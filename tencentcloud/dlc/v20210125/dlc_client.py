@@ -1590,6 +1590,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserRoles(self, request):
+        """列举用户角色信息
+
+        :param request: Request instance for DescribeUserRoles.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUsers(self, request):
         """获取用户列表信息
 

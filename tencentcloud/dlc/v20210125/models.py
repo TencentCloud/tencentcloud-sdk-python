@@ -1877,6 +1877,53 @@ class CommonMetrics(AbstractModel):
         
 
 
+class CosPermission(AbstractModel):
+    """cos权限描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosPath: cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPath: str
+        :param _Permissions: 权限【"read","write"】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of str
+        """
+        self._CosPath = None
+        self._Permissions = None
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._CosPath = params.get("CosPath")
+        self._Permissions = params.get("Permissions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDMSDatabaseRequest(AbstractModel):
     """CreateDMSDatabase请求参数结构体
 
@@ -11149,6 +11196,141 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserRolesRequest(AbstractModel):
+    """DescribeUserRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 列举的数量限制
+        :type Limit: int
+        :param _Offset: 列举的偏移位置
+        :type Offset: int
+        :param _Fuzzy: 按照arn模糊列举
+        :type Fuzzy: str
+        :param _SortBy: 返回结果按照该字段排序
+        :type SortBy: str
+        :param _Sorting: 正序或者倒序，例如：desc
+        :type Sorting: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Fuzzy = None
+        self._SortBy = None
+        self._Sorting = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Fuzzy(self):
+        return self._Fuzzy
+
+    @Fuzzy.setter
+    def Fuzzy(self, Fuzzy):
+        self._Fuzzy = Fuzzy
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Fuzzy = params.get("Fuzzy")
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserRolesResponse(AbstractModel):
+    """DescribeUserRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 符合列举条件的总数量
+        :type Total: int
+        :param _UserRoles: 用户角色信息
+        :type UserRoles: list of UserRole
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._UserRoles = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def UserRoles(self):
+        return self._UserRoles
+
+    @UserRoles.setter
+    def UserRoles(self, UserRoles):
+        self._UserRoles = UserRoles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("UserRoles") is not None:
+            self._UserRoles = []
+            for item in params.get("UserRoles"):
+                obj = UserRole()
+                obj._deserialize(item)
+                self._UserRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUsersRequest(AbstractModel):
     """DescribeUsers请求参数结构体
 
@@ -18611,6 +18793,156 @@ class UserMessage(AbstractModel):
         self._Creator = params.get("Creator")
         self._CreateTime = params.get("CreateTime")
         self._UserAlias = params.get("UserAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRole(AbstractModel):
+    """用户角色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色ID
+        :type RoleId: int
+        :param _AppId: 用户app ID
+        :type AppId: str
+        :param _Uin: 用户ID
+        :type Uin: str
+        :param _Arn: 角色权限
+        :type Arn: str
+        :param _ModifyTime: 最近修改时间戳
+        :type ModifyTime: int
+        :param _Desc: 角色描述信息
+        :type Desc: str
+        :param _RoleName: 角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param _Creator: 创建者UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _CosPermissionList: cos授权路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPermissionList: list of CosPermission
+        :param _PermissionJson: cam策略json
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionJson: str
+        """
+        self._RoleId = None
+        self._AppId = None
+        self._Uin = None
+        self._Arn = None
+        self._ModifyTime = None
+        self._Desc = None
+        self._RoleName = None
+        self._Creator = None
+        self._CosPermissionList = None
+        self._PermissionJson = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Arn(self):
+        return self._Arn
+
+    @Arn.setter
+    def Arn(self, Arn):
+        self._Arn = Arn
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CosPermissionList(self):
+        return self._CosPermissionList
+
+    @CosPermissionList.setter
+    def CosPermissionList(self, CosPermissionList):
+        self._CosPermissionList = CosPermissionList
+
+    @property
+    def PermissionJson(self):
+        return self._PermissionJson
+
+    @PermissionJson.setter
+    def PermissionJson(self, PermissionJson):
+        self._PermissionJson = PermissionJson
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Arn = params.get("Arn")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Desc = params.get("Desc")
+        self._RoleName = params.get("RoleName")
+        self._Creator = params.get("Creator")
+        if params.get("CosPermissionList") is not None:
+            self._CosPermissionList = []
+            for item in params.get("CosPermissionList"):
+                obj = CosPermission()
+                obj._deserialize(item)
+                self._CosPermissionList.append(obj)
+        self._PermissionJson = params.get("PermissionJson")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -86,6 +86,9 @@ FAILEDOPERATION_JSONMARSHALERROR = 'FailedOperation.JsonMarshalError'
 # json反序列化失败。
 FAILEDOPERATION_JSONUNMARSHALERROR = 'FailedOperation.JsonUnmarshalError'
 
+# 检查到改动前后策略一致，无改动点。
+FAILEDOPERATION_NOTCHANGESTRATEGY = 'FailedOperation.NotChangeStrategy'
+
 # 不是延迟复制RO。
 FAILEDOPERATION_NOTDELAYRO = 'FailedOperation.NotDelayRo'
 
@@ -103,6 +106,9 @@ FAILEDOPERATION_QUERYAUDITTASKFAILERROR = 'FailedOperation.QueryAuditTaskFailErr
 
 # 查询日志失败。
 FAILEDOPERATION_QUERYLOGERROR = 'FailedOperation.QueryLogError'
+
+# 高可用版服务跨区调用反序列化失败。
+FAILEDOPERATION_REMOTECALLUNMARSHALERROR = 'FailedOperation.RemoteCallUnmarshalError'
 
 # 代理创建中或则已存在，请勿重复创建。
 FAILEDOPERATION_REPEATCREATEPROXYERROR = 'FailedOperation.RepeatCreateProxyError'
@@ -559,6 +565,9 @@ UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = 'UnauthorizedOperation.NotEnoughPriv
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 非强隔离实例不支持当前操作。
+UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = 'UnsupportedOperation.NotSupportNormalInstance'
 
 # 权限不支持。
 UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = 'UnsupportedOperation.PrivilegesUnsupportedError'

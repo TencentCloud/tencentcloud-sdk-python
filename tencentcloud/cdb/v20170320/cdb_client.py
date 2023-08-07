@@ -1268,6 +1268,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCpuExpandStrategy(self, request):
+        """通过该 API 可以查询实例的 CPU 弹性扩容策略
+
+        :param request: Request instance for DescribeCpuExpandStrategy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCpuExpandStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCpuExpandStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBFeatures(self, request):
         """本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
 
@@ -3137,6 +3160,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartCpuExpand(self, request):
+        """通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+
+        :param request: Request instance for StartCpuExpand.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCpuExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartCpuExpandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartReplication(self, request):
         """开启 RO 复制，从主实例同步数据。
 
@@ -3151,6 +3197,29 @@ class CdbClient(AbstractClient):
             body = self.call("StartReplication", params, headers=headers)
             response = json.loads(body)
             model = models.StartReplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCpuExpand(self, request):
+        """通过该API，可以关闭 CPU 弹性扩容。
+
+        :param request: Request instance for StopCpuExpand.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopCpuExpandRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopCpuExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCpuExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCpuExpandResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

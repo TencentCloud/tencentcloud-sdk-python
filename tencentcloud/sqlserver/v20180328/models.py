@@ -4662,7 +4662,7 @@ class DBInstance(AbstractModel):
         :type Cpu: int
         :param _Version: 实例版本代号
         :type Version: str
-        :param _Type: 物理机代号
+        :param _Type: 实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
         :type Type: str
         :param _Pid: 计费ID
         :type Pid: int

@@ -93,6 +93,37 @@ class AcceptAttachCcnInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AcceptVpcPeeringConnectionRequest(AbstractModel):
+    """AcceptVpcPeeringConnection请求参数结构体
+
+    """
+
+
+class AcceptVpcPeeringConnectionResponse(AbstractModel):
+    """AcceptVpcPeeringConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AccessPolicy(AbstractModel):
     """策略信息
 
@@ -9481,6 +9512,37 @@ class CreateVpcEndPointServiceWhiteListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVpcPeeringConnectionRequest(AbstractModel):
+    """CreateVpcPeeringConnection请求参数结构体
+
+    """
+
+
+class CreateVpcPeeringConnectionResponse(AbstractModel):
+    """CreateVpcPeeringConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateVpcRequest(AbstractModel):
     """CreateVpc请求参数结构体
 
@@ -13293,6 +13355,37 @@ class DeleteVpcEndPointServiceWhiteListRequest(AbstractModel):
 
 class DeleteVpcEndPointServiceWhiteListResponse(AbstractModel):
     """DeleteVpcEndPointServiceWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVpcPeeringConnectionRequest(AbstractModel):
+    """DeleteVpcPeeringConnection请求参数结构体
+
+    """
+
+
+class DeleteVpcPeeringConnectionResponse(AbstractModel):
+    """DeleteVpcPeeringConnection返回参数结构体
 
     """
 
@@ -22525,6 +22618,132 @@ class DescribeVpcLimitsResponse(AbstractModel):
                 obj = VpcLimit()
                 obj._deserialize(item)
                 self._VpcLimitSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVpcPeeringConnectionsRequest(AbstractModel):
+    """DescribeVpcPeeringConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PeeringConnectionIds: 对等连接唯一ID数组。
+        :type PeeringConnectionIds: list of str
+        :param _Filters: 过滤条件，参数不支持同时指定PeeringConnectionIds和Filters。
+<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+<li>state String - （过滤条件）对等连接状态，可选值有：PENDING，投放中；ACTIVE，使用中；EXPIRED，已过期；REJECTED，拒绝。</li>
+<li>peering-connection-name - String - （过滤条件）对等连接名称。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        :param _OrderField: 排序字段，可选值有：CreatedTime，PeeringConnectionName。
+        :type OrderField: str
+        :param _OrderDirection: 排序方式：DESC，降序；ASC，升序。
+        :type OrderDirection: str
+        """
+        self._PeeringConnectionIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._OrderDirection = None
+
+    @property
+    def PeeringConnectionIds(self):
+        return self._PeeringConnectionIds
+
+    @PeeringConnectionIds.setter
+    def PeeringConnectionIds(self, PeeringConnectionIds):
+        self._PeeringConnectionIds = PeeringConnectionIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+
+    def _deserialize(self, params):
+        self._PeeringConnectionIds = params.get("PeeringConnectionIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcPeeringConnectionsResponse(AbstractModel):
+    """DescribeVpcPeeringConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -33382,6 +33601,37 @@ class ModifyVpcEndPointServiceWhiteListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyVpcPeeringConnectionRequest(AbstractModel):
+    """ModifyVpcPeeringConnection请求参数结构体
+
+    """
+
+
+class ModifyVpcPeeringConnectionResponse(AbstractModel):
+    """ModifyVpcPeeringConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyVpnConnectionAttributeRequest(AbstractModel):
     """ModifyVpnConnectionAttribute请求参数结构体
 
@@ -36200,6 +36450,37 @@ class RejectAttachCcnInstancesRequest(AbstractModel):
 
 class RejectAttachCcnInstancesResponse(AbstractModel):
     """RejectAttachCcnInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RejectVpcPeeringConnectionRequest(AbstractModel):
+    """RejectVpcPeeringConnection请求参数结构体
+
+    """
+
+
+class RejectVpcPeeringConnectionResponse(AbstractModel):
+    """RejectVpcPeeringConnection返回参数结构体
 
     """
 

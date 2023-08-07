@@ -3496,6 +3496,40 @@ class ClusterNetworkSettings(AbstractModel):
         
 
 
+class ClusterProperty(AbstractModel):
+    """集群属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeNameType: 节点hostname命名模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeNameType: str
+        """
+        self._NodeNameType = None
+
+    @property
+    def NodeNameType(self):
+        return self._NodeNameType
+
+    @NodeNameType.setter
+    def NodeNameType(self, NodeNameType):
+        self._NodeNameType = NodeNameType
+
+
+    def _deserialize(self, params):
+        self._NodeNameType = params.get("NodeNameType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterPublicLB(AbstractModel):
     """弹性容器集群公网访问负载均衡信息
 
@@ -25842,6 +25876,8 @@ class ModifyClusterAttributeRequest(AbstractModel):
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         :param _QGPUShareEnable: 是否开启QGPU共享
         :type QGPUShareEnable: bool
+        :param _ClusterProperty: 集群属性
+        :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         """
         self._ClusterId = None
         self._ProjectId = None
@@ -25850,6 +25886,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self._ClusterLevel = None
         self._AutoUpgradeClusterLevel = None
         self._QGPUShareEnable = None
+        self._ClusterProperty = None
 
     @property
     def ClusterId(self):
@@ -25907,6 +25944,14 @@ class ModifyClusterAttributeRequest(AbstractModel):
     def QGPUShareEnable(self, QGPUShareEnable):
         self._QGPUShareEnable = QGPUShareEnable
 
+    @property
+    def ClusterProperty(self):
+        return self._ClusterProperty
+
+    @ClusterProperty.setter
+    def ClusterProperty(self, ClusterProperty):
+        self._ClusterProperty = ClusterProperty
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -25918,6 +25963,9 @@ class ModifyClusterAttributeRequest(AbstractModel):
             self._AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
             self._AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         self._QGPUShareEnable = params.get("QGPUShareEnable")
+        if params.get("ClusterProperty") is not None:
+            self._ClusterProperty = ClusterProperty()
+            self._ClusterProperty._deserialize(params.get("ClusterProperty"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25953,6 +26001,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
         :param _QGPUShareEnable: 是否开启QGPU共享
 注意：此字段可能返回 null，表示取不到有效值。
         :type QGPUShareEnable: bool
+        :param _ClusterProperty: 集群属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25962,6 +26013,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self._ClusterLevel = None
         self._AutoUpgradeClusterLevel = None
         self._QGPUShareEnable = None
+        self._ClusterProperty = None
         self._RequestId = None
 
     @property
@@ -26013,6 +26065,14 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self._QGPUShareEnable = QGPUShareEnable
 
     @property
+    def ClusterProperty(self):
+        return self._ClusterProperty
+
+    @ClusterProperty.setter
+    def ClusterProperty(self, ClusterProperty):
+        self._ClusterProperty = ClusterProperty
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -26030,6 +26090,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
             self._AutoUpgradeClusterLevel = AutoUpgradeClusterLevel()
             self._AutoUpgradeClusterLevel._deserialize(params.get("AutoUpgradeClusterLevel"))
         self._QGPUShareEnable = params.get("QGPUShareEnable")
+        if params.get("ClusterProperty") is not None:
+            self._ClusterProperty = ClusterProperty()
+            self._ClusterProperty._deserialize(params.get("ClusterProperty"))
         self._RequestId = params.get("RequestId")
 
 

@@ -4887,10 +4887,14 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def ForceHttps(self):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
         return self._ForceHttps
 
     @ForceHttps.setter
     def ForceHttps(self, ForceHttps):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
         self._ForceHttps = ForceHttps
 
     @property

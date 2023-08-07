@@ -49,6 +49,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AcceptVpcPeeringConnection(self, request):
+        """本接口（AcceptVpcPeeringConnection）用于接受对等连接请求。
+
+        :param request: Request instance for AcceptVpcPeeringConnection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.AcceptVpcPeeringConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AcceptVpcPeeringConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AcceptVpcPeeringConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.AcceptVpcPeeringConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddBandwidthPackageResources(self, request):
         """接口用于添加带宽包资源，包括[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)和[负载均衡](https://cloud.tencent.com/document/product/214/517)等
 
@@ -1622,6 +1645,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVpcPeeringConnection(self, request):
+        """本接口（CreateVpcPeeringConnection）用于创建私有网络对等连接。
+
+        :param request: Request instance for CreateVpcPeeringConnection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateVpcPeeringConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpcPeeringConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVpcPeeringConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVpcPeeringConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateVpnConnection(self, request):
         """本接口（CreateVpnConnection）用于创建VPN通道。
         >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
@@ -2533,6 +2579,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteVpcEndPointServiceWhiteList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteVpcEndPointServiceWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVpcPeeringConnection(self, request):
+        """本接口（DeleteVpcPeeringConnection）用于删除私有网络对等连接。
+
+        :param request: Request instance for DeleteVpcPeeringConnection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcPeeringConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteVpcPeeringConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVpcPeeringConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVpcPeeringConnectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4371,6 +4440,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeVpcLimits", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcLimitsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVpcPeeringConnections(self, request):
+        """查询私有网络对等连接。
+
+        :param request: Request instance for DescribeVpcPeeringConnections.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPeeringConnectionsRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeVpcPeeringConnectionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVpcPeeringConnections", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVpcPeeringConnectionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6520,6 +6612,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyVpcPeeringConnection(self, request):
+        """本接口（ModifyVpcPeeringConnection）用于修改私有网络对等连接属性。
+
+        :param request: Request instance for ModifyVpcPeeringConnection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcPeeringConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpcPeeringConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVpcPeeringConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVpcPeeringConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVpnConnectionAttribute(self, request):
         """本接口（ModifyVpnConnectionAttribute）用于修改VPN通道。
 
@@ -6672,6 +6787,29 @@ class VpcClient(AbstractClient):
             body = self.call("RejectAttachCcnInstances", params, headers=headers)
             response = json.loads(body)
             model = models.RejectAttachCcnInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RejectVpcPeeringConnection(self, request):
+        """本接口（RejectVpcPeeringConnection）用于驳回对等连接请求。
+
+        :param request: Request instance for RejectVpcPeeringConnection.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.RejectVpcPeeringConnectionRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RejectVpcPeeringConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RejectVpcPeeringConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.RejectVpcPeeringConnectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -106,7 +106,7 @@ class GmeClient(AbstractClient):
 
 
     def CreateScanUser(self, request):
-        """新增自定义送检用户
+        """新增自定义送检用户。**接口使用前提**：目前 CreateScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for CreateScanUser.
         :type request: :class:`tencentcloud.gme.v20180711.models.CreateScanUserRequest`
@@ -175,7 +175,7 @@ class GmeClient(AbstractClient):
 
 
     def DeleteScanUser(self, request):
-        """删除自定义送检用户
+        """删除自定义送检用户。**接口使用前提**：目前 DeleteScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for DeleteScanUser.
         :type request: :class:`tencentcloud.gme.v20180711.models.DeleteScanUserRequest`
@@ -290,7 +290,7 @@ class GmeClient(AbstractClient):
 
 
     def DescribeRealtimeScanConfig(self, request):
-        """获取用户自定义送检信息
+        """获取用户自定义送检信息。**接口使用前提**：目前 DescribeRealtimeScanConfig 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for DescribeRealtimeScanConfig.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeRealtimeScanConfigRequest`
@@ -773,7 +773,7 @@ class GmeClient(AbstractClient):
 
 
     def UpdateScanRooms(self, request):
-        """更新自定义送检房间号
+        """更新自定义送检房间号。**接口使用前提**：目前 UpdateScanRooms 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for UpdateScanRooms.
         :type request: :class:`tencentcloud.gme.v20180711.models.UpdateScanRoomsRequest`
@@ -796,7 +796,8 @@ class GmeClient(AbstractClient):
 
 
     def UpdateScanUsers(self, request):
-        """更新自定义送检用户号
+        """更新自定义送检用户号。
+        **接口使用前提**：目前 UpdateScanUsers 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 
         :param request: Request instance for UpdateScanUsers.
         :type request: :class:`tencentcloud.gme.v20180711.models.UpdateScanUsersRequest`
