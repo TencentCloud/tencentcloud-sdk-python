@@ -72,6 +72,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAdminURL(self, request):
+        """创建管理端访问链接
+
+        :param request: Request instance for CreateAdminURL.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateAdminURLRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateAdminURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAdminURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAdminURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAutoCalloutTask(self, request):
         """创建自动外呼任务
 

@@ -523,6 +523,9 @@ class AssetClusterPod(AbstractModel):
         :param _IsCore: 是否核心：1:核心，2:非核心
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCore: int
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
         """
         self._AppId = None
         self._Uin = None
@@ -543,6 +546,7 @@ class AssetClusterPod(AbstractModel):
         self._PublicIp = None
         self._PrivateIp = None
         self._IsCore = None
+        self._IsNewAsset = None
 
     @property
     def AppId(self):
@@ -696,6 +700,14 @@ class AssetClusterPod(AbstractModel):
     def IsCore(self, IsCore):
         self._IsCore = IsCore
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -717,6 +729,7 @@ class AssetClusterPod(AbstractModel):
         self._PublicIp = params.get("PublicIp")
         self._PrivateIp = params.get("PrivateIp")
         self._IsCore = params.get("IsCore")
+        self._IsNewAsset = params.get("IsNewAsset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1555,6 +1568,9 @@ class CVMAssetVO(AbstractModel):
         :param _BASAgentStatus: 模拟攻击工具状态。0代表未安装，1代表已安装，2代表已离线
 注意：此字段可能返回 null，表示取不到有效值。
         :type BASAgentStatus: int
+        :param _IsNewAsset: 1新资产；0 非新资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -1606,6 +1622,7 @@ class CVMAssetVO(AbstractModel):
         self._Os = None
         self._RiskExposure = None
         self._BASAgentStatus = None
+        self._IsNewAsset = None
 
     @property
     def AssetId(self):
@@ -2007,6 +2024,14 @@ class CVMAssetVO(AbstractModel):
     def BASAgentStatus(self, BASAgentStatus):
         self._BASAgentStatus = BASAgentStatus
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -2064,6 +2089,7 @@ class CVMAssetVO(AbstractModel):
         self._Os = params.get("Os")
         self._RiskExposure = params.get("RiskExposure")
         self._BASAgentStatus = params.get("BASAgentStatus")
+        self._IsNewAsset = params.get("IsNewAsset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2155,7 +2181,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type TaskName: str
         :param _ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
         :type ScanAssetType: int
-        :param _ScanItem: 扫描项目；port/poc/weakpass/webcontent/configrisk
+        :param _ScanItem: 扫描项目；port/poc/weakpass/webcontent/configrisk/exposedserver
         :type ScanItem: list of str
         :param _ScanPlanType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
         :type ScanPlanType: int
@@ -2289,10 +2315,16 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 任务id
         :type TaskId: str
+        :param _Status: 0,任务创建成功；小于0失败；-1为存在资产未认证
+        :type Status: int
+        :param _UnAuthAsset: 未认证资产列表
+        :type UnAuthAsset: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
+        self._Status = None
+        self._UnAuthAsset = None
         self._RequestId = None
 
     @property
@@ -2302,6 +2334,22 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UnAuthAsset(self):
+        return self._UnAuthAsset
+
+    @UnAuthAsset.setter
+    def UnAuthAsset(self, UnAuthAsset):
+        self._UnAuthAsset = UnAuthAsset
 
     @property
     def RequestId(self):
@@ -2314,6 +2362,8 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._UnAuthAsset = params.get("UnAuthAsset")
         self._RequestId = params.get("RequestId")
 
 
@@ -2390,6 +2440,9 @@ class DBAssetVO(AbstractModel):
         :param _IsCore: 是否核心
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCore: int
+        :param _IsNewAsset: 是否新资产: 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -2413,6 +2466,7 @@ class DBAssetVO(AbstractModel):
         self._PublicIp = None
         self._Status = None
         self._IsCore = None
+        self._IsNewAsset = None
 
     @property
     def AssetId(self):
@@ -2590,6 +2644,14 @@ class DBAssetVO(AbstractModel):
     def IsCore(self, IsCore):
         self._IsCore = IsCore
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -2619,6 +2681,7 @@ class DBAssetVO(AbstractModel):
         self._PublicIp = params.get("PublicIp")
         self._Status = params.get("Status")
         self._IsCore = params.get("IsCore")
+        self._IsNewAsset = params.get("IsNewAsset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4735,6 +4798,18 @@ class DomainAssetVO(AbstractModel):
         :param _ServiceRisk: 风险服务暴露数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceRisk: int
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
+        :param _VerifyDomain: 待确认资产的随机三级域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyDomain: str
+        :param _VerifyTXTRecord: 待确认资产的TXT记录内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyTXTRecord: str
+        :param _VerifyStatus: 待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyStatus: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -4770,6 +4845,10 @@ class DomainAssetVO(AbstractModel):
         self._CCAttack = None
         self._WebAttack = None
         self._ServiceRisk = None
+        self._IsNewAsset = None
+        self._VerifyDomain = None
+        self._VerifyTXTRecord = None
+        self._VerifyStatus = None
 
     @property
     def AssetId(self):
@@ -5043,6 +5122,38 @@ class DomainAssetVO(AbstractModel):
     def ServiceRisk(self, ServiceRisk):
         self._ServiceRisk = ServiceRisk
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
+    @property
+    def VerifyDomain(self):
+        return self._VerifyDomain
+
+    @VerifyDomain.setter
+    def VerifyDomain(self, VerifyDomain):
+        self._VerifyDomain = VerifyDomain
+
+    @property
+    def VerifyTXTRecord(self):
+        return self._VerifyTXTRecord
+
+    @VerifyTXTRecord.setter
+    def VerifyTXTRecord(self, VerifyTXTRecord):
+        self._VerifyTXTRecord = VerifyTXTRecord
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -5084,6 +5195,10 @@ class DomainAssetVO(AbstractModel):
         self._CCAttack = params.get("CCAttack")
         self._WebAttack = params.get("WebAttack")
         self._ServiceRisk = params.get("ServiceRisk")
+        self._IsNewAsset = params.get("IsNewAsset")
+        self._VerifyDomain = params.get("VerifyDomain")
+        self._VerifyTXTRecord = params.get("VerifyTXTRecord")
+        self._VerifyStatus = params.get("VerifyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5355,6 +5470,12 @@ class IpAssetListVO(AbstractModel):
         :param _RiskExposure: 风险服务暴露
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskExposure: int
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
+        :param _VerifyStatus: 资产认证状态，0-待认证，1-认证成功，2-认证中，3+-认证失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyStatus: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -5389,6 +5510,8 @@ class IpAssetListVO(AbstractModel):
         self._AddressId = None
         self._MemberId = None
         self._RiskExposure = None
+        self._IsNewAsset = None
+        self._VerifyStatus = None
 
     @property
     def AssetId(self):
@@ -5654,6 +5777,22 @@ class IpAssetListVO(AbstractModel):
     def RiskExposure(self, RiskExposure):
         self._RiskExposure = RiskExposure
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
+    @property
+    def VerifyStatus(self):
+        return self._VerifyStatus
+
+    @VerifyStatus.setter
+    def VerifyStatus(self, VerifyStatus):
+        self._VerifyStatus = VerifyStatus
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -5694,6 +5833,8 @@ class IpAssetListVO(AbstractModel):
         self._AddressId = params.get("AddressId")
         self._MemberId = params.get("MemberId")
         self._RiskExposure = params.get("RiskExposure")
+        self._IsNewAsset = params.get("IsNewAsset")
+        self._VerifyStatus = params.get("VerifyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5926,6 +6067,9 @@ class SubnetAsset(AbstractModel):
         :param _IsCore: 是否核心
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCore: int
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
         """
         self._AppId = None
         self._Uin = None
@@ -5945,6 +6089,7 @@ class SubnetAsset(AbstractModel):
         self._ScanTask = None
         self._LastScanTime = None
         self._IsCore = None
+        self._IsNewAsset = None
 
     @property
     def AppId(self):
@@ -6090,6 +6235,14 @@ class SubnetAsset(AbstractModel):
     def IsCore(self, IsCore):
         self._IsCore = IsCore
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -6115,6 +6268,7 @@ class SubnetAsset(AbstractModel):
         self._ScanTask = params.get("ScanTask")
         self._LastScanTime = params.get("LastScanTime")
         self._IsCore = params.get("IsCore")
+        self._IsNewAsset = params.get("IsNewAsset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6509,6 +6663,12 @@ class Vpc(AbstractModel):
         :type Uin: str
         :param _Nick: 昵称
         :type Nick: str
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
+        :param _IsCore: 是否核心资产1是 2不是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCore: int
         """
         self._Subnet = None
         self._ConnectedVpc = None
@@ -6523,6 +6683,8 @@ class Vpc(AbstractModel):
         self._AppId = None
         self._Uin = None
         self._Nick = None
+        self._IsNewAsset = None
+        self._IsCore = None
 
     @property
     def Subnet(self):
@@ -6628,6 +6790,22 @@ class Vpc(AbstractModel):
     def Nick(self, Nick):
         self._Nick = Nick
 
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
+    @property
+    def IsCore(self):
+        return self._IsCore
+
+    @IsCore.setter
+    def IsCore(self, IsCore):
+        self._IsCore = IsCore
+
 
     def _deserialize(self, params):
         self._Subnet = params.get("Subnet")
@@ -6648,6 +6826,8 @@ class Vpc(AbstractModel):
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._Nick = params.get("Nick")
+        self._IsNewAsset = params.get("IsNewAsset")
+        self._IsCore = params.get("IsCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6669,7 +6849,10 @@ class WhereFilter(AbstractModel):
         :type Name: str
         :param _Values: 过滤的值
         :type Values: list of str
-        :param _OperatorType: 精确匹配填 7 模糊匹配填9 ， 兼容 中台定的结构
+        :param _OperatorType: 中台定义：
+1等于 2大于 3小于 4大于等于 5小于等于 6不等于 9模糊匹配 13非模糊匹配 14按位与
+精确匹配填 7 模糊匹配填9 兼容 中台定的结构
+
         :type OperatorType: int
         """
         self._Name = None

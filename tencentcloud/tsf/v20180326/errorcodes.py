@@ -761,6 +761,9 @@ INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = 'InvalidParameterValue.FileCon
 # 文件配置项文件路径不合规。
 INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = 'InvalidParameterValue.FileConfigFilePathInvalid'
 
+# 文件配置项固定字段不可变更。
+INVALIDPARAMETERVALUE_FILECONFIGFIXEDFIELDUNCHANGEABLE = 'InvalidParameterValue.FileConfigFixedFieldUnchangeable'
+
 # 文件配置项名称不合规。
 INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = 'InvalidParameterValue.FileConfigNameInvalid'
 

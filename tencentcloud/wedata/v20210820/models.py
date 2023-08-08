@@ -15578,6 +15578,18 @@ presto\SparkJob\SparkSql
         :param _CreateTime: 创造时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _CycleUnit: 周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleUnit: str
+        :param _ScheduleDesc: 调度计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleDesc: str
+        :param _DatasourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: str
+        :param _DatasourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceType: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -15593,6 +15605,10 @@ presto\SparkJob\SparkSql
         self._DataEngine = None
         self._UpdateTime = None
         self._CreateTime = None
+        self._CycleUnit = None
+        self._ScheduleDesc = None
+        self._DatasourceId = None
+        self._DatasourceType = None
 
     @property
     def TaskId(self):
@@ -15706,6 +15722,38 @@ presto\SparkJob\SparkSql
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def CycleUnit(self):
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def ScheduleDesc(self):
+        return self._ScheduleDesc
+
+    @ScheduleDesc.setter
+    def ScheduleDesc(self, ScheduleDesc):
+        self._ScheduleDesc = ScheduleDesc
+
+    @property
+    def DatasourceId(self):
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatasourceType(self):
+        return self._DatasourceType
+
+    @DatasourceType.setter
+    def DatasourceType(self, DatasourceType):
+        self._DatasourceType = DatasourceType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -15722,6 +15770,10 @@ presto\SparkJob\SparkSql
         self._DataEngine = params.get("DataEngine")
         self._UpdateTime = params.get("UpdateTime")
         self._CreateTime = params.get("CreateTime")
+        self._CycleUnit = params.get("CycleUnit")
+        self._ScheduleDesc = params.get("ScheduleDesc")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatasourceType = params.get("DatasourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15849,6 +15901,14 @@ presto
         :type OwnerId: str
         :param _TenantId: 1
         :type TenantId: str
+        :param _DatasourceIdList: 数据源ID列表
+        :type DatasourceIdList: list of str
+        :param _DatasourceTypeList: 数据源类型列表
+        :type DatasourceTypeList: list of str
+        :param _CycleUnitList: 调度单位类型列表
+        :type CycleUnitList: list of str
+        :param _CanSubmit: 是否筛选出可提交的任务
+        :type CanSubmit: bool
         """
         self._ProjectId = None
         self._Page = None
@@ -15867,6 +15927,10 @@ presto
         self._UserId = None
         self._OwnerId = None
         self._TenantId = None
+        self._DatasourceIdList = None
+        self._DatasourceTypeList = None
+        self._CycleUnitList = None
+        self._CanSubmit = None
 
     @property
     def ProjectId(self):
@@ -16004,6 +16068,38 @@ presto
     def TenantId(self, TenantId):
         self._TenantId = TenantId
 
+    @property
+    def DatasourceIdList(self):
+        return self._DatasourceIdList
+
+    @DatasourceIdList.setter
+    def DatasourceIdList(self, DatasourceIdList):
+        self._DatasourceIdList = DatasourceIdList
+
+    @property
+    def DatasourceTypeList(self):
+        return self._DatasourceTypeList
+
+    @DatasourceTypeList.setter
+    def DatasourceTypeList(self, DatasourceTypeList):
+        self._DatasourceTypeList = DatasourceTypeList
+
+    @property
+    def CycleUnitList(self):
+        return self._CycleUnitList
+
+    @CycleUnitList.setter
+    def CycleUnitList(self, CycleUnitList):
+        self._CycleUnitList = CycleUnitList
+
+    @property
+    def CanSubmit(self):
+        return self._CanSubmit
+
+    @CanSubmit.setter
+    def CanSubmit(self, CanSubmit):
+        self._CanSubmit = CanSubmit
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -16023,6 +16119,10 @@ presto
         self._UserId = params.get("UserId")
         self._OwnerId = params.get("OwnerId")
         self._TenantId = params.get("TenantId")
+        self._DatasourceIdList = params.get("DatasourceIdList")
+        self._DatasourceTypeList = params.get("DatasourceTypeList")
+        self._CycleUnitList = params.get("CycleUnitList")
+        self._CanSubmit = params.get("CanSubmit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

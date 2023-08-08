@@ -694,7 +694,7 @@ class Addr(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IP: IP
+        :param _IP: IP地址
         :type IP: str
         :param _Port: 端口
         :type Port: int
@@ -3187,10 +3187,10 @@ class CreateClustersRequest(AbstractModel):
 普通实例Cpu核数
         :type Cpu: int
         :param _Memory: 当DbMode为NORMAL或不填时必选
-普通实例内存,单位G
+普通实例内存,单位GB
         :type Memory: int
         :param _Storage: 该参数无实际意义，已废弃。
-存储大小，单位G。
+存储大小，单位GB。
         :type Storage: int
         :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
         :type ClusterName: str
@@ -5318,7 +5318,7 @@ pausing
         :type Vip: str
         :param _Vport: vport端口
         :type Vport: int
-        :param _RoAddr: 读写分离Vport
+        :param _RoAddr: 集群只读实例的vip地址和vport端口
         :type RoAddr: list of Addr
         :param _Ability: 集群支持的功能
 注意：此字段可能返回 null，表示取不到有效值。

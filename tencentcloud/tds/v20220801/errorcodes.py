@@ -14,5 +14,8 @@
 # limitations under the License.
 
 
+# 操作失败。
+FAILEDOPERATION = 'FailedOperation'
+
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'

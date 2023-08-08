@@ -3269,6 +3269,85 @@ class VoicePrintBaseData(AbstractModel):
         
 
 
+class VoicePrintCountData(AbstractModel):
+    """统计返回注册数量结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        """
+        self._Total = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintCountRequest(AbstractModel):
+    """VoicePrintCount请求参数结构体
+
+    """
+
+
+class VoicePrintCountResponse(AbstractModel):
+    """VoicePrintCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 统计数据
+        :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintCountData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VoicePrintCountData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class VoicePrintDeleteRequest(AbstractModel):
     """VoicePrintDelete请求参数结构体
 

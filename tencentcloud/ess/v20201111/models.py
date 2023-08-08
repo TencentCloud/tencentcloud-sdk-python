@@ -4456,9 +4456,9 @@ class CreateIntegrationUserRolesRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _UserIds: 绑定角色的用户id列表
+        :param _UserIds: 绑定角色的用户id列表，不能重复，不能大于 100 个
         :type UserIds: list of str
-        :param _RoleIds: 绑定角色的角色id列表
+        :param _RoleIds: 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
         :type RoleIds: list of str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -5397,6 +5397,8 @@ true：做透明化处理和颜色增强。
 取值：
 填写的FileId通过UploadFiles接口上传文件获取。
         :type FileId: str
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._UserName = None
         self._IdCardNumber = None
@@ -5410,6 +5412,7 @@ true：做透明化处理和颜色增强。
         self._SealColor = None
         self._ProcessSeal = None
         self._FileId = None
+        self._Agent = None
 
     @property
     def UserName(self):
@@ -5511,6 +5514,14 @@ true：做透明化处理和颜色增强。
     def FileId(self, FileId):
         self._FileId = FileId
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -5527,6 +5538,9 @@ true：做透明化处理和颜色增强。
         self._SealColor = params.get("SealColor")
         self._ProcessSeal = params.get("ProcessSeal")
         self._FileId = params.get("FileId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5733,16 +5747,22 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type Name: str
         :param _Mobile: 手机号，大陆手机号11位
         :type Mobile: str
-        :param _EndPoint: 链接类型
-HTTP：跳转电子签小程序的http_url，
-APP：第三方APP或小程序跳转电子签小程序的path。
-默认为HTTP类型
+        :param _EndPoint: 要跳转的链接类型
+
+- HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+- APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
+
         :type EndPoint: str
         :param _FlowId: 签署流程编号 (PathType=1时必传)
         :type FlowId: str
         :param _FlowGroupId: 合同组ID 
         :type FlowGroupId: str
-        :param _PathType: 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
+        :param _PathType: 要跳转到的页面类型 
+
+- 0: 不传, 主页 (默认)
+- 1: 小程序合同详情 
+- 2: 小程序合同列表页 
+
         :type PathType: int
         :param _AutoJumpBack: 是否自动回跳
 true：是，
@@ -5753,10 +5773,10 @@ false：否。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Hides: 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
 
-0:合同签署页面更多操作按钮
-1:合同签署页面更多操作的拒绝签署按钮
-2:合同签署页面更多操作的转他人处理按钮
-3:签署成功页的查看详情按钮
+- 0:合同签署页面更多操作按钮
+- 1:合同签署页面更多操作的拒绝签署按钮
+- 2:合同签署页面更多操作的转他人处理按钮
+- 3:签署成功页的查看详情按钮
         :type Hides: list of int
         """
         self._Operator = None
@@ -6690,7 +6710,7 @@ class DeleteIntegrationDepartmentRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _DeptId: 电子签中的部门id
+        :param _DeptId: 电子签中的部门id,通过DescribeIntegrationDepartments接口可获得
         :type DeptId: str
         :param _ReceiveDeptId: 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
         :type ReceiveDeptId: str
@@ -6774,7 +6794,7 @@ class DeleteIntegrationEmployeesRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Employees: 待移除员工的信息，userId和openId二选一，必填一个
+        :param _Employees: 待移除员工的信息，userId和openId二选一，必填一个，如果需要指定交接人的话，ReceiveUserId或者ReceiveOpenId字段二选一
         :type Employees: list of Staff
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -6881,7 +6901,7 @@ class DeleteIntegrationRoleUsersRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _RoleId: 角色id
         :type RoleId: str
-        :param _Users: 用户信息
+        :param _Users: 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
         :type Users: list of UserInfo
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -7646,9 +7666,9 @@ class DescribeFlowComponentsRequest(AbstractModel):
         r"""
         :param _Operator: 操作者信息
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 电子签流程的Id
+        :param _FlowId: 流程(合同)的编号
         :type FlowId: str
-        :param _Agent: 应用相关信息
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -7705,7 +7725,7 @@ class DescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientComponentInfos: 流程关联的填写控件信息
+        :param _RecipientComponentInfos: 流程关联的填写控件信息，按照参与方进行分类返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8350,14 +8370,14 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Limit: 返回最大数量，最大为20
+        :param _Limit: 指定每页多少条数据，单页最大20
         :type Limit: int
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
         :type Offset: int
         """
         self._Operator = None
@@ -8442,10 +8462,10 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
         :param _Employees: 员工数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Employees: list of Staff
-        :param _Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
-        :param _Limit: 返回最大数量，最大为20
+        :param _Limit: 指定每页多少条数据，单页最大20
         :type Limit: int
         :param _TotalCount: 符合条件的员工数量
         :type TotalCount: int
@@ -8596,7 +8616,7 @@ class DescribeIntegrationRolesRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Limit: 返回最大数量，最大为200
+        :param _Limit: 指定每页多少条数据，单页最大200
         :type Limit: int
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -8605,7 +8625,7 @@ Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角�
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0，最大为2000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
         :type Offset: int
         """
         self._Operator = None
@@ -8687,9 +8707,9 @@ class DescribeIntegrationRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认为0，最大为2000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
         :type Offset: int
-        :param _Limit: 返回最大数量，最大为200
+        :param _Limit: 指定每页多少条数据，单页最大200
         :type Limit: int
         :param _TotalCount: 符合查询条件的总的角色数
         :type TotalCount: int
@@ -8767,9 +8787,9 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，userId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Limit: 单次查询成员企业最大返回数量
+        :param _Limit: 指定每页多少条数据，单页最大1000
         :type Limit: int
-        :param _Offset: 页面偏移量
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0
         :type Offset: int
         :param _Name: 查询成员企业的企业名，模糊匹配
         :type Name: str
@@ -8777,7 +8797,7 @@ class DescribeOrganizationGroupOrganizationsRequest(AbstractModel):
         :type Status: int
         :param _Export: 是否导出当前成员企业数据
         :type Export: bool
-        :param _Id: 成员企业id
+        :param _Id: 成员企业机构 ID，在PC控制台 集团管理可获取
         :type Id: str
         """
         self._Operator = None
@@ -8881,7 +8901,7 @@ class DescribeOrganizationGroupOrganizationsResponse(AbstractModel):
         :param _ActivedTotal: 已加入的企业数量(废弃,请使用ActivatedTotal)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivedTotal: int
-        :param _ExportUrl: 导出文件的url
+        :param _ExportUrl: 如果入参Export为 true 时使用，表示导出Excel的url
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExportUrl: str
         :param _List: 成员企业信息列表
@@ -11916,7 +11936,7 @@ class GroupOrganization(AbstractModel):
         :param _JoinTime: 成员企业加入集团时间，时间戳，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type JoinTime: int
-        :param _FlowEngineEnable: 是否使用审批流引擎，true-是，false-否
+        :param _FlowEngineEnable: 是否使用自建审批流引擎（即不是企微审批流引擎），true-是，false-否
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowEngineEnable: bool
         """
@@ -12445,9 +12465,9 @@ class ModifyIntegrationDepartmentRequest(AbstractModel):
         r"""
         :param _Operator: 操作人信息，UserId必填且需拥有组织架构管理权限
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _DeptId: 电子签部门ID
+        :param _DeptId: 电子签部门ID,通过DescribeIntegrationDepartments接口可以获取
         :type DeptId: str
-        :param _ParentDeptId: 电子签父部门ID
+        :param _ParentDeptId: 电子签父部门ID，通过DescribeIntegrationDepartments接口可以获取
         :type ParentDeptId: str
         :param _DeptName: 部门名称，不超过50个字符
         :type DeptName: str
@@ -13192,12 +13212,14 @@ class RecipientComponentInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientId: str
         :param _RecipientFillStatus: 参与方填写状态
+0-未填写
+1-已填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientFillStatus: str
-        :param _IsPromoter: 是否发起方
+        :param _IsPromoter: 是否为发起方
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
-        :param _Components: 填写控件内容
+        :param _Components: 填写控件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
@@ -14825,7 +14847,7 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
+        :param _Operator: 当前用户信息，UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Employees: 员工信息，不超过100个。
 根据UserId或OpenId更新员工，必填一个，优先UserId。

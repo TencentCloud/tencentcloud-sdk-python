@@ -4443,6 +4443,8 @@ class CreateMachineGroupRequest(AbstractModel):
         :type ServiceLogging: bool
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
+        :param _OSType: 系统类型，默认0，0：Linux，1: windows
+        :type OSType: int
         """
         self._GroupName = None
         self._MachineGroupType = None
@@ -4452,6 +4454,7 @@ class CreateMachineGroupRequest(AbstractModel):
         self._UpdateEndTime = None
         self._ServiceLogging = None
         self._MetaTags = None
+        self._OSType = None
 
     @property
     def GroupName(self):
@@ -4517,6 +4520,14 @@ class CreateMachineGroupRequest(AbstractModel):
     def MetaTags(self, MetaTags):
         self._MetaTags = MetaTags
 
+    @property
+    def OSType(self):
+        return self._OSType
+
+    @OSType.setter
+    def OSType(self, OSType):
+        self._OSType = OSType
+
 
     def _deserialize(self, params):
         self._GroupName = params.get("GroupName")
@@ -4539,6 +4550,7 @@ class CreateMachineGroupRequest(AbstractModel):
                 obj = MetaTagInfo()
                 obj._deserialize(item)
                 self._MetaTags.append(obj)
+        self._OSType = params.get("OSType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9110,6 +9122,11 @@ machineGroupId
 - 类型：String
 - 必选：否
 
+osType
+- 按照【操作系统类型】进行过滤。
+- 类型：Int
+- 必选：否
+
 tagKey
 - 按照【标签键】进行过滤。
 - 类型：String
@@ -9967,6 +9984,76 @@ class DynamicIndex(AbstractModel):
         
 
 
+class EventLog(AbstractModel):
+    """Windows事件日志采集配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventChannel: 事件通道，支持Application，Security，Setup，System，ALL
+
+        :type EventChannel: str
+        :param _TimeType: 时间类型，1:用户自定义，2:当前时间
+        :type TimeType: int
+        :param _Timestamp: 时间，用户选择自定义时间类型时，需要指定时间
+        :type Timestamp: int
+        :param _EventIDs: 事件ID过滤列表
+        :type EventIDs: list of str
+        """
+        self._EventChannel = None
+        self._TimeType = None
+        self._Timestamp = None
+        self._EventIDs = None
+
+    @property
+    def EventChannel(self):
+        return self._EventChannel
+
+    @EventChannel.setter
+    def EventChannel(self, EventChannel):
+        self._EventChannel = EventChannel
+
+    @property
+    def TimeType(self):
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def EventIDs(self):
+        return self._EventIDs
+
+    @EventIDs.setter
+    def EventIDs(self, EventIDs):
+        self._EventIDs = EventIDs
+
+
+    def _deserialize(self, params):
+        self._EventChannel = params.get("EventChannel")
+        self._TimeType = params.get("TimeType")
+        self._Timestamp = params.get("Timestamp")
+        self._EventIDs = params.get("EventIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExcludePathInfo(AbstractModel):
     """黑名单path信息
 
@@ -10253,6 +10340,8 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         :type PathRegex: str
         :param _MetaTags: 用户自定义元数据信息，MetadataType为2时必填
         :type MetaTags: list of MetaTagInfo
+        :param _EventLogRules: windows事件日志采集
+        :type EventLogRules: list of EventLog
         """
         self._TimeKey = None
         self._TimeFormat = None
@@ -10272,6 +10361,7 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         self._MetadataType = None
         self._PathRegex = None
         self._MetaTags = None
+        self._EventLogRules = None
 
     @property
     def TimeKey(self):
@@ -10417,6 +10507,14 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
     def MetaTags(self, MetaTags):
         self._MetaTags = MetaTags
 
+    @property
+    def EventLogRules(self):
+        return self._EventLogRules
+
+    @EventLogRules.setter
+    def EventLogRules(self, EventLogRules):
+        self._EventLogRules = EventLogRules
+
 
     def _deserialize(self, params):
         self._TimeKey = params.get("TimeKey")
@@ -10447,6 +10545,12 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
                 obj = MetaTagInfo()
                 obj._deserialize(item)
                 self._MetaTags.append(obj)
+        if params.get("EventLogRules") is not None:
+            self._EventLogRules = []
+            for item in params.get("EventLogRules"):
+                obj = EventLog()
+                obj._deserialize(item)
+                self._EventLogRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12266,6 +12370,8 @@ class MachineGroupInfo(AbstractModel):
         :type ServiceLogging: bool
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
+        :param _OSType: 操作系统类型，0: Linux，1: windows
+        :type OSType: int
         """
         self._GroupId = None
         self._GroupName = None
@@ -12277,6 +12383,7 @@ class MachineGroupInfo(AbstractModel):
         self._UpdateEndTime = None
         self._ServiceLogging = None
         self._MetaTags = None
+        self._OSType = None
 
     @property
     def GroupId(self):
@@ -12358,6 +12465,14 @@ class MachineGroupInfo(AbstractModel):
     def MetaTags(self, MetaTags):
         self._MetaTags = MetaTags
 
+    @property
+    def OSType(self):
+        return self._OSType
+
+    @OSType.setter
+    def OSType(self, OSType):
+        self._OSType = OSType
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -12382,6 +12497,7 @@ class MachineGroupInfo(AbstractModel):
                 obj = MetaTagInfo()
                 obj._deserialize(item)
                 self._MetaTags.append(obj)
+        self._OSType = params.get("OSType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

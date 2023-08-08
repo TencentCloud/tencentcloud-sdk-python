@@ -3850,6 +3850,8 @@ class DescribeDevicesRequest(AbstractModel):
         :type ResourceIdSet: list of str
         :param _KindSet: 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
         :type KindSet: list of int non-negative
+        :param _ManagedAccount: 资产是否包含托管账号。1，包含；0，不包含
+        :type ManagedAccount: str
         :param _DepartmentId: 过滤条件，可按照部门ID进行过滤
         :type DepartmentId: str
         :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
@@ -3868,6 +3870,7 @@ BindingStatus 绑定状态
         self._AuthorizedUserIdSet = None
         self._ResourceIdSet = None
         self._KindSet = None
+        self._ManagedAccount = None
         self._DepartmentId = None
         self._TagFilters = None
         self._Filters = None
@@ -3953,6 +3956,14 @@ BindingStatus 绑定状态
         self._KindSet = KindSet
 
     @property
+    def ManagedAccount(self):
+        return self._ManagedAccount
+
+    @ManagedAccount.setter
+    def ManagedAccount(self, ManagedAccount):
+        self._ManagedAccount = ManagedAccount
+
+    @property
     def DepartmentId(self):
         return self._DepartmentId
 
@@ -3988,6 +3999,7 @@ BindingStatus 绑定状态
         self._AuthorizedUserIdSet = params.get("AuthorizedUserIdSet")
         self._ResourceIdSet = params.get("ResourceIdSet")
         self._KindSet = params.get("KindSet")
+        self._ManagedAccount = params.get("ManagedAccount")
         self._DepartmentId = params.get("DepartmentId")
         if params.get("TagFilters") is not None:
             self._TagFilters = []

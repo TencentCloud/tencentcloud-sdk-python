@@ -3169,11 +3169,11 @@ class ChannelCreateUserRolesRequest(AbstractModel):
         r"""
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _RoleIds: 绑定角色的角色id列表
+        :param _RoleIds: 绑定角色的角色id列表，最多 100 个
         :type RoleIds: list of str
-        :param _UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+        :param _UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
         :type UserIds: list of str
-        :param _OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+        :param _OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
         :type OpenIds: list of str
         :param _Operator: 操作者信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -3389,11 +3389,11 @@ class ChannelDeleteRoleUsersRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _RoleId: 角色Id（非超管或法人角色Id）
         :type RoleId: str
-        :param _UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+        :param _UserIds: 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
         :type UserIds: list of str
         :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+        :param _OpenIds: 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
         :type OpenIds: list of str
         """
         self._Agent = None
@@ -3632,32 +3632,24 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回最大数量，最大为20
-        :type Limit: int
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Limit: 指定每页多少条数据，单页最大20
+        :type Limit: int
         :param _Filters: 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 查询离职员工时，Key为Status，Values为["QuiteJob"]
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0,最大为20000
         :type Offset: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
-        self._Limit = None
         self._Agent = None
+        self._Limit = None
         self._Filters = None
         self._Offset = None
         self._Operator = None
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
 
     @property
     def Agent(self):
@@ -3666,6 +3658,14 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
 
     @property
     def Filters(self):
@@ -3697,10 +3697,10 @@ class ChannelDescribeEmployeesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Limit = params.get("Limit")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -3731,10 +3731,10 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
         :param _Employees: 员工数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Employees: list of Staff
-        :param _Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
-        :param _Limit: 返回最大数量，最大为20
+        :param _Limit: 指定每页多少条数据，单页最大20
         :type Limit: int
         :param _TotalCount: 符合条件的员工数量
         :type TotalCount: int
@@ -3855,7 +3855,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientComponentInfos: 流程关联的填写控件信息
+        :param _RecipientComponentInfos: 流程关联的填写控件信息，控件会按照参与方进行分类。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4055,9 +4055,9 @@ class ChannelDescribeRolesRequest(AbstractModel):
         r"""
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Offset: 查询起始偏移，最大2000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
         :type Offset: int
-        :param _Limit: 查询数量，最大200
+        :param _Limit: 指定每页多少条数据，单页最大200
         :type Limit: str
         :param _Filters: 查询的关键字段:
 Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
@@ -4149,9 +4149,9 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 页面偏移量，最大2000
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
         :type Offset: int
-        :param _Limit: 查询数量，最大200
+        :param _Limit: 指定每页多少条数据，单页最大200
         :type Limit: int
         :param _TotalCount: 查询角色的总数量
         :type TotalCount: int

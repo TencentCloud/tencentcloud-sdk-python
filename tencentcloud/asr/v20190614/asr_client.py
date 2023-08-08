@@ -512,6 +512,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VoicePrintCount(self, request):
+        """统计并返回注册的说话人id总数
+
+        :param request: Request instance for VoicePrintCount.
+        :type request: :class:`tencentcloud.asr.v20190614.models.VoicePrintCountRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VoicePrintCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.VoicePrintCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VoicePrintDelete(self, request):
         """本接口用于以删除已经注册的说话人信息（删除之后，原有的说话人ID和说话人音频数据都会失效）
 

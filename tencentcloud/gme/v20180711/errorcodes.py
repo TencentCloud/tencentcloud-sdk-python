@@ -53,6 +53,9 @@ INVALIDPARAMETER_TIMERANGEERROR = 'InvalidParameter.TimeRangeError'
 # BizId 参数错误
 INVALIDPARAMETERVALUE_INVALIDBIZID = 'InvalidParameterValue.InvalidBizId'
 
+# 输入删除类型应为1或2。
+INVALIDPARAMETERVALUE_INVALIDDELETETYPE = 'InvalidParameterValue.InvalidDeleteType'
+
 # RecordMode参数错误
 INVALIDPARAMETERVALUE_INVALIDRECORDMODE = 'InvalidParameterValue.InvalidRecordMode'
 
