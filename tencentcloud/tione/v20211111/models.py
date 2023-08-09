@@ -1277,6 +1277,234 @@ class CFSTurbo(AbstractModel):
         
 
 
+class ChatCompletionRequest(AbstractModel):
+    """ChatCompletion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 部署好的模型服务Id。
+        :type Model: str
+        :param _Messages: 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+        :type Messages: list of Message
+        :param _Temperature: 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        :type Temperature: float
+        :param _TopP: 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+        :type TopP: float
+        :param _MaxTokens: 最大生成的token数目。默认为无限大。
+        :type MaxTokens: int
+        """
+        self._Model = None
+        self._Messages = None
+        self._Temperature = None
+        self._TopP = None
+        self._MaxTokens = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Temperature(self):
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def MaxTokens(self):
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = Message()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        self._MaxTokens = params.get("MaxTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatCompletionResponse(AbstractModel):
+    """ChatCompletion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 部署好的服务Id
+        :type Model: str
+        :param _Choices: 本次问答的答案。
+        :type Choices: list of Choice
+        :param _Id: 会话Id。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Usage: token统计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Usage: :class:`tencentcloud.tione.v20211111.models.Usage`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Model = None
+        self._Choices = None
+        self._Id = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Choices(self):
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        self._Id = params.get("Id")
+        if params.get("Usage") is not None:
+            self._Usage = Usage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
+class Choice(AbstractModel):
+    """对话结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 对话结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: :class:`tencentcloud.tione.v20211111.models.Message`
+        :param _FinishReason: 结束理由: stop, length, content_filter, null
+        :type FinishReason: str
+        :param _Index: 序号
+        :type Index: int
+        """
+        self._Message = None
+        self._FinishReason = None
+        self._Index = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def FinishReason(self):
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        if params.get("Message") is not None:
+            self._Message = Message()
+            self._Message._deserialize(params.get("Message"))
+        self._FinishReason = params.get("FinishReason")
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Container(AbstractModel):
     """容器信息
 
@@ -11439,6 +11667,53 @@ class LogIdentity(AbstractModel):
         
 
 
+class Message(AbstractModel):
+    """对话输入内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _Content: 对话输入内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetricData(AbstractModel):
     """指标数据
 
@@ -19787,6 +20062,66 @@ class TrainingTaskSetItem(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Usage(AbstractModel):
+    """大模型生成Token统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompletionTokens: 生成的token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletionTokens: int
+        :param _PromptTokens: 输入的token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTokens: int
+        :param _TotalTokens: 总共token数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTokens: int
+        """
+        self._CompletionTokens = None
+        self._PromptTokens = None
+        self._TotalTokens = None
+
+    @property
+    def CompletionTokens(self):
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def PromptTokens(self):
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def TotalTokens(self):
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._PromptTokens = params.get("PromptTokens")
+        self._TotalTokens = params.get("TotalTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

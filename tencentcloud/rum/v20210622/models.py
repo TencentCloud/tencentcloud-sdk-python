@@ -5350,6 +5350,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         :type Browser: str
         :param _Env: 环境
         :type Env: str
+        :param _GroupByType: group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+ 5:1d
+        :type GroupByType: int
         """
         self._StartTime = None
         self._Type = None
@@ -5372,6 +5375,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         self._Os = None
         self._Browser = None
         self._Env = None
+        self._GroupByType = None
 
     @property
     def StartTime(self):
@@ -5541,6 +5545,14 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
     def Env(self, Env):
         self._Env = Env
 
+    @property
+    def GroupByType(self):
+        return self._GroupByType
+
+    @GroupByType.setter
+    def GroupByType(self, GroupByType):
+        self._GroupByType = GroupByType
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -5564,6 +5576,7 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         self._Os = params.get("Os")
         self._Browser = params.get("Browser")
         self._Env = params.get("Env")
+        self._GroupByType = params.get("GroupByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

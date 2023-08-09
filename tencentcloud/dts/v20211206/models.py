@@ -1133,7 +1133,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
         :type DstNodeType: str
-        :param _Options: 同步任务选项
+        :param _Options: 同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param _AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
         :type AutoRetryTimeRangeMinutes: int
@@ -4243,6 +4243,11 @@ manualPaused(已暂停)
         :param _ErrorInfo: 任务错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: list of ErrorInfoItem
+        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        :type DumperResumeCtrl: str
+        :param _RateLimitOption: 任务的限速信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4266,6 +4271,8 @@ manualPaused(已暂停)
         self._CheckStepInfo = None
         self._TradeInfo = None
         self._ErrorInfo = None
+        self._DumperResumeCtrl = None
+        self._RateLimitOption = None
         self._RequestId = None
 
     @property
@@ -4429,6 +4436,22 @@ manualPaused(已暂停)
         self._ErrorInfo = ErrorInfo
 
     @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
+    @property
+    def RateLimitOption(self):
+        return self._RateLimitOption
+
+    @RateLimitOption.setter
+    def RateLimitOption(self, RateLimitOption):
+        self._RateLimitOption = RateLimitOption
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4484,6 +4507,10 @@ manualPaused(已暂停)
                 obj = ErrorInfoItem()
                 obj._deserialize(item)
                 self._ErrorInfo.append(obj)
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
+        if params.get("RateLimitOption") is not None:
+            self._RateLimitOption = RateLimitOption()
+            self._RateLimitOption._deserialize(params.get("RateLimitOption"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5711,6 +5738,9 @@ class Endpoint(AbstractModel):
         :param _DatabaseNetEnv: 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseNetEnv: str
+        :param _CcnOwnerUin: 数据库为跨账号云联网下的实例时、表示云联网所属主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CcnOwnerUin: str
         """
         self._Region = None
         self._Role = None
@@ -5738,6 +5768,7 @@ class Endpoint(AbstractModel):
         self._TmpToken = None
         self._EncryptConn = None
         self._DatabaseNetEnv = None
+        self._CcnOwnerUin = None
 
     @property
     def Region(self):
@@ -5947,6 +5978,14 @@ class Endpoint(AbstractModel):
     def DatabaseNetEnv(self, DatabaseNetEnv):
         self._DatabaseNetEnv = DatabaseNetEnv
 
+    @property
+    def CcnOwnerUin(self):
+        return self._CcnOwnerUin
+
+    @CcnOwnerUin.setter
+    def CcnOwnerUin(self, CcnOwnerUin):
+        self._CcnOwnerUin = CcnOwnerUin
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -5975,6 +6014,66 @@ class Endpoint(AbstractModel):
         self._TmpToken = params.get("TmpToken")
         self._EncryptConn = params.get("EncryptConn")
         self._DatabaseNetEnv = params.get("DatabaseNetEnv")
+        self._CcnOwnerUin = params.get("CcnOwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrInfo(AbstractModel):
+    """错误信息及其解决方案
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reason: 错误原因
+        :type Reason: str
+        :param _Message: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Solution: 解决方案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Solution: str
+        """
+        self._Reason = None
+        self._Message = None
+        self._Solution = None
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+
+    def _deserialize(self, params):
+        self._Reason = params.get("Reason")
+        self._Message = params.get("Message")
+        self._Solution = params.get("Solution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6237,6 +6336,9 @@ manualPaused(已暂停)
         :param _AutoRetryTimeRangeMinutes: 自动重试时间段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
+        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DumperResumeCtrl: str
         """
         self._JobId = None
         self._JobName = None
@@ -6256,6 +6358,7 @@ manualPaused(已暂停)
         self._TradeInfo = None
         self._Tags = None
         self._AutoRetryTimeRangeMinutes = None
+        self._DumperResumeCtrl = None
 
     @property
     def JobId(self):
@@ -6401,6 +6504,14 @@ manualPaused(已暂停)
     def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
+    @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6438,6 +6549,7 @@ manualPaused(已暂停)
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7277,7 +7389,7 @@ class ModifyMigrationJobRequest(AbstractModel):
         :type JobId: str
         :param _RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
         :type RunMode: str
-        :param _MigrateOption: 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息
+        :param _MigrateOption: 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改
         :type MigrateOption: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
         :param _SrcInfo: 源实例信息
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
@@ -7662,6 +7774,12 @@ class Options(AbstractModel):
         :param _KafkaOption: kafka同步选项
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
+        :param _RateLimitOption: 任务限速信息、该字段仅用作出参、入参该字段无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
+        :param _AutoRetryTimeRangeMinutes: 自动重试的时间窗口设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRetryTimeRangeMinutes: int
         """
         self._InitType = None
         self._DealOfExistSameTable = None
@@ -7671,6 +7789,8 @@ class Options(AbstractModel):
         self._ConflictHandleOption = None
         self._DdlOptions = None
         self._KafkaOption = None
+        self._RateLimitOption = None
+        self._AutoRetryTimeRangeMinutes = None
 
     @property
     def InitType(self):
@@ -7736,6 +7856,22 @@ class Options(AbstractModel):
     def KafkaOption(self, KafkaOption):
         self._KafkaOption = KafkaOption
 
+    @property
+    def RateLimitOption(self):
+        return self._RateLimitOption
+
+    @RateLimitOption.setter
+    def RateLimitOption(self, RateLimitOption):
+        self._RateLimitOption = RateLimitOption
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
+
 
     def _deserialize(self, params):
         self._InitType = params.get("InitType")
@@ -7755,6 +7891,10 @@ class Options(AbstractModel):
         if params.get("KafkaOption") is not None:
             self._KafkaOption = KafkaOption()
             self._KafkaOption._deserialize(params.get("KafkaOption"))
+        if params.get("RateLimitOption") is not None:
+            self._RateLimitOption = RateLimitOption()
+            self._RateLimitOption._deserialize(params.get("RateLimitOption"))
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8035,6 +8175,170 @@ class ProcessStepTip(AbstractModel):
         self._Message = params.get("Message")
         self._Solution = params.get("Solution")
         self._HelpDoc = params.get("HelpDoc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitOption(AbstractModel):
+    """迁移和同步任务限速的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDumpThread: 当前生效的全量导出线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentDumpThread: int
+        :param _DefaultDumpThread: 默认的全量导出线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDumpThread: int
+        :param _CurrentDumpRps: 当前生效的全量导出Rps	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentDumpRps: int
+        :param _DefaultDumpRps: 默认的全量导出Rps	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultDumpRps: int
+        :param _CurrentLoadThread: 当前生效的全量导入线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentLoadThread: int
+        :param _DefaultLoadThread: 默认的全量导入线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultLoadThread: int
+        :param _CurrentLoadRps: 当前生效的全量导入Rps	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentLoadRps: int
+        :param _DefaultLoadRps: 默认的全量导入Rps	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultLoadRps: int
+        :param _CurrentSinkerThread: 当前生效的增量导入线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentSinkerThread: int
+        :param _DefaultSinkerThread: 默认的增量导入线程数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultSinkerThread: int
+        :param _HasUserSetRateLimit: enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasUserSetRateLimit: str
+        """
+        self._CurrentDumpThread = None
+        self._DefaultDumpThread = None
+        self._CurrentDumpRps = None
+        self._DefaultDumpRps = None
+        self._CurrentLoadThread = None
+        self._DefaultLoadThread = None
+        self._CurrentLoadRps = None
+        self._DefaultLoadRps = None
+        self._CurrentSinkerThread = None
+        self._DefaultSinkerThread = None
+        self._HasUserSetRateLimit = None
+
+    @property
+    def CurrentDumpThread(self):
+        return self._CurrentDumpThread
+
+    @CurrentDumpThread.setter
+    def CurrentDumpThread(self, CurrentDumpThread):
+        self._CurrentDumpThread = CurrentDumpThread
+
+    @property
+    def DefaultDumpThread(self):
+        return self._DefaultDumpThread
+
+    @DefaultDumpThread.setter
+    def DefaultDumpThread(self, DefaultDumpThread):
+        self._DefaultDumpThread = DefaultDumpThread
+
+    @property
+    def CurrentDumpRps(self):
+        return self._CurrentDumpRps
+
+    @CurrentDumpRps.setter
+    def CurrentDumpRps(self, CurrentDumpRps):
+        self._CurrentDumpRps = CurrentDumpRps
+
+    @property
+    def DefaultDumpRps(self):
+        return self._DefaultDumpRps
+
+    @DefaultDumpRps.setter
+    def DefaultDumpRps(self, DefaultDumpRps):
+        self._DefaultDumpRps = DefaultDumpRps
+
+    @property
+    def CurrentLoadThread(self):
+        return self._CurrentLoadThread
+
+    @CurrentLoadThread.setter
+    def CurrentLoadThread(self, CurrentLoadThread):
+        self._CurrentLoadThread = CurrentLoadThread
+
+    @property
+    def DefaultLoadThread(self):
+        return self._DefaultLoadThread
+
+    @DefaultLoadThread.setter
+    def DefaultLoadThread(self, DefaultLoadThread):
+        self._DefaultLoadThread = DefaultLoadThread
+
+    @property
+    def CurrentLoadRps(self):
+        return self._CurrentLoadRps
+
+    @CurrentLoadRps.setter
+    def CurrentLoadRps(self, CurrentLoadRps):
+        self._CurrentLoadRps = CurrentLoadRps
+
+    @property
+    def DefaultLoadRps(self):
+        return self._DefaultLoadRps
+
+    @DefaultLoadRps.setter
+    def DefaultLoadRps(self, DefaultLoadRps):
+        self._DefaultLoadRps = DefaultLoadRps
+
+    @property
+    def CurrentSinkerThread(self):
+        return self._CurrentSinkerThread
+
+    @CurrentSinkerThread.setter
+    def CurrentSinkerThread(self, CurrentSinkerThread):
+        self._CurrentSinkerThread = CurrentSinkerThread
+
+    @property
+    def DefaultSinkerThread(self):
+        return self._DefaultSinkerThread
+
+    @DefaultSinkerThread.setter
+    def DefaultSinkerThread(self, DefaultSinkerThread):
+        self._DefaultSinkerThread = DefaultSinkerThread
+
+    @property
+    def HasUserSetRateLimit(self):
+        return self._HasUserSetRateLimit
+
+    @HasUserSetRateLimit.setter
+    def HasUserSetRateLimit(self, HasUserSetRateLimit):
+        self._HasUserSetRateLimit = HasUserSetRateLimit
+
+
+    def _deserialize(self, params):
+        self._CurrentDumpThread = params.get("CurrentDumpThread")
+        self._DefaultDumpThread = params.get("DefaultDumpThread")
+        self._CurrentDumpRps = params.get("CurrentDumpRps")
+        self._DefaultDumpRps = params.get("DefaultDumpRps")
+        self._CurrentLoadThread = params.get("CurrentLoadThread")
+        self._DefaultLoadThread = params.get("DefaultLoadThread")
+        self._CurrentLoadRps = params.get("CurrentLoadRps")
+        self._DefaultLoadRps = params.get("DefaultLoadRps")
+        self._CurrentSinkerThread = params.get("CurrentSinkerThread")
+        self._DefaultSinkerThread = params.get("DefaultSinkerThread")
+        self._HasUserSetRateLimit = params.get("HasUserSetRateLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9576,7 +9880,7 @@ class SyncDetailInfo(AbstractModel):
         :param _Progress: 总体进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
-        :param _CurrentStepProgress: 当前步骤进度
+        :param _CurrentStepProgress: 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentStepProgress: int
         :param _MasterSlaveDistance: 同步两端数据量差距
@@ -9594,6 +9898,9 @@ class SyncDetailInfo(AbstractModel):
         :param _CauseOfCompareDisable: 不能发起一致性校验的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type CauseOfCompareDisable: str
+        :param _ErrInfo: 任务的错误和解决方案信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrInfo: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
         """
         self._StepAll = None
         self._StepNow = None
@@ -9604,6 +9911,7 @@ class SyncDetailInfo(AbstractModel):
         self._Message = None
         self._StepInfos = None
         self._CauseOfCompareDisable = None
+        self._ErrInfo = None
 
     @property
     def StepAll(self):
@@ -9677,6 +9985,14 @@ class SyncDetailInfo(AbstractModel):
     def CauseOfCompareDisable(self, CauseOfCompareDisable):
         self._CauseOfCompareDisable = CauseOfCompareDisable
 
+    @property
+    def ErrInfo(self):
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
 
     def _deserialize(self, params):
         self._StepAll = params.get("StepAll")
@@ -9693,6 +10009,9 @@ class SyncDetailInfo(AbstractModel):
                 obj._deserialize(item)
                 self._StepInfos.append(obj)
         self._CauseOfCompareDisable = params.get("CauseOfCompareDisable")
+        if params.get("ErrInfo") is not None:
+            self._ErrInfo = ErrInfo()
+            self._ErrInfo._deserialize(params.get("ErrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9755,6 +10074,12 @@ class SyncJobInfo(AbstractModel):
         :param _SrcInfo: 源端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param _SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcNodeType: str
+        :param _SrcInfos: 源端信息，多节点数据库使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstRegion: 目标端地域，如：ap-guangzhou等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstRegion: str
@@ -9767,6 +10092,12 @@ class SyncJobInfo(AbstractModel):
         :param _DstInfo: 目标端信息，单节点数据库使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstNodeType: str
+        :param _DstInfos: 目标端信息，多节点数据库使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -9800,6 +10131,9 @@ class SyncJobInfo(AbstractModel):
         :param _AutoRetryTimeRangeMinutes: 自动重试时间段设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
+        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DumperResumeCtrl: str
         """
         self._JobId = None
         self._JobName = None
@@ -9816,10 +10150,14 @@ class SyncJobInfo(AbstractModel):
         self._SrcDatabaseType = None
         self._SrcAccessType = None
         self._SrcInfo = None
+        self._SrcNodeType = None
+        self._SrcInfos = None
         self._DstRegion = None
         self._DstDatabaseType = None
         self._DstAccessType = None
         self._DstInfo = None
+        self._DstNodeType = None
+        self._DstInfos = None
         self._CreateTime = None
         self._StartTime = None
         self._Status = None
@@ -9831,6 +10169,7 @@ class SyncJobInfo(AbstractModel):
         self._AutoRenew = None
         self._OfflineTime = None
         self._AutoRetryTimeRangeMinutes = None
+        self._DumperResumeCtrl = None
 
     @property
     def JobId(self):
@@ -9953,6 +10292,22 @@ class SyncJobInfo(AbstractModel):
         self._SrcInfo = SrcInfo
 
     @property
+    def SrcNodeType(self):
+        return self._SrcNodeType
+
+    @SrcNodeType.setter
+    def SrcNodeType(self, SrcNodeType):
+        self._SrcNodeType = SrcNodeType
+
+    @property
+    def SrcInfos(self):
+        return self._SrcInfos
+
+    @SrcInfos.setter
+    def SrcInfos(self, SrcInfos):
+        self._SrcInfos = SrcInfos
+
+    @property
     def DstRegion(self):
         return self._DstRegion
 
@@ -9983,6 +10338,22 @@ class SyncJobInfo(AbstractModel):
     @DstInfo.setter
     def DstInfo(self, DstInfo):
         self._DstInfo = DstInfo
+
+    @property
+    def DstNodeType(self):
+        return self._DstNodeType
+
+    @DstNodeType.setter
+    def DstNodeType(self, DstNodeType):
+        self._DstNodeType = DstNodeType
+
+    @property
+    def DstInfos(self):
+        return self._DstInfos
+
+    @DstInfos.setter
+    def DstInfos(self, DstInfos):
+        self._DstInfos = DstInfos
 
     @property
     def CreateTime(self):
@@ -10072,6 +10443,14 @@ class SyncJobInfo(AbstractModel):
     def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
+    @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10095,12 +10474,20 @@ class SyncJobInfo(AbstractModel):
         if params.get("SrcInfo") is not None:
             self._SrcInfo = Endpoint()
             self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfos") is not None:
+            self._SrcInfos = SyncDBEndpointInfos()
+            self._SrcInfos._deserialize(params.get("SrcInfos"))
         self._DstRegion = params.get("DstRegion")
         self._DstDatabaseType = params.get("DstDatabaseType")
         self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
             self._DstInfo = Endpoint()
             self._DstInfo._deserialize(params.get("DstInfo"))
+        self._DstNodeType = params.get("DstNodeType")
+        if params.get("DstInfos") is not None:
+            self._DstInfos = SyncDBEndpointInfos()
+            self._DstInfos._deserialize(params.get("DstInfos"))
         self._CreateTime = params.get("CreateTime")
         self._StartTime = params.get("StartTime")
         self._Status = params.get("Status")
@@ -10119,6 +10506,7 @@ class SyncJobInfo(AbstractModel):
         self._AutoRenew = params.get("AutoRenew")
         self._OfflineTime = params.get("OfflineTime")
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

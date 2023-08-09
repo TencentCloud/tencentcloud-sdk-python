@@ -1146,7 +1146,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeAllStreamPlayInfoList(self, request):
-        """输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。
 
         :param request: Request instance for DescribeAllStreamPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeAllStreamPlayInfoListRequest`
@@ -1215,7 +1216,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeCallbackRecordsList(self, request):
-        """用于查询回调事件。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        用于查询回调事件。
 
         :param request: Request instance for DescribeCallbackRecordsList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeCallbackRecordsListRequest`
@@ -1284,7 +1286,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeGroupProIspPlayInfoList(self, request):
-        """查询按省份和运营商分组的下行播放数据。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询按省份和运营商分组的下行播放数据。
 
         :param request: Request instance for DescribeGroupProIspPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeGroupProIspPlayInfoListRequest`
@@ -1307,7 +1310,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeHttpStatusInfoList(self, request):
-        """查询某段时间内5分钟粒度的各播放http状态码的个数。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询某段时间内5分钟粒度的各播放http状态码的个数。
         备注：数据延迟1小时，如10:00-10:59点的数据12点才能查到。
 
         :param request: Request instance for DescribeHttpStatusInfoList.
@@ -1538,7 +1542,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveDomainPlayInfoList(self, request):
-        """查询实时的域名维度下行播放数据，由于数据处理有耗时，接口默认查询4分钟前的准实时数据。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询实时的域名维度下行播放数据，由于数据处理有耗时，接口默认查询4分钟前的准实时数据。
 
         :param request: Request instance for DescribeLiveDomainPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveDomainPlayInfoListRequest`
@@ -2080,7 +2085,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveStreamPushInfoList(self, request):
-        """查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询所有实时流的推流信息，包括客户端IP，服务端IP，帧率，码率，域名，开始推流时间。
 
         :param request: Request instance for DescribeLiveStreamPushInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveStreamPushInfoListRequest`
@@ -2204,7 +2210,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeLiveTranscodeDetailInfo(self, request):
-        """支持查询某天或某段时间的转码详细信息。由于转码数据量较大，如果查询时间跨度太长可能会拉不到数据，可以尝试将查询时间范围缩小些再重试。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        支持查询某天或某段时间的转码详细信息。由于转码数据量较大，如果查询时间跨度太长可能会拉不到数据，可以尝试将查询时间范围缩小些再重试。
 
         :param request: Request instance for DescribeLiveTranscodeDetailInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveTranscodeDetailInfoRequest`
@@ -2460,8 +2467,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeDetailInfoList(self, request):
-        """查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
-
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
 
         :param request: Request instance for DescribePlayErrorCodeDetailInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListRequest`
@@ -2484,7 +2491,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribePlayErrorCodeSumInfoList(self, request):
-        """查询下行播放错误码信息。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询下行播放错误码信息。
 
         :param request: Request instance for DescribePlayErrorCodeSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeSumInfoListRequest`
@@ -2507,7 +2515,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProIspPlaySumInfoList(self, request):
-        """查询某段时间内每个国家地区每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询某段时间内每个国家地区每个省份每个运营商的平均每秒流量，总流量，总请求数信息。
 
         :param request: Request instance for DescribeProIspPlaySumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeProIspPlaySumInfoListRequest`
@@ -2530,7 +2539,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeProvinceIspPlayInfoList(self, request):
-        """查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询某省份某运营商下行播放数据，包括带宽，流量，请求数，并发连接数信息。
 
         :param request: Request instance for DescribeProvinceIspPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeProvinceIspPlayInfoListRequest`
@@ -2675,7 +2685,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamDayPlayInfoList(self, request):
-        """查询天维度每条流的播放数据，包括总流量等。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询天维度每条流的播放数据，包括总流量等。
 
         :param request: Request instance for DescribeStreamDayPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamDayPlayInfoListRequest`
@@ -2698,7 +2709,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPlayInfoList(self, request):
-        """查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
 
         :param request: Request instance for DescribeStreamPlayInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPlayInfoListRequest`
@@ -2721,7 +2733,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeStreamPushInfoList(self, request):
-        """查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询流id的上行推流质量数据，包括音视频的帧率，码率，流逝时间，编码格式等。
 
         :param request: Request instance for DescribeStreamPushInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPushInfoListRequest`
@@ -2790,7 +2803,8 @@ class LiveClient(AbstractClient):
 
 
     def DescribeTopClientIpSumInfoList(self, request):
-        """查询某段时间top n客户端ip汇总信息（暂支持top 1000）
+        """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
+        查询某段时间top n客户端ip汇总信息（暂支持top 1000）
 
         :param request: Request instance for DescribeTopClientIpSumInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeTopClientIpSumInfoListRequest`

@@ -62,6 +62,9 @@ FAILEDOPERATION_CREATERECORDNOTEXIST = 'FailedOperation.CreateRecordNotExist'
 # 创建角色异常。
 FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 
+# 删除授权策略异常。
+FAILEDOPERATION_DELETEPOLICY = 'FailedOperation.DeletePolicy'
+
 # 不能退出自己创建的企业组织。
 FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = 'FailedOperation.DisableQuitSelfCreatedOrganization'
 
@@ -109,6 +112,9 @@ FAILEDOPERATION_OPERATEPOLICY = 'FailedOperation.OperatePolicy'
 
 # 成员是主体管理账号不允许删除。
 FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = 'FailedOperation.OrganizationAuthManageNotAllowDelete'
+
+# 组织身份策略不合法。
+FAILEDOPERATION_ORGANIZATIONIDENTITYPOLICYERROR = 'FailedOperation.OrganizationIdentityPolicyError'
 
 # 成员名已存在。
 FAILEDOPERATION_ORGANIZATIONMEMBERNAMEUSED = 'FailedOperation.OrganizationMemberNameUsed'
@@ -205,6 +211,9 @@ RESOURCENOTFOUND_MEMBERNOTEXIST = 'ResourceNotFound.MemberNotExist'
 
 # 组织成员策略不存在。
 RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = 'ResourceNotFound.MemberPolicyNotExist'
+
+# 组织身份不存在。
+RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = 'ResourceNotFound.OrganizationIdentityNotExist'
 
 # 组织成员不存在。
 RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = 'ResourceNotFound.OrganizationMemberNotExist'

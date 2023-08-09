@@ -2100,6 +2100,183 @@ class CVMAssetVO(AbstractModel):
         
 
 
+class ClbListenerListInfo(AbstractModel):
+    """clb实例和监听器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenerId: 监听器id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerId: str
+        :param _ListenerName: 监听器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ListenerName: str
+        :param _LoadBalancerId: 负载均衡Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerId: str
+        :param _LoadBalancerName: 负载均衡名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerName: str
+        :param _Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Vip: 负载均衡ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _VPort: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPort: int
+        :param _Zone: 区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _NumericalVpcId: 私有网络id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumericalVpcId: int
+        :param _LoadBalancerType: 负载均衡类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param _Domain: 监听器域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        """
+        self._ListenerId = None
+        self._ListenerName = None
+        self._LoadBalancerId = None
+        self._LoadBalancerName = None
+        self._Protocol = None
+        self._Region = None
+        self._Vip = None
+        self._VPort = None
+        self._Zone = None
+        self._NumericalVpcId = None
+        self._LoadBalancerType = None
+        self._Domain = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VPort(self):
+        return self._VPort
+
+    @VPort.setter
+    def VPort(self, VPort):
+        self._VPort = VPort
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NumericalVpcId(self):
+        return self._NumericalVpcId
+
+    @NumericalVpcId.setter
+    def NumericalVpcId(self, NumericalVpcId):
+        self._NumericalVpcId = NumericalVpcId
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerName = params.get("LoadBalancerName")
+        self._Protocol = params.get("Protocol")
+        self._Region = params.get("Region")
+        self._Vip = params.get("Vip")
+        self._VPort = params.get("VPort")
+        self._Zone = params.get("Zone")
+        self._NumericalVpcId = params.get("NumericalVpcId")
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDomainAndIpRequest(AbstractModel):
     """CreateDomainAndIp请求参数结构体
 
@@ -3740,6 +3917,97 @@ class DescribeDomainAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeListenerListRequest(AbstractModel):
+    """DescribeListenerList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: -
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeListenerListResponse(AbstractModel):
+    """DescribeListenerList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Data: 监听器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ClbListenerListInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ClbListenerListInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

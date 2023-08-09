@@ -29409,11 +29409,20 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         :type ExecutionGroupId: str
         :param _ExecutionGroupName: 执行资源组名字
         :type ExecutionGroupName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InCharge: 责任人
+        :type InCharge: str
         """
         self._ProjectId = None
         self._TaskTypeId = None
         self._ExecutionGroupId = None
         self._ExecutionGroupName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InCharge = None
 
     @property
     def ProjectId(self):
@@ -29447,12 +29456,39 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
     def ExecutionGroupName(self, ExecutionGroupName):
         self._ExecutionGroupName = ExecutionGroupName
 
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._TaskTypeId = params.get("TaskTypeId")
         self._ExecutionGroupId = params.get("ExecutionGroupId")
         self._ExecutionGroupName = params.get("ExecutionGroupName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29523,12 +29559,18 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日前：2023-03-20
         :type EndTime: str
+        :param _TaskType: 1
+        :type TaskType: int
+        :param _InCharge: 1
+        :type InCharge: str
         """
         self._ProjectId = None
         self._CycleUnit = None
         self._TimeUnit = None
         self._StartTime = None
         self._EndTime = None
+        self._TaskType = None
+        self._InCharge = None
 
     @property
     def ProjectId(self):
@@ -29570,6 +29612,22 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -29577,6 +29635,8 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         self._TimeUnit = params.get("TimeUnit")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._TaskType = params.get("TaskType")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29643,10 +29703,13 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
         :type TypeName: str
         :param _ProjectId: 111
         :type ProjectId: str
+        :param _InCharge: 1
+        :type InCharge: str
         """
         self._TaskType = None
         self._TypeName = None
         self._ProjectId = None
+        self._InCharge = None
 
     @property
     def TaskType(self):
@@ -29672,11 +29735,20 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._TypeName = params.get("TypeName")
         self._ProjectId = params.get("ProjectId")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29739,8 +29811,11 @@ class DescribeSchedulerTaskTypeCntRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目ID
         :type ProjectId: str
+        :param _InCharge: 1
+        :type InCharge: str
         """
         self._ProjectId = None
+        self._InCharge = None
 
     @property
     def ProjectId(self):
@@ -29750,9 +29825,18 @@ class DescribeSchedulerTaskTypeCntRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30197,6 +30281,16 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         :type ExecutionGroupId: str
         :param _ExecutionGroupName: 资源组名称
         :type ExecutionGroupName: str
+        :param _InCharge: 1
+        :type InCharge: str
+        :param _TaskType: 1
+        :type TaskType: int
+        :param _StateList: 1
+        :type StateList: list of int
+        :param _AggregationUnit: D代表天，H代表小时
+        :type AggregationUnit: str
+        :param _AverageWindowSize: 1
+        :type AverageWindowSize: int
         """
         self._ProjectId = None
         self._TaskTypeId = None
@@ -30206,6 +30300,11 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._EndTime = None
         self._ExecutionGroupId = None
         self._ExecutionGroupName = None
+        self._InCharge = None
+        self._TaskType = None
+        self._StateList = None
+        self._AggregationUnit = None
+        self._AverageWindowSize = None
 
     @property
     def ProjectId(self):
@@ -30271,6 +30370,46 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
     def ExecutionGroupName(self, ExecutionGroupName):
         self._ExecutionGroupName = ExecutionGroupName
 
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def StateList(self):
+        return self._StateList
+
+    @StateList.setter
+    def StateList(self, StateList):
+        self._StateList = StateList
+
+    @property
+    def AggregationUnit(self):
+        return self._AggregationUnit
+
+    @AggregationUnit.setter
+    def AggregationUnit(self, AggregationUnit):
+        self._AggregationUnit = AggregationUnit
+
+    @property
+    def AverageWindowSize(self):
+        return self._AverageWindowSize
+
+    @AverageWindowSize.setter
+    def AverageWindowSize(self, AverageWindowSize):
+        self._AverageWindowSize = AverageWindowSize
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -30281,6 +30420,11 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._ExecutionGroupId = params.get("ExecutionGroupId")
         self._ExecutionGroupName = params.get("ExecutionGroupName")
+        self._InCharge = params.get("InCharge")
+        self._TaskType = params.get("TaskType")
+        self._StateList = params.get("StateList")
+        self._AggregationUnit = params.get("AggregationUnit")
+        self._AverageWindowSize = params.get("AverageWindowSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31567,8 +31711,11 @@ class DescribeTaskByCycleRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目ID
         :type ProjectId: str
+        :param _InCharge: 1
+        :type InCharge: str
         """
         self._ProjectId = None
+        self._InCharge = None
 
     @property
     def ProjectId(self):
@@ -31578,9 +31725,18 @@ class DescribeTaskByCycleRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31652,6 +31808,14 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
+        :param _AggregationUnit: 无
+        :type AggregationUnit: str
+        :param _CycleUnit: 无
+        :type CycleUnit: str
+        :param _Status: 无
+        :type Status: str
+        :param _InCharge: 无
+        :type InCharge: str
         """
         self._ProjectId = None
         self._Type = None
@@ -31659,6 +31823,10 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._TypeName = None
         self._StartTime = None
         self._EndTime = None
+        self._AggregationUnit = None
+        self._CycleUnit = None
+        self._Status = None
+        self._InCharge = None
 
     @property
     def ProjectId(self):
@@ -31708,6 +31876,38 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def AggregationUnit(self):
+        return self._AggregationUnit
+
+    @AggregationUnit.setter
+    def AggregationUnit(self, AggregationUnit):
+        self._AggregationUnit = AggregationUnit
+
+    @property
+    def CycleUnit(self):
+        return self._CycleUnit
+
+    @CycleUnit.setter
+    def CycleUnit(self, CycleUnit):
+        self._CycleUnit = CycleUnit
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -31716,6 +31916,10 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._TypeName = params.get("TypeName")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._AggregationUnit = params.get("AggregationUnit")
+        self._CycleUnit = params.get("CycleUnit")
+        self._Status = params.get("Status")
+        self._InCharge = params.get("InCharge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42123,12 +42327,20 @@ class InstanceStatisticInfo(AbstractModel):
         :param _ShowTime: 当前展示时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowTime: str
+        :param _ReportTime: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTime: str
+        :param _Count: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
         """
         self._CountList = None
         self._TimeList = None
         self._InstanceStatus = None
         self._InstanceCount = None
         self._ShowTime = None
+        self._ReportTime = None
+        self._Count = None
 
     @property
     def CountList(self):
@@ -42170,6 +42382,22 @@ class InstanceStatisticInfo(AbstractModel):
     def ShowTime(self, ShowTime):
         self._ShowTime = ShowTime
 
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
 
     def _deserialize(self, params):
         self._CountList = params.get("CountList")
@@ -42177,6 +42405,8 @@ class InstanceStatisticInfo(AbstractModel):
         self._InstanceStatus = params.get("InstanceStatus")
         self._InstanceCount = params.get("InstanceCount")
         self._ShowTime = params.get("ShowTime")
+        self._ReportTime = params.get("ReportTime")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62199,11 +62429,17 @@ class TaskByStatus(AbstractModel):
         :param _CycleUnit: 周期单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleUnit: str
+        :param _ReportTime: 1
+        :type ReportTime: str
+        :param _Count: 1
+        :type Count: int
         """
         self._CountGroup = None
         self._ShowTimeGroup = None
         self._Status = None
         self._CycleUnit = None
+        self._ReportTime = None
+        self._Count = None
 
     @property
     def CountGroup(self):
@@ -62237,12 +62473,30 @@ class TaskByStatus(AbstractModel):
     def CycleUnit(self, CycleUnit):
         self._CycleUnit = CycleUnit
 
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
 
     def _deserialize(self, params):
         self._CountGroup = params.get("CountGroup")
         self._ShowTimeGroup = params.get("ShowTimeGroup")
         self._Status = params.get("Status")
         self._CycleUnit = params.get("CycleUnit")
+        self._ReportTime = params.get("ReportTime")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

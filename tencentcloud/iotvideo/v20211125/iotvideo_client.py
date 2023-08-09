@@ -2119,6 +2119,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetCloudStorageEvent(self, request):
+        """重置云存事件
+
+        :param request: Request instance for ResetCloudStorageEvent.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.ResetCloudStorageEventRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.ResetCloudStorageEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetCloudStorageEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetCloudStorageEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RetryDeviceFirmwareTask(self, request):
         """本接口用于重试设备升级任务
 

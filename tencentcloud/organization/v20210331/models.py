@@ -432,6 +432,76 @@ class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationMemberAuthIdentityRequest(AbstractModel):
+    """CreateOrganizationMemberAuthIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUins: 成员uin列表。最多10个
+        :type MemberUins: list of int non-negative
+        :param _IdentityIds: 身份Id列表。最多5个
+        :type IdentityIds: list of int non-negative
+        """
+        self._MemberUins = None
+        self._IdentityIds = None
+
+    @property
+    def MemberUins(self):
+        return self._MemberUins
+
+    @MemberUins.setter
+    def MemberUins(self, MemberUins):
+        self._MemberUins = MemberUins
+
+    @property
+    def IdentityIds(self):
+        return self._IdentityIds
+
+    @IdentityIds.setter
+    def IdentityIds(self, IdentityIds):
+        self._IdentityIds = IdentityIds
+
+
+    def _deserialize(self, params):
+        self._MemberUins = params.get("MemberUins")
+        self._IdentityIds = params.get("IdentityIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationMemberAuthIdentityResponse(AbstractModel):
+    """CreateOrganizationMemberAuthIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrganizationMemberPolicyRequest(AbstractModel):
     """CreateOrganizationMemberPolicy请求参数结构体
 
@@ -715,6 +785,64 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationMembersPolicyRequest(AbstractModel):
+    """DeleteOrganizationMembersPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: 访问策略ID。
+        :type PolicyId: int
+        """
+        self._PolicyId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationMembersPolicyResponse(AbstractModel):
+    """DeleteOrganizationMembersPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

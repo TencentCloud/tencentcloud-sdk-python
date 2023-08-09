@@ -233,6 +233,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeListenerList(self, request):
+        """查询clb监听器列表
+
+        :param request: Request instance for DescribeListenerList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeListenerListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeListenerListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeListenerList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeListenerListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePublicIpAssets(self, request):
         """ip公网列表
 

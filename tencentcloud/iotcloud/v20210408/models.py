@@ -516,6 +516,8 @@ class CLSLogItem(AbstractModel):
         :type Time: str
         :param _Userid: 腾讯云账号
         :type Userid: str
+        :param _UserId: 腾讯云账号
+        :type UserId: str
         """
         self._Content = None
         self._DeviceName = None
@@ -525,6 +527,7 @@ class CLSLogItem(AbstractModel):
         self._Scene = None
         self._Time = None
         self._Userid = None
+        self._UserId = None
 
     @property
     def Content(self):
@@ -584,11 +587,23 @@ class CLSLogItem(AbstractModel):
 
     @property
     def Userid(self):
+        warnings.warn("parameter `Userid` is deprecated", DeprecationWarning) 
+
         return self._Userid
 
     @Userid.setter
     def Userid(self, Userid):
+        warnings.warn("parameter `Userid` is deprecated", DeprecationWarning) 
+
         self._Userid = Userid
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
 
 
     def _deserialize(self, params):
@@ -600,6 +615,7 @@ class CLSLogItem(AbstractModel):
         self._Scene = params.get("Scene")
         self._Time = params.get("Time")
         self._Userid = params.get("Userid")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2539,7 +2555,7 @@ class DescribeDeviceResponse(AbstractModel):
         r"""
         :param _DeviceName: 设备名
         :type DeviceName: str
-        :param _Online: 设备是否在线，0不在线，1在线
+        :param _Online: 设备是否在线，0不在线，1在线，3未激活
         :type Online: int
         :param _LoginTime: 设备登录时间
         :type LoginTime: int
@@ -2597,6 +2613,8 @@ class DescribeDeviceResponse(AbstractModel):
         :param _CreateUserId: 创建者账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
+        :param _NBIoTDeviceID: NB IoT运营商处的DeviceID
+        :type NBIoTDeviceID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2625,6 +2643,7 @@ class DescribeDeviceResponse(AbstractModel):
         self._ClientIP = None
         self._FirmwareUpdateTime = None
         self._CreateUserId = None
+        self._NBIoTDeviceID = None
         self._RequestId = None
 
     @property
@@ -2725,10 +2744,14 @@ class DescribeDeviceResponse(AbstractModel):
 
     @property
     def NbiotDeviceID(self):
+        warnings.warn("parameter `NbiotDeviceID` is deprecated", DeprecationWarning) 
+
         return self._NbiotDeviceID
 
     @NbiotDeviceID.setter
     def NbiotDeviceID(self, NbiotDeviceID):
+        warnings.warn("parameter `NbiotDeviceID` is deprecated", DeprecationWarning) 
+
         self._NbiotDeviceID = NbiotDeviceID
 
     @property
@@ -2828,6 +2851,14 @@ class DescribeDeviceResponse(AbstractModel):
         self._CreateUserId = CreateUserId
 
     @property
+    def NBIoTDeviceID(self):
+        return self._NBIoTDeviceID
+
+    @NBIoTDeviceID.setter
+    def NBIoTDeviceID(self, NBIoTDeviceID):
+        self._NBIoTDeviceID = NBIoTDeviceID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2872,6 +2903,7 @@ class DescribeDeviceResponse(AbstractModel):
         self._ClientIP = params.get("ClientIP")
         self._FirmwareUpdateTime = params.get("FirmwareUpdateTime")
         self._CreateUserId = params.get("CreateUserId")
+        self._NBIoTDeviceID = params.get("NBIoTDeviceID")
         self._RequestId = params.get("RequestId")
 
 
@@ -5324,6 +5356,8 @@ class DeviceInfo(AbstractModel):
         :param _CreateUserId: 创建者 Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserId: int
+        :param _NBIoTDeviceID: NB IOT运营商处的DeviceID
+        :type NBIoTDeviceID: str
         """
         self._DeviceName = None
         self._Online = None
@@ -5350,6 +5384,7 @@ class DeviceInfo(AbstractModel):
         self._ClientIP = None
         self._FirmwareUpdateTime = None
         self._CreateUserId = None
+        self._NBIoTDeviceID = None
 
     @property
     def DeviceName(self):
@@ -5433,10 +5468,14 @@ class DeviceInfo(AbstractModel):
 
     @property
     def NbiotDeviceID(self):
+        warnings.warn("parameter `NbiotDeviceID` is deprecated", DeprecationWarning) 
+
         return self._NbiotDeviceID
 
     @NbiotDeviceID.setter
     def NbiotDeviceID(self, NbiotDeviceID):
+        warnings.warn("parameter `NbiotDeviceID` is deprecated", DeprecationWarning) 
+
         self._NbiotDeviceID = NbiotDeviceID
 
     @property
@@ -5551,6 +5590,14 @@ class DeviceInfo(AbstractModel):
     def CreateUserId(self, CreateUserId):
         self._CreateUserId = CreateUserId
 
+    @property
+    def NBIoTDeviceID(self):
+        return self._NBIoTDeviceID
+
+    @NBIoTDeviceID.setter
+    def NBIoTDeviceID(self, NBIoTDeviceID):
+        self._NBIoTDeviceID = NBIoTDeviceID
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
@@ -5588,6 +5635,7 @@ class DeviceInfo(AbstractModel):
         self._ClientIP = params.get("ClientIP")
         self._FirmwareUpdateTime = params.get("FirmwareUpdateTime")
         self._CreateUserId = params.get("CreateUserId")
+        self._NBIoTDeviceID = params.get("NBIoTDeviceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7706,6 +7754,8 @@ class ProductProperties(AbstractModel):
         :type DeviceLimit: int
         :param _ForbiddenStatus: 产品禁用状态
         :type ForbiddenStatus: int
+        :param _AppEUI: LoRa产品运营侧APPEUI，只有LoRa产品需要填写
+        :type AppEUI: str
         """
         self._ProductDescription = None
         self._EncryptionType = None
@@ -7725,6 +7775,7 @@ class ProductProperties(AbstractModel):
         self._OriginUserId = None
         self._DeviceLimit = None
         self._ForbiddenStatus = None
+        self._AppEUI = None
 
     @property
     def ProductDescription(self):
@@ -7776,10 +7827,14 @@ class ProductProperties(AbstractModel):
 
     @property
     def Appeui(self):
+        warnings.warn("parameter `Appeui` is deprecated", DeprecationWarning) 
+
         return self._Appeui
 
     @Appeui.setter
     def Appeui(self, Appeui):
+        warnings.warn("parameter `Appeui` is deprecated", DeprecationWarning) 
+
         self._Appeui = Appeui
 
     @property
@@ -7870,6 +7925,14 @@ class ProductProperties(AbstractModel):
     def ForbiddenStatus(self, ForbiddenStatus):
         self._ForbiddenStatus = ForbiddenStatus
 
+    @property
+    def AppEUI(self):
+        return self._AppEUI
+
+    @AppEUI.setter
+    def AppEUI(self, AppEUI):
+        self._AppEUI = AppEUI
+
 
     def _deserialize(self, params):
         self._ProductDescription = params.get("ProductDescription")
@@ -7890,6 +7953,7 @@ class ProductProperties(AbstractModel):
         self._OriginUserId = params.get("OriginUserId")
         self._DeviceLimit = params.get("DeviceLimit")
         self._ForbiddenStatus = params.get("ForbiddenStatus")
+        self._AppEUI = params.get("AppEUI")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

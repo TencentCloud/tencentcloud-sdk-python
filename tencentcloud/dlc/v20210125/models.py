@@ -3194,6 +3194,8 @@ class CreateNotebookSessionRequest(AbstractModel):
         :type ExecutorMaxNumbers: int
         :param _SparkImage: 指定spark版本名称，当前任务使用该spark镜像运行
         :type SparkImage: str
+        :param _IsInherit: 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+        :type IsInherit: int
         """
         self._Name = None
         self._Kind = None
@@ -3210,6 +3212,7 @@ class CreateNotebookSessionRequest(AbstractModel):
         self._TimeoutInSecond = None
         self._ExecutorMaxNumbers = None
         self._SparkImage = None
+        self._IsInherit = None
 
     @property
     def Name(self):
@@ -3331,6 +3334,14 @@ class CreateNotebookSessionRequest(AbstractModel):
     def SparkImage(self, SparkImage):
         self._SparkImage = SparkImage
 
+    @property
+    def IsInherit(self):
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3353,6 +3364,7 @@ class CreateNotebookSessionRequest(AbstractModel):
         self._TimeoutInSecond = params.get("TimeoutInSecond")
         self._ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
         self._SparkImage = params.get("SparkImage")
+        self._IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4347,6 +4359,8 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
         :type Arguments: list of KVPair
+        :param _IsInherit: 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+        :type IsInherit: int
         """
         self._DataEngineName = None
         self._ExecuteSQL = None
@@ -4358,6 +4372,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         self._SessionId = None
         self._SessionName = None
         self._Arguments = None
+        self._IsInherit = None
 
     @property
     def DataEngineName(self):
@@ -4439,6 +4454,14 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
     def Arguments(self, Arguments):
         self._Arguments = Arguments
 
+    @property
+    def IsInherit(self):
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -4456,6 +4479,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._Arguments.append(obj)
+        self._IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

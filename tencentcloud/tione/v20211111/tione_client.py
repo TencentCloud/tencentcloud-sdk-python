@@ -26,6 +26,29 @@ class TioneClient(AbstractClient):
     _service = 'tione'
 
 
+    def ChatCompletion(self, request):
+        """与大模型聊天
+
+        :param request: Request instance for ChatCompletion.
+        :type request: :class:`tencentcloud.tione.v20211111.models.ChatCompletionRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ChatCompletionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChatCompletion", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChatCompletionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBatchModelAccTasks(self, request):
         """批量创建模型加速任务
 

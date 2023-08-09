@@ -141,6 +141,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrganizationMemberAuthIdentity(self, request):
+        """添加组织成员访问授权
+
+        :param request: Request instance for CreateOrganizationMemberAuthIdentity.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMemberAuthIdentityRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreateOrganizationMemberAuthIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrganizationMemberAuthIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrganizationMemberAuthIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrganizationMemberPolicy(self, request):
         """创建组织成员访问授权策略
 
@@ -178,6 +201,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteOrganizationMembers", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteOrganizationMembersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOrganizationMembersPolicy(self, request):
+        """删除组织成员访问策略
+
+        :param request: Request instance for DeleteOrganizationMembersPolicy.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMembersPolicyRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMembersPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrganizationMembersPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrganizationMembersPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2855,6 +2855,15 @@ class DeployRecordDetail(AbstractModel):
         :param _Port: 端口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
+        :param _EnvId: TCB环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param _TCBType: 部署的TCB类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TCBType: str
+        :param _Region: 部署的TCB地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self._Id = None
         self._CertId = None
@@ -2874,6 +2883,9 @@ class DeployRecordDetail(AbstractModel):
         self._Namespace = None
         self._SecretName = None
         self._Port = None
+        self._EnvId = None
+        self._TCBType = None
+        self._Region = None
 
     @property
     def Id(self):
@@ -3019,6 +3031,30 @@ class DeployRecordDetail(AbstractModel):
     def Port(self, Port):
         self._Port = Port
 
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TCBType(self):
+        return self._TCBType
+
+    @TCBType.setter
+    def TCBType(self, TCBType):
+        self._TCBType = TCBType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3039,6 +3075,9 @@ class DeployRecordDetail(AbstractModel):
         self._Namespace = params.get("Namespace")
         self._SecretName = params.get("SecretName")
         self._Port = params.get("Port")
+        self._EnvId = params.get("EnvId")
+        self._TCBType = params.get("TCBType")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4557,6 +4596,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type IsSM: int
         :param _FilterExpiring: 筛选证书是否即将过期，传1是筛选，0不筛选
         :type FilterExpiring: int
+        :param _Hostable: 是否可托管，可选值：1 = 可托管，0 =  不可托管。
+        :type Hostable: int
         """
         self._Offset = None
         self._Limit = None
@@ -4571,6 +4612,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self._FilterSource = None
         self._IsSM = None
         self._FilterExpiring = None
+        self._Hostable = None
 
     @property
     def Offset(self):
@@ -4676,6 +4718,14 @@ class DescribeCertificatesRequest(AbstractModel):
     def FilterExpiring(self, FilterExpiring):
         self._FilterExpiring = FilterExpiring
 
+    @property
+    def Hostable(self):
+        return self._Hostable
+
+    @Hostable.setter
+    def Hostable(self, Hostable):
+        self._Hostable = Hostable
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -4691,6 +4741,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self._FilterSource = params.get("FilterSource")
         self._IsSM = params.get("IsSM")
         self._FilterExpiring = params.get("FilterExpiring")
+        self._Hostable = params.get("Hostable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5823,7 +5874,7 @@ class DescribeHostDeployRecordDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待部署的证书ID
+        :param _DeployRecordId: 部署记录ID
         :type DeployRecordId: str
         :param _Offset: 分页偏移量，从0开始。
         :type Offset: int
@@ -6705,7 +6756,7 @@ class DescribeHostUpdateRecordDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 待部署的证书ID
+        :param _DeployRecordId: 一键更新记录ID
         :type DeployRecordId: str
         :param _Limit: 每页数量，默认10。
         :type Limit: str
@@ -10984,7 +11035,7 @@ class UpdateCertificateInstanceRequest(AbstractModel):
         :type CertificateId: str
         :param _OldCertificateId: 一键更新原证书ID
         :type OldCertificateId: str
-        :param _ResourceTypes: 需要部署的资源类型
+        :param _ResourceTypes: 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
         :type ResourceTypes: list of str
         :param _Regions: 需要部署的地域列表（废弃）
         :type Regions: list of str
@@ -11023,10 +11074,14 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def Regions(self):
+        warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
+
         return self._Regions
 
     @Regions.setter
     def Regions(self, Regions):
+        warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
+
         self._Regions = Regions
 
     @property
@@ -11309,6 +11364,12 @@ class UpdateRecordDetail(AbstractModel):
         :param _SecretName: secret名称（TKE专用）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
+        :param _EnvId: 环境ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvId: str
+        :param _TCBType: TCB部署类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TCBType: str
         """
         self._Id = None
         self._CertId = None
@@ -11330,6 +11391,8 @@ class UpdateRecordDetail(AbstractModel):
         self._Port = None
         self._Namespace = None
         self._SecretName = None
+        self._EnvId = None
+        self._TCBType = None
 
     @property
     def Id(self):
@@ -11491,6 +11554,22 @@ class UpdateRecordDetail(AbstractModel):
     def SecretName(self, SecretName):
         self._SecretName = SecretName
 
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TCBType(self):
+        return self._TCBType
+
+    @TCBType.setter
+    def TCBType(self, TCBType):
+        self._TCBType = TCBType
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11513,6 +11592,8 @@ class UpdateRecordDetail(AbstractModel):
         self._Port = params.get("Port")
         self._Namespace = params.get("Namespace")
         self._SecretName = params.get("SecretName")
+        self._EnvId = params.get("EnvId")
+        self._TCBType = params.get("TCBType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11722,6 +11803,8 @@ class UploadCertificateRequest(AbstractModel):
         :type ProjectId: int
         :param _CertificateUse: 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
         :type CertificateUse: str
+        :param _Tags: 标签列表
+        :type Tags: list of Tags
         :param _Repeatable: 相同的证书是否允许重复上传
         :type Repeatable: bool
         """
@@ -11731,6 +11814,7 @@ class UploadCertificateRequest(AbstractModel):
         self._Alias = None
         self._ProjectId = None
         self._CertificateUse = None
+        self._Tags = None
         self._Repeatable = None
 
     @property
@@ -11782,6 +11866,14 @@ class UploadCertificateRequest(AbstractModel):
         self._CertificateUse = CertificateUse
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def Repeatable(self):
         return self._Repeatable
 
@@ -11797,6 +11889,12 @@ class UploadCertificateRequest(AbstractModel):
         self._Alias = params.get("Alias")
         self._ProjectId = params.get("ProjectId")
         self._CertificateUse = params.get("CertificateUse")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._Repeatable = params.get("Repeatable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

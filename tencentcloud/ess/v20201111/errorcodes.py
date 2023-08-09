@@ -17,14 +17,8 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
-# DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
-DRYRUNOPERATION = 'DryRunOperation'
-
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
-
-# 实名认证失败。
-FAILEDOPERATION_ACCOUNTVERIFYFAIL = 'FailedOperation.AccountVerifyFail'
 
 # 年龄限制无法使用电子签服务，请联系客服咨询处理。
 FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = 'FailedOperation.AgeNotAchieveNormalLegal'
@@ -239,9 +233,6 @@ INVALIDPARAMETER_INVALIDNAME = 'InvalidParameter.InvalidName'
 # 参数Offset不正确。
 INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
 
-# OpenId不正确。
-INVALIDPARAMETER_INVALIDOPENID = 'InvalidParameter.InvalidOpenId'
-
 # 操作人ID不正确。
 INVALIDPARAMETER_INVALIDOPERATORID = 'InvalidParameter.InvalidOperatorId'
 
@@ -259,9 +250,6 @@ INVALIDPARAMETER_INVALIDROLENAME = 'InvalidParameter.InvalidRoleName'
 
 # 实名认证渠道不正确。
 INVALIDPARAMETER_INVALIDVERIFYCHANNEL = 'InvalidParameter.InvalidVerifyChannel'
-
-# 验证码不正确。
-INVALIDPARAMETER_INVALIDVERIFYCODE = 'InvalidParameter.InvalidVerifyCode'
 
 # Limit参数超出最大限制
 INVALIDPARAMETER_LIMIT = 'InvalidParameter.Limit'

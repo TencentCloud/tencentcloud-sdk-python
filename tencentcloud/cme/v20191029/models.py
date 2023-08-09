@@ -8167,8 +8167,11 @@ class MediaCastOutputMediaSetting(AbstractModel):
         r"""
         :param _VideoSetting: 视频配置。
         :type VideoSetting: :class:`tencentcloud.cme.v20191029.models.MediaCastVideoSetting`
+        :param _FollowSourceInfo: 视频配置是否和第一个输入源的视频配置相同，默认值：false。如果 FollowSourceInfo 的值为 true，忽略 VideoSetting 参数。
+        :type FollowSourceInfo: bool
         """
         self._VideoSetting = None
+        self._FollowSourceInfo = None
 
     @property
     def VideoSetting(self):
@@ -8178,11 +8181,20 @@ class MediaCastOutputMediaSetting(AbstractModel):
     def VideoSetting(self, VideoSetting):
         self._VideoSetting = VideoSetting
 
+    @property
+    def FollowSourceInfo(self):
+        return self._FollowSourceInfo
+
+    @FollowSourceInfo.setter
+    def FollowSourceInfo(self, FollowSourceInfo):
+        self._FollowSourceInfo = FollowSourceInfo
+
 
     def _deserialize(self, params):
         if params.get("VideoSetting") is not None:
             self._VideoSetting = MediaCastVideoSetting()
             self._VideoSetting._deserialize(params.get("VideoSetting"))
+        self._FollowSourceInfo = params.get("FollowSourceInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

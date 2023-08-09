@@ -9376,12 +9376,22 @@ class DescribeRabbitMQVirtualHostRequest(AbstractModel):
         :type Limit: int
         :param _Filters: search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
         :type Filters: :class:`tencentcloud.tdmq.v20200217.models.Filter`
+        :param _SortElement: 排序依据的字段：
+MessageHeapCount - 消息堆积数；
+MessageRateInOut - 生产消费速率之和；
+MessageRateIn - 生产速率；
+MessageRateOut - 消费速率；
+        :type SortElement: str
+        :param _SortOrder: 排序顺序，ascend 或 descend
+        :type SortOrder: str
         """
         self._InstanceId = None
         self._VirtualHost = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._SortElement = None
+        self._SortOrder = None
 
     @property
     def InstanceId(self):
@@ -9423,6 +9433,22 @@ class DescribeRabbitMQVirtualHostRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def SortElement(self):
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9432,6 +9458,8 @@ class DescribeRabbitMQVirtualHostRequest(AbstractModel):
         if params.get("Filters") is not None:
             self._Filters = Filter()
             self._Filters._deserialize(params.get("Filters"))
+        self._SortElement = params.get("SortElement")
+        self._SortOrder = params.get("SortOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16136,6 +16164,18 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :param _VirtualHostStatistics: vhost概览统计信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualHostStatistics: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
+        :param _Status: vhost状态，与原生控制台对应，有running、partial、stopped、unknown
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _MessageHeapCount: 消息堆积数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageHeapCount: int
+        :param _MessageRateIn: 输入消息速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateIn: float
+        :param _MessageRateOut: 输出消息速率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateOut: float
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -16144,6 +16184,10 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._VirtualHostStatistics = None
+        self._Status = None
+        self._MessageHeapCount = None
+        self._MessageRateIn = None
+        self._MessageRateOut = None
 
     @property
     def InstanceId(self):
@@ -16201,6 +16245,38 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     def VirtualHostStatistics(self, VirtualHostStatistics):
         self._VirtualHostStatistics = VirtualHostStatistics
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MessageHeapCount(self):
+        return self._MessageHeapCount
+
+    @MessageHeapCount.setter
+    def MessageHeapCount(self, MessageHeapCount):
+        self._MessageHeapCount = MessageHeapCount
+
+    @property
+    def MessageRateIn(self):
+        return self._MessageRateIn
+
+    @MessageRateIn.setter
+    def MessageRateIn(self, MessageRateIn):
+        self._MessageRateIn = MessageRateIn
+
+    @property
+    def MessageRateOut(self):
+        return self._MessageRateOut
+
+    @MessageRateOut.setter
+    def MessageRateOut(self, MessageRateOut):
+        self._MessageRateOut = MessageRateOut
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -16212,6 +16288,10 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         if params.get("VirtualHostStatistics") is not None:
             self._VirtualHostStatistics = RabbitMQVirtualHostStatistics()
             self._VirtualHostStatistics._deserialize(params.get("VirtualHostStatistics"))
+        self._Status = params.get("Status")
+        self._MessageHeapCount = params.get("MessageHeapCount")
+        self._MessageRateIn = params.get("MessageRateIn")
+        self._MessageRateOut = params.get("MessageRateOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

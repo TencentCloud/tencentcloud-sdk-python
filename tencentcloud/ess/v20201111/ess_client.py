@@ -970,7 +970,7 @@ class EssClient(AbstractClient):
     def DescribeFlowBriefs(self, request):
         """查询流程基础信息
         适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
-        每个企业限制日调用量限制：10W，当日超过此限制后再调用接口返回错误
+        每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误
 
         :param request: Request instance for DescribeFlowBriefs.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowBriefsRequest`

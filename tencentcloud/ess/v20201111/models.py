@@ -167,13 +167,14 @@ class ApproverInfo(AbstractModel):
         :type OrganizationName: str
         :param _SignComponents: 签署人的签署控件列表
         :type SignComponents: list of Component
-        :param _ApproverIdCardNumber: 签署人的身份证号
-        :type ApproverIdCardNumber: str
-        :param _ApproverIdCardType: 签署人的身份证件类型 
+        :param _ApproverIdCardType: 签署人的证件类型
 ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
         :type ApproverIdCardType: str
+        :param _ApproverIdCardNumber: 签署人证件号（长度不超过18位）	
+        :type ApproverIdCardNumber: str
         :param _NotifyType: 签署通知类型：sms--短信，none--不通知
         :type NotifyType: str
         :param _ApproverRole: 签署人角色类型：1--收款人、2--开具人、3--见证人
@@ -208,8 +209,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._ApproverMobile = None
         self._OrganizationName = None
         self._SignComponents = None
-        self._ApproverIdCardNumber = None
         self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
         self._NotifyType = None
         self._ApproverRole = None
         self._VerifyChannel = None
@@ -263,20 +264,20 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._SignComponents = SignComponents
 
     @property
-    def ApproverIdCardNumber(self):
-        return self._ApproverIdCardNumber
-
-    @ApproverIdCardNumber.setter
-    def ApproverIdCardNumber(self, ApproverIdCardNumber):
-        self._ApproverIdCardNumber = ApproverIdCardNumber
-
-    @property
     def ApproverIdCardType(self):
         return self._ApproverIdCardType
 
     @ApproverIdCardType.setter
     def ApproverIdCardType(self, ApproverIdCardType):
         self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
 
     @property
     def NotifyType(self):
@@ -378,8 +379,8 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
                 obj = Component()
                 obj._deserialize(item)
                 self._SignComponents.append(obj)
-        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
         self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
         self._NotifyType = params.get("NotifyType")
         self._ApproverRole = params.get("ApproverRole")
         self._VerifyChannel = params.get("VerifyChannel")
@@ -10725,11 +10726,13 @@ class FlowCreateApprover(AbstractModel):
 <br/>在未指定签署人电子签UserId情况下，为必填参数
 
         :type ApproverMobile: str
-        :param _ApproverIdCardType: 签署方经办人证件类型ID_CARD 身份证
+        :param _ApproverIdCardType: 签署人的证件类型
+ID_CARD 身份证
 HONGKONG_AND_MACAO 港澳居民来往内地通行证
 HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
         :type ApproverIdCardType: str
-        :param _ApproverIdCardNumber: 签署方经办人证件号码
+        :param _ApproverIdCardNumber: 签署人证件号（长度不超过18位）	
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中的参与方ID
 <br/>模板发起合同时，该参数为必填项

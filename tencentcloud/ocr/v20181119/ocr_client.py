@@ -2346,62 +2346,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def VerifyBasicBizLicense(self, request):
-        """库源服务调整，该接口在2023年6月1日将正式下线。
-
-        本接口支持营业执照信息的识别与准确性核验。
-
-        您可以通过输入营业执照注册号或营业执照图片（若两者都输入则只用注册号做查询）进行核验，接口返回查询到的工商照面信息，并比对要校验的字段与查询结果的一致性。查询到工商信息包括：统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、注册资本等。
-
-        :param request: Request instance for VerifyBasicBizLicense.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyBasicBizLicenseRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyBasicBizLicenseResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyBasicBizLicense", params, headers=headers)
-            response = json.loads(body)
-            model = models.VerifyBasicBizLicenseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def VerifyBizLicense(self, request):
-        """库源服务调整，该接口在2023年6月1日将正式下线。
-
-        本接口支持营业执照信息的识别与准确性核验，返回的真实工商照面信息比营业执照识别及核验（基础版）接口更详细。
-
-        您可以输入营业执照注册号或营业执照图片（若两者都输入则只用注册号做查询），接口返回查询到的工商照面信息，并比对要校验的字段与查询结果的一致性。
-
-        查询到工商信息包括：统一社会信用代码、组织机构代码、经营期限、法人姓名、经营状态、经营业务范围及方式、注册资金、注册币种、登记机关、开业日期、企业（机构）类型、注销日期、吊销日期、许可经营项目、一般经营项目、核准时间、省、地级市、区/县、住所所在行政区划代码、行业门类代码、行业门类名称、国民经济行业代码、国民经济行业名称、经营（业务）范围等。
-
-        :param request: Request instance for VerifyBizLicense.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyBizLicense", params, headers=headers)
-            response = json.loads(body)
-            model = models.VerifyBizLicenseResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def VerifyOfdVatInvoiceOCR(self, request):
         """本接口支持OFD格式的增值税电子普通发票和增值税电子专用发票的识别，返回发票代码、发票号码、开票日期、验证码、机器编号、密码区，购买方和销售方信息，包括名称、纳税人识别号、地址电话、开户行及账号，以及价税合计、开票人、收款人、复核人、税额、不含税金额等字段信息。
 
