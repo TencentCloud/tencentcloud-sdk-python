@@ -187,6 +187,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteOrganizationMemberAuthIdentity(self, request):
+        """删除组织成员访问授权
+
+        :param request: Request instance for DeleteOrganizationMemberAuthIdentity.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMemberAuthIdentityRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteOrganizationMemberAuthIdentityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrganizationMemberAuthIdentity", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrganizationMemberAuthIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOrganizationMembers(self, request):
         """批量删除企业组织成员
 

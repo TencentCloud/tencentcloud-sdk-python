@@ -395,7 +395,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateScheduledSql(self, request):
-        """本接口用于创建ScheduledSql任务
+        """本接口用于创建定时SQL分析任务
 
         :param request: Request instance for CreateScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateScheduledSqlRequest`
@@ -763,7 +763,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteScheduledSql(self, request):
-        """本接口用于删除ScheduledSql任务
+        """本接口用于删除定时SQL分析任务
 
         :param request: Request instance for DeleteScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
@@ -1338,7 +1338,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeScheduledSqlInfo(self, request):
-        """本接口用于获取ScheduledSql任务列表
+        """本接口用于获取定时SQL分析任务列表
 
         :param request: Request instance for DescribeScheduledSqlInfo.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoRequest`
@@ -1752,7 +1752,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyScheduledSql(self, request):
-        """本接口用于修改ScheduledSql任务
+        """本接口用于修改定时SQL分析任务
 
         :param request: Request instance for ModifyScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`

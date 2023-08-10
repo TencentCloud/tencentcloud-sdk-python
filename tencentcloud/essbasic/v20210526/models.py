@@ -285,6 +285,101 @@ class AuthorizedUser(AbstractModel):
         
 
 
+class AutoSignConfig(AbstractModel):
+    """自动签开启、签署相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserInfo: 自动签开通个人用户的三要素
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        :param _CertInfoCallback: 是否回调证书信息
+        :type CertInfoCallback: bool
+        :param _UserDefineSeal: 是否支持用户自定义签名印章
+        :type UserDefineSeal: bool
+        :param _SealImgCallback: 是否需要回调的时候返回印章(签名) 图片的 base64
+        :type SealImgCallback: bool
+        :param _CallbackUrl: 回调链接，如果渠道已经配置了，可以不传
+        :type CallbackUrl: str
+        :param _VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+        :type VerifyChannels: list of str
+        """
+        self._UserInfo = None
+        self._CertInfoCallback = None
+        self._UserDefineSeal = None
+        self._SealImgCallback = None
+        self._CallbackUrl = None
+        self._VerifyChannels = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def CertInfoCallback(self):
+        return self._CertInfoCallback
+
+    @CertInfoCallback.setter
+    def CertInfoCallback(self, CertInfoCallback):
+        self._CertInfoCallback = CertInfoCallback
+
+    @property
+    def UserDefineSeal(self):
+        return self._UserDefineSeal
+
+    @UserDefineSeal.setter
+    def UserDefineSeal(self, UserDefineSeal):
+        self._UserDefineSeal = UserDefineSeal
+
+    @property
+    def SealImgCallback(self):
+        return self._SealImgCallback
+
+    @SealImgCallback.setter
+    def SealImgCallback(self, SealImgCallback):
+        self._SealImgCallback = SealImgCallback
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def VerifyChannels(self):
+        return self._VerifyChannels
+
+    @VerifyChannels.setter
+    def VerifyChannels(self, VerifyChannels):
+        self._VerifyChannels = VerifyChannels
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        self._CertInfoCallback = params.get("CertInfoCallback")
+        self._UserDefineSeal = params.get("UserDefineSeal")
+        self._SealImgCallback = params.get("SealImgCallback")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._VerifyChannels = params.get("VerifyChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BaseFlowInfo(AbstractModel):
     """基础流程信息
 
@@ -867,6 +962,106 @@ class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
+    """ChannelCancelUserAutoSignEnableUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param _UserInfo: 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        """
+        self._Agent = None
+        self._Operator = None
+        self._SceneKey = None
+        self._UserInfo = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCancelUserAutoSignEnableUrlResponse(AbstractModel):
+    """ChannelCancelUserAutoSignEnableUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
     """ChannelCreateBatchCancelFlowUrl请求参数结构体
 
@@ -1379,22 +1574,29 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowName: 签署流程名称，长度不超过200个字符
         :type FlowName: str
+        :param _FlowDescription: 签署流程的描述，长度不超过1000个字符
+        :type FlowDescription: str
         :param _FlowApprovers: 签署流程签约方列表，最多不超过50个参与方
         :type FlowApprovers: list of FlowApproverInfo
         :param _FileIds: 签署文件资源Id列表，目前仅支持单个文件
         :type FileIds: list of str
         :param _Components: 签署文件中的发起方的填写控件，需要在发起的时候进行填充
         :type Components: list of Component
-        :param _Deadline: 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        :param _Deadline: 签署流程的签署截止时间。
+值为unix时间戳,精确到秒,不传默认为当前时间一年后
+不能早于当前时间
         :type Deadline: int
         :param _CallbackUrl: 签署流程回调地址，长度不超过255个字符
+如果不传递回调地址， 则默认是配置应用号时候使用的回调地址
         :type CallbackUrl: str
-        :param _Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
+        :param _Unordered: 合同签署顺序类型
+true - 无序签,
+false - 顺序签，
+默认为false，即有序签署。
+有序签署时以传入FlowApprovers数组的顺序作为签署顺序
         :type Unordered: bool
         :param _FlowType: 签署流程的类型，长度不超过255个字符
         :type FlowType: str
-        :param _FlowDescription: 签署流程的描述，长度不超过1000个字符
-        :type FlowDescription: str
         :param _CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
         :type CustomShowMap: str
         :param _CustomerData: 业务信息，最大长度1000个字符。
@@ -1406,11 +1608,16 @@ VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
-        :param _SignBeanTag: 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+        :param _SignBeanTag: 标识是否允许发起后添加控件。
+0为不允许
+1为允许。
+如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
         :type SignBeanTag: int
         :param _CcInfos: 被抄送人信息列表
         :type CcInfos: list of CcInfo
-        :param _CcNotifyType: 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+        :param _CcNotifyType: 给关注人发送短信通知的类型，
+0-合同发起时通知 
+1-签署完成后通知
         :type CcNotifyType: int
         :param _AutoSignScene: 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
         :type AutoSignScene: str
@@ -1419,6 +1626,7 @@ MobileCheck：手机号验证
         """
         self._Agent = None
         self._FlowName = None
+        self._FlowDescription = None
         self._FlowApprovers = None
         self._FileIds = None
         self._Components = None
@@ -1426,7 +1634,6 @@ MobileCheck：手机号验证
         self._CallbackUrl = None
         self._Unordered = None
         self._FlowType = None
-        self._FlowDescription = None
         self._CustomShowMap = None
         self._CustomerData = None
         self._NeedSignReview = None
@@ -1452,6 +1659,14 @@ MobileCheck：手机号验证
     @FlowName.setter
     def FlowName(self, FlowName):
         self._FlowName = FlowName
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
 
     @property
     def FlowApprovers(self):
@@ -1508,14 +1723,6 @@ MobileCheck：手机号验证
     @FlowType.setter
     def FlowType(self, FlowType):
         self._FlowType = FlowType
-
-    @property
-    def FlowDescription(self):
-        return self._FlowDescription
-
-    @FlowDescription.setter
-    def FlowDescription(self, FlowDescription):
-        self._FlowDescription = FlowDescription
 
     @property
     def CustomShowMap(self):
@@ -1599,6 +1806,7 @@ MobileCheck：手机号验证
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._FlowName = params.get("FlowName")
+        self._FlowDescription = params.get("FlowDescription")
         if params.get("FlowApprovers") is not None:
             self._FlowApprovers = []
             for item in params.get("FlowApprovers"):
@@ -1616,7 +1824,6 @@ MobileCheck：手机号验证
         self._CallbackUrl = params.get("CallbackUrl")
         self._Unordered = params.get("Unordered")
         self._FlowType = params.get("FlowType")
-        self._FlowDescription = params.get("FlowDescription")
         self._CustomShowMap = params.get("CustomShowMap")
         self._CustomerData = params.get("CustomerData")
         self._NeedSignReview = params.get("NeedSignReview")
@@ -3160,6 +3367,227 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
+    """ChannelCreateUserAutoSignEnableUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _AutoSignConfig: 自动签开通，签署相关配置
+        :type AutoSignConfig: :class:`tencentcloud.essbasic.v20210526.models.AutoSignConfig`
+        :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :type UrlType: str
+        :param _NotifyType: 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
+        :type NotifyType: str
+        :param _NotifyAddress: 若上方填写为 SMS，则此处为手机号
+        :type NotifyAddress: str
+        :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+        :type ExpiredTime: int
+        """
+        self._Agent = None
+        self._SceneKey = None
+        self._Operator = None
+        self._AutoSignConfig = None
+        self._UrlType = None
+        self._NotifyType = None
+        self._NotifyAddress = None
+        self._ExpiredTime = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def AutoSignConfig(self):
+        return self._AutoSignConfig
+
+    @AutoSignConfig.setter
+    def AutoSignConfig(self, AutoSignConfig):
+        self._AutoSignConfig = AutoSignConfig
+
+    @property
+    def UrlType(self):
+        return self._UrlType
+
+    @UrlType.setter
+    def UrlType(self, UrlType):
+        self._UrlType = UrlType
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def NotifyAddress(self):
+        return self._NotifyAddress
+
+    @NotifyAddress.setter
+    def NotifyAddress(self, NotifyAddress):
+        self._NotifyAddress = NotifyAddress
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("AutoSignConfig") is not None:
+            self._AutoSignConfig = AutoSignConfig()
+            self._AutoSignConfig._deserialize(params.get("AutoSignConfig"))
+        self._UrlType = params.get("UrlType")
+        self._NotifyType = params.get("NotifyType")
+        self._NotifyAddress = params.get("NotifyAddress")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
+    """ChannelCreateUserAutoSignEnableUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 跳转短链
+        :type Url: str
+        :param _AppId: 小程序AppId
+        :type AppId: str
+        :param _AppOriginalId: 小程序 原始 Id
+        :type AppOriginalId: str
+        :param _Path: 跳转路径
+        :type Path: str
+        :param _QrCode: base64格式跳转二维码
+        :type QrCode: str
+        :param _UrlType: 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+        :type UrlType: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._AppId = None
+        self._AppOriginalId = None
+        self._Path = None
+        self._QrCode = None
+        self._UrlType = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppOriginalId(self):
+        return self._AppOriginalId
+
+    @AppOriginalId.setter
+    def AppOriginalId(self, AppOriginalId):
+        self._AppOriginalId = AppOriginalId
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def QrCode(self):
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def UrlType(self):
+        return self._UrlType
+
+    @UrlType.setter
+    def UrlType(self, UrlType):
+        self._UrlType = UrlType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._AppId = params.get("AppId")
+        self._AppOriginalId = params.get("AppOriginalId")
+        self._Path = params.get("Path")
+        self._QrCode = params.get("QrCode")
+        self._UrlType = params.get("UrlType")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateUserRolesRequest(AbstractModel):
     """ChannelCreateUserRoles请求参数结构体
 
@@ -4218,6 +4646,244 @@ class ChannelDescribeRolesResponse(AbstractModel):
                 obj = ChannelRole()
                 obj._deserialize(item)
                 self._ChannelRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
+    """ChannelDescribeUserAutoSignStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param _UserInfo: 查询开启状态的用户信息
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self._Agent = None
+        self._SceneKey = None
+        self._UserInfo = None
+        self._Operator = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
+    """ChannelDescribeUserAutoSignStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsOpen: 是否开通
+        :type IsOpen: bool
+        :param _LicenseFrom: 自动签许可生效时间。当且仅当已开通自动签时有值。
+        :type LicenseFrom: int
+        :param _LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
+        :type LicenseTo: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsOpen = None
+        self._LicenseFrom = None
+        self._LicenseTo = None
+        self._RequestId = None
+
+    @property
+    def IsOpen(self):
+        return self._IsOpen
+
+    @IsOpen.setter
+    def IsOpen(self, IsOpen):
+        self._IsOpen = IsOpen
+
+    @property
+    def LicenseFrom(self):
+        return self._LicenseFrom
+
+    @LicenseFrom.setter
+    def LicenseFrom(self, LicenseFrom):
+        self._LicenseFrom = LicenseFrom
+
+    @property
+    def LicenseTo(self):
+        return self._LicenseTo
+
+    @LicenseTo.setter
+    def LicenseTo(self, LicenseTo):
+        self._LicenseTo = LicenseTo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsOpen = params.get("IsOpen")
+        self._LicenseFrom = params.get("LicenseFrom")
+        self._LicenseTo = params.get("LicenseTo")
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelDisableUserAutoSignRequest(AbstractModel):
+    """ChannelDisableUserAutoSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SceneKey: 自动签场景:
+E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :type SceneKey: str
+        :param _UserInfo: 关闭自动签的个人的三要素
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self._Agent = None
+        self._SceneKey = None
+        self._UserInfo = None
+        self._Operator = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDisableUserAutoSignResponse(AbstractModel):
+    """ChannelDisableUserAutoSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -12302,6 +12968,66 @@ class UserInfo(AbstractModel):
         self._CustomUserId = params.get("CustomUserId")
         self._ClientIp = params.get("ClientIp")
         self._ProxyIp = params.get("ProxyIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserThreeFactor(AbstractModel):
+    """用户的三要素：姓名，证件号，证件类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 姓名
+        :type Name: str
+        :param _IdCardType: 证件类型: 
+ID_CARD 身份证
+HONGKONG_AND_MACAO 港澳居民来往内地通行证
+HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+        :type IdCardType: str
+        :param _IdCardNumber: 证件号，如果有 X 请大写
+        :type IdCardNumber: str
+        """
+        self._Name = None
+        self._IdCardType = None
+        self._IdCardNumber = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

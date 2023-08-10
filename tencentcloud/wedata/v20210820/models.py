@@ -8596,7 +8596,7 @@ class CreateHiveTableRequest(AbstractModel):
         :type DatasourceId: str
         :param _Database: 数据库
         :type Database: str
-        :param _DDLSql: 建hive表ddl
+        :param _DDLSql: base64转码之后的建表语句
         :type DDLSql: str
         :param _Privilege: 表权限 ，默认为0:项目共享;1:仅个人与管理员
         :type Privilege: int
@@ -20506,7 +20506,7 @@ class DescribeInLongTkeClusterListRequest(AbstractModel):
         :param _ClusterName: 集群名称。
 多个名称用逗号连接。
         :type ClusterName: str
-        :param _Status: TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常 Failed 异常 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
+        :param _Status: TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常 Failed 失败 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
 多个状态用逗号连接。
         :type Status: str
         :param _HasAgent: 是否安装Agent，true: 是，false: 否
@@ -20994,7 +20994,7 @@ class DescribeInstanceListRequest(AbstractModel):
         :type ProjectId: str
         :param _PageIndex: 页码
         :type PageIndex: int
-        :param _PageSize: 页大小
+        :param _PageSize: 一页展示的条数
         :type PageSize: int
         :param _CycleList: 周期列表（如天，一次性），可选
         :type CycleList: list of str
@@ -21006,7 +21006,11 @@ class DescribeInstanceListRequest(AbstractModel):
         :type Sort: str
         :param _SortCol: 排序列（costTime 运行耗时，startTime 开始时间，state 实例状态，curRunDate 数据时间）
         :type SortCol: str
-        :param _TaskTypeList: 类型列表（如35 shell任务），可选
+        :param _TaskTypeList: 类型列表（如python任务类型：30
+pyspark任务类型：31
+hivesql任务类型：34
+shell任务类型：35
+sparksql任务类型：36 jdbcsql任务类型：21 dlc任务类型：32），可选
         :type TaskTypeList: list of int
         :param _StateList: 状态列表（如成功 2，正在执行 1），可选
         :type StateList: list of int

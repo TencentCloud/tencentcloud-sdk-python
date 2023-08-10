@@ -788,6 +788,76 @@ class CreateOrganizationMemberResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
+    """DeleteOrganizationMemberAuthIdentity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: 成员uin。
+        :type MemberUin: int
+        :param _IdentityId: 身份Id。
+        :type IdentityId: int
+        """
+        self._MemberUin = None
+        self._IdentityId = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def IdentityId(self):
+        return self._IdentityId
+
+    @IdentityId.setter
+    def IdentityId(self, IdentityId):
+        self._IdentityId = IdentityId
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._IdentityId = params.get("IdentityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOrganizationMemberAuthIdentityResponse(AbstractModel):
+    """DeleteOrganizationMemberAuthIdentity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOrganizationMembersPolicyRequest(AbstractModel):
     """DeleteOrganizationMembersPolicy请求参数结构体
 

@@ -290,6 +290,8 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         :type Interval: int
         :param _RuntimeClass: 环境运行类型：0:运行时类型、1:api类型
         :type RuntimeClass: int
+        :param _AggregationType: 资源指标聚合类型：0: 环境维度 1:执行引擎维度 2:datatwaypy维度 3.datawayjava维度
+        :type AggregationType: int
         """
         self._RuntimeId = None
         self._StartTime = None
@@ -298,6 +300,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         self._RateType = None
         self._Interval = None
         self._RuntimeClass = None
+        self._AggregationType = None
 
     @property
     def RuntimeId(self):
@@ -355,6 +358,14 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
     def RuntimeClass(self, RuntimeClass):
         self._RuntimeClass = RuntimeClass
 
+    @property
+    def AggregationType(self):
+        return self._AggregationType
+
+    @AggregationType.setter
+    def AggregationType(self, AggregationType):
+        self._AggregationType = AggregationType
+
 
     def _deserialize(self, params):
         self._RuntimeId = params.get("RuntimeId")
@@ -364,6 +375,7 @@ class GetRuntimeResourceMonitorMetricMCRequest(AbstractModel):
         self._RateType = params.get("RateType")
         self._Interval = params.get("Interval")
         self._RuntimeClass = params.get("RuntimeClass")
+        self._AggregationType = params.get("AggregationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -567,6 +579,10 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
 0: 运行中
 2: 已停止
         :type Status: int
+        :param _RuntimeClass: 0: 应用集成
+1: API管理
+2: ETL
+        :type RuntimeClass: int
         """
         self._RuntimeId = None
         self._Limit = None
@@ -577,6 +593,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self._ApiVersion = None
         self._GroupId = None
         self._Status = None
+        self._RuntimeClass = None
 
     @property
     def RuntimeId(self):
@@ -650,6 +667,14 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def RuntimeClass(self):
+        return self._RuntimeClass
+
+    @RuntimeClass.setter
+    def RuntimeClass(self, RuntimeClass):
+        self._RuntimeClass = RuntimeClass
+
 
     def _deserialize(self, params):
         self._RuntimeId = params.get("RuntimeId")
@@ -661,6 +686,7 @@ class ListRuntimeDeployedInstancesMCRequest(AbstractModel):
         self._ApiVersion = params.get("ApiVersion")
         self._GroupId = params.get("GroupId")
         self._Status = params.get("Status")
+        self._RuntimeClass = params.get("RuntimeClass")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

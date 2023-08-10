@@ -4034,11 +4034,19 @@ class TRTCJoinRoomInput(AbstractModel):
         :type SdkAppId: str
         :param _UserId: 用户唯一标识。
         :type UserId: str
+        :param _RoomIdType: TRTC房间号的类型：
+
+Integer：数字类型
+String：字符串类型
+默认为：Integer 。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomIdType: str
         """
         self._Sign = None
         self._RoomId = None
         self._SdkAppId = None
         self._UserId = None
+        self._RoomIdType = None
 
     @property
     def Sign(self):
@@ -4072,12 +4080,21 @@ class TRTCJoinRoomInput(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
 
     def _deserialize(self, params):
         self._Sign = params.get("Sign")
         self._RoomId = params.get("RoomId")
         self._SdkAppId = params.get("SdkAppId")
         self._UserId = params.get("UserId")
+        self._RoomIdType = params.get("RoomIdType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

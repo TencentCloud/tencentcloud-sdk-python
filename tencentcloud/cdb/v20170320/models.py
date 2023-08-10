@@ -8581,7 +8581,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 "affectRows" - 影响行数；
 "execTime" - 执行时间。
         :type OrderBy: str
-        :param _LogFilter: 过滤条件。可按设置的过滤条件过滤日志。
+        :param _LogFilter: 过滤条件。多个值之前是且的关系。
         :type LogFilter: list of InstanceAuditLogFilters
         """
         self._InstanceId = None
@@ -17010,7 +17010,10 @@ class InstanceAuditLogFilters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 过滤项。sql 暂时不支持搜索。目前支持以下搜索条件：
+        :param _Type: 过滤项。目前支持以下搜索条件：
+
+包含、不包含、包含（分词维度）、不包含（分词维度）:
+sql - SQL详情
 
 等于、不等于、包含、不包含：
 host - 客户端地址；
@@ -17033,13 +17036,15 @@ affectRows - 影响行数；
 sentRows - 返回行数。
         :type Type: str
         :param _Compare: 过滤条件。支持以下条件：
+WINC-包含（分词维度），
+WEXC-不包含（分词维度）,
 INC - 包含,
 EXC - 不包含,
 EQS - 等于,
 NEQ - 不等于,
 RA - 范围。
         :type Compare: str
-        :param _Value: 过滤的值。
+        :param _Value: 过滤的值。反向查询时，多个值之前是且的关系，正向查询多个值是或的关系
         :type Value: list of str
         """
         self._Type = None

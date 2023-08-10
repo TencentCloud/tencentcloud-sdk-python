@@ -206,7 +206,7 @@ class CreateEmbedTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 分享项目id，必选
+        :param _ProjectId: 分享项目id
         :type ProjectId: int
         :param _PageId: 分享页面id，嵌出看板时此为空值0
         :type PageId: int

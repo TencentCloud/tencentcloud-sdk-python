@@ -108,6 +108,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCancelUserAutoSignEnableUrl(self, request):
+        """此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+
+        :param request: Request instance for ChannelCancelUserAutoSignEnableUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCancelUserAutoSignEnableUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCancelUserAutoSignEnableUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCancelUserAutoSignEnableUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCancelUserAutoSignEnableUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateBatchCancelFlowUrl(self, request):
         """指定需要批量撤销的签署流程Id，获取批量撤销链接 - 不建议使用此接口，可使用ChannelBatchCancelFlows
         客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
@@ -487,6 +510,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreateUserAutoSignEnableUrl(self, request):
+        """企业方可以通过此接口获取个人用户开启自动签的跳转链接
+
+        :param request: Request instance for ChannelCreateUserAutoSignEnableUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserAutoSignEnableUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateUserAutoSignEnableUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateUserAutoSignEnableUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateUserAutoSignEnableUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateUserRoles(self, request):
         """通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
 
@@ -663,6 +709,52 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelDescribeRoles", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelDescribeRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelDescribeUserAutoSignStatus(self, request):
+        """企业方可以通过此接口查询个人用户自动签开启状态
+
+        :param request: Request instance for ChannelDescribeUserAutoSignStatus.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeUserAutoSignStatusRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeUserAutoSignStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDescribeUserAutoSignStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDescribeUserAutoSignStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelDisableUserAutoSign(self, request):
+        """企业方可以通过此接口关闭个人的自动签功能
+
+        :param request: Request instance for ChannelDisableUserAutoSign.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDisableUserAutoSignRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDisableUserAutoSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDisableUserAutoSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDisableUserAutoSignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
