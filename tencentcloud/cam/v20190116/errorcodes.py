@@ -170,6 +170,9 @@ INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = 'InvalidParameter.PrincipalQcsNotExist'
 # PrincipalService不存在。
 INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = 'InvalidParameter.PrincipalServiceNotExist'
 
+# 消息接收人超出限制。
+INVALIDPARAMETER_RECEIVEROVERLIMIT = 'InvalidParameter.ReceiverOverLimit'
+
 # 策略语法中资源内容不正确。
 INVALIDPARAMETER_RESOURCECONTENTERROR = 'InvalidParameter.ResourceContentError'
 
@@ -242,6 +245,9 @@ INVALIDPARAMETER_USERGROUPFULL = 'InvalidParameter.UserGroupFull'
 # 用户名不合法。
 INVALIDPARAMETER_USERNAMEILLEGAL = 'InvalidParameter.UserNameIllegal'
 
+# 用户未实名。
+INVALIDPARAMETER_USERNOTAUTH = 'InvalidParameter.UserNotAuth'
+
 # 用户对象不存在。
 INVALIDPARAMETER_USERNOTEXIST = 'InvalidParameter.UserNotExist'
 
@@ -265,6 +271,9 @@ INVALIDPARAMETERVALUE_NAMEERROR = 'InvalidParameterValue.NameError'
 
 # 身份提供商已达到上限。
 LIMITEXCEEDED_IDENTITYFULL = 'LimitExceeded.IdentityFull'
+
+# 请求超出限制。
+LIMITEXCEEDED_UIN = 'LimitExceeded.Uin'
 
 # 每个账号最多支持两个AccessKey。
 OPERATIONDENIED_ACCESSKEYOVERLIMIT = 'OperationDenied.AccessKeyOverLimit'

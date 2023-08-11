@@ -5144,7 +5144,7 @@ class UpdateScanRoomsRequest(AbstractModel):
         :type BizId: int
         :param _RoomIdString: 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
         :type RoomIdString: str
-        :param _RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
+        :param _RoomIdRegex: 符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
         :type RoomIdRegex: list of str
         """
         self._BizId = None

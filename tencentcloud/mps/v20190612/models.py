@@ -37854,7 +37854,7 @@ class VideoTemplateInfo(AbstractModel):
 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
 注意：av1 编码容器目前只支持 mp4 。
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
+        :param _Fps: 视频帧率，取值范围：[0, 120]，单位：Hz。
 当取值为 0，表示帧率和原始视频保持一致。
 注意：自适应码率时取值范围是 [0, 60]
         :type Fps: int

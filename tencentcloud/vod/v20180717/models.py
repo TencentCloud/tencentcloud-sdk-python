@@ -21112,6 +21112,12 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> ExtractTraceWatermark: 提取水印</li>
 <li> AddTraceWatermark: 添加水印</li>
 <li> RebuildMedia: 音画质重生</li>
+<li> QualityInspect: 音画质检测</li>
+<li> VideoHighlight: 视频智能集锦</li>
+<li> VideoTag: 视频智能标签</li>
+<li> VideoClassification:  视频智能分类</li>
+<li> VideoCover: 视频智能封面</li>
+<li> VideoSegment: 视频智能拆条</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type Type: str
         """
@@ -42752,6 +42758,7 @@ class ProductInstanceRecource(AbstractModel):
 <li>Transcode：普通转码资源包。</li>
 <li>TESHD：极速高清转码资源包。</li>
 <li>Review：音视频审核转码资源包。</li>
+<li>MediaProcess：媒体处理时长资源包。</li>
         :type ResourceType: str
         :param _Amount: 资源包额度。
 <li>音视频存储资源包，单位为字节。</li>
@@ -42759,6 +42766,7 @@ class ProductInstanceRecource(AbstractModel):
 <li>音视频审核资源包，单位为秒。</li>
 <li>音视频极速高清资源包，单位为秒。</li>
 <li>音视频加速资源包，单位为字节。</li>
+<li>媒体处理时长资源包，单位为秒。</li>
         :type Amount: int
         :param _Left: 资源包余量。
 <li>音视频存储资源包，单位为字节。</li>
@@ -42766,6 +42774,7 @@ class ProductInstanceRecource(AbstractModel):
 <li>音视频审核资源包，单位为秒。</li>
 <li>音视频极速高清资源包，单位为秒。</li>
 <li>音视频加速资源包，单位为字节。</li>
+<li>媒体处理时长资源包，单位为秒。</li>
         :type Left: int
         """
         self._ResourceType = None
@@ -52801,6 +52810,7 @@ class TaskStatData(AbstractModel):
 <li> ExtractTraceWatermark: 提取水印</li>
 <li> AddTraceWatermark: 添加水印</li>
 <li> RebuildMedia: 音画质重生</li>
+<li> QualityInspect: 音画质检测</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type TaskType: str
         :param _Summary: 任务数统计数据概览，用量单位为秒。

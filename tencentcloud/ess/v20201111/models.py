@@ -158,12 +158,16 @@ class ApproverInfo(AbstractModel):
 1：个人
 3：企业静默签署
 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
         :type ApproverType: int
         :param _ApproverName: 签署人的姓名
         :type ApproverName: str
         :param _ApproverMobile: 签署人的手机号，11位数字
         :type ApproverMobile: str
-        :param _OrganizationName: 如果签署方是企业签署方，则为企业名
+        :param _OrganizationName: 如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
+
+则企业名称必填
         :type OrganizationName: str
         :param _SignComponents: 签署人的签署控件列表
         :type SignComponents: list of Component
@@ -183,9 +187,13 @@ OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
         :type VerifyChannel: list of str
         :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param _UserId: 签署人userId，传此字段则不用传姓名、手机号
+        :param _UserId: 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
+
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
         :type UserId: str
-        :param _ApproverSource: 签署人用户来源，企微侧用户请传入：WEWORKAPP
+        :param _ApproverSource: 签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
         :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
         :type CustomApproverTag: str
@@ -10713,6 +10721,8 @@ class FlowCreateApprover(AbstractModel):
 自动签署仅进行盖章操作，不能是手写签名。
 本方企业自动签署的签署人会默认是当前的发起人
 他方企业自动签署的签署人是自动签模板的他方企业授权人
+7: 个人自动签署，适用于个人自动签场景。
+注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
         :type ApproverType: int
         :param _OrganizationName: 签署人企业名称
 <br/>当approverType=1 或 approverType=3时，必须指定
@@ -10751,14 +10761,15 @@ OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
         :type IsFullText: bool
         :param _PreReadTime: 合同的强制预览时间：3~300s，未指定则按合同页数计算
         :type PreReadTime: int
-        :param _UserId: 签署方经办人的电子签用户ID
-<br/>当未指定签署人姓名+手机号的情况下，该字段毕传
+        :param _UserId: 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
 
+若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
         :type UserId: str
         :param _Required: 当前只支持true，默认为true
         :type Required: bool
-        :param _ApproverSource: 签署人用户来源
-<br/>企微侧用户请传入：WEWORKAPP
+        :param _ApproverSource: 签署人用户来源，此参数仅针对企微用户开放
+
+企微侧用户请传入：WEWORKAPP
         :type ApproverSource: str
         :param _CustomApproverTag: 企业签署方或签标识，客户自定义，64位长度
 <br>用于发起含有或签签署人的合同。或签参与人必须有此字段。
@@ -10780,10 +10791,10 @@ OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
 <br/>false,无序企业内部审批（默认）
 <br/>为个人签署方时则由发起方企业审核。
         :type ApproverNeedSignReview: bool
-        :param _SignComponents: 签署人签署控件
+        :param _SignComponents: 签署人签署控件， 此参数仅针对文件发起（CreateFlowByFiles）生效
 <br/>文件发起时，可通过该参数为签署人指定签署控件类型以及位置
         :type SignComponents: list of Component
-        :param _Components: 签署人填写控件
+        :param _Components: 签署人填写控件 此参数仅针对文件发起（CreateFlowByFiles）生效
 <br/>文件发起时，可通过该参数为签署人指定填写控件类型以及位置
         :type Components: list of Component
         :param _ComponentLimitType: 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式

@@ -6170,7 +6170,7 @@ class DescribeImageRequest(AbstractModel):
         :param _Filters: 过滤条件，每次请求的Filters的上限为10，详细的过滤条件如下：
 image-id - String - 是否必填： 否 - （过滤条件）按照镜像ID进行过滤
 image-type - String - 是否必填： 否 - （过滤条件）按照镜像类型进行过滤。取值范围：
-PRIVATE_IMAGE: 私有镜像 (本帐户创建的镜像) 
+PRIVATE_IMAGE: 私有镜像 (本账户创建的镜像) 
 PUBLIC_IMAGE: 公共镜像 (腾讯云官方镜像)
 instance-type -String - 是否必填: 否 - (过滤条件) 按机型过滤支持的镜像
 image-name - String - 是否必填：否 - (过滤条件) 按镜像的名称模糊匹配，只能提供一个值
@@ -19960,7 +19960,7 @@ class ResetInstancesRequest(AbstractModel):
         :type ImageId: str
         :param _Password: 密码设置，若未指定，则后续将以站内信的形式通知密码。
         :type Password: str
-        :param _EnhancedService: 是否开启云监控和云镜服务，未指定时默认开启。
+        :param _EnhancedService: 是否开启腾讯云可观测平台和主机安全服务，未指定时默认开启。
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
         :param _KeepData: 是否保留数据盘数据，取值"true"/"false"。默认为"true"
         :type KeepData: str

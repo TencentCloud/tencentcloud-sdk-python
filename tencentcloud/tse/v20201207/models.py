@@ -4787,7 +4787,7 @@ class KongRoutePreview(AbstractModel):
         :type DestinationPorts: list of int non-negative
         :param _Headers: 路由的Headers
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Headers: :class:`tencentcloud.tse.v20201207.models.KVMapping`
+        :type Headers: list of KVMapping
         """
         self._ID = None
         self._Name = None
@@ -4946,8 +4946,11 @@ class KongRoutePreview(AbstractModel):
         self._ServiceID = params.get("ServiceID")
         self._DestinationPorts = params.get("DestinationPorts")
         if params.get("Headers") is not None:
-            self._Headers = KVMapping()
-            self._Headers._deserialize(params.get("Headers"))
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._Headers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

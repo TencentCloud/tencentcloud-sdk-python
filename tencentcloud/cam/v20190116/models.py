@@ -1430,6 +1430,112 @@ class CreateGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMessageReceiverRequest(AbstractModel):
+    """CreateMessageReceiver请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 消息接收人的用户名
+        :type Name: str
+        :param _CountryCode: 手机号国际区号，国内为86
+        :type CountryCode: str
+        :param _PhoneNumber: 手机号码, 例如：132****2492
+        :type PhoneNumber: str
+        :param _Email: 邮箱，例如：57*****@qq.com
+        :type Email: str
+        :param _Remark: 消息接收人的备注，选填
+        :type Remark: str
+        """
+        self._Name = None
+        self._CountryCode = None
+        self._PhoneNumber = None
+        self._Email = None
+        self._Remark = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CountryCode(self):
+        return self._CountryCode
+
+    @CountryCode.setter
+    def CountryCode(self, CountryCode):
+        self._CountryCode = CountryCode
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CountryCode = params.get("CountryCode")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Email = params.get("Email")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMessageReceiverResponse(AbstractModel):
+    """CreateMessageReceiver返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOIDCConfigRequest(AbstractModel):
     """CreateOIDCConfig请求参数结构体
 

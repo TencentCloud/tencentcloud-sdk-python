@@ -210,6 +210,29 @@ class CamClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMessageReceiver(self, request):
+        """创建消息接收人接口：仅允许已完成实名认证的用户访问消息接收人接口，并对每个用户限制每天最多请求10次。
+
+        :param request: Request instance for CreateMessageReceiver.
+        :type request: :class:`tencentcloud.cam.v20190116.models.CreateMessageReceiverRequest`
+        :rtype: :class:`tencentcloud.cam.v20190116.models.CreateMessageReceiverResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMessageReceiver", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMessageReceiverResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOIDCConfig(self, request):
         """创建角色OIDC配置
 

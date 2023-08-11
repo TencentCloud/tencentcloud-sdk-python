@@ -13751,6 +13751,8 @@ class EsParam(AbstractModel):
         :type RecordMappingList: list of EsRecordMapping
         :param _DateField: 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
         :type DateField: str
+        :param _RecordMappingMode: 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+        :type RecordMappingMode: str
         """
         self._Resource = None
         self._Port = None
@@ -13771,6 +13773,7 @@ class EsParam(AbstractModel):
         self._DropDlq = None
         self._RecordMappingList = None
         self._DateField = None
+        self._RecordMappingMode = None
 
     @property
     def Resource(self):
@@ -13924,6 +13927,14 @@ class EsParam(AbstractModel):
     def DateField(self, DateField):
         self._DateField = DateField
 
+    @property
+    def RecordMappingMode(self):
+        return self._RecordMappingMode
+
+    @RecordMappingMode.setter
+    def RecordMappingMode(self, RecordMappingMode):
+        self._RecordMappingMode = RecordMappingMode
+
 
     def _deserialize(self, params):
         self._Resource = params.get("Resource")
@@ -13954,6 +13965,7 @@ class EsParam(AbstractModel):
                 obj._deserialize(item)
                 self._RecordMappingList.append(obj)
         self._DateField = params.get("DateField")
+        self._RecordMappingMode = params.get("RecordMappingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16378,6 +16390,9 @@ class InstanceAttributesResponse(AbstractModel):
         :param _DynamicDiskConfig: 动态硬盘扩容策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicDiskConfig: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        :param _InstanceChargeType: 实例计费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargeType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -16414,6 +16429,7 @@ class InstanceAttributesResponse(AbstractModel):
         self._RemainingPartitions = None
         self._RemainingTopics = None
         self._DynamicDiskConfig = None
+        self._InstanceChargeType = None
 
     @property
     def InstanceId(self):
@@ -16695,6 +16711,14 @@ class InstanceAttributesResponse(AbstractModel):
     def DynamicDiskConfig(self, DynamicDiskConfig):
         self._DynamicDiskConfig = DynamicDiskConfig
 
+    @property
+    def InstanceChargeType(self):
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -16748,6 +16772,7 @@ class InstanceAttributesResponse(AbstractModel):
         if params.get("DynamicDiskConfig") is not None:
             self._DynamicDiskConfig = DynamicDiskConfig()
             self._DynamicDiskConfig._deserialize(params.get("DynamicDiskConfig"))
+        self._InstanceChargeType = params.get("InstanceChargeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22013,7 +22038,7 @@ class RenewCkafkaInstanceRequest(AbstractModel):
         
 
 
-class RenewCkafkaInstanceResponse(AbstractModel):
+class RenewCkafkaInstanceResp(AbstractModel):
     """RenewCkafkaInstance接口出参bigDealIds
 
     """
@@ -22050,6 +22075,53 @@ class RenewCkafkaInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._BigDealId = params.get("BigDealId")
         self._DealName = params.get("DealName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewCkafkaInstanceResponse(AbstractModel):
+    """RenewCkafkaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回值
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceResp`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = RenewCkafkaInstanceResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class ReplaceParam(AbstractModel):

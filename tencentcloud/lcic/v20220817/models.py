@@ -1659,7 +1659,7 @@ video 纯视频
         :type RTCAudienceNumber: int
         :param _AudienceType: 观看类型。互动观看 （默认）
         :type AudienceType: int
-        :param _RecordLayout: 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        :param _RecordLayout: 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
         :param _GroupId: 房间绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
@@ -4041,6 +4041,8 @@ video 纯视频
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
         :type RoomType: int
+        :param _VideoDuration: 录制时长
+        :type VideoDuration: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4065,6 +4067,7 @@ video 纯视频
         self._VideoOrientation = None
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
+        self._VideoDuration = None
         self._RequestId = None
 
     @property
@@ -4236,6 +4239,14 @@ video 纯视频
         self._RoomType = RoomType
 
     @property
+    def VideoDuration(self):
+        return self._VideoDuration
+
+    @VideoDuration.setter
+    def VideoDuration(self, VideoDuration):
+        self._VideoDuration = VideoDuration
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4266,6 +4277,7 @@ video 纯视频
         self._VideoOrientation = params.get("VideoOrientation")
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
+        self._VideoDuration = params.get("VideoDuration")
         self._RequestId = params.get("RequestId")
 
 
