@@ -463,6 +463,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreatePreparedPersonalEsign(self, request):
+        """本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
+
+        :param request: Request instance for ChannelCreatePreparedPersonalEsign.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreatePreparedPersonalEsignRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreatePreparedPersonalEsignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreatePreparedPersonalEsign", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreatePreparedPersonalEsignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateReleaseFlow(self, request):
         """发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
         合同发起人必须在电子签已经进行实名。

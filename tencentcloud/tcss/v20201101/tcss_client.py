@@ -4836,6 +4836,52 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRiskDnsEventDetail(self, request):
+        """查询恶意请求事件详情
+
+        :param request: Request instance for DescribeRiskDnsEventDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsEventDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskDnsEventDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskDnsEventDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRiskDnsList(self, request):
+        """查询恶意请求事件列表
+
+        :param request: Request instance for DescribeRiskDnsList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeRiskDnsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskDnsList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskDnsListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRiskList(self, request):
         """查询最近一次任务发现的风险项的信息列表，支持根据特殊字段进行过滤
 

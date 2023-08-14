@@ -16422,6 +16422,124 @@ class ScheduledSqlTaskInfo(AbstractModel):
         
 
 
+class SearchLogErrors(AbstractModel):
+    """多日志主题检索错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _ErrorCodeStr: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeStr: str
+        """
+        self._TopicId = None
+        self._ErrorMsg = None
+        self._ErrorCodeStr = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ErrorCodeStr(self):
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogInfos(AbstractModel):
+    """多日志主题检索topic信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题ID
+        :type TopicId: str
+        :param _Period: 日志存储生命周期
+        :type Period: int
+        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Period = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Period = params.get("Period")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchLogRequest(AbstractModel):
     """SearchLog请求参数结构体
 
@@ -16445,11 +16563,11 @@ class SearchLogRequest(AbstractModel):
 * 仅当检索分析语句(Query)不包含SQL时有效
 * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
         :type Limit: int
-        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 注意：
 * 透传该参数时，请勿修改除该参数外的其它参数
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
         :type Context: str
         :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 注意：
@@ -16610,7 +16728,9 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+注意：
+* 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
         :type Context: str
         :param _ListOver: 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
 注意：仅当检索分析语句(Query)不包含SQL时有效
@@ -16639,6 +16759,9 @@ class SearchLogResponse(AbstractModel):
         :param _SamplingRate: 本次统计分析使用的采样率
 注意：此字段可能返回 null，表示取不到有效值。
         :type SamplingRate: float
+        :param _Topics: 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topics: :class:`tencentcloud.cls.v20201016.models.SearchLogTopics`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16651,6 +16774,7 @@ class SearchLogResponse(AbstractModel):
         self._AnalysisRecords = None
         self._Columns = None
         self._SamplingRate = None
+        self._Topics = None
         self._RequestId = None
 
     @property
@@ -16726,6 +16850,14 @@ class SearchLogResponse(AbstractModel):
         self._SamplingRate = SamplingRate
 
     @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16759,7 +16891,67 @@ class SearchLogResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Columns.append(obj)
         self._SamplingRate = params.get("SamplingRate")
+        if params.get("Topics") is not None:
+            self._Topics = SearchLogTopics()
+            self._Topics._deserialize(params.get("Topics"))
         self._RequestId = params.get("RequestId")
+
+
+class SearchLogTopics(AbstractModel):
+    """多主题检索返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Errors: 多日志主题检索对应的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errors: list of SearchLogErrors
+        :param _Infos: 多日志主题检索各日志主题信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of SearchLogInfos
+        """
+        self._Errors = None
+        self._Infos = None
+
+    @property
+    def Errors(self):
+        return self._Errors
+
+    @Errors.setter
+    def Errors(self, Errors):
+        self._Errors = Errors
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+
+    def _deserialize(self, params):
+        if params.get("Errors") is not None:
+            self._Errors = []
+            for item in params.get("Errors"):
+                obj = SearchLogErrors()
+                obj._deserialize(item)
+                self._Errors.append(obj)
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SearchLogInfos()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ShipperInfo(AbstractModel):

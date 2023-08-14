@@ -7830,6 +7830,88 @@ class DescribeFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogFileRetentionPeriodRequest(AbstractModel):
+    """DescribeLogFileRetentionPeriod请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogFileRetentionPeriodResponse(AbstractModel):
+    """DescribeLogFileRetentionPeriod返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID，形如：tdsql-ow728lmc。
+        :type InstanceId: str
+        :param _Days: 日志备份天数
+        :type Days: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Days = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Days = params.get("Days")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOrdersRequest(AbstractModel):
     """DescribeOrders请求参数结构体
 

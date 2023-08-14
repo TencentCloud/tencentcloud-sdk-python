@@ -3058,6 +3058,176 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
+    """ChannelCreatePreparedPersonalEsign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _UserName: 个人用户名称
+        :type UserName: str
+        :param _IdCardNumber: 身份证件号码
+        :type IdCardNumber: str
+        :param _SealImage: 印章图片的base64
+        :type SealImage: str
+        :param _SealName: 印章名称
+        :type SealName: str
+        :param _Operator: 操作者信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _IdCardType: 身份证件类型
+        :type IdCardType: str
+        :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
+        :type Mobile: str
+        :param _EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
+        :type EnableAutoSign: bool
+        """
+        self._Agent = None
+        self._UserName = None
+        self._IdCardNumber = None
+        self._SealImage = None
+        self._SealName = None
+        self._Operator = None
+        self._IdCardType = None
+        self._Mobile = None
+        self._EnableAutoSign = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
+
+    @property
+    def SealImage(self):
+        return self._SealImage
+
+    @SealImage.setter
+    def SealImage(self, SealImage):
+        self._SealImage = SealImage
+
+    @property
+    def SealName(self):
+        return self._SealName
+
+    @SealName.setter
+    def SealName(self, SealName):
+        self._SealName = SealName
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def EnableAutoSign(self):
+        return self._EnableAutoSign
+
+    @EnableAutoSign.setter
+    def EnableAutoSign(self, EnableAutoSign):
+        self._EnableAutoSign = EnableAutoSign
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._UserName = params.get("UserName")
+        self._IdCardNumber = params.get("IdCardNumber")
+        self._SealImage = params.get("SealImage")
+        self._SealName = params.get("SealName")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._IdCardType = params.get("IdCardType")
+        self._Mobile = params.get("Mobile")
+        self._EnableAutoSign = params.get("EnableAutoSign")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
+    """ChannelCreatePreparedPersonalEsign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SealId: 导入的印章 ID
+        :type SealId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SealId = None
+        self._RequestId = None
+
+    @property
+    def SealId(self):
+        return self._SealId
+
+    @SealId.setter
+    def SealId(self, SealId):
+        self._SealId = SealId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SealId = params.get("SealId")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateReleaseFlowRequest(AbstractModel):
     """ChannelCreateReleaseFlow请求参数结构体
 

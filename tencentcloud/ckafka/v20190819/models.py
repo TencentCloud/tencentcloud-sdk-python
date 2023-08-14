@@ -1876,35 +1876,62 @@ class ClickHouseParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Cluster: ClickHouse的集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type Cluster: str
         :param _Database: ClickHouse的数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: ClickHouse的数据表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Schema: ClickHouse的schema
+注意：此字段可能返回 null，表示取不到有效值。
         :type Schema: list of ClickHouseSchema
         :param _Resource: 实例资源
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _Ip: ClickHouse的连接ip
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: ClickHouse的连接port
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _UserName: ClickHouse的用户名
+注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
         :param _Password: ClickHouse的密码
+注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         :param _ServiceVip: 实例vip
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceVip: str
         :param _UniqVpcId: 实例的vpcId
+注意：此字段可能返回 null，表示取不到有效值。
         :type UniqVpcId: str
         :param _SelfBuilt: 是否为自建集群
+注意：此字段可能返回 null，表示取不到有效值。
         :type SelfBuilt: bool
         :param _DropInvalidMessage: ClickHouse是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidMessage: bool
         :param _Type: ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
+        :param _BatchSize: 每批次投递到 ClickHouse 表消息数量，默认为 1000 条。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchSize: int
+        :param _ConsumerFetchMinBytes: 每次从 topic 中拉取消息大小，默认为 1MB，即至少要从 topic 中批量拉取 1MB 消息，才进行数据投递到 ClickHouse 操作。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerFetchMinBytes: int
+        :param _ConsumerFetchMaxWaitMs: 每次从 topic 拉取消息最大等待时间，当超过当前最大等待时间时，即使没有拉取到 ConsumerFetchMinBytes 大小，也将进行 ClickHouse 投递操作。
+提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerFetchMaxWaitMs: int
         """
         self._Cluster = None
         self._Database = None
@@ -1921,6 +1948,9 @@ class ClickHouseParam(AbstractModel):
         self._DropInvalidMessage = None
         self._Type = None
         self._DropCls = None
+        self._BatchSize = None
+        self._ConsumerFetchMinBytes = None
+        self._ConsumerFetchMaxWaitMs = None
 
     @property
     def Cluster(self):
@@ -2042,6 +2072,30 @@ class ClickHouseParam(AbstractModel):
     def DropCls(self, DropCls):
         self._DropCls = DropCls
 
+    @property
+    def BatchSize(self):
+        return self._BatchSize
+
+    @BatchSize.setter
+    def BatchSize(self, BatchSize):
+        self._BatchSize = BatchSize
+
+    @property
+    def ConsumerFetchMinBytes(self):
+        return self._ConsumerFetchMinBytes
+
+    @ConsumerFetchMinBytes.setter
+    def ConsumerFetchMinBytes(self, ConsumerFetchMinBytes):
+        self._ConsumerFetchMinBytes = ConsumerFetchMinBytes
+
+    @property
+    def ConsumerFetchMaxWaitMs(self):
+        return self._ConsumerFetchMaxWaitMs
+
+    @ConsumerFetchMaxWaitMs.setter
+    def ConsumerFetchMaxWaitMs(self, ConsumerFetchMaxWaitMs):
+        self._ConsumerFetchMaxWaitMs = ConsumerFetchMaxWaitMs
+
 
     def _deserialize(self, params):
         self._Cluster = params.get("Cluster")
@@ -2066,6 +2120,9 @@ class ClickHouseParam(AbstractModel):
         if params.get("DropCls") is not None:
             self._DropCls = DropCls()
             self._DropCls._deserialize(params.get("DropCls"))
+        self._BatchSize = params.get("BatchSize")
+        self._ConsumerFetchMinBytes = params.get("ConsumerFetchMinBytes")
+        self._ConsumerFetchMaxWaitMs = params.get("ConsumerFetchMaxWaitMs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
