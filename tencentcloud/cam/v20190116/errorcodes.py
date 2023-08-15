@@ -116,6 +116,9 @@ INVALIDPARAMETER_GROUPUSERFULL = 'InvalidParameter.GroupUserFull'
 # 身份提供商名称已经使用。
 INVALIDPARAMETER_IDENTITYNAMEINUSE = 'InvalidParameter.IdentityNameInUse'
 
+# 接口不存在。
+INVALIDPARAMETER_INTERFACENOTEXIST = 'InvalidParameter.InterfaceNotExist'
+
 # Keyword字段不合法。
 INVALIDPARAMETER_KEYWORDERROR = 'InvalidParameter.KeywordError'
 

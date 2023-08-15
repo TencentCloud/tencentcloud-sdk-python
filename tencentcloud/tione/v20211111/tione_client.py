@@ -1452,6 +1452,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendChatMessage(self, request):
+        """LLM模型的对话请求发送接口
+
+        :param request: Request instance for SendChatMessage.
+        :type request: :class:`tencentcloud.tione.v20211111.models.SendChatMessageRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SendChatMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendChatMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendChatMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartNotebook(self, request):
         """启动Notebook
 

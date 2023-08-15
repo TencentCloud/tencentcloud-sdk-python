@@ -5344,6 +5344,21 @@ class ClusterInfoItem(AbstractModel):
         :type CheckStatus: str
         :param _TaskCreateTime: 任务创建时间,检查时间
         :type TaskCreateTime: str
+        :param _AccessedStatus: 接入状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessedStatus: str
+        :param _AccessedSubStatus: 接入失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessedSubStatus: str
+        :param _NodeCount: 节点总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeCount: int
+        :param _OffLineNodeCount: 离线节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffLineNodeCount: int
+        :param _UnInstallAgentNodeCount: 未安装agent节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnInstallAgentNodeCount: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5365,6 +5380,11 @@ class ClusterInfoItem(AbstractModel):
         self._CheckFailReason = None
         self._CheckStatus = None
         self._TaskCreateTime = None
+        self._AccessedStatus = None
+        self._AccessedSubStatus = None
+        self._NodeCount = None
+        self._OffLineNodeCount = None
+        self._UnInstallAgentNodeCount = None
 
     @property
     def ClusterId(self):
@@ -5526,6 +5546,46 @@ class ClusterInfoItem(AbstractModel):
     def TaskCreateTime(self, TaskCreateTime):
         self._TaskCreateTime = TaskCreateTime
 
+    @property
+    def AccessedStatus(self):
+        return self._AccessedStatus
+
+    @AccessedStatus.setter
+    def AccessedStatus(self, AccessedStatus):
+        self._AccessedStatus = AccessedStatus
+
+    @property
+    def AccessedSubStatus(self):
+        return self._AccessedSubStatus
+
+    @AccessedSubStatus.setter
+    def AccessedSubStatus(self, AccessedSubStatus):
+        self._AccessedSubStatus = AccessedSubStatus
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def OffLineNodeCount(self):
+        return self._OffLineNodeCount
+
+    @OffLineNodeCount.setter
+    def OffLineNodeCount(self, OffLineNodeCount):
+        self._OffLineNodeCount = OffLineNodeCount
+
+    @property
+    def UnInstallAgentNodeCount(self):
+        return self._UnInstallAgentNodeCount
+
+    @UnInstallAgentNodeCount.setter
+    def UnInstallAgentNodeCount(self, UnInstallAgentNodeCount):
+        self._UnInstallAgentNodeCount = UnInstallAgentNodeCount
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5548,6 +5608,11 @@ class ClusterInfoItem(AbstractModel):
         self._CheckFailReason = params.get("CheckFailReason")
         self._CheckStatus = params.get("CheckStatus")
         self._TaskCreateTime = params.get("TaskCreateTime")
+        self._AccessedStatus = params.get("AccessedStatus")
+        self._AccessedSubStatus = params.get("AccessedSubStatus")
+        self._NodeCount = params.get("NodeCount")
+        self._OffLineNodeCount = params.get("OffLineNodeCount")
+        self._UnInstallAgentNodeCount = params.get("UnInstallAgentNodeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9684,11 +9749,15 @@ class CreateClusterCheckTaskResponse(AbstractModel):
         :type TaskId: int
         :param _CreateResult: 创建检查任务的结果，"Succ"为成功，其他的为失败原因
         :type CreateResult: str
+        :param _NewTaskID: 返回创建的集群新任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewTaskID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._CreateResult = None
+        self._NewTaskID = None
         self._RequestId = None
 
     @property
@@ -9708,6 +9777,14 @@ class CreateClusterCheckTaskResponse(AbstractModel):
         self._CreateResult = CreateResult
 
     @property
+    def NewTaskID(self):
+        return self._NewTaskID
+
+    @NewTaskID.setter
+    def NewTaskID(self, NewTaskID):
+        self._NewTaskID = NewTaskID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9719,6 +9796,7 @@ class CreateClusterCheckTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._CreateResult = params.get("CreateResult")
+        self._NewTaskID = params.get("NewTaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -18090,6 +18168,12 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
         :param _Tags: 标签
         :type Tags: list of TagInfo
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterAccessedStatus: 集群接入状态
+        :type ClusterAccessedStatus: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18119,6 +18203,9 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self._RegionID = None
         self._Project = None
         self._Tags = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._ClusterAccessedStatus = None
         self._RequestId = None
 
     @property
@@ -18330,6 +18417,30 @@ class DescribeAssetHostDetailResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterAccessedStatus(self):
+        return self._ClusterAccessedStatus
+
+    @ClusterAccessedStatus.setter
+    def ClusterAccessedStatus(self, ClusterAccessedStatus):
+        self._ClusterAccessedStatus = ClusterAccessedStatus
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -18372,6 +18483,9 @@ class DescribeAssetHostDetailResponse(AbstractModel):
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -24283,6 +24397,15 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type NotImportedClusterCount: int
         :param _ServerlessClusterCount: eks集群数量
         :type ServerlessClusterCount: int
+        :param _TkeClusterCount: TKE集群数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TkeClusterCount: int
+        :param _UserCreateTencentClusterCount: 用户自建腾讯云集群数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCreateTencentClusterCount: int
+        :param _UserCreateHybridClusterCount: 用户自建集群混合云数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCreateHybridClusterCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24298,6 +24421,9 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._FailedClusterCount = None
         self._NotImportedClusterCount = None
         self._ServerlessClusterCount = None
+        self._TkeClusterCount = None
+        self._UserCreateTencentClusterCount = None
+        self._UserCreateHybridClusterCount = None
         self._RequestId = None
 
     @property
@@ -24397,6 +24523,30 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._ServerlessClusterCount = ServerlessClusterCount
 
     @property
+    def TkeClusterCount(self):
+        return self._TkeClusterCount
+
+    @TkeClusterCount.setter
+    def TkeClusterCount(self, TkeClusterCount):
+        self._TkeClusterCount = TkeClusterCount
+
+    @property
+    def UserCreateTencentClusterCount(self):
+        return self._UserCreateTencentClusterCount
+
+    @UserCreateTencentClusterCount.setter
+    def UserCreateTencentClusterCount(self, UserCreateTencentClusterCount):
+        self._UserCreateTencentClusterCount = UserCreateTencentClusterCount
+
+    @property
+    def UserCreateHybridClusterCount(self):
+        return self._UserCreateHybridClusterCount
+
+    @UserCreateHybridClusterCount.setter
+    def UserCreateHybridClusterCount(self, UserCreateHybridClusterCount):
+        self._UserCreateHybridClusterCount = UserCreateHybridClusterCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24418,6 +24568,9 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._FailedClusterCount = params.get("FailedClusterCount")
         self._NotImportedClusterCount = params.get("NotImportedClusterCount")
         self._ServerlessClusterCount = params.get("ServerlessClusterCount")
+        self._TkeClusterCount = params.get("TkeClusterCount")
+        self._UserCreateTencentClusterCount = params.get("UserCreateTencentClusterCount")
+        self._UserCreateHybridClusterCount = params.get("UserCreateHybridClusterCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -31597,8 +31750,11 @@ class DescribeRefreshTaskRequest(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: int
+        :param _NewTaskID: 新任务ID
+        :type NewTaskID: str
         """
         self._TaskId = None
+        self._NewTaskID = None
 
     @property
     def TaskId(self):
@@ -31608,9 +31764,18 @@ class DescribeRefreshTaskRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def NewTaskID(self):
+        return self._NewTaskID
+
+    @NewTaskID.setter
+    def NewTaskID(self, NewTaskID):
+        self._NewTaskID = NewTaskID
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._NewTaskID = params.get("NewTaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36080,11 +36245,15 @@ class DescribeUnfinishRefreshTaskResponse(AbstractModel):
         :type TaskId: int
         :param _TaskStatus: 任务状态，为Task_New,Task_Running,Task_Finish,Task_Error,Task_NoExist.Task_New,Task_Running表示有任务存在，不允许新下发
         :type TaskStatus: str
+        :param _NewTaskID: 新任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewTaskID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._TaskStatus = None
+        self._NewTaskID = None
         self._RequestId = None
 
     @property
@@ -36104,6 +36273,14 @@ class DescribeUnfinishRefreshTaskResponse(AbstractModel):
         self._TaskStatus = TaskStatus
 
     @property
+    def NewTaskID(self):
+        return self._NewTaskID
+
+    @NewTaskID.setter
+    def NewTaskID(self, NewTaskID):
+        self._NewTaskID = NewTaskID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -36115,6 +36292,7 @@ class DescribeUnfinishRefreshTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._TaskStatus = params.get("TaskStatus")
+        self._NewTaskID = params.get("NewTaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -43219,6 +43397,10 @@ class HostInfo(AbstractModel):
         :type Tags: list of TagInfo
         :param _ClusterID: 集群id
         :type ClusterID: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterAccessedStatus: 集群接入状态
+        :type ClusterAccessedStatus: str
         """
         self._HostID = None
         self._HostIP = None
@@ -43238,6 +43420,8 @@ class HostInfo(AbstractModel):
         self._Project = None
         self._Tags = None
         self._ClusterID = None
+        self._ClusterName = None
+        self._ClusterAccessedStatus = None
 
     @property
     def HostID(self):
@@ -43383,6 +43567,22 @@ class HostInfo(AbstractModel):
     def ClusterID(self, ClusterID):
         self._ClusterID = ClusterID
 
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterAccessedStatus(self):
+        return self._ClusterAccessedStatus
+
+    @ClusterAccessedStatus.setter
+    def ClusterAccessedStatus(self, ClusterAccessedStatus):
+        self._ClusterAccessedStatus = ClusterAccessedStatus
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -43410,6 +43610,8 @@ class HostInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

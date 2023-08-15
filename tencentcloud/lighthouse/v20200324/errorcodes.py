@@ -638,6 +638,9 @@ UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = 'UnsupportedOperation.LatestOpe
 # 共享镜像不支持此操作。
 UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = 'UnsupportedOperation.NotSupportSharedBlueprint'
 
+# 此接口已下线。
+UNSUPPORTEDOPERATION_OPERATIONOFFLINE = 'UnsupportedOperation.OperationOffline'
+
 # 计费资源中心删除资源失败。
 UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = 'UnsupportedOperation.PostDestroyResourceFailed'
 

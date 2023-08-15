@@ -3201,6 +3201,12 @@ class DescAcItem(AbstractModel):
         :param _BetaList: 关联任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type BetaList: list of BetaInfoByACL
+        :param _Scope: 生效范围：serial，串行；side，旁路；all，全局
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scope: str
+        :param _InternetBorderUuid: 互联网边界防火墙使用的内部规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetBorderUuid: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -3227,6 +3233,8 @@ class DescAcItem(AbstractModel):
         self._InternalUuid = None
         self._Status = None
         self._BetaList = None
+        self._Scope = None
+        self._InternetBorderUuid = None
 
     @property
     def SourceContent(self):
@@ -3428,6 +3436,22 @@ class DescAcItem(AbstractModel):
     def BetaList(self, BetaList):
         self._BetaList = BetaList
 
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InternetBorderUuid(self):
+        return self._InternetBorderUuid
+
+    @InternetBorderUuid.setter
+    def InternetBorderUuid(self, InternetBorderUuid):
+        self._InternetBorderUuid = InternetBorderUuid
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -3460,6 +3484,8 @@ class DescAcItem(AbstractModel):
                 obj = BetaInfoByACL()
                 obj._deserialize(item)
                 self._BetaList.append(obj)
+        self._Scope = params.get("Scope")
+        self._InternetBorderUuid = params.get("InternetBorderUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10212,6 +10238,12 @@ class NatInstanceInfo(AbstractModel):
         :param _RuleMax: 实例的规则限制最大规格数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleMax: int
+        :param _EngineVersion: 实例引擎版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineVersion: str
+        :param _UpdateEnable: 引擎是否可升级：0，不可升级；1，可升级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateEnable: int
         """
         self._NatinsId = None
         self._NatinsName = None
@@ -10230,6 +10262,8 @@ class NatInstanceInfo(AbstractModel):
         self._ZoneZhBak = None
         self._RuleUsed = None
         self._RuleMax = None
+        self._EngineVersion = None
+        self._UpdateEnable = None
 
     @property
     def NatinsId(self):
@@ -10367,6 +10401,22 @@ class NatInstanceInfo(AbstractModel):
     def RuleMax(self, RuleMax):
         self._RuleMax = RuleMax
 
+    @property
+    def EngineVersion(self):
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def UpdateEnable(self):
+        return self._UpdateEnable
+
+    @UpdateEnable.setter
+    def UpdateEnable(self, UpdateEnable):
+        self._UpdateEnable = UpdateEnable
+
 
     def _deserialize(self, params):
         self._NatinsId = params.get("NatinsId")
@@ -10386,6 +10436,8 @@ class NatInstanceInfo(AbstractModel):
         self._ZoneZhBak = params.get("ZoneZhBak")
         self._RuleUsed = params.get("RuleUsed")
         self._RuleMax = params.get("RuleMax")
+        self._EngineVersion = params.get("EngineVersion")
+        self._UpdateEnable = params.get("UpdateEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13065,6 +13117,12 @@ class VpcDnsInfo(AbstractModel):
         :type NatInsName: str
         :param _SwitchStatus: 0：开关关闭 ， 1: 开关打开
         :type SwitchStatus: int
+        :param _ProtectedStatus: 0：未防护， 1: 已防护，2：忽略此字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtectedStatus: int
+        :param _SupportDNSFW: 是否支持DNS FW，0-不支持、1-支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDNSFW: int
         """
         self._VpcId = None
         self._VpcName = None
@@ -13074,6 +13132,8 @@ class VpcDnsInfo(AbstractModel):
         self._NatInsId = None
         self._NatInsName = None
         self._SwitchStatus = None
+        self._ProtectedStatus = None
+        self._SupportDNSFW = None
 
     @property
     def VpcId(self):
@@ -13139,6 +13199,22 @@ class VpcDnsInfo(AbstractModel):
     def SwitchStatus(self, SwitchStatus):
         self._SwitchStatus = SwitchStatus
 
+    @property
+    def ProtectedStatus(self):
+        return self._ProtectedStatus
+
+    @ProtectedStatus.setter
+    def ProtectedStatus(self, ProtectedStatus):
+        self._ProtectedStatus = ProtectedStatus
+
+    @property
+    def SupportDNSFW(self):
+        return self._SupportDNSFW
+
+    @SupportDNSFW.setter
+    def SupportDNSFW(self, SupportDNSFW):
+        self._SupportDNSFW = SupportDNSFW
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -13149,6 +13225,8 @@ class VpcDnsInfo(AbstractModel):
         self._NatInsId = params.get("NatInsId")
         self._NatInsName = params.get("NatInsName")
         self._SwitchStatus = params.get("SwitchStatus")
+        self._ProtectedStatus = params.get("ProtectedStatus")
+        self._SupportDNSFW = params.get("SupportDNSFW")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

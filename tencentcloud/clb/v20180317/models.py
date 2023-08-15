@@ -12568,6 +12568,76 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancersProjectRequest(AbstractModel):
+    """ModifyLoadBalancersProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerIds: 一个或多个待操作的负载均衡实例ID。
+        :type LoadBalancerIds: list of str
+        :param _ProjectId: 项目ID。
+        :type ProjectId: int
+        """
+        self._LoadBalancerIds = None
+        self._ProjectId = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancersProjectResponse(AbstractModel):
+    """ModifyLoadBalancersProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule请求参数结构体
 

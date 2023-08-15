@@ -53,6 +53,9 @@ FAILEDOPERATION_GETTCRCLIENT = 'FailedOperation.GetTcrClient'
 # 操作取消。
 FAILEDOPERATION_OPERATIONCANCEL = 'FailedOperation.OperationCancel'
 
+# 先决条件不满足。
+FAILEDOPERATION_PRECONDITIONFAILED = 'FailedOperation.PreconditionFailed'
+
 # 交易失败。
 FAILEDOPERATION_TRADEFAILED = 'FailedOperation.TradeFailed'
 

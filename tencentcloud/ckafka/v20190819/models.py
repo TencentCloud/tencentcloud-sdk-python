@@ -21762,22 +21762,31 @@ class RecordMapping(AbstractModel):
     def __init__(self):
         r"""
         :param _JsonKey: 消息的 key 名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type JsonKey: str
         :param _Type: 消息类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _AllowNull: 消息是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
         :type AllowNull: bool
         :param _ColumnName: 对应映射列名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
         :param _ExtraInfo: 数据库表额外字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
         :param _ColumnSize: 当前列大小
+注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnSize: str
         :param _DecimalDigits: 当前列精度
+注意：此字段可能返回 null，表示取不到有效值。
         :type DecimalDigits: str
         :param _AutoIncrement: 是否为自增列
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoIncrement: bool
         :param _DefaultValue: 数据库表默认参数
+注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultValue: str
         """
         self._JsonKey = None

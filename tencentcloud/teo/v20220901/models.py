@@ -12445,6 +12445,8 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
 <li>单端口：80；</li>
 <li>端口段：81-90，81至90端口。</li>
         :type OriginPort: str
+        :param _RuleTag: 规则标签。不填保持原有值。
+        :type RuleTag: str
         """
         self._ZoneId = None
         self._ProxyId = None
@@ -12457,6 +12459,7 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
         self._SessionPersist = None
         self._SessionPersistTime = None
         self._OriginPort = None
+        self._RuleTag = None
 
     @property
     def ZoneId(self):
@@ -12546,6 +12549,14 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
     def OriginPort(self, OriginPort):
         self._OriginPort = OriginPort
 
+    @property
+    def RuleTag(self):
+        return self._RuleTag
+
+    @RuleTag.setter
+    def RuleTag(self, RuleTag):
+        self._RuleTag = RuleTag
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -12559,6 +12570,7 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
         self._SessionPersist = params.get("SessionPersist")
         self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
+        self._RuleTag = params.get("RuleTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

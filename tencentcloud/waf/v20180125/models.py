@@ -1115,9 +1115,9 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type UpstreamType: int
         :param _IsWebsocket: 是否开启WebSocket支持，1表示开启，0不开启
         :type IsWebsocket: int
-        :param _LoadBalance: 负载均衡策略，0表示轮徇，1表示IP hash
+        :param _LoadBalance: 负载均衡策略，0表示轮询，1表示IP hash
         :type LoadBalance: str
-        :param _Cert: CertType=1时，需要填次参数，表示证书内容
+        :param _Cert: 值为1时，需要填次参数，表示证书内容
         :type Cert: str
         :param _PrivateKey: CertType=1时，需要填次参数，表示证书的私钥
         :type PrivateKey: str
@@ -1171,6 +1171,8 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type SniHost: str
         :param _IpHeaders: is_cdn=3时，需要填此参数，表示自定义header
         :type IpHeaders: list of str
+        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+        :type XFFReset: int
         """
         self._Domain = None
         self._CertType = None
@@ -1205,6 +1207,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._SniType = None
         self._SniHost = None
         self._IpHeaders = None
+        self._XFFReset = None
 
     @property
     def Domain(self):
@@ -1470,6 +1473,14 @@ class AddSpartaProtectionRequest(AbstractModel):
     def IpHeaders(self, IpHeaders):
         self._IpHeaders = IpHeaders
 
+    @property
+    def XFFReset(self):
+        return self._XFFReset
+
+    @XFFReset.setter
+    def XFFReset(self, XFFReset):
+        self._XFFReset = XFFReset
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1510,6 +1521,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._SniType = params.get("SniType")
         self._SniHost = params.get("SniHost")
         self._IpHeaders = params.get("IpHeaders")
+        self._XFFReset = params.get("XFFReset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4495,7 +4507,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移
+        :param _Offset: 偏移量
         :type Offset: int
         :param _Limit: 容量
         :type Limit: int
@@ -6267,14 +6279,19 @@ class DomainPackageNew(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _ValidTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTime: str
         :param _RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Count: 套餐购买个数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Region: 套餐购买地域，clb-waf暂时没有用到
+注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         """
         self._ResourceIds = None
@@ -6415,6 +6432,9 @@ class DomainsPartInfo(AbstractModel):
         :param _IpHeaders: IsCdn=3时，表示自定义header
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
+        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type XFFReset: int
         """
         self._HttpsRewrite = None
         self._HttpsUpstreamPort = None
@@ -6445,6 +6465,7 @@ class DomainsPartInfo(AbstractModel):
         self._SniHost = None
         self._Weights = None
         self._IpHeaders = None
+        self._XFFReset = None
 
     @property
     def HttpsRewrite(self):
@@ -6678,6 +6699,14 @@ class DomainsPartInfo(AbstractModel):
     def IpHeaders(self, IpHeaders):
         self._IpHeaders = IpHeaders
 
+    @property
+    def XFFReset(self):
+        return self._XFFReset
+
+    @XFFReset.setter
+    def XFFReset(self, XFFReset):
+        self._XFFReset = XFFReset
+
 
     def _deserialize(self, params):
         self._HttpsRewrite = params.get("HttpsRewrite")
@@ -6714,6 +6743,7 @@ class DomainsPartInfo(AbstractModel):
         self._SniHost = params.get("SniHost")
         self._Weights = params.get("Weights")
         self._IpHeaders = params.get("IpHeaders")
+        self._XFFReset = params.get("XFFReset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7720,7 +7750,7 @@ class InstanceInfo(AbstractModel):
         :param _AttackLogPost: 攻击日志投递开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLogPost: int
-        :param _MaxBandwidth: 带宽峰值
+        :param _MaxBandwidth: 带宽峰值，单位为B/s(字节每秒)
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxBandwidth: int
         :param _APISecurity: api安全是否购买
@@ -7737,6 +7767,9 @@ class InstanceInfo(AbstractModel):
         :param _SandboxQps: 实例沙箱值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SandboxQps: int
+        :param _IsAPISecurityTrial: 是否api 安全试用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAPISecurityTrial: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7768,6 +7801,7 @@ class InstanceInfo(AbstractModel):
         self._BandwidthStandard = None
         self._Status = None
         self._SandboxQps = None
+        self._IsAPISecurityTrial = None
 
     @property
     def InstanceId(self):
@@ -8009,6 +8043,14 @@ class InstanceInfo(AbstractModel):
     def SandboxQps(self, SandboxQps):
         self._SandboxQps = SandboxQps
 
+    @property
+    def IsAPISecurityTrial(self):
+        return self._IsAPISecurityTrial
+
+    @IsAPISecurityTrial.setter
+    def IsAPISecurityTrial(self, IsAPISecurityTrial):
+        self._IsAPISecurityTrial = IsAPISecurityTrial
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8051,6 +8093,7 @@ class InstanceInfo(AbstractModel):
         self._BandwidthStandard = params.get("BandwidthStandard")
         self._Status = params.get("Status")
         self._SandboxQps = params.get("SandboxQps")
+        self._IsAPISecurityTrial = params.get("IsAPISecurityTrial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9287,7 +9330,7 @@ class ModifySpartaProtectionRequest(AbstractModel):
         :type TLSVersion: int
         :param _Ciphers: 加密套件信息
         :type Ciphers: list of int
-        :param _CipherTemplate: 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+        :param _CipherTemplate: 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
         :type CipherTemplate: int
         :param _ProxyReadTimeout: 300s
         :type ProxyReadTimeout: int
@@ -9299,6 +9342,8 @@ class ModifySpartaProtectionRequest(AbstractModel):
         :type SniHost: str
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header
         :type IpHeaders: list of str
+        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+        :type XFFReset: int
         """
         self._Domain = None
         self._DomainId = None
@@ -9332,6 +9377,7 @@ class ModifySpartaProtectionRequest(AbstractModel):
         self._SniType = None
         self._SniHost = None
         self._IpHeaders = None
+        self._XFFReset = None
 
     @property
     def Domain(self):
@@ -9589,6 +9635,14 @@ class ModifySpartaProtectionRequest(AbstractModel):
     def IpHeaders(self, IpHeaders):
         self._IpHeaders = IpHeaders
 
+    @property
+    def XFFReset(self):
+        return self._XFFReset
+
+    @XFFReset.setter
+    def XFFReset(self, XFFReset):
+        self._XFFReset = XFFReset
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -9628,6 +9682,7 @@ class ModifySpartaProtectionRequest(AbstractModel):
         self._SniType = params.get("SniType")
         self._SniHost = params.get("SniHost")
         self._IpHeaders = params.get("IpHeaders")
+        self._XFFReset = params.get("XFFReset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10439,16 +10494,22 @@ class QPSPackageNew(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceIds: 资源ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceIds: str
         :param _ValidTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type ValidTime: str
         :param _RenewFlag: 是否自动续费，1：自动续费，0：不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _Count: 套餐购买个数
+注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         :param _Region: 套餐购买地域，clb-waf暂时没有用到
+注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _BillingItem: 计费项
+注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
         """
         self._ResourceIds = None

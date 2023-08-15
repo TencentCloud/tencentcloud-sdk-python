@@ -15983,6 +15983,137 @@ class SegmentationInfo(AbstractModel):
         
 
 
+class SendChatMessageRequest(AbstractModel):
+    """SendChatMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 会话id，标识一组对话的唯一id，id变更则重置会话
+        :type SessionId: str
+        :param _Question: 问题描述
+        :type Question: str
+        :param _ModelVersion: 会话模型版本，不同的会话模型调用到不同的模型后台。
+注: 多行业多场景大模型填写 tj_llm_clm-v1
+        :type ModelVersion: str
+        :param _Mode: 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+        :type Mode: str
+        :param _SearchSource: 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+        :type SearchSource: str
+        """
+        self._SessionId = None
+        self._Question = None
+        self._ModelVersion = None
+        self._Mode = None
+        self._SearchSource = None
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Question(self):
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def ModelVersion(self):
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def SearchSource(self):
+        return self._SearchSource
+
+    @SearchSource.setter
+    def SearchSource(self, SearchSource):
+        self._SearchSource = SearchSource
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._Question = params.get("Question")
+        self._ModelVersion = params.get("ModelVersion")
+        self._Mode = params.get("Mode")
+        self._SearchSource = params.get("SearchSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendChatMessageResponse(AbstractModel):
+    """SendChatMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: 答案
+        :type Answer: str
+        :param _SessionId: 会话id,返回请求的会话id
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Answer = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def Answer(self):
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
 class Service(AbstractModel):
     """描述在线服务
 

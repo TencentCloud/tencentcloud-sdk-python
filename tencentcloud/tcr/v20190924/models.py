@@ -9626,6 +9626,148 @@ class DuplicateImagePersonalResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DuplicateImageRequest(AbstractModel):
+    """DuplicateImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例id
+        :type RegistryId: str
+        :param _SourceNamespace: 源命名空间名称
+        :type SourceNamespace: str
+        :param _SourceRepo: 源镜像仓库名称
+        :type SourceRepo: str
+        :param _SourceReference: 源镜像tag或digest值，目前仅支持tag
+        :type SourceReference: str
+        :param _DestinationTag: 目标镜像版本
+        :type DestinationTag: str
+        :param _DestinationNamespace: 目标命名空间，不填默认与源一致
+        :type DestinationNamespace: str
+        :param _DestinationRepo: 目标镜像仓库，不填默认与源一致
+        :type DestinationRepo: str
+        :param _Override: 是否覆盖
+        :type Override: bool
+        """
+        self._RegistryId = None
+        self._SourceNamespace = None
+        self._SourceRepo = None
+        self._SourceReference = None
+        self._DestinationTag = None
+        self._DestinationNamespace = None
+        self._DestinationRepo = None
+        self._Override = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def SourceNamespace(self):
+        return self._SourceNamespace
+
+    @SourceNamespace.setter
+    def SourceNamespace(self, SourceNamespace):
+        self._SourceNamespace = SourceNamespace
+
+    @property
+    def SourceRepo(self):
+        return self._SourceRepo
+
+    @SourceRepo.setter
+    def SourceRepo(self, SourceRepo):
+        self._SourceRepo = SourceRepo
+
+    @property
+    def SourceReference(self):
+        return self._SourceReference
+
+    @SourceReference.setter
+    def SourceReference(self, SourceReference):
+        self._SourceReference = SourceReference
+
+    @property
+    def DestinationTag(self):
+        return self._DestinationTag
+
+    @DestinationTag.setter
+    def DestinationTag(self, DestinationTag):
+        self._DestinationTag = DestinationTag
+
+    @property
+    def DestinationNamespace(self):
+        return self._DestinationNamespace
+
+    @DestinationNamespace.setter
+    def DestinationNamespace(self, DestinationNamespace):
+        self._DestinationNamespace = DestinationNamespace
+
+    @property
+    def DestinationRepo(self):
+        return self._DestinationRepo
+
+    @DestinationRepo.setter
+    def DestinationRepo(self, DestinationRepo):
+        self._DestinationRepo = DestinationRepo
+
+    @property
+    def Override(self):
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._SourceNamespace = params.get("SourceNamespace")
+        self._SourceRepo = params.get("SourceRepo")
+        self._SourceReference = params.get("SourceReference")
+        self._DestinationTag = params.get("DestinationTag")
+        self._DestinationNamespace = params.get("DestinationNamespace")
+        self._DestinationRepo = params.get("DestinationRepo")
+        self._Override = params.get("Override")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DuplicateImageResponse(AbstractModel):
+    """DuplicateImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class FavorResp(AbstractModel):
     """用于获取收藏仓库的响应
 

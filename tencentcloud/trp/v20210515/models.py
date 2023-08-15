@@ -3719,12 +3719,18 @@ class DescribeCodePacksRequest(AbstractModel):
         :type CorpId: int
         :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
+        :param _ResType: 资源类型 batch:批次, order_in 入库, order_out: 出入
+        :type ResType: str
+        :param _ResId: 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
+        :type ResId: str
         """
         self._PageSize = None
         self._PageNumber = None
         self._Keyword = None
         self._CorpId = None
         self._SerialType = None
+        self._ResType = None
+        self._ResId = None
 
     @property
     def PageSize(self):
@@ -3766,6 +3772,22 @@ class DescribeCodePacksRequest(AbstractModel):
     def SerialType(self, SerialType):
         self._SerialType = SerialType
 
+    @property
+    def ResType(self):
+        return self._ResType
+
+    @ResType.setter
+    def ResType(self, ResType):
+        self._ResType = ResType
+
+    @property
+    def ResId(self):
+        return self._ResId
+
+    @ResId.setter
+    def ResId(self, ResId):
+        self._ResId = ResId
+
 
     def _deserialize(self, params):
         self._PageSize = params.get("PageSize")
@@ -3773,6 +3795,8 @@ class DescribeCodePacksRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._CorpId = params.get("CorpId")
         self._SerialType = params.get("SerialType")
+        self._ResType = params.get("ResType")
+        self._ResId = params.get("ResId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7547,16 +7571,22 @@ class PhaseData(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadEnabled: 启用头
+注意：此字段可能返回 null，表示取不到有效值。
         :type HeadEnabled: bool
         :param _HeadTitle: 标题
+注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTitle: str
         :param _Key: 标识符
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _AppId: 小程序AppId
+注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
         :param _AppPath: 小程序AppPath
+注意：此字段可能返回 null，表示取不到有效值。
         :type AppPath: str
         :param _AppName: 小程序名称AppName
+注意：此字段可能返回 null，表示取不到有效值。
         :type AppName: str
         """
         self._HeadEnabled = None

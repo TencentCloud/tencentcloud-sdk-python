@@ -47,6 +47,9 @@ FAILEDOPERATION_ROOMNOTEXIST = 'FailedOperation.RoomNotExist'
 # 应用ID不存在。
 FAILEDOPERATION_SDKAPPIDNOTEXIST = 'FailedOperation.SdkAppIdNotExist'
 
+# 调用接口时任务已结束。
+FAILEDOPERATION_TASKFINISHED = 'FailedOperation.TaskFinished'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

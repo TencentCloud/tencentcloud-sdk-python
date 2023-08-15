@@ -2098,6 +2098,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DuplicateImage(self, request):
+        """用于在企业版镜像仓库中复制镜像版本
+
+        :param request: Request instance for DuplicateImage.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DuplicateImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DuplicateImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DuplicateImagePersonal(self, request):
         """用于在个人版镜像仓库中复制镜像版本
 
