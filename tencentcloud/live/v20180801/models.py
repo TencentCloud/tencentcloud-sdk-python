@@ -1073,8 +1073,8 @@ class CallbackEventInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _EventTime: 事件时间。
-数据时间点，接口返回支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见ISO日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+接口返回支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
 接口返回的时间格式和查询请求传入的时间格式一致。
         :type EventTime: str
@@ -1084,7 +1084,11 @@ class CallbackEventInfo(AbstractModel):
         :type Request: str
         :param _Response: 回调响应
         :type Response: str
-        :param _ResponseTime: 客户接口响应时间
+        :param _ResponseTime: 客户接口响应时间。
+接口返回支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
+2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+接口返回的时间格式和查询请求传入的时间格式一致。
         :type ResponseTime: str
         :param _ResultCode: 回调结果
         :type ResultCode: int
@@ -7456,11 +7460,11 @@ class DescribeCallbackRecordsListRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: 起始时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
         :type StartTime: str
         :param _EndTime: 结束时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 
 查询的起始和结束时间跨度不支持超过1天。仅支持查询最近14天的数据。

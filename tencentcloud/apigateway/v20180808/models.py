@@ -4084,7 +4084,7 @@ class CreateApiRequest(AbstractModel):
         r"""
         :param _ServiceId: API 所在的服务唯一 ID。
         :type ServiceId: str
-        :param _ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
+        :param _ServiceType: API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、EB、TARGET、VPC、UPSTREAM、GRPC、COS、WEBSOCKET。
         :type ServiceType: str
         :param _ServiceTimeout: API 的后端服务超时时间，单位是秒。
         :type ServiceTimeout: int

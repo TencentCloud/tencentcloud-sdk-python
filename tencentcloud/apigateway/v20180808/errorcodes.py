@@ -128,6 +128,9 @@ FAILEDOPERATION_GETROLEERROR = 'FailedOperation.GetRoleError'
 # 实例不存在，或者无效状态。
 FAILEDOPERATION_INSTANCENOTEXIST = 'FailedOperation.InstanceNotExist'
 
+# 无效的输入json
+FAILEDOPERATION_INVALIDINPUTJSON = 'FailedOperation.InvalidInputJSON'
+
 # Apis 自定义路径与默认路径冲突。
 FAILEDOPERATION_ISDEFAULTMAPPING = 'FailedOperation.IsDefaultMapping'
 
@@ -335,6 +338,9 @@ INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = 'InvalidParameterValue.Param
 # 参数取值错误，不在参数范围内。
 INVALIDPARAMETERVALUE_RANGEEXCEEDED = 'InvalidParameterValue.RangeExceeded'
 
+# 无效的参数值
+INVALIDPARAMETERVALUE_TRAFFICCONTROL = 'InvalidParameterValue.TrafficControl'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = 'InvalidParameterValue.UnsupportedParameter'
 
@@ -517,6 +523,9 @@ UNSUPPORTEDOPERATION_RESOURCEISINUSE = 'UnsupportedOperation.ResourceIsInUse'
 
 # 资源未关联。
 UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = 'UnsupportedOperation.ResourceUnassociated'
+
+# 服务不存在
+UNSUPPORTEDOPERATION_SERVICEEXIST = 'UnsupportedOperation.ServiceExist'
 
 # 标签不为空
 UNSUPPORTEDOPERATION_TAGSNOTEMPTY = 'UnsupportedOperation.TagsNotEmpty'

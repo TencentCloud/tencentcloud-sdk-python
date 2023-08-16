@@ -580,6 +580,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourcesTags(self, request):
+        """强制修改标签
+
+        :param request: Request instance for ModifyResourcesTags.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcesTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcesTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunJobFlow(self, request):
         """创建流程作业
 

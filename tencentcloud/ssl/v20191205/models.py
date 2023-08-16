@@ -9502,6 +9502,11 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CsrkeyPassword: str
         :param _Reason: 重颁发原因。
         :type Reason: str
+        :param _CertCSREncryptAlgo: CSR加密方式，可选：RSA、ECC、SM2
+（CsrType为Online才可选）， 默认为RSA
+        :type CertCSREncryptAlgo: str
+        :param _CertCSRKeyParameter: CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
+        :type CertCSRKeyParameter: str
         """
         self._CertificateId = None
         self._ValidType = None
@@ -9509,6 +9514,8 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CsrContent = None
         self._CsrkeyPassword = None
         self._Reason = None
+        self._CertCSREncryptAlgo = None
+        self._CertCSRKeyParameter = None
 
     @property
     def CertificateId(self):
@@ -9558,6 +9565,22 @@ class ReplaceCertificateRequest(AbstractModel):
     def Reason(self, Reason):
         self._Reason = Reason
 
+    @property
+    def CertCSREncryptAlgo(self):
+        return self._CertCSREncryptAlgo
+
+    @CertCSREncryptAlgo.setter
+    def CertCSREncryptAlgo(self, CertCSREncryptAlgo):
+        self._CertCSREncryptAlgo = CertCSREncryptAlgo
+
+    @property
+    def CertCSRKeyParameter(self):
+        return self._CertCSRKeyParameter
+
+    @CertCSRKeyParameter.setter
+    def CertCSRKeyParameter(self, CertCSRKeyParameter):
+        self._CertCSRKeyParameter = CertCSRKeyParameter
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -9566,6 +9589,8 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CsrContent = params.get("CsrContent")
         self._CsrkeyPassword = params.get("CsrkeyPassword")
         self._Reason = params.get("Reason")
+        self._CertCSREncryptAlgo = params.get("CertCSREncryptAlgo")
+        self._CertCSRKeyParameter = params.get("CertCSRKeyParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

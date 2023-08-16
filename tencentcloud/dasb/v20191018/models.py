@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ACTemplate(AbstractModel):
+    """权限控制模版对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模版id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param _TemplateName: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param _Description: 模版描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Acl(AbstractModel):
     """访问权限
 
@@ -82,6 +142,12 @@ class Acl(AbstractModel):
         :param _Department: 所属部门的信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Department: :class:`tencentcloud.dasb.v20191018.models.Department`
+        :param _AllowAccessCredential: 是否允许使用访问串，默认允许
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowAccessCredential: bool
+        :param _ACTemplateSet: 关联的数据库高危命令列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ACTemplateSet: list of ACTemplate
         """
         self._Id = None
         self._Name = None
@@ -110,6 +176,8 @@ class Acl(AbstractModel):
         self._ValidateTo = None
         self._Status = None
         self._Department = None
+        self._AllowAccessCredential = None
+        self._ACTemplateSet = None
 
     @property
     def Id(self):
@@ -327,6 +395,22 @@ class Acl(AbstractModel):
     def Department(self, Department):
         self._Department = Department
 
+    @property
+    def AllowAccessCredential(self):
+        return self._AllowAccessCredential
+
+    @AllowAccessCredential.setter
+    def AllowAccessCredential(self, AllowAccessCredential):
+        self._AllowAccessCredential = AllowAccessCredential
+
+    @property
+    def ACTemplateSet(self):
+        return self._ACTemplateSet
+
+    @ACTemplateSet.setter
+    def ACTemplateSet(self, ACTemplateSet):
+        self._ACTemplateSet = ACTemplateSet
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -383,6 +467,13 @@ class Acl(AbstractModel):
         if params.get("Department") is not None:
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
+        self._AllowAccessCredential = params.get("AllowAccessCredential")
+        if params.get("ACTemplateSet") is not None:
+            self._ACTemplateSet = []
+            for item in params.get("ACTemplateSet"):
+                obj = ACTemplate()
+                obj._deserialize(item)
+                self._ACTemplateSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1295,6 +1386,8 @@ class CreateAclRequest(AbstractModel):
         :type ValidateTo: str
         :param _DepartmentId: 访问权限所属部门的ID
         :type DepartmentId: str
+        :param _AllowAccessCredential: 是否允许使用访问串，默认允许
+        :type AllowAccessCredential: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -1322,6 +1415,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateFrom = None
         self._ValidateTo = None
         self._DepartmentId = None
+        self._AllowAccessCredential = None
 
     @property
     def Name(self):
@@ -1531,6 +1625,14 @@ class CreateAclRequest(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def AllowAccessCredential(self):
+        return self._AllowAccessCredential
+
+    @AllowAccessCredential.setter
+    def AllowAccessCredential(self, AllowAccessCredential):
+        self._AllowAccessCredential = AllowAccessCredential
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1559,6 +1661,7 @@ class CreateAclRequest(AbstractModel):
         self._ValidateFrom = params.get("ValidateFrom")
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
+        self._AllowAccessCredential = params.get("AllowAccessCredential")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2746,10 +2849,14 @@ class Department(AbstractModel):
         :param _Managers: 部门管理员账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Managers: list of str
+        :param _ManagerUsers: 管理员用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagerUsers: list of DepartmentManagerUser
         """
         self._Id = None
         self._Name = None
         self._Managers = None
+        self._ManagerUsers = None
 
     @property
     def Id(self):
@@ -2775,11 +2882,72 @@ class Department(AbstractModel):
     def Managers(self, Managers):
         self._Managers = Managers
 
+    @property
+    def ManagerUsers(self):
+        return self._ManagerUsers
+
+    @ManagerUsers.setter
+    def ManagerUsers(self, ManagerUsers):
+        self._ManagerUsers = ManagerUsers
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Managers = params.get("Managers")
+        if params.get("ManagerUsers") is not None:
+            self._ManagerUsers = []
+            for item in params.get("ManagerUsers"):
+                obj = DepartmentManagerUser()
+                obj._deserialize(item)
+                self._ManagerUsers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DepartmentManagerUser(AbstractModel):
+    """部门管理员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ManagerId: 管理员Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagerId: str
+        :param _ManagerName: 管理员姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagerName: str
+        """
+        self._ManagerId = None
+        self._ManagerName = None
+
+    @property
+    def ManagerId(self):
+        return self._ManagerId
+
+    @ManagerId.setter
+    def ManagerId(self, ManagerId):
+        self._ManagerId = ManagerId
+
+    @property
+    def ManagerName(self):
+        return self._ManagerName
+
+    @ManagerName.setter
+    def ManagerName(self, ManagerName):
+        self._ManagerName = ManagerName
+
+
+    def _deserialize(self, params):
+        self._ManagerId = params.get("ManagerId")
+        self._ManagerName = params.get("ManagerName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4852,6 +5020,9 @@ class DescribeUsersRequest(AbstractModel):
         :type AuthTypeSet: list of int non-negative
         :param _DepartmentId: 部门ID，用于过滤属于某个部门的用户
         :type DepartmentId: str
+        :param _Filters: 参数过滤数组
+
+        :type Filters: list of Filter
         """
         self._IdSet = None
         self._Name = None
@@ -4863,6 +5034,7 @@ class DescribeUsersRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = None
         self._AuthTypeSet = None
         self._DepartmentId = None
+        self._Filters = None
 
     @property
     def IdSet(self):
@@ -4944,6 +5116,14 @@ class DescribeUsersRequest(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._IdSet = params.get("IdSet")
@@ -4956,6 +5136,12 @@ class DescribeUsersRequest(AbstractModel):
         self._AuthorizedDeviceIdSet = params.get("AuthorizedDeviceIdSet")
         self._AuthTypeSet = params.get("AuthTypeSet")
         self._DepartmentId = params.get("DepartmentId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5758,6 +5944,8 @@ class ModifyAclRequest(AbstractModel):
         :type ValidateTo: str
         :param _DepartmentId: 权限所属部门的ID，如：1.2.3
         :type DepartmentId: str
+        :param _AllowAccessCredential: 是否允许使用访问串
+        :type AllowAccessCredential: bool
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -5786,6 +5974,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateFrom = None
         self._ValidateTo = None
         self._DepartmentId = None
+        self._AllowAccessCredential = None
 
     @property
     def Name(self):
@@ -6003,6 +6192,14 @@ class ModifyAclRequest(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def AllowAccessCredential(self):
+        return self._AllowAccessCredential
+
+    @AllowAccessCredential.setter
+    def AllowAccessCredential(self, AllowAccessCredential):
+        self._AllowAccessCredential = AllowAccessCredential
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6032,6 +6229,7 @@ class ModifyAclRequest(AbstractModel):
         self._ValidateFrom = params.get("ValidateFrom")
         self._ValidateTo = params.get("ValidateTo")
         self._DepartmentId = params.get("DepartmentId")
+        self._AllowAccessCredential = params.get("AllowAccessCredential")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9400,6 +9598,15 @@ class User(AbstractModel):
         :param _DepartmentId: 用户所属部门（用于入参）
 注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
+        :param _ActiveStatus: 激活状态 0 - 未激活 1 - 激活
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveStatus: int
+        :param _LockStatus: 锁定状态 0 - 未锁定 1 - 锁定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockStatus: int
+        :param _Status: 状态 与Filter中一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._UserName = None
         self._RealName = None
@@ -9413,6 +9620,9 @@ class User(AbstractModel):
         self._ValidateTime = None
         self._Department = None
         self._DepartmentId = None
+        self._ActiveStatus = None
+        self._LockStatus = None
+        self._Status = None
 
     @property
     def UserName(self):
@@ -9510,6 +9720,30 @@ class User(AbstractModel):
     def DepartmentId(self, DepartmentId):
         self._DepartmentId = DepartmentId
 
+    @property
+    def ActiveStatus(self):
+        return self._ActiveStatus
+
+    @ActiveStatus.setter
+    def ActiveStatus(self, ActiveStatus):
+        self._ActiveStatus = ActiveStatus
+
+    @property
+    def LockStatus(self):
+        return self._LockStatus
+
+    @LockStatus.setter
+    def LockStatus(self, LockStatus):
+        self._LockStatus = LockStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -9531,6 +9765,9 @@ class User(AbstractModel):
             self._Department = Department()
             self._Department._deserialize(params.get("Department"))
         self._DepartmentId = params.get("DepartmentId")
+        self._ActiveStatus = params.get("ActiveStatus")
+        self._LockStatus = params.get("LockStatus")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
