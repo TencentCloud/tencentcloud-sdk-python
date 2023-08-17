@@ -5101,6 +5101,161 @@ class PluginListItem(AbstractModel):
         
 
 
+class RequestLocalTaskRequest(AbstractModel):
+    """RequestLocalTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: Client Id
+        :type ClientId: str
+        """
+        self._ClientId = None
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RequestLocalTaskResponse(AbstractModel):
+    """RequestLocalTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sid: 返回的任务id
+        :type Sid: str
+        :param _SrcFileMd5: 任务文件的mk5
+        :type SrcFileMd5: str
+        :param _SrcFileSize: 文件大小，可不传
+        :type SrcFileSize: int
+        :param _SrcFileUrl: 任务文件的下载地址，必须无鉴权可下载
+        :type SrcFileUrl: str
+        :param _SrcFileType: release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+        :type SrcFileType: str
+        :param _SrcFileVersion: enterprise
+trial
+        :type SrcFileVersion: str
+        :param _EncryptParam: 补充字段
+        :type EncryptParam: str
+        :param _EncryptState: 任务状态
+        :type EncryptState: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Sid = None
+        self._SrcFileMd5 = None
+        self._SrcFileSize = None
+        self._SrcFileUrl = None
+        self._SrcFileType = None
+        self._SrcFileVersion = None
+        self._EncryptParam = None
+        self._EncryptState = None
+        self._RequestId = None
+
+    @property
+    def Sid(self):
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
+
+    @property
+    def SrcFileMd5(self):
+        return self._SrcFileMd5
+
+    @SrcFileMd5.setter
+    def SrcFileMd5(self, SrcFileMd5):
+        self._SrcFileMd5 = SrcFileMd5
+
+    @property
+    def SrcFileSize(self):
+        return self._SrcFileSize
+
+    @SrcFileSize.setter
+    def SrcFileSize(self, SrcFileSize):
+        self._SrcFileSize = SrcFileSize
+
+    @property
+    def SrcFileUrl(self):
+        return self._SrcFileUrl
+
+    @SrcFileUrl.setter
+    def SrcFileUrl(self, SrcFileUrl):
+        self._SrcFileUrl = SrcFileUrl
+
+    @property
+    def SrcFileType(self):
+        return self._SrcFileType
+
+    @SrcFileType.setter
+    def SrcFileType(self, SrcFileType):
+        self._SrcFileType = SrcFileType
+
+    @property
+    def SrcFileVersion(self):
+        return self._SrcFileVersion
+
+    @SrcFileVersion.setter
+    def SrcFileVersion(self, SrcFileVersion):
+        self._SrcFileVersion = SrcFileVersion
+
+    @property
+    def EncryptParam(self):
+        return self._EncryptParam
+
+    @EncryptParam.setter
+    def EncryptParam(self, EncryptParam):
+        self._EncryptParam = EncryptParam
+
+    @property
+    def EncryptState(self):
+        return self._EncryptState
+
+    @EncryptState.setter
+    def EncryptState(self, EncryptState):
+        self._EncryptState = EncryptState
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sid = params.get("Sid")
+        self._SrcFileMd5 = params.get("SrcFileMd5")
+        self._SrcFileSize = params.get("SrcFileSize")
+        self._SrcFileUrl = params.get("SrcFileUrl")
+        self._SrcFileType = params.get("SrcFileType")
+        self._SrcFileVersion = params.get("SrcFileVersion")
+        self._EncryptParam = params.get("EncryptParam")
+        self._EncryptState = params.get("EncryptState")
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceInfo(AbstractModel):
     """拉取某个用户的所有资源信息
 
@@ -5855,3 +6010,251 @@ class SoInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateClientStateRequest(AbstractModel):
+    """UpdateClientState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: Client Id
+        :type ClientId: str
+        :param _Ip: Ip addr
+        :type Ip: str
+        :param _Internal: 内部分组
+        :type Internal: int
+        :param _ServerVersion: Client  Version
+        :type ServerVersion: str
+        :param _Hostname: 主机
+        :type Hostname: str
+        :param _Os: 系统
+        :type Os: str
+        """
+        self._ClientId = None
+        self._Ip = None
+        self._Internal = None
+        self._ServerVersion = None
+        self._Hostname = None
+        self._Os = None
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Internal(self):
+        return self._Internal
+
+    @Internal.setter
+    def Internal(self, Internal):
+        self._Internal = Internal
+
+    @property
+    def ServerVersion(self):
+        return self._ServerVersion
+
+    @ServerVersion.setter
+    def ServerVersion(self, ServerVersion):
+        self._ServerVersion = ServerVersion
+
+    @property
+    def Hostname(self):
+        return self._Hostname
+
+    @Hostname.setter
+    def Hostname(self, Hostname):
+        self._Hostname = Hostname
+
+    @property
+    def Os(self):
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._Ip = params.get("Ip")
+        self._Internal = params.get("Internal")
+        self._ServerVersion = params.get("ServerVersion")
+        self._Hostname = params.get("Hostname")
+        self._Os = params.get("Os")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateClientStateResponse(AbstractModel):
+    """UpdateClientState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCode: 返回值
+        :type ResultCode: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultCode = None
+        self._RequestId = None
+
+    @property
+    def ResultCode(self):
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultCode = params.get("ResultCode")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateLocalTaskResultRequest(AbstractModel):
+    """UpdateLocalTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sid: 任务id
+        :type Sid: str
+        :param _ResultCode: 一级任务code。标记任务状态
+        :type ResultCode: int
+        :param _SubCode: 二级错误码
+        :type SubCode: int
+        :param _ErrMsg: 二级错误信息
+        :type ErrMsg: str
+        :param _Result: 结果
+        :type Result: str
+        """
+        self._Sid = None
+        self._ResultCode = None
+        self._SubCode = None
+        self._ErrMsg = None
+        self._Result = None
+
+    @property
+    def Sid(self):
+        return self._Sid
+
+    @Sid.setter
+    def Sid(self, Sid):
+        self._Sid = Sid
+
+    @property
+    def ResultCode(self):
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def SubCode(self):
+        return self._SubCode
+
+    @SubCode.setter
+    def SubCode(self, SubCode):
+        self._SubCode = SubCode
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Sid = params.get("Sid")
+        self._ResultCode = params.get("ResultCode")
+        self._SubCode = params.get("SubCode")
+        self._ErrMsg = params.get("ErrMsg")
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLocalTaskResultResponse(AbstractModel):
+    """UpdateLocalTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCode: 标记成功
+        :type ResultCode: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultCode = None
+        self._RequestId = None
+
+    @property
+    def ResultCode(self):
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResultCode = params.get("ResultCode")
+        self._RequestId = params.get("RequestId")

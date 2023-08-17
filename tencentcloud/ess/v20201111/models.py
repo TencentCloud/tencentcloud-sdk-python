@@ -6051,7 +6051,7 @@ class CreateSchemeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SchemeUrl: 小程序链接地址，有效期5分钟
+        :param _SchemeUrl: 小程序链接地址，有效期30天
         :type SchemeUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

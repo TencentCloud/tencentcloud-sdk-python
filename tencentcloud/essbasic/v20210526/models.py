@@ -3067,18 +3067,20 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         r"""
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _UserName: 个人用户名称
+        :param _UserName: 个人用户姓名
         :type UserName: str
         :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
-        :param _SealImage: 印章图片的base64
-        :type SealImage: str
         :param _SealName: 印章名称
         :type SealName: str
+        :param _SealImage: 印章图片的base64，最大不超过 8M
+        :type SealImage: str
         :param _Operator: 操作者信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _IdCardType: 身份证件类型
         :type IdCardType: str
+        :param _SealImageCompress: 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+        :type SealImageCompress: bool
         :param _Mobile: 手机号码；当需要开通自动签时，该参数必传
         :type Mobile: str
         :param _EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
@@ -3087,10 +3089,11 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._Agent = None
         self._UserName = None
         self._IdCardNumber = None
-        self._SealImage = None
         self._SealName = None
+        self._SealImage = None
         self._Operator = None
         self._IdCardType = None
+        self._SealImageCompress = None
         self._Mobile = None
         self._EnableAutoSign = None
 
@@ -3119,20 +3122,20 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._IdCardNumber = IdCardNumber
 
     @property
-    def SealImage(self):
-        return self._SealImage
-
-    @SealImage.setter
-    def SealImage(self, SealImage):
-        self._SealImage = SealImage
-
-    @property
     def SealName(self):
         return self._SealName
 
     @SealName.setter
     def SealName(self, SealName):
         self._SealName = SealName
+
+    @property
+    def SealImage(self):
+        return self._SealImage
+
+    @SealImage.setter
+    def SealImage(self, SealImage):
+        self._SealImage = SealImage
 
     @property
     def Operator(self):
@@ -3149,6 +3152,14 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
     @IdCardType.setter
     def IdCardType(self, IdCardType):
         self._IdCardType = IdCardType
+
+    @property
+    def SealImageCompress(self):
+        return self._SealImageCompress
+
+    @SealImageCompress.setter
+    def SealImageCompress(self, SealImageCompress):
+        self._SealImageCompress = SealImageCompress
 
     @property
     def Mobile(self):
@@ -3173,12 +3184,13 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._UserName = params.get("UserName")
         self._IdCardNumber = params.get("IdCardNumber")
-        self._SealImage = params.get("SealImage")
         self._SealName = params.get("SealName")
+        self._SealImage = params.get("SealImage")
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._IdCardType = params.get("IdCardType")
+        self._SealImageCompress = params.get("SealImageCompress")
         self._Mobile = params.get("Mobile")
         self._EnableAutoSign = params.get("EnableAutoSign")
         memeber_set = set(params.keys())
@@ -6718,7 +6730,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         r"""
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowInfos: 多个合同（签署流程）信息，最多支持20个
+        :param _FlowInfos: 要创建的合同信息列表，最多支持一次创建20个合同
         :type FlowInfos: list of FlowInfo
         :param _NeedPreview: 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
 预览链接有效期300秒；
@@ -6814,7 +6826,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         r"""
         :param _FlowIds: 多个合同ID
         :type FlowIds: list of str
-        :param _CustomerData: 业务信息，限制1024字符
+        :param _CustomerData: 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
         :type CustomerData: list of str
         :param _ErrorMessages: 创建消息，对应多个合同ID，
 成功为“”,创建失败则对应失败消息

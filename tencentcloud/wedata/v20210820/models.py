@@ -30878,6 +30878,8 @@ class DescribeTableLineageRequest(AbstractModel):
         :type ExtParams: list of LineageParamRecord
         :param _IgnoreTemp: 是否过滤临时表,默认true
         :type IgnoreTemp: bool
+        :param _RecursiveSecond: 是否递归查询二级节点数目，默认为true
+        :type RecursiveSecond: bool
         """
         self._Direction = None
         self._Data = None
@@ -30885,6 +30887,7 @@ class DescribeTableLineageRequest(AbstractModel):
         self._OutputDepth = None
         self._ExtParams = None
         self._IgnoreTemp = None
+        self._RecursiveSecond = None
 
     @property
     def Direction(self):
@@ -30934,6 +30937,14 @@ class DescribeTableLineageRequest(AbstractModel):
     def IgnoreTemp(self, IgnoreTemp):
         self._IgnoreTemp = IgnoreTemp
 
+    @property
+    def RecursiveSecond(self):
+        return self._RecursiveSecond
+
+    @RecursiveSecond.setter
+    def RecursiveSecond(self, RecursiveSecond):
+        self._RecursiveSecond = RecursiveSecond
+
 
     def _deserialize(self, params):
         self._Direction = params.get("Direction")
@@ -30949,6 +30960,7 @@ class DescribeTableLineageRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ExtParams.append(obj)
         self._IgnoreTemp = params.get("IgnoreTemp")
+        self._RecursiveSecond = params.get("RecursiveSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

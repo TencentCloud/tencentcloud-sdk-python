@@ -303,27 +303,23 @@ class Application(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Command: 任务执行命令
-        :type Command: str
         :param _DeliveryForm: 应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeliveryForm: str
+        :param _Command: 任务执行命令。与Commands不能同时指定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: str
         :param _PackagePath: 应用程序软件包的远程存储路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type PackagePath: str
         :param _Docker: 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
         """
-        self._Command = None
         self._DeliveryForm = None
+        self._Command = None
         self._PackagePath = None
         self._Docker = None
-
-    @property
-    def Command(self):
-        return self._Command
-
-    @Command.setter
-    def Command(self, Command):
-        self._Command = Command
 
     @property
     def DeliveryForm(self):
@@ -332,6 +328,14 @@ class Application(AbstractModel):
     @DeliveryForm.setter
     def DeliveryForm(self, DeliveryForm):
         self._DeliveryForm = DeliveryForm
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
 
     @property
     def PackagePath(self):
@@ -351,8 +355,8 @@ class Application(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Command = params.get("Command")
         self._DeliveryForm = params.get("DeliveryForm")
+        self._Command = params.get("Command")
         self._PackagePath = params.get("PackagePath")
         if params.get("Docker") is not None:
             self._Docker = Docker()

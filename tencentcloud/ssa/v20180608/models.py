@@ -6144,7 +6144,7 @@ class DescribeSocAlertListRequest(AbstractModel):
         :type Filter: list of QueryFilter
         :param _Sorter: 排序参数
         :type Sorter: list of QuerySort
-        :param _ExportFlag: 是否导出
+        :param _ExportFlag: 是否导出；默认为否，如量级超过1000，则使用单独的导出接口
         :type ExportFlag: bool
         """
         self._PageSize = None

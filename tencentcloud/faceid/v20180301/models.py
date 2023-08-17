@@ -1363,10 +1363,12 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         :param _IntentionVerifyText: 意愿核身（朗读模式）使用的文案，若未使用意愿核身（朗读模式），则该字段无需传入。默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
-        :param _IntentionQuestions: 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
+        :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
         :type IntentionQuestions: list of IntentionQuestion
         :param _Config: RuleId相关配置
         :type Config: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
+        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+        :type IntentionActions: list of IntentionActionConfig
         """
         self._RuleId = None
         self._TerminalType = None
@@ -1379,6 +1381,7 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         self._IntentionVerifyText = None
         self._IntentionQuestions = None
         self._Config = None
+        self._IntentionActions = None
 
     @property
     def RuleId(self):
@@ -1468,6 +1471,14 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
     def Config(self, Config):
         self._Config = Config
 
+    @property
+    def IntentionActions(self):
+        return self._IntentionActions
+
+    @IntentionActions.setter
+    def IntentionActions(self, IntentionActions):
+        self._IntentionActions = IntentionActions
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -1490,6 +1501,12 @@ Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。请
         if params.get("Config") is not None:
             self._Config = RuleIdConfig()
             self._Config._deserialize(params.get("Config"))
+        if params.get("IntentionActions") is not None:
+            self._IntentionActions = []
+            for item in params.get("IntentionActions"):
+                obj = IntentionActionConfig()
+                obj._deserialize(item)
+                self._IntentionActions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2905,6 +2922,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
+        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2915,6 +2935,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self._Encryption = None
         self._IntentionVerifyData = None
         self._IntentionQuestionResult = None
+        self._IntentionActionResult = None
         self._RequestId = None
 
     @property
@@ -2974,6 +2995,14 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self._IntentionQuestionResult = IntentionQuestionResult
 
     @property
+    def IntentionActionResult(self):
+        return self._IntentionActionResult
+
+    @IntentionActionResult.setter
+    def IntentionActionResult(self, IntentionActionResult):
+        self._IntentionActionResult = IntentionActionResult
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3004,6 +3033,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         if params.get("IntentionQuestionResult") is not None:
             self._IntentionQuestionResult = IntentionQuestionResult()
             self._IntentionQuestionResult._deserialize(params.get("IntentionQuestionResult"))
+        if params.get("IntentionActionResult") is not None:
+            self._IntentionActionResult = IntentionActionResult()
+            self._IntentionActionResult._deserialize(params.get("IntentionActionResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4628,6 +4660,170 @@ class ImageRecognitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IntentionActionConfig(AbstractModel):
+    """意愿核身（点头确认模式）配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionActionResult(AbstractModel):
+    """意愿核身点头确认模式结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinalResultDetailCode: 意愿核身错误码：
+0: "成功"       
+-1: "参数错误"    
+-2: "系统异常"    
+-101: "请保持人脸在框内"    
+-102: "检测到多张人脸"   
+-103: "人脸检测失败"   
+-104: "人脸检测不完整"   
+-105: "请勿遮挡眼睛"    
+-106: "请勿遮挡嘴巴"     
+-107: "请勿遮挡鼻子"     
+-201: "人脸比对相似度低"    
+-202: "人脸比对失败"    
+-301: "意愿核验不通过"   
+-800: "前端不兼容错误"    
+-801: "用户未授权摄像头和麦克风权限"   
+-802: "获取视频流失败"   
+-803: "用户主动关闭链接/异常断开链接"   
+-998: "系统数据异常"   
+-999: "系统未知错误，请联系人工核实"   
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalResultDetailCode: int
+        :param _FinalResultMessage: 意愿核身错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalResultMessage: str
+        :param _Details: 意愿核身结果详细数据，与每段点头确认过程一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of IntentionActionResultDetail
+        """
+        self._FinalResultDetailCode = None
+        self._FinalResultMessage = None
+        self._Details = None
+
+    @property
+    def FinalResultDetailCode(self):
+        return self._FinalResultDetailCode
+
+    @FinalResultDetailCode.setter
+    def FinalResultDetailCode(self, FinalResultDetailCode):
+        self._FinalResultDetailCode = FinalResultDetailCode
+
+    @property
+    def FinalResultMessage(self):
+        return self._FinalResultMessage
+
+    @FinalResultMessage.setter
+    def FinalResultMessage(self, FinalResultMessage):
+        self._FinalResultMessage = FinalResultMessage
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._FinalResultDetailCode = params.get("FinalResultDetailCode")
+        self._FinalResultMessage = params.get("FinalResultMessage")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = IntentionActionResultDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionActionResultDetail(AbstractModel):
+    """意愿核身点头确认模式结果详细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Video: 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: str
+        :param _ScreenShot: 屏幕截图base64编码列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScreenShot: list of str
+        """
+        self._Video = None
+        self._ScreenShot = None
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def ScreenShot(self):
+        return self._ScreenShot
+
+    @ScreenShot.setter
+    def ScreenShot(self, ScreenShot):
+        self._ScreenShot = ScreenShot
+
+
+    def _deserialize(self, params):
+        self._Video = params.get("Video")
+        self._ScreenShot = params.get("ScreenShot")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntentionQuestion(AbstractModel):
     """意愿核身过程中播报的问题文本、用户回答的标准文本。
 
@@ -4635,9 +4831,9 @@ class IntentionQuestion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Question: 系统播报的问题文本，问题最大长度为150个字符。
+        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
         :type Question: str
-        :param _Answers: 用户答案的标准文本列表，用于识别用户回答的语音与标准文本是否一致。列表长度最大为50，单个答案长度限制10个字符。
+        :param _Answers: 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。列表长度最大为50，单个答案长度限制10个字符。
         :type Answers: list of str
         """
         self._Question = None
@@ -6822,8 +7018,13 @@ class RuleIdConfig(AbstractModel):
         r"""
         :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
         :type IntentionRecognition: bool
+        :param _IntentionType: 意愿核身类型，默认为0：
+0：问答模式，DetectAuth接口需要传入IntentionQuestions字段；
+1：点头模式，DetectAuth接口需要传入IntentionActions字段；
+        :type IntentionType: int
         """
         self._IntentionRecognition = None
+        self._IntentionType = None
 
     @property
     def IntentionRecognition(self):
@@ -6833,9 +7034,18 @@ class RuleIdConfig(AbstractModel):
     def IntentionRecognition(self, IntentionRecognition):
         self._IntentionRecognition = IntentionRecognition
 
+    @property
+    def IntentionType(self):
+        return self._IntentionType
+
+    @IntentionType.setter
+    def IntentionType(self, IntentionType):
+        self._IntentionType = IntentionType
+
 
     def _deserialize(self, params):
         self._IntentionRecognition = params.get("IntentionRecognition")
+        self._IntentionType = params.get("IntentionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

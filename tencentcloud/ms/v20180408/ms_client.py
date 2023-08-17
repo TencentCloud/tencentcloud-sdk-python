@@ -468,3 +468,72 @@ class MsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RequestLocalTask(self, request):
+        """client任务请求地址
+
+        :param request: Request instance for RequestLocalTask.
+        :type request: :class:`tencentcloud.ms.v20180408.models.RequestLocalTaskRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.RequestLocalTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RequestLocalTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RequestLocalTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateClientState(self, request):
+        """更新client状态
+
+        :param request: Request instance for UpdateClientState.
+        :type request: :class:`tencentcloud.ms.v20180408.models.UpdateClientStateRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.UpdateClientStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateClientState", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateClientStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateLocalTaskResult(self, request):
+        """更新本地任务结果
+
+        :param request: Request instance for UpdateLocalTaskResult.
+        :type request: :class:`tencentcloud.ms.v20180408.models.UpdateLocalTaskResultRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.UpdateLocalTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLocalTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateLocalTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

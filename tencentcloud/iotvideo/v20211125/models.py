@@ -2260,12 +2260,15 @@ lye1y30d：低功耗事件30天年套餐。
         :type Override: int
         :param _PackageQueue: 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
         :type PackageQueue: str
+        :param _OrderId: 订单id
+        :type OrderId: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._PackageId = None
         self._Override = None
         self._PackageQueue = None
+        self._OrderId = None
 
     @property
     def ProductId(self):
@@ -2307,6 +2310,14 @@ lye1y30d：低功耗事件30天年套餐。
     def PackageQueue(self, PackageQueue):
         self._PackageQueue = PackageQueue
 
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -2314,6 +2325,7 @@ lye1y30d：低功耗事件30天年套餐。
         self._PackageId = params.get("PackageId")
         self._Override = params.get("Override")
         self._PackageQueue = params.get("PackageQueue")
+        self._OrderId = params.get("OrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12138,6 +12150,12 @@ class PackageInfo(AbstractModel):
         :param _UpdatedAt: 云存套餐更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: int
+        :param _PackageId: 套餐id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageId: str
+        :param _OrderId: 订单id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
         """
         self._Status = None
         self._CSType = None
@@ -12145,6 +12163,8 @@ class PackageInfo(AbstractModel):
         self._CSExpiredTime = None
         self._CreatedAt = None
         self._UpdatedAt = None
+        self._PackageId = None
+        self._OrderId = None
 
     @property
     def Status(self):
@@ -12194,6 +12214,22 @@ class PackageInfo(AbstractModel):
     def UpdatedAt(self, UpdatedAt):
         self._UpdatedAt = UpdatedAt
 
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -12202,6 +12238,8 @@ class PackageInfo(AbstractModel):
         self._CSExpiredTime = params.get("CSExpiredTime")
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
+        self._PackageId = params.get("PackageId")
+        self._OrderId = params.get("OrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
