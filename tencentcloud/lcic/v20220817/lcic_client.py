@@ -509,6 +509,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteUser(self, request):
+        """删除已注册用户。注：如果该成员已被添加到群组，请先在群组中删除该成员。
+
+        :param request: Request instance for DeleteUser.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DeleteUserRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DeleteUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAnswerList(self, request):
         """获取房间答题详情
 

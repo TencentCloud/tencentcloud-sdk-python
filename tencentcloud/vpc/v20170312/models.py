@@ -22299,14 +22299,17 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcEndpointServiceUserSet: 白名单对象数组。
+        :param _VpcEndpointServiceUserSet: 白名单对象数组。已废弃
         :type VpcEndpointServiceUserSet: list of VpcEndPointServiceUser
+        :param _VpcEndPointServiceUserSet: 白名单对象数组。
+        :type VpcEndPointServiceUserSet: list of VpcEndPointServiceUser
         :param _TotalCount: 符合条件的白名单个数。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VpcEndpointServiceUserSet = None
+        self._VpcEndPointServiceUserSet = None
         self._TotalCount = None
         self._RequestId = None
 
@@ -22317,6 +22320,14 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
     @VpcEndpointServiceUserSet.setter
     def VpcEndpointServiceUserSet(self, VpcEndpointServiceUserSet):
         self._VpcEndpointServiceUserSet = VpcEndpointServiceUserSet
+
+    @property
+    def VpcEndPointServiceUserSet(self):
+        return self._VpcEndPointServiceUserSet
+
+    @VpcEndPointServiceUserSet.setter
+    def VpcEndPointServiceUserSet(self, VpcEndPointServiceUserSet):
+        self._VpcEndPointServiceUserSet = VpcEndPointServiceUserSet
 
     @property
     def TotalCount(self):
@@ -22342,6 +22353,12 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
                 obj = VpcEndPointServiceUser()
                 obj._deserialize(item)
                 self._VpcEndpointServiceUserSet.append(obj)
+        if params.get("VpcEndPointServiceUserSet") is not None:
+            self._VpcEndPointServiceUserSet = []
+            for item in params.get("VpcEndPointServiceUserSet"):
+                obj = VpcEndPointServiceUser()
+                obj._deserialize(item)
+                self._VpcEndPointServiceUserSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 

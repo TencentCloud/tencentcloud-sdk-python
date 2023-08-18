@@ -877,6 +877,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorageOrder(self, request):
+        """查询云存服务详情
+
+        :param request: Request instance for DescribeCloudStorageOrder.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageOrderRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudStoragePackageConsumeDetails(self, request):
         """获取云存套餐包消耗详细记录
 

@@ -134,7 +134,7 @@ UNSUPPORTEDOPERATION_FORBIDDENUSE = 'UnsupportedOperation.ForbiddenUse'
 # 没有余额。
 UNSUPPORTEDOPERATION_NOBANLANCE = 'UnsupportedOperation.NoBanlance'
 
-# 客户免费额度已用完。
+# 免费资源包已用尽，请购买资源包或开通后付费。
 UNSUPPORTEDOPERATION_NOFREEACCOUNT = 'UnsupportedOperation.NoFreeAccount'
 
 # 资源包余量已用尽。

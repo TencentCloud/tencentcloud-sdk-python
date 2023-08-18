@@ -4080,6 +4080,8 @@ class CreateVpcRequest(AbstractModel):
         :type Tags: list of Tag
         :param _Description: 描述信息
         :type Description: str
+        :param _ISPTypes: 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+        :type ISPTypes: list of ISPTypeItem
         """
         self._VpcName = None
         self._CidrBlock = None
@@ -4089,6 +4091,7 @@ class CreateVpcRequest(AbstractModel):
         self._DomainName = None
         self._Tags = None
         self._Description = None
+        self._ISPTypes = None
 
     @property
     def VpcName(self):
@@ -4154,6 +4157,14 @@ class CreateVpcRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ISPTypes(self):
+        return self._ISPTypes
+
+    @ISPTypes.setter
+    def ISPTypes(self, ISPTypes):
+        self._ISPTypes = ISPTypes
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -4169,6 +4180,12 @@ class CreateVpcRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._Description = params.get("Description")
+        if params.get("ISPTypes") is not None:
+            self._ISPTypes = []
+            for item in params.get("ISPTypes"):
+                obj = ISPTypeItem()
+                obj._deserialize(item)
+                self._ISPTypes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

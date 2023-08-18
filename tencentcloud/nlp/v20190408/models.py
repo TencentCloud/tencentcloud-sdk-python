@@ -1550,6 +1550,232 @@ class SentencePair(AbstractModel):
         
 
 
+class TestingTextGenerationRequest(AbstractModel):
+    """TestingTextGeneration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Messages: 会话内容,按对话时间从旧到新在数组中排列。
+        :type Messages: list of TextGenerationMessage
+        :param _Model: 模型名称，当前固定为TestingModel
+        :type Model: str
+        :param _QueryId: 会话id。
+        :type QueryId: str
+        :param _Temperature: 超参数temperature, 该参数用于控制生成文本中重复内容。取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果。默认为1.0。
+        :type Temperature: float
+        :param _TopP: 超参数top_p, 该参数用于控制生成文本的多样性。较小的"top_p"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_p"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果。默认值为1.0。
+        :type TopP: float
+        :param _TopK: 超参数top_k,该参数用于控制生成文本的多样性和可控性，较小的"top_k"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_k"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[1, 100]，默认值 40。
+        :type TopK: float
+        :param _RepetitionPenalty: 重复惩罚项,该参数用于用于控制生成文本中重复内容。建议范围[1.0, 1.05]非必要不建议使用, 不合理的取值会影响效果。默认为1。
+        :type RepetitionPenalty: float
+        :param _OutputSeqLen: 输出结果最大tokens数量。取值区间为(0, 1024]。默认值为768。
+        :type OutputSeqLen: int
+        :param _MaxInputSeqLen: 输入文本的最大 tokens 数量。取值区间为(0, 1024]。默认值为256。
+        :type MaxInputSeqLen: int
+        """
+        self._Messages = None
+        self._Model = None
+        self._QueryId = None
+        self._Temperature = None
+        self._TopP = None
+        self._TopK = None
+        self._RepetitionPenalty = None
+        self._OutputSeqLen = None
+        self._MaxInputSeqLen = None
+
+    @property
+    def Messages(self):
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def QueryId(self):
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def Temperature(self):
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def TopK(self):
+        return self._TopK
+
+    @TopK.setter
+    def TopK(self, TopK):
+        self._TopK = TopK
+
+    @property
+    def RepetitionPenalty(self):
+        return self._RepetitionPenalty
+
+    @RepetitionPenalty.setter
+    def RepetitionPenalty(self, RepetitionPenalty):
+        self._RepetitionPenalty = RepetitionPenalty
+
+    @property
+    def OutputSeqLen(self):
+        return self._OutputSeqLen
+
+    @OutputSeqLen.setter
+    def OutputSeqLen(self, OutputSeqLen):
+        self._OutputSeqLen = OutputSeqLen
+
+    @property
+    def MaxInputSeqLen(self):
+        return self._MaxInputSeqLen
+
+    @MaxInputSeqLen.setter
+    def MaxInputSeqLen(self, MaxInputSeqLen):
+        self._MaxInputSeqLen = MaxInputSeqLen
+
+
+    def _deserialize(self, params):
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = TextGenerationMessage()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Model = params.get("Model")
+        self._QueryId = params.get("QueryId")
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        self._TopK = params.get("TopK")
+        self._RepetitionPenalty = params.get("RepetitionPenalty")
+        self._OutputSeqLen = params.get("OutputSeqLen")
+        self._MaxInputSeqLen = params.get("MaxInputSeqLen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TestingTextGenerationResponse(AbstractModel):
+    """TestingTextGeneration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Choices: 结果
+        :type Choices: list of TextGenerationChoices
+        :param _Created: unix时间戳的字符串
+        :type Created: int
+        :param _Id: 会话id
+        :type Id: str
+        :param _Model: 模型名
+        :type Model: str
+        :param _Usage: token数量
+        :type Usage: :class:`tencentcloud.nlp.v20190408.models.TextGenerationUsage`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Choices = None
+        self._Created = None
+        self._Id = None
+        self._Model = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Choices(self):
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Created(self):
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Model(self):
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = TextGenerationChoices()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        self._Created = params.get("Created")
+        self._Id = params.get("Id")
+        self._Model = params.get("Model")
+        if params.get("Usage") is not None:
+            self._Usage = TextGenerationUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
 class TextEmbellishRequest(AbstractModel):
     """TextEmbellish请求参数结构体
 
@@ -1668,6 +1894,146 @@ class TextEmbellishResponse(AbstractModel):
                 obj._deserialize(item)
                 self._EmbellishList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class TextGenerationChoices(AbstractModel):
+    """TextGenerationChoices
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: :class:`tencentcloud.nlp.v20190408.models.TextGenerationMessage`
+        """
+        self._Message = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        if params.get("Message") is not None:
+            self._Message = TextGenerationMessage()
+            self._Message._deserialize(params.get("Message"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextGenerationMessage(AbstractModel):
+    """TextGenerationMessage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色支持 system, user, assistant。默认为user。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _Content: 消息的内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextGenerationUsage(AbstractModel):
+    """TextGenerationUsage
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: 输入tokens数量
+        :type PromptTokens: int
+        :param _CompletionTokens: 输出tokens数量
+        :type CompletionTokens: int
+        :param _TotalTokens: 总token数量
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TextWritingRequest(AbstractModel):

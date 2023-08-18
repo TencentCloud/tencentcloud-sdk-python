@@ -1292,7 +1292,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
         :type ResourceType: str
         :param _ResourceName: 资源名称，长度限制为256字符
         :type ResourceName: str
-        :param _ResourceId: 资源Id，通过UploadFiles获取
+        :param _ResourceId: 文件Id，通过UploadFiles获取
         :type ResourceId: str
         :param _Operator: 调用方用户信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -1906,6 +1906,8 @@ VerifyCheck: 人脸识别（默认）
 MobileCheck：手机号验证
 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
+        :param _FlowGroupOptions: 合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+        :type FlowGroupOptions: :class:`tencentcloud.essbasic.v20210526.models.FlowGroupOptions`
         :param _Operator: 操作者的信息，此参数不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
@@ -1913,6 +1915,7 @@ MobileCheck：手机号验证
         self._FlowGroupName = None
         self._Agent = None
         self._ApproverVerifyType = None
+        self._FlowGroupOptions = None
         self._Operator = None
 
     @property
@@ -1948,6 +1951,14 @@ MobileCheck：手机号验证
         self._ApproverVerifyType = ApproverVerifyType
 
     @property
+    def FlowGroupOptions(self):
+        return self._FlowGroupOptions
+
+    @FlowGroupOptions.setter
+    def FlowGroupOptions(self, FlowGroupOptions):
+        self._FlowGroupOptions = FlowGroupOptions
+
+    @property
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
@@ -1972,6 +1983,9 @@ MobileCheck：手机号验证
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._ApproverVerifyType = params.get("ApproverVerifyType")
+        if params.get("FlowGroupOptions") is not None:
+            self._FlowGroupOptions = FlowGroupOptions()
+            self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
@@ -3016,9 +3030,9 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PrepareFlowUrl: 预发起的合同链接
+        :param _PrepareFlowUrl: 预发起的合同链接， 可以直接点击进入进行合同发起
         :type PrepareFlowUrl: str
-        :param _PreviewFlowUrl: 合同发起后预览链接
+        :param _PreviewFlowUrl: 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果
         :type PreviewFlowUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9476,6 +9490,57 @@ class FlowFileInfo(AbstractModel):
                 self._Components.append(obj)
         self._CustomShowMap = params.get("CustomShowMap")
         self._NeedSignReview = params.get("NeedSignReview")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowGroupOptions(AbstractModel):
+    """合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SelfOrganizationApproverSignEach: 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认：
+fasle：发起方企业经办人签署时对所有子合同进行统一的意愿确认
+true：发起方企业经办人签署时需要对子合同进行独立的意愿确认
+默认为fasle。
+        :type SelfOrganizationApproverSignEach: bool
+        :param _OtherApproverSignEach: 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认：
+fasle：非发起方企业经办人签署时对所有子合同进行统一的意愿确认
+true：非发起方企业经办人签署时需要对子合同进行独立的意愿确认
+默认为false。
+        :type OtherApproverSignEach: bool
+        """
+        self._SelfOrganizationApproverSignEach = None
+        self._OtherApproverSignEach = None
+
+    @property
+    def SelfOrganizationApproverSignEach(self):
+        return self._SelfOrganizationApproverSignEach
+
+    @SelfOrganizationApproverSignEach.setter
+    def SelfOrganizationApproverSignEach(self, SelfOrganizationApproverSignEach):
+        self._SelfOrganizationApproverSignEach = SelfOrganizationApproverSignEach
+
+    @property
+    def OtherApproverSignEach(self):
+        return self._OtherApproverSignEach
+
+    @OtherApproverSignEach.setter
+    def OtherApproverSignEach(self, OtherApproverSignEach):
+        self._OtherApproverSignEach = OtherApproverSignEach
+
+
+    def _deserialize(self, params):
+        self._SelfOrganizationApproverSignEach = params.get("SelfOrganizationApproverSignEach")
+        self._OtherApproverSignEach = params.get("OtherApproverSignEach")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

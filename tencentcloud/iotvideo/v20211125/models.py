@@ -5063,6 +5063,118 @@ class DescribeCloudStorageEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageOrderRequest(AbstractModel):
+    """DescribeCloudStorageOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单id
+        :type OrderId: str
+        """
+        self._OrderId = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageOrderResponse(AbstractModel):
+    """DescribeCloudStorageOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 云存套餐开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param _ExpireTime: 云存套餐过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _PackageId: 套餐id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageId: str
+        :param _Status: 套餐状态
+0：等待生效
+1: 已过期
+2:生效
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._ExpireTime = None
+        self._PackageId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def PackageId(self):
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._PackageId = params.get("PackageId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudStoragePackageConsumeDetailsRequest(AbstractModel):
     """DescribeCloudStoragePackageConsumeDetails请求参数结构体
 

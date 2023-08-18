@@ -907,6 +907,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type SubStreamObjectName: str
         :param _SegmentObjectName: 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
         :type SegmentObjectName: str
+        :param _AddOnSubtitles: 要插入的字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -914,6 +917,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._OutputObjectPath = None
         self._SubStreamObjectName = None
         self._SegmentObjectName = None
+        self._AddOnSubtitles = None
 
     @property
     def Definition(self):
@@ -963,6 +967,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     def SegmentObjectName(self, SegmentObjectName):
         self._SegmentObjectName = SegmentObjectName
 
+    @property
+    def AddOnSubtitles(self):
+        return self._AddOnSubtitles
+
+    @AddOnSubtitles.setter
+    def AddOnSubtitles(self, AddOnSubtitles):
+        self._AddOnSubtitles = AddOnSubtitles
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -978,6 +990,12 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._OutputObjectPath = params.get("OutputObjectPath")
         self._SubStreamObjectName = params.get("SubStreamObjectName")
         self._SegmentObjectName = params.get("SegmentObjectName")
+        if params.get("AddOnSubtitles") is not None:
+            self._AddOnSubtitles = []
+            for item in params.get("AddOnSubtitles"):
+                obj = AddOnSubtitle()
+                obj._deserialize(item)
+                self._AddOnSubtitles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1209,6 +1227,57 @@ class AdaptiveStreamTemplate(AbstractModel):
             self._Audio._deserialize(params.get("Audio"))
         self._RemoveAudio = params.get("RemoveAudio")
         self._RemoveVideo = params.get("RemoveVideo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOnSubtitle(AbstractModel):
+    """外挂字幕。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 插入形式，可选值：
+<li>subtitle-stream：插入字幕轨道</li>
+<li>close-caption：编码到SEI帧</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Subtitle: 字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        self._Type = None
+        self._Subtitle = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Subtitle(self):
+        return self._Subtitle
+
+    @Subtitle.setter
+    def Subtitle(self, Subtitle):
+        self._Subtitle = Subtitle
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Subtitle") is not None:
+            self._Subtitle = MediaInputInfo()
+            self._Subtitle._deserialize(params.get("Subtitle"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29968,6 +30037,9 @@ class OverrideTranscodeParameter(AbstractModel):
         :param _StdExtInfo: 转码扩展字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StdExtInfo: str
+        :param _AddOnSubtitles: 要插入的字幕文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Container = None
         self._RemoveVideo = None
@@ -29978,6 +30050,7 @@ class OverrideTranscodeParameter(AbstractModel):
         self._SubtitleTemplate = None
         self._AddonAudioStream = None
         self._StdExtInfo = None
+        self._AddOnSubtitles = None
 
     @property
     def Container(self):
@@ -30051,6 +30124,14 @@ class OverrideTranscodeParameter(AbstractModel):
     def StdExtInfo(self, StdExtInfo):
         self._StdExtInfo = StdExtInfo
 
+    @property
+    def AddOnSubtitles(self):
+        return self._AddOnSubtitles
+
+    @AddOnSubtitles.setter
+    def AddOnSubtitles(self, AddOnSubtitles):
+        self._AddOnSubtitles = AddOnSubtitles
+
 
     def _deserialize(self, params):
         self._Container = params.get("Container")
@@ -30075,6 +30156,12 @@ class OverrideTranscodeParameter(AbstractModel):
                 obj._deserialize(item)
                 self._AddonAudioStream.append(obj)
         self._StdExtInfo = params.get("StdExtInfo")
+        if params.get("AddOnSubtitles") is not None:
+            self._AddOnSubtitles = []
+            for item in params.get("AddOnSubtitles"):
+                obj = AddOnSubtitle()
+                obj._deserialize(item)
+                self._AddOnSubtitles.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33349,12 +33436,16 @@ class S3OutputStorage(AbstractModel):
     def __init__(self):
         r"""
         :param _S3Bucket: S3 bucket。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3Bucket: str
         :param _S3Region: S3 bucket 对应的区域。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3Region: str
         :param _S3SecretId: AWS 内网上传 媒体资源的秘钥id。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3SecretId: str
         :param _S3SecretKey: AWS 内网上传 媒体资源的秘钥key。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3SecretKey: str
         """
         self._S3Bucket = None
