@@ -19354,6 +19354,9 @@ class WxGatewayRountItem(AbstractModel):
         :param _GatewayRouteEnvId: 路由环境ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRouteEnvId: str
+        :param _GatewayRoutePathMatchType: 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayRoutePathMatchType: str
         """
         self._GatewayRouteName = None
         self._GatewayRouteProtocol = None
@@ -19370,6 +19373,7 @@ class WxGatewayRountItem(AbstractModel):
         self._GatewayRouteMethod = None
         self._GatewayRoutePort = None
         self._GatewayRouteEnvId = None
+        self._GatewayRoutePathMatchType = None
 
     @property
     def GatewayRouteName(self):
@@ -19491,6 +19495,14 @@ class WxGatewayRountItem(AbstractModel):
     def GatewayRouteEnvId(self, GatewayRouteEnvId):
         self._GatewayRouteEnvId = GatewayRouteEnvId
 
+    @property
+    def GatewayRoutePathMatchType(self):
+        return self._GatewayRoutePathMatchType
+
+    @GatewayRoutePathMatchType.setter
+    def GatewayRoutePathMatchType(self, GatewayRoutePathMatchType):
+        self._GatewayRoutePathMatchType = GatewayRoutePathMatchType
+
 
     def _deserialize(self, params):
         self._GatewayRouteName = params.get("GatewayRouteName")
@@ -19513,6 +19525,7 @@ class WxGatewayRountItem(AbstractModel):
         self._GatewayRouteMethod = params.get("GatewayRouteMethod")
         self._GatewayRoutePort = params.get("GatewayRoutePort")
         self._GatewayRouteEnvId = params.get("GatewayRouteEnvId")
+        self._GatewayRoutePathMatchType = params.get("GatewayRoutePathMatchType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

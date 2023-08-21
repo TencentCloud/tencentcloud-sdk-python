@@ -641,6 +641,53 @@ class CloudNativeAPIGatewayNode(AbstractModel):
         
 
 
+class CloudNativeAPIGatewayNodeConfig(AbstractModel):
+    """云原生API网关节点配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Specification: 节点配置, 1c2g|2c4g|4c8g|8c16g。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Specification: str
+        :param _Number: 节点数量，2-9。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Number: int
+        """
+        self._Specification = None
+        self._Number = None
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+
+    def _deserialize(self, params):
+        self._Specification = params.get("Specification")
+        self._Number = params.get("Number")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudNativeAPIGatewayRateLimitDetail(AbstractModel):
     """云原生网关Tse 限流插件配置
 
@@ -843,6 +890,53 @@ external_redis 外部redis
         
 
 
+class CloudNativeAPIGatewayVpcConfig(AbstractModel):
+    """云原生API网关vpc配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 私有网络ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
     """CreateCloudNativeAPIGatewayCanaryRule请求参数结构体
 
@@ -925,6 +1019,310 @@ class CreateCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayRequest(AbstractModel):
+    """CreateCloudNativeAPIGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 云原生API网关名字, 最多支持60个字符。
+        :type Name: str
+        :param _Type: 云原生API网关类型, 目前只支持kong。
+        :type Type: str
+        :param _GatewayVersion: 云原生API网关版本。参考值：
+- 2.4.1
+- 2.5.1
+        :type GatewayVersion: str
+        :param _NodeConfig: 云原生API网关节点配置。
+        :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
+        :param _VpcConfig: 云原生API网关vpc配置。
+        :type VpcConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayVpcConfig`
+        :param _Description: 云原生API网关描述信息, 最多支持120个字符。
+        :type Description: str
+        :param _Tags: 标签列表
+        :type Tags: list of InstanceTagInfo
+        :param _EnableCls: 是否开启 CLS 日志。默认值：fasle
+        :type EnableCls: bool
+        :param _FeatureVersion: 产品版本。参考值：
+- TRIAL：开发版
+- STANDARD：标准版 （默认值）
+- PROFESSIONAL：专业版
+        :type FeatureVersion: str
+        :param _InternetMaxBandwidthOut: 公网出流量带宽，[1,2048]Mbps
+        :type InternetMaxBandwidthOut: int
+        :param _EngineRegion: 实例实际的地域信息，默认值：ap-guangzhou
+        :type EngineRegion: str
+        :param _IngressClassName: ingress Class名称
+        :type IngressClassName: str
+        :param _TradeType: 付费类型。参考值：
+0：后付费（默认值）
+1：预付费（接口暂不支持创建预付费实例）
+        :type TradeType: int
+        :param _InternetConfig: 公网相关配置
+        :type InternetConfig: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
+        """
+        self._Name = None
+        self._Type = None
+        self._GatewayVersion = None
+        self._NodeConfig = None
+        self._VpcConfig = None
+        self._Description = None
+        self._Tags = None
+        self._EnableCls = None
+        self._FeatureVersion = None
+        self._InternetMaxBandwidthOut = None
+        self._EngineRegion = None
+        self._IngressClassName = None
+        self._TradeType = None
+        self._InternetConfig = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GatewayVersion(self):
+        return self._GatewayVersion
+
+    @GatewayVersion.setter
+    def GatewayVersion(self, GatewayVersion):
+        self._GatewayVersion = GatewayVersion
+
+    @property
+    def NodeConfig(self):
+        return self._NodeConfig
+
+    @NodeConfig.setter
+    def NodeConfig(self, NodeConfig):
+        self._NodeConfig = NodeConfig
+
+    @property
+    def VpcConfig(self):
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EnableCls(self):
+        return self._EnableCls
+
+    @EnableCls.setter
+    def EnableCls(self, EnableCls):
+        self._EnableCls = EnableCls
+
+    @property
+    def FeatureVersion(self):
+        return self._FeatureVersion
+
+    @FeatureVersion.setter
+    def FeatureVersion(self, FeatureVersion):
+        self._FeatureVersion = FeatureVersion
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def EngineRegion(self):
+        return self._EngineRegion
+
+    @EngineRegion.setter
+    def EngineRegion(self, EngineRegion):
+        self._EngineRegion = EngineRegion
+
+    @property
+    def IngressClassName(self):
+        return self._IngressClassName
+
+    @IngressClassName.setter
+    def IngressClassName(self, IngressClassName):
+        self._IngressClassName = IngressClassName
+
+    @property
+    def TradeType(self):
+        return self._TradeType
+
+    @TradeType.setter
+    def TradeType(self, TradeType):
+        self._TradeType = TradeType
+
+    @property
+    def InternetConfig(self):
+        return self._InternetConfig
+
+    @InternetConfig.setter
+    def InternetConfig(self, InternetConfig):
+        self._InternetConfig = InternetConfig
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._GatewayVersion = params.get("GatewayVersion")
+        if params.get("NodeConfig") is not None:
+            self._NodeConfig = CloudNativeAPIGatewayNodeConfig()
+            self._NodeConfig._deserialize(params.get("NodeConfig"))
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = CloudNativeAPIGatewayVpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = InstanceTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._EnableCls = params.get("EnableCls")
+        self._FeatureVersion = params.get("FeatureVersion")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._EngineRegion = params.get("EngineRegion")
+        self._IngressClassName = params.get("IngressClassName")
+        self._TradeType = params.get("TradeType")
+        if params.get("InternetConfig") is not None:
+            self._InternetConfig = InternetConfig()
+            self._InternetConfig._deserialize(params.get("InternetConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayResponse(AbstractModel):
+    """CreateCloudNativeAPIGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建云原生API网关实例响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateCloudNativeAPIGatewayResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayResult(AbstractModel):
+    """创建云原生API网关响应结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关ID。
+        :type GatewayId: str
+        :param _Status: 云原生网关状态。
+        :type Status: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._GatewayId = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
@@ -1239,6 +1637,77 @@ class CreateCloudNativeAPIGatewayRouteResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayServerGroupResult(AbstractModel):
+    """创建网关分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _GroupId: 分组id
+        :type GroupId: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateCloudNativeAPIGatewayServiceRateLimitRequest(AbstractModel):
@@ -1801,6 +2270,156 @@ class CreateEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNativeGatewayServerGroupRequest(AbstractModel):
+    """CreateNativeGatewayServerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id。
+只支持后付费实例
+        :type GatewayId: str
+        :param _Name: 网关分组名
+        :type Name: str
+        :param _NodeConfig: 节点配置
+        :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
+        :param _SubnetId: 子网id
+        :type SubnetId: str
+        :param _Description: 描述信息
+        :type Description: str
+        :param _InternetMaxBandwidthOut: 公网带宽信息
+        :type InternetMaxBandwidthOut: int
+        :param _InternetConfig: 公网配置。
+        :type InternetConfig: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._NodeConfig = None
+        self._SubnetId = None
+        self._Description = None
+        self._InternetMaxBandwidthOut = None
+        self._InternetConfig = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NodeConfig(self):
+        return self._NodeConfig
+
+    @NodeConfig.setter
+    def NodeConfig(self, NodeConfig):
+        self._NodeConfig = NodeConfig
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def InternetConfig(self):
+        return self._InternetConfig
+
+    @InternetConfig.setter
+    def InternetConfig(self, InternetConfig):
+        self._InternetConfig = InternetConfig
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("NodeConfig") is not None:
+            self._NodeConfig = CloudNativeAPIGatewayNodeConfig()
+            self._NodeConfig._deserialize(params.get("NodeConfig"))
+        self._SubnetId = params.get("SubnetId")
+        self._Description = params.get("Description")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        if params.get("InternetConfig") is not None:
+            self._InternetConfig = InternetConfig()
+            self._InternetConfig._deserialize(params.get("InternetConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNativeGatewayServerGroupResponse(AbstractModel):
+    """CreateNativeGatewayServerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 网关分组创建信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayServerGroupResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateCloudNativeAPIGatewayServerGroupResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
     """DeleteCloudNativeAPIGatewayCanaryRule请求参数结构体
 
@@ -1881,6 +2500,135 @@ class DeleteCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayRequest(AbstractModel):
+    """DeleteCloudNativeAPIGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _DeleteClsTopic: 是否删除实例关联的 CLS 日志主题。
+        :type DeleteClsTopic: bool
+        """
+        self._GatewayId = None
+        self._DeleteClsTopic = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def DeleteClsTopic(self):
+        return self._DeleteClsTopic
+
+    @DeleteClsTopic.setter
+    def DeleteClsTopic(self, DeleteClsTopic):
+        self._DeleteClsTopic = DeleteClsTopic
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._DeleteClsTopic = params.get("DeleteClsTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayResponse(AbstractModel):
+    """DeleteCloudNativeAPIGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除云原生API网关实例响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DeleteCloudNativeAPIGatewayResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayResult(AbstractModel):
+    """删除云原生API网关响应结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生网关ID。
+        :type GatewayId: str
+        :param _Status: 云原生网关状态。
+        :type Status: str
+        """
+        self._GatewayId = None
+        self._Status = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
@@ -2222,6 +2970,161 @@ class DeleteEngineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteNativeGatewayServerGroupRequest(AbstractModel):
+    """DeleteNativeGatewayServerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id。
+只支持后付费实例
+        :type GatewayId: str
+        :param _GroupId: 网关分组id
+        :type GroupId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNativeGatewayServerGroupResponse(AbstractModel):
+    """DeleteNativeGatewayServerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除信息
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DeleteNativeGatewayServerGroupResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DeleteNativeGatewayServerGroupResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNativeGatewayServerGroupResult(AbstractModel):
+    """删除网关实例结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例id
+        :type GatewayId: str
+        :param _GroupId: 网关分组id
+        :type GroupId: str
+        :param _Status: 删除状态
+        :type Status: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
     """DescribeCloudNativeAPIGatewayCanaryRules请求参数结构体
 
@@ -2559,6 +3462,429 @@ class DescribeCloudNativeAPIGatewayPortsResponse(AbstractModel):
             self._Result = DescribeGatewayInstancePortResult()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayRequest(AbstractModel):
+    """DescribeCloudNativeAPIGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID
+        :type GatewayId: str
+        """
+        self._GatewayId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayResponse(AbstractModel):
+    """DescribeCloudNativeAPIGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 获取云原生API网关基础信息响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeCloudNativeAPIGatewayResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayResult(AbstractModel):
+    """获取云原生API网关基础信息响应结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关ID。
+        :type GatewayId: str
+        :param _Status: 云原生API网关状态。
+        :type Status: str
+        :param _Name: 云原生API网关名。
+        :type Name: str
+        :param _Type: 云原生API网关类型。
+        :type Type: str
+        :param _GatewayVersion: 实例版本：
+- 2.4.1
+- 2.5.1
+        :type GatewayVersion: str
+        :param _NodeConfig: 云原生API网关节点信息。
+        :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
+        :param _VpcConfig: 云原生API网关vpc配置。
+        :type VpcConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayVpcConfig`
+        :param _Description: 云原生API网关描述。
+        :type Description: str
+        :param _CreateTime: 云原生API网关创建时间。
+        :type CreateTime: str
+        :param _Tags: 实例的标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of InstanceTagInfo
+        :param _EnableCls: 是否开启 cls 日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCls: bool
+        :param _TradeType: 付费模式，0表示后付费，1预付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TradeType: int
+        :param _FeatureVersion: 实例版本，当前支持开发版、标准版、专业版【TRIAL、STANDARD、PROFESSIONAL】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureVersion: str
+        :param _InternetMaxBandwidthOut: 公网出流量带宽，[1,2048]Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态)；
+1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _CurDeadline: 到期时间，预付费时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        :param _IsolateTime: 隔离时间，实例隔离时使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsolateTime: str
+        :param _EnableInternet: 是否开启客户端公网。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableInternet: bool
+        :param _EngineRegion: 实例实际的地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineRegion: str
+        :param _IngressClassName: Ingress class名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressClassName: str
+        :param _InternetPayMode: 公网计费方式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetPayMode: str
+        :param _GatewayMinorVersion: 云原生API网关小版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayMinorVersion: str
+        :param _InstancePort: 实例监听的端口信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePort: :class:`tencentcloud.tse.v20201207.models.InstancePort`
+        :param _LoadBalancerType: 公网CLB默认类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerType: str
+        :param _PublicIpAddresses: 公网IP地址列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIpAddresses: list of str
+        """
+        self._GatewayId = None
+        self._Status = None
+        self._Name = None
+        self._Type = None
+        self._GatewayVersion = None
+        self._NodeConfig = None
+        self._VpcConfig = None
+        self._Description = None
+        self._CreateTime = None
+        self._Tags = None
+        self._EnableCls = None
+        self._TradeType = None
+        self._FeatureVersion = None
+        self._InternetMaxBandwidthOut = None
+        self._AutoRenewFlag = None
+        self._CurDeadline = None
+        self._IsolateTime = None
+        self._EnableInternet = None
+        self._EngineRegion = None
+        self._IngressClassName = None
+        self._InternetPayMode = None
+        self._GatewayMinorVersion = None
+        self._InstancePort = None
+        self._LoadBalancerType = None
+        self._PublicIpAddresses = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GatewayVersion(self):
+        return self._GatewayVersion
+
+    @GatewayVersion.setter
+    def GatewayVersion(self, GatewayVersion):
+        self._GatewayVersion = GatewayVersion
+
+    @property
+    def NodeConfig(self):
+        return self._NodeConfig
+
+    @NodeConfig.setter
+    def NodeConfig(self, NodeConfig):
+        self._NodeConfig = NodeConfig
+
+    @property
+    def VpcConfig(self):
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EnableCls(self):
+        return self._EnableCls
+
+    @EnableCls.setter
+    def EnableCls(self, EnableCls):
+        self._EnableCls = EnableCls
+
+    @property
+    def TradeType(self):
+        return self._TradeType
+
+    @TradeType.setter
+    def TradeType(self, TradeType):
+        self._TradeType = TradeType
+
+    @property
+    def FeatureVersion(self):
+        return self._FeatureVersion
+
+    @FeatureVersion.setter
+    def FeatureVersion(self, FeatureVersion):
+        self._FeatureVersion = FeatureVersion
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def CurDeadline(self):
+        return self._CurDeadline
+
+    @CurDeadline.setter
+    def CurDeadline(self, CurDeadline):
+        self._CurDeadline = CurDeadline
+
+    @property
+    def IsolateTime(self):
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def EnableInternet(self):
+        return self._EnableInternet
+
+    @EnableInternet.setter
+    def EnableInternet(self, EnableInternet):
+        self._EnableInternet = EnableInternet
+
+    @property
+    def EngineRegion(self):
+        return self._EngineRegion
+
+    @EngineRegion.setter
+    def EngineRegion(self, EngineRegion):
+        self._EngineRegion = EngineRegion
+
+    @property
+    def IngressClassName(self):
+        return self._IngressClassName
+
+    @IngressClassName.setter
+    def IngressClassName(self, IngressClassName):
+        self._IngressClassName = IngressClassName
+
+    @property
+    def InternetPayMode(self):
+        return self._InternetPayMode
+
+    @InternetPayMode.setter
+    def InternetPayMode(self, InternetPayMode):
+        self._InternetPayMode = InternetPayMode
+
+    @property
+    def GatewayMinorVersion(self):
+        return self._GatewayMinorVersion
+
+    @GatewayMinorVersion.setter
+    def GatewayMinorVersion(self, GatewayMinorVersion):
+        self._GatewayMinorVersion = GatewayMinorVersion
+
+    @property
+    def InstancePort(self):
+        return self._InstancePort
+
+    @InstancePort.setter
+    def InstancePort(self, InstancePort):
+        self._InstancePort = InstancePort
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def PublicIpAddresses(self):
+        return self._PublicIpAddresses
+
+    @PublicIpAddresses.setter
+    def PublicIpAddresses(self, PublicIpAddresses):
+        self._PublicIpAddresses = PublicIpAddresses
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Status = params.get("Status")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._GatewayVersion = params.get("GatewayVersion")
+        if params.get("NodeConfig") is not None:
+            self._NodeConfig = CloudNativeAPIGatewayNodeConfig()
+            self._NodeConfig._deserialize(params.get("NodeConfig"))
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = CloudNativeAPIGatewayVpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = InstanceTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._EnableCls = params.get("EnableCls")
+        self._TradeType = params.get("TradeType")
+        self._FeatureVersion = params.get("FeatureVersion")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._CurDeadline = params.get("CurDeadline")
+        self._IsolateTime = params.get("IsolateTime")
+        self._EnableInternet = params.get("EnableInternet")
+        self._EngineRegion = params.get("EngineRegion")
+        self._IngressClassName = params.get("IngressClassName")
+        self._InternetPayMode = params.get("InternetPayMode")
+        self._GatewayMinorVersion = params.get("GatewayMinorVersion")
+        if params.get("InstancePort") is not None:
+            self._InstancePort = InstancePort()
+            self._InstancePort._deserialize(params.get("InstancePort"))
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._PublicIpAddresses = params.get("PublicIpAddresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeCloudNativeAPIGatewayRouteRateLimitRequest(AbstractModel):
@@ -2978,6 +4304,107 @@ class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = KongServices()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
+    """DescribeCloudNativeAPIGateways请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param _Filters: 请求过滤参数，支持按照实例名称、ID和标签键值（Name、GatewayId、Tag）筛选
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewaysResponse(AbstractModel):
+    """DescribeCloudNativeAPIGateways返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 获取云原生API网关实例列表响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.ListCloudNativeAPIGatewayResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ListCloudNativeAPIGatewayResult()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -4599,6 +6026,53 @@ class GatewayInstanceSchemeAndPorts(AbstractModel):
         
 
 
+class InstancePort(AbstractModel):
+    """实例监听端口信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpPort: 监听的 http 端口范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpPort: str
+        :param _HttpsPort: 监听的 https 端口范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsPort: str
+        """
+        self._HttpPort = None
+        self._HttpsPort = None
+
+    @property
+    def HttpPort(self):
+        return self._HttpPort
+
+    @HttpPort.setter
+    def HttpPort(self, HttpPort):
+        self._HttpPort = HttpPort
+
+    @property
+    def HttpsPort(self):
+        return self._HttpsPort
+
+    @HttpsPort.setter
+    def HttpsPort(self, HttpsPort):
+        self._HttpsPort = HttpsPort
+
+
+    def _deserialize(self, params):
+        self._HttpPort = params.get("HttpPort")
+        self._HttpsPort = params.get("HttpsPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceTagInfo(AbstractModel):
     """引擎实例的标签信息
 
@@ -4634,6 +6108,123 @@ class InstanceTagInfo(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternetConfig(AbstractModel):
+    """公网负载均衡配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetAddressVersion: 公网地址版本，可选："IPV4" | "IPV6-NAT64" 。不填默认 IPV4 。
+        :type InternetAddressVersion: str
+        :param _InternetPayMode: 公网付费类型，当前仅可选："BANDWIDTH"。不填默认为 "BANDWIDTH"
+        :type InternetPayMode: str
+        :param _InternetMaxBandwidthOut: 公网带宽。
+        :type InternetMaxBandwidthOut: int
+        :param _Description: 负载均衡描述
+        :type Description: str
+        :param _SlaType: 负载均衡的规格类型，传 "SLA" 表示性能容量型，不传为共享型。
+        :type SlaType: str
+        :param _MultiZoneFlag: 负载均衡是否多可用区
+        :type MultiZoneFlag: bool
+        :param _MasterZoneId: 主可用区
+        :type MasterZoneId: str
+        :param _SlaveZoneId: 备可用区
+        :type SlaveZoneId: str
+        """
+        self._InternetAddressVersion = None
+        self._InternetPayMode = None
+        self._InternetMaxBandwidthOut = None
+        self._Description = None
+        self._SlaType = None
+        self._MultiZoneFlag = None
+        self._MasterZoneId = None
+        self._SlaveZoneId = None
+
+    @property
+    def InternetAddressVersion(self):
+        return self._InternetAddressVersion
+
+    @InternetAddressVersion.setter
+    def InternetAddressVersion(self, InternetAddressVersion):
+        self._InternetAddressVersion = InternetAddressVersion
+
+    @property
+    def InternetPayMode(self):
+        return self._InternetPayMode
+
+    @InternetPayMode.setter
+    def InternetPayMode(self, InternetPayMode):
+        self._InternetPayMode = InternetPayMode
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SlaType(self):
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def MultiZoneFlag(self):
+        return self._MultiZoneFlag
+
+    @MultiZoneFlag.setter
+    def MultiZoneFlag(self, MultiZoneFlag):
+        self._MultiZoneFlag = MultiZoneFlag
+
+    @property
+    def MasterZoneId(self):
+        return self._MasterZoneId
+
+    @MasterZoneId.setter
+    def MasterZoneId(self, MasterZoneId):
+        self._MasterZoneId = MasterZoneId
+
+    @property
+    def SlaveZoneId(self):
+        return self._SlaveZoneId
+
+    @SlaveZoneId.setter
+    def SlaveZoneId(self, SlaveZoneId):
+        self._SlaveZoneId = SlaveZoneId
+
+
+    def _deserialize(self, params):
+        self._InternetAddressVersion = params.get("InternetAddressVersion")
+        self._InternetPayMode = params.get("InternetPayMode")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._Description = params.get("Description")
+        self._SlaType = params.get("SlaType")
+        self._MultiZoneFlag = params.get("MultiZoneFlag")
+        self._MasterZoneId = params.get("MasterZoneId")
+        self._SlaveZoneId = params.get("SlaveZoneId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5692,6 +7283,56 @@ class KongUpstreamInfo(AbstractModel):
         
 
 
+class ListCloudNativeAPIGatewayResult(AbstractModel):
+    """获取云原生API网关实例列表响应结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数。
+        :type TotalCount: int
+        :param _GatewayList: 云原生API网关实例列表。
+        :type GatewayList: list of DescribeCloudNativeAPIGatewayResult
+        """
+        self._TotalCount = None
+        self._GatewayList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def GatewayList(self):
+        return self._GatewayList
+
+    @GatewayList.setter
+    def GatewayList(self, GatewayList):
+        self._GatewayList = GatewayList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("GatewayList") is not None:
+            self._GatewayList = []
+            for item in params.get("GatewayList"):
+                obj = DescribeCloudNativeAPIGatewayResult()
+                obj._deserialize(item)
+                self._GatewayList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListFilter(AbstractModel):
     """列表过滤条件，模糊匹配
 
@@ -5810,6 +7451,112 @@ class ModifyCloudNativeAPIGatewayCanaryRuleRequest(AbstractModel):
 
 class ModifyCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
     """ModifyCloudNativeAPIGatewayCanaryRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayRequest(AbstractModel):
+    """ModifyCloudNativeAPIGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _Name: 云原生API网关名字, 最多支持60个字符。
+        :type Name: str
+        :param _Description: 云原生API网关描述信息, 最多支持120个字符。
+        :type Description: str
+        :param _EnableCls: 是否开启 CLS 日志。暂时取值只能是 true，即只能从关闭状态变成开启状态。
+        :type EnableCls: bool
+        :param _InternetPayMode: 公网计费模式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
+        :type InternetPayMode: str
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._Description = None
+        self._EnableCls = None
+        self._InternetPayMode = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EnableCls(self):
+        return self._EnableCls
+
+    @EnableCls.setter
+    def EnableCls(self, EnableCls):
+        self._EnableCls = EnableCls
+
+    @property
+    def InternetPayMode(self):
+        return self._InternetPayMode
+
+    @InternetPayMode.setter
+    def InternetPayMode(self, InternetPayMode):
+        self._InternetPayMode = InternetPayMode
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._EnableCls = params.get("EnableCls")
+        self._InternetPayMode = params.get("InternetPayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayResponse(AbstractModel):
+    """ModifyCloudNativeAPIGateway返回参数结构体
 
     """
 
@@ -6385,6 +8132,100 @@ class ModifyCloudNativeAPIGatewayServiceRequest(AbstractModel):
 
 class ModifyCloudNativeAPIGatewayServiceResponse(AbstractModel):
     """ModifyCloudNativeAPIGatewayService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNativeGatewayServerGroupRequest(AbstractModel):
+    """ModifyNativeGatewayServerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 网关分组 id
+        :type GroupId: str
+        :param _Name: 云原生API网关名字, 最多支持60个字符。
+        :type Name: str
+        :param _Description: 云原生API网关描述信息, 最多支持120个字符。
+        :type Description: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNativeGatewayServerGroupResponse(AbstractModel):
+    """ModifyNativeGatewayServerGroup返回参数结构体
 
     """
 
@@ -7297,6 +9138,163 @@ class ServiceGovernanceInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCloudNativeAPIGatewayResult(AbstractModel):
+    """更新云原生API网关响应结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关ID。
+        :type GatewayId: str
+        :param _Status: 云原生网关状态。
+        :type Status: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._GatewayId = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCloudNativeAPIGatewaySpecRequest(AbstractModel):
+    """UpdateCloudNativeAPIGatewaySpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+只支持后付费实例
+        :type GatewayId: str
+        :param _GroupId: 网关分组id
+        :type GroupId: str
+        :param _NodeConfig: 网关分组节点规格配置。
+        :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._NodeConfig = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NodeConfig(self):
+        return self._NodeConfig
+
+    @NodeConfig.setter
+    def NodeConfig(self, NodeConfig):
+        self._NodeConfig = NodeConfig
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        if params.get("NodeConfig") is not None:
+            self._NodeConfig = CloudNativeAPIGatewayNodeConfig()
+            self._NodeConfig._deserialize(params.get("NodeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCloudNativeAPIGatewaySpecResponse(AbstractModel):
+    """UpdateCloudNativeAPIGatewaySpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 更新云原生API网关实例规格的响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.UpdateCloudNativeAPIGatewayResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = UpdateCloudNativeAPIGatewayResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateEngineInternetAccessRequest(AbstractModel):

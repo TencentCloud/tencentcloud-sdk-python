@@ -7378,6 +7378,124 @@ class ModifyMigrateNameResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMigrateRateLimitRequest(AbstractModel):
+    """ModifyMigrateRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 迁移任务ID
+        :type JobId: str
+        :param _DumpThread: 迁移任务全量导出线程数、有效值为 1-16
+        :type DumpThread: int
+        :param _DumpRps: 迁移全量导出的 Rps 限制、需要大于 0
+        :type DumpRps: int
+        :param _LoadThread: 迁移任务全量导入线程数、有效值为 1-16
+        :type LoadThread: int
+        :param _SinkerThread: 迁移任务增量导入线程数、有效值为 1-128
+        :type SinkerThread: int
+        :param _LoadRps: 全量导入Rps限制
+        :type LoadRps: int
+        """
+        self._JobId = None
+        self._DumpThread = None
+        self._DumpRps = None
+        self._LoadThread = None
+        self._SinkerThread = None
+        self._LoadRps = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DumpThread(self):
+        return self._DumpThread
+
+    @DumpThread.setter
+    def DumpThread(self, DumpThread):
+        self._DumpThread = DumpThread
+
+    @property
+    def DumpRps(self):
+        return self._DumpRps
+
+    @DumpRps.setter
+    def DumpRps(self, DumpRps):
+        self._DumpRps = DumpRps
+
+    @property
+    def LoadThread(self):
+        return self._LoadThread
+
+    @LoadThread.setter
+    def LoadThread(self, LoadThread):
+        self._LoadThread = LoadThread
+
+    @property
+    def SinkerThread(self):
+        return self._SinkerThread
+
+    @SinkerThread.setter
+    def SinkerThread(self, SinkerThread):
+        self._SinkerThread = SinkerThread
+
+    @property
+    def LoadRps(self):
+        return self._LoadRps
+
+    @LoadRps.setter
+    def LoadRps(self, LoadRps):
+        self._LoadRps = LoadRps
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._DumpThread = params.get("DumpThread")
+        self._DumpRps = params.get("DumpRps")
+        self._LoadThread = params.get("LoadThread")
+        self._SinkerThread = params.get("SinkerThread")
+        self._LoadRps = params.get("LoadRps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMigrateRateLimitResponse(AbstractModel):
+    """ModifyMigrateRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMigrationJobRequest(AbstractModel):
     """ModifyMigrationJob请求参数结构体
 
@@ -7606,6 +7724,124 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
 class ModifySyncJobConfigResponse(AbstractModel):
     """ModifySyncJobConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySyncRateLimitRequest(AbstractModel):
+    """ModifySyncRateLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 迁移任务ID
+        :type JobId: str
+        :param _DumpThread: 同步任务全量导出线程数、有效值为 1-16
+        :type DumpThread: int
+        :param _DumpRps: 同步任务全量导出的 Rps 限制、需要大于 0
+        :type DumpRps: int
+        :param _LoadThread: 同步任务全量导入线程数、有效值为 1-16
+        :type LoadThread: int
+        :param _SinkerThread: 同步任务增量导入线程数、有效值为 1-128
+        :type SinkerThread: int
+        :param _LoadRps: 同步任务全量导入的Rps
+        :type LoadRps: int
+        """
+        self._JobId = None
+        self._DumpThread = None
+        self._DumpRps = None
+        self._LoadThread = None
+        self._SinkerThread = None
+        self._LoadRps = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def DumpThread(self):
+        return self._DumpThread
+
+    @DumpThread.setter
+    def DumpThread(self, DumpThread):
+        self._DumpThread = DumpThread
+
+    @property
+    def DumpRps(self):
+        return self._DumpRps
+
+    @DumpRps.setter
+    def DumpRps(self, DumpRps):
+        self._DumpRps = DumpRps
+
+    @property
+    def LoadThread(self):
+        return self._LoadThread
+
+    @LoadThread.setter
+    def LoadThread(self, LoadThread):
+        self._LoadThread = LoadThread
+
+    @property
+    def SinkerThread(self):
+        return self._SinkerThread
+
+    @SinkerThread.setter
+    def SinkerThread(self, SinkerThread):
+        self._SinkerThread = SinkerThread
+
+    @property
+    def LoadRps(self):
+        return self._LoadRps
+
+    @LoadRps.setter
+    def LoadRps(self, LoadRps):
+        self._LoadRps = LoadRps
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._DumpThread = params.get("DumpThread")
+        self._DumpRps = params.get("DumpRps")
+        self._LoadThread = params.get("LoadThread")
+        self._SinkerThread = params.get("SinkerThread")
+        self._LoadRps = params.get("LoadRps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySyncRateLimitResponse(AbstractModel):
+    """ModifySyncRateLimit返回参数结构体
 
     """
 

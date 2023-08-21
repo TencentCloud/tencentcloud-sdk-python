@@ -676,6 +676,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMigrateRateLimit(self, request):
+        """用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+
+        :param request: Request instance for ModifyMigrateRateLimit.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRateLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMigrateRateLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMigrateRateLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMigrationJob(self, request):
         """配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
 
@@ -714,6 +737,29 @@ class DtsClient(AbstractClient):
             body = self.call("ModifySyncJobConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySyncJobConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySyncRateLimit(self, request):
+        """用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+
+        :param request: Request instance for ModifySyncRateLimit.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifySyncRateLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySyncRateLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySyncRateLimitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -6425,32 +6425,70 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ProxyOrganizationName: 子客企业名称，最大长度64个字符
+注意：
+1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
+2、该名称需要与Agent.ProxyOrganizationOpenId相匹配。
         :type ProxyOrganizationName: str
-        :param _ProxyOperatorName: 子客企业经办人的姓名，最大长度50个字符
-        :type ProxyOperatorName: str
-        :param _Module: PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
-        :type Module: str
-        :param _ModuleId: 控制台指定模块Id
-        :type ModuleId: str
         :param _UniformSocialCreditCode: 子客企业统一社会信用代码，最大长度200个字符
+注意：
+1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
         :type UniformSocialCreditCode: str
-        :param _MenuStatus: 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
+        :param _ProxyOperatorName: 子客企业经办人的姓名，最大长度50个字符
+注意：
+1、若经办人已经实名，这里修改经办人名字传入将不会生效。
+2、该名称需要和Agent. ProxyOperator.OpenId相匹配
+        :type ProxyOperatorName: str
+        :param _Module: PC控制台登录后进入该参数指定的模块，如果不传递，将默认进入控制台首页。支持的模块包括：
+1、DOCUMENT:合同管理模块，
+2、TEMPLATE:企业模板管理模块，
+3、SEAL:印章管理模块，
+4、OPERATOR:组织管理模块，
+默认将进入企业中心模块
+注意：
+1、如果EndPoint选择"CHANNEL"或"APP"，该参数仅支持传递"SEAL"，进入印章管理模块
+2、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+        :type Module: str
+        :param _ModuleId: 该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
+根据Module参数的不同所代表的含义不同。当前支持：
+1、如果Module="SEAL"，ModuleId代表印章Id, 登录链接将直接查看指定印章的详情。
+2、如果Module="TEMPLATE"，ModuleId代表模版Id，登录链接将直接查看指定模版的详情。
+3、如果Module="1、DOCUMENT"，ModuleId代表合同Id，登录链接将直接查看指定合同的详情。
+注意：
+1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+2、ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到。
+        :type ModuleId: str
+        :param _MenuStatus: 是否展示左侧菜单栏 
+"ENABLE": 是，展示 
+“DISABLE”: 否，不展示
+默认值为ENABLE
+注意：
+1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
         :type MenuStatus: str
-        :param _Endpoint: 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+        :param _Endpoint: 生成链接的类型：
+"PC"：PC控制台链接
+"CHANNEL"：H5跳转到电子签小程序链接
+"APP"：第三方APP或小程序跳转电子签小程序链接
+默认将生成PC控制台链接
         :type Endpoint: str
-        :param _AutoJumpBackEvent: 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+        :param _AutoJumpBackEvent: 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
         :type AutoJumpBackEvent: str
-        :param _AuthorizationTypes: 支持的授权方式,授权方式: "1" - 上传授权书认证  "2" - 法定代表人认证
+        :param _AuthorizationTypes: 可选的企业授权方式: 
+1：上传授权书 
+2：转法定代表人授权
+4：企业实名认证（信任第三方认证源）（此项仅支持单选）
+未选择信任第三方认证源时，如果是法人进行企业激活，仅支持法人扫脸直接授权，该配置不生效；选择信任第三方认证源时，请先通过“同步企业信息”接口同步信息。
+该参数仅在企业激活场景生效
         :type AuthorizationTypes: list of int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
         self._ProxyOrganizationName = None
+        self._UniformSocialCreditCode = None
         self._ProxyOperatorName = None
         self._Module = None
         self._ModuleId = None
-        self._UniformSocialCreditCode = None
         self._MenuStatus = None
         self._Endpoint = None
         self._AutoJumpBackEvent = None
@@ -6472,6 +6510,14 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     @ProxyOrganizationName.setter
     def ProxyOrganizationName(self, ProxyOrganizationName):
         self._ProxyOrganizationName = ProxyOrganizationName
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
 
     @property
     def ProxyOperatorName(self):
@@ -6496,14 +6542,6 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     @ModuleId.setter
     def ModuleId(self, ModuleId):
         self._ModuleId = ModuleId
-
-    @property
-    def UniformSocialCreditCode(self):
-        return self._UniformSocialCreditCode
-
-    @UniformSocialCreditCode.setter
-    def UniformSocialCreditCode(self, UniformSocialCreditCode):
-        self._UniformSocialCreditCode = UniformSocialCreditCode
 
     @property
     def MenuStatus(self):
@@ -6555,10 +6593,10 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._ProxyOrganizationName = params.get("ProxyOrganizationName")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self._ProxyOperatorName = params.get("ProxyOperatorName")
         self._Module = params.get("Module")
         self._ModuleId = params.get("ModuleId")
-        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self._MenuStatus = params.get("MenuStatus")
         self._Endpoint = params.get("Endpoint")
         self._AutoJumpBackEvent = params.get("AutoJumpBackEvent")
@@ -6585,14 +6623,18 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
         r"""
         :param _ConsoleUrl: 子客企业Web控制台url注意事项：
 1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
-2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
-3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
-4. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）
+2. 若企业认证完成且员工认证完成后，重新获取pc端的链接在5分钟之内有效，且只能访问一次
+3. 若企业认证完成且员工认证完成后，重新获取CHANNEL/APP的链接只要在有效期内（一年）都可以访问
+4. 此链接仅单次有效，每次登录需要需要重新创建新的链接，尽量不要做链接存储，多次使用。
 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
         :type ConsoleUrl: str
         :param _IsActivated: 子客企业是否已开通腾讯电子签，true-是，false-否
+注意：
+1、企业是否实名根据传参Agent.ProxyOrganizationOpenId进行判断，非企业名称或者社会信用代码
         :type IsActivated: bool
-        :param _ProxyOperatorIsVerified: 当前经办人是否已认证（false:未认证 true:已认证）
+        :param _ProxyOperatorIsVerified: 当前经办人是否已认证，true-是，false-否
+注意：
+1、经办人是否实名是根据Agent.ProxyOperator.OpenId判断，非经办人姓名
         :type ProxyOperatorIsVerified: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12422,6 +12464,10 @@ class SyncProxyOrganizationRequest(AbstractModel):
         :type ProxyLegalName: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ProxyLegalIdCardType: 第三方平台子客企业法人/负责人证件类型，默认居民身份证（ID_CARD）类型，暂不支持其他类型
+        :type ProxyLegalIdCardType: str
+        :param _ProxyLegalIdCardNumber: 第三方平台子客企业法人/负责人证件号
+        :type ProxyLegalIdCardNumber: str
         """
         self._Agent = None
         self._ProxyOrganizationName = None
@@ -12429,6 +12475,8 @@ class SyncProxyOrganizationRequest(AbstractModel):
         self._UniformSocialCreditCode = None
         self._ProxyLegalName = None
         self._Operator = None
+        self._ProxyLegalIdCardType = None
+        self._ProxyLegalIdCardNumber = None
 
     @property
     def Agent(self):
@@ -12482,6 +12530,22 @@ class SyncProxyOrganizationRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def ProxyLegalIdCardType(self):
+        return self._ProxyLegalIdCardType
+
+    @ProxyLegalIdCardType.setter
+    def ProxyLegalIdCardType(self, ProxyLegalIdCardType):
+        self._ProxyLegalIdCardType = ProxyLegalIdCardType
+
+    @property
+    def ProxyLegalIdCardNumber(self):
+        return self._ProxyLegalIdCardNumber
+
+    @ProxyLegalIdCardNumber.setter
+    def ProxyLegalIdCardNumber(self, ProxyLegalIdCardNumber):
+        self._ProxyLegalIdCardNumber = ProxyLegalIdCardNumber
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -12494,6 +12558,8 @@ class SyncProxyOrganizationRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._ProxyLegalIdCardType = params.get("ProxyLegalIdCardType")
+        self._ProxyLegalIdCardNumber = params.get("ProxyLegalIdCardNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

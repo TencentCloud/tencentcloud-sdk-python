@@ -20917,6 +20917,8 @@ class ProxyNodeInfo(AbstractModel):
         :type Region: str
         :param _Zone: 可用区
         :type Zone: str
+        :param _OssProxyNodeName: 数据库代理节点名字
+        :type OssProxyNodeName: str
         """
         self._ProxyNodeId = None
         self._ProxyNodeConnections = None
@@ -20928,6 +20930,7 @@ class ProxyNodeInfo(AbstractModel):
         self._AppId = None
         self._Region = None
         self._Zone = None
+        self._OssProxyNodeName = None
 
     @property
     def ProxyNodeId(self):
@@ -21009,6 +21012,14 @@ class ProxyNodeInfo(AbstractModel):
     def Zone(self, Zone):
         self._Zone = Zone
 
+    @property
+    def OssProxyNodeName(self):
+        return self._OssProxyNodeName
+
+    @OssProxyNodeName.setter
+    def OssProxyNodeName(self, OssProxyNodeName):
+        self._OssProxyNodeName = OssProxyNodeName
+
 
     def _deserialize(self, params):
         self._ProxyNodeId = params.get("ProxyNodeId")
@@ -21021,6 +21032,7 @@ class ProxyNodeInfo(AbstractModel):
         self._AppId = params.get("AppId")
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
+        self._OssProxyNodeName = params.get("OssProxyNodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
