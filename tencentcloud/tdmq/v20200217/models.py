@@ -4492,6 +4492,8 @@ class CreateTopicRequest(AbstractModel):
 2: 持久非分区
 3: 持久分区
         :type PulsarTopicType: int
+        :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+        :type MsgTTL: int
         """
         self._EnvironmentId = None
         self._TopicName = None
@@ -4500,6 +4502,7 @@ class CreateTopicRequest(AbstractModel):
         self._TopicType = None
         self._ClusterId = None
         self._PulsarTopicType = None
+        self._MsgTTL = None
 
     @property
     def EnvironmentId(self):
@@ -4557,6 +4560,14 @@ class CreateTopicRequest(AbstractModel):
     def PulsarTopicType(self, PulsarTopicType):
         self._PulsarTopicType = PulsarTopicType
 
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -4566,6 +4577,7 @@ class CreateTopicRequest(AbstractModel):
         self._TopicType = params.get("TopicType")
         self._ClusterId = params.get("ClusterId")
         self._PulsarTopicType = params.get("PulsarTopicType")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13858,12 +13870,16 @@ class ModifyTopicRequest(AbstractModel):
         :type Remark: str
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+
+        :type MsgTTL: int
         """
         self._EnvironmentId = None
         self._TopicName = None
         self._Partitions = None
         self._Remark = None
         self._ClusterId = None
+        self._MsgTTL = None
 
     @property
     def EnvironmentId(self):
@@ -13905,6 +13921,14 @@ class ModifyTopicRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -13912,6 +13936,7 @@ class ModifyTopicRequest(AbstractModel):
         self._Partitions = params.get("Partitions")
         self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19676,6 +19701,10 @@ class Topic(AbstractModel):
 3: 持久分区
 注意：此字段可能返回 null，表示取不到有效值。
         :type PulsarTopicType: int
+        :param _MsgTTL: 未消费消息过期时间，单位：秒
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgTTL: int
         """
         self._AverageMsgSize = None
         self._ConsumerCount = None
@@ -19699,6 +19728,7 @@ class Topic(AbstractModel):
         self._ProducerLimit = None
         self._ConsumerLimit = None
         self._PulsarTopicType = None
+        self._MsgTTL = None
 
     @property
     def AverageMsgSize(self):
@@ -19876,6 +19906,14 @@ class Topic(AbstractModel):
     def PulsarTopicType(self, PulsarTopicType):
         self._PulsarTopicType = PulsarTopicType
 
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._AverageMsgSize = params.get("AverageMsgSize")
@@ -19905,6 +19943,7 @@ class Topic(AbstractModel):
         self._ProducerLimit = params.get("ProducerLimit")
         self._ConsumerLimit = params.get("ConsumerLimit")
         self._PulsarTopicType = params.get("PulsarTopicType")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -10262,6 +10262,160 @@ class UpdateNamespaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateTriggerRequest(AbstractModel):
+    """UpdateTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: 函数名称
+        :type FunctionName: str
+        :param _TriggerName: 触发器名称
+        :type TriggerName: str
+        :param _Type: 触发器类型
+        :type Type: str
+        :param _Enable: 触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭
+        :type Enable: str
+        :param _Qualifier: 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
+        :type Qualifier: str
+        :param _Namespace: 函数的命名空间
+        :type Namespace: str
+        :param _TriggerDesc: TriggerDesc参数
+        :type TriggerDesc: str
+        :param _Description: 触发器描述
+        :type Description: str
+        :param _CustomArgument: 用户附加信息
+        :type CustomArgument: str
+        """
+        self._FunctionName = None
+        self._TriggerName = None
+        self._Type = None
+        self._Enable = None
+        self._Qualifier = None
+        self._Namespace = None
+        self._TriggerDesc = None
+        self._Description = None
+        self._CustomArgument = None
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def TriggerName(self):
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TriggerDesc(self):
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CustomArgument(self):
+        return self._CustomArgument
+
+    @CustomArgument.setter
+    def CustomArgument(self, CustomArgument):
+        self._CustomArgument = CustomArgument
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        self._TriggerName = params.get("TriggerName")
+        self._Type = params.get("Type")
+        self._Enable = params.get("Enable")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._Description = params.get("Description")
+        self._CustomArgument = params.get("CustomArgument")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTriggerResponse(AbstractModel):
+    """UpdateTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateTriggerStatusRequest(AbstractModel):
     """UpdateTriggerStatus请求参数结构体
 

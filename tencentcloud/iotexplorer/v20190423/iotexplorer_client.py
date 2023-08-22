@@ -969,6 +969,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstance(self, request):
+        """公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+
+        :param request: Request instance for DescribeInstance.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeInstanceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLoRaFrequency(self, request):
         """提供查询LoRa自定义频点详情的能力
 

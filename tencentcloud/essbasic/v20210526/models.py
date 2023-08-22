@@ -304,6 +304,8 @@ class AutoSignConfig(AbstractModel):
         :type CallbackUrl: str
         :param _VerifyChannels: 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
         :type VerifyChannels: list of str
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        :type LicenseType: int
         """
         self._UserInfo = None
         self._CertInfoCallback = None
@@ -311,6 +313,7 @@ class AutoSignConfig(AbstractModel):
         self._SealImgCallback = None
         self._CallbackUrl = None
         self._VerifyChannels = None
+        self._LicenseType = None
 
     @property
     def UserInfo(self):
@@ -360,6 +363,14 @@ class AutoSignConfig(AbstractModel):
     def VerifyChannels(self, VerifyChannels):
         self._VerifyChannels = VerifyChannels
 
+    @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
@@ -370,6 +381,7 @@ class AutoSignConfig(AbstractModel):
         self._SealImgCallback = params.get("SealImgCallback")
         self._CallbackUrl = params.get("CallbackUrl")
         self._VerifyChannels = params.get("VerifyChannels")
+        self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3099,6 +3111,8 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         :type Mobile: str
         :param _EnableAutoSign: 是否开通自动签，该功能需联系运营工作人员开通后使用
         :type EnableAutoSign: bool
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        :type LicenseType: int
         """
         self._Agent = None
         self._UserName = None
@@ -3110,6 +3124,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._SealImageCompress = None
         self._Mobile = None
         self._EnableAutoSign = None
+        self._LicenseType = None
 
     @property
     def Agent(self):
@@ -3191,6 +3206,14 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
     def EnableAutoSign(self, EnableAutoSign):
         self._EnableAutoSign = EnableAutoSign
 
+    @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -3207,6 +3230,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         self._SealImageCompress = params.get("SealImageCompress")
         self._Mobile = params.get("Mobile")
         self._EnableAutoSign = params.get("EnableAutoSign")
+        self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3267,7 +3291,7 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
         :type NeedRelievedFlowId: str
         :param _ReliveInfo: 解除协议内容
         :type ReliveInfo: :class:`tencentcloud.essbasic.v20210526.models.RelieveInfo`
-        :param _ReleasedApprovers: 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+        :param _ReleasedApprovers: 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，已转发的签署人不包含在内，解除协议的签署人数量不能多于原流程的签署人数量
         :type ReleasedApprovers: list of ReleasedApprover
         :param _CallbackUrl: 签署完回调url，最大长度1000个字符
         :type CallbackUrl: str
@@ -4934,12 +4958,15 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
         :type LicenseFrom: int
         :param _LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
         :type LicenseTo: int
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        :type LicenseType: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsOpen = None
         self._LicenseFrom = None
         self._LicenseTo = None
+        self._LicenseType = None
         self._RequestId = None
 
     @property
@@ -4967,6 +4994,14 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
         self._LicenseTo = LicenseTo
 
     @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4979,6 +5014,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
         self._IsOpen = params.get("IsOpen")
         self._LicenseFrom = params.get("LicenseFrom")
         self._LicenseTo = params.get("LicenseTo")
+        self._LicenseType = params.get("LicenseType")
         self._RequestId = params.get("RequestId")
 
 

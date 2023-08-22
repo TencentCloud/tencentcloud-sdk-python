@@ -265,9 +265,18 @@ class BillDetail(AbstractModel):
         :type RegionId: str
         :param _ProjectId: 项目ID
         :type ProjectId: int
-        :param _PriceInfo: 价格属性
+        :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceInfo: list of str
+        :param _AssociatedOrder: 关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
+        :param _Formula: 计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Formula: str
+        :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormulaUrl: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -294,6 +303,9 @@ class BillDetail(AbstractModel):
         self._RegionId = None
         self._ProjectId = None
         self._PriceInfo = None
+        self._AssociatedOrder = None
+        self._Formula = None
+        self._FormulaUrl = None
 
     @property
     def BusinessCodeName(self):
@@ -495,6 +507,30 @@ class BillDetail(AbstractModel):
     def PriceInfo(self, PriceInfo):
         self._PriceInfo = PriceInfo
 
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -532,6 +568,110 @@ class BillDetail(AbstractModel):
         self._RegionId = params.get("RegionId")
         self._ProjectId = params.get("ProjectId")
         self._PriceInfo = params.get("PriceInfo")
+        if params.get("AssociatedOrder") is not None:
+            self._AssociatedOrder = BillDetailAssociatedOrder()
+            self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDetailAssociatedOrder(AbstractModel):
+    """明细账单关联单据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrepayPurchase: 新购订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepayPurchase: str
+        :param _PrepayRenew: 续费订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepayRenew: str
+        :param _PrepayModifyUp: 升配订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrepayModifyUp: str
+        :param _ReverseOrder: 冲销订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReverseOrder: str
+        :param _NewOrder: 优惠调整后订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewOrder: str
+        :param _Original: 优惠调整前订单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Original: str
+        """
+        self._PrepayPurchase = None
+        self._PrepayRenew = None
+        self._PrepayModifyUp = None
+        self._ReverseOrder = None
+        self._NewOrder = None
+        self._Original = None
+
+    @property
+    def PrepayPurchase(self):
+        return self._PrepayPurchase
+
+    @PrepayPurchase.setter
+    def PrepayPurchase(self, PrepayPurchase):
+        self._PrepayPurchase = PrepayPurchase
+
+    @property
+    def PrepayRenew(self):
+        return self._PrepayRenew
+
+    @PrepayRenew.setter
+    def PrepayRenew(self, PrepayRenew):
+        self._PrepayRenew = PrepayRenew
+
+    @property
+    def PrepayModifyUp(self):
+        return self._PrepayModifyUp
+
+    @PrepayModifyUp.setter
+    def PrepayModifyUp(self, PrepayModifyUp):
+        self._PrepayModifyUp = PrepayModifyUp
+
+    @property
+    def ReverseOrder(self):
+        return self._ReverseOrder
+
+    @ReverseOrder.setter
+    def ReverseOrder(self, ReverseOrder):
+        self._ReverseOrder = ReverseOrder
+
+    @property
+    def NewOrder(self):
+        return self._NewOrder
+
+    @NewOrder.setter
+    def NewOrder(self, NewOrder):
+        self._NewOrder = NewOrder
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
+
+
+    def _deserialize(self, params):
+        self._PrepayPurchase = params.get("PrepayPurchase")
+        self._PrepayRenew = params.get("PrepayRenew")
+        self._PrepayModifyUp = params.get("PrepayModifyUp")
+        self._ReverseOrder = params.get("ReverseOrder")
+        self._NewOrder = params.get("NewOrder")
+        self._Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -620,6 +760,9 @@ class BillDetailComponent(AbstractModel):
         :param _BlendedDiscount: 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
 注意：此字段可能返回 null，表示取不到有效值。
         :type BlendedDiscount: str
+        :param _ComponentConfig: 配置描述：资源配置规格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentConfig: list of BillDetailComponentConfig
         """
         self._ComponentCodeName = None
         self._ItemCodeName = None
@@ -650,6 +793,7 @@ class BillDetailComponent(AbstractModel):
         self._SPDeduction = None
         self._OriginalCostWithSP = None
         self._BlendedDiscount = None
+        self._ComponentConfig = None
 
     @property
     def ComponentCodeName(self):
@@ -891,6 +1035,14 @@ class BillDetailComponent(AbstractModel):
     def BlendedDiscount(self, BlendedDiscount):
         self._BlendedDiscount = BlendedDiscount
 
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
 
     def _deserialize(self, params):
         self._ComponentCodeName = params.get("ComponentCodeName")
@@ -922,6 +1074,59 @@ class BillDetailComponent(AbstractModel):
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
         self._BlendedDiscount = params.get("BlendedDiscount")
+        if params.get("ComponentConfig") is not None:
+            self._ComponentConfig = []
+            for item in params.get("ComponentConfig"):
+                obj = BillDetailComponentConfig()
+                obj._deserialize(item)
+                self._ComponentConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDetailComponentConfig(AbstractModel):
+    """明细账单配置描述结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 配置描述名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 配置描述值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4263,16 +4468,16 @@ class DescribeBillDetailRequest(AbstractModel):
         :type PeriodType: str
         :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
         :type Month: str
-        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。(不支持跨月查询)
+        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
         :type BeginTime: str
-        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。（不支持跨月查询）
+        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
         :type EndTime: str
         :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
 1-表示需要， 0-表示不需要
         :type NeedRecordNum: int
         :param _ProductCode: 已废弃参数，未开放
         :type ProductCode: str
-        :param _PayMode: 付费模式 prePay/postPay
+        :param _PayMode: 付费模式 prePay(表示包年包月)/postPay(表示按时按量)
         :type PayMode: str
         :param _ResourceId: 查询指定资源信息
         :type ResourceId: str

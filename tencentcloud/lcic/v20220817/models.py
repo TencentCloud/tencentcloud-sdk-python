@@ -5199,9 +5199,25 @@ class EventDataInfo(AbstractModel):
         :param _UserId: 事件发生的用户。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
+        :param _Device: 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Device: int
+        :param _Duration: 录制时长。单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _RecordSize: 录制文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordSize: int
+        :param _RecordUrl: 录制url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordUrl: str
         """
         self._RoomId = None
         self._UserId = None
+        self._Device = None
+        self._Duration = None
+        self._RecordSize = None
+        self._RecordUrl = None
 
     @property
     def RoomId(self):
@@ -5219,10 +5235,46 @@ class EventDataInfo(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def Device(self):
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RecordSize(self):
+        return self._RecordSize
+
+    @RecordSize.setter
+    def RecordSize(self, RecordSize):
+        self._RecordSize = RecordSize
+
+    @property
+    def RecordUrl(self):
+        return self._RecordUrl
+
+    @RecordUrl.setter
+    def RecordUrl(self, RecordUrl):
+        self._RecordUrl = RecordUrl
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._UserId = params.get("UserId")
+        self._Device = params.get("Device")
+        self._Duration = params.get("Duration")
+        self._RecordSize = params.get("RecordSize")
+        self._RecordUrl = params.get("RecordUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7732,7 +7784,7 @@ class RoomItem(AbstractModel):
         :param _RecordUrl: 录制地址（协议为https)。仅在房间结束后存在。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordUrl: str
-        :param _MaxMicNumber: 最高房间内人数（包括老师），0表示不限制，默认为0
+        :param _MaxMicNumber: 最高房间内人数（不包括老师），0表示不限制，默认为0
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxMicNumber: int
         :param _EnableDirectControl: 打开学生麦克风/摄像头的授权开关 

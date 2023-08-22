@@ -1246,7 +1246,8 @@ class AddOnSubtitle(AbstractModel):
         r"""
         :param _Type: 插入形式，可选值：
 <li>subtitle-stream：插入字幕轨道</li>
-<li>close-caption：编码到SEI帧</li>
+<li>close-caption-708：CEA-708字幕编码到SEI帧</li>
+<li>close-caption-608：CEA-608字幕编码到SEI帧</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Subtitle: 字幕文件。
@@ -22270,6 +22271,7 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 <li>AsrFullTextRecognition：语音全文识别，</li>
 <li>OcrFullTextRecognition：文本全文识别。</li>
 <li>TransTextRecognition：语音翻译。</li>
+<li>TagRecognition：精彩打点。</li>
         :type Type: str
         :param _FaceRecognitionResultSet: 人脸识别结果，当 Type 为
 FaceRecognition 时有效。
@@ -22288,6 +22290,9 @@ OcrFullTextRecognition 时有效。
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
         :param _TransTextRecognitionResultSet: 翻译结果，当Type 为 TransTextRecognition 时有效。
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
+        :param _TagRecognitionResultSet: 打点结果，当Type 为 TagRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
         """
         self._Type = None
         self._FaceRecognitionResultSet = None
@@ -22296,6 +22301,7 @@ OcrFullTextRecognition 时有效。
         self._AsrFullTextRecognitionResultSet = None
         self._OcrFullTextRecognitionResultSet = None
         self._TransTextRecognitionResultSet = None
+        self._TagRecognitionResultSet = None
 
     @property
     def Type(self):
@@ -22353,6 +22359,14 @@ OcrFullTextRecognition 时有效。
     def TransTextRecognitionResultSet(self, TransTextRecognitionResultSet):
         self._TransTextRecognitionResultSet = TransTextRecognitionResultSet
 
+    @property
+    def TagRecognitionResultSet(self):
+        return self._TagRecognitionResultSet
+
+    @TagRecognitionResultSet.setter
+    def TagRecognitionResultSet(self, TagRecognitionResultSet):
+        self._TagRecognitionResultSet = TagRecognitionResultSet
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -22392,6 +22406,12 @@ OcrFullTextRecognition 时有效。
                 obj = LiveStreamTransTextRecognitionResult()
                 obj._deserialize(item)
                 self._TransTextRecognitionResultSet.append(obj)
+        if params.get("TagRecognitionResultSet") is not None:
+            self._TagRecognitionResultSet = []
+            for item in params.get("TagRecognitionResultSet"):
+                obj = LiveStreamTagRecognitionResult()
+                obj._deserialize(item)
+                self._TagRecognitionResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23560,6 +23580,75 @@ class LiveStreamProcessTask(AbstractModel):
         self._ErrCode = params.get("ErrCode")
         self._Message = params.get("Message")
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamTagRecognitionResult(AbstractModel):
+    """直播 AI 打点识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 打点事件。
+        :type Id: str
+        :param _StartPtsTime: 识别片段起始的 PTS 时间，单位：秒。
+        :type StartPtsTime: float
+        :param _EndPtsTime: 识别片段终止的 PTS 时间，单位：秒。
+        :type EndPtsTime: float
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        """
+        self._Id = None
+        self._StartPtsTime = None
+        self._EndPtsTime = None
+        self._Confidence = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartPtsTime(self):
+        return self._StartPtsTime
+
+    @StartPtsTime.setter
+    def StartPtsTime(self, StartPtsTime):
+        self._StartPtsTime = StartPtsTime
+
+    @property
+    def EndPtsTime(self):
+        return self._EndPtsTime
+
+    @EndPtsTime.setter
+    def EndPtsTime(self, EndPtsTime):
+        self._EndPtsTime = EndPtsTime
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartPtsTime = params.get("StartPtsTime")
+        self._EndPtsTime = params.get("EndPtsTime")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

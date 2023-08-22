@@ -7079,7 +7079,7 @@ class DescribeVulListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Params: 查询过滤参数
+        :param _Params: 查询过滤参数:(json序列化的结果）
         :type Params: str
         """
         self._Params = None

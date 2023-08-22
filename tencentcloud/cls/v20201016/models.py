@@ -99,8 +99,10 @@ class AlarmAnalysisConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 键
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None
@@ -174,6 +176,10 @@ class AlarmInfo(AbstractModel):
         :param _Analysis: 多维分析设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Analysis: list of AnalysisDimensional
+        :param _MultiConditions: 多触发条件。
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiConditions: list of MultiCondition
         """
         self._Name = None
         self._AlarmTargets = None
@@ -189,6 +195,7 @@ class AlarmInfo(AbstractModel):
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
+        self._MultiConditions = None
 
     @property
     def Name(self):
@@ -302,6 +309,14 @@ class AlarmInfo(AbstractModel):
     def Analysis(self, Analysis):
         self._Analysis = Analysis
 
+    @property
+    def MultiConditions(self):
+        return self._MultiConditions
+
+    @MultiConditions.setter
+    def MultiConditions(self, MultiConditions):
+        self._MultiConditions = MultiConditions
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -332,6 +347,12 @@ class AlarmInfo(AbstractModel):
                 obj = AnalysisDimensional()
                 obj._deserialize(item)
                 self._Analysis.append(obj)
+        if params.get("MultiConditions") is not None:
+            self._MultiConditions = []
+            for item in params.get("MultiConditions"):
+                obj = MultiCondition()
+                obj._deserialize(item)
+                self._MultiConditions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -371,6 +392,9 @@ class AlarmNotice(AbstractModel):
         :param _UpdateTime: 最近更新时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _NoticeRules: 通知规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeRules: list of NoticeRule
         """
         self._Name = None
         self._Type = None
@@ -379,6 +403,7 @@ class AlarmNotice(AbstractModel):
         self._AlarmNoticeId = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._NoticeRules = None
 
     @property
     def Name(self):
@@ -436,6 +461,14 @@ class AlarmNotice(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def NoticeRules(self):
+        return self._NoticeRules
+
+    @NoticeRules.setter
+    def NoticeRules(self, NoticeRules):
+        self._NoticeRules = NoticeRules
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -455,6 +488,12 @@ class AlarmNotice(AbstractModel):
         self._AlarmNoticeId = params.get("AlarmNoticeId")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("NoticeRules") is not None:
+            self._NoticeRules = []
+            for item in params.get("NoticeRules"):
+                obj = NoticeRule()
+                obj._deserialize(item)
+                self._NoticeRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -473,20 +512,27 @@ class AlarmTarget(AbstractModel):
     def __init__(self):
         r"""
         :param _TopicId: 日志主题ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
         :param _Query: 查询语句。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Query: str
         :param _Number: 告警对象序号；从1开始递增。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Number: int
         :param _StartTimeOffset: 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeOffset: int
         :param _EndTimeOffset: 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndTimeOffset: int
         :param _LogsetId: 日志集ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
         :param _SyntaxRule: 检索语法规则，默认值为0。
 0：Lucene语法，1：CQL语法。
 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+注意：此字段可能返回 null，表示取不到有效值。
         :type SyntaxRule: int
         """
         self._TopicId = None
@@ -2069,6 +2115,8 @@ class ContainerFileInfo(AbstractModel):
         :type LogPath: str
         :param _FilePattern: 日志名称
         :type FilePattern: str
+        :param _FilePaths: 日志文件信息
+        :type FilePaths: list of FilePathInfo
         :param _IncludeLabels: pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeLabels: list of str
@@ -2081,15 +2129,20 @@ class ContainerFileInfo(AbstractModel):
         :param _ExcludeLabels: 需要排除的pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeLabels: list of str
+        :param _CustomLabels: metadata信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLabels: list of str
         """
         self._Namespace = None
         self._Container = None
         self._LogPath = None
         self._FilePattern = None
+        self._FilePaths = None
         self._IncludeLabels = None
         self._WorkLoad = None
         self._ExcludeNamespace = None
         self._ExcludeLabels = None
+        self._CustomLabels = None
 
     @property
     def Namespace(self):
@@ -2124,6 +2177,14 @@ class ContainerFileInfo(AbstractModel):
         self._FilePattern = FilePattern
 
     @property
+    def FilePaths(self):
+        return self._FilePaths
+
+    @FilePaths.setter
+    def FilePaths(self, FilePaths):
+        self._FilePaths = FilePaths
+
+    @property
     def IncludeLabels(self):
         return self._IncludeLabels
 
@@ -2155,18 +2216,33 @@ class ContainerFileInfo(AbstractModel):
     def ExcludeLabels(self, ExcludeLabels):
         self._ExcludeLabels = ExcludeLabels
 
+    @property
+    def CustomLabels(self):
+        return self._CustomLabels
+
+    @CustomLabels.setter
+    def CustomLabels(self, CustomLabels):
+        self._CustomLabels = CustomLabels
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
         self._Container = params.get("Container")
         self._LogPath = params.get("LogPath")
         self._FilePattern = params.get("FilePattern")
+        if params.get("FilePaths") is not None:
+            self._FilePaths = []
+            for item in params.get("FilePaths"):
+                obj = FilePathInfo()
+                obj._deserialize(item)
+                self._FilePaths.append(obj)
         self._IncludeLabels = params.get("IncludeLabels")
         if params.get("WorkLoad") is not None:
             self._WorkLoad = ContainerWorkLoadInfo()
             self._WorkLoad._deserialize(params.get("WorkLoad"))
         self._ExcludeNamespace = params.get("ExcludeNamespace")
         self._ExcludeLabels = params.get("ExcludeLabels")
+        self._CustomLabels = params.get("CustomLabels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2204,6 +2280,9 @@ class ContainerStdoutInfo(AbstractModel):
         :param _ExcludeLabels: 需要排除的pod标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludeLabels: list of str
+        :param _CustomLabels: metadata信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomLabels: list of str
         """
         self._AllContainers = None
         self._Container = None
@@ -2212,6 +2291,7 @@ class ContainerStdoutInfo(AbstractModel):
         self._WorkLoads = None
         self._ExcludeNamespace = None
         self._ExcludeLabels = None
+        self._CustomLabels = None
 
     @property
     def AllContainers(self):
@@ -2269,6 +2349,14 @@ class ContainerStdoutInfo(AbstractModel):
     def ExcludeLabels(self, ExcludeLabels):
         self._ExcludeLabels = ExcludeLabels
 
+    @property
+    def CustomLabels(self):
+        return self._CustomLabels
+
+    @CustomLabels.setter
+    def CustomLabels(self, CustomLabels):
+        self._CustomLabels = CustomLabels
+
 
     def _deserialize(self, params):
         self._AllContainers = params.get("AllContainers")
@@ -2283,6 +2371,7 @@ class ContainerStdoutInfo(AbstractModel):
                 self._WorkLoads.append(obj)
         self._ExcludeNamespace = params.get("ExcludeNamespace")
         self._ExcludeLabels = params.get("ExcludeLabels")
+        self._CustomLabels = params.get("CustomLabels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2679,11 +2768,20 @@ class CreateAlarmNoticeRequest(AbstractModel):
         :type NoticeReceivers: list of NoticeReceiver
         :param _WebCallbacks: 接口回调信息（包括企业微信）。
         :type WebCallbacks: list of WebCallback
+        :param _NoticeRules: 通知规则。
+
+ 注意:  
+
+- Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+
+
+        :type NoticeRules: list of NoticeRule
         """
         self._Name = None
         self._Type = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
+        self._NoticeRules = None
 
     @property
     def Name(self):
@@ -2717,6 +2815,14 @@ class CreateAlarmNoticeRequest(AbstractModel):
     def WebCallbacks(self, WebCallbacks):
         self._WebCallbacks = WebCallbacks
 
+    @property
+    def NoticeRules(self):
+        return self._NoticeRules
+
+    @NoticeRules.setter
+    def NoticeRules(self, NoticeRules):
+        self._NoticeRules = NoticeRules
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2733,6 +2839,12 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj = WebCallback()
                 obj._deserialize(item)
                 self._WebCallbacks.append(obj)
+        if params.get("NoticeRules") is not None:
+            self._NoticeRules = []
+            for item in params.get("NoticeRules"):
+                obj = NoticeRule()
+                obj._deserialize(item)
+                self._NoticeRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2793,14 +2905,27 @@ class CreateAlarmRequest(AbstractModel):
         :type AlarmTargets: list of AlarmTarget
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 触发条件。
-        :type Condition: str
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
         :type AlarmPeriod: int
         :param _AlarmNoticeIds: 关联的告警通知模板列表。
         :type AlarmNoticeIds: list of str
+        :param _Condition: 触发条件。
+
+ 注意:  
+
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+
+        :type Condition: str
+        :param _MultiConditions: 多触发条件。
+
+ 注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+
+
+
+        :type MultiConditions: list of MultiCondition
         :param _Status: 是否开启告警策略。默认值为true
         :type Status: bool
         :param _MessageTemplate: 用户自定义告警内容
@@ -2813,10 +2938,11 @@ class CreateAlarmRequest(AbstractModel):
         self._Name = None
         self._AlarmTargets = None
         self._MonitorTime = None
-        self._Condition = None
         self._TriggerCount = None
         self._AlarmPeriod = None
         self._AlarmNoticeIds = None
+        self._Condition = None
+        self._MultiConditions = None
         self._Status = None
         self._MessageTemplate = None
         self._CallBack = None
@@ -2847,14 +2973,6 @@ class CreateAlarmRequest(AbstractModel):
         self._MonitorTime = MonitorTime
 
     @property
-    def Condition(self):
-        return self._Condition
-
-    @Condition.setter
-    def Condition(self, Condition):
-        self._Condition = Condition
-
-    @property
     def TriggerCount(self):
         return self._TriggerCount
 
@@ -2877,6 +2995,22 @@ class CreateAlarmRequest(AbstractModel):
     @AlarmNoticeIds.setter
     def AlarmNoticeIds(self, AlarmNoticeIds):
         self._AlarmNoticeIds = AlarmNoticeIds
+
+    @property
+    def Condition(self):
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def MultiConditions(self):
+        return self._MultiConditions
+
+    @MultiConditions.setter
+    def MultiConditions(self, MultiConditions):
+        self._MultiConditions = MultiConditions
 
     @property
     def Status(self):
@@ -2922,10 +3056,16 @@ class CreateAlarmRequest(AbstractModel):
         if params.get("MonitorTime") is not None:
             self._MonitorTime = MonitorTime()
             self._MonitorTime._deserialize(params.get("MonitorTime"))
-        self._Condition = params.get("Condition")
         self._TriggerCount = params.get("TriggerCount")
         self._AlarmPeriod = params.get("AlarmPeriod")
         self._AlarmNoticeIds = params.get("AlarmNoticeIds")
+        self._Condition = params.get("Condition")
+        if params.get("MultiConditions") is not None:
+            self._MultiConditions = []
+            for item in params.get("MultiConditions"):
+                obj = MultiCondition()
+                obj._deserialize(item)
+                self._MultiConditions.append(obj)
         self._Status = params.get("Status")
         self._MessageTemplate = params.get("MessageTemplate")
         if params.get("CallBack") is not None:
@@ -10561,6 +10701,51 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         
 
 
+class FilePathInfo(AbstractModel):
+    """文件路径信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 文件路径
+        :type Path: str
+        :param _File: 文件名称
+        :type File: str
+        """
+        self._Path = None
+        self._File = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def File(self):
+        return self._File
+
+    @File.setter
+    def File(self, File):
+        self._File = File
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._File = params.get("File")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """过滤器
 
@@ -12822,12 +13007,20 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         :type NoticeReceivers: list of NoticeReceiver
         :param _WebCallbacks: 接口回调信息（包括企业微信）。
         :type WebCallbacks: list of WebCallback
+        :param _NoticeRules: 通知规则。
+
+注意: 
+
+- Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+- 传其中一组数据，则另一组数据置空。
+        :type NoticeRules: list of NoticeRule
         """
         self._AlarmNoticeId = None
         self._Name = None
         self._Type = None
         self._NoticeReceivers = None
         self._WebCallbacks = None
+        self._NoticeRules = None
 
     @property
     def AlarmNoticeId(self):
@@ -12869,6 +13062,14 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     def WebCallbacks(self, WebCallbacks):
         self._WebCallbacks = WebCallbacks
 
+    @property
+    def NoticeRules(self):
+        return self._NoticeRules
+
+    @NoticeRules.setter
+    def NoticeRules(self, NoticeRules):
+        self._NoticeRules = NoticeRules
+
 
     def _deserialize(self, params):
         self._AlarmNoticeId = params.get("AlarmNoticeId")
@@ -12886,6 +13087,12 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 obj = WebCallback()
                 obj._deserialize(item)
                 self._WebCallbacks.append(obj)
+        if params.get("NoticeRules") is not None:
+            self._NoticeRules = []
+            for item in params.get("NoticeRules"):
+                obj = NoticeRule()
+                obj._deserialize(item)
+                self._NoticeRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12935,7 +13142,22 @@ class ModifyAlarmRequest(AbstractModel):
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
         :param _Condition: 触发条件。
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
         :type Condition: str
+        :param _AlarmLevel: 告警级别。
+
+0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :type AlarmLevel: int
+        :param _MultiConditions: 多触发条件。 
+
+注意:  
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :type MultiConditions: list of MultiCondition
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
         :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
@@ -12957,6 +13179,8 @@ class ModifyAlarmRequest(AbstractModel):
         self._Name = None
         self._MonitorTime = None
         self._Condition = None
+        self._AlarmLevel = None
+        self._MultiConditions = None
         self._TriggerCount = None
         self._AlarmPeriod = None
         self._AlarmNoticeIds = None
@@ -12997,6 +13221,22 @@ class ModifyAlarmRequest(AbstractModel):
     @Condition.setter
     def Condition(self, Condition):
         self._Condition = Condition
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def MultiConditions(self):
+        return self._MultiConditions
+
+    @MultiConditions.setter
+    def MultiConditions(self, MultiConditions):
+        self._MultiConditions = MultiConditions
 
     @property
     def TriggerCount(self):
@@ -13070,6 +13310,13 @@ class ModifyAlarmRequest(AbstractModel):
             self._MonitorTime = MonitorTime()
             self._MonitorTime._deserialize(params.get("MonitorTime"))
         self._Condition = params.get("Condition")
+        self._AlarmLevel = params.get("AlarmLevel")
+        if params.get("MultiConditions") is not None:
+            self._MultiConditions = []
+            for item in params.get("MultiConditions"):
+                obj = MultiCondition()
+                obj._deserialize(item)
+                self._MultiConditions.append(obj)
         self._TriggerCount = params.get("TriggerCount")
         self._AlarmPeriod = params.get("AlarmPeriod")
         self._AlarmNoticeIds = params.get("AlarmNoticeIds")
@@ -15138,6 +15385,54 @@ class MonitorTime(AbstractModel):
         
 
 
+class MultiCondition(AbstractModel):
+    """多触发条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: 触发条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Condition: str
+        :param _AlarmLevel: 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+<li> 不填则默认为0。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        """
+        self._Condition = None
+        self._AlarmLevel = None
+
+    @property
+    def Condition(self):
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        self._AlarmLevel = params.get("AlarmLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MultiTopicSearchInformation(AbstractModel):
     """多日志主题检索相关信息
 
@@ -15273,6 +15568,76 @@ class NoticeReceiver(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeRule(AbstractModel):
+    """通知规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeReceivers: 告警通知模板接收者信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NoticeReceivers: list of NoticeReceiver
+        :param _WebCallbacks: 告警通知模板回调信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebCallbacks: list of WebCallback
+        :param _Rule: 匹配规则。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: str
+        """
+        self._NoticeReceivers = None
+        self._WebCallbacks = None
+        self._Rule = None
+
+    @property
+    def NoticeReceivers(self):
+        return self._NoticeReceivers
+
+    @NoticeReceivers.setter
+    def NoticeReceivers(self, NoticeReceivers):
+        self._NoticeReceivers = NoticeReceivers
+
+    @property
+    def WebCallbacks(self):
+        return self._WebCallbacks
+
+    @WebCallbacks.setter
+    def WebCallbacks(self, WebCallbacks):
+        self._WebCallbacks = WebCallbacks
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        if params.get("NoticeReceivers") is not None:
+            self._NoticeReceivers = []
+            for item in params.get("NoticeReceivers"):
+                obj = NoticeReceiver()
+                obj._deserialize(item)
+                self._NoticeReceivers.append(obj)
+        if params.get("WebCallbacks") is not None:
+            self._WebCallbacks = []
+            for item in params.get("WebCallbacks"):
+                obj = WebCallback()
+                obj._deserialize(item)
+                self._WebCallbacks.append(obj)
+        self._Rule = params.get("Rule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

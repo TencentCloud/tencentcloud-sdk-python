@@ -54922,6 +54922,9 @@ class RuleGroup(AbstractModel):
         :param _InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -54941,6 +54944,7 @@ class RuleGroup(AbstractModel):
         self._MonitorStatus = None
         self._TableOwnerUserId = None
         self._InstanceId = None
+        self._CreateTime = None
 
     @property
     def RuleGroupId(self):
@@ -55086,6 +55090,14 @@ class RuleGroup(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -55110,6 +55122,7 @@ class RuleGroup(AbstractModel):
         self._MonitorStatus = params.get("MonitorStatus")
         self._TableOwnerUserId = params.get("TableOwnerUserId")
         self._InstanceId = params.get("InstanceId")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

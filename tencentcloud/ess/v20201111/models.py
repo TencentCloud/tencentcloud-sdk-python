@@ -641,6 +641,11 @@ TELECOM : 运营商三要素验证
 
 如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
         :type VerifyChannels: list of str
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。
+0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次
+1-不绑定，发起合同时将按标准合同套餐进行扣减
+
+        :type LicenseType: int
         """
         self._UserInfo = None
         self._CallbackUrl = None
@@ -648,6 +653,7 @@ TELECOM : 运营商三要素验证
         self._UserDefineSeal = None
         self._SealImgCallback = None
         self._VerifyChannels = None
+        self._LicenseType = None
 
     @property
     def UserInfo(self):
@@ -697,6 +703,14 @@ TELECOM : 运营商三要素验证
     def VerifyChannels(self, VerifyChannels):
         self._VerifyChannels = VerifyChannels
 
+    @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
 
     def _deserialize(self, params):
         if params.get("UserInfo") is not None:
@@ -707,6 +721,7 @@ TELECOM : 运营商三要素验证
         self._UserDefineSeal = params.get("UserDefineSeal")
         self._SealImgCallback = params.get("SealImgCallback")
         self._VerifyChannels = params.get("VerifyChannels")
+        self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5521,6 +5536,8 @@ true：做透明化处理和颜色增强。
         :type FileId: str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+        :type LicenseType: int
         """
         self._UserName = None
         self._IdCardNumber = None
@@ -5535,6 +5552,7 @@ true：做透明化处理和颜色增强。
         self._ProcessSeal = None
         self._FileId = None
         self._Agent = None
+        self._LicenseType = None
 
     @property
     def UserName(self):
@@ -5644,6 +5662,14 @@ true：做透明化处理和颜色增强。
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -5663,6 +5689,7 @@ true：做透明化处理和颜色增强。
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5871,7 +5898,8 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type Mobile: str
         :param _EndPoint: 要跳转的链接类型
 
-- HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+- HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)，此时返回长链
+- HTTP_SHORT_URL：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链
 - APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
 
         :type EndPoint: str
@@ -6035,7 +6063,7 @@ class CreateSchemeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SchemeUrl: 小程序链接地址，有效期30天
+        :param _SchemeUrl: 小程序链接地址，有效期90天。如果EndPoint是App，得到的链接Path如’weixin://dl/business/?t= *TICKET*‘，用于客户APP、小程序直接拉起电子签小程序；其他EndPoint得到的https链接如'https://essurl.cn/xxx'，点击链接会打开一个H5页面，然后拉起电子签小程序。
         :type SchemeUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6750,10 +6778,13 @@ class CreateWebThemeConfigRequest(AbstractModel):
         :type ThemeType: str
         :param _WebThemeConfig: 主题配置
         :type WebThemeConfig: :class:`tencentcloud.ess.v20201111.models.WebThemeConfig`
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._ThemeType = None
         self._WebThemeConfig = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -6779,6 +6810,14 @@ class CreateWebThemeConfigRequest(AbstractModel):
     def WebThemeConfig(self, WebThemeConfig):
         self._WebThemeConfig = WebThemeConfig
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6788,6 +6827,9 @@ class CreateWebThemeConfigRequest(AbstractModel):
         if params.get("WebThemeConfig") is not None:
             self._WebThemeConfig = WebThemeConfig()
             self._WebThemeConfig._deserialize(params.get("WebThemeConfig"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9510,12 +9552,17 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         :param _LicenseTo: 自动签许可到期时间。当且仅当已开通自动签时有值。
 值为unix时间戳,单位为秒。
         :type LicenseTo: int
+        :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。
+0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次
+1-不绑定，发起合同时将按标准合同套餐进行扣减
+        :type LicenseType: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsOpen = None
         self._LicenseFrom = None
         self._LicenseTo = None
+        self._LicenseType = None
         self._RequestId = None
 
     @property
@@ -9543,6 +9590,14 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._LicenseTo = LicenseTo
 
     @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9555,6 +9610,7 @@ class DescribeUserAutoSignStatusResponse(AbstractModel):
         self._IsOpen = params.get("IsOpen")
         self._LicenseFrom = params.get("LicenseFrom")
         self._LicenseTo = params.get("LicenseTo")
+        self._LicenseType = params.get("LicenseType")
         self._RequestId = params.get("RequestId")
 
 

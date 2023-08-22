@@ -5030,6 +5030,115 @@ class DescribeGatewaySubProductsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceRequest(AbstractModel):
+    """DescribeInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Include: 附加查询返回包含字段值，不传返回0，有效值 ProductNum、ProjectNum、UsedDeviceNum、TotalDevice、ActivateDevice
+        :type Include: list of str
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _ProductId: 产品ID，-1 代表全部产品
+        :type ProductId: str
+        """
+        self._InstanceId = None
+        self._Include = None
+        self._ProjectId = None
+        self._ProductId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Include(self):
+        return self._Include
+
+    @Include.setter
+    def Include(self, Include):
+        self._Include = Include
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Include = params.get("Include")
+        self._ProjectId = params.get("ProjectId")
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceResponse(AbstractModel):
+    """DescribeInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.InstanceDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = InstanceDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoRaFrequencyRequest(AbstractModel):
     """DescribeLoRaFrequency请求参数结构体
 
@@ -8676,6 +8785,186 @@ class GetTopicRuleListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class InstanceDetail(AbstractModel):
+    """实例信息
+    公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceType: 实例类型（0 公共实例 1 标准企业实例 2专享企业实例）
+        :type InstanceType: int
+        :param _Region: 地域字母缩写
+        :type Region: str
+        :param _ZoneId: 区域全拼
+        :type ZoneId: str
+        :param _TotalDeviceNum: 支持设备总数
+        :type TotalDeviceNum: int
+        :param _UsedDeviceNum: 以注册设备数
+        :type UsedDeviceNum: int
+        :param _ProjectNum: 项目数
+        :type ProjectNum: int
+        :param _ProductNum: 产品数
+        :type ProductNum: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _ExpireTime: 过期时间，公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+        :type ExpireTime: str
+        :param _TotalDevice: 总设备数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalDevice: int
+        :param _ActivateDevice: 激活设备数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivateDevice: int
+        """
+        self._InstanceId = None
+        self._InstanceType = None
+        self._Region = None
+        self._ZoneId = None
+        self._TotalDeviceNum = None
+        self._UsedDeviceNum = None
+        self._ProjectNum = None
+        self._ProductNum = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ExpireTime = None
+        self._TotalDevice = None
+        self._ActivateDevice = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TotalDeviceNum(self):
+        return self._TotalDeviceNum
+
+    @TotalDeviceNum.setter
+    def TotalDeviceNum(self, TotalDeviceNum):
+        self._TotalDeviceNum = TotalDeviceNum
+
+    @property
+    def UsedDeviceNum(self):
+        return self._UsedDeviceNum
+
+    @UsedDeviceNum.setter
+    def UsedDeviceNum(self, UsedDeviceNum):
+        self._UsedDeviceNum = UsedDeviceNum
+
+    @property
+    def ProjectNum(self):
+        return self._ProjectNum
+
+    @ProjectNum.setter
+    def ProjectNum(self, ProjectNum):
+        self._ProjectNum = ProjectNum
+
+    @property
+    def ProductNum(self):
+        return self._ProductNum
+
+    @ProductNum.setter
+    def ProductNum(self, ProductNum):
+        self._ProductNum = ProductNum
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def TotalDevice(self):
+        return self._TotalDevice
+
+    @TotalDevice.setter
+    def TotalDevice(self, TotalDevice):
+        self._TotalDevice = TotalDevice
+
+    @property
+    def ActivateDevice(self):
+        return self._ActivateDevice
+
+    @ActivateDevice.setter
+    def ActivateDevice(self, ActivateDevice):
+        self._ActivateDevice = ActivateDevice
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        self._Region = params.get("Region")
+        self._ZoneId = params.get("ZoneId")
+        self._TotalDeviceNum = params.get("TotalDeviceNum")
+        self._UsedDeviceNum = params.get("UsedDeviceNum")
+        self._ProjectNum = params.get("ProjectNum")
+        self._ProductNum = params.get("ProductNum")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._TotalDevice = params.get("TotalDevice")
+        self._ActivateDevice = params.get("ActivateDevice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ListEventHistoryRequest(AbstractModel):

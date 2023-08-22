@@ -4200,6 +4200,9 @@ class ConfigRelease(AbstractModel):
         :param _ApplicationId: 应用ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
+        :param _ConfigCenters: 配置中心发布情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigCenters: list of TsfConfigCenter
         """
         self._ConfigReleaseId = None
         self._ConfigId = None
@@ -4214,6 +4217,7 @@ class ConfigRelease(AbstractModel):
         self._ClusterName = None
         self._ReleaseDesc = None
         self._ApplicationId = None
+        self._ConfigCenters = None
 
     @property
     def ConfigReleaseId(self):
@@ -4319,6 +4323,14 @@ class ConfigRelease(AbstractModel):
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
 
+    @property
+    def ConfigCenters(self):
+        return self._ConfigCenters
+
+    @ConfigCenters.setter
+    def ConfigCenters(self, ConfigCenters):
+        self._ConfigCenters = ConfigCenters
+
 
     def _deserialize(self, params):
         self._ConfigReleaseId = params.get("ConfigReleaseId")
@@ -4334,6 +4346,12 @@ class ConfigRelease(AbstractModel):
         self._ClusterName = params.get("ClusterName")
         self._ReleaseDesc = params.get("ReleaseDesc")
         self._ApplicationId = params.get("ApplicationId")
+        if params.get("ConfigCenters") is not None:
+            self._ConfigCenters = []
+            for item in params.get("ConfigCenters"):
+                obj = TsfConfigCenter()
+                obj._deserialize(item)
+                self._ConfigCenters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4402,6 +4420,12 @@ class ConfigReleaseLog(AbstractModel):
         :param _RollbackFlag: 回滚标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type RollbackFlag: bool
+        :param _ReleasedConfigCenter: 发布成功的配置中心
+ ALL/EXCLUSIVE/SHARE/NONE
+
+全部发布成功，独占发布成功，共享发布成功，全部发布失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleasedConfigCenter: str
         """
         self._ConfigReleaseLogId = None
         self._ConfigId = None
@@ -4420,6 +4444,7 @@ class ConfigReleaseLog(AbstractModel):
         self._LastConfigName = None
         self._LastConfigVersion = None
         self._RollbackFlag = None
+        self._ReleasedConfigCenter = None
 
     @property
     def ConfigReleaseLogId(self):
@@ -4557,6 +4582,14 @@ class ConfigReleaseLog(AbstractModel):
     def RollbackFlag(self, RollbackFlag):
         self._RollbackFlag = RollbackFlag
 
+    @property
+    def ReleasedConfigCenter(self):
+        return self._ReleasedConfigCenter
+
+    @ReleasedConfigCenter.setter
+    def ReleasedConfigCenter(self, ReleasedConfigCenter):
+        self._ReleasedConfigCenter = ReleasedConfigCenter
+
 
     def _deserialize(self, params):
         self._ConfigReleaseLogId = params.get("ConfigReleaseLogId")
@@ -4576,6 +4609,7 @@ class ConfigReleaseLog(AbstractModel):
         self._LastConfigName = params.get("LastConfigName")
         self._LastConfigVersion = params.get("LastConfigVersion")
         self._RollbackFlag = params.get("RollbackFlag")
+        self._ReleasedConfigCenter = params.get("ReleasedConfigCenter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40390,6 +40424,92 @@ class TsfApiListResponse(AbstractModel):
                 obj = MsApiArray()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TsfConfigCenter(AbstractModel):
+    """配置中心
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigType: 配置中心类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigType: str
+        :param _ConfigCenterInstanceId: 配置中心实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigCenterInstanceId: str
+        :param _ConfigCenterInstanceName: 配置中心实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigCenterInstanceName: str
+        :param _RegionId: 实例地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param _NamespaceId: 命名空间id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        """
+        self._ConfigType = None
+        self._ConfigCenterInstanceId = None
+        self._ConfigCenterInstanceName = None
+        self._RegionId = None
+        self._NamespaceId = None
+
+    @property
+    def ConfigType(self):
+        return self._ConfigType
+
+    @ConfigType.setter
+    def ConfigType(self, ConfigType):
+        self._ConfigType = ConfigType
+
+    @property
+    def ConfigCenterInstanceId(self):
+        return self._ConfigCenterInstanceId
+
+    @ConfigCenterInstanceId.setter
+    def ConfigCenterInstanceId(self, ConfigCenterInstanceId):
+        self._ConfigCenterInstanceId = ConfigCenterInstanceId
+
+    @property
+    def ConfigCenterInstanceName(self):
+        return self._ConfigCenterInstanceName
+
+    @ConfigCenterInstanceName.setter
+    def ConfigCenterInstanceName(self, ConfigCenterInstanceName):
+        self._ConfigCenterInstanceName = ConfigCenterInstanceName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+
+    def _deserialize(self, params):
+        self._ConfigType = params.get("ConfigType")
+        self._ConfigCenterInstanceId = params.get("ConfigCenterInstanceId")
+        self._ConfigCenterInstanceName = params.get("ConfigCenterInstanceName")
+        self._RegionId = params.get("RegionId")
+        self._NamespaceId = params.get("NamespaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -68,6 +68,45 @@ class CheckRuleRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Event: Event信息
+        :type Event: str
+        :param _EventPattern: EventPattern信息
+        :type EventPattern: str
+        """
+        self._Event = None
+        self._EventPattern = None
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def EventPattern(self):
+        return self._EventPattern
+
+    @EventPattern.setter
+    def EventPattern(self, EventPattern):
+        self._EventPattern = EventPattern
+
+
+    def _deserialize(self, params):
+        self._Event = params.get("Event")
+        self._EventPattern = params.get("EventPattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CheckRuleResponse(AbstractModel):
     """CheckRule返回参数结构体

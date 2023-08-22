@@ -6411,7 +6411,7 @@ class DomainsPartInfo(AbstractModel):
         :param _Ciphers: 加密套件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ciphers: list of int
-        :param _CipherTemplate: 模版
+        :param _CipherTemplate: 模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type CipherTemplate: int
         :param _ProxyReadTimeout: 300s
@@ -7439,6 +7439,112 @@ class GetAttackHistogramResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._Period = params.get("Period")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class GetAttackTotalCountRequest(AbstractModel):
+    """GetAttackTotalCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Domain: 查询的域名，全部域名不指定
+        :type Domain: str
+        :param _QueryString: 查询条件，默认为""
+        :type QueryString: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Domain = None
+        self._QueryString = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def QueryString(self):
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Domain = params.get("Domain")
+        self._QueryString = params.get("QueryString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAttackTotalCountResponse(AbstractModel):
+    """GetAttackTotalCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 攻击总次数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -8833,7 +8939,7 @@ class ModifyAreaBanStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 修要修改的域名
+        :param _Domain: 需要修改的域名
         :type Domain: str
         :param _Status: 状态值，0表示关闭，1表示开启
         :type Status: int
@@ -9017,7 +9123,7 @@ class ModifyCustomWhiteRuleRequest(AbstractModel):
         :type RuleId: int
         :param _RuleName: 编辑的规则名称
         :type RuleName: str
-        :param _Bypass: 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+        :param _Bypass: 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果勾选多个，则以“，”串接。
         :type Bypass: str
         :param _SortId: 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
         :type SortId: int

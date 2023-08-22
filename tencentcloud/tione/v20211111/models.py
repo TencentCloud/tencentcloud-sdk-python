@@ -2885,24 +2885,16 @@ class CreateNotebookImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Kernels: 要保存的kernel数组
-        :type Kernels: list of str
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param _NotebookId: notebook id
         :type NotebookId: str
+        :param _Kernels: 要保存的kernel数组
+        :type Kernels: list of str
         """
-        self._Kernels = None
         self._ImageInfo = None
         self._NotebookId = None
-
-    @property
-    def Kernels(self):
-        return self._Kernels
-
-    @Kernels.setter
-    def Kernels(self, Kernels):
-        self._Kernels = Kernels
+        self._Kernels = None
 
     @property
     def ImageInfo(self):
@@ -2920,13 +2912,21 @@ class CreateNotebookImageRequest(AbstractModel):
     def NotebookId(self, NotebookId):
         self._NotebookId = NotebookId
 
+    @property
+    def Kernels(self):
+        return self._Kernels
+
+    @Kernels.setter
+    def Kernels(self, Kernels):
+        self._Kernels = Kernels
+
 
     def _deserialize(self, params):
-        self._Kernels = params.get("Kernels")
         if params.get("ImageInfo") is not None:
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
         self._NotebookId = params.get("NotebookId")
+        self._Kernels = params.get("Kernels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11118,11 +11118,19 @@ class ImageInfo(AbstractModel):
         :param _RegistryId: TCR镜像对应的实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryId: str
+        :param _AllowSaveAllContent: 是否允许导出全部内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowSaveAllContent: bool
+        :param _ImageName: 镜像名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageName: str
         """
         self._ImageType = None
         self._ImageUrl = None
         self._RegistryRegion = None
         self._RegistryId = None
+        self._AllowSaveAllContent = None
+        self._ImageName = None
 
     @property
     def ImageType(self):
@@ -11156,12 +11164,30 @@ class ImageInfo(AbstractModel):
     def RegistryId(self, RegistryId):
         self._RegistryId = RegistryId
 
+    @property
+    def AllowSaveAllContent(self):
+        return self._AllowSaveAllContent
+
+    @AllowSaveAllContent.setter
+    def AllowSaveAllContent(self, AllowSaveAllContent):
+        self._AllowSaveAllContent = AllowSaveAllContent
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
 
     def _deserialize(self, params):
         self._ImageType = params.get("ImageType")
         self._ImageUrl = params.get("ImageUrl")
         self._RegistryRegion = params.get("RegistryRegion")
         self._RegistryId = params.get("RegistryId")
+        self._AllowSaveAllContent = params.get("AllowSaveAllContent")
+        self._ImageName = params.get("ImageName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

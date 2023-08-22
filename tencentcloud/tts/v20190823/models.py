@@ -45,6 +45,8 @@ class CreateTtsTaskRequest(AbstractModel):
         :type Codec: str
         :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
         :type CallbackUrl: str
+        :param _EnableSubtitle: 是否开启时间戳功能，默认为false。
+        :type EnableSubtitle: bool
         :param _VoiceoverDialogueSplit: 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
         :type VoiceoverDialogueSplit: bool
         """
@@ -58,6 +60,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self._SampleRate = None
         self._Codec = None
         self._CallbackUrl = None
+        self._EnableSubtitle = None
         self._VoiceoverDialogueSplit = None
 
     @property
@@ -141,6 +144,14 @@ class CreateTtsTaskRequest(AbstractModel):
         self._CallbackUrl = CallbackUrl
 
     @property
+    def EnableSubtitle(self):
+        return self._EnableSubtitle
+
+    @EnableSubtitle.setter
+    def EnableSubtitle(self, EnableSubtitle):
+        self._EnableSubtitle = EnableSubtitle
+
+    @property
     def VoiceoverDialogueSplit(self):
         return self._VoiceoverDialogueSplit
 
@@ -160,6 +171,7 @@ class CreateTtsTaskRequest(AbstractModel):
         self._SampleRate = params.get("SampleRate")
         self._Codec = params.get("Codec")
         self._CallbackUrl = params.get("CallbackUrl")
+        self._EnableSubtitle = params.get("EnableSubtitle")
         self._VoiceoverDialogueSplit = params.get("VoiceoverDialogueSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -291,6 +303,8 @@ class DescribeTtsTaskStatusRespData(AbstractModel):
         :type StatusStr: str
         :param _ResultUrl: 合成音频COS地址（链接有效期1天）。
         :type ResultUrl: str
+        :param _Subtitles: 时间戳信息，若未开启时间戳，则返回空数组。
+        :type Subtitles: list of Subtitle
         :param _ErrorMsg: 失败原因说明。
         :type ErrorMsg: str
         """
@@ -298,6 +312,7 @@ class DescribeTtsTaskStatusRespData(AbstractModel):
         self._Status = None
         self._StatusStr = None
         self._ResultUrl = None
+        self._Subtitles = None
         self._ErrorMsg = None
 
     @property
@@ -333,6 +348,14 @@ class DescribeTtsTaskStatusRespData(AbstractModel):
         self._ResultUrl = ResultUrl
 
     @property
+    def Subtitles(self):
+        return self._Subtitles
+
+    @Subtitles.setter
+    def Subtitles(self, Subtitles):
+        self._Subtitles = Subtitles
+
+    @property
     def ErrorMsg(self):
         return self._ErrorMsg
 
@@ -346,6 +369,12 @@ class DescribeTtsTaskStatusRespData(AbstractModel):
         self._Status = params.get("Status")
         self._StatusStr = params.get("StatusStr")
         self._ResultUrl = params.get("ResultUrl")
+        if params.get("Subtitles") is not None:
+            self._Subtitles = []
+            for item in params.get("Subtitles"):
+                obj = Subtitle()
+                obj._deserialize(item)
+                self._Subtitles.append(obj)
         self._ErrorMsg = params.get("ErrorMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

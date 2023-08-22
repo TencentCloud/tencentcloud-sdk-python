@@ -17908,7 +17908,7 @@ class TaskResultInfo(AbstractModel):
         :type SQL: str
         :param _SQLType: 执行任务的类型，现在分为DDL、DML、DQL
         :type SQLType: str
-        :param _State: 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功 -1：任务执行失败 -3：用户手动终止。只有任务执行成功的情况下，才会返回任务执行的结果
+        :param _State: 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功  3：数据写入中 4：排队中 -1：任务执行失败 -3：用户手动终止 。只有任务执行成功的情况下，才会返回任务执行的结果
         :type State: int
         :param _DataAmount: 扫描的数据量，单位byte
         :type DataAmount: int
