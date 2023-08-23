@@ -6953,6 +6953,8 @@ video 纯视频
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
         :type RoomType: int
+        :param _RecordLayout: 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        :type RecordLayout: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -6973,6 +6975,7 @@ video 纯视频
         self._VideoOrientation = None
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
+        self._RecordLayout = None
 
     @property
     def RoomId(self):
@@ -7126,6 +7129,14 @@ video 纯视频
     def RoomType(self, RoomType):
         self._RoomType = RoomType
 
+    @property
+    def RecordLayout(self):
+        return self._RecordLayout
+
+    @RecordLayout.setter
+    def RecordLayout(self, RecordLayout):
+        self._RecordLayout = RecordLayout
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -7147,6 +7158,7 @@ video 纯视频
         self._VideoOrientation = params.get("VideoOrientation")
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
+        self._RecordLayout = params.get("RecordLayout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

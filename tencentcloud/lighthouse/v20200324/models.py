@@ -88,6 +88,93 @@ class ApplyDiskBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApplyFirewallTemplateRequest(AbstractModel):
+    """ApplyFirewallTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板ID。
+        :type TemplateId: str
+        :param _ApplyInstances: 应用防火墙模板的实例列表。
+        :type ApplyInstances: list of InstanceIdentifier
+        """
+        self._TemplateId = None
+        self._ApplyInstances = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ApplyInstances(self):
+        return self._ApplyInstances
+
+    @ApplyInstances.setter
+    def ApplyInstances(self, ApplyInstances):
+        self._ApplyInstances = ApplyInstances
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        if params.get("ApplyInstances") is not None:
+            self._ApplyInstances = []
+            for item in params.get("ApplyInstances"):
+                obj = InstanceIdentifier()
+                obj._deserialize(item)
+                self._ApplyInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyFirewallTemplateResponse(AbstractModel):
+    """ApplyFirewallTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ApplyInstanceSnapshotRequest(AbstractModel):
     """ApplyInstanceSnapshot请求参数结构体
 
@@ -1694,6 +1781,180 @@ class CreateFirewallRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFirewallTemplateRequest(AbstractModel):
+    """CreateFirewallTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateName: 模板名称。
+        :type TemplateName: str
+        :param _TemplateRules: 防火墙规则列表。
+        :type TemplateRules: list of FirewallRule
+        """
+        self._TemplateName = None
+        self._TemplateRules = None
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateRules(self):
+        return self._TemplateRules
+
+    @TemplateRules.setter
+    def TemplateRules(self, TemplateRules):
+        self._TemplateRules = TemplateRules
+
+
+    def _deserialize(self, params):
+        self._TemplateName = params.get("TemplateName")
+        if params.get("TemplateRules") is not None:
+            self._TemplateRules = []
+            for item in params.get("TemplateRules"):
+                obj = FirewallRule()
+                obj._deserialize(item)
+                self._TemplateRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFirewallTemplateResponse(AbstractModel):
+    """CreateFirewallTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFirewallTemplateRulesRequest(AbstractModel):
+    """CreateFirewallTemplateRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TemplateRules: 防火墙模板规则列表。
+        :type TemplateRules: list of FirewallRule
+        """
+        self._TemplateId = None
+        self._TemplateRules = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateRules(self):
+        return self._TemplateRules
+
+    @TemplateRules.setter
+    def TemplateRules(self, TemplateRules):
+        self._TemplateRules = TemplateRules
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        if params.get("TemplateRules") is not None:
+            self._TemplateRules = []
+            for item in params.get("TemplateRules"):
+                obj = FirewallRule()
+                obj._deserialize(item)
+                self._TemplateRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFirewallTemplateRulesResponse(AbstractModel):
+    """CreateFirewallTemplateRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateRuleIdSet: 规则ID列表。
+        :type TemplateRuleIdSet: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateRuleIdSet = None
+        self._RequestId = None
+
+    @property
+    def TemplateRuleIdSet(self):
+        return self._TemplateRuleIdSet
+
+    @TemplateRuleIdSet.setter
+    def TemplateRuleIdSet(self, TemplateRuleIdSet):
+        self._TemplateRuleIdSet = TemplateRuleIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateRuleIdSet = params.get("TemplateRuleIdSet")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInstanceSnapshotRequest(AbstractModel):
     """CreateInstanceSnapshot请求参数结构体
 
@@ -1809,6 +2070,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type Containers: list of DockerContainerConfiguration
         :param _AutoVoucher: 是否自动使用代金券。默认不使用。
         :type AutoVoucher: bool
+        :param _FirewallTemplateId: 防火墙模版ID。若不指定该参数，则使用默认防火墙策略。
+        :type FirewallTemplateId: str
         """
         self._BundleId = None
         self._BlueprintId = None
@@ -1821,6 +2084,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._LoginConfiguration = None
         self._Containers = None
         self._AutoVoucher = None
+        self._FirewallTemplateId = None
 
     @property
     def BundleId(self):
@@ -1910,6 +2174,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def AutoVoucher(self, AutoVoucher):
         self._AutoVoucher = AutoVoucher
 
+    @property
+    def FirewallTemplateId(self):
+        return self._FirewallTemplateId
+
+    @FirewallTemplateId.setter
+    def FirewallTemplateId(self, FirewallTemplateId):
+        self._FirewallTemplateId = FirewallTemplateId
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -1932,6 +2204,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj._deserialize(item)
                 self._Containers.append(obj)
         self._AutoVoucher = params.get("AutoVoucher")
+        self._FirewallTemplateId = params.get("FirewallTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2327,6 +2600,134 @@ class DeleteFirewallRulesRequest(AbstractModel):
 
 class DeleteFirewallRulesResponse(AbstractModel):
     """DeleteFirewallRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFirewallTemplateRequest(AbstractModel):
+    """DeleteFirewallTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFirewallTemplateResponse(AbstractModel):
+    """DeleteFirewallTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFirewallTemplateRulesRequest(AbstractModel):
+    """DeleteFirewallTemplateRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TemplateRuleIds: 防火墙模板规则ID列表。
+        :type TemplateRuleIds: list of str
+        """
+        self._TemplateId = None
+        self._TemplateRuleIds = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateRuleIds(self):
+        return self._TemplateRuleIds
+
+    @TemplateRuleIds.setter
+    def TemplateRuleIds(self, TemplateRuleIds):
+        self._TemplateRuleIds = TemplateRuleIds
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateRuleIds = params.get("TemplateRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFirewallTemplateRulesResponse(AbstractModel):
+    """DeleteFirewallTemplateRules返回参数结构体
 
     """
 
@@ -4580,6 +4981,491 @@ class DescribeFirewallRulesTemplateResponse(AbstractModel):
                 obj = FirewallRuleInfo()
                 obj._deserialize(item)
                 self._FirewallRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirewallTemplateApplyRecordsRequest(AbstractModel):
+    """DescribeFirewallTemplateApplyRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TaskIds: 应用任务ID列表。
+        :type TaskIds: list of str
+        """
+        self._TemplateId = None
+        self._TaskIds = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirewallTemplateApplyRecordsResponse(AbstractModel):
+    """DescribeFirewallTemplateApplyRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyRecordSet: 防火墙模板应用记录列表。
+        :type ApplyRecordSet: list of FirewallTemplateApplyRecord
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplyRecordSet = None
+        self._RequestId = None
+
+    @property
+    def ApplyRecordSet(self):
+        return self._ApplyRecordSet
+
+    @ApplyRecordSet.setter
+    def ApplyRecordSet(self, ApplyRecordSet):
+        self._ApplyRecordSet = ApplyRecordSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyRecordSet") is not None:
+            self._ApplyRecordSet = []
+            for item in params.get("ApplyRecordSet"):
+                obj = FirewallTemplateApplyRecord()
+                obj._deserialize(item)
+                self._ApplyRecordSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirewallTemplateQuotaRequest(AbstractModel):
+    """DescribeFirewallTemplateQuota请求参数结构体
+
+    """
+
+
+class DescribeFirewallTemplateQuotaResponse(AbstractModel):
+    """DescribeFirewallTemplateQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Available: 当前可用配额。
+        :type Available: int
+        :param _Total: 总配额。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Available = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Available = params.get("Available")
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirewallTemplateRuleQuotaRequest(AbstractModel):
+    """DescribeFirewallTemplateRuleQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirewallTemplateRuleQuotaResponse(AbstractModel):
+    """DescribeFirewallTemplateRuleQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Available: 当前可用配额。
+        :type Available: int
+        :param _Total: 总配额。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Available = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Available = params.get("Available")
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirewallTemplateRulesRequest(AbstractModel):
+    """DescribeFirewallTemplateRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TemplateRuleIds: 防火墙模板规则ID列表。
+        :type TemplateRuleIds: list of str
+        :param _Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self._TemplateId = None
+        self._TemplateRuleIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateRuleIds(self):
+        return self._TemplateRuleIds
+
+    @TemplateRuleIds.setter
+    def TemplateRuleIds(self, TemplateRuleIds):
+        self._TemplateRuleIds = TemplateRuleIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateRuleIds = params.get("TemplateRuleIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirewallTemplateRulesResponse(AbstractModel):
+    """DescribeFirewallTemplateRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 防火墙模板规则总数量。
+        :type TotalCount: int
+        :param _TemplateRuleSet: 防火墙模板规则信息列表。
+        :type TemplateRuleSet: list of FirewallTemplateRuleInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TemplateRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TemplateRuleSet(self):
+        return self._TemplateRuleSet
+
+    @TemplateRuleSet.setter
+    def TemplateRuleSet(self, TemplateRuleSet):
+        self._TemplateRuleSet = TemplateRuleSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TemplateRuleSet") is not None:
+            self._TemplateRuleSet = []
+            for item in params.get("TemplateRuleSet"):
+                obj = FirewallTemplateRuleInfo()
+                obj._deserialize(item)
+                self._TemplateRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFirewallTemplatesRequest(AbstractModel):
+    """DescribeFirewallTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateIds: 防火墙模板ID列表。
+        :type TemplateIds: list of str
+        :param _Filters: 过滤器列表。
+<li>template-id</li>按照【防火墙模版所属的ID】进行过滤。
+类型：String
+必选：否
+<li>template-name</li>按照【防火墙模版所属的名称】进行过滤。
+类型：String
+必选：否
+<li>template-type</li>按照【防火墙模版的类型】进行过滤。
+类型：String
+必选：否
+每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为 20，最大值为 100。
+        :type Limit: int
+        """
+        self._TemplateIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TemplateIds(self):
+        return self._TemplateIds
+
+    @TemplateIds.setter
+    def TemplateIds(self, TemplateIds):
+        self._TemplateIds = TemplateIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TemplateIds = params.get("TemplateIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFirewallTemplatesResponse(AbstractModel):
+    """DescribeFirewallTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 模板总数量。
+        :type TotalCount: int
+        :param _TemplateSet: 防火墙模板列表。
+        :type TemplateSet: list of FirewallTemplate
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TemplateSet(self):
+        return self._TemplateSet
+
+    @TemplateSet.setter
+    def TemplateSet(self, TemplateSet):
+        self._TemplateSet = TemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TemplateSet") is not None:
+            self._TemplateSet = []
+            for item in params.get("TemplateSet"):
+                obj = FirewallTemplate()
+                obj._deserialize(item)
+                self._TemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8192,6 +9078,367 @@ class FirewallRuleInfo(AbstractModel):
         
 
 
+class FirewallTemplate(AbstractModel):
+    """防火墙模板信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板Id。
+        :type TemplateId: str
+        :param _TemplateName: 模板名称。
+        :type TemplateName: str
+        :param _TemplateType: 模板类型。
+        :type TemplateType: str
+        :param _TemplateState: 模板状态。
+        :type TemplateState: str
+        :param _CreatedTime: 模板创建时间。
+        :type CreatedTime: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._TemplateType = None
+        self._TemplateState = None
+        self._CreatedTime = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def TemplateState(self):
+        return self._TemplateState
+
+    @TemplateState.setter
+    def TemplateState(self, TemplateState):
+        self._TemplateState = TemplateState
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._TemplateType = params.get("TemplateType")
+        self._TemplateState = params.get("TemplateState")
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FirewallTemplateApplyRecord(AbstractModel):
+    """防火墙模板应用记录。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: str
+        :param _ApplyTime: 应用模板的时间。
+        :type ApplyTime: str
+        :param _TemplateRuleSet: 模板规则列表。
+        :type TemplateRuleSet: list of FirewallTemplateRule
+        :param _ApplyState: 应用模板的执行状态。
+        :type ApplyState: str
+        :param _SuccessCount: 应用成功的实例数量。
+        :type SuccessCount: int
+        :param _FailedCount: 应用失败的实例数量。
+        :type FailedCount: int
+        :param _RunningCount: 正在应用中的实例数量。
+        :type RunningCount: int
+        :param _ApplyDetailSet: 应用模板的执行细节。
+        :type ApplyDetailSet: list of FirewallTemplateApplyRecordDetail
+        """
+        self._TaskId = None
+        self._ApplyTime = None
+        self._TemplateRuleSet = None
+        self._ApplyState = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._RunningCount = None
+        self._ApplyDetailSet = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ApplyTime(self):
+        return self._ApplyTime
+
+    @ApplyTime.setter
+    def ApplyTime(self, ApplyTime):
+        self._ApplyTime = ApplyTime
+
+    @property
+    def TemplateRuleSet(self):
+        return self._TemplateRuleSet
+
+    @TemplateRuleSet.setter
+    def TemplateRuleSet(self, TemplateRuleSet):
+        self._TemplateRuleSet = TemplateRuleSet
+
+    @property
+    def ApplyState(self):
+        return self._ApplyState
+
+    @ApplyState.setter
+    def ApplyState(self, ApplyState):
+        self._ApplyState = ApplyState
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def RunningCount(self):
+        return self._RunningCount
+
+    @RunningCount.setter
+    def RunningCount(self, RunningCount):
+        self._RunningCount = RunningCount
+
+    @property
+    def ApplyDetailSet(self):
+        return self._ApplyDetailSet
+
+    @ApplyDetailSet.setter
+    def ApplyDetailSet(self, ApplyDetailSet):
+        self._ApplyDetailSet = ApplyDetailSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ApplyTime = params.get("ApplyTime")
+        if params.get("TemplateRuleSet") is not None:
+            self._TemplateRuleSet = []
+            for item in params.get("TemplateRuleSet"):
+                obj = FirewallTemplateRule()
+                obj._deserialize(item)
+                self._TemplateRuleSet.append(obj)
+        self._ApplyState = params.get("ApplyState")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        self._RunningCount = params.get("RunningCount")
+        if params.get("ApplyDetailSet") is not None:
+            self._ApplyDetailSet = []
+            for item in params.get("ApplyDetailSet"):
+                obj = FirewallTemplateApplyRecordDetail()
+                obj._deserialize(item)
+                self._ApplyDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FirewallTemplateApplyRecordDetail(AbstractModel):
+    """防火墙模板应用记录详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Instance: 实例标识信息。
+        :type Instance: :class:`tencentcloud.lighthouse.v20200324.models.InstanceIdentifier`
+        :param _ApplyState: 防火墙模板应用状态。
+        :type ApplyState: str
+        :param _ErrorMessage: 防火墙模板应用错误信息。
+        :type ErrorMessage: str
+        """
+        self._Instance = None
+        self._ApplyState = None
+        self._ErrorMessage = None
+
+    @property
+    def Instance(self):
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def ApplyState(self):
+        return self._ApplyState
+
+    @ApplyState.setter
+    def ApplyState(self, ApplyState):
+        self._ApplyState = ApplyState
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        if params.get("Instance") is not None:
+            self._Instance = InstanceIdentifier()
+            self._Instance._deserialize(params.get("Instance"))
+        self._ApplyState = params.get("ApplyState")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FirewallTemplateRule(AbstractModel):
+    """防火墙模板规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateRuleId: 防火墙模板规则ID。
+        :type TemplateRuleId: str
+        :param _FirewallRule: 防火墙规则。
+        :type FirewallRule: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
+        self._TemplateRuleId = None
+        self._FirewallRule = None
+
+    @property
+    def TemplateRuleId(self):
+        return self._TemplateRuleId
+
+    @TemplateRuleId.setter
+    def TemplateRuleId(self, TemplateRuleId):
+        self._TemplateRuleId = TemplateRuleId
+
+    @property
+    def FirewallRule(self):
+        return self._FirewallRule
+
+    @FirewallRule.setter
+    def FirewallRule(self, FirewallRule):
+        self._FirewallRule = FirewallRule
+
+
+    def _deserialize(self, params):
+        self._TemplateRuleId = params.get("TemplateRuleId")
+        if params.get("FirewallRule") is not None:
+            self._FirewallRule = FirewallRule()
+            self._FirewallRule._deserialize(params.get("FirewallRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FirewallTemplateRuleInfo(AbstractModel):
+    """防火墙模板规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateRuleId: 防火墙模板规则ID。
+        :type TemplateRuleId: str
+        :param _FirewallRuleInfo: 防火墙规则信息。
+        :type FirewallRuleInfo: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRuleInfo`
+        """
+        self._TemplateRuleId = None
+        self._FirewallRuleInfo = None
+
+    @property
+    def TemplateRuleId(self):
+        return self._TemplateRuleId
+
+    @TemplateRuleId.setter
+    def TemplateRuleId(self, TemplateRuleId):
+        self._TemplateRuleId = TemplateRuleId
+
+    @property
+    def FirewallRuleInfo(self):
+        return self._FirewallRuleInfo
+
+    @FirewallRuleInfo.setter
+    def FirewallRuleInfo(self, FirewallRuleInfo):
+        self._FirewallRuleInfo = FirewallRuleInfo
+
+
+    def _deserialize(self, params):
+        self._TemplateRuleId = params.get("TemplateRuleId")
+        if params.get("FirewallRuleInfo") is not None:
+            self._FirewallRuleInfo = FirewallRuleInfo()
+            self._FirewallRuleInfo._deserialize(params.get("FirewallRuleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GeneralResourceQuota(AbstractModel):
     """描述通用资源配额信息。
 
@@ -9342,6 +10589,51 @@ class InstanceDeniedActions(AbstractModel):
                 obj = DeniedAction()
                 obj._deserialize(item)
                 self._DeniedActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceIdentifier(AbstractModel):
+    """实例标识信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Region: 实例地域。
+        :type Region: str
+        """
+        self._InstanceId = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10702,6 +11994,76 @@ class ModifyFirewallRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyFirewallTemplateRequest(AbstractModel):
+    """ModifyFirewallTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TemplateName: 模板名称。
+        :type TemplateName: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFirewallTemplateResponse(AbstractModel):
+    """ModifyFirewallTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstancesAttributeRequest(AbstractModel):
     """ModifyInstancesAttribute请求参数结构体
 
@@ -11748,6 +13110,90 @@ class RenewInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplaceFirewallTemplateRuleRequest(AbstractModel):
+    """ReplaceFirewallTemplateRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 防火墙模板ID。
+        :type TemplateId: str
+        :param _TemplateRuleId: 防火墙模板规则ID。
+        :type TemplateRuleId: str
+        :param _TemplateRule: 替换后的防火墙模板规则。
+        :type TemplateRule: :class:`tencentcloud.lighthouse.v20200324.models.FirewallRule`
+        """
+        self._TemplateId = None
+        self._TemplateRuleId = None
+        self._TemplateRule = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateRuleId(self):
+        return self._TemplateRuleId
+
+    @TemplateRuleId.setter
+    def TemplateRuleId(self, TemplateRuleId):
+        self._TemplateRuleId = TemplateRuleId
+
+    @property
+    def TemplateRule(self):
+        return self._TemplateRule
+
+    @TemplateRule.setter
+    def TemplateRule(self, TemplateRule):
+        self._TemplateRule = TemplateRule
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateRuleId = params.get("TemplateRuleId")
+        if params.get("TemplateRule") is not None:
+            self._TemplateRule = FirewallRule()
+            self._TemplateRule._deserialize(params.get("TemplateRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplaceFirewallTemplateRuleResponse(AbstractModel):
+    """ReplaceFirewallTemplateRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RerunDockerContainerRequest(AbstractModel):
     """RerunDockerContainer请求参数结构体
 
@@ -11899,6 +13345,93 @@ class ResetAttachCcnResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetFirewallTemplateRulesRequest(AbstractModel):
+    """ResetFirewallTemplateRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板ID。
+        :type TemplateId: str
+        :param _TemplateRules: 重置后的防火墙模板规则列表。
+        :type TemplateRules: list of FirewallRule
+        """
+        self._TemplateId = None
+        self._TemplateRules = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateRules(self):
+        return self._TemplateRules
+
+    @TemplateRules.setter
+    def TemplateRules(self, TemplateRules):
+        self._TemplateRules = TemplateRules
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        if params.get("TemplateRules") is not None:
+            self._TemplateRules = []
+            for item in params.get("TemplateRules"):
+                obj = FirewallRule()
+                obj._deserialize(item)
+                self._TemplateRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetFirewallTemplateRulesResponse(AbstractModel):
+    """ResetFirewallTemplateRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateRuleIdSet: 重置后的规则ID列表。
+        :type TemplateRuleIdSet: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateRuleIdSet = None
+        self._RequestId = None
+
+    @property
+    def TemplateRuleIdSet(self):
+        return self._TemplateRuleIdSet
+
+    @TemplateRuleIdSet.setter
+    def TemplateRuleIdSet(self, TemplateRuleIdSet):
+        self._TemplateRuleIdSet = TemplateRuleIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateRuleIdSet = params.get("TemplateRuleIdSet")
         self._RequestId = params.get("RequestId")
 
 

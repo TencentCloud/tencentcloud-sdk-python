@@ -3019,6 +3019,8 @@ POSTPAID_BY_HOUR：按小时后付费
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param _ImageType: 镜像类型
         :type ImageType: str
+        :param _SSHConfig: SSH配置信息
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
         """
         self._Name = None
         self._ChargeType = None
@@ -3042,6 +3044,7 @@ POSTPAID_BY_HOUR：按小时后付费
         self._DataConfigs = None
         self._ImageInfo = None
         self._ImageType = None
+        self._SSHConfig = None
 
     @property
     def Name(self):
@@ -3219,6 +3222,14 @@ POSTPAID_BY_HOUR：按小时后付费
     def ImageType(self, ImageType):
         self._ImageType = ImageType
 
+    @property
+    def SSHConfig(self):
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3261,6 +3272,9 @@ POSTPAID_BY_HOUR：按小时后付费
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
         self._ImageType = params.get("ImageType")
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3821,14 +3835,6 @@ POSTPAID_BY_HOUR 按量计费
         :type ChargeType: str
         :param _ResourceConfigInfos: 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
         :type ResourceConfigInfos: list of ResourceConfigInfo
-        :param _CodePackagePath: COS代码包路径
-        :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-        :type TrainingMode: str
-        :param _Output: COS训练输出路径
-        :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _LogEnable: 是否上报日志
-        :type LogEnable: bool
         :param _FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
         :type FrameworkName: str
         :param _FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
@@ -3841,18 +3847,26 @@ POSTPAID_BY_HOUR 按量计费
         :type Tags: list of Tag
         :param _ImageInfo: 自定义镜像信息
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _CodePackagePath: COS代码包路径
+        :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _StartCmdInfo: 启动命令信息，默认为sh start.sh
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
+        :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :type TrainingMode: str
         :param _DataConfigs: 数据配置，依赖DataSource字段
         :type DataConfigs: list of DataConfig
         :param _VpcId: VPC Id
         :type VpcId: str
         :param _SubnetId: 子网Id
         :type SubnetId: str
+        :param _Output: COS训练输出路径
+        :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _LogConfig: CLS日志配置
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         :param _TuningParameters: 调优参数
         :type TuningParameters: str
+        :param _LogEnable: 是否上报日志
+        :type LogEnable: bool
         :param _Remark: 备注，最多500个字
         :type Remark: str
         :param _DataSource: 数据来源，eg：DATASET、COS、CFS、HDFS
@@ -3863,22 +3877,22 @@ POSTPAID_BY_HOUR 按量计费
         self._Name = None
         self._ChargeType = None
         self._ResourceConfigInfos = None
-        self._CodePackagePath = None
-        self._TrainingMode = None
-        self._Output = None
-        self._LogEnable = None
         self._FrameworkName = None
         self._FrameworkVersion = None
         self._FrameworkEnvironment = None
         self._ResourceGroupId = None
         self._Tags = None
         self._ImageInfo = None
+        self._CodePackagePath = None
         self._StartCmdInfo = None
+        self._TrainingMode = None
         self._DataConfigs = None
         self._VpcId = None
         self._SubnetId = None
+        self._Output = None
         self._LogConfig = None
         self._TuningParameters = None
+        self._LogEnable = None
         self._Remark = None
         self._DataSource = None
         self._CallbackUrl = None
@@ -3906,38 +3920,6 @@ POSTPAID_BY_HOUR 按量计费
     @ResourceConfigInfos.setter
     def ResourceConfigInfos(self, ResourceConfigInfos):
         self._ResourceConfigInfos = ResourceConfigInfos
-
-    @property
-    def CodePackagePath(self):
-        return self._CodePackagePath
-
-    @CodePackagePath.setter
-    def CodePackagePath(self, CodePackagePath):
-        self._CodePackagePath = CodePackagePath
-
-    @property
-    def TrainingMode(self):
-        return self._TrainingMode
-
-    @TrainingMode.setter
-    def TrainingMode(self, TrainingMode):
-        self._TrainingMode = TrainingMode
-
-    @property
-    def Output(self):
-        return self._Output
-
-    @Output.setter
-    def Output(self, Output):
-        self._Output = Output
-
-    @property
-    def LogEnable(self):
-        return self._LogEnable
-
-    @LogEnable.setter
-    def LogEnable(self, LogEnable):
-        self._LogEnable = LogEnable
 
     @property
     def FrameworkName(self):
@@ -3988,12 +3970,28 @@ POSTPAID_BY_HOUR 按量计费
         self._ImageInfo = ImageInfo
 
     @property
+    def CodePackagePath(self):
+        return self._CodePackagePath
+
+    @CodePackagePath.setter
+    def CodePackagePath(self, CodePackagePath):
+        self._CodePackagePath = CodePackagePath
+
+    @property
     def StartCmdInfo(self):
         return self._StartCmdInfo
 
     @StartCmdInfo.setter
     def StartCmdInfo(self, StartCmdInfo):
         self._StartCmdInfo = StartCmdInfo
+
+    @property
+    def TrainingMode(self):
+        return self._TrainingMode
+
+    @TrainingMode.setter
+    def TrainingMode(self, TrainingMode):
+        self._TrainingMode = TrainingMode
 
     @property
     def DataConfigs(self):
@@ -4020,6 +4018,14 @@ POSTPAID_BY_HOUR 按量计费
         self._SubnetId = SubnetId
 
     @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
     def LogConfig(self):
         return self._LogConfig
 
@@ -4034,6 +4040,14 @@ POSTPAID_BY_HOUR 按量计费
     @TuningParameters.setter
     def TuningParameters(self, TuningParameters):
         self._TuningParameters = TuningParameters
+
+    @property
+    def LogEnable(self):
+        return self._LogEnable
+
+    @LogEnable.setter
+    def LogEnable(self, LogEnable):
+        self._LogEnable = LogEnable
 
     @property
     def Remark(self):
@@ -4069,14 +4083,6 @@ POSTPAID_BY_HOUR 按量计费
                 obj = ResourceConfigInfo()
                 obj._deserialize(item)
                 self._ResourceConfigInfos.append(obj)
-        if params.get("CodePackagePath") is not None:
-            self._CodePackagePath = CosPathInfo()
-            self._CodePackagePath._deserialize(params.get("CodePackagePath"))
-        self._TrainingMode = params.get("TrainingMode")
-        if params.get("Output") is not None:
-            self._Output = CosPathInfo()
-            self._Output._deserialize(params.get("Output"))
-        self._LogEnable = params.get("LogEnable")
         self._FrameworkName = params.get("FrameworkName")
         self._FrameworkVersion = params.get("FrameworkVersion")
         self._FrameworkEnvironment = params.get("FrameworkEnvironment")
@@ -4090,9 +4096,13 @@ POSTPAID_BY_HOUR 按量计费
         if params.get("ImageInfo") is not None:
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("CodePackagePath") is not None:
+            self._CodePackagePath = CosPathInfo()
+            self._CodePackagePath._deserialize(params.get("CodePackagePath"))
         if params.get("StartCmdInfo") is not None:
             self._StartCmdInfo = StartCmdInfo()
             self._StartCmdInfo._deserialize(params.get("StartCmdInfo"))
+        self._TrainingMode = params.get("TrainingMode")
         if params.get("DataConfigs") is not None:
             self._DataConfigs = []
             for item in params.get("DataConfigs"):
@@ -4101,10 +4111,14 @@ POSTPAID_BY_HOUR 按量计费
                 self._DataConfigs.append(obj)
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        if params.get("Output") is not None:
+            self._Output = CosPathInfo()
+            self._Output._deserialize(params.get("Output"))
         if params.get("LogConfig") is not None:
             self._LogConfig = LogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
         self._TuningParameters = params.get("TuningParameters")
+        self._LogEnable = params.get("LogEnable")
         self._Remark = params.get("Remark")
         self._DataSource = params.get("DataSource")
         self._CallbackUrl = params.get("CallbackUrl")
@@ -13027,6 +13041,8 @@ POSTPAID_BY_HOUR：按小时后付费
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param _ImageType: 镜像类型
         :type ImageType: str
+        :param _SSHConfig: SSH配置
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
         """
         self._Id = None
         self._Name = None
@@ -13051,6 +13067,7 @@ POSTPAID_BY_HOUR：按小时后付费
         self._DataConfigs = None
         self._ImageInfo = None
         self._ImageType = None
+        self._SSHConfig = None
 
     @property
     def Id(self):
@@ -13236,6 +13253,14 @@ POSTPAID_BY_HOUR：按小时后付费
     def ImageType(self, ImageType):
         self._ImageType = ImageType
 
+    @property
+    def SSHConfig(self):
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13279,6 +13304,9 @@ POSTPAID_BY_HOUR：按小时后付费
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
         self._ImageType = params.get("ImageType")
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14181,6 +14209,9 @@ class NotebookSetItem(AbstractModel):
         :param _UserTypes: notebook用户类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserTypes: list of str
+        :param _SSHConfig: SSH配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
         """
         self._Id = None
         self._Name = None
@@ -14207,6 +14238,7 @@ class NotebookSetItem(AbstractModel):
         self._VolumeSourceCFS = None
         self._Message = None
         self._UserTypes = None
+        self._SSHConfig = None
 
     @property
     def Id(self):
@@ -14408,6 +14440,14 @@ class NotebookSetItem(AbstractModel):
     def UserTypes(self, UserTypes):
         self._UserTypes = UserTypes
 
+    @property
+    def SSHConfig(self):
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -14444,6 +14484,9 @@ class NotebookSetItem(AbstractModel):
             self._VolumeSourceCFS._deserialize(params.get("VolumeSourceCFS"))
         self._Message = params.get("Message")
         self._UserTypes = params.get("UserTypes")
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14766,9 +14809,13 @@ class PodInfo(AbstractModel):
         :param _IP: pod的IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
+        :param _Status: pod状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._Name = None
         self._IP = None
+        self._Status = None
 
     @property
     def Name(self):
@@ -14786,10 +14833,19 @@ class PodInfo(AbstractModel):
     def IP(self, IP):
         self._IP = IP
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._IP = params.get("IP")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15831,6 +15887,79 @@ class RowValue(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSHConfig(AbstractModel):
+    """notebook ssh端口配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启ssh
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _PublicKey: 公钥信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKey: str
+        :param _Port: 端口号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _LoginCommand: 登录命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoginCommand: str
+        """
+        self._Enable = None
+        self._PublicKey = None
+        self._Port = None
+        self._LoginCommand = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def PublicKey(self):
+        return self._PublicKey
+
+    @PublicKey.setter
+    def PublicKey(self, PublicKey):
+        self._PublicKey = PublicKey
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def LoginCommand(self):
+        return self._LoginCommand
+
+    @LoginCommand.setter
+    def LoginCommand(self, LoginCommand):
+        self._LoginCommand = LoginCommand
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._PublicKey = params.get("PublicKey")
+        self._Port = params.get("Port")
+        self._LoginCommand = params.get("LoginCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

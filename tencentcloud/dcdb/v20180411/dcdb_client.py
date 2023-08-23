@@ -972,31 +972,6 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSqlLogs(self, request):
-        """已废弃接口
-
-        本接口（DescribeSqlLogs）用于获取实例SQL日志。
-
-        :param request: Request instance for DescribeSqlLogs.
-        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeSqlLogsRequest`
-        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeSqlLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSqlLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSqlLogsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeUserTasks(self, request):
         """本接口（DescribeUserTasks）用于拉取用户任务列表
 

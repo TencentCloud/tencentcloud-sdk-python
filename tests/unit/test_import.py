@@ -464,6 +464,11 @@ def test_import_ds():
     from tencentcloud.ds.v20180523 import models
 
 
+def test_import_dsgc():
+    from tencentcloud.dsgc.v20190723 import dsgc_client
+    from tencentcloud.dsgc.v20190723 import models
+
+
 def test_import_dtf():
     from tencentcloud.dtf.v20200506 import dtf_client
     from tencentcloud.dtf.v20200506 import models

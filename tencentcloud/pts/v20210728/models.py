@@ -10871,6 +10871,8 @@ class UpdateScenarioRequest(AbstractModel):
         :type NotificationHooks: list of Notification
         :param _Owner: 创建人名
         :type Owner: str
+        :param _EnvId: 环境ID
+        :type EnvId: str
         """
         self._ScenarioId = None
         self._Name = None
@@ -10893,6 +10895,7 @@ class UpdateScenarioRequest(AbstractModel):
         self._DomainNameConfig = None
         self._NotificationHooks = None
         self._Owner = None
+        self._EnvId = None
 
     @property
     def ScenarioId(self):
@@ -11062,6 +11065,14 @@ class UpdateScenarioRequest(AbstractModel):
     def Owner(self, Owner):
         self._Owner = Owner
 
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
 
     def _deserialize(self, params):
         self._ScenarioId = params.get("ScenarioId")
@@ -11121,6 +11132,7 @@ class UpdateScenarioRequest(AbstractModel):
                 obj._deserialize(item)
                 self._NotificationHooks.append(obj)
         self._Owner = params.get("Owner")
+        self._EnvId = params.get("EnvId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

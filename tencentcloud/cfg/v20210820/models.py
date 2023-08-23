@@ -2684,8 +2684,11 @@ class TaskMonitor(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskMonitorId: 监控指标ID
+        :param _TaskMonitorId: 演练监控指标ID
         :type TaskMonitorId: int
+        :param _MetricId: 监控指标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
         :param _TaskMonitorObjectTypeId: 监控指标对象类型ID
         :type TaskMonitorObjectTypeId: int
         :param _MetricName: 指标名称
@@ -2700,6 +2703,7 @@ class TaskMonitor(AbstractModel):
         :type Unit: str
         """
         self._TaskMonitorId = None
+        self._MetricId = None
         self._TaskMonitorObjectTypeId = None
         self._MetricName = None
         self._InstancesIds = None
@@ -2713,6 +2717,14 @@ class TaskMonitor(AbstractModel):
     @TaskMonitorId.setter
     def TaskMonitorId(self, TaskMonitorId):
         self._TaskMonitorId = TaskMonitorId
+
+    @property
+    def MetricId(self):
+        return self._MetricId
+
+    @MetricId.setter
+    def MetricId(self, MetricId):
+        self._MetricId = MetricId
 
     @property
     def TaskMonitorObjectTypeId(self):
@@ -2757,6 +2769,7 @@ class TaskMonitor(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskMonitorId = params.get("TaskMonitorId")
+        self._MetricId = params.get("MetricId")
         self._TaskMonitorObjectTypeId = params.get("TaskMonitorObjectTypeId")
         self._MetricName = params.get("MetricName")
         self._InstancesIds = params.get("InstancesIds")
@@ -3571,8 +3584,11 @@ class TemplateMonitor(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorId: 监控指标ID
+        :param _MonitorId: pk
         :type MonitorId: int
+        :param _MetricId: 监控指标ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricId: int
         :param _ObjectTypeId: 监控指标对象类型ID
         :type ObjectTypeId: int
         :param _MetricName: 指标名称
@@ -3582,6 +3598,7 @@ class TemplateMonitor(AbstractModel):
         :type MetricChineseName: str
         """
         self._MonitorId = None
+        self._MetricId = None
         self._ObjectTypeId = None
         self._MetricName = None
         self._MetricChineseName = None
@@ -3593,6 +3610,14 @@ class TemplateMonitor(AbstractModel):
     @MonitorId.setter
     def MonitorId(self, MonitorId):
         self._MonitorId = MonitorId
+
+    @property
+    def MetricId(self):
+        return self._MetricId
+
+    @MetricId.setter
+    def MetricId(self, MetricId):
+        self._MetricId = MetricId
 
     @property
     def ObjectTypeId(self):
@@ -3621,6 +3646,7 @@ class TemplateMonitor(AbstractModel):
 
     def _deserialize(self, params):
         self._MonitorId = params.get("MonitorId")
+        self._MetricId = params.get("MetricId")
         self._ObjectTypeId = params.get("ObjectTypeId")
         self._MetricName = params.get("MetricName")
         self._MetricChineseName = params.get("MetricChineseName")

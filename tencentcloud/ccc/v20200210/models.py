@@ -1648,9 +1648,12 @@ class CreateSDKLoginTokenRequest(AbstractModel):
         :type SdkAppId: int
         :param _SeatUserId: 座席账号。
         :type SeatUserId: str
+        :param _OnlyOnce: 生成的token是否一次性校验
+        :type OnlyOnce: bool
         """
         self._SdkAppId = None
         self._SeatUserId = None
+        self._OnlyOnce = None
 
     @property
     def SdkAppId(self):
@@ -1668,10 +1671,19 @@ class CreateSDKLoginTokenRequest(AbstractModel):
     def SeatUserId(self, SeatUserId):
         self._SeatUserId = SeatUserId
 
+    @property
+    def OnlyOnce(self):
+        return self._OnlyOnce
+
+    @OnlyOnce.setter
+    def OnlyOnce(self, OnlyOnce):
+        self._OnlyOnce = OnlyOnce
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._SeatUserId = params.get("SeatUserId")
+        self._OnlyOnce = params.get("OnlyOnce")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

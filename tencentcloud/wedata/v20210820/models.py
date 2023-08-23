@@ -67276,12 +67276,12 @@ class UserFileDTO(AbstractModel):
         :param _Md5Value: 文件MD5值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Md5Value: str
-        :param _CreateTime: 创建时间，秒级别的时间戳
+        :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: int
-        :param _UpdateTime: 更新时间，秒级别的时间戳
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
-        :type UpdateTime: int
+        :type UpdateTime: str
         :param _Size: 文件大小，单位为字节
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
