@@ -170,9 +170,10 @@ class ApproverInfo(AbstractModel):
 注: `若传该字段，则签署方经办人的其他信息（如签署方经办人的姓名、证件号码、手机号码等）将被忽略。`
         :type ApproverMobile: str
         :param _OrganizationName: 组织机构名称。
-如果签署方是企业签署方(approverType = 1 或者 approverType = 3)， 则企业名称必填。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
 
-注: `请确认该名称与企业营业执照中注册的名称一致 ; 如果名称中包含英文括号()，请使用中文括号（）代替。`
         :type OrganizationName: str
         :param _SignComponents: 合同中的签署控件列表，列表中可支持下列多种签署控件,控件的详细定义参考开发者中心的Component结构体
 <ul><li> 个人签名/印章</li>
@@ -6252,17 +6253,25 @@ class CreateSealRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SealName: 电子印章名字
+        :param _SealName: 电子印章名字，1-50个中文字符。
         :type SealName: str
-        :param _Agent: 应用相关信息
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _GenerateSource: 本接口支持上传图片印章及系统直接生成印章；如果要使用系统生成印章，此值传：SealGenerateSourceSystem；如果要使用图片上传请传字段 Image
+        :param _GenerateSource: 本接口支持上传图片印章及系统直接生成印章；
+如果要使用系统生成印章，此值传：SealGenerateSourceSystem；
+如果要使用图片上传请传字段 Image
         :type GenerateSource: str
-        :param _SealType: 电子印章类型，OFFICIAL-公章,CONTRACT-合同专用章
+        :param _SealType: 电子印章类型：
+OFFICIAL-公章；
+CONTRACT-合同专用章;
+FINANCE-合财务专用章;
+PERSONNEL-人事专用章.
         :type SealType: str
-        :param _FileName: 电子印章图片文件名称
+        :param _FileName: 电子印章图片文件名称，1-50个中文字符。
         :type FileName: str
         :param _Image: 电子印章图片base64编码
 参数Image,FileToken或GenerateSource=SealGenerateSourceSystem三选一。
@@ -6277,7 +6286,7 @@ class CreateSealRequest(AbstractModel):
 
 系统目前只支持红色印章创建。
         :type Color: str
-        :param _SealHorizontalText: 暂时不支持横向文字设置
+        :param _SealHorizontalText: 企业印章横向文字，最多可填15个汉字（若超过印章最大宽度，优先压缩字间距，其次缩小字号）
         :type SealHorizontalText: str
         :param _SealChordText: 暂时不支持下弦文字设置
         :type SealChordText: str
@@ -6286,6 +6295,17 @@ class CreateSealRequest(AbstractModel):
         :param _FileToken: 通过文件上传时，服务端生成的电子印章上传图片的token
 
         :type FileToken: str
+        :param _SealStyle: 印章样式:
+
+cycle:圆形印章;
+ellipse:椭圆印章;
+注：默认圆形印章
+        :type SealStyle: str
+        :param _SealSize: 印章尺寸取值描述：
+42_42 圆形企业公章直径42mm；
+40_40 圆形企业印章直径40mm；
+45_30 椭圆形印章45mm x 30mm;
+        :type SealSize: str
         """
         self._Operator = None
         self._SealName = None
@@ -6301,6 +6321,8 @@ class CreateSealRequest(AbstractModel):
         self._SealChordText = None
         self._SealCentralType = None
         self._FileToken = None
+        self._SealStyle = None
+        self._SealSize = None
 
     @property
     def Operator(self):
@@ -6414,6 +6436,22 @@ class CreateSealRequest(AbstractModel):
     def FileToken(self, FileToken):
         self._FileToken = FileToken
 
+    @property
+    def SealStyle(self):
+        return self._SealStyle
+
+    @SealStyle.setter
+    def SealStyle(self, SealStyle):
+        self._SealStyle = SealStyle
+
+    @property
+    def SealSize(self):
+        return self._SealSize
+
+    @SealSize.setter
+    def SealSize(self, SealSize):
+        self._SealSize = SealSize
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6434,6 +6472,8 @@ class CreateSealRequest(AbstractModel):
         self._SealChordText = params.get("SealChordText")
         self._SealCentralType = params.get("SealCentralType")
         self._FileToken = params.get("FileToken")
+        self._SealStyle = params.get("SealStyle")
+        self._SealSize = params.get("SealSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -98,6 +98,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRegisterCode(self, request):
+        """接口用于创建注册码。
+
+        :param request: Request instance for CreateRegisterCode.
+        :type request: :class:`tencentcloud.tat.v20201028.models.CreateRegisterCodeRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.CreateRegisterCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRegisterCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRegisterCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCommand(self, request):
         """此接口用于删除命令。
         如果命令与执行器关联，则无法被删除。
@@ -136,6 +159,52 @@ class TatClient(AbstractClient):
             body = self.call("DeleteInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRegisterCodes(self, request):
+        """此接口用于批量删除注册码。
+
+        :param request: Request instance for DeleteRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRegisterCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRegisterInstance(self, request):
+        """接口用于删除托管实例。
+
+        :param request: Request instance for DeleteRegisterInstance.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterInstanceRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteRegisterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRegisterInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRegisterInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -307,6 +376,52 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRegisterCodes(self, request):
+        """接口用于查询注册码信息。
+
+        :param request: Request instance for DescribeRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegisterCodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRegisterInstances(self, request):
+        """接口用于查询被托管的实例信息。
+
+        :param request: Request instance for DescribeRegisterInstances.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterInstancesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeRegisterInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegisterInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegisterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableInvoker(self, request):
         """此接口用于停止执行器。
 
@@ -321,6 +436,29 @@ class TatClient(AbstractClient):
             body = self.call("DisableInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.DisableInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisableRegisterCodes(self, request):
+        """此接口用于批量禁用注册码。
+
+        :param request: Request instance for DisableRegisterCodes.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DisableRegisterCodesRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DisableRegisterCodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableRegisterCodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableRegisterCodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -419,6 +557,29 @@ class TatClient(AbstractClient):
             body = self.call("ModifyInvoker", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInvokerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRegisterInstance(self, request):
+        """接口用于修改托管实例信息。
+
+        :param request: Request instance for ModifyRegisterInstance.
+        :type request: :class:`tencentcloud.tat.v20201028.models.ModifyRegisterInstanceRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.ModifyRegisterInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRegisterInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRegisterInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

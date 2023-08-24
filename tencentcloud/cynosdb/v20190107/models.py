@@ -2540,9 +2540,9 @@ class CopyClusterPasswordComplexityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterIds: 复制集群ID数组
+        :param _ClusterIds: 复制集群ID数组，例如["cynosdbmysql-bzxxrmtq","cynosdbmysql-qwer"]
         :type ClusterIds: list of str
-        :param _SourceClusterId: 集群id
+        :param _SourceClusterId: 集群id，例如"cynosdbmysql-bzxxrmtq"
         :type SourceClusterId: str
         """
         self._ClusterIds = None
@@ -15260,7 +15260,7 @@ class IsolateInstanceRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _InstanceIdList: 实例ID数组
+        :param _InstanceIdList: 实例ID数组，例如["cynosdbbmysql-ins-asd","cynosdbmysql-ins-zxc"]
         :type InstanceIdList: list of str
         :param _DbType: 该参数已废弃
         :type DbType: str
@@ -17515,9 +17515,9 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID，例如cynosdbmysql-asd123
         :type ClusterId: str
-        :param _ProxyGroupId: 数据库代理组ID
+        :param _ProxyGroupId: 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
         :type ProxyGroupId: str
         :param _ConsistencyType: 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
         :type ConsistencyType: str
@@ -18266,11 +18266,11 @@ class NewAccount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountName: 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-16
+        :param _AccountName: 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
         :type AccountName: str
         :param _AccountPassword: 密码，密码长度范围为8到64个字符
         :type AccountPassword: str
-        :param _Host: 主机
+        :param _Host: 主机(%或ipv4地址)
         :type Host: str
         :param _Description: 描述
         :type Description: str

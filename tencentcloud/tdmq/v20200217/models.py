@@ -2882,10 +2882,10 @@ class CreateEnvironmentRequest(AbstractModel):
         :type EnvironmentId: str
         :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
         :type MsgTTL: int
-        :param _Remark: 说明，128个字符以内。
-        :type Remark: str
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param _Remark: 说明，128个字符以内。
+        :type Remark: str
         :param _RetentionPolicy: 消息保留策略
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: 是否开启自动创建订阅
@@ -2893,8 +2893,8 @@ class CreateEnvironmentRequest(AbstractModel):
         """
         self._EnvironmentId = None
         self._MsgTTL = None
-        self._Remark = None
         self._ClusterId = None
+        self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
 
@@ -2915,20 +2915,20 @@ class CreateEnvironmentRequest(AbstractModel):
         self._MsgTTL = MsgTTL
 
     @property
-    def Remark(self):
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def ClusterId(self):
         return self._ClusterId
 
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def RetentionPolicy(self):
@@ -2950,8 +2950,8 @@ class CreateEnvironmentRequest(AbstractModel):
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._MsgTTL = params.get("MsgTTL")
-        self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
         if params.get("RetentionPolicy") is not None:
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))

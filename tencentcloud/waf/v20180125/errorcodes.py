@@ -128,6 +128,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# IPV6网络正在分配，请耐心等待
+RESOURCEUNAVAILABLE_DOMAINIPV6INCONFIGERR = 'ResourceUnavailable.DomainIpv6InConfigErr'
+
 # 资源售罄。
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 

@@ -1098,6 +1098,64 @@ class AddDomainWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddSpartaProtectionAutoRequest(AbstractModel):
+    """AddSpartaProtectionAuto请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSpartaProtectionAutoResponse(AbstractModel):
+    """AddSpartaProtectionAuto返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddSpartaProtectionRequest(AbstractModel):
     """AddSpartaProtection请求参数结构体
 
@@ -1554,6 +1612,81 @@ class AddSpartaProtectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AddSpartaProtectionsAutoRequest(AbstractModel):
+    """AddSpartaProtectionsAuto请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 多域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSpartaProtectionsAutoResponse(AbstractModel):
+    """AddSpartaProtectionsAuto返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedInfos: 失败原因
+        :type FailedInfos: list of FailedInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedInfos = None
+        self._RequestId = None
+
+    @property
+    def FailedInfos(self):
+        return self._FailedInfos
+
+    @FailedInfos.setter
+    def FailedInfos(self, FailedInfos):
+        self._FailedInfos = FailedInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailedInfos") is not None:
+            self._FailedInfos = []
+            for item in params.get("FailedInfos"):
+                obj = FailedInfo()
+                obj._deserialize(item)
+                self._FailedInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2107,6 +2240,320 @@ class CdcRegion(AbstractModel):
                 obj = CdcCluster()
                 obj._deserialize(item)
                 self._Clusters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbDomainsInfo(AbstractModel):
+    """clb域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名id
+        :type DomainId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _Edition: waf类型
+        :type Edition: str
+        :param _IsCdn: 是否是cdn
+        :type IsCdn: int
+        :param _LoadBalancerSet: 负载均衡算法
+        :type LoadBalancerSet: list of LoadBalancerPackageNew
+        :param _FlowMode: 镜像模式
+        :type FlowMode: int
+        :param _State: 绑定clb状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _AlbType: 负载均衡类型，clb或者apisix
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlbType: str
+        :param _IpHeaders: IsCdn=3时，表示自定义header
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpHeaders: list of str
+        :param _CdcClusters: cdc类型会增加集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcClusters: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Edition = None
+        self._IsCdn = None
+        self._LoadBalancerSet = None
+        self._FlowMode = None
+        self._State = None
+        self._AlbType = None
+        self._IpHeaders = None
+        self._CdcClusters = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def IsCdn(self):
+        return self._IsCdn
+
+    @IsCdn.setter
+    def IsCdn(self, IsCdn):
+        self._IsCdn = IsCdn
+
+    @property
+    def LoadBalancerSet(self):
+        return self._LoadBalancerSet
+
+    @LoadBalancerSet.setter
+    def LoadBalancerSet(self, LoadBalancerSet):
+        self._LoadBalancerSet = LoadBalancerSet
+
+    @property
+    def FlowMode(self):
+        return self._FlowMode
+
+    @FlowMode.setter
+    def FlowMode(self, FlowMode):
+        self._FlowMode = FlowMode
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def AlbType(self):
+        return self._AlbType
+
+    @AlbType.setter
+    def AlbType(self, AlbType):
+        self._AlbType = AlbType
+
+    @property
+    def IpHeaders(self):
+        return self._IpHeaders
+
+    @IpHeaders.setter
+    def IpHeaders(self, IpHeaders):
+        self._IpHeaders = IpHeaders
+
+    @property
+    def CdcClusters(self):
+        return self._CdcClusters
+
+    @CdcClusters.setter
+    def CdcClusters(self, CdcClusters):
+        self._CdcClusters = CdcClusters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Edition = params.get("Edition")
+        self._IsCdn = params.get("IsCdn")
+        if params.get("LoadBalancerSet") is not None:
+            self._LoadBalancerSet = []
+            for item in params.get("LoadBalancerSet"):
+                obj = LoadBalancerPackageNew()
+                obj._deserialize(item)
+                self._LoadBalancerSet.append(obj)
+        self._FlowMode = params.get("FlowMode")
+        self._State = params.get("State")
+        self._AlbType = params.get("AlbType")
+        self._IpHeaders = params.get("IpHeaders")
+        self._CdcClusters = params.get("CdcClusters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbHostResult(AbstractModel):
+    """CLB查询对应绑定的WAF状态的结果参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancer: WAF绑定的监听器实例
+        :type LoadBalancer: :class:`tencentcloud.waf.v20180125.models.LoadBalancer`
+        :param _Domain: WAF绑定的域名
+        :type Domain: str
+        :param _DomainId: WAF绑定的实例ID
+        :type DomainId: str
+        :param _Status: 是否有绑定WAF，1：绑定了WAF，0：没有绑定WAF
+        :type Status: int
+        :param _FlowMode: 绑定了WAF的情况下，WAF流量模式，1：清洗模式，0：镜像模式（默认）
+        :type FlowMode: int
+        """
+        self._LoadBalancer = None
+        self._Domain = None
+        self._DomainId = None
+        self._Status = None
+        self._FlowMode = None
+
+    @property
+    def LoadBalancer(self):
+        return self._LoadBalancer
+
+    @LoadBalancer.setter
+    def LoadBalancer(self, LoadBalancer):
+        self._LoadBalancer = LoadBalancer
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FlowMode(self):
+        return self._FlowMode
+
+    @FlowMode.setter
+    def FlowMode(self, FlowMode):
+        self._FlowMode = FlowMode
+
+
+    def _deserialize(self, params):
+        if params.get("LoadBalancer") is not None:
+            self._LoadBalancer = LoadBalancer()
+            self._LoadBalancer._deserialize(params.get("LoadBalancer"))
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Status = params.get("Status")
+        self._FlowMode = params.get("FlowMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbHostsParams(AbstractModel):
+    """CLB回调WAF接口（获取、删除）的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例ID，如果不传次参数则默认认为操作的是整个AppId的监听器，如果此参数不为空则认为操作的是对应负载均衡实例。
+        :type LoadBalancerId: str
+        :param _ListenerId: 负载均衡监听器ID，，如果不传次参数则默认认为操作的是整个负载均衡实例，如果此参数不为空则认为操作的是对应负载均衡监听器。
+        :type ListenerId: str
+        :param _DomainId: WAF实例ID，，如果不传次参数则默认认为操作的是整个负载均衡监听器实例，如果此参数不为空则认为操作的是对应负载均衡监听器的某一个具体的域名。
+        :type DomainId: str
+        """
+        self._LoadBalancerId = None
+        self._ListenerId = None
+        self._DomainId = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerId = params.get("ListenerId")
+        self._DomainId = params.get("DomainId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2696,6 +3143,83 @@ class DeleteDownloadRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteHostRequest(AbstractModel):
+    """DeleteHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostsDel: 删除的域名列表
+        :type HostsDel: list of HostDel
+        """
+        self._HostsDel = None
+
+    @property
+    def HostsDel(self):
+        return self._HostsDel
+
+    @HostsDel.setter
+    def HostsDel(self, HostsDel):
+        self._HostsDel = HostsDel
+
+
+    def _deserialize(self, params):
+        if params.get("HostsDel") is not None:
+            self._HostsDel = []
+            for item in params.get("HostsDel"):
+                obj = HostDel()
+                obj._deserialize(item)
+                self._HostsDel.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHostResponse(AbstractModel):
+    """DeleteHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteIpAccessControlRequest(AbstractModel):
     """DeleteIpAccessControl请求参数结构体
 
@@ -2896,6 +3420,88 @@ class DeleteSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSpartaProtectionRequest(AbstractModel):
+    """DeleteSpartaProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 域名列表
+        :type Domains: list of str
+        :param _Edition: 版本
+        :type Edition: str
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self._Domains = None
+        self._Edition = None
+        self._InstanceID = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSpartaProtectionResponse(AbstractModel):
+    """DeleteSpartaProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3730,6 +4336,55 @@ class DescribeAutoDenyIPResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCiphersDetailRequest(AbstractModel):
+    """DescribeCiphersDetail请求参数结构体
+
+    """
+
+
+class DescribeCiphersDetailResponse(AbstractModel):
+    """DescribeCiphersDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ciphers: 加密套件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ciphers: list of TLSCiphers
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ciphers = None
+        self._RequestId = None
+
+    @property
+    def Ciphers(self):
+        return self._Ciphers
+
+    @Ciphers.setter
+    def Ciphers(self, Ciphers):
+        self._Ciphers = Ciphers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Ciphers") is not None:
+            self._Ciphers = []
+            for item in params.get("Ciphers"):
+                obj = TLSCiphers()
+                obj._deserialize(item)
+                self._Ciphers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCustomRulesRspRuleListItem(AbstractModel):
     """DescribeCustomRules接口回包中的复杂类型
 
@@ -4038,6 +4693,193 @@ class DescribeCustomWhiteRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._RuleList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDomainCountInfoRequest(AbstractModel):
+    """DescribeDomainCountInfo请求参数结构体
+
+    """
+
+
+class DescribeDomainCountInfoResponse(AbstractModel):
+    """DescribeDomainCountInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllDomain: 域名总数
+        :type AllDomain: int
+        :param _UpdateTime: 最近发现时间
+        :type UpdateTime: str
+        :param _WafDomainCount: 接入域名总数
+        :type WafDomainCount: int
+        :param _LeftDomainCount: 剩下配额
+        :type LeftDomainCount: int
+        :param _OpenWafDomain: 开启防护域名数
+        :type OpenWafDomain: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AllDomain = None
+        self._UpdateTime = None
+        self._WafDomainCount = None
+        self._LeftDomainCount = None
+        self._OpenWafDomain = None
+        self._RequestId = None
+
+    @property
+    def AllDomain(self):
+        return self._AllDomain
+
+    @AllDomain.setter
+    def AllDomain(self, AllDomain):
+        self._AllDomain = AllDomain
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def WafDomainCount(self):
+        return self._WafDomainCount
+
+    @WafDomainCount.setter
+    def WafDomainCount(self, WafDomainCount):
+        self._WafDomainCount = WafDomainCount
+
+    @property
+    def LeftDomainCount(self):
+        return self._LeftDomainCount
+
+    @LeftDomainCount.setter
+    def LeftDomainCount(self, LeftDomainCount):
+        self._LeftDomainCount = LeftDomainCount
+
+    @property
+    def OpenWafDomain(self):
+        return self._OpenWafDomain
+
+    @OpenWafDomain.setter
+    def OpenWafDomain(self, OpenWafDomain):
+        self._OpenWafDomain = OpenWafDomain
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AllDomain = params.get("AllDomain")
+        self._UpdateTime = params.get("UpdateTime")
+        self._WafDomainCount = params.get("WafDomainCount")
+        self._LeftDomainCount = params.get("LeftDomainCount")
+        self._OpenWafDomain = params.get("OpenWafDomain")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDomainDetailsClbRequest(AbstractModel):
+    """DescribeDomainDetailsClb请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名id
+        :type DomainId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainDetailsClbResponse(AbstractModel):
+    """DescribeDomainDetailsClb返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainsClbPartInfo: clb域名详情
+        :type DomainsClbPartInfo: :class:`tencentcloud.waf.v20180125.models.ClbDomainsInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DomainsClbPartInfo = None
+        self._RequestId = None
+
+    @property
+    def DomainsClbPartInfo(self):
+        return self._DomainsClbPartInfo
+
+    @DomainsClbPartInfo.setter
+    def DomainsClbPartInfo(self, DomainsClbPartInfo):
+        self._DomainsClbPartInfo = DomainsClbPartInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DomainsClbPartInfo") is not None:
+            self._DomainsClbPartInfo = ClbDomainsInfo()
+            self._DomainsClbPartInfo._deserialize(params.get("DomainsClbPartInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4401,6 +5243,153 @@ class DescribeDomainsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFindDomainListRequest(AbstractModel):
+    """DescribeFindDomainList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页
+        :type Offset: int
+        :param _Limit: 每页容量
+        :type Limit: int
+        :param _Key: 过滤条件
+        :type Key: str
+        :param _IsWafDomain: 是否接入waf
+        :type IsWafDomain: str
+        :param _By: 排序参数
+        :type By: str
+        :param _Order: 排序方式
+        :type Order: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Key = None
+        self._IsWafDomain = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def IsWafDomain(self):
+        return self._IsWafDomain
+
+    @IsWafDomain.setter
+    def IsWafDomain(self, IsWafDomain):
+        self._IsWafDomain = IsWafDomain
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Key = params.get("Key")
+        self._IsWafDomain = params.get("IsWafDomain")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFindDomainListResponse(AbstractModel):
+    """DescribeFindDomainList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 域名总数
+        :type Total: int
+        :param _List: 域名信息列表
+        :type List: list of FindAllDomainDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = FindAllDomainDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFlowTrendRequest(AbstractModel):
     """DescribeFlowTrend请求参数结构体
 
@@ -4497,6 +5486,337 @@ class DescribeFlowTrendResponse(AbstractModel):
                 obj = BotStatPointItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostLimitRequest(AbstractModel):
+    """DescribeHostLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 添加的域名
+        :type Domain: str
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        :param _AlbType: 流量来源
+        :type AlbType: str
+        """
+        self._Domain = None
+        self._InstanceID = None
+        self._AlbType = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def AlbType(self):
+        return self._AlbType
+
+    @AlbType.setter
+    def AlbType(self, AlbType):
+        self._AlbType = AlbType
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._InstanceID = params.get("InstanceID")
+        self._AlbType = params.get("AlbType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostLimitResponse(AbstractModel):
+    """DescribeHostLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 成功返回的状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostRequest(AbstractModel):
+    """DescribeHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostResponse(AbstractModel):
+    """DescribeHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 域名详情
+        :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Host = None
+        self._RequestId = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Host") is not None:
+            self._Host = HostRecord()
+            self._Host._deserialize(params.get("Host"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostsRequest(AbstractModel):
+    """DescribeHosts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 防护域名，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名，此参数不支持模糊搜索
+        :type Domain: str
+        :param _DomainId: 防护域名ID，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名ID，此参数不支持模糊搜索
+        :type DomainId: str
+        :param _Search: 搜索条件，根据此参数对域名做模糊搜索
+        :type Search: str
+        :param _Item: 复杂的搜索条件
+        :type Item: :class:`tencentcloud.waf.v20180125.models.SearchItem`
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._Search = None
+        self._Item = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Search(self):
+        return self._Search
+
+    @Search.setter
+    def Search(self, Search):
+        self._Search = Search
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Search = params.get("Search")
+        if params.get("Item") is not None:
+            self._Item = SearchItem()
+            self._Item._deserialize(params.get("Item"))
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostsResponse(AbstractModel):
+    """DescribeHosts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 防护域名列表的长度
+        :type TotalCount: int
+        :param _HostList: 防护域名的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostList: list of HostRecord
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._HostList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HostList(self):
+        return self._HostList
+
+    @HostList.setter
+    def HostList(self, HostList):
+        self._HostList = HostList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("HostList") is not None:
+            self._HostList = []
+            for item in params.get("HostList"):
+                obj = HostRecord()
+                obj._deserialize(item)
+                self._HostList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5523,6 +6843,54 @@ class DescribeRuleLimitResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTlsVersionRequest(AbstractModel):
+    """DescribeTlsVersion请求参数结构体
+
+    """
+
+
+class DescribeTlsVersionResponse(AbstractModel):
+    """DescribeTlsVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TLS: TLS key value
+        :type TLS: list of TLSVersion
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TLS = None
+        self._RequestId = None
+
+    @property
+    def TLS(self):
+        return self._TLS
+
+    @TLS.setter
+    def TLS(self, TLS):
+        self._TLS = TLS
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TLS") is not None:
+            self._TLS = []
+            for item in params.get("TLS"):
+                obj = TLSVersion()
+                obj._deserialize(item)
+                self._TLS.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserCdcClbWafRegionsRequest(AbstractModel):
     """DescribeUserCdcClbWafRegions请求参数结构体
 
@@ -5613,6 +6981,54 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserDomainInfoRequest(AbstractModel):
+    """DescribeUserDomainInfo请求参数结构体
+
+    """
+
+
+class DescribeUserDomainInfoResponse(AbstractModel):
+    """DescribeUserDomainInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsersInfo: saas和clb域名信息
+        :type UsersInfo: list of UserDomainInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsersInfo = None
+        self._RequestId = None
+
+    @property
+    def UsersInfo(self):
+        return self._UsersInfo
+
+    @UsersInfo.setter
+    def UsersInfo(self, UsersInfo):
+        self._UsersInfo = UsersInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UsersInfo") is not None:
+            self._UsersInfo = []
+            for item in params.get("UsersInfo"):
+                obj = UserDomainInfo()
+                obj._deserialize(item)
+                self._UsersInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5839,6 +7255,98 @@ class DescribeWafAutoDenyStatusResponse(AbstractModel):
         if params.get("WafAutoDenyDetails") is not None:
             self._WafAutoDenyDetails = AutoDenyDetail()
             self._WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWafInfoRequest(AbstractModel):
+    """DescribeWafInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Params: CLB回调WAF接口（获取、删除）的参数
+        :type Params: list of ClbHostsParams
+        """
+        self._Params = None
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ClbHostsParams()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafInfoResponse(AbstractModel):
+    """DescribeWafInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 返回的WAF信息数组的长度，为0则表示没有查询到对应的信息
+        :type Total: int
+        :param _HostList: 对应的WAF信息的数组。
+        :type HostList: list of ClbHostResult
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._HostList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def HostList(self):
+        return self._HostList
+
+    @HostList.setter
+    def HostList(self, HostList):
+        self._HostList = HostList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("HostList") is not None:
+            self._HostList = []
+            for item in params.get("HostList"):
+                obj = ClbHostResult()
+                obj._deserialize(item)
+                self._HostList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6347,6 +7855,51 @@ class DomainPackageNew(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._Count = params.get("Count")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DomainURI(AbstractModel):
+    """唯一定位Domain
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Edition: 版本
+        :type Edition: str
+        """
+        self._Domain = None
+        self._Edition = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Edition = params.get("Edition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7078,6 +8631,53 @@ class ExportAccessInfo(AbstractModel):
         
 
 
+class FailedInfo(AbstractModel):
+    """失败描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _Message: 失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._Domain = None
+        self._Message = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FiltersItemNew(AbstractModel):
     """过滤数组
 
@@ -7125,6 +8725,123 @@ class FiltersItemNew(AbstractModel):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
         self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FindAllDomainDetail(AbstractModel):
+    """域名列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Appid: 用户id
+        :type Appid: int
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Ips: 域名ip
+        :type Ips: list of str
+        :param _FindTime: 发现时间
+        :type FindTime: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _DomainId: 域名id
+        :type DomainId: str
+        :param _Edition: waf类型
+        :type Edition: str
+        :param _IsWafDomain: 是否接入waf
+        :type IsWafDomain: int
+        """
+        self._Appid = None
+        self._Domain = None
+        self._Ips = None
+        self._FindTime = None
+        self._InstanceId = None
+        self._DomainId = None
+        self._Edition = None
+        self._IsWafDomain = None
+
+    @property
+    def Appid(self):
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Ips(self):
+        return self._Ips
+
+    @Ips.setter
+    def Ips(self, Ips):
+        self._Ips = Ips
+
+    @property
+    def FindTime(self):
+        return self._FindTime
+
+    @FindTime.setter
+    def FindTime(self, FindTime):
+        self._FindTime = FindTime
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def IsWafDomain(self):
+        return self._IsWafDomain
+
+    @IsWafDomain.setter
+    def IsWafDomain(self, IsWafDomain):
+        self._IsWafDomain = IsWafDomain
+
+
+    def _deserialize(self, params):
+        self._Appid = params.get("Appid")
+        self._Domain = params.get("Domain")
+        self._Ips = params.get("Ips")
+        self._FindTime = params.get("FindTime")
+        self._InstanceId = params.get("InstanceId")
+        self._DomainId = params.get("DomainId")
+        self._Edition = params.get("Edition")
+        self._IsWafDomain = params.get("IsWafDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7549,6 +9266,63 @@ class GetAttackTotalCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HostDel(AbstractModel):
+    """CLB-WAF删除域名参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _InstanceID: 实例类型
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostRecord(AbstractModel):
     """clb-waf防护域名
 
@@ -7786,6 +9560,75 @@ class HostRecord(AbstractModel):
         self._AlbType = params.get("AlbType")
         self._IpHeaders = params.get("IpHeaders")
         self._EngineType = params.get("EngineType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostStatus(AbstractModel):
+    """设置WAF状态的结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _Status: WAF的开关，1：开，0：关
+        :type Status: int
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._Status = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Status = params.get("Status")
+        self._InstanceID = params.get("InstanceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9259,6 +11102,112 @@ class ModifyCustomWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDomainIpv6StatusRequest(AbstractModel):
+    """ModifyDomainIpv6Status请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 需要修改的域名所属的实例ID
+        :type InstanceId: str
+        :param _Domain: 需要修改的域名
+        :type Domain: str
+        :param _DomainId: 需要修改的域名ID
+        :type DomainId: str
+        :param _Status: 修改域名的Ipv6开关为Status （0:关闭 1:开启）
+        :type Status: int
+        """
+        self._InstanceId = None
+        self._Domain = None
+        self._DomainId = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainIpv6StatusResponse(AbstractModel):
+    """ModifyDomainIpv6Status返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ipv6Status: 返回的状态 （0: 操作失败 1:操作成功 2:企业版以上不支持 3:企业版以下不支持 ）
+        :type Ipv6Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ipv6Status = None
+        self._RequestId = None
+
+    @property
+    def Ipv6Status(self):
+        return self._Ipv6Status
+
+    @Ipv6Status.setter
+    def Ipv6Status(self, Ipv6Status):
+        self._Ipv6Status = Ipv6Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ipv6Status = params.get("Ipv6Status")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDomainWhiteRuleRequest(AbstractModel):
     """ModifyDomainWhiteRule请求参数结构体
 
@@ -9354,6 +11303,663 @@ class ModifyDomainWhiteRuleRequest(AbstractModel):
 
 class ModifyDomainWhiteRuleResponse(AbstractModel):
     """ModifyDomainWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDomainsCLSStatusRequest(AbstractModel):
+    """ModifyDomainsCLSStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 需要修改的域名列表
+        :type Domains: list of DomainURI
+        :param _Status: 修改域名的访问日志开关为Status
+        :type Status: int
+        """
+        self._Domains = None
+        self._Status = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = DomainURI()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainsCLSStatusResponse(AbstractModel):
+    """ModifyDomainsCLSStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHostFlowModeRequest(AbstractModel):
+    """ModifyHostFlowMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _FlowMode: WAF流量模式，1：清洗模式，0：镜像模式（默认）
+        :type FlowMode: int
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._FlowMode = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def FlowMode(self):
+        return self._FlowMode
+
+    @FlowMode.setter
+    def FlowMode(self, FlowMode):
+        self._FlowMode = FlowMode
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._FlowMode = params.get("FlowMode")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHostFlowModeResponse(AbstractModel):
+    """ModifyHostFlowMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 成功的状态码
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHostModeRequest(AbstractModel):
+    """ModifyHostMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _Mode: 防护状态：
+10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
+20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
+        :type Mode: int
+        :param _Type: 0:修改防护模式，1:修改AI
+        :type Type: int
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        :param _Edition: 实例类型
+        :type Edition: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._Mode = None
+        self._Type = None
+        self._InstanceID = None
+        self._Edition = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Mode = params.get("Mode")
+        self._Type = params.get("Type")
+        self._InstanceID = params.get("InstanceID")
+        self._Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHostModeResponse(AbstractModel):
+    """ModifyHostMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHostRequest(AbstractModel):
+    """ModifyHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 编辑的域名配置信息
+        :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self._Host = None
+        self._InstanceID = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        if params.get("Host") is not None:
+            self._Host = HostRecord()
+            self._Host._deserialize(params.get("Host"))
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHostResponse(AbstractModel):
+    """ModifyHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 编辑的域名ID
+        :type DomainId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DomainId = None
+        self._RequestId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHostStatusRequest(AbstractModel):
+    """ModifyHostStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostsStatus: 域名状态列表
+        :type HostsStatus: list of HostStatus
+        """
+        self._HostsStatus = None
+
+    @property
+    def HostsStatus(self):
+        return self._HostsStatus
+
+    @HostsStatus.setter
+    def HostsStatus(self, HostsStatus):
+        self._HostsStatus = HostsStatus
+
+
+    def _deserialize(self, params):
+        if params.get("HostsStatus") is not None:
+            self._HostsStatus = []
+            for item in params.get("HostsStatus"):
+                obj = HostStatus()
+                obj._deserialize(item)
+                self._HostsStatus.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHostStatusResponse(AbstractModel):
+    """ModifyHostStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 成功的状态码，需要JSON解码后再使用，返回的格式是{"域名":"状态"}，成功的状态码为Success，其它的为失败的状态码（yunapi定义的错误码）
+        :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Success") is not None:
+            self._Success = ResponseCode()
+            self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProtectionStatusRequest(AbstractModel):
+    """ModifyProtectionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+        :type Edition: str
+        """
+        self._Domain = None
+        self._Status = None
+        self._Edition = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProtectionStatusResponse(AbstractModel):
+    """ModifyProtectionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySpartaProtectionModeRequest(AbstractModel):
+    """ModifySpartaProtectionMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Mode: 防护状态：
+10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
+20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
+        :type Mode: int
+        :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+        :type Edition: str
+        :param _Type: 0是修改规则引擎状态，1是修改AI的状态
+        :type Type: int
+        """
+        self._Domain = None
+        self._Mode = None
+        self._Edition = None
+        self._Type = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Mode = params.get("Mode")
+        self._Edition = params.get("Edition")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySpartaProtectionModeResponse(AbstractModel):
+    """ModifySpartaProtectionMode返回参数结构体
 
     """
 
@@ -10691,6 +13297,64 @@ class QPSPackageNew(AbstractModel):
         
 
 
+class RefreshAccessCheckResultRequest(AbstractModel):
+    """RefreshAccessCheckResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshAccessCheckResultResponse(AbstractModel):
+    """RefreshAccessCheckResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResponseCode(AbstractModel):
     """响应体的返回码
 
@@ -11266,6 +13930,63 @@ class SearchAttackLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchItem(AbstractModel):
+    """接入列表查询复杂条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClsStatus: 日志开关
+        :type ClsStatus: str
+        :param _Status: waf开关
+        :type Status: str
+        :param _FlowMode: 流量模式
+        :type FlowMode: str
+        """
+        self._ClsStatus = None
+        self._Status = None
+        self._FlowMode = None
+
+    @property
+    def ClsStatus(self):
+        return self._ClsStatus
+
+    @ClsStatus.setter
+    def ClsStatus(self, ClsStatus):
+        self._ClsStatus = ClsStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FlowMode(self):
+        return self._FlowMode
+
+    @FlowMode.setter
+    def FlowMode(self, FlowMode):
+        self._FlowMode = FlowMode
+
+
+    def _deserialize(self, params):
+        self._ClsStatus = params.get("ClsStatus")
+        self._Status = params.get("Status")
+        self._FlowMode = params.get("FlowMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpartaProtectionPort(AbstractModel):
     """waf斯巴达-编辑防护域名中的端口结构
 
@@ -11515,6 +14236,113 @@ class SwitchDomainRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TLSCiphers(AbstractModel):
+    """TLS 加密套件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: TLS版本ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param _CipherId: 加密套件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CipherId: int
+        :param _CipherName: 加密套件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CipherName: str
+        """
+        self._VersionId = None
+        self._CipherId = None
+        self._CipherName = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def CipherId(self):
+        return self._CipherId
+
+    @CipherId.setter
+    def CipherId(self, CipherId):
+        self._CipherId = CipherId
+
+    @property
+    def CipherName(self):
+        return self._CipherName
+
+    @CipherName.setter
+    def CipherName(self, CipherName):
+        self._CipherName = CipherName
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._CipherId = params.get("CipherId")
+        self._CipherName = params.get("CipherName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TLSVersion(AbstractModel):
+    """TLS信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: TLSVERSION的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: int
+        :param _VersionName: TLSVERSION的NAME
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        """
+        self._VersionId = None
+        self._VersionName = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionName(self):
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpsertIpAccessControlRequest(AbstractModel):
     """UpsertIpAccessControl请求参数结构体
 
@@ -11633,6 +14461,138 @@ class UpsertIpAccessControlResponse(AbstractModel):
         self._FailedItems = params.get("FailedItems")
         self._FailedCount = params.get("FailedCount")
         self._RequestId = params.get("RequestId")
+
+
+class UserDomainInfo(AbstractModel):
+    """saas和clb信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Appid: 用户id
+        :type Appid: int
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名id
+        :type DomainId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _Edition: waf类型
+        :type Edition: str
+        :param _Level: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param _WriteConfig: 指定域名访问日志字段的开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteConfig: str
+        :param _Cls: 指定域名是否写cls的开关 1:写 0:不写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cls: int
+        """
+        self._Appid = None
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Edition = None
+        self._Level = None
+        self._WriteConfig = None
+        self._Cls = None
+
+    @property
+    def Appid(self):
+        return self._Appid
+
+    @Appid.setter
+    def Appid(self, Appid):
+        self._Appid = Appid
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def WriteConfig(self):
+        return self._WriteConfig
+
+    @WriteConfig.setter
+    def WriteConfig(self, WriteConfig):
+        self._WriteConfig = WriteConfig
+
+    @property
+    def Cls(self):
+        return self._Cls
+
+    @Cls.setter
+    def Cls(self, Cls):
+        self._Cls = Cls
+
+
+    def _deserialize(self, params):
+        self._Appid = params.get("Appid")
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Edition = params.get("Edition")
+        self._Level = params.get("Level")
+        self._WriteConfig = params.get("WriteConfig")
+        self._Cls = params.get("Cls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VipInfo(AbstractModel):
