@@ -4054,6 +4054,9 @@ class DescribeAttackOverviewResponse(AbstractModel):
         :type BotCount: int
         :param _ApiAssetsCount: api资产总数
         :type ApiAssetsCount: int
+        :param _ApiRiskEventCount: api风险事件数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiRiskEventCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4063,6 +4066,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._CCCount = None
         self._BotCount = None
         self._ApiAssetsCount = None
+        self._ApiRiskEventCount = None
         self._RequestId = None
 
     @property
@@ -4114,6 +4118,14 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._ApiAssetsCount = ApiAssetsCount
 
     @property
+    def ApiRiskEventCount(self):
+        return self._ApiRiskEventCount
+
+    @ApiRiskEventCount.setter
+    def ApiRiskEventCount(self, ApiRiskEventCount):
+        self._ApiRiskEventCount = ApiRiskEventCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4129,6 +4141,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._CCCount = params.get("CCCount")
         self._BotCount = params.get("BotCount")
         self._ApiAssetsCount = params.get("ApiAssetsCount")
+        self._ApiRiskEventCount = params.get("ApiRiskEventCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5133,7 +5146,7 @@ class DescribeDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 数据偏移量，从1开始。
+        :param _Offset: 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
         :type Offset: int
         :param _Limit: 返回域名的数量
         :type Limit: int
@@ -10775,6 +10788,144 @@ class ModifyAccessPeriodResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyApiAnalyzeStatusRequest(AbstractModel):
+    """ModifyApiAnalyzeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 开关状态
+        :type Status: int
+        :param _Domain: 域名
+        :type Domain: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _TargetList: 需要批量开启的实体列表
+        :type TargetList: list of TargetEntity
+        """
+        self._Status = None
+        self._Domain = None
+        self._InstanceId = None
+        self._TargetList = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TargetList(self):
+        return self._TargetList
+
+    @TargetList.setter
+    def TargetList(self, TargetList):
+        self._TargetList = TargetList
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Domain = params.get("Domain")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("TargetList") is not None:
+            self._TargetList = []
+            for item in params.get("TargetList"):
+                obj = TargetEntity()
+                obj._deserialize(item)
+                self._TargetList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApiAnalyzeStatusResponse(AbstractModel):
+    """ModifyApiAnalyzeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 已经开启的数量,如果返回值为3（大于支持的域名开启数量），则表示开启失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _UnSupportedList: 不支持开启的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnSupportedList: list of str
+        :param _FailDomainList: 开启/关闭失败的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailDomainList: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._UnSupportedList = None
+        self._FailDomainList = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def UnSupportedList(self):
+        return self._UnSupportedList
+
+    @UnSupportedList.setter
+    def UnSupportedList(self, UnSupportedList):
+        self._UnSupportedList = UnSupportedList
+
+    @property
+    def FailDomainList(self):
+        return self._FailDomainList
+
+    @FailDomainList.setter
+    def FailDomainList(self, FailDomainList):
+        self._FailDomainList = FailDomainList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._UnSupportedList = params.get("UnSupportedList")
+        self._FailDomainList = params.get("FailDomainList")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAreaBanStatusRequest(AbstractModel):
     """ModifyAreaBanStatus请求参数结构体
 
@@ -10842,6 +10993,137 @@ class ModifyAreaBanStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBotStatusRequest(AbstractModel):
+    """ModifyBotStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Category: 类别
+        :type Category: str
+        :param _Status: 状态
+        :type Status: str
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        :param _IsVersionFour: 是否是bot4.0版本
+        :type IsVersionFour: bool
+        :param _BotVersion: 传入Bot版本号，场景化版本为"4.1.0"
+        :type BotVersion: str
+        """
+        self._Domain = None
+        self._Category = None
+        self._Status = None
+        self._InstanceID = None
+        self._IsVersionFour = None
+        self._BotVersion = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def IsVersionFour(self):
+        return self._IsVersionFour
+
+    @IsVersionFour.setter
+    def IsVersionFour(self, IsVersionFour):
+        self._IsVersionFour = IsVersionFour
+
+    @property
+    def BotVersion(self):
+        return self._BotVersion
+
+    @BotVersion.setter
+    def BotVersion(self, BotVersion):
+        self._BotVersion = BotVersion
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Category = params.get("Category")
+        self._Status = params.get("Status")
+        self._InstanceID = params.get("InstanceID")
+        self._IsVersionFour = params.get("IsVersionFour")
+        self._BotVersion = params.get("BotVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBotStatusResponse(AbstractModel):
+    """ModifyBotStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 正常情况为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -14333,6 +14615,51 @@ class TLSVersion(AbstractModel):
     def _deserialize(self, params):
         self._VersionId = params.get("VersionId")
         self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetEntity(AbstractModel):
+    """需要开启/关闭API安全的 实例+域名 组合实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._InstanceId = None
+        self._Domain = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

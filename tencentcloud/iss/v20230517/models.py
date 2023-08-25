@@ -8068,6 +8068,144 @@ class FaceMaskAIResultInfo(AbstractModel):
         
 
 
+class GatewayDevice(AbstractModel):
+    """网关设备数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _ProtocolType: 网关接入协议类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolType: int
+        :param _ProtocolTypeName: 网关接入协议名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolTypeName: str
+        :param _Name: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 设备类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Ip: 设备内网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Port: 设备端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _ChannelNum: 设备下通道数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelNum: int
+        :param _Status: 设备状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._DeviceId = None
+        self._ProtocolType = None
+        self._ProtocolTypeName = None
+        self._Name = None
+        self._Type = None
+        self._Ip = None
+        self._Port = None
+        self._ChannelNum = None
+        self._Status = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def ProtocolType(self):
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
+    @property
+    def ProtocolTypeName(self):
+        return self._ProtocolTypeName
+
+    @ProtocolTypeName.setter
+    def ProtocolTypeName(self, ProtocolTypeName):
+        self._ProtocolTypeName = ProtocolTypeName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def ChannelNum(self):
+        return self._ChannelNum
+
+    @ChannelNum.setter
+    def ChannelNum(self, ChannelNum):
+        self._ChannelNum = ChannelNum
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._ProtocolType = params.get("ProtocolType")
+        self._ProtocolTypeName = params.get("ProtocolTypeName")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._ChannelNum = params.get("ChannelNum")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayVersion(AbstractModel):
     """网关详情版本信息
 
@@ -8841,6 +8979,130 @@ class ListDevicesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ListGatewayDevicesData(AbstractModel):
+    """查询网关设备列表返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 网关下设备列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of GatewayDevice
+        :param _TotalCount: 网关下设备总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = GatewayDevice()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGatewayDevicesRequest(AbstractModel):
+    """ListGatewayDevices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关索引ID（从获取网关列表接口ListGateways中获取）
+        :type GatewayId: str
+        """
+        self._GatewayId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListGatewayDevicesResponse(AbstractModel):
+    """ListGatewayDevices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListGatewayDevicesData()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 

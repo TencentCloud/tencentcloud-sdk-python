@@ -315,11 +315,15 @@ class Application(AbstractModel):
         :param _Docker: 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Docker: :class:`tencentcloud.batch.v20170312.models.Docker`
+        :param _Commands: 任务执行命令信息。与Command不能同时指定。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Commands: list of CommandLine
         """
         self._DeliveryForm = None
         self._Command = None
         self._PackagePath = None
         self._Docker = None
+        self._Commands = None
 
     @property
     def DeliveryForm(self):
@@ -353,6 +357,14 @@ class Application(AbstractModel):
     def Docker(self, Docker):
         self._Docker = Docker
 
+    @property
+    def Commands(self):
+        return self._Commands
+
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
+
 
     def _deserialize(self, params):
         self._DeliveryForm = params.get("DeliveryForm")
@@ -361,6 +373,12 @@ class Application(AbstractModel):
         if params.get("Docker") is not None:
             self._Docker = Docker()
             self._Docker._deserialize(params.get("Docker"))
+        if params.get("Commands") is not None:
+            self._Commands = []
+            for item in params.get("Commands"):
+                obj = CommandLine()
+                obj._deserialize(item)
+                self._Commands.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -493,6 +511,40 @@ class Authentication(AbstractModel):
         self._Scene = params.get("Scene")
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CommandLine(AbstractModel):
+    """任务执行信息描述。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Command: 任务执行命令。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: str
+        """
+        self._Command = None
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+
+    def _deserialize(self, params):
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

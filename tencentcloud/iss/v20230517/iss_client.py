@@ -1179,6 +1179,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListGatewayDevices(self, request):
+        """用于查询网关下挂载的设备列表。
+
+        :param request: Request instance for ListGatewayDevices.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListGatewayDevicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListGatewayDevices", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListGatewayDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListGateways(self, request):
         """用于获取网关列表。
 

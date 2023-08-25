@@ -242,6 +242,9 @@ LIMITEXCEEDED_USERINSTANCELIMIT = 'LimitExceeded.UserInstanceLimit'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 审计规则不存在
+OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = 'OperationDenied.AuditPolicyNotExistError'
+
 # 权限校验失败。
 OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 

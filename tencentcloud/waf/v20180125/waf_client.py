@@ -1296,6 +1296,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApiAnalyzeStatus(self, request):
+        """api分析页面开关
+
+        :param request: Request instance for ModifyApiAnalyzeStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyApiAnalyzeStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyApiAnalyzeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiAnalyzeStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiAnalyzeStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAreaBanStatus(self, request):
         """修改防护域名的地域封禁状态
 
@@ -1310,6 +1333,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyAreaBanStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAreaBanStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBotStatus(self, request):
+        """Bot_V2 bot总开关更新
+
+        :param request: Request instance for ModifyBotStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBotStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBotStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBotStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBotStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

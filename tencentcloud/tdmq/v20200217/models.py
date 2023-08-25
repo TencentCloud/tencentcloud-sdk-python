@@ -4323,10 +4323,10 @@ class CreateSubscriptionRequest(AbstractModel):
         :type SubscriptionName: str
         :param _IsIdempotent: 是否幂等创建，若否不允许创建同名的订阅关系。
         :type IsIdempotent: bool
-        :param _Remark: 备注，128个字符以内。
-        :type Remark: str
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param _Remark: 备注，128个字符以内。
+        :type Remark: str
         :param _AutoCreatePolicyTopic: 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
         :type AutoCreatePolicyTopic: bool
         :param _PostFixPattern: 指定死信和重试主题名称规范，LEGACY表示历史命名规则，COMMUNITY表示Pulsar社区命名规范
@@ -4336,8 +4336,8 @@ class CreateSubscriptionRequest(AbstractModel):
         self._TopicName = None
         self._SubscriptionName = None
         self._IsIdempotent = None
-        self._Remark = None
         self._ClusterId = None
+        self._Remark = None
         self._AutoCreatePolicyTopic = None
         self._PostFixPattern = None
 
@@ -4374,20 +4374,20 @@ class CreateSubscriptionRequest(AbstractModel):
         self._IsIdempotent = IsIdempotent
 
     @property
-    def Remark(self):
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def ClusterId(self):
         return self._ClusterId
 
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def AutoCreatePolicyTopic(self):
@@ -4411,8 +4411,8 @@ class CreateSubscriptionRequest(AbstractModel):
         self._TopicName = params.get("TopicName")
         self._SubscriptionName = params.get("SubscriptionName")
         self._IsIdempotent = params.get("IsIdempotent")
-        self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
         self._AutoCreatePolicyTopic = params.get("AutoCreatePolicyTopic")
         self._PostFixPattern = params.get("PostFixPattern")
         memeber_set = set(params.keys())
@@ -4475,6 +4475,8 @@ class CreateTopicRequest(AbstractModel):
         :type TopicName: str
         :param _Partitions: 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
         :type Partitions: int
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         :param _Remark: 备注，128字符以内。
         :type Remark: str
         :param _TopicType: 该入参将逐步弃用，可切换至PulsarTopicType参数
@@ -4484,8 +4486,6 @@ class CreateTopicRequest(AbstractModel):
 3 ：重试队列；
 4 ：死信队列。
         :type TopicType: int
-        :param _ClusterId: Pulsar 集群的ID
-        :type ClusterId: str
         :param _PulsarTopicType: Pulsar 主题类型
 0: 非持久非分区
 1: 非持久分区
@@ -4498,9 +4498,9 @@ class CreateTopicRequest(AbstractModel):
         self._EnvironmentId = None
         self._TopicName = None
         self._Partitions = None
+        self._ClusterId = None
         self._Remark = None
         self._TopicType = None
-        self._ClusterId = None
         self._PulsarTopicType = None
         self._MsgTTL = None
 
@@ -4529,6 +4529,14 @@ class CreateTopicRequest(AbstractModel):
         self._Partitions = Partitions
 
     @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
     def Remark(self):
         return self._Remark
 
@@ -4543,14 +4551,6 @@ class CreateTopicRequest(AbstractModel):
     @TopicType.setter
     def TopicType(self, TopicType):
         self._TopicType = TopicType
-
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
 
     @property
     def PulsarTopicType(self):
@@ -4573,9 +4573,9 @@ class CreateTopicRequest(AbstractModel):
         self._EnvironmentId = params.get("EnvironmentId")
         self._TopicName = params.get("TopicName")
         self._Partitions = params.get("Partitions")
+        self._ClusterId = params.get("ClusterId")
         self._Remark = params.get("Remark")
         self._TopicType = params.get("TopicType")
-        self._ClusterId = params.get("ClusterId")
         self._PulsarTopicType = params.get("PulsarTopicType")
         self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
@@ -7756,25 +7756,33 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         :param _EnvironmentId: 命名空间名称，模糊搜索。
         :type EnvironmentId: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param _Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
-        :param _ClusterId: Pulsar 集群的ID
-        :type ClusterId: str
         :param _Filters: * EnvironmentId
 按照名称空间进行过滤，精确查询。
 类型：String
 必选：否
         :type Filters: list of Filter
         """
+        self._ClusterId = None
         self._EnvironmentId = None
         self._Offset = None
         self._Limit = None
-        self._ClusterId = None
         self._Filters = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def EnvironmentId(self):
@@ -7801,14 +7809,6 @@ class DescribeEnvironmentsRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
     def Filters(self):
         return self._Filters
 
@@ -7818,10 +7818,10 @@ class DescribeEnvironmentsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
         self._EnvironmentId = params.get("EnvironmentId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
-        self._ClusterId = params.get("ClusterId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -10687,25 +10687,33 @@ class DescribeRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ClusterId: 必填字段，集群Id
+        :type ClusterId: str
         :param _RoleName: 角色名称，模糊查询
         :type RoleName: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param _Limit: 返回数量，不填则默认为10，最大值为20。
         :type Limit: int
-        :param _ClusterId: 必填字段，集群Id
-        :type ClusterId: str
         :param _Filters: * RoleName
 按照角色名进行过滤，精确查询。
 类型：String
 必选：否
         :type Filters: list of Filter
         """
+        self._ClusterId = None
         self._RoleName = None
         self._Offset = None
         self._Limit = None
-        self._ClusterId = None
         self._Filters = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def RoleName(self):
@@ -10732,14 +10740,6 @@ class DescribeRolesRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
-    @property
     def Filters(self):
         return self._Filters
 
@@ -10749,10 +10749,10 @@ class DescribeRolesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
         self._RoleName = params.get("RoleName")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
-        self._ClusterId = params.get("ClusterId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -10834,6 +10834,8 @@ class DescribeSubscriptionsRequest(AbstractModel):
         :type EnvironmentId: str
         :param _TopicName: 主题名称。
         :type TopicName: str
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
         :param _Offset: 起始下标，不填默认为0。
         :type Offset: int
         :param _Limit: 返回数量，不填则默认为10，最大值为20。
@@ -10842,16 +10844,14 @@ class DescribeSubscriptionsRequest(AbstractModel):
         :type SubscriptionName: str
         :param _Filters: 数据过滤条件。
         :type Filters: list of FilterSubscription
-        :param _ClusterId: Pulsar 集群的ID
-        :type ClusterId: str
         """
         self._EnvironmentId = None
         self._TopicName = None
+        self._ClusterId = None
         self._Offset = None
         self._Limit = None
         self._SubscriptionName = None
         self._Filters = None
-        self._ClusterId = None
 
     @property
     def EnvironmentId(self):
@@ -10868,6 +10868,14 @@ class DescribeSubscriptionsRequest(AbstractModel):
     @TopicName.setter
     def TopicName(self, TopicName):
         self._TopicName = TopicName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def Offset(self):
@@ -10901,18 +10909,11 @@ class DescribeSubscriptionsRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
-    @property
-    def ClusterId(self):
-        return self._ClusterId
-
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
-
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._TopicName = params.get("TopicName")
+        self._ClusterId = params.get("ClusterId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._SubscriptionName = params.get("SubscriptionName")
@@ -10922,7 +10923,6 @@ class DescribeSubscriptionsRequest(AbstractModel):
                 obj = FilterSubscription()
                 obj._deserialize(item)
                 self._Filters.append(obj)
-        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12616,10 +12616,10 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type EnvironmentId: str
         :param _MsgTTL: 未消费消息过期时间，单位：秒，范围60秒~15天。
         :type MsgTTL: int
-        :param _Remark: 备注，字符串最长不超过128。
-        :type Remark: str
         :param _ClusterId: 集群ID
         :type ClusterId: str
+        :param _Remark: 备注，字符串最长不超过128。
+        :type Remark: str
         :param _RetentionPolicy: 消息保留策略
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
         :param _AutoSubscriptionCreation: 是否开启自动创建订阅
@@ -12627,8 +12627,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         """
         self._EnvironmentId = None
         self._MsgTTL = None
-        self._Remark = None
         self._ClusterId = None
+        self._Remark = None
         self._RetentionPolicy = None
         self._AutoSubscriptionCreation = None
 
@@ -12649,20 +12649,20 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         self._MsgTTL = MsgTTL
 
     @property
-    def Remark(self):
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def ClusterId(self):
         return self._ClusterId
 
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def RetentionPolicy(self):
@@ -12684,8 +12684,8 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._MsgTTL = params.get("MsgTTL")
-        self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
         if params.get("RetentionPolicy") is not None:
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
@@ -13756,14 +13756,20 @@ class ModifyRoleRequest(AbstractModel):
         r"""
         :param _RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
         :type RoleName: str
-        :param _Remark: 备注说明，长度必须大等于0且小等于128。
-        :type Remark: str
         :param _ClusterId: 必填字段，集群Id
         :type ClusterId: str
+        :param _Remark: 备注说明，长度必须大等于0且小等于128。
+        :type Remark: str
+        :param _EnvironmentRoleSets: 批量绑定名字空间信息
+        :type EnvironmentRoleSets: list of EnvironmentRoleSet
+        :param _UnbindAllEnvironment: 全部解绑名字空间，设置为 true
+        :type UnbindAllEnvironment: bool
         """
         self._RoleName = None
-        self._Remark = None
         self._ClusterId = None
+        self._Remark = None
+        self._EnvironmentRoleSets = None
+        self._UnbindAllEnvironment = None
 
     @property
     def RoleName(self):
@@ -13774,6 +13780,14 @@ class ModifyRoleRequest(AbstractModel):
         self._RoleName = RoleName
 
     @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
     def Remark(self):
         return self._Remark
 
@@ -13782,18 +13796,33 @@ class ModifyRoleRequest(AbstractModel):
         self._Remark = Remark
 
     @property
-    def ClusterId(self):
-        return self._ClusterId
+    def EnvironmentRoleSets(self):
+        return self._EnvironmentRoleSets
 
-    @ClusterId.setter
-    def ClusterId(self, ClusterId):
-        self._ClusterId = ClusterId
+    @EnvironmentRoleSets.setter
+    def EnvironmentRoleSets(self, EnvironmentRoleSets):
+        self._EnvironmentRoleSets = EnvironmentRoleSets
+
+    @property
+    def UnbindAllEnvironment(self):
+        return self._UnbindAllEnvironment
+
+    @UnbindAllEnvironment.setter
+    def UnbindAllEnvironment(self, UnbindAllEnvironment):
+        self._UnbindAllEnvironment = UnbindAllEnvironment
 
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
-        self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
+        if params.get("EnvironmentRoleSets") is not None:
+            self._EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRoleSet()
+                obj._deserialize(item)
+                self._EnvironmentRoleSets.append(obj)
+        self._UnbindAllEnvironment = params.get("UnbindAllEnvironment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13866,10 +13895,10 @@ class ModifyTopicRequest(AbstractModel):
         :type TopicName: str
         :param _Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
         :type Partitions: int
-        :param _Remark: 备注，128字符以内。
-        :type Remark: str
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str
+        :param _Remark: 备注，128字符以内。
+        :type Remark: str
         :param _MsgTTL: 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 
         :type MsgTTL: int
@@ -13877,8 +13906,8 @@ class ModifyTopicRequest(AbstractModel):
         self._EnvironmentId = None
         self._TopicName = None
         self._Partitions = None
-        self._Remark = None
         self._ClusterId = None
+        self._Remark = None
         self._MsgTTL = None
 
     @property
@@ -13906,20 +13935,20 @@ class ModifyTopicRequest(AbstractModel):
         self._Partitions = Partitions
 
     @property
-    def Remark(self):
-        return self._Remark
-
-    @Remark.setter
-    def Remark(self, Remark):
-        self._Remark = Remark
-
-    @property
     def ClusterId(self):
         return self._ClusterId
 
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
 
     @property
     def MsgTTL(self):
@@ -13934,8 +13963,8 @@ class ModifyTopicRequest(AbstractModel):
         self._EnvironmentId = params.get("EnvironmentId")
         self._TopicName = params.get("TopicName")
         self._Partitions = params.get("Partitions")
-        self._Remark = params.get("Remark")
         self._ClusterId = params.get("ClusterId")
+        self._Remark = params.get("Remark")
         self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

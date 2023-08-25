@@ -890,6 +890,501 @@ external_redis 外部redis
         
 
 
+class CloudNativeAPIGatewayStrategy(AbstractModel):
+    """网关实例策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 策略ID
+        :type StrategyId: str
+        :param _StrategyName: 策略名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Description: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Config: 弹性伸缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyAutoScalerConfig`
+        :param _GatewayId: 网关实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _CronConfig: 定时伸缩配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategyCronScalerConfig`
+        :param _MaxReplicas: 最大节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        """
+        self._StrategyId = None
+        self._StrategyName = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Description = None
+        self._Config = None
+        self._GatewayId = None
+        self._CronConfig = None
+        self._MaxReplicas = None
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def CronConfig(self):
+        return self._CronConfig
+
+    @CronConfig.setter
+    def CronConfig(self, CronConfig):
+        self._CronConfig = CronConfig
+
+    @property
+    def MaxReplicas(self):
+        return self._MaxReplicas
+
+    @MaxReplicas.setter
+    def MaxReplicas(self, MaxReplicas):
+        self._MaxReplicas = MaxReplicas
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyName = params.get("StrategyName")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Description = params.get("Description")
+        if params.get("Config") is not None:
+            self._Config = CloudNativeAPIGatewayStrategyAutoScalerConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._GatewayId = params.get("GatewayId")
+        if params.get("CronConfig") is not None:
+            self._CronConfig = CloudNativeAPIGatewayStrategyCronScalerConfig()
+            self._CronConfig._deserialize(params.get("CronConfig"))
+        self._MaxReplicas = params.get("MaxReplicas")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
+    """弹性伸缩策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxReplicas: 最大副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param _Metrics: 指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of CloudNativeAPIGatewayStrategyAutoScalerConfigMetric
+        :param _Enabled: 是否开启指标伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _StrategyId: 弹性策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: str
+        :param _AutoScalerId: 指标配置ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoScalerId: str
+        """
+        self._MaxReplicas = None
+        self._Metrics = None
+        self._Enabled = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._StrategyId = None
+        self._AutoScalerId = None
+
+    @property
+    def MaxReplicas(self):
+        return self._MaxReplicas
+
+    @MaxReplicas.setter
+    def MaxReplicas(self, MaxReplicas):
+        self._MaxReplicas = MaxReplicas
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def AutoScalerId(self):
+        return self._AutoScalerId
+
+    @AutoScalerId.setter
+    def AutoScalerId(self, AutoScalerId):
+        self._AutoScalerId = AutoScalerId
+
+
+    def _deserialize(self, params):
+        self._MaxReplicas = params.get("MaxReplicas")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = CloudNativeAPIGatewayStrategyAutoScalerConfigMetric()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        self._Enabled = params.get("Enabled")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._StrategyId = params.get("StrategyId")
+        self._AutoScalerId = params.get("AutoScalerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
+    """弹性伸缩配置指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 指标类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _ResourceName: 指标资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _TargetType: 指标目标类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetType: str
+        :param _TargetValue: 指标目标值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetValue: int
+        """
+        self._Type = None
+        self._ResourceName = None
+        self._TargetType = None
+        self._TargetValue = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def TargetValue(self):
+        return self._TargetValue
+
+    @TargetValue.setter
+    def TargetValue(self, TargetValue):
+        self._TargetValue = TargetValue
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._ResourceName = params.get("ResourceName")
+        self._TargetType = params.get("TargetType")
+        self._TargetValue = params.get("TargetValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayStrategyCronScalerConfig(AbstractModel):
+    """定时伸缩策略配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否开启定时伸缩
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _Params: 定时伸缩配置参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of CloudNativeAPIGatewayStrategyCronScalerConfigParam
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _StrategyId: 弹性策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: str
+        """
+        self._Enabled = None
+        self._Params = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._StrategyId = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = CloudNativeAPIGatewayStrategyCronScalerConfigParam()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
+    """定时伸缩配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 定时伸缩周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: str
+        :param _StartAt: 定时伸缩开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartAt: str
+        :param _TargetReplicas: 定时伸缩目标节点数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetReplicas: int
+        :param _Crontab: 定时伸缩cron表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Crontab: str
+        """
+        self._Period = None
+        self._StartAt = None
+        self._TargetReplicas = None
+        self._Crontab = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartAt(self):
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def TargetReplicas(self):
+        return self._TargetReplicas
+
+    @TargetReplicas.setter
+    def TargetReplicas(self, TargetReplicas):
+        self._TargetReplicas = TargetReplicas
+
+    @property
+    def Crontab(self):
+        return self._Crontab
+
+    @Crontab.setter
+    def Crontab(self, Crontab):
+        self._Crontab = Crontab
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._StartAt = params.get("StartAt")
+        self._TargetReplicas = params.get("TargetReplicas")
+        self._Crontab = params.get("Crontab")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudNativeAPIGatewayVpcConfig(AbstractModel):
     """云原生API网关vpc配置。
 
@@ -4775,6 +5270,119 @@ class DescribeNacosServerInterfacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNativeGatewayServerGroupsRequest(AbstractModel):
+    """DescribeNativeGatewayServerGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _Offset: 翻页从第几个开始获取
+        :type Offset: int
+        :param _Limit: 翻页获取多少个
+        :type Limit: int
+        :param _Filters: 过滤参数
+        :type Filters: list of Filter
+        """
+        self._GatewayId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNativeGatewayServerGroupsResponse(AbstractModel):
+    """DescribeNativeGatewayServerGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 分组列表信息
+        :type Result: :class:`tencentcloud.tse.v20201207.models.NativeGatewayServerGroups`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = NativeGatewayServerGroups()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOneCloudNativeAPIGatewayServiceRequest(AbstractModel):
     """DescribeOneCloudNativeAPIGatewayService请求参数结构体
 
@@ -8382,6 +8990,232 @@ class NacosServerInterface(AbstractModel):
 
     def _deserialize(self, params):
         self._Interface = params.get("Interface")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NativeGatewayServerGroup(AbstractModel):
+    """云原生网关分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 云原生网关分组唯一id
+        :type GroupId: str
+        :param _Name: 分组名
+        :type Name: str
+        :param _Description: 描述信息
+        :type Description: str
+        :param _NodeConfig: 节点规格、节点数信息
+        :type NodeConfig: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayNodeConfig`
+        :param _Status: 网关分组状态。
+        :type Status: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _IsFirstGroup: 是否是默认分组。
+0：否。
+1：是。
+        :type IsFirstGroup: int
+        :param _BindingStrategy: 关联策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindingStrategy: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayStrategy`
+        :param _GatewayId: 网关实例 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _InternetMaxBandwidthOut: 带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _SubnetIds: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: str
+        """
+        self._GroupId = None
+        self._Name = None
+        self._Description = None
+        self._NodeConfig = None
+        self._Status = None
+        self._CreateTime = None
+        self._IsFirstGroup = None
+        self._BindingStrategy = None
+        self._GatewayId = None
+        self._InternetMaxBandwidthOut = None
+        self._ModifyTime = None
+        self._SubnetIds = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def NodeConfig(self):
+        return self._NodeConfig
+
+    @NodeConfig.setter
+    def NodeConfig(self, NodeConfig):
+        self._NodeConfig = NodeConfig
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IsFirstGroup(self):
+        return self._IsFirstGroup
+
+    @IsFirstGroup.setter
+    def IsFirstGroup(self, IsFirstGroup):
+        self._IsFirstGroup = IsFirstGroup
+
+    @property
+    def BindingStrategy(self):
+        return self._BindingStrategy
+
+    @BindingStrategy.setter
+    def BindingStrategy(self, BindingStrategy):
+        self._BindingStrategy = BindingStrategy
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def SubnetIds(self):
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("NodeConfig") is not None:
+            self._NodeConfig = CloudNativeAPIGatewayNodeConfig()
+            self._NodeConfig._deserialize(params.get("NodeConfig"))
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._IsFirstGroup = params.get("IsFirstGroup")
+        if params.get("BindingStrategy") is not None:
+            self._BindingStrategy = CloudNativeAPIGatewayStrategy()
+            self._BindingStrategy._deserialize(params.get("BindingStrategy"))
+        self._GatewayId = params.get("GatewayId")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._ModifyTime = params.get("ModifyTime")
+        self._SubnetIds = params.get("SubnetIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NativeGatewayServerGroups(AbstractModel):
+    """网关分组列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _GatewayGroupList: 分组信息数组。
+        :type GatewayGroupList: list of NativeGatewayServerGroup
+        """
+        self._TotalCount = None
+        self._GatewayGroupList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def GatewayGroupList(self):
+        return self._GatewayGroupList
+
+    @GatewayGroupList.setter
+    def GatewayGroupList(self, GatewayGroupList):
+        self._GatewayGroupList = GatewayGroupList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("GatewayGroupList") is not None:
+            self._GatewayGroupList = []
+            for item in params.get("GatewayGroupList"):
+                obj = NativeGatewayServerGroup()
+                obj._deserialize(item)
+                self._GatewayGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

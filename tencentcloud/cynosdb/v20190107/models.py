@@ -12169,7 +12169,7 @@ class DescribeProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
         :type ClusterId: str
         :param _Limit: 返回数量，默认为 20，最大值为 100
         :type Limit: int
@@ -12834,7 +12834,7 @@ class DescribeResourcePackageListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总配置数
+        :param _Total: 资源包总数
         :type Total: int
         :param _Detail: 资源包明细
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19161,7 +19161,7 @@ refund-已退费。
         :param _PackageUsedSpec: 资源包已使用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageUsedSpec: float
-        :param _HasQuota: 资源包已使用量
+        :param _HasQuota: 是否还有库存余量
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasQuota: bool
         :param _BindInstanceInfos: 绑定实例信息

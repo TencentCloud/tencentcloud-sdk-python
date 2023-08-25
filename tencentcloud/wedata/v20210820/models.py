@@ -43017,6 +43017,9 @@ class IntegrationNodeSchema(AbstractModel):
         :param _Alias: schema别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
+        :param _Comment: 字段备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
         """
         self._Id = None
         self._Name = None
@@ -43024,6 +43027,7 @@ class IntegrationNodeSchema(AbstractModel):
         self._Value = None
         self._Properties = None
         self._Alias = None
+        self._Comment = None
 
     @property
     def Id(self):
@@ -43073,6 +43077,14 @@ class IntegrationNodeSchema(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -43086,6 +43098,7 @@ class IntegrationNodeSchema(AbstractModel):
                 obj._deserialize(item)
                 self._Properties.append(obj)
         self._Alias = params.get("Alias")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -647,6 +647,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNativeGatewayServerGroups(self, request):
+        """查询云原生网关分组信息
+
+        :param request: Request instance for DescribeNativeGatewayServerGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServerGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeNativeGatewayServerGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNativeGatewayServerGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNativeGatewayServerGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOneCloudNativeAPIGatewayService(self, request):
         """获取云原生网关服务详情
 

@@ -29832,6 +29832,63 @@ class LiveRealTimeClipStreamInfo(AbstractModel):
         
 
 
+class LiveRecordInfo(AbstractModel):
+    """直播录制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamId: 直播录制流 ID。
+        :type StreamId: str
+        :param _RecordStartTime: 录制起始时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type RecordStartTime: str
+        :param _RecordEndTime: 录制结束时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type RecordEndTime: str
+        """
+        self._StreamId = None
+        self._RecordStartTime = None
+        self._RecordEndTime = None
+
+    @property
+    def StreamId(self):
+        return self._StreamId
+
+    @StreamId.setter
+    def StreamId(self, StreamId):
+        self._StreamId = StreamId
+
+    @property
+    def RecordStartTime(self):
+        return self._RecordStartTime
+
+    @RecordStartTime.setter
+    def RecordStartTime(self, RecordStartTime):
+        self._RecordStartTime = RecordStartTime
+
+    @property
+    def RecordEndTime(self):
+        return self._RecordEndTime
+
+    @RecordEndTime.setter
+    def RecordEndTime(self, RecordEndTime):
+        self._RecordEndTime = RecordEndTime
+
+
+    def _deserialize(self, params):
+        self._StreamId = params.get("StreamId")
+        self._RecordStartTime = params.get("RecordStartTime")
+        self._RecordEndTime = params.get("RecordEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LowLightEnhanceInfo(AbstractModel):
     """低光照增强控制
 
@@ -33880,18 +33937,27 @@ class MediaSourceData(AbstractModel):
 <li>Record：来自录制。如直播录制、直播时移录制等。</li>
 <li>Upload：来自上传。如拉取上传、服务端上传、客户端 UGC 上传等。</li>
 <li>VideoProcessing：来自视频处理。如视频拼接、视频剪辑等。</li>
+<li>TrtcRecord：来自TRTC 伴生录制。</li>
 <li>WebPageRecord：来自全景录制。</li>
 <li>Unknown：未知来源。</li>
         :type SourceType: str
-        :param _SourceContext: 用户创建文件时透传的字段
+        :param _SourceContext: 用户创建文件时透传的字段。
         :type SourceContext: str
-        :param _TrtcRecordInfo: TRTC 伴生录制信息。
+        :param _LiveRecordInfo: 直播录制信息，当文件来源为 Record 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveRecordInfo: :class:`tencentcloud.vod.v20180717.models.LiveRecordInfo`
+        :param _TrtcRecordInfo: TRTC 伴生录制信息，当文件来源为 TrtcRecord 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrtcRecordInfo: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
+        :param _WebPageRecordInfo: 全景录制信息，当文件来源为 WebPageRecord 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebPageRecordInfo: :class:`tencentcloud.vod.v20180717.models.WebPageRecordInfo`
         """
         self._SourceType = None
         self._SourceContext = None
+        self._LiveRecordInfo = None
         self._TrtcRecordInfo = None
+        self._WebPageRecordInfo = None
 
     @property
     def SourceType(self):
@@ -33910,6 +33976,14 @@ class MediaSourceData(AbstractModel):
         self._SourceContext = SourceContext
 
     @property
+    def LiveRecordInfo(self):
+        return self._LiveRecordInfo
+
+    @LiveRecordInfo.setter
+    def LiveRecordInfo(self, LiveRecordInfo):
+        self._LiveRecordInfo = LiveRecordInfo
+
+    @property
     def TrtcRecordInfo(self):
         return self._TrtcRecordInfo
 
@@ -33917,13 +33991,27 @@ class MediaSourceData(AbstractModel):
     def TrtcRecordInfo(self, TrtcRecordInfo):
         self._TrtcRecordInfo = TrtcRecordInfo
 
+    @property
+    def WebPageRecordInfo(self):
+        return self._WebPageRecordInfo
+
+    @WebPageRecordInfo.setter
+    def WebPageRecordInfo(self, WebPageRecordInfo):
+        self._WebPageRecordInfo = WebPageRecordInfo
+
 
     def _deserialize(self, params):
         self._SourceType = params.get("SourceType")
         self._SourceContext = params.get("SourceContext")
+        if params.get("LiveRecordInfo") is not None:
+            self._LiveRecordInfo = LiveRecordInfo()
+            self._LiveRecordInfo._deserialize(params.get("LiveRecordInfo"))
         if params.get("TrtcRecordInfo") is not None:
             self._TrtcRecordInfo = TrtcRecordInfo()
             self._TrtcRecordInfo._deserialize(params.get("TrtcRecordInfo"))
+        if params.get("WebPageRecordInfo") is not None:
+            self._WebPageRecordInfo = WebPageRecordInfo()
+            self._WebPageRecordInfo._deserialize(params.get("WebPageRecordInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56196,6 +56284,51 @@ class WeChatMiniProgramPublishResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class WebPageRecordInfo(AbstractModel):
+    """全景录制信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordUrl: 全景录制地址。
+        :type RecordUrl: str
+        :param _RecordTaskId: 全景录制任务 ID。
+        :type RecordTaskId: str
+        """
+        self._RecordUrl = None
+        self._RecordTaskId = None
+
+    @property
+    def RecordUrl(self):
+        return self._RecordUrl
+
+    @RecordUrl.setter
+    def RecordUrl(self, RecordUrl):
+        self._RecordUrl = RecordUrl
+
+    @property
+    def RecordTaskId(self):
+        return self._RecordTaskId
+
+    @RecordTaskId.setter
+    def RecordTaskId(self, RecordTaskId):
+        self._RecordTaskId = RecordTaskId
+
+
+    def _deserialize(self, params):
+        self._RecordUrl = params.get("RecordUrl")
+        self._RecordTaskId = params.get("RecordTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WechatMiniProgramPublishTask(AbstractModel):

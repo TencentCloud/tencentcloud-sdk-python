@@ -372,7 +372,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateClusters(self, request):
-        """创建集群
+        """购买新集群
 
         :param request: Request instance for CreateClusters.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersRequest`
@@ -2120,7 +2120,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyClusterStorage(self, request):
-        """升级预付费存储
+        """调整包年包月存储容量
 
         :param request: Request instance for ModifyClusterStorage.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterStorageRequest`
@@ -2373,7 +2373,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineCluster(self, request):
-        """下线集群
+        """销毁集群
 
         :param request: Request instance for OfflineCluster.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineClusterRequest`
@@ -2396,7 +2396,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OfflineInstance(self, request):
-        """下线实例
+        """销毁实例
 
         :param request: Request instance for OfflineInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OfflineInstanceRequest`
@@ -2442,7 +2442,7 @@ class CynosdbClient(AbstractClient):
 
 
     def OpenClusterPasswordComplexity(self, request):
-        """本接口（OpenClusterPasswordComplexity）用于开启集群密码复杂度
+        """本接口（OpenClusterPasswordComplexity）用于开启自定义密码复杂度功能
 
         :param request: Request instance for OpenClusterPasswordComplexity.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterPasswordComplexityRequest`
@@ -2902,7 +2902,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeClusterVersion(self, request):
-        """更新集群Cynos内核版本
+        """更新内核小版本
 
         :param request: Request instance for UpgradeClusterVersion.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeClusterVersionRequest`
@@ -2925,7 +2925,7 @@ class CynosdbClient(AbstractClient):
 
 
     def UpgradeInstance(self, request):
-        """升级实例
+        """实例变配
 
         :param request: Request instance for UpgradeInstance.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeInstanceRequest`

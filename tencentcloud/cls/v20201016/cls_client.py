@@ -1889,6 +1889,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchCosRechargeInfo(self, request):
+        """本接口用于预览cos导入信息
+
+        :param request: Request instance for SearchCosRechargeInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchCosRechargeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchCosRechargeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchLog(self, request):
         """本接口用于检索分析日志, 该接口除受默认接口请求频率限制外，针对单个日志主题，查询并发数不能超过15。
 

@@ -16787,6 +16787,199 @@ class ScheduledSqlTaskInfo(AbstractModel):
         
 
 
+class SearchCosRechargeInfoRequest(AbstractModel):
+    """SearchCosRechargeInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题 ID
+        :type TopicId: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        :param _Name: 投递任务名称
+        :type Name: str
+        :param _Bucket: 存储桶
+        :type Bucket: str
+        :param _BucketRegion: 存储桶所在地域
+        :type BucketRegion: str
+        :param _Prefix: cos文件所在文件夹的前缀
+        :type Prefix: str
+        :param _Compress: 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+        :type Compress: str
+        """
+        self._TopicId = None
+        self._LogsetId = None
+        self._Name = None
+        self._Bucket = None
+        self._BucketRegion = None
+        self._Prefix = None
+        self._Compress = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def BucketRegion(self):
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def Prefix(self):
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Name = params.get("Name")
+        self._Bucket = params.get("Bucket")
+        self._BucketRegion = params.get("BucketRegion")
+        self._Prefix = params.get("Prefix")
+        self._Compress = params.get("Compress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchCosRechargeInfoResponse(AbstractModel):
+    """SearchCosRechargeInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 匹配到的存储桶下的某个文件的前几行数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of str
+        :param _Sum: 匹配到的存储桶下的文件个数
+        :type Sum: int
+        :param _Path: 当前预览文件路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Msg: 预览获取数据失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Status: 状态
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Sum = None
+        self._Path = None
+        self._Msg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Sum(self):
+        return self._Sum
+
+    @Sum.setter
+    def Sum(self, Sum):
+        self._Sum = Sum
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Sum = params.get("Sum")
+        self._Path = params.get("Path")
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class SearchLogErrors(AbstractModel):
     """多日志主题检索错误信息
 
