@@ -256,6 +256,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomRule(self, request):
+        """删除自定义规则
+
+        :param request: Request instance for DeleteCustomRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCustomWhiteRule(self, request):
         """删除精准白名单规则
 
@@ -572,6 +595,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeCiphersDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCiphersDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomRuleList(self, request):
+        """获取防护配置中的访问控制策略列表
+
+        :param request: Request instance for DescribeCustomRuleList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRuleListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeCustomRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1356,6 +1402,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyBotStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBotStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCustomRule(self, request):
+        """编辑自定义规则
+
+        :param request: Request instance for ModifyCustomRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

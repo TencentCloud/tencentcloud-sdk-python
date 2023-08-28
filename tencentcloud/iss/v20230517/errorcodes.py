@@ -23,6 +23,9 @@ FAILEDOPERATION_AITASKSTATUSISOFF = 'FailedOperation.AITaskStatusIsOff'
 # 不允许删除或更改状态为On的AI任务
 FAILEDOPERATION_AITASKSTATUSISON = 'FailedOperation.AITaskStatusIsOn'
 
+# 数据库错误
+FAILEDOPERATION_DATABASEERROR = 'FailedOperation.DatabaseError'
+
 # 设备响应超时
 FAILEDOPERATION_DEVICERESPONSETIMEOUT = 'FailedOperation.DeviceResponseTimeOut'
 
@@ -32,6 +35,9 @@ FAILEDOPERATION_DEVICERESULTTIMEOUT = 'FailedOperation.DeviceResultTimeOut'
 # 域名CNAME解析未成功，请到域名服务商处检查配置
 FAILEDOPERATION_NOMATCHEDCNAME = 'FailedOperation.NoMatchedCname'
 
+# 请求超时
+FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeout'
+
 # 无效的输入参数
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -40,6 +46,9 @@ INVALIDPARAMETER_DOWNLOADURLERROR = 'InvalidParameter.DownloadUrlError'
 
 # 下载URL已过期
 INVALIDPARAMETER_DOWNLOADURLHASEXPIRED = 'InvalidParameter.DownloadUrlHasExpired'
+
+# 操作类型不合法
+INVALIDPARAMETER_INVALIDACTION = 'InvalidParameter.InvalidAction'
 
 # 无效的消息体格式
 INVALIDPARAMETER_INVALIDBODYFORMAT = 'InvalidParameter.InvalidBodyFormat'
@@ -53,8 +62,17 @@ INVALIDPARAMETER_INVALIDLIFERULEPARAM = 'InvalidParameter.InvalidLifeRuleParam'
 # 无效的组织参数
 INVALIDPARAMETER_INVALIDORGANIZATIONPARAM = 'InvalidParameter.InvalidOrganizationParam'
 
+# 参数格式不对或缺少参数
+INVALIDPARAMETER_INVALIDPARAMETERFORMAT = 'InvalidParameter.InvalidParameterFormat'
+
 # 无效的时间片段
 INVALIDPARAMETER_INVALIDTIMESECTION = 'InvalidParameter.InvalidTimeSection'
+
+# 必要请求头参数不能为空
+INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = 'InvalidParameter.RequiredHeaderParameterEmpty'
+
+# TaskId不存在
+INVALIDPARAMETER_TASKIDNOTEXIST = 'InvalidParameter.TaskIdNotExist'
 
 # 无效的参数值
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -221,6 +239,9 @@ INVALIDPARAMETERVALUE_INVALIDORGANIZATIONID = 'InvalidParameterValue.InvalidOrga
 # 无效的PageNumber
 INVALIDPARAMETERVALUE_INVALIDPAGENUMBER = 'InvalidParameterValue.InvalidPageNumber'
 
+# 页参数取值错误
+INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = 'InvalidParameterValue.InvalidPageParameter'
+
 # 无效的PageSize
 INVALIDPARAMETERVALUE_INVALIDPAGESIZE = 'InvalidParameterValue.InvalidPageSize'
 
@@ -244,6 +265,9 @@ INVALIDPARAMETERVALUE_INVALIDSECRET = 'InvalidParameterValue.InvalidSecret'
 
 # 无效的开始或结束时间
 INVALIDPARAMETERVALUE_INVALIDSTARTTIMEORENDTIME = 'InvalidParameterValue.InvalidStartTimeOrEndTime'
+
+# 状态取值错误
+INVALIDPARAMETERVALUE_INVALIDSTATUS = 'InvalidParameterValue.InvalidStatus'
 
 # 无效的流类型
 INVALIDPARAMETERVALUE_INVALIDSTREAMTYPE = 'InvalidParameterValue.InvalidStreamType'
@@ -314,6 +338,9 @@ INVALIDPARAMETERVALUE_STARTTIMEZERO = 'InvalidParameterValue.StartTimeZero'
 # AI任务状态不能为空
 INVALIDPARAMETERVALUE_STATUSMUSTBENOTEMPTY = 'InvalidParameterValue.StatusMustBeNotEmpty'
 
+# 不支持任务类型
+INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = 'InvalidParameterValue.TaskTypeNotSupported'
+
 # TemplateTag必须一致
 INVALIDPARAMETERVALUE_TEMPLATETAGMUSTBECONSISTENT = 'InvalidParameterValue.TemplateTagMustBeConsistent'
 
@@ -328,6 +355,9 @@ INVALIDPARAMETERVALUE_TOOLONGNAME = 'InvalidParameterValue.TooLongName'
 
 # 码流类型过长
 INVALIDPARAMETERVALUE_TOOLONGSTREAMTYPE = 'InvalidParameterValue.TooLongStreamType'
+
+# 不支持的操作命令
+INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = 'InvalidParameterValue.UnSupportOperateCMD'
 
 # 不支持该倍速
 INVALIDPARAMETERVALUE_UNSUPPORTSCALE = 'InvalidParameterValue.UnSupportScale'
@@ -367,6 +397,9 @@ OPERATIONDENIED_CONCURRENTDOWNLOADSOVERLIMIT = 'OperationDenied.ConcurrentDownlo
 
 # 链接数受限
 OPERATIONDENIED_CONNECTSLIMITZERO = 'OperationDenied.ConnectsLimitZero'
+
+# 资源不可达，该资源不属于该地域
+REGIONERROR_RESOURCEUNREACHABLE = 'RegionError.ResourceUnreachable'
 
 # 所有通道都已添加计划，不能重复添加
 RESOURCEINUSE_CHANNELREPEATADD = 'ResourceInUse.ChannelRepeatAdd'

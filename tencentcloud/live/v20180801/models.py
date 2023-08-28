@@ -36,7 +36,7 @@ class AddDelayLiveStreamRequest(AbstractModel):
         :param _ExpireTime: 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认7天后过期，且最长支持7天内生效。
-2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
         :type ExpireTime: str
         """
         self._AppName = None
@@ -16566,7 +16566,7 @@ class ForbidLiveStreamRequest(AbstractModel):
         :param _ResumeTime: 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 注意：
 1. 默认禁推7天，且最长支持禁推90天。
-2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
         :type ResumeTime: str
         :param _Reason: 禁推原因。
 注明：请务必填写禁推原因，防止误操作。
@@ -18818,7 +18818,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
         :param _StartTime: 开始时间。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
         :type StartTime: str
         :param _EndTime: 结束时间，注意：
 1. 结束时间必须大于开始时间；
@@ -18826,7 +18826,7 @@ SourceType为点播（PullVodPushLive）可以填多个，上限30个。
 3. 结束时间 和 开始时间 间隔必须小于七天。
 使用UTC格式时间，
 例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
         :type EndTime: str
         :param _VodLoopTimes: 点播拉流转推循环次数。
 -1：无限循环，直到任务结束。

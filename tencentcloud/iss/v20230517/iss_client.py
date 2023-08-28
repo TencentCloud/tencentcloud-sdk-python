@@ -236,6 +236,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchOperateDevice(self, request):
+        """用于批量操作（启用，禁用，删除）设备
+
+        :param request: Request instance for BatchOperateDevice.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchOperateDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchOperateDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckDomain(self, request):
         """用于检测域名是否备案。
 
@@ -1087,6 +1110,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTask(self, request):
+        """用于查询任务详情
+
+        :param request: Request instance for DescribeTask.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeTaskRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserDevice(self, request):
         """用于查询设备的详细信息。
 
@@ -1446,6 +1492,52 @@ class IssClient(AbstractClient):
             body = self.call("ListRecordTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.ListRecordTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSubTasks(self, request):
+        """用于查询任务的子任务列表
+
+        :param request: Request instance for ListSubTasks.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListSubTasksRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListSubTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSubTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSubTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTasks(self, request):
+        """用于查询批量任务和简单任务列表
+
+        :param request: Request instance for ListTasks.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListTasksRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

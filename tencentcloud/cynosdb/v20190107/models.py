@@ -7388,8 +7388,10 @@ class DatabasePrivileges(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库
+注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _Privileges: 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of str
         """
         self._Db = None
@@ -23535,10 +23537,13 @@ class TablePrivileges(AbstractModel):
     def __init__(self):
         r"""
         :param _Db: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
         :param _TableName: 表名
+注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
         :param _Privileges: 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of str
         """
         self._Db = None

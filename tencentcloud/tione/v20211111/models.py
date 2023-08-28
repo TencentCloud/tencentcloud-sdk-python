@@ -2503,6 +2503,8 @@ HYBRID_PAID:
         :type ModelTurboEnable: bool
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
+        :param _Command: 服务的启动命令
+        :type Command: str
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -2533,6 +2535,7 @@ HYBRID_PAID:
         self._CallbackUrl = None
         self._ModelTurboEnable = None
         self._ServiceCategory = None
+        self._Command = None
 
     @property
     def ServiceGroupId(self):
@@ -2766,6 +2769,14 @@ HYBRID_PAID:
     def ServiceCategory(self, ServiceCategory):
         self._ServiceCategory = ServiceCategory
 
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2828,6 +2839,7 @@ HYBRID_PAID:
         self._CallbackUrl = params.get("CallbackUrl")
         self._ModelTurboEnable = params.get("ModelTurboEnable")
         self._ServiceCategory = params.get("ServiceCategory")
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11212,6 +11224,42 @@ class ImageInfo(AbstractModel):
         
 
 
+class InferCodeInfo(AbstractModel):
+    """推理代码的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosPathInfo: 推理代码所在的cos详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        self._CosPathInfo = None
+
+    @property
+    def CosPathInfo(self):
+        return self._CosPathInfo
+
+    @CosPathInfo.setter
+    def CosPathInfo(self, CosPathInfo):
+        self._CosPathInfo = CosPathInfo
+
+
+    def _deserialize(self, params):
+        if params.get("CosPathInfo") is not None:
+            self._CosPathInfo = CosPathInfo()
+            self._CosPathInfo._deserialize(params.get("CosPathInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InferGatewayCallInfo(AbstractModel):
     """服务的调用信息，服务组下唯一
 
@@ -12692,6 +12740,8 @@ HYBRID_PAID:
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
         :type ModelTurboEnable: bool
+        :param _Command: 服务的启动命令
+        :type Command: str
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -12714,6 +12764,7 @@ HYBRID_PAID:
         self._ServiceLimit = None
         self._VolumeMount = None
         self._ModelTurboEnable = None
+        self._Command = None
 
     @property
     def ServiceId(self):
@@ -12883,6 +12934,14 @@ HYBRID_PAID:
     def ModelTurboEnable(self, ModelTurboEnable):
         self._ModelTurboEnable = ModelTurboEnable
 
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -12932,6 +12991,7 @@ HYBRID_PAID:
             self._VolumeMount = VolumeMount()
             self._VolumeMount._deserialize(params.get("VolumeMount"))
         self._ModelTurboEnable = params.get("ModelTurboEnable")
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17226,6 +17286,15 @@ HYBRID_PAID:
         :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelTurboEnable: bool
+        :param _VolumeMount: 挂载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
+        :param _InferCodeInfo: 推理代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InferCodeInfo: :class:`tencentcloud.tione.v20211111.models.InferCodeInfo`
+        :param _Command: 服务的启动命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Command: str
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -17253,6 +17322,9 @@ HYBRID_PAID:
         self._PodInfos = None
         self._ServiceLimit = None
         self._ModelTurboEnable = None
+        self._VolumeMount = None
+        self._InferCodeInfo = None
+        self._Command = None
 
     @property
     def Replicas(self):
@@ -17462,6 +17534,30 @@ HYBRID_PAID:
     def ModelTurboEnable(self, ModelTurboEnable):
         self._ModelTurboEnable = ModelTurboEnable
 
+    @property
+    def VolumeMount(self):
+        return self._VolumeMount
+
+    @VolumeMount.setter
+    def VolumeMount(self, VolumeMount):
+        self._VolumeMount = VolumeMount
+
+    @property
+    def InferCodeInfo(self):
+        return self._InferCodeInfo
+
+    @InferCodeInfo.setter
+    def InferCodeInfo(self, InferCodeInfo):
+        self._InferCodeInfo = InferCodeInfo
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -17523,6 +17619,13 @@ HYBRID_PAID:
             self._ServiceLimit = ServiceLimit()
             self._ServiceLimit._deserialize(params.get("ServiceLimit"))
         self._ModelTurboEnable = params.get("ModelTurboEnable")
+        if params.get("VolumeMount") is not None:
+            self._VolumeMount = VolumeMount()
+            self._VolumeMount._deserialize(params.get("VolumeMount"))
+        if params.get("InferCodeInfo") is not None:
+            self._InferCodeInfo = InferCodeInfo()
+            self._InferCodeInfo._deserialize(params.get("InferCodeInfo"))
+        self._Command = params.get("Command")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17968,12 +18071,16 @@ class StatefulSetCondition(AbstractModel):
         :param _LastTransitionTime: 上次更新的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastTransitionTime: str
+        :param _LastUpdateTime: 上次更新的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
         """
         self._Message = None
         self._Reason = None
         self._Status = None
         self._Type = None
         self._LastTransitionTime = None
+        self._LastUpdateTime = None
 
     @property
     def Message(self):
@@ -18015,6 +18122,14 @@ class StatefulSetCondition(AbstractModel):
     def LastTransitionTime(self, LastTransitionTime):
         self._LastTransitionTime = LastTransitionTime
 
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
 
     def _deserialize(self, params):
         self._Message = params.get("Message")
@@ -18022,6 +18137,7 @@ class StatefulSetCondition(AbstractModel):
         self._Status = params.get("Status")
         self._Type = params.get("Type")
         self._LastTransitionTime = params.get("LastTransitionTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20427,7 +20543,7 @@ class VolumeMount(AbstractModel):
         r"""
         :param _CFSConfig: cfs的配置信息
         :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
-        :param _VolumeSourceType: 挂载源类型
+        :param _VolumeSourceType: 挂载源类型，CFS、COS，默认为CFS
         :type VolumeSourceType: str
         """
         self._CFSConfig = None
@@ -20602,10 +20718,14 @@ Stopping 停止中
 
     @property
     def StatefulSetCondition(self):
+        warnings.warn("parameter `StatefulSetCondition` is deprecated", DeprecationWarning) 
+
         return self._StatefulSetCondition
 
     @StatefulSetCondition.setter
     def StatefulSetCondition(self, StatefulSetCondition):
+        warnings.warn("parameter `StatefulSetCondition` is deprecated", DeprecationWarning) 
+
         self._StatefulSetCondition = StatefulSetCondition
 
     @property

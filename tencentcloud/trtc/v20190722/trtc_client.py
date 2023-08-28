@@ -363,6 +363,37 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTRTCMarketQualityData(self, request):
+        """查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
+        joinSuccessRate：加入频道成功率。
+        joinSuccessIn5sRate：5s内加入频道成功率。
+        audioFreezeRate：音频卡顿率。
+        videoFreezeRate：视频卡顿率。
+        networkDelay ：网络延迟率。
+        注意：
+        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+        2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+
+        :param request: Request instance for DescribeTRTCMarketQualityData.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketQualityDataRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketQualityDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCMarketQualityData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCMarketQualityDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTRTCMarketQualityMetricData(self, request):
         """查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
@@ -385,6 +416,36 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeTRTCMarketQualityMetricData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTRTCMarketQualityMetricDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTRTCMarketScaleData(self, request):
+        """查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
+        userCount：通话人数，
+        roomCount：通话房间数，从有用户加入频道到所有用户离开频道计为一个通话频道。
+        peakCurrentChannels：峰值同时在线频道数。
+        peakCurrentUsers：峰值同时在线人数。
+        注意：
+        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+        2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+
+        :param request: Request instance for DescribeTRTCMarketScaleData.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketScaleDataRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCMarketScaleDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCMarketScaleData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCMarketScaleDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -424,6 +485,34 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTRTCRealTimeQualityData(self, request):
+        """查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
+        -视频卡顿率
+        -音频卡顿率
+        注意：
+        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+        2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+
+        :param request: Request instance for DescribeTRTCRealTimeQualityData.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeQualityDataRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeQualityDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCRealTimeQualityData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCRealTimeQualityDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTRTCRealTimeQualityMetricData(self, request):
         """查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
         -视频卡顿率
@@ -443,6 +532,36 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeTRTCRealTimeQualityMetricData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTRTCRealTimeQualityMetricDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTRTCRealTimeScaleData(self, request):
+        """查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
+        -userCount（在线用户数）
+        -roomCount（在线房间数）
+        注意：
+        1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+        2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+        xa0
+        3.除此之外您也可以通过订阅TRTC包月套餐(https://buy.cloud.tencent.com/trtc)尊享版或旗舰版解锁此接口的调用能力，请在开通包月套餐后，请提交工单联系售后解锁调用能力https://console.cloud.tencent.com/workorder/category
+
+        :param request: Request instance for DescribeTRTCRealTimeScaleData.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeScaleDataRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCRealTimeScaleDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCRealTimeScaleData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCRealTimeScaleDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

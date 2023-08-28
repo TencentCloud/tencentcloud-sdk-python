@@ -2918,6 +2918,88 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCustomRuleRequest(AbstractModel):
+    """DeleteCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 删除的域名
+        :type Domain: str
+        :param _RuleId: 删除的规则ID
+        :type RuleId: str
+        :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+        :type Edition: str
+        """
+        self._Domain = None
+        self._RuleId = None
+        self._Edition = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleId = params.get("RuleId")
+        self._Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomRuleResponse(AbstractModel):
+    """DeleteCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCustomWhiteRuleRequest(AbstractModel):
     """DeleteCustomWhiteRule请求参数结构体
 
@@ -4395,6 +4477,158 @@ class DescribeCiphersDetailResponse(AbstractModel):
                 obj = TLSCiphers()
                 obj._deserialize(item)
                 self._Ciphers.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomRuleListRequest(AbstractModel):
+    """DescribeCustomRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Offset: 偏移
+        :type Offset: int
+        :param _Limit: 容量
+        :type Limit: int
+        :param _Filters: 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+        :type Filters: list of FiltersItemNew
+        :param _Order: asc或者desc
+        :type Order: str
+        :param _By: exp_ts或者mod_ts
+        :type By: str
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomRuleListResponse(AbstractModel):
+    """DescribeCustomRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: 规则详情
+        :type RuleList: list of DescribeCustomRulesRspRuleListItem
+        :param _TotalCount: 规则条数
+        :type TotalCount: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RuleList(self):
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = DescribeCustomRulesRspRuleListItem()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -11124,6 +11358,180 @@ class ModifyBotStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCustomRuleRequest(AbstractModel):
+    """ModifyCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 编辑的域名
+        :type Domain: str
+        :param _RuleId: 编辑的规则ID
+        :type RuleId: int
+        :param _RuleName: 编辑的规则名称
+        :type RuleName: str
+        :param _RuleAction: 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+        :type RuleAction: str
+        :param _Strategies: 匹配条件数组
+        :type Strategies: list of Strategy
+        :param _Edition: WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+        :type Edition: str
+        :param _Redirect: 动作为重定向的时候重定向URL，默认为"/"
+        :type Redirect: str
+        :param _Bypass: 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+默认是"geoip,cc,owasp,ai,antileakage"
+        :type Bypass: str
+        :param _SortId: 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
+默认是100
+        :type SortId: int
+        :param _ExpireTime: 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+默认是0
+        :type ExpireTime: int
+        """
+        self._Domain = None
+        self._RuleId = None
+        self._RuleName = None
+        self._RuleAction = None
+        self._Strategies = None
+        self._Edition = None
+        self._Redirect = None
+        self._Bypass = None
+        self._SortId = None
+        self._ExpireTime = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleAction(self):
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def Strategies(self):
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Redirect(self):
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+    @property
+    def Bypass(self):
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def SortId(self):
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._RuleAction = params.get("RuleAction")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Edition = params.get("Edition")
+        self._Redirect = params.get("Redirect")
+        self._Bypass = params.get("Bypass")
+        self._SortId = params.get("SortId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomRuleResponse(AbstractModel):
+    """ModifyCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

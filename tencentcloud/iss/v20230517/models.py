@@ -2676,6 +2676,124 @@ class BaseAIResultInfo(AbstractModel):
         
 
 
+class BatchOperateDeviceData(AbstractModel):
+    """批量操作设备返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchOperateDeviceRequest(AbstractModel):
+    """BatchOperateDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+        :type DeviceIds: list of str
+        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除）
+        :type Cmd: str
+        """
+        self._DeviceIds = None
+        self._Cmd = None
+
+    @property
+    def DeviceIds(self):
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+    @property
+    def Cmd(self):
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        self._Cmd = params.get("Cmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchOperateDeviceResponse(AbstractModel):
+    """BatchOperateDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchOperateDeviceData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class BodyAIResultInfo(AbstractModel):
     """人体识别结果详情
 
@@ -7751,6 +7869,78 @@ class DescribeStreamAuthResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskRequest(AbstractModel):
+    """DescribeTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 简单任务或复杂任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskResponse(AbstractModel):
+    """DescribeTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务详情
+        :type Data: :class:`tencentcloud.iss.v20230517.models.TaskData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TaskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserDeviceRequest(AbstractModel):
     """DescribeUserDevice请求参数结构体
 
@@ -9043,8 +9233,14 @@ class ListGatewayDevicesRequest(AbstractModel):
         r"""
         :param _GatewayId: 网关索引ID（从获取网关列表接口ListGateways中获取）
         :type GatewayId: str
+        :param _PageNumber: 分页页数
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
         """
         self._GatewayId = None
+        self._PageNumber = None
+        self._PageSize = None
 
     @property
     def GatewayId(self):
@@ -9054,9 +9250,27 @@ class ListGatewayDevicesRequest(AbstractModel):
     def GatewayId(self, GatewayId):
         self._GatewayId = GatewayId
 
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10584,6 +10798,324 @@ class ListRecordTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListSubTasksData(AbstractModel):
+    """列举子任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 子任务列表
+        :type List: list of SubTaskData
+        :param _TotalCount: 子任务数量
+        :type TotalCount: int
+        """
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = SubTaskData()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSubTasksRequest(AbstractModel):
+    """ListSubTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 复杂任务ID
+        :type TaskId: str
+        :param _PageNumber: 页码，默认为1
+        :type PageNumber: int
+        :param _PageSize: 每页数量，默认为10
+        :type PageSize: int
+        :param _Status: 默认不对该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+        :type Status: int
+        """
+        self._TaskId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Status = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSubTasksResponse(AbstractModel):
+    """ListSubTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListSubTasksData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListSubTasksData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListTasksData(AbstractModel):
+    """查询任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of TaskData
+        :param _TotalCount: 任务数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = TaskData()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTasksRequest(AbstractModel):
+    """ListTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码，默认为1
+        :type PageNumber: int
+        :param _PageSize: 每页数量，默认为10
+        :type PageSize: int
+        :param _Operation: 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+        :type Operation: str
+        :param _Status: 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Operation = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Operation = params.get("Operation")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTasksResponse(AbstractModel):
+    """ListTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListTasksData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTasksData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class Location(AbstractModel):
     """AI识别结果在画面中坐标
 
@@ -12012,6 +12544,374 @@ class SnapshotConfig(AbstractModel):
                 obj = OperTimeSlot()
                 obj._deserialize(item)
                 self._OperTimeSlot.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubTaskData(AbstractModel):
+    """子任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubTaskId: 子任务ID
+        :type SubTaskId: str
+        :param _Status: 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+        :type Status: int
+        :param _FailReason: 任务失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _Progress: 任务进度
+        :type Progress: float
+        :param _Action: 操作类型
+        :type Action: str
+        :param _ActionZhDesc: 操作类型中文描述
+        :type ActionZhDesc: str
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _StartedAt: 启动任务时间
+        :type StartedAt: str
+        :param _CreatedAt: 创建任务时间
+        :type CreatedAt: str
+        :param _UpdatedAt: 更新任务时间
+        :type UpdatedAt: str
+        :param _Runtime: 任务运行时间，单位ms
+        :type Runtime: int
+        """
+        self._SubTaskId = None
+        self._Status = None
+        self._FailReason = None
+        self._Progress = None
+        self._Action = None
+        self._ActionZhDesc = None
+        self._ResourceId = None
+        self._StartedAt = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Runtime = None
+
+    @property
+    def SubTaskId(self):
+        return self._SubTaskId
+
+    @SubTaskId.setter
+    def SubTaskId(self, SubTaskId):
+        self._SubTaskId = SubTaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ActionZhDesc(self):
+        return self._ActionZhDesc
+
+    @ActionZhDesc.setter
+    def ActionZhDesc(self, ActionZhDesc):
+        self._ActionZhDesc = ActionZhDesc
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def StartedAt(self):
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Runtime(self):
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+
+    def _deserialize(self, params):
+        self._SubTaskId = params.get("SubTaskId")
+        self._Status = params.get("Status")
+        self._FailReason = params.get("FailReason")
+        self._Progress = params.get("Progress")
+        self._Action = params.get("Action")
+        self._ActionZhDesc = params.get("ActionZhDesc")
+        self._ResourceId = params.get("ResourceId")
+        self._StartedAt = params.get("StartedAt")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._Runtime = params.get("Runtime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskData(AbstractModel):
+    """查询复杂任务详情返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _Status: 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+        :type Status: int
+        :param _FailReason: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _Progress: 进度（0-1）
+        :type Progress: float
+        :param _Action: 任务操作类型，批量任务类型以Batch开头
+        :type Action: str
+        :param _ActionZhDesc: 操作类型中文描述
+        :type ActionZhDesc: str
+        :param _TaskType: 任务类型 1.简单 2.复杂 3.子任务
+        :type TaskType: int
+        :param _ResourceId: 任务资源id（复杂任务该字段无效）
+        :type ResourceId: str
+        :param _Total: 总任务数（仅复杂任务有效）
+        :type Total: int
+        :param _SuccessCount: 成功任务数（仅复杂任务有效）
+        :type SuccessCount: int
+        :param _FailCount: 失败任务数（仅复杂任务有效）
+        :type FailCount: int
+        :param _RunningCount: 运行任务数（仅复杂任务有效）
+        :type RunningCount: int
+        :param _StartedAt: 启动任务时间
+        :type StartedAt: str
+        :param _CreatedAt: 创建任务时间
+        :type CreatedAt: str
+        :param _UpdatedAt: 更新任务时间
+        :type UpdatedAt: str
+        :param _Runtime: 任务运行时间，单位ms
+        :type Runtime: int
+        """
+        self._TaskId = None
+        self._Status = None
+        self._FailReason = None
+        self._Progress = None
+        self._Action = None
+        self._ActionZhDesc = None
+        self._TaskType = None
+        self._ResourceId = None
+        self._Total = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._RunningCount = None
+        self._StartedAt = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Runtime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def ActionZhDesc(self):
+        return self._ActionZhDesc
+
+    @ActionZhDesc.setter
+    def ActionZhDesc(self, ActionZhDesc):
+        self._ActionZhDesc = ActionZhDesc
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def RunningCount(self):
+        return self._RunningCount
+
+    @RunningCount.setter
+    def RunningCount(self, RunningCount):
+        self._RunningCount = RunningCount
+
+    @property
+    def StartedAt(self):
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Runtime(self):
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._FailReason = params.get("FailReason")
+        self._Progress = params.get("Progress")
+        self._Action = params.get("Action")
+        self._ActionZhDesc = params.get("ActionZhDesc")
+        self._TaskType = params.get("TaskType")
+        self._ResourceId = params.get("ResourceId")
+        self._Total = params.get("Total")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._RunningCount = params.get("RunningCount")
+        self._StartedAt = params.get("StartedAt")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._Runtime = params.get("Runtime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
