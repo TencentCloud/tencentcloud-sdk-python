@@ -1924,7 +1924,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type ShardCpu: int
         :param _DbVersionId: 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
         :type DbVersionId: str
-        :param _Zones: 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+        :param _Zones: 分片节点可用区分布，可填写多个可用区。
         :type Zones: list of str
         :param _SecurityGroupId: 安全组id
         :type SecurityGroupId: str
@@ -1946,6 +1946,8 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type RollbackTime: str
         :param _SecurityGroupIds: 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
         :type SecurityGroupIds: list of str
+        :param _DcnSyncMode: DCN同步模式，0：普通DCN同步，1：一致性同步
+        :type DcnSyncMode: int
         """
         self._ShardMemory = None
         self._ShardStorage = None
@@ -1968,6 +1970,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         self._RollbackInstanceId = None
         self._RollbackTime = None
         self._SecurityGroupIds = None
+        self._DcnSyncMode = None
 
     @property
     def ShardMemory(self):
@@ -2137,6 +2140,14 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DcnSyncMode(self):
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
 
     def _deserialize(self, params):
         self._ShardMemory = params.get("ShardMemory")
@@ -2170,6 +2181,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         self._RollbackInstanceId = params.get("RollbackInstanceId")
         self._RollbackTime = params.get("RollbackTime")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DcnSyncMode = params.get("DcnSyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -393,6 +393,11 @@ class EssbasicClient(AbstractClient):
         - B端企业的签署方式是静默签署
         - B端企业是非首位签署
 
+        通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+        ]( https://qian.tencent.com/developers/partner/callback_types_contracts_sign)
+
+        用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+
         :param request: Request instance for ChannelCreateMultiFlowSignQRCode.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateMultiFlowSignQRCodeRequest`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateMultiFlowSignQRCodeResponse`

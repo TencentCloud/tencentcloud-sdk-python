@@ -5090,10 +5090,14 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def AsrResultSimilarity(self):
+        warnings.warn("parameter `AsrResultSimilarity` is deprecated", DeprecationWarning) 
+
         return self._AsrResultSimilarity
 
     @AsrResultSimilarity.setter
     def AsrResultSimilarity(self, AsrResultSimilarity):
+        warnings.warn("parameter `AsrResultSimilarity` is deprecated", DeprecationWarning) 
+
         self._AsrResultSimilarity = AsrResultSimilarity
 
 

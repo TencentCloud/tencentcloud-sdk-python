@@ -147,7 +147,7 @@ class Agent(AbstractModel):
 
 
 class ApproverInfo(AbstractModel):
-    """参与者信息
+    """参与者信息。
 
     """
 
@@ -2077,7 +2077,7 @@ class CreateConvertTaskApiRequest(AbstractModel):
         :type ResourceId: str
         :param _Operator: 调用方用户信息，userId 必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 应用号信息
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
@@ -2123,14 +2123,10 @@ class CreateConvertTaskApiRequest(AbstractModel):
 
     @property
     def Agent(self):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         return self._Agent
 
     @Agent.setter
     def Agent(self, Agent):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         self._Agent = Agent
 
     @property
@@ -4729,10 +4725,12 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :param _UserData: 用户自定义字段
 <br/>回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param _CallbackUrl: 回调地址,最大长度1000字符串
-<br/>回调时机：用户通过签署二维码发起签署流程时，企业额度不足导致失败
+        :param _CallbackUrl: 已废弃，回调配置统一使用企业应用管理-应用集成-企业版应用中的配置 
+<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/company/callback_types_contracts_sign
+<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
+
         :type CallbackUrl: str
-        :param _Agent: 应用信息
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
@@ -4815,22 +4813,22 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property
     def Agent(self):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         return self._Agent
 
     @Agent.setter
     def Agent(self, Agent):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         self._Agent = Agent
 
     @property
@@ -5098,11 +5096,14 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         :type IdCardType: str
         :param _IdCardNumber: 身份证件号码
         :type IdCardNumber: str
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._UserName = None
         self._IdCardType = None
         self._IdCardNumber = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -5136,6 +5137,14 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
     def IdCardNumber(self, IdCardNumber):
         self._IdCardNumber = IdCardNumber
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5144,6 +5153,9 @@ HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
         self._UserName = params.get("UserName")
         self._IdCardType = params.get("IdCardType")
         self._IdCardNumber = params.get("IdCardNumber")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7578,7 +7590,8 @@ class DescribeFileUrlsRequest(AbstractModel):
         :type CcToken: str
         :param _Scene: 暂不开放
         :type Scene: str
-        :param _Agent: 应用相关信息
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -7683,14 +7696,10 @@ class DescribeFileUrlsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         return self._Agent
 
     @Agent.setter
     def Agent(self, Agent):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         self._Agent = Agent
 
 
@@ -8860,7 +8869,8 @@ class DescribeIntegrationRolesRequest(AbstractModel):
         :param _Filters: 查询的关键字段:
 Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
-Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
+Key:"IsGroupRole"，Values:["0"]:查询非集团角色，Values:["1"]表示查询集团角色
+Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
         :type Filters: list of Filter
         :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
         :type Offset: int
@@ -9261,6 +9271,18 @@ LEGAL_PERSON_SEAL：法定代表人章
         :type SealTypes: list of str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _SealStatuses: 查询的印章状态列表。
+取值为空，只查询启用状态的印章；
+取值ALL，查询所有状态的印章；
+取值CHECKING，查询待审核的印章；
+取值SUCCESS，查询启用状态的印章；
+取值FAIL，查询印章审核拒绝的印章；
+取值DISABLE，查询已停用的印章；
+取值STOPPED，查询已终止的印章；
+取值VOID，查询已作废的印章；
+取值INVALID，查询以失效的印章；
+
+        :type SealStatuses: list of str
         """
         self._Operator = None
         self._Limit = None
@@ -9269,6 +9291,7 @@ LEGAL_PERSON_SEAL：法定代表人章
         self._SealId = None
         self._SealTypes = None
         self._Agent = None
+        self._SealStatuses = None
 
     @property
     def Operator(self):
@@ -9326,6 +9349,14 @@ LEGAL_PERSON_SEAL：法定代表人章
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def SealStatuses(self):
+        return self._SealStatuses
+
+    @SealStatuses.setter
+    def SealStatuses(self, SealStatuses):
+        self._SealStatuses = SealStatuses
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -9339,6 +9370,7 @@ LEGAL_PERSON_SEAL：法定代表人章
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._SealStatuses = params.get("SealStatuses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10800,48 +10832,46 @@ class FlowApproverUrlInfo(AbstractModel):
 
 
 class FlowBrief(AbstractModel):
-    """流程信息摘要
+    """合同流程的基础信息
 
     """
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程的编号ID
+        :param _FlowId: 合同流程ID，为32位字符串。
         :type FlowId: str
-        :param _FlowName: 流程的名称
+        :param _FlowName: 合同流程的名称。
         :type FlowName: str
-        :param _FlowDescription: 流程的描述信息
+        :param _FlowDescription: 合同流程描述信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowDescription: str
-        :param _FlowType: 流程的类型
+        :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
         :type FlowType: str
-        :param _FlowStatus: 流程状态
-- 0 还没有发起
-- 1 待签署
-- 2 部分签署
-- 3 已拒签
-- 4 已签署
-- 5 已过期
-- 6 已撤销
-- 7 还没有预发起
-- 8 等待填写
-- 9 部分填写
-- 10 拒填
-- 21 已解除
+        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值
+<ul><li> **0** : 未开启流程(合同中不存在填写环节)</li>
+<li> **1** : 待签署</li>
+<li> **2** : 部分签署</li>
+<li> **3** : 已拒签</li>
+<li> **4** : 已签署</li>
+<li> **5** : 已过期</li>
+<li> **6** : 已撤销</li>
+<li> **7** : 未开启流程(合同中存在填写环节)</li>
+<li> **8** : 等待填写</li>
+<li> **9** : 部分填写</li>
+<li> **10** : 已拒填</li>
+<li> **21** : 已解除</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowStatus: int
-        :param _CreatedOn: 流程创建的时间戳，单位秒
+        :param _CreatedOn: 合同流程创建时间，格式为Unix标准时间戳（秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedOn: int
-        :param _FlowMessage: 当合同被拒签或者取消后(当FlowStatus=3或者FlowStatus=6的时候)
-此字段展示拒签或者取消的原因描述
-
+        :param _FlowMessage: 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMessage: str
-        :param _Creator:  合同发起人userId
+        :param _Creator:  合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creator: str
-        :param _Deadline: 合同过期时间，时间戳，单位秒
+        :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deadline: int
         """
@@ -11995,7 +12025,7 @@ class GetTaskResultApiRequest(AbstractModel):
         :type TaskId: str
         :param _Operator: 操作人信息,UserId必填
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 应用号信息
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
@@ -12023,14 +12053,10 @@ class GetTaskResultApiRequest(AbstractModel):
 
     @property
     def Agent(self):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         return self._Agent
 
     @Agent.setter
     def Agent(self, Agent):
-        warnings.warn("parameter `Agent` is deprecated", DeprecationWarning) 
-
         self._Agent = Agent
 
     @property
@@ -12402,12 +12428,16 @@ class IntegrateRole(AbstractModel):
         :param _SubOrgIdList: 管辖的子企业列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubOrgIdList: list of str
+        :param _PermissionGroups: 权限树
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionGroups: list of PermissionGroup
         """
         self._RoleId = None
         self._RoleName = None
         self._RoleStatus = None
         self._IsGroupRole = None
         self._SubOrgIdList = None
+        self._PermissionGroups = None
 
     @property
     def RoleId(self):
@@ -12449,6 +12479,14 @@ class IntegrateRole(AbstractModel):
     def SubOrgIdList(self, SubOrgIdList):
         self._SubOrgIdList = SubOrgIdList
 
+    @property
+    def PermissionGroups(self):
+        return self._PermissionGroups
+
+    @PermissionGroups.setter
+    def PermissionGroups(self, PermissionGroups):
+        self._PermissionGroups = PermissionGroups
+
 
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
@@ -12456,6 +12494,12 @@ class IntegrateRole(AbstractModel):
         self._RoleStatus = params.get("RoleStatus")
         self._IsGroupRole = params.get("IsGroupRole")
         self._SubOrgIdList = params.get("SubOrgIdList")
+        if params.get("PermissionGroups") is not None:
+            self._PermissionGroups = []
+            for item in params.get("PermissionGroups"):
+                obj = PermissionGroup()
+                obj._deserialize(item)
+                self._PermissionGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13276,6 +13320,253 @@ class PdfVerifyResult(AbstractModel):
         self._ComponentWidth = params.get("ComponentWidth")
         self._ComponentHeight = params.get("ComponentHeight")
         self._ComponentPage = params.get("ComponentPage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Permission(AbstractModel):
+    """权限树节点权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Key: 权限key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Type: 权限类型 1前端，2后端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Hide: 是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hide: int
+        :param _DataLabel: 数据权限标签 1:表示根节点，2:表示叶子结点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLabel: int
+        :param _DataType: 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataType: int
+        :param _DataRange: 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataRange: int
+        :param _DataTo: 关联权限, 表示这个功能权限要受哪个数据权限管控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataTo: str
+        :param _ParentKey: 父级权限key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentKey: str
+        :param _IsChecked: 是否选中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsChecked: bool
+        :param _Children: 子权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of Permission
+        """
+        self._Name = None
+        self._Key = None
+        self._Type = None
+        self._Hide = None
+        self._DataLabel = None
+        self._DataType = None
+        self._DataRange = None
+        self._DataTo = None
+        self._ParentKey = None
+        self._IsChecked = None
+        self._Children = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Hide(self):
+        return self._Hide
+
+    @Hide.setter
+    def Hide(self, Hide):
+        self._Hide = Hide
+
+    @property
+    def DataLabel(self):
+        return self._DataLabel
+
+    @DataLabel.setter
+    def DataLabel(self, DataLabel):
+        self._DataLabel = DataLabel
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def DataRange(self):
+        return self._DataRange
+
+    @DataRange.setter
+    def DataRange(self, DataRange):
+        self._DataRange = DataRange
+
+    @property
+    def DataTo(self):
+        return self._DataTo
+
+    @DataTo.setter
+    def DataTo(self, DataTo):
+        self._DataTo = DataTo
+
+    @property
+    def ParentKey(self):
+        return self._ParentKey
+
+    @ParentKey.setter
+    def ParentKey(self, ParentKey):
+        self._ParentKey = ParentKey
+
+    @property
+    def IsChecked(self):
+        return self._IsChecked
+
+    @IsChecked.setter
+    def IsChecked(self, IsChecked):
+        self._IsChecked = IsChecked
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        self._Hide = params.get("Hide")
+        self._DataLabel = params.get("DataLabel")
+        self._DataType = params.get("DataType")
+        self._DataRange = params.get("DataRange")
+        self._DataTo = params.get("DataTo")
+        self._ParentKey = params.get("ParentKey")
+        self._IsChecked = params.get("IsChecked")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionGroup(AbstractModel):
+    """权限树中的权限组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 权限组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _GroupKey: 权限组key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupKey: str
+        :param _Hide: 是否隐藏分组，0否1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hide: int
+        :param _Permissions: 权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of Permission
+        """
+        self._GroupName = None
+        self._GroupKey = None
+        self._Hide = None
+        self._Permissions = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupKey(self):
+        return self._GroupKey
+
+    @GroupKey.setter
+    def GroupKey(self, GroupKey):
+        self._GroupKey = GroupKey
+
+    @property
+    def Hide(self):
+        return self._Hide
+
+    @Hide.setter
+    def Hide(self, Hide):
+        self._Hide = Hide
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._GroupKey = params.get("GroupKey")
+        self._Hide = params.get("Hide")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15678,7 +15969,7 @@ class VerifyPdfResponse(AbstractModel):
         r"""
         :param _VerifyResult: 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
         :type VerifyResult: int
-        :param _PdfVerifyResults: 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
+        :param _PdfVerifyResults: 验签结果详情，每个签名域对应的验签结果。状态值：1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
         :type PdfVerifyResults: list of PdfVerifyResult
         :param _VerifySerialNo: 验签序列号
         :type VerifySerialNo: str

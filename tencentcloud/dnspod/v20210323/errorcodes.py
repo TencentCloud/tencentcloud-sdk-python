@@ -68,6 +68,9 @@ FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = 'FailedOperation.DomainOwnedByOtherUser
 # 校验公网 IP 发生异常。
 FAILEDOPERATION_EIPCHECKFAILED = 'FailedOperation.EipCheckFailed'
 
+# 您操作过于频繁，请稍后重试
+FAILEDOPERATION_FREQUENCYLIMIT = 'FailedOperation.FrequencyLimit'
+
 # 此功能暂停申请，请稍候重试。
 FAILEDOPERATION_FUNCTIONNOTALLOWEDAPPLY = 'FailedOperation.FunctionNotAllowedApply'
 

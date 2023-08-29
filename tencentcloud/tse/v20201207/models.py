@@ -6733,7 +6733,7 @@ class InternetConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InternetAddressVersion: 公网地址版本，可选："IPV4" | "IPV6-NAT64" 。不填默认 IPV4 。
+        :param _InternetAddressVersion: 公网地址版本，可选："IPV4" | "IPV6" 。不填默认 IPV4 。
         :type InternetAddressVersion: str
         :param _InternetPayMode: 公网付费类型，当前仅可选："BANDWIDTH"。不填默认为 "BANDWIDTH"
         :type InternetPayMode: str
@@ -9315,7 +9315,7 @@ class RateLimitResponse(AbstractModel):
         :param _Body: 自定义响应体
 注意：此字段可能返回 null，表示取不到有效值。
         :type Body: str
-        :param _Headers: headrs
+        :param _Headers: Headers
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of KVMapping
         :param _HttpStatus: http状态码

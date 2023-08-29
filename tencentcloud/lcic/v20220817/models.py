@@ -4815,6 +4815,9 @@ class DescribeUserResponse(AbstractModel):
         :type Name: str
         :param _Avatar: 用户头像Url。
         :type Avatar: str
+        :param _OriginId: 用户在客户系统的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4822,6 +4825,7 @@ class DescribeUserResponse(AbstractModel):
         self._UserId = None
         self._Name = None
         self._Avatar = None
+        self._OriginId = None
         self._RequestId = None
 
     @property
@@ -4857,6 +4861,14 @@ class DescribeUserResponse(AbstractModel):
         self._Avatar = Avatar
 
     @property
+    def OriginId(self):
+        return self._OriginId
+
+    @OriginId.setter
+    def OriginId(self, OriginId):
+        self._OriginId = OriginId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4870,6 +4882,7 @@ class DescribeUserResponse(AbstractModel):
         self._UserId = params.get("UserId")
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
+        self._OriginId = params.get("OriginId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8488,11 +8501,15 @@ class UserInfo(AbstractModel):
         :param _Avatar: 用户头像Url。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Avatar: str
+        :param _OriginId: 用户在客户系统的Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginId: str
         """
         self._SdkAppId = None
         self._UserId = None
         self._Name = None
         self._Avatar = None
+        self._OriginId = None
 
     @property
     def SdkAppId(self):
@@ -8526,12 +8543,21 @@ class UserInfo(AbstractModel):
     def Avatar(self, Avatar):
         self._Avatar = Avatar
 
+    @property
+    def OriginId(self):
+        return self._OriginId
+
+    @OriginId.setter
+    def OriginId(self, OriginId):
+        self._OriginId = OriginId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._UserId = params.get("UserId")
         self._Name = params.get("Name")
         self._Avatar = params.get("Avatar")
+        self._OriginId = params.get("OriginId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

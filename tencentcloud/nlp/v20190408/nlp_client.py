@@ -165,7 +165,7 @@ class NlpClient(AbstractClient):
 
 
     def GenerateKeywordSentence(self, request):
-        """提取文本中的关键信息，生成简洁明了的关键句子，便于用户快速获取核心观点。
+        """根据提供的关键词，生成简洁明了的关键句子，便于用户快速获取核心观点。
 
         :param request: Request instance for GenerateKeywordSentence.
         :type request: :class:`tencentcloud.nlp.v20190408.models.GenerateKeywordSentenceRequest`

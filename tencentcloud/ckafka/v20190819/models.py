@@ -20761,6 +20761,8 @@ class MySQLParam(AbstractModel):
         :type SignalDatabase: str
         :param _IsTableRegular: 输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
         :type IsTableRegular: bool
+        :param _SignalTable: 信号表
+        :type SignalTable: str
         """
         self._Database = None
         self._Table = None
@@ -20787,6 +20789,7 @@ class MySQLParam(AbstractModel):
         self._RecordWithSchema = None
         self._SignalDatabase = None
         self._IsTableRegular = None
+        self._SignalTable = None
 
     @property
     def Database(self):
@@ -20988,6 +20991,14 @@ class MySQLParam(AbstractModel):
     def IsTableRegular(self, IsTableRegular):
         self._IsTableRegular = IsTableRegular
 
+    @property
+    def SignalTable(self):
+        return self._SignalTable
+
+    @SignalTable.setter
+    def SignalTable(self, SignalTable):
+        self._SignalTable = SignalTable
+
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
@@ -21022,6 +21033,7 @@ class MySQLParam(AbstractModel):
         self._RecordWithSchema = params.get("RecordWithSchema")
         self._SignalDatabase = params.get("SignalDatabase")
         self._IsTableRegular = params.get("IsTableRegular")
+        self._SignalTable = params.get("SignalTable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

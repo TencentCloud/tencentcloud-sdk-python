@@ -586,7 +586,7 @@ class CreateInstanceRequest(AbstractModel):
 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
         :param _DiskType: 已废弃请使用NodeInfoList
-节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
         :type DiskType: str
         :param _DiskSize: 已废弃请使用NodeInfoList
 节点磁盘容量（单位GB）
@@ -637,6 +637,8 @@ class CreateInstanceRequest(AbstractModel):
         :type DiskEnhance: int
         :param _EnableDiagnose: 是否开启智能巡检
         :type EnableDiagnose: bool
+        :param _CdcId: cdcId，使用cdc子网时传递
+        :type CdcId: str
         """
         self._Zone = None
         self._EsVersion = None
@@ -672,6 +674,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableHybridStorage = None
         self._DiskEnhance = None
         self._EnableDiagnose = None
+        self._CdcId = None
 
     @property
     def Zone(self):
@@ -945,6 +948,14 @@ class CreateInstanceRequest(AbstractModel):
     def EnableDiagnose(self, EnableDiagnose):
         self._EnableDiagnose = EnableDiagnose
 
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1000,6 +1011,7 @@ class CreateInstanceRequest(AbstractModel):
         self._EnableHybridStorage = params.get("EnableHybridStorage")
         self._DiskEnhance = params.get("DiskEnhance")
         self._EnableDiagnose = params.get("EnableDiagnose")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4356,6 +4368,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _KibanaAlteringPublicAccess: Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaAlteringPublicAccess: str
+        :param _HasKernelUpgrade: 本月是否有内核可以更新：false-无，true-有
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasKernelUpgrade: bool
+        :param _CdcId: cdcId，使用cdc子网时传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CdcId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -4438,6 +4456,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableHybridStorage = None
         self._ProcessPercent = None
         self._KibanaAlteringPublicAccess = None
+        self._HasKernelUpgrade = None
+        self._CdcId = None
 
     @property
     def InstanceId(self):
@@ -5087,6 +5107,22 @@ RENEW_FLAG_DEFAULT：不自动续费
     def KibanaAlteringPublicAccess(self, KibanaAlteringPublicAccess):
         self._KibanaAlteringPublicAccess = KibanaAlteringPublicAccess
 
+    @property
+    def HasKernelUpgrade(self):
+        return self._HasKernelUpgrade
+
+    @HasKernelUpgrade.setter
+    def HasKernelUpgrade(self, HasKernelUpgrade):
+        self._HasKernelUpgrade = HasKernelUpgrade
+
+    @property
+    def CdcId(self):
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5211,6 +5247,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._EnableHybridStorage = params.get("EnableHybridStorage")
         self._ProcessPercent = params.get("ProcessPercent")
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
+        self._HasKernelUpgrade = params.get("HasKernelUpgrade")
+        self._CdcId = params.get("CdcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -429,6 +429,8 @@ class BaseFlowInfo(AbstractModel):
 <br/>false：不开启发起方发起前审核
 <br/>当指定NeedCreateReview=true，则提交审核后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
         :type NeedCreateReview: bool
+        :param _Components: 填写控件：文件发起使用
+        :type Components: list of Component
         """
         self._FlowName = None
         self._FlowType = None
@@ -441,6 +443,7 @@ class BaseFlowInfo(AbstractModel):
         self._UserData = None
         self._CcInfos = None
         self._NeedCreateReview = None
+        self._Components = None
 
     @property
     def FlowName(self):
@@ -530,6 +533,14 @@ class BaseFlowInfo(AbstractModel):
     def NeedCreateReview(self, NeedCreateReview):
         self._NeedCreateReview = NeedCreateReview
 
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -553,6 +564,12 @@ class BaseFlowInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CcInfos.append(obj)
         self._NeedCreateReview = params.get("NeedCreateReview")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self._Components.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2589,9 +2606,9 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :param _Restrictions: 指定的签署二维码签署人
 <br/>指定后，只允许知道的人操作和签署
         :type Restrictions: list of ApproverRestriction
-        :param _CallbackUrl: 回调地址，最大长度1000个字符
-不传默认使用第三方应用号配置的回调地址
-回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
+        :param _CallbackUrl: 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
+<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
+<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
         :type CallbackUrl: str
         :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
         :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
@@ -2667,10 +2684,14 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         return self._CallbackUrl
 
     @CallbackUrl.setter
     def CallbackUrl(self, CallbackUrl):
+        warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
+
         self._CallbackUrl = CallbackUrl
 
     @property
@@ -2876,7 +2897,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         r"""
         :param _ResourceId: 资源id，与ResourceType对应
         :type ResourceId: str
-        :param _ResourceType: 资源类型，1：模板，目前仅支持模板，与ResourceId对应
+        :param _ResourceType: 资源类型，与ResourceId对应1：模板   2: 文件
         :type ResourceType: int
         :param _FlowInfo: 合同流程基础信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
@@ -5667,6 +5688,8 @@ class CommonFlowApprover(AbstractModel):
         :type NotifyType: str
         :param _ApproverOption: 签署人配置
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
+        :param _SignComponents: 签署控件：文件发起使用
+        :type SignComponents: list of Component
         """
         self._NotChannelOrganization = None
         self._ApproverType = None
@@ -5682,6 +5705,7 @@ class CommonFlowApprover(AbstractModel):
         self._IsFullText = None
         self._NotifyType = None
         self._ApproverOption = None
+        self._SignComponents = None
 
     @property
     def NotChannelOrganization(self):
@@ -5799,6 +5823,14 @@ class CommonFlowApprover(AbstractModel):
     def ApproverOption(self, ApproverOption):
         self._ApproverOption = ApproverOption
 
+    @property
+    def SignComponents(self):
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
+
 
     def _deserialize(self, params):
         self._NotChannelOrganization = params.get("NotChannelOrganization")
@@ -5817,6 +5849,12 @@ class CommonFlowApprover(AbstractModel):
         if params.get("ApproverOption") is not None:
             self._ApproverOption = CommonApproverOption()
             self._ApproverOption._deserialize(params.get("ApproverOption"))
+        if params.get("SignComponents") is not None:
+            self._SignComponents = []
+            for item in params.get("SignComponents"):
+                obj = Component()
+                obj._deserialize(item)
+                self._SignComponents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8834,7 +8872,7 @@ class FlowApproverInfo(AbstractModel):
     4-非第三方平台子客企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
 
     RecipientId参数：
-    从DescribeTemplates接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId
+    从DescribeTemplates接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId。
 
     """
 

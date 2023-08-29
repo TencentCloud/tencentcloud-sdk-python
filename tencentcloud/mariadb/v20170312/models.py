@@ -1667,7 +1667,7 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zones: 节点可用区分布，最多可填两个可用区。
+        :param _Zones: 节点可用区分布，可填写多个可用区。
         :type Zones: list of str
         :param _NodeCount: 节点个数
         :type NodeCount: int
@@ -1705,6 +1705,8 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
         :type RollbackInstanceId: str
         :param _RollbackTime: 回档时间
         :type RollbackTime: str
+        :param _DcnSyncMode: DCN同步模式，0：普通DCN同步，1：一致性同步
+        :type DcnSyncMode: int
         """
         self._Zones = None
         self._NodeCount = None
@@ -1724,6 +1726,7 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
         self._InitParams = None
         self._RollbackInstanceId = None
         self._RollbackTime = None
+        self._DcnSyncMode = None
 
     @property
     def Zones(self):
@@ -1869,6 +1872,14 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
     def RollbackTime(self, RollbackTime):
         self._RollbackTime = RollbackTime
 
+    @property
+    def DcnSyncMode(self):
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
 
     def _deserialize(self, params):
         self._Zones = params.get("Zones")
@@ -1899,6 +1910,7 @@ innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0
                 self._InitParams.append(obj)
         self._RollbackInstanceId = params.get("RollbackInstanceId")
         self._RollbackTime = params.get("RollbackTime")
+        self._DcnSyncMode = params.get("DcnSyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
