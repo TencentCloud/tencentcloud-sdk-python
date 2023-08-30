@@ -9955,7 +9955,7 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
         :type TotalCount: int
         :param _List: 设备通道信息列表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type List: :class:`tencentcloud.iss.v20230517.models.RecordPlanChannelInfo`
+        :type List: list of RecordPlanChannelInfo
         """
         self._PageNumber = None
         self._PageSize = None
@@ -10000,8 +10000,11 @@ class ListRecordBackupPlanDevicesData(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._TotalCount = params.get("TotalCount")
         if params.get("List") is not None:
-            self._List = RecordPlanChannelInfo()
-            self._List._deserialize(params.get("List"))
+            self._List = []
+            for item in params.get("List"):
+                obj = RecordPlanChannelInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10028,9 +10031,9 @@ class ListRecordBackupPlanDevicesRequest(AbstractModel):
         :param _OrganizationName: 按照组织名称查询（为空时，不参考该参数）
         :type OrganizationName: str
         :param _PageSize: 每页最大数量
-        :type PageSize: str
-        :param _PageNumber: 第几页
-        :type PageNumber: str
+        :type PageSize: int
+        :param _PageNumber: 分页页数
+        :type PageNumber: int
         """
         self._PlanId = None
         self._DeviceName = None

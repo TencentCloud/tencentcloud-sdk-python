@@ -628,6 +628,14 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _ScheduleType: 策略类型 meta(元数据)  data (表数据)
+        :type ScheduleType: str
+        :param _OperationType: 操作类型 create(创建) update(编辑修改)
+        :type OperationType: str
+        :param _RetainDays: 保留天数 例如7
+        :type RetainDays: int
         :param _ScheduleId: 编辑时需要传
         :type ScheduleId: int
         :param _WeekDays: 选择的星期 逗号分隔，例如 2 代表周二
@@ -637,10 +645,46 @@ class CreateBackUpScheduleRequest(AbstractModel):
         :param _BackUpTables: 备份表列表
         :type BackUpTables: list of BackupTableContent
         """
+        self._InstanceId = None
+        self._ScheduleType = None
+        self._OperationType = None
+        self._RetainDays = None
         self._ScheduleId = None
         self._WeekDays = None
         self._ExecuteHour = None
         self._BackUpTables = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ScheduleType(self):
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def RetainDays(self):
+        return self._RetainDays
+
+    @RetainDays.setter
+    def RetainDays(self, RetainDays):
+        self._RetainDays = RetainDays
 
     @property
     def ScheduleId(self):
@@ -676,6 +720,10 @@ class CreateBackUpScheduleRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ScheduleType = params.get("ScheduleType")
+        self._OperationType = params.get("OperationType")
+        self._RetainDays = params.get("RetainDays")
         self._ScheduleId = params.get("ScheduleId")
         self._WeekDays = params.get("WeekDays")
         self._ExecuteHour = params.get("ExecuteHour")
@@ -702,10 +750,21 @@ class CreateBackUpScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorMsg: 错误描述
+        :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMsg = None
         self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
 
     @property
     def RequestId(self):
@@ -717,6 +776,7 @@ class CreateBackUpScheduleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 

@@ -3909,6 +3909,64 @@ class CostDetail(AbstractModel):
         
 
 
+class CreateAllocationTagRequest(AbstractModel):
+    """CreateAllocationTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 用户分账标签键
+        :type TagKey: list of str
+        """
+        self._TagKey = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAllocationTagResponse(AbstractModel):
+    """CreateAllocationTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Deal(AbstractModel):
     """订单数据对象
 
@@ -4264,6 +4322,64 @@ postMoveIn 按量计费迁入资源
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteAllocationTagRequest(AbstractModel):
+    """DeleteAllocationTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 用户分账标签键
+        :type TagKey: list of str
+        """
+        self._TagKey = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAllocationTagResponse(AbstractModel):
+    """DeleteAllocationTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAccountBalanceRequest(AbstractModel):
@@ -5111,6 +5227,11 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         :type BusinessCode: str
         :param _PayerUin: 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
         :type PayerUin: str
+        :param _TagKey: 分账标签键，用户自定义（支持2021-01以后账单查询）
+        :type TagKey: str
+        :param _TagValue: 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+（支持2021-01以后账单查询）
+        :type TagValue: str
         """
         self._Offset = None
         self._Limit = None
@@ -5122,6 +5243,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self._PayMode = None
         self._BusinessCode = None
         self._PayerUin = None
+        self._TagKey = None
+        self._TagValue = None
 
     @property
     def Offset(self):
@@ -5203,6 +5326,22 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     def PayerUin(self, PayerUin):
         self._PayerUin = PayerUin
 
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -5215,6 +5354,8 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._BusinessCode = params.get("BusinessCode")
         self._PayerUin = params.get("PayerUin")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7411,6 +7552,141 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTagListRequest(AbstractModel):
+    """DescribeTagList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Limit: int
+        :param _Offset: 数量，最大值为1000
+        :type Offset: int
+        :param _TagKey: 分账标签键，用作模糊搜索
+        :type TagKey: str
+        :param _Status: 标签类型，枚举值：0普通标签，1分账标签，用作筛选，不传获取全部标签键
+        :type Status: int
+        :param _OrderType: 排序方式，枚举值：asc排升序，desc排降序
+        :type OrderType: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._TagKey = None
+        self._Status = None
+        self._OrderType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TagKey = params.get("TagKey")
+        self._Status = params.get("Status")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTagListResponse(AbstractModel):
+    """DescribeTagList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总记录数
+        :type RecordNum: int
+        :param _Data: 标签信息
+        :type Data: list of TagDataInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TagDataInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVoucherInfoRequest(AbstractModel):
     """DescribeVoucherInfo请求参数结构体
 
@@ -8747,6 +9023,64 @@ class SummaryTotal(AbstractModel):
     def _deserialize(self, params):
         self._RealTotalCost = params.get("RealTotalCost")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagDataInfo(AbstractModel):
+    """标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 分账标签键
+        :type TagKey: str
+        :param _Status: 标签类型，0普通标签，1分账标签
+        :type Status: int
+        :param _UpdateTime: 设置分账标签时间，普通标签不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._TagKey = None
+        self._Status = None
+        self._UpdateTime = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._Status = params.get("Status")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

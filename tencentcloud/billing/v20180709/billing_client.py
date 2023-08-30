@@ -26,6 +26,52 @@ class BillingClient(AbstractClient):
     _service = 'billing'
 
 
+    def CreateAllocationTag(self, request):
+        """批量设置分账标签
+
+        :param request: Request instance for CreateAllocationTag.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationTag(self, request):
+        """批量取消设置分账标签
+
+        :param request: Request instance for DeleteAllocationTag.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountBalance(self, request):
         """获取云账户余额信息。
 
@@ -434,6 +480,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeDosageDetailByDate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDosageDetailByDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTagList(self, request):
+        """获取分账标签
+
+        :param request: Request instance for DescribeTagList.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeTagListRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeTagListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTagList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTagListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

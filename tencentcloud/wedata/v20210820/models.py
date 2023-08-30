@@ -33147,7 +33147,7 @@ class DescribeTaskRunHistoryRequest(AbstractModel):
         :param _PageSize: 分页大小
         :type PageSize: int
         :param _PageNumber: 分页页码
-        :type PageNumber: str
+        :type PageNumber: int
         """
         self._ProjectId = None
         self._SearchCondition = None

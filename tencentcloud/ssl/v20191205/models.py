@@ -409,10 +409,13 @@ class CdnInstanceDetail(AbstractModel):
         :type CertId: str
         :param _Status: 域名状态
         :type Status: str
+        :param _HttpsBillingSwitch: 域名计费状态
+        :type HttpsBillingSwitch: str
         """
         self._Domain = None
         self._CertId = None
         self._Status = None
+        self._HttpsBillingSwitch = None
 
     @property
     def Domain(self):
@@ -438,11 +441,20 @@ class CdnInstanceDetail(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def HttpsBillingSwitch(self):
+        return self._HttpsBillingSwitch
+
+    @HttpsBillingSwitch.setter
+    def HttpsBillingSwitch(self, HttpsBillingSwitch):
+        self._HttpsBillingSwitch = HttpsBillingSwitch
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._CertId = params.get("CertId")
         self._Status = params.get("Status")
+        self._HttpsBillingSwitch = params.get("HttpsBillingSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -536,9 +548,17 @@ class Certificate(AbstractModel):
         :type CertId: str
         :param _DnsNames: 证书绑定的域名
         :type DnsNames: list of str
+        :param _CertCaId: 根证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertCaId: str
+        :param _SSLMode: 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLMode: str
         """
         self._CertId = None
         self._DnsNames = None
+        self._CertCaId = None
+        self._SSLMode = None
 
     @property
     def CertId(self):
@@ -556,10 +576,28 @@ class Certificate(AbstractModel):
     def DnsNames(self, DnsNames):
         self._DnsNames = DnsNames
 
+    @property
+    def CertCaId(self):
+        return self._CertCaId
+
+    @CertCaId.setter
+    def CertCaId(self, CertCaId):
+        self._CertCaId = CertCaId
+
+    @property
+    def SSLMode(self):
+        return self._SSLMode
+
+    @SSLMode.setter
+    def SSLMode(self, SSLMode):
+        self._SSLMode = SSLMode
+
 
     def _deserialize(self, params):
         self._CertId = params.get("CertId")
         self._DnsNames = params.get("DnsNames")
+        self._CertCaId = params.get("CertCaId")
+        self._SSLMode = params.get("SSLMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10875,10 +10913,16 @@ class TkeInstanceDetail(AbstractModel):
         :type ClusterName: str
         :param _NamespaceList: 集群命名空间列表
         :type NamespaceList: list of TkeNameSpaceDetail
+        :param _ClusterType: 集群类型
+        :type ClusterType: str
+        :param _ClusterVersion: 集群版本
+        :type ClusterVersion: str
         """
         self._ClusterId = None
         self._ClusterName = None
         self._NamespaceList = None
+        self._ClusterType = None
+        self._ClusterVersion = None
 
     @property
     def ClusterId(self):
@@ -10904,6 +10948,22 @@ class TkeInstanceDetail(AbstractModel):
     def NamespaceList(self, NamespaceList):
         self._NamespaceList = NamespaceList
 
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterVersion(self):
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -10914,6 +10974,8 @@ class TkeInstanceDetail(AbstractModel):
                 obj = TkeNameSpaceDetail()
                 obj._deserialize(item)
                 self._NamespaceList.append(obj)
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterVersion = params.get("ClusterVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

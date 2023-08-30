@@ -10441,6 +10441,9 @@ class BashRule(AbstractModel):
         :param _DealOldEvents: 是否处理之前的事件 0: 不处理 1:处理
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealOldEvents: int
+        :param _Description: 规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._Id = None
         self._Uuid = None
@@ -10457,6 +10460,7 @@ class BashRule(AbstractModel):
         self._Uuids = None
         self._White = None
         self._DealOldEvents = None
+        self._Description = None
 
     @property
     def Id(self):
@@ -10500,10 +10504,14 @@ class BashRule(AbstractModel):
 
     @property
     def Decription(self):
+        warnings.warn("parameter `Decription` is deprecated", DeprecationWarning) 
+
         return self._Decription
 
     @Decription.setter
     def Decription(self, Decription):
+        warnings.warn("parameter `Decription` is deprecated", DeprecationWarning) 
+
         self._Decription = Decription
 
     @property
@@ -10578,6 +10586,14 @@ class BashRule(AbstractModel):
     def DealOldEvents(self, DealOldEvents):
         self._DealOldEvents = DealOldEvents
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10595,6 +10611,7 @@ class BashRule(AbstractModel):
         self._Uuids = params.get("Uuids")
         self._White = params.get("White")
         self._DealOldEvents = params.get("DealOldEvents")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

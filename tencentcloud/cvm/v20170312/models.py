@@ -7223,6 +7223,9 @@ class HostResource(AbstractModel):
         :type GpuTotal: int
         :param _GpuAvailable: 专用宿主机实例可用GPU卡数
         :type GpuAvailable: int
+        :param _ExclusiveOwner: CDH owner
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExclusiveOwner: str
         """
         self._CpuTotal = None
         self._CpuAvailable = None
@@ -7233,6 +7236,7 @@ class HostResource(AbstractModel):
         self._DiskType = None
         self._GpuTotal = None
         self._GpuAvailable = None
+        self._ExclusiveOwner = None
 
     @property
     def CpuTotal(self):
@@ -7306,6 +7310,14 @@ class HostResource(AbstractModel):
     def GpuAvailable(self, GpuAvailable):
         self._GpuAvailable = GpuAvailable
 
+    @property
+    def ExclusiveOwner(self):
+        return self._ExclusiveOwner
+
+    @ExclusiveOwner.setter
+    def ExclusiveOwner(self, ExclusiveOwner):
+        self._ExclusiveOwner = ExclusiveOwner
+
 
     def _deserialize(self, params):
         self._CpuTotal = params.get("CpuTotal")
@@ -7317,6 +7329,7 @@ class HostResource(AbstractModel):
         self._DiskType = params.get("DiskType")
         self._GpuTotal = params.get("GpuTotal")
         self._GpuAvailable = params.get("GpuAvailable")
+        self._ExclusiveOwner = params.get("ExclusiveOwner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

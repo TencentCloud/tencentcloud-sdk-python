@@ -1898,7 +1898,7 @@ class DeleteApplicationRequest(AbstractModel):
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
-        :param _SourceChannel: 来源渠道
+        :param _SourceChannel: 来源渠道(用户不需要关心此参数)
         :type SourceChannel: int
         :param _DeleteApplicationIfNoRunningVersion: 当服务没有任何运行版本时，是否删除此服务
         :type DeleteApplicationIfNoRunningVersion: bool
@@ -7578,7 +7578,7 @@ class ModifyApplicationReplicasRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 服务id
+        :param _ApplicationId: 应用id
         :type ApplicationId: str
         :param _EnvironmentId: 环境ID
         :type EnvironmentId: str
@@ -9120,7 +9120,7 @@ class RestartApplicationRequest(AbstractModel):
         :type ApplicationId: str
         :param _SourceChannel: 来源渠道
         :type SourceChannel: int
-        :param _EnvironmentId: 环境ID
+        :param _EnvironmentId: 环境ID/命名空间ID
         :type EnvironmentId: str
         """
         self._ApplicationId = None
@@ -10455,7 +10455,7 @@ class StopApplicationRequest(AbstractModel):
         :type ApplicationId: str
         :param _SourceChannel: 来源渠道
         :type SourceChannel: int
-        :param _EnvironmentId: 环境ID
+        :param _EnvironmentId: 环境ID/命名空间ID
         :type EnvironmentId: str
         """
         self._ApplicationId = None

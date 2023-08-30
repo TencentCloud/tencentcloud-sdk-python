@@ -2262,6 +2262,8 @@ lye1y30d：低功耗事件30天年套餐。
         :type PackageQueue: str
         :param _OrderId: 订单id
         :type OrderId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -2269,6 +2271,7 @@ lye1y30d：低功耗事件30天年套餐。
         self._Override = None
         self._PackageQueue = None
         self._OrderId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -2318,6 +2321,14 @@ lye1y30d：低功耗事件30天年套餐。
     def OrderId(self, OrderId):
         self._OrderId = OrderId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -2326,6 +2337,7 @@ lye1y30d：低功耗事件30天年套餐。
         self._Override = params.get("Override")
         self._PackageQueue = params.get("PackageQueue")
         self._OrderId = params.get("OrderId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4763,10 +4775,13 @@ class DescribeCloudStorageDateRequest(AbstractModel):
         :type DeviceName: str
         :param _UserId: 用户ID
         :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -4792,11 +4807,20 @@ class DescribeCloudStorageDateRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5706,6 +5730,8 @@ class DescribeCloudStorageTimeRequest(AbstractModel):
         :type EndTime: int
         :param _UserId: 用户ID
         :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -5713,6 +5739,7 @@ class DescribeCloudStorageTimeRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -5762,6 +5789,14 @@ class DescribeCloudStorageTimeRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -5770,6 +5805,7 @@ class DescribeCloudStorageTimeRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -471,7 +471,7 @@ class MsClient(AbstractClient):
 
 
     def RequestLocalTask(self, request):
-        """client任务请求地址
+        """client任务请求
 
         :param request: Request instance for RequestLocalTask.
         :type request: :class:`tencentcloud.ms.v20180408.models.RequestLocalTaskRequest`
@@ -494,7 +494,7 @@ class MsClient(AbstractClient):
 
 
     def UpdateClientState(self, request):
-        """更新client状态
+        """更新client状态，需要白名单
 
         :param request: Request instance for UpdateClientState.
         :type request: :class:`tencentcloud.ms.v20180408.models.UpdateClientStateRequest`
@@ -517,7 +517,7 @@ class MsClient(AbstractClient):
 
 
     def UpdateLocalTaskResult(self, request):
-        """更新本地任务结果
+        """更新本地任务执行结果
 
         :param request: Request instance for UpdateLocalTaskResult.
         :type request: :class:`tencentcloud.ms.v20180408.models.UpdateLocalTaskResultRequest`

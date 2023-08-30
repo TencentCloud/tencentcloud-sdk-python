@@ -1216,9 +1216,11 @@ class BizLicenseOCRResponse(AbstractModel):
         :type SetDate: str
         :param _RecognizeWarnCode: Code 告警码列表和释义：
 -9102 黑白复印件告警
+-9104 翻拍件告警
         :type RecognizeWarnCode: list of int
         :param _RecognizeWarnMsg: 告警码说明：
 WARN_COPY_CARD 黑白复印件告警
+WARN_RESHOOT_SCREENED_CARD 翻拍件告警
         :type RecognizeWarnMsg: list of str
         :param _IsDuplication: 是否为副本。1为是，-1为不是。
         :type IsDuplication: int
