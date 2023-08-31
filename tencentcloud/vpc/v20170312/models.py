@@ -7702,6 +7702,78 @@ class CreateNetDetectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNetworkAclEntriesRequest(AbstractModel):
+    """CreateNetworkAclEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAclId: 网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param _NetworkAclEntrySet: 网络三元组ACL规则集。
+        :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
+        self._NetworkAclId = None
+        self._NetworkAclEntrySet = None
+
+    @property
+    def NetworkAclId(self):
+        return self._NetworkAclId
+
+    @NetworkAclId.setter
+    def NetworkAclId(self, NetworkAclId):
+        self._NetworkAclId = NetworkAclId
+
+    @property
+    def NetworkAclEntrySet(self):
+        return self._NetworkAclEntrySet
+
+    @NetworkAclEntrySet.setter
+    def NetworkAclEntrySet(self, NetworkAclEntrySet):
+        self._NetworkAclEntrySet = NetworkAclEntrySet
+
+
+    def _deserialize(self, params):
+        self._NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclEntrySet") is not None:
+            self._NetworkAclEntrySet = NetworkAclEntrySet()
+            self._NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkAclEntriesResponse(AbstractModel):
+    """CreateNetworkAclEntries返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNetworkAclQuintupleEntriesRequest(AbstractModel):
     """CreateNetworkAclQuintupleEntries请求参数结构体
 
@@ -12366,6 +12438,78 @@ class DeleteNetDetectRequest(AbstractModel):
 
 class DeleteNetDetectResponse(AbstractModel):
     """DeleteNetDetect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNetworkAclEntriesRequest(AbstractModel):
+    """DeleteNetworkAclEntries请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAclId: 三元组网络ACL实例ID。例如：acl-12345678。
+        :type NetworkAclId: str
+        :param _NetworkAclEntrySet: 三元组网络ACL规则集。
+        :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
+        self._NetworkAclId = None
+        self._NetworkAclEntrySet = None
+
+    @property
+    def NetworkAclId(self):
+        return self._NetworkAclId
+
+    @NetworkAclId.setter
+    def NetworkAclId(self, NetworkAclId):
+        self._NetworkAclId = NetworkAclId
+
+    @property
+    def NetworkAclEntrySet(self):
+        return self._NetworkAclEntrySet
+
+    @NetworkAclEntrySet.setter
+    def NetworkAclEntrySet(self, NetworkAclEntrySet):
+        self._NetworkAclEntrySet = NetworkAclEntrySet
+
+
+    def _deserialize(self, params):
+        self._NetworkAclId = params.get("NetworkAclId")
+        if params.get("NetworkAclEntrySet") is not None:
+            self._NetworkAclEntrySet = NetworkAclEntrySet()
+            self._NetworkAclEntrySet._deserialize(params.get("NetworkAclEntrySet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNetworkAclEntriesResponse(AbstractModel):
+    """DeleteNetworkAclEntries返回参数结构体
 
     """
 

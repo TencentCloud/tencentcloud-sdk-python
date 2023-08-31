@@ -1198,6 +1198,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNetworkAclEntries(self, request):
+        """本接口（CreateNetworkAclEntries）用于增量添加网络ACL三元组的入站规则和出站规则。
+
+        :param request: Request instance for CreateNetworkAclEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateNetworkAclEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkAclEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNetworkAclEntriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNetworkAclQuintupleEntries(self, request):
         """本接口（CreateNetworkAclQuintupleEntries）用于增量网络ACL五元组的入站规则和出站规则。
 
@@ -2200,6 +2223,31 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteNetworkAcl", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNetworkAclResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNetworkAclEntries(self, request):
+        """本接口（DeleteNetworkAclEntries）用于删除三元组网络ACL的入站规则和出站规则。在NetworkAclEntrySet参数中：
+        * 删除IPv4规则，需要传入NetworkAclIpv4EntryId。
+        * 删除IPv6规则，需要传入NetworkAclIpv6EntryId。
+
+        :param request: Request instance for DeleteNetworkAclEntries.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclEntriesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteNetworkAclEntriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNetworkAclEntries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNetworkAclEntriesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
