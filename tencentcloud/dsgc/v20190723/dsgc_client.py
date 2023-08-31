@@ -1322,6 +1322,52 @@ class DsgcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDSPAAssessmentRiskSideDistributed(self, request):
+        """风险评估概览页，查询风险面的分布
+
+        :param request: Request instance for DescribeDSPAAssessmentRiskSideDistributed.
+        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideDistributedRequest`
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideDistributedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDSPAAssessmentRiskSideDistributed", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDSPAAssessmentRiskSideDistributedResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDSPAAssessmentRiskSideList(self, request):
+        """风险评估概览页，查询风险面的分布
+
+        :param request: Request instance for DescribeDSPAAssessmentRiskSideList.
+        :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideListRequest`
+        :rtype: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskSideListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDSPAAssessmentRiskSideList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDSPAAssessmentRiskSideListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDSPAAssessmentRiskTemplateDetail(self, request):
         """风险项页面--查看评估模版详情
 

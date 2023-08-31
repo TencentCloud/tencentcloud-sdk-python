@@ -2143,6 +2143,9 @@ class ClbListenerListInfo(AbstractModel):
         :param _Domain: 监听器域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
+        :param _LoadBalancerDomain: 负载均衡域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDomain: str
         """
         self._ListenerId = None
         self._ListenerName = None
@@ -2156,6 +2159,7 @@ class ClbListenerListInfo(AbstractModel):
         self._NumericalVpcId = None
         self._LoadBalancerType = None
         self._Domain = None
+        self._LoadBalancerDomain = None
 
     @property
     def ListenerId(self):
@@ -2253,6 +2257,14 @@ class ClbListenerListInfo(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def LoadBalancerDomain(self):
+        return self._LoadBalancerDomain
+
+    @LoadBalancerDomain.setter
+    def LoadBalancerDomain(self, LoadBalancerDomain):
+        self._LoadBalancerDomain = LoadBalancerDomain
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -2267,6 +2279,7 @@ class ClbListenerListInfo(AbstractModel):
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
         self._Domain = params.get("Domain")
+        self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

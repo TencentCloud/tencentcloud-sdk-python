@@ -1418,6 +1418,66 @@ class BrokerTopicData(AbstractModel):
         
 
 
+class BrokerTopicFlowData(AbstractModel):
+    """broker维度topic 流量排行指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: Topic 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _TopicId: Topic Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _TopicTraffic: Topic 流量(MB)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicTraffic: str
+        """
+        self._TopicName = None
+        self._TopicId = None
+        self._TopicTraffic = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicTraffic(self):
+        return self._TopicTraffic
+
+    @TopicTraffic.setter
+    def TopicTraffic(self, TopicTraffic):
+        self._TopicTraffic = TopicTraffic
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._TopicId = params.get("TopicId")
+        self._TopicTraffic = params.get("TopicTraffic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelAuthorizationTokenRequest(AbstractModel):
     """CancelAuthorizationToken请求参数结构体
 
@@ -4859,6 +4919,8 @@ class CreateInstancePreRequest(AbstractModel):
         :type PublicNetworkMonthly: int
         :param _InstanceNum: 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
         :type InstanceNum: int
+        :param _AutoVoucher: 是否自动选择代金券:1-是;0否。默认为0
+        :type AutoVoucher: int
         """
         self._InstanceName = None
         self._ZoneId = None
@@ -4880,6 +4942,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._ZoneIds = None
         self._PublicNetworkMonthly = None
         self._InstanceNum = None
+        self._AutoVoucher = None
 
     @property
     def InstanceName(self):
@@ -5041,6 +5104,14 @@ class CreateInstancePreRequest(AbstractModel):
     def InstanceNum(self, InstanceNum):
         self._InstanceNum = InstanceNum
 
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5068,6 +5139,7 @@ class CreateInstancePreRequest(AbstractModel):
         self._ZoneIds = params.get("ZoneIds")
         self._PublicNetworkMonthly = params.get("PublicNetworkMonthly")
         self._InstanceNum = params.get("InstanceNum")
+        self._AutoVoucher = params.get("AutoVoucher")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24278,12 +24350,15 @@ class TopicFlowRankingResult(AbstractModel):
         :param _BrokerTopicData: 单个broker 节点 Topic占用的数据大小
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerTopicData: list of BrokerTopicData
+        :param _BrokerTopicFlowData: 单个Broker 节点Topic 流量的大小(单位MB)
+        :type BrokerTopicFlowData: list of BrokerTopicFlowData
         """
         self._TopicFlow = None
         self._ConsumeSpeed = None
         self._TopicMessageHeap = None
         self._BrokerIp = None
         self._BrokerTopicData = None
+        self._BrokerTopicFlowData = None
 
     @property
     def TopicFlow(self):
@@ -24325,6 +24400,14 @@ class TopicFlowRankingResult(AbstractModel):
     def BrokerTopicData(self, BrokerTopicData):
         self._BrokerTopicData = BrokerTopicData
 
+    @property
+    def BrokerTopicFlowData(self):
+        return self._BrokerTopicFlowData
+
+    @BrokerTopicFlowData.setter
+    def BrokerTopicFlowData(self, BrokerTopicFlowData):
+        self._BrokerTopicFlowData = BrokerTopicFlowData
+
 
     def _deserialize(self, params):
         if params.get("TopicFlow") is not None:
@@ -24352,6 +24435,12 @@ class TopicFlowRankingResult(AbstractModel):
                 obj = BrokerTopicData()
                 obj._deserialize(item)
                 self._BrokerTopicData.append(obj)
+        if params.get("BrokerTopicFlowData") is not None:
+            self._BrokerTopicFlowData = []
+            for item in params.get("BrokerTopicFlowData"):
+                obj = BrokerTopicFlowData()
+                obj._deserialize(item)
+                self._BrokerTopicFlowData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25744,6 +25833,8 @@ class ZoneInfo(AbstractModel):
         :param _SalesInfo: 标准版售罄信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SalesInfo: list of SaleInfo
+        :param _ExtraFlag: 额外标识
+        :type ExtraFlag: str
         """
         self._ZoneId = None
         self._IsInternalApp = None
@@ -25754,6 +25845,7 @@ class ZoneInfo(AbstractModel):
         self._Exflag = None
         self._SoldOut = None
         self._SalesInfo = None
+        self._ExtraFlag = None
 
     @property
     def ZoneId(self):
@@ -25805,10 +25897,14 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Exflag(self):
+        warnings.warn("parameter `Exflag` is deprecated", DeprecationWarning) 
+
         return self._Exflag
 
     @Exflag.setter
     def Exflag(self, Exflag):
+        warnings.warn("parameter `Exflag` is deprecated", DeprecationWarning) 
+
         self._Exflag = Exflag
 
     @property
@@ -25827,6 +25923,14 @@ class ZoneInfo(AbstractModel):
     def SalesInfo(self, SalesInfo):
         self._SalesInfo = SalesInfo
 
+    @property
+    def ExtraFlag(self):
+        return self._ExtraFlag
+
+    @ExtraFlag.setter
+    def ExtraFlag(self, ExtraFlag):
+        self._ExtraFlag = ExtraFlag
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -25843,6 +25947,7 @@ class ZoneInfo(AbstractModel):
                 obj = SaleInfo()
                 obj._deserialize(item)
                 self._SalesInfo.append(obj)
+        self._ExtraFlag = params.get("ExtraFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

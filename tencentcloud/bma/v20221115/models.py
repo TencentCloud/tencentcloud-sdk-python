@@ -817,10 +817,13 @@ class CreateBPWhiteListRequest(AbstractModel):
         :type WhiteListType: int
         :param _WhiteLists: 白名单名称
         :type WhiteLists: list of str
+        :param _Remark: 白名单备注
+        :type Remark: str
         """
         self._CompanyId = None
         self._WhiteListType = None
         self._WhiteLists = None
+        self._Remark = None
 
     @property
     def CompanyId(self):
@@ -846,11 +849,20 @@ class CreateBPWhiteListRequest(AbstractModel):
     def WhiteLists(self, WhiteLists):
         self._WhiteLists = WhiteLists
 
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._CompanyId = params.get("CompanyId")
         self._WhiteListType = params.get("WhiteListType")
         self._WhiteLists = params.get("WhiteLists")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2214,6 +2226,9 @@ class WhiteListData(AbstractModel):
         :param _WhiteList: 白名单
 注意：此字段可能返回 null，表示取不到有效值。
         :type WhiteList: str
+        :param _Remark: 白名单备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         :param _InsertTime: 新增时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
@@ -2223,6 +2238,7 @@ class WhiteListData(AbstractModel):
         self._BrandName = None
         self._AssetsType = None
         self._WhiteList = None
+        self._Remark = None
         self._InsertTime = None
 
     @property
@@ -2266,6 +2282,14 @@ class WhiteListData(AbstractModel):
         self._WhiteList = WhiteList
 
     @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
     def InsertTime(self):
         return self._InsertTime
 
@@ -2280,6 +2304,7 @@ class WhiteListData(AbstractModel):
         self._BrandName = params.get("BrandName")
         self._AssetsType = params.get("AssetsType")
         self._WhiteList = params.get("WhiteList")
+        self._Remark = params.get("Remark")
         self._InsertTime = params.get("InsertTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

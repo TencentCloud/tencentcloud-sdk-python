@@ -173,6 +173,111 @@ class AttachCBSSpec(AbstractModel):
         
 
 
+class BackUpJobDisplay(AbstractModel):
+    """备份任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 备份任务id
+        :type JobId: int
+        :param _Snapshot: 备份任务名
+        :type Snapshot: str
+        :param _BackUpType: 任务类型(元数据),(数据)
+        :type BackUpType: str
+        :param _BackUpSize: 备份数据量
+        :type BackUpSize: int
+        :param _BackUpTime: 任务创建时间
+        :type BackUpTime: str
+        :param _ExpireTime: 任务过期时间
+        :type ExpireTime: str
+        :param _JobStatus: 任务状态
+        :type JobStatus: str
+        """
+        self._JobId = None
+        self._Snapshot = None
+        self._BackUpType = None
+        self._BackUpSize = None
+        self._BackUpTime = None
+        self._ExpireTime = None
+        self._JobStatus = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def BackUpType(self):
+        return self._BackUpType
+
+    @BackUpType.setter
+    def BackUpType(self, BackUpType):
+        self._BackUpType = BackUpType
+
+    @property
+    def BackUpSize(self):
+        return self._BackUpSize
+
+    @BackUpSize.setter
+    def BackUpSize(self, BackUpSize):
+        self._BackUpSize = BackUpSize
+
+    @property
+    def BackUpTime(self):
+        return self._BackUpTime
+
+    @BackUpTime.setter
+    def BackUpTime(self, BackUpTime):
+        self._BackUpTime = BackUpTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def JobStatus(self):
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Snapshot = params.get("Snapshot")
+        self._BackUpType = params.get("BackUpType")
+        self._BackUpSize = params.get("BackUpSize")
+        self._BackUpTime = params.get("BackUpTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._JobStatus = params.get("JobStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupTableContent(AbstractModel):
     """备份表信息
 
@@ -1041,6 +1146,300 @@ class CreateInstanceNewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBackUpDataRequest(AbstractModel):
+    """DeleteBackUpData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        :param _IsDeleteAll: 是否删除所有数据
+        :type IsDeleteAll: bool
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+        self._IsDeleteAll = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+    @property
+    def IsDeleteAll(self):
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackUpDataResponse(AbstractModel):
+    """DeleteBackUpData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobDetailRequest(AbstractModel):
+    """DescribeBackUpJobDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobDetailResponse(AbstractModel):
+    """DescribeBackUpJobDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableContents: 备份表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableContents: list of BackupTableContent
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableContents = None
+        self._RequestId = None
+
+    @property
+    def TableContents(self):
+        return self._TableContents
+
+    @TableContents.setter
+    def TableContents(self, TableContents):
+        self._TableContents = TableContents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableContents") is not None:
+            self._TableContents = []
+            for item in params.get("TableContents"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._TableContents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobRequest(AbstractModel):
+    """DescribeBackUpJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _PageNum: 页号
+        :type PageNum: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._InstanceId = None
+        self._PageSize = None
+        self._PageNum = None
+        self._BeginTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobResponse(AbstractModel):
+    """DescribeBackUpJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackUpJobs: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackUpJobs: list of BackUpJobDisplay
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackUpJobs = None
+        self._RequestId = None
+
+    @property
+    def BackUpJobs(self):
+        return self._BackUpJobs
+
+    @BackUpJobs.setter
+    def BackUpJobs(self, BackUpJobs):
+        self._BackUpJobs = BackUpJobs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackUpJobs") is not None:
+            self._BackUpJobs = []
+            for item in params.get("BackUpJobs"):
+                obj = BackUpJobDisplay()
+                obj._deserialize(item)
+                self._BackUpJobs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackUpScheduleRequest(AbstractModel):
     """DescribeBackUpSchedule请求参数结构体
 
@@ -1210,11 +1609,14 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
         :type Cluster: str
         :param _UserName: 用户名称，api与user相关的必填
         :type UserName: str
+        :param _UserType: 账户的类型
+        :type UserType: str
         """
         self._InstanceId = None
         self._ApiType = None
         self._Cluster = None
         self._UserName = None
+        self._UserType = None
 
     @property
     def InstanceId(self):
@@ -1248,12 +1650,21 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ApiType = params.get("ApiType")
         self._Cluster = params.get("Cluster")
         self._UserName = params.get("UserName")
+        self._UserType = params.get("UserType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3980,6 +4391,76 @@ class OpenBackUpRequest(AbstractModel):
 
 class OpenBackUpResponse(AbstractModel):
     """OpenBackUp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RecoverBackUpJobRequest(AbstractModel):
+    """RecoverBackUpJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _BackUpJobId: 任务id
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecoverBackUpJobResponse(AbstractModel):
+    """RecoverBackUpJob返回参数结构体
 
     """
 

@@ -28284,10 +28284,16 @@ class DescribeMaliciousRequestWhiteListRequest(AbstractModel):
 
 <li>Domain  - String - 基线名称</li>
         :type Filters: list of Filters
+        :param _Order: 排序方式 [asc:升序|desc:降序]
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
         """
         self._Limit = None
         self._Offset = None
         self._Filters = None
+        self._Order = None
+        self._By = None
 
     @property
     def Limit(self):
@@ -28313,6 +28319,22 @@ class DescribeMaliciousRequestWhiteListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -28323,6 +28345,8 @@ class DescribeMaliciousRequestWhiteListRequest(AbstractModel):
                 obj = Filters()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

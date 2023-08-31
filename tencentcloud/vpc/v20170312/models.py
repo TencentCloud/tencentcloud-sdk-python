@@ -5765,6 +5765,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
 <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
 <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
+<li>ENHANCED95_POSTPAID_BY_MONTH: 按月后付费增强型95计费</li>
+<li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 后付费日结按带宽计费</li>
+
         :type ChargeType: str
         :param _BandwidthPackageName: 带宽包名称。
         :type BandwidthPackageName: str
@@ -32222,10 +32225,13 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
         :type NetworkAclEntrySet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
         :param _NetworkAclQuintupleSet: 网络ACL五元组规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
         :type NetworkAclQuintupleSet: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        :param _EnableUpdateAclEntries: 三元组的增量更新。该接口的默认语义为全量覆盖。当需要实现增量更新语义时，设置该参数为True。
+        :type EnableUpdateAclEntries: bool
         """
         self._NetworkAclId = None
         self._NetworkAclEntrySet = None
         self._NetworkAclQuintupleSet = None
+        self._EnableUpdateAclEntries = None
 
     @property
     def NetworkAclId(self):
@@ -32251,6 +32257,14 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
     def NetworkAclQuintupleSet(self, NetworkAclQuintupleSet):
         self._NetworkAclQuintupleSet = NetworkAclQuintupleSet
 
+    @property
+    def EnableUpdateAclEntries(self):
+        return self._EnableUpdateAclEntries
+
+    @EnableUpdateAclEntries.setter
+    def EnableUpdateAclEntries(self, EnableUpdateAclEntries):
+        self._EnableUpdateAclEntries = EnableUpdateAclEntries
+
 
     def _deserialize(self, params):
         self._NetworkAclId = params.get("NetworkAclId")
@@ -32260,6 +32274,7 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
         if params.get("NetworkAclQuintupleSet") is not None:
             self._NetworkAclQuintupleSet = NetworkAclQuintupleEntries()
             self._NetworkAclQuintupleSet._deserialize(params.get("NetworkAclQuintupleSet"))
+        self._EnableUpdateAclEntries = params.get("EnableUpdateAclEntries")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35212,13 +35227,11 @@ class NetworkAclEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModifyTime: 修改时间。
-        :type ModifyTime: str
         :param _Protocol: 协议, 取值: TCP,UDP, ICMP, ALL。
         :type Protocol: str
         :param _Port: 端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
         :type Port: str
-        :param _CidrBlock: 网段或IP(互斥)。
+        :param _CidrBlock: 网段或IP(互斥)。增量创建ACL规则时，CidrBlock和Ipv6CidrBlock至少提供一个。
         :type CidrBlock: str
         :param _Ipv6CidrBlock: 网段或IPv6(互斥)。
         :type Ipv6CidrBlock: str
@@ -35226,22 +35239,27 @@ class NetworkAclEntry(AbstractModel):
         :type Action: str
         :param _Description: 规则描述，最大长度100。
         :type Description: str
+        :param _ModifyTime: 修改时间。
+        :type ModifyTime: str
+        :param _Priority: 优先级，从1开始。	
+        :type Priority: int
+        :param _NetworkAclIpv4EntryId: IPv4网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryID至少提供一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAclIpv4EntryId: str
+        :param _NetworkAclIpv6EntryId: IPv6网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryId至少提供一个。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkAclIpv6EntryId: str
         """
-        self._ModifyTime = None
         self._Protocol = None
         self._Port = None
         self._CidrBlock = None
         self._Ipv6CidrBlock = None
         self._Action = None
         self._Description = None
-
-    @property
-    def ModifyTime(self):
-        return self._ModifyTime
-
-    @ModifyTime.setter
-    def ModifyTime(self, ModifyTime):
-        self._ModifyTime = ModifyTime
+        self._ModifyTime = None
+        self._Priority = None
+        self._NetworkAclIpv4EntryId = None
+        self._NetworkAclIpv6EntryId = None
 
     @property
     def Protocol(self):
@@ -35291,15 +35309,50 @@ class NetworkAclEntry(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def NetworkAclIpv4EntryId(self):
+        return self._NetworkAclIpv4EntryId
+
+    @NetworkAclIpv4EntryId.setter
+    def NetworkAclIpv4EntryId(self, NetworkAclIpv4EntryId):
+        self._NetworkAclIpv4EntryId = NetworkAclIpv4EntryId
+
+    @property
+    def NetworkAclIpv6EntryId(self):
+        return self._NetworkAclIpv6EntryId
+
+    @NetworkAclIpv6EntryId.setter
+    def NetworkAclIpv6EntryId(self, NetworkAclIpv6EntryId):
+        self._NetworkAclIpv6EntryId = NetworkAclIpv6EntryId
+
 
     def _deserialize(self, params):
-        self._ModifyTime = params.get("ModifyTime")
         self._Protocol = params.get("Protocol")
         self._Port = params.get("Port")
         self._CidrBlock = params.get("CidrBlock")
         self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self._Action = params.get("Action")
         self._Description = params.get("Description")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Priority = params.get("Priority")
+        self._NetworkAclIpv4EntryId = params.get("NetworkAclIpv4EntryId")
+        self._NetworkAclIpv6EntryId = params.get("NetworkAclIpv6EntryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

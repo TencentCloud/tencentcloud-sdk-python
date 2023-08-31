@@ -353,6 +353,15 @@ class Cluster(AbstractModel):
         :param _ClusterSessions: session集群信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterSessions: list of ClusterSession
+        :param _ArchGeneration: V3版本 = 2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchGeneration: int
+        :param _ClusterType: 0:TKE, 1:EKS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: int
+        :param _Orders: 订单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Orders: list of Order
         """
         self._ClusterId = None
         self._Name = None
@@ -390,6 +399,9 @@ class Cluster(AbstractModel):
         self._PayMode = None
         self._IsNeedManageNode = None
         self._ClusterSessions = None
+        self._ArchGeneration = None
+        self._ClusterType = None
+        self._Orders = None
 
     @property
     def ClusterId(self):
@@ -679,6 +691,30 @@ class Cluster(AbstractModel):
     def ClusterSessions(self, ClusterSessions):
         self._ClusterSessions = ClusterSessions
 
+    @property
+    def ArchGeneration(self):
+        return self._ArchGeneration
+
+    @ArchGeneration.setter
+    def ArchGeneration(self, ArchGeneration):
+        self._ArchGeneration = ArchGeneration
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def Orders(self):
+        return self._Orders
+
+    @Orders.setter
+    def Orders(self, Orders):
+        self._Orders = Orders
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -739,6 +775,14 @@ class Cluster(AbstractModel):
                 obj = ClusterSession()
                 obj._deserialize(item)
                 self._ClusterSessions.append(obj)
+        self._ArchGeneration = params.get("ArchGeneration")
+        self._ClusterType = params.get("ClusterType")
+        if params.get("Orders") is not None:
+            self._Orders = []
+            for item in params.get("Orders"):
+                obj = Order()
+                obj._deserialize(item)
+                self._Orders.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5911,6 +5955,92 @@ class NodeConfig(AbstractModel):
                 obj._deserialize(item)
                 self._Configuration.append(obj)
         self._StateTTL = params.get("StateTTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Order(AbstractModel):
+    """集群购买、扩缩容、续费订单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 创建、续费、扩缩容 1 2 3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _AutoRenewFlag: 自动续费 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _OperateUin: 操作人的UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _ComputeCu: 最终集群的CU数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeCu: int
+        :param _OrderTime: 订单的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderTime: str
+        """
+        self._Type = None
+        self._AutoRenewFlag = None
+        self._OperateUin = None
+        self._ComputeCu = None
+        self._OrderTime = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def ComputeCu(self):
+        return self._ComputeCu
+
+    @ComputeCu.setter
+    def ComputeCu(self, ComputeCu):
+        self._ComputeCu = ComputeCu
+
+    @property
+    def OrderTime(self):
+        return self._OrderTime
+
+    @OrderTime.setter
+    def OrderTime(self, OrderTime):
+        self._OrderTime = OrderTime
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._OperateUin = params.get("OperateUin")
+        self._ComputeCu = params.get("ComputeCu")
+        self._OrderTime = params.get("OrderTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

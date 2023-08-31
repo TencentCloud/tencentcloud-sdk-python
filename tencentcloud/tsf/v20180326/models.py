@@ -42286,7 +42286,7 @@ class UnitRuleItem(AbstractModel):
         :param _UnitRuleTagList: 规则标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnitRuleTagList: list of UnitRuleTag
-        :param _ItemIndex: 项目id
+        :param _ItemIndex: 规则项索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemIndex: int
         :param _CreatedTime: 创建时间
@@ -42441,7 +42441,7 @@ class UnitRuleTag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagType: 标签类型 : U(用户标签)
+        :param _TagType: 标签类型 : U(用户标签)/S(系统标签)
         :type TagType: str
         :param _TagField: 标签名
         :type TagField: str

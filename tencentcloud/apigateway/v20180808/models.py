@@ -5308,7 +5308,7 @@ class CreateServiceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _InstanceId: 独享实例id
         :type InstanceId: str
-        :param _UniqVpcId: vpc属性
+        :param _UniqVpcId: vpc属性，选择VPC后不可修改，为服务选择VPC后，可对接该VPC下的后端资源
         :type UniqVpcId: str
         """
         self._ServiceName = None
@@ -5558,7 +5558,7 @@ class CreateUpstreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scheme: 后端协议，取值范围：HTTP, HTTPS
+        :param _Scheme: 后端协议，取值范围：HTTP, HTTPS,gRPC，gRPCs
         :type Scheme: str
         :param _Algorithm: 负载均衡算法，取值范围：ROUND-ROBIN
         :type Algorithm: str
@@ -11040,6 +11040,9 @@ class DescribeServiceResponse(AbstractModel):
         :param _SpecialUse: 特殊用途, NULL和DEFAULT表示无特殊用途，其他用途如HTTP_DNS等
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecialUse: str
+        :param _UniqVpcId: vpc属性，存量可能为空字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11068,6 +11071,7 @@ class DescribeServiceResponse(AbstractModel):
         self._SetType = None
         self._DeploymentType = None
         self._SpecialUse = None
+        self._UniqVpcId = None
         self._RequestId = None
 
     @property
@@ -11271,6 +11275,14 @@ class DescribeServiceResponse(AbstractModel):
         self._SpecialUse = SpecialUse
 
     @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11320,6 +11332,7 @@ class DescribeServiceResponse(AbstractModel):
         self._SetType = params.get("SetType")
         self._DeploymentType = params.get("DeploymentType")
         self._SpecialUse = params.get("SpecialUse")
+        self._UniqVpcId = params.get("UniqVpcId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15987,12 +16000,15 @@ class ModifyServiceRequest(AbstractModel):
         :type Protocol: str
         :param _NetTypes: 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
         :type NetTypes: list of str
+        :param _UniqVpcId: vpc属性，选择VPC后不可修改。为服务选择VPC后，可对接该VPC下的后端资源
+        :type UniqVpcId: str
         """
         self._ServiceId = None
         self._ServiceName = None
         self._ServiceDesc = None
         self._Protocol = None
         self._NetTypes = None
+        self._UniqVpcId = None
 
     @property
     def ServiceId(self):
@@ -16034,6 +16050,14 @@ class ModifyServiceRequest(AbstractModel):
     def NetTypes(self, NetTypes):
         self._NetTypes = NetTypes
 
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -16041,6 +16065,7 @@ class ModifyServiceRequest(AbstractModel):
         self._ServiceDesc = params.get("ServiceDesc")
         self._Protocol = params.get("Protocol")
         self._NetTypes = params.get("NetTypes")
+        self._UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

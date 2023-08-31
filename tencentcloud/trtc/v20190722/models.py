@@ -3745,7 +3745,8 @@ class DismissRoomByStrRoomIdRequest(AbstractModel):
         r"""
         :param _SdkAppId: TRTC的SDKAppId。
         :type SdkAppId: int
-        :param _RoomId: 房间号。
+        :param _RoomId: 字符串类型房间号。
+本接口仅支持解散字符串类型房间号，如需解散数字类型房间号，请使用：DismissRoom
         :type RoomId: str
         """
         self._SdkAppId = None

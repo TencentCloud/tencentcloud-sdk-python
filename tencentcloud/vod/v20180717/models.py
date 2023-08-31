@@ -42700,6 +42700,8 @@ class ProductInstance(AbstractModel):
         :type BindStatus: int
         :param _ProductInstanceResourceSet: 预付费资源包实例中包含的资源包列表。
         :type ProductInstanceResourceSet: list of ProductInstanceRecource
+        :param _ResourceSet: 预付费资源包实例中包含的资源包列表。
+        :type ResourceSet: list of ProductInstanceResource
         :param _ProductInstanceStatus: 资源包实例的状态，取值有：
 <li>Effective：生效，可用于计费抵扣。</li>
 <li>Isolated：隔离，不可用于计费抵扣。</li>
@@ -42722,6 +42724,7 @@ class ProductInstance(AbstractModel):
         self._LastConsumeDate = None
         self._BindStatus = None
         self._ProductInstanceResourceSet = None
+        self._ResourceSet = None
         self._ProductInstanceStatus = None
         self._RefundStatus = None
         self._RenewStatus = None
@@ -42776,11 +42779,23 @@ class ProductInstance(AbstractModel):
 
     @property
     def ProductInstanceResourceSet(self):
+        warnings.warn("parameter `ProductInstanceResourceSet` is deprecated", DeprecationWarning) 
+
         return self._ProductInstanceResourceSet
 
     @ProductInstanceResourceSet.setter
     def ProductInstanceResourceSet(self, ProductInstanceResourceSet):
+        warnings.warn("parameter `ProductInstanceResourceSet` is deprecated", DeprecationWarning) 
+
         self._ProductInstanceResourceSet = ProductInstanceResourceSet
+
+    @property
+    def ResourceSet(self):
+        return self._ResourceSet
+
+    @ResourceSet.setter
+    def ResourceSet(self, ResourceSet):
+        self._ResourceSet = ResourceSet
 
     @property
     def ProductInstanceStatus(self):
@@ -42820,6 +42835,12 @@ class ProductInstance(AbstractModel):
                 obj = ProductInstanceRecource()
                 obj._deserialize(item)
                 self._ProductInstanceResourceSet.append(obj)
+        if params.get("ResourceSet") is not None:
+            self._ResourceSet = []
+            for item in params.get("ResourceSet"):
+                obj = ProductInstanceResource()
+                obj._deserialize(item)
+                self._ResourceSet.append(obj)
         self._ProductInstanceStatus = params.get("ProductInstanceStatus")
         self._RefundStatus = params.get("RefundStatus")
         self._RenewStatus = params.get("RenewStatus")
@@ -42834,6 +42855,81 @@ class ProductInstance(AbstractModel):
 
 
 class ProductInstanceRecource(AbstractModel):
+    """资源包中包含的资源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型。
+<li>Storage：存储资源包。</li>
+<li>Traffic：流量资源包。</li>
+<li>Transcode：普通转码资源包。</li>
+<li>TESHD：极速高清转码资源包。</li>
+<li>Review：音视频审核转码资源包。</li>
+<li>MediaProcess：媒体处理时长资源包。</li>
+        :type ResourceType: str
+        :param _Amount: 资源包额度。
+<li>音视频存储资源包，单位为字节。</li>
+<li>音视频转码资源包，单位为秒。</li>
+<li>音视频审核资源包，单位为秒。</li>
+<li>音视频极速高清资源包，单位为秒。</li>
+<li>音视频加速资源包，单位为字节。</li>
+<li>媒体处理时长资源包，单位为秒。</li>
+        :type Amount: int
+        :param _Left: 资源包余量。
+<li>音视频存储资源包，单位为字节。</li>
+<li>音视频转码资源包，单位为秒。</li>
+<li>音视频审核资源包，单位为秒。</li>
+<li>音视频极速高清资源包，单位为秒。</li>
+<li>音视频加速资源包，单位为字节。</li>
+<li>媒体处理时长资源包，单位为秒。</li>
+        :type Left: int
+        """
+        self._ResourceType = None
+        self._Amount = None
+        self._Left = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Amount = params.get("Amount")
+        self._Left = params.get("Left")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductInstanceResource(AbstractModel):
     """资源包中包含的资源。
 
     """

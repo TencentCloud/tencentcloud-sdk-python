@@ -7796,6 +7796,10 @@ class InstanceInfo(AbstractModel):
         :param _ClusterName: 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
+        :param _AgentStatus: 自建MySQL的Agent状态，"not_deployed" - 未部署，"deploying" - 部署中，"connected" - 连接正常，"deploy_failed" - 连接失败，"monitoring" - 连接正常，"stopped" - 暂停连接，"connect_failed" - 连接失败，unknown - 未知。
+        :type AgentStatus: str
+        :param _InstanceStatus: 自建MySQL的实例状态，"not_attached" - 未连接，"attached" - 连接正常，"failed" - 连接失败，"stopped" - 停止监控，unknown- 未知。
+        :type InstanceStatus: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7830,6 +7834,8 @@ class InstanceInfo(AbstractModel):
         self._CreateTime = None
         self._ClusterId = None
         self._ClusterName = None
+        self._AgentStatus = None
+        self._InstanceStatus = None
 
     @property
     def InstanceId(self):
@@ -8095,6 +8101,22 @@ class InstanceInfo(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8132,6 +8154,8 @@ class InstanceInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
+        self._AgentStatus = params.get("AgentStatus")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

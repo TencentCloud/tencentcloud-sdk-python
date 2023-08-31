@@ -305,6 +305,9 @@ class AssessmentRisk(AbstractModel):
         :param _RiskType: 风险类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
+        :param _RiskSide: 风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSide: str
         """
         self._RiskId = None
         self._RiskDescription = None
@@ -324,6 +327,7 @@ class AssessmentRisk(AbstractModel):
         self._AssetName = None
         self._SecurityProduct = None
         self._RiskType = None
+        self._RiskSide = None
 
     @property
     def RiskId(self):
@@ -469,6 +473,14 @@ class AssessmentRisk(AbstractModel):
     def RiskType(self, RiskType):
         self._RiskType = RiskType
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -494,6 +506,7 @@ class AssessmentRisk(AbstractModel):
                 obj._deserialize(item)
                 self._SecurityProduct.append(obj)
         self._RiskType = params.get("RiskType")
+        self._RiskSide = params.get("RiskSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -532,6 +545,12 @@ class AssessmentRiskItem(AbstractModel):
         :param _SupportDataSource: 支持的数据源
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataSource: list of str
+        :param _RiskSide: 风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSide: str
+        :param _ReferTemplateList: 关联模版列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReferTemplateList: list of TemplateInfo
         """
         self._Id = None
         self._RiskName = None
@@ -540,6 +559,8 @@ class AssessmentRiskItem(AbstractModel):
         self._RiskType = None
         self._ReferTemplateCount = None
         self._SupportDataSource = None
+        self._RiskSide = None
+        self._ReferTemplateList = None
 
     @property
     def Id(self):
@@ -597,6 +618,22 @@ class AssessmentRiskItem(AbstractModel):
     def SupportDataSource(self, SupportDataSource):
         self._SupportDataSource = SupportDataSource
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
+    @property
+    def ReferTemplateList(self):
+        return self._ReferTemplateList
+
+    @ReferTemplateList.setter
+    def ReferTemplateList(self, ReferTemplateList):
+        self._ReferTemplateList = ReferTemplateList
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -606,6 +643,13 @@ class AssessmentRiskItem(AbstractModel):
         self._RiskType = params.get("RiskType")
         self._ReferTemplateCount = params.get("ReferTemplateCount")
         self._SupportDataSource = params.get("SupportDataSource")
+        self._RiskSide = params.get("RiskSide")
+        if params.get("ReferTemplateList") is not None:
+            self._ReferTemplateList = []
+            for item in params.get("ReferTemplateList"):
+                obj = TemplateInfo()
+                obj._deserialize(item)
+                self._ReferTemplateList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -882,6 +926,9 @@ class AssessmentTemplate(AbstractModel):
         :param _SupportDataSource: 支持的数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataSource: list of str
+        :param _IsASMTemplate: 是否包含攻击面风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsASMTemplate: bool
         """
         self._Id = None
         self._TemplateId = None
@@ -894,6 +941,7 @@ class AssessmentTemplate(AbstractModel):
         self._AppliedItemCount = None
         self._Status = None
         self._SupportDataSource = None
+        self._IsASMTemplate = None
 
     @property
     def Id(self):
@@ -983,6 +1031,14 @@ class AssessmentTemplate(AbstractModel):
     def SupportDataSource(self, SupportDataSource):
         self._SupportDataSource = SupportDataSource
 
+    @property
+    def IsASMTemplate(self):
+        return self._IsASMTemplate
+
+    @IsASMTemplate.setter
+    def IsASMTemplate(self, IsASMTemplate):
+        self._IsASMTemplate = IsASMTemplate
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -996,6 +1052,7 @@ class AssessmentTemplate(AbstractModel):
         self._AppliedItemCount = params.get("AppliedItemCount")
         self._Status = params.get("Status")
         self._SupportDataSource = params.get("SupportDataSource")
+        self._IsASMTemplate = params.get("IsASMTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2947,8 +3004,6 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         :type Name: str
         :param _TemplateId: 评估模版Id，格式“template-xxxxxxxx”
         :type TemplateId: str
-        :param _DiscoveryCondition: 敏感数据扫描数据源条件。
-        :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         :param _BusinessName: 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :type BusinessName: str
         :param _BusinessDept: 业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
@@ -2957,17 +3012,19 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         :type BusinessOwner: str
         :param _ComplianceId: 分类分级模版Id
         :type ComplianceId: int
+        :param _DiscoveryCondition: 敏感数据扫描数据源条件。
+        :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         :param _Description: 说明
         :type Description: str
         """
         self._DspaId = None
         self._Name = None
         self._TemplateId = None
-        self._DiscoveryCondition = None
         self._BusinessName = None
         self._BusinessDept = None
         self._BusinessOwner = None
         self._ComplianceId = None
+        self._DiscoveryCondition = None
         self._Description = None
 
     @property
@@ -2993,14 +3050,6 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
     @TemplateId.setter
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
-
-    @property
-    def DiscoveryCondition(self):
-        return self._DiscoveryCondition
-
-    @DiscoveryCondition.setter
-    def DiscoveryCondition(self, DiscoveryCondition):
-        self._DiscoveryCondition = DiscoveryCondition
 
     @property
     def BusinessName(self):
@@ -3047,6 +3096,14 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         self._ComplianceId = ComplianceId
 
     @property
+    def DiscoveryCondition(self):
+        return self._DiscoveryCondition
+
+    @DiscoveryCondition.setter
+    def DiscoveryCondition(self, DiscoveryCondition):
+        self._DiscoveryCondition = DiscoveryCondition
+
+    @property
     def Description(self):
         return self._Description
 
@@ -3059,13 +3116,13 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         self._DspaId = params.get("DspaId")
         self._Name = params.get("Name")
         self._TemplateId = params.get("TemplateId")
-        if params.get("DiscoveryCondition") is not None:
-            self._DiscoveryCondition = DiscoveryCondition()
-            self._DiscoveryCondition._deserialize(params.get("DiscoveryCondition"))
         self._BusinessName = params.get("BusinessName")
         self._BusinessDept = params.get("BusinessDept")
         self._BusinessOwner = params.get("BusinessOwner")
         self._ComplianceId = params.get("ComplianceId")
+        if params.get("DiscoveryCondition") is not None:
+            self._DiscoveryCondition = DiscoveryCondition()
+            self._DiscoveryCondition._deserialize(params.get("DiscoveryCondition"))
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7379,9 +7436,13 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
         :type DspaId: str
         :param _TemplateId: 评估模版id
         :type TemplateId: int
+        :param _Filter: 过滤条件， rdb（数据库）cos（对象存储）
+不传就是全部
+        :type Filter: str
         """
         self._DspaId = None
         self._TemplateId = None
+        self._Filter = None
 
     @property
     def DspaId(self):
@@ -7399,10 +7460,19 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
 
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TemplateId = params.get("TemplateId")
+        self._Filter = params.get("Filter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7834,6 +7904,8 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         :type EndTime: str
         :param _RiskLevel: 风险等级筛选
         :type RiskLevel: str
+        :param _RiskSide: 风险面筛选
+        :type RiskSide: list of str
         """
         self._DspaId = None
         self._TemplateId = None
@@ -7846,6 +7918,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         self._BeginTime = None
         self._EndTime = None
         self._RiskLevel = None
+        self._RiskSide = None
 
     @property
     def DspaId(self):
@@ -7935,6 +8008,14 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
     def RiskLevel(self, RiskLevel):
         self._RiskLevel = RiskLevel
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -7948,6 +8029,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._RiskLevel = params.get("RiskLevel")
+        self._RiskSide = params.get("RiskSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8730,9 +8812,13 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
         :type DspaId: str
         :param _TemplateId: 评估模版id
         :type TemplateId: int
+        :param _Filter: 风险资产分布的过滤条件
+（rdb，cos，不传就筛选全部）
+        :type Filter: str
         """
         self._DspaId = None
         self._TemplateId = None
+        self._Filter = None
 
     @property
     def DspaId(self):
@@ -8750,10 +8836,19 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
 
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._TemplateId = params.get("TemplateId")
+        self._Filter = params.get("Filter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9475,6 +9570,182 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
+    """DescribeDSPAAssessmentRiskSideDistributed请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DspaId: DSPA实例ID
+        :type DspaId: str
+        :param _TemplateId: 评估模版id
+        :type TemplateId: int
+        """
+        self._DspaId = None
+        self._TemplateId = None
+
+    @property
+    def DspaId(self):
+        return self._DspaId
+
+    @DspaId.setter
+    def DspaId(self, DspaId):
+        self._DspaId = DspaId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._DspaId = params.get("DspaId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
+    """DescribeDSPAAssessmentRiskSideDistributed返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskSideDistributed: 风险面的分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSideDistributed: list of RiskSideDistributed
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskSideDistributed = None
+        self._RequestId = None
+
+    @property
+    def RiskSideDistributed(self):
+        return self._RiskSideDistributed
+
+    @RiskSideDistributed.setter
+    def RiskSideDistributed(self, RiskSideDistributed):
+        self._RiskSideDistributed = RiskSideDistributed
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RiskSideDistributed") is not None:
+            self._RiskSideDistributed = []
+            for item in params.get("RiskSideDistributed"):
+                obj = RiskSideDistributed()
+                obj._deserialize(item)
+                self._RiskSideDistributed.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
+    """DescribeDSPAAssessmentRiskSideList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DspaId: DSPA实例ID
+        :type DspaId: str
+        :param _TemplateId: 评估模版id
+        :type TemplateId: int
+        """
+        self._DspaId = None
+        self._TemplateId = None
+
+    @property
+    def DspaId(self):
+        return self._DspaId
+
+    @DspaId.setter
+    def DspaId(self, DspaId):
+        self._DspaId = DspaId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._DspaId = params.get("DspaId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
+    """DescribeDSPAAssessmentRiskSideList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskSideItmeList: 风险面列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSideItmeList: list of Note
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskSideItmeList = None
+        self._RequestId = None
+
+    @property
+    def RiskSideItmeList(self):
+        return self._RiskSideItmeList
+
+    @RiskSideItmeList.setter
+    def RiskSideItmeList(self, RiskSideItmeList):
+        self._RiskSideItmeList = RiskSideItmeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RiskSideItmeList") is not None:
+            self._RiskSideItmeList = []
+            for item in params.get("RiskSideItmeList"):
+                obj = Note()
+                obj._deserialize(item)
+                self._RiskSideItmeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
     """DescribeDSPAAssessmentRiskTemplateDetail请求参数结构体
 
@@ -9691,12 +9962,15 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
         :type RiskType: str
         :param _RiskName: 风险名称
         :type RiskName: str
+        :param _RiskSide: 风险面
+        :type RiskSide: str
         """
         self._DspaId = None
         self._Limit = None
         self._Offset = None
         self._RiskType = None
         self._RiskName = None
+        self._RiskSide = None
 
     @property
     def DspaId(self):
@@ -9738,6 +10012,14 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
     def RiskName(self, RiskName):
         self._RiskName = RiskName
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -9745,6 +10027,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._RiskType = params.get("RiskType")
         self._RiskName = params.get("RiskName")
+        self._RiskSide = params.get("RiskSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13376,6 +13659,8 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
         :type CategoryIdList: list of int
         :param _LevelId: 敏感数据分级ID
         :type LevelId: int
+        :param _DbName: 索引名称
+        :type DbName: str
         """
         self._DspaId = None
         self._TaskId = None
@@ -13384,6 +13669,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
         self._Limit = None
         self._CategoryIdList = None
         self._LevelId = None
+        self._DbName = None
 
     @property
     def DspaId(self):
@@ -13441,6 +13727,14 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
     def LevelId(self, LevelId):
         self._LevelId = LevelId
 
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -13450,6 +13744,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._CategoryIdList = params.get("CategoryIdList")
         self._LevelId = params.get("LevelId")
+        self._DbName = params.get("DbName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20377,6 +20672,9 @@ class ESTaskResultDetail(AbstractModel):
         :param _LevelName: 分级名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type LevelName: str
+        :param _LevelRiskScore: 分级分数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelRiskScore: int
         """
         self._Id = None
         self._TaskId = None
@@ -20388,6 +20686,7 @@ class ESTaskResultDetail(AbstractModel):
         self._CategoryArr = None
         self._LevelId = None
         self._LevelName = None
+        self._LevelRiskScore = None
 
     @property
     def Id(self):
@@ -20469,6 +20768,14 @@ class ESTaskResultDetail(AbstractModel):
     def LevelName(self, LevelName):
         self._LevelName = LevelName
 
+    @property
+    def LevelRiskScore(self):
+        return self._LevelRiskScore
+
+    @LevelRiskScore.setter
+    def LevelRiskScore(self, LevelRiskScore):
+        self._LevelRiskScore = LevelRiskScore
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -20481,6 +20788,7 @@ class ESTaskResultDetail(AbstractModel):
         self._CategoryArr = params.get("CategoryArr")
         self._LevelId = params.get("LevelId")
         self._LevelName = params.get("LevelName")
+        self._LevelRiskScore = params.get("LevelRiskScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21196,6 +21504,12 @@ class HighRiskAssetsDetail(AbstractModel):
         :param _InstanceId: 实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _DataSourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
+        :param _DataSourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceName: str
         :param _AssetsName: 资产对象名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsName: str
@@ -21208,12 +21522,22 @@ class HighRiskAssetsDetail(AbstractModel):
         :param _TotalRiskCount: 总的风险个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalRiskCount: int
+        :param _RiskSide: 风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSide: str
+        :param _ResourceRegion: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRegion: str
         """
         self._InstanceId = None
+        self._DataSourceType = None
+        self._DataSourceName = None
         self._AssetsName = None
         self._HighRiskCount = None
         self._RiskType = None
         self._TotalRiskCount = None
+        self._RiskSide = None
+        self._ResourceRegion = None
 
     @property
     def InstanceId(self):
@@ -21222,6 +21546,22 @@ class HighRiskAssetsDetail(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def DataSourceName(self):
+        return self._DataSourceName
+
+    @DataSourceName.setter
+    def DataSourceName(self, DataSourceName):
+        self._DataSourceName = DataSourceName
 
     @property
     def AssetsName(self):
@@ -21255,13 +21595,33 @@ class HighRiskAssetsDetail(AbstractModel):
     def TotalRiskCount(self, TotalRiskCount):
         self._TotalRiskCount = TotalRiskCount
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._DataSourceType = params.get("DataSourceType")
+        self._DataSourceName = params.get("DataSourceName")
         self._AssetsName = params.get("AssetsName")
         self._HighRiskCount = params.get("HighRiskCount")
         self._RiskType = params.get("RiskType")
         self._TotalRiskCount = params.get("TotalRiskCount")
+        self._RiskSide = params.get("RiskSide")
+        self._ResourceRegion = params.get("ResourceRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21930,12 +22290,15 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         :type Note: str
         :param _ProcessPeople: 处置人
         :type ProcessPeople: str
+        :param _BathRiskIdList: 批量处理的列表
+        :type BathRiskIdList: list of int
         """
         self._DspaId = None
         self._RiskLatestTableId = None
         self._Status = None
         self._Note = None
         self._ProcessPeople = None
+        self._BathRiskIdList = None
 
     @property
     def DspaId(self):
@@ -21947,10 +22310,14 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
 
     @property
     def RiskLatestTableId(self):
+        warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
+
         return self._RiskLatestTableId
 
     @RiskLatestTableId.setter
     def RiskLatestTableId(self, RiskLatestTableId):
+        warnings.warn("parameter `RiskLatestTableId` is deprecated", DeprecationWarning) 
+
         self._RiskLatestTableId = RiskLatestTableId
 
     @property
@@ -21977,6 +22344,14 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
     def ProcessPeople(self, ProcessPeople):
         self._ProcessPeople = ProcessPeople
 
+    @property
+    def BathRiskIdList(self):
+        return self._BathRiskIdList
+
+    @BathRiskIdList.setter
+    def BathRiskIdList(self, BathRiskIdList):
+        self._BathRiskIdList = BathRiskIdList
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -21984,6 +22359,7 @@ class ModifyDSPAAssessmentRiskLatestRequest(AbstractModel):
         self._Status = params.get("Status")
         self._Note = params.get("Note")
         self._ProcessPeople = params.get("ProcessPeople")
+        self._BathRiskIdList = params.get("BathRiskIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24997,9 +25373,13 @@ class RiskCountInfo(AbstractModel):
         :type RiskLevel: str
         :param _Count: 该等级风险项数量
         :type Count: int
+        :param _RiskLevelName: 风险等级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevelName: str
         """
         self._RiskLevel = None
         self._Count = None
+        self._RiskLevelName = None
 
     @property
     def RiskLevel(self):
@@ -25017,10 +25397,19 @@ class RiskCountInfo(AbstractModel):
     def Count(self, Count):
         self._Count = Count
 
+    @property
+    def RiskLevelName(self):
+        return self._RiskLevelName
+
+    @RiskLevelName.setter
+    def RiskLevelName(self, RiskLevelName):
+        self._RiskLevelName = RiskLevelName
+
 
     def _deserialize(self, params):
         self._RiskLevel = params.get("RiskLevel")
         self._Count = params.get("Count")
+        self._RiskLevelName = params.get("RiskLevelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25164,6 +25553,9 @@ class RiskItemInfo(AbstractModel):
         :param _DataSourceType: 数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
+        :param _ResourceRegion: 资源地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRegion: str
         :param _AssetName: 资产名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
@@ -25200,11 +25592,15 @@ class RiskItemInfo(AbstractModel):
         :param _ItemSubType: 类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemSubType: str
+        :param _RiskSide: 风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskSide: str
         """
         self._Id = None
         self._DataSourceId = None
         self._DataSourceName = None
         self._DataSourceType = None
+        self._ResourceRegion = None
         self._AssetName = None
         self._RiskType = None
         self._RiskName = None
@@ -25217,6 +25613,7 @@ class RiskItemInfo(AbstractModel):
         self._LastProcessTime = None
         self._IdentifyComplianceId = None
         self._ItemSubType = None
+        self._RiskSide = None
 
     @property
     def Id(self):
@@ -25249,6 +25646,14 @@ class RiskItemInfo(AbstractModel):
     @DataSourceType.setter
     def DataSourceType(self, DataSourceType):
         self._DataSourceType = DataSourceType
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
 
     @property
     def AssetName(self):
@@ -25346,12 +25751,21 @@ class RiskItemInfo(AbstractModel):
     def ItemSubType(self, ItemSubType):
         self._ItemSubType = ItemSubType
 
+    @property
+    def RiskSide(self):
+        return self._RiskSide
+
+    @RiskSide.setter
+    def RiskSide(self, RiskSide):
+        self._RiskSide = RiskSide
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._DataSourceId = params.get("DataSourceId")
         self._DataSourceName = params.get("DataSourceName")
         self._DataSourceType = params.get("DataSourceType")
+        self._ResourceRegion = params.get("ResourceRegion")
         self._AssetName = params.get("AssetName")
         self._RiskType = params.get("RiskType")
         self._RiskName = params.get("RiskName")
@@ -25369,6 +25783,7 @@ class RiskItemInfo(AbstractModel):
         self._LastProcessTime = params.get("LastProcessTime")
         self._IdentifyComplianceId = params.get("IdentifyComplianceId")
         self._ItemSubType = params.get("ItemSubType")
+        self._RiskSide = params.get("RiskSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25682,6 +26097,60 @@ class RiskMatrixLevel(AbstractModel):
         self._Name = params.get("Name")
         self._Id = params.get("Id")
         self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RiskSideDistributed(AbstractModel):
+    """风险面的分布
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssessmentRiskSide: 风险面
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssessmentRiskSide: :class:`tencentcloud.dsgc.v20190723.models.Note`
+        :param _AssessmentRisk: 风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssessmentRisk: list of Note
+        """
+        self._AssessmentRiskSide = None
+        self._AssessmentRisk = None
+
+    @property
+    def AssessmentRiskSide(self):
+        return self._AssessmentRiskSide
+
+    @AssessmentRiskSide.setter
+    def AssessmentRiskSide(self, AssessmentRiskSide):
+        self._AssessmentRiskSide = AssessmentRiskSide
+
+    @property
+    def AssessmentRisk(self):
+        return self._AssessmentRisk
+
+    @AssessmentRisk.setter
+    def AssessmentRisk(self, AssessmentRisk):
+        self._AssessmentRisk = AssessmentRisk
+
+
+    def _deserialize(self, params):
+        if params.get("AssessmentRiskSide") is not None:
+            self._AssessmentRiskSide = Note()
+            self._AssessmentRiskSide._deserialize(params.get("AssessmentRiskSide"))
+        if params.get("AssessmentRisk") is not None:
+            self._AssessmentRisk = []
+            for item in params.get("AssessmentRisk"):
+                obj = Note()
+                obj._deserialize(item)
+                self._AssessmentRisk.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26443,6 +26912,53 @@ class SuggestRiskLevelMatrixItem(AbstractModel):
             self._VulnerabilityLevel._deserialize(params.get("VulnerabilityLevel"))
         self._RiskName = params.get("RiskName")
         self._RiskScore = params.get("RiskScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateInfo(AbstractModel):
+    """评估模版的详情数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模版id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: int
+        :param _TemplateName: 模版名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17060,9 +17060,9 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type ClusterId: str
         :param _InstanceIds: 实例ID
         :type InstanceIds: list of str
-        :param _ClusterParamList: 集群参数列表
+        :param _ClusterParamList: 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
         :type ClusterParamList: list of ModifyParamItem
-        :param _InstanceParamList: 实例参数列表
+        :param _InstanceParamList: 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
         :type InstanceParamList: list of ModifyParamItem
         :param _IsInMaintainPeriod: yes：在运维时间窗内修改，no：立即执行（默认值）
         :type IsInMaintainPeriod: str

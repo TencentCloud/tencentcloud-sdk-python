@@ -3267,6 +3267,9 @@ class GetEidResultResponse(AbstractModel):
         :param _IntentionQuestionResult: 意愿核身问答模式相关信息。若未使用意愿核身问答模式功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionQuestionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionQuestionResult`
+        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3276,6 +3279,7 @@ class GetEidResultResponse(AbstractModel):
         self._EidInfo = None
         self._IntentionVerifyData = None
         self._IntentionQuestionResult = None
+        self._IntentionActionResult = None
         self._RequestId = None
 
     @property
@@ -3327,6 +3331,14 @@ class GetEidResultResponse(AbstractModel):
         self._IntentionQuestionResult = IntentionQuestionResult
 
     @property
+    def IntentionActionResult(self):
+        return self._IntentionActionResult
+
+    @IntentionActionResult.setter
+    def IntentionActionResult(self, IntentionActionResult):
+        self._IntentionActionResult = IntentionActionResult
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3354,6 +3366,9 @@ class GetEidResultResponse(AbstractModel):
         if params.get("IntentionQuestionResult") is not None:
             self._IntentionQuestionResult = IntentionQuestionResult()
             self._IntentionQuestionResult._deserialize(params.get("IntentionQuestionResult"))
+        if params.get("IntentionActionResult") is not None:
+            self._IntentionActionResult = IntentionActionResult()
+            self._IntentionActionResult._deserialize(params.get("IntentionActionResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3374,12 +3389,14 @@ class GetEidTokenConfig(AbstractModel):
         :type InputType: str
         :param _UseIntentionVerify: 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
         :type UseIntentionVerify: bool
-        :param _IntentionMode: 意愿核身模式。枚举值：1( 朗读模式)，2（问答模式） 。默认值1
+        :param _IntentionMode: 意愿核身模式。枚举值：1( 语音朗读模式)，2（语音问答模式） ，3（点头确认模式）。默认值为1。
         :type IntentionMode: str
         :param _IntentionVerifyText: 意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
         :type IntentionVerifyText: str
         :param _IntentionQuestions: 意愿核身问答模式的配置列表。当前仅支持一个问答。
         :type IntentionQuestions: list of IntentionQuestion
+        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。默认为空，最长可接受150的字符串长度。
+        :type IntentionActions: list of IntentionActionConfig
         :param _IntentionRecognition: 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
         :type IntentionRecognition: bool
         :param _IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别
@@ -3390,6 +3407,7 @@ class GetEidTokenConfig(AbstractModel):
         self._IntentionMode = None
         self._IntentionVerifyText = None
         self._IntentionQuestions = None
+        self._IntentionActions = None
         self._IntentionRecognition = None
         self._IsSupportHMTResidentPermitOCR = None
 
@@ -3434,6 +3452,14 @@ class GetEidTokenConfig(AbstractModel):
         self._IntentionQuestions = IntentionQuestions
 
     @property
+    def IntentionActions(self):
+        return self._IntentionActions
+
+    @IntentionActions.setter
+    def IntentionActions(self, IntentionActions):
+        self._IntentionActions = IntentionActions
+
+    @property
     def IntentionRecognition(self):
         return self._IntentionRecognition
 
@@ -3461,6 +3487,12 @@ class GetEidTokenConfig(AbstractModel):
                 obj = IntentionQuestion()
                 obj._deserialize(item)
                 self._IntentionQuestions.append(obj)
+        if params.get("IntentionActions") is not None:
+            self._IntentionActions = []
+            for item in params.get("IntentionActions"):
+                obj = IntentionActionConfig()
+                obj._deserialize(item)
+                self._IntentionActions.append(obj)
         self._IntentionRecognition = params.get("IntentionRecognition")
         self._IsSupportHMTResidentPermitOCR = params.get("IsSupportHMTResidentPermitOCR")
         memeber_set = set(params.keys())

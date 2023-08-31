@@ -11302,6 +11302,9 @@ class DataSourceInfo(AbstractModel):
         :param _ModifiedTime: 修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedTime: int
+        :param _ShowType: 数据源页面展示类型，与Type对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShowType: str
         """
         self._DatabaseName = None
         self._Description = None
@@ -11333,6 +11336,7 @@ class DataSourceInfo(AbstractModel):
         self._ParamsString = None
         self._BizParamsString = None
         self._ModifiedTime = None
+        self._ShowType = None
 
     @property
     def DatabaseName(self):
@@ -11574,6 +11578,14 @@ class DataSourceInfo(AbstractModel):
     def ModifiedTime(self, ModifiedTime):
         self._ModifiedTime = ModifiedTime
 
+    @property
+    def ShowType(self):
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -11606,6 +11618,7 @@ class DataSourceInfo(AbstractModel):
         self._ParamsString = params.get("ParamsString")
         self._BizParamsString = params.get("BizParamsString")
         self._ModifiedTime = params.get("ModifiedTime")
+        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
