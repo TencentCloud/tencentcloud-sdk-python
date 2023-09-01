@@ -1284,15 +1284,17 @@ class ChatCompletionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 部署好的模型服务Id。
+        :param _Model: 对话的目标模型ID。
+多行业多场景大模型在线体验聊天：tj_llm_clm-v1。
+自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
         :type Model: str
         :param _Messages: 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
         :type Messages: list of Message
-        :param _Temperature: 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        :param _Temperature: 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
         :type Temperature: float
-        :param _TopP: 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+        :param _TopP: 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
         :type TopP: float
-        :param _MaxTokens: 最大生成的token数目。默认为无限大。
+        :param _MaxTokens: 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
         :type MaxTokens: int
         """
         self._Model = None
@@ -3447,8 +3449,6 @@ MODEL：导入新模型
 VERSION：导入新版本
 EXIST：导入现有版本
         :type ImportMethod: str
-        :param _TrainingModelCosPath: 模型来源cos目录，以/结尾
-        :type TrainingModelCosPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _ReasoningEnvironmentSource: 推理环境来源（SYSTEM/CUSTOM）
         :type ReasoningEnvironmentSource: str
         :param _TrainingModelName: 模型名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
@@ -3457,6 +3457,8 @@ EXIST：导入现有版本
         :type Tags: list of Tag
         :param _TrainingJobName: 训练任务名称
         :type TrainingJobName: str
+        :param _TrainingModelCosPath: 模型来源cos目录，以/结尾
+        :type TrainingModelCosPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _AlgorithmFramework: 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
         :type AlgorithmFramework: str
         :param _ReasoningEnvironment: 推理环境
@@ -3501,11 +3503,11 @@ EXIST：导入现有版本
         :type IsQAT: bool
         """
         self._ImportMethod = None
-        self._TrainingModelCosPath = None
         self._ReasoningEnvironmentSource = None
         self._TrainingModelName = None
         self._Tags = None
         self._TrainingJobName = None
+        self._TrainingModelCosPath = None
         self._AlgorithmFramework = None
         self._ReasoningEnvironment = None
         self._TrainingModelIndex = None
@@ -3534,14 +3536,6 @@ EXIST：导入现有版本
     @ImportMethod.setter
     def ImportMethod(self, ImportMethod):
         self._ImportMethod = ImportMethod
-
-    @property
-    def TrainingModelCosPath(self):
-        return self._TrainingModelCosPath
-
-    @TrainingModelCosPath.setter
-    def TrainingModelCosPath(self, TrainingModelCosPath):
-        self._TrainingModelCosPath = TrainingModelCosPath
 
     @property
     def ReasoningEnvironmentSource(self):
@@ -3574,6 +3568,14 @@ EXIST：导入现有版本
     @TrainingJobName.setter
     def TrainingJobName(self, TrainingJobName):
         self._TrainingJobName = TrainingJobName
+
+    @property
+    def TrainingModelCosPath(self):
+        return self._TrainingModelCosPath
+
+    @TrainingModelCosPath.setter
+    def TrainingModelCosPath(self, TrainingModelCosPath):
+        self._TrainingModelCosPath = TrainingModelCosPath
 
     @property
     def AlgorithmFramework(self):
@@ -3738,9 +3740,6 @@ EXIST：导入现有版本
 
     def _deserialize(self, params):
         self._ImportMethod = params.get("ImportMethod")
-        if params.get("TrainingModelCosPath") is not None:
-            self._TrainingModelCosPath = CosPathInfo()
-            self._TrainingModelCosPath._deserialize(params.get("TrainingModelCosPath"))
         self._ReasoningEnvironmentSource = params.get("ReasoningEnvironmentSource")
         self._TrainingModelName = params.get("TrainingModelName")
         if params.get("Tags") is not None:
@@ -3750,6 +3749,9 @@ EXIST：导入现有版本
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._TrainingJobName = params.get("TrainingJobName")
+        if params.get("TrainingModelCosPath") is not None:
+            self._TrainingModelCosPath = CosPathInfo()
+            self._TrainingModelCosPath._deserialize(params.get("TrainingModelCosPath"))
         self._AlgorithmFramework = params.get("AlgorithmFramework")
         self._ReasoningEnvironment = params.get("ReasoningEnvironment")
         self._TrainingModelIndex = params.get("TrainingModelIndex")
@@ -5714,8 +5716,11 @@ class DeleteModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._ServiceId = None
+        self._ServiceCategory = None
 
     @property
     def ServiceId(self):
@@ -5725,9 +5730,18 @@ class DeleteModelServiceRequest(AbstractModel):
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
 
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7582,14 +7596,14 @@ class DescribeLogsRequest(AbstractModel):
         r"""
         :param _Service: 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
         :type Service: str
-        :param _PodName: 查询哪个Pod的日志（支持结尾通配符*)
-        :type PodName: str
         :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
         :type StartTime: str
         :param _EndTime: 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
         :type EndTime: str
         :param _Limit: 日志查询条数，默认值100，最大值100
         :type Limit: int
+        :param _PodName: 查询哪个Pod的日志（支持结尾通配符*)
+        :type PodName: str
         :param _Order: 排序方向（可选值为ASC, DESC ），默认为DESC
         :type Order: str
         :param _OrderField: 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
@@ -7604,10 +7618,10 @@ class DescribeLogsRequest(AbstractModel):
         :type Filters: list of Filter
         """
         self._Service = None
-        self._PodName = None
         self._StartTime = None
         self._EndTime = None
         self._Limit = None
+        self._PodName = None
         self._Order = None
         self._OrderField = None
         self._Context = None
@@ -7620,14 +7634,6 @@ class DescribeLogsRequest(AbstractModel):
     @Service.setter
     def Service(self, Service):
         self._Service = Service
-
-    @property
-    def PodName(self):
-        return self._PodName
-
-    @PodName.setter
-    def PodName(self, PodName):
-        self._PodName = PodName
 
     @property
     def StartTime(self):
@@ -7652,6 +7658,14 @@ class DescribeLogsRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
 
     @property
     def Order(self):
@@ -7688,10 +7702,10 @@ class DescribeLogsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
-        self._PodName = params.get("PodName")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Limit = params.get("Limit")
+        self._PodName = params.get("PodName")
         self._Order = params.get("Order")
         self._OrderField = params.get("OrderField")
         self._Context = params.get("Context")
@@ -8098,8 +8112,11 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组id
         :type ServiceGroupId: str
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._ServiceGroupId = None
+        self._ServiceCategory = None
 
     @property
     def ServiceGroupId(self):
@@ -8109,9 +8126,18 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
     def ServiceGroupId(self, ServiceGroupId):
         self._ServiceGroupId = ServiceGroupId
 
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8138,12 +8164,20 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         :param _DefaultNginxGatewayCallInfo: 默认nginx网关的调用信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultNginxGatewayCallInfo: :class:`tencentcloud.tione.v20211111.models.DefaultNginxGatewayCallInfo`
+        :param _TJCallInfo: 太极服务的调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TJCallInfo: :class:`tencentcloud.tione.v20211111.models.TJCallInfo`
+        :param _IntranetCallInfo: 内网调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetCallInfo: :class:`tencentcloud.tione.v20211111.models.IntranetCallInfo`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ServiceCallInfo = None
         self._InferGatewayCallInfo = None
         self._DefaultNginxGatewayCallInfo = None
+        self._TJCallInfo = None
+        self._IntranetCallInfo = None
         self._RequestId = None
 
     @property
@@ -8171,6 +8205,22 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         self._DefaultNginxGatewayCallInfo = DefaultNginxGatewayCallInfo
 
     @property
+    def TJCallInfo(self):
+        return self._TJCallInfo
+
+    @TJCallInfo.setter
+    def TJCallInfo(self, TJCallInfo):
+        self._TJCallInfo = TJCallInfo
+
+    @property
+    def IntranetCallInfo(self):
+        return self._IntranetCallInfo
+
+    @IntranetCallInfo.setter
+    def IntranetCallInfo(self, IntranetCallInfo):
+        self._IntranetCallInfo = IntranetCallInfo
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8189,6 +8239,12 @@ class DescribeModelServiceCallInfoResponse(AbstractModel):
         if params.get("DefaultNginxGatewayCallInfo") is not None:
             self._DefaultNginxGatewayCallInfo = DefaultNginxGatewayCallInfo()
             self._DefaultNginxGatewayCallInfo._deserialize(params.get("DefaultNginxGatewayCallInfo"))
+        if params.get("TJCallInfo") is not None:
+            self._TJCallInfo = TJCallInfo()
+            self._TJCallInfo._deserialize(params.get("TJCallInfo"))
+        if params.get("IntranetCallInfo") is not None:
+            self._IntranetCallInfo = IntranetCallInfo()
+            self._IntranetCallInfo._deserialize(params.get("IntranetCallInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8201,8 +8257,11 @@ class DescribeModelServiceGroupRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组ID
         :type ServiceGroupId: str
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._ServiceGroupId = None
+        self._ServiceCategory = None
 
     @property
     def ServiceGroupId(self):
@@ -8212,9 +8271,18 @@ class DescribeModelServiceGroupRequest(AbstractModel):
     def ServiceGroupId(self, ServiceGroupId):
         self._ServiceGroupId = ServiceGroupId
 
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8285,6 +8353,8 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _TagFilters: 标签过滤参数
         :type TagFilters: list of TagFilter
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._Offset = None
         self._Limit = None
@@ -8292,6 +8362,7 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
         self._OrderField = None
         self._Filters = None
         self._TagFilters = None
+        self._ServiceCategory = None
 
     @property
     def Offset(self):
@@ -8341,6 +8412,14 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
     def TagFilters(self, TagFilters):
         self._TagFilters = TagFilters
 
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -8359,6 +8438,7 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self._TagFilters.append(obj)
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8623,8 +8703,11 @@ class DescribeModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
+        :param _ServiceCategory: 服务分类
+        :type ServiceCategory: str
         """
         self._ServiceId = None
+        self._ServiceCategory = None
 
     @property
     def ServiceId(self):
@@ -8634,9 +8717,18 @@ class DescribeModelServiceRequest(AbstractModel):
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
 
+    @property
+    def ServiceCategory(self):
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
+        self._ServiceCategory = params.get("ServiceCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11469,6 +11561,79 @@ class InferTemplateGroup(AbstractModel):
         
 
 
+class IngressPrivateLinkInfo(AbstractModel):
+    """私有连接通道信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 用户子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _InnerHttpAddr: 内网http调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpAddr: list of str
+        :param _InnerHttpsAddr: 内网https调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpsAddr: list of str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._InnerHttpAddr = None
+        self._InnerHttpsAddr = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InnerHttpAddr(self):
+        return self._InnerHttpAddr
+
+    @InnerHttpAddr.setter
+    def InnerHttpAddr(self, InnerHttpAddr):
+        self._InnerHttpAddr = InnerHttpAddr
+
+    @property
+    def InnerHttpsAddr(self):
+        return self._InnerHttpsAddr
+
+    @InnerHttpsAddr.setter
+    def InnerHttpsAddr(self, InnerHttpsAddr):
+        self._InnerHttpsAddr = InnerHttpsAddr
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InnerHttpAddr = params.get("InnerHttpAddr")
+        self._InnerHttpsAddr = params.get("InnerHttpsAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Instance(AbstractModel):
     """资源组节点信息
 
@@ -11625,6 +11790,60 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._SpecId = params.get("SpecId")
         self._SpecAlias = params.get("SpecAlias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntranetCallInfo(AbstractModel):
+    """内网调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IngressPrivateLinkInfo: 私有连接通道信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IngressPrivateLinkInfo: :class:`tencentcloud.tione.v20211111.models.IngressPrivateLinkInfo`
+        :param _ServiceEIPInfo: 共享弹性网卡信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceEIPInfo: list of ServiceEIPInfo
+        """
+        self._IngressPrivateLinkInfo = None
+        self._ServiceEIPInfo = None
+
+    @property
+    def IngressPrivateLinkInfo(self):
+        return self._IngressPrivateLinkInfo
+
+    @IngressPrivateLinkInfo.setter
+    def IngressPrivateLinkInfo(self, IngressPrivateLinkInfo):
+        self._IngressPrivateLinkInfo = IngressPrivateLinkInfo
+
+    @property
+    def ServiceEIPInfo(self):
+        return self._ServiceEIPInfo
+
+    @ServiceEIPInfo.setter
+    def ServiceEIPInfo(self, ServiceEIPInfo):
+        self._ServiceEIPInfo = ServiceEIPInfo
+
+
+    def _deserialize(self, params):
+        if params.get("IngressPrivateLinkInfo") is not None:
+            self._IngressPrivateLinkInfo = IngressPrivateLinkInfo()
+            self._IngressPrivateLinkInfo._deserialize(params.get("IngressPrivateLinkInfo"))
+        if params.get("ServiceEIPInfo") is not None:
+            self._ServiceEIPInfo = []
+            for item in params.get("ServiceEIPInfo"):
+                obj = ServiceEIPInfo()
+                obj._deserialize(item)
+                self._ServiceEIPInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16209,12 +16428,18 @@ class SendChatMessageRequest(AbstractModel):
         :type SessionId: str
         :param _Question: 问题描述
         :type Question: str
-        :param _ModelVersion: 会话模型版本，不同的会话模型调用到不同的模型后台。
-注: 多行业多场景大模型填写 tj_llm_clm-v1
+        :param _ModelVersion: 会话模型版本。
+多行业多场景大模型：填写 tj_llm_clm-v1。
+多行业客服大模型：填写demo_big_model_version_id。
+默认为demo_big_model_version_id，即多行业客服大模型。
         :type ModelVersion: str
-        :param _Mode: 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+        :param _Mode: 使用模式(仅多场景客服大模型支持)。
+通用问答：填写General。
+搜索增强问答：填写WithSearchPlugin。
+默认为General，即通用问答。
         :type Mode: str
-        :param _SearchSource: 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+        :param _SearchSource: 搜索来源。仅当Mode为WithSearchPlugin时生效。
+预置文稿库：填写Preset。自定义：填写Custom。
         :type SearchSource: str
         """
         self._SessionId = None
@@ -16857,6 +17082,126 @@ class ServiceCallInfo(AbstractModel):
         
 
 
+class ServiceEIP(AbstractModel):
+    """服务共享弹性网卡设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableEIP: 是否开启TIONE内网到外部的访问
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableEIP: bool
+        :param _VpcId: 用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 用户subnetId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self._EnableEIP = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def EnableEIP(self):
+        return self._EnableEIP
+
+    @EnableEIP.setter
+    def EnableEIP(self, EnableEIP):
+        self._EnableEIP = EnableEIP
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._EnableEIP = params.get("EnableEIP")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceEIPInfo(AbstractModel):
+    """共享弹性网卡信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        :param _VpcId: 用户VpcId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 用户子网Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        """
+        self._ServiceId = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceGroup(AbstractModel):
     """在线服务一个服务组的信息
 
@@ -17295,6 +17640,9 @@ HYBRID_PAID:
         :param _Command: 服务的启动命令
 注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
+        :param _ServiceEIP: 开启TIONE内网访问外部设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -17325,6 +17673,7 @@ HYBRID_PAID:
         self._VolumeMount = None
         self._InferCodeInfo = None
         self._Command = None
+        self._ServiceEIP = None
 
     @property
     def Replicas(self):
@@ -17558,6 +17907,14 @@ HYBRID_PAID:
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def ServiceEIP(self):
+        return self._ServiceEIP
+
+    @ServiceEIP.setter
+    def ServiceEIP(self, ServiceEIP):
+        self._ServiceEIP = ServiceEIP
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -17626,6 +17983,9 @@ HYBRID_PAID:
             self._InferCodeInfo = InferCodeInfo()
             self._InferCodeInfo._deserialize(params.get("InferCodeInfo"))
         self._Command = params.get("Command")
+        if params.get("ServiceEIP") is not None:
+            self._ServiceEIP = ServiceEIP()
+            self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18462,6 +18822,66 @@ class StopTrainingTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TJCallInfo(AbstractModel):
+    """太极服务的调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpAddr: 调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpAddr: str
+        :param _Token: token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param _CallExample: 调用示例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallExample: str
+        """
+        self._HttpAddr = None
+        self._Token = None
+        self._CallExample = None
+
+    @property
+    def HttpAddr(self):
+        return self._HttpAddr
+
+    @HttpAddr.setter
+    def HttpAddr(self, HttpAddr):
+        self._HttpAddr = HttpAddr
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def CallExample(self):
+        return self._CallExample
+
+    @CallExample.setter
+    def CallExample(self, CallExample):
+        self._CallExample = CallExample
+
+
+    def _deserialize(self, params):
+        self._HttpAddr = params.get("HttpAddr")
+        self._Token = params.get("Token")
+        self._CallExample = params.get("CallExample")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):

@@ -126,6 +126,182 @@ class ApolloEnvParam(AbstractModel):
         
 
 
+class AutoScalerBehavior(AbstractModel):
+    """指标伸缩行为
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScaleUp: 扩容行为配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleUp: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
+        :param _ScaleDown: 缩容行为配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDown: :class:`tencentcloud.tse.v20201207.models.AutoScalerRules`
+        """
+        self._ScaleUp = None
+        self._ScaleDown = None
+
+    @property
+    def ScaleUp(self):
+        return self._ScaleUp
+
+    @ScaleUp.setter
+    def ScaleUp(self, ScaleUp):
+        self._ScaleUp = ScaleUp
+
+    @property
+    def ScaleDown(self):
+        return self._ScaleDown
+
+    @ScaleDown.setter
+    def ScaleDown(self, ScaleDown):
+        self._ScaleDown = ScaleDown
+
+
+    def _deserialize(self, params):
+        if params.get("ScaleUp") is not None:
+            self._ScaleUp = AutoScalerRules()
+            self._ScaleUp._deserialize(params.get("ScaleUp"))
+        if params.get("ScaleDown") is not None:
+            self._ScaleDown = AutoScalerRules()
+            self._ScaleDown._deserialize(params.get("ScaleDown"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoScalerPolicy(AbstractModel):
+    """扩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型，Pods或Percent
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        :param _PeriodSeconds: 扩容周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodSeconds: int
+        """
+        self._Type = None
+        self._Value = None
+        self._PeriodSeconds = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def PeriodSeconds(self):
+        return self._PeriodSeconds
+
+    @PeriodSeconds.setter
+    def PeriodSeconds(self, PeriodSeconds):
+        self._PeriodSeconds = PeriodSeconds
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._PeriodSeconds = params.get("PeriodSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoScalerRules(AbstractModel):
+    """指标伸缩的规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StabilizationWindowSeconds: 稳定窗口时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StabilizationWindowSeconds: int
+        :param _SelectPolicy: 选择策略依据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectPolicy: str
+        :param _Policies: 扩容策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policies: list of AutoScalerPolicy
+        """
+        self._StabilizationWindowSeconds = None
+        self._SelectPolicy = None
+        self._Policies = None
+
+    @property
+    def StabilizationWindowSeconds(self):
+        return self._StabilizationWindowSeconds
+
+    @StabilizationWindowSeconds.setter
+    def StabilizationWindowSeconds(self, StabilizationWindowSeconds):
+        self._StabilizationWindowSeconds = StabilizationWindowSeconds
+
+    @property
+    def SelectPolicy(self):
+        return self._SelectPolicy
+
+    @SelectPolicy.setter
+    def SelectPolicy(self, SelectPolicy):
+        self._SelectPolicy = SelectPolicy
+
+    @property
+    def Policies(self):
+        return self._Policies
+
+    @Policies.setter
+    def Policies(self, Policies):
+        self._Policies = Policies
+
+
+    def _deserialize(self, params):
+        self._StabilizationWindowSeconds = params.get("StabilizationWindowSeconds")
+        self._SelectPolicy = params.get("SelectPolicy")
+        if params.get("Policies") is not None:
+            self._Policies = []
+            for item in params.get("Policies"):
+                obj = AutoScalerPolicy()
+                obj._deserialize(item)
+                self._Policies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BoundK8SInfo(AbstractModel):
     """服务治理引擎绑定的kubernetes信息
 
@@ -1000,10 +1176,14 @@ class CloudNativeAPIGatewayStrategy(AbstractModel):
 
     @property
     def MaxReplicas(self):
+        warnings.warn("parameter `MaxReplicas` is deprecated", DeprecationWarning) 
+
         return self._MaxReplicas
 
     @MaxReplicas.setter
     def MaxReplicas(self, MaxReplicas):
+        warnings.warn("parameter `MaxReplicas` is deprecated", DeprecationWarning) 
+
         self._MaxReplicas = MaxReplicas
 
 
@@ -1059,6 +1239,9 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
         :param _AutoScalerId: 指标配置ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalerId: str
+        :param _Behavior: 指标伸缩行为配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Behavior: :class:`tencentcloud.tse.v20201207.models.AutoScalerBehavior`
         """
         self._MaxReplicas = None
         self._Metrics = None
@@ -1067,6 +1250,7 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
         self._ModifyTime = None
         self._StrategyId = None
         self._AutoScalerId = None
+        self._Behavior = None
 
     @property
     def MaxReplicas(self):
@@ -1094,35 +1278,59 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
 
     @property
     def CreateTime(self):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         return self._CreateTime
 
     @CreateTime.setter
     def CreateTime(self, CreateTime):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         self._CreateTime = CreateTime
 
     @property
     def ModifyTime(self):
+        warnings.warn("parameter `ModifyTime` is deprecated", DeprecationWarning) 
+
         return self._ModifyTime
 
     @ModifyTime.setter
     def ModifyTime(self, ModifyTime):
+        warnings.warn("parameter `ModifyTime` is deprecated", DeprecationWarning) 
+
         self._ModifyTime = ModifyTime
 
     @property
     def StrategyId(self):
+        warnings.warn("parameter `StrategyId` is deprecated", DeprecationWarning) 
+
         return self._StrategyId
 
     @StrategyId.setter
     def StrategyId(self, StrategyId):
+        warnings.warn("parameter `StrategyId` is deprecated", DeprecationWarning) 
+
         self._StrategyId = StrategyId
 
     @property
     def AutoScalerId(self):
+        warnings.warn("parameter `AutoScalerId` is deprecated", DeprecationWarning) 
+
         return self._AutoScalerId
 
     @AutoScalerId.setter
     def AutoScalerId(self, AutoScalerId):
+        warnings.warn("parameter `AutoScalerId` is deprecated", DeprecationWarning) 
+
         self._AutoScalerId = AutoScalerId
+
+    @property
+    def Behavior(self):
+        return self._Behavior
+
+    @Behavior.setter
+    def Behavior(self, Behavior):
+        self._Behavior = Behavior
 
 
     def _deserialize(self, params):
@@ -1138,6 +1346,9 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._StrategyId = params.get("StrategyId")
         self._AutoScalerId = params.get("AutoScalerId")
+        if params.get("Behavior") is not None:
+            self._Behavior = AutoScalerBehavior()
+            self._Behavior._deserialize(params.get("Behavior"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1268,26 +1479,38 @@ class CloudNativeAPIGatewayStrategyCronScalerConfig(AbstractModel):
 
     @property
     def CreateTime(self):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         return self._CreateTime
 
     @CreateTime.setter
     def CreateTime(self, CreateTime):
+        warnings.warn("parameter `CreateTime` is deprecated", DeprecationWarning) 
+
         self._CreateTime = CreateTime
 
     @property
     def ModifyTime(self):
+        warnings.warn("parameter `ModifyTime` is deprecated", DeprecationWarning) 
+
         return self._ModifyTime
 
     @ModifyTime.setter
     def ModifyTime(self, ModifyTime):
+        warnings.warn("parameter `ModifyTime` is deprecated", DeprecationWarning) 
+
         self._ModifyTime = ModifyTime
 
     @property
     def StrategyId(self):
+        warnings.warn("parameter `StrategyId` is deprecated", DeprecationWarning) 
+
         return self._StrategyId
 
     @StrategyId.setter
     def StrategyId(self, StrategyId):
+        warnings.warn("parameter `StrategyId` is deprecated", DeprecationWarning) 
+
         self._StrategyId = StrategyId
 
 

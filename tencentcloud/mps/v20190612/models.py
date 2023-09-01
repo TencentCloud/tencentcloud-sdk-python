@@ -910,6 +910,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :param _AddOnSubtitles: 要插入的字幕文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddOnSubtitles: list of AddOnSubtitle
+        :param _DrmInfo: Drm信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -918,6 +921,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._SubStreamObjectName = None
         self._SegmentObjectName = None
         self._AddOnSubtitles = None
+        self._DrmInfo = None
 
     @property
     def Definition(self):
@@ -975,6 +979,14 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     def AddOnSubtitles(self, AddOnSubtitles):
         self._AddOnSubtitles = AddOnSubtitles
 
+    @property
+    def DrmInfo(self):
+        return self._DrmInfo
+
+    @DrmInfo.setter
+    def DrmInfo(self, DrmInfo):
+        self._DrmInfo = DrmInfo
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -996,6 +1008,9 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
                 obj = AddOnSubtitle()
                 obj._deserialize(item)
                 self._AddOnSubtitles.append(obj)
+        if params.get("DrmInfo") is not None:
+            self._DrmInfo = DrmInfo()
+            self._DrmInfo._deserialize(params.get("DrmInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18961,6 +18976,56 @@ class DisableWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DrmInfo(AbstractModel):
+    """Drm 加密信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 加密类型：
+<li> simpleaes: aes-128 加密</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _SimpleAesDrm: SimpleAes 加密信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
+        """
+        self._Type = None
+        self._SimpleAesDrm = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SimpleAesDrm(self):
+        return self._SimpleAesDrm
+
+    @SimpleAesDrm.setter
+    def SimpleAesDrm(self, SimpleAesDrm):
+        self._SimpleAesDrm = SimpleAesDrm
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("SimpleAesDrm") is not None:
+            self._SimpleAesDrm = SimpleAesDrm()
+            self._SimpleAesDrm._deserialize(params.get("SimpleAesDrm"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaFileInfo(AbstractModel):
     """编辑点播视频文件信息
 
@@ -34935,6 +35000,66 @@ class SharpEnhanceConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimpleAesDrm(AbstractModel):
+    """SimpleAes 加密信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uri: 请求解密秘钥uri地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uri: str
+        :param _Key: 加密key(32字节字符串)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Vector: 加密初始化向量(32字节字符串)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vector: str
+        """
+        self._Uri = None
+        self._Key = None
+        self._Vector = None
+
+    @property
+    def Uri(self):
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Vector(self):
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+
+    def _deserialize(self, params):
+        self._Uri = params.get("Uri")
+        self._Key = params.get("Key")
+        self._Vector = params.get("Vector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

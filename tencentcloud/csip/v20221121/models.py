@@ -740,6 +740,157 @@ class AssetClusterPod(AbstractModel):
         
 
 
+class AssetInfoDetail(AbstractModel):
+    """资产扫描结构细节
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppID: str
+        :param _CVEId: CVE编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVEId: str
+        :param _IsScan: 是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsScan: int
+        :param _InfluenceAsset: 影响资产数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InfluenceAsset: int
+        :param _NotRepairAsset: 未修复资产数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotRepairAsset: int
+        :param _NotProtectAsset: 未防护资产数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotProtectAsset: int
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskPercent: 任务百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskPercent: int
+        :param _TaskTime: 任务时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTime: int
+        :param _ScanTime: 扫描时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanTime: str
+        """
+        self._AppID = None
+        self._CVEId = None
+        self._IsScan = None
+        self._InfluenceAsset = None
+        self._NotRepairAsset = None
+        self._NotProtectAsset = None
+        self._TaskId = None
+        self._TaskPercent = None
+        self._TaskTime = None
+        self._ScanTime = None
+
+    @property
+    def AppID(self):
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def CVEId(self):
+        return self._CVEId
+
+    @CVEId.setter
+    def CVEId(self, CVEId):
+        self._CVEId = CVEId
+
+    @property
+    def IsScan(self):
+        return self._IsScan
+
+    @IsScan.setter
+    def IsScan(self, IsScan):
+        self._IsScan = IsScan
+
+    @property
+    def InfluenceAsset(self):
+        return self._InfluenceAsset
+
+    @InfluenceAsset.setter
+    def InfluenceAsset(self, InfluenceAsset):
+        self._InfluenceAsset = InfluenceAsset
+
+    @property
+    def NotRepairAsset(self):
+        return self._NotRepairAsset
+
+    @NotRepairAsset.setter
+    def NotRepairAsset(self, NotRepairAsset):
+        self._NotRepairAsset = NotRepairAsset
+
+    @property
+    def NotProtectAsset(self):
+        return self._NotProtectAsset
+
+    @NotProtectAsset.setter
+    def NotProtectAsset(self, NotProtectAsset):
+        self._NotProtectAsset = NotProtectAsset
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskPercent(self):
+        return self._TaskPercent
+
+    @TaskPercent.setter
+    def TaskPercent(self, TaskPercent):
+        self._TaskPercent = TaskPercent
+
+    @property
+    def TaskTime(self):
+        return self._TaskTime
+
+    @TaskTime.setter
+    def TaskTime(self, TaskTime):
+        self._TaskTime = TaskTime
+
+    @property
+    def ScanTime(self):
+        return self._ScanTime
+
+    @ScanTime.setter
+    def ScanTime(self, ScanTime):
+        self._ScanTime = ScanTime
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._CVEId = params.get("CVEId")
+        self._IsScan = params.get("IsScan")
+        self._InfluenceAsset = params.get("InfluenceAsset")
+        self._NotRepairAsset = params.get("NotRepairAsset")
+        self._NotProtectAsset = params.get("NotProtectAsset")
+        self._TaskId = params.get("TaskId")
+        self._TaskPercent = params.get("TaskPercent")
+        self._TaskTime = params.get("TaskTime")
+        self._ScanTime = params.get("ScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetViewPortRisk(AbstractModel):
     """资产视角的端口风险对象
 
@@ -1401,6 +1552,287 @@ class AssetViewVULRisk(AbstractModel):
         self._InstanceUUID = params.get("InstanceUUID")
         self._Payload = params.get("Payload")
         self._EMGCVulType = params.get("EMGCVulType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BugInfoDetail(AbstractModel):
+    """漏洞详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 漏洞编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _PatchId: 漏洞对应pocId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatchId: str
+        :param _VULName: 漏洞名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VULName: str
+        :param _Level: 漏洞严重性：high,middle，low，info
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
+        :param _CVSSScore: cvss评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSSScore: str
+        :param _CVEId: cve编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVEId: str
+        :param _Tag: 漏洞标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
+        :param _VULCategory: 漏洞种类，1:web应用，2:系统组件漏洞，3:配置风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VULCategory: int
+        :param _ImpactOs: 漏洞影响系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactOs: str
+        :param _ImpactCOMPENT: 漏洞影响组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactCOMPENT: str
+        :param _ImpactVersion: 漏洞影响版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactVersion: str
+        :param _Reference: 链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reference: str
+        :param _VULDescribe: 漏洞描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VULDescribe: str
+        :param _Fix: 修复建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fix: str
+        :param _ProSupport: 产品支持状态，实时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProSupport: int
+        :param _IsPublish: 是否公开，0为未发布，1为发布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPublish: int
+        :param _ReleaseTime: 释放时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _SubCategory: 漏洞子类别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubCategory: str
+        """
+        self._Id = None
+        self._PatchId = None
+        self._VULName = None
+        self._Level = None
+        self._CVSSScore = None
+        self._CVEId = None
+        self._Tag = None
+        self._VULCategory = None
+        self._ImpactOs = None
+        self._ImpactCOMPENT = None
+        self._ImpactVersion = None
+        self._Reference = None
+        self._VULDescribe = None
+        self._Fix = None
+        self._ProSupport = None
+        self._IsPublish = None
+        self._ReleaseTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubCategory = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PatchId(self):
+        return self._PatchId
+
+    @PatchId.setter
+    def PatchId(self, PatchId):
+        self._PatchId = PatchId
+
+    @property
+    def VULName(self):
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def CVSSScore(self):
+        return self._CVSSScore
+
+    @CVSSScore.setter
+    def CVSSScore(self, CVSSScore):
+        self._CVSSScore = CVSSScore
+
+    @property
+    def CVEId(self):
+        return self._CVEId
+
+    @CVEId.setter
+    def CVEId(self, CVEId):
+        self._CVEId = CVEId
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def VULCategory(self):
+        return self._VULCategory
+
+    @VULCategory.setter
+    def VULCategory(self, VULCategory):
+        self._VULCategory = VULCategory
+
+    @property
+    def ImpactOs(self):
+        return self._ImpactOs
+
+    @ImpactOs.setter
+    def ImpactOs(self, ImpactOs):
+        self._ImpactOs = ImpactOs
+
+    @property
+    def ImpactCOMPENT(self):
+        return self._ImpactCOMPENT
+
+    @ImpactCOMPENT.setter
+    def ImpactCOMPENT(self, ImpactCOMPENT):
+        self._ImpactCOMPENT = ImpactCOMPENT
+
+    @property
+    def ImpactVersion(self):
+        return self._ImpactVersion
+
+    @ImpactVersion.setter
+    def ImpactVersion(self, ImpactVersion):
+        self._ImpactVersion = ImpactVersion
+
+    @property
+    def Reference(self):
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
+    @property
+    def VULDescribe(self):
+        return self._VULDescribe
+
+    @VULDescribe.setter
+    def VULDescribe(self, VULDescribe):
+        self._VULDescribe = VULDescribe
+
+    @property
+    def Fix(self):
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def ProSupport(self):
+        return self._ProSupport
+
+    @ProSupport.setter
+    def ProSupport(self, ProSupport):
+        self._ProSupport = ProSupport
+
+    @property
+    def IsPublish(self):
+        return self._IsPublish
+
+    @IsPublish.setter
+    def IsPublish(self, IsPublish):
+        self._IsPublish = IsPublish
+
+    @property
+    def ReleaseTime(self):
+        return self._ReleaseTime
+
+    @ReleaseTime.setter
+    def ReleaseTime(self, ReleaseTime):
+        self._ReleaseTime = ReleaseTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubCategory(self):
+        return self._SubCategory
+
+    @SubCategory.setter
+    def SubCategory(self, SubCategory):
+        self._SubCategory = SubCategory
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PatchId = params.get("PatchId")
+        self._VULName = params.get("VULName")
+        self._Level = params.get("Level")
+        self._CVSSScore = params.get("CVSSScore")
+        self._CVEId = params.get("CVEId")
+        self._Tag = params.get("Tag")
+        self._VULCategory = params.get("VULCategory")
+        self._ImpactOs = params.get("ImpactOs")
+        self._ImpactCOMPENT = params.get("ImpactCOMPENT")
+        self._ImpactVersion = params.get("ImpactVersion")
+        self._Reference = params.get("Reference")
+        self._VULDescribe = params.get("VULDescribe")
+        self._Fix = params.get("Fix")
+        self._ProSupport = params.get("ProSupport")
+        self._IsPublish = params.get("IsPublish")
+        self._ReleaseTime = params.get("ReleaseTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SubCategory = params.get("SubCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2872,6 +3304,140 @@ class DBAssetVO(AbstractModel):
         self._Status = params.get("Status")
         self._IsCore = params.get("IsCore")
         self._IsNewAsset = params.get("IsNewAsset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataSearchBug(AbstractModel):
+    """漏洞和资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StateCode: 返回查询状态
+        :type StateCode: str
+        :param _DataBug: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataBug: list of BugInfoDetail
+        :param _DataAsset: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataAsset: list of AssetInfoDetail
+        :param _VSSScan: true支持扫描。false不支持扫描
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VSSScan: bool
+        :param _CWPScan: 0不支持，1支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPScan: str
+        :param _CFWPatch: 1支持虚拟补丁，0或空不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFWPatch: str
+        :param _WafPatch: 0不支持，1支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WafPatch: int
+        :param _CWPFix: 0不支持，1支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPFix: int
+        """
+        self._StateCode = None
+        self._DataBug = None
+        self._DataAsset = None
+        self._VSSScan = None
+        self._CWPScan = None
+        self._CFWPatch = None
+        self._WafPatch = None
+        self._CWPFix = None
+
+    @property
+    def StateCode(self):
+        return self._StateCode
+
+    @StateCode.setter
+    def StateCode(self, StateCode):
+        self._StateCode = StateCode
+
+    @property
+    def DataBug(self):
+        return self._DataBug
+
+    @DataBug.setter
+    def DataBug(self, DataBug):
+        self._DataBug = DataBug
+
+    @property
+    def DataAsset(self):
+        return self._DataAsset
+
+    @DataAsset.setter
+    def DataAsset(self, DataAsset):
+        self._DataAsset = DataAsset
+
+    @property
+    def VSSScan(self):
+        return self._VSSScan
+
+    @VSSScan.setter
+    def VSSScan(self, VSSScan):
+        self._VSSScan = VSSScan
+
+    @property
+    def CWPScan(self):
+        return self._CWPScan
+
+    @CWPScan.setter
+    def CWPScan(self, CWPScan):
+        self._CWPScan = CWPScan
+
+    @property
+    def CFWPatch(self):
+        return self._CFWPatch
+
+    @CFWPatch.setter
+    def CFWPatch(self, CFWPatch):
+        self._CFWPatch = CFWPatch
+
+    @property
+    def WafPatch(self):
+        return self._WafPatch
+
+    @WafPatch.setter
+    def WafPatch(self, WafPatch):
+        self._WafPatch = WafPatch
+
+    @property
+    def CWPFix(self):
+        return self._CWPFix
+
+    @CWPFix.setter
+    def CWPFix(self, CWPFix):
+        self._CWPFix = CWPFix
+
+
+    def _deserialize(self, params):
+        self._StateCode = params.get("StateCode")
+        if params.get("DataBug") is not None:
+            self._DataBug = []
+            for item in params.get("DataBug"):
+                obj = BugInfoDetail()
+                obj._deserialize(item)
+                self._DataBug.append(obj)
+        if params.get("DataAsset") is not None:
+            self._DataAsset = []
+            for item in params.get("DataAsset"):
+                obj = AssetInfoDetail()
+                obj._deserialize(item)
+                self._DataAsset.append(obj)
+        self._VSSScan = params.get("VSSScan")
+        self._CWPScan = params.get("CWPScan")
+        self._CFWPatch = params.get("CFWPatch")
+        self._WafPatch = params.get("WafPatch")
+        self._CWPFix = params.get("CWPFix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4673,6 +5239,237 @@ class DescribeScanReportListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeScanTaskListRequest(AbstractModel):
+    """DescribeScanTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScanTaskListResponse(AbstractModel):
+    """DescribeScanTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 任务日志列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ScanTaskInfoList
+        :param _UINList: 主账户ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UINList: list of str
+        :param _TaskModeList: 体检模式过滤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskModeList: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._UINList = None
+        self._TaskModeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def UINList(self):
+        return self._UINList
+
+    @UINList.setter
+    def UINList(self, UINList):
+        self._UINList = UINList
+
+    @property
+    def TaskModeList(self):
+        return self._TaskModeList
+
+    @TaskModeList.setter
+    def TaskModeList(self, TaskModeList):
+        self._TaskModeList = TaskModeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ScanTaskInfoList()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._UINList = params.get("UINList")
+        if params.get("TaskModeList") is not None:
+            self._TaskModeList = []
+            for item in params.get("TaskModeList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._TaskModeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSearchBugInfoRequest(AbstractModel):
+    """DescribeSearchBugInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 无
+        :type Id: str
+        :param _CVEId: id=3时传入该参数
+        :type CVEId: str
+        """
+        self._Id = None
+        self._CVEId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CVEId(self):
+        return self._CVEId
+
+    @CVEId.setter
+    def CVEId(self, CVEId):
+        self._CVEId = CVEId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CVEId = params.get("CVEId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSearchBugInfoResponse(AbstractModel):
+    """DescribeSearchBugInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 漏洞信息和资产信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.csip.v20221121.models.DataSearchBug`
+        :param _ReturnCode: 状态值，0：查询成功，非0：查询失败
+        :type ReturnCode: int
+        :param _ReturnMsg: 状态信息，success：查询成功，fail：查询失败
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DataSearchBug()
+            self._Data._deserialize(params.get("Data"))
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSubnetAssetsRequest(AbstractModel):
     """DescribeSubnetAssets请求参数结构体
 
@@ -4827,6 +5624,202 @@ class DescribeSubnetAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._ZoneList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskLogListRequest(AbstractModel):
+    """DescribeTaskLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskLogListResponse(AbstractModel):
+    """DescribeTaskLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 报告列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of TaskLogInfo
+        :param _NotViewNumber: 待查看数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotViewNumber: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._NotViewNumber = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def NotViewNumber(self):
+        return self._NotViewNumber
+
+    @NotViewNumber.setter
+    def NotViewNumber(self, NotViewNumber):
+        self._NotViewNumber = NotViewNumber
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskLogInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._NotViewNumber = params.get("NotViewNumber")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTaskLogURLRequest(AbstractModel):
+    """DescribeTaskLogURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReportItemKeyList: 任务报告Id 列表
+        :type ReportItemKeyList: list of ReportItemKey
+        :param _Type: 0: 预览， 1: 下载
+        :type Type: int
+        """
+        self._ReportItemKeyList = None
+        self._Type = None
+
+    @property
+    def ReportItemKeyList(self):
+        return self._ReportItemKeyList
+
+    @ReportItemKeyList.setter
+    def ReportItemKeyList(self, ReportItemKeyList):
+        self._ReportItemKeyList = ReportItemKeyList
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        if params.get("ReportItemKeyList") is not None:
+            self._ReportItemKeyList = []
+            for item in params.get("ReportItemKeyList"):
+                obj = ReportItemKey()
+                obj._deserialize(item)
+                self._ReportItemKeyList.append(obj)
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskLogURLResponse(AbstractModel):
+    """DescribeTaskLogURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回报告临时下载url
+        :type Data: list of TaskLogURL
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TaskLogURL()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6126,6 +7119,39 @@ class IpAssetListVO(AbstractModel):
         
 
 
+class ReportItemKey(AbstractModel):
+    """报告项key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskLogList: 日志Id列表
+        :type TaskLogList: list of str
+        """
+        self._TaskLogList = None
+
+    @property
+    def TaskLogList(self):
+        return self._TaskLogList
+
+    @TaskLogList.setter
+    def TaskLogList(self, TaskLogList):
+        self._TaskLogList = TaskLogList
+
+
+    def _deserialize(self, params):
+        self._TaskLogList = params.get("TaskLogList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScanTaskInfo(AbstractModel):
     """扫描任务详情
 
@@ -6293,6 +7319,539 @@ class ScanTaskInfo(AbstractModel):
         self._AppId = params.get("AppId")
         self._UIN = params.get("UIN")
         self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanTaskInfoList(AbstractModel):
+    """扫描任务列表展示信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _StartTime: 任务开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ScanPlanContent: corn
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanPlanContent: str
+        :param _TaskType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: int
+        :param _InsertTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsertTime: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _SelfDefiningAssets: 排除扫描资产信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfDefiningAssets: list of str
+        :param _PredictTime: 预估时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredictTime: int
+        :param _PredictEndTime: 预估完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PredictEndTime: str
+        :param _ReportNumber: 报告数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportNumber: int
+        :param _AssetNumber: 资产数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetNumber: int
+        :param _ScanStatus: 扫描状态 0 初始值  1正在扫描  2扫描完成  3扫描出错
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanStatus: int
+        :param _Percent: 任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percent: float
+        :param _ScanItem: port/poc/weakpass/webcontent/configrisk
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanItem: str
+        :param _ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanAssetType: int
+        :param _VSSTaskId: vss子任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VSSTaskId: str
+        :param _CSPMTaskId: cspm子任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSPMTaskId: str
+        :param _CWPPOCId: 主机漏扫子任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPPOCId: str
+        :param _CWPBlId: 主机基线子任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPBlId: str
+        :param _VSSTaskProcess: vss子任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VSSTaskProcess: int
+        :param _CSPMTaskProcess: cspm子任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSPMTaskProcess: int
+        :param _CWPPOCProcess: 主机漏扫子任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPPOCProcess: int
+        :param _CWPBlProcess: 主机基线子任务进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPBlProcess: int
+        :param _ErrorCode: 异常状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: int
+        :param _ErrorInfo: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: str
+        :param _StartDay: 周期任务开始的天数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartDay: int
+        :param _Frequency: 扫描频率,单位天,1-每天,7-每周,30-月,0-扫描一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Frequency: int
+        :param _CompleteNumber: 完成次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompleteNumber: int
+        :param _CompleteAssetNumber: 已完成资产个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompleteAssetNumber: int
+        :param _RiskCount: 风险数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param _Assets: 资产
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Assets: list of TaskAssetObject
+        :param _AppId: 用户Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _UIN: 用户主账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UIN: str
+        :param _UserName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskMode: int
+        :param _ScanFrom: 扫描来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanFrom: str
+        :param _IsFree: 是否限免体检0不是，1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFree: int
+        :param _IsDelete: 是否可以删除，1-可以，0-不可以，对应多账户管理使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDelete: int
+        """
+        self._TaskName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ScanPlanContent = None
+        self._TaskType = None
+        self._InsertTime = None
+        self._TaskId = None
+        self._SelfDefiningAssets = None
+        self._PredictTime = None
+        self._PredictEndTime = None
+        self._ReportNumber = None
+        self._AssetNumber = None
+        self._ScanStatus = None
+        self._Percent = None
+        self._ScanItem = None
+        self._ScanAssetType = None
+        self._VSSTaskId = None
+        self._CSPMTaskId = None
+        self._CWPPOCId = None
+        self._CWPBlId = None
+        self._VSSTaskProcess = None
+        self._CSPMTaskProcess = None
+        self._CWPPOCProcess = None
+        self._CWPBlProcess = None
+        self._ErrorCode = None
+        self._ErrorInfo = None
+        self._StartDay = None
+        self._Frequency = None
+        self._CompleteNumber = None
+        self._CompleteAssetNumber = None
+        self._RiskCount = None
+        self._Assets = None
+        self._AppId = None
+        self._UIN = None
+        self._UserName = None
+        self._TaskMode = None
+        self._ScanFrom = None
+        self._IsFree = None
+        self._IsDelete = None
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ScanPlanContent(self):
+        return self._ScanPlanContent
+
+    @ScanPlanContent.setter
+    def ScanPlanContent(self, ScanPlanContent):
+        self._ScanPlanContent = ScanPlanContent
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SelfDefiningAssets(self):
+        return self._SelfDefiningAssets
+
+    @SelfDefiningAssets.setter
+    def SelfDefiningAssets(self, SelfDefiningAssets):
+        self._SelfDefiningAssets = SelfDefiningAssets
+
+    @property
+    def PredictTime(self):
+        return self._PredictTime
+
+    @PredictTime.setter
+    def PredictTime(self, PredictTime):
+        self._PredictTime = PredictTime
+
+    @property
+    def PredictEndTime(self):
+        return self._PredictEndTime
+
+    @PredictEndTime.setter
+    def PredictEndTime(self, PredictEndTime):
+        self._PredictEndTime = PredictEndTime
+
+    @property
+    def ReportNumber(self):
+        return self._ReportNumber
+
+    @ReportNumber.setter
+    def ReportNumber(self, ReportNumber):
+        self._ReportNumber = ReportNumber
+
+    @property
+    def AssetNumber(self):
+        return self._AssetNumber
+
+    @AssetNumber.setter
+    def AssetNumber(self, AssetNumber):
+        self._AssetNumber = AssetNumber
+
+    @property
+    def ScanStatus(self):
+        return self._ScanStatus
+
+    @ScanStatus.setter
+    def ScanStatus(self, ScanStatus):
+        self._ScanStatus = ScanStatus
+
+    @property
+    def Percent(self):
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def ScanItem(self):
+        return self._ScanItem
+
+    @ScanItem.setter
+    def ScanItem(self, ScanItem):
+        self._ScanItem = ScanItem
+
+    @property
+    def ScanAssetType(self):
+        return self._ScanAssetType
+
+    @ScanAssetType.setter
+    def ScanAssetType(self, ScanAssetType):
+        self._ScanAssetType = ScanAssetType
+
+    @property
+    def VSSTaskId(self):
+        return self._VSSTaskId
+
+    @VSSTaskId.setter
+    def VSSTaskId(self, VSSTaskId):
+        self._VSSTaskId = VSSTaskId
+
+    @property
+    def CSPMTaskId(self):
+        return self._CSPMTaskId
+
+    @CSPMTaskId.setter
+    def CSPMTaskId(self, CSPMTaskId):
+        self._CSPMTaskId = CSPMTaskId
+
+    @property
+    def CWPPOCId(self):
+        return self._CWPPOCId
+
+    @CWPPOCId.setter
+    def CWPPOCId(self, CWPPOCId):
+        self._CWPPOCId = CWPPOCId
+
+    @property
+    def CWPBlId(self):
+        return self._CWPBlId
+
+    @CWPBlId.setter
+    def CWPBlId(self, CWPBlId):
+        self._CWPBlId = CWPBlId
+
+    @property
+    def VSSTaskProcess(self):
+        return self._VSSTaskProcess
+
+    @VSSTaskProcess.setter
+    def VSSTaskProcess(self, VSSTaskProcess):
+        self._VSSTaskProcess = VSSTaskProcess
+
+    @property
+    def CSPMTaskProcess(self):
+        return self._CSPMTaskProcess
+
+    @CSPMTaskProcess.setter
+    def CSPMTaskProcess(self, CSPMTaskProcess):
+        self._CSPMTaskProcess = CSPMTaskProcess
+
+    @property
+    def CWPPOCProcess(self):
+        return self._CWPPOCProcess
+
+    @CWPPOCProcess.setter
+    def CWPPOCProcess(self, CWPPOCProcess):
+        self._CWPPOCProcess = CWPPOCProcess
+
+    @property
+    def CWPBlProcess(self):
+        return self._CWPBlProcess
+
+    @CWPBlProcess.setter
+    def CWPBlProcess(self, CWPBlProcess):
+        self._CWPBlProcess = CWPBlProcess
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def StartDay(self):
+        return self._StartDay
+
+    @StartDay.setter
+    def StartDay(self, StartDay):
+        self._StartDay = StartDay
+
+    @property
+    def Frequency(self):
+        return self._Frequency
+
+    @Frequency.setter
+    def Frequency(self, Frequency):
+        self._Frequency = Frequency
+
+    @property
+    def CompleteNumber(self):
+        return self._CompleteNumber
+
+    @CompleteNumber.setter
+    def CompleteNumber(self, CompleteNumber):
+        self._CompleteNumber = CompleteNumber
+
+    @property
+    def CompleteAssetNumber(self):
+        return self._CompleteAssetNumber
+
+    @CompleteAssetNumber.setter
+    def CompleteAssetNumber(self, CompleteAssetNumber):
+        self._CompleteAssetNumber = CompleteAssetNumber
+
+    @property
+    def RiskCount(self):
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def Assets(self):
+        return self._Assets
+
+    @Assets.setter
+    def Assets(self, Assets):
+        self._Assets = Assets
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def UIN(self):
+        return self._UIN
+
+    @UIN.setter
+    def UIN(self, UIN):
+        self._UIN = UIN
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def TaskMode(self):
+        return self._TaskMode
+
+    @TaskMode.setter
+    def TaskMode(self, TaskMode):
+        self._TaskMode = TaskMode
+
+    @property
+    def ScanFrom(self):
+        return self._ScanFrom
+
+    @ScanFrom.setter
+    def ScanFrom(self, ScanFrom):
+        self._ScanFrom = ScanFrom
+
+    @property
+    def IsFree(self):
+        return self._IsFree
+
+    @IsFree.setter
+    def IsFree(self, IsFree):
+        self._IsFree = IsFree
+
+    @property
+    def IsDelete(self):
+        return self._IsDelete
+
+    @IsDelete.setter
+    def IsDelete(self, IsDelete):
+        self._IsDelete = IsDelete
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ScanPlanContent = params.get("ScanPlanContent")
+        self._TaskType = params.get("TaskType")
+        self._InsertTime = params.get("InsertTime")
+        self._TaskId = params.get("TaskId")
+        self._SelfDefiningAssets = params.get("SelfDefiningAssets")
+        self._PredictTime = params.get("PredictTime")
+        self._PredictEndTime = params.get("PredictEndTime")
+        self._ReportNumber = params.get("ReportNumber")
+        self._AssetNumber = params.get("AssetNumber")
+        self._ScanStatus = params.get("ScanStatus")
+        self._Percent = params.get("Percent")
+        self._ScanItem = params.get("ScanItem")
+        self._ScanAssetType = params.get("ScanAssetType")
+        self._VSSTaskId = params.get("VSSTaskId")
+        self._CSPMTaskId = params.get("CSPMTaskId")
+        self._CWPPOCId = params.get("CWPPOCId")
+        self._CWPBlId = params.get("CWPBlId")
+        self._VSSTaskProcess = params.get("VSSTaskProcess")
+        self._CSPMTaskProcess = params.get("CSPMTaskProcess")
+        self._CWPPOCProcess = params.get("CWPPOCProcess")
+        self._CWPBlProcess = params.get("CWPBlProcess")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorInfo = params.get("ErrorInfo")
+        self._StartDay = params.get("StartDay")
+        self._Frequency = params.get("Frequency")
+        self._CompleteNumber = params.get("CompleteNumber")
+        self._CompleteAssetNumber = params.get("CompleteAssetNumber")
+        self._RiskCount = params.get("RiskCount")
+        if params.get("Assets") is not None:
+            self._Assets = []
+            for item in params.get("Assets"):
+                obj = TaskAssetObject()
+                obj._deserialize(item)
+                self._Assets.append(obj)
+        self._AppId = params.get("AppId")
+        self._UIN = params.get("UIN")
+        self._UserName = params.get("UserName")
+        self._TaskMode = params.get("TaskMode")
+        self._ScanFrom = params.get("ScanFrom")
+        self._IsFree = params.get("IsFree")
+        self._IsDelete = params.get("IsDelete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6899,6 +8458,255 @@ class TaskCenterWeakPwdRiskInputParam(AbstractModel):
     def _deserialize(self, params):
         self._CheckItemId = params.get("CheckItemId")
         self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskLogInfo(AbstractModel):
+    """任务报告信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskLogName: 报告名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLogName: str
+        :param _TaskLogId: 报告ID
+        :type TaskLogId: str
+        :param _AssetsNumber: 关联资产个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetsNumber: int
+        :param _RiskNumber: 安全风险数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskNumber: int
+        :param _Time: 报告生成时间,任务结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param _Status: 任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _TaskName: 关联任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _StartTime: 扫描开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _TaskCenterTaskId: 任务中心扫描任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskCenterTaskId: str
+        :param _AppId: 租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _UIN: 主账户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UIN: str
+        :param _UserName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        """
+        self._TaskLogName = None
+        self._TaskLogId = None
+        self._AssetsNumber = None
+        self._RiskNumber = None
+        self._Time = None
+        self._Status = None
+        self._TaskName = None
+        self._StartTime = None
+        self._TaskCenterTaskId = None
+        self._AppId = None
+        self._UIN = None
+        self._UserName = None
+
+    @property
+    def TaskLogName(self):
+        return self._TaskLogName
+
+    @TaskLogName.setter
+    def TaskLogName(self, TaskLogName):
+        self._TaskLogName = TaskLogName
+
+    @property
+    def TaskLogId(self):
+        return self._TaskLogId
+
+    @TaskLogId.setter
+    def TaskLogId(self, TaskLogId):
+        self._TaskLogId = TaskLogId
+
+    @property
+    def AssetsNumber(self):
+        return self._AssetsNumber
+
+    @AssetsNumber.setter
+    def AssetsNumber(self, AssetsNumber):
+        self._AssetsNumber = AssetsNumber
+
+    @property
+    def RiskNumber(self):
+        return self._RiskNumber
+
+    @RiskNumber.setter
+    def RiskNumber(self, RiskNumber):
+        self._RiskNumber = RiskNumber
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def TaskCenterTaskId(self):
+        return self._TaskCenterTaskId
+
+    @TaskCenterTaskId.setter
+    def TaskCenterTaskId(self, TaskCenterTaskId):
+        self._TaskCenterTaskId = TaskCenterTaskId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def UIN(self):
+        return self._UIN
+
+    @UIN.setter
+    def UIN(self, UIN):
+        self._UIN = UIN
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._TaskLogName = params.get("TaskLogName")
+        self._TaskLogId = params.get("TaskLogId")
+        self._AssetsNumber = params.get("AssetsNumber")
+        self._RiskNumber = params.get("RiskNumber")
+        self._Time = params.get("Time")
+        self._Status = params.get("Status")
+        self._TaskName = params.get("TaskName")
+        self._StartTime = params.get("StartTime")
+        self._TaskCenterTaskId = params.get("TaskCenterTaskId")
+        self._AppId = params.get("AppId")
+        self._UIN = params.get("UIN")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskLogURL(AbstractModel):
+    """报告pdf下载的临时链接
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URL: 报告下载临时链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type URL: str
+        :param _LogId: 任务报告id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: str
+        :param _TaskLogName: 任务报告名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLogName: str
+        :param _AppId: APP ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        """
+        self._URL = None
+        self._LogId = None
+        self._TaskLogName = None
+        self._AppId = None
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def TaskLogName(self):
+        return self._TaskLogName
+
+    @TaskLogName.setter
+    def TaskLogName(self, TaskLogName):
+        self._TaskLogName = TaskLogName
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._URL = params.get("URL")
+        self._LogId = params.get("LogId")
+        self._TaskLogName = params.get("TaskLogName")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

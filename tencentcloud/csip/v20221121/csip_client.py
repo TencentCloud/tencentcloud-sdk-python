@@ -348,6 +348,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScanTaskList(self, request):
+        """获取扫描任务列表
+
+        :param request: Request instance for DescribeScanTaskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeScanTaskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeScanTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScanTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScanTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSearchBugInfo(self, request):
+        """立体防护中心查询漏洞信息
+
+        :param request: Request instance for DescribeSearchBugInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSearchBugInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSearchBugInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchBugInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSearchBugInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSubnetAssets(self, request):
         """获取子网列表
 
@@ -362,6 +408,52 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeSubnetAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSubnetAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskLogList(self, request):
+        """获取任务扫描报告列表
+
+        :param request: Request instance for DescribeTaskLogList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskLogURL(self, request):
+        """获取报告下载的临时链接
+
+        :param request: Request instance for DescribeTaskLogURL.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogURLRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeTaskLogURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskLogURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskLogURLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

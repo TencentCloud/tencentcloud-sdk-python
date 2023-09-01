@@ -3752,7 +3752,7 @@ class DescribeDiagDBInstancesRequest(AbstractModel):
         r"""
         :param _IsSupported: 是否是DBbrain支持的实例，固定传 true。
         :type IsSupported: bool
-        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
         :type Product: str
         :param _Offset: 分页参数，偏移量。
         :type Offset: int
@@ -11323,6 +11323,170 @@ class TimeSlice(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAgentSwitchRequest(AbstractModel):
+    """UpdateAgentSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: Agent标识。
+        :type AgentId: str
+        :param _Switch: 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
+        :type Switch: str
+        :param _Product: 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+        :type Product: str
+        """
+        self._AgentId = None
+        self._Switch = None
+        self._Product = None
+
+    @property
+    def AgentId(self):
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._Switch = params.get("Switch")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAgentSwitchResponse(AbstractModel):
+    """UpdateAgentSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateMonitorSwitchRequest(AbstractModel):
+    """UpdateMonitorSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
+        :type Switch: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+        :type Product: str
+        """
+        self._Switch = None
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateMonitorSwitchResponse(AbstractModel):
+    """UpdateMonitorSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UserProfile(AbstractModel):

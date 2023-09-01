@@ -2046,11 +2046,14 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
         :type SecondaryPrivateIpAddressCount: int
         :param _QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
         :type QosLevel: str
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
         """
         self._NetworkInterfaceId = None
         self._PrivateIpAddresses = None
         self._SecondaryPrivateIpAddressCount = None
         self._QosLevel = None
+        self._ClientToken = None
 
     @property
     def NetworkInterfaceId(self):
@@ -2084,6 +2087,14 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
     def QosLevel(self, QosLevel):
         self._QosLevel = QosLevel
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
@@ -2095,6 +2106,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
                 self._PrivateIpAddresses.append(obj)
         self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
         self._QosLevel = params.get("QosLevel")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2932,10 +2944,13 @@ class AttachNetworkInterfaceRequest(AbstractModel):
         :type InstanceId: str
         :param _AttachType: 网卡的挂载类型：0 标准型，1扩展型，默认值0。
         :type AttachType: int
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :type ClientToken: str
         """
         self._NetworkInterfaceId = None
         self._InstanceId = None
         self._AttachType = None
+        self._ClientToken = None
 
     @property
     def NetworkInterfaceId(self):
@@ -2961,11 +2976,20 @@ class AttachNetworkInterfaceRequest(AbstractModel):
     def AttachType(self, AttachType):
         self._AttachType = AttachType
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         self._InstanceId = params.get("InstanceId")
         self._AttachType = params.get("AttachType")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5489,6 +5513,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _AttachType: 绑定类型：0 标准型 1 扩展型。
         :type AttachType: int
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :type ClientToken: str
         """
         self._VpcId = None
         self._NetworkInterfaceName = None
@@ -5501,6 +5527,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._NetworkInterfaceDescription = None
         self._Tags = None
         self._AttachType = None
+        self._ClientToken = None
 
     @property
     def VpcId(self):
@@ -5590,6 +5617,14 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
     def AttachType(self, AttachType):
         self._AttachType = AttachType
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -5613,6 +5648,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AttachType = params.get("AttachType")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7986,6 +8022,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         :type Tags: list of Tag
         :param _TrunkingFlag: 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
         :type TrunkingFlag: str
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :type ClientToken: str
         """
         self._VpcId = None
         self._NetworkInterfaceName = None
@@ -7997,6 +8035,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._PrivateIpAddresses = None
         self._Tags = None
         self._TrunkingFlag = None
+        self._ClientToken = None
 
     @property
     def VpcId(self):
@@ -8078,6 +8117,14 @@ class CreateNetworkInterfaceRequest(AbstractModel):
     def TrunkingFlag(self, TrunkingFlag):
         self._TrunkingFlag = TrunkingFlag
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -8100,6 +8147,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._TrunkingFlag = params.get("TrunkingFlag")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8361,7 +8409,7 @@ class CreateSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
@@ -8437,7 +8485,7 @@ class CreateSecurityGroupRequest(AbstractModel):
         :type GroupName: str
         :param _GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
         :type ProjectId: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
@@ -8550,7 +8598,7 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
         :type GroupName: str
         :param _GroupDescription: 安全组备注，最多100个字符。
         :type GroupDescription: str
-        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
+        :param _ProjectId: 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
         :type ProjectId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
@@ -12878,7 +12926,7 @@ class DeleteSecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
@@ -12950,7 +12998,7 @@ class DeleteSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         """
         self._SecurityGroupId = None
@@ -19794,7 +19842,7 @@ LOCAL_GATEWAY：本地网关。
         :type RouteTableIds: list of str
         :param _Offset: 偏移量。
         :type Offset: str
-        :param _Limit: 请求对象个数。
+        :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
         """
         self._Filters = None
@@ -19916,7 +19964,7 @@ class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupIds: 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupIds: 安全实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupIds: list of str
         """
         self._SecurityGroupIds = None
@@ -24413,9 +24461,12 @@ class DetachNetworkInterfaceRequest(AbstractModel):
         :type NetworkInterfaceId: str
         :param _InstanceId: CVM实例ID。形如：ins-r8hr2upy。
         :type InstanceId: str
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :type ClientToken: str
         """
         self._NetworkInterfaceId = None
         self._InstanceId = None
+        self._ClientToken = None
 
     @property
     def NetworkInterfaceId(self):
@@ -24433,10 +24484,19 @@ class DetachNetworkInterfaceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._NetworkInterfaceId = params.get("NetworkInterfaceId")
         self._InstanceId = params.get("InstanceId")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32866,7 +32926,7 @@ class ModifySecurityGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _GroupName: 安全组名称，可任意命名，但不得超过60个字符。
         :type GroupName: str
@@ -32948,7 +33008,7 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _SecurityGroupPolicySet: 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
@@ -34936,7 +34996,7 @@ NONEXTHOP：无下一跳；
 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
 下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
-下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
+下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测，添加和修改时，不需要指定值，查询时值为空字符串；
         :type NextHopDestination: str
         :param _NextHopName: 下一跳网关名称。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -37567,7 +37627,7 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+        :param _SecurityGroupId: 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
         :type SecurityGroupId: str
         :param _SecurityGroupPolicySet: 安全组规则集合对象。
         :type SecurityGroupPolicySet: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`

@@ -413,6 +413,9 @@ INVALIDPARAMETER_INPUTNUMLIMITEXCEEDED = 'InvalidParameter.InputNumLimitExceeded
 # 非法的背景长宽。
 INVALIDPARAMETER_INVALIDBACKGROUDRESOLUTION = 'InvalidParameter.InvalidBackgroudResolution'
 
+# 无效的备用推流地址。
+INVALIDPARAMETER_INVALIDBACKUPTOURL = 'InvalidParameter.InvalidBackupToUrl'
+
 # 非法的输出码率。
 INVALIDPARAMETER_INVALIDBITRATE = 'InvalidParameter.InvalidBitrate'
 

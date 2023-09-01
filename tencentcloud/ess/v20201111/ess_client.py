@@ -326,8 +326,9 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowEvidenceReport(self, request):
-        """创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
-        出证需要一定时间，建议调用创建出证24小时之后再通过DescribeFlowEvidenceReport进行查询。
+        """创建出证报告并返回报告ID。
+        使用此功能需搭配出证套餐。
+        注意：出证过程需一定时间，建议在调用创建出证后的24小时之后，通过DescribeFlowEvidenceReport接口进行查询。
 
         :param request: Request instance for CreateFlowEvidenceReport.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowEvidenceReportRequest`
@@ -399,11 +400,13 @@ class EssClient(AbstractClient):
 
 
     def CreateFlowReminds(self, request):
-        """指定需要批量催办的签署流程Id，批量催办合同，最多100个; 接口失败后返回错误信息
-        注意:
-        该接口不可直接调用，请联系客户经理申请使用
-        仅能催办当前状态为“待签署”的签署人，且只能催办一次
-        发起合同时，签署人的NotifyType需设置为sms，否则无法催办
+        """指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
+
+        1. 发起合同时，签署人的NotifyType需设置为sms
+        2. 合同中当前状态为“待签署”的签署人是催办的对象
+        3. 每个合同只能催办一次
+
+        注意：该接口无法直接调用，请联系客户经理申请使用。
 
         :param request: Request instance for CreateFlowReminds.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateFlowRemindsRequest`

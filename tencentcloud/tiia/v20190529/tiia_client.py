@@ -64,14 +64,20 @@ class TiiaClient(AbstractClient):
                 <td>通用图像搜索1.0版。<br>在自建图片库中搜索相同原图或相似图片集，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。</td>
             </tr>
             <tr>
-                <td rowspan="2">商品图像搜索</td>
-                <td>7</td><td>商品图像搜索2.0升级版。<br>
+                <td rowspan="3">商品图像搜索</td>
+                <td>8</td>
+                 <td>商品图像搜索3.0升级版（推荐）。<br>
                 在自建图库中搜索同款或相似商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。</td>
+            </tr>
+         <tr>
+                <td>7</td>
+                <td>商品图像搜索2.0版。<br>
+                 功能和3.0升级版类似。</td>
             </tr>
              <tr>
                 <td>5</td>
                 <td>商品图像搜索1.0版。<br>
-                功能和2.0升级版类似。</td>
+                功能和3.0升级版类似。</td>
             </tr>
             <tr>
             <td>图案花纹搜索</td><td>6</td><td>图案花纹搜索1.0版。<br>
@@ -79,7 +85,6 @@ class TiiaClient(AbstractClient):
             </tr>
         </table>
 
-        >
         - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 
         :param request: Request instance for CreateGroup.

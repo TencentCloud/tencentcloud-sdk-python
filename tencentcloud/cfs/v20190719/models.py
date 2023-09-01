@@ -2688,8 +2688,14 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统 ID。
         :type FileSystemId: str
+        :param _Offset: Offset 分页码
+        :type Offset: int
+        :param _Limit: Limit 页面大小
+        :type Limit: int
         """
         self._FileSystemId = None
+        self._Offset = None
+        self._Limit = None
 
     @property
     def FileSystemId(self):
@@ -2699,9 +2705,27 @@ class DescribeCfsFileSystemClientsRequest(AbstractModel):
     def FileSystemId(self, FileSystemId):
         self._FileSystemId = FileSystemId
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2721,10 +2745,13 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
         r"""
         :param _ClientList: 客户端列表
         :type ClientList: list of FileSystemClient
+        :param _TotalCount: 文件系统总数
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClientList = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -2734,6 +2761,14 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
     @ClientList.setter
     def ClientList(self, ClientList):
         self._ClientList = ClientList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -2751,6 +2786,7 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
                 obj = FileSystemClient()
                 obj._deserialize(item)
                 self._ClientList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

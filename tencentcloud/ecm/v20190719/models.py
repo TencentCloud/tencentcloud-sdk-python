@@ -23897,8 +23897,10 @@ CMCC：中国移动
         :type SubnetId: str
         :param _PrivateIpAddresses: 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
         :type PrivateIpAddresses: list of str
-        :param _Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
+        :param _Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，单网情况下是1，单网需要ISP 只能为单网运营商，三网情况3
         :type Ipv6AddressCount: int
+        :param _Ipv6SubnetIds: 指定创建三网ipv6地址，使用的subnet数组，单独ipv4和单网ipv6子网依然使用SubnetId字段
+        :type Ipv6SubnetIds: list of str
         """
         self._Zone = None
         self._InstanceCount = None
@@ -23907,6 +23909,7 @@ CMCC：中国移动
         self._SubnetId = None
         self._PrivateIpAddresses = None
         self._Ipv6AddressCount = None
+        self._Ipv6SubnetIds = None
 
     @property
     def Zone(self):
@@ -23964,6 +23967,14 @@ CMCC：中国移动
     def Ipv6AddressCount(self, Ipv6AddressCount):
         self._Ipv6AddressCount = Ipv6AddressCount
 
+    @property
+    def Ipv6SubnetIds(self):
+        return self._Ipv6SubnetIds
+
+    @Ipv6SubnetIds.setter
+    def Ipv6SubnetIds(self, Ipv6SubnetIds):
+        self._Ipv6SubnetIds = Ipv6SubnetIds
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -23973,6 +23984,7 @@ CMCC：中国移动
         self._SubnetId = params.get("SubnetId")
         self._PrivateIpAddresses = params.get("PrivateIpAddresses")
         self._Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._Ipv6SubnetIds = params.get("Ipv6SubnetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

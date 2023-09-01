@@ -464,7 +464,7 @@ class CdwchClient(AbstractClient):
 
 
     def ModifyUserNewPrivilege(self, request):
-        """针对ck账号的权限做管控（新版）
+        """针对集群账号的权限做管控（新版）
 
         :param request: Request instance for ModifyUserNewPrivilege.
         :type request: :class:`tencentcloud.cdwch.v20200915.models.ModifyUserNewPrivilegeRequest`

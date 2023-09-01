@@ -197,6 +197,53 @@ class CheckStepInfo(AbstractModel):
         
 
 
+class Column(AbstractModel):
+    """数据同步中的列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: 列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnName: str
+        :param _NewColumnName: 新列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewColumnName: str
+        """
+        self._ColumnName = None
+        self._NewColumnName = None
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def NewColumnName(self):
+        return self._NewColumnName
+
+    @NewColumnName.setter
+    def NewColumnName(self, NewColumnName):
+        self._NewColumnName = NewColumnName
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        self._NewColumnName = params.get("NewColumnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareAbstractInfo(AbstractModel):
     """一致性校验摘要信息
 
@@ -404,6 +451,40 @@ class CompareAbstractInfo(AbstractModel):
         
 
 
+class CompareColumnItem(AbstractModel):
+    """列选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: 列名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnName: str
+        """
+        self._ColumnName = None
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareDetailInfo(AbstractModel):
     """一致性校验详细信息
 
@@ -542,10 +623,10 @@ class CompareObjectItem(AbstractModel):
         :param _Tables: 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tables: list of CompareTableItem
-        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
 注意：此字段可能返回 null，表示取不到有效值。
         :type ViewMode: str
-        :param _Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写
+        :param _Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of CompareViewItem
         """
@@ -712,8 +793,16 @@ class CompareTableItem(AbstractModel):
         :param _TableName: 表名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
+        :param _ColumnMode: column 模式，all 为全部，partial 表示部分(该参数仅对数据同步任务有效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnMode: str
+        :param _Columns: 当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of CompareColumnItem
         """
         self._TableName = None
+        self._ColumnMode = None
+        self._Columns = None
 
     @property
     def TableName(self):
@@ -723,9 +812,32 @@ class CompareTableItem(AbstractModel):
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def ColumnMode(self):
+        return self._ColumnMode
+
+    @ColumnMode.setter
+    def ColumnMode(self, ColumnMode):
+        self._ColumnMode = ColumnMode
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
 
     def _deserialize(self, params):
         self._TableName = params.get("TableName")
+        self._ColumnMode = params.get("ColumnMode")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = CompareColumnItem()
+                obj._deserialize(item)
+                self._Columns.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10769,6 +10881,12 @@ class Table(AbstractModel):
         :param _FilterCondition: 过滤条件
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterCondition: str
+        :param _ColumnMode: 是否同步表中所有列，All：当前表下的所有列,Partial(ModifySyncJobConfig接口里的对应字段ColumnMode暂不支持Partial)：当前表下的部分列，通过填充Columns字段详细表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnMode: str
+        :param _Columns: 同步的的列信息，当ColumnMode为Partial时，必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of Column
         :param _TmpTables: 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpTables: list of str
@@ -10779,6 +10897,8 @@ class Table(AbstractModel):
         self._TableName = None
         self._NewTableName = None
         self._FilterCondition = None
+        self._ColumnMode = None
+        self._Columns = None
         self._TmpTables = None
         self._TableEditMode = None
 
@@ -10807,6 +10927,22 @@ class Table(AbstractModel):
         self._FilterCondition = FilterCondition
 
     @property
+    def ColumnMode(self):
+        return self._ColumnMode
+
+    @ColumnMode.setter
+    def ColumnMode(self, ColumnMode):
+        self._ColumnMode = ColumnMode
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
     def TmpTables(self):
         return self._TmpTables
 
@@ -10827,6 +10963,13 @@ class Table(AbstractModel):
         self._TableName = params.get("TableName")
         self._NewTableName = params.get("NewTableName")
         self._FilterCondition = params.get("FilterCondition")
+        self._ColumnMode = params.get("ColumnMode")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
         self._TmpTables = params.get("TmpTables")
         self._TableEditMode = params.get("TableEditMode")
         memeber_set = set(params.keys())

@@ -3072,12 +3072,14 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 签署流程编号
+        :param _FlowId: 合同流程ID，为32位字符串。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :type FlowId: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
-
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -3134,14 +3136,17 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportId: 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
+        :param _ReportId: 出证报告 ID，可用于DescribeFlowEvidenceReport接口查询出证PDF的下载地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
-        :param _Status: 执行中：EvidenceStatusExecuting
-成功：EvidenceStatusSuccess
-失败：EvidenceStatusFailed
+        :param _Status: 出证任务执行的状态, 可能会有以下状态：
+
+<ul><li>EvidenceStatusExecuting：  出证任务在执行中</li>
+<li>EvidenceStatusSuccess：  出证任务执行成功</li>
+<li>EvidenceStatusFailed ： 出征任务执行失败</li></ul>
         :type Status: str
-        :param _ReportUrl: 废除，字段无效
+        :param _ReportUrl: 此字段已经废除,不再使用.
+出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3170,10 +3175,14 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
+        warnings.warn("parameter `ReportUrl` is deprecated", DeprecationWarning) 
+
         return self._ReportUrl
 
     @ReportUrl.setter
     def ReportUrl(self, ReportUrl):
+        warnings.warn("parameter `ReportUrl` is deprecated", DeprecationWarning) 
+
         self._ReportUrl = ReportUrl
 
     @property
@@ -3639,11 +3648,13 @@ class CreateFlowRemindsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 需要执行催办的签署流程id数组，最多100个
+        :param _FlowIds: 需执行催办的签署流程ID数组，最多包含100个。
         :type FlowIds: list of str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -3700,7 +3711,7 @@ class CreateFlowRemindsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RemindFlowRecords: 催办合同详情列表
+        :param _RemindFlowRecords: 合同催办结果的详细信息列表。
         :type RemindFlowRecords: list of RemindFlowRecords
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3749,19 +3760,20 @@ class CreateFlowRequest(AbstractModel):
         :param _Approvers: 签署流程参与者信息，最大限制50方
 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
         :type Approvers: list of FlowCreateApprover
+        :param _FlowDescription: 签署流程描述,最大长度1000个字符
+        :type FlowDescription: str
         :param _FlowType: 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
         :type FlowType: str
         :param _ClientToken: 客户端Token，保持接口幂等性,最大长度64个字符
         :type ClientToken: str
         :param _DeadLine: 签署流程的签署截止时间。
+
 值为unix时间戳,精确到秒,不传默认为当前时间一年后
         :type DeadLine: int
         :param _RemindedOn: 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
         :type RemindedOn: int
         :param _UserData: 用户自定义字段，回调的时候会进行透传，长度需要小于20480
         :type UserData: str
-        :param _FlowDescription: 签署流程描述,最大长度1000个字符
-        :type FlowDescription: str
         :param _Unordered: 发送类型：
 true：无序签
 false：有序签
@@ -3789,12 +3801,12 @@ false：有序签
         self._Operator = None
         self._FlowName = None
         self._Approvers = None
+        self._FlowDescription = None
         self._FlowType = None
         self._ClientToken = None
         self._DeadLine = None
         self._RemindedOn = None
         self._UserData = None
-        self._FlowDescription = None
         self._Unordered = None
         self._CustomShowMap = None
         self._NeedSignReview = None
@@ -3827,6 +3839,14 @@ false：有序签
     @Approvers.setter
     def Approvers(self, Approvers):
         self._Approvers = Approvers
+
+    @property
+    def FlowDescription(self):
+        return self._FlowDescription
+
+    @FlowDescription.setter
+    def FlowDescription(self, FlowDescription):
+        self._FlowDescription = FlowDescription
 
     @property
     def FlowType(self):
@@ -3867,14 +3887,6 @@ false：有序签
     @UserData.setter
     def UserData(self, UserData):
         self._UserData = UserData
-
-    @property
-    def FlowDescription(self):
-        return self._FlowDescription
-
-    @FlowDescription.setter
-    def FlowDescription(self, FlowDescription):
-        self._FlowDescription = FlowDescription
 
     @property
     def Unordered(self):
@@ -3960,12 +3972,12 @@ false：有序签
                 obj = FlowCreateApprover()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._FlowDescription = params.get("FlowDescription")
         self._FlowType = params.get("FlowType")
         self._ClientToken = params.get("ClientToken")
         self._DeadLine = params.get("DeadLine")
         self._RemindedOn = params.get("RemindedOn")
         self._UserData = params.get("UserData")
-        self._FlowDescription = params.get("FlowDescription")
         self._Unordered = params.get("Unordered")
         self._CustomShowMap = params.get("CustomShowMap")
         self._NeedSignReview = params.get("NeedSignReview")
@@ -3998,7 +4010,11 @@ class CreateFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 签署流程编号
+        :param _FlowId: 签署流程编号，
+
+返回的流程编号，需要在CreateDocument，StartFlow中使用，
+
+注意：这三个接口（CreateFlow，CreateDocument，StartFlow）要一并调用，才算发起成功
         :type FlowId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14458,17 +14474,19 @@ class RelieveInfo(AbstractModel):
 
 
 class RemindFlowRecords(AbstractModel):
-    """催办接口返回详细信息
+    """催办接口返回的详细信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _CanRemind: 是否能够催办，true-是，false-否
+        :param _CanRemind: 合同流程是否可以催办：
+true - 可以，false - 不可以。
+若无法催办，将返回RemindMessage以解释原因。
         :type CanRemind: bool
-        :param _FlowId: 合同id
+        :param _FlowId: 合同流程ID，为32位字符串。
         :type FlowId: str
-        :param _RemindMessage: 催办详情信息
+        :param _RemindMessage: 在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。
         :type RemindMessage: str
         """
         self._CanRemind = None

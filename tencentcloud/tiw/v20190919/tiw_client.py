@@ -73,7 +73,9 @@ class TiwClient(AbstractClient):
 
 
     def CreateOfflineRecord(self, request):
-        """创建课后录制任务
+        """课后录制服务已下线
+
+        创建课后录制任务
 
         :param request: Request instance for CreateOfflineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordRequest`
@@ -303,7 +305,9 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOfflineRecord(self, request):
-        """查询课后录制任务的进度与录制结果等相关信息
+        """课后录制服务已下线
+
+        查询课后录制任务的进度与录制结果等相关信息
 
         :param request: Request instance for DescribeOfflineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordRequest`
@@ -326,7 +330,9 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOfflineRecordCallback(self, request):
-        """查询课后录制回调地址
+        """课后录制服务已下线
+
+        查询课后录制回调地址
 
         :param request: Request instance for DescribeOfflineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackRequest`
@@ -1135,7 +1141,9 @@ class TiwClient(AbstractClient):
 
 
     def SetOfflineRecordCallback(self, request):
-        """设置课后录制回调地址
+        """课后录制服务已下线
+
+        设置课后录制回调地址
 
         :param request: Request instance for SetOfflineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackRequest`
