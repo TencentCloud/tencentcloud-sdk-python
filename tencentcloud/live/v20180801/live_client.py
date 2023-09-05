@@ -1285,6 +1285,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeliverLogDownList(self, request):
+        """批量获取转推日志的URL。
+
+        :param request: Request instance for DescribeDeliverLogDownList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeDeliverLogDownListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeDeliverLogDownListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliverLogDownList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeliverLogDownListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGroupProIspPlayInfoList(self, request):
         """该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询按省份和运营商分组的下行播放数据。

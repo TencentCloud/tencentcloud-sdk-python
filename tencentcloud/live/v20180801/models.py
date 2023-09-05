@@ -7880,6 +7880,66 @@ class DescribeDeliverBandwidthListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeliverLogDownListRequest(AbstractModel):
+    """DescribeDeliverLogDownList请求参数结构体
+
+    """
+
+
+class DescribeDeliverLogDownListResponse(AbstractModel):
+    """DescribeDeliverLogDownList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogInfoList: 日志信息列表。
+        :type LogInfoList: list of PushLogInfo
+        :param _TotalNum: 总条数。
+        :type TotalNum: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogInfoList = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def LogInfoList(self):
+        return self._LogInfoList
+
+    @LogInfoList.setter
+    def LogInfoList(self, LogInfoList):
+        self._LogInfoList = LogInfoList
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LogInfoList") is not None:
+            self._LogInfoList = []
+            for item in params.get("LogInfoList"):
+                obj = PushLogInfo()
+                obj._deserialize(item)
+                self._LogInfoList.append(obj)
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
     """DescribeGroupProIspPlayInfoList请求参数结构体
 
@@ -22211,6 +22271,77 @@ class PushDataInfo(AbstractModel):
         self._MetaAudioSpeed = params.get("MetaAudioSpeed")
         self._MetaVideoSpeed = params.get("MetaVideoSpeed")
         self._MetaFps = params.get("MetaFps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PushLogInfo(AbstractModel):
+    """推流域名日志信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogName: 日志名称。
+        :type LogName: str
+        :param _LogUrl: 日志下载地址。
+        :type LogUrl: str
+        :param _LogTime: 日志时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+注意：
+1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type LogTime: str
+        :param _FileSize: 文件大小，单位字节。
+        :type FileSize: int
+        """
+        self._LogName = None
+        self._LogUrl = None
+        self._LogTime = None
+        self._FileSize = None
+
+    @property
+    def LogName(self):
+        return self._LogName
+
+    @LogName.setter
+    def LogName(self, LogName):
+        self._LogName = LogName
+
+    @property
+    def LogUrl(self):
+        return self._LogUrl
+
+    @LogUrl.setter
+    def LogUrl(self, LogUrl):
+        self._LogUrl = LogUrl
+
+    @property
+    def LogTime(self):
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+
+    def _deserialize(self, params):
+        self._LogName = params.get("LogName")
+        self._LogUrl = params.get("LogUrl")
+        self._LogTime = params.get("LogTime")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

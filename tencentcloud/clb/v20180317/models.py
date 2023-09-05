@@ -3199,9 +3199,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type BandwidthPackageId: str
         :param _ExclusiveCluster: 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param _SlaType: 创建性能容量型实例。
-<ul><li>若需要创建性能容量型实例，则此参数必填，且取值为：SLA，表示超强型1规格。
-<ul><li>当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。如需超大型规格的性能容量型，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。</li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>
+        :param _SlaType: 性能容量型规格。
+<ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> SLA：超强型1规格。当您开通了超大型规格的性能容量型时，SLA对应超强型4规格 </li><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li>如需超大型规格（超强型2及以上），请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
         :type SlaType: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
@@ -3220,6 +3219,8 @@ OPEN：公网属性， INTERNAL：内网属性。
         :type LoadBalancerPassToTarget: bool
         :param _DynamicVip: 创建域名化负载均衡。
         :type DynamicVip: bool
+        :param _Egress: 网络出口
+        :type Egress: str
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -3246,6 +3247,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._EipAddressId = None
         self._LoadBalancerPassToTarget = None
         self._DynamicVip = None
+        self._Egress = None
 
     @property
     def LoadBalancerType(self):
@@ -3447,6 +3449,14 @@ OPEN：公网属性， INTERNAL：内网属性。
     def DynamicVip(self, DynamicVip):
         self._DynamicVip = DynamicVip
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -3488,6 +3498,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._EipAddressId = params.get("EipAddressId")
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self._DynamicVip = params.get("DynamicVip")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15440,8 +15451,15 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param _LoadBalancerId: lb的字符串ID
         :type LoadBalancerId: str
-        :param _SlaType: 升级为性能容量型，固定取值为SLA。SLA表示超强型1规格。
-当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。如需超大型规格的性能容量型，请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。
+        :param _SlaType: 性能容量型规格，取值范围：
+<li> SLA：超强型1规格。当您开通了超大型规格的性能容量型时，SLA对应超强型4规格 </li>
+<li> clb.c2.medium：标准型规格 </li>
+<li> clb.c3.small：高阶型1规格 </li>
+<li> clb.c3.medium：高阶型2规格 </li>
+<li> clb.c4.small：超强型1规格 </li>
+<li> clb.c4.medium：超强型2规格 </li>
+<li> clb.c4.large：超强型3规格 </li>
+<li> clb.c4.xlarge：超强型4规格 </li>如需超大型规格（超强型2及以上），请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)
         :type SlaType: str
         """
         self._LoadBalancerId = None

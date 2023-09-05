@@ -417,6 +417,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAlarmTemplate(self, request):
+        """通知模板查询
+
+        :param request: Request instance for DescribeAlarmTemplate.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAlarmTemplateRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAlarmTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllUserContact(self, request):
         """获取邮件发送中联系人的相关信息。
 
@@ -1144,6 +1167,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("KillMySqlThreads", params, headers=headers)
             response = json.loads(body)
             model = models.KillMySqlThreadsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAlarmPolicy(self, request):
+        """修改告警策略
+
+        :param request: Request instance for ModifyAlarmPolicy.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

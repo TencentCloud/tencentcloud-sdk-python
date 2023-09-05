@@ -112,6 +112,312 @@ class AddUserContactResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AlarmProfileList(AbstractModel):
+    """通知模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsWebHook: 0-不是 1-是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWebHook: int
+        :param _ReceiveUinCount: 接收告警用户数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveUinCount: int
+        :param _Lang: 语言
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lang: str
+        :param _TemplateType: 模板类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateType: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _ReceiveGroupCount: 接收组数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveGroupCount: int
+        :param _UpdateUin: 更新用户的uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUin: int
+        :param _ReceiveType: 接收类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveType: list of int
+        :param _ReceiveInfo: 接收用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveInfo: list of ReceiveInfo
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _TemplateName: 模板名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateName: str
+        :param _SendChannel: 发送渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendChannel: list of int
+        :param _TemplateId: 模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: int
+        :param _WebHookCount: webhook数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebHookCount: int
+        """
+        self._IsWebHook = None
+        self._ReceiveUinCount = None
+        self._Lang = None
+        self._TemplateType = None
+        self._Remark = None
+        self._ReceiveGroupCount = None
+        self._UpdateUin = None
+        self._ReceiveType = None
+        self._ReceiveInfo = None
+        self._UpdateTime = None
+        self._TemplateName = None
+        self._SendChannel = None
+        self._TemplateId = None
+        self._WebHookCount = None
+
+    @property
+    def IsWebHook(self):
+        return self._IsWebHook
+
+    @IsWebHook.setter
+    def IsWebHook(self, IsWebHook):
+        self._IsWebHook = IsWebHook
+
+    @property
+    def ReceiveUinCount(self):
+        return self._ReceiveUinCount
+
+    @ReceiveUinCount.setter
+    def ReceiveUinCount(self, ReceiveUinCount):
+        self._ReceiveUinCount = ReceiveUinCount
+
+    @property
+    def Lang(self):
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ReceiveGroupCount(self):
+        return self._ReceiveGroupCount
+
+    @ReceiveGroupCount.setter
+    def ReceiveGroupCount(self, ReceiveGroupCount):
+        self._ReceiveGroupCount = ReceiveGroupCount
+
+    @property
+    def UpdateUin(self):
+        return self._UpdateUin
+
+    @UpdateUin.setter
+    def UpdateUin(self, UpdateUin):
+        self._UpdateUin = UpdateUin
+
+    @property
+    def ReceiveType(self):
+        return self._ReceiveType
+
+    @ReceiveType.setter
+    def ReceiveType(self, ReceiveType):
+        self._ReceiveType = ReceiveType
+
+    @property
+    def ReceiveInfo(self):
+        return self._ReceiveInfo
+
+    @ReceiveInfo.setter
+    def ReceiveInfo(self, ReceiveInfo):
+        self._ReceiveInfo = ReceiveInfo
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def SendChannel(self):
+        return self._SendChannel
+
+    @SendChannel.setter
+    def SendChannel(self, SendChannel):
+        self._SendChannel = SendChannel
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def WebHookCount(self):
+        return self._WebHookCount
+
+    @WebHookCount.setter
+    def WebHookCount(self, WebHookCount):
+        self._WebHookCount = WebHookCount
+
+
+    def _deserialize(self, params):
+        self._IsWebHook = params.get("IsWebHook")
+        self._ReceiveUinCount = params.get("ReceiveUinCount")
+        self._Lang = params.get("Lang")
+        self._TemplateType = params.get("TemplateType")
+        self._Remark = params.get("Remark")
+        self._ReceiveGroupCount = params.get("ReceiveGroupCount")
+        self._UpdateUin = params.get("UpdateUin")
+        self._ReceiveType = params.get("ReceiveType")
+        if params.get("ReceiveInfo") is not None:
+            self._ReceiveInfo = []
+            for item in params.get("ReceiveInfo"):
+                obj = ReceiveInfo()
+                obj._deserialize(item)
+                self._ReceiveInfo.append(obj)
+        self._UpdateTime = params.get("UpdateTime")
+        self._TemplateName = params.get("TemplateName")
+        self._SendChannel = params.get("SendChannel")
+        self._TemplateId = params.get("TemplateId")
+        self._WebHookCount = params.get("WebHookCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmsRules(AbstractModel):
+    """告警规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Interval: 间隔
+        :type Interval: int
+        :param _Name: 告警名
+        :type Name: str
+        :param _Metric: 指标
+        :type Metric: str
+        :param _Operator: 操作符
+        :type Operator: str
+        :param _Severity: 等级 
+fatal-致命
+critical-严重
+warning-告警
+information-通知
+
+        :type Severity: str
+        :param _Value: 指标值
+        :type Value: float
+        """
+        self._Interval = None
+        self._Name = None
+        self._Metric = None
+        self._Operator = None
+        self._Severity = None
+        self._Value = None
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Metric(self):
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Severity(self):
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Interval = params.get("Interval")
+        self._Name = params.get("Name")
+        self._Metric = params.get("Metric")
+        self._Operator = params.get("Operator")
+        self._Severity = params.get("Severity")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditInstance(AbstractModel):
     """实例详细信息
 
@@ -2464,6 +2770,130 @@ class DeleteSqlFiltersResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAlarmTemplateRequest(AbstractModel):
+    """DescribeAlarmTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateNameRegexp: 搜索字段
+        :type TemplateNameRegexp: str
+        :param _Limit: 返回限制长度
+        :type Limit: int
+        :param _Offset: 偏置
+        :type Offset: int
+        :param _Product: mysql -  mysql
+cynosdb -  tdsql-c
+        :type Product: str
+        """
+        self._TemplateNameRegexp = None
+        self._Limit = None
+        self._Offset = None
+        self._Product = None
+
+    @property
+    def TemplateNameRegexp(self):
+        return self._TemplateNameRegexp
+
+    @TemplateNameRegexp.setter
+    def TemplateNameRegexp(self, TemplateNameRegexp):
+        self._TemplateNameRegexp = TemplateNameRegexp
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._TemplateNameRegexp = params.get("TemplateNameRegexp")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmTemplateResponse(AbstractModel):
+    """DescribeAlarmTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileList: 模板列表
+        :type ProfileList: list of AlarmProfileList
+        :param _TotalCount: 模板总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProfileList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ProfileList(self):
+        return self._ProfileList
+
+    @ProfileList.setter
+    def ProfileList(self, ProfileList):
+        self._ProfileList = ProfileList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProfileList") is not None:
+            self._ProfileList = []
+            for item in params.get("ProfileList"):
+                obj = AlarmProfileList()
+                obj._deserialize(item)
+                self._ProfileList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -7719,6 +8149,39 @@ class InstanceConfs(AbstractModel):
         
 
 
+class InstanceID(AbstractModel):
+    """实例id
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """查询实例列表，返回实例的相关信息的对象。
 
@@ -8450,6 +8913,214 @@ class MailConfiguration(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAlarmPolicyRequest(AbstractModel):
+    """ModifyAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyType: 类型
+        :type ApplyType: str
+        :param _Enable: 开启策略
+        :type Enable: int
+        :param _InstanceIds: 列表
+        :type InstanceIds: list of InstanceID
+        :param _NewProfileLevel: User-动态关联该用户所有实例
+Instance-关联实例列表的实例
+        :type NewProfileLevel: str
+        :param _NewProfileName: 新策略名
+        :type NewProfileName: str
+        :param _ProfileName: 旧策略名
+        :type ProfileName: str
+        :param _ProfileType: 策略类型
+        :type ProfileType: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _RuleType: 规则类型 0-快速，1-自定义 若值为0，则QuickRule不能为空，若值为1，则Rules 不能为空
+        :type RuleType: int
+        :param _TemplateInfo: 接受模板
+        :type TemplateInfo: list of TemplateInfo
+        :param _QuickRule: 快速规则  支持包括fatal-致命, critical-严重,
+warning-告警,
+information-通知
+        :type QuickRule: str
+        :param _Rules: 自定义规则
+        :type Rules: list of AlarmsRules
+        """
+        self._ApplyType = None
+        self._Enable = None
+        self._InstanceIds = None
+        self._NewProfileLevel = None
+        self._NewProfileName = None
+        self._ProfileName = None
+        self._ProfileType = None
+        self._Remark = None
+        self._RuleType = None
+        self._TemplateInfo = None
+        self._QuickRule = None
+        self._Rules = None
+
+    @property
+    def ApplyType(self):
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        self._ApplyType = ApplyType
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def NewProfileLevel(self):
+        return self._NewProfileLevel
+
+    @NewProfileLevel.setter
+    def NewProfileLevel(self, NewProfileLevel):
+        self._NewProfileLevel = NewProfileLevel
+
+    @property
+    def NewProfileName(self):
+        return self._NewProfileName
+
+    @NewProfileName.setter
+    def NewProfileName(self, NewProfileName):
+        self._NewProfileName = NewProfileName
+
+    @property
+    def ProfileName(self):
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
+
+    @property
+    def ProfileType(self):
+        return self._ProfileType
+
+    @ProfileType.setter
+    def ProfileType(self, ProfileType):
+        self._ProfileType = ProfileType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def TemplateInfo(self):
+        return self._TemplateInfo
+
+    @TemplateInfo.setter
+    def TemplateInfo(self, TemplateInfo):
+        self._TemplateInfo = TemplateInfo
+
+    @property
+    def QuickRule(self):
+        return self._QuickRule
+
+    @QuickRule.setter
+    def QuickRule(self, QuickRule):
+        self._QuickRule = QuickRule
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._ApplyType = params.get("ApplyType")
+        self._Enable = params.get("Enable")
+        if params.get("InstanceIds") is not None:
+            self._InstanceIds = []
+            for item in params.get("InstanceIds"):
+                obj = InstanceID()
+                obj._deserialize(item)
+                self._InstanceIds.append(obj)
+        self._NewProfileLevel = params.get("NewProfileLevel")
+        self._NewProfileName = params.get("NewProfileName")
+        self._ProfileName = params.get("ProfileName")
+        self._ProfileType = params.get("ProfileType")
+        self._Remark = params.get("Remark")
+        self._RuleType = params.get("RuleType")
+        if params.get("TemplateInfo") is not None:
+            self._TemplateInfo = []
+            for item in params.get("TemplateInfo"):
+                obj = TemplateInfo()
+                obj._deserialize(item)
+                self._TemplateInfo.append(obj)
+        self._QuickRule = params.get("QuickRule")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = AlarmsRules()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmPolicyResponse(AbstractModel):
+    """ModifyAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAuditServiceRequest(AbstractModel):
@@ -9322,6 +9993,157 @@ class ProfileInfo(AbstractModel):
         if params.get("MailConfiguration") is not None:
             self._MailConfiguration = MailConfiguration()
             self._MailConfiguration._deserialize(params.get("MailConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiveInfo(AbstractModel):
+    """接收组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiveGroup: 接收组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveGroup: list of int
+        :param _EndReceiveTime: 最后接收时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndReceiveTime: str
+        :param _ReceiveName: 接收名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveName: str
+        :param _SendChannel: 推送渠道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendChannel: list of int
+        :param _StartReceiveTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartReceiveTime: str
+        :param _ReceiveUin: 接收用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiveUin: list of ReceiveUin
+        """
+        self._ReceiveGroup = None
+        self._EndReceiveTime = None
+        self._ReceiveName = None
+        self._SendChannel = None
+        self._StartReceiveTime = None
+        self._ReceiveUin = None
+
+    @property
+    def ReceiveGroup(self):
+        return self._ReceiveGroup
+
+    @ReceiveGroup.setter
+    def ReceiveGroup(self, ReceiveGroup):
+        self._ReceiveGroup = ReceiveGroup
+
+    @property
+    def EndReceiveTime(self):
+        return self._EndReceiveTime
+
+    @EndReceiveTime.setter
+    def EndReceiveTime(self, EndReceiveTime):
+        self._EndReceiveTime = EndReceiveTime
+
+    @property
+    def ReceiveName(self):
+        return self._ReceiveName
+
+    @ReceiveName.setter
+    def ReceiveName(self, ReceiveName):
+        self._ReceiveName = ReceiveName
+
+    @property
+    def SendChannel(self):
+        return self._SendChannel
+
+    @SendChannel.setter
+    def SendChannel(self, SendChannel):
+        self._SendChannel = SendChannel
+
+    @property
+    def StartReceiveTime(self):
+        return self._StartReceiveTime
+
+    @StartReceiveTime.setter
+    def StartReceiveTime(self, StartReceiveTime):
+        self._StartReceiveTime = StartReceiveTime
+
+    @property
+    def ReceiveUin(self):
+        return self._ReceiveUin
+
+    @ReceiveUin.setter
+    def ReceiveUin(self, ReceiveUin):
+        self._ReceiveUin = ReceiveUin
+
+
+    def _deserialize(self, params):
+        self._ReceiveGroup = params.get("ReceiveGroup")
+        self._EndReceiveTime = params.get("EndReceiveTime")
+        self._ReceiveName = params.get("ReceiveName")
+        self._SendChannel = params.get("SendChannel")
+        self._StartReceiveTime = params.get("StartReceiveTime")
+        if params.get("ReceiveUin") is not None:
+            self._ReceiveUin = []
+            for item in params.get("ReceiveUin"):
+                obj = ReceiveUin()
+                obj._deserialize(item)
+                self._ReceiveUin.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiveUin(AbstractModel):
+    """接收用户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UinName: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UinName: str
+        :param _Uin: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        """
+        self._UinName = None
+        self._Uin = None
+
+    @property
+    def UinName(self):
+        return self._UinName
+
+    @UinName.setter
+    def UinName(self, UinName):
+        self._UinName = UinName
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._UinName = params.get("UinName")
+        self._Uin = params.get("Uin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11270,6 +12092,51 @@ class TaskInfo(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Progress = params.get("Progress")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateInfo(AbstractModel):
+    """通知模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板id
+        :type TemplateId: str
+        :param _TemplateName: 模板名
+        :type TemplateName: str
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

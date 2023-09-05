@@ -141,6 +141,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlockIgnoreRuleList(self, request):
+        """批量添加入侵防御封禁列表、放通列表规则
+
+        :param request: Request instance for CreateBlockIgnoreRuleList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlockIgnoreRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlockIgnoreRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateChooseVpcs(self, request):
         """创建、选择vpc
 
@@ -1239,6 +1262,30 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyBlockTop", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBlockTopResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyEWRuleStatus(self, request):
+        """启用停用VPC间规则或Nat边界规则
+        VPC间规则需指定EdgeId。Nat边界规则需指定地域Region与Direction。
+
+        :param request: Request instance for ModifyEWRuleStatus.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyEWRuleStatusRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyEWRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEWRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEWRuleStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

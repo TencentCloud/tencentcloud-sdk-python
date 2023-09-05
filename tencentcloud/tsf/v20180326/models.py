@@ -25801,7 +25801,7 @@ class ExecuteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: 任务 ID
         :type TaskId: str
         """
         self._TaskId = None

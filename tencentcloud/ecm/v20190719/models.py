@@ -23889,7 +23889,7 @@ class ZoneInstanceCountISP(AbstractModel):
 CTCC：中国电信
 CUCC：中国联通
 CMCC：中国移动
-多个运营商用英文分号连接";"，例如："CMCC;CUCC;CTCC"。多运营商需要开通白名单，请直接联系腾讯云客服。
+CMCC;CUCC;CTCC：三网；三网需要开通白名单，请直接联系腾讯云客服。
         :type ISP: str
         :param _VpcId: 指定私有网络编号，SubnetId与VpcId必须同时指定或不指定
         :type VpcId: str
@@ -23899,7 +23899,8 @@ CMCC：中国移动
         :type PrivateIpAddresses: list of str
         :param _Ipv6AddressCount: 为弹性网卡指定随机生成的IPv6地址数量，单网情况下是1，单网需要ISP 只能为单网运营商，三网情况3
         :type Ipv6AddressCount: int
-        :param _Ipv6SubnetIds: 指定创建三网ipv6地址，使用的subnet数组，单独ipv4和单网ipv6子网依然使用SubnetId字段
+        :param _Ipv6SubnetIds: 指定创建三网ipv6地址，使用的subnet数组，只创建ipv4不创建ipv6和单网ipv6子网依然使用SubnetId字段；
+该数组必须且仅支持传入三个不同的子网，并且这三个子网各自分配了电信、联通、移动三个运营商的其中一个IPV6 CIDR网段
         :type Ipv6SubnetIds: list of str
         """
         self._Zone = None

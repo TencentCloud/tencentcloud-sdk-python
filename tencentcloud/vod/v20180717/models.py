@@ -36873,7 +36873,7 @@ class ModifyMediaStorageClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: 媒体文件唯一标识列表。
+        :param _FileIds: 媒体文件唯一标识列表，最大长度：100。
         :type FileIds: list of str
         :param _StorageClass: 目标存储类型。可选值有：
 <li> STANDARD：标准存储。</li>

@@ -7408,6 +7408,8 @@ class DomainInfo(AbstractModel):
         :param _TagList: 域名关联的标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of TagItem
+        :param _SearchEnginePush: 是否启用搜索引擎推送
+        :type SearchEnginePush: str
         """
         self._DomainId = None
         self._Status = None
@@ -7440,6 +7442,7 @@ class DomainInfo(AbstractModel):
         self._VipResourceId = None
         self._IsSubDomain = None
         self._TagList = None
+        self._SearchEnginePush = None
 
     @property
     def DomainId(self):
@@ -7689,6 +7692,14 @@ class DomainInfo(AbstractModel):
     def TagList(self, TagList):
         self._TagList = TagList
 
+    @property
+    def SearchEnginePush(self):
+        return self._SearchEnginePush
+
+    @SearchEnginePush.setter
+    def SearchEnginePush(self, SearchEnginePush):
+        self._SearchEnginePush = SearchEnginePush
+
 
     def _deserialize(self, params):
         self._DomainId = params.get("DomainId")
@@ -7727,6 +7738,7 @@ class DomainInfo(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._SearchEnginePush = params.get("SearchEnginePush")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

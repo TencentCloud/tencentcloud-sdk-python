@@ -1591,6 +1591,81 @@ class CreateAddressTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateBlockIgnoreRuleListRequest(AbstractModel):
+    """CreateBlockIgnoreRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 规则列表
+        :type Rules: list of IntrusionDefenseRule
+        :param _RuleType: 规则类型，1封禁，2放通，不支持域名封禁
+        :type RuleType: int
+        """
+        self._Rules = None
+        self._RuleType = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = IntrusionDefenseRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlockIgnoreRuleListResponse(AbstractModel):
+    """CreateBlockIgnoreRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateChooseVpcsRequest(AbstractModel):
     """CreateChooseVpcs请求参数结构体
 
@@ -7691,6 +7766,99 @@ class InstanceInfo(AbstractModel):
         
 
 
+class IntrusionDefenseRule(AbstractModel):
+    """入侵防御封禁列表、放通列表添加规则入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: 规则方向，0出站，1入站，3内网间
+        :type Direction: int
+        :param _EndTime: 规则结束时间，格式：2006-01-02 15:04:05，必须大于当前时间
+        :type EndTime: str
+        :param _IP: 规则IP地址，IP与Domain必填其中之一
+        :type IP: str
+        :param _Domain: 规则域名，IP与Domain必填其中之一
+        :type Domain: str
+        :param _Comment: 备注信息，长度不能超过50
+        :type Comment: str
+        :param _StartTime: 规则开始时间
+        :type StartTime: str
+        """
+        self._Direction = None
+        self._EndTime = None
+        self._IP = None
+        self._Domain = None
+        self._Comment = None
+        self._StartTime = None
+
+    @property
+    def Direction(self):
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        self._EndTime = params.get("EndTime")
+        self._IP = params.get("IP")
+        self._Domain = params.get("Domain")
+        self._Comment = params.get("Comment")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IocListData(AbstractModel):
     """黑白名单IOC列表
 
@@ -8548,6 +8716,136 @@ class ModifyBlockTopResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEWRuleStatusRequest(AbstractModel):
+    """ModifyEWRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EdgeId: vpc规则必填，边id
+        :type EdgeId: str
+        :param _Status: 是否开关开启，0：未开启，1：开启
+        :type Status: int
+        :param _Direction: 规则方向，0：出站，1：入站，默认1
+        :type Direction: int
+        :param _RuleSequence: 更改的规则当前执行顺序
+        :type RuleSequence: int
+        :param _RuleType: 规则类型，vpc：VPC间规则、nat：Nat边界规则
+        :type RuleType: str
+        """
+        self._EdgeId = None
+        self._Status = None
+        self._Direction = None
+        self._RuleSequence = None
+        self._RuleType = None
+
+    @property
+    def EdgeId(self):
+        return self._EdgeId
+
+    @EdgeId.setter
+    def EdgeId(self, EdgeId):
+        self._EdgeId = EdgeId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Direction(self):
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def RuleSequence(self):
+        return self._RuleSequence
+
+    @RuleSequence.setter
+    def RuleSequence(self, RuleSequence):
+        self._RuleSequence = RuleSequence
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+
+    def _deserialize(self, params):
+        self._EdgeId = params.get("EdgeId")
+        self._Status = params.get("Status")
+        self._Direction = params.get("Direction")
+        self._RuleSequence = params.get("RuleSequence")
+        self._RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEWRuleStatusResponse(AbstractModel):
+    """ModifyEWRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 状态值，0：修改成功，非0：修改失败
+        :type ReturnCode: int
+        :param _ReturnMsg: 状态信息，success：查询成功，fail：查询失败
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -10866,6 +11164,8 @@ class RuleInfoData(AbstractModel):
         :type CityName: str
         :param _CountryName: 国家名
         :type CountryName: str
+        :param _RegionIso: 国家二位iso代码或者省份缩写代码
+        :type RegionIso: str
         """
         self._OrderIndex = None
         self._SourceIp = None
@@ -10885,6 +11185,7 @@ class RuleInfoData(AbstractModel):
         self._IsRegion = None
         self._CityName = None
         self._CountryName = None
+        self._RegionIso = None
 
     @property
     def OrderIndex(self):
@@ -11030,6 +11331,14 @@ class RuleInfoData(AbstractModel):
     def CountryName(self, CountryName):
         self._CountryName = CountryName
 
+    @property
+    def RegionIso(self):
+        return self._RegionIso
+
+    @RegionIso.setter
+    def RegionIso(self, RegionIso):
+        self._RegionIso = RegionIso
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
@@ -11050,6 +11359,7 @@ class RuleInfoData(AbstractModel):
         self._IsRegion = params.get("IsRegion")
         self._CityName = params.get("CityName")
         self._CountryName = params.get("CountryName")
+        self._RegionIso = params.get("RegionIso")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11963,20 +12273,20 @@ class SecurityGroupRule(AbstractModel):
         r"""
         :param _SourceContent: 访问源示例：
 net：IP/CIDR(192.168.0.2)
-template：参数模板(ipm-dyodhpby)
-instance：资产实例(ins-123456)
-resourcegroup：资产分组(/全部分组/分组1/子分组1)
-tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+template：参数模板id(ipm-dyodhpby)
+instance：资产实例id(ins-123456)
+resourcegroup：资产分组id(cfwrg-xxxx)
+tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
 region：地域(ap-gaungzhou)
         :type SourceContent: str
         :param _SourceType: 访问源类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
         :type SourceType: str
         :param _DestContent: 访问目的示例：
 net：IP/CIDR(192.168.0.2)
-template：参数模板(ipm-dyodhpby)
-instance：资产实例(ins-123456)
-resourcegroup：资产分组(/全部分组/分组1/子分组1)
-tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+template：参数模板id(ipm-dyodhpby)
+instance：资产实例id(ins-123456)
+resourcegroup：资产分组id(cfwrg-xxxx)
+tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
 region：地域(ap-gaungzhou)
         :type DestContent: str
         :param _DestType: 访问目的类型，类型可以为以下6种：net|template|instance|resourcegroup|tag|region
@@ -11987,7 +12297,7 @@ drop：拒绝
         :type RuleAction: str
         :param _Description: 描述
         :type Description: str
-        :param _OrderIndex: 规则顺序，-1表示最低，1表示最高
+        :param _OrderIndex: 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
         :type OrderIndex: str
         :param _Protocol: 协议；TCP/UDP/ICMP/ANY
 注意：此字段可能返回 null，表示取不到有效值。
@@ -12000,9 +12310,10 @@ drop：拒绝
         :param _ServiceTemplateId: 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceTemplateId: str
-        :param _Id: 规则对应的唯一id
+        :param _Id: （入参时无需填写，自动生成）规则对应的唯一id
         :type Id: str
-        :param _Enable: 规则状态，true表示启用，false表示禁用
+        :param _Enable: （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
+规则状态，true表示启用，false表示禁用
         :type Enable: str
         """
         self._SourceContent = None
