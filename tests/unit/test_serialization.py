@@ -56,7 +56,6 @@ def test_serialization():
                     "ProjectId": 0,
                     "HostId": None,
                     "Zone": "ap-shanghai-2",
-                    "HostIps": None
                 },
                 "PrivateIpAddresses": [
                     "000.000.000.000"
@@ -96,6 +95,7 @@ def test_serialization():
     res.from_json_string(mocked_json)
 
     actual = json.loads(res.to_json_string())
+    print(json.dumps(actual))
     for key in actual["InstanceSet"][0]:
         if key in mocked:
             assert actual["InstanceSet"][0][key] == mocked["InstanceSet"][0][key], key
