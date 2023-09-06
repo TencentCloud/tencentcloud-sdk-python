@@ -56,7 +56,6 @@ def test_serialization():
                     "ProjectId": 0,
                     "HostId": None,
                     "Zone": "ap-shanghai-2",
-                    "HostIps": None
                 },
                 "PrivateIpAddresses": [
                     "000.000.000.000"
