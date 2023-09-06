@@ -10272,6 +10272,9 @@ class ExportInfo(AbstractModel):
         :type CosPath: str
         :param _CreateTime: 日志导出创建时间
         :type CreateTime: str
+        :param _SyntaxRule: 语法规则。 默认值为0。
+0：Lucene语法，1：CQL语法。
+        :type SyntaxRule: int
         """
         self._TopicId = None
         self._ExportId = None
@@ -10286,6 +10289,7 @@ class ExportInfo(AbstractModel):
         self._To = None
         self._CosPath = None
         self._CreateTime = None
+        self._SyntaxRule = None
 
     @property
     def TopicId(self):
@@ -10391,6 +10395,14 @@ class ExportInfo(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def SyntaxRule(self):
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -10406,6 +10418,7 @@ class ExportInfo(AbstractModel):
         self._To = params.get("To")
         self._CosPath = params.get("CosPath")
         self._CreateTime = params.get("CreateTime")
+        self._SyntaxRule = params.get("SyntaxRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12747,6 +12760,9 @@ class MachineInfo(AbstractModel):
         r"""
         :param _Ip: 机器的IP
         :type Ip: str
+        :param _InstanceID: 机器实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
         :param _Status: 机器状态，0:异常，1:正常
         :type Status: int
         :param _OfflineTime: 机器离线时间，空为正常，异常返回具体时间
@@ -12763,6 +12779,7 @@ class MachineInfo(AbstractModel):
         :type ErrMsg: str
         """
         self._Ip = None
+        self._InstanceID = None
         self._Status = None
         self._OfflineTime = None
         self._AutoUpdate = None
@@ -12778,6 +12795,14 @@ class MachineInfo(AbstractModel):
     @Ip.setter
     def Ip(self, Ip):
         self._Ip = Ip
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
 
     @property
     def Status(self):
@@ -12838,6 +12863,7 @@ class MachineInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
+        self._InstanceID = params.get("InstanceID")
         self._Status = params.get("Status")
         self._OfflineTime = params.get("OfflineTime")
         self._AutoUpdate = params.get("AutoUpdate")

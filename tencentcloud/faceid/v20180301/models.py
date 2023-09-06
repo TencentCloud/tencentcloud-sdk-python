@@ -479,7 +479,9 @@ class ChargeDetail(AbstractModel):
         :type ReqTime: str
         :param _Seq: 一比一请求的唯一标记。
         :type Seq: str
-        :param _Idcard: 一比一时使用的、脱敏后的身份证号。
+        :param _IdCard: 一比一时使用的、脱敏后的身份证号。
+        :type IdCard: str
+        :param _Idcard: 已废弃。请使用“IdCard”字段
         :type Idcard: str
         :param _Name: 一比一时使用的、脱敏后的姓名。
         :type Name: str
@@ -496,6 +498,7 @@ class ChargeDetail(AbstractModel):
         """
         self._ReqTime = None
         self._Seq = None
+        self._IdCard = None
         self._Idcard = None
         self._Name = None
         self._Sim = None
@@ -521,11 +524,23 @@ class ChargeDetail(AbstractModel):
         self._Seq = Seq
 
     @property
+    def IdCard(self):
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
     def Idcard(self):
+        warnings.warn("parameter `Idcard` is deprecated", DeprecationWarning) 
+
         return self._Idcard
 
     @Idcard.setter
     def Idcard(self, Idcard):
+        warnings.warn("parameter `Idcard` is deprecated", DeprecationWarning) 
+
         self._Idcard = Idcard
 
     @property
@@ -580,6 +595,7 @@ class ChargeDetail(AbstractModel):
     def _deserialize(self, params):
         self._ReqTime = params.get("ReqTime")
         self._Seq = params.get("Seq")
+        self._IdCard = params.get("IdCard")
         self._Idcard = params.get("Idcard")
         self._Name = params.get("Name")
         self._Sim = params.get("Sim")

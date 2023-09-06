@@ -991,6 +991,13 @@ class EssbasicClient(AbstractClient):
         其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
         使用CreateSignUrls，设置EndPoint为APP，得到path。
 
+        其中小程序的原始Id如下，或者查看小程序信息自助获取。
+
+        | 小程序 | AppID | 原始ID |
+        | ------------ | ------------ | ------------ |
+        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+
         :param request: Request instance for CreateSignUrls.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateSignUrlsRequest`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateSignUrlsResponse`

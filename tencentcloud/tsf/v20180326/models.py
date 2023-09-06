@@ -13816,7 +13816,7 @@ class DeployGroupRequest(AbstractModel):
         :type DeployBetaEnable: bool
         :param _DeployBatch: 滚动发布每个批次参与的实例比率
         :type DeployBatch: list of float
-        :param _DeployExeMode: 滚动发布的执行方式
+        :param _DeployExeMode: 滚动发布的执行方式，auto表示自动， manual表示手动
         :type DeployExeMode: str
         :param _DeployWaitTime: 滚动发布每个批次的时间间隔
         :type DeployWaitTime: int
@@ -13828,7 +13828,8 @@ class DeployGroupRequest(AbstractModel):
         :type IncrementalDeployment: bool
         :param _JdkName: JDK名称: konaJDK或openJDK
         :type JdkName: str
-        :param _JdkVersion: JDK版本: 8或11 (openJDK只支持8)
+        :param _JdkVersion: konaJDK版本：8、11和17
+openJDK版本：8、17
         :type JdkVersion: str
         :param _AgentProfileList: 部署agent的类型、版本
         :type AgentProfileList: list of AgentProfile
@@ -43235,7 +43236,7 @@ class UpdateHealthCheckSettingsRequest(AbstractModel):
         r"""
         :param _GroupId: 部署组ID
         :type GroupId: str
-        :param _EnableHealthCheck: 是否能使健康检查
+        :param _EnableHealthCheck: 是否开启健康检查
         :type EnableHealthCheck: bool
         :param _HealthCheckSettings: 健康检查配置
         :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`

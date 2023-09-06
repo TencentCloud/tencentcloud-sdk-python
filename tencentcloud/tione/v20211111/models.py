@@ -2507,6 +2507,8 @@ HYBRID_PAID:
         :type ServiceCategory: str
         :param _Command: 服务的启动命令
         :type Command: str
+        :param _ServiceEIP: 是否开启TIONE内网访问外部
+        :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -2538,6 +2540,7 @@ HYBRID_PAID:
         self._ModelTurboEnable = None
         self._ServiceCategory = None
         self._Command = None
+        self._ServiceEIP = None
 
     @property
     def ServiceGroupId(self):
@@ -2779,6 +2782,14 @@ HYBRID_PAID:
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def ServiceEIP(self):
+        return self._ServiceEIP
+
+    @ServiceEIP.setter
+    def ServiceEIP(self, ServiceEIP):
+        self._ServiceEIP = ServiceEIP
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2842,6 +2853,9 @@ HYBRID_PAID:
         self._ModelTurboEnable = params.get("ModelTurboEnable")
         self._ServiceCategory = params.get("ServiceCategory")
         self._Command = params.get("Command")
+        if params.get("ServiceEIP") is not None:
+            self._ServiceEIP = ServiceEIP()
+            self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12961,6 +12975,8 @@ HYBRID_PAID:
         :type ModelTurboEnable: bool
         :param _Command: 服务的启动命令
         :type Command: str
+        :param _ServiceEIP: 是否开启TIONE内网访问外部
+        :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -12984,6 +13000,7 @@ HYBRID_PAID:
         self._VolumeMount = None
         self._ModelTurboEnable = None
         self._Command = None
+        self._ServiceEIP = None
 
     @property
     def ServiceId(self):
@@ -13161,6 +13178,14 @@ HYBRID_PAID:
     def Command(self, Command):
         self._Command = Command
 
+    @property
+    def ServiceEIP(self):
+        return self._ServiceEIP
+
+    @ServiceEIP.setter
+    def ServiceEIP(self, ServiceEIP):
+        self._ServiceEIP = ServiceEIP
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -13211,6 +13236,9 @@ HYBRID_PAID:
             self._VolumeMount._deserialize(params.get("VolumeMount"))
         self._ModelTurboEnable = params.get("ModelTurboEnable")
         self._Command = params.get("Command")
+        if params.get("ServiceEIP") is not None:
+            self._ServiceEIP = ServiceEIP()
+            self._ServiceEIP._deserialize(params.get("ServiceEIP"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15091,10 +15119,22 @@ class PodInfo(AbstractModel):
         :param _Status: pod状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _StartTime: pod启动时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: pod结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ResourceConfigInfo: pod资源配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
         """
         self._Name = None
         self._IP = None
         self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ResourceConfigInfo = None
 
     @property
     def Name(self):
@@ -15120,11 +15160,40 @@ class PodInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ResourceConfigInfo(self):
+        return self._ResourceConfigInfo
+
+    @ResourceConfigInfo.setter
+    def ResourceConfigInfo(self, ResourceConfigInfo):
+        self._ResourceConfigInfo = ResourceConfigInfo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._IP = params.get("IP")
         self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("ResourceConfigInfo") is not None:
+            self._ResourceConfigInfo = ResourceConfigInfo()
+            self._ResourceConfigInfo._deserialize(params.get("ResourceConfigInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18058,12 +18127,28 @@ class Spec(AbstractModel):
         :type Available: bool
         :param _AvailableRegion: 当前资源售罄时，可用的区域有哪些
         :type AvailableRegion: list of str
+        :param _SpecFeatures: 当前计费项支持的特性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecFeatures: list of str
+        :param _SpecType: 计费项类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecType: str
+        :param _GpuType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param _CategoryId: 计费项CategoryId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryId: str
         """
         self._SpecId = None
         self._SpecName = None
         self._SpecAlias = None
         self._Available = None
         self._AvailableRegion = None
+        self._SpecFeatures = None
+        self._SpecType = None
+        self._GpuType = None
+        self._CategoryId = None
 
     @property
     def SpecId(self):
@@ -18105,6 +18190,38 @@ class Spec(AbstractModel):
     def AvailableRegion(self, AvailableRegion):
         self._AvailableRegion = AvailableRegion
 
+    @property
+    def SpecFeatures(self):
+        return self._SpecFeatures
+
+    @SpecFeatures.setter
+    def SpecFeatures(self, SpecFeatures):
+        self._SpecFeatures = SpecFeatures
+
+    @property
+    def SpecType(self):
+        return self._SpecType
+
+    @SpecType.setter
+    def SpecType(self, SpecType):
+        self._SpecType = SpecType
+
+    @property
+    def GpuType(self):
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def CategoryId(self):
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
 
     def _deserialize(self, params):
         self._SpecId = params.get("SpecId")
@@ -18112,6 +18229,10 @@ class Spec(AbstractModel):
         self._SpecAlias = params.get("SpecAlias")
         self._Available = params.get("Available")
         self._AvailableRegion = params.get("AvailableRegion")
+        self._SpecFeatures = params.get("SpecFeatures")
+        self._SpecType = params.get("SpecType")
+        self._GpuType = params.get("GpuType")
+        self._CategoryId = params.get("CategoryId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

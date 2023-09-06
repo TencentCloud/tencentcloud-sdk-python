@@ -80,6 +80,9 @@ FAILEDOPERATION_GETPRIVILEGEERROR = 'FailedOperation.GetPrivilegeError'
 # 查询失败。
 FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
+# 实例任务冲突错误。
+FAILEDOPERATION_INSTANCETASKCONFLICTERROR = 'FailedOperation.InstanceTaskConflictError'
+
 # json序列化失败。
 FAILEDOPERATION_JSONMARSHALERROR = 'FailedOperation.JsonMarshalError'
 
@@ -214,6 +217,9 @@ INTERNALERROR_FTPERROR = 'InternalError.FtpError'
 
 # Http请求异常。
 INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
+
+# 请求失败。
+INTERNALERROR_HTTPREQUESTERROR = 'InternalError.HttpRequestError'
 
 # 导入失败。
 INTERNALERROR_IMPORTERROR = 'InternalError.ImportError'

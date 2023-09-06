@@ -4395,6 +4395,102 @@ class CreateSecurityIPGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSharedCNAMERequest(AbstractModel):
+    """CreateSharedCNAME请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 共享 CNAME 所属站点的 ID。	
+        :type ZoneId: str
+        :param _SharedCNAMEPrefix: 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
+共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
+示例值：example.com
+        :type SharedCNAMEPrefix: str
+        :param _Description: 描述。可输入 1-50 个任意字符。
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._SharedCNAMEPrefix = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SharedCNAMEPrefix(self):
+        return self._SharedCNAMEPrefix
+
+    @SharedCNAMEPrefix.setter
+    def SharedCNAMEPrefix(self, SharedCNAMEPrefix):
+        self._SharedCNAMEPrefix = SharedCNAMEPrefix
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SharedCNAMEPrefix = params.get("SharedCNAMEPrefix")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSharedCNAMEResponse(AbstractModel):
+    """CreateSharedCNAME返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharedCNAME: 共享 CNAME。格式为：<自定义前缀>+<ZoneId中的12位随机字符串>+"share.eo.dnse[0-5].com"
+        :type SharedCNAME: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SharedCNAME = None
+        self._RequestId = None
+
+    @property
+    def SharedCNAME(self):
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateZoneRequest(AbstractModel):
     """CreateZone请求参数结构体
 

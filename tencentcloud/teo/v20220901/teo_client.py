@@ -304,6 +304,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSharedCNAME(self, request):
+        """创建共享 CNAME
+
+        :param request: Request instance for CreateSharedCNAME.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateSharedCNAMERequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateSharedCNAMEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSharedCNAME", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSharedCNAMEResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateZone(self, request):
         """用于用户接入新的站点。
 

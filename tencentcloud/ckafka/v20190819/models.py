@@ -898,7 +898,7 @@ class BatchCreateAclResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 状态码
+        :param _Result: 状态码：0-修改成功，否则修改失败
         :type Result: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5653,7 +5653,7 @@ class CreateRouteRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: vpc子网id
         :type SubnetId: str
-        :param _AccessType: 访问类型
+        :param _AccessType: 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
         :type AccessType: int
         :param _AuthFlag: 是否需要权限管理
         :type AuthFlag: int

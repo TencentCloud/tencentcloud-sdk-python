@@ -404,7 +404,7 @@ class AddInstancesRequest(AbstractModel):
         :type Cpu: int
         :param _Memory: 内存，单位为GB
         :type Memory: int
-        :param _ReadOnlyCount: 新增只读实例数，取值范围为[0,4]
+        :param _ReadOnlyCount: 新增只读实例数，取值范围为(0,15]
         :type ReadOnlyCount: int
         :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
         :type InstanceGrpId: str
@@ -3251,7 +3251,8 @@ timeRollback，时间点回档
         :type TimeSpan: int
         :param _TimeUnit: 包年包月购买时长单位，['s','d','m','y']
         :type TimeUnit: str
-        :param _AutoRenewFlag: 包年包月购买是否自动续费，默认为0
+        :param _AutoRenewFlag: 包年包月购买是否自动续费，默认为0。
+0标识默认续费方式，1表示自动续费，2表示手不自动续费。
         :type AutoRenewFlag: int
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
@@ -8344,7 +8345,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Privileges: 权限列表，示例值为：["select","update","delete","create","drop","references","index","alter","show_db","create_tmp_table","lock_tables","execute","create_view","show_view","create_routine","alter_routine","event","trigger"]
+        :param _Privileges: 权限列表，示例值为：["","select","update","delete","create","drop","references","index","alter","show_db","create_tmp_table","lock_tables","execute","create_view","show_view","create_routine","alter_routine","event","trigger"]
         :type Privileges: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13030,9 +13031,11 @@ class DescribeResourcesByDealNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+        :param _DealName: 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+DealName与DealNames至少应输入一项，两者都传时以DealName为准。
         :type DealName: str
-        :param _DealNames: 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+        :param _DealNames: 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+DealName与DealNames至少应输入一项，两者都传时以DealName为准。
         :type DealNames: list of str
         """
         self._DealName = None
@@ -17060,7 +17063,7 @@ class ModifyInstanceParamRequest(AbstractModel):
         :type ClusterId: str
         :param _InstanceIds: 实例ID
         :type InstanceIds: list of str
-        :param _ClusterParamList: 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
+        :param _ClusterParamList: 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"auto_increment_increment"}]
         :type ClusterParamList: list of ModifyParamItem
         :param _InstanceParamList: 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
         :type InstanceParamList: list of ModifyParamItem

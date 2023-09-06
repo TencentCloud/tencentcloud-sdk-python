@@ -7060,9 +7060,11 @@ class RunJobDescription(AbstractModel):
         :type JobId: str
         :param _RunType: 运行类型，1：启动，2：恢复
         :type RunType: int
-        :param _StartMode: 兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（例:T1557394288000）
+        :param _StartMode: 兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（建议传值）
+保证参数为 LATEST、EARLIEST、T+Timestamp （例:T1557394288000）
         :type StartMode: str
         :param _JobConfigVersion: 当前作业的某个版本
+（不传默认为非草稿的作业版本）
         :type JobConfigVersion: int
         :param _SavepointPath: Savepoint路径
         :type SavepointPath: str
@@ -7070,6 +7072,8 @@ class RunJobDescription(AbstractModel):
         :type SavepointId: str
         :param _UseOldSystemConnector: 使用历史版本系统依赖
         :type UseOldSystemConnector: bool
+        :param _CustomTimestamp: 自定义时间戳
+        :type CustomTimestamp: int
         """
         self._JobId = None
         self._RunType = None
@@ -7078,6 +7082,7 @@ class RunJobDescription(AbstractModel):
         self._SavepointPath = None
         self._SavepointId = None
         self._UseOldSystemConnector = None
+        self._CustomTimestamp = None
 
     @property
     def JobId(self):
@@ -7135,6 +7140,14 @@ class RunJobDescription(AbstractModel):
     def UseOldSystemConnector(self, UseOldSystemConnector):
         self._UseOldSystemConnector = UseOldSystemConnector
 
+    @property
+    def CustomTimestamp(self):
+        return self._CustomTimestamp
+
+    @CustomTimestamp.setter
+    def CustomTimestamp(self, CustomTimestamp):
+        self._CustomTimestamp = CustomTimestamp
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7144,6 +7157,7 @@ class RunJobDescription(AbstractModel):
         self._SavepointPath = params.get("SavepointPath")
         self._SavepointId = params.get("SavepointId")
         self._UseOldSystemConnector = params.get("UseOldSystemConnector")
+        self._CustomTimestamp = params.get("CustomTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

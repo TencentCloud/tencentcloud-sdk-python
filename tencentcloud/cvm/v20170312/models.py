@@ -12609,7 +12609,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :type SecurityGroups: list of str
         :param _CamRoleName: 给实例绑定用户角色，传空值为解绑操作
         :type CamRoleName: str
-        :param _HostName: 实例的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。
+        :param _HostName: 实例的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。<br> 注意点：修改主机名后实例会立即重启，重启后新的主机名生效。
         :type HostName: str
         :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例<br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例<br><br>默认取值：FALSE。
         :type DisableApiTermination: bool
@@ -13349,15 +13349,12 @@ class Placement(AbstractModel):
         :type ProjectId: int
         :param _HostIds: 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
-        :param _HostIps: 指定母机IP生产子机
-        :type HostIps: list of str
         :param _HostId: 实例所属的专用宿主机ID，仅用于出参。
         :type HostId: str
         """
         self._Zone = None
         self._ProjectId = None
         self._HostIds = None
-        self._HostIps = None
         self._HostId = None
 
     @property
@@ -13385,14 +13382,6 @@ class Placement(AbstractModel):
         self._HostIds = HostIds
 
     @property
-    def HostIps(self):
-        return self._HostIps
-
-    @HostIps.setter
-    def HostIps(self, HostIps):
-        self._HostIps = HostIps
-
-    @property
     def HostId(self):
         return self._HostId
 
@@ -13405,7 +13394,6 @@ class Placement(AbstractModel):
         self._Zone = params.get("Zone")
         self._ProjectId = params.get("ProjectId")
         self._HostIds = params.get("HostIds")
-        self._HostIps = params.get("HostIps")
         self._HostId = params.get("HostId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

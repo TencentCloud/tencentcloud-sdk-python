@@ -164,6 +164,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCertificateBindResourceSyncTask(self, request):
+        """创建证书绑定关联云资源异步任务， 该接口用于查询证书关联云资源。 若证书ID已存在查询云资源任务，则结果返回该任务ID。关联云资源类型，支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）。查询关联云资源结果使用DescribeCertificateBindResourceTaskResult接口
+
+        :param request: Request instance for CreateCertificateBindResourceSyncTask.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCertificateBindResourceSyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCertificateBindResourceSyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCertificateByPackage(self, request):
         """使用权益点创建证书
 
@@ -316,6 +339,52 @@ class SslClient(AbstractClient):
             body = self.call("DescribeCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCertificateBindResourceTaskDetail(self, request):
+        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+
+        :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCertificateBindResourceTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCertificateBindResourceTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCertificateBindResourceTaskResult(self, request):
+        """查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+
+        :param request: Request instance for DescribeCertificateBindResourceTaskResult.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCertificateBindResourceTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCertificateBindResourceTaskResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -7577,6 +7577,9 @@ class KongServicePreview(AbstractModel):
         :param _Editable: 是否可编辑
 注意：此字段可能返回 null，表示取不到有效值。
         :type Editable: bool
+        :param _Path: 请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
         """
         self._ID = None
         self._Name = None
@@ -7585,6 +7588,7 @@ class KongServicePreview(AbstractModel):
         self._UpstreamType = None
         self._CreatedTime = None
         self._Editable = None
+        self._Path = None
 
     @property
     def ID(self):
@@ -7642,6 +7646,14 @@ class KongServicePreview(AbstractModel):
     def Editable(self, Editable):
         self._Editable = Editable
 
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -7653,6 +7665,7 @@ class KongServicePreview(AbstractModel):
         self._UpstreamType = params.get("UpstreamType")
         self._CreatedTime = params.get("CreatedTime")
         self._Editable = params.get("Editable")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -16839,6 +16839,81 @@ class DescribePrometheusRecordRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusRegionsRequest(AbstractModel):
+    """DescribePrometheusRegions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 1-预付费，2-后付费，3-全地域（不填默认全地域）
+        :type PayMode: int
+        """
+        self._PayMode = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusRegionsResponse(AbstractModel):
+    """DescribePrometheusRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionSet: 区域列表
+        :type RegionSet: list of PrometheusRegionItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def RegionSet(self):
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self._RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = PrometheusRegionItem()
+                obj._deserialize(item)
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusScrapeJobsRequest(AbstractModel):
     """DescribePrometheusScrapeJobs请求参数结构体
 
@@ -19154,9 +19229,9 @@ class GrafanaInstanceInfo(AbstractModel):
         :type VpcId: str
         :param _SubnetIds: 子网 ID 数组
         :type SubnetIds: list of str
-        :param _InternetUrl: Grafana 内网地址
+        :param _InternetUrl: Grafana 公网地址
         :type InternetUrl: str
-        :param _InternalUrl: Grafana 公网地址
+        :param _InternalUrl: Grafana 内网地址
         :type InternalUrl: str
         :param _CreatedAt: 创建时间
         :type CreatedAt: str
@@ -25573,6 +25648,111 @@ class PrometheusRecordRuleYamlItem(AbstractModel):
         self._Status = params.get("Status")
         self._Id = params.get("Id")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusRegionItem(AbstractModel):
+    """DescribePrometheusRegions 响应结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 区域
+        :type Region: str
+        :param _RegionId: 区域 ID
+        :type RegionId: int
+        :param _RegionState: 区域状态( 0: 不可用；1: 可用)
+        :type RegionState: int
+        :param _RegionName: 区域名(中文)
+        :type RegionName: str
+        :param _RegionShortName: 区域名(英文缩写)
+        :type RegionShortName: str
+        :param _Area: 区域所在大区名
+        :type Area: str
+        :param _RegionPayMode: 1-仅支持预付费，2-仅支持后付费，3-支持两种计费模式实例
+        :type RegionPayMode: int
+        """
+        self._Region = None
+        self._RegionId = None
+        self._RegionState = None
+        self._RegionName = None
+        self._RegionShortName = None
+        self._Area = None
+        self._RegionPayMode = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionState(self):
+        return self._RegionState
+
+    @RegionState.setter
+    def RegionState(self, RegionState):
+        self._RegionState = RegionState
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RegionShortName(self):
+        return self._RegionShortName
+
+    @RegionShortName.setter
+    def RegionShortName(self, RegionShortName):
+        self._RegionShortName = RegionShortName
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def RegionPayMode(self):
+        return self._RegionPayMode
+
+    @RegionPayMode.setter
+    def RegionPayMode(self, RegionPayMode):
+        self._RegionPayMode = RegionPayMode
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionId = params.get("RegionId")
+        self._RegionState = params.get("RegionState")
+        self._RegionName = params.get("RegionName")
+        self._RegionShortName = params.get("RegionShortName")
+        self._Area = params.get("Area")
+        self._RegionPayMode = params.get("RegionPayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

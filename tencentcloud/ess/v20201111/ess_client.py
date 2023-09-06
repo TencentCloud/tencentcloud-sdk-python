@@ -587,7 +587,8 @@ class EssClient(AbstractClient):
 
     def CreateMultiFlowSignQRCode(self, request):
         """此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
-        适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+        适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+        常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 
         **本接口适用于发起方没有填写控件的 B2C或者单C模板**
 
@@ -739,17 +740,22 @@ class EssClient(AbstractClient):
 
 
     def CreateSchemeUrl(self, request):
-        """获取小程序签署链接
+        """获取跳转至腾讯电子签小程序的签署链接
 
         适用场景：如果需要签署人在自己的APP、小程序、H5应用中签署，可以通过此接口获取跳转腾讯电子签小程序的签署跳转链接。
 
-        注：如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署。
+        跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 
+        注：
+        `1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署`
+        `2. 签署链接的有效期为90天，超过有效期链接不可用`
 
-        跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+        其中小程序的原始Id如下，或者查看小程序信息自助获取。
 
-
-        如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+        | 小程序 | AppID | 原始ID |
+        | ------------ | ------------ | ------------ |
+        | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+        | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 
         :param request: Request instance for CreateSchemeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateSchemeUrlRequest`
@@ -959,7 +965,12 @@ class EssClient(AbstractClient):
 
 
     def DescribeExtendedServiceAuthInfos(self, request):
-        """查询企业扩展服务授权信息，目前支持查询：企业静默签，企业与港澳台居民签署合同，使用手机号验证签署方身份，骑缝章，批量签署能力是否已经开通
+        """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+        1. 企业静默签
+        2. 企业与港澳台居民签署合同
+        3. 使用手机号验证签署方身份
+        4. 骑缝章
+        5. 批量签署能力
 
         :param request: Request instance for DescribeExtendedServiceAuthInfos.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeExtendedServiceAuthInfosRequest`
@@ -1370,9 +1381,10 @@ class EssClient(AbstractClient):
 
 
     def ModifyApplicationCallbackInfo(self, request):
-        """新增/删除应用callbackinfo
-        callbackinfo包含： 回调地址和签名key
-        操作：新增/删除
+        """新增/删除企业应用集成中的回调配置。
+        新增回调配置只会增加不存在的CallbackUrl；删除操作将针对找到的相同CallbackUrl的配置进行删除。
+        请确保回调地址能够接收并处理 HTTP POST 请求，并返回状态码 200 以表示处理正常。
+        更多回调相关的说明参考文档[回调通知能力](https://qian.tencent.com/developers/company/callback_types_v2)
 
         :param request: Request instance for ModifyApplicationCallbackInfo.
         :type request: :class:`tencentcloud.ess.v20201111.models.ModifyApplicationCallbackInfoRequest`
@@ -1450,9 +1462,9 @@ class EssClient(AbstractClient):
 
 
     def StartFlow(self, request):
-        """此接口用于发起流程
-        适用场景：见创建签署流程接口。
-        注：该接口是“创建电子文档”接口的后置接口，用于激活包含完整合同信息（模板及内容信息）的流程。激活后的流程就是一份待签署的电子合同。
+        """此接口用于启动流程。它是模板发起合同的最后一步。
+        在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于激活包含完整合同信息（模板及内容信息）的流程。
+        流程激活后，将生成一份待签署的电子合同。
 
         :param request: Request instance for StartFlow.
         :type request: :class:`tencentcloud.ess.v20201111.models.StartFlowRequest`

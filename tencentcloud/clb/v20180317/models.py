@@ -2224,6 +2224,9 @@ class Cluster(AbstractModel):
         :param _DisasterRecoveryType: 集群容灾类型，如SINGLE-ZONE，DISASTER-RECOVERY，MUTUAL-DISASTER-RECOVERY
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoveryType: str
+        :param _Egress: 网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -2248,6 +2251,7 @@ class Cluster(AbstractModel):
         self._ClustersZone = None
         self._ClustersVersion = None
         self._DisasterRecoveryType = None
+        self._Egress = None
 
     @property
     def ClusterId(self):
@@ -2433,6 +2437,14 @@ class Cluster(AbstractModel):
     def DisasterRecoveryType(self, DisasterRecoveryType):
         self._DisasterRecoveryType = DisasterRecoveryType
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -2460,6 +2472,7 @@ class Cluster(AbstractModel):
             self._ClustersZone._deserialize(params.get("ClustersZone"))
         self._ClustersVersion = params.get("ClustersVersion")
         self._DisasterRecoveryType = params.get("DisasterRecoveryType")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10071,6 +10084,9 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _LoadBalancerDomain: 负载均衡实例的域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerDomain: str
+        :param _Egress: 网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -10126,6 +10142,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._ClusterIds = None
         self._AttributeFlags = None
         self._LoadBalancerDomain = None
+        self._Egress = None
 
     @property
     def LoadBalancerId(self):
@@ -10559,6 +10576,14 @@ OPEN：公网属性， INTERNAL：内网属性。
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -10642,6 +10667,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         self._ClusterIds = params.get("ClusterIds")
         self._AttributeFlags = params.get("AttributeFlags")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10773,6 +10799,9 @@ Public：公网属性， Private：内网属性。
         :param _LoadBalancerDomain: 负载均衡实例的域名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerDomain: str
+        :param _Egress: 网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -10812,6 +10841,7 @@ Public：公网属性， Private：内网属性。
         self._Zones = None
         self._SniSwitch = None
         self._LoadBalancerDomain = None
+        self._Egress = None
 
     @property
     def LoadBalancerId(self):
@@ -11117,6 +11147,14 @@ Public：公网属性， Private：内网属性。
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -11168,6 +11206,7 @@ Public：公网属性， Private：内网属性。
         self._Zones = params.get("Zones")
         self._SniSwitch = params.get("SniSwitch")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16447,6 +16486,9 @@ class ZoneResource(AbstractModel):
         :type ZoneResourceType: str
         :param _EdgeZone: 可用区是否是EdgeZone可用区，如：false
         :type EdgeZone: bool
+        :param _Egress: 网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         """
         self._MasterZone = None
         self._ResourceSet = None
@@ -16456,6 +16498,7 @@ class ZoneResource(AbstractModel):
         self._LocalZone = None
         self._ZoneResourceType = None
         self._EdgeZone = None
+        self._Egress = None
 
     @property
     def MasterZone(self):
@@ -16521,6 +16564,14 @@ class ZoneResource(AbstractModel):
     def EdgeZone(self, EdgeZone):
         self._EdgeZone = EdgeZone
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._MasterZone = params.get("MasterZone")
@@ -16536,6 +16587,7 @@ class ZoneResource(AbstractModel):
         self._LocalZone = params.get("LocalZone")
         self._ZoneResourceType = params.get("ZoneResourceType")
         self._EdgeZone = params.get("EdgeZone")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

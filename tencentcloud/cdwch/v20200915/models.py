@@ -1146,6 +1146,70 @@ class CreateInstanceNewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DatabasePrivilegeInfo(AbstractModel):
+    """数据库权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatabasePrivileges: //库表权限，SELECT、INSERT_ALL、ALTER、TRUNCATE、DROP_TABLE、CREATE_TABLE、DROP_DATABASE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabasePrivileges: list of str
+        :param _TablePrivilegeList: // 库下面的表权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePrivilegeList: list of TablePrivilegeInfo
+        """
+        self._DatabaseName = None
+        self._DatabasePrivileges = None
+        self._TablePrivilegeList = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabasePrivileges(self):
+        return self._DatabasePrivileges
+
+    @DatabasePrivileges.setter
+    def DatabasePrivileges(self, DatabasePrivileges):
+        self._DatabasePrivileges = DatabasePrivileges
+
+    @property
+    def TablePrivilegeList(self):
+        return self._TablePrivilegeList
+
+    @TablePrivilegeList.setter
+    def TablePrivilegeList(self, TablePrivilegeList):
+        self._TablePrivilegeList = TablePrivilegeList
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabasePrivileges = params.get("DatabasePrivileges")
+        if params.get("TablePrivilegeList") is not None:
+            self._TablePrivilegeList = []
+            for item in params.get("TablePrivilegeList"):
+                obj = TablePrivilegeInfo()
+                obj._deserialize(item)
+                self._TablePrivilegeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteBackUpDataRequest(AbstractModel):
     """DeleteBackUpData请求参数结构体
 
@@ -4051,6 +4115,98 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Cluster: cluster名称
+        :type Cluster: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _AllDatabase: 是否所有数据库表
+        :type AllDatabase: bool
+        :param _GlobalPrivileges: 全局权限
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivilegeList: 数据库表权限
+        :type DatabasePrivilegeList: list of DatabasePrivilegeInfo
+        """
+        self._InstanceId = None
+        self._Cluster = None
+        self._UserName = None
+        self._AllDatabase = None
+        self._GlobalPrivileges = None
+        self._DatabasePrivilegeList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AllDatabase(self):
+        return self._AllDatabase
+
+    @AllDatabase.setter
+    def AllDatabase(self, AllDatabase):
+        self._AllDatabase = AllDatabase
+
+    @property
+    def GlobalPrivileges(self):
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivilegeList(self):
+        return self._DatabasePrivilegeList
+
+    @DatabasePrivilegeList.setter
+    def DatabasePrivilegeList(self, DatabasePrivilegeList):
+        self._DatabasePrivilegeList = DatabasePrivilegeList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Cluster = params.get("Cluster")
+        self._UserName = params.get("UserName")
+        self._AllDatabase = params.get("AllDatabase")
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivilegeList") is not None:
+            self._DatabasePrivilegeList = []
+            for item in params.get("DatabasePrivilegeList"):
+                obj = DatabasePrivilegeInfo()
+                obj._deserialize(item)
+                self._DatabasePrivilegeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyUserNewPrivilegeResponse(AbstractModel):
     """ModifyUserNewPrivilege返回参数结构体
@@ -5258,6 +5414,51 @@ class ServiceInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TablePrivilegeInfo(AbstractModel):
+    """表权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: 表名称
+        :type TableName: str
+        :param _TablePrivileges: 表权限列表 SELECT、INSERT_ALL、ALTER、TRUNCATE、DROP_TABLE 查询、插入、设置、清空表、删除表
+        :type TablePrivileges: list of str
+        """
+        self._TableName = None
+        self._TablePrivileges = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TablePrivileges(self):
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._TablePrivileges = params.get("TablePrivileges")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

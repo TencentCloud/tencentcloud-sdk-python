@@ -179,6 +179,9 @@ INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = 'InvalidParameterValue.ConfigData
 # 配置不合法。
 INVALIDPARAMETERVALUE_CONFIGDATAINVALID = 'InvalidParameterValue.ConfigDataInvalid'
 
+# 创建环境createRegion参数错误。
+INVALIDPARAMETERVALUE_CREATENAMESPACEUNSUPPORTREGIONERROR = 'InvalidParameterValue.CreateNamespaceUnsupportRegionError'
+
 # 定时弹性伸缩目标实例数不合法。
 INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = 'InvalidParameterValue.CronHpaReplicasInvalid'
 

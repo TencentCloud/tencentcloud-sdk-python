@@ -2199,7 +2199,7 @@ class CreateClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+        :param _ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
         :type ClusterName: str
         :param _BindClusterId: 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
         :type BindClusterId: int
@@ -10206,6 +10206,194 @@ class DescribeRocketMQMsgResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQMsgTraceRequest(AbstractModel):
+    """DescribeRocketMQMsgTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _EnvironmentId: 命名空间
+        :type EnvironmentId: str
+        :param _TopicName: 主题，rocketmq查询死信时值为groupId
+        :type TopicName: str
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _GroupName: 消费组、订阅
+        :type GroupName: str
+        :param _QueryDLQMsg: 查询死信时该值为true
+        :type QueryDLQMsg: bool
+        """
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._MsgId = None
+        self._GroupName = None
+        self._QueryDLQMsg = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def QueryDLQMsg(self):
+        return self._QueryDLQMsg
+
+    @QueryDLQMsg.setter
+    def QueryDLQMsg(self, QueryDLQMsg):
+        self._QueryDLQMsg = QueryDLQMsg
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._MsgId = params.get("MsgId")
+        self._GroupName = params.get("GroupName")
+        self._QueryDLQMsg = params.get("QueryDLQMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQMsgTraceResponse(AbstractModel):
+    """DescribeRocketMQMsgTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: [
+    {
+        "Stage": "produce",
+        "Data": {
+            "ProducerName": "生产者名",
+            "ProduceTime": "消息生产时间",
+            "ProducerAddr": "客户端地址",
+            "Duration": "耗时ms",
+            "Status": "状态（0：成功，1：失败）"
+        }
+    },
+    {
+        "Stage": "persist",
+        "Data": {
+            "PersistTime": "存储时间",
+            "Duration": "耗时ms",
+            "Status": "状态（0：成功，1：失败）"
+        }
+    },
+    {
+        "Stage": "consume",
+        "Data": {
+            "TotalCount": 2,
+            "RocketMqConsumeLogs": [
+                {
+                    "ConsumerGroup": "消费组",
+                    "ConsumeModel": "消费模式",
+                    "ConsumerAddr": "消费者地址",
+                    "ConsumeTime": "推送时间",
+                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+                },
+                {
+                    "ConsumerGroup": "消费组",
+                    "ConsumeModel": "消费模式",
+                    "ConsumerAddr": "消费者地址",
+                    "ConsumeTime": "推送时间",
+                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+                }
+            ]    
+        }
+    }
+]
+        :type Result: list of TraceResult
+        :param _ShowTopicName: 消息轨迹页展示的topic名称
+        :type ShowTopicName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ShowTopicName = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ShowTopicName(self):
+        return self._ShowTopicName
+
+    @ShowTopicName.setter
+    def ShowTopicName(self, ShowTopicName):
+        self._ShowTopicName = ShowTopicName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = TraceResult()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._ShowTopicName = params.get("ShowTopicName")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQNamespacesRequest(AbstractModel):
     """DescribeRocketMQNamespaces请求参数结构体
 
@@ -10326,6 +10514,238 @@ class DescribeRocketMQNamespacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Namespaces.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQTopicMsgsRequest(AbstractModel):
+    """DescribeRocketMQTopicMsgs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _EnvironmentId: 命名空间
+        :type EnvironmentId: str
+        :param _TopicName: 主题名称，查询死信时为groupId
+        :type TopicName: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _MsgId: 消息 ID
+        :type MsgId: str
+        :param _MsgKey: 消息 key
+        :type MsgKey: str
+        :param _Offset: 查询偏移
+        :type Offset: int
+        :param _Limit: 查询限额
+        :type Limit: int
+        :param _TaskRequestId: 标志一次分页事务
+        :type TaskRequestId: str
+        :param _QueryDlqMsg: 死信查询时该值为true，只对Rocketmq有效
+        :type QueryDlqMsg: bool
+        :param _NumOfLatestMsg: 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+        :type NumOfLatestMsg: int
+        """
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._MsgId = None
+        self._MsgKey = None
+        self._Offset = None
+        self._Limit = None
+        self._TaskRequestId = None
+        self._QueryDlqMsg = None
+        self._NumOfLatestMsg = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def MsgKey(self):
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TaskRequestId(self):
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def QueryDlqMsg(self):
+        return self._QueryDlqMsg
+
+    @QueryDlqMsg.setter
+    def QueryDlqMsg(self, QueryDlqMsg):
+        self._QueryDlqMsg = QueryDlqMsg
+
+    @property
+    def NumOfLatestMsg(self):
+        return self._NumOfLatestMsg
+
+    @NumOfLatestMsg.setter
+    def NumOfLatestMsg(self, NumOfLatestMsg):
+        self._NumOfLatestMsg = NumOfLatestMsg
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MsgId = params.get("MsgId")
+        self._MsgKey = params.get("MsgKey")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TaskRequestId = params.get("TaskRequestId")
+        self._QueryDlqMsg = params.get("QueryDlqMsg")
+        self._NumOfLatestMsg = params.get("NumOfLatestMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQTopicMsgsResponse(AbstractModel):
+    """DescribeRocketMQTopicMsgs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _TopicMsgLogSets: 消息列表
+        :type TopicMsgLogSets: list of RocketMQMsgLog
+        :param _TaskRequestId: 标志一次分页事务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskRequestId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TopicMsgLogSets = None
+        self._TaskRequestId = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TopicMsgLogSets(self):
+        return self._TopicMsgLogSets
+
+    @TopicMsgLogSets.setter
+    def TopicMsgLogSets(self, TopicMsgLogSets):
+        self._TopicMsgLogSets = TopicMsgLogSets
+
+    @property
+    def TaskRequestId(self):
+        return self._TaskRequestId
+
+    @TaskRequestId.setter
+    def TaskRequestId(self, TaskRequestId):
+        self._TaskRequestId = TaskRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TopicMsgLogSets") is not None:
+            self._TopicMsgLogSets = []
+            for item in params.get("TopicMsgLogSets"):
+                obj = RocketMQMsgLog()
+                obj._deserialize(item)
+                self._TopicMsgLogSets.append(obj)
+        self._TaskRequestId = params.get("TaskRequestId")
         self._RequestId = params.get("RequestId")
 
 
@@ -17973,6 +18393,127 @@ class RocketMQMessageTrack(AbstractModel):
         
 
 
+class RocketMQMsgLog(AbstractModel):
+    """rocketmq消息日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _MsgTag: 消息tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgTag: str
+        :param _MsgKey: 消息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgKey: str
+        :param _ProducerAddr: 客户端地址
+        :type ProducerAddr: str
+        :param _ProduceTime: 消息发送时间
+        :type ProduceTime: str
+        :param _PulsarMsgId: pulsar消息id
+        :type PulsarMsgId: str
+        :param _DeadLetterResendTimes: 死信重发次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterResendTimes: int
+        :param _ResendSuccessCount: 死信重发成功次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResendSuccessCount: int
+        """
+        self._MsgId = None
+        self._MsgTag = None
+        self._MsgKey = None
+        self._ProducerAddr = None
+        self._ProduceTime = None
+        self._PulsarMsgId = None
+        self._DeadLetterResendTimes = None
+        self._ResendSuccessCount = None
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def MsgTag(self):
+        return self._MsgTag
+
+    @MsgTag.setter
+    def MsgTag(self, MsgTag):
+        self._MsgTag = MsgTag
+
+    @property
+    def MsgKey(self):
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def ProducerAddr(self):
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def PulsarMsgId(self):
+        return self._PulsarMsgId
+
+    @PulsarMsgId.setter
+    def PulsarMsgId(self, PulsarMsgId):
+        self._PulsarMsgId = PulsarMsgId
+
+    @property
+    def DeadLetterResendTimes(self):
+        return self._DeadLetterResendTimes
+
+    @DeadLetterResendTimes.setter
+    def DeadLetterResendTimes(self, DeadLetterResendTimes):
+        self._DeadLetterResendTimes = DeadLetterResendTimes
+
+    @property
+    def ResendSuccessCount(self):
+        return self._ResendSuccessCount
+
+    @ResendSuccessCount.setter
+    def ResendSuccessCount(self, ResendSuccessCount):
+        self._ResendSuccessCount = ResendSuccessCount
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._MsgTag = params.get("MsgTag")
+        self._MsgKey = params.get("MsgKey")
+        self._ProducerAddr = params.get("ProducerAddr")
+        self._ProduceTime = params.get("ProduceTime")
+        self._PulsarMsgId = params.get("PulsarMsgId")
+        self._DeadLetterResendTimes = params.get("DeadLetterResendTimes")
+        self._ResendSuccessCount = params.get("ResendSuccessCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQNamespace(AbstractModel):
     """RocketMQ命名空间信息
 
@@ -20018,6 +20559,51 @@ class TopicRecord(AbstractModel):
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
         self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TraceResult(AbstractModel):
+    """消息轨迹结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 阶段
+        :type Stage: str
+        :param _Data: 内容详情
+        :type Data: str
+        """
+        self._Stage = None
+        self._Data = None
+
+    @property
+    def Stage(self):
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

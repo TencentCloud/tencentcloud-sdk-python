@@ -12673,7 +12673,7 @@ class WhoisInfo(AbstractModel):
         :param _IsQcloud: 是否是在腾讯云注册的域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsQcloud: bool
-        :param _IsQcloudOwner: 是否当前操作帐号注册的域名
+        :param _IsQcloudOwner: 是否当前操作账号注册的域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsQcloudOwner: bool
         :param _NameServers: 域名配置的NS

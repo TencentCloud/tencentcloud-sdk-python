@@ -2859,7 +2859,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type ReadOnlyGroupMinInGroup: int
         :param _InstanceChargeType: 付费模式，取值支持 PREPAID（预付费），POSTPAID（后付费）。
         :type InstanceChargeType: str
-        :param _GoodsNum: 本次购买几个只读实例，默认值为2。
+        :param _GoodsNum: 本次即将购买的实例数量，默认取值2。
         :type GoodsNum: int
         :param _SubnetId: VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
         :type SubnetId: str
@@ -5474,7 +5474,7 @@ class DBTDEEncrypt(AbstractModel):
         r"""
         :param _DBName: 数据库名称
         :type DBName: str
-        :param _Encryption: enable-开启加密，disable-关闭加密
+        :param _Encryption: enable-开启数据库TDE加密，disable-关闭数据库TDE加密
         :type Encryption: str
         """
         self._DBName = None
@@ -12276,7 +12276,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type DBVersion: str
         :param _Cpu: 预购买实例的CPU核心数
         :type Cpu: int
-        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-新版高可用,cvmRO-新版只读
+        :param _InstanceType: 购买实例的类型 HA-高可用型(包括双机高可用，alwaysOn集群)，RO-只读副本型，SI-单节点型,cvmHA-虚拟机双机高可用,cvmRO-虚拟机只读
         :type InstanceType: str
         :param _MachineType: 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘,
 CLOUD_HSSD-虚拟机加强型SSD云盘，CLOUD_TSSD-虚拟机极速型SSD云盘，CLOUD_BSSD-虚拟机通用型SSD云盘

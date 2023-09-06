@@ -3939,6 +3939,8 @@ class CreateSubnetRequest(AbstractModel):
         :type EcmRegion: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param _IPv6CidrBlock: IPv6 CIDR
+        :type IPv6CidrBlock: str
         """
         self._VpcId = None
         self._SubnetName = None
@@ -3946,6 +3948,7 @@ class CreateSubnetRequest(AbstractModel):
         self._Zone = None
         self._EcmRegion = None
         self._Tags = None
+        self._IPv6CidrBlock = None
 
     @property
     def VpcId(self):
@@ -3995,6 +3998,14 @@ class CreateSubnetRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IPv6CidrBlock(self):
+        return self._IPv6CidrBlock
+
+    @IPv6CidrBlock.setter
+    def IPv6CidrBlock(self, IPv6CidrBlock):
+        self._IPv6CidrBlock = IPv6CidrBlock
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -4008,6 +4019,7 @@ class CreateSubnetRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IPv6CidrBlock = params.get("IPv6CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

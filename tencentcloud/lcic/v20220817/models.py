@@ -1677,6 +1677,8 @@ video 纯视频
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
         :type RoomType: int
+        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        :type EndDelayTime: int
         """
         self._Name = None
         self._StartTime = None
@@ -1700,6 +1702,7 @@ video 纯视频
         self._VideoOrientation = None
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
+        self._EndDelayTime = None
 
     @property
     def Name(self):
@@ -1877,6 +1880,14 @@ video 纯视频
     def RoomType(self, RoomType):
         self._RoomType = RoomType
 
+    @property
+    def EndDelayTime(self):
+        return self._EndDelayTime
+
+    @EndDelayTime.setter
+    def EndDelayTime(self, EndDelayTime):
+        self._EndDelayTime = EndDelayTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1901,6 +1912,7 @@ video 纯视频
         self._VideoOrientation = params.get("VideoOrientation")
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
+        self._EndDelayTime = params.get("EndDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4101,6 +4113,8 @@ video 纯视频
         :type RoomType: int
         :param _VideoDuration: 录制时长
         :type VideoDuration: int
+        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        :type EndDelayTime: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4126,6 +4140,7 @@ video 纯视频
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
         self._VideoDuration = None
+        self._EndDelayTime = None
         self._RequestId = None
 
     @property
@@ -4305,6 +4320,14 @@ video 纯视频
         self._VideoDuration = VideoDuration
 
     @property
+    def EndDelayTime(self):
+        return self._EndDelayTime
+
+    @EndDelayTime.setter
+    def EndDelayTime(self, EndDelayTime):
+        self._EndDelayTime = EndDelayTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4336,6 +4359,7 @@ video 纯视频
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
         self._VideoDuration = params.get("VideoDuration")
+        self._EndDelayTime = params.get("EndDelayTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -4947,6 +4971,9 @@ class DocumentInfo(AbstractModel):
         :param _Cover: 封面，仅转码的课件会生成封面
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cover: str
+        :param _Preview: 课件预览地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Preview: str
         """
         self._DocumentId = None
         self._DocumentUrl = None
@@ -4966,6 +4993,7 @@ class DocumentInfo(AbstractModel):
         self._Width = None
         self._Height = None
         self._Cover = None
+        self._Preview = None
 
     @property
     def DocumentId(self):
@@ -5111,6 +5139,14 @@ class DocumentInfo(AbstractModel):
     def Cover(self, Cover):
         self._Cover = Cover
 
+    @property
+    def Preview(self):
+        return self._Preview
+
+    @Preview.setter
+    def Preview(self, Preview):
+        self._Preview = Preview
+
 
     def _deserialize(self, params):
         self._DocumentId = params.get("DocumentId")
@@ -5131,6 +5167,7 @@ class DocumentInfo(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Cover = params.get("Cover")
+        self._Preview = params.get("Preview")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6968,6 +7005,8 @@ video 纯视频
         :type RoomType: int
         :param _RecordLayout: 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
+        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        :type EndDelayTime: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -6989,6 +7028,7 @@ video 纯视频
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
         self._RecordLayout = None
+        self._EndDelayTime = None
 
     @property
     def RoomId(self):
@@ -7150,6 +7190,14 @@ video 纯视频
     def RecordLayout(self, RecordLayout):
         self._RecordLayout = RecordLayout
 
+    @property
+    def EndDelayTime(self):
+        return self._EndDelayTime
+
+    @EndDelayTime.setter
+    def EndDelayTime(self, EndDelayTime):
+        self._EndDelayTime = EndDelayTime
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -7172,6 +7220,7 @@ video 纯视频
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
         self._RecordLayout = params.get("RecordLayout")
+        self._EndDelayTime = params.get("EndDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7543,6 +7592,8 @@ class RoomInfo(AbstractModel):
         :type IsGradingRequiredPostClass: int
         :param _RoomType: 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
         :type RoomType: int
+        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+        :type EndDelayTime: int
         """
         self._Name = None
         self._StartTime = None
@@ -7565,6 +7616,7 @@ class RoomInfo(AbstractModel):
         self._VideoOrientation = None
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
+        self._EndDelayTime = None
 
     @property
     def Name(self):
@@ -7734,6 +7786,14 @@ class RoomInfo(AbstractModel):
     def RoomType(self, RoomType):
         self._RoomType = RoomType
 
+    @property
+    def EndDelayTime(self):
+        return self._EndDelayTime
+
+    @EndDelayTime.setter
+    def EndDelayTime(self, EndDelayTime):
+        self._EndDelayTime = EndDelayTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7757,6 +7817,7 @@ class RoomInfo(AbstractModel):
         self._VideoOrientation = params.get("VideoOrientation")
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
+        self._EndDelayTime = params.get("EndDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7827,6 +7888,9 @@ class RoomItem(AbstractModel):
         :param _RoomType: 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomType: int
+        :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndDelayTime: int
         """
         self._Name = None
         self._RoomId = None
@@ -7845,6 +7909,7 @@ class RoomItem(AbstractModel):
         self._VideoOrientation = None
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
+        self._EndDelayTime = None
 
     @property
     def Name(self):
@@ -7982,6 +8047,14 @@ class RoomItem(AbstractModel):
     def RoomType(self, RoomType):
         self._RoomType = RoomType
 
+    @property
+    def EndDelayTime(self):
+        return self._EndDelayTime
+
+    @EndDelayTime.setter
+    def EndDelayTime(self, EndDelayTime):
+        self._EndDelayTime = EndDelayTime
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8001,6 +8074,7 @@ class RoomItem(AbstractModel):
         self._VideoOrientation = params.get("VideoOrientation")
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
+        self._EndDelayTime = params.get("EndDelayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

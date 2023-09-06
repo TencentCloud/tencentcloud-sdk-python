@@ -1590,6 +1590,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQMsgTrace(self, request):
+        """查询消息轨迹
+
+        :param request: Request instance for DescribeRocketMQMsgTrace.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgTraceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgTraceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQMsgTrace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQMsgTraceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQNamespaces(self, request):
         """获取RocketMQ命名空间列表
 
@@ -1604,6 +1627,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRocketMQNamespaces", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRocketMQNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRocketMQTopicMsgs(self, request):
+        """rocketmq 消息查询
+
+        :param request: Request instance for DescribeRocketMQTopicMsgs.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicMsgsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQTopicMsgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQTopicMsgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQTopicMsgsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
