@@ -907,8 +907,8 @@ class CbsClient(AbstractClient):
     def ModifySnapshotAttribute(self, request):
         """本接口（ModifySnapshotAttribute）用于修改指定快照的属性。
 
-        * 当前仅支持修改快照名称及将非永久快照修改为永久快照。
-        * “快照名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
+        * 本接口支持修改快照名称及到期时间，以及将非永久快照修改为永久快照。
+        * “快照名称”仅为方便用户管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
 
         :param request: Request instance for ModifySnapshotAttribute.
         :type request: :class:`tencentcloud.cbs.v20170312.models.ModifySnapshotAttributeRequest`

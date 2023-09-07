@@ -1003,13 +1003,16 @@ class CancelFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 签署流程id
+        :param _FlowId: 合同流程ID, 为32位字符串。
+建议开发者保存此流程ID方便后续其他操作。
         :type FlowId: str
-        :param _CancelMessage: 撤销原因，最长200个字符；
+        :param _CancelMessage: 撤销此合同(流程)的原因，最长200个字。
         :type CancelMessage: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -1101,11 +1104,13 @@ class CancelMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _QrCodeId: 二维码id
+        :param _QrCodeId: 二维码ID，为32位字符串。
         :type QrCodeId: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -1187,17 +1192,25 @@ class CancelUserAutoSignEnableUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息，UseId必填	
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :param _SceneKey: 企业开通用户自动签场景，例如电子处方。
+<ul>
+<li>E_PRESCRIPTION_AUTO_SIGN : 电子处方</li>
+</ul>
         :type SceneKey: str
         :param _UserInfo: 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
 
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
         self._SceneKey = None
         self._UserInfo = None
+        self._Agent = None
 
     @property
     def Operator(self):
@@ -1223,6 +1236,14 @@ class CancelUserAutoSignEnableUrlRequest(AbstractModel):
     def UserInfo(self, UserInfo):
         self._UserInfo = UserInfo
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -1232,6 +1253,9 @@ class CancelUserAutoSignEnableUrlRequest(AbstractModel):
         if params.get("UserInfo") is not None:
             self._UserInfo = UserThreeFactor()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4196,19 +4220,25 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程编号
+        :param _FlowId: 合同流程ID，为32位字符串。
+建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :type FlowId: str
-        :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。
+        :param _FlowApproverInfos: 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，
 
-签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+注:
+`1. ApproverType目前只支持个人类型的签署人。`
+`2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
         :type FlowApproverInfos: list of FlowCreateApprover
-        :param _Operator: 用户信息，此结构体UserId必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Organization: 机构信息，暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
-        :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+        :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
         :type JumpUrl: str
         """
         self._FlowId = None
@@ -5987,27 +6017,37 @@ class CreateReleaseFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _NeedRelievedFlowId: 待解除的签署流程编号（即原签署流程的编号）
+        :param _NeedRelievedFlowId: 待解除的签署流程编号（即原签署流程的编号）。
         :type NeedRelievedFlowId: str
-        :param _ReliveInfo: 解除协议内容
+        :param _ReliveInfo: 解除协议内容。
         :type ReliveInfo: :class:`tencentcloud.ess.v20201111.models.RelieveInfo`
-        :param _ReleasedApprovers: 非必须，解除协议的本企业签署人列表，
-默认使用原流程的签署人列表,当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业其他已实名员工来替换原流程中的原签署人，注意需要指明原签署人的编号(ReceiptId,通过DescribeFlowInfo接口获取)来代表需要替换哪一个签署人
-解除协议的签署人数量不能多于原流程的签署人数量
-        :type ReleasedApprovers: list of ReleasedApprover
-        :param _Deadline: 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
-        :type Deadline: int
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ReleasedApprovers: 解除协议的签署人列表(如不指定该参数，默认使用原流程的签署人列表)。 <br/>
+如需更换原合同中的签署人，可通过指定该签署人的RecipientId编号更换此签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+解除协议的签署人数量不能多于原流程的签署人数量。<br/>
+
+`注意：只能更换同企业的签署人。`<br/>
+`注意：不支持更换个人类型的签署人。`<br/>
+        :type ReleasedApprovers: list of ReleasedApprover
+        :param _Deadline: 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
+如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+        :type Deadline: int
+        :param _UserData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
+回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :type UserData: str
         """
         self._Operator = None
         self._NeedRelievedFlowId = None
         self._ReliveInfo = None
+        self._Agent = None
         self._ReleasedApprovers = None
         self._Deadline = None
-        self._Agent = None
+        self._UserData = None
 
     @property
     def Operator(self):
@@ -6034,6 +6074,14 @@ class CreateReleaseFlowRequest(AbstractModel):
         self._ReliveInfo = ReliveInfo
 
     @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
     def ReleasedApprovers(self):
         return self._ReleasedApprovers
 
@@ -6050,12 +6098,12 @@ class CreateReleaseFlowRequest(AbstractModel):
         self._Deadline = Deadline
 
     @property
-    def Agent(self):
-        return self._Agent
+    def UserData(self):
+        return self._UserData
 
-    @Agent.setter
-    def Agent(self, Agent):
-        self._Agent = Agent
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
 
 
     def _deserialize(self, params):
@@ -6066,6 +6114,9 @@ class CreateReleaseFlowRequest(AbstractModel):
         if params.get("ReliveInfo") is not None:
             self._ReliveInfo = RelieveInfo()
             self._ReliveInfo._deserialize(params.get("ReliveInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         if params.get("ReleasedApprovers") is not None:
             self._ReleasedApprovers = []
             for item in params.get("ReleasedApprovers"):
@@ -6073,9 +6124,7 @@ class CreateReleaseFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ReleasedApprovers.append(obj)
         self._Deadline = params.get("Deadline")
-        if params.get("Agent") is not None:
-            self._Agent = Agent()
-            self._Agent._deserialize(params.get("Agent"))
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6094,6 +6143,7 @@ class CreateReleaseFlowResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 解除协议流程编号
+`注意：这里的流程编号对应的合同是本次发起的解除协议。`
 
         :type FlowId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8239,12 +8289,13 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ReportId: 出证报告编号
+        :param _ReportId: 签署报告编号
         :type ReportId: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
-
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -8304,11 +8355,12 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
         :param _ReportUrl: 出证报告PDF的下载 URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param _Status: 出证任务执行的状态, 分布表示下面的含义
-
-EvidenceStatusExecuting  出证任务在执行中
-EvidenceStatusSuccess  出证任务执行成功
-EvidenceStatusFailed  出证任务执行失败
+        :param _Status: 签署报告出证任务的状态
+<ul>
+<li>EvidenceStatusExecuting : 出证任务在执行中</li>
+<li>EvidenceStatusSuccess : 出证任务执行成功</li>
+<li>EvidenceStatusFailed : 出证任务执行失败</li>
+</ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11007,10 +11059,14 @@ class FlowApproverUrlInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignUrl: 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param _SignUrl: 签署链接(短链形式呈现)。请注意保密，不要将其外泄给无关用户。
+注: `注意该链接有效期为30分钟`
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignUrl: str
-        :param _ApproverType: 签署人类型 1-个人
+        :param _ApproverType: 签署参与人类型 
+<ul><li> **1** :个人参与方</li></ul>
+
+注: `现在仅支持个人参与方`
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: int
         :param _ApproverName: 签署人姓名
@@ -11019,7 +11075,8 @@ class FlowApproverUrlInfo(AbstractModel):
         :param _ApproverMobile: 签署人手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
-        :param _LongUrl: 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+        :param _LongUrl: 签署链接(长链形式呈现)。请注意保密，不要将其外泄给无关用户。
+注: `注意该链接有效期为30分钟`
 注意：此字段可能返回 null，表示取不到有效值。
         :type LongUrl: str
         """
@@ -16286,14 +16343,18 @@ class UserThreeFactor(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 姓名
+        :param _Name: 签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
         :type Name: str
-        :param _IdCardType: 证件类型: 
-ID_CARD 身份证
-HONGKONG_AND_MACAO 港澳居民来往内地通行证
-HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+        :param _IdCardType: 证件类型，支持以下类型
+<ul><li>ID_CARD : 居民身份证 (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
         :type IdCardType: str
-        :param _IdCardNumber: 证件号，如果有 X 请大写
+        :param _IdCardNumber: 证件号码，应符合以下规则
+<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         """
         self._Name = None

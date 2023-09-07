@@ -353,14 +353,17 @@ class BindStaffSkillGroupListRequest(AbstractModel):
         r"""
         :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
         :type SdkAppId: int
-        :param _StaffEmail: 坐席邮箱
+        :param _StaffEmail: 座席邮箱
         :type StaffEmail: str
         :param _SkillGroupList: 绑定技能组列表
         :type SkillGroupList: list of int
+        :param _StaffSkillGroupList: 绑定技能组列表(必填)
+        :type StaffSkillGroupList: list of StaffSkillGroupList
         """
         self._SdkAppId = None
         self._StaffEmail = None
         self._SkillGroupList = None
+        self._StaffSkillGroupList = None
 
     @property
     def SdkAppId(self):
@@ -380,17 +383,35 @@ class BindStaffSkillGroupListRequest(AbstractModel):
 
     @property
     def SkillGroupList(self):
+        warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
+
         return self._SkillGroupList
 
     @SkillGroupList.setter
     def SkillGroupList(self, SkillGroupList):
+        warnings.warn("parameter `SkillGroupList` is deprecated", DeprecationWarning) 
+
         self._SkillGroupList = SkillGroupList
+
+    @property
+    def StaffSkillGroupList(self):
+        return self._StaffSkillGroupList
+
+    @StaffSkillGroupList.setter
+    def StaffSkillGroupList(self, StaffSkillGroupList):
+        self._StaffSkillGroupList = StaffSkillGroupList
 
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._StaffEmail = params.get("StaffEmail")
         self._SkillGroupList = params.get("SkillGroupList")
+        if params.get("StaffSkillGroupList") is not None:
+            self._StaffSkillGroupList = []
+            for item in params.get("StaffSkillGroupList"):
+                obj = StaffSkillGroupList()
+                obj._deserialize(item)
+                self._StaffSkillGroupList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7272,6 +7293,51 @@ class StaffInfo(AbstractModel):
                 obj._deserialize(item)
                 self._SkillGroupList.append(obj)
         self._LastModifyTimestamp = params.get("LastModifyTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaffSkillGroupList(AbstractModel):
+    """座席绑定技能组列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillGroupId: 技能组ID
+        :type SkillGroupId: int
+        :param _Priority: 座席在技能组中的优先级（1为最高，5最低，默认3）
+        :type Priority: int
+        """
+        self._SkillGroupId = None
+        self._Priority = None
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._SkillGroupId = params.get("SkillGroupId")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

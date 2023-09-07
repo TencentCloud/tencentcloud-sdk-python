@@ -9994,6 +9994,9 @@ class Organ(AbstractModel):
         :param _Coords: 器官在报告图片中的坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
+        :param _IsthmusThickness: 峡部厚度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsthmusThickness: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         self._Part = None
         self._Size = None
@@ -10032,6 +10035,7 @@ class Organ(AbstractModel):
         self._Trend = None
         self._Operation = None
         self._Coords = None
+        self._IsthmusThickness = None
 
     @property
     def Part(self):
@@ -10179,10 +10183,14 @@ class Organ(AbstractModel):
 
     @property
     def IsthmusThicknese(self):
+        warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
+
         return self._IsthmusThicknese
 
     @IsthmusThicknese.setter
     def IsthmusThicknese(self, IsthmusThicknese):
+        warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
+
         self._IsthmusThicknese = IsthmusThicknese
 
     @property
@@ -10329,6 +10337,14 @@ class Organ(AbstractModel):
     def Coords(self, Coords):
         self._Coords = Coords
 
+    @property
+    def IsthmusThickness(self):
+        return self._IsthmusThickness
+
+    @IsthmusThickness.setter
+    def IsthmusThickness(self, IsthmusThickness):
+        self._IsthmusThickness = IsthmusThickness
+
 
     def _deserialize(self, params):
         if params.get("Part") is not None:
@@ -10444,6 +10460,9 @@ class Organ(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self._Coords.append(obj)
+        if params.get("IsthmusThickness") is not None:
+            self._IsthmusThickness = Size()
+            self._IsthmusThickness._deserialize(params.get("IsthmusThickness"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10870,6 +10889,9 @@ class ParagraphBlock(AbstractModel):
         :param _TreatmentResultText: 治疗结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TreatmentResultText: str
+        :param _MenstrualHistoryText: 月经史
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MenstrualHistoryText: str
         """
         self._IncisionHealingText = None
         self._AuxiliaryExaminationText = None
@@ -10898,6 +10920,7 @@ class ParagraphBlock(AbstractModel):
         self._BodyExaminationText = None
         self._SpecialistExaminationText = None
         self._TreatmentResultText = None
+        self._MenstrualHistoryText = None
 
     @property
     def IncisionHealingText(self):
@@ -11045,10 +11068,14 @@ class ParagraphBlock(AbstractModel):
 
     @property
     def MenstruallHistoryText(self):
+        warnings.warn("parameter `MenstruallHistoryText` is deprecated", DeprecationWarning) 
+
         return self._MenstruallHistoryText
 
     @MenstruallHistoryText.setter
     def MenstruallHistoryText(self, MenstruallHistoryText):
+        warnings.warn("parameter `MenstruallHistoryText` is deprecated", DeprecationWarning) 
+
         self._MenstruallHistoryText = MenstruallHistoryText
 
     @property
@@ -11115,6 +11142,14 @@ class ParagraphBlock(AbstractModel):
     def TreatmentResultText(self, TreatmentResultText):
         self._TreatmentResultText = TreatmentResultText
 
+    @property
+    def MenstrualHistoryText(self):
+        return self._MenstrualHistoryText
+
+    @MenstrualHistoryText.setter
+    def MenstrualHistoryText(self, MenstrualHistoryText):
+        self._MenstrualHistoryText = MenstrualHistoryText
+
 
     def _deserialize(self, params):
         self._IncisionHealingText = params.get("IncisionHealingText")
@@ -11144,6 +11179,7 @@ class ParagraphBlock(AbstractModel):
         self._BodyExaminationText = params.get("BodyExaminationText")
         self._SpecialistExaminationText = params.get("SpecialistExaminationText")
         self._TreatmentResultText = params.get("TreatmentResultText")
+        self._MenstrualHistoryText = params.get("MenstrualHistoryText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13308,6 +13344,9 @@ class ReportInfo(AbstractModel):
         :param _Times: 未归类时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Times: list of Time
+        :param _BedNo: 床号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BedNo: str
         """
         self._Hospital = None
         self._DepartmentName = None
@@ -13334,6 +13373,7 @@ class ReportInfo(AbstractModel):
         self._OtherTime = None
         self._PrintTime = None
         self._Times = None
+        self._BedNo = None
 
     @property
     def Hospital(self):
@@ -13535,6 +13575,14 @@ class ReportInfo(AbstractModel):
     def Times(self, Times):
         self._Times = Times
 
+    @property
+    def BedNo(self):
+        return self._BedNo
+
+    @BedNo.setter
+    def BedNo(self, BedNo):
+        self._BedNo = BedNo
+
 
     def _deserialize(self, params):
         self._Hospital = params.get("Hospital")
@@ -13567,6 +13615,7 @@ class ReportInfo(AbstractModel):
                 obj = Time()
                 obj._deserialize(item)
                 self._Times.append(obj)
+        self._BedNo = params.get("BedNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16914,6 +16963,9 @@ class TuberInfo(AbstractModel):
         :param _Coords: 在报告图片中的坐标
 注意：此字段可能返回 null，表示取不到有效值。
         :type Coords: list of Coord
+        :param _IsthmusThickness: 峡部厚度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsthmusThickness: :class:`tencentcloud.mrs.v20200910.models.Size`
         """
         self._Type = None
         self._Part = None
@@ -16960,6 +17012,7 @@ class TuberInfo(AbstractModel):
         self._SymDesc = None
         self._ImageFeature = None
         self._Coords = None
+        self._IsthmusThickness = None
 
     @property
     def Type(self):
@@ -17211,10 +17264,14 @@ class TuberInfo(AbstractModel):
 
     @property
     def IsthmusThicknese(self):
+        warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
+
         return self._IsthmusThicknese
 
     @IsthmusThicknese.setter
     def IsthmusThicknese(self, IsthmusThicknese):
+        warnings.warn("parameter `IsthmusThicknese` is deprecated", DeprecationWarning) 
+
         self._IsthmusThicknese = IsthmusThicknese
 
     @property
@@ -17320,6 +17377,14 @@ class TuberInfo(AbstractModel):
     @Coords.setter
     def Coords(self, Coords):
         self._Coords = Coords
+
+    @property
+    def IsthmusThickness(self):
+        return self._IsthmusThickness
+
+    @IsthmusThickness.setter
+    def IsthmusThickness(self, IsthmusThickness):
+        self._IsthmusThickness = IsthmusThickness
 
 
     def _deserialize(self, params):
@@ -17463,6 +17528,9 @@ class TuberInfo(AbstractModel):
                 obj = Coord()
                 obj._deserialize(item)
                 self._Coords.append(obj)
+        if params.get("IsthmusThickness") is not None:
+            self._IsthmusThickness = Size()
+            self._IsthmusThickness._deserialize(params.get("IsthmusThickness"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

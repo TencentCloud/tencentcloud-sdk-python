@@ -1551,6 +1551,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FreshAntiFakeUrl(self, request):
+        """刷新防篡改url
+
+        :param request: Request instance for FreshAntiFakeUrl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.FreshAntiFakeUrlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.FreshAntiFakeUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FreshAntiFakeUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.FreshAntiFakeUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAttackDownloadRecords(self, request):
         """查询下载攻击日志任务记录列表
 

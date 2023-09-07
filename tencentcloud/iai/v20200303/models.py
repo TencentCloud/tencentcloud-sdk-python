@@ -369,7 +369,7 @@ class AttributeItem(AbstractModel):
         r"""
         :param _Type: 属性值
         :type Type: int
-        :param _Probability: Type识别概率值，【0,1】,代表判断正确的概率。
+        :param _Probability: Type识别概率值,[0,1],代表判断正确的概率。
         :type Probability: float
         """
         self._Type = None
@@ -557,10 +557,10 @@ B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
         :type FaceModelVersion: str
         :param _QualityControl: 图片质量控制。 
 0: 不进行控制； 
-1:较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
+1: 较低的质量要求，图像存在非常模糊，眼睛鼻子嘴巴遮挡至少其中一种或多种的情况； 
 2: 一般的质量要求，图像存在偏亮，偏暗，模糊或一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，至少其中三种的情况； 
 3: 较高的质量要求，图像存在偏亮，偏暗，一般模糊，眉毛遮挡，脸颊遮挡，下巴遮挡，其中一到两种的情况； 
-4: 很高的质量要求，各个维度均为最好或最多在某一维度上存在轻微问题； 
+4: 很高的质量要求，各个维度均为最好或最多，在某一维度上存在轻微问题； 
 默认 0。 
 若图片质量不满足要求，则返回结果中会提示图片质量检测不符要求。
         :type QualityControl: int
@@ -1208,13 +1208,9 @@ class CreateGroupRequest(AbstractModel):
         :param _Tag: 人员库信息备注，[0，40]个字符。
         :type Tag: str
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
-
 目前入参支持 “2.0”和“3.0“ 两个输入。
-
 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-
 2020年11月26日后开通服务的账号仅支持输入“3.0”。
-
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
         """
