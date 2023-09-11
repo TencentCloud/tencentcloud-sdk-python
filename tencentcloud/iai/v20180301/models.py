@@ -2300,13 +2300,9 @@ class DetectFaceResponse(AbstractModel):
         :param _FaceInfos: 人脸信息列表。包含人脸坐标信息、属性信息（若需要）、质量分信息（若需要）。
         :type FaceInfos: list of FaceInfo
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
-
 目前入参支持 “2.0”和“3.0“ 两个输入。
-
 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-
 2020年11月26日后开通服务的账号仅支持输入“3.0”。
-
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2665,7 +2661,7 @@ class FaceAttributesInfo(AbstractModel):
         :type Gender: int
         :param _Age: 年龄 [0~100]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Age: int
-        :param _Expression: 微笑[0(normal，正常)~50(smile，微笑)~100(laugh，大笑)]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+        :param _Expression: 微笑[0(normal，正常))~100(laugh，大笑)]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Expression: int
         :param _Glass: 是否有眼镜 [true,false]。NeedFaceAttributes 不为1 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
         :type Glass: bool

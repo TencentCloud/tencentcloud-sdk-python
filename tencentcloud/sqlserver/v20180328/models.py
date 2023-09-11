@@ -9116,6 +9116,153 @@ class DescribeFlowStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHASwitchLogRequest(AbstractModel):
+    """DescribeHASwitchLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _StartTime: 开始时间(yyyy-MM-dd HH:mm:ss)
+        :type StartTime: str
+        :param _EndTime: 结束时间(yyyy-MM-dd HH:mm:ss)
+        :type EndTime: str
+        :param _SwitchType: 切换模式 0-系统自动切换，1-手动切换，不填默认查全部。
+        :type SwitchType: int
+        :param _Limit: 分页，页大小
+        :type Limit: int
+        :param _Offset: 分页,页数
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SwitchType = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SwitchType(self):
+        return self._SwitchType
+
+    @SwitchType.setter
+    def SwitchType(self, SwitchType):
+        self._SwitchType = SwitchType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SwitchType = params.get("SwitchType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHASwitchLogResponse(AbstractModel):
+    """DescribeHASwitchLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 日志总数量
+        :type TotalCount: int
+        :param _SwitchLog: 主备切换日志
+        :type SwitchLog: list of SwitchLog
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SwitchLog = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SwitchLog(self):
+        return self._SwitchLog
+
+    @SwitchLog.setter
+    def SwitchLog(self, SwitchLog):
+        self._SwitchLog = SwitchLog
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SwitchLog") is not None:
+            self._SwitchLog = []
+            for item in params.get("SwitchLog"):
+                obj = SwitchLog()
+                obj._deserialize(item)
+                self._SwitchLog.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIncrementalMigrationRequest(AbstractModel):
     """DescribeIncrementalMigration请求参数结构体
 
@@ -19451,6 +19598,174 @@ class StopMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class SwitchCloudInstanceHARequest(AbstractModel):
+    """SwitchCloudInstanceHA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _WaitSwitch: 切换执行方式，0-立刻执行，1-时间窗内执行，默认取值为0。
+        :type WaitSwitch: int
+        """
+        self._InstanceId = None
+        self._WaitSwitch = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def WaitSwitch(self):
+        return self._WaitSwitch
+
+    @WaitSwitch.setter
+    def WaitSwitch(self, WaitSwitch):
+        self._WaitSwitch = WaitSwitch
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._WaitSwitch = params.get("WaitSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchCloudInstanceHAResponse(AbstractModel):
+    """SwitchCloudInstanceHA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class SwitchLog(AbstractModel):
+    """主备切换日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 切换事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param _SwitchType: 切换模式 0-系统自动切换，1-手动切换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchType: int
+        :param _StartTime: 切换开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 切换结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Reason: 机器故障导致自动切换
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self._EventId = None
+        self._SwitchType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Reason = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def SwitchType(self):
+        return self._SwitchType
+
+    @SwitchType.setter
+    def SwitchType(self, SwitchType):
+        self._SwitchType = SwitchType
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._SwitchType = params.get("SwitchType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TDEConfigAttribute(AbstractModel):

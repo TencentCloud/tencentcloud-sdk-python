@@ -187,6 +187,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackUpTables(self, request):
+        """获取可备份表信息
+
+        :param request: Request instance for DescribeBackUpTables.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpTablesRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeBackUpTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackUpTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackUpTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCkSqlApis(self, request):
         """查询集群用户、集群表，数据库等相关信息
 

@@ -1,133 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 55 次发布
+### 第 44 次发布
 
-发布时间：2023-09-07 01:15:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
-
-	* 新增入参：StaffSkillGroupList
-
-	* <font color="#dd0000">**修改入参**：</font>SkillGroupList
-
-
-新增数据结构：
-
-* [StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 112 次发布
-
-发布时间：2023-09-07 01:48:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CancelUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/93320)
-
-	* 新增入参：Agent
-
-* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
-
-	* 新增入参：UserData
-
-
-修改数据结构：
-
-* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>SignUrl, ApproverType, ApproverName, ApproverMobile, LongUrl
-
-
-
-
-## 医疗报告结构化(mrs) 版本：2020-09-10
-
-### 第 16 次发布
-
-发布时间：2023-09-07 02:12:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
-
-	* 新增成员：IsthmusThickness
-
-	* <font color="#dd0000">**修改成员**：</font>Part, Size, Envelope, Edge, InnerEcho, Gland, Shape, Thickness, ShapeAttr, CDFI, SymDesc, SizeStatus, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, InnerEchoDistribution, Src, Index, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, LymphEnlargement, ImageFeature, Duct, Trend, Operation, Coords
-
-* [ParagraphBlock](https://cloud.tencent.com/document/api/1314/56230#ParagraphBlock)
-
-	* 新增成员：MenstrualHistoryText
-
-	* <font color="#dd0000">**修改成员**：</font>IncisionHealingText, AuxiliaryExaminationText, SpecialExamText, OutpatientDiagnosisText, AdmissionConditionText, CheckAndTreatmentProcessText, SymptomsAndSignsText, DischargeInstructionsText, AdmissionDiagnosisText, SurgeryConditionText, PathologicalDiagnosisText, DischargeConditionText, CheckRecordText, ChiefComplaintText, DischargeDiagnosisText, MainDiseaseHistoryText, DiseasePresentText, PersonalHistoryText, MenstruallHistoryText, ObstericalHistoryText, FamilyHistoryText, AllergyHistoryText, DiseaseHistoryText, OtherDiagnosisText, BodyExaminationText, SpecialistExaminationText, TreatmentResultText
-
-* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
-
-	* 新增成员：BedNo
-
-* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
-
-	* 新增成员：IsthmusThickness
-
-	* <font color="#dd0000">**修改成员**：</font>Type, Part, Size, Multiple, AspectRatio, Edge, InnerEcho, RearEcho, Elastic, Shape, ShapeAttr, SkinMedulla, Trend, Calcification, Envelope, Enhancement, LymphEnlargement, LymphDoor, Activity, Operation, CDFI, Index, SizeStatus, InnerEchoDistribution, InnerEchoType, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, Src, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, SymDesc, ImageFeature, Coords
-
-
-
-
-## 高性能计算平台(thpc) 版本：2023-03-21
-
-### 第 10 次发布
-
-发布时间：2023-09-07 02:37:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
-
-	* 新增成员：ScaleUpMemRatio
-
-* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
-
-	* 新增成员：ScaleUpMemRatio
-
-
-
-
-## 高性能计算平台(thpc) 版本：2022-04-01
-
-
-
-## 高性能计算平台(thpc) 版本：2021-11-09
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 48 次发布
-
-发布时间：2023-09-07 02:51:23
+发布时间：2023-09-11 01:23:41
 
 本次发布包含了以下内容：
 
@@ -135,7 +12,59 @@
 
 新增接口：
 
-* [FreshAntiFakeUrl](https://cloud.tencent.com/document/api/627/97829)
+* [DescribeAddressTemplateList](https://cloud.tencent.com/document/api/1132/97918)
+* [DescribeAssetSync](https://cloud.tencent.com/document/api/1132/97917)
+* [DescribeFwSyncStatus](https://cloud.tencent.com/document/api/1132/97920)
+* [DescribeNatSwitchList](https://cloud.tencent.com/document/api/1132/97915)
+* [ModifyAddressTemplate](https://cloud.tencent.com/document/api/1132/97919)
+* [ModifyAssetSync](https://cloud.tencent.com/document/api/1132/97921)
+* [ModifyNatInstance](https://cloud.tencent.com/document/api/1132/97914)
+* [SyncFwOperate](https://cloud.tencent.com/document/api/1132/97916)
+
+新增数据结构：
+
+* [NatSwitchListData](https://cloud.tencent.com/document/api/1132/49071#NatSwitchListData)
+* [TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 50 次发布
+
+发布时间：2023-09-11 02:35:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHASwitchLog](https://cloud.tencent.com/document/api/238/97923)
+* [SwitchCloudInstanceHA](https://cloud.tencent.com/document/api/238/97922)
+
+新增数据结构：
+
+* [SwitchLog](https://cloud.tencent.com/document/api/238/19976#SwitchLog)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 61 次发布
+
+发布时间：2023-09-11 02:43:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Registry](https://cloud.tencent.com/document/api/1141/41603#Registry)
+
+	* 新增成员：DeletionProtection
+
 
 
 
@@ -13652,7 +13581,7 @@
 
 新增数据结构：
 
-* [[StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList)](https://cloud.tencent.com/document/api/679/47715#[StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList))
+* [StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList)
 
 ### 第 54 次发布
 
@@ -20393,6 +20322,18 @@
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
+### 第 17 次发布
+
+发布时间：2023-09-08 01:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackUpTables](https://cloud.tencent.com/document/api/1299/97836)
+
 ### 第 16 次发布
 
 发布时间：2023-09-05 02:01:53
@@ -21444,6 +21385,90 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 44 次发布
+
+发布时间：2023-09-11 01:23:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAddressTemplateList](https://cloud.tencent.com/document/api/1132/97918)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAssetSync](https://cloud.tencent.com/document/api/1132/97917)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFwSyncStatus](https://cloud.tencent.com/document/api/1132/97920)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNatSwitchList](https://cloud.tencent.com/document/api/1132/97915)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAddressTemplate](https://cloud.tencent.com/document/api/1132/97919)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAssetSync](https://cloud.tencent.com/document/api/1132/97921)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNatInstance](https://cloud.tencent.com/document/api/1132/97914)](https://cloud.tencent.com/document/api/#/#)
+* [[SyncFwOperate](https://cloud.tencent.com/document/api/1132/97916)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NatSwitchListData](https://cloud.tencent.com/document/api/1132/49071#NatSwitchListData)](https://cloud.tencent.com/document/api/1132/49071#[NatSwitchListData](https://cloud.tencent.com/document/api/1132/49071#NatSwitchListData))
+* [[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)](https://cloud.tencent.com/document/api/1132/49071#[TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo))
+
+### 第 43 次发布
+
+发布时间：2023-09-08 01:22:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAclRule](https://cloud.tencent.com/document/api/1132/97847)
+* [AddVpcAcRule](https://cloud.tencent.com/document/api/1132/97846)
+* [CreateVpcFwGroup](https://cloud.tencent.com/document/api/1132/97855)
+* [DeleteBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97856)
+* [DeleteVpcFwGroup](https://cloud.tencent.com/document/api/1132/97854)
+* [DescribeAclRule](https://cloud.tencent.com/document/api/1132/97845)
+* [DescribeFwEdgeIps](https://cloud.tencent.com/document/api/1132/97841)
+* [DescribeFwGroupInstanceInfo](https://cloud.tencent.com/document/api/1132/97853)
+* [DescribeVpcAcRule](https://cloud.tencent.com/document/api/1132/97844)
+* [DescribeVpcFwGroupSwitch](https://cloud.tencent.com/document/api/1132/97840)
+* [ModifyAclRule](https://cloud.tencent.com/document/api/1132/97843)
+* [ModifyBlockIgnoreRule](https://cloud.tencent.com/document/api/1132/97852)
+* [ModifyEdgeIpSwitch](https://cloud.tencent.com/document/api/1132/97839)
+* [ModifyFwGroupSwitch](https://cloud.tencent.com/document/api/1132/97851)
+* [ModifySequenceAclRules](https://cloud.tencent.com/document/api/1132/97850)
+* [ModifyVpcAcRule](https://cloud.tencent.com/document/api/1132/97842)
+* [ModifyVpcFwGroup](https://cloud.tencent.com/document/api/1132/97849)
+* [ModifyVpcFwSequenceRules](https://cloud.tencent.com/document/api/1132/97848)
+* [RemoveAclRule](https://cloud.tencent.com/document/api/1132/97838)
+* [RemoveVpcAcRule](https://cloud.tencent.com/document/api/1132/97837)
+
+修改接口：
+
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)
+
+	* 新增出参：Uuid
+
+* [CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)
+
+	* 新增出参：List
+
+
+新增数据结构：
+
+* [CreateRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateRuleItem)
+* [EdgeIpInfo](https://cloud.tencent.com/document/api/1132/49071#EdgeIpInfo)
+* [EdgeIpSwitch](https://cloud.tencent.com/document/api/1132/49071#EdgeIpSwitch)
+* [FwDeploy](https://cloud.tencent.com/document/api/1132/49071#FwDeploy)
+* [FwGateway](https://cloud.tencent.com/document/api/1132/49071#FwGateway)
+* [FwGroupSwitch](https://cloud.tencent.com/document/api/1132/49071#FwGroupSwitch)
+* [FwGroupSwitchShow](https://cloud.tencent.com/document/api/1132/49071#FwGroupSwitchShow)
+* [NetInstancesInfo](https://cloud.tencent.com/document/api/1132/49071#NetInstancesInfo)
+* [VpcFwCvmInsInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwCvmInsInfo)
+* [VpcFwGroupInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwGroupInfo)
+* [VpcFwInstance](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstance)
+* [VpcFwInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstanceInfo)
+* [VpcFwInstanceShow](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstanceShow)
+* [VpcFwJoinInstanceType](https://cloud.tencent.com/document/api/1132/49071#VpcFwJoinInstanceType)
+* [VpcRuleItem](https://cloud.tencent.com/document/api/1132/49071#VpcRuleItem)
 
 ### 第 42 次发布
 
@@ -47653,6 +47678,27 @@
 
 ## 事件总线(eb) 版本：2021-04-16
 
+### 第 12 次发布
+
+发布时间：2023-09-08 01:48:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetPlatformEventTemplate](https://cloud.tencent.com/document/api/1359/97863)
+* [ListPlatformEventNames](https://cloud.tencent.com/document/api/1359/97862)
+* [ListPlatformEventPatterns](https://cloud.tencent.com/document/api/1359/97861)
+* [ListPlatformProducts](https://cloud.tencent.com/document/api/1359/97860)
+
+新增数据结构：
+
+* [PlatformEventDetail](https://cloud.tencent.com/document/api/1359/67704#PlatformEventDetail)
+* [PlatformEventSummary](https://cloud.tencent.com/document/api/1359/67704#PlatformEventSummary)
+* [PlatformProduct](https://cloud.tencent.com/document/api/1359/67704#PlatformProduct)
+
 ### 第 11 次发布
 
 发布时间：2023-08-22 01:12:28
@@ -52619,6 +52665,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 113 次发布
+
+发布时间：2023-09-08 01:53:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoSignConfig](https://cloud.tencent.com/document/api/1323/70369#AutoSignConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>CallbackUrl
+
+
 ### 第 112 次发布
 
 发布时间：2023-09-07 01:48:58
@@ -56822,6 +56883,18 @@
 
 
 ## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 8 次发布
+
+发布时间：2023-09-08 01:55:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* FaceFusionLite
 
 ### 第 7 次发布
 
@@ -91085,6 +91158,23 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 50 次发布
+
+发布时间：2023-09-11 02:35:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeHASwitchLog](https://cloud.tencent.com/document/api/238/97923)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchCloudInstanceHA](https://cloud.tencent.com/document/api/238/97922)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SwitchLog](https://cloud.tencent.com/document/api/238/19976#SwitchLog)](https://cloud.tencent.com/document/api/238/19976#[SwitchLog](https://cloud.tencent.com/document/api/238/19976#SwitchLog))
+
 ### 第 49 次发布
 
 发布时间：2023-08-04 01:16:26
@@ -98914,6 +99004,21 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 61 次发布
+
+发布时间：2023-09-11 02:43:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Registry](https://cloud.tencent.com/document/api/1141/41603#Registry)
+
+	* 新增成员：DeletionProtection
+
 
 ### 第 60 次发布
 
@@ -115164,6 +115269,27 @@
 
 ## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
 
+### 第 2 次发布
+
+发布时间：2023-09-08 02:48:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)
+* [DeleteInstance](https://cloud.tencent.com/document/api/1493/97867)
+* [DescribeInstance](https://cloud.tencent.com/document/api/1493/97866)
+* [ModifyInstance](https://cloud.tencent.com/document/api/1493/97865)
+
+新增数据结构：
+
+* [Endpoint](https://cloud.tencent.com/document/api/1493/96031#Endpoint)
+* [IpRule](https://cloud.tencent.com/document/api/1493/96031#IpRule)
+* [VpcInfo](https://cloud.tencent.com/document/api/1493/96031#VpcInfo)
+
 ### 第 1 次发布
 
 发布时间：2023-08-07 10:45:38
@@ -129307,6 +129433,27 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 49 次发布
+
+发布时间：2023-09-08 03:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDomainVerifyResult](https://cloud.tencent.com/document/api/627/97869)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AddSpartaProtectionAuto
+* AddSpartaProtectionsAuto
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* FailedInfo
+
 ### 第 48 次发布
 
 发布时间：2023-09-07 02:51:23
@@ -129317,7 +129464,7 @@
 
 新增接口：
 
-* [[FreshAntiFakeUrl](https://cloud.tencent.com/document/api/627/97829)](https://cloud.tencent.com/document/api/#/#)
+* [FreshAntiFakeUrl](https://cloud.tencent.com/document/api/627/97829)
 
 ### 第 47 次发布
 

@@ -1038,6 +1038,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHASwitchLog(self, request):
+        """本接口(DescribeHASwitchLog)用于手动主备切换。
+
+        :param request: Request instance for DescribeHASwitchLog.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeHASwitchLogRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeHASwitchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHASwitchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHASwitchLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIncrementalMigration(self, request):
         """本接口（DescribeIncrementalMigration）用于查询增量备份导入任务。
 
@@ -2550,6 +2573,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("StopMigration", params, headers=headers)
             response = json.loads(body)
             model = models.StopMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchCloudInstanceHA(self, request):
+        """本接口(SwitchCloudInstanceHA)用于手动主备切换。
+
+        :param request: Request instance for SwitchCloudInstanceHA.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.SwitchCloudInstanceHARequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.SwitchCloudInstanceHAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchCloudInstanceHA", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchCloudInstanceHAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

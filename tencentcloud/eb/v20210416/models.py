@@ -2427,6 +2427,76 @@ class GetEventBusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetPlatformEventTemplateRequest(AbstractModel):
+    """GetPlatformEventTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: 平台产品事件类型
+        :type EventType: str
+        """
+        self._EventType = None
+
+    @property
+    def EventType(self):
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetPlatformEventTemplateResponse(AbstractModel):
+    """GetPlatformEventTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTemplate: 平台产品事件模板
+        :type EventTemplate: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventTemplate = None
+        self._RequestId = None
+
+    @property
+    def EventTemplate(self):
+        return self._EventTemplate
+
+    @EventTemplate.setter
+    def EventTemplate(self, EventTemplate):
+        self._EventTemplate = EventTemplate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EventTemplate = params.get("EventTemplate")
+        self._RequestId = params.get("RequestId")
+
+
 class GetRuleRequest(AbstractModel):
     """GetRule请求参数结构体
 
@@ -2979,6 +3049,204 @@ class ListEventBusesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListPlatformEventNamesRequest(AbstractModel):
+    """ListPlatformEventNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductType: 平台产品类型
+        :type ProductType: str
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPlatformEventNamesResponse(AbstractModel):
+    """ListPlatformEventNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventNames: 平台产品列表
+        :type EventNames: list of PlatformEventDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventNames = None
+        self._RequestId = None
+
+    @property
+    def EventNames(self):
+        return self._EventNames
+
+    @EventNames.setter
+    def EventNames(self, EventNames):
+        self._EventNames = EventNames
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventNames") is not None:
+            self._EventNames = []
+            for item in params.get("EventNames"):
+                obj = PlatformEventDetail()
+                obj._deserialize(item)
+                self._EventNames.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListPlatformEventPatternsRequest(AbstractModel):
+    """ListPlatformEventPatterns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductType: 平台产品类型
+        :type ProductType: str
+        """
+        self._ProductType = None
+
+    @property
+    def ProductType(self):
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductType = params.get("ProductType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPlatformEventPatternsResponse(AbstractModel):
+    """ListPlatformEventPatterns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventPatterns: 平台产品事件匹配规则
+        :type EventPatterns: list of PlatformEventSummary
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventPatterns = None
+        self._RequestId = None
+
+    @property
+    def EventPatterns(self):
+        return self._EventPatterns
+
+    @EventPatterns.setter
+    def EventPatterns(self, EventPatterns):
+        self._EventPatterns = EventPatterns
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EventPatterns") is not None:
+            self._EventPatterns = []
+            for item in params.get("EventPatterns"):
+                obj = PlatformEventSummary()
+                obj._deserialize(item)
+                self._EventPatterns.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListPlatformProductsRequest(AbstractModel):
+    """ListPlatformProducts请求参数结构体
+
+    """
+
+
+class ListPlatformProductsResponse(AbstractModel):
+    """ListPlatformProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformProducts: 平台产品列表
+        :type PlatformProducts: list of PlatformProduct
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlatformProducts = None
+        self._RequestId = None
+
+    @property
+    def PlatformProducts(self):
+        return self._PlatformProducts
+
+    @PlatformProducts.setter
+    def PlatformProducts(self, PlatformProducts):
+        self._PlatformProducts = PlatformProducts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PlatformProducts") is not None:
+            self._PlatformProducts = []
+            for item in params.get("PlatformProducts"):
+                obj = PlatformProduct()
+                obj._deserialize(item)
+                self._PlatformProducts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListRulesRequest(AbstractModel):
     """ListRules请求参数结构体
 
@@ -3453,6 +3721,145 @@ class OutputStructParam(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformEventDetail(AbstractModel):
+    """平台事件名称
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventName: 事件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
+        :param _EventType: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventType: str
+        """
+        self._EventName = None
+        self._EventType = None
+
+    @property
+    def EventName(self):
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventType(self):
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+
+    def _deserialize(self, params):
+        self._EventName = params.get("EventName")
+        self._EventType = params.get("EventType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformEventSummary(AbstractModel):
+    """平台事件匹配规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventName: 平台事件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
+        :param _EventPattern: 平台事件匹配规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventPattern: str
+        """
+        self._EventName = None
+        self._EventPattern = None
+
+    @property
+    def EventName(self):
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventPattern(self):
+        return self._EventPattern
+
+    @EventPattern.setter
+    def EventPattern(self, EventPattern):
+        self._EventPattern = EventPattern
+
+
+    def _deserialize(self, params):
+        self._EventName = params.get("EventName")
+        self._EventPattern = params.get("EventPattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformProduct(AbstractModel):
+    """平台产品基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductName: 平台产品名称
+        :type ProductName: str
+        :param _ProductType: 平台产品类型
+        :type ProductType: str
+        """
+        self._ProductName = None
+        self._ProductType = None
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductType(self):
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
+
+
+    def _deserialize(self, params):
+        self._ProductName = params.get("ProductName")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

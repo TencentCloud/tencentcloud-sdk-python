@@ -75,7 +75,9 @@ class FacefusionClient(AbstractClient):
 
 
     def FaceFusionLite(self, request):
-        """人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
+        """接口不再使用
+
+        人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
 
         :param request: Request instance for FaceFusionLite.
         :type request: :class:`tencentcloud.facefusion.v20181201.models.FaceFusionLiteRequest`

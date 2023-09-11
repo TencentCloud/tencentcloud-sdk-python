@@ -23,7 +23,7 @@ FAILEDOPERATION_CHECKDOMAINFAILED = 'FailedOperation.CheckDomainFailed'
 # 创建模板操作失败。
 FAILEDOPERATION_CREATETEMPLATEFAILED = 'FailedOperation.CreateTemplateFailed'
 
-# 删除模版操作失败，请稍后重试。
+# 删除模板操作失败，请稍后重试。
 FAILEDOPERATION_DELETETEMPLATEFAILED = 'FailedOperation.DeleteTemplateFailed'
 
 # 获取域名信息操作失败，请稍后重试。

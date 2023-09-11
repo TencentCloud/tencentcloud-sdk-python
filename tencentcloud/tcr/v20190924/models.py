@@ -8493,7 +8493,7 @@ class DescribeServiceAccountsRequest(AbstractModel):
         :type RegistryId: str
         :param _All: 列出所有服务级账号
         :type All: bool
-        :param _EmbedPermission: 是否填充策略
+        :param _EmbedPermission: 是否填充权限信息
         :type EmbedPermission: bool
         :param _Filters: 过滤条件
         :type Filters: list of Filter
@@ -8590,7 +8590,7 @@ class DescribeServiceAccountsResponse(AbstractModel):
         :param _ServiceAccounts: 服务级账号列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceAccounts: list of ServiceAccount
-        :param _TotalCount: 自定义账户数量
+        :param _TotalCount: 服务级账户数量
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12453,7 +12453,7 @@ class Permission(AbstractModel):
         :param _Resource: 资源路径，目前仅支持Namespace
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
-        :param _Actions: 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository
+        :param _Actions: 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
 注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: list of str
         """
@@ -12648,6 +12648,8 @@ class Registry(AbstractModel):
         :param _RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
+        :param _DeletionProtection: 是否开启实例删除保护，false表示不开启
+        :type DeletionProtection: bool
         """
         self._RegistryId = None
         self._RegistryName = None
@@ -12664,6 +12666,7 @@ class Registry(AbstractModel):
         self._ExpiredAt = None
         self._PayMod = None
         self._RenewFlag = None
+        self._DeletionProtection = None
 
     @property
     def RegistryId(self):
@@ -12785,6 +12788,14 @@ class Registry(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -12804,6 +12815,7 @@ class Registry(AbstractModel):
         self._ExpiredAt = params.get("ExpiredAt")
         self._PayMod = params.get("PayMod")
         self._RenewFlag = params.get("RenewFlag")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14491,8 +14503,10 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _Key: 云标签的key
+注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
         :param _Value: 云标签的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Key = None

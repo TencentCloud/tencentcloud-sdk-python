@@ -26,6 +26,75 @@ class TrocketClient(AbstractClient):
     _service = 'trocket'
 
 
+    def CreateInstance(self, request):
+        """购买新实例
+
+        :param request: Request instance for CreateInstance.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateInstanceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteInstance(self, request):
+        """删除实例
+
+        :param request: Request instance for DeleteInstance.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteInstanceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstance(self, request):
+        """查询实例信息
+
+        :param request: Request instance for DescribeInstance.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeInstanceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceList(self, request):
         """获取实例列表，Filters参数使用说明如下：
         1. InstanceName, 名称模糊查询
@@ -72,6 +141,29 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeTopicList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopicListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstance(self, request):
+        """修改实例属性
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

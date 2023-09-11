@@ -348,6 +348,29 @@ class EbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetPlatformEventTemplate(self, request):
+        """获取平台产品事件模板
+
+        :param request: Request instance for GetPlatformEventTemplate.
+        :type request: :class:`tencentcloud.eb.v20210416.models.GetPlatformEventTemplateRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.GetPlatformEventTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetPlatformEventTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetPlatformEventTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRule(self, request):
         """获取事件规则详情
 
@@ -431,6 +454,75 @@ class EbClient(AbstractClient):
             body = self.call("ListEventBuses", params, headers=headers)
             response = json.loads(body)
             model = models.ListEventBusesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListPlatformEventNames(self, request):
+        """获取平台产品事件名称
+
+        :param request: Request instance for ListPlatformEventNames.
+        :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventNamesRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPlatformEventNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPlatformEventNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListPlatformEventPatterns(self, request):
+        """获取平台产品事件匹配规则
+
+        :param request: Request instance for ListPlatformEventPatterns.
+        :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventPatternsRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ListPlatformEventPatternsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPlatformEventPatterns", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPlatformEventPatternsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListPlatformProducts(self, request):
+        """获取平台产品列表
+
+        :param request: Request instance for ListPlatformProducts.
+        :type request: :class:`tencentcloud.eb.v20210416.models.ListPlatformProductsRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ListPlatformProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPlatformProducts", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPlatformProductsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

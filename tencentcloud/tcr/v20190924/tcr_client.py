@@ -464,7 +464,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateServiceAccount(self, request):
-        """创建自定义账户
+        """创建服务级账户
 
         :param request: Request instance for CreateServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`

@@ -164,52 +164,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def AddSpartaProtectionAuto(self, request):
-        """一键接入
-
-        :param request: Request instance for AddSpartaProtectionAuto.
-        :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionAutoRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionAutoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddSpartaProtectionAuto", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddSpartaProtectionAutoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def AddSpartaProtectionsAuto(self, request):
-        """批量添加域名
-
-        :param request: Request instance for AddSpartaProtectionsAuto.
-        :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionsAutoRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionsAutoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddSpartaProtectionsAuto", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddSpartaProtectionsAutoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateAccessExport(self, request):
         """本接口用于创建访问日志导出
 
@@ -988,6 +942,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeDomainDetailsSaas", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainDetailsSaasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDomainVerifyResult(self, request):
+        """获取添加域名操作的结果
+
+        :param request: Request instance for DescribeDomainVerifyResult.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainVerifyResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainVerifyResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

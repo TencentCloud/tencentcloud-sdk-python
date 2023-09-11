@@ -1303,64 +1303,6 @@ class AddDomainWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class AddSpartaProtectionAutoRequest(AbstractModel):
-    """AddSpartaProtectionAuto请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: 域名
-        :type Domain: str
-        """
-        self._Domain = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddSpartaProtectionAutoResponse(AbstractModel):
-    """AddSpartaProtectionAuto返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class AddSpartaProtectionRequest(AbstractModel):
     """AddSpartaProtection请求参数结构体
 
@@ -1817,81 +1759,6 @@ class AddSpartaProtectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class AddSpartaProtectionsAutoRequest(AbstractModel):
-    """AddSpartaProtectionsAuto请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: 多域名
-        :type Domain: str
-        """
-        self._Domain = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AddSpartaProtectionsAutoResponse(AbstractModel):
-    """AddSpartaProtectionsAuto返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FailedInfos: 失败原因
-        :type FailedInfos: list of FailedInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._FailedInfos = None
-        self._RequestId = None
-
-    @property
-    def FailedInfos(self):
-        return self._FailedInfos
-
-    @FailedInfos.setter
-    def FailedInfos(self, FailedInfos):
-        self._FailedInfos = FailedInfos
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("FailedInfos") is not None:
-            self._FailedInfos = []
-            for item in params.get("FailedInfos"):
-                obj = FailedInfo()
-                obj._deserialize(item)
-                self._FailedInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7210,6 +7077,100 @@ class DescribeDomainDetailsSaasResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDomainVerifyResultRequest(AbstractModel):
+    """DescribeDomainVerifyResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainVerifyResultResponse(AbstractModel):
+    """DescribeDomainVerifyResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: 结果描述；如果可以添加返回空字符串
+        :type Msg: str
+        :param _VerifyCode: 检验状态：0表示可以添加，大于0为不能添加
+        :type VerifyCode: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Msg = None
+        self._VerifyCode = None
+        self._RequestId = None
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
+        self._VerifyCode = params.get("VerifyCode")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDomainWhiteRulesRequest(AbstractModel):
     """DescribeDomainWhiteRules请求参数结构体
 
@@ -10937,53 +10898,6 @@ class ExportAccessInfo(AbstractModel):
         self._To = params.get("To")
         self._CosPath = params.get("CosPath")
         self._CreateTime = params.get("CreateTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class FailedInfo(AbstractModel):
-    """失败描述
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Domain: 域名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param _Message: 失败信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Message: str
-        """
-        self._Domain = None
-        self._Message = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Message(self):
-        return self._Message
-
-    @Message.setter
-    def Message(self, Message):
-        self._Message = Message
-
-
-    def _deserialize(self, params):
-        self._Domain = params.get("Domain")
-        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
