@@ -2183,6 +2183,129 @@ class ListEmailTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListReceiverDetailsRequest(AbstractModel):
+    """ListReceiverDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverId: 收件人列表ID,CreateReceiver接口创建收件人列表时会返回该值
+        :type ReceiverId: int
+        :param _Offset: 偏移量，整型，从0开始
+        :type Offset: int
+        :param _Limit: 限制数目，整型,不超过100
+        :type Limit: int
+        :param _Email: 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
+        :type Email: str
+        """
+        self._ReceiverId = None
+        self._Offset = None
+        self._Limit = None
+        self._Email = None
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._ReceiverId = params.get("ReceiverId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Email = params.get("Email")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListReceiverDetailsResponse(AbstractModel):
+    """ListReceiverDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Data: 数据记录
+        :type Data: list of ReceiverDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ReceiverDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListReceiversRequest(AbstractModel):
     """ListReceivers请求参数结构体
 
@@ -2526,6 +2649,63 @@ class ReceiverData(AbstractModel):
         self._Desc = params.get("Desc")
         self._ReceiversStatus = params.get("ReceiversStatus")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiverDetail(AbstractModel):
+    """收件人列表详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Email: 收件人地址
+        :type Email: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _TemplateData: 模板参数
+        :type TemplateData: str
+        """
+        self._Email = None
+        self._CreateTime = None
+        self._TemplateData = None
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TemplateData(self):
+        return self._TemplateData
+
+    @TemplateData.setter
+    def TemplateData(self, TemplateData):
+        self._TemplateData = TemplateData
+
+
+    def _deserialize(self, params):
+        self._Email = params.get("Email")
+        self._CreateTime = params.get("CreateTime")
+        self._TemplateData = params.get("TemplateData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

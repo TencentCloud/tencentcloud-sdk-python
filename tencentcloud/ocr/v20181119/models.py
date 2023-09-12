@@ -2870,6 +2870,10 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         :type State: str
         :param _CumulativeScore: 累积记分（仅电子驾驶证支持返回该字段）
         :type CumulativeScore: str
+        :param _CurrentTime: 当前时间（仅电子驾驶证支持返回该字段）
+        :type CurrentTime: str
+        :param _GenerateTime: 生成时间（仅电子驾驶证支持返回该字段）
+        :type GenerateTime: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2890,6 +2894,8 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._IssuingAuthority = None
         self._State = None
         self._CumulativeScore = None
+        self._CurrentTime = None
+        self._GenerateTime = None
         self._RequestId = None
 
     @property
@@ -3029,6 +3035,22 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._CumulativeScore = CumulativeScore
 
     @property
+    def CurrentTime(self):
+        return self._CurrentTime
+
+    @CurrentTime.setter
+    def CurrentTime(self, CurrentTime):
+        self._CurrentTime = CurrentTime
+
+    @property
+    def GenerateTime(self):
+        return self._GenerateTime
+
+    @GenerateTime.setter
+    def GenerateTime(self, GenerateTime):
+        self._GenerateTime = GenerateTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3055,6 +3077,8 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._IssuingAuthority = params.get("IssuingAuthority")
         self._State = params.get("State")
         self._CumulativeScore = params.get("CumulativeScore")
+        self._CurrentTime = params.get("CurrentTime")
+        self._GenerateTime = params.get("GenerateTime")
         self._RequestId = params.get("RequestId")
 
 

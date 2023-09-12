@@ -11177,7 +11177,7 @@ class DescribeNewL7RulesRequest(AbstractModel):
         :type Ip: str
         :param _Limit: 一页条数，默认值100，最大值100，超过100最大返回100条
         :type Limit: int
-        :param _Offset: 页起始偏移，取值为(页码-1)*一页条数
+        :param _Offset: 规则偏移量，取值为(页码-1)*一页条数
         :type Offset: int
         :param _ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
         :type ProtocolList: list of str

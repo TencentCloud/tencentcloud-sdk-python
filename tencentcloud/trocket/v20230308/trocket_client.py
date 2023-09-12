@@ -26,6 +26,29 @@ class TrocketClient(AbstractClient):
     _service = 'trocket'
 
 
+    def CreateConsumerGroup(self, request):
+        """创建消费组
+
+        :param request: Request instance for CreateConsumerGroup.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInstance(self, request):
         """购买新实例
 
@@ -49,6 +72,52 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTopic(self, request):
+        """创建主题
+
+        :param request: Request instance for CreateTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConsumerGroup(self, request):
+        """删除消费组
+
+        :param request: Request instance for DeleteConsumerGroup.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInstance(self, request):
         """删除实例
 
@@ -63,6 +132,52 @@ class TrocketClient(AbstractClient):
             body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTopic(self, request):
+        """删除主题
+
+        :param request: Request instance for DeleteTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumerGroup(self, request):
+        """查询消费组详情
+
+        :param request: Request instance for DescribeConsumerGroup.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -124,6 +239,31 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopic(self, request):
+        """查询主题详情，Offset和Limit参数是指订阅该主题的消费组查询分页参数，Filter参数使用说明如下：
+
+        ConsumerGroup，消费组名称过滤
+
+        :param request: Request instance for DescribeTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopicList(self, request):
         """获取主题列表，Filter参数使用说明如下：
 
@@ -150,6 +290,52 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopicStatsOp(self, request):
+        """运营端查询topicStata
+
+        :param request: Request instance for DescribeTopicStatsOp.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsOpRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeTopicStatsOpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicStatsOp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicStatsOpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConsumerGroup(self, request):
+        """修改消费组属性
+
+        :param request: Request instance for ModifyConsumerGroup.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyConsumerGroupRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ModifyConsumerGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsumerGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsumerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstance(self, request):
         """修改实例属性
 
@@ -164,6 +350,29 @@ class TrocketClient(AbstractClient):
             body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTopic(self, request):
+        """修改主题属性
+
+        :param request: Request instance for ModifyTopic.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyTopicRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ModifyTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTopicResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

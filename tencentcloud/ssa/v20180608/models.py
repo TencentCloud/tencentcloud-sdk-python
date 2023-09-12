@@ -68,6 +68,45 @@ class AggregationObj(AbstractModel):
         
 
 
+class AlarmInfoRsp(AbstractModel):
+    """用户威胁告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackEvent: 近7天威胁告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackEvent: list of AttackEvent
+        """
+        self._AttackEvent = None
+
+    @property
+    def AttackEvent(self):
+        return self._AttackEvent
+
+    @AttackEvent.setter
+    def AttackEvent(self, AttackEvent):
+        self._AttackEvent = AttackEvent
+
+
+    def _deserialize(self, params):
+        if params.get("AttackEvent") is not None:
+            self._AttackEvent = []
+            for item in params.get("AttackEvent"):
+                obj = AttackEvent()
+                obj._deserialize(item)
+                self._AttackEvent.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlertDetail(AbstractModel):
     """告警详情
 
@@ -1899,6 +1938,131 @@ class AssetTypeStatistic(AbstractModel):
     def _deserialize(self, params):
         self._AssetType = params.get("AssetType")
         self._AssetCount = params.get("AssetCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttackEvent(AbstractModel):
+    """攻击事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SsaSrcIp: 来源ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaSrcIp: str
+        :param _SsaDstIp: 目标ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDstIp: str
+        :param _SsaDstProvince: 目标省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDstProvince: str
+        :param _SsaDstCity: 目标城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDstCity: str
+        :param _SsaDstCountry: 目标国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaDstCountry: str
+        :param _SsaSrcProvince: 来源省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaSrcProvince: str
+        :param _SsaSrcCountry: 来源国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaSrcCountry: str
+        :param _SsaSrcCity: 来源城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsaSrcCity: str
+        """
+        self._SsaSrcIp = None
+        self._SsaDstIp = None
+        self._SsaDstProvince = None
+        self._SsaDstCity = None
+        self._SsaDstCountry = None
+        self._SsaSrcProvince = None
+        self._SsaSrcCountry = None
+        self._SsaSrcCity = None
+
+    @property
+    def SsaSrcIp(self):
+        return self._SsaSrcIp
+
+    @SsaSrcIp.setter
+    def SsaSrcIp(self, SsaSrcIp):
+        self._SsaSrcIp = SsaSrcIp
+
+    @property
+    def SsaDstIp(self):
+        return self._SsaDstIp
+
+    @SsaDstIp.setter
+    def SsaDstIp(self, SsaDstIp):
+        self._SsaDstIp = SsaDstIp
+
+    @property
+    def SsaDstProvince(self):
+        return self._SsaDstProvince
+
+    @SsaDstProvince.setter
+    def SsaDstProvince(self, SsaDstProvince):
+        self._SsaDstProvince = SsaDstProvince
+
+    @property
+    def SsaDstCity(self):
+        return self._SsaDstCity
+
+    @SsaDstCity.setter
+    def SsaDstCity(self, SsaDstCity):
+        self._SsaDstCity = SsaDstCity
+
+    @property
+    def SsaDstCountry(self):
+        return self._SsaDstCountry
+
+    @SsaDstCountry.setter
+    def SsaDstCountry(self, SsaDstCountry):
+        self._SsaDstCountry = SsaDstCountry
+
+    @property
+    def SsaSrcProvince(self):
+        return self._SsaSrcProvince
+
+    @SsaSrcProvince.setter
+    def SsaSrcProvince(self, SsaSrcProvince):
+        self._SsaSrcProvince = SsaSrcProvince
+
+    @property
+    def SsaSrcCountry(self):
+        return self._SsaSrcCountry
+
+    @SsaSrcCountry.setter
+    def SsaSrcCountry(self, SsaSrcCountry):
+        self._SsaSrcCountry = SsaSrcCountry
+
+    @property
+    def SsaSrcCity(self):
+        return self._SsaSrcCity
+
+    @SsaSrcCity.setter
+    def SsaSrcCity(self, SsaSrcCity):
+        self._SsaSrcCity = SsaSrcCity
+
+
+    def _deserialize(self, params):
+        self._SsaSrcIp = params.get("SsaSrcIp")
+        self._SsaDstIp = params.get("SsaDstIp")
+        self._SsaDstProvince = params.get("SsaDstProvince")
+        self._SsaDstCity = params.get("SsaDstCity")
+        self._SsaDstCountry = params.get("SsaDstCountry")
+        self._SsaSrcProvince = params.get("SsaSrcProvince")
+        self._SsaSrcCountry = params.get("SsaSrcCountry")
+        self._SsaSrcCity = params.get("SsaSrcCity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4215,6 +4379,91 @@ class DataEvent(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAlarmStatRequest(AbstractModel):
+    """DescribeAlarmStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmStatResponse(AbstractModel):
+    """DescribeAlarmStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 威胁告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.AlarmInfoRsp`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = AlarmInfoRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeAssetDetailListRequest(AbstractModel):

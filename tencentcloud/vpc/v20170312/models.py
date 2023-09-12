@@ -14177,10 +14177,13 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _NeedMemberInfo: 是否查询IP地址模板成员标识。
+        :type NeedMemberInfo: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._NeedMemberInfo = None
 
     @property
     def Filters(self):
@@ -14206,6 +14209,14 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def NeedMemberInfo(self):
+        return self._NeedMemberInfo
+
+    @NeedMemberInfo.setter
+    def NeedMemberInfo(self, NeedMemberInfo):
+        self._NeedMemberInfo = NeedMemberInfo
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -14216,6 +14227,7 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._NeedMemberInfo = params.get("NeedMemberInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14296,10 +14308,13 @@ class DescribeAddressTemplatesRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _NeedMemberInfo: 是否获取IP地址模板成员标识。
+        :type NeedMemberInfo: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._NeedMemberInfo = None
 
     @property
     def Filters(self):
@@ -14325,6 +14340,14 @@ class DescribeAddressTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def NeedMemberInfo(self):
+        return self._NeedMemberInfo
+
+    @NeedMemberInfo.setter
+    def NeedMemberInfo(self, NeedMemberInfo):
+        self._NeedMemberInfo = NeedMemberInfo
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -14335,6 +14358,7 @@ class DescribeAddressTemplatesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._NeedMemberInfo = params.get("NeedMemberInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20423,10 +20447,13 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _NeedMemberInfo: 是否获取协议端口模板成员标识。
+        :type NeedMemberInfo: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._NeedMemberInfo = None
 
     @property
     def Filters(self):
@@ -20452,6 +20479,14 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def NeedMemberInfo(self):
+        return self._NeedMemberInfo
+
+    @NeedMemberInfo.setter
+    def NeedMemberInfo(self, NeedMemberInfo):
+        self._NeedMemberInfo = NeedMemberInfo
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -20462,6 +20497,7 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._NeedMemberInfo = params.get("NeedMemberInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20542,10 +20578,13 @@ class DescribeServiceTemplatesRequest(AbstractModel):
         :type Offset: str
         :param _Limit: 返回数量，默认为20，最大值为100。
         :type Limit: str
+        :param _NeedMemberInfo: 是否获取协议端口成员标识。
+        :type NeedMemberInfo: bool
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._NeedMemberInfo = None
 
     @property
     def Filters(self):
@@ -20571,6 +20610,14 @@ class DescribeServiceTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def NeedMemberInfo(self):
+        return self._NeedMemberInfo
+
+    @NeedMemberInfo.setter
+    def NeedMemberInfo(self, NeedMemberInfo):
+        self._NeedMemberInfo = NeedMemberInfo
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -20581,6 +20628,7 @@ class DescribeServiceTemplatesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._NeedMemberInfo = params.get("NeedMemberInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

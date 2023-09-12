@@ -11020,7 +11020,7 @@ class CreateUnitRuleWithDetailRespResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 单元化规则 ID
+        :param _Result: 单元化规则信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.UnitRule`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -16911,7 +16911,7 @@ class DescribeCreateGatewayApiStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 请求方法
+        :param _GroupId: 所属分组ID
         :type GroupId: str
         :param _MicroserviceId: 微服务ID
         :type MicroserviceId: str
@@ -17143,10 +17143,16 @@ class DescribeDeliveryConfigsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 搜索条数
         :type Limit: int
+        :param _ProgramIdList: 数据集idList
+        :type ProgramIdList: list of str
+        :param _ConfigIdList: ConfigIdList
+        :type ConfigIdList: list of str
         """
         self._SearchWord = None
         self._Offset = None
         self._Limit = None
+        self._ProgramIdList = None
+        self._ConfigIdList = None
 
     @property
     def SearchWord(self):
@@ -17172,11 +17178,29 @@ class DescribeDeliveryConfigsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def ProgramIdList(self):
+        return self._ProgramIdList
+
+    @ProgramIdList.setter
+    def ProgramIdList(self, ProgramIdList):
+        self._ProgramIdList = ProgramIdList
+
+    @property
+    def ConfigIdList(self):
+        return self._ConfigIdList
+
+    @ConfigIdList.setter
+    def ConfigIdList(self, ConfigIdList):
+        self._ConfigIdList = ConfigIdList
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._ProgramIdList = params.get("ProgramIdList")
+        self._ConfigIdList = params.get("ConfigIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17883,12 +17907,15 @@ class DescribeGatewayApisRequest(AbstractModel):
         :type SearchWord: str
         :param _GatewayDeployGroupId: 部署组ID
         :type GatewayDeployGroupId: str
+        :param _ReleaseStatus: 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+        :type ReleaseStatus: str
         """
         self._GroupId = None
         self._Offset = None
         self._Limit = None
         self._SearchWord = None
         self._GatewayDeployGroupId = None
+        self._ReleaseStatus = None
 
     @property
     def GroupId(self):
@@ -17930,6 +17957,14 @@ class DescribeGatewayApisRequest(AbstractModel):
     def GatewayDeployGroupId(self, GatewayDeployGroupId):
         self._GatewayDeployGroupId = GatewayDeployGroupId
 
+    @property
+    def ReleaseStatus(self):
+        return self._ReleaseStatus
+
+    @ReleaseStatus.setter
+    def ReleaseStatus(self, ReleaseStatus):
+        self._ReleaseStatus = ReleaseStatus
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -17937,6 +17972,7 @@ class DescribeGatewayApisRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._SearchWord = params.get("SearchWord")
         self._GatewayDeployGroupId = params.get("GatewayDeployGroupId")
+        self._ReleaseStatus = params.get("ReleaseStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19021,21 +19057,21 @@ class DescribeGroupsWithPluginRequest(AbstractModel):
         r"""
         :param _PluginId: 插件ID
         :type PluginId: str
-        :param _Bound: 绑定/未绑定: true / false
-        :type Bound: bool
         :param _Offset: 翻页偏移量
         :type Offset: int
         :param _Limit: 每页记录数量
         :type Limit: int
+        :param _Bound: 绑定/未绑定: true / false
+        :type Bound: bool
         :param _SearchWord: 搜索关键字
         :type SearchWord: str
         :param _GatewayInstanceId: 网关实体ID
         :type GatewayInstanceId: str
         """
         self._PluginId = None
-        self._Bound = None
         self._Offset = None
         self._Limit = None
+        self._Bound = None
         self._SearchWord = None
         self._GatewayInstanceId = None
 
@@ -19046,14 +19082,6 @@ class DescribeGroupsWithPluginRequest(AbstractModel):
     @PluginId.setter
     def PluginId(self, PluginId):
         self._PluginId = PluginId
-
-    @property
-    def Bound(self):
-        return self._Bound
-
-    @Bound.setter
-    def Bound(self, Bound):
-        self._Bound = Bound
 
     @property
     def Offset(self):
@@ -19070,6 +19098,14 @@ class DescribeGroupsWithPluginRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def Bound(self):
+        return self._Bound
+
+    @Bound.setter
+    def Bound(self, Bound):
+        self._Bound = Bound
 
     @property
     def SearchWord(self):
@@ -19090,9 +19126,9 @@ class DescribeGroupsWithPluginRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
-        self._Bound = params.get("Bound")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Bound = params.get("Bound")
         self._SearchWord = params.get("SearchWord")
         self._GatewayInstanceId = params.get("GatewayInstanceId")
         memeber_set = set(params.keys())
@@ -21586,21 +21622,21 @@ class DescribePluginInstancesRequest(AbstractModel):
         r"""
         :param _ScopeValue: 分组或者API的ID
         :type ScopeValue: str
-        :param _Bound: 绑定: true; 未绑定: false
-        :type Bound: bool
         :param _Offset: 翻页偏移量
         :type Offset: int
         :param _Limit: 每页展示的条数
         :type Limit: int
+        :param _Bound: 绑定: true; 未绑定: false
+        :type Bound: bool
         :param _Type: 插件类型
         :type Type: str
         :param _SearchWord: 搜索关键字
         :type SearchWord: str
         """
         self._ScopeValue = None
-        self._Bound = None
         self._Offset = None
         self._Limit = None
+        self._Bound = None
         self._Type = None
         self._SearchWord = None
 
@@ -21611,14 +21647,6 @@ class DescribePluginInstancesRequest(AbstractModel):
     @ScopeValue.setter
     def ScopeValue(self, ScopeValue):
         self._ScopeValue = ScopeValue
-
-    @property
-    def Bound(self):
-        return self._Bound
-
-    @Bound.setter
-    def Bound(self, Bound):
-        self._Bound = Bound
 
     @property
     def Offset(self):
@@ -21635,6 +21663,14 @@ class DescribePluginInstancesRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def Bound(self):
+        return self._Bound
+
+    @Bound.setter
+    def Bound(self, Bound):
+        self._Bound = Bound
 
     @property
     def Type(self):
@@ -21655,9 +21691,9 @@ class DescribePluginInstancesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ScopeValue = params.get("ScopeValue")
-        self._Bound = params.get("Bound")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Bound = params.get("Bound")
         self._Type = params.get("Type")
         self._SearchWord = params.get("SearchWord")
         memeber_set = set(params.keys())
@@ -26906,14 +26942,20 @@ class GatewayPluginBoundParam(AbstractModel):
         r"""
         :param _PluginId: 插件id
         :type PluginId: str
-        :param _ScopeType: 插件绑定到的对象类型:group/api
+        :param _ScopeType: 插件绑定到的对象类型:group/api/all
         :type ScopeType: str
         :param _ScopeValue: 插件绑定到的对象主键值，例如分组的ID/API的ID
         :type ScopeValue: str
+        :param _MicroserviceId: 创建关联的服务id，关联envoy网关时使用
+        :type MicroserviceId: str
+        :param _GatewayInstanceId: 网关id
+        :type GatewayInstanceId: str
         """
         self._PluginId = None
         self._ScopeType = None
         self._ScopeValue = None
+        self._MicroserviceId = None
+        self._GatewayInstanceId = None
 
     @property
     def PluginId(self):
@@ -26939,11 +26981,29 @@ class GatewayPluginBoundParam(AbstractModel):
     def ScopeValue(self, ScopeValue):
         self._ScopeValue = ScopeValue
 
+    @property
+    def MicroserviceId(self):
+        return self._MicroserviceId
+
+    @MicroserviceId.setter
+    def MicroserviceId(self, MicroserviceId):
+        self._MicroserviceId = MicroserviceId
+
+    @property
+    def GatewayInstanceId(self):
+        return self._GatewayInstanceId
+
+    @GatewayInstanceId.setter
+    def GatewayInstanceId(self, GatewayInstanceId):
+        self._GatewayInstanceId = GatewayInstanceId
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
         self._ScopeType = params.get("ScopeType")
         self._ScopeValue = params.get("ScopeValue")
+        self._MicroserviceId = params.get("MicroserviceId")
+        self._GatewayInstanceId = params.get("GatewayInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42543,7 +42603,7 @@ class UpdateApiGroupRequest(AbstractModel):
         :type GroupName: str
         :param _Description: Api 分组描述
         :type Description: str
-        :param _AuthType: 鉴权类型
+        :param _AuthType: 鉴权类型。 secret： 密钥鉴权； none:无鉴权
         :type AuthType: str
         :param _GroupContext: 分组上下文
         :type GroupContext: str

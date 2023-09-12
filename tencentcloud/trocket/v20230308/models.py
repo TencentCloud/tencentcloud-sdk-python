@@ -18,6 +18,149 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CreateConsumerGroupRequest(AbstractModel):
+    """CreateConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _MaxRetryTimes: 最大重试次数
+        :type MaxRetryTimes: int
+        :param _ConsumeEnable: 是否开启消费
+        :type ConsumeEnable: bool
+        :param _ConsumeMessageOrderly: 顺序投递：true
+并发投递：false
+        :type ConsumeMessageOrderly: bool
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._MaxRetryTimes = None
+        self._ConsumeEnable = None
+        self._ConsumeMessageOrderly = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def ConsumeEnable(self):
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerGroupResponse(AbstractModel):
+    """CreateConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组
+        :type ConsumerGroup: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInstanceRequest(AbstractModel):
     """CreateInstance请求参数结构体
 
@@ -220,6 +363,211 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTopicRequest(AbstractModel):
+    """CreateTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _TopicType: 主题类型
+UNSPECIFIED:未指定,
+NORMAL:普通消息,
+FIFO:顺序消息,
+DELAY:延时消息,
+TRANSACTION:事务消息
+        :type TopicType: str
+        :param _QueueNum: 队列数量
+        :type QueueNum: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._TopicType = None
+        self._QueueNum = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def TopicType(self):
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def QueueNum(self):
+        return self._QueueNum
+
+    @QueueNum.setter
+    def QueueNum(self, QueueNum):
+        self._QueueNum = QueueNum
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._TopicType = params.get("TopicType")
+        self._QueueNum = params.get("QueueNum")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTopicResponse(AbstractModel):
+    """CreateTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerGroupRequest(AbstractModel):
+    """DeleteConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerGroupResponse(AbstractModel):
+    """DeleteConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstanceRequest(AbstractModel):
     """DeleteInstance请求参数结构体
 
@@ -275,6 +623,255 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTopicRequest(AbstractModel):
+    """DeleteTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTopicResponse(AbstractModel):
+    """DeleteTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerGroupRequest(AbstractModel):
+    """DescribeConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerGroupResponse(AbstractModel):
+    """DescribeConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerNum: 在线消费者数量
+        :type ConsumerNum: int
+        :param _Tps: TPS
+        :type Tps: int
+        :param _ConsumerLag: 消息堆积数量
+        :type ConsumerLag: int
+        :param _ConsumeType: 消费者类型
+        :type ConsumeType: str
+        :param _CreatedTime: 创建时间，秒为单位
+        :type CreatedTime: int
+        :param _ConsumeMessageOrderly: 顺序投递：true
+并发投递：false
+        :type ConsumeMessageOrderly: bool
+        :param _ConsumeEnable: 是否开启消费
+        :type ConsumeEnable: bool
+        :param _MaxRetryTimes: 最大重试次数
+        :type MaxRetryTimes: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerNum = None
+        self._Tps = None
+        self._ConsumerLag = None
+        self._ConsumeType = None
+        self._CreatedTime = None
+        self._ConsumeMessageOrderly = None
+        self._ConsumeEnable = None
+        self._MaxRetryTimes = None
+        self._Remark = None
+        self._RequestId = None
+
+    @property
+    def ConsumerNum(self):
+        return self._ConsumerNum
+
+    @ConsumerNum.setter
+    def ConsumerNum(self, ConsumerNum):
+        self._ConsumerNum = ConsumerNum
+
+    @property
+    def Tps(self):
+        return self._Tps
+
+    @Tps.setter
+    def Tps(self, Tps):
+        self._Tps = Tps
+
+    @property
+    def ConsumerLag(self):
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+    @property
+    def ConsumeType(self):
+        return self._ConsumeType
+
+    @ConsumeType.setter
+    def ConsumeType(self, ConsumeType):
+        self._ConsumeType = ConsumeType
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def ConsumeEnable(self):
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsumerNum = params.get("ConsumerNum")
+        self._Tps = params.get("Tps")
+        self._ConsumerLag = params.get("ConsumerLag")
+        self._ConsumeType = params.get("ConsumeType")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._Remark = params.get("Remark")
         self._RequestId = params.get("RequestId")
 
 
@@ -892,6 +1489,281 @@ class DescribeTopicListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopicRequest(AbstractModel):
+    """DescribeTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicResponse(AbstractModel):
+    """DescribeTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _TopicType: 主题类型
+UNSPECIFIED:未指定,
+NORMAL:普通消息,
+FIFO:顺序消息,
+DELAY:延时消息,
+TRANSACTION:事务消息
+        :type TopicType: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _CreatedTime: 创建时间，秒为单位
+        :type CreatedTime: int
+        :param _LastUpdateTime: 最后写入时间，秒为单位
+        :type LastUpdateTime: int
+        :param _SubscriptionCount: 订阅数量
+        :type SubscriptionCount: int
+        :param _SubscriptionData: 订阅关系列表
+        :type SubscriptionData: list of SubscriptionData
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._TopicType = None
+        self._Remark = None
+        self._CreatedTime = None
+        self._LastUpdateTime = None
+        self._SubscriptionCount = None
+        self._SubscriptionData = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def TopicType(self):
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def SubscriptionCount(self):
+        return self._SubscriptionCount
+
+    @SubscriptionCount.setter
+    def SubscriptionCount(self, SubscriptionCount):
+        self._SubscriptionCount = SubscriptionCount
+
+    @property
+    def SubscriptionData(self):
+        return self._SubscriptionData
+
+    @SubscriptionData.setter
+    def SubscriptionData(self, SubscriptionData):
+        self._SubscriptionData = SubscriptionData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._TopicType = params.get("TopicType")
+        self._Remark = params.get("Remark")
+        self._CreatedTime = params.get("CreatedTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._SubscriptionCount = params.get("SubscriptionCount")
+        if params.get("SubscriptionData") is not None:
+            self._SubscriptionData = []
+            for item in params.get("SubscriptionData"):
+                obj = SubscriptionData()
+                obj._deserialize(item)
+                self._SubscriptionData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopicStatsOpRequest(AbstractModel):
+    """DescribeTopicStatsOp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题
+        :type Topic: str
+        """
+        self._Topic = None
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicStatsOpResponse(AbstractModel):
+    """DescribeTopicStatsOp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Endpoint(AbstractModel):
     """接入点信息
 
@@ -1395,6 +2267,125 @@ class IpRule(AbstractModel):
         
 
 
+class ModifyConsumerGroupRequest(AbstractModel):
+    """ModifyConsumerGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _ConsumeEnable: 是否开启消费
+        :type ConsumeEnable: bool
+        :param _ConsumeMessageOrderly: 顺序投递：true
+并发投递：false
+        :type ConsumeMessageOrderly: bool
+        :param _MaxRetryTimes: 最大重试次数
+        :type MaxRetryTimes: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._ConsumeEnable = None
+        self._ConsumeMessageOrderly = None
+        self._MaxRetryTimes = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def ConsumeEnable(self):
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsumerGroupResponse(AbstractModel):
+    """ModifyConsumerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceRequest(AbstractModel):
     """ModifyInstance请求参数结构体
 
@@ -1523,6 +2514,303 @@ class ModifyInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyTopicRequest(AbstractModel):
+    """ModifyTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Topic: 主题
+        :type Topic: str
+        :param _QueueNum: 队列数量
+        :type QueueNum: int
+        :param _Remark: 备注信息
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._QueueNum = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def QueueNum(self):
+        return self._QueueNum
+
+    @QueueNum.setter
+    def QueueNum(self, QueueNum):
+        self._QueueNum = QueueNum
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._QueueNum = params.get("QueueNum")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTopicResponse(AbstractModel):
+    """ModifyTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SubscriptionData(AbstractModel):
+    """主题与消费组的订阅关系数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Topic: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _TopicType: 主题类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicType: str
+        :param _TopicQueueNum: 单个节点上主题队列数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicQueueNum: int
+        :param _ConsumerGroup: 消费组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerGroup: str
+        :param _IsOnline: 是否在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOnline: bool
+        :param _ConsumeType: 消费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumeType: str
+        :param _SubString: 订阅规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubString: str
+        :param _ExpressionType: 过滤类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionType: str
+        :param _Consistency: 订阅一致性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: int
+        :param _ConsumerLag: 消费堆积
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLag: int
+        :param _LastUpdateTime: 最后消费进度更新时间，秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param _MaxRetryTimes: 最大重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetryTimes: int
+        :param _ConsumeMessageOrderly: 是否顺序消费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumeMessageOrderly: bool
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._TopicType = None
+        self._TopicQueueNum = None
+        self._ConsumerGroup = None
+        self._IsOnline = None
+        self._ConsumeType = None
+        self._SubString = None
+        self._ExpressionType = None
+        self._Consistency = None
+        self._ConsumerLag = None
+        self._LastUpdateTime = None
+        self._MaxRetryTimes = None
+        self._ConsumeMessageOrderly = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def TopicType(self):
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def TopicQueueNum(self):
+        return self._TopicQueueNum
+
+    @TopicQueueNum.setter
+    def TopicQueueNum(self, TopicQueueNum):
+        self._TopicQueueNum = TopicQueueNum
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def IsOnline(self):
+        return self._IsOnline
+
+    @IsOnline.setter
+    def IsOnline(self, IsOnline):
+        self._IsOnline = IsOnline
+
+    @property
+    def ConsumeType(self):
+        return self._ConsumeType
+
+    @ConsumeType.setter
+    def ConsumeType(self, ConsumeType):
+        self._ConsumeType = ConsumeType
+
+    @property
+    def SubString(self):
+        return self._SubString
+
+    @SubString.setter
+    def SubString(self, SubString):
+        self._SubString = SubString
+
+    @property
+    def ExpressionType(self):
+        return self._ExpressionType
+
+    @ExpressionType.setter
+    def ExpressionType(self, ExpressionType):
+        self._ExpressionType = ExpressionType
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+    @property
+    def ConsumerLag(self):
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._TopicType = params.get("TopicType")
+        self._TopicQueueNum = params.get("TopicQueueNum")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._IsOnline = params.get("IsOnline")
+        self._ConsumeType = params.get("ConsumeType")
+        self._SubString = params.get("SubString")
+        self._ExpressionType = params.get("ExpressionType")
+        self._Consistency = params.get("Consistency")
+        self._ConsumerLag = params.get("ConsumerLag")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Tag(AbstractModel):

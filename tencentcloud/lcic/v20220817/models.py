@@ -1265,6 +1265,8 @@ class CreateDocumentRequest(AbstractModel):
         :type DocumentType: str
         :param _DocumentSize: 文档大小，单位 字节
         :type DocumentSize: int
+        :param _AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认关闭。
+        :type AutoHandleUnsupportedElement: bool
         """
         self._SdkAppId = None
         self._DocumentUrl = None
@@ -1274,6 +1276,7 @@ class CreateDocumentRequest(AbstractModel):
         self._Permission = None
         self._DocumentType = None
         self._DocumentSize = None
+        self._AutoHandleUnsupportedElement = None
 
     @property
     def SdkAppId(self):
@@ -1339,6 +1342,14 @@ class CreateDocumentRequest(AbstractModel):
     def DocumentSize(self, DocumentSize):
         self._DocumentSize = DocumentSize
 
+    @property
+    def AutoHandleUnsupportedElement(self):
+        return self._AutoHandleUnsupportedElement
+
+    @AutoHandleUnsupportedElement.setter
+    def AutoHandleUnsupportedElement(self, AutoHandleUnsupportedElement):
+        self._AutoHandleUnsupportedElement = AutoHandleUnsupportedElement
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -1349,6 +1360,7 @@ class CreateDocumentRequest(AbstractModel):
         self._Permission = params.get("Permission")
         self._DocumentType = params.get("DocumentType")
         self._DocumentSize = params.get("DocumentSize")
+        self._AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

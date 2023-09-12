@@ -1085,6 +1085,15 @@ null = 用户上传证书（没有套餐类型），
         :param _AutoRenewFlag: 是否自动续费
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
+        :param _HostingStatus: 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingStatus: int
+        :param _HostingCompleteTime: 托管完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingCompleteTime: str
+        :param _HostingRenewCertId: 托管新证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostingRenewCertId: str
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1124,6 +1133,9 @@ null = 用户上传证书（没有套餐类型），
         self._CACommonNames = None
         self._PreAuditInfo = None
         self._AutoRenewFlag = None
+        self._HostingStatus = None
+        self._HostingCompleteTime = None
+        self._HostingRenewCertId = None
 
     @property
     def OwnerUin(self):
@@ -1429,6 +1441,30 @@ null = 用户上传证书（没有套餐类型），
     def AutoRenewFlag(self, AutoRenewFlag):
         self._AutoRenewFlag = AutoRenewFlag
 
+    @property
+    def HostingStatus(self):
+        return self._HostingStatus
+
+    @HostingStatus.setter
+    def HostingStatus(self, HostingStatus):
+        self._HostingStatus = HostingStatus
+
+    @property
+    def HostingCompleteTime(self):
+        return self._HostingCompleteTime
+
+    @HostingCompleteTime.setter
+    def HostingCompleteTime(self, HostingCompleteTime):
+        self._HostingCompleteTime = HostingCompleteTime
+
+    @property
+    def HostingRenewCertId(self):
+        return self._HostingRenewCertId
+
+    @HostingRenewCertId.setter
+    def HostingRenewCertId(self, HostingRenewCertId):
+        self._HostingRenewCertId = HostingRenewCertId
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1480,6 +1516,9 @@ null = 用户上传证书（没有套餐类型），
             self._PreAuditInfo = PreAuditInfo()
             self._PreAuditInfo._deserialize(params.get("PreAuditInfo"))
         self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._HostingStatus = params.get("HostingStatus")
+        self._HostingCompleteTime = params.get("HostingCompleteTime")
+        self._HostingRenewCertId = params.get("HostingRenewCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7300,12 +7339,21 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
         :type Filters: list of Filter
         :param _OldCertificateId: 已部署的证书ID
         :type OldCertificateId: str
+        :param _Offset: 分页偏移量，从0开始。
+        :type Offset: int
+        :param _Limit: 每页数量，默认10。	
+        :type Limit: int
+        :param _AsyncCache: 是否异步
+        :type AsyncCache: int
         """
         self._CertificateId = None
         self._ResourceType = None
         self._IsCache = None
         self._Filters = None
         self._OldCertificateId = None
+        self._Offset = None
+        self._Limit = None
+        self._AsyncCache = None
 
     @property
     def CertificateId(self):
@@ -7347,6 +7395,30 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
     def OldCertificateId(self, OldCertificateId):
         self._OldCertificateId = OldCertificateId
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AsyncCache(self):
+        return self._AsyncCache
+
+    @AsyncCache.setter
+    def AsyncCache(self, AsyncCache):
+        self._AsyncCache = AsyncCache
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -7359,6 +7431,9 @@ class DescribeHostTeoInstanceListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._OldCertificateId = params.get("OldCertificateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._AsyncCache = params.get("AsyncCache")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

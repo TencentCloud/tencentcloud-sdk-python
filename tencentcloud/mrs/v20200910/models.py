@@ -829,6 +829,474 @@ class BirthPlaceBlock(AbstractModel):
         
 
 
+class Block(AbstractModel):
+    """结构化信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Check: 诊断信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Check: list of Check
+        :param _Pathology: 病理报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pathology: list of PathologyReport
+        :param _MedDoc: 医学资料
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedDoc: list of MedDoc
+        :param _DiagCert: 诊断证明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiagCert: list of DiagCert
+        :param _FirstPage: 病案首页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstPage: list of FirstPage
+        :param _Indicator: 检验报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Indicator: list of Indicator
+        :param _MedicalRecordInfo: 门诊病历信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedicalRecordInfo: list of MedicalRecordInfo
+        :param _Hospitalization: 出入院信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hospitalization: list of Hospitalization
+        :param _Surgery: 手术记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Surgery: list of Surgery
+        :param _Prescription: 处方单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prescription: list of Prescription
+        :param _VaccineCertificate: 免疫接种证明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaccineCertificate: list of VaccineCertificate
+        :param _Electrocardiogram: 心电图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Electrocardiogram: list of Electrocardiogram
+        :param _PathologyV2: 病理报告v2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PathologyV2: list of PathologyV2
+        :param _Endoscopy: 内窥镜报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endoscopy: list of Endoscopy
+        :param _C14: C14检验报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type C14: list of Indicator
+        :param _Exame: 体检结论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Exame: list of Exame
+        :param _MedDocV2: 出入院结构体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MedDocV2: list of DischargeInfoBlock
+        :param _IndicatorV3: 检验报告v3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorV3: list of IndicatorV3
+        :param _Maternity: 孕产报告
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Maternity: list of Maternity
+        :param _Timeline: 时间轴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeline: list of TimelineInformation
+        :param _Covid: 核酸报告结论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Covid: list of CovidItemsInfo
+        :param _Eye: 眼科报告结构体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Eye: list of EyeItemsInfo
+        :param _BirthCert: 出生证明结构化信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BirthCert: list of BirthCert
+        :param _TextTypeListBlocks: 文本类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTypeListBlocks: list of TextTypeListBlock
+        :param _PhysicalExamination: 体检报告信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalExamination: :class:`tencentcloud.mrs.v20200910.models.PhysicalExaminationV1`
+        """
+        self._Check = None
+        self._Pathology = None
+        self._MedDoc = None
+        self._DiagCert = None
+        self._FirstPage = None
+        self._Indicator = None
+        self._MedicalRecordInfo = None
+        self._Hospitalization = None
+        self._Surgery = None
+        self._Prescription = None
+        self._VaccineCertificate = None
+        self._Electrocardiogram = None
+        self._PathologyV2 = None
+        self._Endoscopy = None
+        self._C14 = None
+        self._Exame = None
+        self._MedDocV2 = None
+        self._IndicatorV3 = None
+        self._Maternity = None
+        self._Timeline = None
+        self._Covid = None
+        self._Eye = None
+        self._BirthCert = None
+        self._TextTypeListBlocks = None
+        self._PhysicalExamination = None
+
+    @property
+    def Check(self):
+        return self._Check
+
+    @Check.setter
+    def Check(self, Check):
+        self._Check = Check
+
+    @property
+    def Pathology(self):
+        return self._Pathology
+
+    @Pathology.setter
+    def Pathology(self, Pathology):
+        self._Pathology = Pathology
+
+    @property
+    def MedDoc(self):
+        return self._MedDoc
+
+    @MedDoc.setter
+    def MedDoc(self, MedDoc):
+        self._MedDoc = MedDoc
+
+    @property
+    def DiagCert(self):
+        return self._DiagCert
+
+    @DiagCert.setter
+    def DiagCert(self, DiagCert):
+        self._DiagCert = DiagCert
+
+    @property
+    def FirstPage(self):
+        return self._FirstPage
+
+    @FirstPage.setter
+    def FirstPage(self, FirstPage):
+        self._FirstPage = FirstPage
+
+    @property
+    def Indicator(self):
+        return self._Indicator
+
+    @Indicator.setter
+    def Indicator(self, Indicator):
+        self._Indicator = Indicator
+
+    @property
+    def MedicalRecordInfo(self):
+        return self._MedicalRecordInfo
+
+    @MedicalRecordInfo.setter
+    def MedicalRecordInfo(self, MedicalRecordInfo):
+        self._MedicalRecordInfo = MedicalRecordInfo
+
+    @property
+    def Hospitalization(self):
+        return self._Hospitalization
+
+    @Hospitalization.setter
+    def Hospitalization(self, Hospitalization):
+        self._Hospitalization = Hospitalization
+
+    @property
+    def Surgery(self):
+        return self._Surgery
+
+    @Surgery.setter
+    def Surgery(self, Surgery):
+        self._Surgery = Surgery
+
+    @property
+    def Prescription(self):
+        return self._Prescription
+
+    @Prescription.setter
+    def Prescription(self, Prescription):
+        self._Prescription = Prescription
+
+    @property
+    def VaccineCertificate(self):
+        return self._VaccineCertificate
+
+    @VaccineCertificate.setter
+    def VaccineCertificate(self, VaccineCertificate):
+        self._VaccineCertificate = VaccineCertificate
+
+    @property
+    def Electrocardiogram(self):
+        return self._Electrocardiogram
+
+    @Electrocardiogram.setter
+    def Electrocardiogram(self, Electrocardiogram):
+        self._Electrocardiogram = Electrocardiogram
+
+    @property
+    def PathologyV2(self):
+        return self._PathologyV2
+
+    @PathologyV2.setter
+    def PathologyV2(self, PathologyV2):
+        self._PathologyV2 = PathologyV2
+
+    @property
+    def Endoscopy(self):
+        return self._Endoscopy
+
+    @Endoscopy.setter
+    def Endoscopy(self, Endoscopy):
+        self._Endoscopy = Endoscopy
+
+    @property
+    def C14(self):
+        return self._C14
+
+    @C14.setter
+    def C14(self, C14):
+        self._C14 = C14
+
+    @property
+    def Exame(self):
+        return self._Exame
+
+    @Exame.setter
+    def Exame(self, Exame):
+        self._Exame = Exame
+
+    @property
+    def MedDocV2(self):
+        return self._MedDocV2
+
+    @MedDocV2.setter
+    def MedDocV2(self, MedDocV2):
+        self._MedDocV2 = MedDocV2
+
+    @property
+    def IndicatorV3(self):
+        return self._IndicatorV3
+
+    @IndicatorV3.setter
+    def IndicatorV3(self, IndicatorV3):
+        self._IndicatorV3 = IndicatorV3
+
+    @property
+    def Maternity(self):
+        return self._Maternity
+
+    @Maternity.setter
+    def Maternity(self, Maternity):
+        self._Maternity = Maternity
+
+    @property
+    def Timeline(self):
+        return self._Timeline
+
+    @Timeline.setter
+    def Timeline(self, Timeline):
+        self._Timeline = Timeline
+
+    @property
+    def Covid(self):
+        return self._Covid
+
+    @Covid.setter
+    def Covid(self, Covid):
+        self._Covid = Covid
+
+    @property
+    def Eye(self):
+        return self._Eye
+
+    @Eye.setter
+    def Eye(self, Eye):
+        self._Eye = Eye
+
+    @property
+    def BirthCert(self):
+        return self._BirthCert
+
+    @BirthCert.setter
+    def BirthCert(self, BirthCert):
+        self._BirthCert = BirthCert
+
+    @property
+    def TextTypeListBlocks(self):
+        return self._TextTypeListBlocks
+
+    @TextTypeListBlocks.setter
+    def TextTypeListBlocks(self, TextTypeListBlocks):
+        self._TextTypeListBlocks = TextTypeListBlocks
+
+    @property
+    def PhysicalExamination(self):
+        return self._PhysicalExamination
+
+    @PhysicalExamination.setter
+    def PhysicalExamination(self, PhysicalExamination):
+        self._PhysicalExamination = PhysicalExamination
+
+
+    def _deserialize(self, params):
+        if params.get("Check") is not None:
+            self._Check = []
+            for item in params.get("Check"):
+                obj = Check()
+                obj._deserialize(item)
+                self._Check.append(obj)
+        if params.get("Pathology") is not None:
+            self._Pathology = []
+            for item in params.get("Pathology"):
+                obj = PathologyReport()
+                obj._deserialize(item)
+                self._Pathology.append(obj)
+        if params.get("MedDoc") is not None:
+            self._MedDoc = []
+            for item in params.get("MedDoc"):
+                obj = MedDoc()
+                obj._deserialize(item)
+                self._MedDoc.append(obj)
+        if params.get("DiagCert") is not None:
+            self._DiagCert = []
+            for item in params.get("DiagCert"):
+                obj = DiagCert()
+                obj._deserialize(item)
+                self._DiagCert.append(obj)
+        if params.get("FirstPage") is not None:
+            self._FirstPage = []
+            for item in params.get("FirstPage"):
+                obj = FirstPage()
+                obj._deserialize(item)
+                self._FirstPage.append(obj)
+        if params.get("Indicator") is not None:
+            self._Indicator = []
+            for item in params.get("Indicator"):
+                obj = Indicator()
+                obj._deserialize(item)
+                self._Indicator.append(obj)
+        if params.get("MedicalRecordInfo") is not None:
+            self._MedicalRecordInfo = []
+            for item in params.get("MedicalRecordInfo"):
+                obj = MedicalRecordInfo()
+                obj._deserialize(item)
+                self._MedicalRecordInfo.append(obj)
+        if params.get("Hospitalization") is not None:
+            self._Hospitalization = []
+            for item in params.get("Hospitalization"):
+                obj = Hospitalization()
+                obj._deserialize(item)
+                self._Hospitalization.append(obj)
+        if params.get("Surgery") is not None:
+            self._Surgery = []
+            for item in params.get("Surgery"):
+                obj = Surgery()
+                obj._deserialize(item)
+                self._Surgery.append(obj)
+        if params.get("Prescription") is not None:
+            self._Prescription = []
+            for item in params.get("Prescription"):
+                obj = Prescription()
+                obj._deserialize(item)
+                self._Prescription.append(obj)
+        if params.get("VaccineCertificate") is not None:
+            self._VaccineCertificate = []
+            for item in params.get("VaccineCertificate"):
+                obj = VaccineCertificate()
+                obj._deserialize(item)
+                self._VaccineCertificate.append(obj)
+        if params.get("Electrocardiogram") is not None:
+            self._Electrocardiogram = []
+            for item in params.get("Electrocardiogram"):
+                obj = Electrocardiogram()
+                obj._deserialize(item)
+                self._Electrocardiogram.append(obj)
+        if params.get("PathologyV2") is not None:
+            self._PathologyV2 = []
+            for item in params.get("PathologyV2"):
+                obj = PathologyV2()
+                obj._deserialize(item)
+                self._PathologyV2.append(obj)
+        if params.get("Endoscopy") is not None:
+            self._Endoscopy = []
+            for item in params.get("Endoscopy"):
+                obj = Endoscopy()
+                obj._deserialize(item)
+                self._Endoscopy.append(obj)
+        if params.get("C14") is not None:
+            self._C14 = []
+            for item in params.get("C14"):
+                obj = Indicator()
+                obj._deserialize(item)
+                self._C14.append(obj)
+        if params.get("Exame") is not None:
+            self._Exame = []
+            for item in params.get("Exame"):
+                obj = Exame()
+                obj._deserialize(item)
+                self._Exame.append(obj)
+        if params.get("MedDocV2") is not None:
+            self._MedDocV2 = []
+            for item in params.get("MedDocV2"):
+                obj = DischargeInfoBlock()
+                obj._deserialize(item)
+                self._MedDocV2.append(obj)
+        if params.get("IndicatorV3") is not None:
+            self._IndicatorV3 = []
+            for item in params.get("IndicatorV3"):
+                obj = IndicatorV3()
+                obj._deserialize(item)
+                self._IndicatorV3.append(obj)
+        if params.get("Maternity") is not None:
+            self._Maternity = []
+            for item in params.get("Maternity"):
+                obj = Maternity()
+                obj._deserialize(item)
+                self._Maternity.append(obj)
+        if params.get("Timeline") is not None:
+            self._Timeline = []
+            for item in params.get("Timeline"):
+                obj = TimelineInformation()
+                obj._deserialize(item)
+                self._Timeline.append(obj)
+        if params.get("Covid") is not None:
+            self._Covid = []
+            for item in params.get("Covid"):
+                obj = CovidItemsInfo()
+                obj._deserialize(item)
+                self._Covid.append(obj)
+        if params.get("Eye") is not None:
+            self._Eye = []
+            for item in params.get("Eye"):
+                obj = EyeItemsInfo()
+                obj._deserialize(item)
+                self._Eye.append(obj)
+        if params.get("BirthCert") is not None:
+            self._BirthCert = []
+            for item in params.get("BirthCert"):
+                obj = BirthCert()
+                obj._deserialize(item)
+                self._BirthCert.append(obj)
+        if params.get("TextTypeListBlocks") is not None:
+            self._TextTypeListBlocks = []
+            for item in params.get("TextTypeListBlocks"):
+                obj = TextTypeListBlock()
+                obj._deserialize(item)
+                self._TextTypeListBlocks.append(obj)
+        if params.get("PhysicalExamination") is not None:
+            self._PhysicalExamination = PhysicalExaminationV1()
+            self._PhysicalExamination._deserialize(params.get("PhysicalExamination"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockInfo(AbstractModel):
     """块信息
 
@@ -1144,6 +1612,115 @@ class BloodPressureBlock(AbstractModel):
         
 
 
+class BloodPressureItem(AbstractModel):
+    """体检报告血压检测信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Item: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Result: 数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Times: 第几次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Times: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Location: 左右手臂
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        """
+        self._Name = None
+        self._Item = None
+        self._Result = None
+        self._Unit = None
+        self._Times = None
+        self._Location = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Times(self):
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Item") is not None:
+            self._Item = PhysicalBaseItem()
+            self._Item._deserialize(params.get("Item"))
+        if params.get("Result") is not None:
+            self._Result = PhysicalBaseItem()
+            self._Result._deserialize(params.get("Result"))
+        if params.get("Unit") is not None:
+            self._Unit = PhysicalBaseItem()
+            self._Unit._deserialize(params.get("Unit"))
+        if params.get("Times") is not None:
+            self._Times = PhysicalBaseItem()
+            self._Times._deserialize(params.get("Times"))
+        if params.get("Location") is not None:
+            self._Location = PhysicalBaseItem()
+            self._Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BodyExaminationBlock(AbstractModel):
     """查体
 
@@ -1352,6 +1929,100 @@ class Check(AbstractModel):
         if params.get("Summary") is not None:
             self._Summary = Summary()
             self._Summary._deserialize(params.get("Summary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChestCircumferenceItem(AbstractModel):
+    """体检报告-胸围信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Item: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Result: 数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _State: 呼吸状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        """
+        self._Name = None
+        self._Item = None
+        self._Result = None
+        self._Unit = None
+        self._State = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Item") is not None:
+            self._Item = PhysicalBaseItem()
+            self._Item._deserialize(params.get("Item"))
+        if params.get("Result") is not None:
+            self._Result = PhysicalBaseItem()
+            self._Result._deserialize(params.get("Result"))
+        if params.get("Unit") is not None:
+            self._Unit = PhysicalBaseItem()
+            self._Unit._deserialize(params.get("Unit"))
+        if params.get("State") is not None:
+            self._State = PhysicalBaseItem()
+            self._State._deserialize(params.get("State"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5334,6 +6005,543 @@ class Fp2NdItem(AbstractModel):
         
 
 
+class GeneralExaminationBaseItem(AbstractModel):
+    """体检报告-一般检测信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VitalSign: 生命体征
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VitalSign: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSign`
+        :param _Others: 其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationOthers`
+        :param _BriefSummary: 小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBriefSummary`
+        """
+        self._VitalSign = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def VitalSign(self):
+        return self._VitalSign
+
+    @VitalSign.setter
+    def VitalSign(self, VitalSign):
+        self._VitalSign = VitalSign
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("VitalSign") is not None:
+            self._VitalSign = GeneralExaminationVitalSign()
+            self._VitalSign._deserialize(params.get("VitalSign"))
+        if params.get("Others") is not None:
+            self._Others = GeneralExaminationOthers()
+            self._Others._deserialize(params.get("Others"))
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = GeneralExaminationBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralExaminationBriefSummary(AbstractModel):
+    """体检报告-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 一般检查小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralExaminationOthers(AbstractModel):
+    """体检报告-其他项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Countenance: 面容与表情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Countenance: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _MentalStatus: 精神状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MentalStatus: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _DevelopmentCondition: 发育及营养状况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevelopmentCondition: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Memory: 记忆力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Hipline: 臀围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hipline: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _WaistHipRatio: 腰臀比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaistHipRatio: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _Addiction: 生活嗜好
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Addiction: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _AbilityOfLifeADL: 生活能力评定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbilityOfLifeADL: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Others: 一般检查其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _ChestCircumference: 胸围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChestCircumference: :class:`tencentcloud.mrs.v20200910.models.ChestCircumferenceItem`
+        """
+        self._Countenance = None
+        self._MentalStatus = None
+        self._DevelopmentCondition = None
+        self._Memory = None
+        self._Hipline = None
+        self._WaistHipRatio = None
+        self._Addiction = None
+        self._AbilityOfLifeADL = None
+        self._Others = None
+        self._ChestCircumference = None
+
+    @property
+    def Countenance(self):
+        return self._Countenance
+
+    @Countenance.setter
+    def Countenance(self, Countenance):
+        self._Countenance = Countenance
+
+    @property
+    def MentalStatus(self):
+        return self._MentalStatus
+
+    @MentalStatus.setter
+    def MentalStatus(self, MentalStatus):
+        self._MentalStatus = MentalStatus
+
+    @property
+    def DevelopmentCondition(self):
+        return self._DevelopmentCondition
+
+    @DevelopmentCondition.setter
+    def DevelopmentCondition(self, DevelopmentCondition):
+        self._DevelopmentCondition = DevelopmentCondition
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Hipline(self):
+        return self._Hipline
+
+    @Hipline.setter
+    def Hipline(self, Hipline):
+        self._Hipline = Hipline
+
+    @property
+    def WaistHipRatio(self):
+        return self._WaistHipRatio
+
+    @WaistHipRatio.setter
+    def WaistHipRatio(self, WaistHipRatio):
+        self._WaistHipRatio = WaistHipRatio
+
+    @property
+    def Addiction(self):
+        return self._Addiction
+
+    @Addiction.setter
+    def Addiction(self, Addiction):
+        self._Addiction = Addiction
+
+    @property
+    def AbilityOfLifeADL(self):
+        return self._AbilityOfLifeADL
+
+    @AbilityOfLifeADL.setter
+    def AbilityOfLifeADL(self, AbilityOfLifeADL):
+        self._AbilityOfLifeADL = AbilityOfLifeADL
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def ChestCircumference(self):
+        return self._ChestCircumference
+
+    @ChestCircumference.setter
+    def ChestCircumference(self, ChestCircumference):
+        self._ChestCircumference = ChestCircumference
+
+
+    def _deserialize(self, params):
+        if params.get("Countenance") is not None:
+            self._Countenance = KeyValueItem()
+            self._Countenance._deserialize(params.get("Countenance"))
+        if params.get("MentalStatus") is not None:
+            self._MentalStatus = KeyValueItem()
+            self._MentalStatus._deserialize(params.get("MentalStatus"))
+        if params.get("DevelopmentCondition") is not None:
+            self._DevelopmentCondition = KeyValueItem()
+            self._DevelopmentCondition._deserialize(params.get("DevelopmentCondition"))
+        if params.get("Memory") is not None:
+            self._Memory = KeyValueItem()
+            self._Memory._deserialize(params.get("Memory"))
+        if params.get("Hipline") is not None:
+            self._Hipline = ValueUnitItem()
+            self._Hipline._deserialize(params.get("Hipline"))
+        if params.get("WaistHipRatio") is not None:
+            self._WaistHipRatio = ValueUnitItem()
+            self._WaistHipRatio._deserialize(params.get("WaistHipRatio"))
+        if params.get("Addiction") is not None:
+            self._Addiction = KeyValueItem()
+            self._Addiction._deserialize(params.get("Addiction"))
+        if params.get("AbilityOfLifeADL") is not None:
+            self._AbilityOfLifeADL = KeyValueItem()
+            self._AbilityOfLifeADL._deserialize(params.get("AbilityOfLifeADL"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("ChestCircumference") is not None:
+            self._ChestCircumference = ChestCircumferenceItem()
+            self._ChestCircumference._deserialize(params.get("ChestCircumference"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralExaminationVitalSign(AbstractModel):
+    """生命体征
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 生命体征总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BodyTemperature: 体温
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyTemperature: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _Pulse: 脉率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pulse: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _HeartRate: 心率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BreathingRate: 呼吸频率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BreathingRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BodyHeight: 身高
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyHeight: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BodyWeight: 体重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyWeight: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BodyMassIndex: 体质指数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BodyMassIndex: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _Waistline: 腰围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Waistline: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _BloodPressure: 血压
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BloodPressure: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationVitalSignBloodPressure`
+        """
+        self._Text = None
+        self._BodyTemperature = None
+        self._Pulse = None
+        self._HeartRate = None
+        self._BreathingRate = None
+        self._BodyHeight = None
+        self._BodyWeight = None
+        self._BodyMassIndex = None
+        self._Waistline = None
+        self._BloodPressure = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def BodyTemperature(self):
+        return self._BodyTemperature
+
+    @BodyTemperature.setter
+    def BodyTemperature(self, BodyTemperature):
+        self._BodyTemperature = BodyTemperature
+
+    @property
+    def Pulse(self):
+        return self._Pulse
+
+    @Pulse.setter
+    def Pulse(self, Pulse):
+        self._Pulse = Pulse
+
+    @property
+    def HeartRate(self):
+        return self._HeartRate
+
+    @HeartRate.setter
+    def HeartRate(self, HeartRate):
+        self._HeartRate = HeartRate
+
+    @property
+    def BreathingRate(self):
+        return self._BreathingRate
+
+    @BreathingRate.setter
+    def BreathingRate(self, BreathingRate):
+        self._BreathingRate = BreathingRate
+
+    @property
+    def BodyHeight(self):
+        return self._BodyHeight
+
+    @BodyHeight.setter
+    def BodyHeight(self, BodyHeight):
+        self._BodyHeight = BodyHeight
+
+    @property
+    def BodyWeight(self):
+        return self._BodyWeight
+
+    @BodyWeight.setter
+    def BodyWeight(self, BodyWeight):
+        self._BodyWeight = BodyWeight
+
+    @property
+    def BodyMassIndex(self):
+        return self._BodyMassIndex
+
+    @BodyMassIndex.setter
+    def BodyMassIndex(self, BodyMassIndex):
+        self._BodyMassIndex = BodyMassIndex
+
+    @property
+    def Waistline(self):
+        return self._Waistline
+
+    @Waistline.setter
+    def Waistline(self, Waistline):
+        self._Waistline = Waistline
+
+    @property
+    def BloodPressure(self):
+        return self._BloodPressure
+
+    @BloodPressure.setter
+    def BloodPressure(self, BloodPressure):
+        self._BloodPressure = BloodPressure
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = ValueUnitItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("BodyTemperature") is not None:
+            self._BodyTemperature = ValueUnitItem()
+            self._BodyTemperature._deserialize(params.get("BodyTemperature"))
+        if params.get("Pulse") is not None:
+            self._Pulse = ValueUnitItem()
+            self._Pulse._deserialize(params.get("Pulse"))
+        if params.get("HeartRate") is not None:
+            self._HeartRate = ValueUnitItem()
+            self._HeartRate._deserialize(params.get("HeartRate"))
+        if params.get("BreathingRate") is not None:
+            self._BreathingRate = ValueUnitItem()
+            self._BreathingRate._deserialize(params.get("BreathingRate"))
+        if params.get("BodyHeight") is not None:
+            self._BodyHeight = ValueUnitItem()
+            self._BodyHeight._deserialize(params.get("BodyHeight"))
+        if params.get("BodyWeight") is not None:
+            self._BodyWeight = ValueUnitItem()
+            self._BodyWeight._deserialize(params.get("BodyWeight"))
+        if params.get("BodyMassIndex") is not None:
+            self._BodyMassIndex = ValueUnitItem()
+            self._BodyMassIndex._deserialize(params.get("BodyMassIndex"))
+        if params.get("Waistline") is not None:
+            self._Waistline = ValueUnitItem()
+            self._Waistline._deserialize(params.get("Waistline"))
+        if params.get("BloodPressure") is not None:
+            self._BloodPressure = GeneralExaminationVitalSignBloodPressure()
+            self._BloodPressure._deserialize(params.get("BloodPressure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralExaminationVitalSignBloodPressure(AbstractModel):
+    """血压
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 血压
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.BloodPressureItem`
+        :param _SystolicDiastolicPressure: 收缩压/舒张压
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystolicDiastolicPressure: list of BloodPressureItem
+        :param _SystolicPressure: 收缩压
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SystolicPressure: list of BloodPressureItem
+        :param _DiastolicPressure: 舒张压
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiastolicPressure: list of BloodPressureItem
+        """
+        self._Text = None
+        self._SystolicDiastolicPressure = None
+        self._SystolicPressure = None
+        self._DiastolicPressure = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def SystolicDiastolicPressure(self):
+        return self._SystolicDiastolicPressure
+
+    @SystolicDiastolicPressure.setter
+    def SystolicDiastolicPressure(self, SystolicDiastolicPressure):
+        self._SystolicDiastolicPressure = SystolicDiastolicPressure
+
+    @property
+    def SystolicPressure(self):
+        return self._SystolicPressure
+
+    @SystolicPressure.setter
+    def SystolicPressure(self, SystolicPressure):
+        self._SystolicPressure = SystolicPressure
+
+    @property
+    def DiastolicPressure(self):
+        return self._DiastolicPressure
+
+    @DiastolicPressure.setter
+    def DiastolicPressure(self, DiastolicPressure):
+        self._DiastolicPressure = DiastolicPressure
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = BloodPressureItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("SystolicDiastolicPressure") is not None:
+            self._SystolicDiastolicPressure = []
+            for item in params.get("SystolicDiastolicPressure"):
+                obj = BloodPressureItem()
+                obj._deserialize(item)
+                self._SystolicDiastolicPressure.append(obj)
+        if params.get("SystolicPressure") is not None:
+            self._SystolicPressure = []
+            for item in params.get("SystolicPressure"):
+                obj = BloodPressureItem()
+                obj._deserialize(item)
+                self._SystolicPressure.append(obj)
+        if params.get("DiastolicPressure") is not None:
+            self._DiastolicPressure = []
+            for item in params.get("DiastolicPressure"):
+                obj = BloodPressureItem()
+                obj._deserialize(item)
+                self._DiastolicPressure.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GeneticHistoryBlock(AbstractModel):
     """家族遗传史
 
@@ -5397,6 +6605,453 @@ class GeneticHistoryBlock(AbstractModel):
         self._Src = params.get("Src")
         self._GeneticList = params.get("GeneticList")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyAdnexal(AbstractModel):
+    """体检报告-妇科-子宫附件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 子宫附件总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyBaseItem(AbstractModel):
+    """体检报告-妇科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vulva: 外阴
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vulva: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVulva`
+        :param _Vagina: 阴道
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vagina: :class:`tencentcloud.mrs.v20200910.models.GynaecologyVagina`
+        :param _Cervix: 子宫颈
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cervix: :class:`tencentcloud.mrs.v20200910.models.GynaecologyCervix`
+        :param _Uterus: 子宫
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uterus: :class:`tencentcloud.mrs.v20200910.models.GynaecologyUterus`
+        :param _Adnexal: 子宫附件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Adnexal: :class:`tencentcloud.mrs.v20200910.models.GynaecologyAdnexal`
+        :param _PelvicCavity: 盆腔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PelvicCavity: :class:`tencentcloud.mrs.v20200910.models.GynaecologyPelvicCavity`
+        :param _Others: 妇科其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _MenstrualHistory: 月经史
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MenstrualHistory: :class:`tencentcloud.mrs.v20200910.models.GynaecologyMenstrualHistory`
+        :param _BriefSummary: 小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBriefSummary`
+        """
+        self._Vulva = None
+        self._Vagina = None
+        self._Cervix = None
+        self._Uterus = None
+        self._Adnexal = None
+        self._PelvicCavity = None
+        self._Others = None
+        self._MenstrualHistory = None
+        self._BriefSummary = None
+
+    @property
+    def Vulva(self):
+        return self._Vulva
+
+    @Vulva.setter
+    def Vulva(self, Vulva):
+        self._Vulva = Vulva
+
+    @property
+    def Vagina(self):
+        return self._Vagina
+
+    @Vagina.setter
+    def Vagina(self, Vagina):
+        self._Vagina = Vagina
+
+    @property
+    def Cervix(self):
+        return self._Cervix
+
+    @Cervix.setter
+    def Cervix(self, Cervix):
+        self._Cervix = Cervix
+
+    @property
+    def Uterus(self):
+        return self._Uterus
+
+    @Uterus.setter
+    def Uterus(self, Uterus):
+        self._Uterus = Uterus
+
+    @property
+    def Adnexal(self):
+        return self._Adnexal
+
+    @Adnexal.setter
+    def Adnexal(self, Adnexal):
+        self._Adnexal = Adnexal
+
+    @property
+    def PelvicCavity(self):
+        return self._PelvicCavity
+
+    @PelvicCavity.setter
+    def PelvicCavity(self, PelvicCavity):
+        self._PelvicCavity = PelvicCavity
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def MenstrualHistory(self):
+        return self._MenstrualHistory
+
+    @MenstrualHistory.setter
+    def MenstrualHistory(self, MenstrualHistory):
+        self._MenstrualHistory = MenstrualHistory
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("Vulva") is not None:
+            self._Vulva = GynaecologyVulva()
+            self._Vulva._deserialize(params.get("Vulva"))
+        if params.get("Vagina") is not None:
+            self._Vagina = GynaecologyVagina()
+            self._Vagina._deserialize(params.get("Vagina"))
+        if params.get("Cervix") is not None:
+            self._Cervix = GynaecologyCervix()
+            self._Cervix._deserialize(params.get("Cervix"))
+        if params.get("Uterus") is not None:
+            self._Uterus = GynaecologyUterus()
+            self._Uterus._deserialize(params.get("Uterus"))
+        if params.get("Adnexal") is not None:
+            self._Adnexal = GynaecologyAdnexal()
+            self._Adnexal._deserialize(params.get("Adnexal"))
+        if params.get("PelvicCavity") is not None:
+            self._PelvicCavity = GynaecologyPelvicCavity()
+            self._PelvicCavity._deserialize(params.get("PelvicCavity"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("MenstrualHistory") is not None:
+            self._MenstrualHistory = GynaecologyMenstrualHistory()
+            self._MenstrualHistory._deserialize(params.get("MenstrualHistory"))
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = GynaecologyBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyBriefSummary(AbstractModel):
+    """体检报告-妇科-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyCervix(AbstractModel):
+    """体检报告-妇科-子宫颈
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 子宫颈总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyMenstrualHistory(AbstractModel):
+    """体检报告-妇科-月经史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 妇科月经史总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyPelvicCavity(AbstractModel):
+    """体检报告-妇科-盆腔
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 盆腔总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyUterus(AbstractModel):
+    """体检报告-妇科-子宫
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 子宫总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyVagina(AbstractModel):
+    """体检报告-妇科-阴道
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 阴道总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GynaecologyVulva(AbstractModel):
+    """体检报告-妇科-外阴
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 外阴总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5514,6 +7169,85 @@ class HandleParam(AbstractModel):
         self._IsScale = params.get("IsScale")
         self._ImageOriginalSize = params.get("ImageOriginalSize")
         self._ScaleTargetSize = params.get("ScaleTargetSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HearingItem(AbstractModel):
+    """听力信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Item: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Location: 方位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Result: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        """
+        self._Name = None
+        self._Item = None
+        self._Location = None
+        self._Result = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Item") is not None:
+            self._Item = PhysicalBaseItem()
+            self._Item._deserialize(params.get("Item"))
+        if params.get("Location") is not None:
+            self._Location = PhysicalBaseItem()
+            self._Location._deserialize(params.get("Location"))
+        if params.get("Result") is not None:
+            self._Result = PhysicalBaseItem()
+            self._Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7106,6 +8840,1086 @@ class IndicatorV3(AbstractModel):
         
 
 
+class InternalMedicineAbdomen(AbstractModel):
+    """体检报告-内科-腹部
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 内科腹部小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Liver: 肝脏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Liver: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenLiver`
+        :param _GallBladder: 胆囊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GallBladder: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenGallBladder`
+        :param _Pancreas: 胰腺
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pancreas: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenPancreas`
+        :param _Spleen: 脾脏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spleen: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenSpleen`
+        :param _Kidney: 肾脏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kidney: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomenKidney`
+        :param _Others: 腹部其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        """
+        self._Text = None
+        self._Liver = None
+        self._GallBladder = None
+        self._Pancreas = None
+        self._Spleen = None
+        self._Kidney = None
+        self._Others = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Liver(self):
+        return self._Liver
+
+    @Liver.setter
+    def Liver(self, Liver):
+        self._Liver = Liver
+
+    @property
+    def GallBladder(self):
+        return self._GallBladder
+
+    @GallBladder.setter
+    def GallBladder(self, GallBladder):
+        self._GallBladder = GallBladder
+
+    @property
+    def Pancreas(self):
+        return self._Pancreas
+
+    @Pancreas.setter
+    def Pancreas(self, Pancreas):
+        self._Pancreas = Pancreas
+
+    @property
+    def Spleen(self):
+        return self._Spleen
+
+    @Spleen.setter
+    def Spleen(self, Spleen):
+        self._Spleen = Spleen
+
+    @property
+    def Kidney(self):
+        return self._Kidney
+
+    @Kidney.setter
+    def Kidney(self, Kidney):
+        self._Kidney = Kidney
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("Liver") is not None:
+            self._Liver = InternalMedicineAbdomenLiver()
+            self._Liver._deserialize(params.get("Liver"))
+        if params.get("GallBladder") is not None:
+            self._GallBladder = InternalMedicineAbdomenGallBladder()
+            self._GallBladder._deserialize(params.get("GallBladder"))
+        if params.get("Pancreas") is not None:
+            self._Pancreas = InternalMedicineAbdomenPancreas()
+            self._Pancreas._deserialize(params.get("Pancreas"))
+        if params.get("Spleen") is not None:
+            self._Spleen = InternalMedicineAbdomenSpleen()
+            self._Spleen._deserialize(params.get("Spleen"))
+        if params.get("Kidney") is not None:
+            self._Kidney = InternalMedicineAbdomenKidney()
+            self._Kidney._deserialize(params.get("Kidney"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineAbdomenGallBladder(AbstractModel):
+    """体检报告-内科-腹部-胆囊
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: 胆囊总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Size: 胆囊大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Palpation: 胆囊触诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Percussion: 胆囊叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Tenderness: 胆囊压痛
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Consistency: 胆囊质地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Src = None
+        self._Size = None
+        self._Palpation = None
+        self._Percussion = None
+        self._Tenderness = None
+        self._Consistency = None
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Palpation(self):
+        return self._Palpation
+
+    @Palpation.setter
+    def Palpation(self, Palpation):
+        self._Palpation = Palpation
+
+    @property
+    def Percussion(self):
+        return self._Percussion
+
+    @Percussion.setter
+    def Percussion(self, Percussion):
+        self._Percussion = Percussion
+
+    @property
+    def Tenderness(self):
+        return self._Tenderness
+
+    @Tenderness.setter
+    def Tenderness(self, Tenderness):
+        self._Tenderness = Tenderness
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        if params.get("Src") is not None:
+            self._Src = KeyValueItem()
+            self._Src._deserialize(params.get("Src"))
+        if params.get("Size") is not None:
+            self._Size = KeyValueItem()
+            self._Size._deserialize(params.get("Size"))
+        if params.get("Palpation") is not None:
+            self._Palpation = KeyValueItem()
+            self._Palpation._deserialize(params.get("Palpation"))
+        if params.get("Percussion") is not None:
+            self._Percussion = KeyValueItem()
+            self._Percussion._deserialize(params.get("Percussion"))
+        if params.get("Tenderness") is not None:
+            self._Tenderness = KeyValueItem()
+            self._Tenderness._deserialize(params.get("Tenderness"))
+        if params.get("Consistency") is not None:
+            self._Consistency = KeyValueItem()
+            self._Consistency._deserialize(params.get("Consistency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineAbdomenKidney(AbstractModel):
+    """体检报告-内科-腹部-肾脏
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: 肾脏总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Size: 肾脏大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Palpation: 肾脏触诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Percussion: 肾脏叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Tenderness: 肾脏压痛
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Consistency: 肾脏质地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Src = None
+        self._Size = None
+        self._Palpation = None
+        self._Percussion = None
+        self._Tenderness = None
+        self._Consistency = None
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Palpation(self):
+        return self._Palpation
+
+    @Palpation.setter
+    def Palpation(self, Palpation):
+        self._Palpation = Palpation
+
+    @property
+    def Percussion(self):
+        return self._Percussion
+
+    @Percussion.setter
+    def Percussion(self, Percussion):
+        self._Percussion = Percussion
+
+    @property
+    def Tenderness(self):
+        return self._Tenderness
+
+    @Tenderness.setter
+    def Tenderness(self, Tenderness):
+        self._Tenderness = Tenderness
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        if params.get("Src") is not None:
+            self._Src = KeyValueItem()
+            self._Src._deserialize(params.get("Src"))
+        if params.get("Size") is not None:
+            self._Size = KeyValueItem()
+            self._Size._deserialize(params.get("Size"))
+        if params.get("Palpation") is not None:
+            self._Palpation = KeyValueItem()
+            self._Palpation._deserialize(params.get("Palpation"))
+        if params.get("Percussion") is not None:
+            self._Percussion = KeyValueItem()
+            self._Percussion._deserialize(params.get("Percussion"))
+        if params.get("Tenderness") is not None:
+            self._Tenderness = KeyValueItem()
+            self._Tenderness._deserialize(params.get("Tenderness"))
+        if params.get("Consistency") is not None:
+            self._Consistency = KeyValueItem()
+            self._Consistency._deserialize(params.get("Consistency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineAbdomenLiver(AbstractModel):
+    """体检报告-内科-腹部-肝脏
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: 肝脏总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Size: 肝脏大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Palpation: 肝脏触诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Percussion: 肝脏叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Tenderness: 肝脏压痛
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Consistency: 肝脏质地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Src = None
+        self._Size = None
+        self._Palpation = None
+        self._Percussion = None
+        self._Tenderness = None
+        self._Consistency = None
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Palpation(self):
+        return self._Palpation
+
+    @Palpation.setter
+    def Palpation(self, Palpation):
+        self._Palpation = Palpation
+
+    @property
+    def Percussion(self):
+        return self._Percussion
+
+    @Percussion.setter
+    def Percussion(self, Percussion):
+        self._Percussion = Percussion
+
+    @property
+    def Tenderness(self):
+        return self._Tenderness
+
+    @Tenderness.setter
+    def Tenderness(self, Tenderness):
+        self._Tenderness = Tenderness
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        if params.get("Src") is not None:
+            self._Src = KeyValueItem()
+            self._Src._deserialize(params.get("Src"))
+        if params.get("Size") is not None:
+            self._Size = KeyValueItem()
+            self._Size._deserialize(params.get("Size"))
+        if params.get("Palpation") is not None:
+            self._Palpation = KeyValueItem()
+            self._Palpation._deserialize(params.get("Palpation"))
+        if params.get("Percussion") is not None:
+            self._Percussion = KeyValueItem()
+            self._Percussion._deserialize(params.get("Percussion"))
+        if params.get("Tenderness") is not None:
+            self._Tenderness = KeyValueItem()
+            self._Tenderness._deserialize(params.get("Tenderness"))
+        if params.get("Consistency") is not None:
+            self._Consistency = KeyValueItem()
+            self._Consistency._deserialize(params.get("Consistency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineAbdomenPancreas(AbstractModel):
+    """体检报告-内科-腹部-胰腺
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: 胰腺总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Size: 胰腺大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Palpation: 胰腺触诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Percussion: 胰腺叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Tenderness: 肝脏压痛
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Consistency: 胰腺质地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Src = None
+        self._Size = None
+        self._Palpation = None
+        self._Percussion = None
+        self._Tenderness = None
+        self._Consistency = None
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Palpation(self):
+        return self._Palpation
+
+    @Palpation.setter
+    def Palpation(self, Palpation):
+        self._Palpation = Palpation
+
+    @property
+    def Percussion(self):
+        return self._Percussion
+
+    @Percussion.setter
+    def Percussion(self, Percussion):
+        self._Percussion = Percussion
+
+    @property
+    def Tenderness(self):
+        return self._Tenderness
+
+    @Tenderness.setter
+    def Tenderness(self, Tenderness):
+        self._Tenderness = Tenderness
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        if params.get("Src") is not None:
+            self._Src = KeyValueItem()
+            self._Src._deserialize(params.get("Src"))
+        if params.get("Size") is not None:
+            self._Size = KeyValueItem()
+            self._Size._deserialize(params.get("Size"))
+        if params.get("Palpation") is not None:
+            self._Palpation = KeyValueItem()
+            self._Palpation._deserialize(params.get("Palpation"))
+        if params.get("Percussion") is not None:
+            self._Percussion = KeyValueItem()
+            self._Percussion._deserialize(params.get("Percussion"))
+        if params.get("Tenderness") is not None:
+            self._Tenderness = KeyValueItem()
+            self._Tenderness._deserialize(params.get("Tenderness"))
+        if params.get("Consistency") is not None:
+            self._Consistency = KeyValueItem()
+            self._Consistency._deserialize(params.get("Consistency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineAbdomenSpleen(AbstractModel):
+    """体检报告-内科-腹部-脾脏
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: 脾脏总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Size: 脾脏大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Palpation: 脾脏触诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Palpation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Percussion: 脾脏叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Percussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Tenderness: 脾脏压痛
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tenderness: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Consistency: 脾脏质地
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Src = None
+        self._Size = None
+        self._Palpation = None
+        self._Percussion = None
+        self._Tenderness = None
+        self._Consistency = None
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Palpation(self):
+        return self._Palpation
+
+    @Palpation.setter
+    def Palpation(self, Palpation):
+        self._Palpation = Palpation
+
+    @property
+    def Percussion(self):
+        return self._Percussion
+
+    @Percussion.setter
+    def Percussion(self, Percussion):
+        self._Percussion = Percussion
+
+    @property
+    def Tenderness(self):
+        return self._Tenderness
+
+    @Tenderness.setter
+    def Tenderness(self, Tenderness):
+        self._Tenderness = Tenderness
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        if params.get("Src") is not None:
+            self._Src = KeyValueItem()
+            self._Src._deserialize(params.get("Src"))
+        if params.get("Size") is not None:
+            self._Size = KeyValueItem()
+            self._Size._deserialize(params.get("Size"))
+        if params.get("Palpation") is not None:
+            self._Palpation = KeyValueItem()
+            self._Palpation._deserialize(params.get("Palpation"))
+        if params.get("Percussion") is not None:
+            self._Percussion = KeyValueItem()
+            self._Percussion._deserialize(params.get("Percussion"))
+        if params.get("Tenderness") is not None:
+            self._Tenderness = KeyValueItem()
+            self._Tenderness._deserialize(params.get("Tenderness"))
+        if params.get("Consistency") is not None:
+            self._Consistency = KeyValueItem()
+            self._Consistency._deserialize(params.get("Consistency"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineBaseItem(AbstractModel):
+    """体检报告-内科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Abdomen: 体检报告-内科-腹部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Abdomen: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineAbdomen`
+        :param _Heart: 体检报告-内科-心脏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Heart: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineHeart`
+        :param _Vessel: 体检报告-内科-血管
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vessel: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineVessel`
+        :param _RespiratorySystem: 体检报告-内科-呼吸系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RespiratorySystem: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineRespiratorySystem`
+        :param _Others: 体检报告-内科-内科其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _BriefSummary: 体检报告-内科-小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBriefSummary`
+        """
+        self._Abdomen = None
+        self._Heart = None
+        self._Vessel = None
+        self._RespiratorySystem = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def Abdomen(self):
+        return self._Abdomen
+
+    @Abdomen.setter
+    def Abdomen(self, Abdomen):
+        self._Abdomen = Abdomen
+
+    @property
+    def Heart(self):
+        return self._Heart
+
+    @Heart.setter
+    def Heart(self, Heart):
+        self._Heart = Heart
+
+    @property
+    def Vessel(self):
+        return self._Vessel
+
+    @Vessel.setter
+    def Vessel(self, Vessel):
+        self._Vessel = Vessel
+
+    @property
+    def RespiratorySystem(self):
+        return self._RespiratorySystem
+
+    @RespiratorySystem.setter
+    def RespiratorySystem(self, RespiratorySystem):
+        self._RespiratorySystem = RespiratorySystem
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("Abdomen") is not None:
+            self._Abdomen = InternalMedicineAbdomen()
+            self._Abdomen._deserialize(params.get("Abdomen"))
+        if params.get("Heart") is not None:
+            self._Heart = InternalMedicineHeart()
+            self._Heart._deserialize(params.get("Heart"))
+        if params.get("Vessel") is not None:
+            self._Vessel = InternalMedicineVessel()
+            self._Vessel._deserialize(params.get("Vessel"))
+        if params.get("RespiratorySystem") is not None:
+            self._RespiratorySystem = InternalMedicineRespiratorySystem()
+            self._RespiratorySystem._deserialize(params.get("RespiratorySystem"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = InternalMedicineBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineBriefSummary(AbstractModel):
+    """体检报告-内科-内科小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 内科小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineHeart(AbstractModel):
+    """体检报告-内科-心脏
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 心脏总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _HeartRhythm: 心律
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartRhythm: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _HeartRate: 心率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartRate: :class:`tencentcloud.mrs.v20200910.models.ValueUnitItem`
+        :param _HeartAuscultation: 心脏听诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeartAuscultation: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+        self._HeartRhythm = None
+        self._HeartRate = None
+        self._HeartAuscultation = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def HeartRhythm(self):
+        return self._HeartRhythm
+
+    @HeartRhythm.setter
+    def HeartRhythm(self, HeartRhythm):
+        self._HeartRhythm = HeartRhythm
+
+    @property
+    def HeartRate(self):
+        return self._HeartRate
+
+    @HeartRate.setter
+    def HeartRate(self, HeartRate):
+        self._HeartRate = HeartRate
+
+    @property
+    def HeartAuscultation(self):
+        return self._HeartAuscultation
+
+    @HeartAuscultation.setter
+    def HeartAuscultation(self, HeartAuscultation):
+        self._HeartAuscultation = HeartAuscultation
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("HeartRhythm") is not None:
+            self._HeartRhythm = KeyValueItem()
+            self._HeartRhythm._deserialize(params.get("HeartRhythm"))
+        if params.get("HeartRate") is not None:
+            self._HeartRate = ValueUnitItem()
+            self._HeartRate._deserialize(params.get("HeartRate"))
+        if params.get("HeartAuscultation") is not None:
+            self._HeartAuscultation = KeyValueItem()
+            self._HeartAuscultation._deserialize(params.get("HeartAuscultation"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineRespiratorySystem(AbstractModel):
+    """体检报告-内科-呼吸系统
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 呼吸系统总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Thoracic: 胸廓
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Thoracic: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Sputum: 痰量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sputum: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _LungPercussion: 肺部叩诊
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LungPercussion: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _LungAuscultation: 肺部听诊其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LungAuscultation: list of KeyValueItem
+        """
+        self._Text = None
+        self._Thoracic = None
+        self._Sputum = None
+        self._LungPercussion = None
+        self._LungAuscultation = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Thoracic(self):
+        return self._Thoracic
+
+    @Thoracic.setter
+    def Thoracic(self, Thoracic):
+        self._Thoracic = Thoracic
+
+    @property
+    def Sputum(self):
+        return self._Sputum
+
+    @Sputum.setter
+    def Sputum(self, Sputum):
+        self._Sputum = Sputum
+
+    @property
+    def LungPercussion(self):
+        return self._LungPercussion
+
+    @LungPercussion.setter
+    def LungPercussion(self, LungPercussion):
+        self._LungPercussion = LungPercussion
+
+    @property
+    def LungAuscultation(self):
+        return self._LungAuscultation
+
+    @LungAuscultation.setter
+    def LungAuscultation(self, LungAuscultation):
+        self._LungAuscultation = LungAuscultation
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("Thoracic") is not None:
+            self._Thoracic = KeyValueItem()
+            self._Thoracic._deserialize(params.get("Thoracic"))
+        if params.get("Sputum") is not None:
+            self._Sputum = KeyValueItem()
+            self._Sputum._deserialize(params.get("Sputum"))
+        if params.get("LungPercussion") is not None:
+            self._LungPercussion = KeyValueItem()
+            self._LungPercussion._deserialize(params.get("LungPercussion"))
+        if params.get("LungAuscultation") is not None:
+            self._LungAuscultation = []
+            for item in params.get("LungAuscultation"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._LungAuscultation.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InternalMedicineVessel(AbstractModel):
+    """体检报告-内科-血管
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 血管总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _VascularMurmur: 血管杂音
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VascularMurmur: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _PeripheralVessel: 外周血管
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeripheralVessel: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+        self._VascularMurmur = None
+        self._PeripheralVessel = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VascularMurmur(self):
+        return self._VascularMurmur
+
+    @VascularMurmur.setter
+    def VascularMurmur(self, VascularMurmur):
+        self._VascularMurmur = VascularMurmur
+
+    @property
+    def PeripheralVessel(self):
+        return self._PeripheralVessel
+
+    @PeripheralVessel.setter
+    def PeripheralVessel(self, PeripheralVessel):
+        self._PeripheralVessel = PeripheralVessel
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("VascularMurmur") is not None:
+            self._VascularMurmur = KeyValueItem()
+            self._VascularMurmur._deserialize(params.get("VascularMurmur"))
+        if params.get("PeripheralVessel") is not None:
+            self._PeripheralVessel = KeyValueItem()
+            self._PeripheralVessel._deserialize(params.get("PeripheralVessel"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Invas(AbstractModel):
     """侵犯扩散
 
@@ -7324,6 +10138,70 @@ class IssueInfo(AbstractModel):
         self._CertNumber = params.get("CertNumber")
         self._IssuedAuthority = params.get("IssuedAuthority")
         self._IssuedDate = params.get("IssuedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValueItem(AbstractModel):
+    """体检报告信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Item: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Result: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        """
+        self._Name = None
+        self._Item = None
+        self._Result = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Item") is not None:
+            self._Item = PhysicalBaseItem()
+            self._Item._deserialize(params.get("Item"))
+        if params.get("Result") is not None:
+            self._Result = PhysicalBaseItem()
+            self._Result._deserialize(params.get("Result"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9876,6 +12754,360 @@ class ObstetricalHistoryBlock(AbstractModel):
         
 
 
+class OphthalmologyBareEyeSight(AbstractModel):
+    """体检报告-眼科-裸眼视力
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftEyeVisual: 左眼视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Text: 裸眼视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _RightEyeVisual: 右眼视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RightEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._LeftEyeVisual = None
+        self._Text = None
+        self._RightEyeVisual = None
+
+    @property
+    def LeftEyeVisual(self):
+        return self._LeftEyeVisual
+
+    @LeftEyeVisual.setter
+    def LeftEyeVisual(self, LeftEyeVisual):
+        self._LeftEyeVisual = LeftEyeVisual
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def RightEyeVisual(self):
+        return self._RightEyeVisual
+
+    @RightEyeVisual.setter
+    def RightEyeVisual(self, RightEyeVisual):
+        self._RightEyeVisual = RightEyeVisual
+
+
+    def _deserialize(self, params):
+        if params.get("LeftEyeVisual") is not None:
+            self._LeftEyeVisual = KeyValueItem()
+            self._LeftEyeVisual._deserialize(params.get("LeftEyeVisual"))
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("RightEyeVisual") is not None:
+            self._RightEyeVisual = KeyValueItem()
+            self._RightEyeVisual._deserialize(params.get("RightEyeVisual"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OphthalmologyBaseItem(AbstractModel):
+    """体检报告-眼科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BareEyeSight: 裸眼视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BareEyeSight: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBareEyeSight`
+        :param _CorrectedVisualAcuity: 矫正视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorrectedVisualAcuity: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyCorrectedVisualAcuity`
+        :param _ColourVision: 色觉
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColourVision: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyColourVision`
+        :param _Fundoscopy: 眼底
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fundoscopy: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyFundoscopy`
+        :param _Others: 眼科其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _BriefSummary: 眼科小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBriefSummary`
+        """
+        self._BareEyeSight = None
+        self._CorrectedVisualAcuity = None
+        self._ColourVision = None
+        self._Fundoscopy = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def BareEyeSight(self):
+        return self._BareEyeSight
+
+    @BareEyeSight.setter
+    def BareEyeSight(self, BareEyeSight):
+        self._BareEyeSight = BareEyeSight
+
+    @property
+    def CorrectedVisualAcuity(self):
+        return self._CorrectedVisualAcuity
+
+    @CorrectedVisualAcuity.setter
+    def CorrectedVisualAcuity(self, CorrectedVisualAcuity):
+        self._CorrectedVisualAcuity = CorrectedVisualAcuity
+
+    @property
+    def ColourVision(self):
+        return self._ColourVision
+
+    @ColourVision.setter
+    def ColourVision(self, ColourVision):
+        self._ColourVision = ColourVision
+
+    @property
+    def Fundoscopy(self):
+        return self._Fundoscopy
+
+    @Fundoscopy.setter
+    def Fundoscopy(self, Fundoscopy):
+        self._Fundoscopy = Fundoscopy
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("BareEyeSight") is not None:
+            self._BareEyeSight = OphthalmologyBareEyeSight()
+            self._BareEyeSight._deserialize(params.get("BareEyeSight"))
+        if params.get("CorrectedVisualAcuity") is not None:
+            self._CorrectedVisualAcuity = OphthalmologyCorrectedVisualAcuity()
+            self._CorrectedVisualAcuity._deserialize(params.get("CorrectedVisualAcuity"))
+        if params.get("ColourVision") is not None:
+            self._ColourVision = OphthalmologyColourVision()
+            self._ColourVision._deserialize(params.get("ColourVision"))
+        if params.get("Fundoscopy") is not None:
+            self._Fundoscopy = OphthalmologyFundoscopy()
+            self._Fundoscopy._deserialize(params.get("Fundoscopy"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = OphthalmologyBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OphthalmologyBriefSummary(AbstractModel):
+    """体检报告-眼科-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 眼科小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OphthalmologyColourVision(AbstractModel):
+    """体检报告-眼科-色觉
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 色觉总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OphthalmologyCorrectedVisualAcuity(AbstractModel):
+    """体检报告-眼科-矫正视力
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeftEyeVisual: 左眼矫正视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Text: 矫正视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _RightEyeVisual: 右眼矫正视力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RightEyeVisual: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._LeftEyeVisual = None
+        self._Text = None
+        self._RightEyeVisual = None
+
+    @property
+    def LeftEyeVisual(self):
+        return self._LeftEyeVisual
+
+    @LeftEyeVisual.setter
+    def LeftEyeVisual(self, LeftEyeVisual):
+        self._LeftEyeVisual = LeftEyeVisual
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def RightEyeVisual(self):
+        return self._RightEyeVisual
+
+    @RightEyeVisual.setter
+    def RightEyeVisual(self, RightEyeVisual):
+        self._RightEyeVisual = RightEyeVisual
+
+
+    def _deserialize(self, params):
+        if params.get("LeftEyeVisual") is not None:
+            self._LeftEyeVisual = KeyValueItem()
+            self._LeftEyeVisual._deserialize(params.get("LeftEyeVisual"))
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("RightEyeVisual") is not None:
+            self._RightEyeVisual = KeyValueItem()
+            self._RightEyeVisual._deserialize(params.get("RightEyeVisual"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OphthalmologyFundoscopy(AbstractModel):
+    """体检报告-眼科-眼底
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 眼底检查总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Organ(AbstractModel):
     """器官
 
@@ -10574,6 +13806,264 @@ class OtherInfo(AbstractModel):
         if params.get("StartTime") is not None:
             self._StartTime = SurgeryAttr()
             self._StartTime._deserialize(params.get("StartTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtolaryngologyBaseItem(AbstractModel):
+    """体检报告-耳鼻喉科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ear: 耳朵
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ear: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyEar`
+        :param _Nose: 鼻
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nose: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyNose`
+        :param _Larynx: 喉
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Larynx: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyLarynx`
+        :param _Others: 耳鼻喉其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _BriefSummary: 小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBriefSummary`
+        """
+        self._Ear = None
+        self._Nose = None
+        self._Larynx = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def Ear(self):
+        return self._Ear
+
+    @Ear.setter
+    def Ear(self, Ear):
+        self._Ear = Ear
+
+    @property
+    def Nose(self):
+        return self._Nose
+
+    @Nose.setter
+    def Nose(self, Nose):
+        self._Nose = Nose
+
+    @property
+    def Larynx(self):
+        return self._Larynx
+
+    @Larynx.setter
+    def Larynx(self, Larynx):
+        self._Larynx = Larynx
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("Ear") is not None:
+            self._Ear = OtolaryngologyEar()
+            self._Ear._deserialize(params.get("Ear"))
+        if params.get("Nose") is not None:
+            self._Nose = OtolaryngologyNose()
+            self._Nose._deserialize(params.get("Nose"))
+        if params.get("Larynx") is not None:
+            self._Larynx = OtolaryngologyLarynx()
+            self._Larynx._deserialize(params.get("Larynx"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = OtolaryngologyBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtolaryngologyBriefSummary(AbstractModel):
+    """体检报告-耳鼻喉科-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 耳鼻喉小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtolaryngologyEar(AbstractModel):
+    """体检报告-耳鼻喉科-耳朵
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 耳总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Hearing: 听力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hearing: :class:`tencentcloud.mrs.v20200910.models.HearingItem`
+        """
+        self._Text = None
+        self._Hearing = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Hearing(self):
+        return self._Hearing
+
+    @Hearing.setter
+    def Hearing(self, Hearing):
+        self._Hearing = Hearing
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("Hearing") is not None:
+            self._Hearing = HearingItem()
+            self._Hearing._deserialize(params.get("Hearing"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtolaryngologyLarynx(AbstractModel):
+    """体检报告-耳鼻喉科-喉
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 喉总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtolaryngologyNose(AbstractModel):
+    """体检报告-耳鼻喉科-鼻
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 鼻总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12389,6 +15879,51 @@ class PatientInfo(AbstractModel):
         
 
 
+class PdfInfo(AbstractModel):
+    """体检报告PDF信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: pdf文件url链接(暂不支持)
+        :type Url: str
+        :param _Base64: pdf文件base64编码字符串
+        :type Base64: str
+        """
+        self._Url = None
+        self._Base64 = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Base64(self):
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersonalHistoryBlock(AbstractModel):
     """个人史
 
@@ -12606,6 +16141,277 @@ class PersonalMedicalHistory(AbstractModel):
         self._Job = params.get("Job")
         self._SmokeHistory = params.get("SmokeHistory")
         self._AlcoholicHistory = params.get("AlcoholicHistory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhysicalBaseItem(AbstractModel):
+    """体检报告基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Src: 原始文本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: str
+        :param _Value: 归一化后值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Coords: 四点坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Coords: list of Coord
+        """
+        self._Name = None
+        self._Src = None
+        self._Value = None
+        self._Coords = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Coords(self):
+        return self._Coords
+
+    @Coords.setter
+    def Coords(self, Coords):
+        self._Coords = Coords
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Src = params.get("Src")
+        self._Value = params.get("Value")
+        if params.get("Coords") is not None:
+            self._Coords = []
+            for item in params.get("Coords"):
+                obj = Coord()
+                obj._deserialize(item)
+                self._Coords.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhysicalExamination(AbstractModel):
+    """体检报告综合信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GeneralExamination: 一般检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GeneralExamination: :class:`tencentcloud.mrs.v20200910.models.GeneralExaminationBaseItem`
+        :param _InternalMedicine: 内科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalMedicine: :class:`tencentcloud.mrs.v20200910.models.InternalMedicineBaseItem`
+        :param _Surgery: 外科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Surgery: :class:`tencentcloud.mrs.v20200910.models.SurgeryBaseItem`
+        :param _Stomatology: 口腔科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stomatology: :class:`tencentcloud.mrs.v20200910.models.StomatologyBaseItem`
+        :param _Ophthalmology: 眼科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ophthalmology: :class:`tencentcloud.mrs.v20200910.models.OphthalmologyBaseItem`
+        :param _Otolaryngology: 耳鼻喉科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Otolaryngology: :class:`tencentcloud.mrs.v20200910.models.OtolaryngologyBaseItem`
+        :param _Gynaecology: 妇科
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gynaecology: :class:`tencentcloud.mrs.v20200910.models.GynaecologyBaseItem`
+        :param _Unclassified: 未标准化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unclassified: list of KeyValueItem
+        """
+        self._GeneralExamination = None
+        self._InternalMedicine = None
+        self._Surgery = None
+        self._Stomatology = None
+        self._Ophthalmology = None
+        self._Otolaryngology = None
+        self._Gynaecology = None
+        self._Unclassified = None
+
+    @property
+    def GeneralExamination(self):
+        return self._GeneralExamination
+
+    @GeneralExamination.setter
+    def GeneralExamination(self, GeneralExamination):
+        self._GeneralExamination = GeneralExamination
+
+    @property
+    def InternalMedicine(self):
+        return self._InternalMedicine
+
+    @InternalMedicine.setter
+    def InternalMedicine(self, InternalMedicine):
+        self._InternalMedicine = InternalMedicine
+
+    @property
+    def Surgery(self):
+        return self._Surgery
+
+    @Surgery.setter
+    def Surgery(self, Surgery):
+        self._Surgery = Surgery
+
+    @property
+    def Stomatology(self):
+        return self._Stomatology
+
+    @Stomatology.setter
+    def Stomatology(self, Stomatology):
+        self._Stomatology = Stomatology
+
+    @property
+    def Ophthalmology(self):
+        return self._Ophthalmology
+
+    @Ophthalmology.setter
+    def Ophthalmology(self, Ophthalmology):
+        self._Ophthalmology = Ophthalmology
+
+    @property
+    def Otolaryngology(self):
+        return self._Otolaryngology
+
+    @Otolaryngology.setter
+    def Otolaryngology(self, Otolaryngology):
+        self._Otolaryngology = Otolaryngology
+
+    @property
+    def Gynaecology(self):
+        return self._Gynaecology
+
+    @Gynaecology.setter
+    def Gynaecology(self, Gynaecology):
+        self._Gynaecology = Gynaecology
+
+    @property
+    def Unclassified(self):
+        return self._Unclassified
+
+    @Unclassified.setter
+    def Unclassified(self, Unclassified):
+        self._Unclassified = Unclassified
+
+
+    def _deserialize(self, params):
+        if params.get("GeneralExamination") is not None:
+            self._GeneralExamination = GeneralExaminationBaseItem()
+            self._GeneralExamination._deserialize(params.get("GeneralExamination"))
+        if params.get("InternalMedicine") is not None:
+            self._InternalMedicine = InternalMedicineBaseItem()
+            self._InternalMedicine._deserialize(params.get("InternalMedicine"))
+        if params.get("Surgery") is not None:
+            self._Surgery = SurgeryBaseItem()
+            self._Surgery._deserialize(params.get("Surgery"))
+        if params.get("Stomatology") is not None:
+            self._Stomatology = StomatologyBaseItem()
+            self._Stomatology._deserialize(params.get("Stomatology"))
+        if params.get("Ophthalmology") is not None:
+            self._Ophthalmology = OphthalmologyBaseItem()
+            self._Ophthalmology._deserialize(params.get("Ophthalmology"))
+        if params.get("Otolaryngology") is not None:
+            self._Otolaryngology = OtolaryngologyBaseItem()
+            self._Otolaryngology._deserialize(params.get("Otolaryngology"))
+        if params.get("Gynaecology") is not None:
+            self._Gynaecology = GynaecologyBaseItem()
+            self._Gynaecology._deserialize(params.get("Gynaecology"))
+        if params.get("Unclassified") is not None:
+            self._Unclassified = []
+            for item in params.get("Unclassified"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Unclassified.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PhysicalExaminationV1(AbstractModel):
+    """体检报告V1版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhysicalExaminationMulti: 体检报告信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalExaminationMulti: :class:`tencentcloud.mrs.v20200910.models.PhysicalExamination`
+        :param _Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        """
+        self._PhysicalExaminationMulti = None
+        self._Version = None
+
+    @property
+    def PhysicalExaminationMulti(self):
+        return self._PhysicalExaminationMulti
+
+    @PhysicalExaminationMulti.setter
+    def PhysicalExaminationMulti(self, PhysicalExaminationMulti):
+        self._PhysicalExaminationMulti = PhysicalExaminationMulti
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        if params.get("PhysicalExaminationMulti") is not None:
+            self._PhysicalExaminationMulti = PhysicalExamination()
+            self._PhysicalExaminationMulti._deserialize(params.get("PhysicalExaminationMulti"))
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13938,6 +17744,249 @@ class SmokeHistoryBlock(AbstractModel):
         
 
 
+class StomatologyBaseItem(AbstractModel):
+    """体检报告-口腔科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ToothDecay: 龋齿
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToothDecay: :class:`tencentcloud.mrs.v20200910.models.StomatologyToothDecay`
+        :param _Gingiva: 牙龈
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gingiva: :class:`tencentcloud.mrs.v20200910.models.StomatologyGingiva`
+        :param _Periodontics: 牙周
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Periodontics: :class:`tencentcloud.mrs.v20200910.models.StomatologyPeriodontics`
+        :param _Others: 口腔其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _BriefSummary: 小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.StomatologyBriefSummary`
+        """
+        self._ToothDecay = None
+        self._Gingiva = None
+        self._Periodontics = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def ToothDecay(self):
+        return self._ToothDecay
+
+    @ToothDecay.setter
+    def ToothDecay(self, ToothDecay):
+        self._ToothDecay = ToothDecay
+
+    @property
+    def Gingiva(self):
+        return self._Gingiva
+
+    @Gingiva.setter
+    def Gingiva(self, Gingiva):
+        self._Gingiva = Gingiva
+
+    @property
+    def Periodontics(self):
+        return self._Periodontics
+
+    @Periodontics.setter
+    def Periodontics(self, Periodontics):
+        self._Periodontics = Periodontics
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("ToothDecay") is not None:
+            self._ToothDecay = StomatologyToothDecay()
+            self._ToothDecay._deserialize(params.get("ToothDecay"))
+        if params.get("Gingiva") is not None:
+            self._Gingiva = StomatologyGingiva()
+            self._Gingiva._deserialize(params.get("Gingiva"))
+        if params.get("Periodontics") is not None:
+            self._Periodontics = StomatologyPeriodontics()
+            self._Periodontics._deserialize(params.get("Periodontics"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = StomatologyBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StomatologyBriefSummary(AbstractModel):
+    """体检报告-口腔科-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 口腔小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StomatologyGingiva(AbstractModel):
+    """体检报告-口腔科-牙龈
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 牙龈总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StomatologyPeriodontics(AbstractModel):
+    """体检报告-口腔科-牙周
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 牙周总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StomatologyToothDecay(AbstractModel):
+    """体检报告-口腔科-龋齿
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 龋齿总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Summary(AbstractModel):
     """结论
 
@@ -14113,6 +18162,72 @@ class Surgery(AbstractModel):
         
 
 
+class SurgeryAnorectal(AbstractModel):
+    """体检报告-外科-肛门直肠
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 肛门直肠总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _DigitalRectalExamination: 直肠指检
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DigitalRectalExamination: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Hemorrhoid: 痔疮
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hemorrhoid: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+        self._DigitalRectalExamination = None
+        self._Hemorrhoid = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def DigitalRectalExamination(self):
+        return self._DigitalRectalExamination
+
+    @DigitalRectalExamination.setter
+    def DigitalRectalExamination(self, DigitalRectalExamination):
+        self._DigitalRectalExamination = DigitalRectalExamination
+
+    @property
+    def Hemorrhoid(self):
+        return self._Hemorrhoid
+
+    @Hemorrhoid.setter
+    def Hemorrhoid(self, Hemorrhoid):
+        self._Hemorrhoid = Hemorrhoid
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("DigitalRectalExamination") is not None:
+            self._DigitalRectalExamination = KeyValueItem()
+            self._DigitalRectalExamination._deserialize(params.get("DigitalRectalExamination"))
+        if params.get("Hemorrhoid") is not None:
+            self._Hemorrhoid = KeyValueItem()
+            self._Hemorrhoid._deserialize(params.get("Hemorrhoid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SurgeryAttr(AbstractModel):
     """手术记录属性
 
@@ -14150,6 +18265,252 @@ class SurgeryAttr(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryBaseItem(AbstractModel):
+    """体检报告-外科
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadNeck: 体检报告-外科-头颈部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadNeck: :class:`tencentcloud.mrs.v20200910.models.SurgeryHeadNeck`
+        :param _Thyroid: 体检报告-外科-甲状腺
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Thyroid: :class:`tencentcloud.mrs.v20200910.models.SurgeryThyroid`
+        :param _Breast: 体检报告-外科-乳房
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Breast: :class:`tencentcloud.mrs.v20200910.models.SurgeryBreast`
+        :param _LymphNode: 体检报告-外科-浅表淋巴结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LymphNode: :class:`tencentcloud.mrs.v20200910.models.SurgeryLymphNode`
+        :param _SpinalExtremities: 体检报告-外科-脊柱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpinalExtremities: :class:`tencentcloud.mrs.v20200910.models.SurgerySpinalExtremities`
+        :param _Skin: 体检报告-外科-皮肤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Skin: :class:`tencentcloud.mrs.v20200910.models.SurgerySkin`
+        :param _Anorectal: 体检报告-外科-肛门直肠
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Anorectal: :class:`tencentcloud.mrs.v20200910.models.SurgeryAnorectal`
+        :param _UrogenitalSystem: 体检报告-外科-泌尿生殖系统
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrogenitalSystem: :class:`tencentcloud.mrs.v20200910.models.SurgeryUrogenitalSystem`
+        :param _Others: 体检报告-外科-外科其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Others: list of KeyValueItem
+        :param _BriefSummary: 体检报告-外科-小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BriefSummary: :class:`tencentcloud.mrs.v20200910.models.SurgeryBriefSummary`
+        """
+        self._HeadNeck = None
+        self._Thyroid = None
+        self._Breast = None
+        self._LymphNode = None
+        self._SpinalExtremities = None
+        self._Skin = None
+        self._Anorectal = None
+        self._UrogenitalSystem = None
+        self._Others = None
+        self._BriefSummary = None
+
+    @property
+    def HeadNeck(self):
+        return self._HeadNeck
+
+    @HeadNeck.setter
+    def HeadNeck(self, HeadNeck):
+        self._HeadNeck = HeadNeck
+
+    @property
+    def Thyroid(self):
+        return self._Thyroid
+
+    @Thyroid.setter
+    def Thyroid(self, Thyroid):
+        self._Thyroid = Thyroid
+
+    @property
+    def Breast(self):
+        return self._Breast
+
+    @Breast.setter
+    def Breast(self, Breast):
+        self._Breast = Breast
+
+    @property
+    def LymphNode(self):
+        return self._LymphNode
+
+    @LymphNode.setter
+    def LymphNode(self, LymphNode):
+        self._LymphNode = LymphNode
+
+    @property
+    def SpinalExtremities(self):
+        return self._SpinalExtremities
+
+    @SpinalExtremities.setter
+    def SpinalExtremities(self, SpinalExtremities):
+        self._SpinalExtremities = SpinalExtremities
+
+    @property
+    def Skin(self):
+        return self._Skin
+
+    @Skin.setter
+    def Skin(self, Skin):
+        self._Skin = Skin
+
+    @property
+    def Anorectal(self):
+        return self._Anorectal
+
+    @Anorectal.setter
+    def Anorectal(self, Anorectal):
+        self._Anorectal = Anorectal
+
+    @property
+    def UrogenitalSystem(self):
+        return self._UrogenitalSystem
+
+    @UrogenitalSystem.setter
+    def UrogenitalSystem(self, UrogenitalSystem):
+        self._UrogenitalSystem = UrogenitalSystem
+
+    @property
+    def Others(self):
+        return self._Others
+
+    @Others.setter
+    def Others(self, Others):
+        self._Others = Others
+
+    @property
+    def BriefSummary(self):
+        return self._BriefSummary
+
+    @BriefSummary.setter
+    def BriefSummary(self, BriefSummary):
+        self._BriefSummary = BriefSummary
+
+
+    def _deserialize(self, params):
+        if params.get("HeadNeck") is not None:
+            self._HeadNeck = SurgeryHeadNeck()
+            self._HeadNeck._deserialize(params.get("HeadNeck"))
+        if params.get("Thyroid") is not None:
+            self._Thyroid = SurgeryThyroid()
+            self._Thyroid._deserialize(params.get("Thyroid"))
+        if params.get("Breast") is not None:
+            self._Breast = SurgeryBreast()
+            self._Breast._deserialize(params.get("Breast"))
+        if params.get("LymphNode") is not None:
+            self._LymphNode = SurgeryLymphNode()
+            self._LymphNode._deserialize(params.get("LymphNode"))
+        if params.get("SpinalExtremities") is not None:
+            self._SpinalExtremities = SurgerySpinalExtremities()
+            self._SpinalExtremities._deserialize(params.get("SpinalExtremities"))
+        if params.get("Skin") is not None:
+            self._Skin = SurgerySkin()
+            self._Skin._deserialize(params.get("Skin"))
+        if params.get("Anorectal") is not None:
+            self._Anorectal = SurgeryAnorectal()
+            self._Anorectal._deserialize(params.get("Anorectal"))
+        if params.get("UrogenitalSystem") is not None:
+            self._UrogenitalSystem = SurgeryUrogenitalSystem()
+            self._UrogenitalSystem._deserialize(params.get("UrogenitalSystem"))
+        if params.get("Others") is not None:
+            self._Others = []
+            for item in params.get("Others"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Others.append(obj)
+        if params.get("BriefSummary") is not None:
+            self._BriefSummary = SurgeryBriefSummary()
+            self._BriefSummary._deserialize(params.get("BriefSummary"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryBreast(AbstractModel):
+    """体检报告-外科-乳房
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 乳房总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryBriefSummary(AbstractModel):
+    """体检报告-外科-小结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 外科小结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14229,6 +18590,42 @@ class SurgeryConditionBlock(AbstractModel):
                 obj._deserialize(item)
                 self._SurgeryList.append(obj)
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryHeadNeck(AbstractModel):
+    """体检报告-外科-头颈部
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 头颈部总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14491,6 +18888,306 @@ class SurgeryListBlock(AbstractModel):
         self._TimeType = params.get("TimeType")
         self._Name = params.get("Name")
         self._Part = params.get("Part")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryLymphNode(AbstractModel):
+    """体检报告-外科-浅表淋巴结
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 浅表淋巴结总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgerySkin(AbstractModel):
+    """体检报告-外科-皮肤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 皮肤总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgerySpinalExtremities(AbstractModel):
+    """体检报告-外科-脊柱
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 脊柱四肢总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _SpinalColumn: 脊柱
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpinalColumn: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _LimbJoint: 四肢和关节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimbJoint: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Foot: 平跛足
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Foot: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Bone: 骨骼
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bone: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Gait: 步态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gait: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Deformity: 残疾或畸形
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deformity: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+        self._SpinalColumn = None
+        self._LimbJoint = None
+        self._Foot = None
+        self._Bone = None
+        self._Gait = None
+        self._Deformity = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def SpinalColumn(self):
+        return self._SpinalColumn
+
+    @SpinalColumn.setter
+    def SpinalColumn(self, SpinalColumn):
+        self._SpinalColumn = SpinalColumn
+
+    @property
+    def LimbJoint(self):
+        return self._LimbJoint
+
+    @LimbJoint.setter
+    def LimbJoint(self, LimbJoint):
+        self._LimbJoint = LimbJoint
+
+    @property
+    def Foot(self):
+        return self._Foot
+
+    @Foot.setter
+    def Foot(self, Foot):
+        self._Foot = Foot
+
+    @property
+    def Bone(self):
+        return self._Bone
+
+    @Bone.setter
+    def Bone(self, Bone):
+        self._Bone = Bone
+
+    @property
+    def Gait(self):
+        return self._Gait
+
+    @Gait.setter
+    def Gait(self, Gait):
+        self._Gait = Gait
+
+    @property
+    def Deformity(self):
+        return self._Deformity
+
+    @Deformity.setter
+    def Deformity(self, Deformity):
+        self._Deformity = Deformity
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("SpinalColumn") is not None:
+            self._SpinalColumn = KeyValueItem()
+            self._SpinalColumn._deserialize(params.get("SpinalColumn"))
+        if params.get("LimbJoint") is not None:
+            self._LimbJoint = KeyValueItem()
+            self._LimbJoint._deserialize(params.get("LimbJoint"))
+        if params.get("Foot") is not None:
+            self._Foot = KeyValueItem()
+            self._Foot._deserialize(params.get("Foot"))
+        if params.get("Bone") is not None:
+            self._Bone = KeyValueItem()
+            self._Bone._deserialize(params.get("Bone"))
+        if params.get("Gait") is not None:
+            self._Gait = KeyValueItem()
+            self._Gait._deserialize(params.get("Gait"))
+        if params.get("Deformity") is not None:
+            self._Deformity = KeyValueItem()
+            self._Deformity._deserialize(params.get("Deformity"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryThyroid(AbstractModel):
+    """体检报告-外科-甲状腺
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 甲状腺总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SurgeryUrogenitalSystem(AbstractModel):
+    """体检报告-外科-泌尿生殖系统
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 泌尿生殖系统总体描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _Prostate: 前列腺
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prostate: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        :param _ExternalReproductiveOrgans: 外生殖器（男性）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalReproductiveOrgans: :class:`tencentcloud.mrs.v20200910.models.KeyValueItem`
+        """
+        self._Text = None
+        self._Prostate = None
+        self._ExternalReproductiveOrgans = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Prostate(self):
+        return self._Prostate
+
+    @Prostate.setter
+    def Prostate(self, Prostate):
+        self._Prostate = Prostate
+
+    @property
+    def ExternalReproductiveOrgans(self):
+        return self._ExternalReproductiveOrgans
+
+    @ExternalReproductiveOrgans.setter
+    def ExternalReproductiveOrgans(self, ExternalReproductiveOrgans):
+        self._ExternalReproductiveOrgans = ExternalReproductiveOrgans
+
+
+    def _deserialize(self, params):
+        if params.get("Text") is not None:
+            self._Text = KeyValueItem()
+            self._Text._deserialize(params.get("Text"))
+        if params.get("Prostate") is not None:
+            self._Prostate = KeyValueItem()
+            self._Prostate._deserialize(params.get("Prostate"))
+        if params.get("ExternalReproductiveOrgans") is not None:
+            self._ExternalReproductiveOrgans = KeyValueItem()
+            self._ExternalReproductiveOrgans._deserialize(params.get("ExternalReproductiveOrgans"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15397,6 +20094,45 @@ class TextType(AbstractModel):
         self._Id = params.get("Id")
         self._Level = params.get("Level")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextTypeListBlock(AbstractModel):
+    """文本类型列表块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TextTypeList: 文本类型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextTypeList: list of TextType
+        """
+        self._TextTypeList = None
+
+    @property
+    def TextTypeList(self):
+        return self._TextTypeList
+
+    @TextTypeList.setter
+    def TextTypeList(self, TextTypeList):
+        self._TextTypeList = TextTypeList
+
+
+    def _deserialize(self, params):
+        if params.get("TextTypeList") is not None:
+            self._TextTypeList = []
+            for item in params.get("TextTypeList"):
+                obj = TextType()
+                obj._deserialize(item)
+                self._TextTypeList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17541,6 +22277,123 @@ class TuberInfo(AbstractModel):
         
 
 
+class TurnPDFToObjectRequest(AbstractModel):
+    """TurnPDFToObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PdfInfo: 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+        :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
+        """
+        self._PdfInfo = None
+
+    @property
+    def PdfInfo(self):
+        return self._PdfInfo
+
+    @PdfInfo.setter
+    def PdfInfo(self, PdfInfo):
+        self._PdfInfo = PdfInfo
+
+
+    def _deserialize(self, params):
+        if params.get("PdfInfo") is not None:
+            self._PdfInfo = PdfInfo()
+            self._PdfInfo._deserialize(params.get("PdfInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TurnPDFToObjectResponse(AbstractModel):
+    """TurnPDFToObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Template: 报告结构化结果
+        :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
+        :param _TextTypeList: 多级分类结果
+        :type TextTypeList: list of TextType
+        :param _Block: 报告结构化结果
+        :type Block: :class:`tencentcloud.mrs.v20200910.models.Block`
+        :param _IsBlock: 是否使用Block字段
+        :type IsBlock: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Template = None
+        self._TextTypeList = None
+        self._Block = None
+        self._IsBlock = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def TextTypeList(self):
+        return self._TextTypeList
+
+    @TextTypeList.setter
+    def TextTypeList(self, TextTypeList):
+        self._TextTypeList = TextTypeList
+
+    @property
+    def Block(self):
+        return self._Block
+
+    @Block.setter
+    def Block(self, Block):
+        self._Block = Block
+
+    @property
+    def IsBlock(self):
+        return self._IsBlock
+
+    @IsBlock.setter
+    def IsBlock(self, IsBlock):
+        self._IsBlock = IsBlock
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self._Template = Template()
+            self._Template._deserialize(params.get("Template"))
+        if params.get("TextTypeList") is not None:
+            self._TextTypeList = []
+            for item in params.get("TextTypeList"):
+                obj = TextType()
+                obj._deserialize(item)
+                self._TextTypeList.append(obj)
+        if params.get("Block") is not None:
+            self._Block = Block()
+            self._Block._deserialize(params.get("Block"))
+        self._IsBlock = params.get("IsBlock")
+        self._RequestId = params.get("RequestId")
+
+
 class Vaccination(AbstractModel):
     """免疫接种记录
 
@@ -17841,6 +22694,85 @@ class ValueBlock(AbstractModel):
         self._Grade = params.get("Grade")
         self._Percent = params.get("Percent")
         self._Positive = params.get("Positive")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ValueUnitItem(AbstractModel):
+    """体检报告信息-包含单位
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Item: 项目原文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Result: 数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: :class:`tencentcloud.mrs.v20200910.models.PhysicalBaseItem`
+        """
+        self._Name = None
+        self._Item = None
+        self._Result = None
+        self._Unit = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Item") is not None:
+            self._Item = PhysicalBaseItem()
+            self._Item._deserialize(params.get("Item"))
+        if params.get("Result") is not None:
+            self._Result = PhysicalBaseItem()
+            self._Result._deserialize(params.get("Result"))
+        if params.get("Unit") is not None:
+            self._Unit = PhysicalBaseItem()
+            self._Unit._deserialize(params.get("Unit"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

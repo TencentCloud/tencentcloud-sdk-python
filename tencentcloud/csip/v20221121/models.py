@@ -6084,6 +6084,9 @@ class DomainAssetVO(AbstractModel):
         :param _VerifyStatus: 待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyStatus: int
+        :param _BotAccessCount: bot访问数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotAccessCount: int
         """
         self._AssetId = None
         self._AssetName = None
@@ -6123,6 +6126,7 @@ class DomainAssetVO(AbstractModel):
         self._VerifyDomain = None
         self._VerifyTXTRecord = None
         self._VerifyStatus = None
+        self._BotAccessCount = None
 
     @property
     def AssetId(self):
@@ -6428,6 +6432,14 @@ class DomainAssetVO(AbstractModel):
     def VerifyStatus(self, VerifyStatus):
         self._VerifyStatus = VerifyStatus
 
+    @property
+    def BotAccessCount(self):
+        return self._BotAccessCount
+
+    @BotAccessCount.setter
+    def BotAccessCount(self, BotAccessCount):
+        self._BotAccessCount = BotAccessCount
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -6473,6 +6485,7 @@ class DomainAssetVO(AbstractModel):
         self._VerifyDomain = params.get("VerifyDomain")
         self._VerifyTXTRecord = params.get("VerifyTXTRecord")
         self._VerifyStatus = params.get("VerifyStatus")
+        self._BotAccessCount = params.get("BotAccessCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

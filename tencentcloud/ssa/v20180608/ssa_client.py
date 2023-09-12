@@ -26,6 +26,29 @@ class SsaClient(AbstractClient):
     _service = 'ssa'
 
 
+    def DescribeAlarmStat(self, request):
+        """安全大屏-用户威胁告警信息
+
+        :param request: Request instance for DescribeAlarmStat.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAlarmStatRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAlarmStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmStat", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmStatResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAssetDetail(self, request):
         """资产安全页资产详情
 

@@ -12826,6 +12826,65 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDomainVerifyRecordRequest(AbstractModel):
+    """CreateDomainVerifyRecord请求参数结构体
+
+    """
+
+
+class CreateDomainVerifyRecordResponse(AbstractModel):
+    """CreateDomainVerifyRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DNSVerifyInfo: DNS解析信息
+        :type DNSVerifyInfo: :class:`tencentcloud.vod.v20180717.models.DNSVerifyInfo`
+        :param _FileVerifyInfo: 文件验证信息
+        :type FileVerifyInfo: :class:`tencentcloud.vod.v20180717.models.FileVerifyInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DNSVerifyInfo = None
+        self._FileVerifyInfo = None
+        self._RequestId = None
+
+    @property
+    def DNSVerifyInfo(self):
+        return self._DNSVerifyInfo
+
+    @DNSVerifyInfo.setter
+    def DNSVerifyInfo(self, DNSVerifyInfo):
+        self._DNSVerifyInfo = DNSVerifyInfo
+
+    @property
+    def FileVerifyInfo(self):
+        return self._FileVerifyInfo
+
+    @FileVerifyInfo.setter
+    def FileVerifyInfo(self, FileVerifyInfo):
+        self._FileVerifyInfo = FileVerifyInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DNSVerifyInfo") is not None:
+            self._DNSVerifyInfo = DNSVerifyInfo()
+            self._DNSVerifyInfo._deserialize(params.get("DNSVerifyInfo"))
+        if params.get("FileVerifyInfo") is not None:
+            self._FileVerifyInfo = FileVerifyInfo()
+            self._FileVerifyInfo._deserialize(params.get("FileVerifyInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateEnhanceMediaTemplateRequest(AbstractModel):
     """CreateEnhanceMediaTemplate请求参数结构体
 
@@ -15946,6 +16005,63 @@ class CreateWordSamplesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DNSVerifyInfo(AbstractModel):
+    """DNS解析验证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubDomain: 子解析。
+        :type SubDomain: str
+        :param _Record: 解析值。
+        :type Record: str
+        :param _RecordType: 解析类型。
+        :type RecordType: str
+        """
+        self._SubDomain = None
+        self._Record = None
+        self._RecordType = None
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Record(self):
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+
+    def _deserialize(self, params):
+        self._SubDomain = params.get("SubDomain")
+        self._Record = params.get("Record")
+        self._RecordType = params.get("RecordType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DailyPlayStatInfo(AbstractModel):
@@ -27530,6 +27646,64 @@ class FileUploadTask(AbstractModel):
         if params.get("MetaData") is not None:
             self._MetaData = MediaMetaData()
             self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileVerifyInfo(AbstractModel):
+    """文件验证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileVerifyUrl: 文件验证 URL 指引。
+        :type FileVerifyUrl: str
+        :param _FileVerifyDomains: 文件校验域名列表。
+        :type FileVerifyDomains: list of str
+        :param _FileVerifyName: 文件校验文件名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileVerifyName: str
+        """
+        self._FileVerifyUrl = None
+        self._FileVerifyDomains = None
+        self._FileVerifyName = None
+
+    @property
+    def FileVerifyUrl(self):
+        return self._FileVerifyUrl
+
+    @FileVerifyUrl.setter
+    def FileVerifyUrl(self, FileVerifyUrl):
+        self._FileVerifyUrl = FileVerifyUrl
+
+    @property
+    def FileVerifyDomains(self):
+        return self._FileVerifyDomains
+
+    @FileVerifyDomains.setter
+    def FileVerifyDomains(self, FileVerifyDomains):
+        self._FileVerifyDomains = FileVerifyDomains
+
+    @property
+    def FileVerifyName(self):
+        return self._FileVerifyName
+
+    @FileVerifyName.setter
+    def FileVerifyName(self, FileVerifyName):
+        self._FileVerifyName = FileVerifyName
+
+
+    def _deserialize(self, params):
+        self._FileVerifyUrl = params.get("FileVerifyUrl")
+        self._FileVerifyDomains = params.get("FileVerifyDomains")
+        self._FileVerifyName = params.get("FileVerifyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55227,6 +55401,162 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyDomainOwnershipForConsoleRequest(AbstractModel):
+    """VerifyDomainOwnershipForConsole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要接入点播的域名。
+        :type Domain: str
+        :param _AccelerateArea: 需要开启加速的区域： <li>Mainland: 中国大陆地区</li> <li>Internation: 海外地区及港澳台</li> <li>Global: 全球</li> 不填会根据用户注册腾讯云时的地域信息自动判断 Mainland 或 Internation	
+        :type AccelerateArea: str
+        """
+        self._Domain = None
+        self._AccelerateArea = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AccelerateArea(self):
+        return self._AccelerateArea
+
+    @AccelerateArea.setter
+    def AccelerateArea(self, AccelerateArea):
+        self._AccelerateArea = AccelerateArea
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._AccelerateArea = params.get("AccelerateArea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDomainOwnershipForConsoleResponse(AbstractModel):
+    """VerifyDomainOwnershipForConsole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyDomainRecordRequest(AbstractModel):
+    """VerifyDomainRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要接入点播的加速域名。
+        :type Domain: str
+        :param _VerifyType: 验证方式：
+<li>dns：DNS 解析验证；</li>
+<li>fIle：文件验证。</li>
+
+默认值：dns。
+        :type VerifyType: str
+        """
+        self._Domain = None
+        self._VerifyType = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDomainRecordResponse(AbstractModel):
+    """VerifyDomainRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否验证成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class VideoDenoiseInfo(AbstractModel):

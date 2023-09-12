@@ -1971,8 +1971,20 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
         r"""
         :param _DedicatedClusterId: 查询的专用集群id
         :type DedicatedClusterId: str
+        :param _HostId: 宿主机id
+        :type HostId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Period: 时间范围精度，1分钟/5分钟
+        :type Period: str
         """
         self._DedicatedClusterId = None
+        self._HostId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
 
     @property
     def DedicatedClusterId(self):
@@ -1982,9 +1994,45 @@ class DescribeDedicatedClusterHostStatisticsRequest(AbstractModel):
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
 
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._HostId = params.get("HostId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3129,6 +3177,53 @@ class DescribeSitesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetailData(AbstractModel):
+    """带有时间的详细数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamps: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamps: list of float
+        :param _Values: 对应的具体值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def Timestamps(self):
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostInfo(AbstractModel):
     """CDC宿主机的详细信息
 
@@ -3300,12 +3395,40 @@ class HostStatistic(AbstractModel):
         :type Memory: int
         :param _Count: 该规格宿主机的数量
         :type Count: int
+        :param _CpuAverage: 平均cpu负载百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuAverage: float
+        :param _MemAverage: 平均内存使用率百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemAverage: float
+        :param _NetAverage: 平均网络流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetAverage: float
+        :param _CpuDetailData: cpu详细监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _MemDetailData: 内存详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _NetRateDetailData: 网络速率详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetRateDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _NetPacketDetailData: 网速包详细数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetPacketDetailData: :class:`tencentcloud.cdc.v20201214.models.DetailData`
         """
         self._HostType = None
         self._HostFamily = None
         self._Cpu = None
         self._Memory = None
         self._Count = None
+        self._CpuAverage = None
+        self._MemAverage = None
+        self._NetAverage = None
+        self._CpuDetailData = None
+        self._MemDetailData = None
+        self._NetRateDetailData = None
+        self._NetPacketDetailData = None
 
     @property
     def HostType(self):
@@ -3347,6 +3470,62 @@ class HostStatistic(AbstractModel):
     def Count(self, Count):
         self._Count = Count
 
+    @property
+    def CpuAverage(self):
+        return self._CpuAverage
+
+    @CpuAverage.setter
+    def CpuAverage(self, CpuAverage):
+        self._CpuAverage = CpuAverage
+
+    @property
+    def MemAverage(self):
+        return self._MemAverage
+
+    @MemAverage.setter
+    def MemAverage(self, MemAverage):
+        self._MemAverage = MemAverage
+
+    @property
+    def NetAverage(self):
+        return self._NetAverage
+
+    @NetAverage.setter
+    def NetAverage(self, NetAverage):
+        self._NetAverage = NetAverage
+
+    @property
+    def CpuDetailData(self):
+        return self._CpuDetailData
+
+    @CpuDetailData.setter
+    def CpuDetailData(self, CpuDetailData):
+        self._CpuDetailData = CpuDetailData
+
+    @property
+    def MemDetailData(self):
+        return self._MemDetailData
+
+    @MemDetailData.setter
+    def MemDetailData(self, MemDetailData):
+        self._MemDetailData = MemDetailData
+
+    @property
+    def NetRateDetailData(self):
+        return self._NetRateDetailData
+
+    @NetRateDetailData.setter
+    def NetRateDetailData(self, NetRateDetailData):
+        self._NetRateDetailData = NetRateDetailData
+
+    @property
+    def NetPacketDetailData(self):
+        return self._NetPacketDetailData
+
+    @NetPacketDetailData.setter
+    def NetPacketDetailData(self, NetPacketDetailData):
+        self._NetPacketDetailData = NetPacketDetailData
+
 
     def _deserialize(self, params):
         self._HostType = params.get("HostType")
@@ -3354,6 +3533,21 @@ class HostStatistic(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._Count = params.get("Count")
+        self._CpuAverage = params.get("CpuAverage")
+        self._MemAverage = params.get("MemAverage")
+        self._NetAverage = params.get("NetAverage")
+        if params.get("CpuDetailData") is not None:
+            self._CpuDetailData = DetailData()
+            self._CpuDetailData._deserialize(params.get("CpuDetailData"))
+        if params.get("MemDetailData") is not None:
+            self._MemDetailData = DetailData()
+            self._MemDetailData._deserialize(params.get("MemDetailData"))
+        if params.get("NetRateDetailData") is not None:
+            self._NetRateDetailData = DetailData()
+            self._NetRateDetailData._deserialize(params.get("NetRateDetailData"))
+        if params.get("NetPacketDetailData") is not None:
+            self._NetPacketDetailData = DetailData()
+            self._NetPacketDetailData._deserialize(params.get("NetPacketDetailData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

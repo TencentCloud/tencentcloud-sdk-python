@@ -5690,6 +5690,10 @@ class CommonFlowApprover(AbstractModel):
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
         :param _SignComponents: 签署控件：文件发起使用
         :type SignComponents: list of Component
+        :param _ApproverVerifyTypes: 签署人查看合同时认证方式, 1-实名查看 2-短信验证码查看(企业签署方不支持该方式) 如果不传默认为1 查看合同的认证方式 Flow层级的优先于approver层级的 （当手写签名方式为OCR_ESIGN时，合同认证方式2无效，因为这种签名方式依赖实名认证）
+        :type ApproverVerifyTypes: list of int
+        :param _ApproverSignTypes: 签署人签署合同时的认证方式 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)	
+        :type ApproverSignTypes: list of int
         """
         self._NotChannelOrganization = None
         self._ApproverType = None
@@ -5706,6 +5710,8 @@ class CommonFlowApprover(AbstractModel):
         self._NotifyType = None
         self._ApproverOption = None
         self._SignComponents = None
+        self._ApproverVerifyTypes = None
+        self._ApproverSignTypes = None
 
     @property
     def NotChannelOrganization(self):
@@ -5805,14 +5811,10 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def NotifyType(self):
-        warnings.warn("parameter `NotifyType` is deprecated", DeprecationWarning) 
-
         return self._NotifyType
 
     @NotifyType.setter
     def NotifyType(self, NotifyType):
-        warnings.warn("parameter `NotifyType` is deprecated", DeprecationWarning) 
-
         self._NotifyType = NotifyType
 
     @property
@@ -5830,6 +5832,22 @@ class CommonFlowApprover(AbstractModel):
     @SignComponents.setter
     def SignComponents(self, SignComponents):
         self._SignComponents = SignComponents
+
+    @property
+    def ApproverVerifyTypes(self):
+        return self._ApproverVerifyTypes
+
+    @ApproverVerifyTypes.setter
+    def ApproverVerifyTypes(self, ApproverVerifyTypes):
+        self._ApproverVerifyTypes = ApproverVerifyTypes
+
+    @property
+    def ApproverSignTypes(self):
+        return self._ApproverSignTypes
+
+    @ApproverSignTypes.setter
+    def ApproverSignTypes(self, ApproverSignTypes):
+        self._ApproverSignTypes = ApproverSignTypes
 
 
     def _deserialize(self, params):
@@ -5855,6 +5873,8 @@ class CommonFlowApprover(AbstractModel):
                 obj = Component()
                 obj._deserialize(item)
                 self._SignComponents.append(obj)
+        self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self._ApproverSignTypes = params.get("ApproverSignTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6091,6 +6111,12 @@ UpperRight-右下角。
         :param _Placeholder: 填写提示的内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Placeholder: str
+        :param _LockComponentValue: 是否锁定控件值不允许编辑（嵌入式发起使用） <br/>默认false：不锁定控件值，允许在页面编辑控件值	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockComponentValue: bool
+        :param _ForbidMoveAndDelete: 是否禁止移动和删除控件 <br/>默认false，不禁止移动和删除控件	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForbidMoveAndDelete: bool
         """
         self._ComponentId = None
         self._ComponentType = None
@@ -6117,6 +6143,8 @@ UpperRight-右下角。
         self._RelativeLocation = None
         self._KeywordIndexes = None
         self._Placeholder = None
+        self._LockComponentValue = None
+        self._ForbidMoveAndDelete = None
 
     @property
     def ComponentId(self):
@@ -6318,6 +6346,22 @@ UpperRight-右下角。
     def Placeholder(self, Placeholder):
         self._Placeholder = Placeholder
 
+    @property
+    def LockComponentValue(self):
+        return self._LockComponentValue
+
+    @LockComponentValue.setter
+    def LockComponentValue(self, LockComponentValue):
+        self._LockComponentValue = LockComponentValue
+
+    @property
+    def ForbidMoveAndDelete(self):
+        return self._ForbidMoveAndDelete
+
+    @ForbidMoveAndDelete.setter
+    def ForbidMoveAndDelete(self, ForbidMoveAndDelete):
+        self._ForbidMoveAndDelete = ForbidMoveAndDelete
+
 
     def _deserialize(self, params):
         self._ComponentId = params.get("ComponentId")
@@ -6345,6 +6389,68 @@ UpperRight-右下角。
         self._RelativeLocation = params.get("RelativeLocation")
         self._KeywordIndexes = params.get("KeywordIndexes")
         self._Placeholder = params.get("Placeholder")
+        self._LockComponentValue = params.get("LockComponentValue")
+        self._ForbidMoveAndDelete = params.get("ForbidMoveAndDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComponentLimit(AbstractModel):
+    """签署控件的类型和范围限制条件，用于控制文件发起后签署人拖拽签署区时可使用的控件类型和具体的印章或签名方式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentType: 控件类型，支持以下类型
+<ul><li>SIGN_SEAL : 印章控件</li>
+<li>SIGN_PAGING_SEAL : 骑缝章控件</li>
+<li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
+<li>SIGN_SIGNATURE : 用户签名控件</li></ul>
+        :type ComponentType: str
+        :param _ComponentValue: 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
+
+1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）
+
+2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
+
+<ul><li>HANDWRITE : 手写签名</li>
+<li>OCR_ESIGN : OCR印章（智慧手写签名）</li>
+<li>ESIGN : 个人印章</li>
+<li>SYSTEM_ESIGN : 系统印章</li></ul>
+
+3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
+        :type ComponentValue: list of str
+        """
+        self._ComponentType = None
+        self._ComponentValue = None
+
+    @property
+    def ComponentType(self):
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentValue(self):
+        return self._ComponentValue
+
+    @ComponentValue.setter
+    def ComponentValue(self, ComponentValue):
+        self._ComponentValue = ComponentValue
+
+
+    def _deserialize(self, params):
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentValue = params.get("ComponentValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8950,6 +9056,10 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         :param _NotifyType: SMS: 短信(需确保“电子签短信通知签署方”功能是开启状态才能生效); NONE: 不发信息
 默认为SMS(签署方为子客时该字段不生效)
         :type NotifyType: str
+        :param _AddSignComponentsLimits: [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
+
+注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
+        :type AddSignComponentsLimits: list of ComponentLimit
         """
         self._Name = None
         self._IdCardType = None
@@ -8973,6 +9083,7 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         self._ApproverSignTypes = None
         self._SignId = None
         self._NotifyType = None
+        self._AddSignComponentsLimits = None
 
     @property
     def Name(self):
@@ -9154,6 +9265,14 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
     def NotifyType(self, NotifyType):
         self._NotifyType = NotifyType
 
+    @property
+    def AddSignComponentsLimits(self):
+        return self._AddSignComponentsLimits
+
+    @AddSignComponentsLimits.setter
+    def AddSignComponentsLimits(self, AddSignComponentsLimits):
+        self._AddSignComponentsLimits = AddSignComponentsLimits
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9185,6 +9304,12 @@ ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         self._ApproverSignTypes = params.get("ApproverSignTypes")
         self._SignId = params.get("SignId")
         self._NotifyType = params.get("NotifyType")
+        if params.get("AddSignComponentsLimits") is not None:
+            self._AddSignComponentsLimits = []
+            for item in params.get("AddSignComponentsLimits"):
+                obj = ComponentLimit()
+                obj._deserialize(item)
+                self._AddSignComponentsLimits.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -488,6 +488,29 @@ class SesClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListReceiverDetails(self, request):
+        """根据收件人列表id查询收件人列表中的所有收件人邮箱地址，分页查询，可以根据收件邮箱地址来过滤查询
+
+        :param request: Request instance for ListReceiverDetails.
+        :type request: :class:`tencentcloud.ses.v20201002.models.ListReceiverDetailsRequest`
+        :rtype: :class:`tencentcloud.ses.v20201002.models.ListReceiverDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListReceiverDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListReceiverDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListReceivers(self, request):
         """根据条件查询收件人列表，支持分页，模糊查询，状态查询
 

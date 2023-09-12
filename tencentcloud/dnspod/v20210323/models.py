@@ -6739,7 +6739,7 @@ class DescribeUserDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserInfo: 帐户信息
+        :param _UserInfo: 账户信息
         :type UserInfo: :class:`tencentcloud.dnspod.v20210323.models.UserInfo`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

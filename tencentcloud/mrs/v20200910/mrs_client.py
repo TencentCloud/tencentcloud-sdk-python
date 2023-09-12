@@ -118,3 +118,26 @@ class MrsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TurnPDFToObject(self, request):
+        """将PDF格式的体检报告文件结构化,解析关键信息.
+
+        :param request: Request instance for TurnPDFToObject.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TurnPDFToObject", params, headers=headers)
+            response = json.loads(body)
+            model = models.TurnPDFToObjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
