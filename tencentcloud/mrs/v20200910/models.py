@@ -22284,7 +22284,7 @@ class TurnPDFToObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PdfInfo: 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+        :param _PdfInfo: 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
         :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
         """
         self._PdfInfo = None
@@ -22323,7 +22323,7 @@ class TurnPDFToObjectResponse(AbstractModel):
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
         :param _TextTypeList: 多级分类结果
         :type TextTypeList: list of TextType
-        :param _Block: 报告结构化结果
+        :param _Block: 报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
         :type Block: :class:`tencentcloud.mrs.v20200910.models.Block`
         :param _IsBlock: 是否使用Block字段
         :type IsBlock: bool

@@ -8963,6 +8963,100 @@ class DescribePolicyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePortsRequest(AbstractModel):
+    """DescribePorts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Edition: 版本
+        :type Edition: str
+        :param _InstanceID: 实例ID
+        :type InstanceID: str
+        """
+        self._Edition = None
+        self._InstanceID = None
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePortsResponse(AbstractModel):
+    """DescribePorts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpPorts: http端口列表
+        :type HttpPorts: list of str
+        :param _HttpsPorts: https端口列表
+        :type HttpsPorts: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HttpPorts = None
+        self._HttpsPorts = None
+        self._RequestId = None
+
+    @property
+    def HttpPorts(self):
+        return self._HttpPorts
+
+    @HttpPorts.setter
+    def HttpPorts(self, HttpPorts):
+        self._HttpPorts = HttpPorts
+
+    @property
+    def HttpsPorts(self):
+        return self._HttpsPorts
+
+    @HttpsPorts.setter
+    def HttpsPorts(self, HttpsPorts):
+        self._HttpsPorts = HttpsPorts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HttpPorts = params.get("HttpPorts")
+        self._HttpsPorts = params.get("HttpsPorts")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRuleLimitRequest(AbstractModel):
     """DescribeRuleLimit请求参数结构体
 

@@ -75,6 +75,80 @@ class Aspect(AbstractModel):
         
 
 
+class CompositionContext(AbstractModel):
+    """图像识别批改接口返回的作文文本信息或批改信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 作文内容
+        :type Content: str
+        :param _CorrectData: 批改结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorrectData: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
+        :param _TaskId: 任务 id，用于查询接口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _SessionId: 图像识别唯一标识，一次识别一个 SessionId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        """
+        self._Content = None
+        self._CorrectData = None
+        self._TaskId = None
+        self._SessionId = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CorrectData(self):
+        return self._CorrectData
+
+    @CorrectData.setter
+    def CorrectData(self, CorrectData):
+        self._CorrectData = CorrectData
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        if params.get("CorrectData") is not None:
+            self._CorrectData = CorrectData()
+            self._CorrectData._deserialize(params.get("CorrectData"))
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompostionContext(AbstractModel):
     """图像识别批改接口返回的作文文本信息或批改信息
 
@@ -387,19 +461,34 @@ class CorrectMultiImageResponse(AbstractModel):
         r"""
         :param _Data: 接口返回数据
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
+        :param _ResultData: 接口返回数据
+        :type ResultData: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._ResultData = None
         self._RequestId = None
 
     @property
     def Data(self):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
         return self._Data
 
     @Data.setter
     def Data(self, Data):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
         self._Data = Data
+
+    @property
+    def ResultData(self):
+        return self._ResultData
+
+    @ResultData.setter
+    def ResultData(self, ResultData):
+        self._ResultData = ResultData
 
     @property
     def RequestId(self):
@@ -414,6 +503,9 @@ class CorrectMultiImageResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = CompostionContext()
             self._Data._deserialize(params.get("Data"))
+        if params.get("ResultData") is not None:
+            self._ResultData = CompositionContext()
+            self._ResultData._deserialize(params.get("ResultData"))
         self._RequestId = params.get("RequestId")
 
 
@@ -871,19 +963,34 @@ class EHOCRResponse(AbstractModel):
         r"""
         :param _Data: 接口返回数据
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
+        :param _ResultData: 接口返回数据
+        :type ResultData: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._ResultData = None
         self._RequestId = None
 
     @property
     def Data(self):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
         return self._Data
 
     @Data.setter
     def Data(self, Data):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
         self._Data = Data
+
+    @property
+    def ResultData(self):
+        return self._ResultData
+
+    @ResultData.setter
+    def ResultData(self, ResultData):
+        self._ResultData = ResultData
 
     @property
     def RequestId(self):
@@ -898,6 +1005,9 @@ class EHOCRResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = CompostionContext()
             self._Data._deserialize(params.get("Data"))
+        if params.get("ResultData") is not None:
+            self._ResultData = CompositionContext()
+            self._ResultData._deserialize(params.get("ResultData"))
         self._RequestId = params.get("RequestId")
 
 

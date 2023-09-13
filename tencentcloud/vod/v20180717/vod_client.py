@@ -3984,29 +3984,6 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def VerifyDomainOwnershipForConsole(self, request):
-        """控制台验证域名归属
-
-        :param request: Request instance for VerifyDomainOwnershipForConsole.
-        :type request: :class:`tencentcloud.vod.v20180717.models.VerifyDomainOwnershipForConsoleRequest`
-        :rtype: :class:`tencentcloud.vod.v20180717.models.VerifyDomainOwnershipForConsoleResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyDomainOwnershipForConsole", params, headers=headers)
-            response = json.loads(body)
-            model = models.VerifyDomainOwnershipForConsoleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def VerifyDomainRecord(self, request):
         """该接口用于验证域名解析值。
 

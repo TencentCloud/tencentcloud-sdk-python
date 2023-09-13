@@ -1949,13 +1949,14 @@ class CreateBatchCancelFlowUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowIds: 需要执行撤回的流程(合同)的编号列表，最多100个.
-列表中的流程(合同)编号不要重复.
+<br>列表中的流程(合同)编号不要重复.
         :type FlowIds: list of str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
-
+        :param _Agent: 代理企业和员工的信息。
+<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -2066,102 +2067,6 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
         self._FailMessages = params.get("FailMessages")
         self._UrlExpireOn = params.get("UrlExpireOn")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateChannelSubOrganizationModifyQrCodeRequest(AbstractModel):
-    """CreateChannelSubOrganizationModifyQrCode请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Operator: 操作人信息，userId必填
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ApplicationId: 应用编号
-        :type ApplicationId: str
-        """
-        self._Operator = None
-        self._ApplicationId = None
-
-    @property
-    def Operator(self):
-        return self._Operator
-
-    @Operator.setter
-    def Operator(self, Operator):
-        self._Operator = Operator
-
-    @property
-    def ApplicationId(self):
-        return self._ApplicationId
-
-    @ApplicationId.setter
-    def ApplicationId(self, ApplicationId):
-        self._ApplicationId = ApplicationId
-
-
-    def _deserialize(self, params):
-        if params.get("Operator") is not None:
-            self._Operator = UserInfo()
-            self._Operator._deserialize(params.get("Operator"))
-        self._ApplicationId = params.get("ApplicationId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateChannelSubOrganizationModifyQrCodeResponse(AbstractModel):
-    """CreateChannelSubOrganizationModifyQrCode返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QrCodeUrl: 二维码下载链接
-        :type QrCodeUrl: str
-        :param _ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
-        :type ExpiredTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._QrCodeUrl = None
-        self._ExpiredTime = None
-        self._RequestId = None
-
-    @property
-    def QrCodeUrl(self):
-        return self._QrCodeUrl
-
-    @QrCodeUrl.setter
-    def QrCodeUrl(self, QrCodeUrl):
-        self._QrCodeUrl = QrCodeUrl
-
-    @property
-    def ExpiredTime(self):
-        return self._ExpiredTime
-
-    @ExpiredTime.setter
-    def ExpiredTime(self, ExpiredTime):
-        self._ExpiredTime = ExpiredTime
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._QrCodeUrl = params.get("QrCodeUrl")
-        self._ExpiredTime = params.get("ExpiredTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -2530,7 +2435,8 @@ class CreateEmbedWebUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作者信息
+        :param _Operator: 执行本接口操作的员工信息。
+<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _EmbedType: WEB嵌入资源类型。
 <br/>CREATE_SEAL: 生成创建印章的嵌入页面
@@ -2549,11 +2455,12 @@ class CreateEmbedWebUrlRequest(AbstractModel):
 <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
 <br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
         :type BusinessId: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
+        :param _Agent: 代理企业和员工的信息。
+<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Reviewer: 抄送方信息
         :type Reviewer: :class:`tencentcloud.ess.v20201111.models.ReviewerInfo`
-        :param _Option: 个性化参数
+        :param _Option: 个性化参数，用于控制页面展示内容
         :type Option: :class:`tencentcloud.ess.v20201111.models.EmbedUrlOption`
         """
         self._Operator = None
@@ -2645,7 +2552,7 @@ class CreateEmbedWebUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _WebUrl: 嵌入的web链接，有效期：5分钟
-EmbedType=PREVIEW_CC_FLOW，该url为h5链接
+<br/>EmbedType=PREVIEW_CC_FLOW，该url为h5链接
         :type WebUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5285,17 +5192,27 @@ class CreateOrganizationBatchSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，UserId 必填，支持填入集团子公司经办人UserId。
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+支持填入集团子公司经办人 userId 代发合同。
+
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 指定需要进行批量签署的流程id，数量1-100，填写后用户将通过链接对这些合同进行批量签署。
+        :param _FlowIds: 请指定需执行批量签署的流程ID，数量范围为1-100。</br>
+您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。</br>
+用户将利用链接对这些合同实施批量操作。
         :type FlowIds: list of str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填。
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _UserId: 员工的UserId，该UserId对应的员工必须已经加入企业并实名，Name和Mobile为空时该字段不能为空。（优先使用UserId对应的员工）
+        :param _UserId: 员工在腾讯电子签平台的独特身份标识，为32位字符串。</br>
+您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。</br>
+UserId必须是传入合同（FlowId）中的签署人。
+- 1. 若UserId为空，Name和Mobile 必须提供。
+- 2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。
         :type UserId: str
-        :param _Name: 员工姓名，该字段需要与Mobile组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+        :param _Name: 员工姓名，必须与手机号码一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
         :type Name: str
-        :param _Mobile: 员工手机号码，该字段需要与Name组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+        :param _Mobile: 员工手机号，必须与姓名一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
         :type Mobile: str
         """
         self._Operator = None
@@ -5382,9 +5299,9 @@ class CreateOrganizationBatchSignUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignUrl: 批量签署入口链接
+        :param _SignUrl: 批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。
         :type SignUrl: str
-        :param _ExpiredTime: 链接过期时间戳
+        :param _ExpiredTime: 链接过期截止时间，格式为Unix标准时间戳（秒），默认为7天后截止。
         :type ExpiredTime: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16751,10 +16668,11 @@ class WebThemeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisplaySignBrandLogo: 是否页面底部显示电子签logo
-<br/>true：允许在页面底部隐藏电子签logo
-<br/>false：不允许允许在页面底部隐藏电子签logo
-<br/>默认false，不隐藏logo
+        :param _DisplaySignBrandLogo: 是否显示页面底部电子签logo，取值如下：
+<ul>
+<li> **true**：页面底部显示电子签logo</li>
+<li> **false**：页面底部不显示电子签logo（默认）</li>
+</ul>
         :type DisplaySignBrandLogo: bool
         :param _WebEmbedThemeColor: 主题颜色
 <br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)

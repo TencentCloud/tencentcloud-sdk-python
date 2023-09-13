@@ -14489,21 +14489,22 @@ class OriginInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _OriginType: 源站类型，取值有：
-<li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
-<li>COS：COS源。</li>
-<li>ORIGIN_GROUP：源站组类型源站。</li>
-<li>AWS_S3：AWS S3对象存储源站。</li>
-<li>SPACE：Edgeone源站Space存储，Space存储不允许配置该类型源站。</li>
+<li>IP_DOMAIN：IPV4、IPV6 或域名类型源站；</li>
+<li>COS：COS 源；</li>
+<li>ORIGIN_GROUP：源站组类型源站；</li>
+<li>AWS_S3：S3兼容对象存储源站；</li>
+<li>LB: 负载均衡类型源站；</li>
+<li>SPACE：EdgeOne Shield Space 存储。</li>
         :type OriginType: str
-        :param _Origin: 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+        :param _Origin: 源站地址，当 OriginType 参数指定为 ORIGIN_GROUP 时，该参数填写源站组 ID，其他情况下填写源站地址。
         :type Origin: str
-        :param _BackupOrigin: 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+        :param _BackupOrigin: 备用源站组 ID，该参数在 OriginType 参数指定为 ORIGIN_GROUP 时生效，为空表示不使用备用源站。
         :type BackupOrigin: str
-        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型OriginType=COS或AWS_S3时有效，取值有：
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型 OriginType=COS 或 AWS_S3 时有效，取值有：
 <li>on：使用私有鉴权；</li>
-<li>off：不使用私有鉴权。</li>不填写，默认值为：off。
+<li>off：不使用私有鉴权。</li>默认值：off。
         :type PrivateAccess: str
-        :param _PrivateParameters: 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+        :param _PrivateParameters: 私有鉴权使用参数，当源站类型 PrivateAccess=on 时有效。
         :type PrivateParameters: list of PrivateParameter
         """
         self._OriginType = None

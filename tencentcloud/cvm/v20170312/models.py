@@ -7015,6 +7015,9 @@ class HostItem(AbstractModel):
         :param _CageId: 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CageId: str
+        :param _Tags: 专用宿主机关联的标签列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._Placement = None
         self._HostId = None
@@ -7029,6 +7032,7 @@ class HostItem(AbstractModel):
         self._HostIp = None
         self._HostResource = None
         self._CageId = None
+        self._Tags = None
 
     @property
     def Placement(self):
@@ -7134,6 +7138,14 @@ class HostItem(AbstractModel):
     def CageId(self, CageId):
         self._CageId = CageId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -7153,6 +7165,12 @@ class HostItem(AbstractModel):
             self._HostResource = HostResource()
             self._HostResource._deserialize(params.get("HostResource"))
         self._CageId = params.get("CageId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

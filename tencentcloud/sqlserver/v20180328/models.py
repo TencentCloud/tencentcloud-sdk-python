@@ -616,6 +616,8 @@ class Backup(AbstractModel):
         :type DBs: list of str
         :param _Strategy: 备份策略（0-实例备份；1-多库备份）
         :type Strategy: int
+        :param _StorageStrategy: 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线
+        :type StorageStrategy: int
         :param _BackupWay: 备份方式，0-定时备份；1-手动临时备份；2-定期备份
         :type BackupWay: int
         :param _BackupName: 备份任务名称，可自定义
@@ -641,6 +643,7 @@ class Backup(AbstractModel):
         self._Status = None
         self._DBs = None
         self._Strategy = None
+        self._StorageStrategy = None
         self._BackupWay = None
         self._BackupName = None
         self._GroupId = None
@@ -730,6 +733,14 @@ class Backup(AbstractModel):
         self._Strategy = Strategy
 
     @property
+    def StorageStrategy(self):
+        return self._StorageStrategy
+
+    @StorageStrategy.setter
+    def StorageStrategy(self, StorageStrategy):
+        self._StorageStrategy = StorageStrategy
+
+    @property
     def BackupWay(self):
         return self._BackupWay
 
@@ -797,6 +808,7 @@ class Backup(AbstractModel):
         self._Status = params.get("Status")
         self._DBs = params.get("DBs")
         self._Strategy = params.get("Strategy")
+        self._StorageStrategy = params.get("StorageStrategy")
         self._BackupWay = params.get("BackupWay")
         self._BackupName = params.get("BackupName")
         self._GroupId = params.get("GroupId")
@@ -1692,11 +1704,14 @@ class CreateBackupRequest(AbstractModel):
         :type InstanceId: str
         :param _BackupName: 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
         :type BackupName: str
+        :param _StorageStrategy: 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+        :type StorageStrategy: int
         """
         self._Strategy = None
         self._DBNames = None
         self._InstanceId = None
         self._BackupName = None
+        self._StorageStrategy = None
 
     @property
     def Strategy(self):
@@ -1730,12 +1745,21 @@ class CreateBackupRequest(AbstractModel):
     def BackupName(self, BackupName):
         self._BackupName = BackupName
 
+    @property
+    def StorageStrategy(self):
+        return self._StorageStrategy
+
+    @StorageStrategy.setter
+    def StorageStrategy(self, StorageStrategy):
+        self._StorageStrategy = StorageStrategy
+
 
     def _deserialize(self, params):
         self._Strategy = params.get("Strategy")
         self._DBNames = params.get("DBNames")
         self._InstanceId = params.get("InstanceId")
         self._BackupName = params.get("BackupName")
+        self._StorageStrategy = params.get("StorageStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7622,6 +7646,8 @@ class DescribeBackupsRequest(AbstractModel):
         :type Type: int
         :param _BackupFormat: 按照备份文件形式筛选，pkg-打包备份文件，single-单库备份文件
         :type BackupFormat: str
+        :param _StorageStrategy: 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+        :type StorageStrategy: int
         """
         self._StartTime = None
         self._EndTime = None
@@ -7636,6 +7662,7 @@ class DescribeBackupsRequest(AbstractModel):
         self._Group = None
         self._Type = None
         self._BackupFormat = None
+        self._StorageStrategy = None
 
     @property
     def StartTime(self):
@@ -7741,6 +7768,14 @@ class DescribeBackupsRequest(AbstractModel):
     def BackupFormat(self, BackupFormat):
         self._BackupFormat = BackupFormat
 
+    @property
+    def StorageStrategy(self):
+        return self._StorageStrategy
+
+    @StorageStrategy.setter
+    def StorageStrategy(self, StorageStrategy):
+        self._StorageStrategy = StorageStrategy
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -7756,6 +7791,7 @@ class DescribeBackupsRequest(AbstractModel):
         self._Group = params.get("Group")
         self._Type = params.get("Type")
         self._BackupFormat = params.get("BackupFormat")
+        self._StorageStrategy = params.get("StorageStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

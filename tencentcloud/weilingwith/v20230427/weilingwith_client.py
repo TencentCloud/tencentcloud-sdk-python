@@ -17,29 +17,29 @@ import json
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.abstract_client import AbstractClient
-from tencentcloud.mrs.v20200910 import models
+from tencentcloud.weilingwith.v20230427 import models
 
 
-class MrsClient(AbstractClient):
-    _apiVersion = '2020-09-10'
-    _endpoint = 'mrs.tencentcloudapi.com'
-    _service = 'mrs'
+class WeilingwithClient(AbstractClient):
+    _apiVersion = '2023-04-27'
+    _endpoint = 'weilingwith.tencentcloudapi.com'
+    _service = 'weilingwith'
 
 
-    def ImageToClass(self, request):
-        """图片分类
+    def DescribeApplicationList(self, request):
+        """查询指定空间关联的应用列表
 
-        :param request: Request instance for ImageToClass.
-        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageToClassRequest`
-        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageToClassResponse`
+        :param request: Request instance for DescribeApplicationList.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeApplicationListRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeApplicationListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ImageToClass", params, headers=headers)
+            body = self.call("DescribeApplicationList", params, headers=headers)
             response = json.loads(body)
-            model = models.ImageToClassResponse()
+            model = models.DescribeApplicationListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -49,20 +49,20 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ImageToObject(self, request):
-        """图片转结构化对象
+    def DescribeEdgeApplicationToken(self, request):
+        """查询边缘应用凭证
 
-        :param request: Request instance for ImageToObject.
-        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageToObjectRequest`
-        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageToObjectResponse`
+        :param request: Request instance for DescribeEdgeApplicationToken.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEdgeApplicationTokenRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEdgeApplicationTokenResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("ImageToObject", params, headers=headers)
+            body = self.call("DescribeEdgeApplicationToken", params, headers=headers)
             response = json.loads(body)
-            model = models.ImageToObjectResponse()
+            model = models.DescribeEdgeApplicationTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -72,20 +72,20 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def TextToClass(self, request):
-        """文本分类
+    def DescribeInterfaceList(self, request):
+        """查询接口列表
 
-        :param request: Request instance for TextToClass.
-        :type request: :class:`tencentcloud.mrs.v20200910.models.TextToClassRequest`
-        :rtype: :class:`tencentcloud.mrs.v20200910.models.TextToClassResponse`
+        :param request: Request instance for DescribeInterfaceList.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeInterfaceListRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeInterfaceListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TextToClass", params, headers=headers)
+            body = self.call("DescribeInterfaceList", params, headers=headers)
             response = json.loads(body)
-            model = models.TextToClassResponse()
+            model = models.DescribeInterfaceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -95,22 +95,20 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def TextToObject(self, request):
-        """文本转结构化对象。
+    def DescribeWorkspaceList(self, request):
+        """获取租户下的空间列表
 
-        适用场景：经过腾讯医疗专用 OCR 从图片识别之后的文本，可以调用此接口。通过其它 OCR 识别的文本可能不适配。医院的 XML 格式文本也不适配，XML 文件需要经过特殊转换才能直接调用此接口。单次调用传入的文本不宜超过 2000 字。
-
-        :param request: Request instance for TextToObject.
-        :type request: :class:`tencentcloud.mrs.v20200910.models.TextToObjectRequest`
-        :rtype: :class:`tencentcloud.mrs.v20200910.models.TextToObjectResponse`
+        :param request: Request instance for DescribeWorkspaceList.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceListRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TextToObject", params, headers=headers)
+            body = self.call("DescribeWorkspaceList", params, headers=headers)
             response = json.loads(body)
-            model = models.TextToObjectResponse()
+            model = models.DescribeWorkspaceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -120,21 +118,20 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def TurnPDFToObject(self, request):
-        """将PDF格式的体检报告文件结构化，解析关键信息。
-        注意：该接口是按照体检报告 PDF 页面数量统计次数，不是按照 PDF 文件数量统计次数。通过该接口传入的报告必须是体检报告，非体检报告可能无法正确解析。
+    def DescribeWorkspaceUserList(self, request):
+        """查询项目空间人员列表
 
-        :param request: Request instance for TurnPDFToObject.
-        :type request: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectRequest`
-        :rtype: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectResponse`
+        :param request: Request instance for DescribeWorkspaceUserList.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceUserListRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeWorkspaceUserListResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("TurnPDFToObject", params, headers=headers)
+            body = self.call("DescribeWorkspaceUserList", params, headers=headers)
             response = json.loads(body)
-            model = models.TurnPDFToObjectResponse()
+            model = models.DescribeWorkspaceUserListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

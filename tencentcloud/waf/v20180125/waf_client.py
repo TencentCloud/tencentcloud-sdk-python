@@ -1273,6 +1273,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePorts(self, request):
+        """获取非标端口列表
+
+        :param request: Request instance for DescribePorts.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePortsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePortsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePorts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePortsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRuleLimit(self, request):
         """获取各个模块具体的规格限制
 

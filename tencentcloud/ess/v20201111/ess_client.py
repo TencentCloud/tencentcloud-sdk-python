@@ -151,35 +151,6 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateChannelSubOrganizationModifyQrCode(self, request):
-        """根据产品要求，调整接口目录
-
-        新接口：ChannelCreateOrganizationModifyQrCode
-
-        老接口目前无线上流量，测试用例已下线处理
-
-        生成子客编辑企业信息二维码
-
-        :param request: Request instance for CreateChannelSubOrganizationModifyQrCode.
-        :type request: :class:`tencentcloud.ess.v20201111.models.CreateChannelSubOrganizationModifyQrCodeRequest`
-        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateChannelSubOrganizationModifyQrCodeResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateChannelSubOrganizationModifyQrCode", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateChannelSubOrganizationModifyQrCodeResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateConvertTaskApi(self, request):
         """此接口（CreateConvertTaskApi）用来将word、excel、图片、txt类型文件转换为PDF文件。<br />
         前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
@@ -640,8 +611,10 @@ class EssClient(AbstractClient):
 
 
     def CreateOrganizationBatchSignUrl(self, request):
-        """通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
-        如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+        """使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。</br>
+        附注：
+        - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
+        - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 
         :param request: Request instance for CreateOrganizationBatchSignUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationBatchSignUrlRequest`

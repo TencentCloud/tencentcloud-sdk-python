@@ -29,17 +29,11 @@ FAILEDOPERATION_CLASSNAMEDUPLICATE = 'FailedOperation.ClassNameDuplicate'
 # 操作失败：分类不存在。
 FAILEDOPERATION_CLASSNOFOUND = 'FailedOperation.ClassNoFound'
 
-# 存在冲突域名
-FAILEDOPERATION_CONFLICTDOMAINEXIST = 'FailedOperation.ConflictDomainExist'
-
 # 操作失败：不支持的封面类型。
 FAILEDOPERATION_COVERTYPE = 'FailedOperation.CoverType'
 
 # 操作失败：数据库操作失败。
 FAILEDOPERATION_DBERROR = 'FailedOperation.DBError'
-
-# 域名已经存在
-FAILEDOPERATION_DOMAINALREADYEXIST = 'FailedOperation.DomainAlreadyExist'
 
 # 域名部署中，不能变更配置。
 FAILEDOPERATION_DOMAINDEPLOYING = 'FailedOperation.DomainDeploying'
@@ -79,9 +73,6 @@ FAILEDOPERATION_UPLOADCOSFAIL = 'FailedOperation.UploadCosFail'
 
 # 用户已经停服。
 FAILEDOPERATION_USERSTATUSINAVLID = 'FailedOperation.UserStatusInavlid'
-
-# 泛域名与其他账号的泛域名存在嵌套
-FAILEDOPERATION_WILDCARDDOMAINNESTEDCREATE = 'FailedOperation.WildCardDomainNestedCreate'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -670,12 +661,6 @@ RESOURCEUNAVAILABLE_MASTERPLAYLIST = 'ResourceUnavailable.MasterPlaylist'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
-
-# 域名解析验证失败
-UNAUTHORIZEDOPERATION_DOMAINRECORDNOTVERIFIED = 'UnauthorizedOperation.DomainRecordNotVerified'
-
-# 域名已被其他账号接入
-UNAUTHORIZEDOPERATION_HOSTOWNEDBYOTHERS = 'UnauthorizedOperation.HostOwnedByOthers'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

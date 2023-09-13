@@ -7152,7 +7152,8 @@ class CreateSealByImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _SealName: 印章名称，最大长度不超过50字符
         :type SealName: str
@@ -7160,11 +7161,40 @@ class CreateSealByImageRequest(AbstractModel):
         :type SealImage: str
         :param _Operator: 操作者的信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _GenerateSource: 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传请传字段 SealImage
+        :type GenerateSource: str
+        :param _SealType: 电子印章类型：
+<ul><li>OFFICIAL-公章</li>
+<li>CONTRACT-合同专用章;</li>
+<li>FINANCE-合财务专用章;</li>
+<li>PERSONNEL-人事专用章
+</li>
+<li>默认：OFFICIAL</li>
+<ul>
+        :type SealType: str
+        :param _SealHorizontalText: 企业印章横向文字，最多可填15个汉字（若超过印章最大宽度，优先压缩字间距，其次缩小字号
+        :type SealHorizontalText: str
+        :param _SealStyle: 印章样式:
+
+<ul><li>cycle:圆形印章</li>
+<li>ellipse:椭圆印章</li>
+<li> 注：默认圆形印章</li></ul>
+        :type SealStyle: str
+        :param _SealSize: 印章尺寸取值描述：<ul><li> 42_42 圆形企业公章直径42mm</li>
+<li> 40_40 圆形企业印章直径40mm</li>
+<li> 45_30 椭圆形印章45mm x 30mm</li>
+</ul>
+        :type SealSize: str
         """
         self._Agent = None
         self._SealName = None
         self._SealImage = None
         self._Operator = None
+        self._GenerateSource = None
+        self._SealType = None
+        self._SealHorizontalText = None
+        self._SealStyle = None
+        self._SealSize = None
 
     @property
     def Agent(self):
@@ -7202,6 +7232,46 @@ class CreateSealByImageRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def GenerateSource(self):
+        return self._GenerateSource
+
+    @GenerateSource.setter
+    def GenerateSource(self, GenerateSource):
+        self._GenerateSource = GenerateSource
+
+    @property
+    def SealType(self):
+        return self._SealType
+
+    @SealType.setter
+    def SealType(self, SealType):
+        self._SealType = SealType
+
+    @property
+    def SealHorizontalText(self):
+        return self._SealHorizontalText
+
+    @SealHorizontalText.setter
+    def SealHorizontalText(self, SealHorizontalText):
+        self._SealHorizontalText = SealHorizontalText
+
+    @property
+    def SealStyle(self):
+        return self._SealStyle
+
+    @SealStyle.setter
+    def SealStyle(self, SealStyle):
+        self._SealStyle = SealStyle
+
+    @property
+    def SealSize(self):
+        return self._SealSize
+
+    @SealSize.setter
+    def SealSize(self, SealSize):
+        self._SealSize = SealSize
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -7212,6 +7282,11 @@ class CreateSealByImageRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._GenerateSource = params.get("GenerateSource")
+        self._SealType = params.get("SealType")
+        self._SealHorizontalText = params.get("SealHorizontalText")
+        self._SealStyle = params.get("SealStyle")
+        self._SealSize = params.get("SealSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7229,12 +7304,18 @@ class CreateSealByImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SealId: 印章id
+        :param _SealId: 电子印章ID，为32位字符串。
+建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
         :type SealId: str
+        :param _ImageUrl: 电子印章预览链接地址，地址默认失效时间为24小时。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealId = None
+        self._ImageUrl = None
         self._RequestId = None
 
     @property
@@ -7244,6 +7325,14 @@ class CreateSealByImageResponse(AbstractModel):
     @SealId.setter
     def SealId(self, SealId):
         self._SealId = SealId
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
 
     @property
     def RequestId(self):
@@ -7256,6 +7345,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
+        self._ImageUrl = params.get("ImageUrl")
         self._RequestId = params.get("RequestId")
 
 
