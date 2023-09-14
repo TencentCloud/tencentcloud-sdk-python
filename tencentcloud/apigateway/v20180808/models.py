@@ -13881,6 +13881,18 @@ class InstanceInfo(AbstractModel):
         :type DealName: str
         :param _ResourceId: 资源ID同唯一id
         :type ResourceId: str
+        :param _OuterIpList: 公网IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OuterIpList: list of str
+        :param _InnerIpList: 内网IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerIpList: list of str
+        :param _InstanceChargePrepaid: 专享实例计费信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceChargePrepaid: :class:`tencentcloud.apigateway.v20180808.models.InstanceChargePrepaid`
+        :param _UniqVpcId: 所属vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -13891,6 +13903,10 @@ class InstanceInfo(AbstractModel):
         self._CreatedTime = None
         self._DealName = None
         self._ResourceId = None
+        self._OuterIpList = None
+        self._InnerIpList = None
+        self._InstanceChargePrepaid = None
+        self._UniqVpcId = None
 
     @property
     def InstanceId(self):
@@ -13964,6 +13980,38 @@ class InstanceInfo(AbstractModel):
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
 
+    @property
+    def OuterIpList(self):
+        return self._OuterIpList
+
+    @OuterIpList.setter
+    def OuterIpList(self, OuterIpList):
+        self._OuterIpList = OuterIpList
+
+    @property
+    def InnerIpList(self):
+        return self._InnerIpList
+
+    @InnerIpList.setter
+    def InnerIpList(self, InnerIpList):
+        self._InnerIpList = InnerIpList
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13975,6 +14023,12 @@ class InstanceInfo(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._DealName = params.get("DealName")
         self._ResourceId = params.get("ResourceId")
+        self._OuterIpList = params.get("OuterIpList")
+        self._InnerIpList = params.get("InnerIpList")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._UniqVpcId = params.get("UniqVpcId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

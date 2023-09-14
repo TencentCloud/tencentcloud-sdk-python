@@ -281,7 +281,7 @@ class BatchSendEmailResponse(AbstractModel):
 
 
 class BlackEmailAddress(AbstractModel):
-    """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间
+    """邮箱黑名单结构，包含被拉黑的邮箱地址和被拉黑时间，以及被拉黑的理由
 
     """
 
@@ -291,9 +291,13 @@ class BlackEmailAddress(AbstractModel):
         :type BounceTime: str
         :param _EmailAddress: 被拉黑的邮箱地址
         :type EmailAddress: str
+        :param _IspDesc: 被拉黑的理由
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IspDesc: str
         """
         self._BounceTime = None
         self._EmailAddress = None
+        self._IspDesc = None
 
     @property
     def BounceTime(self):
@@ -311,10 +315,19 @@ class BlackEmailAddress(AbstractModel):
     def EmailAddress(self, EmailAddress):
         self._EmailAddress = EmailAddress
 
+    @property
+    def IspDesc(self):
+        return self._IspDesc
+
+    @IspDesc.setter
+    def IspDesc(self, IspDesc):
+        self._IspDesc = IspDesc
+
 
     def _deserialize(self, params):
         self._BounceTime = params.get("BounceTime")
         self._EmailAddress = params.get("EmailAddress")
+        self._IspDesc = params.get("IspDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1833,7 +1846,7 @@ class ListBlackEmailAddressRequest(AbstractModel):
         :type Offset: int
         :param _EmailAddress: 可以指定邮箱进行查询
         :type EmailAddress: str
-        :param _TaskID: 可以指定任务ID进行查询
+        :param _TaskID: 已废弃
         :type TaskID: str
         """
         self._StartDate = None

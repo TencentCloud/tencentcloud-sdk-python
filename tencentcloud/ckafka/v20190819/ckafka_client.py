@@ -670,6 +670,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteInstancePost(self, request):
+        """删除后付费实例
+
+        :param request: Request instance for DeleteInstancePost.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePostRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteInstancePostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstancePost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstancePostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInstancePre(self, request):
         """删除预付费实例
 

@@ -1350,7 +1350,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type Ports: list of PortItem
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
         :type Edition: str
-        :param _IsKeepAlive: 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
+        :param _IsKeepAlive: 是否开启长连接，0 短连接，1 长连接
         :type IsKeepAlive: str
         :param _InstanceID: 实例id，上线之后带上此字段
         :type InstanceID: str
@@ -10288,6 +10288,22 @@ class DomainsPartInfo(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名id
+        :type DomainId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Edition: 类型
+        :type Edition: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _Cert: 证书
+        :type Cert: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _Engine: AI防御模式
+        :type Engine: int
         :param _HttpsRewrite: 是否开启httpRewrite
         :type HttpsRewrite: int
         :param _HttpsUpstreamPort: https回源端口
@@ -10360,6 +10376,14 @@ class DomainsPartInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type XFFReset: int
         """
+        self._Domain = None
+        self._DomainId = None
+        self._InstanceId = None
+        self._Edition = None
+        self._InstanceName = None
+        self._Cert = None
+        self._CreateTime = None
+        self._Engine = None
         self._HttpsRewrite = None
         self._HttpsUpstreamPort = None
         self._IsCdn = None
@@ -10390,6 +10414,70 @@ class DomainsPartInfo(AbstractModel):
         self._Weights = None
         self._IpHeaders = None
         self._XFFReset = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Engine(self):
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
 
     @property
     def HttpsRewrite(self):
@@ -10633,6 +10721,14 @@ class DomainsPartInfo(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._InstanceId = params.get("InstanceId")
+        self._Edition = params.get("Edition")
+        self._InstanceName = params.get("InstanceName")
+        self._Cert = params.get("Cert")
+        self._CreateTime = params.get("CreateTime")
+        self._Engine = params.get("Engine")
         self._HttpsRewrite = params.get("HttpsRewrite")
         self._HttpsUpstreamPort = params.get("HttpsUpstreamPort")
         self._IsCdn = params.get("IsCdn")
@@ -11669,6 +11765,90 @@ class GetAttackTotalCountResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class GetInstanceQpsLimitRequest(AbstractModel):
+    """GetInstanceQpsLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 套餐实例id
+        :type InstanceId: str
+        :param _Type: 套餐类型
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetInstanceQpsLimitResponse(AbstractModel):
+    """GetInstanceQpsLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QpsData: 弹性qps相关值集合
+        :type QpsData: :class:`tencentcloud.waf.v20180125.models.QpsData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QpsData = None
+        self._RequestId = None
+
+    @property
+    def QpsData(self):
+        return self._QpsData
+
+    @QpsData.setter
+    def QpsData(self, QpsData):
+        self._QpsData = QpsData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QpsData") is not None:
+            self._QpsData = QpsData()
+            self._QpsData._deserialize(params.get("QpsData"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16668,6 +16848,92 @@ class QPSPackageNew(AbstractModel):
         
 
 
+class QpsData(AbstractModel):
+    """获取弹性qps的默认相关值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ElasticBillingDefault: 弹性qps默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBillingDefault: int
+        :param _ElasticBillingMin: 弹性qps最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBillingMin: int
+        :param _ElasticBillingMax: 弹性qps最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBillingMax: int
+        :param _QPSExtendMax: 业务扩展包最大qps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QPSExtendMax: int
+        :param _QPSExtendIntlMax: 海外业务扩展包最大qps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QPSExtendIntlMax: int
+        """
+        self._ElasticBillingDefault = None
+        self._ElasticBillingMin = None
+        self._ElasticBillingMax = None
+        self._QPSExtendMax = None
+        self._QPSExtendIntlMax = None
+
+    @property
+    def ElasticBillingDefault(self):
+        return self._ElasticBillingDefault
+
+    @ElasticBillingDefault.setter
+    def ElasticBillingDefault(self, ElasticBillingDefault):
+        self._ElasticBillingDefault = ElasticBillingDefault
+
+    @property
+    def ElasticBillingMin(self):
+        return self._ElasticBillingMin
+
+    @ElasticBillingMin.setter
+    def ElasticBillingMin(self, ElasticBillingMin):
+        self._ElasticBillingMin = ElasticBillingMin
+
+    @property
+    def ElasticBillingMax(self):
+        return self._ElasticBillingMax
+
+    @ElasticBillingMax.setter
+    def ElasticBillingMax(self, ElasticBillingMax):
+        self._ElasticBillingMax = ElasticBillingMax
+
+    @property
+    def QPSExtendMax(self):
+        return self._QPSExtendMax
+
+    @QPSExtendMax.setter
+    def QPSExtendMax(self, QPSExtendMax):
+        self._QPSExtendMax = QPSExtendMax
+
+    @property
+    def QPSExtendIntlMax(self):
+        return self._QPSExtendIntlMax
+
+    @QPSExtendIntlMax.setter
+    def QPSExtendIntlMax(self, QPSExtendIntlMax):
+        self._QPSExtendIntlMax = QPSExtendIntlMax
+
+
+    def _deserialize(self, params):
+        self._ElasticBillingDefault = params.get("ElasticBillingDefault")
+        self._ElasticBillingMin = params.get("ElasticBillingMin")
+        self._ElasticBillingMax = params.get("ElasticBillingMax")
+        self._QPSExtendMax = params.get("QPSExtendMax")
+        self._QPSExtendIntlMax = params.get("QPSExtendIntlMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefreshAccessCheckResultRequest(AbstractModel):
     """RefreshAccessCheckResult请求参数结构体
 
@@ -17590,42 +17856,46 @@ class Strategy(AbstractModel):
     def __init__(self):
         r"""
         :param _Field: 匹配字段
- 
-有以下枚举值：
-IP-来源IP	IPV6-来源IPv6	Referer-Referer	URL-请求路径
-UserAgent-UserAgent	HTTP_METHOD-HTTP请求方法	QUERY_STRING-请求字符串	GET-GET参数值	GET_PARAMS_NAMES-GET参数名	POST-POST参数值	GET_POST_NAMES-POST参数名	POST_BODY-完整BODY	COOKIE-Cookie	GET_COOKIES_NAMES-Cookie参数名	ARGS_COOKIE-Cookie参数值	GET_HEADERS_NAMES-Header参数名	ARGS_HEADER-Header参数值
+
+    匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同具体如下所示：
+<table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Field: str
         :param _CompareFunc: 逻辑符号 
 
-有以下枚举值：
-empty - 内容为空
-  	null - 不存在
-  	eq - 等于
-  	neq - 不等于
-  	contains - 包含
- 	ncontains - 不包含
-  	strprefix - 前缀匹配
-  	strsuffix - 后缀匹配
-  	len_eq - 长度等于
-  	len_gt - 长度大于
-  	len_lt - 长度小于
-  	ipmatch - 属于
- 	ipnmatch - 不属于
+    逻辑符号一共分为以下几种类型：
+        empty （ 内容为空）
+        null （不存在）
+        eq （ 等于）
+        neq （ 不等于）
+        contains （ 包含）
+        ncontains （ 不包含）
+        strprefix （ 前缀匹配）
+        strsuffix （ 后缀匹配）
+        len_eq （ 长度等于）
+        len_gt （ 长度大于）
+        len_lt （ 长度小于）
+        ipmatch （ 属于）
+        ipnmatch （ 不属于）
+    各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareFunc: str
         :param _Content: 匹配内容
 
-目前 只有匹配字段为COOKIE-Cookie时，才不需要输入 匹配内容其他都需要
-
+    目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容其他都需要
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
         :param _Arg: 匹配参数
 
-目前 只有匹配字段为以下4个时，匹配参数才能选择，否则置灰无法选择	
+    配置参数一共分2种类型 不支持参数与支持参数
+    当匹配字段为以下4个时，匹配参数才能录入，否则不支持该参数
+        GET（GET参数值）		
+        POST（POST参数值）		
+        ARGS_COOKIE（Cookie参数值）		
+        ARGS_HEADER（Header参数值）
 
-GET-GET参数值	POST-POST参数值	ARGS_COOKIE-Cookie参数值	ARGS_HEADER-Header参数值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Arg: str
         """

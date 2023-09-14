@@ -8182,6 +8182,13 @@ class ContainerInfo(AbstractModel):
         :type PodCpu: int
         :param _PodMem: 所属Pod的内存
         :type PodMem: int
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _PodUid: pod uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodUid: str
         """
         self._ContainerID = None
         self._ContainerName = None
@@ -8210,6 +8217,9 @@ class ContainerInfo(AbstractModel):
         self._NodeUniqueID = None
         self._PodCpu = None
         self._PodMem = None
+        self._ClusterName = None
+        self._ClusterID = None
+        self._PodUid = None
 
     @property
     def ContainerID(self):
@@ -8427,6 +8437,30 @@ class ContainerInfo(AbstractModel):
     def PodMem(self, PodMem):
         self._PodMem = PodMem
 
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodUid(self):
+        return self._PodUid
+
+    @PodUid.setter
+    def PodUid(self, PodUid):
+        self._PodUid = PodUid
+
 
     def _deserialize(self, params):
         self._ContainerID = params.get("ContainerID")
@@ -8456,6 +8490,9 @@ class ContainerInfo(AbstractModel):
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._PodCpu = params.get("PodCpu")
         self._PodMem = params.get("PodMem")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterID = params.get("ClusterID")
+        self._PodUid = params.get("PodUid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8933,7 +8970,7 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 是否扫描全部镜像
+        :param _All: 是否扫描全部镜像(废弃)
         :type All: bool
         :param _Images: 扫描的镜像列表
         :type Images: list of ImageInfo
@@ -8941,18 +8978,40 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
         :type ScanType: list of str
         :param _Id: 扫描的镜像列表Id
         :type Id: list of int non-negative
+        :param _IsLatest: 是否最新镜像
+        :type IsLatest: bool
+        :param _ScanScope: 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+        :type ScanScope: int
+        :param _RegistryType: 仓库类型
+        :type RegistryType: list of str
+        :param _Namespace: 命名空间
+        :type Namespace: list of str
+        :param _ContainerRunning: 是否存在运行中的容器
+        :type ContainerRunning: bool
+        :param _Timeout: 任务超时时长单位s
+        :type Timeout: int
         """
         self._All = None
         self._Images = None
         self._ScanType = None
         self._Id = None
+        self._IsLatest = None
+        self._ScanScope = None
+        self._RegistryType = None
+        self._Namespace = None
+        self._ContainerRunning = None
+        self._Timeout = None
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -8979,6 +9038,54 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def IsLatest(self):
+        return self._IsLatest
+
+    @IsLatest.setter
+    def IsLatest(self, IsLatest):
+        self._IsLatest = IsLatest
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
@@ -8990,6 +9097,12 @@ class CreateAssetImageRegistryScanTaskOneKeyRequest(AbstractModel):
                 self._Images.append(obj)
         self._ScanType = params.get("ScanType")
         self._Id = params.get("Id")
+        self._IsLatest = params.get("IsLatest")
+        self._ScanScope = params.get("ScanScope")
+        self._RegistryType = params.get("RegistryType")
+        self._Namespace = params.get("Namespace")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19776,6 +19889,9 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         :param _ImageCreateTime: 镜像创建的时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCreateTime: str
+        :param _SensitiveInfoCnt: 敏感信息数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveInfoCnt: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -19811,6 +19927,7 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._ImageId = None
         self._RegistryRegion = None
         self._ImageCreateTime = None
+        self._SensitiveInfoCnt = None
         self._RequestId = None
 
     @property
@@ -19895,10 +20012,14 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
 
     @property
     def SentiveInfoCnt(self):
+        warnings.warn("parameter `SentiveInfoCnt` is deprecated", DeprecationWarning) 
+
         return self._SentiveInfoCnt
 
     @SentiveInfoCnt.setter
     def SentiveInfoCnt(self, SentiveInfoCnt):
+        warnings.warn("parameter `SentiveInfoCnt` is deprecated", DeprecationWarning) 
+
         self._SentiveInfoCnt = SentiveInfoCnt
 
     @property
@@ -20070,6 +20191,14 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._ImageCreateTime = ImageCreateTime
 
     @property
+    def SensitiveInfoCnt(self):
+        return self._SensitiveInfoCnt
+
+    @SensitiveInfoCnt.setter
+    def SensitiveInfoCnt(self, SensitiveInfoCnt):
+        self._SensitiveInfoCnt = SensitiveInfoCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -20111,6 +20240,7 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._ImageId = params.get("ImageId")
         self._RegistryRegion = params.get("RegistryRegion")
         self._ImageCreateTime = params.get("ImageCreateTime")
+        self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -20282,6 +20412,8 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
         :type Order: str
         :param _OnlyShowLatest: 是否仅展示各repository最新的镜像, 默认为false
         :type OnlyShowLatest: bool
+        :param _IsRunning: 是否仅展示运行中容器镜像
+        :type IsRunning: bool
         """
         self._Limit = None
         self._Offset = None
@@ -20289,6 +20421,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
         self._By = None
         self._Order = None
         self._OnlyShowLatest = None
+        self._IsRunning = None
 
     @property
     def Limit(self):
@@ -20338,6 +20471,14 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
     def OnlyShowLatest(self, OnlyShowLatest):
         self._OnlyShowLatest = OnlyShowLatest
 
+    @property
+    def IsRunning(self):
+        return self._IsRunning
+
+    @IsRunning.setter
+    def IsRunning(self, IsRunning):
+        self._IsRunning = IsRunning
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -20351,6 +20492,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
         self._By = params.get("By")
         self._Order = params.get("Order")
         self._OnlyShowLatest = params.get("OnlyShowLatest")
+        self._IsRunning = params.get("IsRunning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21175,6 +21317,38 @@ class DescribeAssetImageRegistrySummaryRequest(AbstractModel):
     """DescribeAssetImageRegistrySummary请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤字段
+        :type Filters: list of AssetFilters
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAssetImageRegistrySummaryResponse(AbstractModel):
@@ -28262,15 +28436,18 @@ class DescribeImageRegistryNamespaceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 可返回的项目空间的总量。
+        :param _TotalCount: 可返回的命令空间的总量。
         :type TotalCount: int
-        :param _NamespaceList: 返回的项目空间列表
+        :param _NamespaceList: 返回的命令空间列表
         :type NamespaceList: list of str
+        :param _NamespaceDetail: 返回的命令空间详细信息列表
+        :type NamespaceDetail: list of NamespaceInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._NamespaceList = None
+        self._NamespaceDetail = None
         self._RequestId = None
 
     @property
@@ -28290,6 +28467,14 @@ class DescribeImageRegistryNamespaceListResponse(AbstractModel):
         self._NamespaceList = NamespaceList
 
     @property
+    def NamespaceDetail(self):
+        return self._NamespaceDetail
+
+    @NamespaceDetail.setter
+    def NamespaceDetail(self, NamespaceDetail):
+        self._NamespaceDetail = NamespaceDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -28301,6 +28486,12 @@ class DescribeImageRegistryNamespaceListResponse(AbstractModel):
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
         self._NamespaceList = params.get("NamespaceList")
+        if params.get("NamespaceDetail") is not None:
+            self._NamespaceDetail = []
+            for item in params.get("NamespaceDetail"):
+                obj = NamespaceInfo()
+                obj._deserialize(item)
+                self._NamespaceDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -28338,6 +28529,17 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         :param _Latest: 是否扫描最新版本镜像
 注意：此字段可能返回 null，表示取不到有效值。
         :type Latest: bool
+        :param _ScanEndTime: 扫描结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanEndTime: str
+        :param _RegistryType: 仓库类型 tcr,ccr,harbor	
+        :type RegistryType: list of str
+        :param _ContainerRunning: 是否存在运行中的容器	
+        :type ContainerRunning: bool
+        :param _ScanScope: 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+        :type ScanScope: int
+        :param _Namespace: 命名空间
+        :type Namespace: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -28349,6 +28551,11 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._Images = None
         self._Id = None
         self._Latest = None
+        self._ScanEndTime = None
+        self._RegistryType = None
+        self._ContainerRunning = None
+        self._ScanScope = None
+        self._Namespace = None
         self._RequestId = None
 
     @property
@@ -28385,10 +28592,14 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -28416,6 +28627,46 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
         self._Latest = Latest
 
     @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -28438,6 +28689,11 @@ class DescribeImageRegistryTimingScanTaskResponse(AbstractModel):
                 self._Images.append(obj)
         self._Id = params.get("Id")
         self._Latest = params.get("Latest")
+        self._ScanEndTime = params.get("ScanEndTime")
+        self._RegistryType = params.get("RegistryType")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanScope = params.get("ScanScope")
+        self._Namespace = params.get("Namespace")
         self._RequestId = params.get("RequestId")
 
 
@@ -44274,6 +44530,25 @@ class ImageRepoInfo(AbstractModel):
         :param _IsLatestImage: 是否为镜像的最新版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLatestImage: bool
+        :param _LowLevelVulCnt: low级别漏洞个数
+        :type LowLevelVulCnt: int
+        :param _MediumLevelVulCnt: medium级别漏洞个数
+        :type MediumLevelVulCnt: int
+        :param _HighLevelVulCnt: high级别漏洞个数
+        :type HighLevelVulCnt: int
+        :param _CriticalLevelVulCnt: critical级别漏洞个数
+        :type CriticalLevelVulCnt: int
+        :param _ContainerCnt: 关联容器数
+        :type ContainerCnt: int
+        :param _ComponentCnt: 组件数
+        :type ComponentCnt: int
+        :param _IsRunning: 是否运行中
+        :type IsRunning: bool
+        :param _HasNeedFixVul: 是否存在必修漏洞
+        :type HasNeedFixVul: bool
+        :param _SensitiveInfoCnt: 敏感信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveInfoCnt: int
         """
         self._ImageDigest = None
         self._ImageRepoAddress = None
@@ -44309,6 +44584,15 @@ class ImageRepoInfo(AbstractModel):
         self._ImageId = None
         self._ImageCreateTime = None
         self._IsLatestImage = None
+        self._LowLevelVulCnt = None
+        self._MediumLevelVulCnt = None
+        self._HighLevelVulCnt = None
+        self._CriticalLevelVulCnt = None
+        self._ContainerCnt = None
+        self._ComponentCnt = None
+        self._IsRunning = None
+        self._HasNeedFixVul = None
+        self._SensitiveInfoCnt = None
 
     @property
     def ImageDigest(self):
@@ -44400,10 +44684,14 @@ class ImageRepoInfo(AbstractModel):
 
     @property
     def SentiveInfoCnt(self):
+        warnings.warn("parameter `SentiveInfoCnt` is deprecated", DeprecationWarning) 
+
         return self._SentiveInfoCnt
 
     @SentiveInfoCnt.setter
     def SentiveInfoCnt(self, SentiveInfoCnt):
+        warnings.warn("parameter `SentiveInfoCnt` is deprecated", DeprecationWarning) 
+
         self._SentiveInfoCnt = SentiveInfoCnt
 
     @property
@@ -44582,6 +44870,78 @@ class ImageRepoInfo(AbstractModel):
     def IsLatestImage(self, IsLatestImage):
         self._IsLatestImage = IsLatestImage
 
+    @property
+    def LowLevelVulCnt(self):
+        return self._LowLevelVulCnt
+
+    @LowLevelVulCnt.setter
+    def LowLevelVulCnt(self, LowLevelVulCnt):
+        self._LowLevelVulCnt = LowLevelVulCnt
+
+    @property
+    def MediumLevelVulCnt(self):
+        return self._MediumLevelVulCnt
+
+    @MediumLevelVulCnt.setter
+    def MediumLevelVulCnt(self, MediumLevelVulCnt):
+        self._MediumLevelVulCnt = MediumLevelVulCnt
+
+    @property
+    def HighLevelVulCnt(self):
+        return self._HighLevelVulCnt
+
+    @HighLevelVulCnt.setter
+    def HighLevelVulCnt(self, HighLevelVulCnt):
+        self._HighLevelVulCnt = HighLevelVulCnt
+
+    @property
+    def CriticalLevelVulCnt(self):
+        return self._CriticalLevelVulCnt
+
+    @CriticalLevelVulCnt.setter
+    def CriticalLevelVulCnt(self, CriticalLevelVulCnt):
+        self._CriticalLevelVulCnt = CriticalLevelVulCnt
+
+    @property
+    def ContainerCnt(self):
+        return self._ContainerCnt
+
+    @ContainerCnt.setter
+    def ContainerCnt(self, ContainerCnt):
+        self._ContainerCnt = ContainerCnt
+
+    @property
+    def ComponentCnt(self):
+        return self._ComponentCnt
+
+    @ComponentCnt.setter
+    def ComponentCnt(self, ComponentCnt):
+        self._ComponentCnt = ComponentCnt
+
+    @property
+    def IsRunning(self):
+        return self._IsRunning
+
+    @IsRunning.setter
+    def IsRunning(self, IsRunning):
+        self._IsRunning = IsRunning
+
+    @property
+    def HasNeedFixVul(self):
+        return self._HasNeedFixVul
+
+    @HasNeedFixVul.setter
+    def HasNeedFixVul(self, HasNeedFixVul):
+        self._HasNeedFixVul = HasNeedFixVul
+
+    @property
+    def SensitiveInfoCnt(self):
+        return self._SensitiveInfoCnt
+
+    @SensitiveInfoCnt.setter
+    def SensitiveInfoCnt(self, SensitiveInfoCnt):
+        self._SensitiveInfoCnt = SensitiveInfoCnt
+
 
     def _deserialize(self, params):
         self._ImageDigest = params.get("ImageDigest")
@@ -44618,6 +44978,15 @@ class ImageRepoInfo(AbstractModel):
         self._ImageId = params.get("ImageId")
         self._ImageCreateTime = params.get("ImageCreateTime")
         self._IsLatestImage = params.get("IsLatestImage")
+        self._LowLevelVulCnt = params.get("LowLevelVulCnt")
+        self._MediumLevelVulCnt = params.get("MediumLevelVulCnt")
+        self._HighLevelVulCnt = params.get("HighLevelVulCnt")
+        self._CriticalLevelVulCnt = params.get("CriticalLevelVulCnt")
+        self._ContainerCnt = params.get("ContainerCnt")
+        self._ComponentCnt = params.get("ComponentCnt")
+        self._IsRunning = params.get("IsRunning")
+        self._HasNeedFixVul = params.get("HasNeedFixVul")
+        self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45365,6 +45734,9 @@ class ImageVul(AbstractModel):
         :param _Version: 组件版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _AttackLevel: 攻击热度 0-3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackLevel: int
         """
         self._CVEID = None
         self._POCID = None
@@ -45385,6 +45757,7 @@ class ImageVul(AbstractModel):
         self._Tag = None
         self._Component = None
         self._Version = None
+        self._AttackLevel = None
 
     @property
     def CVEID(self):
@@ -45538,6 +45911,14 @@ class ImageVul(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def AttackLevel(self):
+        return self._AttackLevel
+
+    @AttackLevel.setter
+    def AttackLevel(self, AttackLevel):
+        self._AttackLevel = AttackLevel
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -45564,6 +45945,7 @@ class ImageVul(AbstractModel):
         self._Tag = params.get("Tag")
         self._Component = params.get("Component")
         self._Version = params.get("Version")
+        self._AttackLevel = params.get("AttackLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50284,6 +50666,75 @@ class ModifyVulDefenceSettingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NamespaceInfo(AbstractModel):
+    """返回的命名空间列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间名称
+        :type Namespace: str
+        :param _RegistryCnt: 包含仓库数
+        :type RegistryCnt: int
+        :param _ImageCnt: 包含镜像数
+        :type ImageCnt: int
+        :param _RiskImageCnt: 包含风险镜像数
+        :type RiskImageCnt: int
+        """
+        self._Namespace = None
+        self._RegistryCnt = None
+        self._ImageCnt = None
+        self._RiskImageCnt = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def RegistryCnt(self):
+        return self._RegistryCnt
+
+    @RegistryCnt.setter
+    def RegistryCnt(self, RegistryCnt):
+        self._RegistryCnt = RegistryCnt
+
+    @property
+    def ImageCnt(self):
+        return self._ImageCnt
+
+    @ImageCnt.setter
+    def ImageCnt(self, ImageCnt):
+        self._ImageCnt = ImageCnt
+
+    @property
+    def RiskImageCnt(self):
+        return self._RiskImageCnt
+
+    @RiskImageCnt.setter
+    def RiskImageCnt(self, RiskImageCnt):
+        self._RiskImageCnt = RiskImageCnt
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._RegistryCnt = params.get("RegistryCnt")
+        self._ImageCnt = params.get("ImageCnt")
+        self._RiskImageCnt = params.get("RiskImageCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NetworkAuditRecord(AbstractModel):
@@ -57324,6 +57775,16 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type Id: list of int non-negative
         :param _Latest: 是否扫描最新版本
         :type Latest: bool
+        :param _ContainerRunning: 是否存在运行中的容器
+        :type ContainerRunning: bool
+        :param _ScanEndTime: 扫描结束时间
+        :type ScanEndTime: str
+        :param _ScanScope: 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+        :type ScanScope: int
+        :param _RegistryType: 仓库类型 tcr,ccr,harbor
+        :type RegistryType: list of str
+        :param _Namespace: 命名空间
+        :type Namespace: list of str
         """
         self._ScanPeriod = None
         self._Enable = None
@@ -57333,6 +57794,11 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._All = None
         self._Id = None
         self._Latest = None
+        self._ContainerRunning = None
+        self._ScanEndTime = None
+        self._ScanScope = None
+        self._RegistryType = None
+        self._Namespace = None
 
     @property
     def ScanPeriod(self):
@@ -57376,10 +57842,14 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -57398,6 +57868,46 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
     def Latest(self, Latest):
         self._Latest = Latest
 
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
 
     def _deserialize(self, params):
         self._ScanPeriod = params.get("ScanPeriod")
@@ -57413,6 +57923,11 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._All = params.get("All")
         self._Id = params.get("Id")
         self._Latest = params.get("Latest")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanEndTime = params.get("ScanEndTime")
+        self._ScanScope = params.get("ScanScope")
+        self._RegistryType = params.get("RegistryType")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

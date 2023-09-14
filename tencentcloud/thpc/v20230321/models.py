@@ -1228,6 +1228,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type AutoScalingType: str
         :param _InitNodeScripts: 节点初始化脚本信息列表。
         :type InitNodeScripts: list of NodeScript
+        :param _HpcClusterId: 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+        :type HpcClusterId: str
         """
         self._Placement = None
         self._ManagerNode = None
@@ -1249,6 +1251,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._Tags = None
         self._AutoScalingType = None
         self._InitNodeScripts = None
+        self._HpcClusterId = None
 
     @property
     def Placement(self):
@@ -1410,6 +1413,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def InitNodeScripts(self, InitNodeScripts):
         self._InitNodeScripts = InitNodeScripts
 
+    @property
+    def HpcClusterId(self):
+        return self._HpcClusterId
+
+    @HpcClusterId.setter
+    def HpcClusterId(self, HpcClusterId):
+        self._HpcClusterId = HpcClusterId
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -1456,6 +1467,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj = NodeScript()
                 obj._deserialize(item)
                 self._InitNodeScripts.append(obj)
+        self._HpcClusterId = params.get("HpcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5405,6 +5405,9 @@ pausing
         :param _RenewFlag: 自动续费标识，1为自动续费，0为到期不续
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
+        :param _NetworkType: 节点网络类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkType: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5454,6 +5457,7 @@ pausing
         self._NetworkStatus = None
         self._ResourcePackages = None
         self._RenewFlag = None
+        self._NetworkType = None
 
     @property
     def ClusterId(self):
@@ -5839,6 +5843,14 @@ pausing
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5916,6 +5928,7 @@ pausing
                 obj._deserialize(item)
                 self._ResourcePackages.append(obj)
         self._RenewFlag = params.get("RenewFlag")
+        self._NetworkType = params.get("NetworkType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -707,6 +707,286 @@ class CloudNativeAPIGatewayCanaryRuleCondition(AbstractModel):
         
 
 
+class CloudNativeAPIGatewayConfig(AbstractModel):
+    """云原生API网关配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleType: 控制台类型。
+        :type ConsoleType: str
+        :param _HttpUrl: HTTP链接地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpUrl: str
+        :param _HttpsUrl: HTTPS链接地址。
+        :type HttpsUrl: str
+        :param _NetType: 网络类型, Open|Internal。
+        :type NetType: str
+        :param _AdminUser: 管理员用户名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminUser: str
+        :param _AdminPassword: 管理员密码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminPassword: str
+        :param _Status: 网络状态, Open|Closed|Updating
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _AccessControl: 网络访问策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessControl: :class:`tencentcloud.tse.v20201207.models.NetworkAccessControl`
+        :param _SubnetId: 内网子网 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _VpcId: 内网VPC ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _Description: 负载均衡的描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _SlaType: 负载均衡的规格类型，传 "SLA" 表示性能容量型，返回空为共享型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaType: str
+        :param _Vip: clb vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _InternetMaxBandwidthOut: 带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternetMaxBandwidthOut: int
+        :param _MultiZoneFlag: 是否多可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiZoneFlag: bool
+        :param _MasterZoneId: 主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZoneId: str
+        :param _SlaveZoneId: 备可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneId: str
+        :param _MasterZoneName: 主可用区名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterZoneName: str
+        :param _SlaveZoneName: 备可用区名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneName: str
+        :param _NetworkId: 网络 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkId: str
+        """
+        self._ConsoleType = None
+        self._HttpUrl = None
+        self._HttpsUrl = None
+        self._NetType = None
+        self._AdminUser = None
+        self._AdminPassword = None
+        self._Status = None
+        self._AccessControl = None
+        self._SubnetId = None
+        self._VpcId = None
+        self._Description = None
+        self._SlaType = None
+        self._Vip = None
+        self._InternetMaxBandwidthOut = None
+        self._MultiZoneFlag = None
+        self._MasterZoneId = None
+        self._SlaveZoneId = None
+        self._MasterZoneName = None
+        self._SlaveZoneName = None
+        self._NetworkId = None
+
+    @property
+    def ConsoleType(self):
+        return self._ConsoleType
+
+    @ConsoleType.setter
+    def ConsoleType(self, ConsoleType):
+        self._ConsoleType = ConsoleType
+
+    @property
+    def HttpUrl(self):
+        return self._HttpUrl
+
+    @HttpUrl.setter
+    def HttpUrl(self, HttpUrl):
+        self._HttpUrl = HttpUrl
+
+    @property
+    def HttpsUrl(self):
+        return self._HttpsUrl
+
+    @HttpsUrl.setter
+    def HttpsUrl(self, HttpsUrl):
+        self._HttpsUrl = HttpsUrl
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def AdminUser(self):
+        return self._AdminUser
+
+    @AdminUser.setter
+    def AdminUser(self, AdminUser):
+        self._AdminUser = AdminUser
+
+    @property
+    def AdminPassword(self):
+        return self._AdminPassword
+
+    @AdminPassword.setter
+    def AdminPassword(self, AdminPassword):
+        self._AdminPassword = AdminPassword
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AccessControl(self):
+        return self._AccessControl
+
+    @AccessControl.setter
+    def AccessControl(self, AccessControl):
+        self._AccessControl = AccessControl
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SlaType(self):
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def MultiZoneFlag(self):
+        return self._MultiZoneFlag
+
+    @MultiZoneFlag.setter
+    def MultiZoneFlag(self, MultiZoneFlag):
+        self._MultiZoneFlag = MultiZoneFlag
+
+    @property
+    def MasterZoneId(self):
+        return self._MasterZoneId
+
+    @MasterZoneId.setter
+    def MasterZoneId(self, MasterZoneId):
+        self._MasterZoneId = MasterZoneId
+
+    @property
+    def SlaveZoneId(self):
+        return self._SlaveZoneId
+
+    @SlaveZoneId.setter
+    def SlaveZoneId(self, SlaveZoneId):
+        self._SlaveZoneId = SlaveZoneId
+
+    @property
+    def MasterZoneName(self):
+        return self._MasterZoneName
+
+    @MasterZoneName.setter
+    def MasterZoneName(self, MasterZoneName):
+        self._MasterZoneName = MasterZoneName
+
+    @property
+    def SlaveZoneName(self):
+        return self._SlaveZoneName
+
+    @SlaveZoneName.setter
+    def SlaveZoneName(self, SlaveZoneName):
+        self._SlaveZoneName = SlaveZoneName
+
+    @property
+    def NetworkId(self):
+        return self._NetworkId
+
+    @NetworkId.setter
+    def NetworkId(self, NetworkId):
+        self._NetworkId = NetworkId
+
+
+    def _deserialize(self, params):
+        self._ConsoleType = params.get("ConsoleType")
+        self._HttpUrl = params.get("HttpUrl")
+        self._HttpsUrl = params.get("HttpsUrl")
+        self._NetType = params.get("NetType")
+        self._AdminUser = params.get("AdminUser")
+        self._AdminPassword = params.get("AdminPassword")
+        self._Status = params.get("Status")
+        if params.get("AccessControl") is not None:
+            self._AccessControl = NetworkAccessControl()
+            self._AccessControl._deserialize(params.get("AccessControl"))
+        self._SubnetId = params.get("SubnetId")
+        self._VpcId = params.get("VpcId")
+        self._Description = params.get("Description")
+        self._SlaType = params.get("SlaType")
+        self._Vip = params.get("Vip")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._MultiZoneFlag = params.get("MultiZoneFlag")
+        self._MasterZoneId = params.get("MasterZoneId")
+        self._SlaveZoneId = params.get("SlaveZoneId")
+        self._MasterZoneName = params.get("MasterZoneName")
+        self._SlaveZoneName = params.get("SlaveZoneName")
+        self._NetworkId = params.get("NetworkId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudNativeAPIGatewayNode(AbstractModel):
     """云原生API网关节点信息。
 
@@ -3949,6 +4229,179 @@ class DescribeCloudNativeAPIGatewayCanaryRulesResponse(AbstractModel):
             self._Result = CloudAPIGatewayCanaryRuleList()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayConfigRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 分组id，不填时为默认分组
+        :type GroupId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayConfigResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 获取云原生API网关响应结果。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayConfigResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeCloudNativeAPIGatewayConfigResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayConfigResult(AbstractModel):
+    """获取云原生API网关实例网络配置结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例ID。
+        :type GatewayId: str
+        :param _ConfigList: 分组网络配置列表。
+        :type ConfigList: list of CloudNativeAPIGatewayConfig
+        :param _GroupSubnetId: 分组子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupSubnetId: str
+        :param _GroupVpcId: 分组VPC信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupVpcId: str
+        :param _GroupId: 分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        """
+        self._GatewayId = None
+        self._ConfigList = None
+        self._GroupSubnetId = None
+        self._GroupVpcId = None
+        self._GroupId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ConfigList(self):
+        return self._ConfigList
+
+    @ConfigList.setter
+    def ConfigList(self, ConfigList):
+        self._ConfigList = ConfigList
+
+    @property
+    def GroupSubnetId(self):
+        return self._GroupSubnetId
+
+    @GroupSubnetId.setter
+    def GroupSubnetId(self, GroupSubnetId):
+        self._GroupSubnetId = GroupSubnetId
+
+    @property
+    def GroupVpcId(self):
+        return self._GroupVpcId
+
+    @GroupVpcId.setter
+    def GroupVpcId(self, GroupVpcId):
+        self._GroupVpcId = GroupVpcId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        if params.get("ConfigList") is not None:
+            self._ConfigList = []
+            for item in params.get("ConfigList"):
+                obj = CloudNativeAPIGatewayConfig()
+                obj._deserialize(item)
+                self._ConfigList.append(obj)
+        self._GroupSubnetId = params.get("GroupSubnetId")
+        self._GroupVpcId = params.get("GroupVpcId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeCloudNativeAPIGatewayNodesRequest(AbstractModel):
@@ -9452,6 +9905,63 @@ class NativeGatewayServerGroups(AbstractModel):
                 obj = NativeGatewayServerGroup()
                 obj._deserialize(item)
                 self._GatewayGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkAccessControl(AbstractModel):
+    """网络访问策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 访问模式：Whitelist|Blacklist
+        :type Mode: str
+        :param _CidrWhiteList: 白名单列表
+        :type CidrWhiteList: list of str
+        :param _CidrBlackList: 黑名单列表
+        :type CidrBlackList: list of str
+        """
+        self._Mode = None
+        self._CidrWhiteList = None
+        self._CidrBlackList = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def CidrWhiteList(self):
+        return self._CidrWhiteList
+
+    @CidrWhiteList.setter
+    def CidrWhiteList(self, CidrWhiteList):
+        self._CidrWhiteList = CidrWhiteList
+
+    @property
+    def CidrBlackList(self):
+        return self._CidrBlackList
+
+    @CidrBlackList.setter
+    def CidrBlackList(self, CidrBlackList):
+        self._CidrBlackList = CidrBlackList
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._CidrWhiteList = params.get("CidrWhiteList")
+        self._CidrBlackList = params.get("CidrBlackList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

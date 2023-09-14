@@ -9669,7 +9669,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type ZoneIds: list of str
         :param _ProxyIds: 四层实例 ID 集合。
         :type ProxyIds: list of str
-        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 300。
         :type Limit: int
         :param _Offset: 分页的偏移量，默认值为 0。
         :type Offset: int
@@ -9816,7 +9816,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type ZoneIds: list of str
         :param _Domains: 子域名集合，不填默认选择全部子域名。
         :type Domains: list of str
-        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+        :param _Limit: 分页查询的限制数目，默认值为 20，最大查询条目为 300。
         :type Limit: int
         :param _Offset: 分页的偏移量，默认值为 0。
         :type Offset: int

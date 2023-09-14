@@ -3963,7 +3963,7 @@ class TcssClient(AbstractClient):
 
 
     def DescribeImageRegistryNamespaceList(self, request):
-        """查询用户镜像仓库下的项目名称列表
+        """查询用户镜像仓库下的命令空间列表
 
         :param request: Request instance for DescribeImageRegistryNamespaceList.
         :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageRegistryNamespaceListRequest`

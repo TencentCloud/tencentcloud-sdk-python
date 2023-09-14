@@ -18,150 +18,7 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
-class DescribeStrategie(AbstractModel):
-    """评估项信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StrategyId: 评估项ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StrategyId: int
-        :param _Name: 评估项名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Name: str
-        :param _Desc: 评估项描述
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Desc: str
-        :param _Product: 评估项对应产品ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Product: str
-        :param _ProductDesc: 评估项对应产品名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ProductDesc: str
-        :param _Repair: 评估项优化建议
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Repair: str
-        :param _GroupId: 评估项类别ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GroupId: int
-        :param _GroupName: 评估项类别名称
-注意：此字段可能返回 null，表示取不到有效值。
-        :type GroupName: str
-        :param _Conditions: 评估项风险列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Conditions: list of DescribeStrategiesCondition
-        """
-        self._StrategyId = None
-        self._Name = None
-        self._Desc = None
-        self._Product = None
-        self._ProductDesc = None
-        self._Repair = None
-        self._GroupId = None
-        self._GroupName = None
-        self._Conditions = None
-
-    @property
-    def StrategyId(self):
-        return self._StrategyId
-
-    @StrategyId.setter
-    def StrategyId(self, StrategyId):
-        self._StrategyId = StrategyId
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Desc(self):
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-    @property
-    def Product(self):
-        return self._Product
-
-    @Product.setter
-    def Product(self, Product):
-        self._Product = Product
-
-    @property
-    def ProductDesc(self):
-        return self._ProductDesc
-
-    @ProductDesc.setter
-    def ProductDesc(self, ProductDesc):
-        self._ProductDesc = ProductDesc
-
-    @property
-    def Repair(self):
-        return self._Repair
-
-    @Repair.setter
-    def Repair(self, Repair):
-        self._Repair = Repair
-
-    @property
-    def GroupId(self):
-        return self._GroupId
-
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
-
-    @property
-    def GroupName(self):
-        return self._GroupName
-
-    @GroupName.setter
-    def GroupName(self, GroupName):
-        self._GroupName = GroupName
-
-    @property
-    def Conditions(self):
-        return self._Conditions
-
-    @Conditions.setter
-    def Conditions(self, Conditions):
-        self._Conditions = Conditions
-
-
-    def _deserialize(self, params):
-        self._StrategyId = params.get("StrategyId")
-        self._Name = params.get("Name")
-        self._Desc = params.get("Desc")
-        self._Product = params.get("Product")
-        self._ProductDesc = params.get("ProductDesc")
-        self._Repair = params.get("Repair")
-        self._GroupId = params.get("GroupId")
-        self._GroupName = params.get("GroupName")
-        if params.get("Conditions") is not None:
-            self._Conditions = []
-            for item in params.get("Conditions"):
-                obj = DescribeStrategiesCondition()
-                obj._deserialize(item)
-                self._Conditions.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeStrategiesCondition(AbstractModel):
+class Conditions(AbstractModel):
     """评估项警告条件
 
     """
@@ -248,7 +105,7 @@ class DescribeStrategiesResponse(AbstractModel):
         r"""
         :param _Strategies: 评估项列表
 注意：此字段可能返回 null，表示取不到有效值。
-        :type Strategies: list of DescribeStrategie
+        :type Strategies: list of Strategies
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -276,7 +133,7 @@ class DescribeStrategiesResponse(AbstractModel):
         if params.get("Strategies") is not None:
             self._Strategies = []
             for item in params.get("Strategies"):
-                obj = DescribeStrategie()
+                obj = Strategies()
                 obj._deserialize(item)
                 self._Strategies.append(obj)
         self._RequestId = params.get("RequestId")
@@ -573,6 +430,149 @@ tags: 标签类型, 例如: [{"Key":"kkk","Value":"vvv"},{"Key":"kkk2","Value":"
                 obj = KeyValue()
                 obj._deserialize(item)
                 self._FieldDict.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Strategies(AbstractModel):
+    """评估项信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: 评估项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: int
+        :param _Name: 评估项名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Desc: 评估项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param _Product: 评估项对应产品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: str
+        :param _ProductDesc: 评估项对应产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductDesc: str
+        :param _Repair: 评估项优化建议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Repair: str
+        :param _GroupId: 评估项类别ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: int
+        :param _GroupName: 评估项类别名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _Conditions: 评估项风险列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Conditions: list of Conditions
+        """
+        self._StrategyId = None
+        self._Name = None
+        self._Desc = None
+        self._Product = None
+        self._ProductDesc = None
+        self._Repair = None
+        self._GroupId = None
+        self._GroupName = None
+        self._Conditions = None
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ProductDesc(self):
+        return self._ProductDesc
+
+    @ProductDesc.setter
+    def ProductDesc(self, ProductDesc):
+        self._ProductDesc = ProductDesc
+
+    @property
+    def Repair(self):
+        return self._Repair
+
+    @Repair.setter
+    def Repair(self, Repair):
+        self._Repair = Repair
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._Product = params.get("Product")
+        self._ProductDesc = params.get("ProductDesc")
+        self._Repair = params.get("Repair")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = Conditions()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

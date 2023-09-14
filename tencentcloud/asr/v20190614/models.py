@@ -638,6 +638,27 @@ class CreateRecTaskRequest(AbstractModel):
 0：语音 URL；
 1：语音数据（post body）
         :type SourceType: int
+        :param _Data: 语音数据base64编码
+**当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
+
+注意：音频数据要小于5MB（含）
+        :type Data: str
+        :param _DataLen: 数据长度（此数据长度为数据未进行base64编码时的长度）
+        :type DataLen: int
+        :param _Url: 语音URL的地址（需要公网环境浏览器可下载）
+**当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
+
+注意：
+1. 请确保录音文件时长在5个小时（含）之内，否则可能识别失败；
+2. 请保证文件的下载速度，否则可能下载失败
+        :type Url: str
+        :param _CallbackUrl: 回调 URL
+用户自行搭建的用于接收识别结果的服务URL
+回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+
+注意：
+如果用户使用轮询方式获取识别结果，则无需提交该参数
+        :type CallbackUrl: str
         :param _SpeakerDiarization: 是否开启说话人分离
 0：不开启；
 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id，且ChannelNum=1时可用）；
@@ -652,27 +673,38 @@ class CreateRecTaskRequest(AbstractModel):
 1-10：指定人数分离；
 默认值为 0
         :type SpeakerNumber: int
-        :param _CallbackUrl: 回调 URL
-用户自行搭建的用于接收识别结果的服务URL
-回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+        :param _HotwordId: 热词表id
+如不设置该参数，将自动生效默认热词表；
+如设置该参数，将生效对应id的热词表；
+点击这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)
+        :type HotwordId: str
+        :param _ReinforceHotword: 热词增强功能（目前仅支持8k_zh/16k_zh引擎）
+1：开启热词增强功能
+
+注意：热词增强功能开启后，将对传入的热词表id开启同音替换功能，可以在这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)。效果举例：在热词表中配置“蜜制”一词，并开启增强功能，与“蜜制”（mìzhì）同音同调的“秘制”（mìzhì）的识别结果会被强制替换成“蜜制”。**建议客户根据实际的业务需求开启该功能**
+        :type ReinforceHotword: int
+        :param _CustomizationId: 自学习定制模型 id
+如设置了该参数，将生效对应id的自学习定制模型；
+点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
+        :type CustomizationId: str
+        :param _EmotionRecognition: **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
+0：不开启；
+1：开启情绪识别，但不在文本展示情绪标签；
+2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
+默认值为0
+支持的情绪分类为：高兴、伤心、愤怒
 
 注意：
-如果用户使用轮询方式获取识别结果，则无需提交该参数
-        :type CallbackUrl: str
-        :param _Url: 语音URL的地址（需要公网环境浏览器可下载）
-**当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
-
-注意：
-1. 请确保录音文件时长在5个小时（含）之内，否则可能识别失败；
-2. 请保证文件的下载速度，否则可能下载失败
-        :type Url: str
-        :param _Data: 语音数据base64编码
-**当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
-
-注意：音频数据要小于5MB（含）
-        :type Data: str
-        :param _DataLen: 数据长度（此数据长度为数据未进行base64编码时的长度）
-        :type DataLen: int
+1. **本功能为增值服务**，需将参数设置为1或2时方可按对应方式生效；
+2. 如果传入参数值1或2，需确保账号已购买[情绪识别资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值1或2，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**；
+3. 参数设置为0时，无需购买资源包，也不会消耗情绪识别对应资源
+        :type EmotionRecognition: int
+        :param _EmotionalEnergy: 情绪能量值
+取值为音量分贝值/10，取值范围：[1,10]，值越高情绪越强烈
+0：不开启；
+1：开启；
+默认值为0
+        :type EmotionalEnergy: int
         :param _ConvertNumMode: 阿拉伯数字智能转换（目前仅支持8k_zh/16k_zh引擎）
 0：不转换，直接输出中文数字；
 1：根据场景智能转换为阿拉伯数字；
@@ -685,40 +717,18 @@ class CreateRecTaskRequest(AbstractModel):
 2：将脏词替换为 * ；
 默认值为 0
         :type FilterDirty: int
-        :param _HotwordId: 热词表id
-如不设置该参数，将自动生效默认热词表；
-如设置该参数，将生效对应id的热词表；
-点击这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)
-        :type HotwordId: str
-        :param _CustomizationId: 自学习定制模型 id
-如设置了该参数，将生效对应id的自学习定制模型；
-点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
-        :type CustomizationId: str
-        :param _Extra: 附加参数**（该参数无意义，忽略即可）**
-        :type Extra: str
         :param _FilterPunc: 标点符号过滤（目前仅支持8k_zh/16k_zh引擎）
 0：不过滤标点；
 1：过滤句末标点；
 2：过滤所有标点；
 默认值为 0
         :type FilterPunc: int
-        :param _FilterModal: 语气词过滤（目前支持8k_zh/16k_zh引擎）
+        :param _FilterModal: 语气词过滤（目前仅支持8k_zh/16k_zh引擎）
 0：不过滤语气词；
 1：过滤部分语气词；
 2：严格过滤语气词；
 默认值为 0
         :type FilterModal: int
-        :param _EmotionalEnergy: 情绪能量值
-取值为音量分贝值/10，取值范围：[1,10]，值越高情绪越强烈
-0：不开启；
-1：开启；
-默认值为0
-        :type EmotionalEnergy: int
-        :param _ReinforceHotword: 热词增强功能（仅支持8k_zh/16k_zh引擎）
-1：开启热词增强功能
-
-注意：热词增强功能开启后，将对传入的热词表id开启同音替换功能，可以在这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)。效果举例：在热词表中配置“蜜制”一词，并开启增强功能，与“蜜制”（mìzhì）同音同调的“秘制”（mìzhì）的识别结果会被强制替换成“蜜制”。**建议客户根据实际的业务需求开启该功能**
-        :type ReinforceHotword: int
         :param _SentenceMaxLength: 单标点最多字数
 **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
 0：不开启该功能；
@@ -726,39 +736,30 @@ class CreateRecTaskRequest(AbstractModel):
 
 注意：需设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果
         :type SentenceMaxLength: int
-        :param _EmotionRecognition: **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
-0：不开启；
-1：开启情绪识别，但不在文本展示情绪标签；
-2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
-默认值为0
-
-注意：
-1. **本功能为增值服务**，需将参数设置为1或2时方可按对应方式生效；
-2. 如果传入参数值1或2，需确保账号已购买[情绪识别资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**；
-3. 参数设置为0时，无需购买资源包，也不会消耗情绪识别对应资源
-        :type EmotionRecognition: int
+        :param _Extra: 附加参数**（该参数无意义，忽略即可）**
+        :type Extra: str
         """
         self._EngineModelType = None
         self._ChannelNum = None
         self._ResTextFormat = None
         self._SourceType = None
-        self._SpeakerDiarization = None
-        self._SpeakerNumber = None
-        self._CallbackUrl = None
-        self._Url = None
         self._Data = None
         self._DataLen = None
+        self._Url = None
+        self._CallbackUrl = None
+        self._SpeakerDiarization = None
+        self._SpeakerNumber = None
+        self._HotwordId = None
+        self._ReinforceHotword = None
+        self._CustomizationId = None
+        self._EmotionRecognition = None
+        self._EmotionalEnergy = None
         self._ConvertNumMode = None
         self._FilterDirty = None
-        self._HotwordId = None
-        self._CustomizationId = None
-        self._Extra = None
         self._FilterPunc = None
         self._FilterModal = None
-        self._EmotionalEnergy = None
-        self._ReinforceHotword = None
         self._SentenceMaxLength = None
-        self._EmotionRecognition = None
+        self._Extra = None
 
     @property
     def EngineModelType(self):
@@ -793,6 +794,38 @@ class CreateRecTaskRequest(AbstractModel):
         self._SourceType = SourceType
 
     @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def DataLen(self):
+        return self._DataLen
+
+    @DataLen.setter
+    def DataLen(self, DataLen):
+        self._DataLen = DataLen
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def CallbackUrl(self):
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
     def SpeakerDiarization(self):
         return self._SpeakerDiarization
 
@@ -809,36 +842,44 @@ class CreateRecTaskRequest(AbstractModel):
         self._SpeakerNumber = SpeakerNumber
 
     @property
-    def CallbackUrl(self):
-        return self._CallbackUrl
+    def HotwordId(self):
+        return self._HotwordId
 
-    @CallbackUrl.setter
-    def CallbackUrl(self, CallbackUrl):
-        self._CallbackUrl = CallbackUrl
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @HotwordId.setter
+    def HotwordId(self, HotwordId):
+        self._HotwordId = HotwordId
 
     @property
-    def Data(self):
-        return self._Data
+    def ReinforceHotword(self):
+        return self._ReinforceHotword
 
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
+    @ReinforceHotword.setter
+    def ReinforceHotword(self, ReinforceHotword):
+        self._ReinforceHotword = ReinforceHotword
 
     @property
-    def DataLen(self):
-        return self._DataLen
+    def CustomizationId(self):
+        return self._CustomizationId
 
-    @DataLen.setter
-    def DataLen(self, DataLen):
-        self._DataLen = DataLen
+    @CustomizationId.setter
+    def CustomizationId(self, CustomizationId):
+        self._CustomizationId = CustomizationId
+
+    @property
+    def EmotionRecognition(self):
+        return self._EmotionRecognition
+
+    @EmotionRecognition.setter
+    def EmotionRecognition(self, EmotionRecognition):
+        self._EmotionRecognition = EmotionRecognition
+
+    @property
+    def EmotionalEnergy(self):
+        return self._EmotionalEnergy
+
+    @EmotionalEnergy.setter
+    def EmotionalEnergy(self, EmotionalEnergy):
+        self._EmotionalEnergy = EmotionalEnergy
 
     @property
     def ConvertNumMode(self):
@@ -857,30 +898,6 @@ class CreateRecTaskRequest(AbstractModel):
         self._FilterDirty = FilterDirty
 
     @property
-    def HotwordId(self):
-        return self._HotwordId
-
-    @HotwordId.setter
-    def HotwordId(self, HotwordId):
-        self._HotwordId = HotwordId
-
-    @property
-    def CustomizationId(self):
-        return self._CustomizationId
-
-    @CustomizationId.setter
-    def CustomizationId(self, CustomizationId):
-        self._CustomizationId = CustomizationId
-
-    @property
-    def Extra(self):
-        return self._Extra
-
-    @Extra.setter
-    def Extra(self, Extra):
-        self._Extra = Extra
-
-    @property
     def FilterPunc(self):
         return self._FilterPunc
 
@@ -897,22 +914,6 @@ class CreateRecTaskRequest(AbstractModel):
         self._FilterModal = FilterModal
 
     @property
-    def EmotionalEnergy(self):
-        return self._EmotionalEnergy
-
-    @EmotionalEnergy.setter
-    def EmotionalEnergy(self, EmotionalEnergy):
-        self._EmotionalEnergy = EmotionalEnergy
-
-    @property
-    def ReinforceHotword(self):
-        return self._ReinforceHotword
-
-    @ReinforceHotword.setter
-    def ReinforceHotword(self, ReinforceHotword):
-        self._ReinforceHotword = ReinforceHotword
-
-    @property
     def SentenceMaxLength(self):
         return self._SentenceMaxLength
 
@@ -921,12 +922,12 @@ class CreateRecTaskRequest(AbstractModel):
         self._SentenceMaxLength = SentenceMaxLength
 
     @property
-    def EmotionRecognition(self):
-        return self._EmotionRecognition
+    def Extra(self):
+        return self._Extra
 
-    @EmotionRecognition.setter
-    def EmotionRecognition(self, EmotionRecognition):
-        self._EmotionRecognition = EmotionRecognition
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
 
 
     def _deserialize(self, params):
@@ -934,23 +935,23 @@ class CreateRecTaskRequest(AbstractModel):
         self._ChannelNum = params.get("ChannelNum")
         self._ResTextFormat = params.get("ResTextFormat")
         self._SourceType = params.get("SourceType")
-        self._SpeakerDiarization = params.get("SpeakerDiarization")
-        self._SpeakerNumber = params.get("SpeakerNumber")
-        self._CallbackUrl = params.get("CallbackUrl")
-        self._Url = params.get("Url")
         self._Data = params.get("Data")
         self._DataLen = params.get("DataLen")
+        self._Url = params.get("Url")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._SpeakerDiarization = params.get("SpeakerDiarization")
+        self._SpeakerNumber = params.get("SpeakerNumber")
+        self._HotwordId = params.get("HotwordId")
+        self._ReinforceHotword = params.get("ReinforceHotword")
+        self._CustomizationId = params.get("CustomizationId")
+        self._EmotionRecognition = params.get("EmotionRecognition")
+        self._EmotionalEnergy = params.get("EmotionalEnergy")
         self._ConvertNumMode = params.get("ConvertNumMode")
         self._FilterDirty = params.get("FilterDirty")
-        self._HotwordId = params.get("HotwordId")
-        self._CustomizationId = params.get("CustomizationId")
-        self._Extra = params.get("Extra")
         self._FilterPunc = params.get("FilterPunc")
         self._FilterModal = params.get("FilterModal")
-        self._EmotionalEnergy = params.get("EmotionalEnergy")
-        self._ReinforceHotword = params.get("ReinforceHotword")
         self._SentenceMaxLength = params.get("SentenceMaxLength")
-        self._EmotionRecognition = params.get("EmotionRecognition")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

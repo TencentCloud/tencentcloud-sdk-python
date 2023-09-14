@@ -7894,6 +7894,78 @@ class DeleteGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInstancePostRequest(AbstractModel):
+    """DeleteInstancePost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstancePostResponse(AbstractModel):
+    """DeleteInstancePost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回的结果集
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = InstanceDeleteResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstancePreRequest(AbstractModel):
     """DeleteInstancePre请求参数结构体
 
@@ -17004,6 +17076,40 @@ class InstanceConfigDO(AbstractModel):
         self._AutoCreateTopicsEnable = params.get("AutoCreateTopicsEnable")
         self._DefaultNumPartitions = params.get("DefaultNumPartitions")
         self._DefaultReplicationFactor = params.get("DefaultReplicationFactor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceDeleteResponse(AbstractModel):
+    """删除实例返回任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 删除实例返回的任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        """
+        self._FlowId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

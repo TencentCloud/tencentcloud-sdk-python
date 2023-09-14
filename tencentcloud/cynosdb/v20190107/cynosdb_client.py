@@ -1223,7 +1223,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeInstanceSpecs(self, request):
-        """本接口（DescribeInstanceSpecs）用于查询实例规格
+        """本接口（DescribeInstanceSpecs）用于查询购买页可购买的实例规格
 
         :param request: Request instance for DescribeInstanceSpecs.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsRequest`

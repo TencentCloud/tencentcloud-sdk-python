@@ -4249,9 +4249,12 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
         :type Name: str
         :param _SegmentSet: 物体出现的片段列表。
         :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
+        :param _RecognitionSegmentSet: 物体出现的片段列表。
+        :type RecognitionSegmentSet: list of AiRecognitionTaskObjectSegmentItem
         """
         self._Name = None
         self._SegmentSet = None
+        self._RecognitionSegmentSet = None
 
     @property
     def Name(self):
@@ -4263,11 +4266,23 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        warnings.warn("parameter `SegmentSet` is deprecated", DeprecationWarning) 
+
         return self._SegmentSet
 
     @SegmentSet.setter
     def SegmentSet(self, SegmentSet):
+        warnings.warn("parameter `SegmentSet` is deprecated", DeprecationWarning) 
+
         self._SegmentSet = SegmentSet
+
+    @property
+    def RecognitionSegmentSet(self):
+        return self._RecognitionSegmentSet
+
+    @RecognitionSegmentSet.setter
+    def RecognitionSegmentSet(self, RecognitionSegmentSet):
+        self._RecognitionSegmentSet = RecognitionSegmentSet
 
 
     def _deserialize(self, params):
@@ -4278,6 +4293,12 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
                 obj = AiRecognitionTaskObjectSeqmentItem()
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
+        if params.get("RecognitionSegmentSet") is not None:
+            self._RecognitionSegmentSet = []
+            for item in params.get("RecognitionSegmentSet"):
+                obj = AiRecognitionTaskObjectSegmentItem()
+                obj._deserialize(item)
+                self._RecognitionSegmentSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4341,6 +4362,75 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
                 self._ResultSet.append(obj)
         self._ResultSetFileUrl = params.get("ResultSetFileUrl")
         self._ResultSetFileUrlExpireTime = params.get("ResultSetFileUrlExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectSegmentItem(AbstractModel):
+    """物体识别结果片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Confidence = None
+        self._AreaCoordSet = None
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def AreaCoordSet(self):
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+
+    def _deserialize(self, params):
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Confidence = params.get("Confidence")
+        self._AreaCoordSet = params.get("AreaCoordSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34888,9 +34978,12 @@ class MediaTransitionItem(AbstractModel):
         :type Duration: float
         :param _Transitions: 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
         :type Transitions: list of TransitionOpertion
+        :param _MediaTransitions: 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
+        :type MediaTransitions: list of TransitionOperation
         """
         self._Duration = None
         self._Transitions = None
+        self._MediaTransitions = None
 
     @property
     def Duration(self):
@@ -34902,11 +34995,23 @@ class MediaTransitionItem(AbstractModel):
 
     @property
     def Transitions(self):
+        warnings.warn("parameter `Transitions` is deprecated", DeprecationWarning) 
+
         return self._Transitions
 
     @Transitions.setter
     def Transitions(self, Transitions):
+        warnings.warn("parameter `Transitions` is deprecated", DeprecationWarning) 
+
         self._Transitions = Transitions
+
+    @property
+    def MediaTransitions(self):
+        return self._MediaTransitions
+
+    @MediaTransitions.setter
+    def MediaTransitions(self, MediaTransitions):
+        self._MediaTransitions = MediaTransitions
 
 
     def _deserialize(self, params):
@@ -34917,6 +35022,12 @@ class MediaTransitionItem(AbstractModel):
                 obj = TransitionOpertion()
                 obj._deserialize(item)
                 self._Transitions.append(obj)
+        if params.get("MediaTransitions") is not None:
+            self._MediaTransitions = []
+            for item in params.get("MediaTransitions"):
+                obj = TransitionOperation()
+                obj._deserialize(item)
+                self._MediaTransitions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54636,6 +54747,85 @@ class TranscodeTemplate(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SegmentType = params.get("SegmentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransitionOperation(AbstractModel):
+    """转场操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 转场类型，取值有：
+<ul>
+<li>图像的转场操作，用于两个视频片段图像间的转场处理：
+<ul>
+<li>ImageFadeInFadeOut：图像淡入淡出。 </li>
+<li>BowTieHorizontal：水平蝴蝶结。 </li>
+<li>BowTieVertical：垂直蝴蝶结。 </li>
+<li>ButterflyWaveScrawler：晃动。 </li>
+<li>Cannabisleaf：枫叶。 </li>
+<li>Circle：弧形收放。 </li>
+<li>CircleCrop：圆环聚拢。 </li>
+<li>Circleopen：椭圆聚拢。 </li>
+<li>Crosswarp：横向翘曲。 </li>
+<li>Cube：立方体。 </li>
+<li>DoomScreenTransition：幕布。 </li>
+<li>Doorway：门廊。 </li>
+<li>Dreamy：波浪。 </li>
+<li>DreamyZoom：水平聚拢。 </li>
+<li>FilmBurn：火烧云。 </li>
+<li>GlitchMemories：抖动。 </li>
+<li>Heart：心形。 </li>
+<li>InvertedPageCurl：翻页。 </li>
+<li>Luma：腐蚀。 </li>
+<li>Mosaic：九宫格。 </li>
+<li>Pinwheel：风车。 </li>
+<li>PolarFunction：椭圆扩散。 </li>
+<li>PolkaDotsCurtain：弧形扩散。 </li>
+<li>Radial：雷达扫描 </li>
+<li>RotateScaleFade：上下收放。 </li>
+<li>Squeeze：上下聚拢。 </li>
+<li>Swap：放大切换。 </li>
+<li>Swirl：螺旋。 </li>
+<li>UndulatingBurnOutSwirl：水流蔓延。 </li>
+<li>Windowblinds：百叶窗。 </li>
+<li>WipeDown：向下收起。 </li>
+<li>WipeLeft：向左收起。 </li>
+<li>WipeRight：向右收起。 </li>
+<li>WipeUp：向上收起。 </li>
+<li>ZoomInCircles：水波纹。 </li>
+</ul>
+</li>
+<li>音频的转场操作，用于两个音频片段间的转场处理：
+<ul>
+<li>AudioFadeInFadeOut：声音淡入淡出。 </li>
+</ul>
+</li>
+</ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
