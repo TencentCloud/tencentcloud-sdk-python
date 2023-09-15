@@ -49,6 +49,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelAuditCertificate(self, request):
+        """取消证书审核
+
+        :param request: Request instance for CancelAuditCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelAuditCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelAuditCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelCertificateOrder(self, request):
         """取消证书订单。
 
@@ -1006,6 +1029,29 @@ class SslClient(AbstractClient):
             body = self.call("ModifyCertificateProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCertificateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCertificateResubmit(self, request):
+        """针对审核失败或审核取消的付费证书，重新发起审核
+
+        :param request: Request instance for ModifyCertificateResubmit.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCertificateResubmit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCertificateResubmitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

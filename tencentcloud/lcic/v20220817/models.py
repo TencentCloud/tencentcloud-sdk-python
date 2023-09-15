@@ -1266,6 +1266,10 @@ class CreateDocumentRequest(AbstractModel):
         :param _DocumentSize: 文档大小，单位 字节
         :type DocumentSize: int
         :param _AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认关闭。
+自动处理的元素如下：
+1. 墨迹：移除不支持的墨迹（例如WPS墨迹）
+2. 自动翻页：移除PPT上所有自动翻页设置，并设置为单击鼠标翻页
+3. 已损坏音视频：移除PPT上对损坏音视频的引用
         :type AutoHandleUnsupportedElement: bool
         """
         self._SdkAppId = None

@@ -12271,7 +12271,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 <li>SimpleAES</li>
 <li>Widevine</li>
 <li>FairPlay</li>
-如果取值为空字符串，代表不对视频做 DRM 保护。
+默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
         :param _DrmKeyProvider: DRM 的密钥提供商，取值范围：
 <li>SDMC：华曦达；</li>
@@ -13549,8 +13549,10 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
         :param _RowCount: 雪碧图中小图的行数。
+注意：小图的行数会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
         :type RowCount: int
         :param _ColumnCount: 雪碧图中小图的列数。
+注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
         :type ColumnCount: int
         :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
         :type SubAppId: int
@@ -13569,6 +13571,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：小图的宽度会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
         :type Width: int
         :param _Height: 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
@@ -13576,6 +13579,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 默认值：0。
+注意：小图的高度会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
         :type Height: int
         :param _ResolutionAdaptive: 分辨率自适应，可选值：
 <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -15715,18 +15719,18 @@ class CreateVodDomainRequest(AbstractModel):
         r"""
         :param _Domain: 需要接入点播的加速域名。注意：不支持填写泛域名。
         :type Domain: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
-        :type SubAppId: int
         :param _AccelerateArea: 需要开启 CDN 加速的区域：
 <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 <li>Outside Chinese Mainland: 中国境外。</li>
 <li>Global: 全球范围。</li>
 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :type AccelerateArea: str
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
         """
         self._Domain = None
-        self._SubAppId = None
         self._AccelerateArea = None
+        self._SubAppId = None
 
     @property
     def Domain(self):
@@ -15737,14 +15741,6 @@ class CreateVodDomainRequest(AbstractModel):
         self._Domain = Domain
 
     @property
-    def SubAppId(self):
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
-
-    @property
     def AccelerateArea(self):
         return self._AccelerateArea
 
@@ -15752,11 +15748,19 @@ class CreateVodDomainRequest(AbstractModel):
     def AccelerateArea(self, AccelerateArea):
         self._AccelerateArea = AccelerateArea
 
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
-        self._SubAppId = params.get("SubAppId")
         self._AccelerateArea = params.get("AccelerateArea")
+        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45623,7 +45627,7 @@ class RebuildMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
+        :param _TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -48201,6 +48205,8 @@ class RestoreMediaRequest(AbstractModel):
         r"""
         :param _FileIds: 媒体文件唯一标识列表，最大长度：100。
         :type FileIds: list of str
+        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
         :param _RestoreDay: 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
         :type RestoreDay: int
         :param _RestoreTier: 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
@@ -48211,13 +48217,11 @@ class RestoreMediaRequest(AbstractModel):
 <li>标准模式：Standard，解冻任务在24小时后完成。</li>
 <li>批量模式：Bulk，解冻任务在48小时后完成。</li>
         :type RestoreTier: str
-        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-        :type SubAppId: int
         """
         self._FileIds = None
+        self._SubAppId = None
         self._RestoreDay = None
         self._RestoreTier = None
-        self._SubAppId = None
 
     @property
     def FileIds(self):
@@ -48226,6 +48230,14 @@ class RestoreMediaRequest(AbstractModel):
     @FileIds.setter
     def FileIds(self, FileIds):
         self._FileIds = FileIds
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
 
     @property
     def RestoreDay(self):
@@ -48243,20 +48255,12 @@ class RestoreMediaRequest(AbstractModel):
     def RestoreTier(self, RestoreTier):
         self._RestoreTier = RestoreTier
 
-    @property
-    def SubAppId(self):
-        return self._SubAppId
-
-    @SubAppId.setter
-    def SubAppId(self, SubAppId):
-        self._SubAppId = SubAppId
-
 
     def _deserialize(self, params):
         self._FileIds = params.get("FileIds")
+        self._SubAppId = params.get("SubAppId")
         self._RestoreDay = params.get("RestoreDay")
         self._RestoreTier = params.get("RestoreTier")
-        self._SubAppId = params.get("SubAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

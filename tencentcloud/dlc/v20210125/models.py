@@ -15189,6 +15189,130 @@ class Property(AbstractModel):
         
 
 
+class QueryResultRequest(AbstractModel):
+    """QueryResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _NextToken: lastReadFile为上一次读取的文件，lastReadOffset为上一次读取到的位置
+        :type NextToken: str
+        """
+        self._TaskId = None
+        self._NextToken = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryResultResponse(AbstractModel):
+    """QueryResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id
+        :type TaskId: str
+        :param _ResultSet: 结果数据
+        :type ResultSet: str
+        :param _ResultSchema: schema
+        :type ResultSchema: list of Column
+        :param _NextToken: 分页信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._ResultSet = None
+        self._ResultSchema = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+    @property
+    def ResultSchema(self):
+        return self._ResultSchema
+
+    @ResultSchema.setter
+    def ResultSchema(self, ResultSchema):
+        self._ResultSchema = ResultSchema
+
+    @property
+    def NextToken(self):
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ResultSet = params.get("ResultSet")
+        if params.get("ResultSchema") is not None:
+            self._ResultSchema = []
+            for item in params.get("ResultSchema"):
+                obj = Column()
+                obj._deserialize(item)
+                self._ResultSchema.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
+
+
 class ReportHeartbeatMetaDataRequest(AbstractModel):
     """ReportHeartbeatMetaData请求参数结构体
 

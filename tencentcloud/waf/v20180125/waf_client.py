@@ -1574,6 +1574,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GenerateDealsAndPayNew(self, request):
+        """计费资源购买、续费下单接口
+
+        :param request: Request instance for GenerateDealsAndPayNew.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GenerateDealsAndPayNewRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GenerateDealsAndPayNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateDealsAndPayNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateDealsAndPayNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetAttackDownloadRecords(self, request):
         """查询下载攻击日志任务记录列表
 

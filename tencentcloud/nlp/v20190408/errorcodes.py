@@ -65,9 +65,6 @@ INTERNALERROR_TEXTCLASSIFYERROR = 'InternalError.TextClassifyError'
 # 文本解析异常。
 INTERNALERROR_TEXTPARSINGERROR = 'InternalError.TextParsingError'
 
-# 参数错误
-INVALIDPARAMETER = 'InvalidParameter'
-
 # 服务调用失败。
 INVALIDPARAMETER_SERVICEERROR = 'InvalidParameter.ServiceError'
 
@@ -103,9 +100,6 @@ LIMITEXCEEDED_RESOURCEREACHEDLIMIT = 'LimitExceeded.ResourceReachedLimit'
 
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = 'RequestLimitExceeded.UinLimitExceeded'
-
-# 资源不足。
-RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
 # 额度用尽，请充值后重试
 RESOURCEINSUFFICIENT_QUOTARUNOUT = 'ResourceInsufficient.QuotaRunOut'

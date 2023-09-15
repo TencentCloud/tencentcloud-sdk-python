@@ -7527,6 +7527,8 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type ReceiverGroups: list of int
         :param _PolicyIds: 根据告警策略 Id 列表搜索
         :type PolicyIds: list of str
+        :param _AlarmLevels: 告警等级
+        :type AlarmLevels: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -7546,6 +7548,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._ReceiverUids = None
         self._ReceiverGroups = None
         self._PolicyIds = None
+        self._AlarmLevels = None
 
     @property
     def Module(self):
@@ -7691,6 +7694,14 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
     def PolicyIds(self, PolicyIds):
         self._PolicyIds = PolicyIds
 
+    @property
+    def AlarmLevels(self):
+        return self._AlarmLevels
+
+    @AlarmLevels.setter
+    def AlarmLevels(self, AlarmLevels):
+        self._AlarmLevels = AlarmLevels
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -7716,6 +7727,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         self._ReceiverUids = params.get("ReceiverUids")
         self._ReceiverGroups = params.get("ReceiverGroups")
         self._PolicyIds = params.get("PolicyIds")
+        self._AlarmLevels = params.get("AlarmLevels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

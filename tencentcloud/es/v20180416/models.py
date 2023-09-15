@@ -449,7 +449,7 @@ class CreateIndexRequest(AbstractModel):
         :type IndexType: str
         :param _IndexName: 创建的索引名
         :type IndexName: str
-        :param _IndexMetaJson: 创建的索引元数据JSON，如mappings、settings
+        :param _IndexMetaJson: 【必填】创建的索引元数据JSON，如mappings、settings
         :type IndexMetaJson: str
         :param _Username: 集群访问用户名
         :type Username: str
@@ -1682,7 +1682,7 @@ class DescribeIndexListRequest(AbstractModel):
         :type OrderBy: str
         :param _IndexStatusList: 过滤索引状态
         :type IndexStatusList: list of str
-        :param _Order: 排序顺序，支持asc、desc
+        :param _Order: 排序顺序，支持asc、desc，默认为desc 数据格式"asc","desc"
         :type Order: str
         """
         self._IndexType = None

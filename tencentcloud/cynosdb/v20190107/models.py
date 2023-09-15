@@ -867,6 +867,9 @@ class AuditLog(AbstractModel):
         :param _NsTime: 开始时间，与timestamp构成一个精确到纳秒的时间。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NsTime: int
+        :param _TemplateInfo: 日志命中规则模板的基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateInfo: list of LogRuleTemplateInfo
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -888,6 +891,7 @@ class AuditLog(AbstractModel):
         self._LockWaitTime = None
         self._TrxLivingTime = None
         self._NsTime = None
+        self._TemplateInfo = None
 
     @property
     def AffectRows(self):
@@ -1049,6 +1053,14 @@ class AuditLog(AbstractModel):
     def NsTime(self, NsTime):
         self._NsTime = NsTime
 
+    @property
+    def TemplateInfo(self):
+        return self._TemplateInfo
+
+    @TemplateInfo.setter
+    def TemplateInfo(self, TemplateInfo):
+        self._TemplateInfo = TemplateInfo
+
 
     def _deserialize(self, params):
         self._AffectRows = params.get("AffectRows")
@@ -1071,6 +1083,12 @@ class AuditLog(AbstractModel):
         self._LockWaitTime = params.get("LockWaitTime")
         self._TrxLivingTime = params.get("TrxLivingTime")
         self._NsTime = params.get("NsTime")
+        if params.get("TemplateInfo") is not None:
+            self._TemplateInfo = []
+            for item in params.get("TemplateInfo"):
+                obj = LogRuleTemplateInfo()
+                obj._deserialize(item)
+                self._TemplateInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1365,6 +1383,7 @@ class AuditRuleFilters(AbstractModel):
     def __init__(self):
         r"""
         :param _RuleFilters: 单条审计规则。
+注意：此字段可能返回 null，表示取不到有效值。
         :type RuleFilters: list of RuleFilters
         """
         self._RuleFilters = None
@@ -1396,29 +1415,49 @@ class AuditRuleFilters(AbstractModel):
 
 
 class AuditRuleTemplateInfo(AbstractModel):
-    """审计规则模版的详情
+    """审计规则模板的详情
 
     """
 
     def __init__(self):
         r"""
-        :param _RuleTemplateId: 规则模版ID。
+        :param _RuleTemplateId: 规则模板ID。
         :type RuleTemplateId: str
-        :param _RuleTemplateName: 规则模版名称。
+        :param _RuleTemplateName: 规则模板名称。
         :type RuleTemplateName: str
-        :param _RuleFilters: 规则模版的过滤条件
+        :param _RuleFilters: 规则模板的过滤条件
         :type RuleFilters: list of RuleFilters
-        :param _Description: 规则模版描述。
+        :param _Description: 规则模板描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreateAt: 规则模版创建时间。
+        :param _CreateAt: 规则模板创建时间。
         :type CreateAt: str
+        :param _UpdateAt: 规则模板修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateAt: str
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmPolicy: int
+        :param _Status: 模版状态。0-无任务 ，1-修改中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _AffectedInstances: 规则模板应用在哪些在实例。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedInstances: list of str
         """
         self._RuleTemplateId = None
         self._RuleTemplateName = None
         self._RuleFilters = None
         self._Description = None
         self._CreateAt = None
+        self._UpdateAt = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+        self._Status = None
+        self._AffectedInstances = None
 
     @property
     def RuleTemplateId(self):
@@ -1460,6 +1499,46 @@ class AuditRuleTemplateInfo(AbstractModel):
     def CreateAt(self, CreateAt):
         self._CreateAt = CreateAt
 
+    @property
+    def UpdateAt(self):
+        return self._UpdateAt
+
+    @UpdateAt.setter
+    def UpdateAt(self, UpdateAt):
+        self._UpdateAt = UpdateAt
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AffectedInstances(self):
+        return self._AffectedInstances
+
+    @AffectedInstances.setter
+    def AffectedInstances(self, AffectedInstances):
+        self._AffectedInstances = AffectedInstances
+
 
     def _deserialize(self, params):
         self._RuleTemplateId = params.get("RuleTemplateId")
@@ -1472,6 +1551,11 @@ class AuditRuleTemplateInfo(AbstractModel):
                 self._RuleFilters.append(obj)
         self._Description = params.get("Description")
         self._CreateAt = params.get("CreateAt")
+        self._UpdateAt = params.get("UpdateAt")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        self._Status = params.get("Status")
+        self._AffectedInstances = params.get("AffectedInstances")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2851,14 +2935,20 @@ class CreateAuditRuleTemplateRequest(AbstractModel):
         r"""
         :param _RuleFilters: 审计规则。
         :type RuleFilters: list of RuleFilters
-        :param _RuleTemplateName: 规则模版名称。
+        :param _RuleTemplateName: 规则模板名称。
         :type RuleTemplateName: str
-        :param _Description: 规则模版描述。
+        :param _Description: 规则模板描述。
         :type Description: str
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险
+        :type AlarmLevel: int
+        :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
+        :type AlarmPolicy: int
         """
         self._RuleFilters = None
         self._RuleTemplateName = None
         self._Description = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
 
     @property
     def RuleFilters(self):
@@ -2884,6 +2974,22 @@ class CreateAuditRuleTemplateRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
 
     def _deserialize(self, params):
         if params.get("RuleFilters") is not None:
@@ -2894,6 +3000,8 @@ class CreateAuditRuleTemplateRequest(AbstractModel):
                 self._RuleFilters.append(obj)
         self._RuleTemplateName = params.get("RuleTemplateName")
         self._Description = params.get("Description")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2911,7 +3019,7 @@ class CreateAuditRuleTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateId: 生成的规则模版ID。
+        :param _RuleTemplateId: 生成的规则模板ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleTemplateId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7863,7 +7971,7 @@ class DeleteAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: 审计规则模版ID。
+        :param _RuleTemplateIds: 审计规则模板ID。
         :type RuleTemplateIds: list of str
         """
         self._RuleTemplateIds = None
@@ -8874,19 +8982,25 @@ class DescribeAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: 规则模版ID。
+        :param _RuleTemplateIds: 规则模板ID。
         :type RuleTemplateIds: list of str
-        :param _RuleTemplateNames: 规则模版名称
+        :param _RuleTemplateNames: 规则模板名称
         :type RuleTemplateNames: list of str
         :param _Limit: 单次请求返回的数量。默认值20。
         :type Limit: int
         :param _Offset: 偏移量，默认值为 0。
         :type Offset: int
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
+        :type AlarmLevel: int
+        :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
+        :type AlarmPolicy: int
         """
         self._RuleTemplateIds = None
         self._RuleTemplateNames = None
         self._Limit = None
         self._Offset = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
 
     @property
     def RuleTemplateIds(self):
@@ -8920,12 +9034,30 @@ class DescribeAuditRuleTemplatesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
 
     def _deserialize(self, params):
         self._RuleTemplateIds = params.get("RuleTemplateIds")
         self._RuleTemplateNames = params.get("RuleTemplateNames")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8945,7 +9077,7 @@ class DescribeAuditRuleTemplatesResponse(AbstractModel):
         r"""
         :param _TotalCount: 符合查询条件的实例总数。
         :type TotalCount: int
-        :param _Items: 规则模版详细信息列表。
+        :param _Items: 规则模板详细信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of AuditRuleTemplateInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -14552,28 +14684,13 @@ class InstanceAuditLogFilter(AbstractModel):
         r"""
         :param _Type: 过滤项。目前支持以下搜索条件：
 
-包含、不包含、包含（分词维度）、不包含（分词维度）:
-sql - SQL详情
+包含、不包含、包含（分词维度）、不包含（分词维度）: sql - SQL详情；alarmLevel - 告警等级；ruleTemplateId - 规则模板Id
 
-等于、不等于、包含、不包含：
-host - 客户端地址；
-user - 用户名；
-dbName - 数据库名称；
+等于、不等于、包含、不包含： host - 客户端地址； user - 用户名； dbName - 数据库名称；
 
-等于、不等于：
-sqlType - SQL类型；
-errCode - 错误码；
-threadId - 线程ID；
+等于、不等于： sqlType - SQL类型； errCode - 错误码； threadId - 线程ID；
 
-范围搜索（时间类型统一为微妙）：
-execTime - 执行时间；
-lockWaitTime - 锁等待时间；
-ioWaitTime - IO等待时间；
-trxLivingTime - 事物持续时间；
-cpuTime - cpu时间；
-checkRows - 扫描行数；
-affectRows - 影响行数；
-sentRows - 返回行数。
+范围搜索（时间类型统一为微秒）： execTime - 执行时间； lockWaitTime - 执行时间； ioWaitTime - IO等待时间； trxLivingTime - 事物持续时间； cpuTime - cpu时间； checkRows - 扫描行数； affectRows - 影响行数； sentRows - 返回行数。
         :type Type: str
         :param _Compare: 过滤条件。支持以下条件：
 WINC-包含（分词维度），
@@ -14631,7 +14748,7 @@ RA - 范围。
 
 
 class InstanceAuditRule(AbstractModel):
-    """实例的审计规则详情，DescribeAuditRuleWithInstanceIds接口的出参。
+    """实例的审计规则详情。
 
     """
 
@@ -14645,10 +14762,18 @@ class InstanceAuditRule(AbstractModel):
         :param _AuditRuleFilters: 审计规则详情。仅当AuditRule=true时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditRuleFilters: list of AuditRuleFilters
+        :param _OldRule: 是否是审计策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldRule: bool
+        :param _RuleTemplates: 实例应用的规则模板详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplates: list of RuleTemplateInfo
         """
         self._InstanceId = None
         self._AuditRule = None
         self._AuditRuleFilters = None
+        self._OldRule = None
+        self._RuleTemplates = None
 
     @property
     def InstanceId(self):
@@ -14674,6 +14799,22 @@ class InstanceAuditRule(AbstractModel):
     def AuditRuleFilters(self, AuditRuleFilters):
         self._AuditRuleFilters = AuditRuleFilters
 
+    @property
+    def OldRule(self):
+        return self._OldRule
+
+    @OldRule.setter
+    def OldRule(self, OldRule):
+        self._OldRule = OldRule
+
+    @property
+    def RuleTemplates(self):
+        return self._RuleTemplates
+
+    @RuleTemplates.setter
+    def RuleTemplates(self, RuleTemplates):
+        self._RuleTemplates = RuleTemplates
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14684,6 +14825,13 @@ class InstanceAuditRule(AbstractModel):
                 obj = AuditRuleFilters()
                 obj._deserialize(item)
                 self._AuditRuleFilters.append(obj)
+        self._OldRule = params.get("OldRule")
+        if params.get("RuleTemplates") is not None:
+            self._RuleTemplates = []
+            for item in params.get("RuleTemplates"):
+                obj = RuleTemplateInfo()
+                obj._deserialize(item)
+                self._RuleTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15376,6 +15524,79 @@ class IsolateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogRuleTemplateInfo(AbstractModel):
+    """审计日志命中规则模板的基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: 模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: 规则模板名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateName: str
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: str
+        :param _RuleTemplateStatus: 规则模板变更状态：0-未变更；1-已变更；2-已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateStatus: int
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._AlarmLevel = None
+        self._RuleTemplateStatus = None
+
+    @property
+    def RuleTemplateId(self):
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def RuleTemplateStatus(self):
+        return self._RuleTemplateStatus
+
+    @RuleTemplateStatus.setter
+    def RuleTemplateStatus(self, RuleTemplateStatus):
+        self._RuleTemplateStatus = RuleTemplateStatus
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._RuleTemplateStatus = params.get("RuleTemplateStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifiableInfo(AbstractModel):
     """参数是否可修改的详细信息
 
@@ -15774,19 +15995,25 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: 审计规则模版ID。
+        :param _RuleTemplateIds: 审计规则模板ID。
         :type RuleTemplateIds: list of str
         :param _RuleFilters: 修改后的审计规则。
         :type RuleFilters: list of RuleFilters
-        :param _RuleTemplateName: 修改后的规则模版名称。
+        :param _RuleTemplateName: 修改后的规则模板名称。
         :type RuleTemplateName: str
-        :param _Description: 修改后的规则模版描述。
+        :param _Description: 修改后的规则模板描述。
         :type Description: str
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
+        :type AlarmLevel: int
+        :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
+        :type AlarmPolicy: int
         """
         self._RuleTemplateIds = None
         self._RuleFilters = None
         self._RuleTemplateName = None
         self._Description = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
 
     @property
     def RuleTemplateIds(self):
@@ -15820,6 +16047,22 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
 
     def _deserialize(self, params):
         self._RuleTemplateIds = params.get("RuleTemplateIds")
@@ -15831,6 +16074,8 @@ class ModifyAuditRuleTemplatesRequest(AbstractModel):
                 self._RuleFilters.append(obj)
         self._RuleTemplateName = params.get("RuleTemplateName")
         self._Description = params.get("Description")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15883,7 +16128,7 @@ class ModifyAuditServiceRequest(AbstractModel):
         :type AuditAll: bool
         :param _AuditRuleFilters: 规则审计。
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: 规则模版ID。
+        :param _RuleTemplateIds: 规则模板ID。
         :type RuleTemplateIds: list of str
         """
         self._InstanceId = None
@@ -18671,14 +18916,17 @@ class OpenAuditServiceRequest(AbstractModel):
         :type HighLogExpireDay: int
         :param _AuditRuleFilters: 审计规则。同RuleTemplateIds都不填是全审计。
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: 规则模版ID。同AuditRuleFilters都不填是全审计。
+        :param _RuleTemplateIds: 规则模板ID。同AuditRuleFilters都不填是全审计。
         :type RuleTemplateIds: list of str
+        :param _AuditAll: 审计类型。true-全审计；默认false-规则审计。
+        :type AuditAll: bool
         """
         self._InstanceId = None
         self._LogExpireDay = None
         self._HighLogExpireDay = None
         self._AuditRuleFilters = None
         self._RuleTemplateIds = None
+        self._AuditAll = None
 
     @property
     def InstanceId(self):
@@ -18720,6 +18968,14 @@ class OpenAuditServiceRequest(AbstractModel):
     def RuleTemplateIds(self, RuleTemplateIds):
         self._RuleTemplateIds = RuleTemplateIds
 
+    @property
+    def AuditAll(self):
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18732,6 +18988,7 @@ class OpenAuditServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AuditRuleFilters.append(obj)
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._AuditAll = params.get("AuditAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22316,6 +22573,110 @@ class RuleFilters(AbstractModel):
         self._Type = params.get("Type")
         self._Compare = params.get("Compare")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleTemplateInfo(AbstractModel):
+    """规则模板内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: 规则模板ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: 规则模板名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateName: str
+        :param _RuleFilters: 规则内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleFilters: list of RuleFilters
+        :param _AlarmLevel: 告警等级。1-低风险，2-中风险，3-高风险。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
+        :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmPolicy: int
+        :param _Description: 规则描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._RuleFilters = None
+        self._AlarmLevel = None
+        self._AlarmPolicy = None
+        self._Description = None
+
+    @property
+    def RuleTemplateId(self):
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def RuleFilters(self):
+        return self._RuleFilters
+
+    @RuleFilters.setter
+    def RuleFilters(self, RuleFilters):
+        self._RuleFilters = RuleFilters
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        if params.get("RuleFilters") is not None:
+            self._RuleFilters = []
+            for item in params.get("RuleFilters"):
+                obj = RuleFilters()
+                obj._deserialize(item)
+                self._RuleFilters.append(obj)
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

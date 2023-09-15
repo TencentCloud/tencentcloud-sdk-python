@@ -2437,22 +2437,21 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息。
 <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _EmbedType: WEB嵌入资源类型。
-<br/>CREATE_SEAL: 生成创建印章的嵌入页面
-<br/>CREATE_TEMPLATE：生成创建模板的嵌入页面
-<br/>MODIFY_TEMPLATE：生成编辑模板的嵌入页面
-<br/>PREVIEW_TEMPLATE：生成预览模板的嵌入页面
-<br/>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
-<br/>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
-<br/>EXTEND_SERVICE：生成拓展服务的嵌入页面
-<br/>PREVIEW_FLOW：生成预览合同的嵌入页面
-<br/>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面
-
+        :param _EmbedType: WEB嵌入资源类型，支持以下类型
+<ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
+<li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
+<li>MODIFY_TEMPLATE：生成编辑模板的嵌入页面</li>
+<li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
+<li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
+<li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
+<li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
+<li>PREVIEW_FLOW：生成预览合同的嵌入页面</li>
+<li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面</li></ul>
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
-<br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
-<br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
-<br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
+<ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>
+<li>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id</li>
+<li>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id</li><ul>
         :type BusinessId: str
         :param _Agent: 代理企业和员工的信息。
 <br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -2588,17 +2587,23 @@ class CreateFlowApproversRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 签署流程编号
+        :param _FlowId: 合同流程ID，为32位字符串。
+建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :type FlowId: str
-        :param _Approvers: 补充签署人信息
+        :param _Approvers: 补充企业签署人信息。
+
+- 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
+
+- 如果不指定，则使用姓名和手机号进行补充。
         :type Approvers: list of FillApproverInfo
-        :param _Initiator: 企微消息中的发起人
+        :param _Initiator: 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。
         :type Initiator: str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作
-
-
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -3398,15 +3403,22 @@ class CreateFlowGroupByTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowGroupName: 合同组名称,最大长度200个字符
+        :param _FlowGroupName: 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowGroupName: str
-        :param _FlowGroupInfos: 合同组的子合同信息，支持2-50个子合同
+        :param _FlowGroupInfos: 合同（流程）组的子合同信息，支持2-50个子合同
         :type FlowGroupInfos: list of FlowGroupInfo
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowGroupOptions: 合同组的配置信息。包括是否通知本企业签署方，是否通知其他签署方
+        :param _FlowGroupOptions: 合同（流程）组的配置项信息。
+其中包括：
+<ul>
+<li>是否通知本企业签署方</li>
+<li>是否通知其他签署方</li>
+</ul>
         :type FlowGroupOptions: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
         """
         self._Operator = None
@@ -4844,13 +4856,13 @@ class CreateIntegrationUserRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息，UserId必填
+        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _UserIds: 绑定角色的用户id列表，不能重复，不能大于 100 个
         :type UserIds: list of str
-        :param _RoleIds: 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
+        :param _RoleIds: 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取角色信息
         :type RoleIds: list of str
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -7097,7 +7109,7 @@ class CreateUserAutoSignEnableUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 个人用户自动签的开通链接, 短链形式
+        :param _Url: 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
         :type Url: str
         :param _AppId: 腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
 
@@ -7512,13 +7524,13 @@ class DeleteIntegrationRoleUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息，userId必填
+        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _RoleId: 角色id
+        :param _RoleId: 角色id，可以通过DescribeIntegrationRoles接口获取角色信息
         :type RoleId: str
         :param _Users: 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
         :type Users: list of UserInfo
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -9173,81 +9185,6 @@ class DescribeIntegrationEmployeesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeIntegrationMainOrganizationUserRequest(AbstractModel):
-    """DescribeIntegrationMainOrganizationUser请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Operator: 操作人信息，userId必填
-        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        """
-        self._Operator = None
-
-    @property
-    def Operator(self):
-        return self._Operator
-
-    @Operator.setter
-    def Operator(self, Operator):
-        self._Operator = Operator
-
-
-    def _deserialize(self, params):
-        if params.get("Operator") is not None:
-            self._Operator = UserInfo()
-            self._Operator._deserialize(params.get("Operator"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeIntegrationMainOrganizationUserResponse(AbstractModel):
-    """DescribeIntegrationMainOrganizationUser返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _IntegrationMainOrganizationUser: 主企业员工账号信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IntegrationMainOrganizationUser: :class:`tencentcloud.ess.v20201111.models.IntegrationMainOrganizationUser`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._IntegrationMainOrganizationUser = None
-        self._RequestId = None
-
-    @property
-    def IntegrationMainOrganizationUser(self):
-        return self._IntegrationMainOrganizationUser
-
-    @IntegrationMainOrganizationUser.setter
-    def IntegrationMainOrganizationUser(self, IntegrationMainOrganizationUser):
-        self._IntegrationMainOrganizationUser = IntegrationMainOrganizationUser
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("IntegrationMainOrganizationUser") is not None:
-            self._IntegrationMainOrganizationUser = IntegrationMainOrganizationUser()
-            self._IntegrationMainOrganizationUser._deserialize(params.get("IntegrationMainOrganizationUser"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeIntegrationRolesRequest(AbstractModel):
     """DescribeIntegrationRoles请求参数结构体
 
@@ -9255,19 +9192,28 @@ class DescribeIntegrationRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 操作人信息，UserId必填
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Limit: 指定每页多少条数据，单页最大200
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
         :type Limit: int
-        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _Filters: 查询的关键字段:
-Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
-Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
-Key:"IsGroupRole"，Values:["0"]:查询非集团角色，Values:["1"]表示查询集团角色
-Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
+        :param _Filters: 查询的关键字段，支持Key-Value单值查询。可选键值对如下：
+<ul>
+  <li>Key:"RoleType"，查询角色类型，Values可选：
+    <ul><li>**"1"**：查询系统角色</li><li>**"2"**：查询自定义角色</li></ul>
+  </li><li>Key:"RoleStatus"，查询角色状态，Values可选：
+    <ul><li>**"1"**：查询启用角色</li><li>**"2"**：查询禁用角色</li></ul>
+  </li><li>Key:"IsGroupRole"，是否查询集团角色，Values可选：
+    <ul><li>**"0"**：查询非集团角色</li><li>**"1"**：查询集团角色</li></ul>
+  </li><li>Key:"IsReturnPermissionGroup"，是否返回角色对应权限树，Values可选：
+    <ul><li>**"0"**：接口不返回角色对应的权限树字段</li><li>**"1"**：接口返回角色对应的权限树字段</li></ul>
+  </li>
+</ul>
         :type Filters: list of Filter
-        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大2000。
         :type Offset: int
         """
         self._Operator = None
@@ -9349,13 +9295,13 @@ class DescribeIntegrationRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+        :param _Offset: 指定分页返回的页码。页码从0开始，最大为2000。
         :type Offset: int
-        :param _Limit: 指定每页多少条数据，单页最大200
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
         :type Limit: int
-        :param _TotalCount: 符合查询条件的总的角色数
+        :param _TotalCount: 符合查询条件的总角色数。
         :type TotalCount: int
-        :param _IntegrateRoles: 企业角色信息列表
+        :param _IntegrateRoles: 企业角色信息列表。
         :type IntegrateRoles: list of IntegrateRole
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10728,25 +10674,28 @@ class FileUrl(AbstractModel):
 class FillApproverInfo(AbstractModel):
     """补充签署人信息
     - RecipientId 必须指定
-    -  通过企业自定义账号ID补充签署人时，ApproverSource 和 CustomUserId 必填，ApproverSource取值：WEWORKAPP
+    -  通过企业微信自定义账号ID补充签署人时，ApproverSource 和 CustomUserId 必填，ApproverSource取值：WEWORKAPP
     - 通过二要素（姓名/手机号）补充签署人时，ApproverName 和 ApproverMobile 必填，ApproverSource设置为空
 
     """
 
     def __init__(self):
         r"""
-        :param _RecipientId: 对应模板中的参与方ID
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+模板发起合同时，该参数为必填项。
+文件发起合同是，该参数无需传值。
+如果开发者后序用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
         :type RecipientId: str
         :param _ApproverSource: 签署人来源
 WEWORKAPP: 企业微信
 <br/>仅【企微或签】时指定WEWORKAPP
         :type ApproverSource: str
-        :param _CustomUserId: 企业自定义账号ID
-<br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企微明文的userid
+        :param _CustomUserId: 企业微信UserId
+<br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId
         :type CustomUserId: str
-        :param _ApproverName: 补充签署人姓名
+        :param _ApproverName: 补充企业签署人员工姓名
         :type ApproverName: str
-        :param _ApproverMobile: 补充签署人手机号
+        :param _ApproverMobile: 补充企业签署人员工手机号
         :type ApproverMobile: str
         """
         self._RecipientId = None
@@ -11448,10 +11397,10 @@ class FlowCreateApprover(AbstractModel):
 <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
-        :param _RecipientId: 签署方经办人在模板中的参与方ID
-<br/>模板发起合同时，该参数为必填项
-<br/>文件发起合同是，该参数无序传值
-
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+模板发起合同时，该参数为必填项。
+文件发起合同是，该参数无需传值。
+如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
         :type RecipientId: str
         :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
@@ -13088,66 +13037,6 @@ class IntegrationDepartment(AbstractModel):
         self._ParentDeptId = params.get("ParentDeptId")
         self._DeptOpenId = params.get("DeptOpenId")
         self._OrderNo = params.get("OrderNo")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class IntegrationMainOrganizationUser(AbstractModel):
-    """主企业员工账号信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MainOrganizationId: 主企业id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MainOrganizationId: str
-        :param _MainUserId: 主企业员工UserId
-注意：此字段可能返回 null，表示取不到有效值。
-        :type MainUserId: str
-        :param _UserName: 主企业员工名
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UserName: str
-        """
-        self._MainOrganizationId = None
-        self._MainUserId = None
-        self._UserName = None
-
-    @property
-    def MainOrganizationId(self):
-        return self._MainOrganizationId
-
-    @MainOrganizationId.setter
-    def MainOrganizationId(self, MainOrganizationId):
-        self._MainOrganizationId = MainOrganizationId
-
-    @property
-    def MainUserId(self):
-        return self._MainUserId
-
-    @MainUserId.setter
-    def MainUserId(self, MainUserId):
-        self._MainUserId = MainUserId
-
-    @property
-    def UserName(self):
-        return self._UserName
-
-    @UserName.setter
-    def UserName(self, UserName):
-        self._UserName = UserName
-
-
-    def _deserialize(self, params):
-        self._MainOrganizationId = params.get("MainOrganizationId")
-        self._MainUserId = params.get("MainUserId")
-        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

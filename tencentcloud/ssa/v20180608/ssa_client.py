@@ -578,6 +578,29 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SaDivulgeScanRuleMutate(self, request):
+        """SaDivulgeScanRuleMutate
+
+        :param request: Request instance for SaDivulgeScanRuleMutate.
+        :type request: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeScanRuleMutateRequest`
+        :rtype: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeScanRuleMutateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaDivulgeScanRuleMutate", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaDivulgeScanRuleMutateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SaEventPub(self, request):
         """安全事件通用字段
 

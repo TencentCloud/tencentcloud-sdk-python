@@ -626,6 +626,8 @@ class Blueprint(AbstractModel):
         :param _DockerVersion: Docker版本号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DockerVersion: str
+        :param _BlueprintShared: 镜像是否已共享。
+        :type BlueprintShared: bool
         """
         self._BlueprintId = None
         self._DisplayTitle = None
@@ -647,6 +649,7 @@ class Blueprint(AbstractModel):
         self._GuideUrl = None
         self._SceneIdSet = None
         self._DockerVersion = None
+        self._BlueprintShared = None
 
     @property
     def BlueprintId(self):
@@ -808,6 +811,14 @@ class Blueprint(AbstractModel):
     def DockerVersion(self, DockerVersion):
         self._DockerVersion = DockerVersion
 
+    @property
+    def BlueprintShared(self):
+        return self._BlueprintShared
+
+    @BlueprintShared.setter
+    def BlueprintShared(self, BlueprintShared):
+        self._BlueprintShared = BlueprintShared
+
 
     def _deserialize(self, params):
         self._BlueprintId = params.get("BlueprintId")
@@ -830,6 +841,7 @@ class Blueprint(AbstractModel):
         self._GuideUrl = params.get("GuideUrl")
         self._SceneIdSet = params.get("SceneIdSet")
         self._DockerVersion = params.get("DockerVersion")
+        self._BlueprintShared = params.get("BlueprintShared")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

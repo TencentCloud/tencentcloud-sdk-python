@@ -303,7 +303,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CreateAuditRuleTemplate(self, request):
-        """创建审计规则模版
+        """创建审计规则模板
 
         :param request: Request instance for CreateAuditRuleTemplate.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateAuditRuleTemplateRequest`
@@ -533,7 +533,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DeleteAuditRuleTemplates(self, request):
-        """删除审计规则模版
+        """删除审计规则模板
 
         :param request: Request instance for DeleteAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteAuditRuleTemplatesRequest`
@@ -740,7 +740,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeAuditRuleTemplates(self, request):
-        """查询审计规则模版信息
+        """查询审计规则模板信息
 
         :param request: Request instance for DescribeAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditRuleTemplatesRequest`
@@ -1890,7 +1890,7 @@ class CynosdbClient(AbstractClient):
 
 
     def ModifyAuditRuleTemplates(self, request):
-        """修改审计规则模版
+        """修改审计规则模板
 
         :param request: Request instance for ModifyAuditRuleTemplates.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyAuditRuleTemplatesRequest`

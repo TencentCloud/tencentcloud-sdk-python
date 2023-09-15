@@ -1535,7 +1535,7 @@ class ImportTableFileRequest(AbstractModel):
         :type Name: str
         :param _CosUri: 表格文件Cos对象路径。
         :type CosUri: str
-        :param _DataType: 表格文件中每列的数据类型，支持的类型包括：Int、String、File、Array[File]
+        :param _DataType: 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
         :type DataType: list of str
         :param _Description: 表格描述。
         :type Description: str

@@ -485,6 +485,76 @@ class BindResourceResult(AbstractModel):
         
 
 
+class CancelAuditCertificateRequest(AbstractModel):
+    """CancelAuditCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAuditCertificateResponse(AbstractModel):
+    """CancelAuditCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CancelCertificateOrderRequest(AbstractModel):
     """CancelCertificateOrder请求参数结构体
 
@@ -9943,6 +10013,76 @@ class ModifyCertificateProjectResponse(AbstractModel):
     def _deserialize(self, params):
         self._SuccessCertificates = params.get("SuccessCertificates")
         self._FailCertificates = params.get("FailCertificates")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCertificateResubmitRequest(AbstractModel):
+    """ModifyCertificateResubmit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID。
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCertificateResubmitResponse(AbstractModel):
+    """ModifyCertificateResubmit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: 证书ID。
+        :type CertificateId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CertificateId = None
+        self._RequestId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
         self._RequestId = params.get("RequestId")
 
 

@@ -3474,6 +3474,119 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateRoleRequest(AbstractModel):
+    """ChannelCreateRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        :type Name: str
+        :param _Agent: 代理企业和员工的信息。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Description: 角色描述，最大长度为50个字符
+        :type Description: str
+        :param _PermissionGroups: 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+        :type PermissionGroups: list of PermissionGroup
+        """
+        self._Name = None
+        self._Agent = None
+        self._Description = None
+        self._PermissionGroups = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PermissionGroups(self):
+        return self._PermissionGroups
+
+    @PermissionGroups.setter
+    def PermissionGroups(self, PermissionGroups):
+        self._PermissionGroups = PermissionGroups
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Description = params.get("Description")
+        if params.get("PermissionGroups") is not None:
+            self._PermissionGroups = []
+            for item in params.get("PermissionGroups"):
+                obj = PermissionGroup()
+                obj._deserialize(item)
+                self._PermissionGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateRoleResponse(AbstractModel):
+    """ChannelCreateRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色id
+        :type RoleId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateSealPolicyRequest(AbstractModel):
     """ChannelCreateSealPolicy请求参数结构体
 
@@ -4024,6 +4137,78 @@ class ChannelCreateWebThemeConfigRequest(AbstractModel):
 
 class ChannelCreateWebThemeConfigResponse(AbstractModel):
     """ChannelCreateWebThemeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelDeleteRoleRequest(AbstractModel):
+    """ChannelDeleteRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 代理企业和员工的信息。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _RoleIds: 角色id，最多20个
+        :type RoleIds: list of str
+        """
+        self._Agent = None
+        self._RoleIds = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RoleIds(self):
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDeleteRoleResponse(AbstractModel):
+    """ChannelDeleteRole返回参数结构体
 
     """
 
@@ -4724,21 +4909,22 @@ class ChannelDescribeRolesRequest(AbstractModel):
         r"""
         :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
-        :type Offset: int
         :param _Limit: 指定每页多少条数据，单页最大200
         :type Limit: str
         :param _Filters: 查询的关键字段:
 Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
         :type Filters: list of Filter
+        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+        :type Offset: int
         :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
-        self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._Offset = None
         self._Operator = None
 
     @property
@@ -4748,14 +4934,6 @@ Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
 
     @property
     def Limit(self):
@@ -4774,6 +4952,14 @@ Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
         self._Filters = Filters
 
     @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
@@ -4790,7 +4976,6 @@ Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
-        self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -4798,6 +4983,7 @@ Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
@@ -5326,6 +5512,131 @@ ProcessTimeout - 转换文件超时
         self._RequestId = params.get("RequestId")
 
 
+class ChannelModifyRoleRequest(AbstractModel):
+    """ChannelModifyRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 代理企业和员工的信息。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Name: 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        :type Name: str
+        :param _RoleId: 角色Id，可通过接口 ChannelDescribeRoles 查询获取
+        :type RoleId: str
+        :param _Description: 角色描述，最大长度为50个字符
+        :type Description: str
+        :param _PermissionGroups: 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+        :type PermissionGroups: list of PermissionGroup
+        """
+        self._Agent = None
+        self._Name = None
+        self._RoleId = None
+        self._Description = None
+        self._PermissionGroups = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def PermissionGroups(self):
+        return self._PermissionGroups
+
+    @PermissionGroups.setter
+    def PermissionGroups(self, PermissionGroups):
+        self._PermissionGroups = PermissionGroups
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Name = params.get("Name")
+        self._RoleId = params.get("RoleId")
+        self._Description = params.get("Description")
+        if params.get("PermissionGroups") is not None:
+            self._PermissionGroups = []
+            for item in params.get("PermissionGroups"):
+                obj = PermissionGroup()
+                obj._deserialize(item)
+                self._PermissionGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelModifyRoleResponse(AbstractModel):
+    """ChannelModifyRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色id
+        :type RoleId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelRole(AbstractModel):
     """渠道角色信息
 
@@ -5342,10 +5653,14 @@ class ChannelRole(AbstractModel):
         :param _RoleStatus: 角色状态：1-启用；2-禁用
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleStatus: int
+        :param _PermissionGroups: 权限树
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionGroups: list of PermissionGroup
         """
         self._RoleId = None
         self._RoleName = None
         self._RoleStatus = None
+        self._PermissionGroups = None
 
     @property
     def RoleId(self):
@@ -5371,11 +5686,25 @@ class ChannelRole(AbstractModel):
     def RoleStatus(self, RoleStatus):
         self._RoleStatus = RoleStatus
 
+    @property
+    def PermissionGroups(self):
+        return self._PermissionGroups
+
+    @PermissionGroups.setter
+    def PermissionGroups(self, PermissionGroups):
+        self._PermissionGroups = PermissionGroups
+
 
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
         self._RoleName = params.get("RoleName")
         self._RoleStatus = params.get("RoleStatus")
+        if params.get("PermissionGroups") is not None:
+            self._PermissionGroups = []
+            for item in params.get("PermissionGroups"):
+                obj = PermissionGroup()
+                obj._deserialize(item)
+                self._PermissionGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11231,6 +11560,253 @@ class PdfVerifyResult(AbstractModel):
         
 
 
+class Permission(AbstractModel):
+    """权限树节点权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 权限名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Key: 权限key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Type: 权限类型 1前端，2后端
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Hide: 是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hide: int
+        :param _DataLabel: 数据权限标签 1:表示根节点，2:表示叶子结点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLabel: int
+        :param _DataType: 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataType: int
+        :param _DataRange: 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataRange: int
+        :param _DataTo: 关联权限, 表示这个功能权限要受哪个数据权限管控
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataTo: str
+        :param _ParentKey: 父级权限key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentKey: str
+        :param _IsChecked: 是否选中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsChecked: bool
+        :param _Children: 子权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of Permission
+        """
+        self._Name = None
+        self._Key = None
+        self._Type = None
+        self._Hide = None
+        self._DataLabel = None
+        self._DataType = None
+        self._DataRange = None
+        self._DataTo = None
+        self._ParentKey = None
+        self._IsChecked = None
+        self._Children = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Hide(self):
+        return self._Hide
+
+    @Hide.setter
+    def Hide(self, Hide):
+        self._Hide = Hide
+
+    @property
+    def DataLabel(self):
+        return self._DataLabel
+
+    @DataLabel.setter
+    def DataLabel(self, DataLabel):
+        self._DataLabel = DataLabel
+
+    @property
+    def DataType(self):
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def DataRange(self):
+        return self._DataRange
+
+    @DataRange.setter
+    def DataRange(self, DataRange):
+        self._DataRange = DataRange
+
+    @property
+    def DataTo(self):
+        return self._DataTo
+
+    @DataTo.setter
+    def DataTo(self, DataTo):
+        self._DataTo = DataTo
+
+    @property
+    def ParentKey(self):
+        return self._ParentKey
+
+    @ParentKey.setter
+    def ParentKey(self, ParentKey):
+        self._ParentKey = ParentKey
+
+    @property
+    def IsChecked(self):
+        return self._IsChecked
+
+    @IsChecked.setter
+    def IsChecked(self, IsChecked):
+        self._IsChecked = IsChecked
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Type = params.get("Type")
+        self._Hide = params.get("Hide")
+        self._DataLabel = params.get("DataLabel")
+        self._DataType = params.get("DataType")
+        self._DataRange = params.get("DataRange")
+        self._DataTo = params.get("DataTo")
+        self._ParentKey = params.get("ParentKey")
+        self._IsChecked = params.get("IsChecked")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionGroup(AbstractModel):
+    """权限树中的权限组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 权限组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _GroupKey: 权限组key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupKey: str
+        :param _Hide: 是否隐藏分组，0否1是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hide: int
+        :param _Permissions: 权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of Permission
+        """
+        self._GroupName = None
+        self._GroupKey = None
+        self._Hide = None
+        self._Permissions = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupKey(self):
+        return self._GroupKey
+
+    @GroupKey.setter
+    def GroupKey(self, GroupKey):
+        self._GroupKey = GroupKey
+
+    @property
+    def Hide(self):
+        return self._Hide
+
+    @Hide.setter
+    def Hide(self, Hide):
+        self._Hide = Hide
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._GroupKey = params.get("GroupKey")
+        self._Hide = params.get("Hide")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrepareFlowsRequest(AbstractModel):
     """PrepareFlows请求参数结构体
 
@@ -13656,12 +14232,13 @@ class WebThemeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisplaySignBrandLogo: 页面底部是否显示电子签logo
-<br/>true：允许在页面底部隐藏电子签logo 
-<br/>默认false，不允许允许在页面底部隐藏电子签logo
+        :param _DisplaySignBrandLogo: 是否显示页面底部电子签logo，取值如下：
+<ul><li> **true**：页面底部显示电子签logo</li>
+<li> **false**：页面底部不显示电子签logo（默认）</li></ul>
         :type DisplaySignBrandLogo: bool
-        :param _WebEmbedThemeColor: 嵌入式主题颜色
-<br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+        :param _WebEmbedThemeColor: 主题颜色：
+支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+<br/>
         :type WebEmbedThemeColor: str
         """
         self._DisplaySignBrandLogo = None

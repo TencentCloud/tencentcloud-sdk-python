@@ -3419,6 +3419,51 @@ class CreateHostResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DealData(AbstractModel):
+    """计费下单响应实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: 订单号列表，元素个数与请求包的goods数组的元素个数一致，商品详情与订单按顺序对应
+        :type DealNames: list of str
+        :param _BigDealId: 大订单号，一个大订单号下可以有多个子订单，说明是同一次下单[{},{}]
+        :type BigDealId: str
+        """
+        self._DealNames = None
+        self._BigDealId = None
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
+        self._BigDealId = params.get("BigDealId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccessExportRequest(AbstractModel):
     """DeleteAccessExport请求参数结构体
 
@@ -11479,6 +11524,122 @@ class FreshAntiFakeUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GenerateDealsAndPayNewRequest(AbstractModel):
+    """GenerateDealsAndPayNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Goods: 计费下单入参
+        :type Goods: list of GoodNews
+        """
+        self._Goods = None
+
+    @property
+    def Goods(self):
+        return self._Goods
+
+    @Goods.setter
+    def Goods(self, Goods):
+        self._Goods = Goods
+
+
+    def _deserialize(self, params):
+        if params.get("Goods") is not None:
+            self._Goods = []
+            for item in params.get("Goods"):
+                obj = GoodNews()
+                obj._deserialize(item)
+                self._Goods.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateDealsAndPayNewResponse(AbstractModel):
+    """GenerateDealsAndPayNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 计费下单响应结构体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.DealData`
+        :param _Status: 1:成功，0:失败
+        :type Status: int
+        :param _ReturnMessage: 返回message
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnMessage: str
+        :param _InstanceId: 购买的实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Status = None
+        self._ReturnMessage = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReturnMessage(self):
+        return self._ReturnMessage
+
+    @ReturnMessage.setter
+    def ReturnMessage(self, ReturnMessage):
+        self._ReturnMessage = ReturnMessage
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DealData()
+            self._Data._deserialize(params.get("Data"))
+        self._Status = params.get("Status")
+        self._ReturnMessage = params.get("ReturnMessage")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class GetAttackDownloadRecordsRequest(AbstractModel):
     """GetAttackDownloadRecords请求参数结构体
 
@@ -11850,6 +12011,266 @@ class GetInstanceQpsLimitResponse(AbstractModel):
             self._QpsData = QpsData()
             self._QpsData._deserialize(params.get("QpsData"))
         self._RequestId = params.get("RequestId")
+
+
+class GoodNews(AbstractModel):
+    """计费下单接口出入参Goods
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GoodsNum: 商品数量
+        :type GoodsNum: int
+        :param _GoodsDetail: 商品明细
+        :type GoodsDetail: :class:`tencentcloud.waf.v20180125.models.GoodsDetailNew`
+        :param _GoodsCategoryId: 订单类型ID，用来唯一标识一个业务的一种场景（总共三种场景：新购、配置变更、续费）
+高级版: 102375(新购),102376(续费),102377(变配)
+企业版 : 102378(新购),102379(续费),102380(变配)
+旗舰版 : 102369(新购),102370(续费),102371(变配)
+高级版-CLB: 新购 101198  续费 101199 变配 101200
+企业版-CLB 101204(新购),101205(续费),101206(变配)
+旗舰版-CLB : 101201(新购),101202(续费),101203(变配)
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsCategoryId: int
+        :param _RegionId: 购买waf实例区域ID
+1 表示购买大陆资源
+2表示购买非中国大陆资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        """
+        self._GoodsNum = None
+        self._GoodsDetail = None
+        self._GoodsCategoryId = None
+        self._RegionId = None
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def GoodsDetail(self):
+        return self._GoodsDetail
+
+    @GoodsDetail.setter
+    def GoodsDetail(self, GoodsDetail):
+        self._GoodsDetail = GoodsDetail
+
+    @property
+    def GoodsCategoryId(self):
+        return self._GoodsCategoryId
+
+    @GoodsCategoryId.setter
+    def GoodsCategoryId(self, GoodsCategoryId):
+        self._GoodsCategoryId = GoodsCategoryId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._GoodsNum = params.get("GoodsNum")
+        if params.get("GoodsDetail") is not None:
+            self._GoodsDetail = GoodsDetailNew()
+            self._GoodsDetail._deserialize(params.get("GoodsDetail"))
+        self._GoodsCategoryId = params.get("GoodsCategoryId")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GoodsDetailNew(AbstractModel):
+    """产品明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: 时间间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: int
+        :param _TimeUnit: 单位，支持m、y、d
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param _SubProductCode: 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
+高级版 ：sp_wsm_waf_premium
+企业版 ：sp_wsm_waf_enterprise
+旗舰版 ：sp_wsm_waf_ultimate
+高级版-CLB:sp_wsm_waf_premium_clb
+企业版-CLB : sp_wsm_waf_enterprise_clb
+旗舰版-CLB:sp_wsm_waf_ultimate_clb
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductCode: str
+        :param _Pid: 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
+高级版 ：1000827
+企业版 ：1000830
+旗舰版 ：1000832
+高级版-CLB:1001150
+企业版-CLB : 1001152
+旗舰版-CLB:1001154
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pid: int
+        :param _InstanceName: waf实例名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _AutoRenewFlag: 1:自动续费，0:不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _RealRegion: waf购买的实际地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealRegion: int
+        :param _LabelTypes: 计费细项标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelTypes: list of str
+        :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCounts: list of int
+        :param _CurDeadline: 变配使用，实例到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        :param _InstanceId: 对存在的实例购买bot 或api 安全
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._SubProductCode = None
+        self._Pid = None
+        self._InstanceName = None
+        self._AutoRenewFlag = None
+        self._RealRegion = None
+        self._LabelTypes = None
+        self._LabelCounts = None
+        self._CurDeadline = None
+        self._InstanceId = None
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def RealRegion(self):
+        return self._RealRegion
+
+    @RealRegion.setter
+    def RealRegion(self, RealRegion):
+        self._RealRegion = RealRegion
+
+    @property
+    def LabelTypes(self):
+        return self._LabelTypes
+
+    @LabelTypes.setter
+    def LabelTypes(self, LabelTypes):
+        self._LabelTypes = LabelTypes
+
+    @property
+    def LabelCounts(self):
+        return self._LabelCounts
+
+    @LabelCounts.setter
+    def LabelCounts(self, LabelCounts):
+        self._LabelCounts = LabelCounts
+
+    @property
+    def CurDeadline(self):
+        return self._CurDeadline
+
+    @CurDeadline.setter
+    def CurDeadline(self, CurDeadline):
+        self._CurDeadline = CurDeadline
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._SubProductCode = params.get("SubProductCode")
+        self._Pid = params.get("Pid")
+        self._InstanceName = params.get("InstanceName")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._RealRegion = params.get("RealRegion")
+        self._LabelTypes = params.get("LabelTypes")
+        self._LabelCounts = params.get("LabelCounts")
+        self._CurDeadline = params.get("CurDeadline")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HostDel(AbstractModel):
@@ -17959,11 +18380,17 @@ class StrategyForAntiInfoLeak(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Field: 匹配字段
+        :param _Field: 匹配条件，returncode（响应码）、keywords（关键字）、information（敏感信息）
         :type Field: str
-        :param _CompareFunc: 逻辑符号
+        :param _CompareFunc: 逻辑符号，固定取值为contains
         :type CompareFunc: str
-        :param _Content: 匹配内容
+        :param _Content: 匹配内容。
+以下三个对应Field为information时可取的匹配内容：
+idcard（身份证）、phone（手机号）、bankcard（银行卡）。
+以下为对应Field为returncode时可取的匹配内容：
+400（状态码400）、403（状态码403）、404（状态码404）、4xx（其它4xx状态码）、500（状态码500）、501（状态码501）、502（状态码502）、504（状态码504）、5xx（其它5xx状态码）。
+当对应Field为keywords时由用户自己输入匹配内容。
+
         :type Content: str
         """
         self._Field = None

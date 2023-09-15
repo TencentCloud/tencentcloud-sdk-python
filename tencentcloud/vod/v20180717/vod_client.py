@@ -3638,7 +3638,7 @@ class VodClient(AbstractClient):
 
 
     def RebuildMedia(self, request):
-        """发起视频重生
+        """发起音画质重生
 
         :param request: Request instance for RebuildMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaRequest`

@@ -634,6 +634,9 @@ class Address(AbstractModel):
         :param _InstanceType: EIP绑定的实例类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
+        :param _Egress: 静态单线IP网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         :param _AntiDDoSPackageId: 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
         :type AntiDDoSPackageId: str
         """
@@ -658,6 +661,7 @@ class Address(AbstractModel):
         self._TagSet = None
         self._DeadlineDate = None
         self._InstanceType = None
+        self._Egress = None
         self._AntiDDoSPackageId = None
 
     @property
@@ -829,6 +833,14 @@ class Address(AbstractModel):
         self._InstanceType = InstanceType
 
     @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
+    @property
     def AntiDDoSPackageId(self):
         return self._AntiDDoSPackageId
 
@@ -866,6 +878,7 @@ class Address(AbstractModel):
                 self._TagSet.append(obj)
         self._DeadlineDate = params.get("DeadlineDate")
         self._InstanceType = params.get("InstanceType")
+        self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -1414,7 +1427,6 @@ class AllocateAddressesRequest(AbstractModel):
         :param _AddressType: EIP类型。默认值：EIP。
 <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
 <ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
-</ul>
 <ul style="margin:0"><li>已开高防IP白名单的用户，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP。</li></ul>
         :type AddressType: str
         :param _AnycastZone: Anycast发布域。
@@ -1431,7 +1443,7 @@ AnycastEIP是否用于绑定负载均衡。
         :type BandwidthPackageId: str
         :param _AddressName: EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
         :type AddressName: str
-        :param _Egress: 网络出口，默认是：center_egress1
+        :param _Egress: 静态单线IP网络出口，默认值：center_egress1
         :type Egress: str
         :param _AntiDDoSPackageId: 高防包ID， 申请高防IP时，该字段必传。
         :type AntiDDoSPackageId: str
@@ -34582,6 +34594,12 @@ class NatGateway(AbstractModel):
         :param _NatProductVersion: NAT网关大版本号，传统型=1，标准型=2
 注意：此字段可能返回 null，表示取不到有效值。
         :type NatProductVersion: int
+        :param _SmartScheduleMode: 是否启用根据目的网段选择SNAT使用的EIP功能	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartScheduleMode: bool
+        :param _DedicatedClusterId: NAT实例归属的专属集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DedicatedClusterId: str
         """
         self._NatGatewayId = None
         self._NatGatewayName = None
@@ -34603,6 +34621,8 @@ class NatGateway(AbstractModel):
         self._ExclusiveGatewayBandwidth = None
         self._RestrictState = None
         self._NatProductVersion = None
+        self._SmartScheduleMode = None
+        self._DedicatedClusterId = None
 
     @property
     def NatGatewayId(self):
@@ -34764,6 +34784,22 @@ class NatGateway(AbstractModel):
     def NatProductVersion(self, NatProductVersion):
         self._NatProductVersion = NatProductVersion
 
+    @property
+    def SmartScheduleMode(self):
+        return self._SmartScheduleMode
+
+    @SmartScheduleMode.setter
+    def SmartScheduleMode(self, SmartScheduleMode):
+        self._SmartScheduleMode = SmartScheduleMode
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._NatGatewayId = params.get("NatGatewayId")
@@ -34806,6 +34842,8 @@ class NatGateway(AbstractModel):
         self._ExclusiveGatewayBandwidth = params.get("ExclusiveGatewayBandwidth")
         self._RestrictState = params.get("RestrictState")
         self._NatProductVersion = params.get("NatProductVersion")
+        self._SmartScheduleMode = params.get("SmartScheduleMode")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34829,10 +34867,13 @@ class NatGatewayAddress(AbstractModel):
         :type PublicIpAddress: str
         :param _IsBlocked: 资源封堵状态。true表示弹性ip处于封堵状态，false表示弹性ip处于未封堵状态。
         :type IsBlocked: bool
+        :param _BlockType: 资源封堵类型。NORMAL表示未封禁，SECURITY表示安全封禁，USER表示用户封禁，OTHER表示其他封禁，多个原因封禁时用&连接，比如：SECURITY&USER&OTHER。
+        :type BlockType: str
         """
         self._AddressId = None
         self._PublicIpAddress = None
         self._IsBlocked = None
+        self._BlockType = None
 
     @property
     def AddressId(self):
@@ -34858,11 +34899,20 @@ class NatGatewayAddress(AbstractModel):
     def IsBlocked(self, IsBlocked):
         self._IsBlocked = IsBlocked
 
+    @property
+    def BlockType(self):
+        return self._BlockType
+
+    @BlockType.setter
+    def BlockType(self, BlockType):
+        self._BlockType = BlockType
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
         self._PublicIpAddress = params.get("PublicIpAddress")
         self._IsBlocked = params.get("IsBlocked")
+        self._BlockType = params.get("BlockType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

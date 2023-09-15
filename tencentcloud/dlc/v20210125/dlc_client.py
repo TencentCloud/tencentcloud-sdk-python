@@ -1981,6 +1981,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryResult(self, request):
+        """获取任务结果查询
+
+        :param request: Request instance for QueryResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReportHeartbeatMetaData(self, request):
         """上报元数据心跳
 

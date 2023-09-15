@@ -515,6 +515,33 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreateRole(self, request):
+        """此接口（ChannelCreateRole）用来创建企业自定义角色。
+
+        适用场景1：创建当前企业的自定义角色，并且创建时不进行权限的设置（PermissionGroups 参数不传），角色中的权限内容可通过接口 ChannelModifyRole 完成更新。
+
+        适用场景2：创建当前企业的自定义角色，并且创建时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+
+        :param request: Request instance for ChannelCreateRole.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateRoleRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateSealPolicy(self, request):
         """将指定印章授权给第三方平台子客企业下的某些员工
 
@@ -585,7 +612,8 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateWebThemeConfig(self, request):
-        """生成页面主题配置
+        """用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+        创建配置对当前第三方应用全局生效，如果多次调用，会以最后一次的配置为准
 
         :param request: Request instance for ChannelCreateWebThemeConfig.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateWebThemeConfigRequest`
@@ -598,6 +626,31 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelCreateWebThemeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelCreateWebThemeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelDeleteRole(self, request):
+        """此接口（ChannelDeleteRole）用来删除企业自定义角色。
+
+        注意：系统角色不可删除。
+
+        :param request: Request instance for ChannelDeleteRole.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelDeleteRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelDeleteRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelDeleteRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -724,7 +777,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeRoles(self, request):
-        """查询角色列表，支持根据类型和状态过滤角色列表
+        """分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列
 
         :param request: Request instance for ChannelDescribeRoles.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeRolesRequest`
@@ -807,6 +860,33 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelGetTaskResultApi", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelGetTaskResultApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelModifyRole(self, request):
+        """此接口（ChannelModifyRole）用来更新企业自定义角色。
+
+        适用场景1：更新当前企业的自定义角色的名称或描述等其他信息，更新时不进行权限的设置（PermissionGroups 参数不传）。
+
+        适用场景2：更新当前企业的自定义角色的权限信息，更新时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+
+        :param request: Request instance for ChannelModifyRole.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelModifyRoleRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelModifyRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelModifyRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelModifyRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -9024,6 +9024,219 @@ class SaDivulgeDataQueryPubResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SaDivulgeScanRuleMutateRequest(AbstractModel):
+    """SaDivulgeScanRuleMutate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Id
+        :type Id: str
+        :param _DivulgeSoure: DivulgeSoure
+        :type DivulgeSoure: str
+        :param _DivulgeSoureUrl: DivulgeSoureUrl
+        :type DivulgeSoureUrl: str
+        :param _RuleName: RuleName
+        :type RuleName: str
+        :param _RuleWord: RuleWord
+        :type RuleWord: str
+        :param _ScanStatus: ScanStatus
+        :type ScanStatus: str
+        :param _DivulgeType: DivulgeType
+        :type DivulgeType: str
+        :param _RepairAdvice: RepairAdvice
+        :type RepairAdvice: str
+        """
+        self._Id = None
+        self._DivulgeSoure = None
+        self._DivulgeSoureUrl = None
+        self._RuleName = None
+        self._RuleWord = None
+        self._ScanStatus = None
+        self._DivulgeType = None
+        self._RepairAdvice = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DivulgeSoure(self):
+        return self._DivulgeSoure
+
+    @DivulgeSoure.setter
+    def DivulgeSoure(self, DivulgeSoure):
+        self._DivulgeSoure = DivulgeSoure
+
+    @property
+    def DivulgeSoureUrl(self):
+        return self._DivulgeSoureUrl
+
+    @DivulgeSoureUrl.setter
+    def DivulgeSoureUrl(self, DivulgeSoureUrl):
+        self._DivulgeSoureUrl = DivulgeSoureUrl
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleWord(self):
+        return self._RuleWord
+
+    @RuleWord.setter
+    def RuleWord(self, RuleWord):
+        self._RuleWord = RuleWord
+
+    @property
+    def ScanStatus(self):
+        return self._ScanStatus
+
+    @ScanStatus.setter
+    def ScanStatus(self, ScanStatus):
+        self._ScanStatus = ScanStatus
+
+    @property
+    def DivulgeType(self):
+        return self._DivulgeType
+
+    @DivulgeType.setter
+    def DivulgeType(self, DivulgeType):
+        self._DivulgeType = DivulgeType
+
+    @property
+    def RepairAdvice(self):
+        return self._RepairAdvice
+
+    @RepairAdvice.setter
+    def RepairAdvice(self, RepairAdvice):
+        self._RepairAdvice = RepairAdvice
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DivulgeSoure = params.get("DivulgeSoure")
+        self._DivulgeSoureUrl = params.get("DivulgeSoureUrl")
+        self._RuleName = params.get("RuleName")
+        self._RuleWord = params.get("RuleWord")
+        self._ScanStatus = params.get("ScanStatus")
+        self._DivulgeType = params.get("DivulgeType")
+        self._RepairAdvice = params.get("RepairAdvice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaDivulgeScanRuleMutateResponse(AbstractModel):
+    """SaDivulgeScanRuleMutate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Data
+        :type Data: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeScanRuleSetList`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = SaDivulgeScanRuleSetList()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class SaDivulgeScanRuleSetList(AbstractModel):
+    """设置_泄露监测产品监测扫描规则策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: Value
+        :type Value: str
+        :param _Code: Code
+        :type Code: int
+        :param _Message: Message
+        :type Message: str
+        """
+        self._Value = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SaEventPubRequest(AbstractModel):
     """SaEventPub请求参数结构体
 
