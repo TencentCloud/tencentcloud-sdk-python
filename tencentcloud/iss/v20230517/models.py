@@ -14191,11 +14191,11 @@ class UpdateRecordBackupPlanModify(AbstractModel):
         :param _LifeCycle: 生命周期（录像文件生命周期设置，管理文件冷、热存储的时间，不修改生命周期时，不需要该字段）
         :type LifeCycle: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`
         :param _Add: 要新增的设备通道（Json数组，没有新增时，不需要该字段，一次添加通道总数不超过5000个，包括组织目录下的通道数量）
-        :type Add: str
+        :type Add: list of ChannelInfo
         :param _Del: 要删除的设备通道（Json数组，内容为要删除的设备通道id，没有删除设备通道时，不需要该字段）
-        :type Del: str
+        :type Del: list of str
         :param _OrganizationId: 添加组织目录下所有设备通道（Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量））
-        :type OrganizationId: str
+        :type OrganizationId: list of str
         """
         self._PlanName = None
         self._TemplateId = None
@@ -14269,7 +14269,12 @@ class UpdateRecordBackupPlanModify(AbstractModel):
         if params.get("LifeCycle") is not None:
             self._LifeCycle = LifeCycleData()
             self._LifeCycle._deserialize(params.get("LifeCycle"))
-        self._Add = params.get("Add")
+        if params.get("Add") is not None:
+            self._Add = []
+            for item in params.get("Add"):
+                obj = ChannelInfo()
+                obj._deserialize(item)
+                self._Add.append(obj)
         self._Del = params.get("Del")
         self._OrganizationId = params.get("OrganizationId")
         memeber_set = set(params.keys())

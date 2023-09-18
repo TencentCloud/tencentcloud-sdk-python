@@ -6949,6 +6949,120 @@ class DataGovernPolicy(AbstractModel):
         
 
 
+class DataSourceInfo(AbstractModel):
+    """数据源详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 数据源实例的唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 数据源的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _JdbcUrl: 数据源的JDBC访问链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JdbcUrl: str
+        :param _User: 用于访问数据源的用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Password: 数据源访问密码，需要base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Location: 数据源的VPC和子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _DbName: 默认数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._JdbcUrl = None
+        self._User = None
+        self._Password = None
+        self._Location = None
+        self._DbName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def JdbcUrl(self):
+        return self._JdbcUrl
+
+    @JdbcUrl.setter
+    def JdbcUrl(self, JdbcUrl):
+        self._JdbcUrl = JdbcUrl
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._JdbcUrl = params.get("JdbcUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._DbName = params.get("DbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseInfo(AbstractModel):
     """数据库对象
 
@@ -7173,6 +7287,474 @@ class DatabaseResponseInfo(AbstractModel):
             self._GovernPolicy = DataGovernPolicy()
             self._GovernPolicy._deserialize(params.get("GovernPolicy"))
         self._DatabaseId = params.get("DatabaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatasourceConnectionConfig(AbstractModel):
+    """数据源属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mysql: Mysql数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mysql: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
+        :param _Hive: Hive数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hive: :class:`tencentcloud.dlc.v20210125.models.HiveInfo`
+        :param _Kafka: Kafka数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kafka: :class:`tencentcloud.dlc.v20210125.models.KafkaInfo`
+        :param _OtherDatasourceConnection: 其他数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherDatasourceConnection: :class:`tencentcloud.dlc.v20210125.models.OtherDatasourceConnection`
+        :param _PostgreSql: PostgreSQL数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgreSql: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        :param _SqlServer: SQLServer数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlServer: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        :param _ClickHouse: ClickHouse数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClickHouse: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        :param _Elasticsearch: Elasticsearch数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Elasticsearch: :class:`tencentcloud.dlc.v20210125.models.ElasticsearchInfo`
+        :param _TDSQLPostgreSql: TDSQL-PostgreSQL数据源连接的属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TDSQLPostgreSql: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        """
+        self._Mysql = None
+        self._Hive = None
+        self._Kafka = None
+        self._OtherDatasourceConnection = None
+        self._PostgreSql = None
+        self._SqlServer = None
+        self._ClickHouse = None
+        self._Elasticsearch = None
+        self._TDSQLPostgreSql = None
+
+    @property
+    def Mysql(self):
+        return self._Mysql
+
+    @Mysql.setter
+    def Mysql(self, Mysql):
+        self._Mysql = Mysql
+
+    @property
+    def Hive(self):
+        return self._Hive
+
+    @Hive.setter
+    def Hive(self, Hive):
+        self._Hive = Hive
+
+    @property
+    def Kafka(self):
+        return self._Kafka
+
+    @Kafka.setter
+    def Kafka(self, Kafka):
+        self._Kafka = Kafka
+
+    @property
+    def OtherDatasourceConnection(self):
+        return self._OtherDatasourceConnection
+
+    @OtherDatasourceConnection.setter
+    def OtherDatasourceConnection(self, OtherDatasourceConnection):
+        self._OtherDatasourceConnection = OtherDatasourceConnection
+
+    @property
+    def PostgreSql(self):
+        return self._PostgreSql
+
+    @PostgreSql.setter
+    def PostgreSql(self, PostgreSql):
+        self._PostgreSql = PostgreSql
+
+    @property
+    def SqlServer(self):
+        return self._SqlServer
+
+    @SqlServer.setter
+    def SqlServer(self, SqlServer):
+        self._SqlServer = SqlServer
+
+    @property
+    def ClickHouse(self):
+        return self._ClickHouse
+
+    @ClickHouse.setter
+    def ClickHouse(self, ClickHouse):
+        self._ClickHouse = ClickHouse
+
+    @property
+    def Elasticsearch(self):
+        return self._Elasticsearch
+
+    @Elasticsearch.setter
+    def Elasticsearch(self, Elasticsearch):
+        self._Elasticsearch = Elasticsearch
+
+    @property
+    def TDSQLPostgreSql(self):
+        return self._TDSQLPostgreSql
+
+    @TDSQLPostgreSql.setter
+    def TDSQLPostgreSql(self, TDSQLPostgreSql):
+        self._TDSQLPostgreSql = TDSQLPostgreSql
+
+
+    def _deserialize(self, params):
+        if params.get("Mysql") is not None:
+            self._Mysql = MysqlInfo()
+            self._Mysql._deserialize(params.get("Mysql"))
+        if params.get("Hive") is not None:
+            self._Hive = HiveInfo()
+            self._Hive._deserialize(params.get("Hive"))
+        if params.get("Kafka") is not None:
+            self._Kafka = KafkaInfo()
+            self._Kafka._deserialize(params.get("Kafka"))
+        if params.get("OtherDatasourceConnection") is not None:
+            self._OtherDatasourceConnection = OtherDatasourceConnection()
+            self._OtherDatasourceConnection._deserialize(params.get("OtherDatasourceConnection"))
+        if params.get("PostgreSql") is not None:
+            self._PostgreSql = DataSourceInfo()
+            self._PostgreSql._deserialize(params.get("PostgreSql"))
+        if params.get("SqlServer") is not None:
+            self._SqlServer = DataSourceInfo()
+            self._SqlServer._deserialize(params.get("SqlServer"))
+        if params.get("ClickHouse") is not None:
+            self._ClickHouse = DataSourceInfo()
+            self._ClickHouse._deserialize(params.get("ClickHouse"))
+        if params.get("Elasticsearch") is not None:
+            self._Elasticsearch = ElasticsearchInfo()
+            self._Elasticsearch._deserialize(params.get("Elasticsearch"))
+        if params.get("TDSQLPostgreSql") is not None:
+            self._TDSQLPostgreSql = DataSourceInfo()
+            self._TDSQLPostgreSql._deserialize(params.get("TDSQLPostgreSql"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatasourceConnectionInfo(AbstractModel):
+    """数据源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源数字Id
+        :type Id: int
+        :param _DatasourceConnectionId: 数据源字符串Id
+        :type DatasourceConnectionId: str
+        :param _DatasourceConnectionName: 数据源名称
+        :type DatasourceConnectionName: str
+        :param _DatasourceConnectionDesc: 数据源描述
+        :type DatasourceConnectionDesc: str
+        :param _DatasourceConnectionType: 数据源类型，支持DataLakeCatalog、IcebergCatalog、Result、Mysql、HiveCos、HiveHdfs
+        :type DatasourceConnectionType: str
+        :param _DatasourceConnectionConfig: 数据源属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceConnectionConfig: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionConfig`
+        :param _State: 数据源状态：0（初始化）、1（成功）、-1（已删除）、-2（失败）、-3（删除中）
+        :type State: int
+        :param _Region: 地域
+        :type Region: str
+        :param _AppId: 用户AppId
+        :type AppId: str
+        :param _CreateTime: 数据源创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 数据源最近一次更新时间
+        :type UpdateTime: str
+        :param _Message: 数据源同步失败原因
+        :type Message: str
+        :param _DataEngines: 数据源绑定的计算引擎信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngines: list of DataEngineInfo
+        :param _UserAlias: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
+        :param _NetworkConnectionSet: 网络配置列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkConnectionSet: list of NetworkConnection
+        :param _ConnectivityState: 连通性状态：0（未测试，默认）、1（正常）、2（失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectivityState: int
+        :param _ConnectivityTips: 连通性测试提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectivityTips: str
+        """
+        self._Id = None
+        self._DatasourceConnectionId = None
+        self._DatasourceConnectionName = None
+        self._DatasourceConnectionDesc = None
+        self._DatasourceConnectionType = None
+        self._DatasourceConnectionConfig = None
+        self._State = None
+        self._Region = None
+        self._AppId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Message = None
+        self._DataEngines = None
+        self._UserAlias = None
+        self._NetworkConnectionSet = None
+        self._ConnectivityState = None
+        self._ConnectivityTips = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DatasourceConnectionId(self):
+        return self._DatasourceConnectionId
+
+    @DatasourceConnectionId.setter
+    def DatasourceConnectionId(self, DatasourceConnectionId):
+        self._DatasourceConnectionId = DatasourceConnectionId
+
+    @property
+    def DatasourceConnectionName(self):
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+    @property
+    def DatasourceConnectionDesc(self):
+        return self._DatasourceConnectionDesc
+
+    @DatasourceConnectionDesc.setter
+    def DatasourceConnectionDesc(self, DatasourceConnectionDesc):
+        self._DatasourceConnectionDesc = DatasourceConnectionDesc
+
+    @property
+    def DatasourceConnectionType(self):
+        return self._DatasourceConnectionType
+
+    @DatasourceConnectionType.setter
+    def DatasourceConnectionType(self, DatasourceConnectionType):
+        self._DatasourceConnectionType = DatasourceConnectionType
+
+    @property
+    def DatasourceConnectionConfig(self):
+        return self._DatasourceConnectionConfig
+
+    @DatasourceConnectionConfig.setter
+    def DatasourceConnectionConfig(self, DatasourceConnectionConfig):
+        self._DatasourceConnectionConfig = DatasourceConnectionConfig
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def DataEngines(self):
+        return self._DataEngines
+
+    @DataEngines.setter
+    def DataEngines(self, DataEngines):
+        self._DataEngines = DataEngines
+
+    @property
+    def UserAlias(self):
+        return self._UserAlias
+
+    @UserAlias.setter
+    def UserAlias(self, UserAlias):
+        self._UserAlias = UserAlias
+
+    @property
+    def NetworkConnectionSet(self):
+        return self._NetworkConnectionSet
+
+    @NetworkConnectionSet.setter
+    def NetworkConnectionSet(self, NetworkConnectionSet):
+        self._NetworkConnectionSet = NetworkConnectionSet
+
+    @property
+    def ConnectivityState(self):
+        return self._ConnectivityState
+
+    @ConnectivityState.setter
+    def ConnectivityState(self, ConnectivityState):
+        self._ConnectivityState = ConnectivityState
+
+    @property
+    def ConnectivityTips(self):
+        return self._ConnectivityTips
+
+    @ConnectivityTips.setter
+    def ConnectivityTips(self, ConnectivityTips):
+        self._ConnectivityTips = ConnectivityTips
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DatasourceConnectionId = params.get("DatasourceConnectionId")
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self._DatasourceConnectionDesc = params.get("DatasourceConnectionDesc")
+        self._DatasourceConnectionType = params.get("DatasourceConnectionType")
+        if params.get("DatasourceConnectionConfig") is not None:
+            self._DatasourceConnectionConfig = DatasourceConnectionConfig()
+            self._DatasourceConnectionConfig._deserialize(params.get("DatasourceConnectionConfig"))
+        self._State = params.get("State")
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Message = params.get("Message")
+        if params.get("DataEngines") is not None:
+            self._DataEngines = []
+            for item in params.get("DataEngines"):
+                obj = DataEngineInfo()
+                obj._deserialize(item)
+                self._DataEngines.append(obj)
+        self._UserAlias = params.get("UserAlias")
+        if params.get("NetworkConnectionSet") is not None:
+            self._NetworkConnectionSet = []
+            for item in params.get("NetworkConnectionSet"):
+                obj = NetworkConnection()
+                obj._deserialize(item)
+                self._NetworkConnectionSet.append(obj)
+        self._ConnectivityState = params.get("ConnectivityState")
+        self._ConnectivityTips = params.get("ConnectivityTips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatasourceConnectionLocation(AbstractModel):
+    """数据源连接的网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 数据连接所在Vpc实例Id，如“vpc-azd4dt1c”。
+        :type VpcId: str
+        :param _VpcCidrBlock: Vpc的IPv4 CIDR
+        :type VpcCidrBlock: str
+        :param _SubnetId: 数据连接所在子网的实例Id，如“subnet-bthucmmy”
+        :type SubnetId: str
+        :param _SubnetCidrBlock: Subnet的IPv4 CIDR
+        :type SubnetCidrBlock: str
+        """
+        self._VpcId = None
+        self._VpcCidrBlock = None
+        self._SubnetId = None
+        self._SubnetCidrBlock = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcCidrBlock(self):
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetCidrBlock(self):
+        return self._SubnetCidrBlock
+
+    @SubnetCidrBlock.setter
+    def SubnetCidrBlock(self, SubnetCidrBlock):
+        self._SubnetCidrBlock = SubnetCidrBlock
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetCidrBlock = params.get("SubnetCidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8874,6 +9456,207 @@ class DescribeDatabasesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DatabaseList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatasourceConnectionRequest(AbstractModel):
+    """DescribeDatasourceConnection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceConnectionIds: 连接ID列表，指定要查询的连接ID
+        :type DatasourceConnectionIds: list of str
+        :param _Filters: 过滤条件，当前支持的过滤键为：DatasourceConnectionName（数据源连接名）。
+DatasourceConnectionType   （数据源连接连接类型）
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 返回数量，默认20，最大值100
+        :type Limit: int
+        :param _SortBy: 排序字段，支持如下字段类型，create-time（默认，创建时间）、update-time（更新时间）
+        :type SortBy: str
+        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为desc
+        :type Sorting: str
+        :param _StartTime: 筛选字段：起始时间
+        :type StartTime: str
+        :param _EndTime: 筛选字段：截止时间
+        :type EndTime: str
+        :param _DatasourceConnectionNames: 连接名称列表，指定要查询的连接名称
+        :type DatasourceConnectionNames: list of str
+        :param _DatasourceConnectionTypes: 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
+        :type DatasourceConnectionTypes: list of str
+        """
+        self._DatasourceConnectionIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._SortBy = None
+        self._Sorting = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DatasourceConnectionNames = None
+        self._DatasourceConnectionTypes = None
+
+    @property
+    def DatasourceConnectionIds(self):
+        return self._DatasourceConnectionIds
+
+    @DatasourceConnectionIds.setter
+    def DatasourceConnectionIds(self, DatasourceConnectionIds):
+        self._DatasourceConnectionIds = DatasourceConnectionIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DatasourceConnectionNames(self):
+        return self._DatasourceConnectionNames
+
+    @DatasourceConnectionNames.setter
+    def DatasourceConnectionNames(self, DatasourceConnectionNames):
+        self._DatasourceConnectionNames = DatasourceConnectionNames
+
+    @property
+    def DatasourceConnectionTypes(self):
+        return self._DatasourceConnectionTypes
+
+    @DatasourceConnectionTypes.setter
+    def DatasourceConnectionTypes(self, DatasourceConnectionTypes):
+        self._DatasourceConnectionTypes = DatasourceConnectionTypes
+
+
+    def _deserialize(self, params):
+        self._DatasourceConnectionIds = params.get("DatasourceConnectionIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DatasourceConnectionNames = params.get("DatasourceConnectionNames")
+        self._DatasourceConnectionTypes = params.get("DatasourceConnectionTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatasourceConnectionResponse(AbstractModel):
+    """DescribeDatasourceConnection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据连接总数
+        :type TotalCount: int
+        :param _ConnectionSet: 数据连接对象集合
+        :type ConnectionSet: list of DatasourceConnectionInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConnectionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConnectionSet(self):
+        return self._ConnectionSet
+
+    @ConnectionSet.setter
+    def ConnectionSet(self, ConnectionSet):
+        self._ConnectionSet = ConnectionSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConnectionSet") is not None:
+            self._ConnectionSet = []
+            for item in params.get("ConnectionSet"):
+                obj = DatasourceConnectionInfo()
+                obj._deserialize(item)
+                self._ConnectionSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12307,6 +13090,125 @@ class DropDMSTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ElasticsearchInfo(AbstractModel):
+    """Elasticsearch数据源的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _User: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Password: 密码，需要base64编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Location: 数据源的VPC和子网信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _DbName: 默认数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param _ServiceInfo: 访问Elasticsearch的ip、端口信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceInfo: list of IpPortPair
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._User = None
+        self._Password = None
+        self._Location = None
+        self._DbName = None
+        self._ServiceInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def ServiceInfo(self):
+        return self._ServiceInfo
+
+    @ServiceInfo.setter
+    def ServiceInfo(self, ServiceInfo):
+        self._ServiceInfo = ServiceInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._DbName = params.get("DbName")
+        if params.get("ServiceInfo") is not None:
+            self._ServiceInfo = []
+            for item in params.get("ServiceInfo"):
+                obj = IpPortPair()
+                obj._deserialize(item)
+                self._ServiceInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Execution(AbstractModel):
     """SQL语句对象
 
@@ -12522,6 +13424,242 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HiveInfo(AbstractModel):
+    """hive类型数据源的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaStoreUrl: hive metastore的地址
+        :type MetaStoreUrl: str
+        :param _Type: hive数据源类型，代表数据储存的位置，COS或者HDFS
+        :type Type: str
+        :param _Location: 数据源所在的私有网络信息
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _User: 如果类型为HDFS，需要传一个用户名
+        :type User: str
+        :param _HighAvailability: 如果类型为HDFS，需要选择是否高可用
+        :type HighAvailability: bool
+        :param _BucketUrl: 如果类型为COS，需要填写COS桶连接
+        :type BucketUrl: str
+        :param _HdfsProperties: json字符串。如果类型为HDFS，需要填写该字段
+        :type HdfsProperties: str
+        :param _Mysql: Hive的元数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mysql: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
+        :param _InstanceId: emr集群Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: emr集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _HiveVersion: EMR集群中hive组件的版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HiveVersion: str
+        :param _KerberosInfo: Kerberos详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KerberosInfo: :class:`tencentcloud.dlc.v20210125.models.KerberosInfo`
+        :param _KerberosEnable: 是否开启Kerberos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KerberosEnable: bool
+        """
+        self._MetaStoreUrl = None
+        self._Type = None
+        self._Location = None
+        self._User = None
+        self._HighAvailability = None
+        self._BucketUrl = None
+        self._HdfsProperties = None
+        self._Mysql = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._HiveVersion = None
+        self._KerberosInfo = None
+        self._KerberosEnable = None
+
+    @property
+    def MetaStoreUrl(self):
+        return self._MetaStoreUrl
+
+    @MetaStoreUrl.setter
+    def MetaStoreUrl(self, MetaStoreUrl):
+        self._MetaStoreUrl = MetaStoreUrl
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def HighAvailability(self):
+        return self._HighAvailability
+
+    @HighAvailability.setter
+    def HighAvailability(self, HighAvailability):
+        self._HighAvailability = HighAvailability
+
+    @property
+    def BucketUrl(self):
+        return self._BucketUrl
+
+    @BucketUrl.setter
+    def BucketUrl(self, BucketUrl):
+        self._BucketUrl = BucketUrl
+
+    @property
+    def HdfsProperties(self):
+        return self._HdfsProperties
+
+    @HdfsProperties.setter
+    def HdfsProperties(self, HdfsProperties):
+        self._HdfsProperties = HdfsProperties
+
+    @property
+    def Mysql(self):
+        return self._Mysql
+
+    @Mysql.setter
+    def Mysql(self, Mysql):
+        self._Mysql = Mysql
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def HiveVersion(self):
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
+    @property
+    def KerberosInfo(self):
+        return self._KerberosInfo
+
+    @KerberosInfo.setter
+    def KerberosInfo(self, KerberosInfo):
+        self._KerberosInfo = KerberosInfo
+
+    @property
+    def KerberosEnable(self):
+        return self._KerberosEnable
+
+    @KerberosEnable.setter
+    def KerberosEnable(self, KerberosEnable):
+        self._KerberosEnable = KerberosEnable
+
+
+    def _deserialize(self, params):
+        self._MetaStoreUrl = params.get("MetaStoreUrl")
+        self._Type = params.get("Type")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._User = params.get("User")
+        self._HighAvailability = params.get("HighAvailability")
+        self._BucketUrl = params.get("BucketUrl")
+        self._HdfsProperties = params.get("HdfsProperties")
+        if params.get("Mysql") is not None:
+            self._Mysql = MysqlInfo()
+            self._Mysql._deserialize(params.get("Mysql"))
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._HiveVersion = params.get("HiveVersion")
+        if params.get("KerberosInfo") is not None:
+            self._KerberosInfo = KerberosInfo()
+            self._KerberosInfo._deserialize(params.get("KerberosInfo"))
+        self._KerberosEnable = params.get("KerberosEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpPortPair(AbstractModel):
+    """ip端口对信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: ip信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Port: 端口信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        """
+        self._Ip = None
+        self._Port = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobLogResult(AbstractModel):
     """日志详情
 
@@ -12645,6 +13783,110 @@ class KVPair(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaInfo(AbstractModel):
+    """Kafka连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: kakfa实例Id
+        :type InstanceId: str
+        :param _Location: kakfa数据源的网络信息
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        """
+        self._InstanceId = None
+        self._Location = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KerberosInfo(AbstractModel):
+    """Kerberos详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Krb5Conf: Krb5Conf文件值
+        :type Krb5Conf: str
+        :param _KeyTab: KeyTab文件值
+        :type KeyTab: str
+        :param _ServicePrincipal: 服务主体
+        :type ServicePrincipal: str
+        """
+        self._Krb5Conf = None
+        self._KeyTab = None
+        self._ServicePrincipal = None
+
+    @property
+    def Krb5Conf(self):
+        return self._Krb5Conf
+
+    @Krb5Conf.setter
+    def Krb5Conf(self, Krb5Conf):
+        self._Krb5Conf = Krb5Conf
+
+    @property
+    def KeyTab(self):
+        return self._KeyTab
+
+    @KeyTab.setter
+    def KeyTab(self, KeyTab):
+        self._KeyTab = KeyTab
+
+    @property
+    def ServicePrincipal(self):
+        return self._ServicePrincipal
+
+    @ServicePrincipal.setter
+    def ServicePrincipal(self, ServicePrincipal):
+        self._ServicePrincipal = ServicePrincipal
+
+
+    def _deserialize(self, params):
+        self._Krb5Conf = params.get("Krb5Conf")
+        self._KeyTab = params.get("KeyTab")
+        self._ServicePrincipal = params.get("ServicePrincipal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13818,6 +15060,115 @@ class ModifyWorkGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MysqlInfo(AbstractModel):
+    """Mysql类型数据源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JdbcUrl: 连接mysql的jdbc url
+        :type JdbcUrl: str
+        :param _User: 用户名
+        :type User: str
+        :param _Password: mysql密码
+        :type Password: str
+        :param _Location: mysql数据源的网络信息
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _InstanceId: 数据库实例ID，和数据库侧保持一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 数据库实例名称，和数据库侧保持一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        """
+        self._JdbcUrl = None
+        self._User = None
+        self._Password = None
+        self._Location = None
+        self._DbName = None
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def JdbcUrl(self):
+        return self._JdbcUrl
+
+    @JdbcUrl.setter
+    def JdbcUrl(self, JdbcUrl):
+        self._JdbcUrl = JdbcUrl
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._JdbcUrl = params.get("JdbcUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._DbName = params.get("DbName")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetworkConnection(AbstractModel):
     """网络配置
 
@@ -14754,6 +16105,41 @@ class Other(AbstractModel):
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OtherDatasourceConnection(AbstractModel):
+    """其他数据源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: 网络参数
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        """
+        self._Location = None
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

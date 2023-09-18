@@ -12028,15 +12028,20 @@ class GoodNews(AbstractModel):
 高级版: 102375(新购),102376(续费),102377(变配)
 企业版 : 102378(新购),102379(续费),102380(变配)
 旗舰版 : 102369(新购),102370(续费),102371(变配)
+域名包 : 102372(新购),102373(续费),102374(变配)
+业务扩展包 : 101040(新购),101041(续费),101042(变配)
+
 高级版-CLB: 新购 101198  续费 101199 变配 101200
 企业版-CLB 101204(新购),101205(续费),101206(变配)
 旗舰版-CLB : 101201(新购),101202(续费),101203(变配)
+域名包-CLB: 101207(新购),101208(续费),101209(变配)
+业务扩展包-CLB: 101210(新购),101211(续费),101212(变配)
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type GoodsCategoryId: int
         :param _RegionId: 购买waf实例区域ID
-1 表示购买大陆资源
-2表示购买非中国大陆资源
+1 表示购买大陆资源;
+9表示购买非中国大陆资源
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionId: int
         """
@@ -12105,16 +12110,22 @@ class GoodsDetailNew(AbstractModel):
         :param _TimeSpan: 时间间隔
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
-        :param _TimeUnit: 单位，支持m、y、d
+        :param _TimeUnit: 单位，支持购买d、m、y 即（日、月、年）
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _SubProductCode: 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
-高级版 ：sp_wsm_waf_premium
-企业版 ：sp_wsm_waf_enterprise
-旗舰版 ：sp_wsm_waf_ultimate
+
+Saas 高级版 ：sp_wsm_waf_premium
+Saas企业版 ：sp_wsm_waf_enterprise
+Saas旗舰版 ：sp_wsm_waf_ultimate
+Saas 业务扩展包：sp_wsm_waf_qpsep
+Saas 域名扩展包：sp_wsm_waf_domain
+
 高级版-CLB:sp_wsm_waf_premium_clb
 企业版-CLB : sp_wsm_waf_enterprise_clb
 旗舰版-CLB:sp_wsm_waf_ultimate_clb
+ 业务扩展包-CLB：sp_wsm_waf_qpsep_clb
+域名扩展包-CLB：sp_wsm_waf_domain_clb
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
@@ -12122,9 +12133,13 @@ class GoodsDetailNew(AbstractModel):
 高级版 ：1000827
 企业版 ：1000830
 旗舰版 ：1000832
+域名包 : 1000834
+业务扩展包 : 1000481
 高级版-CLB:1001150
 企业版-CLB : 1001152
 旗舰版-CLB:1001154
+域名包-CLB: 1001156
+业务扩展包-CLB : 1001160
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pid: int
@@ -12138,6 +12153,24 @@ class GoodsDetailNew(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealRegion: int
         :param _LabelTypes: 计费细项标签数组
+Saas 高级版  sv_wsm_waf_package_premium 
+Saas 企业版  sv_wsm_waf_package_enterprise
+Saas 旗舰版  sv_wsm_waf_package_ultimate 
+Saas 非中国大陆高级版  sv_wsm_waf_package_premium_intl
+Saas 非中国大陆企业版   sv_wsm_waf_package_enterprise_intl
+Saas 非中国大陆旗舰版  sv_wsm_waf_package_ultimate _intl
+Saas 业务扩展包  sv_wsm_waf_qps_ep
+Saas 域名扩展包  sv_wsm_waf_domain
+
+高级版CLB   sv_wsm_waf_package_premium_clb
+企业版CLB  sv_wsm_waf_package_enterprise_clb
+旗舰版CLB   sv_wsm_waf_package_ultimate_clb
+非中国大陆高级版 CLB sv_wsm_waf_package_premium_clb_intl
+非中国大陆企业版CLB   sv_wsm_waf_package_premium_clb_intl
+非中国大陆旗舰版CLB  sv_wsm_waf_package_ultimate_clb _intl
+业务扩展包CLB sv_wsm_waf_qps_ep_clb
+域名扩展包CLB  sv_wsm_waf_domain_clb
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelTypes: list of str
         :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
@@ -15729,6 +15762,298 @@ class ModifyHostStatusResponse(AbstractModel):
         if params.get("Success") is not None:
             self._Success = ResponseCode()
             self._Success._deserialize(params.get("Success"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceElasticModeRequest(AbstractModel):
+    """ModifyInstanceElasticMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Mode: 弹性计费开关
+        :type Mode: int
+        """
+        self._InstanceId = None
+        self._Mode = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceElasticModeResponse(AbstractModel):
+    """ModifyInstanceElasticMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceNameRequest(AbstractModel):
+    """ModifyInstanceName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        :param _Edition: 版本
+        :type Edition: str
+        """
+        self._InstanceID = None
+        self._Edition = None
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceNameResponse(AbstractModel):
+    """ModifyInstanceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyCode: 修改状态：0为成功
+        :type ModifyCode: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModifyCode = None
+        self._RequestId = None
+
+    @property
+    def ModifyCode(self):
+        return self._ModifyCode
+
+    @ModifyCode.setter
+    def ModifyCode(self, ModifyCode):
+        self._ModifyCode = ModifyCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModifyCode = params.get("ModifyCode")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceQpsLimitRequest(AbstractModel):
+    """ModifyInstanceQpsLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 套餐实例id
+        :type InstanceId: str
+        :param _QpsLimit: qps上限
+        :type QpsLimit: int
+        """
+        self._InstanceId = None
+        self._QpsLimit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def QpsLimit(self):
+        return self._QpsLimit
+
+    @QpsLimit.setter
+    def QpsLimit(self, QpsLimit):
+        self._QpsLimit = QpsLimit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._QpsLimit = params.get("QpsLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceQpsLimitResponse(AbstractModel):
+    """ModifyInstanceQpsLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceRenewFlagRequest(AbstractModel):
+    """ModifyInstanceRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RenewFlag: 续费开关
+        :type RenewFlag: int
+        """
+        self._InstanceId = None
+        self._RenewFlag = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceRenewFlagResponse(AbstractModel):
+    """ModifyInstanceRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -1107,6 +1107,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatasourceConnection(self, request):
+        """本接口（DescribeDatasourceConnection）用于查询数据源信息
+
+        :param request: Request instance for DescribeDatasourceConnection.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDatasourceConnectionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDatasourceConnectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatasourceConnection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatasourceConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEngineUsageInfo(self, request):
         """本接口根据引擎ID查询数据引擎资源使用情况
 

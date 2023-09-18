@@ -21672,6 +21672,9 @@ PullVodPushLive -点播。
         :param _RecordTemplateId: 录制模板 ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordTemplateId: str
+        :param _BackupToUrl: 新增的推流地址。用于单任务推两路场景。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupToUrl: str
         """
         self._TaskId = None
         self._SourceType = None
@@ -21701,6 +21704,7 @@ PullVodPushLive -点播。
         self._WatermarkList = None
         self._VodLocalMode = None
         self._RecordTemplateId = None
+        self._BackupToUrl = None
 
     @property
     def TaskId(self):
@@ -21926,6 +21930,14 @@ PullVodPushLive -点播。
     def RecordTemplateId(self, RecordTemplateId):
         self._RecordTemplateId = RecordTemplateId
 
+    @property
+    def BackupToUrl(self):
+        return self._BackupToUrl
+
+    @BackupToUrl.setter
+    def BackupToUrl(self, BackupToUrl):
+        self._BackupToUrl = BackupToUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -21963,6 +21975,7 @@ PullVodPushLive -点播。
                 self._WatermarkList.append(obj)
         self._VodLocalMode = params.get("VodLocalMode")
         self._RecordTemplateId = params.get("RecordTemplateId")
+        self._BackupToUrl = params.get("BackupToUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

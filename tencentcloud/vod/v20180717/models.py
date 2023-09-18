@@ -22886,6 +22886,7 @@ class DescribeStorageDetailsRequest(AbstractModel):
 <li>ArchiveBulkRetrieval：归档批量取回量。</li>
 <li>DeepArchiveStandardRetrieval：深度归档标准取回量。</li>
 <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
+<li>InfrequentRetrieval：低频存储取回量。</li>
 默认值为 TotalStorage。
         :type StorageType: str
         :param _Area: 查询的存储区域，有效值：

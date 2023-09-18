@@ -361,6 +361,40 @@ class BoundK8SInfo(AbstractModel):
         
 
 
+class CertificateInfo(AbstractModel):
+    """证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudAPIGatewayCanaryRuleList(AbstractModel):
     """灰度规则列表
 
@@ -2019,6 +2053,139 @@ class CreateCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _BindDomains: 绑定的域名
+        :type BindDomains: list of str
+        :param _CertId: ssl平台证书 Id
+        :type CertId: str
+        :param _Name: 证书名称
+        :type Name: str
+        :param _Key: 证书私钥
+        :type Key: str
+        :param _Crt: 证书pem格式
+        :type Crt: str
+        """
+        self._GatewayId = None
+        self._BindDomains = None
+        self._CertId = None
+        self._Name = None
+        self._Key = None
+        self._Crt = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def BindDomains(self):
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Crt(self):
+        return self._Crt
+
+    @Crt.setter
+    def Crt(self, Crt):
+        self._Crt = Crt
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._BindDomains = params.get("BindDomains")
+        self._CertId = params.get("CertId")
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Crt = params.get("Crt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayCertificateResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建证书结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CertificateInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CertificateInfo()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudNativeAPIGatewayRequest(AbstractModel):
     """CreateCloudNativeAPIGateway请求参数结构体
 
@@ -3500,6 +3667,76 @@ class DeleteCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudNativeAPIGatewayCertificateRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 证书Id
+        :type Id: str
+        """
+        self._GatewayId = None
+        self._Id = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayCertificateResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudNativeAPIGatewayRequest(AbstractModel):
     """DeleteCloudNativeAPIGateway请求参数结构体
 
@@ -4227,6 +4464,204 @@ class DescribeCloudNativeAPIGatewayCanaryRulesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = CloudAPIGatewayCanaryRuleList()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayCertificateDetailsRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCertificateDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 证书Id
+        :type Id: str
+        """
+        self._GatewayId = None
+        self._Id = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayCertificateDetailsResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCertificateDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongCertificate`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongCertificate()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCertificates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Limit: 列表数量
+        :type Limit: int
+        :param _Offset: 列表offset
+        :type Offset: int
+        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+        :type Filters: list of ListFilter
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ListFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayCertificatesResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayCertificates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongCertificatesList`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongCertificatesList()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -7611,6 +8046,277 @@ class KVPair(AbstractModel):
         
 
 
+class KongCertificate(AbstractModel):
+    """云原生网关证书
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cert: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cert: :class:`tencentcloud.tse.v20201207.models.KongCertificatesPreview`
+        """
+        self._Cert = None
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+
+    def _deserialize(self, params):
+        if params.get("Cert") is not None:
+            self._Cert = KongCertificatesPreview()
+            self._Cert._deserialize(params.get("Cert"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongCertificatesList(AbstractModel):
+    """kong证书列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 证书列表总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _CertificatesList: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertificatesList: list of KongCertificatesPreview
+        :param _Pages: 证书列表总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pages: int
+        """
+        self._Total = None
+        self._CertificatesList = None
+        self._Pages = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def CertificatesList(self):
+        return self._CertificatesList
+
+    @CertificatesList.setter
+    def CertificatesList(self, CertificatesList):
+        self._CertificatesList = CertificatesList
+
+    @property
+    def Pages(self):
+        warnings.warn("parameter `Pages` is deprecated", DeprecationWarning) 
+
+        return self._Pages
+
+    @Pages.setter
+    def Pages(self, Pages):
+        warnings.warn("parameter `Pages` is deprecated", DeprecationWarning) 
+
+        self._Pages = Pages
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("CertificatesList") is not None:
+            self._CertificatesList = []
+            for item in params.get("CertificatesList"):
+                obj = KongCertificatesPreview()
+                obj._deserialize(item)
+                self._CertificatesList.append(obj)
+        self._Pages = params.get("Pages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongCertificatesPreview(AbstractModel):
+    """云原生网关证书预览信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 证书名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Id: Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _BindDomains: 绑定的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindDomains: list of str
+        :param _Status: 证书状态：expired(已过期)
+                   active(生效中)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Crt: 证书pem格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Crt: str
+        :param _Key: 证书私钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _ExpireTime: 证书过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _CreateTime: 证书上传时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _IssueTime: 证书签发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssueTime: str
+        :param _CertSource: 证书来源：native(kong自定义证书)
+                    ssl(ssl平台证书)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertSource: str
+        :param _CertId: ssl平台证书Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        """
+        self._Name = None
+        self._Id = None
+        self._BindDomains = None
+        self._Status = None
+        self._Crt = None
+        self._Key = None
+        self._ExpireTime = None
+        self._CreateTime = None
+        self._IssueTime = None
+        self._CertSource = None
+        self._CertId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BindDomains(self):
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Crt(self):
+        return self._Crt
+
+    @Crt.setter
+    def Crt(self, Crt):
+        self._Crt = Crt
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IssueTime(self):
+        return self._IssueTime
+
+    @IssueTime.setter
+    def IssueTime(self, IssueTime):
+        self._IssueTime = IssueTime
+
+    @property
+    def CertSource(self):
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._BindDomains = params.get("BindDomains")
+        self._Status = params.get("Status")
+        self._Crt = params.get("Crt")
+        self._Key = params.get("Key")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CreateTime = params.get("CreateTime")
+        self._IssueTime = params.get("IssueTime")
+        self._CertSource = params.get("CertSource")
+        self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KongRoutePreview(AbstractModel):
     """云原生网关路由信息
 
@@ -10718,6 +11424,100 @@ class ServiceGovernanceInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateCloudNativeAPIGatewayCertificateInfoRequest(AbstractModel):
+    """UpdateCloudNativeAPIGatewayCertificateInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 证书id
+        :type Id: str
+        :param _BindDomains: 绑定的域名列表
+        :type BindDomains: list of str
+        :param _Name: 证书名称
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Id = None
+        self._BindDomains = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BindDomains(self):
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        self._BindDomains = params.get("BindDomains")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCloudNativeAPIGatewayCertificateInfoResponse(AbstractModel):
+    """UpdateCloudNativeAPIGatewayCertificateInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateCloudNativeAPIGatewayResult(AbstractModel):

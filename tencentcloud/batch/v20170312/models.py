@@ -7494,15 +7494,12 @@ class Placement(AbstractModel):
         :type ProjectId: int
         :param _HostIds: 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
         :type HostIds: list of str
-        :param _HostIps: 指定母机IP生产子机
-        :type HostIps: list of str
         :param _HostId: 实例所属的专用宿主机ID，仅用于出参。
         :type HostId: str
         """
         self._Zone = None
         self._ProjectId = None
         self._HostIds = None
-        self._HostIps = None
         self._HostId = None
 
     @property
@@ -7530,14 +7527,6 @@ class Placement(AbstractModel):
         self._HostIds = HostIds
 
     @property
-    def HostIps(self):
-        return self._HostIps
-
-    @HostIps.setter
-    def HostIps(self, HostIps):
-        self._HostIps = HostIps
-
-    @property
     def HostId(self):
         return self._HostId
 
@@ -7550,7 +7539,6 @@ class Placement(AbstractModel):
         self._Zone = params.get("Zone")
         self._ProjectId = params.get("ProjectId")
         self._HostIds = params.get("HostIds")
-        self._HostIps = params.get("HostIps")
         self._HostId = params.get("HostId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

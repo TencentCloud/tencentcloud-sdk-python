@@ -128,6 +128,9 @@ INVALIDPARAMETERVALUE_UPDATEERROR = 'InvalidParameterValue.UpdateError'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 网关证书域名总和超出限制
+LIMITEXCEEDED_LBDOMAINS = 'LimitExceeded.LBDomains'
+
 # 参数超过限制。
 LIMITEXCEEDED_LIMITEXCEEDED = 'LimitExceeded.LimitExceeded'
 

@@ -488,7 +488,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSpartaProtection(self, request):
-        """waf斯巴达-删除防护域名
+        """SAASWAF删除防护域名
 
         :param request: Request instance for DeleteSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSpartaProtectionRequest`
@@ -2118,6 +2118,98 @@ class WafClient(AbstractClient):
             body = self.call("ModifyHostStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHostStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceElasticMode(self, request):
+        """修改实例的QPS弹性计费开关
+
+        :param request: Request instance for ModifyInstanceElasticMode.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceElasticMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceElasticModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceName(self, request):
+        """修改实例的名称
+
+        :param request: Request instance for ModifyInstanceName.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceQpsLimit(self, request):
+        """设置套餐实例的弹性qps上限
+
+        :param request: Request instance for ModifyInstanceQpsLimit.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceQpsLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceQpsLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceRenewFlag(self, request):
+        """修改实例的自动续费开关
+
+        :param request: Request instance for ModifyInstanceRenewFlag.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceRenewFlagResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

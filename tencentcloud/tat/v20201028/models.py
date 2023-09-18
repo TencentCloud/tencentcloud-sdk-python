@@ -569,6 +569,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
+        :param _DefaultParameterConfs: 自定义参数数组。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+        :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Tags: 为命令关联的标签，列表长度不超过10。
         :type Tags: list of Tag
         :param _Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
@@ -590,6 +594,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._Timeout = None
         self._EnableParameter = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Tags = None
         self._Username = None
         self._OutputCOSBucketUrl = None
@@ -660,6 +665,14 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
     def Tags(self):
         return self._Tags
 
@@ -701,6 +714,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._Timeout = params.get("Timeout")
         self._EnableParameter = params.get("EnableParameter")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -3196,7 +3215,7 @@ class InvokeCommandRequest(AbstractModel):
         r"""
         :param _CommandId: 待触发的命令ID。
         :type CommandId: str
-        :param _InstanceIds: 待执行命令的实例ID列表，上限100。
+        :param _InstanceIds: 待执行命令的实例ID列表，上限200。
         :type InstanceIds: list of str
         :param _Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
@@ -3614,6 +3633,10 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
+        :param _DefaultParameterConfs: 自定义参数数组。
+如果InvokeCommand时未提供参数取值，将使用这里的默认值进行替换。
+自定义参数最多20个。
+        :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Username: 在 CVM 或 Lighthouse 实例中执行命令的用户名称。
 使用最小权限执行命令是权限管理的最佳实践，建议您以普通用户身份执行云助手命令。
         :type Username: str
@@ -3633,6 +3656,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._WorkingDirectory = None
         self._Timeout = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Username = None
         self._OutputCOSBucketUrl = None
         self._OutputCOSKeyPrefix = None
@@ -3702,6 +3726,14 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
     def Username(self):
         return self._Username
 
@@ -3735,6 +3767,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._WorkingDirectory = params.get("WorkingDirectory")
         self._Timeout = params.get("Timeout")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         self._Username = params.get("Username")
         self._OutputCOSBucketUrl = params.get("OutputCOSBucketUrl")
         self._OutputCOSKeyPrefix = params.get("OutputCOSKeyPrefix")
@@ -4474,7 +4512,7 @@ class RunCommandRequest(AbstractModel):
         r"""
         :param _Content: Base64编码后的命令内容，长度不可超过64KB。
         :type Content: str
-        :param _InstanceIds: 待执行命令的实例ID列表，上限100。支持实例类型：
+        :param _InstanceIds: 待执行命令的实例ID列表，上限200。支持实例类型：
 <li> CVM
 <li> LIGHTHOUSE
         :type InstanceIds: list of str
@@ -4489,12 +4527,15 @@ class RunCommandRequest(AbstractModel):
         :param _Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
         :type Timeout: int
         :param _SaveCommand: 是否保存命令，取值范围：
-<li> True：保存
-<li> False：不保存
-默认为 False。
+<li> true：保存
+<li> false：不保存
+默认为 false。
         :type SaveCommand: bool
         :param _EnableParameter: 是否启用自定义参数功能。
 一旦创建，此值不提供修改。
+取值范围：
+<li> true：启用
+<li> false：不启用
 默认值：false。
         :type EnableParameter: bool
         :param _DefaultParameters: 启用自定义参数功能时，自定义参数的默认取值。字段类型为json encoded string。如：{\"varA\": \"222\"}。
@@ -4503,6 +4544,8 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
 自定义参数最多20个。
 自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
         :type DefaultParameters: str
+        :param _DefaultParameterConfs: 自定义参数数组。 如果 Parameters 未提供，将使用这里的默认值进行替换。 自定义参数最多20个。
+        :type DefaultParameterConfs: list of DefaultParameterConf
         :param _Parameters: Command 的自定义参数。字段类型为json encoded string。如：{\"varA\": \"222\"}。
 key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
 如果未提供该参数取值，将使用 DefaultParameters 进行替换。
@@ -4532,6 +4575,7 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._SaveCommand = None
         self._EnableParameter = None
         self._DefaultParameters = None
+        self._DefaultParameterConfs = None
         self._Parameters = None
         self._Tags = None
         self._Username = None
@@ -4619,6 +4663,14 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._DefaultParameters = DefaultParameters
 
     @property
+    def DefaultParameterConfs(self):
+        return self._DefaultParameterConfs
+
+    @DefaultParameterConfs.setter
+    def DefaultParameterConfs(self, DefaultParameterConfs):
+        self._DefaultParameterConfs = DefaultParameterConfs
+
+    @property
     def Parameters(self):
         return self._Parameters
 
@@ -4670,6 +4722,12 @@ key为自定义参数名称，value为该参数的默认取值。kv均为字符�
         self._SaveCommand = params.get("SaveCommand")
         self._EnableParameter = params.get("EnableParameter")
         self._DefaultParameters = params.get("DefaultParameters")
+        if params.get("DefaultParameterConfs") is not None:
+            self._DefaultParameterConfs = []
+            for item in params.get("DefaultParameterConfs"):
+                obj = DefaultParameterConf()
+                obj._deserialize(item)
+                self._DefaultParameterConfs.append(obj)
         self._Parameters = params.get("Parameters")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -4855,8 +4913,10 @@ class TaskResult(AbstractModel):
         :param _Output: Base64编码后的命令输出。最大长度24KB。
         :type Output: str
         :param _ExecStartTime: 命令执行开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExecStartTime: str
         :param _ExecEndTime: 命令执行结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExecEndTime: str
         :param _Dropped: 命令最终输出被截断的字节数。
         :type Dropped: int

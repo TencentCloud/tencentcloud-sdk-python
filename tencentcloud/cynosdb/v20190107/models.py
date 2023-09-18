@@ -4090,18 +4090,21 @@ class CreateProxyEndPointRequest(AbstractModel):
         :type OpenConnectionPool: str
         :param _ConnectionPoolTimeOut: 连接池阈值：单位（秒）
         :type ConnectionPoolTimeOut: int
-        :param _SecurityGroupIds: 安全组ID数组
+        :param _SecurityGroupIds: 绑定的安全组ID数组
         :type SecurityGroupIds: list of str
         :param _Description: 描述说明
         :type Description: str
-        :param _Vip: vip信息
+        :param _Vip: 想要绑定的vip信息，需与UniqueVpcId对应。
         :type Vip: str
         :param _WeightMode: 权重模式：
 system-系统分配，custom-自定义
         :type WeightMode: str
         :param _AutoAddRo: 是否自动添加只读实例，yes-是，no-不自动添加
         :type AutoAddRo: str
-        :param _FailOver: 是否开启故障转移
+        :param _FailOver: 是否开启故障转移。
+yes：开启
+no：不开启。
+数据库代理出现故障时，链接地址将会路由到主实例
         :type FailOver: str
         :param _ConsistencyType: 一致性类型：
 eventual,global,session
@@ -4109,9 +4112,9 @@ eventual,global,session
         :param _RwType: 读写属性：
 READWRITE,READONLY
         :type RwType: str
-        :param _ConsistencyTimeOut: 一致性超时时间
+        :param _ConsistencyTimeOut: 一致性超时时间。取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待
         :type ConsistencyTimeOut: int
-        :param _TransSplit: 事务拆分
+        :param _TransSplit: 是否开启事务拆分。在一个事务中拆分读和写到不同的实例上去执行
         :type TransSplit: bool
         :param _AccessMode: 连接模式：
 nearby,balance
@@ -17784,22 +17787,26 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ProxyGroupId: str
         :param _ConsistencyType: 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
         :type ConsistencyType: str
-        :param _ConsistencyTimeOut: 一致性超时时间
+        :param _ConsistencyTimeOut: 一致性超时时间。
+取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
         :type ConsistencyTimeOut: str
         :param _WeightMode: 读写权重分配模式；系统自动分配："system"， 自定义："custom"
         :type WeightMode: str
-        :param _InstanceWeights: 实例只读权重
+        :param _InstanceWeights: 实例只读权重。
+该参数必填。
         :type InstanceWeights: list of ProxyInstanceWeight
         :param _FailOver: 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
         :type FailOver: str
         :param _AutoAddRo: 是否自动添加只读实例，取值："yes" , "no"
         :type AutoAddRo: str
-        :param _OpenRw: 是否打开读写分离
+        :param _OpenRw: 是否打开读写分离。
+该参数已废弃，请通过RwType设置读写属性。
         :type OpenRw: str
         :param _RwType: 读写类型：
 READWRITE,READONLY
         :type RwType: str
-        :param _TransSplit: 事务拆分
+        :param _TransSplit: 事务拆分。
+在一个事务中拆分读和写到不同的实例上去执行。
         :type TransSplit: bool
         :param _AccessMode: 连接模式：
 nearby,balance
@@ -17810,7 +17817,8 @@ yes,no
         :param _ConnectionPoolType: 连接池类型：
 SessionConnectionPool
         :type ConnectionPoolType: str
-        :param _ConnectionPoolTimeOut: 连接池时间
+        :param _ConnectionPoolTimeOut: 连接池时间。
+可选范围:0~300（秒）
         :type ConnectionPoolTimeOut: int
         """
         self._ClusterId = None
@@ -22186,9 +22194,11 @@ class RollBackClusterRequest(AbstractModel):
         :type ClusterId: str
         :param _RollbackStrategy: 回档策略 timeRollback-按时间点回档 snapRollback-按备份文件回档
         :type RollbackStrategy: str
-        :param _RollbackId: 回档ID
+        :param _RollbackId: 备份文件ID。
+回档策略为按备份文件回档时必填。
         :type RollbackId: int
-        :param _ExpectTime: 期望回档时间
+        :param _ExpectTime: 期望回档时间。
+回档策略为timeRollback按时间点回档时必填。
         :type ExpectTime: str
         :param _ExpectTimeThresh: 期望阈值（已废弃）
         :type ExpectTimeThresh: int
@@ -23348,7 +23358,7 @@ class SetRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceIds: 需操作的实例ID
+        :param _ResourceIds: 需操作的集群ID
         :type ResourceIds: list of str
         :param _AutoRenewFlag: 自动续费标志位，续费标记 0:正常续费  1:自动续费 2:到期不续
         :type AutoRenewFlag: int

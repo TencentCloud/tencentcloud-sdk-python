@@ -653,13 +653,16 @@ class MergeInfo(AbstractModel):
         :type Url: str
         :param _InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
         :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
-        :param _TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸
+        :param _TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸。此字段仅适用于控制台上传素材的有素材场景。
         :type TemplateFaceID: str
+        :param _TemplateFaceRect: 模版图片人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于自定义模版素材场景。
+        :type TemplateFaceRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
         self._Image = None
         self._Url = None
         self._InputImageFaceRect = None
         self._TemplateFaceID = None
+        self._TemplateFaceRect = None
 
     @property
     def Image(self):
@@ -693,6 +696,14 @@ class MergeInfo(AbstractModel):
     def TemplateFaceID(self, TemplateFaceID):
         self._TemplateFaceID = TemplateFaceID
 
+    @property
+    def TemplateFaceRect(self):
+        return self._TemplateFaceRect
+
+    @TemplateFaceRect.setter
+    def TemplateFaceRect(self, TemplateFaceRect):
+        self._TemplateFaceRect = TemplateFaceRect
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
@@ -701,6 +712,9 @@ class MergeInfo(AbstractModel):
             self._InputImageFaceRect = FaceRect()
             self._InputImageFaceRect._deserialize(params.get("InputImageFaceRect"))
         self._TemplateFaceID = params.get("TemplateFaceID")
+        if params.get("TemplateFaceRect") is not None:
+            self._TemplateFaceRect = FaceRect()
+            self._TemplateFaceRect._deserialize(params.get("TemplateFaceRect"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7324,6 +7324,8 @@ class CreateNatGatewayRequest(AbstractModel):
         :type PublicIpAddressesBandwidthOut: int
         :param _PublicIpFromSameZone: 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
         :type PublicIpFromSameZone: bool
+        :param _NatProductVersion: NAT网关大版本号，1是传统型，2是标准型，默认是1
+        :type NatProductVersion: int
         """
         self._NatGatewayName = None
         self._VpcId = None
@@ -7337,6 +7339,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._StockPublicIpAddressesBandwidthOut = None
         self._PublicIpAddressesBandwidthOut = None
         self._PublicIpFromSameZone = None
+        self._NatProductVersion = None
 
     @property
     def NatGatewayName(self):
@@ -7434,6 +7437,14 @@ class CreateNatGatewayRequest(AbstractModel):
     def PublicIpFromSameZone(self, PublicIpFromSameZone):
         self._PublicIpFromSameZone = PublicIpFromSameZone
 
+    @property
+    def NatProductVersion(self):
+        return self._NatProductVersion
+
+    @NatProductVersion.setter
+    def NatProductVersion(self, NatProductVersion):
+        self._NatProductVersion = NatProductVersion
+
 
     def _deserialize(self, params):
         self._NatGatewayName = params.get("NatGatewayName")
@@ -7453,6 +7464,7 @@ class CreateNatGatewayRequest(AbstractModel):
         self._StockPublicIpAddressesBandwidthOut = params.get("StockPublicIpAddressesBandwidthOut")
         self._PublicIpAddressesBandwidthOut = params.get("PublicIpAddressesBandwidthOut")
         self._PublicIpFromSameZone = params.get("PublicIpFromSameZone")
+        self._NatProductVersion = params.get("NatProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

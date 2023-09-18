@@ -216,12 +216,18 @@ class CreateEmbedTokenRequest(AbstractModel):
         :type ExpireTime: str
         :param _ExtraParam: 备用字段
         :type ExtraParam: str
+        :param _UserCorpId: 使用者企业Id(仅用于多用户)
+        :type UserCorpId: str
+        :param _UserId: 使用者Id(仅用于多用户)
+        :type UserId: str
         """
         self._ProjectId = None
         self._PageId = None
         self._Scope = None
         self._ExpireTime = None
         self._ExtraParam = None
+        self._UserCorpId = None
+        self._UserId = None
 
     @property
     def ProjectId(self):
@@ -263,6 +269,22 @@ class CreateEmbedTokenRequest(AbstractModel):
     def ExtraParam(self, ExtraParam):
         self._ExtraParam = ExtraParam
 
+    @property
+    def UserCorpId(self):
+        return self._UserCorpId
+
+    @UserCorpId.setter
+    def UserCorpId(self, UserCorpId):
+        self._UserCorpId = UserCorpId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -270,6 +292,8 @@ class CreateEmbedTokenRequest(AbstractModel):
         self._Scope = params.get("Scope")
         self._ExpireTime = params.get("ExpireTime")
         self._ExtraParam = params.get("ExtraParam")
+        self._UserCorpId = params.get("UserCorpId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -386,6 +410,12 @@ class EmbedTokenInfo(AbstractModel):
         :param _ExpireTime: 过期时间，分钟为单位，最大240
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: int
+        :param _UserCorpId: 使用者企业Id(仅用于多用户)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCorpId: str
+        :param _UserId: 使用者Id(仅用于多用户)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
         """
         self._Id = None
         self._BIToken = None
@@ -398,6 +428,8 @@ class EmbedTokenInfo(AbstractModel):
         self._ExtraParam = None
         self._Scope = None
         self._ExpireTime = None
+        self._UserCorpId = None
+        self._UserId = None
 
     @property
     def Id(self):
@@ -487,6 +519,22 @@ class EmbedTokenInfo(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def UserCorpId(self):
+        return self._UserCorpId
+
+    @UserCorpId.setter
+    def UserCorpId(self, UserCorpId):
+        self._UserCorpId = UserCorpId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -500,6 +548,8 @@ class EmbedTokenInfo(AbstractModel):
         self._ExtraParam = params.get("ExtraParam")
         self._Scope = params.get("Scope")
         self._ExpireTime = params.get("ExpireTime")
+        self._UserCorpId = params.get("UserCorpId")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
