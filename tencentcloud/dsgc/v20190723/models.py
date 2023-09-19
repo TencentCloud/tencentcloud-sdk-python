@@ -308,6 +308,9 @@ class AssessmentRisk(AbstractModel):
         :param _RiskSide: 风险面
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
+        :param _DataSourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
         """
         self._RiskId = None
         self._RiskDescription = None
@@ -328,6 +331,7 @@ class AssessmentRisk(AbstractModel):
         self._SecurityProduct = None
         self._RiskType = None
         self._RiskSide = None
+        self._DataSourceType = None
 
     @property
     def RiskId(self):
@@ -481,6 +485,14 @@ class AssessmentRisk(AbstractModel):
     def RiskSide(self, RiskSide):
         self._RiskSide = RiskSide
 
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -507,6 +519,7 @@ class AssessmentRisk(AbstractModel):
                 self._SecurityProduct.append(obj)
         self._RiskType = params.get("RiskType")
         self._RiskSide = params.get("RiskSide")
+        self._DataSourceType = params.get("DataSourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -669,6 +682,10 @@ class AssessmentTask(AbstractModel):
         r"""
         :param _TaskId: 评估任务Id
         :type TaskId: str
+        :param _TaskUid: 评估任务的自增ID
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskUid: int
         :param _TaskName: 评估任务名称
         :type TaskName: str
         :param _BusinessName: 业务名称
@@ -703,8 +720,15 @@ class AssessmentTask(AbstractModel):
         :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         :param _ErrorInfo: 评估任务失败信息
         :type ErrorInfo: str
+        :param _TemplateUid: 模版主键id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateUid: int
+        :param _ProgressPercent: 进度百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProgressPercent: int
         """
         self._TaskId = None
+        self._TaskUid = None
         self._TaskName = None
         self._BusinessName = None
         self._BusinessDept = None
@@ -721,6 +745,8 @@ class AssessmentTask(AbstractModel):
         self._RiskCountInfoList = None
         self._DiscoveryCondition = None
         self._ErrorInfo = None
+        self._TemplateUid = None
+        self._ProgressPercent = None
 
     @property
     def TaskId(self):
@@ -729,6 +755,14 @@ class AssessmentTask(AbstractModel):
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def TaskUid(self):
+        return self._TaskUid
+
+    @TaskUid.setter
+    def TaskUid(self, TaskUid):
+        self._TaskUid = TaskUid
 
     @property
     def TaskName(self):
@@ -858,9 +892,26 @@ class AssessmentTask(AbstractModel):
     def ErrorInfo(self, ErrorInfo):
         self._ErrorInfo = ErrorInfo
 
+    @property
+    def TemplateUid(self):
+        return self._TemplateUid
+
+    @TemplateUid.setter
+    def TemplateUid(self, TemplateUid):
+        self._TemplateUid = TemplateUid
+
+    @property
+    def ProgressPercent(self):
+        return self._ProgressPercent
+
+    @ProgressPercent.setter
+    def ProgressPercent(self, ProgressPercent):
+        self._ProgressPercent = ProgressPercent
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._TaskUid = params.get("TaskUid")
         self._TaskName = params.get("TaskName")
         self._BusinessName = params.get("BusinessName")
         self._BusinessDept = params.get("BusinessDept")
@@ -884,6 +935,8 @@ class AssessmentTask(AbstractModel):
             self._DiscoveryCondition = DiscoveryCondition()
             self._DiscoveryCondition._deserialize(params.get("DiscoveryCondition"))
         self._ErrorInfo = params.get("ErrorInfo")
+        self._TemplateUid = params.get("TemplateUid")
+        self._ProgressPercent = params.get("ProgressPercent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -929,6 +982,9 @@ class AssessmentTemplate(AbstractModel):
         :param _IsASMTemplate: 是否包含攻击面风险
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsASMTemplate: bool
+        :param _IdentifyComplianceId: 合规组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentifyComplianceId: int
         """
         self._Id = None
         self._TemplateId = None
@@ -942,6 +998,7 @@ class AssessmentTemplate(AbstractModel):
         self._Status = None
         self._SupportDataSource = None
         self._IsASMTemplate = None
+        self._IdentifyComplianceId = None
 
     @property
     def Id(self):
@@ -1039,6 +1096,14 @@ class AssessmentTemplate(AbstractModel):
     def IsASMTemplate(self, IsASMTemplate):
         self._IsASMTemplate = IsASMTemplate
 
+    @property
+    def IdentifyComplianceId(self):
+        return self._IdentifyComplianceId
+
+    @IdentifyComplianceId.setter
+    def IdentifyComplianceId(self, IdentifyComplianceId):
+        self._IdentifyComplianceId = IdentifyComplianceId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1053,6 +1118,7 @@ class AssessmentTemplate(AbstractModel):
         self._Status = params.get("Status")
         self._SupportDataSource = params.get("SupportDataSource")
         self._IsASMTemplate = params.get("IsASMTemplate")
+        self._IdentifyComplianceId = params.get("IdentifyComplianceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7906,6 +7972,8 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         :type RiskLevel: str
         :param _RiskSide: 风险面筛选
         :type RiskSide: list of str
+        :param _TimeSort: ASC 正序，DESC倒叙
+        :type TimeSort: str
         """
         self._DspaId = None
         self._TemplateId = None
@@ -7919,6 +7987,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         self._EndTime = None
         self._RiskLevel = None
         self._RiskSide = None
+        self._TimeSort = None
 
     @property
     def DspaId(self):
@@ -8016,6 +8085,14 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
     def RiskSide(self, RiskSide):
         self._RiskSide = RiskSide
 
+    @property
+    def TimeSort(self):
+        return self._TimeSort
+
+    @TimeSort.setter
+    def TimeSort(self, TimeSort):
+        self._TimeSort = TimeSort
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -8030,6 +8107,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._RiskLevel = params.get("RiskLevel")
         self._RiskSide = params.get("RiskSide")
+        self._TimeSort = params.get("TimeSort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25595,6 +25673,12 @@ class RiskItemInfo(AbstractModel):
         :param _RiskSide: 风险面
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
+        :param _APIRiskLinkURL: API安全风险链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type APIRiskLinkURL: str
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
         """
         self._Id = None
         self._DataSourceId = None
@@ -25614,6 +25698,8 @@ class RiskItemInfo(AbstractModel):
         self._IdentifyComplianceId = None
         self._ItemSubType = None
         self._RiskSide = None
+        self._APIRiskLinkURL = None
+        self._Remark = None
 
     @property
     def Id(self):
@@ -25759,6 +25845,22 @@ class RiskItemInfo(AbstractModel):
     def RiskSide(self, RiskSide):
         self._RiskSide = RiskSide
 
+    @property
+    def APIRiskLinkURL(self):
+        return self._APIRiskLinkURL
+
+    @APIRiskLinkURL.setter
+    def APIRiskLinkURL(self, APIRiskLinkURL):
+        self._APIRiskLinkURL = APIRiskLinkURL
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -25784,6 +25886,8 @@ class RiskItemInfo(AbstractModel):
         self._IdentifyComplianceId = params.get("IdentifyComplianceId")
         self._ItemSubType = params.get("ItemSubType")
         self._RiskSide = params.get("RiskSide")
+        self._APIRiskLinkURL = params.get("APIRiskLinkURL")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

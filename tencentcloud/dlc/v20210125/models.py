@@ -4339,7 +4339,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         r"""
         :param _DataEngineName: DLC Spark作业引擎名称
         :type DataEngineName: str
-        :param _ExecuteSQL: 运行sql
+        :param _ExecuteSQL: 运行sql，需要base64编码。
         :type ExecuteSQL: str
         :param _DriverSize: 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
         :type DriverSize: str
@@ -4359,7 +4359,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
         :type Arguments: list of KVPair
-        :param _IsInherit: 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+        :param _IsInherit: 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
         :type IsInherit: int
         """
         self._DataEngineName = None

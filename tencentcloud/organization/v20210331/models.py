@@ -788,6 +788,61 @@ class CreateOrganizationMemberResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationRequest(AbstractModel):
+    """CreateOrganization请求参数结构体
+
+    """
+
+
+class CreateOrganizationResponse(AbstractModel):
+    """CreateOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: 企业组织ID
+        :type OrgId: int
+        :param _NickName: 创建者昵称
+        :type NickName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrgId = None
+        self._NickName = None
+        self._RequestId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        self._NickName = params.get("NickName")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOrganizationMemberAuthIdentityRequest(AbstractModel):
     """DeleteOrganizationMemberAuthIdentity请求参数结构体
 
@@ -1009,6 +1064,37 @@ class DeleteOrganizationNodesRequest(AbstractModel):
 
 class DeleteOrganizationNodesResponse(AbstractModel):
     """DeleteOrganizationNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOrganizationRequest(AbstractModel):
+    """DeleteOrganization请求参数结构体
+
+    """
+
+
+class DeleteOrganizationResponse(AbstractModel):
+    """DeleteOrganization返回参数结构体
 
     """
 

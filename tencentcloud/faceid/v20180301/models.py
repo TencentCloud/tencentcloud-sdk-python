@@ -6555,7 +6555,6 @@ class PhoneVerificationCMCCResponse(AbstractModel):
 -7: 身份证号码有误
 -8: 姓名校验不通过
 -9: 没有记录
--10: 认证未通过
 -11: 验证中心服务繁忙
         :type Result: str
         :param _Isp: 运营商名称。
@@ -6698,7 +6697,6 @@ class PhoneVerificationCTCCResponse(AbstractModel):
 -7: 身份证号码有误
 -8: 姓名校验不通过
 -9: 没有记录
--10: 认证未通过
 -11: 验证中心服务繁忙
         :type Result: str
         :param _Isp: 运营商名称。
@@ -6841,7 +6839,6 @@ class PhoneVerificationCUCCResponse(AbstractModel):
 -7: 身份证号码有误
 -8: 姓名校验不通过
 -9: 没有记录
--10: 认证未通过
 -11: 验证中心服务繁忙
         :type Result: str
         :param _Isp: 运营商名称。

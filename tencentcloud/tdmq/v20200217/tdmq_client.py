@@ -1636,6 +1636,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQPublicAccessPoint(self, request):
+        """接口用于查询RocketMQ实例的公网接入信息
+
+        :param request: Request instance for DescribeRocketMQPublicAccessPoint.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessPointRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQPublicAccessPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQPublicAccessPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQPublicAccessPointResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQTopicMsgs(self, request):
         """rocketmq 消息查询
 
@@ -1949,6 +1972,29 @@ class TdmqClient(AbstractClient):
             body = self.call("ModifyEnvironmentRole", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyEnvironmentRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPublicNetworkAccessPoint(self, request):
+        """RabbitMQ专享版修改公网管控台，vpc15672开关
+
+        :param request: Request instance for ModifyPublicNetworkAccessPoint.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkAccessPointRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyPublicNetworkAccessPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPublicNetworkAccessPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPublicNetworkAccessPointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2431,6 +2477,29 @@ class TdmqClient(AbstractClient):
             body = self.call("SendRocketMQMessage", params, headers=headers)
             response = json.loads(body)
             model = models.SendRocketMQMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetRocketMQPublicAccessPoint(self, request):
+        """该接口用于开启关闭公网访问、设置安全访问策略
+
+        :param request: Request instance for SetRocketMQPublicAccessPoint.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SetRocketMQPublicAccessPointRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SetRocketMQPublicAccessPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetRocketMQPublicAccessPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetRocketMQPublicAccessPointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

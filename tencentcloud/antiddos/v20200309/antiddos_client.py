@@ -993,7 +993,9 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBlackWhiteIpList(self, request):
-        """获取DDoS防护的IP黑白名单
+        """接口变更
+
+        获取DDoS防护的IP黑白名单
 
         :param request: Request instance for DescribeBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBlackWhiteIpListRequest`
@@ -1545,7 +1547,9 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListProtectThresholdConfig(self, request):
-        """获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
+        """接口变更
+
+        获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
 
         :param request: Request instance for DescribeListProtectThresholdConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigRequest`

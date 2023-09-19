@@ -619,7 +619,7 @@ class ActivityResItem(AbstractModel):
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
         :param _SnapshotByTimeOffsetTask: 时间点截图任务输出
 注意：此字段可能返回 null，表示取不到有效值。
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         :param _SampleSnapshotTask: 采样截图任务输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
@@ -730,7 +730,7 @@ class ActivityResItem(AbstractModel):
             self._AnimatedGraphicTask = MediaProcessTaskAnimatedGraphicResult()
             self._AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
         if params.get("SnapshotByTimeOffsetTask") is not None:
-            self._SnapshotByTimeOffsetTask = MediaProcessTaskSampleSnapshotResult()
+            self._SnapshotByTimeOffsetTask = MediaProcessTaskSnapshotByTimeOffsetResult()
             self._SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         if params.get("SampleSnapshotTask") is not None:
             self._SampleSnapshotTask = MediaProcessTaskSampleSnapshotResult()
@@ -1981,6 +1981,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
         :param _HighlightSet: 视频智能精彩片段列表。
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
         :param _OutputStorage: 精彩片段的存储位置。
+注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._HighlightSet = None
@@ -2925,10 +2926,14 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
+
         return self._OutputStorage
 
     @OutputStorage.setter
     def OutputStorage(self, OutputStorage):
+        warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
+
         self._OutputStorage = OutputStorage
 
 
@@ -4486,12 +4491,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
         :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
         :param _SubtitlePath: 字幕文件地址。
         :type SubtitlePath: str
-        :param _OutputStorage: 字幕文件存储位置。
-        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
-        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -4509,14 +4511,6 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
-    @property
-    def OutputStorage(self):
-        return self._OutputStorage
-
-    @OutputStorage.setter
-    def OutputStorage(self, OutputStorage):
-        self._OutputStorage = OutputStorage
-
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -4526,9 +4520,6 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
-        if params.get("OutputStorage") is not None:
-            self._OutputStorage = TaskOutputStorage()
-            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5134,6 +5125,7 @@ class AiReviewPornTaskInput(AbstractModel):
     def __init__(self):
         r"""
         :param _Definition: 鉴黄模板 ID。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
         """
         self._Definition = None
@@ -8184,12 +8176,16 @@ class AwsSQS(AbstractModel):
     def __init__(self):
         r"""
         :param _SQSRegion: SQS 队列区域。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SQSRegion: str
         :param _SQSQueueName: SQS 队列名称。
+注意：此字段可能返回 null，表示取不到有效值。
         :type SQSQueueName: str
         :param _S3SecretId: 读写SQS的秘钥id。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3SecretId: str
         :param _S3SecretKey: 读写SQS的秘钥key。
+注意：此字段可能返回 null，表示取不到有效值。
         :type S3SecretKey: str
         """
         self._SQSRegion = None
@@ -8568,6 +8564,1581 @@ class ColorEnhanceConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioItem(AbstractModel):
+    """视频编辑/合成任务 音频元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: 元素对应媒体信息。
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _AudioOperations: 对音频进行操作，如静音等。
+        :type AudioOperations: list of ComposeAudioOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._AudioOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def AudioOperations(self):
+        return self._AudioOperations
+
+    @AudioOperations.setter
+    def AudioOperations(self, AudioOperations):
+        self._AudioOperations = AudioOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        if params.get("AudioOperations") is not None:
+            self._AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = ComposeAudioOperation()
+                obj._deserialize(item)
+                self._AudioOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioOperation(AbstractModel):
+    """视频编辑/合成任务 音频操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 音频操作类型，取值有：
+<li>Volume：音量调节。</li>
+        :type Type: str
+        :param _Volume:  当 Type = Volume 时有效。音量调节参数，取值范围: 0~5。 
+<li>0 表示静音。</li>
+<li>小于1 表示降低音量。</li>
+<li>1 表示不变。</li>
+<li>大于1表示升高音量。</li>
+        :type Volume: float
+        """
+        self._Type = None
+        self._Volume = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Volume = params.get("Volume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioStream(AbstractModel):
+    """视频编辑/合成任务 音频流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 音频流的编码方式，可选值：
+<li>AAC：AAC 编码（默认），用于容器为 mp4。</li>
+<li>MP3：mp3 编码，用于容器为 mp3。</li>
+        :type Codec: str
+        :param _SampleRate: 音频流的采样率，单位：Hz，可选值：
+<li>16000（默认）</li>
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+        :type SampleRate: int
+        :param _AudioChannel: 声道数，可选值：
+<li>1：单声道 。</li>
+<li>2：双声道（默认）。</li>
+        :type AudioChannel: int
+        """
+        self._Codec = None
+        self._SampleRate = None
+        self._AudioChannel = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def AudioChannel(self):
+        return self._AudioChannel
+
+    @AudioChannel.setter
+    def AudioChannel(self, AudioChannel):
+        self._AudioChannel = AudioChannel
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._SampleRate = params.get("SampleRate")
+        self._AudioChannel = params.get("AudioChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeCanvas(AbstractModel):
+    """视频编辑/合成任务画布信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Color: 背景颜色对应的 RGB 参考值，取值格式： #RRGGBB，如 #F0F0F0 。 
+默认值：#000000（黑色）。
+        :type Color: str
+        :param _Width: 画布宽度，即输出视频的宽度，取值范围：0~ 3840，单位：px。  
+默认值：0，表示和第一个视频宽度一致。
+        :type Width: int
+        :param _Height: 画布高度，即输出视频的高度，取值范围：0~ 3840，单位：px。  
+默认值：0，表示和第一个视频高度一致。
+        :type Height: int
+        """
+        self._Color = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Color = params.get("Color")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeEmptyItem(AbstractModel):
+    """视频编辑/合成任务 空白占位元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: 元素时长，时间支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒。</li>
+        :type Duration: str
+        """
+        self._Duration = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeImageItem(AbstractModel):
+    """视频编辑/合成任务 图片元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: 元素对应媒体信息。
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _XPos: 元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认：50%。
+        :type XPos: str
+        :param _YPos: 元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认：50%。
+        :type YPos: str
+        :param _Width: 视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :type Width: str
+        :param _Height: 元素的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :type Height: str
+        :param _ImageOperations: 对图像画面进行的操作，如图像旋转等。
+        :type ImageOperations: list of ComposeImageOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._XPos = None
+        self._YPos = None
+        self._Width = None
+        self._Height = None
+        self._ImageOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageOperations(self):
+        return self._ImageOperations
+
+    @ImageOperations.setter
+    def ImageOperations(self, ImageOperations):
+        self._ImageOperations = ImageOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self._ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ComposeImageOperation()
+                obj._deserialize(item)
+                self._ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeImageOperation(AbstractModel):
+    """视频编辑/合成任务 视频图像转换操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型，取值有：
+<li>Rotate：图像旋转。</li>
+<li>Flip：图像翻转。</li>
+        :type Type: str
+        :param _RotateAngle: 当 Type = Rotate 时有效。图像以中心点为原点进行旋转的角度，取值范围0~360。
+        :type RotateAngle: float
+        :param _FlipType: 当 Type = Flip 时有效。图像翻转动作，取值有： 
+<li>Horizental：水平翻转，即左右镜像。</li>
+<li>Vertical：垂直翻转，即上下镜像。</li>
+        :type FlipType: str
+        """
+        self._Type = None
+        self._RotateAngle = None
+        self._FlipType = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RotateAngle(self):
+        return self._RotateAngle
+
+    @RotateAngle.setter
+    def RotateAngle(self, RotateAngle):
+        self._RotateAngle = RotateAngle
+
+    @property
+    def FlipType(self):
+        return self._FlipType
+
+    @FlipType.setter
+    def FlipType(self, FlipType):
+        self._FlipType = FlipType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._RotateAngle = params.get("RotateAngle")
+        self._FlipType = params.get("FlipType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaConfig(AbstractModel):
+    """视频编辑/合成任务 信息。
+
+    关于 轨道、元素、时间轴 关系示意图：
+
+    ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item.png)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetInfo: 合成目标视频信息。
+        :type TargetInfo: :class:`tencentcloud.mps.v20190612.models.ComposeTargetInfo`
+        :param _Canvas: 合成目标视频的画布信息。
+        :type Canvas: :class:`tencentcloud.mps.v20190612.models.ComposeCanvas`
+        :param _Styles: 全局样式，和轨道 Tracks 配合使用，用于定于样式，如字幕样式。
+        :type Styles: list of ComposeStyles
+        :param _Tracks: 用于描述合成视频的轨道列表，包括：视频、音频、图片、文字等元素组成的多个轨道信息。关于轨道和时间：
+<ul><li>轨道时间轴即为目标视频时间轴。</li><li>时间轴上相同时间点的不同轨道上的元素会重叠：</li><ul><li>视频、图片、文字：按轨道顺序进行图像的叠加，轨道顺序靠前的在上面。</li><li>音频 ：进行混音。</li></ul></ul>注意：同一轨道中各个元素（除字幕元素外）的轨道时间不能重叠。
+        :type Tracks: list of ComposeMediaTrack
+        """
+        self._TargetInfo = None
+        self._Canvas = None
+        self._Styles = None
+        self._Tracks = None
+
+    @property
+    def TargetInfo(self):
+        return self._TargetInfo
+
+    @TargetInfo.setter
+    def TargetInfo(self, TargetInfo):
+        self._TargetInfo = TargetInfo
+
+    @property
+    def Canvas(self):
+        return self._Canvas
+
+    @Canvas.setter
+    def Canvas(self, Canvas):
+        self._Canvas = Canvas
+
+    @property
+    def Styles(self):
+        return self._Styles
+
+    @Styles.setter
+    def Styles(self, Styles):
+        self._Styles = Styles
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+
+    def _deserialize(self, params):
+        if params.get("TargetInfo") is not None:
+            self._TargetInfo = ComposeTargetInfo()
+            self._TargetInfo._deserialize(params.get("TargetInfo"))
+        if params.get("Canvas") is not None:
+            self._Canvas = ComposeCanvas()
+            self._Canvas._deserialize(params.get("Canvas"))
+        if params.get("Styles") is not None:
+            self._Styles = []
+            for item in params.get("Styles"):
+                obj = ComposeStyles()
+                obj._deserialize(item)
+                self._Styles.append(obj)
+        if params.get("Tracks") is not None:
+            self._Tracks = []
+            for item in params.get("Tracks"):
+                obj = ComposeMediaTrack()
+                obj._deserialize(item)
+                self._Tracks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaItem(AbstractModel):
+    """视频编辑/合成任务 轨道元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 元素类型。取值有：
+<li>Video：视频元素。</li>
+<li>Audio：音频元素。</li>
+<li>Image：图片元素。</li>
+<li>Transition：转场元素。</li>
+<li>Subtitle：字幕元素。</li>
+<li>Empty：空白元素。</li>
+        :type Type: str
+        :param _Video: 视频元素，当 Type = Video 时有效。
+        :type Video: :class:`tencentcloud.mps.v20190612.models.ComposeVideoItem`
+        :param _Audio: 音频元素，当 Type = Audio 时有效。
+        :type Audio: :class:`tencentcloud.mps.v20190612.models.ComposeAudioItem`
+        :param _Image: 图片元素，当 Type = Image 时有效。
+        :type Image: :class:`tencentcloud.mps.v20190612.models.ComposeImageItem`
+        :param _Transition: 转场元素，当 Type = Transition 时有效。
+        :type Transition: :class:`tencentcloud.mps.v20190612.models.ComposeTransitionItem`
+        :param _Subtitle: 字幕元素，当 Type = Subtitle 是有效。
+        :type Subtitle: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleItem`
+        :param _Empty: 空白元素，当 Type = Empty 时有效。用于时间轴的占位。
+        :type Empty: :class:`tencentcloud.mps.v20190612.models.ComposeEmptyItem`
+        """
+        self._Type = None
+        self._Video = None
+        self._Audio = None
+        self._Image = None
+        self._Transition = None
+        self._Subtitle = None
+        self._Empty = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def Audio(self):
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Transition(self):
+        return self._Transition
+
+    @Transition.setter
+    def Transition(self, Transition):
+        self._Transition = Transition
+
+    @property
+    def Subtitle(self):
+        return self._Subtitle
+
+    @Subtitle.setter
+    def Subtitle(self, Subtitle):
+        self._Subtitle = Subtitle
+
+    @property
+    def Empty(self):
+        return self._Empty
+
+    @Empty.setter
+    def Empty(self, Empty):
+        self._Empty = Empty
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Video") is not None:
+            self._Video = ComposeVideoItem()
+            self._Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self._Audio = ComposeAudioItem()
+            self._Audio._deserialize(params.get("Audio"))
+        if params.get("Image") is not None:
+            self._Image = ComposeImageItem()
+            self._Image._deserialize(params.get("Image"))
+        if params.get("Transition") is not None:
+            self._Transition = ComposeTransitionItem()
+            self._Transition._deserialize(params.get("Transition"))
+        if params.get("Subtitle") is not None:
+            self._Subtitle = ComposeSubtitleItem()
+            self._Subtitle._deserialize(params.get("Subtitle"))
+        if params.get("Empty") is not None:
+            self._Empty = ComposeEmptyItem()
+            self._Empty._deserialize(params.get("Empty"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaTrack(AbstractModel):
+    """视频编辑/合成任务 轨道信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 轨道类型，取值有：<ul><li>Video ：视频轨道。视频轨道可由以下元素组成：</li><ul><li>Video 元素</li><li>Image 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Audio ：音频轨道。音频轨道可由以下元素组成：</li><ul><li>Audio 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Title：文字轨道。文字轨道可由以下元素组成：</li><ul><li>Subtitle 元素</li></ul>
+        :type Type: str
+        :param _Items: 轨道上的元素列表。
+        :type Items: list of ComposeMediaItem
+        """
+        self._Type = None
+        self._Items = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ComposeMediaItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSourceMedia(AbstractModel):
+    """视频编辑/合成任务  媒体素材源信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体对应的素材ID，即 FileInfos 列表中对应素材的 ID。
+        :type FileId: str
+        :param _StartTime: 媒体位于素材的起始时间，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10% 的时刻。</li>
+默认：0s
+        :type StartTime: str
+        :param _EndTime: 媒体位于素材的结束时间，和 StartTime 构成媒体在源素材的时间区间，时间点支持 s、% 两种格式：
+<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+<li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10%的时间。</li>
+默认：如果对应轨道时长有设置，则默认轨道时长，否则为素材时长，无时长的素材默认为 1 秒。
+注意：至少需要大于 StartTime 0.02 秒。
+
+        :type EndTime: str
+        """
+        self._FileId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeStyles(AbstractModel):
+    """视频编辑/合成任务 样式信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 样式 Id，用于和轨道元素中的样式关联。
+注意：允许字母、数字、-、_ 组合，最长 32 字符。
+        :type Id: str
+        :param _Type: 样式类型，取值有：
+<li>Subtitle：字幕样式。</li>
+        :type Type: str
+        :param _Subtitle: 字幕样式信息，当 Type = Subtitle 时有效。
+        :type Subtitle: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleStyle`
+        """
+        self._Id = None
+        self._Type = None
+        self._Subtitle = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Subtitle(self):
+        return self._Subtitle
+
+    @Subtitle.setter
+    def Subtitle(self, Subtitle):
+        self._Subtitle = Subtitle
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        if params.get("Subtitle") is not None:
+            self._Subtitle = ComposeSubtitleStyle()
+            self._Subtitle._deserialize(params.get("Subtitle"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSubtitleItem(AbstractModel):
+    """视频编辑/合成任务 字幕元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StyleId: 字幕样式，Styles 列表中对应的 Subtitle样式的 ID。
+        :type StyleId: str
+        :param _Text: 字幕文本。
+        :type Text: str
+        :param _TrackTime: 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。	
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
+        self._StyleId = None
+        self._Text = None
+        self._TrackTime = None
+
+    @property
+    def StyleId(self):
+        return self._StyleId
+
+    @StyleId.setter
+    def StyleId(self, StyleId):
+        self._StyleId = StyleId
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+
+    def _deserialize(self, params):
+        self._StyleId = params.get("StyleId")
+        self._Text = params.get("Text")
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSubtitleStyle(AbstractModel):
+    """视频编辑/合成任务 字幕样式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Height: 字幕高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认为 FontSize 大小。
+        :type Height: str
+        :param _MarginBottom: 字幕距离下边框距离，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认：0px
+        :type MarginBottom: str
+        :param _FontType: 字体类型，支持：
+<li>SimHei：黑体（默认）。</li>
+<li>SimSun：宋体。</li>
+        :type FontType: str
+        :param _FontSize: 字体大小，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认：2%
+        :type FontSize: str
+        :param _FontBold: 是否使用粗体，和字体相关，可选值：
+<li>0：否（默认）。</li>
+<li>1：是。</li>
+        :type FontBold: int
+        :param _FontItalic: 是否使用斜体，和字体相关，可选值：
+<li>0：否（默认）。</li>
+<li>1：是。</li>
+        :type FontItalic: int
+        :param _FontColor: 字体颜色，格式：#RRGGBBAA。  
+默认值：0x000000FF（黑色）。  
+注意：其中 AA 部分指的是透明度，为可选。
+
+        :type FontColor: str
+        :param _FontAlign: 文字对齐方式：
+<li>Center：居中（默认）。</li>
+<li>Left：左对齐。</li>
+<li>Right：右对齐。</li>
+        :type FontAlign: str
+        :param _FontAlignMargin: 用于字幕对齐留白：
+<li>FontAlign=Left 时，表示距离左边距离。</li>
+<li>FontAlign=Right时，表示距离右边距离。</li>
+支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布宽度的百分比大小，如 10% 表示为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+        :type FontAlignMargin: str
+        :param _BorderWidth: 字体边框宽度，支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+默认： 0，表示不需要边框。
+        :type BorderWidth: str
+        :param _BorderColor: 边框颜色，当 BorderWidth 不为 0 时生效，其值格式和 FontColor 一致。
+        :type BorderColor: str
+        :param _BottomColor: 文字底色，其值格式和 FontColor 一致。  
+默认为空， 表示不使用底色。
+        :type BottomColor: str
+        """
+        self._Height = None
+        self._MarginBottom = None
+        self._FontType = None
+        self._FontSize = None
+        self._FontBold = None
+        self._FontItalic = None
+        self._FontColor = None
+        self._FontAlign = None
+        self._FontAlignMargin = None
+        self._BorderWidth = None
+        self._BorderColor = None
+        self._BottomColor = None
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def MarginBottom(self):
+        return self._MarginBottom
+
+    @MarginBottom.setter
+    def MarginBottom(self, MarginBottom):
+        self._MarginBottom = MarginBottom
+
+    @property
+    def FontType(self):
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontSize(self):
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontBold(self):
+        return self._FontBold
+
+    @FontBold.setter
+    def FontBold(self, FontBold):
+        self._FontBold = FontBold
+
+    @property
+    def FontItalic(self):
+        return self._FontItalic
+
+    @FontItalic.setter
+    def FontItalic(self, FontItalic):
+        self._FontItalic = FontItalic
+
+    @property
+    def FontColor(self):
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlign(self):
+        return self._FontAlign
+
+    @FontAlign.setter
+    def FontAlign(self, FontAlign):
+        self._FontAlign = FontAlign
+
+    @property
+    def FontAlignMargin(self):
+        return self._FontAlignMargin
+
+    @FontAlignMargin.setter
+    def FontAlignMargin(self, FontAlignMargin):
+        self._FontAlignMargin = FontAlignMargin
+
+    @property
+    def BorderWidth(self):
+        return self._BorderWidth
+
+    @BorderWidth.setter
+    def BorderWidth(self, BorderWidth):
+        self._BorderWidth = BorderWidth
+
+    @property
+    def BorderColor(self):
+        return self._BorderColor
+
+    @BorderColor.setter
+    def BorderColor(self, BorderColor):
+        self._BorderColor = BorderColor
+
+    @property
+    def BottomColor(self):
+        return self._BottomColor
+
+    @BottomColor.setter
+    def BottomColor(self, BottomColor):
+        self._BottomColor = BottomColor
+
+
+    def _deserialize(self, params):
+        self._Height = params.get("Height")
+        self._MarginBottom = params.get("MarginBottom")
+        self._FontType = params.get("FontType")
+        self._FontSize = params.get("FontSize")
+        self._FontBold = params.get("FontBold")
+        self._FontItalic = params.get("FontItalic")
+        self._FontColor = params.get("FontColor")
+        self._FontAlign = params.get("FontAlign")
+        self._FontAlignMargin = params.get("FontAlignMargin")
+        self._BorderWidth = params.get("BorderWidth")
+        self._BorderColor = params.get("BorderColor")
+        self._BottomColor = params.get("BottomColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTargetInfo(AbstractModel):
+    """视频编辑/合成任务 目标视频信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 封装容器格式，可选值：
+<li>mp4：视频文件（默认）。</li>
+<li>mp3：纯音频文件。</li>
+        :type Container: str
+        :param _RemoveVideo: 是否去除视频数据，可选值：
+<li>0：保留（默认）。</li>
+<li>1：去除。</li>
+        :type RemoveVideo: int
+        :param _RemoveAudio: 是否去除音频数据，可选值：
+<li>0：保留（默认）。</li>
+<li>1：去除。</li>
+        :type RemoveAudio: int
+        :param _VideoStream: 输出视频流信息。
+        :type VideoStream: :class:`tencentcloud.mps.v20190612.models.ComposeVideoStream`
+        :param _AudioStream: 输出音频流信息。
+        :type AudioStream: :class:`tencentcloud.mps.v20190612.models.ComposeAudioStream`
+        """
+        self._Container = None
+        self._RemoveVideo = None
+        self._RemoveAudio = None
+        self._VideoStream = None
+        self._AudioStream = None
+
+    @property
+    def Container(self):
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def RemoveVideo(self):
+        return self._RemoveVideo
+
+    @RemoveVideo.setter
+    def RemoveVideo(self, RemoveVideo):
+        self._RemoveVideo = RemoveVideo
+
+    @property
+    def RemoveAudio(self):
+        return self._RemoveAudio
+
+    @RemoveAudio.setter
+    def RemoveAudio(self, RemoveAudio):
+        self._RemoveAudio = RemoveAudio
+
+    @property
+    def VideoStream(self):
+        return self._VideoStream
+
+    @VideoStream.setter
+    def VideoStream(self, VideoStream):
+        self._VideoStream = VideoStream
+
+    @property
+    def AudioStream(self):
+        return self._AudioStream
+
+    @AudioStream.setter
+    def AudioStream(self, AudioStream):
+        self._AudioStream = AudioStream
+
+
+    def _deserialize(self, params):
+        self._Container = params.get("Container")
+        self._RemoveVideo = params.get("RemoveVideo")
+        self._RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoStream") is not None:
+            self._VideoStream = ComposeVideoStream()
+            self._VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("AudioStream") is not None:
+            self._AudioStream = ComposeAudioStream()
+            self._AudioStream._deserialize(params.get("AudioStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTrackTime(AbstractModel):
+    """视频编辑/合成任务 对应元素在目标视频轨道上的时间信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 元素在轨道上的起始时间，时间点支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+注意：不填则默认为前一个元素的结束时间，此时可以通过 ComposeEmptyItem 元素来进行占位，实现轨道起始时间设置。
+        :type Start: str
+        :param _Duration: 元素时长，时间支持：
+<li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+默认：取对应 ComposeSourceMedia 媒体的有效时长（即 EndTime-StartTime），没有 ComposeSourceMedia 则默认为 1 秒。
+        :type Duration: str
+        """
+        self._Start = None
+        self._Duration = None
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTransitionItem(AbstractModel):
+    """视频编辑/合成任务 转场元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: 元素时长，时间支持：<li>以 s 结尾，表示时间点单位为秒，如 3s 表示时间点为第3秒。</li>
+默认：1s
+注意：
+<li>必须是整数s，否则向下取整。</li>
+<li>转场 前后必须紧挨着两个不为 Empty 的元素。</li>
+<li>转场 Duration 必须小于前一个元素的 Duration，同时必须小于后一个元素的 Duration。</li>
+<li>进行转场处理的两个元素，第二个元素在轨道上的起始时间会自动调整为前一个元素的结束时间减去转场的 Duration。</li>
+        :type Duration: str
+        :param _Transitions: 转场操作列表。
+默认：淡入淡出。
+注意：图像转场操作和音频转场操作各自最多支持一个。
+        :type Transitions: list of ComposeTransitionOperation
+        """
+        self._Duration = None
+        self._Transitions = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Transitions(self):
+        return self._Transitions
+
+    @Transitions.setter
+    def Transitions(self, Transitions):
+        self._Transitions = Transitions
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        if params.get("Transitions") is not None:
+            self._Transitions = []
+            for item in params.get("Transitions"):
+                obj = ComposeTransitionOperation()
+                obj._deserialize(item)
+                self._Transitions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTransitionOperation(AbstractModel):
+    """视频编辑/合成任务 元素转场信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 转场类型。
+
+图像的转场操作，用于两个视频片段图像间的转场处理：
+<li>ImageFadeInFadeOut：图像淡入淡出。</li>
+<li>BowTieHorizontal：水平蝴蝶结。</li>
+<li>BowTieVertical：垂直蝴蝶结。</li>
+<li>ButterflyWaveScrawler：晃动。</li>
+<li>Cannabisleaf：枫叶。</li>
+<li>Circle：弧形收放。</li>
+<li>CircleCrop：圆环聚拢。</li>
+<li>Circleopen：椭圆聚拢。</li>
+<li>Crosswarp：横向翘曲。</li>
+<li>Cube：立方体。</li>
+<li>DoomScreenTransition：幕布。</li>
+<li>Doorway：门廊。</li>
+<li>Dreamy：波浪。</li>
+<li>DreamyZoom：水平聚拢。</li>
+<li>FilmBurn：火烧云。</li>
+<li>GlitchMemories：抖动。</li>
+<li>Heart：心形。</li>
+<li>InvertedPageCurl：翻页。</li>
+<li>Luma：腐蚀。</li>
+<li>Mosaic：九宫格。</li>
+<li>Pinwheel：风车。</li>
+<li>PolarFunction：椭圆扩散。</li>
+<li>PolkaDotsCurtain：弧形扩散。</li>
+<li>Radial：雷达扫描。</li>
+<li>RotateScaleFade：上下收放。</li>
+<li>Squeeze：上下聚拢。</li>
+<li>Swap：放大切换。</li>
+<li>Swirl：螺旋。</li>
+<li>UndulatingBurnOutSwirl：水流蔓延。</li>
+<li>Windowblinds：百叶窗。</li>
+<li>WipeDown：向下收起。</li>
+<li>WipeLeft：向左收起。</li>
+<li>WipeRight：向右收起。</li>
+<li>WipeUp：向上收起。</li>
+<li>ZoomInCircles：水波纹。</li> 
+音频的转场操作，用于两个音频片段间的转场处理：
+<li>AudioFadeInFadeOut：声音淡入淡出。</li>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeVideoItem(AbstractModel):
+    """视频编辑/合成任务 视频元素信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: 元素对应媒体信息。
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _XPos: 元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+默认：50%。
+        :type XPos: str
+        :param _YPos: 元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+默认：50%。
+        :type YPos: str
+        :param _Width: 视频片段的宽度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :type Width: str
+        :param _Height: 元素的高度。支持 %、px 两种格式：
+<li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+<li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+为空（或0） 的场景：
+<li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+<li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+<li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+        :type Height: str
+        :param _ImageOperations: 对图像画面进行的操作，如图像旋转等。
+        :type ImageOperations: list of ComposeImageOperation
+        :param _AudioOperations: 对音频进行操作，如静音等。
+        :type AudioOperations: list of ComposeAudioOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._XPos = None
+        self._YPos = None
+        self._Width = None
+        self._Height = None
+        self._ImageOperations = None
+        self._AudioOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageOperations(self):
+        return self._ImageOperations
+
+    @ImageOperations.setter
+    def ImageOperations(self, ImageOperations):
+        self._ImageOperations = ImageOperations
+
+    @property
+    def AudioOperations(self):
+        return self._AudioOperations
+
+    @AudioOperations.setter
+    def AudioOperations(self, AudioOperations):
+        self._AudioOperations = AudioOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self._ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ComposeImageOperation()
+                obj._deserialize(item)
+                self._ImageOperations.append(obj)
+        if params.get("AudioOperations") is not None:
+            self._AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = ComposeAudioOperation()
+                obj._deserialize(item)
+                self._AudioOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeVideoStream(AbstractModel):
+    """视频编辑/合成任务 视频流信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: 视频流的编码方式，可选值：
+<li>H.264：H.264 编码（默认）。</li>
+        :type Codec: str
+        :param _Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。  
+默认值：0，表示和第一个视频帧率一致。
+        :type Fps: int
+        """
+        self._Codec = None
+        self._Fps = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18137,6 +19708,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _ScheduleTask: 编排处理任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        :param _LiveScheduleTask: 直播编排处理任务信息，仅当 TaskType 为 LiveScheduleTask，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveScheduleTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18154,6 +19728,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._SessionContext = None
         self._ExtInfo = None
         self._ScheduleTask = None
+        self._LiveScheduleTask = None
         self._RequestId = None
 
     @property
@@ -18269,6 +19844,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ScheduleTask = ScheduleTask
 
     @property
+    def LiveScheduleTask(self):
+        return self._LiveScheduleTask
+
+    @LiveScheduleTask.setter
+    def LiveScheduleTask(self, LiveScheduleTask):
+        self._LiveScheduleTask = LiveScheduleTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -18302,6 +19885,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("ScheduleTask") is not None:
             self._ScheduleTask = ScheduleTask()
             self._ScheduleTask._deserialize(params.get("ScheduleTask"))
+        if params.get("LiveScheduleTask") is not None:
+            self._LiveScheduleTask = LiveScheduleTask()
+            self._LiveScheduleTask._deserialize(params.get("LiveScheduleTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -19272,14 +20858,20 @@ class EditMediaFileInfo(AbstractModel):
         r"""
         :param _InputInfo: 视频的输入信息。
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _StartTimeOffset: 视频剪辑的起始时间偏移，单位：秒。
+        :param _StartTimeOffset: 【剪辑】任务生效，视频剪辑的起始时间偏移，单位：秒。
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 视频剪辑的结束时间偏移，单位：秒。
+        :param _EndTimeOffset: 【剪辑】任务生效，视频剪辑的结束时间偏移，单位：秒。
         :type EndTimeOffset: float
+        :param _Id: 【合成】任务必选，用于轨道元素中媒体关联源素材 ID。
+
+注意：允许字母、数字、-、_ ，最长 32 字符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         """
         self._InputInfo = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._Id = None
 
     @property
     def InputInfo(self):
@@ -19305,6 +20897,14 @@ class EditMediaFileInfo(AbstractModel):
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -19312,6 +20912,7 @@ class EditMediaFileInfo(AbstractModel):
             self._InputInfo._deserialize(params.get("InputInfo"))
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19330,8 +20931,10 @@ class EditMediaOutputConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _Container: 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Container: str
         :param _Type: 剪辑模式，可选值 normal、fast。默认是精确剪辑 normal
+注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
         self._Container = None
@@ -19379,9 +20982,16 @@ class EditMediaRequest(AbstractModel):
         :param _OutputStorage: 媒体处理输出文件的目标存储。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: 媒体处理输出文件的目标路径。
+
+注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
+
         :type OutputObjectPath: str
-        :param _OutputConfig: 编辑后生成的文件配置。
+        :param _OutputConfig: 【剪辑】任务生成的文件配置。
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
+        :param _ComposeConfig: 【合成】任务配置。
+
+注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+        :type ComposeConfig: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
         :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
@@ -19395,6 +21005,7 @@ class EditMediaRequest(AbstractModel):
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._OutputConfig = None
+        self._ComposeConfig = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -19431,6 +21042,14 @@ class EditMediaRequest(AbstractModel):
     @OutputConfig.setter
     def OutputConfig(self, OutputConfig):
         self._OutputConfig = OutputConfig
+
+    @property
+    def ComposeConfig(self):
+        return self._ComposeConfig
+
+    @ComposeConfig.setter
+    def ComposeConfig(self, ComposeConfig):
+        self._ComposeConfig = ComposeConfig
 
     @property
     def TaskNotifyConfig(self):
@@ -19479,6 +21098,9 @@ class EditMediaRequest(AbstractModel):
         if params.get("OutputConfig") is not None:
             self._OutputConfig = EditMediaOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
+        if params.get("ComposeConfig") is not None:
+            self._ComposeConfig = ComposeMediaConfig()
+            self._ComposeConfig._deserialize(params.get("ComposeConfig"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -21647,8 +23269,10 @@ class HeadTailParameter(AbstractModel):
     def __init__(self):
         r"""
         :param _HeadSet: 片头列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type HeadSet: list of MediaInputInfo
         :param _TailSet: 片尾列表。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TailSet: list of MediaInputInfo
         """
         self._HeadSet = None
@@ -22377,6 +24001,527 @@ class InputAddress(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveActivityResItem(AbstractModel):
+    """直播编排子任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LiveRecordTask: 直播录制任务输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveRecordTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        """
+        self._LiveRecordTask = None
+
+    @property
+    def LiveRecordTask(self):
+        return self._LiveRecordTask
+
+    @LiveRecordTask.setter
+    def LiveRecordTask(self, LiveRecordTask):
+        self._LiveRecordTask = LiveRecordTask
+
+
+    def _deserialize(self, params):
+        if params.get("LiveRecordTask") is not None:
+            self._LiveRecordTask = LiveScheduleLiveRecordTaskResult()
+            self._LiveRecordTask._deserialize(params.get("LiveRecordTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveActivityResult(AbstractModel):
+    """直播编排任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityType: 原子任务类型。
+<li>LiveRecord：直播录制。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActivityType: str
+        :param _LiveActivityResItem: 原子任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveActivityResItem: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
+        """
+        self._ActivityType = None
+        self._LiveActivityResItem = None
+
+    @property
+    def ActivityType(self):
+        return self._ActivityType
+
+    @ActivityType.setter
+    def ActivityType(self, ActivityType):
+        self._ActivityType = ActivityType
+
+    @property
+    def LiveActivityResItem(self):
+        return self._LiveActivityResItem
+
+    @LiveActivityResItem.setter
+    def LiveActivityResItem(self, LiveActivityResItem):
+        self._LiveActivityResItem = LiveActivityResItem
+
+
+    def _deserialize(self, params):
+        self._ActivityType = params.get("ActivityType")
+        if params.get("LiveActivityResItem") is not None:
+            self._LiveActivityResItem = LiveActivityResItem()
+            self._LiveActivityResItem._deserialize(params.get("LiveActivityResItem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordFile(AbstractModel):
+    """直播录制输出文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 直播录制文件地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _Size: 直播录制文件大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _Duration: 直播录制文件时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _StartTime: 直播录制文件开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 直播录制文件结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._Url = None
+        self._Size = None
+        self._Duration = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Size = params.get("Size")
+        self._Duration = params.get("Duration")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordResult(AbstractModel):
+    """直播录制结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: 直播录制文件的目标存储。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _FileList: 直播录制文件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileList: list of LiveRecordFile
+        """
+        self._OutputStorage = None
+        self._FileList = None
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def FileList(self):
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = LiveRecordFile()
+                obj._deserialize(item)
+                self._FileList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordTaskInput(AbstractModel):
+    """直播录制任务输入参数类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 直播录制模板 ID。
+        :type Definition: int
+        :param _OutputStorage: 直播录制后文件的目标存储，不填则继承上层的 OutputStorage 值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: 直播录制后文件的输出路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputObjectPath: str
+        """
+        self._Definition = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveScheduleLiveRecordTaskResult(AbstractModel):
+    """直播编排直播录制任务结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCodeExt: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Input: 直播录制任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
+        :param _Output: 直播录制任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
+        :param _BeginProcessTime: 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginProcessTime: str
+        :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = LiveRecordTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = LiveRecordResult()
+            self._Output._deserialize(params.get("Output"))
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveScheduleTask(AbstractModel):
+    """直播编排任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 直播编排任务 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _ErrCode: 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: int
+        :param _Message: 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _Url: 直播流 URL。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _LiveActivityResultSet: 直播编排任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveActivityResultSet: list of LiveActivityResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Url = None
+        self._LiveActivityResultSet = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LiveActivityResultSet(self):
+        return self._LiveActivityResultSet
+
+    @LiveActivityResultSet.setter
+    def LiveActivityResultSet(self, LiveActivityResultSet):
+        self._LiveActivityResultSet = LiveActivityResultSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._Url = params.get("Url")
+        if params.get("LiveActivityResultSet") is not None:
+            self._LiveActivityResultSet = []
+            for item in params.get("LiveActivityResultSet"):
+                obj = LiveActivityResult()
+                obj._deserialize(item)
+                self._LiveActivityResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31963,6 +34108,12 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type SessionId: str
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
+        :param _ScheduleId: 直播编排ID。
+注意1：对于OutputStorage、OutputDir参数：
+<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
+注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+        :type ScheduleId: int
         """
         self._Url = None
         self._TaskNotifyConfig = None
@@ -31974,6 +34125,7 @@ class ProcessLiveStreamRequest(AbstractModel):
         self._AiQualityControlTask = None
         self._SessionId = None
         self._SessionContext = None
+        self._ScheduleId = None
 
     @property
     def Url(self):
@@ -32055,6 +34207,14 @@ class ProcessLiveStreamRequest(AbstractModel):
     def SessionContext(self, SessionContext):
         self._SessionContext = SessionContext
 
+    @property
+    def ScheduleId(self):
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
@@ -32079,6 +34239,7 @@ class ProcessLiveStreamRequest(AbstractModel):
             self._AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
+        self._ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34941,6 +37102,11 @@ class SchedulesInfo(AbstractModel):
         :param _ScheduleName: 编排名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleName: str
+        :param _Type: 编排类型，可选值：
+ <li>Preset：系统预置编排；</li>
+<li>Custom：用户自定义编排。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         :param _Status: 编排状态，取值范围：
 Enabled：已启用，
 Disabled：已禁用。
@@ -34970,6 +37136,7 @@ Disabled：已禁用。
         """
         self._ScheduleId = None
         self._ScheduleName = None
+        self._Type = None
         self._Status = None
         self._Trigger = None
         self._Activities = None
@@ -34994,6 +37161,14 @@ Disabled：已禁用。
     @ScheduleName.setter
     def ScheduleName(self, ScheduleName):
         self._ScheduleName = ScheduleName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Status(self):
@@ -35063,6 +37238,7 @@ Disabled：已禁用。
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
         self._ScheduleName = params.get("ScheduleName")
+        self._Type = params.get("Type")
         self._Status = params.get("Status")
         if params.get("Trigger") is not None:
             self._Trigger = WorkflowTrigger()
@@ -36239,16 +38415,6 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CmqModel: CMQ或TDMQ-CMQ 的模型，有 Queue 和 Topic 两种。
-        :type CmqModel: str
-        :param _CmqRegion: CMQ或TDMQ-CMQ 的园区，如 sh，bj 等。
-        :type CmqRegion: str
-        :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的主题名。
-        :type TopicName: str
-        :param _QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的队列名。
-        :type QueueName: str
-        :param _NotifyMode: 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
-        :type NotifyMode: str
         :param _NotifyType: 通知类型，可选值：
 <li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
 <li>TDMQ-CMQ：消息队列</li>
@@ -36257,21 +38423,55 @@ class TaskNotifyConfig(AbstractModel):
 <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
 <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
         :type NotifyType: str
+        :param _NotifyMode: 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
+        :type NotifyMode: str
         :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
+        :param _CmqModel: CMQ或TDMQ-CMQ 的模型，有 Queue 和 Topic 两种。
+        :type CmqModel: str
+        :param _CmqRegion: CMQ或TDMQ-CMQ 的园区，如 sh，bj 等。
+        :type CmqRegion: str
+        :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的主题名。
+        :type TopicName: str
+        :param _QueueName: 当模型为 Queue 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的队列名。
+        :type QueueName: str
         :param _AwsSQS: AWS SQS 回调，NotifyType为 AWS-SQS 时必填。
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
         """
+        self._NotifyType = None
+        self._NotifyMode = None
+        self._NotifyUrl = None
         self._CmqModel = None
         self._CmqRegion = None
         self._TopicName = None
         self._QueueName = None
-        self._NotifyMode = None
-        self._NotifyType = None
-        self._NotifyUrl = None
         self._AwsSQS = None
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def NotifyMode(self):
+        return self._NotifyMode
+
+    @NotifyMode.setter
+    def NotifyMode(self, NotifyMode):
+        self._NotifyMode = NotifyMode
+
+    @property
+    def NotifyUrl(self):
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
 
     @property
     def CmqModel(self):
@@ -36306,30 +38506,6 @@ class TaskNotifyConfig(AbstractModel):
         self._QueueName = QueueName
 
     @property
-    def NotifyMode(self):
-        return self._NotifyMode
-
-    @NotifyMode.setter
-    def NotifyMode(self, NotifyMode):
-        self._NotifyMode = NotifyMode
-
-    @property
-    def NotifyType(self):
-        return self._NotifyType
-
-    @NotifyType.setter
-    def NotifyType(self, NotifyType):
-        self._NotifyType = NotifyType
-
-    @property
-    def NotifyUrl(self):
-        return self._NotifyUrl
-
-    @NotifyUrl.setter
-    def NotifyUrl(self, NotifyUrl):
-        self._NotifyUrl = NotifyUrl
-
-    @property
     def AwsSQS(self):
         return self._AwsSQS
 
@@ -36339,13 +38515,13 @@ class TaskNotifyConfig(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._NotifyType = params.get("NotifyType")
+        self._NotifyMode = params.get("NotifyMode")
+        self._NotifyUrl = params.get("NotifyUrl")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._TopicName = params.get("TopicName")
         self._QueueName = params.get("QueueName")
-        self._NotifyMode = params.get("NotifyMode")
-        self._NotifyType = params.get("NotifyType")
-        self._NotifyUrl = params.get("NotifyUrl")
         if params.get("AwsSQS") is not None:
             self._AwsSQS = AwsSQS()
             self._AwsSQS._deserialize(params.get("AwsSQS"))

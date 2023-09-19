@@ -216,6 +216,144 @@ class AccountVpcInfoOutput(AbstractModel):
         
 
 
+class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
+    """AddSpecifyPrivateZoneVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域id
+        :type ZoneId: str
+        :param _VpcSet: 本次新增的vpc信息
+        :type VpcSet: list of VpcInfo
+        :param _AccountVpcSet: 本次新增关联账户vpc信息
+        :type AccountVpcSet: list of AccountVpcInfo
+        """
+        self._ZoneId = None
+        self._VpcSet = None
+        self._AccountVpcSet = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VpcSet(self):
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def AccountVpcSet(self):
+        return self._AccountVpcSet
+
+    @AccountVpcSet.setter
+    def AccountVpcSet(self, AccountVpcSet):
+        self._AccountVpcSet = AccountVpcSet
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("VpcSet") is not None:
+            self._VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self._AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self._AccountVpcSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
+    """AddSpecifyPrivateZoneVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: zone id
+        :type ZoneId: str
+        :param _VpcSet: 本次新增的vpc
+        :type VpcSet: list of VpcInfo
+        :param _AccountVpcSet: 本次新增的关联账号vpc
+        :type AccountVpcSet: list of AccountVpcInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneId = None
+        self._VpcSet = None
+        self._AccountVpcSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VpcSet(self):
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def AccountVpcSet(self):
+        return self._AccountVpcSet
+
+    @AccountVpcSet.setter
+    def AccountVpcSet(self, AccountVpcSet):
+        self._AccountVpcSet = AccountVpcSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("VpcSet") is not None:
+            self._VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self._AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self._AccountVpcSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AuditLog(AbstractModel):
     """操作日志
 
@@ -1047,6 +1185,144 @@ class DeletePrivateZoneResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
+    """DeleteSpecifyPrivateZoneVpc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域id
+        :type ZoneId: str
+        :param _VpcSet: 本次删除的VPC
+        :type VpcSet: list of VpcInfo
+        :param _AccountVpcSet: 本次删除的关联账户VPC
+        :type AccountVpcSet: list of AccountVpcInfo
+        """
+        self._ZoneId = None
+        self._VpcSet = None
+        self._AccountVpcSet = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VpcSet(self):
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def AccountVpcSet(self):
+        return self._AccountVpcSet
+
+    @AccountVpcSet.setter
+    def AccountVpcSet(self, AccountVpcSet):
+        self._AccountVpcSet = AccountVpcSet
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("VpcSet") is not None:
+            self._VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self._AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self._AccountVpcSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
+    """DeleteSpecifyPrivateZoneVpc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 私有域id
+        :type ZoneId: str
+        :param _VpcSet: 本次删除的VPC
+        :type VpcSet: list of VpcInfo
+        :param _AccountVpcSet: 本次删除的关联账户的VPC
+        :type AccountVpcSet: list of AccountVpcInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneId = None
+        self._VpcSet = None
+        self._AccountVpcSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VpcSet(self):
+        return self._VpcSet
+
+    @VpcSet.setter
+    def VpcSet(self, VpcSet):
+        self._VpcSet = VpcSet
+
+    @property
+    def AccountVpcSet(self):
+        return self._AccountVpcSet
+
+    @AccountVpcSet.setter
+    def AccountVpcSet(self, AccountVpcSet):
+        self._AccountVpcSet = AccountVpcSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("VpcSet") is not None:
+            self._VpcSet = []
+            for item in params.get("VpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcSet.append(obj)
+        if params.get("AccountVpcSet") is not None:
+            self._AccountVpcSet = []
+            for item in params.get("AccountVpcSet"):
+                obj = AccountVpcInfo()
+                obj._deserialize(item)
+                self._AccountVpcSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

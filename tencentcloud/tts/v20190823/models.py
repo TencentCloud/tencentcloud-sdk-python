@@ -49,6 +49,10 @@ class CreateTtsTaskRequest(AbstractModel):
         :type EnableSubtitle: bool
         :param _VoiceoverDialogueSplit: 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
         :type VoiceoverDialogueSplit: bool
+        :param _EmotionCategory: 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、撒娇(sajiao)、厌恶(disgusted)、震惊(amaze)、平静(peaceful)、兴奋(exciting)、傲娇(aojiao)、解说(jieshuo)
+        :type EmotionCategory: str
+        :param _EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效。
+        :type EmotionIntensity: int
         """
         self._Text = None
         self._ModelType = None
@@ -62,6 +66,8 @@ class CreateTtsTaskRequest(AbstractModel):
         self._CallbackUrl = None
         self._EnableSubtitle = None
         self._VoiceoverDialogueSplit = None
+        self._EmotionCategory = None
+        self._EmotionIntensity = None
 
     @property
     def Text(self):
@@ -159,6 +165,22 @@ class CreateTtsTaskRequest(AbstractModel):
     def VoiceoverDialogueSplit(self, VoiceoverDialogueSplit):
         self._VoiceoverDialogueSplit = VoiceoverDialogueSplit
 
+    @property
+    def EmotionCategory(self):
+        return self._EmotionCategory
+
+    @EmotionCategory.setter
+    def EmotionCategory(self, EmotionCategory):
+        self._EmotionCategory = EmotionCategory
+
+    @property
+    def EmotionIntensity(self):
+        return self._EmotionIntensity
+
+    @EmotionIntensity.setter
+    def EmotionIntensity(self, EmotionIntensity):
+        self._EmotionIntensity = EmotionIntensity
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -173,6 +195,8 @@ class CreateTtsTaskRequest(AbstractModel):
         self._CallbackUrl = params.get("CallbackUrl")
         self._EnableSubtitle = params.get("EnableSubtitle")
         self._VoiceoverDialogueSplit = params.get("VoiceoverDialogueSplit")
+        self._EmotionCategory = params.get("EmotionCategory")
+        self._EmotionIntensity = params.get("EmotionIntensity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

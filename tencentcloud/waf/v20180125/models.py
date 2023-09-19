@@ -2914,6 +2914,9 @@ class ClbDomainsInfo(AbstractModel):
         :param _CdcClusters: cdc类型会增加集群信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: str
+        :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: str
         """
         self._Domain = None
         self._DomainId = None
@@ -2927,6 +2930,7 @@ class ClbDomainsInfo(AbstractModel):
         self._AlbType = None
         self._IpHeaders = None
         self._CdcClusters = None
+        self._CloudType = None
 
     @property
     def Domain(self):
@@ -3024,6 +3028,14 @@ class ClbDomainsInfo(AbstractModel):
     def CdcClusters(self, CdcClusters):
         self._CdcClusters = CdcClusters
 
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -3043,6 +3055,7 @@ class ClbDomainsInfo(AbstractModel):
         self._AlbType = params.get("AlbType")
         self._IpHeaders = params.get("IpHeaders")
         self._CdcClusters = params.get("CdcClusters")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12376,13 +12389,13 @@ class HostRecord(AbstractModel):
         :type DomainId: str
         :param _MainDomain: 主域名，入参时为空
         :type MainDomain: str
-        :param _Mode: waf模式，同saas waf保持一致
+        :param _Mode: 规则引擎防护模式，0 观察模式，1拦截模式
         :type Mode: int
         :param _Status: waf和LD的绑定，0：没有绑定，1：绑定
         :type Status: int
         :param _State: 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
         :type State: int
-        :param _Engine: 使用的规则，同saas waf保持一致
+        :param _Engine: 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
         :type Engine: int
         :param _IsCdn: 是否开启代理，0：不开启，1：开启
         :type IsCdn: int
@@ -12411,6 +12424,9 @@ class HostRecord(AbstractModel):
         :param _EngineType: 规则引擎类型， 1: menshen,   2:tiga
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: int
+        :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: str
         """
         self._Domain = None
         self._DomainId = None
@@ -12430,6 +12446,7 @@ class HostRecord(AbstractModel):
         self._AlbType = None
         self._IpHeaders = None
         self._EngineType = None
+        self._CloudType = None
 
     @property
     def Domain(self):
@@ -12575,6 +12592,14 @@ class HostRecord(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -12600,6 +12625,7 @@ class HostRecord(AbstractModel):
         self._AlbType = params.get("AlbType")
         self._IpHeaders = params.get("IpHeaders")
         self._EngineType = params.get("EngineType")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13412,6 +13438,9 @@ class LoadBalancer(AbstractModel):
         :param _LoadBalancerType: 负载均衡的网络类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
+        :param _LoadBalancerDomain: 负载均衡的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDomain: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -13424,6 +13453,7 @@ class LoadBalancer(AbstractModel):
         self._Zone = None
         self._NumericalVpcId = None
         self._LoadBalancerType = None
+        self._LoadBalancerDomain = None
 
     @property
     def LoadBalancerId(self):
@@ -13513,6 +13543,14 @@ class LoadBalancer(AbstractModel):
     def LoadBalancerType(self, LoadBalancerType):
         self._LoadBalancerType = LoadBalancerType
 
+    @property
+    def LoadBalancerDomain(self):
+        return self._LoadBalancerDomain
+
+    @LoadBalancerDomain.setter
+    def LoadBalancerDomain(self, LoadBalancerDomain):
+        self._LoadBalancerDomain = LoadBalancerDomain
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -13526,6 +13564,7 @@ class LoadBalancer(AbstractModel):
         self._Zone = params.get("Zone")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
+        self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13576,6 +13615,9 @@ class LoadBalancerPackageNew(AbstractModel):
         :param _LoadBalancerType: CLB类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoadBalancerType: str
+        :param _LoadBalancerDomain: 负载均衡器的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoadBalancerDomain: str
         """
         self._ListenerId = None
         self._ListenerName = None
@@ -13588,6 +13630,7 @@ class LoadBalancerPackageNew(AbstractModel):
         self._Zone = None
         self._NumericalVpcId = None
         self._LoadBalancerType = None
+        self._LoadBalancerDomain = None
 
     @property
     def ListenerId(self):
@@ -13677,6 +13720,14 @@ class LoadBalancerPackageNew(AbstractModel):
     def LoadBalancerType(self, LoadBalancerType):
         self._LoadBalancerType = LoadBalancerType
 
+    @property
+    def LoadBalancerDomain(self):
+        return self._LoadBalancerDomain
+
+    @LoadBalancerDomain.setter
+    def LoadBalancerDomain(self, LoadBalancerDomain):
+        self._LoadBalancerDomain = LoadBalancerDomain
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -13690,6 +13741,7 @@ class LoadBalancerPackageNew(AbstractModel):
         self._Zone = params.get("Zone")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
+        self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15842,13 +15894,24 @@ class ModifyInstanceNameRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _InstanceName: 新名称
+        :type InstanceName: str
         :param _InstanceID: 实例id
         :type InstanceID: str
         :param _Edition: 版本
         :type Edition: str
         """
+        self._InstanceName = None
         self._InstanceID = None
         self._Edition = None
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
     @property
     def InstanceID(self):
@@ -15868,6 +15931,7 @@ class ModifyInstanceNameRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
         self._InstanceID = params.get("InstanceID")
         self._Edition = params.get("Edition")
         memeber_set = set(params.keys())
@@ -16306,7 +16370,7 @@ class ModifySpartaProtectionRequest(AbstractModel):
         :type SniHost: str
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header
         :type IpHeaders: list of str
-        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+        :param _XFFReset: 0:关闭xff重置；1:开启xff重置，只有在IsCdn=0时可以开启
         :type XFFReset: int
         """
         self._Domain = None
@@ -19550,6 +19614,9 @@ class UserDomainInfo(AbstractModel):
         :param _Cls: 指定域名是否写cls的开关 1:写 0:不写
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cls: int
+        :param _CloudType: 标记是否是混合云接入。hybrid表示混合云接入域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: str
         """
         self._Appid = None
         self._Domain = None
@@ -19560,6 +19627,7 @@ class UserDomainInfo(AbstractModel):
         self._Level = None
         self._WriteConfig = None
         self._Cls = None
+        self._CloudType = None
 
     @property
     def Appid(self):
@@ -19633,6 +19701,14 @@ class UserDomainInfo(AbstractModel):
     def Cls(self, Cls):
         self._Cls = Cls
 
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._Appid = params.get("Appid")
@@ -19644,6 +19720,7 @@ class UserDomainInfo(AbstractModel):
         self._Level = params.get("Level")
         self._WriteConfig = params.get("WriteConfig")
         self._Cls = params.get("Cls")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

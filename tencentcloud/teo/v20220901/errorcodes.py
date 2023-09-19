@@ -395,6 +395,9 @@ INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 # 配置项参数错误。
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
+# Shield Space 未绑定源站，请先绑定源站后重试。
+INVALIDPARAMETER_SPACENOTBINDORIGIN = 'InvalidParameter.SpaceNotBindOrigin'
+
 # 资源存在错误。
 INVALIDPARAMETER_TARGET = 'InvalidParameter.Target'
 

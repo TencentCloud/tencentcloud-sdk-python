@@ -10517,6 +10517,153 @@ class DescribeRocketMQNamespacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQPublicAccessPointRequest(AbstractModel):
+    """DescribeRocketMQPublicAccessPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID，当前只支持专享集群
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQPublicAccessPointResponse(AbstractModel):
+    """DescribeRocketMQPublicAccessPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 公网接入点状态：
+0， 已开启
+1， 已关闭
+2，开启中
+3，关闭中
+4，修改中
+        :type Status: int
+        :param _PayStatus: 支付状态：
+0, 未知
+1，正常
+2，欠费
+        :type PayStatus: int
+        :param _AccessUrl: 接入点地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessUrl: str
+        :param _Rules: 安全访问规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of PublicAccessRule
+        :param _Bandwidth: 带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Bandwidth: int
+        :param _PayMode: 付费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._PayStatus = None
+        self._AccessUrl = None
+        self._Rules = None
+        self._Bandwidth = None
+        self._PayMode = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PayStatus(self):
+        return self._PayStatus
+
+    @PayStatus.setter
+    def PayStatus(self, PayStatus):
+        self._PayStatus = PayStatus
+
+    @property
+    def AccessUrl(self):
+        return self._AccessUrl
+
+    @AccessUrl.setter
+    def AccessUrl(self, AccessUrl):
+        self._AccessUrl = AccessUrl
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._PayStatus = params.get("PayStatus")
+        self._AccessUrl = params.get("AccessUrl")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._Bandwidth = params.get("Bandwidth")
+        self._PayMode = params.get("PayMode")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQTopicMsgsRequest(AbstractModel):
     """DescribeRocketMQTopicMsgs请求参数结构体
 
@@ -13289,6 +13436,136 @@ class ModifyEnvironmentRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPublicNetworkAccessPointRequest(AbstractModel):
+    """ModifyPublicNetworkAccessPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群名字
+        :type ClusterId: str
+        :param _PublicNetworkAccessPointStatus: 是否开启
+        :type PublicNetworkAccessPointStatus: bool
+        :param _SwitchOwner: 必填，公网控制台的开关/Vpc控制台的开关，示例值，Public/Vpc
+        :type SwitchOwner: str
+        :param _VpcId: Vpc
+        :type VpcId: str
+        :param _SubnetId: 子网
+        :type SubnetId: str
+        :param _SelectIp: 子网下面指定ip作为vpc接入点
+        :type SelectIp: str
+        """
+        self._ClusterId = None
+        self._PublicNetworkAccessPointStatus = None
+        self._SwitchOwner = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._SelectIp = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PublicNetworkAccessPointStatus(self):
+        return self._PublicNetworkAccessPointStatus
+
+    @PublicNetworkAccessPointStatus.setter
+    def PublicNetworkAccessPointStatus(self, PublicNetworkAccessPointStatus):
+        self._PublicNetworkAccessPointStatus = PublicNetworkAccessPointStatus
+
+    @property
+    def SwitchOwner(self):
+        return self._SwitchOwner
+
+    @SwitchOwner.setter
+    def SwitchOwner(self, SwitchOwner):
+        self._SwitchOwner = SwitchOwner
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SelectIp(self):
+        return self._SelectIp
+
+    @SelectIp.setter
+    def SelectIp(self, SelectIp):
+        self._SelectIp = SelectIp
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PublicNetworkAccessPointStatus = params.get("PublicNetworkAccessPointStatus")
+        self._SwitchOwner = params.get("SwitchOwner")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._SelectIp = params.get("SelectIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPublicNetworkAccessPointResponse(AbstractModel):
+    """ModifyPublicNetworkAccessPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyResult: 修改结果
+        :type ModifyResult: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModifyResult = None
+        self._RequestId = None
+
+    @property
+    def ModifyResult(self):
+        return self._ModifyResult
+
+    @ModifyResult.setter
+    def ModifyResult(self, ModifyResult):
+        self._ModifyResult = ModifyResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModifyResult = params.get("ModifyResult")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRabbitMQUserRequest(AbstractModel):
     """ModifyRabbitMQUser请求参数结构体
 
@@ -14700,6 +14977,64 @@ class PrometheusEndpointInfo(AbstractModel):
         if params.get("VpcEndpointInfo") is not None:
             self._VpcEndpointInfo = VpcEndpointInfo()
             self._VpcEndpointInfo._deserialize(params.get("VpcEndpointInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublicAccessRule(AbstractModel):
+    """公网访问安全规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpRule: ip网段信息
+        :type IpRule: str
+        :param _Allow: 允许或者拒绝
+        :type Allow: bool
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._IpRule = None
+        self._Allow = None
+        self._Remark = None
+
+    @property
+    def IpRule(self):
+        return self._IpRule
+
+    @IpRule.setter
+    def IpRule(self, IpRule):
+        self._IpRule = IpRule
+
+    @property
+    def Allow(self):
+        return self._Allow
+
+    @Allow.setter
+    def Allow(self, Allow):
+        self._Allow = Allow
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._IpRule = params.get("IpRule")
+        self._Allow = params.get("Allow")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19750,6 +20085,117 @@ class SendRocketMQMessageResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._MsgId = params.get("MsgId")
+        self._RequestId = params.get("RequestId")
+
+
+class SetRocketMQPublicAccessPointRequest(AbstractModel):
+    """SetRocketMQPublicAccessPoint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID，当前只支持专享集群
+        :type InstanceId: str
+        :param _Enabled: 开启或关闭访问
+        :type Enabled: bool
+        :param _Bandwidth: 带宽大小，开启或者调整公网时必须指定，Mbps为单位
+        :type Bandwidth: int
+        :param _PayMode: 付费模式，开启公网时必须指定，0为按小时计费，1为包年包月，当前只支持按小时计费
+        :type PayMode: int
+        :param _Rules: 公网访问安全规则列表，Enabled为true时必须传入
+        :type Rules: list of PublicAccessRule
+        """
+        self._InstanceId = None
+        self._Enabled = None
+        self._Bandwidth = None
+        self._PayMode = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Enabled = params.get("Enabled")
+        self._Bandwidth = params.get("Bandwidth")
+        self._PayMode = params.get("PayMode")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetRocketMQPublicAccessPointResponse(AbstractModel):
+    """SetRocketMQPublicAccessPoint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
