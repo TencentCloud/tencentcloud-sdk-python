@@ -1310,73 +1310,115 @@ class AddSpartaProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要防御的域名
+        :param _Domain: 需要防护的域名
         :type Domain: str
-        :param _CertType: 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+        :param _CertType: 证书类型。
+0：仅配置HTTP监听端口，没有证书
+1：证书来源为自有证书
+2：证书来源为托管证书
         :type CertType: int
-        :param _IsCdn: 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
+        :param _IsCdn: waf前是否部署有七层代理服务。
+0：没有部署代理服务
+1：有部署代理服务，waf将使用XFF获取客户端IP
+2：有部署代理服务，waf将使用remote_addr获取客户端IP
+3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _UpstreamType: 回源类型，0表示通过IP回源,1 表示通过域名回源
+        :param _UpstreamType: 回源类型。
+0：通过IP回源
+1：通过域名回源
         :type UpstreamType: int
-        :param _IsWebsocket: 是否开启WebSocket支持，1表示开启，0不开启
+        :param _IsWebsocket: 是否开启WebSocket支持。
+0：关闭
+1：开启
         :type IsWebsocket: int
-        :param _LoadBalance: 负载均衡策略，0表示轮询，1表示IP hash
+        :param _LoadBalance: 回源负载均衡策略。
+0：轮询
+1：IP hash
+2：加权轮询
         :type LoadBalance: str
-        :param _Cert: 值为1时，需要填次参数，表示证书内容
+        :param _Cert: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Cert: str
-        :param _PrivateKey: CertType=1时，需要填次参数，表示证书的私钥
+        :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
         :type PrivateKey: str
-        :param _SSLId: CertType=2时，需要填次参数，表示证书的ID
+        :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type SSLId: str
-        :param _ResourceId: Waf的资源ID
+        :param _ResourceId: 待废弃，可不填。Waf的资源ID。
         :type ResourceId: str
-        :param _UpstreamScheme: HTTPS回源协议，填http或者https
+        :param _IpHeaders: IsCdn为3时，需要填此参数，表示自定义header
+        :type IpHeaders: list of str
+        :param _UpstreamScheme: 服务配置有HTTPS端口时，HTTPS的回源协议。
+http：使用http协议回源，和HttpsUpstreamPort配合使用
+https：使用https协议回源
         :type UpstreamScheme: str
         :param _HttpsUpstreamPort: HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
         :type HttpsUpstreamPort: str
-        :param _IsGray: 是否开启灰度，0表示不开启灰度
+        :param _IsGray: 待废弃，可不填。是否开启灰度，0表示不开启灰度。
         :type IsGray: int
-        :param _GrayAreas: 灰度的地区
+        :param _GrayAreas: 待废弃，可不填。灰度的地区
         :type GrayAreas: list of str
-        :param _UpstreamDomain: UpstreamType=1时，填次字段表示回源域名
-        :type UpstreamDomain: str
-        :param _SrcList: UpstreamType=0时，填次字段表示回源IP
-        :type SrcList: list of str
-        :param _IsHttp2: 是否开启HTTP2,开启HTTP2需要HTTPS支持
-        :type IsHttp2: int
-        :param _HttpsRewrite: 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
+        :param _HttpsRewrite: 是否开启HTTP强制跳转到HTTPS。
+0：不强制跳转
+1：开启强制跳转
         :type HttpsRewrite: int
-        :param _Ports: 服务有多端口需要设置此字段
+        :param _UpstreamDomain: 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+        :type UpstreamDomain: str
+        :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+        :type SrcList: list of str
+        :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。
+0：关闭
+1：开启
+        :type IsHttp2: int
+        :param _Ports: 服务端口列表配置。
+NginxServerId：新增域名时填'0'
+Port：监听端口号
+Protocol：端口协议
+UpstreamPort：与Port相同
+UpstreamProtocol：与Protocol相同
         :type Ports: list of PortItem
-        :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
+        :param _Edition: 待废弃，可不填。WAF实例类型。
+sparta-waf：SAAS型WAF
+clb-waf：负载均衡型WAF
+cdn-waf：CDN上的Web防护能力
         :type Edition: str
-        :param _IsKeepAlive: 是否开启长连接，0 短连接，1 长连接
+        :param _IsKeepAlive: 是否开启长连接。
+0： 短连接
+1： 长连接
         :type IsKeepAlive: str
-        :param _InstanceID: 实例id，上线之后带上此字段
+        :param _InstanceID: 域名所属实例id
         :type InstanceID: str
-        :param _Anycast: anycast IP类型开关： 0 普通IP 1 Anycast IP
+        :param _Anycast: 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
-        :param _Weights: src权重
+        :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
         :type Weights: list of int
-        :param _ActiveCheck: 是否开启主动健康检测，1表示开启，0表示不开启
+        :param _ActiveCheck: 是否开启主动健康检测。
+0：不开启
+1：开启
         :type ActiveCheck: int
         :param _TLSVersion: TLS版本信息
         :type TLSVersion: int
-        :param _Ciphers: 加密套件信息
-        :type Ciphers: list of int
-        :param _CipherTemplate: 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+        :param _CipherTemplate: 加密套件模板。
+0：不支持选择，使用默认模版  
+1：通用型模版 
+2：安全型模版 
+3：自定义模版
         :type CipherTemplate: int
-        :param _ProxyReadTimeout: 300s
+        :param _Ciphers: 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+        :type Ciphers: list of int
+        :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
         :type ProxyReadTimeout: int
-        :param _ProxySendTimeout: 300s
+        :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
         :type ProxySendTimeout: int
-        :param _SniType: 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+        :param _SniType: WAF回源时的SNI类型。
+0：关闭SNI，不配置client_hello中的server_name
+1：开启SNI，client_hello中的server_name为防护域名
+2：开启SNI，SNI为域名回源时的源站域名
+3：开启SNI，SNI为自定义域名
         :type SniType: int
-        :param _SniHost: SniType=3时，需要填此参数，表示自定义的host；
+        :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
         :type SniHost: str
-        :param _IpHeaders: is_cdn=3时，需要填此参数，表示自定义header
-        :type IpHeaders: list of str
-        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+        :param _XFFReset: 是否开启XFF重置。
+0：关闭
+1：开启
         :type XFFReset: int
         """
         self._Domain = None
@@ -1389,14 +1431,15 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._PrivateKey = None
         self._SSLId = None
         self._ResourceId = None
+        self._IpHeaders = None
         self._UpstreamScheme = None
         self._HttpsUpstreamPort = None
         self._IsGray = None
         self._GrayAreas = None
+        self._HttpsRewrite = None
         self._UpstreamDomain = None
         self._SrcList = None
         self._IsHttp2 = None
-        self._HttpsRewrite = None
         self._Ports = None
         self._Edition = None
         self._IsKeepAlive = None
@@ -1405,13 +1448,12 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._Weights = None
         self._ActiveCheck = None
         self._TLSVersion = None
-        self._Ciphers = None
         self._CipherTemplate = None
+        self._Ciphers = None
         self._ProxyReadTimeout = None
         self._ProxySendTimeout = None
         self._SniType = None
         self._SniHost = None
-        self._IpHeaders = None
         self._XFFReset = None
 
     @property
@@ -1495,6 +1537,14 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._ResourceId = ResourceId
 
     @property
+    def IpHeaders(self):
+        return self._IpHeaders
+
+    @IpHeaders.setter
+    def IpHeaders(self, IpHeaders):
+        self._IpHeaders = IpHeaders
+
+    @property
     def UpstreamScheme(self):
         return self._UpstreamScheme
 
@@ -1527,6 +1577,14 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._GrayAreas = GrayAreas
 
     @property
+    def HttpsRewrite(self):
+        return self._HttpsRewrite
+
+    @HttpsRewrite.setter
+    def HttpsRewrite(self, HttpsRewrite):
+        self._HttpsRewrite = HttpsRewrite
+
+    @property
     def UpstreamDomain(self):
         return self._UpstreamDomain
 
@@ -1549,14 +1607,6 @@ class AddSpartaProtectionRequest(AbstractModel):
     @IsHttp2.setter
     def IsHttp2(self, IsHttp2):
         self._IsHttp2 = IsHttp2
-
-    @property
-    def HttpsRewrite(self):
-        return self._HttpsRewrite
-
-    @HttpsRewrite.setter
-    def HttpsRewrite(self, HttpsRewrite):
-        self._HttpsRewrite = HttpsRewrite
 
     @property
     def Ports(self):
@@ -1623,20 +1673,20 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._TLSVersion = TLSVersion
 
     @property
-    def Ciphers(self):
-        return self._Ciphers
-
-    @Ciphers.setter
-    def Ciphers(self, Ciphers):
-        self._Ciphers = Ciphers
-
-    @property
     def CipherTemplate(self):
         return self._CipherTemplate
 
     @CipherTemplate.setter
     def CipherTemplate(self, CipherTemplate):
         self._CipherTemplate = CipherTemplate
+
+    @property
+    def Ciphers(self):
+        return self._Ciphers
+
+    @Ciphers.setter
+    def Ciphers(self, Ciphers):
+        self._Ciphers = Ciphers
 
     @property
     def ProxyReadTimeout(self):
@@ -1671,14 +1721,6 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._SniHost = SniHost
 
     @property
-    def IpHeaders(self):
-        return self._IpHeaders
-
-    @IpHeaders.setter
-    def IpHeaders(self, IpHeaders):
-        self._IpHeaders = IpHeaders
-
-    @property
     def XFFReset(self):
         return self._XFFReset
 
@@ -1698,14 +1740,15 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._PrivateKey = params.get("PrivateKey")
         self._SSLId = params.get("SSLId")
         self._ResourceId = params.get("ResourceId")
+        self._IpHeaders = params.get("IpHeaders")
         self._UpstreamScheme = params.get("UpstreamScheme")
         self._HttpsUpstreamPort = params.get("HttpsUpstreamPort")
         self._IsGray = params.get("IsGray")
         self._GrayAreas = params.get("GrayAreas")
+        self._HttpsRewrite = params.get("HttpsRewrite")
         self._UpstreamDomain = params.get("UpstreamDomain")
         self._SrcList = params.get("SrcList")
         self._IsHttp2 = params.get("IsHttp2")
-        self._HttpsRewrite = params.get("HttpsRewrite")
         if params.get("Ports") is not None:
             self._Ports = []
             for item in params.get("Ports"):
@@ -1719,13 +1762,12 @@ class AddSpartaProtectionRequest(AbstractModel):
         self._Weights = params.get("Weights")
         self._ActiveCheck = params.get("ActiveCheck")
         self._TLSVersion = params.get("TLSVersion")
-        self._Ciphers = params.get("Ciphers")
         self._CipherTemplate = params.get("CipherTemplate")
+        self._Ciphers = params.get("Ciphers")
         self._ProxyReadTimeout = params.get("ProxyReadTimeout")
         self._ProxySendTimeout = params.get("ProxySendTimeout")
         self._SniType = params.get("SniType")
         self._SniHost = params.get("SniHost")
-        self._IpHeaders = params.get("IpHeaders")
         self._XFFReset = params.get("XFFReset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4436,7 +4478,7 @@ class DeleteSpartaProtectionRequest(AbstractModel):
         r"""
         :param _Domains: 域名列表
         :type Domains: list of str
-        :param _Edition: 版本
+        :param _Edition: 实例类型
         :type Edition: str
         :param _InstanceID: 实例id
         :type InstanceID: str
@@ -9028,21 +9070,13 @@ class DescribePortsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Edition: 版本
-        :type Edition: str
         :param _InstanceID: 实例ID
         :type InstanceID: str
+        :param _Edition: 实例类型
+        :type Edition: str
         """
-        self._Edition = None
         self._InstanceID = None
-
-    @property
-    def Edition(self):
-        return self._Edition
-
-    @Edition.setter
-    def Edition(self, Edition):
-        self._Edition = Edition
+        self._Edition = None
 
     @property
     def InstanceID(self):
@@ -9052,10 +9086,18 @@ class DescribePortsRequest(AbstractModel):
     def InstanceID(self, InstanceID):
         self._InstanceID = InstanceID
 
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
 
     def _deserialize(self, params):
-        self._Edition = params.get("Edition")
         self._InstanceID = params.get("InstanceID")
+        self._Edition = params.get("Edition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18897,6 +18939,88 @@ class SwitchDomainRulesRequest(AbstractModel):
 
 class SwitchDomainRulesResponse(AbstractModel):
     """SwitchDomainRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SwitchElasticModeRequest(AbstractModel):
+    """SwitchElasticMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Edition: 版本，只能是sparta-waf, clb-waf, cdn-waf
+        :type Edition: str
+        :param _Mode: 0代表关闭，1代表打开
+        :type Mode: int
+        :param _InstanceID: 实例id
+        :type InstanceID: str
+        """
+        self._Edition = None
+        self._Mode = None
+        self._InstanceID = None
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Edition = params.get("Edition")
+        self._Mode = params.get("Mode")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchElasticModeResponse(AbstractModel):
+    """SwitchElasticMode返回参数结构体
 
     """
 

@@ -8971,6 +8971,422 @@ class IdleLoadBalancer(AbstractModel):
         
 
 
+class InquiryPriceCreateLoadBalancerRequest(AbstractModel):
+    """InquiryPriceCreateLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerType: 询价的负载均衡类型，OPEN为公网类型，INTERNAL为内网类型
+        :type LoadBalancerType: str
+        :param _LoadBalancerChargeType: 询价的收费类型，POSTPAID为按量计费，"PREPAID"为预付费包年包月
+        :type LoadBalancerChargeType: str
+        :param _LoadBalancerChargePrepaid: 询价的收费周期
+        :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param _InternetAccessible: 询价的网络计费方式
+        :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param _GoodsNum: 询价的负载均衡实例个数，默认为1
+        :type GoodsNum: int
+        :param _ZoneId: 指定可用区询价。如：ap-guangzhou-1
+        :type ZoneId: str
+        :param _SlaType: 包年包月询价时传性能容量型规格，如：clb.c3.small。按量付费询价时传SLA
+        :type SlaType: str
+        :param _AddressIPVersion: IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
+        :type AddressIPVersion: str
+        :param _VipIsp: 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。
+        :type VipIsp: str
+        """
+        self._LoadBalancerType = None
+        self._LoadBalancerChargeType = None
+        self._LoadBalancerChargePrepaid = None
+        self._InternetAccessible = None
+        self._GoodsNum = None
+        self._ZoneId = None
+        self._SlaType = None
+        self._AddressIPVersion = None
+        self._VipIsp = None
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def LoadBalancerChargeType(self):
+        return self._LoadBalancerChargeType
+
+    @LoadBalancerChargeType.setter
+    def LoadBalancerChargeType(self, LoadBalancerChargeType):
+        self._LoadBalancerChargeType = LoadBalancerChargeType
+
+    @property
+    def LoadBalancerChargePrepaid(self):
+        return self._LoadBalancerChargePrepaid
+
+    @LoadBalancerChargePrepaid.setter
+    def LoadBalancerChargePrepaid(self, LoadBalancerChargePrepaid):
+        self._LoadBalancerChargePrepaid = LoadBalancerChargePrepaid
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SlaType(self):
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def AddressIPVersion(self):
+        return self._AddressIPVersion
+
+    @AddressIPVersion.setter
+    def AddressIPVersion(self, AddressIPVersion):
+        self._AddressIPVersion = AddressIPVersion
+
+    @property
+    def VipIsp(self):
+        return self._VipIsp
+
+    @VipIsp.setter
+    def VipIsp(self, VipIsp):
+        self._VipIsp = VipIsp
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._LoadBalancerChargeType = params.get("LoadBalancerChargeType")
+        if params.get("LoadBalancerChargePrepaid") is not None:
+            self._LoadBalancerChargePrepaid = LBChargePrepaid()
+            self._LoadBalancerChargePrepaid._deserialize(params.get("LoadBalancerChargePrepaid"))
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self._GoodsNum = params.get("GoodsNum")
+        self._ZoneId = params.get("ZoneId")
+        self._SlaType = params.get("SlaType")
+        self._AddressIPVersion = params.get("AddressIPVersion")
+        self._VipIsp = params.get("VipIsp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceCreateLoadBalancerResponse(AbstractModel):
+    """InquiryPriceCreateLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 该参数表示对应的价格。
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
+    """InquiryPriceModifyLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param _InternetAccessible: 修改后的网络带宽信息
+        :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        """
+        self._LoadBalancerId = None
+        self._InternetAccessible = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceModifyLoadBalancerResponse(AbstractModel):
+    """InquiryPriceModifyLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 描述价格信息
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRefundLoadBalancerRequest(AbstractModel):
+    """InquiryPriceRefundLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        """
+        self._LoadBalancerId = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRefundLoadBalancerResponse(AbstractModel):
+    """InquiryPriceRefundLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 该参数表示对应的价格。
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
+    """InquiryPriceRenewLoadBalancer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例ID
+        :type LoadBalancerId: str
+        :param _LoadBalancerChargePrepaid: 续费周期
+        :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        self._LoadBalancerId = None
+        self._LoadBalancerChargePrepaid = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerChargePrepaid(self):
+        return self._LoadBalancerChargePrepaid
+
+    @LoadBalancerChargePrepaid.setter
+    def LoadBalancerChargePrepaid(self, LoadBalancerChargePrepaid):
+        self._LoadBalancerChargePrepaid = LoadBalancerChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("LoadBalancerChargePrepaid") is not None:
+            self._LoadBalancerChargePrepaid = LBChargePrepaid()
+            self._LoadBalancerChargePrepaid._deserialize(params.get("LoadBalancerChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewLoadBalancerResponse(AbstractModel):
+    """InquiryPriceRenewLoadBalancer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 表示续费价格
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InternetAccessible(AbstractModel):
     """网络计费模式，最大出带宽
 
@@ -9026,6 +9442,107 @@ BANDWIDTH_PACKAGE 按带宽包计费;
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._BandwidthpkgSubType = params.get("BandwidthpkgSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemPrice(AbstractModel):
+    """描述了单项的价格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitPrice: 后付费单价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param _ChargeUnit: 后续计价单元，可取值范围： 
+HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）；
+GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
+        :param _OriginalPrice: 预支费用的原价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param _DiscountPrice: 预支费用的折扣价，单位：元。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param _UnitPriceDiscount: 后付费的折扣单价，单位:元
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPriceDiscount: float
+        :param _Discount: 折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        """
+        self._UnitPrice = None
+        self._ChargeUnit = None
+        self._OriginalPrice = None
+        self._DiscountPrice = None
+        self._UnitPriceDiscount = None
+        self._Discount = None
+
+    @property
+    def UnitPrice(self):
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def ChargeUnit(self):
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def UnitPriceDiscount(self):
+        return self._UnitPriceDiscount
+
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+
+    def _deserialize(self, params):
+        self._UnitPrice = params.get("UnitPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self._Discount = params.get("Discount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13399,6 +13916,72 @@ class MultiCertInfo(AbstractModel):
                 obj = CertInfo()
                 obj._deserialize(item)
                 self._CertList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Price(AbstractModel):
+    """表示负载均衡的价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstancePrice: 描述了实例价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancePrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        :param _BandwidthPrice: 描述了网络价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthPrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        :param _LcuPrice: 描述了lcu价格。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LcuPrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        """
+        self._InstancePrice = None
+        self._BandwidthPrice = None
+        self._LcuPrice = None
+
+    @property
+    def InstancePrice(self):
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def BandwidthPrice(self):
+        return self._BandwidthPrice
+
+    @BandwidthPrice.setter
+    def BandwidthPrice(self, BandwidthPrice):
+        self._BandwidthPrice = BandwidthPrice
+
+    @property
+    def LcuPrice(self):
+        return self._LcuPrice
+
+    @LcuPrice.setter
+    def LcuPrice(self, LcuPrice):
+        self._LcuPrice = LcuPrice
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self._InstancePrice = ItemPrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("BandwidthPrice") is not None:
+            self._BandwidthPrice = ItemPrice()
+            self._BandwidthPrice._deserialize(params.get("BandwidthPrice"))
+        if params.get("LcuPrice") is not None:
+            self._LcuPrice = ItemPrice()
+            self._LcuPrice._deserialize(params.get("LcuPrice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

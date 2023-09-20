@@ -1317,6 +1317,98 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquiryPriceCreateLoadBalancer(self, request):
+        """InquiryPriceCreateLoadBalancer接口查询创建负载均衡的价格。
+
+        :param request: Request instance for InquiryPriceCreateLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceCreateLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceCreateLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceCreateLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceCreateLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceModifyLoadBalancer(self, request):
+        """InquiryPriceModifyLoadBalancer接口修改负载均衡配置询价。
+
+        :param request: Request instance for InquiryPriceModifyLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceModifyLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceModifyLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceModifyLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceModifyLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRefundLoadBalancer(self, request):
+        """InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+
+        :param request: Request instance for InquiryPriceRefundLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRefundLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRefundLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRenewLoadBalancer(self, request):
+        """InquiryPriceRenewLoadBalancer接口查询对负载均衡续费的价格，只支持预付费负载均衡续费。
+
+        :param request: Request instance for InquiryPriceRenewLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRenewLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRenewLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManualRewrite(self, request):
         """用户手动配置原访问地址和重定向地址，系统自动将原访问地址的请求重定向至对应路径的目的地址。同一域名下可以配置多条路径作为重定向策略，实现http/https之间请求的自动跳转。设置重定向时，需满足如下约束条件：若A已经重定向至B，则A不能再重定向至C（除非先删除老的重定向关系，再建立新的重定向关系），B不能重定向至任何其它地址。
         本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。

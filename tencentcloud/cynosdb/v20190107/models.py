@@ -9266,6 +9266,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         :param _BackupType: 备份方式，logic-逻辑备份，snapshot-快照备份
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupType: str
+        :param _LogicCrossRegionsConfigUpdateTime: 跨地域逻辑备份配置修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicCrossRegionsConfigUpdateTime: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9274,6 +9277,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._ReserveDuration = None
         self._BackupFreq = None
         self._BackupType = None
+        self._LogicCrossRegionsConfigUpdateTime = None
         self._RequestId = None
 
     @property
@@ -9317,6 +9321,14 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._BackupType = BackupType
 
     @property
+    def LogicCrossRegionsConfigUpdateTime(self):
+        return self._LogicCrossRegionsConfigUpdateTime
+
+    @LogicCrossRegionsConfigUpdateTime.setter
+    def LogicCrossRegionsConfigUpdateTime(self, LogicCrossRegionsConfigUpdateTime):
+        self._LogicCrossRegionsConfigUpdateTime = LogicCrossRegionsConfigUpdateTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9331,6 +9343,7 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._ReserveDuration = params.get("ReserveDuration")
         self._BackupFreq = params.get("BackupFreq")
         self._BackupType = params.get("BackupType")
+        self._LogicCrossRegionsConfigUpdateTime = params.get("LogicCrossRegionsConfigUpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -9450,6 +9463,10 @@ class DescribeBackupListRequest(AbstractModel):
         :type BackupNames: list of str
         :param _SnapshotIdList: 快照备份Id列表
         :type SnapshotIdList: list of int
+        :param _BackupRegion: 备份地域
+        :type BackupRegion: str
+        :param _IsCrossRegionsBackup: 是否跨地域备份
+        :type IsCrossRegionsBackup: str
         """
         self._ClusterId = None
         self._Limit = None
@@ -9464,6 +9481,8 @@ class DescribeBackupListRequest(AbstractModel):
         self._FileNames = None
         self._BackupNames = None
         self._SnapshotIdList = None
+        self._BackupRegion = None
+        self._IsCrossRegionsBackup = None
 
     @property
     def ClusterId(self):
@@ -9569,6 +9588,22 @@ class DescribeBackupListRequest(AbstractModel):
     def SnapshotIdList(self, SnapshotIdList):
         self._SnapshotIdList = SnapshotIdList
 
+    @property
+    def BackupRegion(self):
+        return self._BackupRegion
+
+    @BackupRegion.setter
+    def BackupRegion(self, BackupRegion):
+        self._BackupRegion = BackupRegion
+
+    @property
+    def IsCrossRegionsBackup(self):
+        return self._IsCrossRegionsBackup
+
+    @IsCrossRegionsBackup.setter
+    def IsCrossRegionsBackup(self, IsCrossRegionsBackup):
+        self._IsCrossRegionsBackup = IsCrossRegionsBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -9584,6 +9619,8 @@ class DescribeBackupListRequest(AbstractModel):
         self._FileNames = params.get("FileNames")
         self._BackupNames = params.get("BackupNames")
         self._SnapshotIdList = params.get("SnapshotIdList")
+        self._BackupRegion = params.get("BackupRegion")
+        self._IsCrossRegionsBackup = params.get("IsCrossRegionsBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15600,6 +15637,105 @@ class LogRuleTemplateInfo(AbstractModel):
         
 
 
+class LogicBackupConfigInfo(AbstractModel):
+    """逻辑备份配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogicBackupEnable: 是否开启自动逻辑备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicBackupEnable: str
+        :param _LogicBackupTimeBeg: 自动逻辑备份开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicBackupTimeBeg: int
+        :param _LogicBackupTimeEnd: 自动逻辑备份结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicBackupTimeEnd: int
+        :param _LogicReserveDuration: 自动逻辑备份保留时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicReserveDuration: int
+        :param _LogicCrossRegionsEnable: 是否开启跨地域逻辑备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicCrossRegionsEnable: str
+        :param _LogicCrossRegions: 逻辑备份所跨地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicCrossRegions: list of str
+        """
+        self._LogicBackupEnable = None
+        self._LogicBackupTimeBeg = None
+        self._LogicBackupTimeEnd = None
+        self._LogicReserveDuration = None
+        self._LogicCrossRegionsEnable = None
+        self._LogicCrossRegions = None
+
+    @property
+    def LogicBackupEnable(self):
+        return self._LogicBackupEnable
+
+    @LogicBackupEnable.setter
+    def LogicBackupEnable(self, LogicBackupEnable):
+        self._LogicBackupEnable = LogicBackupEnable
+
+    @property
+    def LogicBackupTimeBeg(self):
+        return self._LogicBackupTimeBeg
+
+    @LogicBackupTimeBeg.setter
+    def LogicBackupTimeBeg(self, LogicBackupTimeBeg):
+        self._LogicBackupTimeBeg = LogicBackupTimeBeg
+
+    @property
+    def LogicBackupTimeEnd(self):
+        return self._LogicBackupTimeEnd
+
+    @LogicBackupTimeEnd.setter
+    def LogicBackupTimeEnd(self, LogicBackupTimeEnd):
+        self._LogicBackupTimeEnd = LogicBackupTimeEnd
+
+    @property
+    def LogicReserveDuration(self):
+        return self._LogicReserveDuration
+
+    @LogicReserveDuration.setter
+    def LogicReserveDuration(self, LogicReserveDuration):
+        self._LogicReserveDuration = LogicReserveDuration
+
+    @property
+    def LogicCrossRegionsEnable(self):
+        return self._LogicCrossRegionsEnable
+
+    @LogicCrossRegionsEnable.setter
+    def LogicCrossRegionsEnable(self, LogicCrossRegionsEnable):
+        self._LogicCrossRegionsEnable = LogicCrossRegionsEnable
+
+    @property
+    def LogicCrossRegions(self):
+        return self._LogicCrossRegions
+
+    @LogicCrossRegions.setter
+    def LogicCrossRegions(self, LogicCrossRegions):
+        self._LogicCrossRegions = LogicCrossRegions
+
+
+    def _deserialize(self, params):
+        self._LogicBackupEnable = params.get("LogicBackupEnable")
+        self._LogicBackupTimeBeg = params.get("LogicBackupTimeBeg")
+        self._LogicBackupTimeEnd = params.get("LogicBackupTimeEnd")
+        self._LogicReserveDuration = params.get("LogicReserveDuration")
+        self._LogicCrossRegionsEnable = params.get("LogicCrossRegionsEnable")
+        self._LogicCrossRegions = params.get("LogicCrossRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifiableInfo(AbstractModel):
     """参数是否可修改的详细信息
 
@@ -16246,23 +16382,29 @@ class ModifyBackupConfigRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-        :type ReserveDuration: int
         :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
         :type BackupTimeBeg: int
         :param _BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
         :type BackupTimeEnd: int
+        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+        :type ReserveDuration: int
         :param _BackupFreq: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
         :type BackupFreq: list of str
         :param _BackupType: 该参数目前不支持修改，无需填写。备份方式，logic-逻辑备份，snapshot-快照备份
         :type BackupType: str
+        :param _LogicBackupConfig: 逻辑备份配置
+        :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
+        :param _DeleteAutoLogicBackup: 是否删除自动逻辑备份
+        :type DeleteAutoLogicBackup: bool
         """
         self._ClusterId = None
-        self._ReserveDuration = None
         self._BackupTimeBeg = None
         self._BackupTimeEnd = None
+        self._ReserveDuration = None
         self._BackupFreq = None
         self._BackupType = None
+        self._LogicBackupConfig = None
+        self._DeleteAutoLogicBackup = None
 
     @property
     def ClusterId(self):
@@ -16271,14 +16413,6 @@ class ModifyBackupConfigRequest(AbstractModel):
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
-
-    @property
-    def ReserveDuration(self):
-        return self._ReserveDuration
-
-    @ReserveDuration.setter
-    def ReserveDuration(self, ReserveDuration):
-        self._ReserveDuration = ReserveDuration
 
     @property
     def BackupTimeBeg(self):
@@ -16297,6 +16431,14 @@ class ModifyBackupConfigRequest(AbstractModel):
         self._BackupTimeEnd = BackupTimeEnd
 
     @property
+    def ReserveDuration(self):
+        return self._ReserveDuration
+
+    @ReserveDuration.setter
+    def ReserveDuration(self, ReserveDuration):
+        self._ReserveDuration = ReserveDuration
+
+    @property
     def BackupFreq(self):
         return self._BackupFreq
 
@@ -16312,14 +16454,34 @@ class ModifyBackupConfigRequest(AbstractModel):
     def BackupType(self, BackupType):
         self._BackupType = BackupType
 
+    @property
+    def LogicBackupConfig(self):
+        return self._LogicBackupConfig
+
+    @LogicBackupConfig.setter
+    def LogicBackupConfig(self, LogicBackupConfig):
+        self._LogicBackupConfig = LogicBackupConfig
+
+    @property
+    def DeleteAutoLogicBackup(self):
+        return self._DeleteAutoLogicBackup
+
+    @DeleteAutoLogicBackup.setter
+    def DeleteAutoLogicBackup(self, DeleteAutoLogicBackup):
+        self._DeleteAutoLogicBackup = DeleteAutoLogicBackup
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
-        self._ReserveDuration = params.get("ReserveDuration")
         self._BackupTimeBeg = params.get("BackupTimeBeg")
         self._BackupTimeEnd = params.get("BackupTimeEnd")
+        self._ReserveDuration = params.get("ReserveDuration")
         self._BackupFreq = params.get("BackupFreq")
         self._BackupType = params.get("BackupType")
+        if params.get("LogicBackupConfig") is not None:
+            self._LogicBackupConfig = LogicBackupConfigInfo()
+            self._LogicBackupConfig._deserialize(params.get("LogicBackupConfig"))
+        self._DeleteAutoLogicBackup = params.get("DeleteAutoLogicBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

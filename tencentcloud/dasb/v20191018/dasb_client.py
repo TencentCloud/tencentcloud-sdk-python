@@ -900,6 +900,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCmdTemplate(self, request):
+        """修改高危命令模板
+
+        :param request: Request instance for ModifyCmdTemplate.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyCmdTemplateRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyCmdTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCmdTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCmdTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDevice(self, request):
         """修改资产信息
 

@@ -4176,6 +4176,64 @@ class OrgProductFinancial(AbstractModel):
         
 
 
+class QuitOrganizationRequest(AbstractModel):
+    """QuitOrganization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrgId: 企业组织ID
+        :type OrgId: int
+        """
+        self._OrgId = None
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
+
+
+    def _deserialize(self, params):
+        self._OrgId = params.get("OrgId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuitOrganizationResponse(AbstractModel):
+    """QuitOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateOrganizationMemberEmailBindRequest(AbstractModel):
     """UpdateOrganizationMemberEmailBind请求参数结构体
 

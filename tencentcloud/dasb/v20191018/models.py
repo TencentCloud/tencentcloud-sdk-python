@@ -6265,6 +6265,101 @@ class ModifyAclResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCmdTemplateRequest(AbstractModel):
+    """ModifyCmdTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名，最长32字符，不能包含空白字符
+        :type Name: str
+        :param _CmdList: 命令列表，\n分隔，最长32768字节
+        :type CmdList: str
+        :param _Id: 命令模板ID
+        :type Id: int
+        :param _Encoding: CmdList字段前端是否base64传值。
+0：否，1：是
+        :type Encoding: int
+        """
+        self._Name = None
+        self._CmdList = None
+        self._Id = None
+        self._Encoding = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CmdList(self):
+        return self._CmdList
+
+    @CmdList.setter
+    def CmdList(self, CmdList):
+        self._CmdList = CmdList
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Encoding(self):
+        return self._Encoding
+
+    @Encoding.setter
+    def Encoding(self, Encoding):
+        self._Encoding = Encoding
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CmdList = params.get("CmdList")
+        self._Id = params.get("Id")
+        self._Encoding = params.get("Encoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCmdTemplateResponse(AbstractModel):
+    """ModifyCmdTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDeviceGroupRequest(AbstractModel):
     """ModifyDeviceGroup请求参数结构体
 

@@ -624,6 +624,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QuitOrganization(self, request):
+        """退出企业组织
+
+        :param request: Request instance for QuitOrganization.
+        :type request: :class:`tencentcloud.organization.v20210331.models.QuitOrganizationRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.QuitOrganizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QuitOrganization", params, headers=headers)
+            response = json.loads(body)
+            model = models.QuitOrganizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateOrganizationMember(self, request):
         """更新组织成员信息
 

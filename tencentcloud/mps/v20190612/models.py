@@ -38439,6 +38439,9 @@ class TaskNotifyConfig(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        :param _NotifyKey: 用于生成回调签名的key。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyKey: str
         """
         self._NotifyType = None
         self._NotifyMode = None
@@ -38448,6 +38451,7 @@ class TaskNotifyConfig(AbstractModel):
         self._TopicName = None
         self._QueueName = None
         self._AwsSQS = None
+        self._NotifyKey = None
 
     @property
     def NotifyType(self):
@@ -38513,6 +38517,14 @@ class TaskNotifyConfig(AbstractModel):
     def AwsSQS(self, AwsSQS):
         self._AwsSQS = AwsSQS
 
+    @property
+    def NotifyKey(self):
+        return self._NotifyKey
+
+    @NotifyKey.setter
+    def NotifyKey(self, NotifyKey):
+        self._NotifyKey = NotifyKey
+
 
     def _deserialize(self, params):
         self._NotifyType = params.get("NotifyType")
@@ -38525,6 +38537,7 @@ class TaskNotifyConfig(AbstractModel):
         if params.get("AwsSQS") is not None:
             self._AwsSQS = AwsSQS()
             self._AwsSQS._deserialize(params.get("AwsSQS"))
+        self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

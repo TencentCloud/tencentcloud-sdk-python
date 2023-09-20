@@ -142,7 +142,7 @@ class WafClient(AbstractClient):
 
 
     def AddSpartaProtection(self, request):
-        """添加Spart防护域名
+        """添加SaaS型WAF防护域名
 
         :param request: Request instance for AddSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.AddSpartaProtectionRequest`
@@ -188,7 +188,7 @@ class WafClient(AbstractClient):
 
 
     def CreateHost(self, request):
-        """clb-waf中添加防护的域名
+        """clb-waf中添加防护域名
 
         :param request: Request instance for CreateHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.CreateHostRequest`
@@ -488,7 +488,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSpartaProtection(self, request):
-        """SAASWAF删除防护域名
+        """Saas型WAF删除防护域名
 
         :param request: Request instance for DeleteSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSpartaProtectionRequest`
@@ -814,7 +814,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeCiphersDetail(self, request):
-        """查询加密套件信息
+        """Saas型WAF接入查询加密套件信息
 
         :param request: Request instance for DescribeCiphersDetail.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCiphersDetailRequest`
@@ -906,7 +906,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsClb(self, request):
-        """获取一个clb域名详情
+        """获取一个clbwaf域名详情
 
         :param request: Request instance for DescribeDomainDetailsClb.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsClbRequest`
@@ -929,7 +929,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeDomainDetailsSaas(self, request):
-        """查询单个saas域名详情
+        """查询单个saaswaf域名详情
 
         :param request: Request instance for DescribeDomainDetailsSaas.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainDetailsSaasRequest`
@@ -1274,7 +1274,7 @@ class WafClient(AbstractClient):
 
 
     def DescribePorts(self, request):
-        """获取非标端口列表
+        """获取Saas型WAF防护端口列表
 
         :param request: Request instance for DescribePorts.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribePortsRequest`
@@ -1966,7 +1966,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyDomainIpv6Status(self, request):
-        """修改ipv6开关
+        """切换ipv6开关
 
         :param request: Request instance for ModifyDomainIpv6Status.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainIpv6StatusRequest`
@@ -2463,6 +2463,29 @@ class WafClient(AbstractClient):
             body = self.call("SwitchDomainRules", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchDomainRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchElasticMode(self, request):
+        """切换弹性的开关
+
+        :param request: Request instance for SwitchElasticMode.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchElasticMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchElasticModeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

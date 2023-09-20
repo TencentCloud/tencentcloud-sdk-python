@@ -943,21 +943,14 @@ class CdcSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskAavilable: 独享集群的可用容量大小，单位GiB
-        :type DiskAavilable: int
         :param _DiskTotal: 独享集群的总容量大小，单位GiB
         :type DiskTotal: int
+        :param _DiskAvailable: 独享集群的可用容量大小，单位GiB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskAvailable: int
         """
-        self._DiskAavilable = None
         self._DiskTotal = None
-
-    @property
-    def DiskAavilable(self):
-        return self._DiskAavilable
-
-    @DiskAavilable.setter
-    def DiskAavilable(self, DiskAavilable):
-        self._DiskAavilable = DiskAavilable
+        self._DiskAvailable = None
 
     @property
     def DiskTotal(self):
@@ -967,10 +960,18 @@ class CdcSize(AbstractModel):
     def DiskTotal(self, DiskTotal):
         self._DiskTotal = DiskTotal
 
+    @property
+    def DiskAvailable(self):
+        return self._DiskAvailable
+
+    @DiskAvailable.setter
+    def DiskAvailable(self, DiskAvailable):
+        self._DiskAvailable = DiskAvailable
+
 
     def _deserialize(self, params):
-        self._DiskAavilable = params.get("DiskAavilable")
         self._DiskTotal = params.get("DiskTotal")
+        self._DiskAvailable = params.get("DiskAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

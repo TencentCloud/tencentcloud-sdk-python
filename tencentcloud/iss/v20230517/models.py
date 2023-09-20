@@ -7627,6 +7627,106 @@ class DescribeRecordRetrieveTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRecordSliceRequest(AbstractModel):
+    """DescribeRecordSlice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 通道ID
+        :type ChannelId: str
+        :param _StartTime: 检索开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+        :type StartTime: int
+        :param _EndTime: 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+        :type EndTime: int
+        """
+        self._ChannelId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordSliceResponse(AbstractModel):
+    """DescribeRecordSlice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 云录像切片信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of RecordSliceInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = RecordSliceInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRecordTemplateRequest(AbstractModel):
     """DescribeRecordTemplate请求参数结构体
 
@@ -12213,6 +12313,56 @@ class RecordRetrieveTaskDetailsInfo(AbstractModel):
         self._Capacity = params.get("Capacity")
         self._Describe = params.get("Describe")
         self._ChannelCount = params.get("ChannelCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordSliceInfo(AbstractModel):
+    """录像切片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 计划ID
+        :type PlanId: str
+        :param _List: 录像切片开始和结束时间列表
+        :type List: list of RecordTimeLine
+        """
+        self._PlanId = None
+        self._List = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RecordTimeLine()
+                obj._deserialize(item)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

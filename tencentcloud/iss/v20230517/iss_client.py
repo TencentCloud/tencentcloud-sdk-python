@@ -1064,6 +1064,30 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordSlice(self, request):
+        """平台支持将数据以TS切片的形式存入客户自有COS桶，该接口用于支持客户快捷查询切片信息列表
+        （注意：只支持标准存储类型的查询）
+
+        :param request: Request instance for DescribeRecordSlice.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeRecordSliceRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeRecordSliceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordSlice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordSliceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecordTemplate(self, request):
         """用于查询实时上云模板详情
 
