@@ -673,6 +673,18 @@ class CodePack(AbstractModel):
         :param _PackSpec: 层级码配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackSpec: list of PackSpec
+        :param _ProductName: 商品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _ProductSpecification: 商品规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductSpecification: str
+        :param _ProductId: 商品ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: str
+        :param _RelateType: 码关系是否预关联
+0:否, 1:是
+        :type RelateType: int
         """
         self._PackId = None
         self._CorpId = None
@@ -694,6 +706,10 @@ class CodePack(AbstractModel):
         self._PackType = None
         self._PackLevel = None
         self._PackSpec = None
+        self._ProductName = None
+        self._ProductSpecification = None
+        self._ProductId = None
+        self._RelateType = None
 
     @property
     def PackId(self):
@@ -855,6 +871,38 @@ class CodePack(AbstractModel):
     def PackSpec(self, PackSpec):
         self._PackSpec = PackSpec
 
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def ProductSpecification(self):
+        return self._ProductSpecification
+
+    @ProductSpecification.setter
+    def ProductSpecification(self, ProductSpecification):
+        self._ProductSpecification = ProductSpecification
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RelateType(self):
+        return self._RelateType
+
+    @RelateType.setter
+    def RelateType(self, RelateType):
+        self._RelateType = RelateType
+
 
     def _deserialize(self, params):
         self._PackId = params.get("PackId")
@@ -882,6 +930,10 @@ class CodePack(AbstractModel):
                 obj = PackSpec()
                 obj._deserialize(item)
                 self._PackSpec.append(obj)
+        self._ProductName = params.get("ProductName")
+        self._ProductSpecification = params.get("ProductSpecification")
+        self._ProductId = params.get("ProductId")
+        self._RelateType = params.get("RelateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1267,6 +1319,10 @@ class CreateCodePackRequest(AbstractModel):
         :type BatchId: str
         :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
+        :param _ProductId: 关联产品ID
+        :type ProductId: str
+        :param _RelateType: 层级码时是否提前生成关联关系，默认为 1
+        :type RelateType: int
         """
         self._MerchantId = None
         self._CodeLength = None
@@ -1278,6 +1334,8 @@ class CreateCodePackRequest(AbstractModel):
         self._PackSpec = None
         self._BatchId = None
         self._SerialType = None
+        self._ProductId = None
+        self._RelateType = None
 
     @property
     def MerchantId(self):
@@ -1359,6 +1417,22 @@ class CreateCodePackRequest(AbstractModel):
     def SerialType(self, SerialType):
         self._SerialType = SerialType
 
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RelateType(self):
+        return self._RelateType
+
+    @RelateType.setter
+    def RelateType(self, RelateType):
+        self._RelateType = RelateType
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -1376,6 +1450,8 @@ class CreateCodePackRequest(AbstractModel):
                 self._PackSpec.append(obj)
         self._BatchId = params.get("BatchId")
         self._SerialType = params.get("SerialType")
+        self._ProductId = params.get("ProductId")
+        self._RelateType = params.get("RelateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1617,6 +1693,12 @@ class CreateCustomPackRequest(AbstractModel):
         :type BatchId: str
         :param _SerialType: 是否有流水码 0:无 1:有
         :type SerialType: int
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _RelateType: 是否预生成码关系
+0: 否, 1:是
+默认为1，仅对层级码有效
+        :type RelateType: int
         """
         self._MerchantId = None
         self._Amount = None
@@ -1628,6 +1710,8 @@ class CreateCustomPackRequest(AbstractModel):
         self._CodeParts = None
         self._BatchId = None
         self._SerialType = None
+        self._ProductId = None
+        self._RelateType = None
 
     @property
     def MerchantId(self):
@@ -1709,6 +1793,22 @@ class CreateCustomPackRequest(AbstractModel):
     def SerialType(self, SerialType):
         self._SerialType = SerialType
 
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RelateType(self):
+        return self._RelateType
+
+    @RelateType.setter
+    def RelateType(self, RelateType):
+        self._RelateType = RelateType
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -1731,6 +1831,8 @@ class CreateCustomPackRequest(AbstractModel):
                 self._CodeParts.append(obj)
         self._BatchId = params.get("BatchId")
         self._SerialType = params.get("SerialType")
+        self._ProductId = params.get("ProductId")
+        self._RelateType = params.get("RelateType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

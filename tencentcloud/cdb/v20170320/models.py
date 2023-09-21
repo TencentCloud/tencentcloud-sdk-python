@@ -21594,6 +21594,8 @@ class ParamRecord(AbstractModel):
         :type IsSucess: bool
         :param _ModifyTime: 修改时间
         :type ModifyTime: str
+        :param _IsSuccess: 参数是否修改成功
+        :type IsSuccess: bool
         """
         self._InstanceId = None
         self._ParamName = None
@@ -21601,6 +21603,7 @@ class ParamRecord(AbstractModel):
         self._NewValue = None
         self._IsSucess = None
         self._ModifyTime = None
+        self._IsSuccess = None
 
     @property
     def InstanceId(self):
@@ -21636,10 +21639,14 @@ class ParamRecord(AbstractModel):
 
     @property
     def IsSucess(self):
+        warnings.warn("parameter `IsSucess` is deprecated", DeprecationWarning) 
+
         return self._IsSucess
 
     @IsSucess.setter
     def IsSucess(self, IsSucess):
+        warnings.warn("parameter `IsSucess` is deprecated", DeprecationWarning) 
+
         self._IsSucess = IsSucess
 
     @property
@@ -21650,6 +21657,14 @@ class ParamRecord(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21658,6 +21673,7 @@ class ParamRecord(AbstractModel):
         self._NewValue = params.get("NewValue")
         self._IsSucess = params.get("IsSucess")
         self._ModifyTime = params.get("ModifyTime")
+        self._IsSuccess = params.get("IsSuccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

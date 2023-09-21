@@ -119,6 +119,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGeneralSpanList(self, request):
+        """通用查询调用链列表
+
+        :param request: Request instance for DescribeGeneralSpanList.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralSpanListRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeGeneralSpanListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGeneralSpanList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGeneralSpanListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMetricRecords(self, request):
         """拉取通用指标列表
 

@@ -780,6 +780,8 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页大小，默认为 15
         :type Limit: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._ServiceType = None
         self._ResourcePrefix = None
@@ -787,6 +789,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         self._ResourceRegion = None
         self._Offset = None
         self._Limit = None
+        self._Category = None
 
     @property
     def ServiceType(self):
@@ -836,6 +839,14 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -844,6 +855,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1894,15 +1906,18 @@ class DescribeTagKeysRequest(AbstractModel):
         :type CreateUin: int
         :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: 每页大小，默认为 15，最大1000
         :type Limit: int
         :param _ShowProject: 是否展现项目
         :type ShowProject: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._CreateUin = None
         self._Offset = None
         self._Limit = None
         self._ShowProject = None
+        self._Category = None
 
     @property
     def CreateUin(self):
@@ -1936,12 +1951,21 @@ class DescribeTagKeysRequest(AbstractModel):
     def ShowProject(self, ShowProject):
         self._ShowProject = ShowProject
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._CreateUin = params.get("CreateUin")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ShowProject = params.get("ShowProject")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2040,11 +2064,14 @@ class DescribeTagValuesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每页大小，默认为 15
         :type Limit: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._TagKeys = None
         self._CreateUin = None
         self._Offset = None
         self._Limit = None
+        self._Category = None
 
     @property
     def TagKeys(self):
@@ -2078,12 +2105,21 @@ class DescribeTagValuesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKeys = params.get("TagKeys")
         self._CreateUin = params.get("CreateUin")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2998,9 +3034,12 @@ class GetTagKeysRequest(AbstractModel):
         :param _MaxResults: 每一页返回的数据最大条数，最大1000。
 缺省值：50。
         :type MaxResults: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._PaginationToken = None
         self._MaxResults = None
+        self._Category = None
 
     @property
     def PaginationToken(self):
@@ -3018,10 +3057,19 @@ class GetTagKeysRequest(AbstractModel):
     def MaxResults(self, MaxResults):
         self._MaxResults = MaxResults
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3098,10 +3146,13 @@ class GetTagValuesRequest(AbstractModel):
         :param _MaxResults: 每一页返回的数据最大条数，最大1000。
 缺省值：50。
         :type MaxResults: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._TagKeys = None
         self._PaginationToken = None
         self._MaxResults = None
+        self._Category = None
 
     @property
     def TagKeys(self):
@@ -3127,11 +3178,20 @@ class GetTagValuesRequest(AbstractModel):
     def MaxResults(self, MaxResults):
         self._MaxResults = MaxResults
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKeys = params.get("TagKeys")
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3213,10 +3273,13 @@ class GetTagsRequest(AbstractModel):
 返回所有标签键列表对应的标签。
 最大长度：20
         :type TagKeys: list of str
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :type Category: str
         """
         self._PaginationToken = None
         self._MaxResults = None
         self._TagKeys = None
+        self._Category = None
 
     @property
     def PaginationToken(self):
@@ -3242,11 +3305,20 @@ class GetTagsRequest(AbstractModel):
     def TagKeys(self, TagKeys):
         self._TagKeys = TagKeys
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
         self._TagKeys = params.get("TagKeys")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3807,9 +3879,13 @@ class Tag(AbstractModel):
         :type TagKey: str
         :param _TagValue: 标签值
         :type TagValue: str
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -3827,10 +3903,19 @@ class Tag(AbstractModel):
     def TagValue(self, TagValue):
         self._TagValue = TagValue
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3939,6 +4024,9 @@ class TagResource(AbstractModel):
         :param _ServiceType: 资源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
@@ -3946,6 +4034,7 @@ class TagResource(AbstractModel):
         self._TagKeyMd5 = None
         self._TagValueMd5 = None
         self._ServiceType = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -3995,6 +4084,14 @@ class TagResource(AbstractModel):
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
@@ -4003,6 +4100,7 @@ class TagResource(AbstractModel):
         self._TagKeyMd5 = params.get("TagKeyMd5")
         self._TagValueMd5 = params.get("TagValueMd5")
         self._ServiceType = params.get("ServiceType")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4020,8 +4118,7 @@ class TagResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceList: 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
-例如：ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}。
+        :param _ResourceList: 待绑定的云资源，用标准的资源六段式表示。正确的资源六段式请参考：[标准的资源六段式](https://cloud.tencent.com/document/product/598/10606)和[支持标签的云产品及资源描述方式](https://cloud.tencent.com/document/product/651/89122)。
 N取值范围：0~9
         :type ResourceList: list of str
         :param _Tags: 标签键和标签值。
@@ -4126,10 +4223,14 @@ class TagWithDelete(AbstractModel):
         :type TagValue: str
         :param _CanDelete: 是否可以删除
         :type CanDelete: int
+        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
         self._CanDelete = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -4155,11 +4256,20 @@ class TagWithDelete(AbstractModel):
     def CanDelete(self, CanDelete):
         self._CanDelete = CanDelete
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._CanDelete = params.get("CanDelete")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

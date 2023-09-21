@@ -1866,6 +1866,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryMetric(self, request):
+        """查询指定时刻指标的最新值
+
+        :param request: Request instance for QueryMetric.
+        :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.QueryMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryRangeMetric(self, request):
+        """查询指定时间范围内指标的变化趋势
+
+        :param request: Request instance for QueryRangeMetric.
+        :type request: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryRangeMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryRangeMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RetryShipperTask(self, request):
         """重试失败的投递任务
 

@@ -4674,6 +4674,8 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type IsPdf: bool
         :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
         :type PdfPageNumber: int
+        :param _EnableDetectText: 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+        :type EnableDetectText: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -4681,6 +4683,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._EnableDetectSplit = None
         self._IsPdf = None
         self._PdfPageNumber = None
+        self._EnableDetectText = None
 
     @property
     def ImageBase64(self):
@@ -4730,6 +4733,14 @@ class GeneralAccurateOCRRequest(AbstractModel):
     def PdfPageNumber(self, PdfPageNumber):
         self._PdfPageNumber = PdfPageNumber
 
+    @property
+    def EnableDetectText(self):
+        return self._EnableDetectText
+
+    @EnableDetectText.setter
+    def EnableDetectText(self, EnableDetectText):
+        self._EnableDetectText = EnableDetectText
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -4738,6 +4749,7 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._EnableDetectSplit = params.get("EnableDetectSplit")
         self._IsPdf = params.get("IsPdf")
         self._PdfPageNumber = params.get("PdfPageNumber")
+        self._EnableDetectText = params.get("EnableDetectText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4759,11 +4771,14 @@ class GeneralAccurateOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
+        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+        :type Angle: float
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
         self._Angel = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -4776,11 +4791,23 @@ class GeneralAccurateOCRResponse(AbstractModel):
 
     @property
     def Angel(self):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         return self._Angel
 
     @Angel.setter
     def Angel(self, Angel):
+        warnings.warn("parameter `Angel` is deprecated", DeprecationWarning) 
+
         self._Angel = Angel
+
+    @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
 
     @property
     def RequestId(self):
@@ -4799,6 +4826,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TextDetections.append(obj)
         self._Angel = params.get("Angel")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 

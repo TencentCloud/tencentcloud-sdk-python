@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 操作访问密钥错误。
 FAILEDOPERATION_ACCESSKEY = 'FailedOperation.Accesskey'
 
+# 集团策略不允许操作。
+FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = 'FailedOperation.OrganizationPolicyOperateError'
+
 # 用户策略数超过上限。
 FAILEDOPERATION_POLICYFULL = 'FailedOperation.PolicyFull'
 

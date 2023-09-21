@@ -118,6 +118,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartPublishStreamWithURL(self, request):
+        """开始云端推流到指定URL
+
+        :param request: Request instance for StartPublishStreamWithURL.
+        :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishStreamWithURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishStreamWithURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopPublishStream(self, request):
         """停止云端推流
 

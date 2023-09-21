@@ -406,6 +406,76 @@ class StartPublishStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartPublishStreamWithURLRequest(AbstractModel):
+    """StartPublishStreamWithURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 唯一用户身份标识，由业务方自定义，平台不予理解。
+        :type UserId: str
+        :param _PublishStreamURL: 推流地址，仅支持rtmp协议。
+        :type PublishStreamURL: str
+        """
+        self._UserId = None
+        self._PublishStreamURL = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PublishStreamURL(self):
+        return self._PublishStreamURL
+
+    @PublishStreamURL.setter
+    def PublishStreamURL(self, PublishStreamURL):
+        self._PublishStreamURL = PublishStreamURL
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._PublishStreamURL = params.get("PublishStreamURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishStreamWithURLResponse(AbstractModel):
+    """StartPublishStreamWithURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopPublishStreamRequest(AbstractModel):
     """StopPublishStream请求参数结构体
 

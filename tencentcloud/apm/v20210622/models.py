@@ -1377,6 +1377,184 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGeneralSpanListRequest(AbstractModel):
+    """DescribeGeneralSpanList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页
+        :type Offset: int
+        :param _Limit: 列表项个数
+        :type Limit: int
+        :param _OrderBy: 排序
+        :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
+        :param _StartTime: span查询开始时间戳（单位:秒）
+        :type StartTime: int
+        :param _InstanceId: 实例名
+        :type InstanceId: str
+        :param _Filters: 通用过滤参数
+        :type Filters: list of Filter
+        :param _BusinessName: 业务自身服务名
+        :type BusinessName: str
+        :param _EndTime: span查询结束时间戳（单位:秒）
+        :type EndTime: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._StartTime = None
+        self._InstanceId = None
+        self._Filters = None
+        self._BusinessName = None
+        self._EndTime = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def BusinessName(self):
+        return self._BusinessName
+
+    @BusinessName.setter
+    def BusinessName(self, BusinessName):
+        self._BusinessName = BusinessName
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("OrderBy") is not None:
+            self._OrderBy = OrderBy()
+            self._OrderBy._deserialize(params.get("OrderBy"))
+        self._StartTime = params.get("StartTime")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._BusinessName = params.get("BusinessName")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGeneralSpanListResponse(AbstractModel):
+    """DescribeGeneralSpanList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _Spans: Span分页列表
+        :type Spans: list of Span
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Spans = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Spans(self):
+        return self._Spans
+
+    @Spans.setter
+    def Spans(self, Spans):
+        self._Spans = Spans
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Spans") is not None:
+            self._Spans = []
+            for item in params.get("Spans"):
+                obj = Span()
+                obj._deserialize(item)
+                self._Spans.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMetricRecordsRequest(AbstractModel):
     """DescribeMetricRecords请求参数结构体
 
@@ -2348,6 +2526,405 @@ class QueryMetricItem(AbstractModel):
         self._MetricName = params.get("MetricName")
         self._Compare = params.get("Compare")
         self._Compares = params.get("Compares")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Span(AbstractModel):
+    """Span对象
+
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TraceID: Trace Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceID: str
+        :param _Logs: 日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Logs: list of SpanLog
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of SpanTag
+        :param _Process: 上报应用服务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Process: :class:`tencentcloud.apm.v20210622.models.SpanProcess`
+        :param _Timestamp: 产生时间戳(毫秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _OperationName: Span名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationName: str
+        :param _References: 关联关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: list of SpanReference
+        :param _StartTime: 产生时间戳(微秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param _Duration: 持续耗时(微妙)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        :param _SpanID: Span Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpanID: str
+        :param _StartTimeMillis: 产生时间戳(毫秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimeMillis: int
+        """
+        self._TraceID = None
+        self._Logs = None
+        self._Tags = None
+        self._Process = None
+        self._Timestamp = None
+        self._OperationName = None
+        self._References = None
+        self._StartTime = None
+        self._Duration = None
+        self._SpanID = None
+        self._StartTimeMillis = None
+
+    @property
+    def TraceID(self):
+        return self._TraceID
+
+    @TraceID.setter
+    def TraceID(self, TraceID):
+        self._TraceID = TraceID
+
+    @property
+    def Logs(self):
+        return self._Logs
+
+    @Logs.setter
+    def Logs(self, Logs):
+        self._Logs = Logs
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Process(self):
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def OperationName(self):
+        return self._OperationName
+
+    @OperationName.setter
+    def OperationName(self, OperationName):
+        self._OperationName = OperationName
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def SpanID(self):
+        return self._SpanID
+
+    @SpanID.setter
+    def SpanID(self, SpanID):
+        self._SpanID = SpanID
+
+    @property
+    def StartTimeMillis(self):
+        return self._StartTimeMillis
+
+    @StartTimeMillis.setter
+    def StartTimeMillis(self, StartTimeMillis):
+        self._StartTimeMillis = StartTimeMillis
+
+
+    def _deserialize(self, params):
+        self._TraceID = params.get("TraceID")
+        if params.get("Logs") is not None:
+            self._Logs = []
+            for item in params.get("Logs"):
+                obj = SpanLog()
+                obj._deserialize(item)
+                self._Logs.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = SpanTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Process") is not None:
+            self._Process = SpanProcess()
+            self._Process._deserialize(params.get("Process"))
+        self._Timestamp = params.get("Timestamp")
+        self._OperationName = params.get("OperationName")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = SpanReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._SpanID = params.get("SpanID")
+        self._StartTimeMillis = params.get("StartTimeMillis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpanLog(AbstractModel):
+    """Span日志部分
+
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: 日志时间戳
+        :type Timestamp: int
+        :param _Fields: 标签
+        :type Fields: list of SpanTag
+        """
+        self._Timestamp = None
+        self._Fields = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        if params.get("Fields") is not None:
+            self._Fields = []
+            for item in params.get("Fields"):
+                obj = SpanTag()
+                obj._deserialize(item)
+                self._Fields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpanProcess(AbstractModel):
+    """服务相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: 应用服务名称
+        :type ServiceName: str
+        :param _Tags: Tags 标签数组
+        :type Tags: list of SpanTag
+        """
+        self._ServiceName = None
+        self._Tags = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = SpanTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpanReference(AbstractModel):
+    """Span上下游关联关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefType: 关联关系类型
+        :type RefType: str
+        :param _SpanID: Span ID
+        :type SpanID: str
+        :param _TraceID: Trace ID
+        :type TraceID: str
+        """
+        self._RefType = None
+        self._SpanID = None
+        self._TraceID = None
+
+    @property
+    def RefType(self):
+        return self._RefType
+
+    @RefType.setter
+    def RefType(self, RefType):
+        self._RefType = RefType
+
+    @property
+    def SpanID(self):
+        return self._SpanID
+
+    @SpanID.setter
+    def SpanID(self, SpanID):
+        self._SpanID = SpanID
+
+    @property
+    def TraceID(self):
+        return self._TraceID
+
+    @TraceID.setter
+    def TraceID(self, TraceID):
+        self._TraceID = TraceID
+
+
+    def _deserialize(self, params):
+        self._RefType = params.get("RefType")
+        self._SpanID = params.get("SpanID")
+        self._TraceID = params.get("TraceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpanTag(AbstractModel):
+    """标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 标签类型
+        :type Type: str
+        :param _Key: 标签Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Type = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

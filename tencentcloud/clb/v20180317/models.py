@@ -9827,7 +9827,7 @@ class Listener(AbstractModel):
         :param _SessionExpireTime: 会话保持时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionExpireTime: int
-        :param _SniSwitch: 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）
+        :param _SniSwitch: 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniSwitch: int
         :param _Rules: 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
@@ -11310,7 +11310,7 @@ Public：公网属性， Private：内网属性。
         :param _Zones: 内网负载均衡实例所在可用区，由白名单CLB_Internal_Zone控制
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zones: list of str
-        :param _SniSwitch: 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
+        :param _SniSwitch: 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniSwitch: int
         :param _LoadBalancerDomain: 负载均衡实例的域名。
