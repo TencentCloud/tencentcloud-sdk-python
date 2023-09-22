@@ -5482,6 +5482,33 @@ class DescribeCustomHeaderRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        """
+        self._RuleId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCustomHeaderResponse(AbstractModel):
     """DescribeCustomHeader返回参数结构体

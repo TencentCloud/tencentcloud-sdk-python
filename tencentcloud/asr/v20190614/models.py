@@ -2190,6 +2190,9 @@ class SentenceDetail(AbstractModel):
         :param _SliceSentence: 单句中间识别结果，使用空格拆分为多个词
 注意：此字段可能返回 null，表示取不到有效值。
         :type SliceSentence: str
+        :param _WrittenText: 口语转书面语结果，开启改功能才有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WrittenText: str
         :param _StartMs: 单句开始时间（毫秒）
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartMs: int
@@ -2220,6 +2223,7 @@ class SentenceDetail(AbstractModel):
         """
         self._FinalSentence = None
         self._SliceSentence = None
+        self._WrittenText = None
         self._StartMs = None
         self._EndMs = None
         self._WordsNum = None
@@ -2245,6 +2249,14 @@ class SentenceDetail(AbstractModel):
     @SliceSentence.setter
     def SliceSentence(self, SliceSentence):
         self._SliceSentence = SliceSentence
+
+    @property
+    def WrittenText(self):
+        return self._WrittenText
+
+    @WrittenText.setter
+    def WrittenText(self, WrittenText):
+        self._WrittenText = WrittenText
 
     @property
     def StartMs(self):
@@ -2322,6 +2334,7 @@ class SentenceDetail(AbstractModel):
     def _deserialize(self, params):
         self._FinalSentence = params.get("FinalSentence")
         self._SliceSentence = params.get("SliceSentence")
+        self._WrittenText = params.get("WrittenText")
         self._StartMs = params.get("StartMs")
         self._EndMs = params.get("EndMs")
         self._WordsNum = params.get("WordsNum")

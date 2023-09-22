@@ -105,6 +105,59 @@ class Agent(AbstractModel):
         
 
 
+class ApproverComponentLimitType(AbstractModel):
+    """指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+        :type RecipientId: str
+        :param _Values: 签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+
+签名方式：
+<ul>
+<li>HANDWRITE-手写签名</li>
+<li>ESIGN-个人印章类型</li>
+<li>OCR_ESIGN-AI智能识别手写签名</li>
+<li>SYSTEM_ESIGN-系统签名</li>
+</ul>
+        :type Values: list of str
+        """
+        self._RecipientId = None
+        self._Values = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._RecipientId = params.get("RecipientId")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApproverOption(AbstractModel):
     """签署人个性化能力信息
 
@@ -2858,6 +2911,8 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ApproverComponentLimitTypes: 指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+        :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
         """
         self._Agent = None
         self._TemplateId = None
@@ -2869,6 +2924,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._CallbackUrl = None
         self._ApproverRestrictions = None
         self._Operator = None
+        self._ApproverComponentLimitTypes = None
 
     @property
     def Agent(self):
@@ -2962,6 +3018,14 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def ApproverComponentLimitTypes(self):
+        return self._ApproverComponentLimitTypes
+
+    @ApproverComponentLimitTypes.setter
+    def ApproverComponentLimitTypes(self, ApproverComponentLimitTypes):
+        self._ApproverComponentLimitTypes = ApproverComponentLimitTypes
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -2985,6 +3049,12 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        if params.get("ApproverComponentLimitTypes") is not None:
+            self._ApproverComponentLimitTypes = []
+            for item in params.get("ApproverComponentLimitTypes"):
+                obj = ApproverComponentLimitType()
+                obj._deserialize(item)
+                self._ApproverComponentLimitTypes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6567,7 +6637,7 @@ ComponentType为SIGN_DATE时，支持以下参数：
 
 ComponentType为SIGN_SEAL类型时，支持以下参数：
 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
-参数样例： "ComponentExtra":"{["PageRange":{"BeginPage":1,"EndPage":-1}]}"
+参数样例： "ComponentExtra":"{"PageRange":[{"BeginPage":1,"EndPage":-1}]}"
         :type ComponentExtra: str
         :param _ComponentValue: 控件填充vaule，ComponentType和传入值类型对应关系：
 TEXT - 文本内容
@@ -9681,7 +9751,12 @@ PERSON-个人/自然人；
 PERSON_AUTO_SIGN-个人自动签署，适用于个人自动签场景
 注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
 ORGANIZATION-企业（企业签署方或模板发起时的企业静默签）；
-ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
+ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的本方企业自动签）
+
+若要实现他方企业（同一应用下）自动签，需要满足3个条件：
+条件1：ApproverType 设置为ENTERPRISESERVER
+条件2：子客之间完成授权
+条件3：联系对接的客户经理沟通
         :type ApproverType: str
         :param _RecipientId: 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
         :type RecipientId: str

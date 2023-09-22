@@ -1475,6 +1475,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSparkSessionBatchSQL(self, request):
+        """本接口（DescribeSparkSessionBatchSQL）用于查询Spark SQL批任务运行状态
+
+        :param request: Request instance for DescribeSparkSessionBatchSQL.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSQLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSparkSessionBatchSQL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSparkSessionBatchSQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSparkSessionBatchSqlLog(self, request):
         """本接口（DescribeSparkSessionBatchSqlLog）用于查询Spark SQL批任务日志
 

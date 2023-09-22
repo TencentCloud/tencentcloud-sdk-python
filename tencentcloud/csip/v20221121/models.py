@@ -3617,6 +3617,168 @@ class DbAssetInfo(AbstractModel):
         
 
 
+class DeleteDomainAndIpRequest(AbstractModel):
+    """DeleteDomainAndIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: -
+        :type Content: list of PublicIpDomainListKey
+        :param _RetainPath: 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
+        :type RetainPath: int
+        :param _IgnoreAsset: 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
+        :type IgnoreAsset: int
+        """
+        self._Content = None
+        self._RetainPath = None
+        self._IgnoreAsset = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RetainPath(self):
+        return self._RetainPath
+
+    @RetainPath.setter
+    def RetainPath(self, RetainPath):
+        self._RetainPath = RetainPath
+
+    @property
+    def IgnoreAsset(self):
+        return self._IgnoreAsset
+
+    @IgnoreAsset.setter
+    def IgnoreAsset(self, IgnoreAsset):
+        self._IgnoreAsset = IgnoreAsset
+
+
+    def _deserialize(self, params):
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = PublicIpDomainListKey()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RetainPath = params.get("RetainPath")
+        self._IgnoreAsset = params.get("IgnoreAsset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDomainAndIpResponse(AbstractModel):
+    """DeleteDomainAndIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 删除的资产数量
+        :type Data: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRiskScanTaskRequest(AbstractModel):
+    """DeleteRiskScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdList: 任务id 列表
+        :type TaskIdList: list of TaskIdListKey
+        """
+        self._TaskIdList = None
+
+    @property
+    def TaskIdList(self):
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+
+    def _deserialize(self, params):
+        if params.get("TaskIdList") is not None:
+            self._TaskIdList = []
+            for item in params.get("TaskIdList"):
+                obj = TaskIdListKey()
+                obj._deserialize(item)
+                self._TaskIdList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRiskScanTaskResponse(AbstractModel):
+    """DeleteRiskScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCVMAssetInfoRequest(AbstractModel):
     """DescribeCVMAssetInfo请求参数结构体
 
@@ -7132,6 +7294,39 @@ class IpAssetListVO(AbstractModel):
         
 
 
+class PublicIpDomainListKey(AbstractModel):
+    """公网IP和域名资产列表key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Asset: 资产值
+        :type Asset: str
+        """
+        self._Asset = None
+
+    @property
+    def Asset(self):
+        return self._Asset
+
+    @Asset.setter
+    def Asset(self, Asset):
+        self._Asset = Asset
+
+
+    def _deserialize(self, params):
+        self._Asset = params.get("Asset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReportItemKey(AbstractModel):
     """报告项key
 
@@ -7875,6 +8070,81 @@ class ScanTaskInfoList(AbstractModel):
         
 
 
+class StopRiskCenterTaskRequest(AbstractModel):
+    """StopRiskCenterTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdList: 任务id 列表
+        :type TaskIdList: list of TaskIdListKey
+        """
+        self._TaskIdList = None
+
+    @property
+    def TaskIdList(self):
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+
+    def _deserialize(self, params):
+        if params.get("TaskIdList") is not None:
+            self._TaskIdList = []
+            for item in params.get("TaskIdList"):
+                obj = TaskIdListKey()
+                obj._deserialize(item)
+                self._TaskIdList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopRiskCenterTaskResponse(AbstractModel):
+    """StopRiskCenterTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Status为0， 停止成功
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class SubnetAsset(AbstractModel):
     """子网资产
 
@@ -8471,6 +8741,39 @@ class TaskCenterWeakPwdRiskInputParam(AbstractModel):
     def _deserialize(self, params):
         self._CheckItemId = params.get("CheckItemId")
         self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskIdListKey(AbstractModel):
+    """任务ID列表Key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

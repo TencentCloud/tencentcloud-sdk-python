@@ -14167,6 +14167,209 @@ class DescribeAccountStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAgentInstallCommandRequest(AbstractModel):
+    """DescribeAgentInstallCommand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsCloud: 是否腾讯云
+        :type IsCloud: bool
+        :param _NetType: 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
+        :type NetType: str
+        :param _RegionCode: 地域标示, NetType=direct时必填
+        :type RegionCode: str
+        :param _VpcId: VpcId, NetType=direct时必填
+        :type VpcId: str
+        :param _TagIds: 标签ID列表，IsCloud=false时才会生效
+        :type TagIds: list of int non-negative
+        :param _ExpireDate: 命令有效期，非腾讯云时必填
+        :type ExpireDate: str
+        :param _Vip: 代理方式接入的vip
+        :type Vip: str
+        """
+        self._IsCloud = None
+        self._NetType = None
+        self._RegionCode = None
+        self._VpcId = None
+        self._TagIds = None
+        self._ExpireDate = None
+        self._Vip = None
+
+    @property
+    def IsCloud(self):
+        return self._IsCloud
+
+    @IsCloud.setter
+    def IsCloud(self, IsCloud):
+        self._IsCloud = IsCloud
+
+    @property
+    def NetType(self):
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def RegionCode(self):
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TagIds(self):
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def ExpireDate(self):
+        return self._ExpireDate
+
+    @ExpireDate.setter
+    def ExpireDate(self, ExpireDate):
+        self._ExpireDate = ExpireDate
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._IsCloud = params.get("IsCloud")
+        self._NetType = params.get("NetType")
+        self._RegionCode = params.get("RegionCode")
+        self._VpcId = params.get("VpcId")
+        self._TagIds = params.get("TagIds")
+        self._ExpireDate = params.get("ExpireDate")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAgentInstallCommandResponse(AbstractModel):
+    """DescribeAgentInstallCommand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LinuxCommand: linux系统安装命令
+        :type LinuxCommand: str
+        :param _WindowsCommand: windows系统安装命令（windows2008及以上）
+        :type WindowsCommand: str
+        :param _WindowsStepOne: windows系统安装命令第一步（windows2003）
+        :type WindowsStepOne: str
+        :param _WindowsStepTwo: windows系统安装命令第二步（windows2003）
+        :type WindowsStepTwo: str
+        :param _WindowsDownloadUrl: windows版agent下载链接
+        :type WindowsDownloadUrl: str
+        :param _ARMCommand: Arm安装命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ARMCommand: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LinuxCommand = None
+        self._WindowsCommand = None
+        self._WindowsStepOne = None
+        self._WindowsStepTwo = None
+        self._WindowsDownloadUrl = None
+        self._ARMCommand = None
+        self._RequestId = None
+
+    @property
+    def LinuxCommand(self):
+        return self._LinuxCommand
+
+    @LinuxCommand.setter
+    def LinuxCommand(self, LinuxCommand):
+        self._LinuxCommand = LinuxCommand
+
+    @property
+    def WindowsCommand(self):
+        return self._WindowsCommand
+
+    @WindowsCommand.setter
+    def WindowsCommand(self, WindowsCommand):
+        self._WindowsCommand = WindowsCommand
+
+    @property
+    def WindowsStepOne(self):
+        return self._WindowsStepOne
+
+    @WindowsStepOne.setter
+    def WindowsStepOne(self, WindowsStepOne):
+        self._WindowsStepOne = WindowsStepOne
+
+    @property
+    def WindowsStepTwo(self):
+        return self._WindowsStepTwo
+
+    @WindowsStepTwo.setter
+    def WindowsStepTwo(self, WindowsStepTwo):
+        self._WindowsStepTwo = WindowsStepTwo
+
+    @property
+    def WindowsDownloadUrl(self):
+        return self._WindowsDownloadUrl
+
+    @WindowsDownloadUrl.setter
+    def WindowsDownloadUrl(self, WindowsDownloadUrl):
+        self._WindowsDownloadUrl = WindowsDownloadUrl
+
+    @property
+    def ARMCommand(self):
+        return self._ARMCommand
+
+    @ARMCommand.setter
+    def ARMCommand(self, ARMCommand):
+        self._ARMCommand = ARMCommand
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LinuxCommand = params.get("LinuxCommand")
+        self._WindowsCommand = params.get("WindowsCommand")
+        self._WindowsStepOne = params.get("WindowsStepOne")
+        self._WindowsStepTwo = params.get("WindowsStepTwo")
+        self._WindowsDownloadUrl = params.get("WindowsDownloadUrl")
+        self._ARMCommand = params.get("ARMCommand")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAlarmIncidentNodesRequest(AbstractModel):
     """DescribeAlarmIncidentNodes请求参数结构体
 
@@ -28382,6 +28585,7 @@ Other 混合云专区
 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
+<li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
         :type Filters: list of Filter
         :param _ProjectIds: 机器所属业务ID列表
         :type ProjectIds: list of int non-negative

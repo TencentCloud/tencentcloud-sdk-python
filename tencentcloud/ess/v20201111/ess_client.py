@@ -1158,7 +1158,7 @@ class EssClient(AbstractClient):
 
 
     def DescribeFlowInfo(self, request):
-        """接口用户查询合同流程的详情信息, 支持查询多个(数量不能超过100)
+        """此接口用于查询合同流程的详情信息，支持查询多个（数量不能超过100）。
 
         适用场景：可用于主动查询某个合同详情信息。
 
@@ -1327,6 +1327,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribeOrganizationSeals", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOrganizationSealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePersonCertificate(self, request):
+        """此接口（DescribePersonCertificate）用于查询个人数字证书信息。<br />注：`1.目前仅用于查询开通了医疗自动签署功能的个人数字证书。`<br />`2.调用此接口需要开通白名单，使用前请联系相关人员开通白名单。`
+
+        :param request: Request instance for DescribePersonCertificate.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribePersonCertificateRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribePersonCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePersonCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePersonCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

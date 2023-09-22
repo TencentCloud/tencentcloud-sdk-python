@@ -148,6 +148,59 @@ class Agent(AbstractModel):
         
 
 
+class ApproverComponentLimitType(AbstractModel):
+    """签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+        :type RecipientId: str
+        :param _Values: 签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式，可多选
+
+签名方式：
+<ul>
+<li>HANDWRITE-手写签名</li>
+<li>ESIGN-个人印章类型</li>
+<li>OCR_ESIGN-AI智能识别手写签名</li>
+<li>SYSTEM_ESIGN-系统签名</li>
+</ul>
+        :type Values: list of str
+        """
+        self._RecipientId = None
+        self._Values = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._RecipientId = params.get("RecipientId")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApproverInfo(AbstractModel):
     """参与者信息。
 
@@ -3657,7 +3710,7 @@ class CreateFlowGroupByTemplatesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowGroupName: 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowGroupName: str
@@ -5267,6 +5320,8 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
+        :param _ApproverComponentLimitTypes: 指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
+        :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
         """
         self._Operator = None
         self._TemplateId = None
@@ -5279,6 +5334,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._CallbackUrl = None
         self._Agent = None
         self._ApproverRestrictions = None
+        self._ApproverComponentLimitTypes = None
 
     @property
     def Operator(self):
@@ -5376,6 +5432,14 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
         self._ApproverRestrictions = ApproverRestrictions
 
+    @property
+    def ApproverComponentLimitTypes(self):
+        return self._ApproverComponentLimitTypes
+
+    @ApproverComponentLimitTypes.setter
+    def ApproverComponentLimitTypes(self, ApproverComponentLimitTypes):
+        self._ApproverComponentLimitTypes = ApproverComponentLimitTypes
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5400,6 +5464,12 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         if params.get("ApproverRestrictions") is not None:
             self._ApproverRestrictions = ApproverRestriction()
             self._ApproverRestrictions._deserialize(params.get("ApproverRestrictions"))
+        if params.get("ApproverComponentLimitTypes") is not None:
+            self._ApproverComponentLimitTypes = []
+            for item in params.get("ApproverComponentLimitTypes"):
+                obj = ApproverComponentLimitType()
+                obj._deserialize(item)
+                self._ApproverComponentLimitTypes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8862,15 +8932,12 @@ class DescribeFlowInfoRequest(AbstractModel):
         r"""
         :param _Operator: 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 需要查询的流程ID列表，限制最大100个
-
-如果查询合同组的信息,不要传此参数
+        :param _FlowIds: 需要查询的流程ID列表，最多可传入100个ID。
+如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
         :type FlowIds: list of str
         :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowGroupId: 合同组ID, 如果传此参数会忽略FlowIds入参
- 所以如传此参数不要传FlowIds参数
-
+        :param _FlowGroupId: 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
         :type FlowGroupId: str
         """
         self._Operator = None
@@ -8937,11 +9004,12 @@ class DescribeFlowInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowDetailInfos: 签署流程信息
+        :param _FlowDetailInfos: 合同流程的详细信息。
+如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
         :type FlowDetailInfos: list of FlowDetailInfo
-        :param _FlowGroupId: 合同组ID，为32位字符串
+        :param _FlowGroupId: 合同组ID，只有在查询合同组信息时才会返回。
         :type FlowGroupId: str
-        :param _FlowGroupName: 合同组名称
+        :param _FlowGroupName: 合同组名称，只有在查询合同组信息时才会返回。
         :type FlowGroupName: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10147,6 +10215,125 @@ class DescribeOrganizationSealsResponse(AbstractModel):
                 obj = OccupiedSeal()
                 obj._deserialize(item)
                 self._Seals.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePersonCertificateRequest(AbstractModel):
+    """DescribePersonCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _UserInfo: 个人用户的三要素信息：
+<ul><li>姓名</li>
+<li>证件号</li>
+<li>证件类型</li></ul>
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _SceneKey: 证书使用场景，可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
+注: `现在仅支持电子处方场景`
+        :type SceneKey: str
+        """
+        self._Operator = None
+        self._UserInfo = None
+        self._Agent = None
+        self._SceneKey = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePersonCertificateResponse(AbstractModel):
+    """DescribePersonCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cert: 证书的Base64
+        :type Cert: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Cert = None
+        self._RequestId = None
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Cert = params.get("Cert")
         self._RequestId = params.get("RequestId")
 
 

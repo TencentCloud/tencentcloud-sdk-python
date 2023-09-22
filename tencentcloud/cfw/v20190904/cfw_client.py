@@ -1940,7 +1940,9 @@ class CfwClient(AbstractClient):
 
 
     def ModifyPublicIPSwitchStatus(self, request):
-        """单个修改互联网边界防火墙开关
+        """已上新接口，支持串行
+
+        单个修改互联网边界防火墙开关
 
         :param request: Request instance for ModifyPublicIPSwitchStatus.
         :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusRequest`

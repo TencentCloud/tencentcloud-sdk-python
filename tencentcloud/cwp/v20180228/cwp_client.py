@@ -880,6 +880,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAgentInstallCommand(self, request):
+        """获取agent安装命令
+
+        :param request: Request instance for DescribeAgentInstallCommand.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallCommandRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeAgentInstallCommandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentInstallCommand", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentInstallCommandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlarmIncidentNodes(self, request):
         """获取告警点所在事件的所有节点信息
 

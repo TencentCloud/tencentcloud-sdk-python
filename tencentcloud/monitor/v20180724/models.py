@@ -7517,7 +7517,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type Namespaces: list of MonitorTypeNamespace
         :param _MetricNames: 根据指标名过滤
         :type MetricNames: list of str
-        :param _PolicyName: 根据策略名称模糊搜索
+        :param _PolicyName: 根据策略名称模糊搜索,不支持大小写区分
         :type PolicyName: str
         :param _Content: 根据告警内容模糊搜索
         :type Content: str
@@ -7527,7 +7527,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type ReceiverGroups: list of int
         :param _PolicyIds: 根据告警策略 Id 列表搜索
         :type PolicyIds: list of str
-        :param _AlarmLevels: 告警等级
+        :param _AlarmLevels: 告警等级,取值范围：Remind、Serious、Warn
         :type AlarmLevels: list of str
         """
         self._Module = None

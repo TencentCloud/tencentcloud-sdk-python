@@ -810,7 +810,8 @@ tar.gz： 生成`.tar.gz`压缩包
 
 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinScaleResolution: str
-        :param _AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认不开启。
+        :param _AutoHandleUnsupportedElement: 此参数仅对动态转码生效。
+是否对不支持元素开启自动处理的功能。默认不开启。
 
 在开启自动处理的情况下，会自动进行如下处理：
 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）

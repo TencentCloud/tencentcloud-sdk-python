@@ -11696,6 +11696,9 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         :type SpecId: str
         :param _SpecAlias: 计费项别名
         :type SpecAlias: str
+        :param _SpecFeatures: 计费项特性列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecFeatures: list of str
         """
         self._InstanceId = None
         self._UsedResource = None
@@ -11707,6 +11710,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._AutoRenewFlag = None
         self._SpecId = None
         self._SpecAlias = None
+        self._SpecFeatures = None
 
     @property
     def InstanceId(self):
@@ -11788,6 +11792,14 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
     def SpecAlias(self, SpecAlias):
         self._SpecAlias = SpecAlias
 
+    @property
+    def SpecFeatures(self):
+        return self._SpecFeatures
+
+    @SpecFeatures.setter
+    def SpecFeatures(self, SpecFeatures):
+        self._SpecFeatures = SpecFeatures
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11804,6 +11816,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._SpecId = params.get("SpecId")
         self._SpecAlias = params.get("SpecAlias")
+        self._SpecFeatures = params.get("SpecFeatures")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

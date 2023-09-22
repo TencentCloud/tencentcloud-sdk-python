@@ -95,6 +95,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDomainAndIp(self, request):
+        """删除域名和ip请求
+
+        :param request: Request instance for DeleteDomainAndIp.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDomainAndIpRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDomainAndIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDomainAndIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDomainAndIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRiskScanTask(self, request):
+        """删除风险中心扫描任务
+
+        :param request: Request instance for DeleteRiskScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteRiskScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteRiskScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRiskScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRiskScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCVMAssetInfo(self, request):
         """cvm详情
 
@@ -477,6 +523,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVpcAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopRiskCenterTask(self, request):
+        """停止扫风险中心扫描任务
+
+        :param request: Request instance for StopRiskCenterTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.StopRiskCenterTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.StopRiskCenterTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopRiskCenterTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopRiskCenterTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

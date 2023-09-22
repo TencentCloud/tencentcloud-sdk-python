@@ -1001,6 +1001,66 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchSqlTask(AbstractModel):
+    """SparkSQL批任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: SQL子任务唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _ExecuteSQL: 运行SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteSQL: str
+        :param _Message: 任务信息，成功则返回：Task Success!，失败则返回异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._TaskId = None
+        self._ExecuteSQL = None
+        self._Message = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ExecuteSQL(self):
+        return self._ExecuteSQL
+
+    @ExecuteSQL.setter
+    def ExecuteSQL(self, ExecuteSQL):
+        self._ExecuteSQL = ExecuteSQL
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ExecuteSQL = params.get("ExecuteSQL")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindWorkGroupsToUserRequest(AbstractModel):
     """BindWorkGroupsToUser请求参数结构体
 
@@ -11265,6 +11325,106 @@ class DescribeSparkAppTasksResponse(AbstractModel):
                 obj = TaskResponseInfo()
                 obj._deserialize(item)
                 self._SparkAppTasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSparkSessionBatchSQLRequest(AbstractModel):
+    """DescribeSparkSessionBatchSQL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchId: SparkSQL唯一标识
+        :type BatchId: str
+        """
+        self._BatchId = None
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+
+    def _deserialize(self, params):
+        self._BatchId = params.get("BatchId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSparkSessionBatchSQLResponse(AbstractModel):
+    """DescribeSparkSessionBatchSQL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _State: 状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
+        :type State: int
+        :param _Tasks: SQL子任务列表，仅展示运行完成的子任务，若某个任务运行失败，后续其它子任务不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of BatchSqlTask
+        :param _Event: 非sql运行的异常事件信息，包含资源创建失败、调度异常，JOB超时等，正常运行下该Event值为空
+        :type Event: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._State = None
+        self._Tasks = None
+        self._Event = None
+        self._RequestId = None
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._State = params.get("State")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = BatchSqlTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Event = params.get("Event")
         self._RequestId = params.get("RequestId")
 
 

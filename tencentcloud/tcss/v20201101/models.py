@@ -11935,6 +11935,45 @@ class CreateRefreshTaskRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterIDs: 指定集群列表,若为空则标识同步所有集群
+        :type ClusterIDs: list of str
+        :param _IsSyncListOnly: 是否只同步列表
+        :type IsSyncListOnly: bool
+        """
+        self._ClusterIDs = None
+        self._IsSyncListOnly = None
+
+    @property
+    def ClusterIDs(self):
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def IsSyncListOnly(self):
+        return self._IsSyncListOnly
+
+    @IsSyncListOnly.setter
+    def IsSyncListOnly(self, IsSyncListOnly):
+        self._IsSyncListOnly = IsSyncListOnly
+
+
+    def _deserialize(self, params):
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._IsSyncListOnly = params.get("IsSyncListOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateRefreshTaskResponse(AbstractModel):
     """CreateRefreshTask返回参数结构体
@@ -11947,11 +11986,14 @@ class CreateRefreshTaskResponse(AbstractModel):
         :type TaskId: int
         :param _CreateResult: 创建检查任务的结果，"Succ"为成功，"Failed"为失败
         :type CreateResult: str
+        :param _NewTaskID: 返回创建的新集群检查任务ID
+        :type NewTaskID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._CreateResult = None
+        self._NewTaskID = None
         self._RequestId = None
 
     @property
@@ -11971,6 +12013,14 @@ class CreateRefreshTaskResponse(AbstractModel):
         self._CreateResult = CreateResult
 
     @property
+    def NewTaskID(self):
+        return self._NewTaskID
+
+    @NewTaskID.setter
+    def NewTaskID(self, NewTaskID):
+        self._NewTaskID = NewTaskID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11982,6 +12032,7 @@ class CreateRefreshTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._CreateResult = params.get("CreateResult")
+        self._NewTaskID = params.get("NewTaskID")
         self._RequestId = params.get("RequestId")
 
 
