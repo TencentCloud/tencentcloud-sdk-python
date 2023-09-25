@@ -116,10 +116,14 @@ class EvaluationRequest(AbstractModel):
 
     @property
     def IsAsync(self):
+        warnings.warn("parameter `IsAsync` is deprecated", DeprecationWarning) 
+
         return self._IsAsync
 
     @IsAsync.setter
     def IsAsync(self, IsAsync):
+        warnings.warn("parameter `IsAsync` is deprecated", DeprecationWarning) 
+
         self._IsAsync = IsAsync
 
     @property
@@ -235,10 +239,14 @@ class EvaluationResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         return self._TaskId
 
     @TaskId.setter
     def TaskId(self, TaskId):
+        warnings.warn("parameter `TaskId` is deprecated", DeprecationWarning) 
+
         self._TaskId = TaskId
 
     @property

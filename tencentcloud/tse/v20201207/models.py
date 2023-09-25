@@ -2114,18 +2114,26 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
 
     @property
     def Key(self):
+        warnings.warn("parameter `Key` is deprecated", DeprecationWarning) 
+
         return self._Key
 
     @Key.setter
     def Key(self, Key):
+        warnings.warn("parameter `Key` is deprecated", DeprecationWarning) 
+
         self._Key = Key
 
     @property
     def Crt(self):
+        warnings.warn("parameter `Crt` is deprecated", DeprecationWarning) 
+
         return self._Crt
 
     @Crt.setter
     def Crt(self, Crt):
+        warnings.warn("parameter `Crt` is deprecated", DeprecationWarning) 
+
         self._Crt = Crt
 
 

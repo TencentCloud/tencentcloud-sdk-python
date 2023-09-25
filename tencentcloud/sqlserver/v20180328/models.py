@@ -8545,6 +8545,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type UidSet: list of str
         :param _InstanceType: 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
         :type InstanceType: str
+        :param _PaginationType: 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
+        :type PaginationType: str
         """
         self._ProjectId = None
         self._Status = None
@@ -8562,6 +8564,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._SearchKey = None
         self._UidSet = None
         self._InstanceType = None
+        self._PaginationType = None
 
     @property
     def ProjectId(self):
@@ -8691,6 +8694,14 @@ class DescribeDBInstancesRequest(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def PaginationType(self):
+        return self._PaginationType
+
+    @PaginationType.setter
+    def PaginationType(self, PaginationType):
+        self._PaginationType = PaginationType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -8709,6 +8720,7 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._SearchKey = params.get("SearchKey")
         self._UidSet = params.get("UidSet")
         self._InstanceType = params.get("InstanceType")
+        self._PaginationType = params.get("PaginationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

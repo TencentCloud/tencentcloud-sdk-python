@@ -891,6 +891,269 @@ class AssetInfoDetail(AbstractModel):
         
 
 
+class AssetViewCFGRisk(AbstractModel):
+    """资产视角配置风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 唯一id
+        :type Id: str
+        :param _CFGName: 配置名
+        :type CFGName: str
+        :param _CheckType: 检查类型
+        :type CheckType: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _AffectAsset: 影响资产
+        :type AffectAsset: str
+        :param _Level: 风险等级
+        :type Level: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _From: 来源
+        :type From: str
+        :param _Status: 状态
+        :type Status: int
+        :param _CFGSTD: -
+        :type CFGSTD: str
+        :param _CFGDescribe: 配置详情
+        :type CFGDescribe: str
+        :param _CFGFix: 修复建议
+        :type CFGFix: str
+        :param _CFGHelpURL: 帮助文档链接
+        :type CFGHelpURL: str
+        :param _Index: 前端使用索引
+        :type Index: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        """
+        self._Id = None
+        self._CFGName = None
+        self._CheckType = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceType = None
+        self._AffectAsset = None
+        self._Level = None
+        self._FirstTime = None
+        self._RecentTime = None
+        self._From = None
+        self._Status = None
+        self._CFGSTD = None
+        self._CFGDescribe = None
+        self._CFGFix = None
+        self._CFGHelpURL = None
+        self._Index = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CFGName(self):
+        return self._CFGName
+
+    @CFGName.setter
+    def CFGName(self, CFGName):
+        self._CFGName = CFGName
+
+    @property
+    def CheckType(self):
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def AffectAsset(self):
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CFGSTD(self):
+        return self._CFGSTD
+
+    @CFGSTD.setter
+    def CFGSTD(self, CFGSTD):
+        self._CFGSTD = CFGSTD
+
+    @property
+    def CFGDescribe(self):
+        return self._CFGDescribe
+
+    @CFGDescribe.setter
+    def CFGDescribe(self, CFGDescribe):
+        self._CFGDescribe = CFGDescribe
+
+    @property
+    def CFGFix(self):
+        return self._CFGFix
+
+    @CFGFix.setter
+    def CFGFix(self, CFGFix):
+        self._CFGFix = CFGFix
+
+    @property
+    def CFGHelpURL(self):
+        return self._CFGHelpURL
+
+    @CFGHelpURL.setter
+    def CFGHelpURL(self, CFGHelpURL):
+        self._CFGHelpURL = CFGHelpURL
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CFGName = params.get("CFGName")
+        self._CheckType = params.get("CheckType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceType = params.get("InstanceType")
+        self._AffectAsset = params.get("AffectAsset")
+        self._Level = params.get("Level")
+        self._FirstTime = params.get("FirstTime")
+        self._RecentTime = params.get("RecentTime")
+        self._From = params.get("From")
+        self._Status = params.get("Status")
+        self._CFGSTD = params.get("CFGSTD")
+        self._CFGDescribe = params.get("CFGDescribe")
+        self._CFGFix = params.get("CFGFix")
+        self._CFGHelpURL = params.get("CFGHelpURL")
+        self._Index = params.get("Index")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetViewPortRisk(AbstractModel):
     """资产视角的端口风险对象
 
@@ -1552,6 +1815,281 @@ class AssetViewVULRisk(AbstractModel):
         self._InstanceUUID = params.get("InstanceUUID")
         self._Payload = params.get("Payload")
         self._EMGCVulType = params.get("EMGCVulType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssetViewWeakPassRisk(AbstractModel):
+    """资产视角的弱口令风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectAsset: 影响资产
+        :type AffectAsset: str
+        :param _Level: 风险等级
+        :type Level: str
+        :param _InstanceType: 资产类型
+        :type InstanceType: str
+        :param _Component: 组件
+        :type Component: str
+        :param _Service: 服务
+        :type Service: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _Status: 状态，0未处理、1已处置、2已忽略
+        :type Status: int
+        :param _Id: 资产唯一id
+        :type Id: str
+        :param _Index: 前端索引
+        :type Index: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _PasswordType: 弱口令类型
+        :type PasswordType: str
+        :param _From: 来源
+        :type From: str
+        :param _VULType: 漏洞类型
+        :type VULType: str
+        :param _VULURL: 漏洞url
+        :type VULURL: str
+        :param _Fix: 修复建议
+        :type Fix: str
+        :param _Payload: 负载
+        :type Payload: str
+        """
+        self._AffectAsset = None
+        self._Level = None
+        self._InstanceType = None
+        self._Component = None
+        self._Service = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._Status = None
+        self._Id = None
+        self._Index = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+        self._PasswordType = None
+        self._From = None
+        self._VULType = None
+        self._VULURL = None
+        self._Fix = None
+        self._Payload = None
+
+    @property
+    def AffectAsset(self):
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def PasswordType(self):
+        return self._PasswordType
+
+    @PasswordType.setter
+    def PasswordType(self, PasswordType):
+        self._PasswordType = PasswordType
+
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def VULType(self):
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def VULURL(self):
+        return self._VULURL
+
+    @VULURL.setter
+    def VULURL(self, VULURL):
+        self._VULURL = VULURL
+
+    @property
+    def Fix(self):
+        return self._Fix
+
+    @Fix.setter
+    def Fix(self, Fix):
+        self._Fix = Fix
+
+    @property
+    def Payload(self):
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+
+    def _deserialize(self, params):
+        self._AffectAsset = params.get("AffectAsset")
+        self._Level = params.get("Level")
+        self._InstanceType = params.get("InstanceType")
+        self._Component = params.get("Component")
+        self._Service = params.get("Service")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._Index = params.get("Index")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._PasswordType = params.get("PasswordType")
+        self._From = params.get("From")
+        self._VULType = params.get("VULType")
+        self._VULURL = params.get("VULURL")
+        self._Fix = params.get("Fix")
+        self._Payload = params.get("Payload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4950,6 +5488,197 @@ class DescribePublicIpAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
+    """DescribeRiskCenterAssetViewCFGRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
+    """DescribeRiskCenterAssetViewCFGRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 资产视角的配置风险列表
+        :type Data: list of AssetViewCFGRisk
+        :param _StatusLists: 状态列表
+        :type StatusLists: list of FilterDataObject
+        :param _LevelLists: 危险等级列表
+        :type LevelLists: list of FilterDataObject
+        :param _CFGNameLists: 配置名列表
+        :type CFGNameLists: list of FilterDataObject
+        :param _CheckTypeLists: 检查类型列表
+        :type CheckTypeLists: list of FilterDataObject
+        :param _InstanceTypeLists: 资产类型列表
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _FromLists: 来源列表
+        :type FromLists: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._StatusLists = None
+        self._LevelLists = None
+        self._CFGNameLists = None
+        self._CheckTypeLists = None
+        self._InstanceTypeLists = None
+        self._FromLists = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def StatusLists(self):
+        return self._StatusLists
+
+    @StatusLists.setter
+    def StatusLists(self, StatusLists):
+        self._StatusLists = StatusLists
+
+    @property
+    def LevelLists(self):
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def CFGNameLists(self):
+        return self._CFGNameLists
+
+    @CFGNameLists.setter
+    def CFGNameLists(self, CFGNameLists):
+        self._CFGNameLists = CFGNameLists
+
+    @property
+    def CheckTypeLists(self):
+        return self._CheckTypeLists
+
+    @CheckTypeLists.setter
+    def CheckTypeLists(self, CheckTypeLists):
+        self._CheckTypeLists = CheckTypeLists
+
+    @property
+    def InstanceTypeLists(self):
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def FromLists(self):
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AssetViewCFGRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("StatusLists") is not None:
+            self._StatusLists = []
+            for item in params.get("StatusLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._StatusLists.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("CFGNameLists") is not None:
+            self._CFGNameLists = []
+            for item in params.get("CFGNameLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CFGNameLists.append(obj)
+        if params.get("CheckTypeLists") is not None:
+            self._CheckTypeLists = []
+            for item in params.get("CheckTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CheckTypeLists.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
     """DescribeRiskCenterAssetViewPortRiskList请求参数结构体
 
@@ -5295,6 +6024,443 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._InstanceTypeLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
+    """DescribeRiskCenterAssetViewWeakPasswordRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
+    """DescribeRiskCenterAssetViewWeakPasswordRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 风险列表
+        :type Data: list of AssetViewWeakPassRisk
+        :param _StatusLists: 状态列表
+        :type StatusLists: list of FilterDataObject
+        :param _LevelLists: 危险等级列表
+        :type LevelLists: list of FilterDataObject
+        :param _FromLists: 来源列表
+        :type FromLists: list of FilterDataObject
+        :param _InstanceTypeLists: 资产类型列表
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _PasswordTypeLists: 弱口令类型列表
+        :type PasswordTypeLists: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._StatusLists = None
+        self._LevelLists = None
+        self._FromLists = None
+        self._InstanceTypeLists = None
+        self._PasswordTypeLists = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def StatusLists(self):
+        return self._StatusLists
+
+    @StatusLists.setter
+    def StatusLists(self, StatusLists):
+        self._StatusLists = StatusLists
+
+    @property
+    def LevelLists(self):
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def FromLists(self):
+        return self._FromLists
+
+    @FromLists.setter
+    def FromLists(self, FromLists):
+        self._FromLists = FromLists
+
+    @property
+    def InstanceTypeLists(self):
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def PasswordTypeLists(self):
+        return self._PasswordTypeLists
+
+    @PasswordTypeLists.setter
+    def PasswordTypeLists(self, PasswordTypeLists):
+        self._PasswordTypeLists = PasswordTypeLists
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AssetViewWeakPassRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("StatusLists") is not None:
+            self._StatusLists = []
+            for item in params.get("StatusLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._StatusLists.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("FromLists") is not None:
+            self._FromLists = []
+            for item in params.get("FromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._FromLists.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        if params.get("PasswordTypeLists") is not None:
+            self._PasswordTypeLists = []
+            for item in params.get("PasswordTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._PasswordTypeLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskCenterServerRiskListRequest(AbstractModel):
+    """DescribeRiskCenterServerRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskCenterServerRiskListResponse(AbstractModel):
+    """DescribeRiskCenterServerRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 风险服务列表
+        :type Data: list of ServerRisk
+        :param _InstanceTypeLists: 资产类型枚举
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._InstanceTypeLists = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def InstanceTypeLists(self):
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ServerRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
+    """DescribeRiskCenterWebsiteRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
+    """DescribeRiskCenterWebsiteRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Data: 资产视角的端口风险列表
+        :type Data: list of WebsiteRisk
+        :param _StatusLists: 状态列表
+        :type StatusLists: list of FilterDataObject
+        :param _LevelLists: 危险等级列表
+        :type LevelLists: list of FilterDataObject
+        :param _InstanceTypeLists: 资产类型列表
+        :type InstanceTypeLists: list of FilterDataObject
+        :param _DetectEngineLists: 风险类型列表
+        :type DetectEngineLists: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._StatusLists = None
+        self._LevelLists = None
+        self._InstanceTypeLists = None
+        self._DetectEngineLists = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def StatusLists(self):
+        return self._StatusLists
+
+    @StatusLists.setter
+    def StatusLists(self, StatusLists):
+        self._StatusLists = StatusLists
+
+    @property
+    def LevelLists(self):
+        return self._LevelLists
+
+    @LevelLists.setter
+    def LevelLists(self, LevelLists):
+        self._LevelLists = LevelLists
+
+    @property
+    def InstanceTypeLists(self):
+        return self._InstanceTypeLists
+
+    @InstanceTypeLists.setter
+    def InstanceTypeLists(self, InstanceTypeLists):
+        self._InstanceTypeLists = InstanceTypeLists
+
+    @property
+    def DetectEngineLists(self):
+        return self._DetectEngineLists
+
+    @DetectEngineLists.setter
+    def DetectEngineLists(self, DetectEngineLists):
+        self._DetectEngineLists = DetectEngineLists
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = WebsiteRisk()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("StatusLists") is not None:
+            self._StatusLists = []
+            for item in params.get("StatusLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._StatusLists.append(obj)
+        if params.get("LevelLists") is not None:
+            self._LevelLists = []
+            for item in params.get("LevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._LevelLists.append(obj)
+        if params.get("InstanceTypeLists") is not None:
+            self._InstanceTypeLists = []
+            for item in params.get("InstanceTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeLists.append(obj)
+        if params.get("DetectEngineLists") is not None:
+            self._DetectEngineLists = []
+            for item in params.get("DetectEngineLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._DetectEngineLists.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8070,6 +9236,394 @@ class ScanTaskInfoList(AbstractModel):
         
 
 
+class ServerRisk(AbstractModel):
+    """服务风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceTag: 测绘标签
+        :type ServiceTag: str
+        :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _AffectAsset: 影响资产
+        :type AffectAsset: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _InstanceType: 资产类型
+        :type InstanceType: str
+        :param _Level: 风险等级
+        :type Level: str
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _Component: 组件
+        :type Component: str
+        :param _Service: 服务
+        :type Service: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _RiskDetails: 风险详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskDetails: str
+        :param _Suggestion: 处置建议
+        :type Suggestion: str
+        :param _Status: 状态，0未处理、1已处置、2已忽略
+        :type Status: int
+        :param _Id: 资产唯一id
+        :type Id: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _ServiceSnapshot: 服务快照
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSnapshot: str
+        :param _Url: 服务访问的url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _Index: 列表索引值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: str
+        :param _RiskList: 风险列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskList: list of ServerRiskSuggestion
+        :param _SuggestionList: 建议列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuggestionList: list of ServerRiskSuggestion
+        :param _StatusCode: HTTP响应状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCode: str
+        """
+        self._ServiceTag = None
+        self._Port = None
+        self._AffectAsset = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceType = None
+        self._Level = None
+        self._Protocol = None
+        self._Component = None
+        self._Service = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._RiskDetails = None
+        self._Suggestion = None
+        self._Status = None
+        self._Id = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+        self._ServiceSnapshot = None
+        self._Url = None
+        self._Index = None
+        self._RiskList = None
+        self._SuggestionList = None
+        self._StatusCode = None
+
+    @property
+    def ServiceTag(self):
+        return self._ServiceTag
+
+    @ServiceTag.setter
+    def ServiceTag(self, ServiceTag):
+        self._ServiceTag = ServiceTag
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def AffectAsset(self):
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def RiskDetails(self):
+        return self._RiskDetails
+
+    @RiskDetails.setter
+    def RiskDetails(self, RiskDetails):
+        self._RiskDetails = RiskDetails
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def ServiceSnapshot(self):
+        return self._ServiceSnapshot
+
+    @ServiceSnapshot.setter
+    def ServiceSnapshot(self, ServiceSnapshot):
+        self._ServiceSnapshot = ServiceSnapshot
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def RiskList(self):
+        return self._RiskList
+
+    @RiskList.setter
+    def RiskList(self, RiskList):
+        self._RiskList = RiskList
+
+    @property
+    def SuggestionList(self):
+        return self._SuggestionList
+
+    @SuggestionList.setter
+    def SuggestionList(self, SuggestionList):
+        self._SuggestionList = SuggestionList
+
+    @property
+    def StatusCode(self):
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+
+    def _deserialize(self, params):
+        self._ServiceTag = params.get("ServiceTag")
+        self._Port = params.get("Port")
+        self._AffectAsset = params.get("AffectAsset")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceType = params.get("InstanceType")
+        self._Level = params.get("Level")
+        self._Protocol = params.get("Protocol")
+        self._Component = params.get("Component")
+        self._Service = params.get("Service")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._RiskDetails = params.get("RiskDetails")
+        self._Suggestion = params.get("Suggestion")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._ServiceSnapshot = params.get("ServiceSnapshot")
+        self._Url = params.get("Url")
+        self._Index = params.get("Index")
+        if params.get("RiskList") is not None:
+            self._RiskList = []
+            for item in params.get("RiskList"):
+                obj = ServerRiskSuggestion()
+                obj._deserialize(item)
+                self._RiskList.append(obj)
+        if params.get("SuggestionList") is not None:
+            self._SuggestionList = []
+            for item in params.get("SuggestionList"):
+                obj = ServerRiskSuggestion()
+                obj._deserialize(item)
+                self._SuggestionList.append(obj)
+        self._StatusCode = params.get("StatusCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerRiskSuggestion(AbstractModel):
+    """风险详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Body: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Body: str
+        """
+        self._Title = None
+        self._Body = None
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Body = params.get("Body")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopRiskCenterTaskRequest(AbstractModel):
     """StopRiskCenterTask请求参数结构体
 
@@ -9233,6 +10787,257 @@ class Vpc(AbstractModel):
         self._Nick = params.get("Nick")
         self._IsNewAsset = params.get("IsNewAsset")
         self._IsCore = params.get("IsCore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebsiteRisk(AbstractModel):
+    """网站风险对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectAsset: 影响资产
+        :type AffectAsset: str
+        :param _Level: 风险等级
+        :type Level: str
+        :param _RecentTime: 最近识别时间
+        :type RecentTime: str
+        :param _FirstTime: 首次识别时间
+        :type FirstTime: str
+        :param _Status: 状态，0未处理、1已处置、2已忽略
+        :type Status: int
+        :param _Id: 资产唯一id
+        :type Id: str
+        :param _Index: 前端索引
+        :type Index: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _AppId: 用户appid
+        :type AppId: str
+        :param _Nick: 用户昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nick: str
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _URL: 风险链接
+        :type URL: str
+        :param _URLPath: 风险文件地址
+        :type URLPath: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _DetectEngine: 类型
+        :type DetectEngine: str
+        :param _ResultDescribe: 结果描述
+        :type ResultDescribe: str
+        :param _SourceURL: 源地址url
+        :type SourceURL: str
+        :param _SourceURLPath: 源文件地址
+        :type SourceURLPath: str
+        """
+        self._AffectAsset = None
+        self._Level = None
+        self._RecentTime = None
+        self._FirstTime = None
+        self._Status = None
+        self._Id = None
+        self._Index = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AppId = None
+        self._Nick = None
+        self._Uin = None
+        self._URL = None
+        self._URLPath = None
+        self._InstanceType = None
+        self._DetectEngine = None
+        self._ResultDescribe = None
+        self._SourceURL = None
+        self._SourceURLPath = None
+
+    @property
+    def AffectAsset(self):
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def RecentTime(self):
+        return self._RecentTime
+
+    @RecentTime.setter
+    def RecentTime(self, RecentTime):
+        self._RecentTime = RecentTime
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def URLPath(self):
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def DetectEngine(self):
+        return self._DetectEngine
+
+    @DetectEngine.setter
+    def DetectEngine(self, DetectEngine):
+        self._DetectEngine = DetectEngine
+
+    @property
+    def ResultDescribe(self):
+        return self._ResultDescribe
+
+    @ResultDescribe.setter
+    def ResultDescribe(self, ResultDescribe):
+        self._ResultDescribe = ResultDescribe
+
+    @property
+    def SourceURL(self):
+        return self._SourceURL
+
+    @SourceURL.setter
+    def SourceURL(self, SourceURL):
+        self._SourceURL = SourceURL
+
+    @property
+    def SourceURLPath(self):
+        return self._SourceURLPath
+
+    @SourceURLPath.setter
+    def SourceURLPath(self, SourceURLPath):
+        self._SourceURLPath = SourceURLPath
+
+
+    def _deserialize(self, params):
+        self._AffectAsset = params.get("AffectAsset")
+        self._Level = params.get("Level")
+        self._RecentTime = params.get("RecentTime")
+        self._FirstTime = params.get("FirstTime")
+        self._Status = params.get("Status")
+        self._Id = params.get("Id")
+        self._Index = params.get("Index")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AppId = params.get("AppId")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        self._URL = params.get("URL")
+        self._URLPath = params.get("URLPath")
+        self._InstanceType = params.get("InstanceType")
+        self._DetectEngine = params.get("DetectEngine")
+        self._ResultDescribe = params.get("ResultDescribe")
+        self._SourceURL = params.get("SourceURL")
+        self._SourceURLPath = params.get("SourceURLPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

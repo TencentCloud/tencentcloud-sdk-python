@@ -9893,9 +9893,9 @@ class DomainInfo(AbstractModel):
         :type FlowMode: int
         :param _Status: waf开关,0关闭 1开启
         :type Status: int
-        :param _Mode: 规则防御模式,0观察模式 1拦截模式
+        :param _Mode: 规则引擎防护模式,0观察模式 1拦截模式
         :type Mode: int
-        :param _Engine: AI防御模式,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
+        :param _Engine: 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
         :type Engine: int
         :param _CCList: CC列表
         :type CCList: list of str
@@ -9936,6 +9936,9 @@ class DomainInfo(AbstractModel):
         :param _SgDetail: 安全组状态的详细解释
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgDetail: str
+        :param _CloudType: 域名类型:hybrid表示混合云域名，public表示公有云域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: str
         """
         self._Domain = None
         self._DomainId = None
@@ -9966,6 +9969,7 @@ class DomainInfo(AbstractModel):
         self._AlbType = None
         self._SgState = None
         self._SgDetail = None
+        self._CloudType = None
 
     @property
     def Domain(self):
@@ -10199,6 +10203,14 @@ class DomainInfo(AbstractModel):
     def SgDetail(self, SgDetail):
         self._SgDetail = SgDetail
 
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10240,6 +10252,7 @@ class DomainInfo(AbstractModel):
         self._AlbType = params.get("AlbType")
         self._SgState = params.get("SgState")
         self._SgDetail = params.get("SgDetail")
+        self._CloudType = params.get("CloudType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15169,7 +15182,7 @@ class ModifyDomainIpv6StatusRequest(AbstractModel):
         :type Domain: str
         :param _DomainId: 需要修改的域名ID
         :type DomainId: str
-        :param _Status: 修改域名的Ipv6开关为Status （0:关闭 1:开启）
+        :param _Status: 修改域名的Ipv6开关为Status （1:开启 2:关闭）
         :type Status: int
         """
         self._InstanceId = None

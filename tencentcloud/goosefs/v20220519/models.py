@@ -2180,12 +2180,23 @@ class MappedBucket(AbstractModel):
         :param _RuleDescription: 规则备注与描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleDescription: str
+        :param _Status: 桶关联状态 0：关联中 1：关联完成
+        :type Status: int
+        :param _AccelerateFlag: 是否使用全球加速域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccelerateFlag: bool
+        :param _BucketRegion: 桶所在的园区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketRegion: str
         """
         self._BucketName = None
         self._FileSystemPath = None
         self._DataRepositoryTaskAutoStrategy = None
         self._RuleId = None
         self._RuleDescription = None
+        self._Status = None
+        self._AccelerateFlag = None
+        self._BucketRegion = None
 
     @property
     def BucketName(self):
@@ -2227,6 +2238,30 @@ class MappedBucket(AbstractModel):
     def RuleDescription(self, RuleDescription):
         self._RuleDescription = RuleDescription
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AccelerateFlag(self):
+        return self._AccelerateFlag
+
+    @AccelerateFlag.setter
+    def AccelerateFlag(self, AccelerateFlag):
+        self._AccelerateFlag = AccelerateFlag
+
+    @property
+    def BucketRegion(self):
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
 
     def _deserialize(self, params):
         self._BucketName = params.get("BucketName")
@@ -2234,6 +2269,9 @@ class MappedBucket(AbstractModel):
         self._DataRepositoryTaskAutoStrategy = params.get("DataRepositoryTaskAutoStrategy")
         self._RuleId = params.get("RuleId")
         self._RuleDescription = params.get("RuleDescription")
+        self._Status = params.get("Status")
+        self._AccelerateFlag = params.get("AccelerateFlag")
+        self._BucketRegion = params.get("BucketRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3262,6 +3262,9 @@ class BandwidthPackage(AbstractModel):
         :type ResourceSet: list of Resource
         :param _Bandwidth: 带宽包限速大小。单位：Mbps，-1表示不限速。
         :type Bandwidth: int
+        :param _Egress: 网络出口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Egress: str
         """
         self._BandwidthPackageId = None
         self._NetworkType = None
@@ -3271,6 +3274,7 @@ class BandwidthPackage(AbstractModel):
         self._Status = None
         self._ResourceSet = None
         self._Bandwidth = None
+        self._Egress = None
 
     @property
     def BandwidthPackageId(self):
@@ -3336,6 +3340,14 @@ class BandwidthPackage(AbstractModel):
     def Bandwidth(self, Bandwidth):
         self._Bandwidth = Bandwidth
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._BandwidthPackageId = params.get("BandwidthPackageId")
@@ -3351,6 +3363,7 @@ class BandwidthPackage(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceSet.append(obj)
         self._Bandwidth = params.get("Bandwidth")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5808,6 +5821,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :param _NetworkType: 带宽包类型, 默认值: BGP, 可选值:
 <li>BGP: 普通BGP共享带宽包</li>
 <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+<li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+<li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+<li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
         :type NetworkType: str
         :param _ChargeType: 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
 <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
@@ -5829,6 +5845,8 @@ class CreateBandwidthPackageRequest(AbstractModel):
         :type Protocol: str
         :param _TimeSpan: 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
         :type TimeSpan: int
+        :param _Egress: 网络出口，默认值：center_egress1
+        :type Egress: str
         """
         self._NetworkType = None
         self._ChargeType = None
@@ -5838,6 +5856,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
         self._Tags = None
         self._Protocol = None
         self._TimeSpan = None
+        self._Egress = None
 
     @property
     def NetworkType(self):
@@ -5903,6 +5922,14 @@ class CreateBandwidthPackageRequest(AbstractModel):
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._NetworkType = params.get("NetworkType")
@@ -5918,6 +5945,7 @@ class CreateBandwidthPackageRequest(AbstractModel):
                 self._Tags.append(obj)
         self._Protocol = params.get("Protocol")
         self._TimeSpan = params.get("TimeSpan")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5320,9 +5320,9 @@ class KafkaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Address: kafaka address
+        :param _Address: Kafka address
         :type Address: str
-        :param _Topic: kafaka topic
+        :param _Topic: Kafka topic
         :type Topic: str
         :param _User: kafka username
         :type User: str
