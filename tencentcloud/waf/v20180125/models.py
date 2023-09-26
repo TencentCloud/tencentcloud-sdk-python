@@ -698,10 +698,13 @@ class AddAntiFakeUrlResponse(AbstractModel):
         r"""
         :param _Result: 结果
         :type Result: str
+        :param _Id: 规则ID
+        :type Id: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
+        self._Id = None
         self._RequestId = None
 
     @property
@@ -711,6 +714,14 @@ class AddAntiFakeUrlResponse(AbstractModel):
     @Result.setter
     def Result(self, Result):
         self._Result = Result
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def RequestId(self):
@@ -723,6 +734,7 @@ class AddAntiFakeUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -735,9 +747,9 @@ class AddAntiInfoLeakRulesRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _Name: 名称
+        :param _Name: 规则名称
         :type Name: str
-        :param _ActionType: 动作
+        :param _ActionType: 动作，0（告警）、1（替换）、2（仅显示前四位）、3（仅显示后四位）、4（阻断）
         :type ActionType: int
         :param _Strategies: 策略详情
         :type Strategies: list of StrategyForAntiInfoLeak
@@ -819,10 +831,21 @@ class AddAntiInfoLeakRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleId: 规则ID
+        :type RuleId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleId = None
         self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -834,6 +857,7 @@ class AddAntiInfoLeakRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2023,6 +2047,9 @@ class BatchIpAccessControlItem(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Id: mongo表自增Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         :param _ActionType: 黑名单42或白名单40
         :type ActionType: int
         :param _Ip: 黑白名单的IP
@@ -2038,6 +2065,7 @@ class BatchIpAccessControlItem(AbstractModel):
         :param _Hosts: 域名列表
         :type Hosts: list of str
         """
+        self._Id = None
         self._ActionType = None
         self._Ip = None
         self._Note = None
@@ -2045,6 +2073,14 @@ class BatchIpAccessControlItem(AbstractModel):
         self._TsVersion = None
         self._ValidTs = None
         self._Hosts = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def ActionType(self):
@@ -2104,6 +2140,7 @@ class BatchIpAccessControlItem(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._ActionType = params.get("ActionType")
         self._Ip = params.get("Ip")
         self._Note = params.get("Note")
@@ -3800,10 +3837,13 @@ class DeleteCCRuleRequest(AbstractModel):
         :type Name: str
         :param _Edition: clb-waf或者sparta-waf
         :type Edition: str
+        :param _RuleId: 规则Id
+        :type RuleId: int
         """
         self._Domain = None
         self._Name = None
         self._Edition = None
+        self._RuleId = None
 
     @property
     def Domain(self):
@@ -3829,11 +3869,20 @@ class DeleteCCRuleRequest(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Name = params.get("Name")
         self._Edition = params.get("Edition")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3854,10 +3903,13 @@ class DeleteCCRuleResponse(AbstractModel):
         :param _Data: 一般为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
+        :param _RuleId: 操作的规则Id
+        :type RuleId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._RuleId = None
         self._RequestId = None
 
     @property
@@ -3867,6 +3919,14 @@ class DeleteCCRuleResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -3879,6 +3939,7 @@ class DeleteCCRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4277,6 +4338,8 @@ class DeleteIpAccessControlRequest(AbstractModel):
         :type Domain: str
         :param _Items: 删除的ip数组
         :type Items: list of str
+        :param _IsId: 若IsId字段为True，则Items列表元素需为Id，否则为IP
+        :type IsId: bool
         :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
         :type DeleteAll: bool
         :param _SourceType: 是否为多域名黑白名单
@@ -4284,6 +4347,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
         """
         self._Domain = None
         self._Items = None
+        self._IsId = None
         self._DeleteAll = None
         self._SourceType = None
 
@@ -4302,6 +4366,14 @@ class DeleteIpAccessControlRequest(AbstractModel):
     @Items.setter
     def Items(self, Items):
         self._Items = Items
+
+    @property
+    def IsId(self):
+        return self._IsId
+
+    @IsId.setter
+    def IsId(self, IsId):
+        self._IsId = IsId
 
     @property
     def DeleteAll(self):
@@ -4323,6 +4395,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Items = params.get("Items")
+        self._IsId = params.get("IsId")
         self._DeleteAll = params.get("DeleteAll")
         self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
@@ -4397,9 +4470,12 @@ class DeleteSessionRequest(AbstractModel):
         :type Domain: str
         :param _Edition: clb-waf 或者 sprta-waf
         :type Edition: str
+        :param _SessionID: 要删除的SessionID
+        :type SessionID: int
         """
         self._Domain = None
         self._Edition = None
+        self._SessionID = None
 
     @property
     def Domain(self):
@@ -4417,10 +4493,19 @@ class DeleteSessionRequest(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def SessionID(self):
+        return self._SessionID
+
+    @SessionID.setter
+    def SessionID(self, SessionID):
+        self._SessionID = SessionID
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Edition = params.get("Edition")
+        self._SessionID = params.get("SessionID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4680,12 +4765,18 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
         :type Query: str
         :param _FieldName: 需要分析统计的字段名
         :type FieldName: str
+        :param _Sort: 排序字段,升序asc,降序desc，默认降序desc 
+        :type Sort: str
+        :param _Count: 返回的top数，默认返回top5
+        :type Count: int
         """
         self._TopicId = None
         self._From = None
         self._To = None
         self._Query = None
         self._FieldName = None
+        self._Sort = None
+        self._Count = None
 
     @property
     def TopicId(self):
@@ -4727,6 +4818,22 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
     def FieldName(self, FieldName):
         self._FieldName = FieldName
 
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -4734,6 +4841,8 @@ class DescribeAccessFastAnalysisRequest(AbstractModel):
         self._To = params.get("To")
         self._Query = params.get("Query")
         self._FieldName = params.get("FieldName")
+        self._Sort = params.get("Sort")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5812,6 +5921,15 @@ class DescribeAttackOverviewResponse(AbstractModel):
         :param _ApiRiskEventCount: api风险事件数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiRiskEventCount: int
+        :param _IPBlackCount: 黑名单总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPBlackCount: int
+        :param _TamperCount: 防篡改总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TamperCount: int
+        :param _LeakCount: 信息泄露总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeakCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5822,6 +5940,9 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._BotCount = None
         self._ApiAssetsCount = None
         self._ApiRiskEventCount = None
+        self._IPBlackCount = None
+        self._TamperCount = None
+        self._LeakCount = None
         self._RequestId = None
 
     @property
@@ -5881,6 +6002,30 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._ApiRiskEventCount = ApiRiskEventCount
 
     @property
+    def IPBlackCount(self):
+        return self._IPBlackCount
+
+    @IPBlackCount.setter
+    def IPBlackCount(self, IPBlackCount):
+        self._IPBlackCount = IPBlackCount
+
+    @property
+    def TamperCount(self):
+        return self._TamperCount
+
+    @TamperCount.setter
+    def TamperCount(self, TamperCount):
+        self._TamperCount = TamperCount
+
+    @property
+    def LeakCount(self):
+        return self._LeakCount
+
+    @LeakCount.setter
+    def LeakCount(self, LeakCount):
+        self._LeakCount = LeakCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5897,6 +6042,9 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._BotCount = params.get("BotCount")
         self._ApiAssetsCount = params.get("ApiAssetsCount")
         self._ApiRiskEventCount = params.get("ApiRiskEventCount")
+        self._IPBlackCount = params.get("IPBlackCount")
+        self._TamperCount = params.get("TamperCount")
+        self._LeakCount = params.get("LeakCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8259,6 +8407,8 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type Sort: str
         :param _Ip: ip
         :type Ip: str
+        :param _ValidStatus: 生效状态
+        :type ValidStatus: int
         """
         self._Domain = None
         self._Count = None
@@ -8272,6 +8422,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._Source = None
         self._Sort = None
         self._Ip = None
+        self._ValidStatus = None
 
     @property
     def Domain(self):
@@ -8369,6 +8520,14 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def Ip(self, Ip):
         self._Ip = Ip
 
+    @property
+    def ValidStatus(self):
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -8383,6 +8542,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._Source = params.get("Source")
         self._Sort = params.get("Sort")
         self._Ip = params.get("Ip")
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8655,20 +8815,18 @@ class DescribePeakPointsRequest(AbstractModel):
         :type Edition: str
         :param _InstanceID: WAF实例ID，不传则不过滤
         :type InstanceID: str
-        :param _MetricName: 十三个值可选：
+        :param _MetricName: 十一个值可选：
 access-峰值qps趋势图
 botAccess- bot峰值qps趋势图
 down-下行峰值带宽趋势图
 up-上行峰值带宽趋势图
 attack-Web攻击总数趋势图
 cc-CC攻击总数趋势图
-StatusServerError-WAF返回给客户端状态码次数趋势图
-StatusClientError-WAF返回给客户端状态码次数趋势图
-StatusRedirect-WAF返回给客户端状态码次数趋势图
-StatusOk-WAF返回给客户端状态码次数趋势图
-UpstreamServerError-源站返回给WAF状态码次数趋势图
-UpstreamClientError-源站返回给WAF状态码次数趋势图
-UpstreamRedirect-源站返回给WAF状态码次数趋势图
+bw-黑IP攻击总数趋势图
+tamper-防篡改攻击总数趋势图
+leak-防泄露攻击总数趋势图
+acl-访问控制攻击总数趋势图
+http_status-状态码各次数趋势图
         :type MetricName: str
         """
         self._FromTime = None
@@ -9166,8 +9324,11 @@ class DescribeRuleLimitRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
         """
         self._Domain = None
+        self._InstanceId = None
 
     @property
     def Domain(self):
@@ -9177,9 +9338,18 @@ class DescribeRuleLimitRequest(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9587,8 +9757,11 @@ class DescribeWafAutoDenyRulesRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
         """
         self._Domain = None
+        self._InstanceId = None
 
     @property
     def Domain(self):
@@ -9598,9 +9771,18 @@ class DescribeWafAutoDenyRulesRequest(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9626,6 +9808,8 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         :type DenyTimeThreshold: int
         :param _DefenseStatus: 自动封禁状态
         :type DefenseStatus: int
+        :param _HWState: 重保护网域名状态
+        :type HWState: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9633,6 +9817,7 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._TimeThreshold = None
         self._DenyTimeThreshold = None
         self._DefenseStatus = None
+        self._HWState = None
         self._RequestId = None
 
     @property
@@ -9668,6 +9853,14 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._DefenseStatus = DefenseStatus
 
     @property
+    def HWState(self):
+        return self._HWState
+
+    @HWState.setter
+    def HWState(self, HWState):
+        self._HWState = HWState
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9681,6 +9874,7 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._TimeThreshold = params.get("TimeThreshold")
         self._DenyTimeThreshold = params.get("DenyTimeThreshold")
         self._DefenseStatus = params.get("DefenseStatus")
+        self._HWState = params.get("HWState")
         self._RequestId = params.get("RequestId")
 
 
@@ -12760,6 +12954,131 @@ class HostStatus(AbstractModel):
         
 
 
+class HybridPkg(AbstractModel):
+    """混合云节点资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """一个实例的详细信息
 
@@ -12840,6 +13159,12 @@ class InstanceInfo(AbstractModel):
         :param _IsAPISecurityTrial: 是否api 安全试用
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAPISecurityTrial: int
+        :param _MajorEventsPkg: 重保包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MajorEventsPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
+        :param _HybridPkg: 混合云子节点包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HybridPkg: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12872,6 +13197,8 @@ class InstanceInfo(AbstractModel):
         self._Status = None
         self._SandboxQps = None
         self._IsAPISecurityTrial = None
+        self._MajorEventsPkg = None
+        self._HybridPkg = None
 
     @property
     def InstanceId(self):
@@ -13121,6 +13448,22 @@ class InstanceInfo(AbstractModel):
     def IsAPISecurityTrial(self, IsAPISecurityTrial):
         self._IsAPISecurityTrial = IsAPISecurityTrial
 
+    @property
+    def MajorEventsPkg(self):
+        return self._MajorEventsPkg
+
+    @MajorEventsPkg.setter
+    def MajorEventsPkg(self, MajorEventsPkg):
+        self._MajorEventsPkg = MajorEventsPkg
+
+    @property
+    def HybridPkg(self):
+        return self._HybridPkg
+
+    @HybridPkg.setter
+    def HybridPkg(self, HybridPkg):
+        self._HybridPkg = HybridPkg
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13164,6 +13507,12 @@ class InstanceInfo(AbstractModel):
         self._Status = params.get("Status")
         self._SandboxQps = params.get("SandboxQps")
         self._IsAPISecurityTrial = params.get("IsAPISecurityTrial")
+        if params.get("MajorEventsPkg") is not None:
+            self._MajorEventsPkg = MajorEventsPkg()
+            self._MajorEventsPkg._deserialize(params.get("MajorEventsPkg"))
+        if params.get("HybridPkg") is not None:
+            self._HybridPkg = HybridPkg()
+            self._HybridPkg._deserialize(params.get("HybridPkg"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13232,6 +13581,9 @@ class IpAccessControlItem(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Id: mongo表自增Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         :param _ActionType: 动作
         :type ActionType: int
         :param _Ip: ip
@@ -13245,13 +13597,26 @@ class IpAccessControlItem(AbstractModel):
         :type TsVersion: int
         :param _ValidTs: 有效截止时间戳
         :type ValidTs: int
+        :param _ValidStatus: 生效状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidStatus: int
         """
+        self._Id = None
         self._ActionType = None
         self._Ip = None
         self._Note = None
         self._Source = None
         self._TsVersion = None
         self._ValidTs = None
+        self._ValidStatus = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def ActionType(self):
@@ -13301,14 +13666,24 @@ class IpAccessControlItem(AbstractModel):
     def ValidTs(self, ValidTs):
         self._ValidTs = ValidTs
 
+    @property
+    def ValidStatus(self):
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
 
     def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._ActionType = params.get("ActionType")
         self._Ip = params.get("Ip")
         self._Note = params.get("Note")
         self._Source = params.get("Source")
         self._TsVersion = params.get("TsVersion")
         self._ValidTs = params.get("ValidTs")
+        self._ValidStatus = params.get("ValidStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13842,6 +14217,157 @@ class LogHistogramInfo(AbstractModel):
     def _deserialize(self, params):
         self._Count = params.get("Count")
         self._TimeStamp = params.get("TimeStamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MajorEventsPkg(AbstractModel):
+    """重保防护资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedNum: int
+        :param _RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItem: str
+        :param _HWState: 护网包状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HWState: int
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+        self._HWState = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def UsedNum(self):
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def HWState(self):
+        return self._HWState
+
+    @HWState.setter
+    def HWState(self, HWState):
+        self._HWState = HWState
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
+        self._HWState = params.get("HWState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17135,27 +17661,39 @@ class PeakPointsItem(AbstractModel):
         :type Cc: int
         :param _BotAccess: Bot qps
         :type BotAccess: int
-        :param _StatusServerError: WAF返回给客户端状态码次数
+        :param _StatusServerError: WAF返回给客户端状态码5xx次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusServerError: int
-        :param _StatusClientError: WAF返回给客户端状态码次数
+        :param _StatusClientError: WAF返回给客户端状态码4xx次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusClientError: int
-        :param _StatusRedirect: WAF返回给客户端状态码次数
+        :param _StatusRedirect: WAF返回给客户端状态码302次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusRedirect: int
-        :param _StatusOk: WAF返回给客户端状态码次数
+        :param _StatusOk: WAF返回给客户端状态码202次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusOk: int
-        :param _UpstreamServerError: 源站返回给WAF状态码次数
+        :param _UpstreamServerError: 源站返回给WAF状态码5xx次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamServerError: int
-        :param _UpstreamClientError: 源站返回给WAF状态码次数
+        :param _UpstreamClientError: 源站返回给WAF状态码4xx次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamClientError: int
-        :param _UpstreamRedirect: 源站返回给WAF状态码次数
+        :param _UpstreamRedirect: 源站返回给WAF状态码302次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamRedirect: int
+        :param _BlackIP: 黑名单次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlackIP: int
+        :param _Tamper: 防篡改次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tamper: int
+        :param _Leak: 信息防泄露次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Leak: int
+        :param _ACL: 访问控制 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ACL: int
         """
         self._Time = None
         self._Access = None
@@ -17171,6 +17709,10 @@ class PeakPointsItem(AbstractModel):
         self._UpstreamServerError = None
         self._UpstreamClientError = None
         self._UpstreamRedirect = None
+        self._BlackIP = None
+        self._Tamper = None
+        self._Leak = None
+        self._ACL = None
 
     @property
     def Time(self):
@@ -17284,6 +17826,38 @@ class PeakPointsItem(AbstractModel):
     def UpstreamRedirect(self, UpstreamRedirect):
         self._UpstreamRedirect = UpstreamRedirect
 
+    @property
+    def BlackIP(self):
+        return self._BlackIP
+
+    @BlackIP.setter
+    def BlackIP(self, BlackIP):
+        self._BlackIP = BlackIP
+
+    @property
+    def Tamper(self):
+        return self._Tamper
+
+    @Tamper.setter
+    def Tamper(self, Tamper):
+        self._Tamper = Tamper
+
+    @property
+    def Leak(self):
+        return self._Leak
+
+    @Leak.setter
+    def Leak(self, Leak):
+        self._Leak = Leak
+
+    @property
+    def ACL(self):
+        return self._ACL
+
+    @ACL.setter
+    def ACL(self, ACL):
+        self._ACL = ACL
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -17300,6 +17874,10 @@ class PeakPointsItem(AbstractModel):
         self._UpstreamServerError = params.get("UpstreamServerError")
         self._UpstreamClientError = params.get("UpstreamClientError")
         self._UpstreamRedirect = params.get("UpstreamRedirect")
+        self._BlackIP = params.get("BlackIP")
+        self._Tamper = params.get("Tamper")
+        self._Leak = params.get("Leak")
+        self._ACL = params.get("ACL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19246,6 +19824,10 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Type: int
         :param _EventId: 添加规则的来源事件id
         :type EventId: str
+        :param _SessionApplied: 规则需要启用的SessionID
+        :type SessionApplied: list of int
+        :param _RuleId: 规则ID，新增时填0
+        :type RuleId: int
         """
         self._Domain = None
         self._Name = None
@@ -19262,6 +19844,8 @@ class UpsertCCRuleRequest(AbstractModel):
         self._Edition = None
         self._Type = None
         self._EventId = None
+        self._SessionApplied = None
+        self._RuleId = None
 
     @property
     def Domain(self):
@@ -19383,6 +19967,22 @@ class UpsertCCRuleRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def SessionApplied(self):
+        return self._SessionApplied
+
+    @SessionApplied.setter
+    def SessionApplied(self, SessionApplied):
+        self._SessionApplied = SessionApplied
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -19400,6 +20000,8 @@ class UpsertCCRuleRequest(AbstractModel):
         self._Edition = params.get("Edition")
         self._Type = params.get("Type")
         self._EventId = params.get("EventId")
+        self._SessionApplied = params.get("SessionApplied")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19420,10 +20022,13 @@ class UpsertCCRuleResponse(AbstractModel):
         :param _Data: 一般为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
+        :param _RuleId: 操作的RuleId
+        :type RuleId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._RuleId = None
         self._RequestId = None
 
     @property
@@ -19433,6 +20038,14 @@ class UpsertCCRuleResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -19445,6 +20058,7 @@ class UpsertCCRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -19459,6 +20073,8 @@ class UpsertIpAccessControlRequest(AbstractModel):
         :type Domain: str
         :param _Items: ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
         :type Items: list of str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
         :param _Edition: WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
         :type Edition: str
         :param _SourceType: 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
@@ -19466,6 +20082,7 @@ class UpsertIpAccessControlRequest(AbstractModel):
         """
         self._Domain = None
         self._Items = None
+        self._InstanceId = None
         self._Edition = None
         self._SourceType = None
 
@@ -19484,6 +20101,14 @@ class UpsertIpAccessControlRequest(AbstractModel):
     @Items.setter
     def Items(self, Items):
         self._Items = Items
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Edition(self):
@@ -19505,6 +20130,7 @@ class UpsertIpAccessControlRequest(AbstractModel):
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Items = params.get("Items")
+        self._InstanceId = params.get("InstanceId")
         self._Edition = params.get("Edition")
         self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
@@ -19591,6 +20217,10 @@ class UpsertSessionRequest(AbstractModel):
         :type EndOffset: str
         :param _Edition: 版本
         :type Edition: str
+        :param _SessionName: Session名
+        :type SessionName: str
+        :param _SessionID: Session对应ID
+        :type SessionID: int
         """
         self._Domain = None
         self._Source = None
@@ -19600,6 +20230,8 @@ class UpsertSessionRequest(AbstractModel):
         self._StartOffset = None
         self._EndOffset = None
         self._Edition = None
+        self._SessionName = None
+        self._SessionID = None
 
     @property
     def Domain(self):
@@ -19665,6 +20297,22 @@ class UpsertSessionRequest(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def SessionName(self):
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def SessionID(self):
+        return self._SessionID
+
+    @SessionID.setter
+    def SessionID(self, SessionID):
+        self._SessionID = SessionID
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -19675,6 +20323,8 @@ class UpsertSessionRequest(AbstractModel):
         self._StartOffset = params.get("StartOffset")
         self._EndOffset = params.get("EndOffset")
         self._Edition = params.get("Edition")
+        self._SessionName = params.get("SessionName")
+        self._SessionID = params.get("SessionID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

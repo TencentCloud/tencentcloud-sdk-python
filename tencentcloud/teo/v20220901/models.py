@@ -95,17 +95,10 @@ class AccelerationDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginDetail: 源站信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _CreatedOn: 创建时间。
-        :type CreatedOn: str
-        :param _DomainName: 加速域名名称。
-        :type DomainName: str
-        :param _ModifiedOn: 修改时间。
-        :type ModifiedOn: str
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
+        :param _DomainName: 加速域名名称。
+        :type DomainName: str
         :param _DomainStatus: 加速域名状态，取值有：
 <li>online：已生效；</li>
 <li>process：部署中；</li>
@@ -113,52 +106,31 @@ class AccelerationDomain(AbstractModel):
 <li>forbidden：已封禁；</li>
 <li>init：未生效，待激活站点；</li>
         :type DomainStatus: str
+        :param _OriginDetail: 源站信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
         :param _Cname: CNAME 地址。
         :type Cname: str
         :param _IdentificationStatus: 加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentificationStatus: str
+        :param _CreatedOn: 创建时间。
+        :type CreatedOn: str
+        :param _ModifiedOn: 修改时间。
+        :type ModifiedOn: str
+        :param _OwnershipVerification: 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
-        self._OriginDetail = None
-        self._CreatedOn = None
-        self._DomainName = None
-        self._ModifiedOn = None
         self._ZoneId = None
+        self._DomainName = None
         self._DomainStatus = None
+        self._OriginDetail = None
         self._Cname = None
         self._IdentificationStatus = None
-
-    @property
-    def OriginDetail(self):
-        return self._OriginDetail
-
-    @OriginDetail.setter
-    def OriginDetail(self, OriginDetail):
-        self._OriginDetail = OriginDetail
-
-    @property
-    def CreatedOn(self):
-        return self._CreatedOn
-
-    @CreatedOn.setter
-    def CreatedOn(self, CreatedOn):
-        self._CreatedOn = CreatedOn
-
-    @property
-    def DomainName(self):
-        return self._DomainName
-
-    @DomainName.setter
-    def DomainName(self, DomainName):
-        self._DomainName = DomainName
-
-    @property
-    def ModifiedOn(self):
-        return self._ModifiedOn
-
-    @ModifiedOn.setter
-    def ModifiedOn(self, ModifiedOn):
-        self._ModifiedOn = ModifiedOn
+        self._CreatedOn = None
+        self._ModifiedOn = None
+        self._OwnershipVerification = None
 
     @property
     def ZoneId(self):
@@ -169,12 +141,28 @@ class AccelerationDomain(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
     def DomainStatus(self):
         return self._DomainStatus
 
     @DomainStatus.setter
     def DomainStatus(self, DomainStatus):
         self._DomainStatus = DomainStatus
+
+    @property
+    def OriginDetail(self):
+        return self._OriginDetail
+
+    @OriginDetail.setter
+    def OriginDetail(self, OriginDetail):
+        self._OriginDetail = OriginDetail
 
     @property
     def Cname(self):
@@ -192,18 +180,45 @@ class AccelerationDomain(AbstractModel):
     def IdentificationStatus(self, IdentificationStatus):
         self._IdentificationStatus = IdentificationStatus
 
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._DomainStatus = params.get("DomainStatus")
         if params.get("OriginDetail") is not None:
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
-        self._CreatedOn = params.get("CreatedOn")
-        self._DomainName = params.get("DomainName")
-        self._ModifiedOn = params.get("ModifiedOn")
-        self._ZoneId = params.get("ZoneId")
-        self._DomainStatus = params.get("DomainStatus")
         self._Cname = params.get("Cname")
         self._IdentificationStatus = params.get("IdentificationStatus")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3072,9 +3087,9 @@ class CreateAccelerationDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 加速域名所属站点ID。
+        :param _ZoneId: 加速域名所属站点 ID。
         :type ZoneId: str
-        :param _DomainName: 加速域名名称。
+        :param _DomainName: 加速域名。
         :type DomainName: str
         :param _OriginInfo: 源站信息。
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
@@ -3131,10 +3146,22 @@ class CreateAccelerationDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _OwnershipVerification: 当您的站点未进行归属权验证时，您可通过该参数返回的信息单独对域名进行归属权校验。详情参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._OwnershipVerification = None
         self._RequestId = None
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def RequestId(self):
@@ -3146,6 +3173,9 @@ class CreateAccelerationDomainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4498,38 +4528,39 @@ class CreateZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneName: 站点名称。
-        :type ZoneName: str
-        :param _Type: 接入方式，取值有：
-<li> full：NS接入；</li>
-<li> partial：CNAME接入，请先调用认证站点API（IdentifyZone）进行站点归属权校验，校验通过后继续调用本接口创建站点；<li>noDomainAccess：无域名接入，取此值时仅Tags字段有效。</li>
-</li>不填写使用默认值full。
+        :param _Type: 站点接入类型。该参数取值如下，不填写时默认为 partial：
+<li>partial：CNAME 接入；</li>
+<li> full：NS 接入；</li>
+<li>noDomainAccess：无域名接入。</li>
         :type Type: str
-        :param _JumpStart: 是否跳过站点现有的DNS记录扫描。默认值：false。
-        :type JumpStart: bool
-        :param _Tags: 资源标签。
+        :param _ZoneName: 站点名称。CNAME/NS 接入的时，请传入二级域名（example.com）作为站点名称；无域名接入时，该值请保留为空。
+        :type ZoneName: str
+        :param _Area: Type 取值为 partial/full 时，七层域名的加速区域。以下为该参数取值，不填写时该值默认为 overseas。Type 取值为 noDomainAccess 时该值请保留为空：
+<li> global: 全球可用区；</li>
+<li> mainland: 中国大陆可用区；</li>
+<li> overseas: 全球可用区（不含中国大陆）。</li>
+        :type Area: str
+        :param _PlanId: 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+        :type PlanId: str
+        :param _AliasZoneName: 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识]()，无此使用场景时，该字段保留为空即可。
+        :type AliasZoneName: str
+        :param _Tags: 标签。该参数用于对站点进行分权限管控、分账。需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建对应的标签才可以在此处传入对应的标签键和标签值。
         :type Tags: list of Tag
         :param _AllowDuplicates: 是否允许重复接入。
 <li> true：允许重复接入；</li>
 <li> false：不允许重复接入。</li>不填写使用默认值false。
         :type AllowDuplicates: bool
-        :param _AliasZoneName: 站点别名。数字、英文、-和_组合，限制20个字符。
-        :type AliasZoneName: str
+        :param _JumpStart: 是否跳过站点现有的DNS记录扫描。默认值：false。
+        :type JumpStart: bool
         """
-        self._ZoneName = None
         self._Type = None
-        self._JumpStart = None
+        self._ZoneName = None
+        self._Area = None
+        self._PlanId = None
+        self._AliasZoneName = None
         self._Tags = None
         self._AllowDuplicates = None
-        self._AliasZoneName = None
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
+        self._JumpStart = None
 
     @property
     def Type(self):
@@ -4540,12 +4571,36 @@ class CreateZoneRequest(AbstractModel):
         self._Type = Type
 
     @property
-    def JumpStart(self):
-        return self._JumpStart
+    def ZoneName(self):
+        return self._ZoneName
 
-    @JumpStart.setter
-    def JumpStart(self, JumpStart):
-        self._JumpStart = JumpStart
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def AliasZoneName(self):
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
 
     @property
     def Tags(self):
@@ -4557,25 +4612,35 @@ class CreateZoneRequest(AbstractModel):
 
     @property
     def AllowDuplicates(self):
+        warnings.warn("parameter `AllowDuplicates` is deprecated", DeprecationWarning) 
+
         return self._AllowDuplicates
 
     @AllowDuplicates.setter
     def AllowDuplicates(self, AllowDuplicates):
+        warnings.warn("parameter `AllowDuplicates` is deprecated", DeprecationWarning) 
+
         self._AllowDuplicates = AllowDuplicates
 
     @property
-    def AliasZoneName(self):
-        return self._AliasZoneName
+    def JumpStart(self):
+        warnings.warn("parameter `JumpStart` is deprecated", DeprecationWarning) 
 
-    @AliasZoneName.setter
-    def AliasZoneName(self, AliasZoneName):
-        self._AliasZoneName = AliasZoneName
+        return self._JumpStart
+
+    @JumpStart.setter
+    def JumpStart(self, JumpStart):
+        warnings.warn("parameter `JumpStart` is deprecated", DeprecationWarning) 
+
+        self._JumpStart = JumpStart
 
 
     def _deserialize(self, params):
-        self._ZoneName = params.get("ZoneName")
         self._Type = params.get("Type")
-        self._JumpStart = params.get("JumpStart")
+        self._ZoneName = params.get("ZoneName")
+        self._Area = params.get("Area")
+        self._PlanId = params.get("PlanId")
+        self._AliasZoneName = params.get("AliasZoneName")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -4583,7 +4648,7 @@ class CreateZoneRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AllowDuplicates = params.get("AllowDuplicates")
-        self._AliasZoneName = params.get("AliasZoneName")
+        self._JumpStart = params.get("JumpStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4601,12 +4666,22 @@ class CreateZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
+        :param _OwnershipVerification: 站点归属权验证信息。站点完成创建后，您还需要完成归属权校验，站点才能正常服务。
+
+Type = partial 时，您需要参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789) 前往您的域名解析服务商添加 TXT 记录或者前往根域名服务器添加文件，再调用接口 [VerifyOwnership]() 完成验证；
+
+Type = full 时，您需要参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452) 切换 DNS 服务器即可，可通过接口 [VerifyOwnership]() 查询 DNS 是否切换成功；
+
+Type = noDomainAccess 时，该值为空，不需要进行任何操作。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ZoneId = None
+        self._OwnershipVerification = None
         self._RequestId = None
 
     @property
@@ -4616,6 +4691,14 @@ class CreateZoneResponse(AbstractModel):
     @ZoneId.setter
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def RequestId(self):
@@ -4628,6 +4711,9 @@ class CreateZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5625,41 +5711,40 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 加速域名所属站点ID。
+        :param _ZoneId: 加速域名所属站点 ID。
         :type ZoneId: str
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
-<li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-<li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-<li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-<li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
-<li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
+        :param _Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目，默认值：20，上限：200。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
+<li>domain-name：按照加速域名进行过滤；</li>
+<li>origin-type：按照源站类型进行过滤；</li>
+<li>origin：按照主源站地址进行过滤；</li>
+<li>backup-origin： 按照备用源站地址进行过滤；</li>
+<li>domain-cname：按照 CNAME 进行过滤；</li>
+<li>share-cname：按照共享 CNAME 进行过滤；</li>
         :type Filters: list of AdvancedFilter
-        :param _Direction: 列表排序方式，取值有：
+        :param _Order: 可根据该字段对返回结果进行排序，取值有：
+<li>created_on：加速域名创建时间；</li>
+<li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
+        :type Order: str
+        :param _Direction: 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
 <li>asc：升序排列；</li>
-<li>desc：降序排列。</li>默认值为asc。
+<li>desc：降序排列。</li>不填写使用默认值 asc。
         :type Direction: str
         :param _Match: 匹配方式，取值有：
 <li>all：返回匹配所有查询条件的加速域名；</li>
-<li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
+<li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
         :type Match: str
-        :param _Limit: 分页查询限制数目，默认值：20，上限：200。
-        :type Limit: int
-        :param _Offset: 分页查询偏移量，默认为 0。
-        :type Offset: int
-        :param _Order: 排序依据，取值有：
-<li>created_on：加速域名创建时间；</li>
-<li>domain-name：加速域名名称；</li>
-</li>默认根据domain-name属性排序。
-        :type Order: str
         """
         self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
         self._Filters = None
+        self._Order = None
         self._Direction = None
         self._Match = None
-        self._Limit = None
-        self._Offset = None
-        self._Order = None
 
     @property
     def ZoneId(self):
@@ -5670,12 +5755,36 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
     def Filters(self):
         return self._Filters
 
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
     @property
     def Direction(self):
@@ -5693,44 +5802,20 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
     def Match(self, Match):
         self._Match = Match
 
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Order(self):
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = AdvancedFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Order = params.get("Order")
         self._Direction = params.get("Direction")
         self._Match = params.get("Match")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5748,9 +5833,9 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 加速域名总数。
+        :param _TotalCount: 符合查询条件的加速域名个数。
         :type TotalCount: int
-        :param _AccelerationDomains: 加速域名列表。
+        :param _AccelerationDomains: 符合查询条件的所有加速域名的信息。
         :type AccelerationDomains: list of AccelerationDomain
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9095,22 +9180,22 @@ class DescribeZonesRequest(AbstractModel):
         r"""
         :param _Offset: 分页查询偏移量。默认值：0。
         :type Offset: int
-        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
+<li>zone-name：按照站点名称进行过滤；</li><li>zone-id：按照站点 ID进行过滤。站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤；</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤。</li>模糊查询时仅支持过滤字段名为 zone-name。
         :type Filters: list of AdvancedFilter
-        :param _Order: 排序字段，取值有：
+        :param _Order: 可根据该字段对返回结果进行排序，取值有：
 <li> type：接入类型；</li>
 <li> area：加速区域；</li>
 <li> create-time：创建时间；</li>
 <li> zone-name：站点名称；</li>
 <li> use-time：最近使用时间；</li>
-<li> active-status：生效状态。</li>不填写使用默认值create-time。
+<li> active-status：生效状态。</li>不填写时对返回结果默认按照 create-time 排序。
         :type Order: str
-        :param _Direction: 排序方向，取值有：
+        :param _Direction: 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
 <li> asc：从小到大排序；</li>
-<li> desc：从大到小排序。</li>不填写使用默认值desc。
+<li> desc：从大到小排序。</li>不填写使用默认值 desc。
         :type Direction: str
         """
         self._Offset = None
@@ -9190,7 +9275,7 @@ class DescribeZonesResponse(AbstractModel):
         r"""
         :param _TotalCount: 符合条件的站点个数。
         :type TotalCount: int
-        :param _Zones: 站点详细信息列表。
+        :param _Zones: 站点详细信息。
         :type Zones: list of Zone
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9644,6 +9729,63 @@ class DiffIPWhitelist(AbstractModel):
         if params.get("NoChangeIPWhitelist") is not None:
             self._NoChangeIPWhitelist = IPWhitelist()
             self._NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DnsVerification(AbstractModel):
+    """CNAME 接入，使用 DNS 解析验证时所需的信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Subdomain: 主机记录。
+        :type Subdomain: str
+        :param _RecordType: 记录类型。
+        :type RecordType: str
+        :param _RecordValue: 记录值。
+        :type RecordValue: str
+        """
+        self._Subdomain = None
+        self._RecordType = None
+        self._RecordValue = None
+
+    @property
+    def Subdomain(self):
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def RecordValue(self):
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+
+    def _deserialize(self, params):
+        self._Subdomain = params.get("Subdomain")
+        self._RecordType = params.get("RecordType")
+        self._RecordValue = params.get("RecordValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10532,6 +10674,51 @@ class FileAscriptionInfo(AbstractModel):
     def _deserialize(self, params):
         self._IdentifyPath = params.get("IdentifyPath")
         self._IdentifyContent = params.get("IdentifyContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileVerification(AbstractModel):
+    """CNAME 接入，使用文件验证时所需的信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: EdgeOne 后台服务器将通过 Scheme + Host + URL Path 的格式（例如 https://www.example.com/.well-known/teo-verification/z12h416twn.txt）获取文件验证信息。该字段为您需要创建的 URL Path 部分。
+        :type Path: str
+        :param _Content: 验证文件的内容。该字段的内容需要您填写至 Path 字段返回的 txt 文件中。
+        :type Content: str
+        """
+        self._Path = None
+        self._Content = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12916,17 +13103,24 @@ class ModifyHostsCertificateRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _Hosts: 本次变更的域名列表。
+        :param _Hosts: 需要修改证书配置的加速域名。
         :type Hosts: list of str
-        :param _ServerCertInfo: 证书信息, 只需要传入 CertId 即可, 如果为空, 则使用默认证书。
+        :param _Mode: 配置证书的模式，取值有：
+<li>disable：不配置证书；</li>
+<li>eofreecert：配置 EdgeOne 免费证书；</li>
+<li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+        :type Mode: str
+        :param _ServerCertInfo: SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: 托管类型，取值有：
-<li>apply：托管EO；</li>
-<li>none：不托管EO；</li>不填，默认取值为none。
+<li>none：不托管EO；</li>
+<li>apply：托管EO</li>
+不填，默认取值为none。
         :type ApplyType: str
         """
         self._ZoneId = None
         self._Hosts = None
+        self._Mode = None
         self._ServerCertInfo = None
         self._ApplyType = None
 
@@ -12947,6 +13141,14 @@ class ModifyHostsCertificateRequest(AbstractModel):
         self._Hosts = Hosts
 
     @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
     def ServerCertInfo(self):
         return self._ServerCertInfo
 
@@ -12956,16 +13158,21 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
     @property
     def ApplyType(self):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
         return self._ApplyType
 
     @ApplyType.setter
     def ApplyType(self, ApplyType):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
         self._ApplyType = ApplyType
 
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._Hosts = params.get("Hosts")
+        self._Mode = params.get("Mode")
         if params.get("ServerCertInfo") is not None:
             self._ServerCertInfo = []
             for item in params.get("ServerCertInfo"):
@@ -14109,6 +14316,39 @@ class NormalAction(AbstractModel):
         
 
 
+class NsVerification(AbstractModel):
+    """NS 接入，切换 DNS 服务器所需的信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameServers: NS 接入时，分配给用户的 DNS 服务器地址，需要将域名的 NameServer 切换至该地址。
+        :type NameServers: list of str
+        """
+        self._NameServers = None
+
+    @property
+    def NameServers(self):
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+
+    def _deserialize(self, params):
+        self._NameServers = params.get("NameServers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineCache(AbstractModel):
     """离线缓存是否开启
 
@@ -14494,7 +14734,7 @@ class OriginInfo(AbstractModel):
 <li>ORIGIN_GROUP：源站组类型源站；</li>
 <li>AWS_S3：S3兼容对象存储源站；</li>
 <li>LB: 负载均衡类型源站；</li>
-<li>SPACE：EdgeOne Shield Space 存储。</li>
+<li>SPACE：EdgeOne Shield Space 存储。</li>  
         :type OriginType: str
         :param _Origin: 源站地址，当 OriginType 参数指定为 ORIGIN_GROUP 时，该参数填写源站组 ID，其他情况下填写源站地址。
         :type Origin: str
@@ -14832,6 +15072,74 @@ class OriginRecord(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnershipVerification(AbstractModel):
+    """该结构体表示各种场景、模式下，用于验证用户对站点域名的归属权内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsVerification: CNAME 接入，使用 DNS 解析验证时所需的信息。详情参考 [站点/域名归属权验证
+](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        :param _FileVerification: CNAME 接入，使用文件验证时所需的信息。详情参考 [站点/域名归属权验证
+](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        :param _NsVerification: NS 接入，切换 DNS 服务器所需的信息。详情参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NsVerification: :class:`tencentcloud.teo.v20220901.models.NsVerification`
+        """
+        self._DnsVerification = None
+        self._FileVerification = None
+        self._NsVerification = None
+
+    @property
+    def DnsVerification(self):
+        return self._DnsVerification
+
+    @DnsVerification.setter
+    def DnsVerification(self, DnsVerification):
+        self._DnsVerification = DnsVerification
+
+    @property
+    def FileVerification(self):
+        return self._FileVerification
+
+    @FileVerification.setter
+    def FileVerification(self, FileVerification):
+        self._FileVerification = FileVerification
+
+    @property
+    def NsVerification(self):
+        return self._NsVerification
+
+    @NsVerification.setter
+    def NsVerification(self, NsVerification):
+        self._NsVerification = NsVerification
+
+
+    def _deserialize(self, params):
+        if params.get("DnsVerification") is not None:
+            self._DnsVerification = DnsVerification()
+            self._DnsVerification._deserialize(params.get("DnsVerification"))
+        if params.get("FileVerification") is not None:
+            self._FileVerification = FileVerification()
+            self._FileVerification._deserialize(params.get("FileVerification"))
+        if params.get("NsVerification") is not None:
+            self._NsVerification = NsVerification()
+            self._NsVerification._deserialize(params.get("NsVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19006,7 +19314,7 @@ class Zone(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID。
         :type ZoneId: str
         :param _ZoneName: 站点名称。
         :type ZoneName: str
@@ -19019,11 +19327,13 @@ class Zone(AbstractModel):
 <li> pending：NS 未切换；</li>
 <li> moved：NS 已切走；</li>
 <li> deactivated：被封禁。 </li>
+<li> initializing：待绑定套餐。 </li>
         :type Status: str
-        :param _Type: 站点接入方式，取值有
-<li> full：NS 接入； </li>
+        :param _Type: 站点接入方式，取值有：
+<li> full：NS 接入；</li>
 <li> partial：CNAME 接入；</li>
-<li> noDomainAccess：无域名接入。</li>
+<li> noDomainAccess：无域名接入；</li>
+<li> vodeo：vodeo默认站点。</li>
         :type Type: str
         :param _Paused: 站点是否关闭。
         :type Paused: bool
@@ -19066,8 +19376,11 @@ class Zone(AbstractModel):
 <li> 0：非伪站点；</li>
 <li> 1：伪站点。</li>
         :type IsFake: int
-        :param _LockStatus: 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+        :param _LockStatus: 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作；</li><li> plan_migrate：套餐迁移中，不允许进行修改操作。</li>
         :type LockStatus: str
+        :param _OwnershipVerification: 归属权验证信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         self._ZoneId = None
         self._ZoneName = None
@@ -19089,6 +19402,7 @@ class Zone(AbstractModel):
         self._AliasZoneName = None
         self._IsFake = None
         self._LockStatus = None
+        self._OwnershipVerification = None
 
     @property
     def ZoneId(self):
@@ -19250,6 +19564,14 @@ class Zone(AbstractModel):
     def LockStatus(self, LockStatus):
         self._LockStatus = LockStatus
 
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -19289,6 +19611,9 @@ class Zone(AbstractModel):
         self._AliasZoneName = params.get("AliasZoneName")
         self._IsFake = params.get("IsFake")
         self._LockStatus = params.get("LockStatus")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

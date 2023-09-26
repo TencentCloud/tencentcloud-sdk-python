@@ -8955,16 +8955,22 @@ class KongTarget(AbstractModel):
     def __init__(self):
         r"""
         :param _Host: Host
+注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _Weight: 权重
+注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
         :param _Health: 健康状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type Health: str
         :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
         :param _Source: Target的来源
+注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
         """
         self._Host = None
@@ -9048,43 +9054,65 @@ class KongUpstreamInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Host: IP或域名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
         :param _Port: 端口
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         :param _SourceID: 服务来源ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceID: str
         :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
         :type Namespace: str
         :param _ServiceName: 服务（注册中心或Kubernetes中的服务）名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
         :param _Targets: 服务后端类型是IPList时提供
+注意：此字段可能返回 null，表示取不到有效值。
         :type Targets: list of KongTarget
         :param _SourceType: 服务来源类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
         :param _ScfType: SCF函数类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScfType: str
         :param _ScfNamespace: SCF函数命名空间
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScfNamespace: str
         :param _ScfLambdaName: SCF函数名
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScfLambdaName: str
         :param _ScfLambdaQualifier: SCF函数版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type ScfLambdaQualifier: str
         :param _SlowStart: 冷启动时间，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
         :type SlowStart: int
         :param _Algorithm: 负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithm: str
         :param _AutoScalingGroupID: CVM弹性伸缩组ID
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalingGroupID: str
         :param _AutoScalingCvmPort: CVM弹性伸缩组端口
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalingCvmPort: int
         :param _AutoScalingTatCmdStatus: CVM弹性伸缩组使用的CVM TAT命令状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalingTatCmdStatus: str
         :param _AutoScalingHookStatus: CVM弹性伸缩组生命周期挂钩状态
+注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalingHookStatus: str
         :param _SourceName: 服务来源的名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type SourceName: str
         :param _RealSourceType: 精确的服务来源类型，新建服务来源时候传入的类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type RealSourceType: str
+        :param _HealthStatus: upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatus: str
         """
         self._Host = None
         self._Port = None
@@ -9105,6 +9133,7 @@ class KongUpstreamInfo(AbstractModel):
         self._AutoScalingHookStatus = None
         self._SourceName = None
         self._RealSourceType = None
+        self._HealthStatus = None
 
     @property
     def Host(self):
@@ -9258,6 +9287,14 @@ class KongUpstreamInfo(AbstractModel):
     def RealSourceType(self, RealSourceType):
         self._RealSourceType = RealSourceType
 
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
@@ -9284,6 +9321,7 @@ class KongUpstreamInfo(AbstractModel):
         self._AutoScalingHookStatus = params.get("AutoScalingHookStatus")
         self._SourceName = params.get("SourceName")
         self._RealSourceType = params.get("RealSourceType")
+        self._HealthStatus = params.get("HealthStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

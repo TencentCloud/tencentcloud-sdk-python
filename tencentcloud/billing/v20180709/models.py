@@ -1137,6 +1137,482 @@ class BillDetailComponentConfig(AbstractModel):
         
 
 
+class BillDistributionResourceSummary(AbstractModel):
+    """经销账单资源汇总数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        :type BusinessCodeName: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        :type ProductCodeName: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+        :type PayModeName: str
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        :type ProjectName: str
+        :param _RegionName: 地域：资源所属地域，如华南地区（广州）
+        :type RegionName: str
+        :param _ZoneName: 可用区：资源所属可用区，如广州三区
+        :type ZoneName: str
+        :param _ResourceId: 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
+        :type ResourceId: str
+        :param _ResourceName: 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        :type ResourceName: str
+        :param _ActionTypeName: 交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+        :type ActionTypeName: str
+        :param _OrderId: 订单ID：包年包月计费模式下订购的订单号
+        :type OrderId: str
+        :param _PayTime: 扣费时间：结算扣费时间
+        :type PayTime: str
+        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+        :type FeeBeginTime: str
+        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+        :type FeeEndTime: str
+        :param _ConfigDesc: 配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
+        :type ConfigDesc: str
+        :param _ExtendField1: 扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
+        :type ExtendField1: str
+        :param _ExtendField2: 扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
+        :type ExtendField2: str
+        :param _TotalCost: 原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+        :type TotalCost: str
+        :param _Discount: 折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+        :type Discount: str
+        :param _ReduceType: 优惠类型
+        :type ReduceType: str
+        :param _RealTotalCost: 优惠后总价
+        :type RealTotalCost: str
+        :param _VoucherPayAmount: 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+        :type VoucherPayAmount: str
+        :param _CashPayAmount: 现金账户支出：通过现金账户支付的金额
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出：使用赠送金支付的金额
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成金账户支出：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param _ExtendField3: 扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
+        :type ExtendField3: str
+        :param _ExtendField4: 扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
+        :type ExtendField4: str
+        :param _ExtendField5: 扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
+        :type ExtendField5: str
+        :param _Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of BillTagInfo
+        :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
+        :type OwnerUin: str
+        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :type OperateUin: str
+        :param _BusinessCode: 产品编码
+        :type BusinessCode: str
+        :param _ProductCode: 子产品编码
+        :type ProductCode: str
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _InstanceType: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+        :type InstanceType: str
+        :param _OriginalCostWithRI: 预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
+        :type OriginalCostWithRI: str
+        :param _SPDeduction: 节省计划抵扣金额（已废弃）
+        :type SPDeduction: str
+        :param _OriginalCostWithSP: 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
+        :type OriginalCostWithSP: str
+        """
+        self._BusinessCodeName = None
+        self._ProductCodeName = None
+        self._PayModeName = None
+        self._ProjectName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ConfigDesc = None
+        self._ExtendField1 = None
+        self._ExtendField2 = None
+        self._TotalCost = None
+        self._Discount = None
+        self._ReduceType = None
+        self._RealTotalCost = None
+        self._VoucherPayAmount = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._ExtendField3 = None
+        self._ExtendField4 = None
+        self._ExtendField5 = None
+        self._Tags = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._RegionId = None
+        self._InstanceType = None
+        self._OriginalCostWithRI = None
+        self._SPDeduction = None
+        self._OriginalCostWithSP = None
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ConfigDesc(self):
+        return self._ConfigDesc
+
+    @ConfigDesc.setter
+    def ConfigDesc(self, ConfigDesc):
+        self._ConfigDesc = ConfigDesc
+
+    @property
+    def ExtendField1(self):
+        return self._ExtendField1
+
+    @ExtendField1.setter
+    def ExtendField1(self, ExtendField1):
+        self._ExtendField1 = ExtendField1
+
+    @property
+    def ExtendField2(self):
+        return self._ExtendField2
+
+    @ExtendField2.setter
+    def ExtendField2(self, ExtendField2):
+        self._ExtendField2 = ExtendField2
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def ReduceType(self):
+        return self._ReduceType
+
+    @ReduceType.setter
+    def ReduceType(self, ReduceType):
+        self._ReduceType = ReduceType
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def ExtendField3(self):
+        return self._ExtendField3
+
+    @ExtendField3.setter
+    def ExtendField3(self, ExtendField3):
+        self._ExtendField3 = ExtendField3
+
+    @property
+    def ExtendField4(self):
+        return self._ExtendField4
+
+    @ExtendField4.setter
+    def ExtendField4(self, ExtendField4):
+        self._ExtendField4 = ExtendField4
+
+    @property
+    def ExtendField5(self):
+        return self._ExtendField5
+
+    @ExtendField5.setter
+    def ExtendField5(self, ExtendField5):
+        self._ExtendField5 = ExtendField5
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def OriginalCostWithRI(self):
+        return self._OriginalCostWithRI
+
+    @OriginalCostWithRI.setter
+    def OriginalCostWithRI(self, OriginalCostWithRI):
+        self._OriginalCostWithRI = OriginalCostWithRI
+
+    @property
+    def SPDeduction(self):
+        warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
+
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
+
+        self._SPDeduction = SPDeduction
+
+    @property
+    def OriginalCostWithSP(self):
+        return self._OriginalCostWithSP
+
+    @OriginalCostWithSP.setter
+    def OriginalCostWithSP(self, OriginalCostWithSP):
+        self._OriginalCostWithSP = OriginalCostWithSP
+
+
+    def _deserialize(self, params):
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._ConfigDesc = params.get("ConfigDesc")
+        self._ExtendField1 = params.get("ExtendField1")
+        self._ExtendField2 = params.get("ExtendField2")
+        self._TotalCost = params.get("TotalCost")
+        self._Discount = params.get("Discount")
+        self._ReduceType = params.get("ReduceType")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._ExtendField3 = params.get("ExtendField3")
+        self._ExtendField4 = params.get("ExtendField4")
+        self._ExtendField5 = params.get("ExtendField5")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._RegionId = params.get("RegionId")
+        self._InstanceType = params.get("InstanceType")
+        self._OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self._SPDeduction = params.get("SPDeduction")
+        self._OriginalCostWithSP = params.get("OriginalCostWithSP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillResourceSummary(AbstractModel):
     """账单资源汇总数据对象
 
@@ -4569,6 +5045,281 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillDetailForOrganizationRequest(AbstractModel):
+    """DescribeBillDetailForOrganization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Limit: 数量，最大值为100
+        :type Limit: int
+        :param _PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        :type PeriodType: str
+        :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+        :type Month: str
+        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+        :type BeginTime: str
+        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+        :type EndTime: str
+        :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
+1-表示需要， 0-表示不需要
+        :type NeedRecordNum: int
+        :param _PayMode: 付费模式 prePay(表示包年包月)/postPay(表示按时按量)
+        :type PayMode: str
+        :param _ResourceId: 查询指定资源信息
+        :type ResourceId: str
+        :param _ActionType: 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+包年包月新购
+包年包月续费
+包年包月配置变更
+包年包月退款 
+按量计费扣费 
+线下项目扣费 
+线下产品扣费 
+调账扣费 
+调账补偿 
+按量计费小时结 
+按量计费日结 
+按量计费月结 
+竞价实例小时结 
+线下项目调账补偿 
+线下产品调账补偿 
+优惠扣费 
+优惠补偿 
+按量计费迁入资源 
+按量计费迁出资源 
+包年包月迁入资源 
+包年包月迁出资源 
+预付费用 
+小时费用 
+预留实例退款 
+按量计费冲正 
+包年包月转按量 
+保底扣款 
+节省计划小时费用
+        :type ActionType: str
+        :param _ProjectId: 项目ID:资源所属项目ID
+        :type ProjectId: int
+        :param _BusinessCode: 产品名称代码
+备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        :type BusinessCode: str
+        :param _Context: 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+        :type Context: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._PeriodType = None
+        self._Month = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._NeedRecordNum = None
+        self._PayMode = None
+        self._ResourceId = None
+        self._ActionType = None
+        self._ProjectId = None
+        self._BusinessCode = None
+        self._Context = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PeriodType = params.get("PeriodType")
+        self._Month = params.get("Month")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._PayMode = params.get("PayMode")
+        self._ResourceId = params.get("ResourceId")
+        self._ActionType = params.get("ActionType")
+        self._ProjectId = params.get("ProjectId")
+        self._BusinessCode = params.get("BusinessCode")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDetailForOrganizationResponse(AbstractModel):
+    """DescribeBillDetailForOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailSet: 详情列表
+        :type DetailSet: list of DistributionBillDetail
+        :param _Total: 总记录数，24小时缓存一次，可能比实际总记录数少
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Context: 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Context: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DetailSet = None
+        self._Total = None
+        self._Context = None
+        self._RequestId = None
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = DistributionBillDetail()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        self._Total = params.get("Total")
+        self._Context = params.get("Context")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillDetailRequest(AbstractModel):
     """DescribeBillDetail请求参数结构体
 
@@ -4865,6 +5616,120 @@ class DescribeBillDetailResponse(AbstractModel):
                 self._DetailSet.append(obj)
         self._Total = params.get("Total")
         self._Context = params.get("Context")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillDownloadUrlRequest(AbstractModel):
+    """DescribeBillDownloadUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: 账单类型，枚举值
+billOverview=L0-PDF账单
+billSummary=L1-汇总账单	
+billResource=L2-资源账单	
+billDetail=L3-明细账单	
+billPack=账单包
+        :type FileType: str
+        :param _Month: 账单月份
+支持的最早开始月份为2021-01
+L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
+        :type Month: str
+        :param _ChildUin: 下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+        :type ChildUin: list of str
+        """
+        self._FileType = None
+        self._Month = None
+        self._ChildUin = None
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def ChildUin(self):
+        return self._ChildUin
+
+    @ChildUin.setter
+    def ChildUin(self, ChildUin):
+        self._ChildUin = ChildUin
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._Month = params.get("Month")
+        self._ChildUin = params.get("ChildUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDownloadUrlResponse(AbstractModel):
+    """DescribeBillDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: 账单文件是否准备就绪，0文件生成中，1文件已生成
+        :type Ready: int
+        :param _DownloadUrl: 账单文件下载链接，有效时长为一小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._DownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def DownloadUrl(self):
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        self._DownloadUrl = params.get("DownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -5167,6 +6032,245 @@ class DescribeBillListResponse(AbstractModel):
         self._WithdrawAmount = params.get("WithdrawAmount")
         self._AgentOutAmount = params.get("AgentOutAmount")
         self._AdvancePayAmount = params.get("AdvancePayAmount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
+    """DescribeBillResourceSummaryForOrganization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Limit: 数量，最大值为1000
+        :type Limit: int
+        :param _Month: 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+        :type Month: str
+        :param _PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        :type PeriodType: str
+        :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
+1-表示需要， 0-表示不需要
+        :type NeedRecordNum: int
+        :param _ActionType: 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+包年包月新购
+包年包月续费
+包年包月配置变更
+包年包月退款 
+按量计费扣费 
+线下项目扣费 
+线下产品扣费 
+调账扣费 
+调账补偿 
+按量计费小时结 
+按量计费日结 
+按量计费月结 
+竞价实例小时结 
+线下项目调账补偿 
+线下产品调账补偿 
+优惠扣费 
+优惠补偿 
+按量计费迁入资源 
+按量计费迁出资源 
+包年包月迁入资源 
+包年包月迁出资源 
+预付费用 
+小时费用 
+预留实例退款 
+按量计费冲正 
+包年包月转按量 
+保底扣款 
+节省计划小时费用
+        :type ActionType: str
+        :param _ResourceId: 查询指定资源信息
+        :type ResourceId: str
+        :param _PayMode: 付费模式 prePay/postPay
+        :type PayMode: str
+        :param _BusinessCode: 产品名称代码
+备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        :type BusinessCode: str
+        :param _TagKey: 分账标签键，用户自定义（支持2021-01以后账单查询）
+        :type TagKey: str
+        :param _TagValue: 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+（支持2021-01以后账单查询）
+        :type TagValue: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Month = None
+        self._PeriodType = None
+        self._NeedRecordNum = None
+        self._ActionType = None
+        self._ResourceId = None
+        self._PayMode = None
+        self._BusinessCode = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._ActionType = params.get("ActionType")
+        self._ResourceId = params.get("ResourceId")
+        self._PayMode = params.get("PayMode")
+        self._BusinessCode = params.get("BusinessCode")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
+    """DescribeBillResourceSummaryForOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSummarySet: 资源汇总列表
+        :type ResourceSummarySet: list of BillDistributionResourceSummary
+        :param _Total: 资源汇总列表总数，入参NeedRecordNum为0时不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceSummarySet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ResourceSummarySet(self):
+        return self._ResourceSummarySet
+
+    @ResourceSummarySet.setter
+    def ResourceSummarySet(self, ResourceSummarySet):
+        self._ResourceSummarySet = ResourceSummarySet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSummarySet") is not None:
+            self._ResourceSummarySet = []
+            for item in params.get("ResourceSummarySet"):
+                obj = BillDistributionResourceSummary()
+                obj._deserialize(item)
+                self._ResourceSummarySet.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -6049,6 +7153,117 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
         if params.get("SummaryTotal") is not None:
             self._SummaryTotal = SummaryTotal()
             self._SummaryTotal._deserialize(params.get("SummaryTotal"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryForOrganizationRequest(AbstractModel):
+    """DescribeBillSummaryForOrganization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份，格式为2023-04
+        :type Month: str
+        :param _GroupType: 账单维度类型，枚举值如下：business、project、region、payMode、tag
+        :type GroupType: str
+        :param _TagKey: 标签键，GroupType=tag获取标签维度账单时传
+        :type TagKey: list of str
+        """
+        self._Month = None
+        self._GroupType = None
+        self._TagKey = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._GroupType = params.get("GroupType")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryForOrganizationResponse(AbstractModel):
+    """DescribeBillSummaryForOrganization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :type Ready: int
+        :param _SummaryDetail: 账单多维度汇总消费详情
+        :type SummaryDetail: list of SummaryDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._SummaryDetail = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def SummaryDetail(self):
+        return self._SummaryDetail
+
+    @SummaryDetail.setter
+    def SummaryDetail(self, SummaryDetail):
+        self._SummaryDetail = SummaryDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("SummaryDetail") is not None:
+            self._SummaryDetail = []
+            for item in params.get("SummaryDetail"):
+                obj = SummaryDetail()
+                obj._deserialize(item)
+                self._SummaryDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8189,6 +9404,372 @@ class DetailSet(AbstractModel):
                 obj._deserialize(item)
                 self._DetailPoints.append(obj)
         self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DistributionBillDetail(AbstractModel):
+    """经销账单明细数据对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+        :type BusinessCodeName: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+        :type ProductCodeName: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+        :type PayModeName: str
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        :type ProjectName: str
+        :param _RegionName: 地域：资源所属地域，如华南地区（广州）
+        :type RegionName: str
+        :param _ZoneName: 可用区：资源所属可用区，如广州三区
+        :type ZoneName: str
+        :param _ResourceId: 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :type ResourceId: str
+        :param _ResourceName: 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+        :type ResourceName: str
+        :param _ActionTypeName: 交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+        :type ActionTypeName: str
+        :param _OrderId: 订单ID：包年包月计费模式下订购的订单号
+        :type OrderId: str
+        :param _BillId: 交易ID：结算扣费单号
+        :type BillId: str
+        :param _PayTime: 扣费时间：结算扣费时间
+        :type PayTime: str
+        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+        :type FeeBeginTime: str
+        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+        :type FeeEndTime: str
+        :param _ComponentSet: 组件列表
+        :type ComponentSet: list of BillDetailComponent
+        :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
+        :type OwnerUin: str
+        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :type OperateUin: str
+        :param _Tags: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of BillTagInfo
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param _ProjectId: 项目ID
+        :type ProjectId: int
+        :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceInfo: list of str
+        :param _AssociatedOrder: 关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
+        :param _Formula: 计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Formula: str
+        :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormulaUrl: str
+        """
+        self._BusinessCodeName = None
+        self._ProductCodeName = None
+        self._PayModeName = None
+        self._ProjectName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._BillId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ComponentSet = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._Tags = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._ActionType = None
+        self._RegionId = None
+        self._ProjectId = None
+        self._PriceInfo = None
+        self._AssociatedOrder = None
+        self._Formula = None
+        self._FormulaUrl = None
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ComponentSet(self):
+        return self._ComponentSet
+
+    @ComponentSet.setter
+    def ComponentSet(self, ComponentSet):
+        self._ComponentSet = ComponentSet
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PriceInfo(self):
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+
+    def _deserialize(self, params):
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._BillId = params.get("BillId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        if params.get("ComponentSet") is not None:
+            self._ComponentSet = []
+            for item in params.get("ComponentSet"):
+                obj = BillDetailComponent()
+                obj._deserialize(item)
+                self._ComponentSet.append(obj)
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ActionType = params.get("ActionType")
+        self._RegionId = params.get("RegionId")
+        self._ProjectId = params.get("ProjectId")
+        self._PriceInfo = params.get("PriceInfo")
+        if params.get("AssociatedOrder") is not None:
+            self._AssociatedOrder = BillDetailAssociatedOrder()
+            self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

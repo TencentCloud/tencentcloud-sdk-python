@@ -72,6 +72,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRole(self, request):
+        """添加角色
+
+        :param request: Request instance for CreateRole.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateRoleRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTopic(self, request):
         """创建主题
 
@@ -132,6 +155,29 @@ class TrocketClient(AbstractClient):
             body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRole(self, request):
+        """删除角色
+
+        :param request: Request instance for DeleteRole.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DeleteRoleRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DeleteRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -230,6 +276,31 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRoleList(self, request):
+        """查询角色列表，Filter参数使用说明如下：
+
+        1. RoleName，角色名称模糊搜索
+
+        :param request: Request instance for DescribeRoleList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeRoleListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeRoleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -350,6 +421,29 @@ class TrocketClient(AbstractClient):
             body = self.call("ModifyInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRole(self, request):
+        """修改角色
+
+        :param request: Request instance for ModifyRole.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ModifyRoleRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ModifyRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

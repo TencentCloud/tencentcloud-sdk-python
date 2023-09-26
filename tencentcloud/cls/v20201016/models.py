@@ -4045,6 +4045,9 @@ class CreateExportRequest(AbstractModel):
         :type Order: str
         :param _Format: 日志导出数据格式。json，csv，默认为json
         :type Format: str
+        :param _SyntaxRule: 语法规则,  默认值为0。
+0：Lucene语法，1：CQL语法。
+        :type SyntaxRule: int
         """
         self._TopicId = None
         self._Count = None
@@ -4053,6 +4056,7 @@ class CreateExportRequest(AbstractModel):
         self._To = None
         self._Order = None
         self._Format = None
+        self._SyntaxRule = None
 
     @property
     def TopicId(self):
@@ -4110,6 +4114,14 @@ class CreateExportRequest(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def SyntaxRule(self):
+        return self._SyntaxRule
+
+    @SyntaxRule.setter
+    def SyntaxRule(self, SyntaxRule):
+        self._SyntaxRule = SyntaxRule
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -4119,6 +4131,7 @@ class CreateExportRequest(AbstractModel):
         self._To = params.get("To")
         self._Order = params.get("Order")
         self._Format = params.get("Format")
+        self._SyntaxRule = params.get("SyntaxRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

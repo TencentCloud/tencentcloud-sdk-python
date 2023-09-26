@@ -1098,6 +1098,9 @@ class BlockIgnoreRule(AbstractModel):
         :param _Domain: 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
+        :param _IP: IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IP: str
         :param _Ioc: 规则ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ioc: str
@@ -1145,6 +1148,7 @@ class BlockIgnoreRule(AbstractModel):
         :type Comment: str
         """
         self._Domain = None
+        self._IP = None
         self._Ioc = None
         self._Level = None
         self._EventName = None
@@ -1168,6 +1172,14 @@ class BlockIgnoreRule(AbstractModel):
     @Domain.setter
     def Domain(self, Domain):
         self._Domain = Domain
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
 
     @property
     def Ioc(self):
@@ -1292,6 +1304,7 @@ class BlockIgnoreRule(AbstractModel):
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._IP = params.get("IP")
         self._Ioc = params.get("Ioc")
         self._Level = params.get("Level")
         self._EventName = params.get("EventName")
@@ -1788,9 +1801,12 @@ class CreateBlockIgnoreRuleListRequest(AbstractModel):
         :type Rules: list of IntrusionDefenseRule
         :param _RuleType: 规则类型，1封禁，2放通，不支持域名封禁
         :type RuleType: int
+        :param _CoverDuplicate: 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+        :type CoverDuplicate: int
         """
         self._Rules = None
         self._RuleType = None
+        self._CoverDuplicate = None
 
     @property
     def Rules(self):
@@ -1808,6 +1824,14 @@ class CreateBlockIgnoreRuleListRequest(AbstractModel):
     def RuleType(self, RuleType):
         self._RuleType = RuleType
 
+    @property
+    def CoverDuplicate(self):
+        return self._CoverDuplicate
+
+    @CoverDuplicate.setter
+    def CoverDuplicate(self, CoverDuplicate):
+        self._CoverDuplicate = CoverDuplicate
+
 
     def _deserialize(self, params):
         if params.get("Rules") is not None:
@@ -1817,6 +1841,7 @@ class CreateBlockIgnoreRuleListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RuleType = params.get("RuleType")
+        self._CoverDuplicate = params.get("CoverDuplicate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9469,6 +9494,9 @@ class EdgeIpInfo(AbstractModel):
 1 : 串行
 2 : 正在模式切换
         :type SwitchMode: int
+        :param _SwitchWeight: 开关权重
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchWeight: int
         """
         self._PublicIp = None
         self._PublicIpType = None
@@ -9490,6 +9518,7 @@ class EdgeIpInfo(AbstractModel):
         self._EndpointId = None
         self._EndpointIp = None
         self._SwitchMode = None
+        self._SwitchWeight = None
 
     @property
     def PublicIp(self):
@@ -9651,6 +9680,14 @@ class EdgeIpInfo(AbstractModel):
     def SwitchMode(self, SwitchMode):
         self._SwitchMode = SwitchMode
 
+    @property
+    def SwitchWeight(self):
+        return self._SwitchWeight
+
+    @SwitchWeight.setter
+    def SwitchWeight(self, SwitchWeight):
+        self._SwitchWeight = SwitchWeight
+
 
     def _deserialize(self, params):
         self._PublicIp = params.get("PublicIp")
@@ -9673,6 +9710,7 @@ class EdgeIpInfo(AbstractModel):
         self._EndpointId = params.get("EndpointId")
         self._EndpointIp = params.get("EndpointIp")
         self._SwitchMode = params.get("SwitchMode")
+        self._SwitchWeight = params.get("SwitchWeight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12138,12 +12176,22 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
         r"""
         :param _Enable: 0 关闭开关
 1 打开开关
+2 不操作开关，此次切换模式
         :type Enable: int
         :param _EdgeIpSwitchLst: 操作开关详情
         :type EdgeIpSwitchLst: list of EdgeIpSwitch
+        :param _AutoChooseSubnet: 0 不自动选择子网
+1 自动选择子网创建私有连接
+        :type AutoChooseSubnet: int
+        :param _SwitchMode: 0 切换为旁路
+1 切换为串行
+2 不切换模式，此次操作开关
+        :type SwitchMode: int
         """
         self._Enable = None
         self._EdgeIpSwitchLst = None
+        self._AutoChooseSubnet = None
+        self._SwitchMode = None
 
     @property
     def Enable(self):
@@ -12161,6 +12209,22 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
     def EdgeIpSwitchLst(self, EdgeIpSwitchLst):
         self._EdgeIpSwitchLst = EdgeIpSwitchLst
 
+    @property
+    def AutoChooseSubnet(self):
+        return self._AutoChooseSubnet
+
+    @AutoChooseSubnet.setter
+    def AutoChooseSubnet(self, AutoChooseSubnet):
+        self._AutoChooseSubnet = AutoChooseSubnet
+
+    @property
+    def SwitchMode(self):
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
@@ -12170,6 +12234,8 @@ class ModifyEdgeIpSwitchRequest(AbstractModel):
                 obj = EdgeIpSwitch()
                 obj._deserialize(item)
                 self._EdgeIpSwitchLst.append(obj)
+        self._AutoChooseSubnet = params.get("AutoChooseSubnet")
+        self._SwitchMode = params.get("SwitchMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14396,6 +14462,9 @@ class NatInstanceInfo(AbstractModel):
         :param _UpdateEnable: 引擎是否可升级：0，不可升级；1，可升级
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateEnable: int
+        :param _NeedProbeEngineUpdate: 是的需要升级引擎 支持 nat拨测 1需要 0不需要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NeedProbeEngineUpdate: int
         """
         self._NatinsId = None
         self._NatinsName = None
@@ -14416,6 +14485,7 @@ class NatInstanceInfo(AbstractModel):
         self._RuleMax = None
         self._EngineVersion = None
         self._UpdateEnable = None
+        self._NeedProbeEngineUpdate = None
 
     @property
     def NatinsId(self):
@@ -14569,6 +14639,14 @@ class NatInstanceInfo(AbstractModel):
     def UpdateEnable(self, UpdateEnable):
         self._UpdateEnable = UpdateEnable
 
+    @property
+    def NeedProbeEngineUpdate(self):
+        return self._NeedProbeEngineUpdate
+
+    @NeedProbeEngineUpdate.setter
+    def NeedProbeEngineUpdate(self, NeedProbeEngineUpdate):
+        self._NeedProbeEngineUpdate = NeedProbeEngineUpdate
+
 
     def _deserialize(self, params):
         self._NatinsId = params.get("NatinsId")
@@ -14590,6 +14668,7 @@ class NatInstanceInfo(AbstractModel):
         self._RuleMax = params.get("RuleMax")
         self._EngineVersion = params.get("EngineVersion")
         self._UpdateEnable = params.get("UpdateEnable")
+        self._NeedProbeEngineUpdate = params.get("NeedProbeEngineUpdate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

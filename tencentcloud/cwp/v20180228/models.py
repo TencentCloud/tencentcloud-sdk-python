@@ -1910,6 +1910,8 @@ class AssetInitServiceBaseInfo(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _IsAutoRun: 开机自启动[0:否|1:是]
+        :type IsAutoRun: int
         """
         self._Name = None
         self._Type = None
@@ -1926,6 +1928,7 @@ class AssetInitServiceBaseInfo(AbstractModel):
         self._IsNew = None
         self._MachineWanIp = None
         self._MachineExtraInfo = None
+        self._IsAutoRun = None
 
     @property
     def Name(self):
@@ -2047,6 +2050,14 @@ class AssetInitServiceBaseInfo(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def IsAutoRun(self):
+        return self._IsAutoRun
+
+    @IsAutoRun.setter
+    def IsAutoRun(self, IsAutoRun):
+        self._IsAutoRun = IsAutoRun
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2066,6 +2077,7 @@ class AssetInitServiceBaseInfo(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._IsAutoRun = params.get("IsAutoRun")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15980,6 +15992,7 @@ class DescribeAssetInitServiceListRequest(AbstractModel):
 <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 <li>Name- string - 是否必填：否 - 包名</li>
 <li>User- string - 是否必填：否 - 用户</li>
+<li>IsAutoRun - string - 是否必填：否 - 是否开机自启动：0否，1是</li>
 <li>Status- string - 是否必填：否 - 默认启用状态：0未启用， 1启用 仅linux</li>
 <li>Type- string - 是否必填：否 - 类型：类型 仅windows：
 1:编码器

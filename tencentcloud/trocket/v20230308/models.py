@@ -363,6 +363,124 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRoleRequest(AbstractModel):
+    """CreateRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Role: 角色名称
+        :type Role: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _PermWrite: 是否开启生产权限
+        :type PermWrite: bool
+        :param _PermRead: 是否开启消费权限
+        :type PermRead: bool
+        """
+        self._InstanceId = None
+        self._Role = None
+        self._Remark = None
+        self._PermWrite = None
+        self._PermRead = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PermWrite(self):
+        return self._PermWrite
+
+    @PermWrite.setter
+    def PermWrite(self, PermWrite):
+        self._PermWrite = PermWrite
+
+    @property
+    def PermRead(self):
+        return self._PermRead
+
+    @PermRead.setter
+    def PermRead(self, PermRead):
+        self._PermRead = PermRead
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Role = params.get("Role")
+        self._Remark = params.get("Remark")
+        self._PermWrite = params.get("PermWrite")
+        self._PermRead = params.get("PermRead")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoleResponse(AbstractModel):
+    """CreateRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色名
+        :type Role: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Role = None
+        self._RequestId = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTopicRequest(AbstractModel):
     """CreateTopic请求参数结构体
 
@@ -603,6 +721,76 @@ class DeleteInstanceRequest(AbstractModel):
 
 class DeleteInstanceResponse(AbstractModel):
     """DeleteInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRoleRequest(AbstractModel):
+    """DeleteRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Role: 角色名称
+        :type Role: str
+        """
+        self._InstanceId = None
+        self._Role = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoleResponse(AbstractModel):
+    """DeleteRole返回参数结构体
 
     """
 
@@ -1357,6 +1545,135 @@ PLATINUM 铂金版
         self._InstanceStatus = params.get("InstanceStatus")
         self._SkuCode = params.get("SkuCode")
         self._PayMode = params.get("PayMode")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRoleListRequest(AbstractModel):
+    """DescribeRoleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoleListResponse(AbstractModel):
+    """DescribeRoleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 角色信息列表
+        :type Data: list of RoleItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = RoleItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2516,6 +2833,112 @@ class ModifyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRoleRequest(AbstractModel):
+    """ModifyRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Role: 角色名称
+        :type Role: str
+        :param _PermRead: 是否开启消费
+        :type PermRead: bool
+        :param _PermWrite: 是否开启生产
+        :type PermWrite: bool
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Role = None
+        self._PermRead = None
+        self._PermWrite = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def PermRead(self):
+        return self._PermRead
+
+    @PermRead.setter
+    def PermRead(self, PermRead):
+        self._PermRead = PermRead
+
+    @property
+    def PermWrite(self):
+        return self._PermWrite
+
+    @PermWrite.setter
+    def PermWrite(self, PermWrite):
+        self._PermWrite = PermWrite
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Role = params.get("Role")
+        self._PermRead = params.get("PermRead")
+        self._PermWrite = params.get("PermWrite")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoleResponse(AbstractModel):
+    """ModifyRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTopicRequest(AbstractModel):
     """ModifyTopic请求参数结构体
 
@@ -2608,6 +3031,123 @@ class ModifyTopicResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RoleItem(AbstractModel):
+    """角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _AccessKey: Access Key
+        :type AccessKey: str
+        :param _SecretKey: Secret Key
+        :type SecretKey: str
+        :param _PermRead: 是否开启消费
+        :type PermRead: bool
+        :param _PermWrite: 是否开启生产
+        :type PermWrite: bool
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _CreatedTime: 创建时间，秒为单位
+        :type CreatedTime: int
+        :param _ModifiedTime: 修改时间，秒为单位
+        :type ModifiedTime: int
+        """
+        self._RoleName = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._PermRead = None
+        self._PermWrite = None
+        self._Remark = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def PermRead(self):
+        return self._PermRead
+
+    @PermRead.setter
+    def PermRead(self, PermRead):
+        self._PermRead = PermRead
+
+    @property
+    def PermWrite(self):
+        return self._PermWrite
+
+    @PermWrite.setter
+    def PermWrite(self, PermWrite):
+        self._PermWrite = PermWrite
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._PermRead = params.get("PermRead")
+        self._PermWrite = params.get("PermWrite")
+        self._Remark = params.get("Remark")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscriptionData(AbstractModel):
