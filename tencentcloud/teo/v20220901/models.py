@@ -121,6 +121,9 @@ class AccelerationDomain(AbstractModel):
         :param _OwnershipVerification: 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _Certificate: 域名证书信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
         self._ZoneId = None
         self._DomainName = None
@@ -131,6 +134,7 @@ class AccelerationDomain(AbstractModel):
         self._CreatedOn = None
         self._ModifiedOn = None
         self._OwnershipVerification = None
+        self._Certificate = None
 
     @property
     def ZoneId(self):
@@ -204,6 +208,14 @@ class AccelerationDomain(AbstractModel):
     def OwnershipVerification(self, OwnershipVerification):
         self._OwnershipVerification = OwnershipVerification
 
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -219,6 +231,60 @@ class AccelerationDomain(AbstractModel):
         if params.get("OwnershipVerification") is not None:
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        if params.get("Certificate") is not None:
+            self._Certificate = AccelerationDomainCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccelerationDomainCertificate(AbstractModel):
+    """加速域名所对应的证书信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 配置证书的模式，取值有： <li>disable：不配置证书；</li> <li>eofreecert：配置 EdgeOne 免费证书；</li> <li>sslcert：配置 SSL 证书。</li>
+        :type Mode: str
+        :param _List: 证书列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of CertificateInfo
+        """
+        self._Mode = None
+        self._List = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2725,6 +2791,119 @@ class CachePrefresh(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Percent = params.get("Percent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertificateInfo(AbstractModel):
+    """https 服务端证书配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 服务器证书 ID。
+        :type CertId: str
+        :param _Alias: 证书备注名。
+        :type Alias: str
+        :param _Type: 证书类型，取值有：
+<li>default：默认证书；</li>
+<li>upload：用户上传；</li>
+<li>managed：腾讯云托管。</li>
+        :type Type: str
+        :param _ExpireTime: 证书过期时间。
+        :type ExpireTime: str
+        :param _DeployTime: 证书部署时间。
+        :type DeployTime: str
+        :param _SignAlgo: 签名算法。
+        :type SignAlgo: str
+        :param _Status: 证书状态，取值有：
+<li>deployed：已部署；</li>
+<li>processing：部署中；</li>
+<li>applying：申请中；</li>
+<li>failed：申请失败；</li>
+<li>issued：绑定失败。</li>
+        :type Status: str
+        """
+        self._CertId = None
+        self._Alias = None
+        self._Type = None
+        self._ExpireTime = None
+        self._DeployTime = None
+        self._SignAlgo = None
+        self._Status = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def SignAlgo(self):
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._Alias = params.get("Alias")
+        self._Type = params.get("Type")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeployTime = params.get("DeployTime")
+        self._SignAlgo = params.get("SignAlgo")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

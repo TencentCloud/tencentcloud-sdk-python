@@ -112,6 +112,88 @@ class AddUserContactResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Aggregation(AbstractModel):
+    """mongodb慢查模板概览明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvgExecTime: 平均执行时间（ms）。
+        :type AvgExecTime: int
+        :param _AvgDocsExamined: 平均扫描行数。
+        :type AvgDocsExamined: int
+        :param _SlowLogCount: 产生慢查次数（/天）。
+        :type SlowLogCount: int
+        :param _SortCount: 内存排序次数。
+        :type SortCount: int
+        :param _SlowLogs: 慢查模板概览。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowLogs: list of str
+        """
+        self._AvgExecTime = None
+        self._AvgDocsExamined = None
+        self._SlowLogCount = None
+        self._SortCount = None
+        self._SlowLogs = None
+
+    @property
+    def AvgExecTime(self):
+        return self._AvgExecTime
+
+    @AvgExecTime.setter
+    def AvgExecTime(self, AvgExecTime):
+        self._AvgExecTime = AvgExecTime
+
+    @property
+    def AvgDocsExamined(self):
+        return self._AvgDocsExamined
+
+    @AvgDocsExamined.setter
+    def AvgDocsExamined(self, AvgDocsExamined):
+        self._AvgDocsExamined = AvgDocsExamined
+
+    @property
+    def SlowLogCount(self):
+        return self._SlowLogCount
+
+    @SlowLogCount.setter
+    def SlowLogCount(self, SlowLogCount):
+        self._SlowLogCount = SlowLogCount
+
+    @property
+    def SortCount(self):
+        return self._SortCount
+
+    @SortCount.setter
+    def SortCount(self, SortCount):
+        self._SortCount = SortCount
+
+    @property
+    def SlowLogs(self):
+        return self._SlowLogs
+
+    @SlowLogs.setter
+    def SlowLogs(self, SlowLogs):
+        self._SlowLogs = SlowLogs
+
+
+    def _deserialize(self, params):
+        self._AvgExecTime = params.get("AvgExecTime")
+        self._AvgDocsExamined = params.get("AvgDocsExamined")
+        self._SlowLogCount = params.get("SlowLogCount")
+        self._SortCount = params.get("SortCount")
+        self._SlowLogs = params.get("SlowLogs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmProfileList(AbstractModel):
     """通知模板
 
@@ -4440,6 +4522,274 @@ class DescribeHealthScoreResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIndexRecommendAggregationSlowLogsRequest(AbstractModel):
+    """DescribeIndexRecommendAggregationSlowLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括："mongodb" - 云数据库 。
+        :type Product: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Db: 数据库名称。
+        :type Db: str
+        :param _Collection: 表明。
+        :type Collection: str
+        :param _Signs: 签名。
+        :type Signs: list of str
+        """
+        self._Product = None
+        self._InstanceId = None
+        self._Db = None
+        self._Collection = None
+        self._Signs = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Collection(self):
+        return self._Collection
+
+    @Collection.setter
+    def Collection(self, Collection):
+        self._Collection = Collection
+
+    @property
+    def Signs(self):
+        return self._Signs
+
+    @Signs.setter
+    def Signs(self, Signs):
+        self._Signs = Signs
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._Db = params.get("Db")
+        self._Collection = params.get("Collection")
+        self._Signs = params.get("Signs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexRecommendAggregationSlowLogsResponse(AbstractModel):
+    """DescribeIndexRecommendAggregationSlowLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Aggregation: 查询实例慢查询聚合结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Aggregation: :class:`tencentcloud.dbbrain.v20210527.models.Aggregation`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Aggregation = None
+        self._RequestId = None
+
+    @property
+    def Aggregation(self):
+        return self._Aggregation
+
+    @Aggregation.setter
+    def Aggregation(self, Aggregation):
+        self._Aggregation = Aggregation
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Aggregation") is not None:
+            self._Aggregation = Aggregation()
+            self._Aggregation._deserialize(params.get("Aggregation"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIndexRecommendInfoRequest(AbstractModel):
+    """DescribeIndexRecommendInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 服务产品类型，支持值包括："mongodb" - 云数据库 。
+        :type Product: str
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self._Product = None
+        self._InstanceId = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIndexRecommendInfoResponse(AbstractModel):
+    """DescribeIndexRecommendInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CollectionNum: 索引推荐的集合数量。
+        :type CollectionNum: int
+        :param _IndexNum: 索引推荐的索引数量。
+        :type IndexNum: int
+        :param _Items: 索引项。
+        :type Items: list of MongoDBIndex
+        :param _Level: 优化级别，1-4，优先级从高到低。
+        :type Level: int
+        :param _Optimized: 历史优化数。
+        :type Optimized: int
+        :param _OptimizedCount: 累计优化条数。
+        :type OptimizedCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CollectionNum = None
+        self._IndexNum = None
+        self._Items = None
+        self._Level = None
+        self._Optimized = None
+        self._OptimizedCount = None
+        self._RequestId = None
+
+    @property
+    def CollectionNum(self):
+        return self._CollectionNum
+
+    @CollectionNum.setter
+    def CollectionNum(self, CollectionNum):
+        self._CollectionNum = CollectionNum
+
+    @property
+    def IndexNum(self):
+        return self._IndexNum
+
+    @IndexNum.setter
+    def IndexNum(self, IndexNum):
+        self._IndexNum = IndexNum
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Optimized(self):
+        return self._Optimized
+
+    @Optimized.setter
+    def Optimized(self, Optimized):
+        self._Optimized = Optimized
+
+    @property
+    def OptimizedCount(self):
+        return self._OptimizedCount
+
+    @OptimizedCount.setter
+    def OptimizedCount(self, OptimizedCount):
+        self._OptimizedCount = OptimizedCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CollectionNum = params.get("CollectionNum")
+        self._IndexNum = params.get("IndexNum")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MongoDBIndex()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Level = params.get("Level")
+        self._Optimized = params.get("Optimized")
+        self._OptimizedCount = params.get("OptimizedCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMailProfileRequest(AbstractModel):
     """DescribeMailProfile请求参数结构体
 
@@ -5195,6 +5545,129 @@ class DescribeProxySessionKillTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRedisProcessListRequest(AbstractModel):
+    """DescribeRedisProcessList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Redis 实例ID。
+        :type InstanceId: str
+        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :type Product: str
+        :param _Limit: 查询的Proxy节点数量上限，默认值为20，最大值为50。
+        :type Limit: int
+        :param _Offset: Proxy节点的偏移量，默认值为0。
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedisProcessListResponse(AbstractModel):
+    """DescribeRedisProcessList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyCount: 该实例的Proxy节点数量，可用于分页查询。
+        :type ProxyCount: int
+        :param _Processes: 实时会话详情列表。
+        :type Processes: list of Process
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProxyCount = None
+        self._Processes = None
+        self._RequestId = None
+
+    @property
+    def ProxyCount(self):
+        return self._ProxyCount
+
+    @ProxyCount.setter
+    def ProxyCount(self, ProxyCount):
+        self._ProxyCount = ProxyCount
+
+    @property
+    def Processes(self):
+        return self._Processes
+
+    @Processes.setter
+    def Processes(self, Processes):
+        self._Processes = Processes
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProxyCount = params.get("ProxyCount")
+        if params.get("Processes") is not None:
+            self._Processes = []
+            for item in params.get("Processes"):
+                obj = Process()
+                obj._deserialize(item)
+                self._Processes.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7998,6 +8471,192 @@ class HealthStatus(AbstractModel):
         
 
 
+class IndexesToBuild(AbstractModel):
+    """推荐的索引
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 索引id，唯一标识一个索引。
+        :type Id: int
+        :param _IndexCommand: 创建索引命令。
+        :type IndexCommand: str
+        :param _IndexStr: 索引字符串。
+        :type IndexStr: str
+        :param _Level: 优化级别，1-4，优先级从高到低。
+        :type Level: int
+        :param _Score: 索引得分。
+        :type Score: int
+        :param _Signs: 签名。
+        :type Signs: list of str
+        :param _Status: 0-待创建；1-创建中。
+        :type Status: int
+        """
+        self._Id = None
+        self._IndexCommand = None
+        self._IndexStr = None
+        self._Level = None
+        self._Score = None
+        self._Signs = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IndexCommand(self):
+        return self._IndexCommand
+
+    @IndexCommand.setter
+    def IndexCommand(self, IndexCommand):
+        self._IndexCommand = IndexCommand
+
+    @property
+    def IndexStr(self):
+        return self._IndexStr
+
+    @IndexStr.setter
+    def IndexStr(self, IndexStr):
+        self._IndexStr = IndexStr
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Signs(self):
+        return self._Signs
+
+    @Signs.setter
+    def Signs(self, Signs):
+        self._Signs = Signs
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._IndexCommand = params.get("IndexCommand")
+        self._IndexStr = params.get("IndexStr")
+        self._Level = params.get("Level")
+        self._Score = params.get("Score")
+        self._Signs = params.get("Signs")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexesToDrop(AbstractModel):
+    """无效索引
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexStr: 索引字符串。
+        :type IndexStr: str
+        :param _Score: 索引得分。
+        :type Score: int
+        :param _Reason: 无效原因。
+        :type Reason: str
+        :param _IndexCommand: 删除索引命令。
+        :type IndexCommand: str
+        :param _IndexName: 索引名。
+        :type IndexName: str
+        """
+        self._IndexStr = None
+        self._Score = None
+        self._Reason = None
+        self._IndexCommand = None
+        self._IndexName = None
+
+    @property
+    def IndexStr(self):
+        return self._IndexStr
+
+    @IndexStr.setter
+    def IndexStr(self, IndexStr):
+        self._IndexStr = IndexStr
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def IndexCommand(self):
+        return self._IndexCommand
+
+    @IndexCommand.setter
+    def IndexCommand(self, IndexCommand):
+        self._IndexCommand = IndexCommand
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+
+    def _deserialize(self, params):
+        self._IndexStr = params.get("IndexStr")
+        self._Score = params.get("Score")
+        self._Reason = params.get("Reason")
+        self._IndexCommand = params.get("IndexCommand")
+        self._IndexName = params.get("IndexName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceBasicInfo(AbstractModel):
     """实例基础信息。
 
@@ -9443,6 +10102,123 @@ class ModifySqlFiltersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MongoDBIndex(AbstractModel):
+    """Mongodb索引项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 实例id。
+        :type ClusterId: str
+        :param _Collection: 表名。
+        :type Collection: str
+        :param _Db: 库名。
+        :type Db: str
+        :param _Level: 优化级别，1-4，优先级从高到低。
+        :type Level: int
+        :param _Score: 得分。
+        :type Score: int
+        :param _IndexesToBuild: 推荐索引列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexesToBuild: list of IndexesToBuild
+        :param _IndexesToDrop: 无效索引列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexesToDrop: list of IndexesToDrop
+        """
+        self._ClusterId = None
+        self._Collection = None
+        self._Db = None
+        self._Level = None
+        self._Score = None
+        self._IndexesToBuild = None
+        self._IndexesToDrop = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Collection(self):
+        return self._Collection
+
+    @Collection.setter
+    def Collection(self, Collection):
+        self._Collection = Collection
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def IndexesToBuild(self):
+        return self._IndexesToBuild
+
+    @IndexesToBuild.setter
+    def IndexesToBuild(self, IndexesToBuild):
+        self._IndexesToBuild = IndexesToBuild
+
+    @property
+    def IndexesToDrop(self):
+        return self._IndexesToDrop
+
+    @IndexesToDrop.setter
+    def IndexesToDrop(self, IndexesToDrop):
+        self._IndexesToDrop = IndexesToDrop
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Collection = params.get("Collection")
+        self._Db = params.get("Db")
+        self._Level = params.get("Level")
+        self._Score = params.get("Score")
+        if params.get("IndexesToBuild") is not None:
+            self._IndexesToBuild = []
+            for item in params.get("IndexesToBuild"):
+                obj = IndexesToBuild()
+                obj._deserialize(item)
+                self._IndexesToBuild.append(obj)
+        if params.get("IndexesToDrop") is not None:
+            self._IndexesToDrop = []
+            for item in params.get("IndexesToDrop"):
+                obj = IndexesToDrop()
+                obj._deserialize(item)
+                self._IndexesToDrop.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MonitorFloatMetric(AbstractModel):
     """监控数据（浮点型）
 
@@ -9892,6 +10668,123 @@ class OpenAuditServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class Process(AbstractModel):
+    """实时会话详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 会话 ID。
+        :type Id: int
+        :param _Address: 访问来源，IP 地址和端口号。
+        :type Address: str
+        :param _FileDescriptor: 文件描述符。
+        :type FileDescriptor: int
+        :param _Name: 会话名称，使用 CLIENT SETNAME 命令设置。
+        :type Name: str
+        :param _LastCommand: 最后一次执行的命令。
+        :type LastCommand: str
+        :param _Age: 会话存活时间，单位：秒。
+        :type Age: int
+        :param _Idle: 最后一次执行命令后空闲的时间，单位：秒。
+        :type Idle: int
+        :param _ProxyId: 会话所属的 Proxy节点 ID。
+        :type ProxyId: str
+        """
+        self._Id = None
+        self._Address = None
+        self._FileDescriptor = None
+        self._Name = None
+        self._LastCommand = None
+        self._Age = None
+        self._Idle = None
+        self._ProxyId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def FileDescriptor(self):
+        return self._FileDescriptor
+
+    @FileDescriptor.setter
+    def FileDescriptor(self, FileDescriptor):
+        self._FileDescriptor = FileDescriptor
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LastCommand(self):
+        return self._LastCommand
+
+    @LastCommand.setter
+    def LastCommand(self, LastCommand):
+        self._LastCommand = LastCommand
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Idle(self):
+        return self._Idle
+
+    @Idle.setter
+    def Idle(self, Idle):
+        self._Idle = Idle
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Address = params.get("Address")
+        self._FileDescriptor = params.get("FileDescriptor")
+        self._Name = params.get("Name")
+        self._LastCommand = params.get("LastCommand")
+        self._Age = params.get("Age")
+        self._Idle = params.get("Idle")
+        self._ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProcessStatistic(AbstractModel):

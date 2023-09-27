@@ -693,6 +693,52 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIndexRecommendAggregationSlowLogs(self, request):
+        """查询某张表的慢查模板概览
+
+        :param request: Request instance for DescribeIndexRecommendAggregationSlowLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeIndexRecommendAggregationSlowLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeIndexRecommendAggregationSlowLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIndexRecommendAggregationSlowLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIndexRecommendAggregationSlowLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIndexRecommendInfo(self, request):
+        """查询实例的索引推荐信息，包括索引统计相关信息，推荐索引列表，无效索引列表等。
+
+        :param request: Request instance for DescribeIndexRecommendInfo.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeIndexRecommendInfoRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeIndexRecommendInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIndexRecommendInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIndexRecommendInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMailProfile(self, request):
         """获取发送邮件的配置， 包括数据库巡检的邮件配置以及定期生成健康报告的邮件发送配置。
 
@@ -799,6 +845,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeProxySessionKillTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProxySessionKillTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRedisProcessList(self, request):
+        """获取 Redis 实例所有 proxy 节点的实时会话详情列表。
+
+        :param request: Request instance for DescribeRedisProcessList.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisProcessListRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeRedisProcessListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedisProcessList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedisProcessListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
