@@ -2043,7 +2043,7 @@ class OcrClient(AbstractClient):
     def SmartStructuralOCRV2(self, request):
         """本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
 
-        默认接口请求频率限制：10次/秒。
+        默认接口请求频率限制：5次/秒。
 
         :param request: Request instance for SmartStructuralOCRV2.
         :type request: :class:`tencentcloud.ocr.v20181119.models.SmartStructuralOCRV2Request`

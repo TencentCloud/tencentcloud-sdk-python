@@ -234,7 +234,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeDbAssets(self, request):
-        """资产列表
+        """数据库资产列表
 
         :param request: Request instance for DescribeDbAssets.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDbAssetsRequest`

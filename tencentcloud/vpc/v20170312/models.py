@@ -23095,10 +23095,32 @@ class DescribeVpcPeeringConnectionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: 满足条件的对等连接实例个数。
+        :type TotalCount: int
+        :param _PeerConnectionSet: 对等连接实例列表。
+        :type PeerConnectionSet: list of PeerConnection
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._PeerConnectionSet = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PeerConnectionSet(self):
+        return self._PeerConnectionSet
+
+    @PeerConnectionSet.setter
+    def PeerConnectionSet(self, PeerConnectionSet):
+        self._PeerConnectionSet = PeerConnectionSet
 
     @property
     def RequestId(self):
@@ -23110,6 +23132,13 @@ class DescribeVpcPeeringConnectionsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PeerConnectionSet") is not None:
+            self._PeerConnectionSet = []
+            for item in params.get("PeerConnectionSet"):
+                obj = PeerConnection()
+                obj._deserialize(item)
+                self._PeerConnectionSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -36410,6 +36439,250 @@ class NotifyRoutesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class PeerConnection(AbstractModel):
+    """对等连接实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceVpcId: 本端VPC唯一ID。
+        :type SourceVpcId: str
+        :param _PeerVpcId: 对端VPC唯一ID。
+        :type PeerVpcId: str
+        :param _PeeringConnectionId: 对等连接唯一ID。
+        :type PeeringConnectionId: str
+        :param _PeeringConnectionName: 对等连接名称。
+        :type PeeringConnectionName: str
+        :param _State: 对等连接状态，PENDING，投放中；ACTIVE，使用中；REJECTED，已拒绝‘DELETED，已删除；FAILED，失败；EXPIRED，已过期；ISOLATED，隔离中。
+        :type State: str
+        :param _IsNgw: 是否是新控制器，true: 是NewAfc；false:不是。
+        :type IsNgw: bool
+        :param _Bandwidth: 对等连接带宽值。
+        :type Bandwidth: int
+        :param _SourceRegion: 本端地域。
+        :type SourceRegion: str
+        :param _DestinationRegion: 对端地域。
+        :type DestinationRegion: str
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _AppId: 本端APPID。
+        :type AppId: int
+        :param _PeerAppId: 对端APPID。
+        :type PeerAppId: int
+        :param _ChargeType: 计费类型，POSTPAID_BY_DAY_MAX：日峰值计费；POSTPAID_BY_MONTH_95：月95计费。
+        :type ChargeType: str
+        :param _SourceUin: 本端UIN。
+        :type SourceUin: int
+        :param _DestinationUin: 对端UIN。
+        :type DestinationUin: int
+        :param _TagSet: 资源标签数据。
+        :type TagSet: list of Tag
+        :param _QosLevel: 服务分级：PT、AU、AG。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QosLevel: str
+        :param _Type: 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._SourceVpcId = None
+        self._PeerVpcId = None
+        self._PeeringConnectionId = None
+        self._PeeringConnectionName = None
+        self._State = None
+        self._IsNgw = None
+        self._Bandwidth = None
+        self._SourceRegion = None
+        self._DestinationRegion = None
+        self._CreateTime = None
+        self._AppId = None
+        self._PeerAppId = None
+        self._ChargeType = None
+        self._SourceUin = None
+        self._DestinationUin = None
+        self._TagSet = None
+        self._QosLevel = None
+        self._Type = None
+
+    @property
+    def SourceVpcId(self):
+        return self._SourceVpcId
+
+    @SourceVpcId.setter
+    def SourceVpcId(self, SourceVpcId):
+        self._SourceVpcId = SourceVpcId
+
+    @property
+    def PeerVpcId(self):
+        return self._PeerVpcId
+
+    @PeerVpcId.setter
+    def PeerVpcId(self, PeerVpcId):
+        self._PeerVpcId = PeerVpcId
+
+    @property
+    def PeeringConnectionId(self):
+        return self._PeeringConnectionId
+
+    @PeeringConnectionId.setter
+    def PeeringConnectionId(self, PeeringConnectionId):
+        self._PeeringConnectionId = PeeringConnectionId
+
+    @property
+    def PeeringConnectionName(self):
+        return self._PeeringConnectionName
+
+    @PeeringConnectionName.setter
+    def PeeringConnectionName(self, PeeringConnectionName):
+        self._PeeringConnectionName = PeeringConnectionName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def IsNgw(self):
+        return self._IsNgw
+
+    @IsNgw.setter
+    def IsNgw(self, IsNgw):
+        self._IsNgw = IsNgw
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def SourceRegion(self):
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def DestinationRegion(self):
+        return self._DestinationRegion
+
+    @DestinationRegion.setter
+    def DestinationRegion(self, DestinationRegion):
+        self._DestinationRegion = DestinationRegion
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PeerAppId(self):
+        return self._PeerAppId
+
+    @PeerAppId.setter
+    def PeerAppId(self, PeerAppId):
+        self._PeerAppId = PeerAppId
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def SourceUin(self):
+        return self._SourceUin
+
+    @SourceUin.setter
+    def SourceUin(self, SourceUin):
+        self._SourceUin = SourceUin
+
+    @property
+    def DestinationUin(self):
+        return self._DestinationUin
+
+    @DestinationUin.setter
+    def DestinationUin(self, DestinationUin):
+        self._DestinationUin = DestinationUin
+
+    @property
+    def TagSet(self):
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
+    @property
+    def QosLevel(self):
+        return self._QosLevel
+
+    @QosLevel.setter
+    def QosLevel(self, QosLevel):
+        self._QosLevel = QosLevel
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._SourceVpcId = params.get("SourceVpcId")
+        self._PeerVpcId = params.get("PeerVpcId")
+        self._PeeringConnectionId = params.get("PeeringConnectionId")
+        self._PeeringConnectionName = params.get("PeeringConnectionName")
+        self._State = params.get("State")
+        self._IsNgw = params.get("IsNgw")
+        self._Bandwidth = params.get("Bandwidth")
+        self._SourceRegion = params.get("SourceRegion")
+        self._DestinationRegion = params.get("DestinationRegion")
+        self._CreateTime = params.get("CreateTime")
+        self._AppId = params.get("AppId")
+        self._PeerAppId = params.get("PeerAppId")
+        self._ChargeType = params.get("ChargeType")
+        self._SourceUin = params.get("SourceUin")
+        self._DestinationUin = params.get("DestinationUin")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
+        self._QosLevel = params.get("QosLevel")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Price(AbstractModel):

@@ -1349,7 +1349,7 @@ class TextTranslateResponse(AbstractModel):
         r"""
         :param _TargetText: 翻译后的文本
         :type TargetText: str
-        :param _Source: 源语言，详见入参Target
+        :param _Source: 源语言，详见入参Source
         :type Source: str
         :param _Target: 目标语言，详见入参Target
         :type Target: str

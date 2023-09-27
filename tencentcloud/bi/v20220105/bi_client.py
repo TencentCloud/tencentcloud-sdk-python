@@ -463,6 +463,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserRole(self, request):
+        """修改用户角色信息
+
+        :param request: Request instance for ModifyUserRole.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyUserRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserRoleProject(self, request):
         """项目-修改用户角色信息
 

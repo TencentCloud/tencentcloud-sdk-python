@@ -646,8 +646,10 @@ class DeleteSignStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _DeleteStatus: 删除状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteStatus: str
         :param _DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTime: int
         """
         self._DeleteStatus = None
@@ -1257,7 +1259,7 @@ class DescribeTemplateListStatus(AbstractModel):
         r"""
         :param _TemplateId: 模板ID。
         :type TemplateId: int
-        :param _International: 是否国际/港澳台短信，其中0表示国内短信，1表示国际/港澳台短信。
+        :param _International: 是否国际/港澳台短信，其中0表示国内短信，1表示国际/港澳台短信，3表示该模板既支持国内短信也支持国际/港澳台短信。
         :type International: int
         :param _StatusCode: 申请模板状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。注：只有状态值为0时该模板才能使用。
         :type StatusCode: int

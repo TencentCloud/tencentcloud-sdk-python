@@ -4882,8 +4882,11 @@ class DescribeDbAssetsRequest(AbstractModel):
         r"""
         :param _Filter: -
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _AssetTypes: 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
+        :type AssetTypes: list of str
         """
         self._Filter = None
+        self._AssetTypes = None
 
     @property
     def Filter(self):
@@ -4893,11 +4896,20 @@ class DescribeDbAssetsRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def AssetTypes(self):
+        return self._AssetTypes
+
+    @AssetTypes.setter
+    def AssetTypes(self, AssetTypes):
+        self._AssetTypes = AssetTypes
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        self._AssetTypes = params.get("AssetTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8719,7 +8731,7 @@ class ScanTaskInfoList(AbstractModel):
         :param _EndTime: 任务结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ScanPlanContent: corn
+        :param _ScanPlanContent: cron格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPlanContent: str
         :param _TaskType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义
@@ -8746,7 +8758,7 @@ class ScanTaskInfoList(AbstractModel):
         :param _AssetNumber: 资产数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetNumber: int
-        :param _ScanStatus: 扫描状态 0 初始值  1正在扫描  2扫描完成  3扫描出错
+        :param _ScanStatus: 扫描状态, 0-初始值，1-正在扫描，2-扫描完成，3-扫描出错，4-停止扫描
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanStatus: int
         :param _Percent: 任务进度
@@ -8827,6 +8839,9 @@ class ScanTaskInfoList(AbstractModel):
         :param _IsDelete: 是否可以删除，1-可以，0-不可以，对应多账户管理使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDelete: int
+        :param _SourceType: 任务源类型，0-默认，1-小助手，2-体检项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: int
         """
         self._TaskName = None
         self._StartTime = None
@@ -8867,6 +8882,7 @@ class ScanTaskInfoList(AbstractModel):
         self._ScanFrom = None
         self._IsFree = None
         self._IsDelete = None
+        self._SourceType = None
 
     @property
     def TaskName(self):
@@ -9180,6 +9196,14 @@ class ScanTaskInfoList(AbstractModel):
     def IsDelete(self, IsDelete):
         self._IsDelete = IsDelete
 
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -9226,6 +9250,7 @@ class ScanTaskInfoList(AbstractModel):
         self._ScanFrom = params.get("ScanFrom")
         self._IsFree = params.get("IsFree")
         self._IsDelete = params.get("IsDelete")
+        self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10094,12 +10119,16 @@ class TaskAssetObject(AbstractModel):
         :param _Region: 地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
+        :param _Arn: 多云资产唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Arn: str
         """
         self._AssetName = None
         self._InstanceType = None
         self._AssetType = None
         self._Asset = None
         self._Region = None
+        self._Arn = None
 
     @property
     def AssetName(self):
@@ -10141,6 +10170,14 @@ class TaskAssetObject(AbstractModel):
     def Region(self, Region):
         self._Region = Region
 
+    @property
+    def Arn(self):
+        return self._Arn
+
+    @Arn.setter
+    def Arn(self, Arn):
+        self._Arn = Arn
+
 
     def _deserialize(self, params):
         self._AssetName = params.get("AssetName")
@@ -10148,6 +10185,7 @@ class TaskAssetObject(AbstractModel):
         self._AssetType = params.get("AssetType")
         self._Asset = params.get("Asset")
         self._Region = params.get("Region")
+        self._Arn = params.get("Arn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

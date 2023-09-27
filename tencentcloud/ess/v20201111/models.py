@@ -256,6 +256,8 @@ class ApproverInfo(AbstractModel):
 <li>   **3** :见证人</li></ul>
 注: `收据场景为白名单功能，使用前请联系对接的客户经理沟通。`
         :type ApproverRole: int
+        :param _ApproverRoleName: 自定义签署人角色名：收款人、开具人、见证人
+        :type ApproverRoleName: str
         :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
 注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
@@ -320,6 +322,7 @@ class ApproverInfo(AbstractModel):
         self._ApproverIdCardNumber = None
         self._NotifyType = None
         self._ApproverRole = None
+        self._ApproverRoleName = None
         self._VerifyChannel = None
         self._PreReadTime = None
         self._UserId = None
@@ -402,6 +405,14 @@ class ApproverInfo(AbstractModel):
     @ApproverRole.setter
     def ApproverRole(self, ApproverRole):
         self._ApproverRole = ApproverRole
+
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
 
     @property
     def VerifyChannel(self):
@@ -499,6 +510,7 @@ class ApproverInfo(AbstractModel):
         self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
         self._NotifyType = params.get("NotifyType")
         self._ApproverRole = params.get("ApproverRole")
+        self._ApproverRoleName = params.get("ApproverRoleName")
         self._VerifyChannel = params.get("VerifyChannel")
         self._PreReadTime = params.get("PreReadTime")
         self._UserId = params.get("UserId")
@@ -526,6 +538,66 @@ class ApproverInfo(AbstractModel):
         
 
 
+class ApproverItem(AbstractModel):
+    """签署方信息，发起合同后可获取到对应的签署方信息，如角色ID，角色名称
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignId: 签署方唯一编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignId: str
+        :param _RecipientId: 签署方角色编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientId: str
+        :param _ApproverRoleName: 签署方角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverRoleName: str
+        """
+        self._SignId = None
+        self._RecipientId = None
+        self._ApproverRoleName = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
+
+
+    def _deserialize(self, params):
+        self._SignId = params.get("SignId")
+        self._RecipientId = params.get("RecipientId")
+        self._ApproverRoleName = params.get("ApproverRoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApproverOption(AbstractModel):
     """签署人个性化能力信息
 
@@ -543,9 +615,15 @@ class ApproverOption(AbstractModel):
 <ul><li> **false** : ( 默认)可以转他人处理</li>
 <li> **true** :不可以转他人处理</li></ul>
         :type NoTransfer: bool
+        :param _FillType: 签署人信息补充类型，默认无需补充。
+
+<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+</ul>
+        :type FillType: int
         """
         self._NoRefuse = None
         self._NoTransfer = None
+        self._FillType = None
 
     @property
     def NoRefuse(self):
@@ -563,10 +641,19 @@ class ApproverOption(AbstractModel):
     def NoTransfer(self, NoTransfer):
         self._NoTransfer = NoTransfer
 
+    @property
+    def FillType(self):
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
 
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
         self._NoTransfer = params.get("NoTransfer")
+        self._FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1086,9 +1173,10 @@ class CancelFlowRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID, 为32位字符串。
-建议开发者保存此流程ID方便后续其他操作。
+
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
         :type FlowId: str
-        :param _CancelMessage: 撤销此合同(流程)的原因，最长200个字。
+        :param _CancelMessage: 撤销此合同流程的原因，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
         :type CancelMessage: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -2695,11 +2783,15 @@ class CreateDocumentResponse(AbstractModel):
 `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewFileUrl: str
+        :param _Approvers: 签署方信息，如角色ID、角色名称等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approvers: list of ApproverItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DocumentId = None
         self._PreviewFileUrl = None
+        self._Approvers = None
         self._RequestId = None
 
     @property
@@ -2719,6 +2811,14 @@ class CreateDocumentResponse(AbstractModel):
         self._PreviewFileUrl = PreviewFileUrl
 
     @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2730,6 +2830,12 @@ class CreateDocumentResponse(AbstractModel):
     def _deserialize(self, params):
         self._DocumentId = params.get("DocumentId")
         self._PreviewFileUrl = params.get("PreviewFileUrl")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ApproverItem()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2911,12 +3017,18 @@ class CreateFlowApproversRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FillApproverType: 签署人信息补充方式
+
+<ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
+<li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+        :type FillApproverType: int
         """
         self._Operator = None
         self._FlowId = None
         self._Approvers = None
         self._Initiator = None
         self._Agent = None
+        self._FillApproverType = None
 
     @property
     def Operator(self):
@@ -2958,6 +3070,14 @@ class CreateFlowApproversRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def FillApproverType(self):
+        return self._FillApproverType
+
+    @FillApproverType.setter
+    def FillApproverType(self, FillApproverType):
+        self._FillApproverType = FillApproverType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -2974,6 +3094,7 @@ class CreateFlowApproversRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._FillApproverType = params.get("FillApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3378,11 +3499,15 @@ class CreateFlowByFilesResponse(AbstractModel):
 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
+        :param _Approvers: 签署方信息，如角色ID、角色名称等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approvers: list of ApproverItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
         self._PreviewUrl = None
+        self._Approvers = None
         self._RequestId = None
 
     @property
@@ -3402,6 +3527,14 @@ class CreateFlowByFilesResponse(AbstractModel):
         self._PreviewUrl = PreviewUrl
 
     @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3413,6 +3546,12 @@ class CreateFlowByFilesResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._PreviewUrl = params.get("PreviewUrl")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ApproverItem()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6685,6 +6824,8 @@ class CreateSchemeUrlRequest(AbstractModel):
 
 注:  `字段为数组, 可以传值隐藏多个按钮`
         :type Hides: list of int
+        :param _RecipientId: 签署节点ID，用于生成动态签署人链接完成领取
+        :type RecipientId: str
         """
         self._Operator = None
         self._OrganizationName = None
@@ -6697,6 +6838,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._AutoJumpBack = None
         self._Agent = None
         self._Hides = None
+        self._RecipientId = None
 
     @property
     def Operator(self):
@@ -6786,6 +6928,14 @@ class CreateSchemeUrlRequest(AbstractModel):
     def Hides(self, Hides):
         self._Hides = Hides
 
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6803,6 +6953,7 @@ class CreateSchemeUrlRequest(AbstractModel):
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._Hides = params.get("Hides")
+        self._RecipientId = params.get("RecipientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6826,10 +6977,13 @@ class CreateSchemeUrlResponse(AbstractModel):
 <li>如果EndPoint是**HTTP**，得到的链接类似于 `https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?where=mini&from=SFY&id=yDwfEUUw**4rV6Avz&to=MVP_CONTRACT_COVER&name=%E9%83%**5%86%9B`，点击后会跳转到腾讯电子签小程序进行签署</li>
 <li>如果EndPoint是**HTTP_SHORT_URL**，得到的链接类似于 `https://essurl.cn/2n**42Nd`，点击后会跳转到腾讯电子签小程序进行签署</li></ul>
         :type SchemeUrl: str
+        :param _SchemeQrcodeUrl: 二维码，在生成动态签署人跳转封面页链接时返回
+        :type SchemeQrcodeUrl: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SchemeUrl = None
+        self._SchemeQrcodeUrl = None
         self._RequestId = None
 
     @property
@@ -6839,6 +6993,14 @@ class CreateSchemeUrlResponse(AbstractModel):
     @SchemeUrl.setter
     def SchemeUrl(self, SchemeUrl):
         self._SchemeUrl = SchemeUrl
+
+    @property
+    def SchemeQrcodeUrl(self):
+        return self._SchemeQrcodeUrl
+
+    @SchemeQrcodeUrl.setter
+    def SchemeQrcodeUrl(self, SchemeQrcodeUrl):
+        self._SchemeQrcodeUrl = SchemeQrcodeUrl
 
     @property
     def RequestId(self):
@@ -6851,6 +7013,7 @@ class CreateSchemeUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SchemeUrl = params.get("SchemeUrl")
+        self._SchemeQrcodeUrl = params.get("SchemeQrcodeUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -8361,10 +8524,10 @@ class DescribeFileUrlsRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _BusinessType: 文件对应的业务类型，目前支持：
 <ul>
-<li>FLOW 如需下载合同文件请选择此项</li>
-<li>TEMPLATE 如需下载模板文件请选择此项</li>
-<li>DOCUMENT 如需下载文档文件请选择此项</li>
-<li>SEAL 如需下载印章图片请选择此项</li>
+<li>**FLOW ** : 如需下载合同文件请选择此项</li>
+<li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
+<li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
+<li>**SEAL  **: 如需下载印章图片请选择此项</li>
 </ul>
         :type BusinessType: str
         :param _BusinessIds: 业务编号的数组，取值如下：
@@ -8542,7 +8705,7 @@ class DescribeFileUrlsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FileUrls: 文件URL信息；
-链接不是永久链接，有效期5分钟后链接失效。
+链接不是永久链接,  过期时间收UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。
         :type FileUrls: list of FileUrl
         :param _TotalCount: URL数量
         :type TotalCount: int
@@ -11259,12 +11422,15 @@ WEWORKAPP: 企业微信
         :type ApproverName: str
         :param _ApproverMobile: 补充企业签署人员工手机号
         :type ApproverMobile: str
+        :param _OrganizationName: 补充企业动态签署人时，需要指定对应企业名称
+        :type OrganizationName: str
         """
         self._RecipientId = None
         self._ApproverSource = None
         self._CustomUserId = None
         self._ApproverName = None
         self._ApproverMobile = None
+        self._OrganizationName = None
 
     @property
     def RecipientId(self):
@@ -11306,6 +11472,14 @@ WEWORKAPP: 企业微信
     def ApproverMobile(self, ApproverMobile):
         self._ApproverMobile = ApproverMobile
 
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
@@ -11313,6 +11487,7 @@ WEWORKAPP: 企业微信
         self._CustomUserId = params.get("CustomUserId")
         self._ApproverName = params.get("ApproverName")
         self._ApproverMobile = params.get("ApproverMobile")
+        self._OrganizationName = params.get("OrganizationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11523,6 +11698,9 @@ class FlowApproverDetail(AbstractModel):
         :param _SignId: 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignId: str
+        :param _ApproverRoleName: 自定义签署人角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverRoleName: str
         """
         self._ApproveMessage = None
         self._ApproveName = None
@@ -11538,6 +11716,7 @@ class FlowApproverDetail(AbstractModel):
         self._OrganizationId = None
         self._OrganizationName = None
         self._SignId = None
+        self._ApproverRoleName = None
 
     @property
     def ApproveMessage(self):
@@ -11651,6 +11830,14 @@ class FlowApproverDetail(AbstractModel):
     def SignId(self, SignId):
         self._SignId = SignId
 
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
+
 
     def _deserialize(self, params):
         self._ApproveMessage = params.get("ApproveMessage")
@@ -11667,6 +11854,7 @@ class FlowApproverDetail(AbstractModel):
         self._OrganizationId = params.get("OrganizationId")
         self._OrganizationName = params.get("OrganizationName")
         self._SignId = params.get("SignId")
+        self._ApproverRoleName = params.get("ApproverRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13022,11 +13210,14 @@ class GetTaskResultApiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id，通过接口CreateConvertTaskApi或CreateMergeFileTask得到的返回任务id
+        :param _TaskId: 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
+得到的转换任务id
         :type TaskId: str
-        :param _Operator: 操作人信息,UserId必填
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _Organization: 暂未开放
         :type Organization: :class:`tencentcloud.ess.v20201111.models.OrganizationInfo`
@@ -13104,20 +13295,20 @@ class GetTaskResultApiResponse(AbstractModel):
         :param _TaskId: 任务Id
         :type TaskId: str
         :param _TaskStatus: 任务状态，需要关注的状态
-0  :NeedTranform   - 任务已提交
-4  :Processing     - 文档转换中
-8  :TaskEnd        - 任务处理完成
--2 :DownloadFailed - 下载失败
--6 :ProcessFailed  - 转换失败
--13:ProcessTimeout - 转换文件超时
+<ul><li>**0**  :NeedTranform   - 任务已提交</li>
+<li>**4**  :Processing     - 文档转换中</li>
+<li>**8**  :TaskEnd        - 任务处理完成</li>
+<li>**-2** :DownloadFailed - 下载失败</li>
+<li>**-6** :ProcessFailed  - 转换失败</li>
+<li>**-13**:ProcessTimeout - 转换文件超时</li></ul>
         :type TaskStatus: int
         :param _TaskMessage: 状态描述，需要关注的状态
-NeedTranform   - 任务已提交
-Processing     - 文档转换中
-TaskEnd        - 任务处理完成
-DownloadFailed - 下载失败
-ProcessFailed  - 转换失败
-ProcessTimeout - 转换文件超时
+<ul><li> **NeedTranform** : 任务已提交</li>
+<li> **Processing** : 文档转换中</li>
+<li> **TaskEnd** : 任务处理完成</li>
+<li> **DownloadFailed** : 下载失败</li>
+<li> **ProcessFailed** : 转换失败</li>
+<li> **ProcessTimeout** : 转换文件超时</li></ul>
         :type TaskMessage: str
         :param _ResourceId: 资源Id，也是FileId，用于文件发起时使用
         :type ResourceId: str
@@ -16722,26 +16913,45 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessType: 文件对应业务类型
-1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
-2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
-3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+        :param _BusinessType: 文件对应业务类型,可以选择的类型如下
+<ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+<li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+<li> **DOCUMENT** : 此文件用于合同图片控件的填充，文件类型支持.jpg/.png</li>
+<li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
         :type BusinessType: str
-        :param _Caller: 调用方信息，其中OperatorId为必填字段，即用户的UserId
+        :param _Caller: 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
-        :param _FileInfos: 上传文件内容数组，最多支持20个文件
+        :param _FileInfos: 上传文件内容数组，最多支持上传20个文件。
         :type FileInfos: list of UploadFile
-        :param _FileType: 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
-如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
+        :param _FileType: 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
+可支持的指定类型如下:
+<ul><li>pdf</li>
+<li>doc</li>
+<li>docx</li>
+<li>xls</li>
+<li>xlsx</li>
+<li>html</li>
+<li>jpg</li>
+<li>jpeg</li>
+<li>png</li></ul>
+如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
         :type FileType: str
-        :param _CoverRect: 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
-true--是，处理置白
-默认为false--否，不处理
+        :param _CoverRect: 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
+<ul><li>**true**：将灰色矩阵置为白色。</li>
+<li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
+
+注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
         :type CoverRect: bool
         :param _CustomIds: 用户自定义ID数组，与上传文件一一对应
+
+注: `历史遗留问题，已经废弃，调用接口时不用赋值`
         :type CustomIds: list of str
         :param _FileUrls: 不再使用，上传文件链接数组，最多支持20个URL
         :type FileUrls: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._BusinessType = None
         self._Caller = None
@@ -16750,6 +16960,7 @@ true--是，处理置白
         self._CoverRect = None
         self._CustomIds = None
         self._FileUrls = None
+        self._Agent = None
 
     @property
     def BusinessType(self):
@@ -16811,6 +17022,14 @@ true--是，处理置白
 
         self._FileUrls = FileUrls
 
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
 
     def _deserialize(self, params):
         self._BusinessType = params.get("BusinessType")
@@ -16827,6 +17046,9 @@ true--是，处理置白
         self._CoverRect = params.get("CoverRect")
         self._CustomIds = params.get("CustomIds")
         self._FileUrls = params.get("FileUrls")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16844,7 +17066,8 @@ class UploadFilesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: 文件id数组
+        :param _FileIds: 文件资源ID数组，每个文件资源ID为32位字符串。
+建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
         :type FileIds: list of str
         :param _TotalCount: 上传成功文件数量
         :type TotalCount: int

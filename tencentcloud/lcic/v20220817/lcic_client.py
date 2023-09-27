@@ -788,7 +788,7 @@ class LcicClient(AbstractClient):
 
 
     def DescribeRoom(self, request):
-        """获取房间信息
+        """获取房间配置信息
 
         :param request: Request instance for DescribeRoom.
         :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomRequest`

@@ -2192,6 +2192,12 @@ class BotPkg(AbstractModel):
         :param _RenewFlag: 续费标志	
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
+        :param _BotCPWaf: 购买页bot6折
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotCPWaf: int
+        :param _BotNPWaf: 控制台买bot5折
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BotNPWaf: int
         """
         self._ResourceIds = None
         self._Status = None
@@ -2202,6 +2208,8 @@ class BotPkg(AbstractModel):
         self._UsedNum = None
         self._Type = None
         self._RenewFlag = None
+        self._BotCPWaf = None
+        self._BotNPWaf = None
 
     @property
     def ResourceIds(self):
@@ -2275,6 +2283,22 @@ class BotPkg(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def BotCPWaf(self):
+        return self._BotCPWaf
+
+    @BotCPWaf.setter
+    def BotCPWaf(self, BotCPWaf):
+        self._BotCPWaf = BotCPWaf
+
+    @property
+    def BotNPWaf(self):
+        return self._BotNPWaf
+
+    @BotNPWaf.setter
+    def BotNPWaf(self, BotNPWaf):
+        self._BotNPWaf = BotNPWaf
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -2286,6 +2310,8 @@ class BotPkg(AbstractModel):
         self._UsedNum = params.get("UsedNum")
         self._Type = params.get("Type")
         self._RenewFlag = params.get("RenewFlag")
+        self._BotCPWaf = params.get("BotCPWaf")
+        self._BotNPWaf = params.get("BotNPWaf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

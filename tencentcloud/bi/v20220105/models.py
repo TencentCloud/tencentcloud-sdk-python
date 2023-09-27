@@ -4671,6 +4671,163 @@ class ModifyUserRoleProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserRoleRequest(AbstractModel):
+    """ModifyUserRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _RoleIdList: 角色ID 列表
+        :type RoleIdList: list of int
+        :param _Email: 邮箱
+        :type Email: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _PhoneNumber: 手机号
+        :type PhoneNumber: str
+        :param _AreaCode: 手机区号
+        :type AreaCode: str
+        """
+        self._UserId = None
+        self._RoleIdList = None
+        self._Email = None
+        self._UserName = None
+        self._PhoneNumber = None
+        self._AreaCode = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoleIdList(self):
+        return self._RoleIdList
+
+    @RoleIdList.setter
+    def RoleIdList(self, RoleIdList):
+        self._RoleIdList = RoleIdList
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PhoneNumber(self):
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def AreaCode(self):
+        return self._AreaCode
+
+    @AreaCode.setter
+    def AreaCode(self, AreaCode):
+        self._AreaCode = AreaCode
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._RoleIdList = params.get("RoleIdList")
+        self._Email = params.get("Email")
+        self._UserName = params.get("UserName")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._AreaCode = params.get("AreaCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserRoleResponse(AbstractModel):
+    """ModifyUserRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class PermissionComponent(AbstractModel):
     """商业版本权限单元
 

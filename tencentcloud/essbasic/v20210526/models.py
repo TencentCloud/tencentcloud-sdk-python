@@ -158,6 +158,66 @@ class ApproverComponentLimitType(AbstractModel):
         
 
 
+class ApproverItem(AbstractModel):
+    """签署方信息，发起合同后可获取到对应的签署方信息，如角色ID，角色名称
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignId: 签署方唯一编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignId: str
+        :param _RecipientId: 签署方角色编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientId: str
+        :param _ApproverRoleName: 签署方角色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverRoleName: str
+        """
+        self._SignId = None
+        self._RecipientId = None
+        self._ApproverRoleName = None
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
+
+
+    def _deserialize(self, params):
+        self._SignId = params.get("SignId")
+        self._RecipientId = params.get("RecipientId")
+        self._ApproverRoleName = params.get("ApproverRoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApproverOption(AbstractModel):
     """签署人个性化能力信息
 
@@ -167,8 +227,14 @@ class ApproverOption(AbstractModel):
         r"""
         :param _HideOneKeySign: 是否隐藏一键签署 默认false-不隐藏true-隐藏
         :type HideOneKeySign: bool
+        :param _FillType: 签署人信息补充类型，默认无需补充。
+
+<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+</ul>
+        :type FillType: int
         """
         self._HideOneKeySign = None
+        self._FillType = None
 
     @property
     def HideOneKeySign(self):
@@ -178,9 +244,18 @@ class ApproverOption(AbstractModel):
     def HideOneKeySign(self, HideOneKeySign):
         self._HideOneKeySign = HideOneKeySign
 
+    @property
+    def FillType(self):
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
 
     def _deserialize(self, params):
         self._HideOneKeySign = params.get("HideOneKeySign")
+        self._FillType = params.get("FillType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2186,10 +2261,14 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         :param _FlowId: 合同签署流程ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
+        :param _Approvers: 签署方信息，如角色ID、角色名称等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approvers: list of ApproverItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._Approvers = None
         self._RequestId = None
 
     @property
@@ -2199,6 +2278,14 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
 
     @property
     def RequestId(self):
@@ -2211,6 +2298,12 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ApproverItem()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7715,6 +7808,8 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         :param _TaskInfos: 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
         :type TaskInfos: list of TaskInfo
+        :param _FlowApprovers: 签署方信息，如角色ID、角色名称等
+        :type FlowApprovers: list of FlowApproverItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7723,6 +7818,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self._ErrorMessages = None
         self._PreviewUrls = None
         self._TaskInfos = None
+        self._FlowApprovers = None
         self._RequestId = None
 
     @property
@@ -7766,6 +7862,14 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self._TaskInfos = TaskInfos
 
     @property
+    def FlowApprovers(self):
+        return self._FlowApprovers
+
+    @FlowApprovers.setter
+    def FlowApprovers(self, FlowApprovers):
+        self._FlowApprovers = FlowApprovers
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7785,6 +7889,12 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
                 obj = TaskInfo()
                 obj._deserialize(item)
                 self._TaskInfos.append(obj)
+        if params.get("FlowApprovers") is not None:
+            self._FlowApprovers = []
+            for item in params.get("FlowApprovers"):
+                obj = FlowApproverItem()
+                obj._deserialize(item)
+                self._FlowApprovers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8045,6 +8155,8 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
 - 2:合同签署页面更多操作的转他人处理按钮
 - 3:签署成功页的查看详情按钮
         :type Hides: list of int
+        :param _RecipientIds: 签署节点ID，用于补充动态签署人，使用此参数需要与flow_ids数量一致
+        :type RecipientIds: list of str
         """
         self._Agent = None
         self._FlowIds = None
@@ -8060,6 +8172,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
         self._JumpUrl = None
         self._Operator = None
         self._Hides = None
+        self._RecipientIds = None
 
     @property
     def Agent(self):
@@ -8177,6 +8290,14 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
     def Hides(self, Hides):
         self._Hides = Hides
 
+    @property
+    def RecipientIds(self):
+        return self._RecipientIds
+
+    @RecipientIds.setter
+    def RecipientIds(self, RecipientIds):
+        self._RecipientIds = RecipientIds
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -8197,6 +8318,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._Hides = params.get("Hides")
+        self._RecipientIds = params.get("RecipientIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9583,6 +9705,9 @@ class FlowApproverDetail(AbstractModel):
 <br/>PERSON：个人签署人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: str
+        :param _ApproverRoleName: 自定义签署人角色
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverRoleName: str
         """
         self._ReceiptId = None
         self._ProxyOrganizationOpenId = None
@@ -9595,6 +9720,7 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveMessage = None
         self._ApproveTime = None
         self._ApproveType = None
+        self._ApproverRoleName = None
 
     @property
     def ReceiptId(self):
@@ -9684,6 +9810,14 @@ class FlowApproverDetail(AbstractModel):
     def ApproveType(self, ApproveType):
         self._ApproveType = ApproveType
 
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
+
 
     def _deserialize(self, params):
         self._ReceiptId = params.get("ReceiptId")
@@ -9697,6 +9831,7 @@ class FlowApproverDetail(AbstractModel):
         self._ApproveMessage = params.get("ApproveMessage")
         self._ApproveTime = params.get("ApproveTime")
         self._ApproveType = params.get("ApproveType")
+        self._ApproverRoleName = params.get("ApproverRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9711,11 +9846,14 @@ class FlowApproverInfo(AbstractModel):
     """创建签署流程签署人入参。
 
     其中签署方FlowApproverInfo需要传递的参数
-    非单C、单B、B2C合同，ApproverType、RecipientId（模板发起合同时）必传，建议都传。其他身份标识
-    1-个人：Name、Mobile必传
-    2-第三方平台子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；
-    3-第三方平台子客企业不指定经办人：OrgName必传、OrgOpenId必传；
-    4-非第三方平台子客企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。
+    非单C、单B、B2C合同，ApproverType、RecipientId（模板发起合同时）必传，建议都传。
+
+    其他身份标识
+
+    <ul><li>1-个人：Name、Mobile必传</li>
+    <li>2-第三方平台子客企业指定经办人：OpenId必传，OrgName必传、OrgOpenId必传；</li>
+    <li>3-第三方平台子客企业不指定经办人：OrgName必传、OrgOpenId必传；</li>
+    <li>4-非第三方平台子客企业：Name、Mobile必传，OrgName必传，且NotChannelOrganization=True。</li></ul>
 
     RecipientId参数：
     从DescribeTemplates接口中，可以得到模板下的签署方Recipient列表，根据模板自定义的Rolename在此结构体中确定其RecipientId。
@@ -9798,6 +9936,8 @@ ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的
 
 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
         :type AddSignComponentsLimits: list of ComponentLimit
+        :param _ApproverRoleName: 自定义签署方角色名称
+        :type ApproverRoleName: str
         """
         self._Name = None
         self._IdCardType = None
@@ -9822,6 +9962,7 @@ ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的
         self._SignId = None
         self._NotifyType = None
         self._AddSignComponentsLimits = None
+        self._ApproverRoleName = None
 
     @property
     def Name(self):
@@ -10011,6 +10152,14 @@ ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的
     def AddSignComponentsLimits(self, AddSignComponentsLimits):
         self._AddSignComponentsLimits = AddSignComponentsLimits
 
+    @property
+    def ApproverRoleName(self):
+        return self._ApproverRoleName
+
+    @ApproverRoleName.setter
+    def ApproverRoleName(self, ApproverRoleName):
+        self._ApproverRoleName = ApproverRoleName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10048,6 +10197,59 @@ ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的
                 obj = ComponentLimit()
                 obj._deserialize(item)
                 self._AddSignComponentsLimits.append(obj)
+        self._ApproverRoleName = params.get("ApproverRoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowApproverItem(AbstractModel):
+    """签署方信息，如角色ID、角色名称等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param _Approvers: 签署方信息，如角色ID、角色名称等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approvers: list of ApproverItem
+        """
+        self._FlowId = None
+        self._Approvers = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ApproverItem()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11123,10 +11325,15 @@ class ModifyExtendedServiceRequest(AbstractModel):
 OPEN:开通 
 CLOSE:关闭
         :type Operate: str
+        :param _Endpoint: 链接跳转类型，支持以下类型
+<ul><li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+<li>APP : 第三方APP或小程序跳转电子签小程序</li></ul>
+        :type Endpoint: str
         """
         self._Agent = None
         self._ServiceType = None
         self._Operate = None
+        self._Endpoint = None
 
     @property
     def Agent(self):
@@ -11152,6 +11359,14 @@ CLOSE:关闭
     def Operate(self, Operate):
         self._Operate = Operate
 
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -11159,6 +11374,7 @@ CLOSE:关闭
             self._Agent._deserialize(params.get("Agent"))
         self._ServiceType = params.get("ServiceType")
         self._Operate = params.get("Operate")
+        self._Endpoint = params.get("Endpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13095,6 +13311,9 @@ PERSON 自然人
         :param _FlowGroupId: 合同组签署链接对应的合同组id
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
+        :param _SignQrcodeUrl: 二维码，在生成动态签署人跳转封面页链接时返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignQrcodeUrl: str
         """
         self._SignUrl = None
         self._Deadline = None
@@ -13109,6 +13328,7 @@ PERSON 自然人
         self._FlowId = None
         self._OpenId = None
         self._FlowGroupId = None
+        self._SignQrcodeUrl = None
 
     @property
     def SignUrl(self):
@@ -13218,6 +13438,14 @@ PERSON 自然人
     def FlowGroupId(self, FlowGroupId):
         self._FlowGroupId = FlowGroupId
 
+    @property
+    def SignQrcodeUrl(self):
+        return self._SignQrcodeUrl
+
+    @SignQrcodeUrl.setter
+    def SignQrcodeUrl(self, SignQrcodeUrl):
+        self._SignQrcodeUrl = SignQrcodeUrl
+
 
     def _deserialize(self, params):
         self._SignUrl = params.get("SignUrl")
@@ -13233,6 +13461,7 @@ PERSON 自然人
         self._FlowId = params.get("FlowId")
         self._OpenId = params.get("OpenId")
         self._FlowGroupId = params.get("FlowGroupId")
+        self._SignQrcodeUrl = params.get("SignQrcodeUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
