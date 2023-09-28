@@ -18920,6 +18920,9 @@ ResetTaskConfig：任务更新回调。
 注意：
 1. 单位：秒，配合FileIndex使用。
         :type OffsetTime: int
+        :param _ToUrl: 目标 Url。
+换目标地址，会断流重推到新地址。
+        :type ToUrl: str
         :param _Comment: 任务备注。
         :type Comment: str
         :param _BackupSourceType: 备源的类型：
@@ -18962,6 +18965,7 @@ PullVodPushLive -点播。
         self._CallbackUrl = None
         self._FileIndex = None
         self._OffsetTime = None
+        self._ToUrl = None
         self._Comment = None
         self._BackupSourceType = None
         self._BackupSourceUrl = None
@@ -19065,6 +19069,14 @@ PullVodPushLive -点播。
         self._OffsetTime = OffsetTime
 
     @property
+    def ToUrl(self):
+        return self._ToUrl
+
+    @ToUrl.setter
+    def ToUrl(self, ToUrl):
+        self._ToUrl = ToUrl
+
+    @property
     def Comment(self):
         return self._Comment
 
@@ -19118,6 +19130,7 @@ PullVodPushLive -点播。
         self._CallbackUrl = params.get("CallbackUrl")
         self._FileIndex = params.get("FileIndex")
         self._OffsetTime = params.get("OffsetTime")
+        self._ToUrl = params.get("ToUrl")
         self._Comment = params.get("Comment")
         self._BackupSourceType = params.get("BackupSourceType")
         self._BackupSourceUrl = params.get("BackupSourceUrl")

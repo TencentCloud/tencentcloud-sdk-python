@@ -808,6 +808,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateReservedInstances(self, request):
+        """预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
+
+        :param request: Request instance for CreateReservedInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReservedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReservedInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTKEEdgeCluster(self, request):
         """创建边缘计算集群
 
@@ -1443,6 +1466,29 @@ class TkeClient(AbstractClient):
             body = self.call("DeletePrometheusTemplateSync", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePrometheusTemplateSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteReservedInstances(self, request):
+        """预留券实例如符合退还规则，可通过本接口主动退还。
+
+        :param request: Request instance for DeleteReservedInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReservedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReservedInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2625,6 +2671,75 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePodDeductionRate(self, request):
+        """查询各个规格的 Pod 的抵扣率
+
+        :param request: Request instance for DescribePodDeductionRate.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodDeductionRateRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePodDeductionRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePodDeductionRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePodDeductionRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePodsBySpec(self, request):
+        """查询可以用预留券抵扣的 Pod 信息。
+
+        :param request: Request instance for DescribePodsBySpec.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePodsBySpecRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePodsBySpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePodsBySpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePodsBySpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePostNodeResources(self, request):
+        """包括 Pod 资源统计和绑定的预留券资源统计。
+
+        :param request: Request instance for DescribePostNodeResources.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribePostNodeResourcesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribePostNodeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePostNodeResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePostNodeResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrometheusAgentInstances(self, request):
         """获取关联目标集群的实例列表
 
@@ -3062,6 +3177,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRIUtilizationDetail(self, request):
+        """预留实例用量查询
+
+        :param request: Request instance for DescribeRIUtilizationDetail.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeRIUtilizationDetailRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeRIUtilizationDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRIUtilizationDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRIUtilizationDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRegions(self, request):
         """获取容器服务支持的所有地域
 
@@ -3076,6 +3214,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReservedInstances(self, request):
+        """查询预留实例列表
+
+        :param request: Request instance for DescribeReservedInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4189,6 +4350,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyReservedInstanceScope(self, request):
+        """修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
+
+        :param request: Request instance for ModifyReservedInstanceScope.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyReservedInstanceScopeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyReservedInstanceScopeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReservedInstanceScope", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReservedInstanceScopeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveNodeFromNodePool(self, request):
         """移出节点池节点，但保留在集群内
 
@@ -4203,6 +4387,29 @@ class TkeClient(AbstractClient):
             body = self.call("RemoveNodeFromNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveNodeFromNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewReservedInstances(self, request):
+        """续费时请确保账户余额充足。
+
+        :param request: Request instance for RenewReservedInstances.
+        :type request: :class:`tencentcloud.tke.v20180525.models.RenewReservedInstancesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RenewReservedInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewReservedInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewReservedInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -5830,6 +5830,119 @@ class CreateOrganizationBatchSignUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrganizationInfoChangeUrlRequest(AbstractModel):
+    """CreateOrganizationInfoChangeUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ChangeType: 企业信息变更类型，可选类型如下：
+<ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+        :type ChangeType: int
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._ChangeType = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ChangeType(self):
+        return self._ChangeType
+
+    @ChangeType.setter
+    def ChangeType(self, ChangeType):
+        self._ChangeType = ChangeType
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ChangeType = params.get("ChangeType")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrganizationInfoChangeUrlResponse(AbstractModel):
+    """CreateOrganizationInfoChangeUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 创建的企业信息变更链接。
+        :type Url: str
+        :param _ExpiredTime: 链接过期时间。链接7天有效。
+        :type ExpiredTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonAuthCertificateImageRequest(AbstractModel):
     """CreatePersonAuthCertificateImage请求参数结构体
 

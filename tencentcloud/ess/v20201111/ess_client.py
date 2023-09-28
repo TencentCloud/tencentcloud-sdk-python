@@ -684,6 +684,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrganizationInfoChangeUrl(self, request):
+        """此接口（CreateOrganizationInfoChangeUrl）用于创建企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+
+        :param request: Request instance for CreateOrganizationInfoChangeUrl.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationInfoChangeUrlRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateOrganizationInfoChangeUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrganizationInfoChangeUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrganizationInfoChangeUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonAuthCertificateImage(self, request):
         """获取个人用户认证证书图片下载URL
 

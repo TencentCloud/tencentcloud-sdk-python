@@ -775,6 +775,53 @@ class ClusterExternalServiceInfo(AbstractModel):
         
 
 
+class ClusterIDToFlowID(AbstractModel):
+    """集群id与流程id的mapping
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _FlowId: 流程id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        """
+        self._ClusterId = None
+        self._FlowId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._FlowId = params.get("FlowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterInstancesInfo(AbstractModel):
     """集群实例信息
 
@@ -2111,8 +2158,8 @@ class CreateInstanceRequest(AbstractModel):
         :param _CbsEncrypt: 集群维度CBS加密盘，默认0表示不加密，1表示加密
         :type CbsEncrypt: int
         :param _MetaType: hive共享元数据库类型。取值范围：
-<li>EMR_NEW_META：表示集群默认创建</li>
-<li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
+<li>EMR_DEFAULT_META：表示集群默认创建</li>
+<li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
 <li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
         :type MetaType: str
         :param _UnifyMetaInstanceId: EMR-MetaDB实例
@@ -8422,12 +8469,16 @@ class ModifyResourcesTagsResponse(AbstractModel):
         :param _PartSuccessList: 部分成功的资源id列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartSuccessList: list of str
+        :param _ClusterToFlowIdList: 集群id与流程id的映射列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterToFlowIdList: list of ClusterIDToFlowID
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessList = None
         self._FailList = None
         self._PartSuccessList = None
+        self._ClusterToFlowIdList = None
         self._RequestId = None
 
     @property
@@ -8455,6 +8506,14 @@ class ModifyResourcesTagsResponse(AbstractModel):
         self._PartSuccessList = PartSuccessList
 
     @property
+    def ClusterToFlowIdList(self):
+        return self._ClusterToFlowIdList
+
+    @ClusterToFlowIdList.setter
+    def ClusterToFlowIdList(self, ClusterToFlowIdList):
+        self._ClusterToFlowIdList = ClusterToFlowIdList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8467,6 +8526,12 @@ class ModifyResourcesTagsResponse(AbstractModel):
         self._SuccessList = params.get("SuccessList")
         self._FailList = params.get("FailList")
         self._PartSuccessList = params.get("PartSuccessList")
+        if params.get("ClusterToFlowIdList") is not None:
+            self._ClusterToFlowIdList = []
+            for item in params.get("ClusterToFlowIdList"):
+                obj = ClusterIDToFlowID()
+                obj._deserialize(item)
+                self._ClusterToFlowIdList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

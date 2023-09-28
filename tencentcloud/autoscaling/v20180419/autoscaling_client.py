@@ -74,6 +74,32 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelInstanceRefresh(self, request):
+        """取消伸缩组的实例刷新活动。
+        * 已刷新/正在刷新的批次不受影响，待刷新批次被取消
+        * 刷新失败的实例保持备用中状态，需用户手动处理后尝试退出备用中状态或销毁
+        * 取消后不允许回滚操作，也不支持恢复操作
+
+        :param request: Request instance for CancelInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CancelInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CancelInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ClearLaunchConfigurationAttributes(self, request):
         """本接口（ClearLaunchConfigurationAttributes）用于将启动配置内的特定属性完全清空。
 
@@ -698,6 +724,29 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRefreshActivities(self, request):
+        """本接口（DescribeRefreshActivities）用于查询伸缩组的实例刷新活动记录。
+
+        :param request: Request instance for DescribeRefreshActivities.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeRefreshActivitiesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeRefreshActivitiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRefreshActivities", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRefreshActivitiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScalingPolicies(self, request):
         """本接口（DescribeScalingPolicies）用于查询告警触发策略。
 
@@ -873,6 +922,31 @@ class AutoscalingClient(AbstractClient):
             body = self.call("ExecuteScalingPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ExecuteScalingPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExitStandby(self, request):
+        """伸缩组内实例退出备用中状态。
+        * 备用中状态的实例负载均衡器权重值为 0，退出备用中状态后，权重值也会恢复
+        * 对备用中状态实例进行开关机操作也会使其退出备用中状态
+
+        :param request: Request instance for ExitStandby.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ExitStandbyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ExitStandbyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExitStandby", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExitStandbyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1123,6 +1197,56 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResumeInstanceRefresh(self, request):
+        """恢复暂停状态的实例刷新活动，使其重试当前批次刷新失败实例或继续刷新后续批次，非暂停状态下调用该接口无效。
+
+        :param request: Request instance for ResumeInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ResumeInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ResumeInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackInstanceRefresh(self, request):
+        """回滚操作会生成一个新的实例刷新活动，该活动也支持分批次刷新以及暂停、恢复、取消操作，接口返回回滚活动的 RefreshActivityId。
+        * 原活动中待刷新实例变更为已取消，忽略不存在实例，其他状态实例进入回滚流程
+        * 原活动中正在刷新的实例不会立刻终止，刷新结束后再执行回滚活动
+        * 暂停状态或最近一次成功的刷新活动支持回滚，其他状态不支持回滚
+        * 原活动刷新方式为重装实例时，对于 ImageId参数，会自动恢复到回滚前镜像 ID；对于 UserData、EnhancedService、LoginSettings、 HostName 参数，依然会从启动配置中读取，需用户在回滚前自行修改启动配置
+
+        :param request: Request instance for RollbackInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.RollbackInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollbackInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleInInstances(self, request):
         """为伸缩组指定数量缩容实例，返回缩容活动的 ActivityId。
         * 伸缩组需要未处于活动中
@@ -1229,6 +1353,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartInstanceRefresh(self, request):
+        """根据启动配置中参数，刷新伸缩组内运行中状态 CVM 实例，返回实例刷新活动的 RefreshActivityId。
+        * 对于重装实例的刷新方式（目前仅支持重装），重装时仅会从启动配置中获取 ImageId、UserData、EnhancedService、 HostName、LoginSettings 参数进行刷新，实例的其他参数不会刷新
+        * 实例刷新期间（包括暂停状态），伸缩组会被停用。不建议刷新期间修改关联启动配置，否则会影响刷新参数，造成实例配置不一致
+        * 滚动更新模式会分成多批次进行刷新实例，单批次中若存在刷新失败实例，活动会进入失败暂停状态
+        * 若待刷新实例被移出或销毁，会被标记为 NOT_FOUND 状态，不阻塞实例刷新活动
+        * 运行中状态实例与最新启动配置参数一致，实例也会再次刷新
+
+        :param request: Request instance for StartInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StartInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StartInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAutoScalingInstances(self, request):
         """本接口（StopAutoScalingInstances）用于关闭伸缩组内 CVM 实例。
         * 关机方式采用`SOFT_FIRST`方式，表示在正常关闭失败后进行强制关闭
@@ -1247,6 +1399,31 @@ class AutoscalingClient(AbstractClient):
             body = self.call("StopAutoScalingInstances", params, headers=headers)
             response = json.loads(body)
             model = models.StopAutoScalingInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopInstanceRefresh(self, request):
+        """暂停正在执行的实例刷新活动。
+        * 暂停状态下，伸缩组也会处于停用中状态
+        * 当前正在更新的实例不会暂停，待更新的实例会暂停更新
+
+        :param request: Request instance for StopInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StopInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StopInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopInstanceRefreshResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

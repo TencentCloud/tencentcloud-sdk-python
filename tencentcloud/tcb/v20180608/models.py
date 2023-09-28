@@ -5400,6 +5400,45 @@ class CreateWxCloudBaseRunServerDBClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomHeader(AbstractModel):
+    """安全网关自定义头部
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestToAddList: 请求添加头部配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestToAddList: list of CustomRequestToAdd
+        """
+        self._RequestToAddList = None
+
+    @property
+    def RequestToAddList(self):
+        return self._RequestToAddList
+
+    @RequestToAddList.setter
+    def RequestToAddList(self, RequestToAddList):
+        self._RequestToAddList = RequestToAddList
+
+
+    def _deserialize(self, params):
+        if params.get("RequestToAddList") is not None:
+            self._RequestToAddList = []
+            for item in params.get("RequestToAddList"):
+                obj = CustomRequestToAdd()
+                obj._deserialize(item)
+                self._RequestToAddList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomLogConfig(AbstractModel):
     """安全网关自定义日志配置
 
@@ -5483,6 +5522,66 @@ class CustomLogConfig(AbstractModel):
         self._NeedRspHeaderLog = params.get("NeedRspHeaderLog")
         self._LogSetId = params.get("LogSetId")
         self._LogTopicId = params.get("LogTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomRequestToAdd(AbstractModel):
+    """安全网关请求自定义头部
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Header名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: Header值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _AppendAction: Header类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppendAction: str
+        """
+        self._Key = None
+        self._Value = None
+        self._AppendAction = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def AppendAction(self):
+        return self._AppendAction
+
+    @AppendAction.setter
+    def AppendAction(self, AppendAction):
+        self._AppendAction = AppendAction
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._AppendAction = params.get("AppendAction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19357,6 +19456,9 @@ class WxGatewayRountItem(AbstractModel):
         :param _GatewayRoutePathMatchType: 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayRoutePathMatchType: str
+        :param _CustomHeader: 安全网关自定义头部
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomHeader: :class:`tencentcloud.tcb.v20180608.models.CustomHeader`
         """
         self._GatewayRouteName = None
         self._GatewayRouteProtocol = None
@@ -19374,6 +19476,7 @@ class WxGatewayRountItem(AbstractModel):
         self._GatewayRoutePort = None
         self._GatewayRouteEnvId = None
         self._GatewayRoutePathMatchType = None
+        self._CustomHeader = None
 
     @property
     def GatewayRouteName(self):
@@ -19503,6 +19606,14 @@ class WxGatewayRountItem(AbstractModel):
     def GatewayRoutePathMatchType(self, GatewayRoutePathMatchType):
         self._GatewayRoutePathMatchType = GatewayRoutePathMatchType
 
+    @property
+    def CustomHeader(self):
+        return self._CustomHeader
+
+    @CustomHeader.setter
+    def CustomHeader(self, CustomHeader):
+        self._CustomHeader = CustomHeader
+
 
     def _deserialize(self, params):
         self._GatewayRouteName = params.get("GatewayRouteName")
@@ -19526,6 +19637,9 @@ class WxGatewayRountItem(AbstractModel):
         self._GatewayRoutePort = params.get("GatewayRoutePort")
         self._GatewayRouteEnvId = params.get("GatewayRouteEnvId")
         self._GatewayRoutePathMatchType = params.get("GatewayRoutePathMatchType")
+        if params.get("CustomHeader") is not None:
+            self._CustomHeader = CustomHeader()
+            self._CustomHeader._deserialize(params.get("CustomHeader"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

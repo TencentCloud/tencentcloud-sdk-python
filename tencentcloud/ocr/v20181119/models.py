@@ -7463,7 +7463,7 @@ class LicensePlateInfo(AbstractModel):
         :type Confidence: int
         :param _Rect: 文本行在原图片中的像素坐标框。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :type Color: str
         """
         self._Number = None
@@ -7586,7 +7586,7 @@ class LicensePlateOCRResponse(AbstractModel):
         :type Confidence: int
         :param _Rect: 文本行在原图片中的像素坐标框。
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
         :type Color: str
         :param _LicensePlateInfos: 全部车牌信息。
         :type LicensePlateInfos: list of LicensePlateInfo

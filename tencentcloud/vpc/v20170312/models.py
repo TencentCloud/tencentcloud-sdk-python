@@ -9719,6 +9719,129 @@ class CreateVpcPeeringConnectionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _SourceVpcId: 本端VPC唯一ID。
+        :type SourceVpcId: str
+        :param _PeeringConnectionName: 对等连接名称。
+        :type PeeringConnectionName: str
+        :param _DestinationVpcId: 对端VPC唯一ID。
+        :type DestinationVpcId: str
+        :param _DestinationUin: 对端用户UIN。
+        :type DestinationUin: str
+        :param _DestinationRegion: 对端地域。
+        :type DestinationRegion: str
+        :param _Bandwidth: 带宽上限，单位Mbps。
+        :type Bandwidth: int
+        :param _Type: 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
+        :type Type: str
+        :param _ChargeType: 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95POSTPAID_BY_MONTH_95。
+        :type ChargeType: str
+        :param _QosLevel: 服务分级：PT、AU、AG。
+        :type QosLevel: str
+        """
+        self._SourceVpcId = None
+        self._PeeringConnectionName = None
+        self._DestinationVpcId = None
+        self._DestinationUin = None
+        self._DestinationRegion = None
+        self._Bandwidth = None
+        self._Type = None
+        self._ChargeType = None
+        self._QosLevel = None
+
+    @property
+    def SourceVpcId(self):
+        return self._SourceVpcId
+
+    @SourceVpcId.setter
+    def SourceVpcId(self, SourceVpcId):
+        self._SourceVpcId = SourceVpcId
+
+    @property
+    def PeeringConnectionName(self):
+        return self._PeeringConnectionName
+
+    @PeeringConnectionName.setter
+    def PeeringConnectionName(self, PeeringConnectionName):
+        self._PeeringConnectionName = PeeringConnectionName
+
+    @property
+    def DestinationVpcId(self):
+        return self._DestinationVpcId
+
+    @DestinationVpcId.setter
+    def DestinationVpcId(self, DestinationVpcId):
+        self._DestinationVpcId = DestinationVpcId
+
+    @property
+    def DestinationUin(self):
+        return self._DestinationUin
+
+    @DestinationUin.setter
+    def DestinationUin(self, DestinationUin):
+        self._DestinationUin = DestinationUin
+
+    @property
+    def DestinationRegion(self):
+        return self._DestinationRegion
+
+    @DestinationRegion.setter
+    def DestinationRegion(self, DestinationRegion):
+        self._DestinationRegion = DestinationRegion
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def QosLevel(self):
+        return self._QosLevel
+
+    @QosLevel.setter
+    def QosLevel(self, QosLevel):
+        self._QosLevel = QosLevel
+
+
+    def _deserialize(self, params):
+        self._SourceVpcId = params.get("SourceVpcId")
+        self._PeeringConnectionName = params.get("PeeringConnectionName")
+        self._DestinationVpcId = params.get("DestinationVpcId")
+        self._DestinationUin = params.get("DestinationUin")
+        self._DestinationRegion = params.get("DestinationRegion")
+        self._Bandwidth = params.get("Bandwidth")
+        self._Type = params.get("Type")
+        self._ChargeType = params.get("ChargeType")
+        self._QosLevel = params.get("QosLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateVpcPeeringConnectionResponse(AbstractModel):
     """CreateVpcPeeringConnection返回参数结构体
@@ -9727,10 +9850,22 @@ class CreateVpcPeeringConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PeeringConnectionId: 对等连接ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeeringConnectionId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._PeeringConnectionId = None
         self._RequestId = None
+
+    @property
+    def PeeringConnectionId(self):
+        return self._PeeringConnectionId
+
+    @PeeringConnectionId.setter
+    def PeeringConnectionId(self, PeeringConnectionId):
+        self._PeeringConnectionId = PeeringConnectionId
 
     @property
     def RequestId(self):
@@ -9742,6 +9877,7 @@ class CreateVpcPeeringConnectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._PeeringConnectionId = params.get("PeeringConnectionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -34025,6 +34161,69 @@ class ModifyVpcPeeringConnectionRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _PeeringConnectionId: 对等连接ID。
+        :type PeeringConnectionId: str
+        :param _PeeringConnectionName: 对等连接名称。
+        :type PeeringConnectionName: str
+        :param _Bandwidth: 带宽上限，单位Mbps。
+        :type Bandwidth: int
+        :param _ChargeType: 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95 POSTPAID_BY_MONTH_95。
+        :type ChargeType: str
+        """
+        self._PeeringConnectionId = None
+        self._PeeringConnectionName = None
+        self._Bandwidth = None
+        self._ChargeType = None
+
+    @property
+    def PeeringConnectionId(self):
+        return self._PeeringConnectionId
+
+    @PeeringConnectionId.setter
+    def PeeringConnectionId(self, PeeringConnectionId):
+        self._PeeringConnectionId = PeeringConnectionId
+
+    @property
+    def PeeringConnectionName(self):
+        return self._PeeringConnectionName
+
+    @PeeringConnectionName.setter
+    def PeeringConnectionName(self, PeeringConnectionName):
+        self._PeeringConnectionName = PeeringConnectionName
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+
+    def _deserialize(self, params):
+        self._PeeringConnectionId = params.get("PeeringConnectionId")
+        self._PeeringConnectionName = params.get("PeeringConnectionName")
+        self._Bandwidth = params.get("Bandwidth")
+        self._ChargeType = params.get("ChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyVpcPeeringConnectionResponse(AbstractModel):
     """ModifyVpcPeeringConnection返回参数结构体
@@ -37216,6 +37415,33 @@ class RejectVpcPeeringConnectionRequest(AbstractModel):
     """RejectVpcPeeringConnection请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _PeeringConnectionId: 对等连接唯一ID。
+        :type PeeringConnectionId: str
+        """
+        self._PeeringConnectionId = None
+
+    @property
+    def PeeringConnectionId(self):
+        return self._PeeringConnectionId
+
+    @PeeringConnectionId.setter
+    def PeeringConnectionId(self, PeeringConnectionId):
+        self._PeeringConnectionId = PeeringConnectionId
+
+
+    def _deserialize(self, params):
+        self._PeeringConnectionId = params.get("PeeringConnectionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RejectVpcPeeringConnectionResponse(AbstractModel):

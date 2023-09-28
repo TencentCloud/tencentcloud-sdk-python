@@ -11572,6 +11572,8 @@ class CreateInput(AbstractModel):
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
         :param _ResilientStream: 延播平滑吐流配置信息。
         :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        :param _SecurityGroupIds: 绑定的输入安全组 ID。 
+        :type SecurityGroupIds: list of str
         """
         self._InputName = None
         self._Protocol = None
@@ -11584,6 +11586,7 @@ class CreateInput(AbstractModel):
         self._RTSPPullSettings = None
         self._HLSPullSettings = None
         self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputName(self):
@@ -11673,6 +11676,14 @@ class CreateInput(AbstractModel):
     def ResilientStream(self, ResilientStream):
         self._ResilientStream = ResilientStream
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -11698,6 +11709,7 @@ class CreateInput(AbstractModel):
         if params.get("ResilientStream") is not None:
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12027,6 +12039,8 @@ class CreateOutputInfo(AbstractModel):
         :type AllowIpList: list of str
         :param _MaxConcurrent: 最大拉流并发数，最大4，默认4。
         :type MaxConcurrent: int
+        :param _SecurityGroupIds: 绑定的输入安全组 ID。 
+        :type SecurityGroupIds: list of str
         """
         self._OutputName = None
         self._Description = None
@@ -12037,6 +12051,7 @@ class CreateOutputInfo(AbstractModel):
         self._RTPSettings = None
         self._AllowIpList = None
         self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputName(self):
@@ -12110,6 +12125,14 @@ class CreateOutputInfo(AbstractModel):
     def MaxConcurrent(self, MaxConcurrent):
         self._MaxConcurrent = MaxConcurrent
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -12127,6 +12150,7 @@ class CreateOutputInfo(AbstractModel):
             self._RTPSettings._deserialize(params.get("RTPSettings"))
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16278,6 +16302,9 @@ class DescribeInput(AbstractModel):
         :param _ResilientStream: 延播平滑吐流配置信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        :param _SecurityGroupIds: 绑定的输入安全组 ID。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -16294,6 +16321,7 @@ class DescribeInput(AbstractModel):
         self._RTSPPullSettings = None
         self._HLSPullSettings = None
         self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputId(self):
@@ -16415,6 +16443,14 @@ class DescribeInput(AbstractModel):
     def ResilientStream(self, ResilientStream):
         self._ResilientStream = ResilientStream
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -16451,6 +16487,7 @@ class DescribeInput(AbstractModel):
         if params.get("ResilientStream") is not None:
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16924,6 +16961,9 @@ class DescribeOutput(AbstractModel):
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
         :param _MaxConcurrent: 最大拉流并发数，最大为4，默认4。
         :type MaxConcurrent: int
+        :param _SecurityGroupIds: 绑定的安全组 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -16940,6 +16980,7 @@ class DescribeOutput(AbstractModel):
         self._RTSPPullSettings = None
         self._HLSPullSettings = None
         self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputId(self):
@@ -17061,6 +17102,14 @@ class DescribeOutput(AbstractModel):
     def MaxConcurrent(self, MaxConcurrent):
         self._MaxConcurrent = MaxConcurrent
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -17095,6 +17144,7 @@ class DescribeOutput(AbstractModel):
             self._HLSPullSettings = DescribeOutputHLSPullSettings()
             self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
         self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30413,6 +30463,8 @@ class ModifyInput(AbstractModel):
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.CreateInputHLSPullSettings`
         :param _ResilientStream: 延播平滑吐流配置信息。
         :type ResilientStream: :class:`tencentcloud.mps.v20190612.models.ResilientStreamConf`
+        :param _SecurityGroupIds: 绑定的输入安全组 ID。 仅支持关联一组安全组。
+        :type SecurityGroupIds: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -30426,6 +30478,7 @@ class ModifyInput(AbstractModel):
         self._RTSPPullSettings = None
         self._HLSPullSettings = None
         self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputId(self):
@@ -30523,6 +30576,14 @@ class ModifyInput(AbstractModel):
     def ResilientStream(self, ResilientStream):
         self._ResilientStream = ResilientStream
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -30549,6 +30610,7 @@ class ModifyInput(AbstractModel):
         if params.get("ResilientStream") is not None:
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30585,6 +30647,8 @@ class ModifyOutputInfo(AbstractModel):
         :type AllowIpList: list of str
         :param _MaxConcurrent: 最大拉流并发数，最大4，默认4。
         :type MaxConcurrent: int
+        :param _SecurityGroupIds: 绑定的安全组 ID。 仅支持关联一组安全组。	
+        :type SecurityGroupIds: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -30595,6 +30659,7 @@ class ModifyOutputInfo(AbstractModel):
         self._RTMPSettings = None
         self._AllowIpList = None
         self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputId(self):
@@ -30668,6 +30733,14 @@ class ModifyOutputInfo(AbstractModel):
     def MaxConcurrent(self, MaxConcurrent):
         self._MaxConcurrent = MaxConcurrent
 
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -30685,6 +30758,7 @@ class ModifyOutputInfo(AbstractModel):
             self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32518,8 +32592,10 @@ class OutputSRTSourceAddressResp(AbstractModel):
     def __init__(self):
         r"""
         :param _Ip: 监听IP。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 监听端口。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         """
         self._Ip = None
@@ -36193,8 +36269,10 @@ class SRTSourceAddressResp(AbstractModel):
     def __init__(self):
         r"""
         :param _Ip: 对端IP。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
         :param _Port: 对端端口。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
         """
         self._Ip = None

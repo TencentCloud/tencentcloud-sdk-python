@@ -999,12 +999,16 @@ class CUDNN(AbstractModel):
     def __init__(self):
         r"""
         :param _Version: cuDNN的版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Name: cuDNN的名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _DocName: cuDNN的Doc名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type DocName: str
         :param _DevName: cuDNN的Dev名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type DevName: str
         """
         self._Version = None
@@ -7747,6 +7751,128 @@ class CreatePrometheusTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateReservedInstancesRequest(AbstractModel):
+    """CreateReservedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceSpec: 预留券实例规格。
+        :type ReservedInstanceSpec: :class:`tencentcloud.tke.v20180525.models.ReservedInstanceSpec`
+        :param _InstanceCount: 购买实例数量，一次最大购买数量为300。
+        :type InstanceCount: int
+        :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20180525.models.InstanceChargePrepaid`
+        :param _InstanceName: 预留券名称。
+        :type InstanceName: str
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        """
+        self._ReservedInstanceSpec = None
+        self._InstanceCount = None
+        self._InstanceChargePrepaid = None
+        self._InstanceName = None
+        self._ClientToken = None
+
+    @property
+    def ReservedInstanceSpec(self):
+        return self._ReservedInstanceSpec
+
+    @ReservedInstanceSpec.setter
+    def ReservedInstanceSpec(self, ReservedInstanceSpec):
+        self._ReservedInstanceSpec = ReservedInstanceSpec
+
+    @property
+    def InstanceCount(self):
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        if params.get("ReservedInstanceSpec") is not None:
+            self._ReservedInstanceSpec = ReservedInstanceSpec()
+            self._ReservedInstanceSpec._deserialize(params.get("ReservedInstanceSpec"))
+        self._InstanceCount = params.get("InstanceCount")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._InstanceName = params.get("InstanceName")
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReservedInstancesResponse(AbstractModel):
+    """CreateReservedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceIds: 预留券实例 ID。
+        :type ReservedInstanceIds: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReservedInstanceIds = None
+        self._RequestId = None
+
+    @property
+    def ReservedInstanceIds(self):
+        return self._ReservedInstanceIds
+
+    @ReservedInstanceIds.setter
+    def ReservedInstanceIds(self, ReservedInstanceIds):
+        self._ReservedInstanceIds = ReservedInstanceIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceIds = params.get("ReservedInstanceIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTKEEdgeClusterRequest(AbstractModel):
     """CreateTKEEdgeCluster请求参数结构体
 
@@ -10234,6 +10360,64 @@ class DeletePrometheusTemplateSyncRequest(AbstractModel):
 
 class DeletePrometheusTemplateSyncResponse(AbstractModel):
     """DeletePrometheusTemplateSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteReservedInstancesRequest(AbstractModel):
+    """DeleteReservedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceIds: 预留券实例ID。
+        :type ReservedInstanceIds: list of str
+        """
+        self._ReservedInstanceIds = None
+
+    @property
+    def ReservedInstanceIds(self):
+        return self._ReservedInstanceIds
+
+    @ReservedInstanceIds.setter
+    def ReservedInstanceIds(self, ReservedInstanceIds):
+        self._ReservedInstanceIds = ReservedInstanceIds
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceIds = params.get("ReservedInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReservedInstancesResponse(AbstractModel):
+    """DeleteReservedInstances返回参数结构体
 
     """
 
@@ -15814,6 +15998,408 @@ class DescribeImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePodDeductionRateRequest(AbstractModel):
+    """DescribePodDeductionRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName:  节点名称
+        :type NodeName: str
+        """
+        self._Zone = None
+        self._ClusterId = None
+        self._NodeName = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePodDeductionRateResponse(AbstractModel):
+    """DescribePodDeductionRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodDeductionRateSet: 各个规格的 可被预留券抵扣的Pod 抵扣率
+        :type PodDeductionRateSet: list of PodDeductionRate
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PodDeductionRateSet = None
+        self._RequestId = None
+
+    @property
+    def PodDeductionRateSet(self):
+        return self._PodDeductionRateSet
+
+    @PodDeductionRateSet.setter
+    def PodDeductionRateSet(self, PodDeductionRateSet):
+        self._PodDeductionRateSet = PodDeductionRateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PodDeductionRateSet") is not None:
+            self._PodDeductionRateSet = []
+            for item in params.get("PodDeductionRateSet"):
+                obj = PodDeductionRate()
+                obj._deserialize(item)
+                self._PodDeductionRateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePodsBySpecRequest(AbstractModel):
+    """DescribePodsBySpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: 核数
+        :type Cpu: float
+        :param _Memory: 内存
+        :type Memory: float
+        :param _GpuNum: 卡数，有0.25、0.5、1、2、4等
+        :type GpuNum: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _Offset: 偏移量，默认0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Filters: pod-type
+按照**【Pod 类型**】进行过滤。资源类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
+类型：String
+必选：否
+
+pod-deduct
+按照**【上个周期抵扣的Pod**】进行过滤。Values可不设置。
+必选：否
+
+pod-not-deduct
+按照**【上个周期未抵扣的Pod**】进行过滤。Values可不设置。
+必选：否
+        :type Filters: list of Filter
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._GpuNum = None
+        self._Zone = None
+        self._ClusterId = None
+        self._NodeName = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def GpuNum(self):
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._GpuNum = params.get("GpuNum")
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePodsBySpecResponse(AbstractModel):
+    """DescribePodsBySpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Pod 总数
+        :type TotalCount: int
+        :param _PodSet: Pod 节点信息
+        :type PodSet: list of PodNodeInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PodSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PodSet(self):
+        return self._PodSet
+
+    @PodSet.setter
+    def PodSet(self, PodSet):
+        self._PodSet = PodSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PodSet") is not None:
+            self._PodSet = []
+            for item in params.get("PodSet"):
+                obj = PodNodeInfo()
+                obj._deserialize(item)
+                self._PodSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePostNodeResourcesRequest(AbstractModel):
+    """DescribePostNodeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName:  节点名称
+        :type NodeName: str
+        """
+        self._ClusterId = None
+        self._NodeName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePostNodeResourcesResponse(AbstractModel):
+    """DescribePostNodeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodSet: Pod详情
+        :type PodSet: list of SuperNodeResource
+        :param _ReservedInstanceSet: 预留券详情
+        :type ReservedInstanceSet: list of SuperNodeResource
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PodSet = None
+        self._ReservedInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def PodSet(self):
+        return self._PodSet
+
+    @PodSet.setter
+    def PodSet(self, PodSet):
+        self._PodSet = PodSet
+
+    @property
+    def ReservedInstanceSet(self):
+        return self._ReservedInstanceSet
+
+    @ReservedInstanceSet.setter
+    def ReservedInstanceSet(self, ReservedInstanceSet):
+        self._ReservedInstanceSet = ReservedInstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PodSet") is not None:
+            self._PodSet = []
+            for item in params.get("PodSet"):
+                obj = SuperNodeResource()
+                obj._deserialize(item)
+                self._PodSet.append(obj)
+        if params.get("ReservedInstanceSet") is not None:
+            self._ReservedInstanceSet = []
+            for item in params.get("ReservedInstanceSet"):
+                obj = SuperNodeResource()
+                obj._deserialize(item)
+                self._ReservedInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusAgentInstancesRequest(AbstractModel):
     """DescribePrometheusAgentInstances请求参数结构体
 
@@ -18018,6 +18604,135 @@ class DescribePrometheusTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRIUtilizationDetailRequest(AbstractModel):
+    """DescribeRIUtilizationDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Filters: reserved-instance-id
+按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+类型：String
+必选：否
+
+begin-time
+按照**【抵扣开始时间**】进行过滤。形如：2023-06-28 15:27:40。
+类型：String
+必选：否
+
+end-time
+按照**【抵扣结束时间**】进行过滤。形如：2023-06-28 15:27:40。
+类型：String
+必选：否
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRIUtilizationDetailResponse(AbstractModel):
+    """DescribeRIUtilizationDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数。
+        :type TotalCount: int
+        :param _RIUtilizationDetailSet: 详情。
+        :type RIUtilizationDetailSet: list of RIUtilizationDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RIUtilizationDetailSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RIUtilizationDetailSet(self):
+        return self._RIUtilizationDetailSet
+
+    @RIUtilizationDetailSet.setter
+    def RIUtilizationDetailSet(self, RIUtilizationDetailSet):
+        self._RIUtilizationDetailSet = RIUtilizationDetailSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RIUtilizationDetailSet") is not None:
+            self._RIUtilizationDetailSet = []
+            for item in params.get("RIUtilizationDetailSet"):
+                obj = RIUtilizationDetail()
+                obj._deserialize(item)
+                self._RIUtilizationDetailSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -18077,6 +18792,202 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInstance()
                 obj._deserialize(item)
                 self._RegionInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReservedInstancesRequest(AbstractModel):
+    """DescribeReservedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Filters: status
+按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+类型：String
+必选：否
+
+resource-type
+按照**【资源类型**】进行过滤。资源类型：common、amd、v100、t4、a10\*gnv4、a10\*gnv4v等，common表示通用类型。
+类型：String
+必选：否
+
+cpu
+按照**【核数**】进行过滤。
+类型：String
+必选：否
+
+memory
+按照**【内存**】进行过滤。
+类型：String
+必选：否
+
+gpu
+按照**【GPU卡数**】进行过滤，取值有0.25、0.5、1、2、4等。
+类型：String
+必选：否
+
+cluster-id
+按照**【集群ID**】进行过滤。
+类型：String
+必选：否
+
+node-name
+按照**【节点名称**】进行过滤。
+类型：String
+必选：否
+
+scope
+按照**【可用区**】进行过滤。比如：ap-guangzhou-2，为空字符串表示地域抵扣范围。如果只过滤可用区抵扣范围，需要同时将cluster-id、node-name设置为空字符串。
+类型：String
+必选：否
+
+reserved-instance-id
+按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+类型：String
+必选：否
+
+reserved-instance-name
+按照**【预留实例名称**】进行过滤。
+类型：String
+必选：否
+
+reserved-instance-deduct
+按照**【上个周期抵扣的预留券**】进行过滤。Values可不设置。
+必选：否
+
+reserved-instance-not-deduct
+按照**【上个周期未抵扣的预留券**】进行过滤。Values可不设置。
+必选：否
+        :type Filters: list of Filter
+        :param _OrderField: 排序字段。支持CreatedAt、ActiveAt、ExpireAt。默认值CreatedAt。
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。顺序：ASC，倒序：DESC。默认值DESC。
+        :type OrderDirection: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._OrderField = None
+        self._OrderDirection = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReservedInstancesResponse(AbstractModel):
+    """DescribeReservedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数。
+        :type TotalCount: int
+        :param _ReservedInstanceSet: 预留实例列表。
+        :type ReservedInstanceSet: list of ReservedInstance
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ReservedInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ReservedInstanceSet(self):
+        return self._ReservedInstanceSet
+
+    @ReservedInstanceSet.setter
+    def ReservedInstanceSet(self, ReservedInstanceSet):
+        self._ReservedInstanceSet = ReservedInstanceSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ReservedInstanceSet") is not None:
+            self._ReservedInstanceSet = []
+            for item in params.get("ReservedInstanceSet"):
+                obj = ReservedInstance()
+                obj._deserialize(item)
+                self._ReservedInstanceSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -19533,8 +20444,10 @@ class DriverVersion(AbstractModel):
     def __init__(self):
         r"""
         :param _Version: GPU驱动或者CUDA的版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
         :param _Name: GPU驱动或者CUDA的名字
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
         self._Version = None
@@ -24103,6 +25016,56 @@ class InstanceAdvancedSettings(AbstractModel):
         
 
 
+class InstanceChargePrepaid(AbstractModel):
+    """包年包月配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+        :type Period: int
+        :param _RenewFlag: 自动续费标识。取值范围：
+NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+
+默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :type RenewFlag: str
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceDataDiskMountSetting(AbstractModel):
     """CVM实例数据盘挂载配置
 
@@ -26307,6 +27270,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type DeletionProtection: bool
         :param _DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
         :type DockerGraphPath: str
+        :param _PreStartUserScript: base64编码后的自定义脚本
+        :type PreStartUserScript: str
         """
         self._ClusterId = None
         self._NodePoolId = None
@@ -26326,6 +27291,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self._Unschedulable = None
         self._DeletionProtection = None
         self._DockerGraphPath = None
+        self._PreStartUserScript = None
 
     @property
     def ClusterId(self):
@@ -26471,6 +27437,14 @@ class ModifyClusterNodePoolRequest(AbstractModel):
     def DockerGraphPath(self, DockerGraphPath):
         self._DockerGraphPath = DockerGraphPath
 
+    @property
+    def PreStartUserScript(self):
+        return self._PreStartUserScript
+
+    @PreStartUserScript.setter
+    def PreStartUserScript(self, PreStartUserScript):
+        self._PreStartUserScript = PreStartUserScript
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -26510,6 +27484,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self._Unschedulable = params.get("Unschedulable")
         self._DeletionProtection = params.get("DeletionProtection")
         self._DockerGraphPath = params.get("DockerGraphPath")
+        self._PreStartUserScript = params.get("PreStartUserScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27511,6 +28486,78 @@ class ModifyPrometheusTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReservedInstanceScopeRequest(AbstractModel):
+    """ModifyReservedInstanceScope请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceIds: 预留券唯一 ID
+        :type ReservedInstanceIds: list of str
+        :param _ReservedInstanceScope: 预留券抵扣范围信息
+        :type ReservedInstanceScope: :class:`tencentcloud.tke.v20180525.models.ReservedInstanceScope`
+        """
+        self._ReservedInstanceIds = None
+        self._ReservedInstanceScope = None
+
+    @property
+    def ReservedInstanceIds(self):
+        return self._ReservedInstanceIds
+
+    @ReservedInstanceIds.setter
+    def ReservedInstanceIds(self, ReservedInstanceIds):
+        self._ReservedInstanceIds = ReservedInstanceIds
+
+    @property
+    def ReservedInstanceScope(self):
+        return self._ReservedInstanceScope
+
+    @ReservedInstanceScope.setter
+    def ReservedInstanceScope(self, ReservedInstanceScope):
+        self._ReservedInstanceScope = ReservedInstanceScope
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceIds = params.get("ReservedInstanceIds")
+        if params.get("ReservedInstanceScope") is not None:
+            self._ReservedInstanceScope = ReservedInstanceScope()
+            self._ReservedInstanceScope._deserialize(params.get("ReservedInstanceScope"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReservedInstanceScopeResponse(AbstractModel):
+    """ModifyReservedInstanceScope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class NfsVolume(AbstractModel):
     """EKS Instance Nfs Volume
 
@@ -27689,6 +28736,24 @@ class NodePool(AbstractModel):
         :param _DeletionProtection: 删除保护开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionProtection: bool
+        :param _ExtraArgs: 节点配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.InstanceExtraArgs`
+        :param _GPUArgs: GPU驱动相关参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUArgs: :class:`tencentcloud.tke.v20180525.models.GPUArgs`
+        :param _DockerGraphPath: dockerd --graph 指定值, 默认为 /var/lib/docker
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DockerGraphPath: str
+        :param _DataDisks: 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataDisks: list of DataDisk
+        :param _Unschedulable: 是否不可调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unschedulable: int
+        :param _PreStartUserScript: 用户自定义脚本,在UserScript前执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreStartUserScript: str
         """
         self._NodePoolId = None
         self._Name = None
@@ -27710,6 +28775,12 @@ class NodePool(AbstractModel):
         self._UserScript = None
         self._Tags = None
         self._DeletionProtection = None
+        self._ExtraArgs = None
+        self._GPUArgs = None
+        self._DockerGraphPath = None
+        self._DataDisks = None
+        self._Unschedulable = None
+        self._PreStartUserScript = None
 
     @property
     def NodePoolId(self):
@@ -27871,6 +28942,54 @@ class NodePool(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def ExtraArgs(self):
+        return self._ExtraArgs
+
+    @ExtraArgs.setter
+    def ExtraArgs(self, ExtraArgs):
+        self._ExtraArgs = ExtraArgs
+
+    @property
+    def GPUArgs(self):
+        return self._GPUArgs
+
+    @GPUArgs.setter
+    def GPUArgs(self, GPUArgs):
+        self._GPUArgs = GPUArgs
+
+    @property
+    def DockerGraphPath(self):
+        return self._DockerGraphPath
+
+    @DockerGraphPath.setter
+    def DockerGraphPath(self, DockerGraphPath):
+        self._DockerGraphPath = DockerGraphPath
+
+    @property
+    def DataDisks(self):
+        return self._DataDisks
+
+    @DataDisks.setter
+    def DataDisks(self, DataDisks):
+        self._DataDisks = DataDisks
+
+    @property
+    def Unschedulable(self):
+        return self._Unschedulable
+
+    @Unschedulable.setter
+    def Unschedulable(self, Unschedulable):
+        self._Unschedulable = Unschedulable
+
+    @property
+    def PreStartUserScript(self):
+        return self._PreStartUserScript
+
+    @PreStartUserScript.setter
+    def PreStartUserScript(self, PreStartUserScript):
+        self._PreStartUserScript = PreStartUserScript
+
 
     def _deserialize(self, params):
         self._NodePoolId = params.get("NodePoolId")
@@ -27910,6 +29029,21 @@ class NodePool(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._DeletionProtection = params.get("DeletionProtection")
+        if params.get("ExtraArgs") is not None:
+            self._ExtraArgs = InstanceExtraArgs()
+            self._ExtraArgs._deserialize(params.get("ExtraArgs"))
+        if params.get("GPUArgs") is not None:
+            self._GPUArgs = GPUArgs()
+            self._GPUArgs._deserialize(params.get("GPUArgs"))
+        self._DockerGraphPath = params.get("DockerGraphPath")
+        if params.get("DataDisks") is not None:
+            self._DataDisks = []
+            for item in params.get("DataDisks"):
+                obj = DataDisk()
+                obj._deserialize(item)
+                self._DataDisks.append(obj)
+        self._Unschedulable = params.get("Unschedulable")
+        self._PreStartUserScript = params.get("PreStartUserScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28149,6 +29283,105 @@ class PendingRelease(AbstractModel):
         
 
 
+class PodDeductionRate(AbstractModel):
+    """可被预留券抵扣的 Pod 某种规格的抵扣率
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: Pod的 CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param _Memory: Pod 的内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: float
+        :param _Type:  Pod 的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _GpuNum:  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuNum: str
+        :param _TotalNum: 这种规格的 Pod总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalNum: int
+        :param _DeductionNum: 这种规格的 Pod被预留券抵扣的数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductionNum: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._Type = None
+        self._GpuNum = None
+        self._TotalNum = None
+        self._DeductionNum = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GpuNum(self):
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def DeductionNum(self):
+        return self._DeductionNum
+
+    @DeductionNum.setter
+    def DeductionNum(self, DeductionNum):
+        self._DeductionNum = DeductionNum
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Type = params.get("Type")
+        self._GpuNum = params.get("GpuNum")
+        self._TotalNum = params.get("TotalNum")
+        self._DeductionNum = params.get("DeductionNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PodLimitsByType(AbstractModel):
     """某机型可支持的最大 VPC-CNI 模式的 Pod 数量
 
@@ -28274,6 +29507,92 @@ class PodLimitsInstance(AbstractModel):
         if params.get("PodLimits") is not None:
             self._PodLimits = PodLimitsByType()
             self._PodLimits._deserialize(params.get("PodLimits"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PodNodeInfo(AbstractModel):
+    """Pod所在的节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _NodeName:  节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Name:  Pod 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._ClusterId = None
+        self._NodeName = None
+        self._Zone = None
+        self._Namespace = None
+        self._Name = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        self._Zone = params.get("Zone")
+        self._Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31288,6 +32607,159 @@ class PrometheusTemplateSyncTarget(AbstractModel):
         
 
 
+class RIUtilizationDetail(AbstractModel):
+    """预留券抵扣详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceId: 预留券ID
+        :type ReservedInstanceId: str
+        :param _EksId: Pod唯一ID
+        :type EksId: str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Name: Pod的名称
+        :type Name: str
+        :param _Namespace: Pod的命名空间
+        :type Namespace: str
+        :param _Kind: 工作负载类型
+        :type Kind: str
+        :param _KindName: 工作负载名称
+        :type KindName: str
+        :param _Uid: Pod的uid
+        :type Uid: str
+        :param _StartTime: 用量开始时间
+        :type StartTime: str
+        :param _EndTime: 用量结束时间
+        :type EndTime: str
+        :param _Product: 抵扣资源所属产品
+        :type Product: str
+        """
+        self._ReservedInstanceId = None
+        self._EksId = None
+        self._ClusterId = None
+        self._Name = None
+        self._Namespace = None
+        self._Kind = None
+        self._KindName = None
+        self._Uid = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+
+    @property
+    def ReservedInstanceId(self):
+        return self._ReservedInstanceId
+
+    @ReservedInstanceId.setter
+    def ReservedInstanceId(self, ReservedInstanceId):
+        self._ReservedInstanceId = ReservedInstanceId
+
+    @property
+    def EksId(self):
+        return self._EksId
+
+    @EksId.setter
+    def EksId(self, EksId):
+        self._EksId = EksId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Kind(self):
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def KindName(self):
+        return self._KindName
+
+    @KindName.setter
+    def KindName(self, KindName):
+        self._KindName = KindName
+
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceId = params.get("ReservedInstanceId")
+        self._EksId = params.get("EksId")
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Kind = params.get("Kind")
+        self._KindName = params.get("KindName")
+        self._Uid = params.get("Uid")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionInstance(AbstractModel):
     """地域属性信息
 
@@ -31985,6 +33457,441 @@ class RemoveNodeFromNodePoolResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RenewReservedInstancesRequest(AbstractModel):
+    """RenewReservedInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceIds: 预留券实例ID，每次请求实例的上限为100。
+        :type ReservedInstanceIds: list of str
+        :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+        :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20180525.models.InstanceChargePrepaid`
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
+        """
+        self._ReservedInstanceIds = None
+        self._InstanceChargePrepaid = None
+        self._ClientToken = None
+
+    @property
+    def ReservedInstanceIds(self):
+        return self._ReservedInstanceIds
+
+    @ReservedInstanceIds.setter
+    def ReservedInstanceIds(self, ReservedInstanceIds):
+        self._ReservedInstanceIds = ReservedInstanceIds
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceIds = params.get("ReservedInstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewReservedInstancesResponse(AbstractModel):
+    """RenewReservedInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReservedInstance(AbstractModel):
+    """预留实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedInstanceId: 预留实例ID
+        :type ReservedInstanceId: str
+        :param _ReservedInstanceName: 预留实例名称
+        :type ReservedInstanceName: str
+        :param _Status: 预留券状态
+        :type Status: str
+        :param _TimeSpan: 有效期，单位：月
+        :type TimeSpan: int
+        :param _ResourceType: 抵扣资源类型
+        :type ResourceType: str
+        :param _Cpu: 资源核数
+        :type Cpu: float
+        :param _Memory: 资源内存，单位：Gi
+        :type Memory: float
+        :param _Scope: 预留券的范围，默认值region。
+        :type Scope: str
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param _ActiveAt: 生效时间
+        :type ActiveAt: str
+        :param _ExpireAt: 过期时间
+        :type ExpireAt: str
+        :param _GpuCount: GPU卡数
+        :type GpuCount: str
+        :param _AutoRenewFlag: 自动续费标记
+        :type AutoRenewFlag: int
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _DeductStatus:  上个周期预留券的抵扣状态，Deduct、NotDeduct
+        :type DeductStatus: str
+        """
+        self._ReservedInstanceId = None
+        self._ReservedInstanceName = None
+        self._Status = None
+        self._TimeSpan = None
+        self._ResourceType = None
+        self._Cpu = None
+        self._Memory = None
+        self._Scope = None
+        self._CreatedAt = None
+        self._ActiveAt = None
+        self._ExpireAt = None
+        self._GpuCount = None
+        self._AutoRenewFlag = None
+        self._ClusterId = None
+        self._NodeName = None
+        self._DeductStatus = None
+
+    @property
+    def ReservedInstanceId(self):
+        return self._ReservedInstanceId
+
+    @ReservedInstanceId.setter
+    def ReservedInstanceId(self, ReservedInstanceId):
+        self._ReservedInstanceId = ReservedInstanceId
+
+    @property
+    def ReservedInstanceName(self):
+        return self._ReservedInstanceName
+
+    @ReservedInstanceName.setter
+    def ReservedInstanceName(self, ReservedInstanceName):
+        self._ReservedInstanceName = ReservedInstanceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ActiveAt(self):
+        return self._ActiveAt
+
+    @ActiveAt.setter
+    def ActiveAt(self, ActiveAt):
+        self._ActiveAt = ActiveAt
+
+    @property
+    def ExpireAt(self):
+        return self._ExpireAt
+
+    @ExpireAt.setter
+    def ExpireAt(self, ExpireAt):
+        self._ExpireAt = ExpireAt
+
+    @property
+    def GpuCount(self):
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def DeductStatus(self):
+        return self._DeductStatus
+
+    @DeductStatus.setter
+    def DeductStatus(self, DeductStatus):
+        self._DeductStatus = DeductStatus
+
+
+    def _deserialize(self, params):
+        self._ReservedInstanceId = params.get("ReservedInstanceId")
+        self._ReservedInstanceName = params.get("ReservedInstanceName")
+        self._Status = params.get("Status")
+        self._TimeSpan = params.get("TimeSpan")
+        self._ResourceType = params.get("ResourceType")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Scope = params.get("Scope")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ActiveAt = params.get("ActiveAt")
+        self._ExpireAt = params.get("ExpireAt")
+        self._GpuCount = params.get("GpuCount")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        self._DeductStatus = params.get("DeductStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedInstanceScope(AbstractModel):
+    """预留券抵扣范围的描述信息，当抵扣范围为 Region 时，表示地域抵扣，其他参数不需要传；当抵扣范围为 Zone 时，表示可用区抵扣，Zone 参数必传；当抵扣范围为 Node 时，表示节点抵扣，参数 Zone、ClusterId和NodeName均必传。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scope: 抵扣范围，取值：Region、Zone 和 Node
+        :type Scope: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _ClusterId: 集群 ID
+        :type ClusterId: str
+        :param _NodeName:  节点名称
+        :type NodeName: str
+        """
+        self._Scope = None
+        self._Zone = None
+        self._ClusterId = None
+        self._NodeName = None
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+
+    def _deserialize(self, params):
+        self._Scope = params.get("Scope")
+        self._Zone = params.get("Zone")
+        self._ClusterId = params.get("ClusterId")
+        self._NodeName = params.get("NodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedInstanceSpec(AbstractModel):
+    """预留券规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 资源类型：common、amd、v100、t4、a10\*gnv4、a10\*gnv4v、a10\*pnv4、windows-common、windows-amd，common表示通用类型。
+        :type Type: str
+        :param _Cpu: 核数
+        :type Cpu: float
+        :param _Memory: 内存
+        :type Memory: float
+        :param _Gpu: GPU卡数，当Type为GPU类型时设置。
+        :type Gpu: float
+        """
+        self._Type = None
+        self._Cpu = None
+        self._Memory = None
+        self._Gpu = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Gpu = params.get("Gpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResourceDeleteOption(AbstractModel):
@@ -33287,6 +35194,92 @@ class SubnetInfos(AbstractModel):
         self._SecurityGroups = params.get("SecurityGroups")
         self._Os = params.get("Os")
         self._Arch = params.get("Arch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperNodeResource(AbstractModel):
+    """超级节点上的资源统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeName: 节点名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _Num: 节点上的资源总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Num: int
+        :param _Cpu: 节点上的总核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: float
+        :param _Memory: 节点上的总内存数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: float
+        :param _Gpu: 节点上的总 GPU 卡数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gpu: float
+        """
+        self._NodeName = None
+        self._Num = None
+        self._Cpu = None
+        self._Memory = None
+        self._Gpu = None
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Num(self):
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Gpu(self):
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+
+    def _deserialize(self, params):
+        self._NodeName = params.get("NodeName")
+        self._Num = params.get("Num")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Gpu = params.get("Gpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

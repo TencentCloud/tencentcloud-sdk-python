@@ -7330,6 +7330,37 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
+    """CreateChannelOrganizationInfoChangeUrl请求参数结构体
+
+    """
+
+
+class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
+    """CreateChannelOrganizationInfoChangeUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConsoleLoginUrlRequest(AbstractModel):
     """CreateConsoleLoginUrl请求参数结构体
 

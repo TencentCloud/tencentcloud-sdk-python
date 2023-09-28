@@ -3157,8 +3157,7 @@ class LiveClient(AbstractClient):
 
     def ModifyLivePullStreamTask(self, request):
         """更新直播拉流任务。
-        1. 不支持修改目标地址，如需推到新地址，请创建新任务。
-        2. 不支持修改拉流源类型，如需更换，请创建新任务。
+        1. 不支持修改拉流源类型，如需更换，请创建新任务。
 
         :param request: Request instance for ModifyLivePullStreamTask.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyLivePullStreamTaskRequest`

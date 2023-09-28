@@ -30,11 +30,11 @@ class AnalyzeDenseLandmarksRequest(AbstractModel):
 最多返回 5 张人脸的五官定位（人脸关键点）具体信息。
         :type Mode: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。  
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -196,11 +196,11 @@ class AnalyzeFaceRequest(AbstractModel):
         :param _Mode: 检测模式。0 为检测所有出现的人脸， 1 为检测面积最大的人脸。默认为 0。最多返回 10 张人脸的五官定位（人脸关键点）具体信息。
         :type Mode: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -520,17 +520,17 @@ class CompareFaceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
         :param _ImageB: B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
         :param _UrlA: A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -538,7 +538,7 @@ A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
         :param _UrlB: B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -711,17 +711,17 @@ class CompareMaskFaceRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ImageA: A 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageA: str
         :param _ImageB: B 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type ImageB: str
         :param _UrlA: A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -729,7 +729,7 @@ A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type UrlA: str
         :param _UrlB: B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -978,13 +978,13 @@ class CreateFaceRequest(AbstractModel):
         :param _PersonId: 人员ID，取值为创建人员接口中的PersonId
         :type PersonId: str
         :param _Images: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 人员人脸总数量不可超过5张。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Images: list of str
         :param _Urls: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -1332,11 +1332,11 @@ class CreatePersonRequest(AbstractModel):
         :param _PersonExDescriptionInfos: 人员描述字段内容，key-value。[0，60]个字符，可修改，可重复。
         :type PersonExDescriptionInfos: list of PersonExDescriptionInfo
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -2159,12 +2159,12 @@ class DetectFaceAttributesRequest(AbstractModel):
 此参数用于控制处理待检测图片中的人脸个数，值越小，处理速度越快。
         :type MaxFaceNum: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。 
 对应图片 base64 编码后大小不可超过5M。 
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。 
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -2349,11 +2349,11 @@ class DetectFaceRequest(AbstractModel):
 
         :type MinFaceSize: int
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -6065,11 +6065,11 @@ class SearchFacesRequest(AbstractModel):
 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。  
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -6291,11 +6291,11 @@ class SearchFacesReturnsByGroupRequest(AbstractModel):
 不可同时搜索不同算法模型版本（FaceModelVersion）的人员库。
         :type GroupIds: list of str
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -6517,12 +6517,12 @@ class SearchPersonsRequest(AbstractModel):
         :param _GroupIds: 希望搜索的人员库列表，上限100个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -6744,11 +6744,11 @@ class SearchPersonsReturnsByGroupRequest(AbstractModel):
         :param _GroupIds: 希望搜索的人员库列表，上限60个。数组元素取值为创建人员库接口中的GroupId
         :type GroupIds: list of str
         :param _Image: 图片 base64 数据，base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Image: str
         :param _Url: 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 Url、Image必须提供一个，如果都提供，只使用 Url。
 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的Url速度和稳定性可能受一定影响。
