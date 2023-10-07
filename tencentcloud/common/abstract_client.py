@@ -324,7 +324,7 @@ class AbstractClient(object):
 
     def _check_status(self, resp_inter):
         if resp_inter.status_code != 200:
-            raise TencentCloudSDKException("ServerNetworkError", resp_inter.data)
+            raise TencentCloudSDKException("ServerNetworkError", resp_inter.content)
 
     def _format_sign_string(self, params):
         formatParam = {}
@@ -353,7 +353,7 @@ class AbstractClient(object):
         return self._handle_response_json(resp)
 
     def _handle_response_json(self, resp):
-        data = json.loads(resp.data)
+        data = json.loads(resp.content)
         if "Error" in data["Response"]:
             code = data["Response"]["Error"]["Code"]
             message = data["Response"]["Error"]["Message"]
@@ -364,7 +364,7 @@ class AbstractClient(object):
             warnings.filterwarnings("default")
             warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
                           DeprecationWarning)
-        return resp.data
+        return data
 
     def _handle_response_sse(self, resp):
         e = {}
@@ -453,10 +453,7 @@ class AbstractClient(object):
 
         resp = self.request.send_request(req)
         self._check_status(resp)
-        data = self._handle_response(resp)
-
-        json_rsp = json.loads(data)
-        return json_rsp
+        return self._handle_response(resp)
 
     def call_json(self, action, params, headers=None, options=None):
         """
