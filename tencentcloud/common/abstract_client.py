@@ -323,7 +323,7 @@ class AbstractClient(object):
         return body
 
     def _check_status(self, resp_inter):
-        if resp_inter.status != 200:
+        if resp_inter.status_code != 200:
             raise TencentCloudSDKException("ServerNetworkError", resp_inter.data)
 
     def _format_sign_string(self, params):
@@ -345,7 +345,7 @@ class AbstractClient(object):
         return endpoint
 
     def _handle_response(self, resp):
-        content_type = resp.raw_resp.headers["Content-Type"]
+        content_type = resp.headers["Content-Type"]
 
         if content_type == "text/event-stream":
             return self._handle_response_sse(resp)
@@ -369,7 +369,7 @@ class AbstractClient(object):
     def _handle_response_sse(self, resp):
         e = {}
 
-        for line in resp.raw_resp.iter_lines():
+        for line in resp.iter_lines():
             if not line:
                 yield e
                 e = {}
@@ -379,7 +379,10 @@ class AbstractClient(object):
             colon_idx = line.find(':')
             key = line[:colon_idx]
             val = line[colon_idx + 1:]
-            e[key] = val
+            if key in ('event', 'data', 'id'):
+                e[key] = val
+            elif key == 'retry':
+                e[key] = int(val)
 
     def call(self, action, params, options=None, headers=None):
         if not self.profile.disable_region_breaker:
