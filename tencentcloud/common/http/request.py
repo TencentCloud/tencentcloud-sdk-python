@@ -14,7 +14,6 @@ except ImportError:
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 
-
 logger = logging.getLogger("tencentcloud_sdk_common")
 
 
@@ -41,7 +40,7 @@ class ProxyConnection(object):
             self.proxy = {"http": proxy, "https": proxy}
         self.request_length = 0
 
-    def request(self, method, url, body=None, headers={}):
+    def request(self, method, url, body=None, headers=None, stream=False):
         self.request_length = 0
         headers.setdefault("Host", self.request_host)
         return requests.request(method=method,
@@ -50,7 +49,8 @@ class ProxyConnection(object):
                                 headers=headers,
                                 proxies=self.proxy,
                                 verify=self.certification,
-                                timeout=self.timeout)
+                                timeout=self.timeout,
+                                stream=stream)
 
 
 class ApiRequest(object):
@@ -94,10 +94,10 @@ class ApiRequest(object):
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (url, req_inter.data)
             return self.conn.request(req_inter.method, req_inter_url,
-                              None, req_inter.header)
+                                     None, req_inter.header, req_inter.stream)
         elif req_inter.method == 'POST':
             return self.conn.request(req_inter.method, url,
-                              req_inter.data, req_inter.header)
+                                     req_inter.data, req_inter.header, req_inter.stream)
         else:
             raise TencentCloudSDKException(
                 "ClientParamsError", 'Method only support (GET, POST)')
@@ -106,9 +106,12 @@ class ApiRequest(object):
         try:
             http_resp = self._request(req_inter)
             headers = dict(http_resp.headers)
-            resp_inter = ResponseInternal(status=http_resp.status_code,
-                                          header=headers,
-                                          data=http_resp.text)
+            resp_inter = ResponseInternal(
+                status=http_resp.status_code,
+                header=headers,
+                data=http_resp.text,
+                raw_resp=http_resp
+            )
             self.request_size = self.conn.request_length
             self.response_size = len(resp_inter.data)
             logger.debug("GetResponse %s" % resp_inter)
@@ -118,7 +121,7 @@ class ApiRequest(object):
 
 
 class RequestInternal(object):
-    def __init__(self, host="", method="", uri="", header=None, data=""):
+    def __init__(self, host="", method="", uri="", header=None, data="", stream=False):
         if header is None:
             header = {}
         self.host = host
@@ -126,6 +129,7 @@ class RequestInternal(object):
         self.uri = uri
         self.header = header
         self.data = data
+        self.stream = stream
 
     def __str__(self):
         headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
@@ -134,12 +138,13 @@ class RequestInternal(object):
 
 
 class ResponseInternal(object):
-    def __init__(self, status=0, header=None, data=""):
+    def __init__(self, status=0, header=None, data="", raw_resp=None):
         if header is None:
             header = {}
         self.status = status
         self.header = header
         self.data = data
+        self.raw_resp = raw_resp
 
     def __str__(self):
         headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())

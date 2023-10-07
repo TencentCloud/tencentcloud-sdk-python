@@ -344,18 +344,42 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
-    def _handle_response(self, data):
-        resp = json.loads(data)
-        if "Error" in resp["Response"]:
-            code = resp["Response"]["Error"]["Code"]
-            message = resp["Response"]["Error"]["Message"]
-            reqid = resp["Response"]["RequestId"]
+    def _handle_response(self, resp):
+        content_type = resp.raw_resp.headers["Content-Type"]
+
+        if content_type == "text/event-stream":
+            return self._handle_response_sse(resp)
+
+        return self._handle_response_json(resp)
+
+    def _handle_response_json(self, resp):
+        data = json.loads(resp.data)
+        if "Error" in data["Response"]:
+            code = data["Response"]["Error"]["Code"]
+            message = data["Response"]["Error"]["Message"]
+            reqid = data["Response"]["RequestId"]
             raise TencentCloudSDKException(code, message, reqid)
-        if "DeprecatedWarning" in resp["Response"]:
+        if "DeprecatedWarning" in data["Response"]:
             import warnings
             warnings.filterwarnings("default")
-            warnings.warn("This action is deprecated, detail: %s" % resp["Response"]["DeprecatedWarning"],
+            warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
                           DeprecationWarning)
+        return resp.data
+
+    def _handle_response_sse(self, resp):
+        e = {}
+
+        for line in resp.raw_resp.iter_lines():
+            if not line:
+                yield e
+                e = {}
+                continue
+
+            line = line.decode('utf-8')
+            colon_idx = line.find(':')
+            key = line[:colon_idx]
+            val = line[colon_idx + 1:]
+            e[key] = val
 
     def call(self, action, params, options=None, headers=None):
         if not self.profile.disable_region_breaker:
@@ -368,9 +392,7 @@ class AbstractClient(object):
 
         resp_inter = self.request.send_request(req)
         self._check_status(resp_inter)
-        data = resp_inter.data
-        self._handle_response(data)
-        return data
+        return self._handle_response(resp_inter)
 
     def call_with_region_breaker(self, action, params, options=None, headers=None):
         endpoint = self._get_endpoint()
@@ -386,8 +408,7 @@ class AbstractClient(object):
         try:
             resp_inter = self.request.send_request(req)
             self._check_status(resp_inter)
-            data = resp_inter.data
-            self._handle_response(data)
+            data = self._handle_response(resp_inter)
             self.circuit_breaker.after_requests(generation, True)
         except TencentCloudSDKException as e:
             if "RequestId" in data and e.code != "InternalError":
@@ -429,8 +450,7 @@ class AbstractClient(object):
 
         resp = self.request.send_request(req)
         self._check_status(resp)
-        data = resp.data
-        self._handle_response(data)
+        data = self._handle_response(resp)
 
         json_rsp = json.loads(data)
         return json_rsp
@@ -448,9 +468,7 @@ class AbstractClient(object):
         :type options: dict
         :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        body = self.call(action, params, options, headers)
-        response = json.loads(body)
-        return response
+        return self.call(action, params, options, headers)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
@@ -487,7 +505,7 @@ class AbstractClient(object):
         log = logging.getLogger(LOGGER_NAME)
         log.setLevel(level)
         mb = 1024 * 1024
-        fh = logging.handlers.RotatingFileHandler(file_path, maxBytes=512*mb, backupCount=10)
+        fh = logging.handlers.RotatingFileHandler(file_path, maxBytes=512 * mb, backupCount=10)
         fh.setLevel(level)
         if log_format is None:
             log_format = self.FMT
