@@ -140,6 +140,9 @@ FAILEDOPERATION_TYPEINCONFLICT = 'FailedOperation.TypeInConflict'
 # 该IP已被占用。
 FAILEDOPERATION_VPCIPINUSEERROR = 'FailedOperation.VpcIpInUseError'
 
+# 无效IP
+FAILEDOPERATION_VPCIPINVALIDERROR = 'FailedOperation.VpcIpInvalidError'
+
 # 子网中不存在该IP
 FAILEDOPERATION_VPCIPNOTINSUBNETERROR = 'FailedOperation.VpcIpNotInSubnetError'
 

@@ -12470,6 +12470,9 @@ Saas 域名扩展包  sv_wsm_waf_domain
         :param _InstanceId: 对存在的实例购买bot 或api 安全
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _ResourceId: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
         """
         self._TimeSpan = None
         self._TimeUnit = None
@@ -12482,6 +12485,7 @@ Saas 域名扩展包  sv_wsm_waf_domain
         self._LabelCounts = None
         self._CurDeadline = None
         self._InstanceId = None
+        self._ResourceId = None
 
     @property
     def TimeSpan(self):
@@ -12571,6 +12575,14 @@ Saas 域名扩展包  sv_wsm_waf_domain
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._TimeSpan = params.get("TimeSpan")
@@ -12584,6 +12596,7 @@ Saas 域名扩展包  sv_wsm_waf_domain
         self._LabelCounts = params.get("LabelCounts")
         self._CurDeadline = params.get("CurDeadline")
         self._InstanceId = params.get("InstanceId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

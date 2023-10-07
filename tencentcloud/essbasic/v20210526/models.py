@@ -7335,6 +7335,48 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _ChangeType: 企业信息变更类型，可选类型如下：
+<ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+        :type ChangeType: int
+        """
+        self._Agent = None
+        self._ChangeType = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ChangeType(self):
+        return self._ChangeType
+
+    @ChangeType.setter
+    def ChangeType(self, ChangeType):
+        self._ChangeType = ChangeType
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ChangeType = params.get("ChangeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
     """CreateChannelOrganizationInfoChangeUrl返回参数结构体
@@ -7343,10 +7385,32 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Url: 创建的企业信息变更链接。
+        :type Url: str
+        :param _ExpiredTime: 链接过期时间。链接7天有效。
+        :type ExpiredTime: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Url = None
+        self._ExpiredTime = None
         self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
 
     @property
     def RequestId(self):
@@ -7358,6 +7422,8 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._ExpiredTime = params.get("ExpiredTime")
         self._RequestId = params.get("RequestId")
 
 
