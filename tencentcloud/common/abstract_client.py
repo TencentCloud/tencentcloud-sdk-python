@@ -376,6 +376,11 @@ class AbstractClient(object):
                 continue
 
             line = line.decode('utf-8')
+
+            # comment
+            if line[0] == ':':
+                continue
+
             colon_idx = line.find(':')
             key = line[:colon_idx]
             val = line[colon_idx + 1:]
