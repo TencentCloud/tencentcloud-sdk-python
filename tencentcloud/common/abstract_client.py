@@ -384,7 +384,13 @@ class AbstractClient(object):
             colon_idx = line.find(':')
             key = line[:colon_idx]
             val = line[colon_idx + 1:]
-            if key in ('event', 'data', 'id'):
+            if key == 'data':
+                # The spec allows for multiple data fields per event, concatenated them with "\n".
+                if 'data' not in e:
+                    e['data'] = val
+                else:
+                    e['data'] += '\n' + val
+            elif key in ('event', 'id'):
                 e[key] = val
             elif key == 'retry':
                 e[key] = int(val)
