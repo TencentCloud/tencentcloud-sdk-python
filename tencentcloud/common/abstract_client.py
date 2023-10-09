@@ -364,7 +364,7 @@ class AbstractClient(object):
             warnings.filterwarnings("default")
             warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
                           DeprecationWarning)
-        return data
+        return resp.content
 
     def _handle_response_sse(self, resp):
         e = {}
