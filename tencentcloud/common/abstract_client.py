@@ -479,7 +479,7 @@ class AbstractClient(object):
         :type options: dict
         :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        return self.call(action, params, options, headers)
+        return json.loads(self.call(action, params, options, headers))
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
