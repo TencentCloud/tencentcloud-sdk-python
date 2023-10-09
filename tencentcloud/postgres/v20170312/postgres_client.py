@@ -2080,3 +2080,26 @@ class PostgresClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDBInstanceMajorVersion(self, request):
+        """本接口（UpgradeDBInstanceMajorVersion）用于升级实例内核大版本，例如从PostgreSQL 12升级到PostgreSQL 15。
+
+        :param request: Request instance for UpgradeDBInstanceMajorVersion.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDBInstanceMajorVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDBInstanceMajorVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

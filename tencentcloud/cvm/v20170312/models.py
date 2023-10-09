@@ -10393,6 +10393,9 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type GpuCount: float
         :param _Frequency: 实例的CPU主频信息
         :type Frequency: str
+        :param _StatusCategory: 描述库存情况。取值范围： <br><li> UnderStock：表示对应库存即将售罄<br><li> NormalStock：表示对应库存供应有保障<br><li> EnoughStock：表示对应库存非常充足<br><li> WithoutStock：表示对应库存已经售罄
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCategory: str
         """
         self._Zone = None
         self._InstanceType = None
@@ -10416,6 +10419,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         self._Remark = None
         self._GpuCount = None
         self._Frequency = None
+        self._StatusCategory = None
 
     @property
     def Zone(self):
@@ -10593,6 +10597,14 @@ class InstanceTypeQuotaItem(AbstractModel):
     def Frequency(self, Frequency):
         self._Frequency = Frequency
 
+    @property
+    def StatusCategory(self):
+        return self._StatusCategory
+
+    @StatusCategory.setter
+    def StatusCategory(self, StatusCategory):
+        self._StatusCategory = StatusCategory
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -10626,6 +10638,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         self._Remark = params.get("Remark")
         self._GpuCount = params.get("GpuCount")
         self._Frequency = params.get("Frequency")
+        self._StatusCategory = params.get("StatusCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

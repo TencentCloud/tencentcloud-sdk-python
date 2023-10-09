@@ -1430,7 +1430,7 @@ class ClsClient(AbstractClient):
 
 
     def GetAlarmLog(self, request):
-        """本接口用于获取告警任务历史
+        """本接口用于获取告警策略执行详情
 
         :param request: Request instance for GetAlarmLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.GetAlarmLogRequest`

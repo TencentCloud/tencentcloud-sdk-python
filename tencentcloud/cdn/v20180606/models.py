@@ -15938,7 +15938,7 @@ failed：部署失败
         :param _Hsts: Hsts配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hsts: :class:`tencentcloud.cdn.v20180606.models.Hsts`
-        :param _TlsVersion: Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+        :param _TlsVersion: Tls版本设置，仅支持部分Advance域名，支持设置 TLSv1, TLSv1.1, TLSv1.2, TLSv1.3，修改时必须开启连续的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type TlsVersion: list of str
         """

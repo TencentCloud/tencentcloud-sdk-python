@@ -302,6 +302,75 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckDataEngineConfigPairsValidity(self, request):
+        """本接口（CheckDataEngineConfigPairsValidity）用于检查引擎用户自定义参数的有效性
+
+        :param request: Request instance for CheckDataEngineConfigPairsValidity.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineConfigPairsValidity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineConfigPairsValidityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckDataEngineImageCanBeRollback(self, request):
+        """本接口（CheckDataEngineImageCanBeRollback）用于查看集群是否能回滚。
+
+        :param request: Request instance for CheckDataEngineImageCanBeRollback.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineImageCanBeRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineImageCanBeRollbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckDataEngineImageCanBeUpgrade(self, request):
+        """本接口（CheckDataEngineImageCanBeUpgrade）用于查看集群镜像是否能够升级。
+
+        :param request: Request instance for CheckDataEngineImageCanBeUpgrade.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineImageCanBeUpgrade", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineImageCanBeUpgradeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckLockMetaData(self, request):
         """元数据锁检查
 
@@ -831,6 +900,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDataEngine(self, request):
+        """删除数据引擎
+
+        :param request: Request instance for DeleteDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteNotebookSession(self, request):
         """本接口（DeleteNotebookSession）用于删除交互式session（notebook）
 
@@ -1052,6 +1144,75 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDMSTables", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDMSTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEngine(self, request):
+        """本接口根据名称用于获取数据引擎详细信息
+
+        :param request: Request instance for DescribeDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEngineImageVersions(self, request):
+        """本接口（DescribeDataEngineImageVersions）用于获取独享集群大版本镜像列表。
+
+        :param request: Request instance for DescribeDataEngineImageVersions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngineImageVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEngineImageVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEnginePythonSparkImages(self, request):
+        """本接口（DescribeDataEnginePythonSparkImages）用于获取PYSPARK镜像列表
+
+        :param request: Request instance for DescribeDataEnginePythonSparkImages.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEnginePythonSparkImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEnginePythonSparkImagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +1797,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserDataEngineConfig(self, request):
+        """查询用户自定义引擎参数
+
+        :param request: Request instance for DescribeUserDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserInfo(self, request):
+        """获取用户详细信息
+
+        :param request: Request instance for DescribeUserInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserRoles(self, request):
         """列举用户角色信息
 
@@ -1650,6 +1857,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeUserRoles", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserType(self, request):
+        """获取用户类型
+
+        :param request: Request instance for DescribeUserType.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1696,6 +1926,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeViews", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkGroupInfo(self, request):
+        """获取工作组详细信息
+
+        :param request: Request instance for DescribeWorkGroupInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkGroupInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1912,6 +2165,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDataEngineDescription(self, request):
+        """修改引擎描述信息
+
+        :param request: Request instance for ModifyDataEngineDescription.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataEngineDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataEngineDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyGovernEventRule(self, request):
         """修改数据治理事件阈值
 
@@ -2004,6 +2280,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserType(self, request):
+        """修改用户类型。只有管理员用户能够调用该接口进行操作
+
+        :param request: Request instance for ModifyUserType.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyWorkGroup(self, request):
         """修改工作组信息
 
@@ -2050,6 +2349,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RenewDataEngine(self, request):
+        """续费数据引擎
+
+        :param request: Request instance for RenewDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReportHeartbeatMetaData(self, request):
         """上报元数据心跳
 
@@ -2064,6 +2386,52 @@ class DlcClient(AbstractClient):
             body = self.call("ReportHeartbeatMetaData", params, headers=headers)
             response = json.loads(body)
             model = models.ReportHeartbeatMetaDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartDataEngine(self, request):
+        """重启引擎
+
+        :param request: Request instance for RestartDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackDataEngineImage(self, request):
+        """回滚引擎镜像版本
+
+        :param request: Request instance for RollbackDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackDataEngineImageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2119,6 +2487,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SwitchDataEngineImage(self, request):
+        """切换引擎镜像版本
+
+        :param request: Request instance for SwitchDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchDataEngineImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UnbindWorkGroupsFromUser(self, request):
         """解绑用户上的用户组
 
@@ -2165,6 +2556,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateDataEngine(self, request):
+        """本接口用于更新数据引擎配置
+
+        :param request: Request instance for UpdateDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataEngineConfig(self, request):
+        """用户某种操作，触发引擎配置修改
+
+        :param request: Request instance for UpdateDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateRowFilter(self, request):
         """此接口用于更新行过滤规则。注意只能更新过滤规则，不能更新规格对象catalog，database和table。
 
@@ -2179,6 +2616,52 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateRowFilter", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateRowFilterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUserDataEngineConfig(self, request):
+        """修改用户引擎自定义配置
+
+        :param request: Request instance for UpdateUserDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUserDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUserDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDataEngineImage(self, request):
+        """升级引擎镜像
+
+        :param request: Request instance for UpgradeDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDataEngineImageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

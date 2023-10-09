@@ -15234,6 +15234,174 @@ class UpgradeDBInstanceKernelVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpgradeDBInstanceMajorVersionRequest(AbstractModel):
+    """UpgradeDBInstanceMajorVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例ID。
+        :type DBInstanceId: str
+        :param _TargetDBKernelVersion: 目标内核版本号，可以通过API DescribeDBVersions获取可以升级的目标内核版本号。
+        :type TargetDBKernelVersion: str
+        :param _UpgradeCheck: 是否为校验模式，若UpgradeCheck为True，表示仅进行内核版本兼容性检查，不会进行实质性的升级操作，对原实例无影响。检查结果可以通过升级日志查看。
+        :type UpgradeCheck: bool
+        :param _BackupBeforeUpgrade: 升级前备份选项。True，表示升级前需要创建全量备份，False，表示升级前不需要创建全量备份。当实例已有备份集可以恢复到升级前的状态时，可选择False，否则需要指定为True。UpgradeCheck为True时，此参数无效。
+        :type BackupBeforeUpgrade: bool
+        :param _StatisticsRefreshOption: 统计信息收集选项，对主例运行 ANALYZE 以在升级后更新系统统计信息。可选值包括，
+0：不需要收集统计信息；
+1：实例恢复写之前收集统计信息；
+3：实例恢复写之后收集统计信息。
+UpgradeCheck为True时，此参数无效。
+        :type StatisticsRefreshOption: int
+        :param _ExtensionUpgradeOption: 插件升级选项，pg_upgrade不会升级任何插件，需要在升级完成后在创建过插件的库上执行"ALTER EXTENSION UPDATE"。发起升级实例大版本时可以指定在实例恢复写前/后是否需要升级任务自动升级插件版本。可选值包括：
+0：不需要自动升级插件；
+1：恢复写之前升级插件；
+2：恢复写之后升级插件。
+UpgradeCheck为True时，此参数无效。
+        :type ExtensionUpgradeOption: int
+        :param _UpgradeTimeOption: 升级时间选项，升级过程中会有一段时间实例只读，并会有一次秒级闪断，发起升级时需要选择这段影响的时间窗。可选值包括：
+0：自动执行，不需要指定时间窗；
+1：指定本次升级任务的时间窗，通过参数UpgradeTimeBegin和UpgradeTimeEnd设置；
+2：在实例运维时间窗内执行。
+UpgradeCheck为True时，此参数无效。
+        :type UpgradeTimeOption: int
+        :param _UpgradeTimeBegin: 升级时间窗开始时间，时间格式：HH:MM:SS，例如：01:00:00。当UpgradeTimeOption为1时，该参数有效。
+UpgradeCheck为True时，此参数无效。
+        :type UpgradeTimeBegin: str
+        :param _UpgradeTimeEnd: 升级时间窗截止时间，时间格式：HH:MM:SS，例如：02:00:00。当UpgradeTimeOption为1时，该参数有效。
+UpgradeCheck为True时，此参数无效。
+        :type UpgradeTimeEnd: str
+        """
+        self._DBInstanceId = None
+        self._TargetDBKernelVersion = None
+        self._UpgradeCheck = None
+        self._BackupBeforeUpgrade = None
+        self._StatisticsRefreshOption = None
+        self._ExtensionUpgradeOption = None
+        self._UpgradeTimeOption = None
+        self._UpgradeTimeBegin = None
+        self._UpgradeTimeEnd = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def TargetDBKernelVersion(self):
+        return self._TargetDBKernelVersion
+
+    @TargetDBKernelVersion.setter
+    def TargetDBKernelVersion(self, TargetDBKernelVersion):
+        self._TargetDBKernelVersion = TargetDBKernelVersion
+
+    @property
+    def UpgradeCheck(self):
+        return self._UpgradeCheck
+
+    @UpgradeCheck.setter
+    def UpgradeCheck(self, UpgradeCheck):
+        self._UpgradeCheck = UpgradeCheck
+
+    @property
+    def BackupBeforeUpgrade(self):
+        return self._BackupBeforeUpgrade
+
+    @BackupBeforeUpgrade.setter
+    def BackupBeforeUpgrade(self, BackupBeforeUpgrade):
+        self._BackupBeforeUpgrade = BackupBeforeUpgrade
+
+    @property
+    def StatisticsRefreshOption(self):
+        return self._StatisticsRefreshOption
+
+    @StatisticsRefreshOption.setter
+    def StatisticsRefreshOption(self, StatisticsRefreshOption):
+        self._StatisticsRefreshOption = StatisticsRefreshOption
+
+    @property
+    def ExtensionUpgradeOption(self):
+        return self._ExtensionUpgradeOption
+
+    @ExtensionUpgradeOption.setter
+    def ExtensionUpgradeOption(self, ExtensionUpgradeOption):
+        self._ExtensionUpgradeOption = ExtensionUpgradeOption
+
+    @property
+    def UpgradeTimeOption(self):
+        return self._UpgradeTimeOption
+
+    @UpgradeTimeOption.setter
+    def UpgradeTimeOption(self, UpgradeTimeOption):
+        self._UpgradeTimeOption = UpgradeTimeOption
+
+    @property
+    def UpgradeTimeBegin(self):
+        return self._UpgradeTimeBegin
+
+    @UpgradeTimeBegin.setter
+    def UpgradeTimeBegin(self, UpgradeTimeBegin):
+        self._UpgradeTimeBegin = UpgradeTimeBegin
+
+    @property
+    def UpgradeTimeEnd(self):
+        return self._UpgradeTimeEnd
+
+    @UpgradeTimeEnd.setter
+    def UpgradeTimeEnd(self, UpgradeTimeEnd):
+        self._UpgradeTimeEnd = UpgradeTimeEnd
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._TargetDBKernelVersion = params.get("TargetDBKernelVersion")
+        self._UpgradeCheck = params.get("UpgradeCheck")
+        self._BackupBeforeUpgrade = params.get("BackupBeforeUpgrade")
+        self._StatisticsRefreshOption = params.get("StatisticsRefreshOption")
+        self._ExtensionUpgradeOption = params.get("ExtensionUpgradeOption")
+        self._UpgradeTimeOption = params.get("UpgradeTimeOption")
+        self._UpgradeTimeBegin = params.get("UpgradeTimeBegin")
+        self._UpgradeTimeEnd = params.get("UpgradeTimeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDBInstanceMajorVersionResponse(AbstractModel):
+    """UpgradeDBInstanceMajorVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpgradeDBInstanceRequest(AbstractModel):
     """UpgradeDBInstance请求参数结构体
 

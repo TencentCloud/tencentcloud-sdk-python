@@ -26637,12 +26637,16 @@ class PrometheusZoneItem(AbstractModel):
         :type RegionId: int
         :param _ZoneName: 可用区名（目前为中文）
         :type ZoneName: str
+        :param _ZoneResourceState: 可用区资源状态(0:资源不足，不可使用；1:资源足够)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneResourceState: int
         """
         self._Zone = None
         self._ZoneId = None
         self._ZoneState = None
         self._RegionId = None
         self._ZoneName = None
+        self._ZoneResourceState = None
 
     @property
     def Zone(self):
@@ -26684,6 +26688,14 @@ class PrometheusZoneItem(AbstractModel):
     def ZoneName(self, ZoneName):
         self._ZoneName = ZoneName
 
+    @property
+    def ZoneResourceState(self):
+        return self._ZoneResourceState
+
+    @ZoneResourceState.setter
+    def ZoneResourceState(self, ZoneResourceState):
+        self._ZoneResourceState = ZoneResourceState
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -26691,6 +26703,7 @@ class PrometheusZoneItem(AbstractModel):
         self._ZoneState = params.get("ZoneState")
         self._RegionId = params.get("RegionId")
         self._ZoneName = params.get("ZoneName")
+        self._ZoneResourceState = params.get("ZoneResourceState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

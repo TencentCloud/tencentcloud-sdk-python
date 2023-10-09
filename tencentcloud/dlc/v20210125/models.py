@@ -1505,6 +1505,294 @@ class CancelTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckDataEngineConfigPairsValidityRequest(AbstractModel):
+    """CheckDataEngineConfigPairsValidity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChildImageVersionId: 引擎小版本ID
+        :type ChildImageVersionId: str
+        :param _DataEngineConfigPairs: 用户自定义参数
+        :type DataEngineConfigPairs: list of DataEngineConfigPair
+        :param _ImageVersionId: 引擎大版本ID，存在小版本ID时仅需传入小版本ID，不存在时会获取当前大版本下最新的小版本ID。
+        :type ImageVersionId: str
+        """
+        self._ChildImageVersionId = None
+        self._DataEngineConfigPairs = None
+        self._ImageVersionId = None
+
+    @property
+    def ChildImageVersionId(self):
+        return self._ChildImageVersionId
+
+    @ChildImageVersionId.setter
+    def ChildImageVersionId(self, ChildImageVersionId):
+        self._ChildImageVersionId = ChildImageVersionId
+
+    @property
+    def DataEngineConfigPairs(self):
+        return self._DataEngineConfigPairs
+
+    @DataEngineConfigPairs.setter
+    def DataEngineConfigPairs(self, DataEngineConfigPairs):
+        self._DataEngineConfigPairs = DataEngineConfigPairs
+
+    @property
+    def ImageVersionId(self):
+        return self._ImageVersionId
+
+    @ImageVersionId.setter
+    def ImageVersionId(self, ImageVersionId):
+        self._ImageVersionId = ImageVersionId
+
+
+    def _deserialize(self, params):
+        self._ChildImageVersionId = params.get("ChildImageVersionId")
+        if params.get("DataEngineConfigPairs") is not None:
+            self._DataEngineConfigPairs = []
+            for item in params.get("DataEngineConfigPairs"):
+                obj = DataEngineConfigPair()
+                obj._deserialize(item)
+                self._DataEngineConfigPairs.append(obj)
+        self._ImageVersionId = params.get("ImageVersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDataEngineConfigPairsValidityResponse(AbstractModel):
+    """CheckDataEngineConfigPairsValidity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAvailable: 参数有效性：ture:有效，false:至少存在一个无效参数；
+        :type IsAvailable: bool
+        :param _UnavailableConfig: 无效参数集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnavailableConfig: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsAvailable = None
+        self._UnavailableConfig = None
+        self._RequestId = None
+
+    @property
+    def IsAvailable(self):
+        return self._IsAvailable
+
+    @IsAvailable.setter
+    def IsAvailable(self, IsAvailable):
+        self._IsAvailable = IsAvailable
+
+    @property
+    def UnavailableConfig(self):
+        return self._UnavailableConfig
+
+    @UnavailableConfig.setter
+    def UnavailableConfig(self, UnavailableConfig):
+        self._UnavailableConfig = UnavailableConfig
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsAvailable = params.get("IsAvailable")
+        self._UnavailableConfig = params.get("UnavailableConfig")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckDataEngineImageCanBeRollbackRequest(AbstractModel):
+    """CheckDataEngineImageCanBeRollback请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎唯一id
+        :type DataEngineId: str
+        """
+        self._DataEngineId = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDataEngineImageCanBeRollbackResponse(AbstractModel):
+    """CheckDataEngineImageCanBeRollback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ToRecordId: 回滚后日志记录id
+        :type ToRecordId: str
+        :param _FromRecordId: 回滚前日志记录id
+        :type FromRecordId: str
+        :param _IsRollback: 是否能够回滚
+        :type IsRollback: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ToRecordId = None
+        self._FromRecordId = None
+        self._IsRollback = None
+        self._RequestId = None
+
+    @property
+    def ToRecordId(self):
+        return self._ToRecordId
+
+    @ToRecordId.setter
+    def ToRecordId(self, ToRecordId):
+        self._ToRecordId = ToRecordId
+
+    @property
+    def FromRecordId(self):
+        return self._FromRecordId
+
+    @FromRecordId.setter
+    def FromRecordId(self, FromRecordId):
+        self._FromRecordId = FromRecordId
+
+    @property
+    def IsRollback(self):
+        return self._IsRollback
+
+    @IsRollback.setter
+    def IsRollback(self, IsRollback):
+        self._IsRollback = IsRollback
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ToRecordId = params.get("ToRecordId")
+        self._FromRecordId = params.get("FromRecordId")
+        self._IsRollback = params.get("IsRollback")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckDataEngineImageCanBeUpgradeRequest(AbstractModel):
+    """CheckDataEngineImageCanBeUpgrade请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 集群id
+        :type DataEngineId: str
+        """
+        self._DataEngineId = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDataEngineImageCanBeUpgradeResponse(AbstractModel):
+    """CheckDataEngineImageCanBeUpgrade返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChildImageVersionId: 当前大版本下，可升级的集群镜像小版本id
+        :type ChildImageVersionId: str
+        :param _IsUpgrade: 是否能够升级
+        :type IsUpgrade: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChildImageVersionId = None
+        self._IsUpgrade = None
+        self._RequestId = None
+
+    @property
+    def ChildImageVersionId(self):
+        return self._ChildImageVersionId
+
+    @ChildImageVersionId.setter
+    def ChildImageVersionId(self, ChildImageVersionId):
+        self._ChildImageVersionId = ChildImageVersionId
+
+    @property
+    def IsUpgrade(self):
+        return self._IsUpgrade
+
+    @IsUpgrade.setter
+    def IsUpgrade(self, IsUpgrade):
+        self._IsUpgrade = IsUpgrade
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChildImageVersionId = params.get("ChildImageVersionId")
+        self._IsUpgrade = params.get("IsUpgrade")
+        self._RequestId = params.get("RequestId")
+
+
 class CheckLockMetaDataRequest(AbstractModel):
     """CheckLockMetaData请求参数结构体
 
@@ -6244,6 +6532,136 @@ class DataEngineConfigPair(AbstractModel):
     """
 
 
+class DataEngineImageVersion(AbstractModel):
+    """集群大版本镜像信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageVersionId: 镜像大版本ID
+        :type ImageVersionId: str
+        :param _ImageVersion: 镜像大版本名称
+        :type ImageVersion: str
+        :param _Description: 镜像大版本描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _IsPublic: 是否为公共版本：1：公共；2：私有
+        :type IsPublic: int
+        :param _EngineType: 集群类型：SparkSQL/PrestoSQL/SparkBatch
+        :type EngineType: str
+        :param _IsSharedEngine: 版本状态：1：初始化；2：上线；3：下线
+        :type IsSharedEngine: int
+        :param _State: 版本状态：1：初始化；2：上线；3：下线
+        :type State: int
+        :param _InsertTime: 插入时间
+        :type InsertTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._ImageVersionId = None
+        self._ImageVersion = None
+        self._Description = None
+        self._IsPublic = None
+        self._EngineType = None
+        self._IsSharedEngine = None
+        self._State = None
+        self._InsertTime = None
+        self._UpdateTime = None
+
+    @property
+    def ImageVersionId(self):
+        return self._ImageVersionId
+
+    @ImageVersionId.setter
+    def ImageVersionId(self, ImageVersionId):
+        self._ImageVersionId = ImageVersionId
+
+    @property
+    def ImageVersion(self):
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsPublic(self):
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+    @property
+    def EngineType(self):
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def IsSharedEngine(self):
+        return self._IsSharedEngine
+
+    @IsSharedEngine.setter
+    def IsSharedEngine(self, IsSharedEngine):
+        self._IsSharedEngine = IsSharedEngine
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def InsertTime(self):
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ImageVersionId = params.get("ImageVersionId")
+        self._ImageVersion = params.get("ImageVersion")
+        self._Description = params.get("Description")
+        self._IsPublic = params.get("IsPublic")
+        self._EngineType = params.get("EngineType")
+        self._IsSharedEngine = params.get("IsSharedEngine")
+        self._State = params.get("State")
+        self._InsertTime = params.get("InsertTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataEngineInfo(AbstractModel):
     """DataEngine详细信息
 
@@ -7825,6 +8243,64 @@ class DatasourceConnectionLocation(AbstractModel):
         
 
 
+class DeleteDataEngineRequest(AbstractModel):
+    """DeleteDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineNames: 删除虚拟集群的名称数组
+        :type DataEngineNames: list of str
+        """
+        self._DataEngineNames = None
+
+    @property
+    def DataEngineNames(self):
+        return self._DataEngineNames
+
+    @DataEngineNames.setter
+    def DataEngineNames(self, DataEngineNames):
+        self._DataEngineNames = DataEngineNames
+
+
+    def _deserialize(self, params):
+        self._DataEngineNames = params.get("DataEngineNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataEngineResponse(AbstractModel):
+    """DeleteDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNotebookSessionRequest(AbstractModel):
     """DeleteNotebookSession请求参数结构体
 
@@ -9155,6 +9631,240 @@ class DescribeDMSTablesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TableList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataEngineImageVersionsRequest(AbstractModel):
+    """DescribeDataEngineImageVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EngineType: 引擎类型：SQL、SparkBatch
+        :type EngineType: str
+        """
+        self._EngineType = None
+
+    @property
+    def EngineType(self):
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+
+    def _deserialize(self, params):
+        self._EngineType = params.get("EngineType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEngineImageVersionsResponse(AbstractModel):
+    """DescribeDataEngineImageVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageParentVersions: 集群大版本镜像信息列表
+        :type ImageParentVersions: list of DataEngineImageVersion
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ImageParentVersions = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ImageParentVersions(self):
+        return self._ImageParentVersions
+
+    @ImageParentVersions.setter
+    def ImageParentVersions(self, ImageParentVersions):
+        self._ImageParentVersions = ImageParentVersions
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ImageParentVersions") is not None:
+            self._ImageParentVersions = []
+            for item in params.get("ImageParentVersions"):
+                obj = DataEngineImageVersion()
+                obj._deserialize(item)
+                self._ImageParentVersions.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataEnginePythonSparkImagesRequest(AbstractModel):
+    """DescribeDataEnginePythonSparkImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChildImageVersionId: 集群镜像小版本ID
+        :type ChildImageVersionId: str
+        """
+        self._ChildImageVersionId = None
+
+    @property
+    def ChildImageVersionId(self):
+        return self._ChildImageVersionId
+
+    @ChildImageVersionId.setter
+    def ChildImageVersionId(self, ChildImageVersionId):
+        self._ChildImageVersionId = ChildImageVersionId
+
+
+    def _deserialize(self, params):
+        self._ChildImageVersionId = params.get("ChildImageVersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEnginePythonSparkImagesResponse(AbstractModel):
+    """DescribeDataEnginePythonSparkImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PythonSparkImages: PYSPARK镜像信息列表
+        :type PythonSparkImages: list of PythonSparkImage
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PythonSparkImages = None
+        self._RequestId = None
+
+    @property
+    def PythonSparkImages(self):
+        return self._PythonSparkImages
+
+    @PythonSparkImages.setter
+    def PythonSparkImages(self, PythonSparkImages):
+        self._PythonSparkImages = PythonSparkImages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PythonSparkImages") is not None:
+            self._PythonSparkImages = []
+            for item in params.get("PythonSparkImages"):
+                obj = PythonSparkImage()
+                obj._deserialize(item)
+                self._PythonSparkImages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataEngineRequest(AbstractModel):
+    """DescribeDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: House名称
+        :type DataEngineName: str
+        """
+        self._DataEngineName = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEngineResponse(AbstractModel):
+    """DescribeDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngine: 数据引擎详细信息
+        :type DataEngine: :class:`tencentcloud.dlc.v20210125.models.DataEngineInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataEngine = None
+        self._RequestId = None
+
+    @property
+    def DataEngine(self):
+        return self._DataEngine
+
+    @DataEngine.setter
+    def DataEngine(self, DataEngine):
+        self._DataEngine = DataEngine
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataEngine") is not None:
+            self._DataEngine = DataEngineInfo()
+            self._DataEngine._deserialize(params.get("DataEngine"))
         self._RequestId = params.get("RequestId")
 
 
@@ -12163,6 +12873,211 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserDataEngineConfigRequest(AbstractModel):
+    """DescribeUserDataEngineConfig请求参数结构体
+
+    """
+
+
+class DescribeUserDataEngineConfigResponse(AbstractModel):
+    """DescribeUserDataEngineConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserInfoRequest(AbstractModel):
+    """DescribeUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户Id
+        :type UserId: str
+        :param _Type: 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+        :type Type: str
+        :param _Filters: 查询的过滤条件。
+
+当Type为Group时，支持Key为workgroup-name的模糊搜索；
+
+当Type为DataAuth时，支持key：
+
+policy-type：权限类型。
+
+policy-source：数据来源。
+
+data-name：库表的模糊搜索。
+
+当Type为EngineAuth时，支持key：
+
+policy-type：权限类型。
+
+policy-source：数据来源。
+
+engine-name：库表的模糊搜索。
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段。
+
+当Type为Group时，支持create-time、group-name
+
+当Type为DataAuth时，支持create-time
+
+当Type为EngineAuth时，支持create-time
+        :type SortBy: str
+        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :type Sorting: str
+        :param _Limit: 返回数量，默认20，最大值100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self._UserId = None
+        self._Type = None
+        self._Filters = None
+        self._SortBy = None
+        self._Sorting = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._Type = params.get("Type")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserInfoResponse(AbstractModel):
+    """DescribeUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserInfo: 用户详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserInfo: :class:`tencentcloud.dlc.v20210125.models.UserDetailInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserInfo = None
+        self._RequestId = None
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserDetailInfo()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserRolesRequest(AbstractModel):
     """DescribeUserRoles请求参数结构体
 
@@ -12295,6 +13210,77 @@ class DescribeUserRolesResponse(AbstractModel):
                 obj = UserRole()
                 obj._deserialize(item)
                 self._UserRoles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserTypeRequest(AbstractModel):
+    """DescribeUserType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID（UIN），如果不填默认为调用方的子UIN
+        :type UserId: str
+        """
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserTypeResponse(AbstractModel):
+    """DescribeUserType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserType: 用户类型。ADMIN：管理员 COMMON：普通用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserType = None
+        self._RequestId = None
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UserType = params.get("UserType")
         self._RequestId = params.get("RequestId")
 
 
@@ -12637,6 +13623,180 @@ class DescribeViewsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ViewList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkGroupInfoRequest(AbstractModel):
+    """DescribeWorkGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkGroupId: 工作组Id
+        :type WorkGroupId: int
+        :param _Type: 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+        :type Type: str
+        :param _Filters: 查询的过滤条件。
+
+当Type为User时，支持Key为user-name的模糊搜索；
+
+当Type为DataAuth时，支持key：
+
+policy-type：权限类型。
+
+policy-source：数据来源。
+
+data-name：库表的模糊搜索。
+
+当Type为EngineAuth时，支持key：
+
+policy-type：权限类型。
+
+policy-source：数据来源。
+
+engine-name：库表的模糊搜索。
+        :type Filters: list of Filter
+        :param _SortBy: 排序字段。
+
+当Type为User时，支持create-time、user-name
+
+当Type为DataAuth时，支持create-time
+
+当Type为EngineAuth时，支持create-time
+        :type SortBy: str
+        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc
+        :type Sorting: str
+        :param _Limit: 返回数量，默认20，最大值100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self._WorkGroupId = None
+        self._Type = None
+        self._Filters = None
+        self._SortBy = None
+        self._Sorting = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def WorkGroupId(self):
+        return self._WorkGroupId
+
+    @WorkGroupId.setter
+    def WorkGroupId(self, WorkGroupId):
+        self._WorkGroupId = WorkGroupId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._WorkGroupId = params.get("WorkGroupId")
+        self._Type = params.get("Type")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkGroupInfoResponse(AbstractModel):
+    """DescribeWorkGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkGroupInfo: 工作组详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupInfo: :class:`tencentcloud.dlc.v20210125.models.WorkGroupDetailInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkGroupInfo = None
+        self._RequestId = None
+
+    @property
+    def WorkGroupInfo(self):
+        return self._WorkGroupInfo
+
+    @WorkGroupInfo.setter
+    def WorkGroupInfo(self, WorkGroupInfo):
+        self._WorkGroupInfo = WorkGroupInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WorkGroupInfo") is not None:
+            self._WorkGroupInfo = WorkGroupDetailInfo()
+            self._WorkGroupInfo._deserialize(params.get("WorkGroupInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -14513,6 +15673,76 @@ class LockMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDataEngineDescriptionRequest(AbstractModel):
+    """ModifyDataEngineDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: 要修改的引擎的名称
+        :type DataEngineName: str
+        :param _Message: 引擎的描述信息，最大长度为250
+        :type Message: str
+        """
+        self._DataEngineName = None
+        self._Message = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataEngineDescriptionResponse(AbstractModel):
+    """ModifyDataEngineDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGovernEventRuleRequest(AbstractModel):
     """ModifyGovernEventRule请求参数结构体
 
@@ -15127,6 +16357,76 @@ class ModifyUserRequest(AbstractModel):
 
 class ModifyUserResponse(AbstractModel):
     """ModifyUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserTypeRequest(AbstractModel):
+    """ModifyUserType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+        :type UserId: str
+        :param _UserType: 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
+        :type UserType: str
+        """
+        self._UserId = None
+        self._UserType = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserTypeResponse(AbstractModel):
+    """ModifyUserType返回参数结构体
 
     """
 
@@ -16643,6 +17943,58 @@ class Policy(AbstractModel):
         
 
 
+class Policys(AbstractModel):
+    """策略集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicySet: 策略集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicySet: list of Policy
+        :param _TotalCount: 策略总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._PolicySet = None
+        self._TotalCount = None
+
+    @property
+    def PolicySet(self):
+        return self._PolicySet
+
+    @PolicySet.setter
+    def PolicySet(self, PolicySet):
+        self._PolicySet = PolicySet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("PolicySet") is not None:
+            self._PolicySet = []
+            for item in params.get("PolicySet"):
+                obj = Policy()
+                obj._deserialize(item)
+                self._PolicySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrestoMonitorMetrics(AbstractModel):
     """Presto监控指标
 
@@ -16725,6 +18077,100 @@ class Property(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PythonSparkImage(AbstractModel):
+    """python-spark镜像信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparkImageId: spark镜像唯一id
+        :type SparkImageId: str
+        :param _ChildImageVersionId: 集群小版本镜像id
+        :type ChildImageVersionId: str
+        :param _SparkImageVersion: spark镜像名称
+        :type SparkImageVersion: str
+        :param _Description: spark镜像描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._SparkImageId = None
+        self._ChildImageVersionId = None
+        self._SparkImageVersion = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SparkImageId(self):
+        return self._SparkImageId
+
+    @SparkImageId.setter
+    def SparkImageId(self, SparkImageId):
+        self._SparkImageId = SparkImageId
+
+    @property
+    def ChildImageVersionId(self):
+        return self._ChildImageVersionId
+
+    @ChildImageVersionId.setter
+    def ChildImageVersionId(self, ChildImageVersionId):
+        self._ChildImageVersionId = ChildImageVersionId
+
+    @property
+    def SparkImageVersion(self):
+        return self._SparkImageVersion
+
+    @SparkImageVersion.setter
+    def SparkImageVersion(self, SparkImageVersion):
+        self._SparkImageVersion = SparkImageVersion
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SparkImageId = params.get("SparkImageId")
+        self._ChildImageVersionId = params.get("ChildImageVersionId")
+        self._SparkImageVersion = params.get("SparkImageVersion")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16859,6 +18305,112 @@ class QueryResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RenewDataEngineRequest(AbstractModel):
+    """RenewDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: CU队列名称
+        :type DataEngineName: str
+        :param _TimeSpan: 续费时长，单位月，最少续费1一个月
+        :type TimeSpan: int
+        :param _PayMode: 付费类型，默认为1，预付费
+        :type PayMode: int
+        :param _TimeUnit: 单位，默认m，仅能填m
+        :type TimeUnit: str
+        :param _RenewFlag: 自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费。不传该参数默认为0
+        :type RenewFlag: int
+        """
+        self._DataEngineName = None
+        self._TimeSpan = None
+        self._PayMode = None
+        self._TimeUnit = None
+        self._RenewFlag = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
+        self._TimeUnit = params.get("TimeUnit")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDataEngineResponse(AbstractModel):
+    """RenewDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ReportHeartbeatMetaDataRequest(AbstractModel):
     """ReportHeartbeatMetaData请求参数结构体
 
@@ -16918,6 +18470,68 @@ class ReportHeartbeatMetaDataRequest(AbstractModel):
 
 class ReportHeartbeatMetaDataResponse(AbstractModel):
     """ReportHeartbeatMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RestartDataEngineRequest(AbstractModel):
+    """RestartDataEngine请求参数结构体
+
+    """
+
+
+class RestartDataEngineResponse(AbstractModel):
+    """RestartDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RollbackDataEngineImageRequest(AbstractModel):
+    """RollbackDataEngineImage请求参数结构体
+
+    """
+
+
+class RollbackDataEngineImageResponse(AbstractModel):
+    """RollbackDataEngineImage返回参数结构体
 
     """
 
@@ -18234,6 +19848,37 @@ class SuspendResumeDataEngineResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
+        self._RequestId = params.get("RequestId")
+
+
+class SwitchDataEngineImageRequest(AbstractModel):
+    """SwitchDataEngineImage请求参数结构体
+
+    """
+
+
+class SwitchDataEngineImageResponse(AbstractModel):
+    """SwitchDataEngineImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -20153,6 +21798,267 @@ class UnlockMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateDataEngineConfigRequest(AbstractModel):
+    """UpdateDataEngineConfig请求参数结构体
+
+    """
+
+
+class UpdateDataEngineConfigResponse(AbstractModel):
+    """UpdateDataEngineConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateDataEngineRequest(AbstractModel):
+    """UpdateDataEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Size: 资源大小
+        :type Size: int
+        :param _MinClusters: 最小资源
+        :type MinClusters: int
+        :param _MaxClusters: 最大资源
+        :type MaxClusters: int
+        :param _AutoResume: 开启自动刷新：true：开启、false（默认）：关闭
+        :type AutoResume: bool
+        :param _DataEngineName: 数据引擎名称
+        :type DataEngineName: str
+        :param _Message: 相关信息
+        :type Message: str
+        :param _AutoSuspend: 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+        :type AutoSuspend: bool
+        :param _CrontabResumeSuspend: 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+        :type CrontabResumeSuspend: int
+        :param _CrontabResumeSuspendStrategy: 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+        :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
+        :param _MaxConcurrency: 单个集群最大并发任务数，默认5
+        :type MaxConcurrency: int
+        :param _TolerableQueueTime: 可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+        :type TolerableQueueTime: int
+        :param _AutoSuspendTime: 集群自动挂起时间
+        :type AutoSuspendTime: int
+        :param _ElasticSwitch: spark jar 包年包月集群是否开启弹性
+        :type ElasticSwitch: bool
+        :param _ElasticLimit: spark jar 包年包月集群弹性上限
+        :type ElasticLimit: int
+        :param _SessionResourceTemplate: Spark批作业集群Session资源配置模板
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        """
+        self._Size = None
+        self._MinClusters = None
+        self._MaxClusters = None
+        self._AutoResume = None
+        self._DataEngineName = None
+        self._Message = None
+        self._AutoSuspend = None
+        self._CrontabResumeSuspend = None
+        self._CrontabResumeSuspendStrategy = None
+        self._MaxConcurrency = None
+        self._TolerableQueueTime = None
+        self._AutoSuspendTime = None
+        self._ElasticSwitch = None
+        self._ElasticLimit = None
+        self._SessionResourceTemplate = None
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def MinClusters(self):
+        return self._MinClusters
+
+    @MinClusters.setter
+    def MinClusters(self, MinClusters):
+        self._MinClusters = MinClusters
+
+    @property
+    def MaxClusters(self):
+        return self._MaxClusters
+
+    @MaxClusters.setter
+    def MaxClusters(self, MaxClusters):
+        self._MaxClusters = MaxClusters
+
+    @property
+    def AutoResume(self):
+        return self._AutoResume
+
+    @AutoResume.setter
+    def AutoResume(self, AutoResume):
+        self._AutoResume = AutoResume
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def AutoSuspend(self):
+        return self._AutoSuspend
+
+    @AutoSuspend.setter
+    def AutoSuspend(self, AutoSuspend):
+        self._AutoSuspend = AutoSuspend
+
+    @property
+    def CrontabResumeSuspend(self):
+        return self._CrontabResumeSuspend
+
+    @CrontabResumeSuspend.setter
+    def CrontabResumeSuspend(self, CrontabResumeSuspend):
+        self._CrontabResumeSuspend = CrontabResumeSuspend
+
+    @property
+    def CrontabResumeSuspendStrategy(self):
+        return self._CrontabResumeSuspendStrategy
+
+    @CrontabResumeSuspendStrategy.setter
+    def CrontabResumeSuspendStrategy(self, CrontabResumeSuspendStrategy):
+        self._CrontabResumeSuspendStrategy = CrontabResumeSuspendStrategy
+
+    @property
+    def MaxConcurrency(self):
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def TolerableQueueTime(self):
+        return self._TolerableQueueTime
+
+    @TolerableQueueTime.setter
+    def TolerableQueueTime(self, TolerableQueueTime):
+        self._TolerableQueueTime = TolerableQueueTime
+
+    @property
+    def AutoSuspendTime(self):
+        return self._AutoSuspendTime
+
+    @AutoSuspendTime.setter
+    def AutoSuspendTime(self, AutoSuspendTime):
+        self._AutoSuspendTime = AutoSuspendTime
+
+    @property
+    def ElasticSwitch(self):
+        return self._ElasticSwitch
+
+    @ElasticSwitch.setter
+    def ElasticSwitch(self, ElasticSwitch):
+        self._ElasticSwitch = ElasticSwitch
+
+    @property
+    def ElasticLimit(self):
+        return self._ElasticLimit
+
+    @ElasticLimit.setter
+    def ElasticLimit(self, ElasticLimit):
+        self._ElasticLimit = ElasticLimit
+
+    @property
+    def SessionResourceTemplate(self):
+        return self._SessionResourceTemplate
+
+    @SessionResourceTemplate.setter
+    def SessionResourceTemplate(self, SessionResourceTemplate):
+        self._SessionResourceTemplate = SessionResourceTemplate
+
+
+    def _deserialize(self, params):
+        self._Size = params.get("Size")
+        self._MinClusters = params.get("MinClusters")
+        self._MaxClusters = params.get("MaxClusters")
+        self._AutoResume = params.get("AutoResume")
+        self._DataEngineName = params.get("DataEngineName")
+        self._Message = params.get("Message")
+        self._AutoSuspend = params.get("AutoSuspend")
+        self._CrontabResumeSuspend = params.get("CrontabResumeSuspend")
+        if params.get("CrontabResumeSuspendStrategy") is not None:
+            self._CrontabResumeSuspendStrategy = CrontabResumeSuspendStrategy()
+            self._CrontabResumeSuspendStrategy._deserialize(params.get("CrontabResumeSuspendStrategy"))
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._TolerableQueueTime = params.get("TolerableQueueTime")
+        self._AutoSuspendTime = params.get("AutoSuspendTime")
+        self._ElasticSwitch = params.get("ElasticSwitch")
+        self._ElasticLimit = params.get("ElasticLimit")
+        if params.get("SessionResourceTemplate") is not None:
+            self._SessionResourceTemplate = SessionResourceTemplate()
+            self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataEngineResponse(AbstractModel):
+    """UpdateDataEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateRowFilterRequest(AbstractModel):
     """UpdateRowFilter请求参数结构体
 
@@ -20223,6 +22129,214 @@ class UpdateRowFilterResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UpdateUserDataEngineConfigRequest(AbstractModel):
+    """UpdateUserDataEngineConfig请求参数结构体
+
+    """
+
+
+class UpdateUserDataEngineConfigResponse(AbstractModel):
+    """UpdateUserDataEngineConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeDataEngineImageRequest(AbstractModel):
+    """UpgradeDataEngineImage请求参数结构体
+
+    """
+
+
+class UpgradeDataEngineImageResponse(AbstractModel):
+    """UpgradeDataEngineImage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UserDetailInfo(AbstractModel):
+    """用户详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _Type: 返回的信息类型，Group：返回的当前用户的工作组信息；DataAuth：返回的当前用户的数据权限信息；EngineAuth：返回的当前用户的引擎权限信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _UserType: 用户类型：ADMIN：管理员 COMMON：一般用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserType: str
+        :param _UserDescription: 用户描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDescription: str
+        :param _DataPolicyInfo: 数据权限信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _EnginePolicyInfo: 引擎权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnginePolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _WorkGroupInfo: 绑定到该用户的工作组集合信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupInfo: :class:`tencentcloud.dlc.v20210125.models.WorkGroups`
+        :param _UserAlias: 用户别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAlias: str
+        :param _RowFilterInfo: 行过滤集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowFilterInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        """
+        self._UserId = None
+        self._Type = None
+        self._UserType = None
+        self._UserDescription = None
+        self._DataPolicyInfo = None
+        self._EnginePolicyInfo = None
+        self._WorkGroupInfo = None
+        self._UserAlias = None
+        self._RowFilterInfo = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UserType(self):
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+    @property
+    def UserDescription(self):
+        return self._UserDescription
+
+    @UserDescription.setter
+    def UserDescription(self, UserDescription):
+        self._UserDescription = UserDescription
+
+    @property
+    def DataPolicyInfo(self):
+        return self._DataPolicyInfo
+
+    @DataPolicyInfo.setter
+    def DataPolicyInfo(self, DataPolicyInfo):
+        self._DataPolicyInfo = DataPolicyInfo
+
+    @property
+    def EnginePolicyInfo(self):
+        return self._EnginePolicyInfo
+
+    @EnginePolicyInfo.setter
+    def EnginePolicyInfo(self, EnginePolicyInfo):
+        self._EnginePolicyInfo = EnginePolicyInfo
+
+    @property
+    def WorkGroupInfo(self):
+        return self._WorkGroupInfo
+
+    @WorkGroupInfo.setter
+    def WorkGroupInfo(self, WorkGroupInfo):
+        self._WorkGroupInfo = WorkGroupInfo
+
+    @property
+    def UserAlias(self):
+        return self._UserAlias
+
+    @UserAlias.setter
+    def UserAlias(self, UserAlias):
+        self._UserAlias = UserAlias
+
+    @property
+    def RowFilterInfo(self):
+        return self._RowFilterInfo
+
+    @RowFilterInfo.setter
+    def RowFilterInfo(self, RowFilterInfo):
+        self._RowFilterInfo = RowFilterInfo
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._Type = params.get("Type")
+        self._UserType = params.get("UserType")
+        self._UserDescription = params.get("UserDescription")
+        if params.get("DataPolicyInfo") is not None:
+            self._DataPolicyInfo = Policys()
+            self._DataPolicyInfo._deserialize(params.get("DataPolicyInfo"))
+        if params.get("EnginePolicyInfo") is not None:
+            self._EnginePolicyInfo = Policys()
+            self._EnginePolicyInfo._deserialize(params.get("EnginePolicyInfo"))
+        if params.get("WorkGroupInfo") is not None:
+            self._WorkGroupInfo = WorkGroups()
+            self._WorkGroupInfo._deserialize(params.get("WorkGroupInfo"))
+        self._UserAlias = params.get("UserAlias")
+        if params.get("RowFilterInfo") is not None:
+            self._RowFilterInfo = Policys()
+            self._RowFilterInfo._deserialize(params.get("RowFilterInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UserIdSetOfWorkGroupId(AbstractModel):
@@ -20647,6 +22761,58 @@ class UserRole(AbstractModel):
         
 
 
+class Users(AbstractModel):
+    """用户信息集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserSet: 用户信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserSet: list of UserMessage
+        :param _TotalCount: 用户总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._UserSet = None
+        self._TotalCount = None
+
+    @property
+    def UserSet(self):
+        return self._UserSet
+
+    @UserSet.setter
+    def UserSet(self, UserSet):
+        self._UserSet = UserSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("UserSet") is not None:
+            self._UserSet = []
+            for item in params.get("UserSet"):
+                obj = UserMessage()
+                obj._deserialize(item)
+                self._UserSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ViewBaseInfo(AbstractModel):
     """视图基本配置信息
 
@@ -20801,6 +22967,139 @@ class ViewResponseInfo(AbstractModel):
                 self._Properties.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkGroupDetailInfo(AbstractModel):
+    """工作组详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkGroupId: 工作组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupId: int
+        :param _WorkGroupName: 工作组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupName: str
+        :param _Type: 包含的信息类型。User：用户信息；DataAuth：数据权限；EngineAuth:引擎权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _UserInfo: 工作组上绑定的用户集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserInfo: :class:`tencentcloud.dlc.v20210125.models.Users`
+        :param _DataPolicyInfo: 数据权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataPolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _EnginePolicyInfo: 引擎权限集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnginePolicyInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        :param _WorkGroupDescription: 工作组描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupDescription: str
+        :param _RowFilterInfo: 行过滤信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowFilterInfo: :class:`tencentcloud.dlc.v20210125.models.Policys`
+        """
+        self._WorkGroupId = None
+        self._WorkGroupName = None
+        self._Type = None
+        self._UserInfo = None
+        self._DataPolicyInfo = None
+        self._EnginePolicyInfo = None
+        self._WorkGroupDescription = None
+        self._RowFilterInfo = None
+
+    @property
+    def WorkGroupId(self):
+        return self._WorkGroupId
+
+    @WorkGroupId.setter
+    def WorkGroupId(self, WorkGroupId):
+        self._WorkGroupId = WorkGroupId
+
+    @property
+    def WorkGroupName(self):
+        return self._WorkGroupName
+
+    @WorkGroupName.setter
+    def WorkGroupName(self, WorkGroupName):
+        self._WorkGroupName = WorkGroupName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def DataPolicyInfo(self):
+        return self._DataPolicyInfo
+
+    @DataPolicyInfo.setter
+    def DataPolicyInfo(self, DataPolicyInfo):
+        self._DataPolicyInfo = DataPolicyInfo
+
+    @property
+    def EnginePolicyInfo(self):
+        return self._EnginePolicyInfo
+
+    @EnginePolicyInfo.setter
+    def EnginePolicyInfo(self, EnginePolicyInfo):
+        self._EnginePolicyInfo = EnginePolicyInfo
+
+    @property
+    def WorkGroupDescription(self):
+        return self._WorkGroupDescription
+
+    @WorkGroupDescription.setter
+    def WorkGroupDescription(self, WorkGroupDescription):
+        self._WorkGroupDescription = WorkGroupDescription
+
+    @property
+    def RowFilterInfo(self):
+        return self._RowFilterInfo
+
+    @RowFilterInfo.setter
+    def RowFilterInfo(self, RowFilterInfo):
+        self._RowFilterInfo = RowFilterInfo
+
+
+    def _deserialize(self, params):
+        self._WorkGroupId = params.get("WorkGroupId")
+        self._WorkGroupName = params.get("WorkGroupName")
+        self._Type = params.get("Type")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = Users()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("DataPolicyInfo") is not None:
+            self._DataPolicyInfo = Policys()
+            self._DataPolicyInfo._deserialize(params.get("DataPolicyInfo"))
+        if params.get("EnginePolicyInfo") is not None:
+            self._EnginePolicyInfo = Policys()
+            self._EnginePolicyInfo._deserialize(params.get("EnginePolicyInfo"))
+        self._WorkGroupDescription = params.get("WorkGroupDescription")
+        if params.get("RowFilterInfo") is not None:
+            self._RowFilterInfo = Policys()
+            self._RowFilterInfo._deserialize(params.get("RowFilterInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21058,6 +23357,58 @@ class WorkGroupMessage(AbstractModel):
         self._WorkGroupDescription = params.get("WorkGroupDescription")
         self._Creator = params.get("Creator")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkGroups(AbstractModel):
+    """工作组集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkGroupSet: 工作组信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkGroupSet: list of WorkGroupMessage
+        :param _TotalCount: 工作组总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        """
+        self._WorkGroupSet = None
+        self._TotalCount = None
+
+    @property
+    def WorkGroupSet(self):
+        return self._WorkGroupSet
+
+    @WorkGroupSet.setter
+    def WorkGroupSet(self, WorkGroupSet):
+        self._WorkGroupSet = WorkGroupSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("WorkGroupSet") is not None:
+            self._WorkGroupSet = []
+            for item in params.get("WorkGroupSet"):
+                obj = WorkGroupMessage()
+                obj._deserialize(item)
+                self._WorkGroupSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

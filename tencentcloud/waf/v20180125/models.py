@@ -6556,6 +6556,161 @@ class DescribeCCRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCertificateVerifyResultRequest(AbstractModel):
+    """DescribeCertificateVerifyResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _CertType: 证书类型
+        :type CertType: int
+        :param _Certificate: 证书公钥
+        :type Certificate: str
+        :param _CertID: 证书ID
+        :type CertID: str
+        :param _PrivateKey: 私钥信息
+        :type PrivateKey: str
+        """
+        self._Domain = None
+        self._CertType = None
+        self._Certificate = None
+        self._CertID = None
+        self._PrivateKey = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def CertID(self):
+        return self._CertID
+
+    @CertID.setter
+    def CertID(self, CertID):
+        self._CertID = CertID
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertType = params.get("CertType")
+        self._Certificate = params.get("Certificate")
+        self._CertID = params.get("CertID")
+        self._PrivateKey = params.get("PrivateKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCertificateVerifyResultResponse(AbstractModel):
+    """DescribeCertificateVerifyResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态码
+        :type Status: int
+        :param _Detail: 错误详情
+        :type Detail: list of str
+        :param _NotAfter: 过期时间
+        :type NotAfter: str
+        :param _Changed: 证书是否改变:1有改变，0没有改变
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Changed: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Detail = None
+        self._NotAfter = None
+        self._Changed = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def NotAfter(self):
+        return self._NotAfter
+
+    @NotAfter.setter
+    def NotAfter(self, NotAfter):
+        self._NotAfter = NotAfter
+
+    @property
+    def Changed(self):
+        return self._Changed
+
+    @Changed.setter
+    def Changed(self, Changed):
+        self._Changed = Changed
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Detail = params.get("Detail")
+        self._NotAfter = params.get("NotAfter")
+        self._Changed = params.get("Changed")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCiphersDetailRequest(AbstractModel):
     """DescribeCiphersDetail请求参数结构体
 

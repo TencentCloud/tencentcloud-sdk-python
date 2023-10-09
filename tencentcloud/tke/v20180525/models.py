@@ -10638,7 +10638,7 @@ class DescribeAddonValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Values: 参数列表，如果addon已安装，会使用已设置的的参数做渲染，是一个json格式的字符串
+        :param _Values: 参数列表，如果addon已安装，会使用已设置的参数做渲染，是一个json格式的字符串
         :type Values: str
         :param _DefaultValues: addon支持的参数列表，使用默认值，是一个json格式的字符串
         :type DefaultValues: str

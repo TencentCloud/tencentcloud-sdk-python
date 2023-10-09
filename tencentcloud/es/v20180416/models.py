@@ -3664,6 +3664,9 @@ class IndexMetaField(AbstractModel):
         :param _IndexName: 索引名
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
+        :param _IndexMetaJson: 索引元数据JSON
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexMetaJson: str
         :param _IndexStatus: 索引状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
@@ -3703,6 +3706,7 @@ class IndexMetaField(AbstractModel):
         """
         self._IndexType = None
         self._IndexName = None
+        self._IndexMetaJson = None
         self._IndexStatus = None
         self._IndexStorage = None
         self._IndexCreateTime = None
@@ -3731,6 +3735,14 @@ class IndexMetaField(AbstractModel):
     @IndexName.setter
     def IndexName(self, IndexName):
         self._IndexName = IndexName
+
+    @property
+    def IndexMetaJson(self):
+        return self._IndexMetaJson
+
+    @IndexMetaJson.setter
+    def IndexMetaJson(self, IndexMetaJson):
+        self._IndexMetaJson = IndexMetaJson
 
     @property
     def IndexStatus(self):
@@ -3832,6 +3844,7 @@ class IndexMetaField(AbstractModel):
     def _deserialize(self, params):
         self._IndexType = params.get("IndexType")
         self._IndexName = params.get("IndexName")
+        self._IndexMetaJson = params.get("IndexMetaJson")
         self._IndexStatus = params.get("IndexStatus")
         self._IndexStorage = params.get("IndexStorage")
         self._IndexCreateTime = params.get("IndexCreateTime")

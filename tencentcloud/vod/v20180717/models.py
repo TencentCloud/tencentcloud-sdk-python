@@ -24943,9 +24943,9 @@ class EditMediaFileInfo(AbstractModel):
         r"""
         :param _FileId: 视频的 ID。
         :type FileId: str
-        :param _StartTimeOffset: 视频剪辑的起始偏移时间偏移，单位：秒。
+        :param _StartTimeOffset: 视频剪辑起始的偏移时间，单位：秒。
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 视频剪辑的起始结束时间偏移，单位：秒。
+        :param _EndTimeOffset: 视频剪辑结束的偏移时间，单位：秒。
         :type EndTimeOffset: float
         """
         self._FileId = None

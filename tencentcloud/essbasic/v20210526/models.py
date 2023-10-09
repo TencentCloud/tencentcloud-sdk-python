@@ -1964,6 +1964,128 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateFlowApproversRequest(AbstractModel):
+    """ChannelCreateFlowApprovers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowId: 合同唯一编号
+        :type FlowId: str
+        :param _Approvers: 补充企业签署人信息。
+
+- 如果发起方指定的补充签署人是企业签署人，则需要提供企业名称或者企业OpenId；
+
+- 如果不指定，则使用姓名和手机号进行补充。
+        :type Approvers: list of FillApproverInfo
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _FillApproverType: 签署人信息补充方式
+
+<ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
+<li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+        :type FillApproverType: int
+        """
+        self._Agent = None
+        self._FlowId = None
+        self._Approvers = None
+        self._Operator = None
+        self._FillApproverType = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FillApproverType(self):
+        return self._FillApproverType
+
+    @FillApproverType.setter
+    def FillApproverType(self, FillApproverType):
+        self._FillApproverType = FillApproverType
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = FillApproverInfo()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FillApproverType = params.get("FillApproverType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateFlowApproversResponse(AbstractModel):
+    """ChannelCreateFlowApprovers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateFlowByFilesRequest(AbstractModel):
     """ChannelCreateFlowByFiles请求参数结构体
 
@@ -3208,6 +3330,141 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         if params.get("SignUrls") is not None:
             self._SignUrls = SignUrl()
             self._SignUrls._deserialize(params.get("SignUrls"))
+        self._RequestId = params.get("RequestId")
+
+
+class ChannelCreateOrganizationBatchSignUrlRequest(AbstractModel):
+    """ChannelCreateOrganizationBatchSignUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowIds: 请指定需执行批量签署的流程ID，数量范围为1-100。 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。 用户将利用链接对这些合同实施批量操作。	
+        :type FlowIds: list of str
+        :param _OpenId: 第三方应用平台的用户openid。 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的OpenId。 OpenId必须是传入合同（FlowId）中的签署人。 - 1. 若OpenId为空，Name和Mobile 必须提供。 - 2. 若OpenId 与 Name，Mobile均存在，将优先采用OpenId对应的员工。	
+        :type OpenId: str
+        :param _Name: 签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+
+注：`请确保和合同中填入的一致`
+        :type Name: str
+        :param _Mobile: 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
+        :type Mobile: str
+        """
+        self._Agent = None
+        self._FlowIds = None
+        self._OpenId = None
+        self._Name = None
+        self._Mobile = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FlowIds = params.get("FlowIds")
+        self._OpenId = params.get("OpenId")
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
+    """ChannelCreateOrganizationBatchSignUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignUrl: 批量签署入口链接，用户可使用这个链接跳转到控制台页面对合同进行签署操作。	
+        :type SignUrl: str
+        :param _ExpiredTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :type ExpiredTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SignUrl = None
+        self._ExpiredTime = None
+        self._RequestId = None
+
+    @property
+    def SignUrl(self):
+        return self._SignUrl
+
+    @SignUrl.setter
+    def SignUrl(self, SignUrl):
+        self._SignUrl = SignUrl
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SignUrl = params.get("SignUrl")
+        self._ExpiredTime = params.get("ExpiredTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -8226,6 +8483,7 @@ class CreateSignUrlsRequest(AbstractModel):
 - NOT_CHANNEL：非第三方平台子客企业企业
 - PERSON：个人
 - FOLLOWER：关注方，目前是合同抄送方
+- RECIPIENT：获取RecipientId对应的签署链接，可用于生成动态签署人补充链接
         :type GenerateType: str
         :param _OrganizationName: 非第三方平台子客企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
         :type OrganizationName: str
@@ -8252,7 +8510,7 @@ GenerateType为"PERSON"或"FOLLOWER"时必填
 - 2:合同签署页面更多操作的转他人处理按钮
 - 3:签署成功页的查看详情按钮
         :type Hides: list of int
-        :param _RecipientIds: 签署节点ID，用于补充动态签署人，使用此参数需要与flow_ids数量一致
+        :param _RecipientIds: 签署节点ID，用于补充动态签署人，使用此参数需要与flow_ids数量一致并且一一对应
         :type RecipientIds: list of str
         """
         self._Agent = None
@@ -9612,6 +9870,113 @@ class FailedCreateRoleData(AbstractModel):
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
         self._RoleIds = params.get("RoleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FillApproverInfo(AbstractModel):
+    """指定补充签署人信息
+    - RecipientId 必须指定
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+
+        :type RecipientId: str
+        :param _OpenId: 指定企业经办签署人OpenId
+        :type OpenId: str
+        :param _ApproverName: 签署人姓名
+        :type ApproverName: str
+        :param _ApproverMobile: 签署人手机号码
+        :type ApproverMobile: str
+        :param _OrganizationName: 企业名称
+        :type OrganizationName: str
+        :param _OrganizationOpenId: 企业OpenId
+        :type OrganizationOpenId: str
+        :param _NotChannelOrganization: 签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，organization_open_id+open_id 必传
+        :type NotChannelOrganization: str
+        """
+        self._RecipientId = None
+        self._OpenId = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._OrganizationName = None
+        self._OrganizationOpenId = None
+        self._NotChannelOrganization = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def NotChannelOrganization(self):
+        return self._NotChannelOrganization
+
+    @NotChannelOrganization.setter
+    def NotChannelOrganization(self, NotChannelOrganization):
+        self._NotChannelOrganization = NotChannelOrganization
+
+
+    def _deserialize(self, params):
+        self._RecipientId = params.get("RecipientId")
+        self._OpenId = params.get("OpenId")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._OrganizationName = params.get("OrganizationName")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._NotChannelOrganization = params.get("NotChannelOrganization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

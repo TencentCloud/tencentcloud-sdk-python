@@ -320,11 +320,15 @@ class CLS(AbstractModel):
         :type Topic: str
         :param _NeedDelete: 是否删除
         :type NeedDelete: bool
+        :param _Region: cls 主题创建的地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self._Enable = None
         self._LogSet = None
         self._Topic = None
         self._NeedDelete = None
+        self._Region = None
 
     @property
     def Enable(self):
@@ -358,12 +362,21 @@ class CLS(AbstractModel):
     def NeedDelete(self, NeedDelete):
         self._NeedDelete = NeedDelete
 
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
         self._LogSet = params.get("LogSet")
         self._Topic = params.get("Topic")
         self._NeedDelete = params.get("NeedDelete")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

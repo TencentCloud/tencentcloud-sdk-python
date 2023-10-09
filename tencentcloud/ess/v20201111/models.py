@@ -6919,7 +6919,8 @@ class CreateSchemeUrlRequest(AbstractModel):
 
 <ul><li> **0** : 腾讯电子签小程序个人首页 (默认)</li>
 <li> **1** : 腾讯电子签小程序流程合同的详情页 (即合同签署页面)</li>
-<li> **2** : 腾讯电子签小程序合同列表页</li></ul>
+<li> **2** : 腾讯电子签小程序合同列表页</li><li> **3** : 腾讯电子签小程序合同封面页
+注：`生成动态签署人补充链接时，必须指定为封面页`</li></ul>
         :type PathType: int
         :param _AutoJumpBack: 签署完成后是否自动回跳
 <ul><li>**false**：否, 签署完成不会自动跳转回来(默认)</li><li>**true**：是, 签署完成会自动跳转回来</li></ul>
@@ -6937,7 +6938,9 @@ class CreateSchemeUrlRequest(AbstractModel):
 
 注:  `字段为数组, 可以传值隐藏多个按钮`
         :type Hides: list of int
-        :param _RecipientId: 签署节点ID，用于生成动态签署人链接完成领取
+        :param _RecipientId: 签署节点ID，用于生成动态签署人链接完成领取。
+
+注：`生成动态签署人补充链接时必传。`
         :type RecipientId: str
         """
         self._Operator = None
@@ -16453,6 +16456,9 @@ true-已发布
 false-未发布
 注意：此字段可能返回 null，表示取不到有效值。
         :type Published: bool
+        :param _ShareTemplateId: 分享来源的模板ID。用在集团账号子企业模板里
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShareTemplateId: str
         :param _TemplateSeals: 模板内部指定的印章列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateSeals: list of SealInfo
@@ -16480,6 +16486,7 @@ false-未发布
         self._PreviewUrl = None
         self._TemplateVersion = None
         self._Published = None
+        self._ShareTemplateId = None
         self._TemplateSeals = None
         self._Seals = None
 
@@ -16644,6 +16651,14 @@ false-未发布
         self._Published = Published
 
     @property
+    def ShareTemplateId(self):
+        return self._ShareTemplateId
+
+    @ShareTemplateId.setter
+    def ShareTemplateId(self, ShareTemplateId):
+        self._ShareTemplateId = ShareTemplateId
+
+    @property
     def TemplateSeals(self):
         return self._TemplateSeals
 
@@ -16707,6 +16722,7 @@ false-未发布
         self._PreviewUrl = params.get("PreviewUrl")
         self._TemplateVersion = params.get("TemplateVersion")
         self._Published = params.get("Published")
+        self._ShareTemplateId = params.get("ShareTemplateId")
         if params.get("TemplateSeals") is not None:
             self._TemplateSeals = []
             for item in params.get("TemplateSeals"):

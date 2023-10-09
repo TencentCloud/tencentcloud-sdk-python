@@ -813,6 +813,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCertificateVerifyResult(self, request):
+        """获取证书的检查结果
+
+        :param request: Request instance for DescribeCertificateVerifyResult.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCertificateVerifyResultRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeCertificateVerifyResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCertificateVerifyResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCertificateVerifyResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCiphersDetail(self, request):
         """Saas型WAF接入查询加密套件信息
 

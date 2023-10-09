@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# 数据加载中
+FAILEDOPERATION_SEGMENTLOADING = 'FailedOperation.SegmentLoading'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

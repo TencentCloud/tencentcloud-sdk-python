@@ -10695,6 +10695,10 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
         :type QueryDlqMsg: bool
         :param _NumOfLatestMsg: 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
         :type NumOfLatestMsg: int
+        :param _Tag: TAG表达式
+        :type Tag: str
+        :param _QueryDeadLetterMessage: 死信查询时该值为true，只对Rocketmq有效
+        :type QueryDeadLetterMessage: bool
         """
         self._ClusterId = None
         self._EnvironmentId = None
@@ -10708,6 +10712,8 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
         self._TaskRequestId = None
         self._QueryDlqMsg = None
         self._NumOfLatestMsg = None
+        self._Tag = None
+        self._QueryDeadLetterMessage = None
 
     @property
     def ClusterId(self):
@@ -10791,10 +10797,14 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
 
     @property
     def QueryDlqMsg(self):
+        warnings.warn("parameter `QueryDlqMsg` is deprecated", DeprecationWarning) 
+
         return self._QueryDlqMsg
 
     @QueryDlqMsg.setter
     def QueryDlqMsg(self, QueryDlqMsg):
+        warnings.warn("parameter `QueryDlqMsg` is deprecated", DeprecationWarning) 
+
         self._QueryDlqMsg = QueryDlqMsg
 
     @property
@@ -10804,6 +10814,22 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
     @NumOfLatestMsg.setter
     def NumOfLatestMsg(self, NumOfLatestMsg):
         self._NumOfLatestMsg = NumOfLatestMsg
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def QueryDeadLetterMessage(self):
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
 
 
     def _deserialize(self, params):
@@ -10819,6 +10845,8 @@ class DescribeRocketMQTopicMsgsRequest(AbstractModel):
         self._TaskRequestId = params.get("TaskRequestId")
         self._QueryDlqMsg = params.get("QueryDlqMsg")
         self._NumOfLatestMsg = params.get("NumOfLatestMsg")
+        self._Tag = params.get("Tag")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18958,6 +18986,218 @@ class RocketMQNamespace(AbstractModel):
         
 
 
+class RocketMQSubscription(AbstractModel):
+    """RocketMQ消费组订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _Type: 主题类型：
+Normal 普通,
+GlobalOrder 全局顺序,
+PartitionedOrder 局部顺序,
+Transaction 事务消息,
+DelayScheduled 延时消息,
+Retry 重试,
+DeadLetter 死信
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _PartitionNum: 分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionNum: int
+        :param _ExpressionType: 过滤模式，TAG，SQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionType: str
+        :param _SubString: 过滤表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubString: str
+        :param _Status: 订阅状态：
+0，订阅关系一致
+1，订阅关系不一致
+2，未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ConsumerLag: 消费堆积数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLag: int
+        :param _ClusterId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ConsumerGroup: 消费组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerGroup: str
+        :param _IsOnline: 是否在线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOnline: bool
+        :param _ConsumeType: 消费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumeType: int
+        :param _Consistency: 订阅一致性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: int
+        :param _LastUpdateTime: 最后消费进度更新时间，秒为单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param _MaxRetryTimes: 最大重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxRetryTimes: int
+        """
+        self._Topic = None
+        self._Type = None
+        self._PartitionNum = None
+        self._ExpressionType = None
+        self._SubString = None
+        self._Status = None
+        self._ConsumerLag = None
+        self._ClusterId = None
+        self._ConsumerGroup = None
+        self._IsOnline = None
+        self._ConsumeType = None
+        self._Consistency = None
+        self._LastUpdateTime = None
+        self._MaxRetryTimes = None
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PartitionNum(self):
+        return self._PartitionNum
+
+    @PartitionNum.setter
+    def PartitionNum(self, PartitionNum):
+        self._PartitionNum = PartitionNum
+
+    @property
+    def ExpressionType(self):
+        return self._ExpressionType
+
+    @ExpressionType.setter
+    def ExpressionType(self, ExpressionType):
+        self._ExpressionType = ExpressionType
+
+    @property
+    def SubString(self):
+        return self._SubString
+
+    @SubString.setter
+    def SubString(self, SubString):
+        self._SubString = SubString
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ConsumerLag(self):
+        return self._ConsumerLag
+
+    @ConsumerLag.setter
+    def ConsumerLag(self, ConsumerLag):
+        self._ConsumerLag = ConsumerLag
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def IsOnline(self):
+        return self._IsOnline
+
+    @IsOnline.setter
+    def IsOnline(self, IsOnline):
+        self._IsOnline = IsOnline
+
+    @property
+    def ConsumeType(self):
+        return self._ConsumeType
+
+    @ConsumeType.setter
+    def ConsumeType(self, ConsumeType):
+        self._ConsumeType = ConsumeType
+
+    @property
+    def Consistency(self):
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._PartitionNum = params.get("PartitionNum")
+        self._ExpressionType = params.get("ExpressionType")
+        self._SubString = params.get("SubString")
+        self._Status = params.get("Status")
+        self._ConsumerLag = params.get("ConsumerLag")
+        self._ClusterId = params.get("ClusterId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._IsOnline = params.get("IsOnline")
+        self._ConsumeType = params.get("ConsumeType")
+        self._Consistency = params.get("Consistency")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQTopic(AbstractModel):
     """RocketMQ主题信息
 
@@ -18980,6 +19220,15 @@ class RocketMQTopic(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: 创建时间，以毫秒为单位
         :type UpdateTime: int
+        :param _LastUpdateTime: 最后写入时间，单位为秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: int
+        :param _SubscriptionCount: 订阅数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionCount: int
+        :param _SubscriptionData: 订阅关系列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionData: list of RocketMQSubscription
         """
         self._Name = None
         self._Type = None
@@ -18988,6 +19237,9 @@ class RocketMQTopic(AbstractModel):
         self._PartitionNum = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._LastUpdateTime = None
+        self._SubscriptionCount = None
+        self._SubscriptionData = None
 
     @property
     def Name(self):
@@ -19045,6 +19297,30 @@ class RocketMQTopic(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def SubscriptionCount(self):
+        return self._SubscriptionCount
+
+    @SubscriptionCount.setter
+    def SubscriptionCount(self, SubscriptionCount):
+        self._SubscriptionCount = SubscriptionCount
+
+    @property
+    def SubscriptionData(self):
+        return self._SubscriptionData
+
+    @SubscriptionData.setter
+    def SubscriptionData(self, SubscriptionData):
+        self._SubscriptionData = SubscriptionData
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -19054,6 +19330,14 @@ class RocketMQTopic(AbstractModel):
         self._PartitionNum = params.get("PartitionNum")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._SubscriptionCount = params.get("SubscriptionCount")
+        if params.get("SubscriptionData") is not None:
+            self._SubscriptionData = []
+            for item in params.get("SubscriptionData"):
+                obj = RocketMQSubscription()
+                obj._deserialize(item)
+                self._SubscriptionData.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

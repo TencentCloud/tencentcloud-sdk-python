@@ -1374,7 +1374,7 @@ class AddRecordBackupPlanResponse(AbstractModel):
 
 
 class AddRecordBackupTemplateData(AbstractModel):
-    """新增录像上云模版返回数据
+    """新增录像上云模板返回数据
 
     """
 
@@ -6876,7 +6876,7 @@ class DescribeRecordBackupPlanResponse(AbstractModel):
 
 
 class DescribeRecordBackupTemplateData(AbstractModel):
-    """查询录像上云模版返回数据
+    """查询录像上云模板返回数据
 
     """
 
@@ -14524,7 +14524,7 @@ class UpdateRecordBackupPlanResponse(AbstractModel):
 
 
 class UpdateRecordBackupTemplateData(AbstractModel):
-    """修改录像上云模版返回数据
+    """修改录像上云模板返回数据
 
     """
 

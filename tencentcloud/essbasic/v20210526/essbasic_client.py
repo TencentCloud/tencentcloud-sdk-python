@@ -262,6 +262,34 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreateFlowApprovers(self, request):
+        """适用场景：
+        当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
+
+        限制条件：
+        1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
+        2. 个人签署人仅支持通过姓名+手机号进行补充。
+
+        :param request: Request instance for ChannelCreateFlowApprovers.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowApproversRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateFlowApproversResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateFlowApprovers", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateFlowApproversResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateFlowByFiles(self, request):
         """接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，请联系客户经理申请使用
 
@@ -438,6 +466,34 @@ class EssbasicClient(AbstractClient):
             body = self.call("ChannelCreateMultiFlowSignQRCode", params, headers=headers)
             response = json.loads(body)
             model = models.ChannelCreateMultiFlowSignQRCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ChannelCreateOrganizationBatchSignUrl(self, request):
+        """通过此接口，创建小程序批量签署链接，可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。
+
+        注：
+        - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方或者领取方。
+        - 仅支持传入待签署或者待领取的合同，待填写暂不支持。
+        - 员工批量签署，支持多种签名方式，包括手写签名、临摹签名、系统签名、个人印章，暂不支持签批控件
+
+        :param request: Request instance for ChannelCreateOrganizationBatchSignUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateOrganizationBatchSignUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateOrganizationBatchSignUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateOrganizationBatchSignUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateOrganizationBatchSignUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
