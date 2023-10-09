@@ -29,6 +29,7 @@ except ImportError:
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.common_client import CommonClient
+from typing import Union
 
 class Credential(object):
     def __init__(self, secret_id, secret_key, token=None):
@@ -272,21 +273,29 @@ class EnvironmentVariableCredential():
 
 class ProfileCredential():
 
-    def get_credential(self):
-        """Tencent Cloud ProfileCredential.
+    def __init__(self, profile='default') -> None:
+        self.profile = profile
+    
+    def get_credential(self) -> Union[Credential, STSAssumeRoleCredential]:
+        """
+        params:
+            profile: the profile name
+            profile_path: the profile path, deafult path is '~/tencentcloud/credentials'
+        des:
+            support use profile to auth account and multi-account
+        credentials details, such as:
+            ```
+                [default] (the ak/sk profile')
+                secret_id:xxxx
+                secret_key:xxxx
+                token: xxxx
 
-        Access https://console.cloud.tencent.com/cam/capi to manage your credentials.
-
-        default file position is "~/.tencentcloud/credentials" or "/etc/tencentcloud/credentials", it is ini format.
-        such as:
-        [default]
-        secret_id=""
-        secret_key=""
-
-        :param secret_id: The secret id of your credential.
-        :type secret_id: str
-        :param secret_key: The secret key of your credential.
-        :type secret_key: str
+                [profile] (the role profile)
+                role_arn: xxx (required)
+                session_name: xxx (default is 'tencentcloud-session')
+                duration_seconds: 3600 (default is 3600)
+                source_profile: xxx (required, the role'carrier, support 'ak/sk profile' or 'cvm_role')
+            ```
         """
         home_path = os.environ.get('HOME') or os.environ.get('HOMEPATH')
         if os.path.exists(home_path + "/.tencentcloud/credentials"):
@@ -294,32 +303,59 @@ class ProfileCredential():
         elif os.path.exists("/etc/tencentcloud/credentials"):
             file_path = "/etc/tencentcloud/credentials"
         else:
-            file_path = ""
-        if file_path:
-            # loads config
-            conf = configparser.ConfigParser()
-            conf.read(file_path)
-            ini_map = dict(conf._sections)
-            for k in dict(conf._sections):
-                option = dict(ini_map[k])
-                for key, value in dict(ini_map[k]).items():
-                    option[key] = value.strip()
-                ini_map[k] = option
-            if "default" in ini_map:
-                client_config = ini_map.get("default")
-                self.secret_id = client_config.get('secret_id', None)
-                self.secret_key = client_config.get('secret_key', None)
-                self.role_arn = client_config.get('role_arn', None)
-        else:
-            self.secret_id = None
-            self.secret_key = None
-            self.role_arn = None
+            raise TencentCloudSDKException(
+                'not find credentials path, please setting the credentials path!')
+        
+        return self.parser_credentials_path(file_path)
+        
+    def parser_credentials(
+            self, credentials_path: str) -> Union[Credential, STSAssumeRoleCredential]:
+        
+        parser = configparser.ConfigParser()
+        parser.read(credentials_path)
+        profile_obj = parser.get(self.profile)
+        if not profile_obj:
+            raise TencentCloudSDKException(f'not find profile: {self.profile}, please check the porfile')
+        
+        # if not find role_arn the profile is ak/sk'profile
+        role_arn = profile_obj.get('role_arn', None)
+        if role_arn is None:
+            secret_id = profile_obj.get('secret_id')
+            secret_key = profile_obj.get('secret_key')
+            token = profile_obj.get('token')
+            return Credential(secret_id, secret_key, token)
+        
+        session_name = profile_obj.get('session_name', 'tencentcloud-session')
+        duration_seconds = profile_obj.get('duration_seconds', 7200)
+        source_profile = profile_obj.get('source_profile')
 
-        if self.secret_id is None or self.secret_key is None:
-            return None
-        if len(self.secret_id) == 0 or len(self.secret_key) == 0:
-            return None
-        return Credential(self.secret_id, self.secret_key)
+        # if the source_profile == 'cvm_metadata', you need add the role to cvm, 
+        # and the role must have assume the the role permmission
+        if source_profile == 'cvm_metadata':
+            cred = CVMRoleCredential()
+            common_client = CommonClient(
+                credential=cred, region="ap-guangzhou", version='2018-08-13', service="sts")
+            params = {
+                "RoleArn": role_arn,
+                "RoleSessionName": session_name,
+                "DurationSeconds": duration_seconds
+            }
+            rsp = common_client.call_json("AssumeRole", params)
+            token = rsp["Response"]["Credentials"]["Token"]
+            secret_id = rsp["Response"]["Credentials"]["TmpSecretId"]
+            secret_key = rsp["Response"]["Credentials"]["TmpSecretKey"]
+
+            return Credential(secret_id, secret_key, token=token)
+        else:
+            sp_obj = parser.get(source_profile, None)
+            if sp_obj is None:
+                raise TencentCloudSDKException(
+                    f'not find source_profile: {source_profile} in credentials, please check the source_profile')
+            secret_id = sp_obj.get('secret_id')
+            secret_key = sp_obj.get('secret_key')
+            token = sp_obj.get('token')
+
+            return STSAssumeRoleCredential(secret_id, secret_key, role_arn, session_name, duration_seconds)
 
 
 class DefaultCredentialProvider(object):
