@@ -14,7 +14,6 @@ except ImportError:
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 
-
 logger = logging.getLogger("tencentcloud_sdk_common")
 
 
@@ -41,8 +40,7 @@ class ProxyConnection(object):
             self.proxy = {"http": proxy, "https": proxy}
         self.request_length = 0
 
-    def request(self, method, url, body=None, headers={}):
-        self.request_length = 0
+    def request(self, method, url, body=None, headers=None):
         headers.setdefault("Host", self.request_host)
         return requests.request(method=method,
                                 url=url,
@@ -50,12 +48,14 @@ class ProxyConnection(object):
                                 headers=headers,
                                 proxies=self.proxy,
                                 verify=self.certification,
-                                timeout=self.timeout)
+                                timeout=self.timeout,
+                                stream=True)
 
 
 class ApiRequest(object):
     def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None):
-        self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification, is_http=is_http)
+        self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification,
+                                    is_http=is_http)
         self.is_http = is_http
         self.host = host
         self.req_timeout = req_timeout
@@ -94,10 +94,10 @@ class ApiRequest(object):
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (url, req_inter.data)
             return self.conn.request(req_inter.method, req_inter_url,
-                              None, req_inter.header)
+                                     None, req_inter.header)
         elif req_inter.method == 'POST':
             return self.conn.request(req_inter.method, url,
-                              req_inter.data, req_inter.header)
+                                     req_inter.data, req_inter.header)
         else:
             raise TencentCloudSDKException(
                 "ClientParamsError", 'Method only support (GET, POST)')
@@ -105,14 +105,9 @@ class ApiRequest(object):
     def send_request(self, req_inter):
         try:
             http_resp = self._request(req_inter)
-            headers = dict(http_resp.headers)
-            resp_inter = ResponseInternal(status=http_resp.status_code,
-                                          header=headers,
-                                          data=http_resp.text)
             self.request_size = self.conn.request_length
-            self.response_size = len(resp_inter.data)
-            logger.debug("GetResponse %s" % resp_inter)
-            return resp_inter
+            logger.debug("GetResponse %s" % http_resp)
+            return http_resp
         except Exception as e:
             raise TencentCloudSDKException("ClientNetworkError", str(e))
 
@@ -131,17 +126,3 @@ class RequestInternal(object):
         headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
         return ("Host: %s\nMethod: %s\nUri: %s\nHeader: %s\nData: %s\n"
                 % (self.host, self.method, self.uri, headers, self.data))
-
-
-class ResponseInternal(object):
-    def __init__(self, status=0, header=None, data=""):
-        if header is None:
-            header = {}
-        self.status = status
-        self.header = header
-        self.data = data
-
-    def __str__(self):
-        headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
-        return ("Status: %s\nHeader: %s\nData: %s\n"
-                % (self.status, headers, self.data))
