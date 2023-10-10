@@ -12946,30 +12946,43 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 一键更新新证书ID
-        :type CertificateId: str
         :param _OldCertificateId: 一键更新原证书ID
         :type OldCertificateId: str
         :param _ResourceTypes: 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
         :type ResourceTypes: list of str
+        :param _CertificateId: 一键更新新证书ID
+        :type CertificateId: str
         :param _Regions: 需要部署的地域列表（废弃）
         :type Regions: list of str
         :param _ResourceTypesRegions: 云资源需要部署的地域列表
         :type ResourceTypesRegions: list of ResourceTypeRegions
+        :param _CertificatePublicKey: 证书公钥， 若上传证书公钥， 则CertificateId不用传
+        :type CertificatePublicKey: str
+        :param _CertificatePrivateKey: 证书私钥，若上传证书公钥， 则证书私钥必填
+        :type CertificatePrivateKey: str
+        :param _ExpiringNotificationSwitch: 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知
+        :type ExpiringNotificationSwitch: int
+        :param _Repeatable: 相同的证书是否允许重复上传，若上传证书公钥， 则可以配置该参数
+        :type Repeatable: bool
+        :param _AllowDownload: 是否允许下载，若上传证书公钥， 则可以配置该参数
+        :type AllowDownload: bool
+        :param _Tags: 标签列表，若上传证书公钥， 则可以配置该参数
+        :type Tags: list of Tags
+        :param _ProjectId: 项目 ID，若上传证书公钥， 则可以配置该参数
+        :type ProjectId: int
         """
-        self._CertificateId = None
         self._OldCertificateId = None
         self._ResourceTypes = None
+        self._CertificateId = None
         self._Regions = None
         self._ResourceTypesRegions = None
-
-    @property
-    def CertificateId(self):
-        return self._CertificateId
-
-    @CertificateId.setter
-    def CertificateId(self, CertificateId):
-        self._CertificateId = CertificateId
+        self._CertificatePublicKey = None
+        self._CertificatePrivateKey = None
+        self._ExpiringNotificationSwitch = None
+        self._Repeatable = None
+        self._AllowDownload = None
+        self._Tags = None
+        self._ProjectId = None
 
     @property
     def OldCertificateId(self):
@@ -12986,6 +12999,14 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     @ResourceTypes.setter
     def ResourceTypes(self, ResourceTypes):
         self._ResourceTypes = ResourceTypes
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
 
     @property
     def Regions(self):
@@ -13007,11 +13028,67 @@ class UpdateCertificateInstanceRequest(AbstractModel):
     def ResourceTypesRegions(self, ResourceTypesRegions):
         self._ResourceTypesRegions = ResourceTypesRegions
 
+    @property
+    def CertificatePublicKey(self):
+        return self._CertificatePublicKey
+
+    @CertificatePublicKey.setter
+    def CertificatePublicKey(self, CertificatePublicKey):
+        self._CertificatePublicKey = CertificatePublicKey
+
+    @property
+    def CertificatePrivateKey(self):
+        return self._CertificatePrivateKey
+
+    @CertificatePrivateKey.setter
+    def CertificatePrivateKey(self, CertificatePrivateKey):
+        self._CertificatePrivateKey = CertificatePrivateKey
+
+    @property
+    def ExpiringNotificationSwitch(self):
+        return self._ExpiringNotificationSwitch
+
+    @ExpiringNotificationSwitch.setter
+    def ExpiringNotificationSwitch(self, ExpiringNotificationSwitch):
+        self._ExpiringNotificationSwitch = ExpiringNotificationSwitch
+
+    @property
+    def Repeatable(self):
+        return self._Repeatable
+
+    @Repeatable.setter
+    def Repeatable(self, Repeatable):
+        self._Repeatable = Repeatable
+
+    @property
+    def AllowDownload(self):
+        return self._AllowDownload
+
+    @AllowDownload.setter
+    def AllowDownload(self, AllowDownload):
+        self._AllowDownload = AllowDownload
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
-        self._CertificateId = params.get("CertificateId")
         self._OldCertificateId = params.get("OldCertificateId")
         self._ResourceTypes = params.get("ResourceTypes")
+        self._CertificateId = params.get("CertificateId")
         self._Regions = params.get("Regions")
         if params.get("ResourceTypesRegions") is not None:
             self._ResourceTypesRegions = []
@@ -13019,6 +13096,18 @@ class UpdateCertificateInstanceRequest(AbstractModel):
                 obj = ResourceTypeRegions()
                 obj._deserialize(item)
                 self._ResourceTypesRegions.append(obj)
+        self._CertificatePublicKey = params.get("CertificatePublicKey")
+        self._CertificatePrivateKey = params.get("CertificatePrivateKey")
+        self._ExpiringNotificationSwitch = params.get("ExpiringNotificationSwitch")
+        self._Repeatable = params.get("Repeatable")
+        self._AllowDownload = params.get("AllowDownload")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

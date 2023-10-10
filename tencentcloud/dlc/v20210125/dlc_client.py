@@ -2119,6 +2119,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetOptimizerPolicy(self, request):
+        """GetOptimizerPolicy
+
+        :param request: Request instance for GetOptimizerPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOptimizerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOptimizerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTaskJobLogDetail(self, request):
         """本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 

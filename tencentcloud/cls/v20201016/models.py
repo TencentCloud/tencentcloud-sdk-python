@@ -15234,7 +15234,7 @@ class ModifyTopicRequest(AbstractModel):
         :param _HotPeriod: 0：关闭日志沉降。
 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
         :type HotPeriod: int
-        :param _IsWebTracking: webtracking开关； false: 关闭 true: 开启
+        :param _IsWebTracking: 免鉴权开关； false: 关闭 true: 开启
         :type IsWebTracking: bool
         """
         self._TopicId = None

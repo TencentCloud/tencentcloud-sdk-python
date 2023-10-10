@@ -166,29 +166,6 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateOriginGroup(self, request):
-        """创建源站组
-
-        :param request: Request instance for CreateOriginGroup.
-        :type request: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOriginGroup", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOriginGroupResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreatePlanForZone(self, request):
         """为未购买套餐的站点购买套餐
 
@@ -437,29 +414,6 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteApplicationProxyRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteApplicationProxyRuleResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteOriginGroup(self, request):
-        """删除源站组
-
-        :param request: Request instance for DeleteOriginGroup.
-        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteOriginGroupRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteOriginGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteOriginGroup", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteOriginGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1382,29 +1336,6 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyHostsCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHostsCertificateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyOriginGroup(self, request):
-        """修改源站组
-
-        :param request: Request instance for ModifyOriginGroup.
-        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupRequest`
-        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyOriginGroup", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyOriginGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

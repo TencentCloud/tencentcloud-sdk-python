@@ -1367,8 +1367,3 @@ def test_import_yunsou():
 def test_import_yunsou():
     from tencentcloud.yunsou.v20191115 import yunsou_client
     from tencentcloud.yunsou.v20191115 import models
-
-
-def test_import_zj():
-    from tencentcloud.zj.v20190121 import zj_client
-    from tencentcloud.zj.v20190121 import models

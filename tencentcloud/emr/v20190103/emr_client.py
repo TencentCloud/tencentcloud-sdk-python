@@ -603,6 +603,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserManagerPwd(self, request):
+        """修改用户密码（用户管理）
+
+        :param request: Request instance for ModifyUserManagerPwd.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserManagerPwd", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserManagerPwdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunJobFlow(self, request):
         """创建流程作业
 

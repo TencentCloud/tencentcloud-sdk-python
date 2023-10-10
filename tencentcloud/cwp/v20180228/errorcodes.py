@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 当前用户鉴权失败。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -86,11 +89,17 @@ INVALIDPARAMETER_NAMEHASREPETITION = 'InvalidParameter.NameHasRepetition'
 # 参数解析错误。
 INVALIDPARAMETER_PARSINGERROR = 'InvalidParameter.ParsingError'
 
+# 端口格式不合法。
+INVALIDPARAMETER_PORTNOVALID = 'InvalidParameter.PortNoValid'
+
 # 正则参数格式错误。
 INVALIDPARAMETER_REGEXRULEERROR = 'InvalidParameter.RegexRuleError'
 
 # 进程名/目标IP/目标端口，不能同时为空。
 INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFieldAllEmpty'
+
+# 规则类接口，主机重复。
+INVALIDPARAMETER_RULEHOSTDUPLICATEERR = 'InvalidParameter.RuleHostDuplicateErr'
 
 # 规则类接口，主机IP不正确。
 INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
@@ -113,6 +122,9 @@ MISSINGPARAMETER = 'MissingParameter'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 
@@ -124,6 +136,9 @@ RESOURCENOTFOUND_MACHINENOTFOUND = 'ResourceNotFound.MachineNotFound'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
 # 未知参数错误。
 UNKNOWNPARAMETER = 'UnknownParameter'

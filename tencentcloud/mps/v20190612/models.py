@@ -197,6 +197,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: 语音关键词识别控制参数。
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        :param _TranslateConfigure: 语音翻译控制参数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranslateConfigure: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
         :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
         :type CreateTime: str
         :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
@@ -215,6 +218,7 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._TranslateConfigure = None
         self._CreateTime = None
         self._UpdateTime = None
         self._Type = None
@@ -284,6 +288,14 @@ class AIRecognitionTemplateItem(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def TranslateConfigure(self):
+        return self._TranslateConfigure
+
+    @TranslateConfigure.setter
+    def TranslateConfigure(self, TranslateConfigure):
+        self._TranslateConfigure = TranslateConfigure
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -327,6 +339,9 @@ class AIRecognitionTemplateItem(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("TranslateConfigure") is not None:
+            self._TranslateConfigure = TranslateConfigureInfo()
+            self._TranslateConfigure._deserialize(params.get("TranslateConfigure"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Type = params.get("Type")

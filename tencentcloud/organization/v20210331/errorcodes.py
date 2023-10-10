@@ -197,6 +197,9 @@ INVALIDPARAMETER_INVALIDEMAIL = 'InvalidParameter.InvalidEmail'
 # 组织成员不存在。
 INVALIDPARAMETER_ORGANIZATIONMEMBERNOTEXIST = 'InvalidParameter.OrganizationMemberNotExist'
 
+# 组织节点不存在。
+INVALIDPARAMETER_ORGANIZATIONNODENOTEXIST = 'InvalidParameter.OrganizationNodeNotExist'
+
 # 密码不合法。
 INVALIDPARAMETER_PASSWORDILLEGAL = 'InvalidParameter.PasswordIllegal'
 

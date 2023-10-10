@@ -63,6 +63,66 @@ class ActionFilter(AbstractModel):
         
 
 
+class ApmServiceInfo(AbstractModel):
+    """应用性能观测产品中应用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 业务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _ServiceNameList: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNameList: list of str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        """
+        self._InstanceId = None
+        self._ServiceNameList = None
+        self._RegionId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceNameList(self):
+        return self._ServiceNameList
+
+    @ServiceNameList.setter
+    def ServiceNameList(self, ServiceNameList):
+        self._ServiceNameList = ServiceNameList
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceNameList = params.get("ServiceNameList")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateTaskFromTemplateRequest(AbstractModel):
     """CreateTaskFromTemplate请求参数结构体
 
@@ -394,6 +454,12 @@ class DescribeTaskListRequest(AbstractModel):
         :type Tags: list of TagWithDescribe
         :param _Filters: 筛选条件
         :type Filters: list of ActionFilter
+        :param _TaskId: 演练ID
+        :type TaskId: list of int non-negative
+        :param _ApplicationId: 关联应用ID筛选
+        :type ApplicationId: list of str
+        :param _ApplicationName: 关联应用筛选
+        :type ApplicationName: list of str
         """
         self._Limit = None
         self._Offset = None
@@ -404,6 +470,9 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskEndTime = None
         self._Tags = None
         self._Filters = None
+        self._TaskId = None
+        self._ApplicationId = None
+        self._ApplicationName = None
 
     @property
     def Limit(self):
@@ -477,6 +546,30 @@ class DescribeTaskListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -498,6 +591,9 @@ class DescribeTaskListRequest(AbstractModel):
                 obj = ActionFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1339,6 +1435,18 @@ class Task(AbstractModel):
         :param _TaskPlanTitle: 关联的演练计划名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskPlanTitle: str
+        :param _ApplicationId: 关联的应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param _ApplicationName: 关联的应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param _AlarmPolicy: 关联的告警指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmPolicy: list of str
+        :param _ApmServiceList: 关联的APM服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmServiceList: list of ApmServiceInfo
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -1363,6 +1471,10 @@ class Task(AbstractModel):
         self._Tags = None
         self._TaskPlanId = None
         self._TaskPlanTitle = None
+        self._ApplicationId = None
+        self._ApplicationName = None
+        self._AlarmPolicy = None
+        self._ApmServiceList = None
 
     @property
     def TaskId(self):
@@ -1548,6 +1660,38 @@ class Task(AbstractModel):
     def TaskPlanTitle(self, TaskPlanTitle):
         self._TaskPlanTitle = TaskPlanTitle
 
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
+    @property
+    def ApmServiceList(self):
+        return self._ApmServiceList
+
+    @ApmServiceList.setter
+    def ApmServiceList(self, ApmServiceList):
+        self._ApmServiceList = ApmServiceList
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1590,6 +1734,15 @@ class Task(AbstractModel):
                 self._Tags.append(obj)
         self._TaskPlanId = params.get("TaskPlanId")
         self._TaskPlanTitle = params.get("TaskPlanTitle")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._AlarmPolicy = params.get("AlarmPolicy")
+        if params.get("ApmServiceList") is not None:
+            self._ApmServiceList = []
+            for item in params.get("ApmServiceList"):
+                obj = ApmServiceInfo()
+                obj._deserialize(item)
+                self._ApmServiceList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2563,6 +2716,12 @@ class TaskListItem(AbstractModel):
         :param _TaskExpect: 演练是否符合预期 1-符合预期 2-不符合预期
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExpect: int
+        :param _ApplicationId: 关联应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param _ApplicationName: 关联应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -2574,6 +2733,8 @@ class TaskListItem(AbstractModel):
         self._TaskPreCheckStatus = None
         self._TaskPreCheckSuccess = None
         self._TaskExpect = None
+        self._ApplicationId = None
+        self._ApplicationName = None
 
     @property
     def TaskId(self):
@@ -2655,6 +2816,22 @@ class TaskListItem(AbstractModel):
     def TaskExpect(self, TaskExpect):
         self._TaskExpect = TaskExpect
 
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -2667,6 +2844,8 @@ class TaskListItem(AbstractModel):
         self._TaskPreCheckStatus = params.get("TaskPreCheckStatus")
         self._TaskPreCheckSuccess = params.get("TaskPreCheckSuccess")
         self._TaskExpect = params.get("TaskExpect")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2923,6 +3102,12 @@ class Template(AbstractModel):
         :param _TemplateSource: 经验来源 0-自建 1-专家推荐
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateSource: int
+        :param _ApmServiceList: apm应用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApmServiceList: list of ApmServiceInfo
+        :param _AlarmPolicy: 告警指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmPolicy: list of str
         """
         self._TemplateId = None
         self._TemplateTitle = None
@@ -2940,6 +3125,8 @@ class Template(AbstractModel):
         self._TemplatePolicy = None
         self._Tags = None
         self._TemplateSource = None
+        self._ApmServiceList = None
+        self._AlarmPolicy = None
 
     @property
     def TemplateId(self):
@@ -3069,6 +3256,22 @@ class Template(AbstractModel):
     def TemplateSource(self, TemplateSource):
         self._TemplateSource = TemplateSource
 
+    @property
+    def ApmServiceList(self):
+        return self._ApmServiceList
+
+    @ApmServiceList.setter
+    def ApmServiceList(self, ApmServiceList):
+        self._ApmServiceList = ApmServiceList
+
+    @property
+    def AlarmPolicy(self):
+        return self._AlarmPolicy
+
+    @AlarmPolicy.setter
+    def AlarmPolicy(self, AlarmPolicy):
+        self._AlarmPolicy = AlarmPolicy
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -3104,6 +3307,13 @@ class Template(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._TemplateSource = params.get("TemplateSource")
+        if params.get("ApmServiceList") is not None:
+            self._ApmServiceList = []
+            for item in params.get("ApmServiceList"):
+                obj = ApmServiceInfo()
+                obj._deserialize(item)
+                self._ApmServiceList.append(obj)
+        self._AlarmPolicy = params.get("AlarmPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

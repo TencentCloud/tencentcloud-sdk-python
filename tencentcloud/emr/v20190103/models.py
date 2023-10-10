@@ -8535,6 +8535,88 @@ class ModifyResourcesTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyUserManagerPwdRequest(AbstractModel):
+    """ModifyUserManagerPwd请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _PassWord: 密码
+        :type PassWord: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserManagerPwdResponse(AbstractModel):
+    """ModifyUserManagerPwd返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiDisk(AbstractModel):
     """多云盘参数
 

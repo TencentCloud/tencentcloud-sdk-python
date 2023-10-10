@@ -3401,7 +3401,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type ClusterParams: list of ParamItem
         :param _DealMode: 交易模式，0-下单且支付，1-下单
         :type DealMode: int
-        :param _ParamTemplateId: 参数模版ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        :param _ParamTemplateId: 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
         :type ParamTemplateId: int
         :param _SlaveZone: 多可用区地址
         :type SlaveZone: str

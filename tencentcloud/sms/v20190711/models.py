@@ -658,8 +658,10 @@ class DeleteSignStatus(AbstractModel):
     def __init__(self):
         r"""
         :param _DeleteStatus: 删除状态信息。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteStatus: str
         :param _DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteTime: int
         """
         self._DeleteStatus = None

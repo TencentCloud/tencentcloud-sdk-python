@@ -440,8 +440,33 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCodeBatches(self, request):
+        """查询批次列表
+
+        :param request: Request instance for DescribeCodeBatches.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchesRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCodeBatches", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCodeBatchesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCodeBatchs(self, request):
         """查询批次列表
+
+        旧版接口已经弃用，新业务请使用用新版的接口 DescribeCodeBatches
 
         :param request: Request instance for DescribeCodeBatchs.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchsRequest`

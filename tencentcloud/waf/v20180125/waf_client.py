@@ -974,6 +974,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDomainRules(self, request):
+        """拉取域名的防护规则列表
+
+        :param request: Request instance for DescribeDomainRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainVerifyResult(self, request):
         """获取添加域名操作的结果
 
@@ -1448,6 +1471,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeUserDomainInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserDomainInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserSignatureRule(self, request):
+        """获取用户特征规则列表
+
+        :param request: Request instance for DescribeUserSignatureRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserSignatureRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserSignatureRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserSignatureRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2242,6 +2288,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyModuleStatus(self, request):
+        """设置某个domain下基础安全模块的开关
+
+        :param request: Request instance for ModifyModuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyModuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyModuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyModuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyProtectionStatus(self, request):
         """waf斯巴达-waf开关
 
@@ -2311,6 +2380,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserLevel(self, request):
+        """修改用户防护规则等级
+
+        :param request: Request instance for ModifyUserLevel.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserLevelRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyUserLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserLevel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserLevelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserSignatureRule(self, request):
+        """修改用户防护规则，开启关闭具体的某条规则
+
+        :param request: Request instance for ModifyUserSignatureRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyUserSignatureRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserSignatureRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserSignatureRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyWafAutoDenyRules(self, request):
         """修改ip惩罚规则
 
@@ -2371,6 +2486,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyWafThreatenIntelligence", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyWafThreatenIntelligenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWebshellStatus(self, request):
+        """设置域名的webshell状态。
+
+        :param request: Request instance for ModifyWebshellStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWebshellStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWebshellStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWebshellStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWebshellStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

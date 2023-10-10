@@ -14562,6 +14562,79 @@ class Execution(AbstractModel):
         
 
 
+class FavorInfo(AbstractModel):
+    """FavorInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Priority: 优先事项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Catalog: Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalog: str
+        :param _DataBase: DataBase名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataBase: str
+        :param _Table: Table名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        """
+        self._Priority = None
+        self._Catalog = None
+        self._DataBase = None
+        self._Table = None
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def DataBase(self):
+        return self._DataBase
+
+    @DataBase.setter
+    def DataBase(self, DataBase):
+        self._DataBase = DataBase
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+
+    def _deserialize(self, params):
+        self._Priority = params.get("Priority")
+        self._Catalog = params.get("Catalog")
+        self._DataBase = params.get("DataBase")
+        self._Table = params.get("Table")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     """查询列表过滤条件参数
 
@@ -14741,6 +14814,80 @@ class GenerateCreateMangedTableSqlResponse(AbstractModel):
         if params.get("Execution") is not None:
             self._Execution = Execution()
             self._Execution._deserialize(params.get("Execution"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetOptimizerPolicyRequest(AbstractModel):
+    """GetOptimizerPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmartPolicy: 策略描述
+        :type SmartPolicy: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
+        """
+        self._SmartPolicy = None
+
+    @property
+    def SmartPolicy(self):
+        return self._SmartPolicy
+
+    @SmartPolicy.setter
+    def SmartPolicy(self, SmartPolicy):
+        self._SmartPolicy = SmartPolicy
+
+
+    def _deserialize(self, params):
+        if params.get("SmartPolicy") is not None:
+            self._SmartPolicy = SmartPolicy()
+            self._SmartPolicy._deserialize(params.get("SmartPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetOptimizerPolicyResponse(AbstractModel):
+    """GetOptimizerPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmartOptimizerPolicy: 智能优化策略
+        :type SmartOptimizerPolicy: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerPolicy`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SmartOptimizerPolicy = None
+        self._RequestId = None
+
+    @property
+    def SmartOptimizerPolicy(self):
+        return self._SmartOptimizerPolicy
+
+    @SmartOptimizerPolicy.setter
+    def SmartOptimizerPolicy(self, SmartOptimizerPolicy):
+        self._SmartOptimizerPolicy = SmartOptimizerPolicy
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SmartOptimizerPolicy") is not None:
+            self._SmartOptimizerPolicy = SmartOptimizerPolicy()
+            self._SmartOptimizerPolicy._deserialize(params.get("SmartOptimizerPolicy"))
         self._RequestId = params.get("RequestId")
 
 
@@ -18493,6 +18640,110 @@ class ReportHeartbeatMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceInfo(AbstractModel):
+    """ResourceInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttributionType: 归属类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttributionType: str
+        :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _Name: 引擎名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Instance: 如资源类型为spark-sql 取值为Name, 如为spark-batch 取值为session app_name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: str
+        :param _Favor: 亲和性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Favor: list of FavorInfo
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._AttributionType = None
+        self._ResourceType = None
+        self._Name = None
+        self._Instance = None
+        self._Favor = None
+        self._Status = None
+
+    @property
+    def AttributionType(self):
+        return self._AttributionType
+
+    @AttributionType.setter
+    def AttributionType(self, AttributionType):
+        self._AttributionType = AttributionType
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Instance(self):
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def Favor(self):
+        return self._Favor
+
+    @Favor.setter
+    def Favor(self, Favor):
+        self._Favor = Favor
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._AttributionType = params.get("AttributionType")
+        self._ResourceType = params.get("ResourceType")
+        self._Name = params.get("Name")
+        self._Instance = params.get("Instance")
+        if params.get("Favor") is not None:
+            self._Favor = []
+            for item in params.get("Favor"):
+                obj = FavorInfo()
+                obj._deserialize(item)
+                self._Favor.append(obj)
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RestartDataEngineRequest(AbstractModel):
     """RestartDataEngine请求参数结构体
 
@@ -18767,6 +19018,353 @@ class SessionResourceTemplate(AbstractModel):
         self._ExecutorSize = params.get("ExecutorSize")
         self._ExecutorNums = params.get("ExecutorNums")
         self._ExecutorMaxNumbers = params.get("ExecutorMaxNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartOptimizerIndexPolicy(AbstractModel):
+    """SmartOptimizerIndexPolicy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexEnable: 开启索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexEnable: str
+        """
+        self._IndexEnable = None
+
+    @property
+    def IndexEnable(self):
+        return self._IndexEnable
+
+    @IndexEnable.setter
+    def IndexEnable(self, IndexEnable):
+        self._IndexEnable = IndexEnable
+
+
+    def _deserialize(self, params):
+        self._IndexEnable = params.get("IndexEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartOptimizerLifecyclePolicy(AbstractModel):
+    """SmartOptimizerLifecyclePolicy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LifecycleEnable: 生命周期启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleEnable: str
+        :param _Expiration: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expiration: int
+        :param _DropTable: 是否删表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DropTable: bool
+        """
+        self._LifecycleEnable = None
+        self._Expiration = None
+        self._DropTable = None
+
+    @property
+    def LifecycleEnable(self):
+        return self._LifecycleEnable
+
+    @LifecycleEnable.setter
+    def LifecycleEnable(self, LifecycleEnable):
+        self._LifecycleEnable = LifecycleEnable
+
+    @property
+    def Expiration(self):
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+    @property
+    def DropTable(self):
+        return self._DropTable
+
+    @DropTable.setter
+    def DropTable(self, DropTable):
+        self._DropTable = DropTable
+
+
+    def _deserialize(self, params):
+        self._LifecycleEnable = params.get("LifecycleEnable")
+        self._Expiration = params.get("Expiration")
+        self._DropTable = params.get("DropTable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartOptimizerPolicy(AbstractModel):
+    """SmartOptimizerPolicy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Inherit: 是否继承
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Inherit: str
+        :param _Resources: ResourceInfo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of ResourceInfo
+        :param _Written: SmartOptimizerWrittenPolicy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Written: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerWrittenPolicy`
+        :param _Lifecycle: SmartOptimizerLifecyclePolicy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lifecycle: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerLifecyclePolicy`
+        :param _Index: SmartOptimizerIndexPolicy
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerIndexPolicy`
+        """
+        self._Inherit = None
+        self._Resources = None
+        self._Written = None
+        self._Lifecycle = None
+        self._Index = None
+
+    @property
+    def Inherit(self):
+        return self._Inherit
+
+    @Inherit.setter
+    def Inherit(self, Inherit):
+        self._Inherit = Inherit
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Written(self):
+        return self._Written
+
+    @Written.setter
+    def Written(self, Written):
+        self._Written = Written
+
+    @property
+    def Lifecycle(self):
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Inherit = params.get("Inherit")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = ResourceInfo()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Written") is not None:
+            self._Written = SmartOptimizerWrittenPolicy()
+            self._Written._deserialize(params.get("Written"))
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = SmartOptimizerLifecyclePolicy()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        if params.get("Index") is not None:
+            self._Index = SmartOptimizerIndexPolicy()
+            self._Index._deserialize(params.get("Index"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartOptimizerWrittenPolicy(AbstractModel):
+    """SmartOptimizerWrittenPolicy
+
+    """
+
+
+class SmartPolicy(AbstractModel):
+    """SmartPolicyRequest
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseInfo: 基础信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaseInfo: :class:`tencentcloud.dlc.v20210125.models.SmartPolicyBaseInfo`
+        :param _Policy: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Policy: :class:`tencentcloud.dlc.v20210125.models.SmartOptimizerPolicy`
+        """
+        self._BaseInfo = None
+        self._Policy = None
+
+    @property
+    def BaseInfo(self):
+        return self._BaseInfo
+
+    @BaseInfo.setter
+    def BaseInfo(self, BaseInfo):
+        self._BaseInfo = BaseInfo
+
+    @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+
+    def _deserialize(self, params):
+        if params.get("BaseInfo") is not None:
+            self._BaseInfo = SmartPolicyBaseInfo()
+            self._BaseInfo._deserialize(params.get("BaseInfo"))
+        if params.get("Policy") is not None:
+            self._Policy = SmartOptimizerPolicy()
+            self._Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartPolicyBaseInfo(AbstractModel):
+    """SmartPolicyBaseInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 用户uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _PolicyType: Catalog/Database/Table
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyType: str
+        :param _Catalog: Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalog: str
+        :param _Database: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Database: str
+        :param _Table: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        :param _AppId: 用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        """
+        self._Uin = None
+        self._PolicyType = None
+        self._Catalog = None
+        self._Database = None
+        self._Table = None
+        self._AppId = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._PolicyType = params.get("PolicyType")
+        self._Catalog = params.get("Catalog")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20185,6 +20783,9 @@ class TableBaseInfo(AbstractModel):
         :param _DbGovernPolicyIsDisable: 库数据治理是否关闭，关闭：true，开启：false
 注意：此字段可能返回 null，表示取不到有效值。
         :type DbGovernPolicyIsDisable: str
+        :param _SmartPolicy: 智能数据治理配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartPolicy: :class:`tencentcloud.dlc.v20210125.models.SmartPolicy`
         """
         self._DatabaseName = None
         self._TableName = None
@@ -20196,6 +20797,7 @@ class TableBaseInfo(AbstractModel):
         self._UserSubUin = None
         self._GovernPolicy = None
         self._DbGovernPolicyIsDisable = None
+        self._SmartPolicy = None
 
     @property
     def DatabaseName(self):
@@ -20277,6 +20879,14 @@ class TableBaseInfo(AbstractModel):
     def DbGovernPolicyIsDisable(self, DbGovernPolicyIsDisable):
         self._DbGovernPolicyIsDisable = DbGovernPolicyIsDisable
 
+    @property
+    def SmartPolicy(self):
+        return self._SmartPolicy
+
+    @SmartPolicy.setter
+    def SmartPolicy(self, SmartPolicy):
+        self._SmartPolicy = SmartPolicy
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -20291,6 +20901,9 @@ class TableBaseInfo(AbstractModel):
             self._GovernPolicy = DataGovernPolicy()
             self._GovernPolicy._deserialize(params.get("GovernPolicy"))
         self._DbGovernPolicyIsDisable = params.get("DbGovernPolicyIsDisable")
+        if params.get("SmartPolicy") is not None:
+            self._SmartPolicy = SmartPolicy()
+            self._SmartPolicy._deserialize(params.get("SmartPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

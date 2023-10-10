@@ -3451,6 +3451,165 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCodeBatchesRequest(AbstractModel):
+    """DescribeCodeBatches请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MerchantId: 查询商户ID
+        :type MerchantId: str
+        :param _ProductId: 查询商品ID
+        :type ProductId: str
+        :param _Keyword: 查询关键字
+        :type Keyword: str
+        :param _PageSize: 条数
+        :type PageSize: int
+        :param _PageNumber: 页数
+        :type PageNumber: int
+        :param _BatchType: 批次类型 0:溯源 1:营销
+        :type BatchType: str
+        :param _CorpId: 企业ID
+        :type CorpId: int
+        """
+        self._MerchantId = None
+        self._ProductId = None
+        self._Keyword = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._BatchType = None
+        self._CorpId = None
+
+    @property
+    def MerchantId(self):
+        return self._MerchantId
+
+    @MerchantId.setter
+    def MerchantId(self, MerchantId):
+        self._MerchantId = MerchantId
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def BatchType(self):
+        return self._BatchType
+
+    @BatchType.setter
+    def BatchType(self, BatchType):
+        self._BatchType = BatchType
+
+    @property
+    def CorpId(self):
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+
+    def _deserialize(self, params):
+        self._MerchantId = params.get("MerchantId")
+        self._ProductId = params.get("ProductId")
+        self._Keyword = params.get("Keyword")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._BatchType = params.get("BatchType")
+        self._CorpId = params.get("CorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCodeBatchesResponse(AbstractModel):
+    """DescribeCodeBatches返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CodeBatches: 批次列表
+        :type CodeBatches: list of CodeBatch
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CodeBatches = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CodeBatches(self):
+        return self._CodeBatches
+
+    @CodeBatches.setter
+    def CodeBatches(self, CodeBatches):
+        self._CodeBatches = CodeBatches
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CodeBatches") is not None:
+            self._CodeBatches = []
+            for item in params.get("CodeBatches"):
+                obj = CodeBatch()
+                obj._deserialize(item)
+                self._CodeBatches.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCodeBatchsRequest(AbstractModel):
     """DescribeCodeBatchs请求参数结构体
 

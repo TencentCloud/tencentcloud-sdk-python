@@ -4606,6 +4606,182 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
+    """ChannelCreateUserAutoSignSealUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 渠道应用相关信息。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
+
+注: `现在仅支持电子处方场景`
+        :type SceneKey: str
+        :param _UserInfo: 自动签开通个人用户信息，包括名字，身份证等。
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ExpiredTime: 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+        :type ExpiredTime: int
+        """
+        self._Agent = None
+        self._SceneKey = None
+        self._UserInfo = None
+        self._Operator = None
+        self._ExpiredTime = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
+    """ChannelCreateUserAutoSignSealUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :type AppId: str
+        :param _AppOriginalId: 腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :type AppOriginalId: str
+        :param _Url: 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+        :type Url: str
+        :param _Path: 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+        :type Path: str
+        :param _QrCode: base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+        :type QrCode: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._AppOriginalId = None
+        self._Url = None
+        self._Path = None
+        self._QrCode = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppOriginalId(self):
+        return self._AppOriginalId
+
+    @AppOriginalId.setter
+    def AppOriginalId(self, AppOriginalId):
+        self._AppOriginalId = AppOriginalId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def QrCode(self):
+        return self._QrCode
+
+    @QrCode.setter
+    def QrCode(self, QrCode):
+        self._QrCode = QrCode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AppOriginalId = params.get("AppOriginalId")
+        self._Url = params.get("Url")
+        self._Path = params.get("Path")
+        self._QrCode = params.get("QrCode")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelCreateUserRolesRequest(AbstractModel):
     """ChannelCreateUserRoles请求参数结构体
 

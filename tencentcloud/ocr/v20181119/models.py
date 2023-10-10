@@ -20266,6 +20266,8 @@ class TrainTicket(AbstractModel):
         :type QRCodeMark: int
         :param _ReimburseOnlyMark: 是否仅供报销使用（0：没有，1：有）
         :type ReimburseOnlyMark: int
+        :param _RefundMark: 是否有退票费标识（0：没有，1：有）
+        :type RefundMark: int
         """
         self._Title = None
         self._Number = None
@@ -20291,6 +20293,7 @@ class TrainTicket(AbstractModel):
         self._ReceiptNumber = None
         self._QRCodeMark = None
         self._ReimburseOnlyMark = None
+        self._RefundMark = None
 
     @property
     def Title(self):
@@ -20484,6 +20487,14 @@ class TrainTicket(AbstractModel):
     def ReimburseOnlyMark(self, ReimburseOnlyMark):
         self._ReimburseOnlyMark = ReimburseOnlyMark
 
+    @property
+    def RefundMark(self):
+        return self._RefundMark
+
+    @RefundMark.setter
+    def RefundMark(self, RefundMark):
+        self._RefundMark = RefundMark
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -20510,6 +20521,7 @@ class TrainTicket(AbstractModel):
         self._ReceiptNumber = params.get("ReceiptNumber")
         self._QRCodeMark = params.get("QRCodeMark")
         self._ReimburseOnlyMark = params.get("ReimburseOnlyMark")
+        self._RefundMark = params.get("RefundMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

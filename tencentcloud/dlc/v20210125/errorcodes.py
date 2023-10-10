@@ -266,6 +266,9 @@ RESOURCEINUSE_UNFINISHEDSQLS = 'ResourceInUse.UnfinishedSQLs'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# 指定的引擎未处于运行中
+RESOURCENOTFOUND_DATAENGINENOTRUNNING = 'ResourceNotFound.DataEngineNotRunning'
+
 # 数据源连接不存在，请重试，或者提交工单联系我们
 RESOURCENOTFOUND_DATASOURCENOTFOUND = 'ResourceNotFound.DatasourceNotFound'
 

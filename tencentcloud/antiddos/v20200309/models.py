@@ -1058,6 +1058,9 @@ class BGPInstance(AbstractModel):
         :param _Line: 网络线路
 注意：此字段可能返回 null，表示取不到有效值。
         :type Line: int
+        :param _FreeServiceBandwidth: 不计费的业务带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FreeServiceBandwidth: int
         :param _ElasticServiceBandwidth: 弹性业务带宽开关
         :type ElasticServiceBandwidth: int
         :param _GiftServiceBandWidth: 赠送的业务带宽
@@ -1086,6 +1089,7 @@ class BGPInstance(AbstractModel):
         self._IpCountNewFlag = None
         self._VitalityVersion = None
         self._Line = None
+        self._FreeServiceBandwidth = None
         self._ElasticServiceBandwidth = None
         self._GiftServiceBandWidth = None
         self._ModifyTime = None
@@ -1228,6 +1232,14 @@ class BGPInstance(AbstractModel):
         self._Line = Line
 
     @property
+    def FreeServiceBandwidth(self):
+        return self._FreeServiceBandwidth
+
+    @FreeServiceBandwidth.setter
+    def FreeServiceBandwidth(self, FreeServiceBandwidth):
+        self._FreeServiceBandwidth = FreeServiceBandwidth
+
+    @property
     def ElasticServiceBandwidth(self):
         return self._ElasticServiceBandwidth
 
@@ -1298,6 +1310,7 @@ class BGPInstance(AbstractModel):
         self._IpCountNewFlag = params.get("IpCountNewFlag")
         self._VitalityVersion = params.get("VitalityVersion")
         self._Line = params.get("Line")
+        self._FreeServiceBandwidth = params.get("FreeServiceBandwidth")
         self._ElasticServiceBandwidth = params.get("ElasticServiceBandwidth")
         self._GiftServiceBandWidth = params.get("GiftServiceBandWidth")
         self._ModifyTime = params.get("ModifyTime")
