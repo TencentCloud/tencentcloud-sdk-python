@@ -21,7 +21,8 @@ try:
     import configparser
     from urllib.parse import urlencode
     from urllib.request import urlopen
-except ImportError:
+except ImportError as e:
+    print(e)
     # py2
     import ConfigParser as configparser
     from urllib import urlencode
@@ -273,7 +274,7 @@ class EnvironmentVariableCredential():
 
 class ProfileCredential():
 
-    def __init__(self, profile='default') -> None:
+    def __init__(self, profile='default1') -> None:
         self.profile = profile
     
     def get_credential(self) -> Union[Credential, STSAssumeRoleCredential]:
@@ -297,32 +298,30 @@ class ProfileCredential():
                 source_profile: xxx (required, the role'carrier, support 'ak/sk profile' or 'cvm_role')
             ```
         """
-        home_path = os.environ.get('HOME') or os.environ.get('HOMEPATH')
-        if os.path.exists(home_path + "/.tencentcloud/credentials"):
-            file_path = home_path + "/.tencentcloud/credentials"
-        elif os.path.exists("/etc/tencentcloud/credentials"):
-            file_path = "/etc/tencentcloud/credentials"
-        else:
+        file_path = os.path.join(os.path.expanduser('~'), '.tencentcloud/credentials')
+        if not os.path.exists(file_path):
             raise TencentCloudSDKException(
                 'not find credentials path, please setting the credentials path!')
         
-        return self.parser_credentials_path(file_path)
+        return self.parser_credentials(file_path)
         
     def parser_credentials(
             self, credentials_path: str) -> Union[Credential, STSAssumeRoleCredential]:
         
         parser = configparser.ConfigParser()
         parser.read(credentials_path)
-        profile_obj = parser.get(self.profile)
-        if not profile_obj:
+        try:
+            profile_obj = parser[self.profile]
+        except KeyError:
             raise TencentCloudSDKException(f'not find profile: {self.profile}, please check the porfile')
-        
+
         # if not find role_arn the profile is ak/sk'profile
         role_arn = profile_obj.get('role_arn', None)
         if role_arn is None:
             secret_id = profile_obj.get('secret_id')
             secret_key = profile_obj.get('secret_key')
             token = profile_obj.get('token')
+
             return Credential(secret_id, secret_key, token)
         
         session_name = profile_obj.get('session_name', 'tencentcloud-session')
@@ -347,10 +346,12 @@ class ProfileCredential():
 
             return Credential(secret_id, secret_key, token=token)
         else:
-            sp_obj = parser.get(source_profile, None)
-            if sp_obj is None:
+            try:
+                sp_obj = parser[source_profile]
+            except KeyError:
                 raise TencentCloudSDKException(
-                    f'not find source_profile: {source_profile} in credentials, please check the source_profile')
+                    f'not find source_profile: {source_profile}, please check the source_profile')
+
             secret_id = sp_obj.get('secret_id')
             secret_key = sp_obj.get('secret_key')
             token = sp_obj.get('token')
