@@ -46,7 +46,6 @@ _json_content = 'application/json'
 _multipart_content = 'multipart/form-data'
 _form_urlencoded_content = 'application/x-www-form-urlencoded'
 _octet_stream = "application/octet-stream"
-_event_stream = "text/event-stream"
 
 
 class EmptyHandler(logging.Handler):
@@ -345,18 +344,11 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
-    def _handle_response(self, resp):
-        content_type = resp.headers["Content-Type"]
+    def _check_error(self, resp):
+        ct = resp.headers.get('Content-Type')
+        if ct not in ('text/plain', _json_content):
+            return
 
-        if content_type == _event_stream:
-            return self._handle_response_sse(resp)
-
-        if content_type == _octet_stream:
-            return self._handle_response_oct_stream(resp)
-
-        return self._handle_response_json(resp)
-
-    def _handle_response_json(self, resp):
         data = json.loads(resp.content)
         if "Error" in data["Response"]:
             code = data["Response"]["Error"]["Code"]
@@ -368,9 +360,9 @@ class AbstractClient(object):
             warnings.filterwarnings("default")
             warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
                           DeprecationWarning)
-        return data
 
-    def _handle_response_sse(self, resp):
+    @staticmethod
+    def _process_response_sse(resp):
         e = {}
 
         for line in resp.iter_lines():
@@ -399,9 +391,6 @@ class AbstractClient(object):
             elif key == 'retry':
                 e[key] = int(val)
 
-    def _handle_response_oct_stream(self, resp):
-        return resp.content
-
     def _call(self, action, params, options=None, headers=None):
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
@@ -416,7 +405,8 @@ class AbstractClient(object):
     def call(self, action, params, options=None, headers=None):
         resp = self._call(action, params, options, headers)
         self._check_status(resp)
-        return self._handle_response(resp)
+        self._check_error(resp)
+        return resp.content
 
     def _call_with_region_breaker(self, action, params, options=None, headers=None):
         endpoint = self._get_endpoint()
@@ -440,9 +430,10 @@ class AbstractClient(object):
                 self.circuit_breaker.after_requests(generation, False)
 
     def call_with_region_breaker(self, action, params, options=None, headers=None):
-        resp = self._call(action, params, options, headers)
+        resp = self._call_with_region_breaker(action, params, options, headers)
         self._check_status(resp)
-        return self._handle_response(resp)
+        self._check_error(resp)
+        return resp.content
 
     def call_octet_stream(self, action, headers, body):
         """
@@ -475,7 +466,8 @@ class AbstractClient(object):
 
         resp = self.request.send_request(req)
         self._check_status(resp)
-        return self._handle_response_oct_stream(resp)
+        self._check_error(resp)
+        return json.loads(resp.content)
 
     def call_json(self, action, params, headers=None, options=None):
         """
@@ -492,7 +484,14 @@ class AbstractClient(object):
         """
         resp = self._call(action, params, options, headers)
         self._check_status(resp)
-        return self._handle_response_json(resp)
+        self._check_error(resp)
+        return json.loads(resp.content)
+
+    def call_sse(self, action, params, headers=None, options=None):
+        resp = self._call(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return self._process_response_sse(resp)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
