@@ -344,15 +344,11 @@ class AbstractClient(object):
             endpoint = self._get_service_domain()
         return endpoint
 
-    def _handle_response(self, resp):
-        content_type = resp.headers["Content-Type"]
+    def _check_error(self, resp):
+        ct = resp.headers.get('Content-Type')
+        if ct not in ('text/plain', _json_content):
+            return
 
-        if content_type == "text/event-stream":
-            return self._handle_response_sse(resp)
-
-        return self._handle_response_json(resp)
-
-    def _handle_response_json(self, resp):
         data = json.loads(resp.content)
         if "Error" in data["Response"]:
             code = data["Response"]["Error"]["Code"]
@@ -364,9 +360,9 @@ class AbstractClient(object):
             warnings.filterwarnings("default")
             warnings.warn("This action is deprecated, detail: %s" % data["Response"]["DeprecatedWarning"],
                           DeprecationWarning)
-        return resp.content
 
-    def _handle_response_sse(self, resp):
+    @staticmethod
+    def _process_response_sse(resp):
         e = {}
 
         for line in resp.iter_lines():
@@ -395,20 +391,24 @@ class AbstractClient(object):
             elif key == 'retry':
                 e[key] = int(val)
 
-    def call(self, action, params, options=None, headers=None):
+    def _call(self, action, params, options=None, headers=None):
         if not self.profile.disable_region_breaker:
-            return self.call_with_region_breaker(action, params, options, headers)
+            return self._call_with_region_breaker(action, params, options, headers)
         req = RequestInternal(self._get_endpoint(),
                               self.profile.httpProfile.reqMethod,
                               self._requestPath,
                               header=headers)
         self._build_req_inter(action, params, req, options)
 
-        resp_inter = self.request.send_request(req)
-        self._check_status(resp_inter)
-        return self._handle_response(resp_inter)
+        return self.request.send_request(req)
 
-    def call_with_region_breaker(self, action, params, options=None, headers=None):
+    def call(self, action, params, options=None, headers=None):
+        resp = self._call(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return resp.content
+
+    def _call_with_region_breaker(self, action, params, options=None, headers=None):
         endpoint = self._get_endpoint()
         generation, need_break = self.circuit_breaker.before_requests()
         if need_break:
@@ -418,19 +418,22 @@ class AbstractClient(object):
                               self._requestPath,
                               header=headers)
         self._build_req_inter(action, params, req, options)
-        data = '{"Response": {}}'
+        resp = None
         try:
-            resp_inter = self.request.send_request(req)
-            self._check_status(resp_inter)
-            data = self._handle_response(resp_inter)
+            resp = self.request.send_request(req)
             self.circuit_breaker.after_requests(generation, True)
+            return resp
         except TencentCloudSDKException as e:
-            if "RequestId" in data and e.code != "InternalError":
+            if resp and "RequestId" in resp.content and e.code != "InternalError":
                 self.circuit_breaker.after_requests(generation, True)
             else:
                 self.circuit_breaker.after_requests(generation, False)
 
-        return data
+    def call_with_region_breaker(self, action, params, options=None, headers=None):
+        resp = self._call_with_region_breaker(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return resp.content
 
     def call_octet_stream(self, action, headers, body):
         """
@@ -455,16 +458,16 @@ class AbstractClient(object):
 
         req = RequestInternal(self._get_endpoint(),
                               self.profile.httpProfile.reqMethod,
-                              self._requestPath)
-        for key in headers:
-            req.header[key] = headers[key]
+                              self._requestPath,
+                              header=headers)
         req.data = body
         options = {"IsOctetStream": True}
         self._build_req_inter(action, None, req, options)
 
         resp = self.request.send_request(req)
         self._check_status(resp)
-        return self._handle_response(resp)
+        self._check_error(resp)
+        return json.loads(resp.content)
 
     def call_json(self, action, params, headers=None, options=None):
         """
@@ -479,7 +482,16 @@ class AbstractClient(object):
         :type options: dict
         :param options: request options, like {"SkipSign": False, "IsMultipart": False, "IsOctetStream": False, "BinaryParams": []}
         """
-        return json.loads(self.call(action, params, options, headers))
+        resp = self._call(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return json.loads(resp.content)
+
+    def call_sse(self, action, params, headers=None, options=None):
+        resp = self._call(action, params, options, headers)
+        self._check_status(resp)
+        self._check_error(resp)
+        return self._process_response_sse(resp)
 
     def set_stream_logger(self, stream=None, level=logging.DEBUG, log_format=None):
         """
