@@ -6526,10 +6526,116 @@ class DMSTableInfo(AbstractModel):
         
 
 
+class DataEngineConfigInstanceInfo(AbstractModel):
+    """引擎配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineId: str
+        :param _DataEngineConfigPairs: 用户自定义配置项集合
+        :type DataEngineConfigPairs: list of DataEngineConfigPair
+        :param _SessionResourceTemplate: 作业集群资源参数配置模版
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        """
+        self._DataEngineId = None
+        self._DataEngineConfigPairs = None
+        self._SessionResourceTemplate = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineConfigPairs(self):
+        return self._DataEngineConfigPairs
+
+    @DataEngineConfigPairs.setter
+    def DataEngineConfigPairs(self, DataEngineConfigPairs):
+        self._DataEngineConfigPairs = DataEngineConfigPairs
+
+    @property
+    def SessionResourceTemplate(self):
+        return self._SessionResourceTemplate
+
+    @SessionResourceTemplate.setter
+    def SessionResourceTemplate(self, SessionResourceTemplate):
+        self._SessionResourceTemplate = SessionResourceTemplate
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        if params.get("DataEngineConfigPairs") is not None:
+            self._DataEngineConfigPairs = []
+            for item in params.get("DataEngineConfigPairs"):
+                obj = DataEngineConfigPair()
+                obj._deserialize(item)
+                self._DataEngineConfigPairs.append(obj)
+        if params.get("SessionResourceTemplate") is not None:
+            self._SessionResourceTemplate = SessionResourceTemplate()
+            self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataEngineConfigPair(AbstractModel):
     """引擎配置
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ConfigItem: 配置项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigItem: str
+        :param _ConfigValue: 配置值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigValue: str
+        """
+        self._ConfigItem = None
+        self._ConfigValue = None
+
+    @property
+    def ConfigItem(self):
+        return self._ConfigItem
+
+    @ConfigItem.setter
+    def ConfigItem(self, ConfigItem):
+        self._ConfigItem = ConfigItem
+
+    @property
+    def ConfigValue(self):
+        return self._ConfigValue
+
+    @ConfigValue.setter
+    def ConfigValue(self, ConfigValue):
+        self._ConfigValue = ConfigValue
+
+
+    def _deserialize(self, params):
+        self._ConfigItem = params.get("ConfigItem")
+        self._ConfigValue = params.get("ConfigValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DataEngineImageVersion(AbstractModel):
@@ -12878,6 +12984,88 @@ class DescribeUserDataEngineConfigRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Sorting: 排序方式，desc表示倒序，asc表示正序
+        :type Sorting: str
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _SortBy: 排序字段，支持如下字段类型，create-time
+        :type SortBy: str
+        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每种过滤参数支持的过滤值不超过5个。
+app-id - String - （appid过滤）
+engine-id - String - （引擎ID过滤）
+        :type Filters: list of Filter
+        """
+        self._Sorting = None
+        self._Limit = None
+        self._Offset = None
+        self._SortBy = None
+        self._Filters = None
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Sorting = params.get("Sorting")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeUserDataEngineConfigResponse(AbstractModel):
     """DescribeUserDataEngineConfig返回参数结构体
@@ -12886,10 +13074,33 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DataEngineConfigInstanceInfos: 用户引擎自定义配置项列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineConfigInstanceInfos: list of DataEngineConfigInstanceInfo
+        :param _TotalCount: 配置项总数。
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DataEngineConfigInstanceInfos = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def DataEngineConfigInstanceInfos(self):
+        return self._DataEngineConfigInstanceInfos
+
+    @DataEngineConfigInstanceInfos.setter
+    def DataEngineConfigInstanceInfos(self, DataEngineConfigInstanceInfos):
+        self._DataEngineConfigInstanceInfos = DataEngineConfigInstanceInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -12901,6 +13112,13 @@ class DescribeUserDataEngineConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DataEngineConfigInstanceInfos") is not None:
+            self._DataEngineConfigInstanceInfos = []
+            for item in params.get("DataEngineConfigInstanceInfos"):
+                obj = DataEngineConfigInstanceInfo()
+                obj._deserialize(item)
+                self._DataEngineConfigInstanceInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -18749,6 +18967,45 @@ class RestartDataEngineRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _ForcedOperation: 是否强制重启，忽略任务
+        :type ForcedOperation: bool
+        """
+        self._DataEngineId = None
+        self._ForcedOperation = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def ForcedOperation(self):
+        return self._ForcedOperation
+
+    @ForcedOperation.setter
+    def ForcedOperation(self, ForcedOperation):
+        self._ForcedOperation = ForcedOperation
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._ForcedOperation = params.get("ForcedOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RestartDataEngineResponse(AbstractModel):
     """RestartDataEngine返回参数结构体
@@ -18779,6 +19036,57 @@ class RollbackDataEngineImageRequest(AbstractModel):
     """RollbackDataEngineImage请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _FromRecordId: 检查是否能回滚的接口返回的FromRecordId参数
+        :type FromRecordId: str
+        :param _ToRecordId: 检查是否能回滚的接口返回的ToRecordId参数
+        :type ToRecordId: str
+        """
+        self._DataEngineId = None
+        self._FromRecordId = None
+        self._ToRecordId = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def FromRecordId(self):
+        return self._FromRecordId
+
+    @FromRecordId.setter
+    def FromRecordId(self, FromRecordId):
+        self._FromRecordId = FromRecordId
+
+    @property
+    def ToRecordId(self):
+        return self._ToRecordId
+
+    @ToRecordId.setter
+    def ToRecordId(self, ToRecordId):
+        self._ToRecordId = ToRecordId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._FromRecordId = params.get("FromRecordId")
+        self._ToRecordId = params.get("ToRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RollbackDataEngineImageResponse(AbstractModel):
@@ -20453,6 +20761,45 @@ class SwitchDataEngineImageRequest(AbstractModel):
     """SwitchDataEngineImage请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _NewImageVersionId: 新镜像版本ID
+        :type NewImageVersionId: str
+        """
+        self._DataEngineId = None
+        self._NewImageVersionId = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def NewImageVersionId(self):
+        return self._NewImageVersionId
+
+    @NewImageVersionId.setter
+    def NewImageVersionId(self, NewImageVersionId):
+        self._NewImageVersionId = NewImageVersionId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        self._NewImageVersionId = params.get("NewImageVersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SwitchDataEngineImageResponse(AbstractModel):
@@ -22416,6 +22763,45 @@ class UpdateDataEngineConfigRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DataEngineIds: 引擎ID
+        :type DataEngineIds: list of str
+        :param _DataEngineConfigCommand: 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
+        :type DataEngineConfigCommand: str
+        """
+        self._DataEngineIds = None
+        self._DataEngineConfigCommand = None
+
+    @property
+    def DataEngineIds(self):
+        return self._DataEngineIds
+
+    @DataEngineIds.setter
+    def DataEngineIds(self, DataEngineIds):
+        self._DataEngineIds = DataEngineIds
+
+    @property
+    def DataEngineConfigCommand(self):
+        return self._DataEngineConfigCommand
+
+    @DataEngineConfigCommand.setter
+    def DataEngineConfigCommand(self, DataEngineConfigCommand):
+        self._DataEngineConfigCommand = DataEngineConfigCommand
+
+
+    def _deserialize(self, params):
+        self._DataEngineIds = params.get("DataEngineIds")
+        self._DataEngineConfigCommand = params.get("DataEngineConfigCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UpdateDataEngineConfigResponse(AbstractModel):
     """UpdateDataEngineConfig返回参数结构体
@@ -22749,6 +23135,64 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        :param _DataEngineConfigPairs: 引擎配置项
+        :type DataEngineConfigPairs: list of DataEngineConfigPair
+        :param _SessionResourceTemplate: 作业引擎资源配置模版
+        :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        """
+        self._DataEngineId = None
+        self._DataEngineConfigPairs = None
+        self._SessionResourceTemplate = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineConfigPairs(self):
+        return self._DataEngineConfigPairs
+
+    @DataEngineConfigPairs.setter
+    def DataEngineConfigPairs(self, DataEngineConfigPairs):
+        self._DataEngineConfigPairs = DataEngineConfigPairs
+
+    @property
+    def SessionResourceTemplate(self):
+        return self._SessionResourceTemplate
+
+    @SessionResourceTemplate.setter
+    def SessionResourceTemplate(self, SessionResourceTemplate):
+        self._SessionResourceTemplate = SessionResourceTemplate
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        if params.get("DataEngineConfigPairs") is not None:
+            self._DataEngineConfigPairs = []
+            for item in params.get("DataEngineConfigPairs"):
+                obj = DataEngineConfigPair()
+                obj._deserialize(item)
+                self._DataEngineConfigPairs.append(obj)
+        if params.get("SessionResourceTemplate") is not None:
+            self._SessionResourceTemplate = SessionResourceTemplate()
+            self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UpdateUserDataEngineConfigResponse(AbstractModel):
     """UpdateUserDataEngineConfig返回参数结构体
@@ -22779,6 +23223,33 @@ class UpgradeDataEngineImageRequest(AbstractModel):
     """UpgradeDataEngineImage请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineId: 引擎ID
+        :type DataEngineId: str
+        """
+        self._DataEngineId = None
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+
+    def _deserialize(self, params):
+        self._DataEngineId = params.get("DataEngineId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeDataEngineImageResponse(AbstractModel):

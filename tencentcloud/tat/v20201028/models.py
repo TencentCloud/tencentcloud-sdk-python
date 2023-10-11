@@ -1168,6 +1168,64 @@ class DeleteCommandResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCommandsRequest(AbstractModel):
+    """DeleteCommands请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommandIds: 待删除命令id
+        :type CommandIds: list of str
+        """
+        self._CommandIds = None
+
+    @property
+    def CommandIds(self):
+        return self._CommandIds
+
+    @CommandIds.setter
+    def CommandIds(self, CommandIds):
+        self._CommandIds = CommandIds
+
+
+    def _deserialize(self, params):
+        self._CommandIds = params.get("CommandIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCommandsResponse(AbstractModel):
+    """DeleteCommands返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInvokerRequest(AbstractModel):
     """DeleteInvoker请求参数结构体
 
@@ -2122,6 +2180,81 @@ class DescribeInvokersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeQuotasRequest(AbstractModel):
+    """DescribeQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceNames: 资源名称，目前有"COMMAND","REGISTER_CODE" 这两个指标
+        :type ResourceNames: list of str
+        """
+        self._ResourceNames = None
+
+    @property
+    def ResourceNames(self):
+        return self._ResourceNames
+
+    @ResourceNames.setter
+    def ResourceNames(self, ResourceNames):
+        self._ResourceNames = ResourceNames
+
+
+    def _deserialize(self, params):
+        self._ResourceNames = params.get("ResourceNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuotasResponse(AbstractModel):
+    """DescribeQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GeneralResourceQuotaSet: 资源额度列表
+        :type GeneralResourceQuotaSet: list of GeneralResourceQuotaSet
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GeneralResourceQuotaSet = None
+        self._RequestId = None
+
+    @property
+    def GeneralResourceQuotaSet(self):
+        return self._GeneralResourceQuotaSet
+
+    @GeneralResourceQuotaSet.setter
+    def GeneralResourceQuotaSet(self, GeneralResourceQuotaSet):
+        self._GeneralResourceQuotaSet = GeneralResourceQuotaSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GeneralResourceQuotaSet") is not None:
+            self._GeneralResourceQuotaSet = []
+            for item in params.get("GeneralResourceQuotaSet"):
+                obj = GeneralResourceQuotaSet()
+                obj._deserialize(item)
+                self._GeneralResourceQuotaSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRegionsRequest(AbstractModel):
     """DescribeRegions请求参数结构体
 
@@ -2660,6 +2793,66 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GeneralResourceQuotaSet(AbstractModel):
+    """GeneralResourceQuotaSet数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _ResourceQuotaUsed: 已使用额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceQuotaUsed: int
+        :param _ResourceQuotaTotal: 总额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceQuotaTotal: int
+        """
+        self._ResourceName = None
+        self._ResourceQuotaUsed = None
+        self._ResourceQuotaTotal = None
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceQuotaUsed(self):
+        return self._ResourceQuotaUsed
+
+    @ResourceQuotaUsed.setter
+    def ResourceQuotaUsed(self, ResourceQuotaUsed):
+        self._ResourceQuotaUsed = ResourceQuotaUsed
+
+    @property
+    def ResourceQuotaTotal(self):
+        return self._ResourceQuotaTotal
+
+    @ResourceQuotaTotal.setter
+    def ResourceQuotaTotal(self, ResourceQuotaTotal):
+        self._ResourceQuotaTotal = ResourceQuotaTotal
+
+
+    def _deserialize(self, params):
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceQuotaUsed = params.get("ResourceQuotaUsed")
+        self._ResourceQuotaTotal = params.get("ResourceQuotaTotal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

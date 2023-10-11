@@ -346,6 +346,156 @@ class CreateInstanceByApiResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSimpleInstancesRequest(AbstractModel):
+    """DescribeSimpleInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchInstanceId: 11
+        :type SearchInstanceId: str
+        :param _SearchInstanceName: 11
+        :type SearchInstanceName: str
+        :param _Offset: 11
+        :type Offset: int
+        :param _Limit: 11
+        :type Limit: int
+        :param _SearchTags: 11
+        :type SearchTags: list of str
+        """
+        self._SearchInstanceId = None
+        self._SearchInstanceName = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchTags = None
+
+    @property
+    def SearchInstanceId(self):
+        return self._SearchInstanceId
+
+    @SearchInstanceId.setter
+    def SearchInstanceId(self, SearchInstanceId):
+        self._SearchInstanceId = SearchInstanceId
+
+    @property
+    def SearchInstanceName(self):
+        return self._SearchInstanceName
+
+    @SearchInstanceName.setter
+    def SearchInstanceName(self, SearchInstanceName):
+        self._SearchInstanceName = SearchInstanceName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchTags(self):
+        return self._SearchTags
+
+    @SearchTags.setter
+    def SearchTags(self, SearchTags):
+        self._SearchTags = SearchTags
+
+
+    def _deserialize(self, params):
+        self._SearchInstanceId = params.get("SearchInstanceId")
+        self._SearchInstanceName = params.get("SearchInstanceName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchTags = params.get("SearchTags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSimpleInstancesResponse(AbstractModel):
+    """DescribeSimpleInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _InstancesList: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancesList: list of InstanceSimpleInfoNew
+        :param _ErrorMsg: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstancesList = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstancesList(self):
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = InstanceSimpleInfoNew()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyInstanceByApiRequest(AbstractModel):
     """DestroyInstanceByApi请求参数结构体
 
@@ -426,6 +576,248 @@ class DestroyInstanceByApiResponse(AbstractModel):
         self._FlowId = params.get("FlowId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class InstanceSimpleInfoNew(AbstractModel):
+    """精简集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _InstanceId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _Version: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Region: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _RegionId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _RegionDesc: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionDesc: str
+        :param _Zone: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ZoneId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneDesc: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneDesc: str
+        :param _VpcId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _CreateTime: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExpireTime: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _AccessInfo: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessInfo: str
+        :param _PayMode: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _RenewFlag: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: bool
+        """
+        self._ID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Version = None
+        self._Region = None
+        self._RegionId = None
+        self._RegionDesc = None
+        self._Zone = None
+        self._ZoneId = None
+        self._ZoneDesc = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._AccessInfo = None
+        self._PayMode = None
+        self._RenewFlag = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionDesc(self):
+        return self._RegionDesc
+
+    @RegionDesc.setter
+    def RegionDesc(self, RegionDesc):
+        self._RegionDesc = RegionDesc
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneDesc(self):
+        return self._ZoneDesc
+
+    @ZoneDesc.setter
+    def ZoneDesc(self, ZoneDesc):
+        self._ZoneDesc = ZoneDesc
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def AccessInfo(self):
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Version = params.get("Version")
+        self._Region = params.get("Region")
+        self._RegionId = params.get("RegionId")
+        self._RegionDesc = params.get("RegionDesc")
+        self._Zone = params.get("Zone")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneDesc = params.get("ZoneDesc")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._AccessInfo = params.get("AccessInfo")
+        self._PayMode = params.get("PayMode")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ResourceSpecNew(AbstractModel):

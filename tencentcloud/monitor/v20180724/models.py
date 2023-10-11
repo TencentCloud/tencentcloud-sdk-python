@@ -18100,8 +18100,10 @@ class Dimension(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 实例维度名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Value: 实例维度值
+注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
         self._Name = None

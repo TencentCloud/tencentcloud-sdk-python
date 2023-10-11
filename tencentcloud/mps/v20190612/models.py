@@ -1348,6 +1348,9 @@ class AiAnalysisResult(AbstractModel):
         :param _HighlightTask: 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
+        :param _DeLogoTask: 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1355,6 +1358,7 @@ class AiAnalysisResult(AbstractModel):
         self._TagTask = None
         self._FrameTagTask = None
         self._HighlightTask = None
+        self._DeLogoTask = None
 
     @property
     def Type(self):
@@ -1404,6 +1408,14 @@ class AiAnalysisResult(AbstractModel):
     def HighlightTask(self, HighlightTask):
         self._HighlightTask = HighlightTask
 
+    @property
+    def DeLogoTask(self):
+        return self._DeLogoTask
+
+    @DeLogoTask.setter
+    def DeLogoTask(self, DeLogoTask):
+        self._DeLogoTask = DeLogoTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1422,6 +1434,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("HighlightTask") is not None:
             self._HighlightTask = AiAnalysisTaskHighlightResult()
             self._HighlightTask._deserialize(params.get("HighlightTask"))
+        if params.get("DeLogoTask") is not None:
+            self._DeLogoTask = AiAnalysisTaskDelLogoResult()
+            self._DeLogoTask._deserialize(params.get("DeLogoTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1773,6 +1788,172 @@ class AiAnalysisTaskCoverResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskCoverOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDelLogoInput(AbstractModel):
+    """智能去水印任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频智能去水印模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDelLogoOutput(AbstractModel):
+    """智能去水印结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 去水印后文件的路径。
+        :type Path: str
+        :param _OutputStorage: 去水印后文件的存储位置。
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._Path = None
+        self._OutputStorage = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDelLogoResult(AbstractModel):
+    """智能去水印结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 智能去水印任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
+        :param _Output: 智能去水印任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDelLogoInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDelLogoOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

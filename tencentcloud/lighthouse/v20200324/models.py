@@ -2066,7 +2066,8 @@ class CreateInstancesRequest(AbstractModel):
         :type InstanceName: str
         :param _InstanceCount: 购买实例数量。包年包月实例取值范围：[1，30]。默认取值：1。指定购买实例的数量不能超过用户所能购买的剩余配额数量
         :type InstanceCount: int
-        :param _Zones: 可用区列表。默认为随机可用区
+        :param _Zones: 可用区列表。
+不填此参数，表示为随机可用区。
         :type Zones: list of str
         :param _DryRun: 是否只预检此次请求。
 true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和库存。
@@ -2076,7 +2077,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type DryRun: bool
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _LoginConfiguration: 实例登录密码信息配置。本字段目前仅支持WINDOWS实例进行密码设置。默认缺失情况下代表用户选择实例创建后设置登录密码。
+        :param _LoginConfiguration: 实例登录密码信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码。
         :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         :param _Containers: 要创建的容器配置列表。
         :type Containers: list of DockerContainerConfiguration
@@ -2084,6 +2085,12 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         :type AutoVoucher: bool
         :param _FirewallTemplateId: 防火墙模版ID。若不指定该参数，则使用默认防火墙策略。
         :type FirewallTemplateId: str
+        :param _Tags: 标签键和标签值。
+如果指定多个标签，则会为指定资源同时创建并绑定该多个标签。
+同一个资源上的同一个标签键只能对应一个标签值。如果您尝试添加已有标签键，则对应的标签值会更新为新值。
+如果标签不存在会为您自动创建标签。
+数组最多支持10个元素。
+        :type Tags: list of Tag
         """
         self._BundleId = None
         self._BlueprintId = None
@@ -2097,6 +2104,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._Containers = None
         self._AutoVoucher = None
         self._FirewallTemplateId = None
+        self._Tags = None
 
     @property
     def BundleId(self):
@@ -2194,6 +2202,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def FirewallTemplateId(self, FirewallTemplateId):
         self._FirewallTemplateId = FirewallTemplateId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -2217,6 +2233,12 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 self._Containers.append(obj)
         self._AutoVoucher = params.get("AutoVoucher")
         self._FirewallTemplateId = params.get("FirewallTemplateId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

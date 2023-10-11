@@ -3112,10 +3112,24 @@ class CreateFlowApproversResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FillError: 批量补充签署人时，补充失败的报错说明
+
+注:`目前仅补充动态签署人时会返回补充失败的原因`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FillError: list of FillError
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FillError = None
         self._RequestId = None
+
+    @property
+    def FillError(self):
+        return self._FillError
+
+    @FillError.setter
+    def FillError(self, FillError):
+        self._FillError = FillError
 
     @property
     def RequestId(self):
@@ -3127,6 +3141,12 @@ class CreateFlowApproversResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FillError") is not None:
+            self._FillError = []
+            for item in params.get("FillError"):
+                obj = FillError()
+                obj._deserialize(item)
+                self._FillError.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11791,6 +11811,53 @@ WEWORKAPP: 企业微信
         
 
 
+class FillError(AbstractModel):
+    """批量补充签署人时，补充失败的报错说明
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecipientId: 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientId: str
+        :param _ErrMessage: 补充失败错误说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMessage: str
+        """
+        self._RecipientId = None
+        self._ErrMessage = None
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+    @property
+    def ErrMessage(self):
+        return self._ErrMessage
+
+    @ErrMessage.setter
+    def ErrMessage(self, ErrMessage):
+        self._ErrMessage = ErrMessage
+
+
+    def _deserialize(self, params):
+        self._RecipientId = params.get("RecipientId")
+        self._ErrMessage = params.get("ErrMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FilledComponent(AbstractModel):
     """文档内的填充控件返回结构体，返回控件的基本信息和填写内容值
 
@@ -12442,7 +12509,7 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 模板发起合同时，该参数为必填项。
-文件发起合同是，该参数无需传值。
+文件发起合同时，该参数无需传值。
 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
         :type RecipientId: str
         :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别

@@ -145,6 +145,29 @@ class TatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCommands(self, request):
+        """批量删除命令接口
+
+        :param request: Request instance for DeleteCommands.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DeleteCommandsRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DeleteCommandsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCommands", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCommandsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInvoker(self, request):
         """此接口用于删除执行器。
 
@@ -343,6 +366,29 @@ class TatClient(AbstractClient):
             body = self.call("DescribeInvokers", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInvokersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQuotas(self, request):
+        """此接口用于获取配额信息
+
+        :param request: Request instance for DescribeQuotas.
+        :type request: :class:`tencentcloud.tat.v20201028.models.DescribeQuotasRequest`
+        :rtype: :class:`tencentcloud.tat.v20201028.models.DescribeQuotasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuotas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQuotasResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

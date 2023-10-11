@@ -13303,7 +13303,7 @@ class DeployContainerGroupRequest(AbstractModel):
         :type ServiceSetting: :class:`tencentcloud.tsf.v20180326.models.ServiceSetting`
         :param _DeployAgent: 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
         :type DeployAgent: bool
-        :param _SchedulingStrategy: 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
+        :param _SchedulingStrategy: 节点调度策略。若不指定该参数，则默认不使用节点调度策略。
         :type SchedulingStrategy: :class:`tencentcloud.tsf.v20180326.models.SchedulingStrategy`
         :param _IncrementalDeployment: 是否进行增量部署，默认为false，全量更新
         :type IncrementalDeployment: bool

@@ -49,6 +49,29 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSimpleInstances(self, request):
+        """获取集群实例列表
+
+        :param request: Request instance for DescribeSimpleInstances.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSimpleInstancesRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeSimpleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSimpleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSimpleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyInstanceByApi(self, request):
         """销毁集群
 

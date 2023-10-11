@@ -2027,6 +2027,76 @@ class CreateDeviceGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateResourceRequest(AbstractModel):
+    """CreateResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 部署堡垒机的VpcId
+        :type VpcId: str
+        :param _SubnetId: 部署堡垒机的SubnetId
+        :type SubnetId: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResourceResponse(AbstractModel):
+    """CreateResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateUserGroupRequest(AbstractModel):
     """CreateUserGroup请求参数结构体
 
@@ -6513,6 +6583,160 @@ class ModifyDeviceRequest(AbstractModel):
 
 class ModifyDeviceResponse(AbstractModel):
     """ModifyDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceRequest(AbstractModel):
+    """ModifyResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 需要开通服务的资源ID
+        :type ResourceId: str
+        :param _Status: 已废弃
+        :type Status: str
+        :param _ModuleSet: 已废弃
+        :type ModuleSet: list of str
+        :param _ResourceEdition: 实例版本
+        :type ResourceEdition: str
+        :param _ResourceNode: 资源节点数
+        :type ResourceNode: int
+        :param _AutoRenewFlag: 自动续费
+        :type AutoRenewFlag: int
+        :param _PackageBandwidth: 带宽扩展包个数(4M)
+        :type PackageBandwidth: int
+        :param _PackageNode: 授权点数扩展包个数(50点)
+        :type PackageNode: int
+        :param _LogDelivery: 日志投递
+        :type LogDelivery: int
+        """
+        self._ResourceId = None
+        self._Status = None
+        self._ModuleSet = None
+        self._ResourceEdition = None
+        self._ResourceNode = None
+        self._AutoRenewFlag = None
+        self._PackageBandwidth = None
+        self._PackageNode = None
+        self._LogDelivery = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ModuleSet(self):
+        return self._ModuleSet
+
+    @ModuleSet.setter
+    def ModuleSet(self, ModuleSet):
+        self._ModuleSet = ModuleSet
+
+    @property
+    def ResourceEdition(self):
+        return self._ResourceEdition
+
+    @ResourceEdition.setter
+    def ResourceEdition(self, ResourceEdition):
+        self._ResourceEdition = ResourceEdition
+
+    @property
+    def ResourceNode(self):
+        return self._ResourceNode
+
+    @ResourceNode.setter
+    def ResourceNode(self, ResourceNode):
+        self._ResourceNode = ResourceNode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def PackageBandwidth(self):
+        return self._PackageBandwidth
+
+    @PackageBandwidth.setter
+    def PackageBandwidth(self, PackageBandwidth):
+        self._PackageBandwidth = PackageBandwidth
+
+    @property
+    def PackageNode(self):
+        return self._PackageNode
+
+    @PackageNode.setter
+    def PackageNode(self, PackageNode):
+        self._PackageNode = PackageNode
+
+    @property
+    def LogDelivery(self):
+        return self._LogDelivery
+
+    @LogDelivery.setter
+    def LogDelivery(self, LogDelivery):
+        self._LogDelivery = LogDelivery
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Status = params.get("Status")
+        self._ModuleSet = params.get("ModuleSet")
+        self._ResourceEdition = params.get("ResourceEdition")
+        self._ResourceNode = params.get("ResourceNode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._PackageBandwidth = params.get("PackageBandwidth")
+        self._PackageNode = params.get("PackageNode")
+        self._LogDelivery = params.get("LogDelivery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceResponse(AbstractModel):
+    """ModifyResource返回参数结构体
 
     """
 
