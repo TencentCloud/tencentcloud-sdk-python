@@ -400,6 +400,9 @@ class AbstractClient(object):
                               header=headers)
         self._build_req_inter(action, params, req, options)
 
+        if self.profile.httpProfile.apigw_endpoint:
+            req.host = self.profile.httpProfile.apigw_endpoint
+            req.header["Host"] = req.host
         return self.request.send_request(req)
 
     def call(self, action, params, options=None, headers=None):
