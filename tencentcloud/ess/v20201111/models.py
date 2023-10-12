@@ -312,6 +312,8 @@ class ApproverInfo(AbstractModel):
 
 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
         :type AddSignComponentsLimits: list of ComponentLimit
+        :param _SignInstructionContent: 签署须知：支持传入富文本，最长字数：500个中文字符
+        :type SignInstructionContent: str
         """
         self._ApproverType = None
         self._ApproverName = None
@@ -333,6 +335,7 @@ class ApproverInfo(AbstractModel):
         self._ApproverSignTypes = None
         self._ApproverNeedSignReview = None
         self._AddSignComponentsLimits = None
+        self._SignInstructionContent = None
 
     @property
     def ApproverType(self):
@@ -494,6 +497,14 @@ class ApproverInfo(AbstractModel):
     def AddSignComponentsLimits(self, AddSignComponentsLimits):
         self._AddSignComponentsLimits = AddSignComponentsLimits
 
+    @property
+    def SignInstructionContent(self):
+        return self._SignInstructionContent
+
+    @SignInstructionContent.setter
+    def SignInstructionContent(self, SignInstructionContent):
+        self._SignInstructionContent = SignInstructionContent
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -528,6 +539,7 @@ class ApproverInfo(AbstractModel):
                 obj = ComponentLimit()
                 obj._deserialize(item)
                 self._AddSignComponentsLimits.append(obj)
+        self._SignInstructionContent = params.get("SignInstructionContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8730,7 +8742,9 @@ class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
 <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
 <li>PAGING_SEAL：骑缝章</li>
-<li>BATCH_SIGN：批量签署</li></ul>
+<li>BATCH_SIGN：批量签署</li>
+<li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
+
         :type ExtendServiceType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -13331,7 +13345,7 @@ class FormField(AbstractModel):
 
     当控件的 ComponentType='TEXT'时，FormField.ComponentValue填入文本内容
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "文本内容"
@@ -13339,7 +13353,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='MULTI_LINE_TEXT'时，FormField.ComponentValue填入文本内容，支持自动换行。
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "多行文本内容"
@@ -13347,7 +13361,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='CHECK_BOX'时，FormField.ComponentValue填入true或false文本
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "true"
@@ -13355,7 +13369,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='FILL_IMAGE'时，FormField.ComponentValue填入图片的资源ID
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -13363,7 +13377,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='ATTACHMENT'时，FormField.ComponentValue填入附件图片的资源ID列表，以逗号分隔，单个附件控件最多支持6个资源ID；
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx1,yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx2,yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx3"
@@ -13371,7 +13385,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='SELECTOR'时，FormField.ComponentValue填入选择的选项内容；
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "选择的内容"
@@ -13379,7 +13393,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='DATE'时，FormField.ComponentValue填入日期内容；
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "2023年01月01日"
@@ -13387,7 +13401,7 @@ class FormField(AbstractModel):
     ```
     当控件的 ComponentType='DISTRICT'时，FormField.ComponentValue填入省市区内容；
     ```
-    FormFiled输入示例：
+    FormField输入示例：
     {
         "ComponentId": "componentId1",
         "ComponentValue": "广东省深圳市福田区"

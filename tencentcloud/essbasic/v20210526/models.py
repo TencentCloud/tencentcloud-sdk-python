@@ -9946,11 +9946,14 @@ class ExtentServiceAuthInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 扩展服务类型
-  AUTO_SIGN             企业静默签（自动签署）
-  OVERSEA_SIGN          企业与港澳台居民*签署合同
-  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
-  PAGING_SEAL           骑缝章
-  DOWNLOAD_FLOW         授权平台企业下载合同 
+<ul>
+  <li>AUTO_SIGN             企业静默签（自动签署）</li>
+<li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+<li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
+ <li> PAGING_SEAL           骑缝章</li>
+ <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+<li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+</ul>
         :type Type: str
         :param _Name: 扩展服务名称 
         :type Name: str
@@ -11817,7 +11820,181 @@ class FlowResourceUrlInfo(AbstractModel):
 
 
 class FormField(AbstractModel):
-    """此结构 (FormField) 用于描述内容控件填充结构。
+    """电子文档的控件填充信息。按照控件类型进行相应的填充。
+
+    当控件的 ComponentType='TEXT'时，FormField.ComponentValue填入文本内容
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "文本内容"
+    }
+    ```
+    当控件的 ComponentType='MULTI_LINE_TEXT'时，FormField.ComponentValue填入文本内容，支持自动换行。
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "多行文本内容"
+    }
+    ```
+    当控件的 ComponentType='CHECK_BOX'时，FormField.ComponentValue填入true或false文本
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "true"
+    }
+    ```
+    当控件的 ComponentType='FILL_IMAGE'时，FormField.ComponentValue填入图片的资源ID
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+    ```
+    当控件的 ComponentType='ATTACHMENT'时，FormField.ComponentValue填入附件图片的资源ID列表，以逗号分隔，单个附件控件最多支持6个资源ID；
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx1,yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx2,yDwhsxxxxxxxxxxxxxxxxxxxxxxxxxx3"
+    }
+    ```
+    当控件的 ComponentType='SELECTOR'时，FormField.ComponentValue填入选择的选项内容；
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "选择的内容"
+    }
+    ```
+    当控件的 ComponentType='DATE'时，FormField.ComponentValue填入日期内容；
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "2023年01月01日"
+    }
+    ```
+    当控件的 ComponentType='DISTRICT'时，FormField.ComponentValue填入省市区内容；
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "广东省深圳市福田区"
+    }
+    ```
+    【数据表格传参说明】
+    当控件的 ComponentType='DYNAMIC_TABLE'时，FormField.ComponentValue需要传递json格式的字符串参数，用于确定表头&填充数据表格（支持内容的单元格合并）
+    输入示例1：
+
+    ```
+    {
+        "headers":[
+            {
+                "content":"head1"
+            },
+            {
+                "content":"head2"
+            },
+            {
+                "content":"head3"
+            }
+        ],
+        "rowCount":3,
+        "body":{
+            "cells":[
+                {
+                    "rowStart":1,
+                    "rowEnd":1,
+                    "columnStart":1,
+                    "columnEnd":1,
+                    "content":"123"
+                },
+                {
+                    "rowStart":2,
+                    "rowEnd":3,
+                    "columnStart":1,
+                    "columnEnd":2,
+                    "content":"456"
+                },
+                {
+                    "rowStart":3,
+                    "rowEnd":3,
+                    "columnStart":3,
+                    "columnEnd":3,
+                    "content":"789"
+                }
+            ]
+        }
+    }
+
+    ```
+
+    输入示例2（表格表头宽度比例配置）：
+
+    ```
+    {
+        "headers":[
+            {
+                "content":"head1",
+                "widthPercent": 30
+            },
+            {
+                "content":"head2",
+                "widthPercent": 30
+            },
+            {
+                "content":"head3",
+                "widthPercent": 40
+            }
+        ],
+        "rowCount":3,
+        "body":{
+            "cells":[
+                {
+                    "rowStart":1,
+                    "rowEnd":1,
+                    "columnStart":1,
+                    "columnEnd":1,
+                    "content":"123"
+                },
+                {
+                    "rowStart":2,
+                    "rowEnd":3,
+                    "columnStart":1,
+                    "columnEnd":2,
+                    "content":"456"
+                },
+                {
+                    "rowStart":3,
+                    "rowEnd":3,
+                    "columnStart":3,
+                    "columnEnd":3,
+                    "content":"789"
+                }
+            ]
+        }
+    }
+
+    ```
+    表格参数说明
+
+    | 名称                | 类型    | 描述                                              |
+    | ------------------- | ------- | ------------------------------------------------- |
+    | headers             | Array   | 表头：不超过10列，不支持单元格合并，字数不超过100 |
+    | rowCount            | Integer | 表格内容最大行数                                  |
+    | cells.N.rowStart    | Integer | 单元格坐标：行起始index                           |
+    | cells.N.rowEnd      | Integer | 单元格坐标：行结束index                           |
+    | cells.N.columnStart | Integer | 单元格坐标：列起始index                           |
+    | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
+    | cells.N.content     | String  | 单元格内容，字数不超过100                         |
+
+    表格参数headers说明
+    widthPercent Integer 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35
+    content String 表头单元格内容，字数不超过100
 
     """
 
@@ -12019,11 +12196,14 @@ class ModifyExtendedServiceRequest(AbstractModel):
 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ServiceType:   扩展服务类型
-  AUTO_SIGN             企业静默签（自动签署）
-  OVERSEA_SIGN          企业与港澳台居民*签署合同
-  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
-  PAGING_SEAL           骑缝章
-  DOWNLOAD_FLOW         授权渠道下载合同 
+<ul>
+  <li>AUTO_SIGN             企业自动签（自动签署）</li>
+<li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+<li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
+ <li> PAGING_SEAL           骑缝章</li>
+ <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+<li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+</ul>
         :type ServiceType: str
         :param _Operate: 操作类型 
 OPEN:开通 

@@ -833,6 +833,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScoreList(self, request):
+        """获取课堂评分列表
+
+        :param request: Request instance for DescribeScoreList.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeScoreListRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeScoreListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScoreList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScoreListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSdkAppIdUsers(self, request):
         """此接口用于获取指定应用ID下用户列表
 

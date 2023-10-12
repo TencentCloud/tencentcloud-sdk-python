@@ -1180,6 +1180,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVideoBitRate(self, request):
+        """用于获取视频通道的码率信息
+
+        :param request: Request instance for DescribeVideoBitRate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVideoBitRateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVideoBitRateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoBitRate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoBitRateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoDownloadUrl(self, request):
         """用于获取云录像下载 url
 

@@ -1250,6 +1250,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeObjects(self, request):
+        """查看防护对象列表
+
+        :param request: Request instance for DescribeObjects.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeObjectsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeObjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePeakPoints(self, request):
         """查询业务和攻击概要趋势
 
@@ -2302,6 +2325,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyModuleStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyModuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyObject(self, request):
+        """修改防护对象
+
+        :param request: Request instance for ModifyObject.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyObjectRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyObject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyObjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

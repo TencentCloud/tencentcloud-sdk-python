@@ -1083,11 +1083,12 @@ class EssClient(AbstractClient):
 
     def DescribeExtendedServiceAuthInfos(self, request):
         """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
-        1. 企业静默签
+        1. 企业自动签
         2. 企业与港澳台居民签署合同
         3. 使用手机号验证签署方身份
         4. 骑缝章
         5. 批量签署能力
+        6. 拓宽签署方年龄限制
 
         :param request: Request instance for DescribeExtendedServiceAuthInfos.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeExtendedServiceAuthInfosRequest`

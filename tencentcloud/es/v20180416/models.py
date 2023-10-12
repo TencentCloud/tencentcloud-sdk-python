@@ -6891,6 +6891,8 @@ class NodeView(AbstractModel):
         :type DiskIds: list of str
         :param _Hidden: 是否为隐藏可用区
         :type Hidden: bool
+        :param _IsCoordinationNode: 是否充当协调节点的角色
+        :type IsCoordinationNode: bool
         """
         self._NodeId = None
         self._NodeIp = None
@@ -6909,6 +6911,7 @@ class NodeView(AbstractModel):
         self._ShardNum = None
         self._DiskIds = None
         self._Hidden = None
+        self._IsCoordinationNode = None
 
     @property
     def NodeId(self):
@@ -7046,6 +7049,14 @@ class NodeView(AbstractModel):
     def Hidden(self, Hidden):
         self._Hidden = Hidden
 
+    @property
+    def IsCoordinationNode(self):
+        return self._IsCoordinationNode
+
+    @IsCoordinationNode.setter
+    def IsCoordinationNode(self, IsCoordinationNode):
+        self._IsCoordinationNode = IsCoordinationNode
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -7065,6 +7076,7 @@ class NodeView(AbstractModel):
         self._ShardNum = params.get("ShardNum")
         self._DiskIds = params.get("DiskIds")
         self._Hidden = params.get("Hidden")
+        self._IsCoordinationNode = params.get("IsCoordinationNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

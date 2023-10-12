@@ -1236,6 +1236,92 @@ class BindDocumentToRoomResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClassScoreItem(AbstractModel):
+    """课堂评分字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 课堂iD
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoomId: int
+        :param _UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _CreateTime: 评分时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _Score: 课堂评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param _ScoreMsg: 课堂评价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScoreMsg: str
+        """
+        self._RoomId = None
+        self._UserId = None
+        self._CreateTime = None
+        self._Score = None
+        self._ScoreMsg = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def ScoreMsg(self):
+        return self._ScoreMsg
+
+    @ScoreMsg.setter
+    def ScoreMsg(self, ScoreMsg):
+        self._ScoreMsg = ScoreMsg
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._UserId = params.get("UserId")
+        self._CreateTime = params.get("CreateTime")
+        self._Score = params.get("Score")
+        self._ScoreMsg = params.get("ScoreMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDocumentRequest(AbstractModel):
     """CreateDocument请求参数结构体
 
@@ -4561,6 +4647,118 @@ class DescribeRoomStatisticsResponse(AbstractModel):
         self._RealEndTime = params.get("RealEndTime")
         self._MessageCount = params.get("MessageCount")
         self._MicCount = params.get("MicCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScoreListRequest(AbstractModel):
+    """DescribeScoreList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 课堂ID
+        :type RoomId: int
+        :param _Page: 分页查询当前页数，从1开始递增
+        :type Page: int
+        :param _Limit: 默认是10条
+        :type Limit: int
+        """
+        self._RoomId = None
+        self._Page = None
+        self._Limit = None
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Page = params.get("Page")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScoreListResponse(AbstractModel):
+    """DescribeScoreList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Scores: 课堂评分列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scores: list of ClassScoreItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Scores = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Scores(self):
+        return self._Scores
+
+    @Scores.setter
+    def Scores(self, Scores):
+        self._Scores = Scores
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Scores") is not None:
+            self._Scores = []
+            for item in params.get("Scores"):
+                obj = ClassScoreItem()
+                obj._deserialize(item)
+                self._Scores.append(obj)
         self._RequestId = params.get("RequestId")
 
 

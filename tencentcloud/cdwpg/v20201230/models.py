@@ -346,6 +346,167 @@ class CreateInstanceByApiResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceStateRequest(AbstractModel):
+    """DescribeInstanceState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例名称
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceStateResponse(AbstractModel):
+    """DescribeInstanceState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceState: 集群状态，例如：Serving
+        :type InstanceState: str
+        :param _FlowCreateTime: 集群操作创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowCreateTime: str
+        :param _FlowName: 集群操作名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param _FlowProgress: 集群操作进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowProgress: float
+        :param _InstanceStateDesc: 集群状态描述，例如：运行中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStateDesc: str
+        :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowMsg: str
+        :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessName: str
+        :param _BackupStatus: 集群备份任务开启状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStatus: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceState = None
+        self._FlowCreateTime = None
+        self._FlowName = None
+        self._FlowProgress = None
+        self._InstanceStateDesc = None
+        self._FlowMsg = None
+        self._ProcessName = None
+        self._BackupStatus = None
+        self._RequestId = None
+
+    @property
+    def InstanceState(self):
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def FlowCreateTime(self):
+        return self._FlowCreateTime
+
+    @FlowCreateTime.setter
+    def FlowCreateTime(self, FlowCreateTime):
+        self._FlowCreateTime = FlowCreateTime
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowProgress(self):
+        return self._FlowProgress
+
+    @FlowProgress.setter
+    def FlowProgress(self, FlowProgress):
+        self._FlowProgress = FlowProgress
+
+    @property
+    def InstanceStateDesc(self):
+        return self._InstanceStateDesc
+
+    @InstanceStateDesc.setter
+    def InstanceStateDesc(self, InstanceStateDesc):
+        self._InstanceStateDesc = InstanceStateDesc
+
+    @property
+    def FlowMsg(self):
+        return self._FlowMsg
+
+    @FlowMsg.setter
+    def FlowMsg(self, FlowMsg):
+        self._FlowMsg = FlowMsg
+
+    @property
+    def ProcessName(self):
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceState = params.get("InstanceState")
+        self._FlowCreateTime = params.get("FlowCreateTime")
+        self._FlowName = params.get("FlowName")
+        self._FlowProgress = params.get("FlowProgress")
+        self._InstanceStateDesc = params.get("InstanceStateDesc")
+        self._FlowMsg = params.get("FlowMsg")
+        self._ProcessName = params.get("ProcessName")
+        self._BackupStatus = params.get("BackupStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSimpleInstancesRequest(AbstractModel):
     """DescribeSimpleInstances请求参数结构体
 
@@ -818,6 +979,76 @@ class InstanceSimpleInfoNew(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyInstanceRequest(AbstractModel):
+    """ModifyInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _InstanceName: 新修改的实例名称
+        :type InstanceName: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceResponse(AbstractModel):
+    """ModifyInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceSpecNew(AbstractModel):

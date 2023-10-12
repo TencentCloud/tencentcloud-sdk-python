@@ -377,6 +377,9 @@ INVALIDPARAMETERVALUE_UNSUPPORTEDSCALEPARAM = 'InvalidParameterValue.UnSupported
 # 不支持的流协议
 INVALIDPARAMETERVALUE_UNSUPPORTEDSTREAMPROTOCOL = 'InvalidParameterValue.UnsupportedStreamProtocol'
 
+# 查询的通道数量不能超过3000个
+LIMITEXCEEDED_CHANNELNUMEXCEEDED = 'LimitExceeded.ChannelNumExceeded'
+
 # 时间片段不存在
 MISSINGPARAMETER_EMPTYTIMESECTION = 'MissingParameter.EmptyTimeSection'
 

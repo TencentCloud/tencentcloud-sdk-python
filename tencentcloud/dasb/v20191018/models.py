@@ -2034,13 +2034,45 @@ class CreateResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeployRegion: 部署region
+        :type DeployRegion: str
         :param _VpcId: 部署堡垒机的VpcId
         :type VpcId: str
         :param _SubnetId: 部署堡垒机的SubnetId
         :type SubnetId: str
+        :param _ResourceEdition: 资源类型。取值:standard/pro
+        :type ResourceEdition: str
+        :param _ResourceNode: 资源节点数
+        :type ResourceNode: int
+        :param _TimeUnit: 计费周期
+        :type TimeUnit: str
+        :param _TimeSpan: 计费时长
+        :type TimeSpan: int
+        :param _PayMode: 计费模式 1预付费
+        :type PayMode: int
+        :param _AutoRenewFlag: 自动续费
+        :type AutoRenewFlag: int
+        :param _DeployZone: 部署zone
+        :type DeployZone: str
         """
+        self._DeployRegion = None
         self._VpcId = None
         self._SubnetId = None
+        self._ResourceEdition = None
+        self._ResourceNode = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._PayMode = None
+        self._AutoRenewFlag = None
+        self._DeployZone = None
+
+    @property
+    def DeployRegion(self):
+        return self._DeployRegion
+
+    @DeployRegion.setter
+    def DeployRegion(self, DeployRegion):
+        self._DeployRegion = DeployRegion
 
     @property
     def VpcId(self):
@@ -2058,10 +2090,74 @@ class CreateResourceRequest(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def ResourceEdition(self):
+        return self._ResourceEdition
+
+    @ResourceEdition.setter
+    def ResourceEdition(self, ResourceEdition):
+        self._ResourceEdition = ResourceEdition
+
+    @property
+    def ResourceNode(self):
+        return self._ResourceNode
+
+    @ResourceNode.setter
+    def ResourceNode(self, ResourceNode):
+        self._ResourceNode = ResourceNode
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def DeployZone(self):
+        return self._DeployZone
+
+    @DeployZone.setter
+    def DeployZone(self, DeployZone):
+        self._DeployZone = DeployZone
+
 
     def _deserialize(self, params):
+        self._DeployRegion = params.get("DeployRegion")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._ResourceEdition = params.get("ResourceEdition")
+        self._ResourceNode = params.get("ResourceNode")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._DeployZone = params.get("DeployZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

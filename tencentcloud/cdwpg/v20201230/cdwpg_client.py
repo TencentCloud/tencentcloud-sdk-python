@@ -49,6 +49,29 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceState(self, request):
+        """集群详情页中显示集群状态、流程进度等
+
+        :param request: Request instance for DescribeInstanceState.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceStateRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceState", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSimpleInstances(self, request):
         """获取集群实例列表
 
@@ -86,6 +109,29 @@ class CdwpgClient(AbstractClient):
             body = self.call("DestroyInstanceByApi", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyInstanceByApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstance(self, request):
+        """修改实例信息，目前为实例名称
+
+        :param request: Request instance for ModifyInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.ModifyInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.ModifyInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

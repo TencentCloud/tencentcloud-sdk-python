@@ -3611,13 +3611,13 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         r"""
         :param _InstanceName: 实例名
         :type InstanceName: str
-        :param _VpcId: VPC ID
+        :param _VpcId: VPC ID (私有网络 ID)
         :type VpcId: str
-        :param _SubnetIds: 子网 ID 数组
+        :param _SubnetIds: 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
         :type SubnetIds: list of str
         :param _EnableInternet: 是否启用外网
         :type EnableInternet: bool
-        :param _GrafanaInitPassword: Grafana 初始密码
+        :param _GrafanaInitPassword: Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
         :type GrafanaInitPassword: str
         :param _TagSpecification: 标签
         :type TagSpecification: list of PrometheusTag
@@ -3746,7 +3746,7 @@ class CreateGrafanaIntegrationRequest(AbstractModel):
         r"""
         :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param _Kind: 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
+        :param _Kind: 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
         :type Kind: str
         :param _Content: 集成配置
         :type Content: str
@@ -3843,9 +3843,9 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         :type InstanceId: str
         :param _ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
-        :param _OrgId: 默认为1，已废弃，请使用 OrganizationIds
+        :param _OrgId: 默认为1，建议使用 OrganizationIds
         :type OrgId: int
-        :param _Receivers: 接受告警通道 ID 数组
+        :param _Receivers: 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
         :type Receivers: list of str
         :param _ExtraOrgIds: 额外组织 ID 数组，已废弃，请使用 OrganizationIds
         :type ExtraOrgIds: list of str
@@ -5337,7 +5337,7 @@ class CreateSSOAccountRequest(AbstractModel):
         :type InstanceId: str
         :param _UserId: 用户账号 ID ，例如：10000000
         :type UserId: str
-        :param _Role: 权限
+        :param _Role: 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
         :type Role: list of GrafanaAccountRole
         :param _Notes: 备注
         :type Notes: str
@@ -5966,7 +5966,7 @@ class DeleteGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIDs: 实例名数组
+        :param _InstanceIDs: 实例ID数组
         :type InstanceIDs: list of str
         """
         self._InstanceIDs = None
@@ -6094,7 +6094,7 @@ class DeleteGrafanaNotificationChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelIDs: 通道 ID 数组。例如：nchannel-abcd1234
+        :param _ChannelIDs: 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
         :type ChannelIDs: list of str
         :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
@@ -10597,7 +10597,7 @@ class DescribeGrafanaChannelsRequest(AbstractModel):
         :type ChannelName: str
         :param _ChannelIds: 告警通道 ID，例如：nchannel-abcd1234
         :type ChannelIds: list of str
-        :param _ChannelState: 告警通道状态
+        :param _ChannelState: 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
         :type ChannelState: int
         """
         self._InstanceId = None
@@ -19109,7 +19109,7 @@ class GrafanaAccountRole(AbstractModel):
         r"""
         :param _Organization: 组织
         :type Organization: str
-        :param _Role: 权限
+        :param _Role: 权限(Admin、Editor、Viewer)
         :type Role: str
         """
         self._Organization = None
@@ -19761,7 +19761,7 @@ class InstallPluginsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Plugins: 插件信息
+        :param _Plugins: 插件信息(可通过 DescribePluginOverviews 接口获取)
         :type Plugins: list of GrafanaPlugin
         :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
@@ -29131,7 +29131,7 @@ class UpdateGrafanaConfigRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID
         :type InstanceId: str
-        :param _Config: JSON 编码后的字符串
+        :param _Config: JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
         :type Config: str
         """
         self._InstanceId = None
@@ -29201,7 +29201,8 @@ class UpdateGrafanaEnvironmentsRequest(AbstractModel):
         r"""
         :param _InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param _Envs: 环境变量字符串
+        :param _Envs: JSON 序列化后的环境变量字符串，如 "{\"key1\":\"key2\"}"
+
         :type Envs: str
         """
         self._InstanceId = None
@@ -29275,7 +29276,7 @@ class UpdateGrafanaIntegrationRequest(AbstractModel):
         :type InstanceId: str
         :param _Kind: 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
         :type Kind: str
-        :param _Content: 集成内容
+        :param _Content: 集成内容，请查看示例
         :type Content: str
         """
         self._IntegrationId = None
@@ -29483,7 +29484,8 @@ class UpdateGrafanaWhiteListRequest(AbstractModel):
         r"""
         :param _InstanceId: Grafana 实例 ID，例如：grafana-abcdefgh
         :type InstanceId: str
-        :param _Whitelist: 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
+        :param _Whitelist: 白名单数组，输入白名单 IP 或 CIDR，如：127.0.0.1或127.0.0.1/24
+如有多个 IP 可换行输入
         :type Whitelist: list of str
         """
         self._InstanceId = None
@@ -30164,7 +30166,7 @@ class UpgradeGrafanaInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param _Alias: 版本别名，例如：v7.4.2
+        :param _Alias: 版本别名，目前固定为 v9.1.5
         :type Alias: str
         """
         self._InstanceId = None

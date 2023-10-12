@@ -1206,6 +1206,9 @@ class ApiInfo(AbstractModel):
         :param _Base64EncodedTriggerRules: Header触发规则，总规则数量不超过10。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Base64EncodedTriggerRules: list of Base64EncodedTriggerRule
+        :param _ServiceScfEventIsAsyncCall: 是否开启SCF Event异步调用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceScfEventIsAsyncCall: bool
         """
         self._ServiceId = None
         self._ServiceName = None
@@ -1258,6 +1261,7 @@ class ApiInfo(AbstractModel):
         self._IsBase64Encoded = None
         self._IsBase64Trigger = None
         self._Base64EncodedTriggerRules = None
+        self._ServiceScfEventIsAsyncCall = None
 
     @property
     def ServiceId(self):
@@ -1667,6 +1671,14 @@ class ApiInfo(AbstractModel):
     def Base64EncodedTriggerRules(self, Base64EncodedTriggerRules):
         self._Base64EncodedTriggerRules = Base64EncodedTriggerRules
 
+    @property
+    def ServiceScfEventIsAsyncCall(self):
+        return self._ServiceScfEventIsAsyncCall
+
+    @ServiceScfEventIsAsyncCall.setter
+    def ServiceScfEventIsAsyncCall(self, ServiceScfEventIsAsyncCall):
+        self._ServiceScfEventIsAsyncCall = ServiceScfEventIsAsyncCall
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -1765,6 +1777,7 @@ class ApiInfo(AbstractModel):
                 obj = Base64EncodedTriggerRule()
                 obj._deserialize(item)
                 self._Base64EncodedTriggerRules.append(obj)
+        self._ServiceScfEventIsAsyncCall = params.get("ServiceScfEventIsAsyncCall")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4178,6 +4191,8 @@ class CreateApiRequest(AbstractModel):
         :type EventBusId: str
         :param _ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
         :type ServiceScfFunctionType: str
+        :param _ServiceScfEventIsAsyncCall: 是否开启SCF Event异步调用。
+        :type ServiceScfEventIsAsyncCall: bool
         :param _EIAMAppType: EIAM应用类型。
         :type EIAMAppType: str
         :param _EIAMAuthType: EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
@@ -4237,6 +4252,7 @@ class CreateApiRequest(AbstractModel):
         self._IsBase64Encoded = None
         self._EventBusId = None
         self._ServiceScfFunctionType = None
+        self._ServiceScfEventIsAsyncCall = None
         self._EIAMAppType = None
         self._EIAMAuthType = None
         self._TokenTimeout = None
@@ -4628,6 +4644,14 @@ class CreateApiRequest(AbstractModel):
         self._ServiceScfFunctionType = ServiceScfFunctionType
 
     @property
+    def ServiceScfEventIsAsyncCall(self):
+        return self._ServiceScfEventIsAsyncCall
+
+    @ServiceScfEventIsAsyncCall.setter
+    def ServiceScfEventIsAsyncCall(self, ServiceScfEventIsAsyncCall):
+        self._ServiceScfEventIsAsyncCall = ServiceScfEventIsAsyncCall
+
+    @property
     def EIAMAppType(self):
         return self._EIAMAppType
 
@@ -4759,6 +4783,7 @@ class CreateApiRequest(AbstractModel):
         self._IsBase64Encoded = params.get("IsBase64Encoded")
         self._EventBusId = params.get("EventBusId")
         self._ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self._ServiceScfEventIsAsyncCall = params.get("ServiceScfEventIsAsyncCall")
         self._EIAMAppType = params.get("EIAMAppType")
         self._EIAMAuthType = params.get("EIAMAuthType")
         self._TokenTimeout = params.get("TokenTimeout")
@@ -14997,6 +15022,8 @@ class ModifyApiRequest(AbstractModel):
         :type EventBusId: str
         :param _ServiceScfFunctionType: scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
         :type ServiceScfFunctionType: str
+        :param _ServiceScfEventIsAsyncCall: 是否开启SCF Event异步调用。
+        :type ServiceScfEventIsAsyncCall: bool
         :param _EIAMAppType: EIAM应用类型。
         :type EIAMAppType: str
         :param _EIAMAuthType: EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
@@ -15056,6 +15083,7 @@ class ModifyApiRequest(AbstractModel):
         self._Base64EncodedTriggerRules = None
         self._EventBusId = None
         self._ServiceScfFunctionType = None
+        self._ServiceScfEventIsAsyncCall = None
         self._EIAMAppType = None
         self._EIAMAuthType = None
         self._EIAMAppId = None
@@ -15462,6 +15490,14 @@ class ModifyApiRequest(AbstractModel):
         self._ServiceScfFunctionType = ServiceScfFunctionType
 
     @property
+    def ServiceScfEventIsAsyncCall(self):
+        return self._ServiceScfEventIsAsyncCall
+
+    @ServiceScfEventIsAsyncCall.setter
+    def ServiceScfEventIsAsyncCall(self, ServiceScfEventIsAsyncCall):
+        self._ServiceScfEventIsAsyncCall = ServiceScfEventIsAsyncCall
+
+    @property
     def EIAMAppType(self):
         return self._EIAMAppType
 
@@ -15589,6 +15625,7 @@ class ModifyApiRequest(AbstractModel):
                 self._Base64EncodedTriggerRules.append(obj)
         self._EventBusId = params.get("EventBusId")
         self._ServiceScfFunctionType = params.get("ServiceScfFunctionType")
+        self._ServiceScfEventIsAsyncCall = params.get("ServiceScfEventIsAsyncCall")
         self._EIAMAppType = params.get("EIAMAppType")
         self._EIAMAuthType = params.get("EIAMAuthType")
         self._EIAMAppId = params.get("EIAMAppId")

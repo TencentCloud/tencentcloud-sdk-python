@@ -3311,6 +3311,207 @@ class ClbHostsParams(AbstractModel):
         
 
 
+class ClbObject(AbstractModel):
+    """Clb类型防护对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectId: 对象ID
+        :type ObjectId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _PreciseDomains: 精准域名列表
+        :type PreciseDomains: list of str
+        :param _Status: WAF功能开关状态，0关闭1开启
+        :type Status: int
+        :param _ClsStatus: WAF日志开关状态，0关闭1开启
+        :type ClsStatus: int
+        :param _VirtualDomain: CLB对象对应的虚拟域名
+        :type VirtualDomain: str
+        :param _ObjectName: 对象名称
+        :type ObjectName: str
+        :param _PublicIp: 公网地址
+        :type PublicIp: list of str
+        :param _PrivateIp: 内网地址
+        :type PrivateIp: list of str
+        :param _VpcName: VPC名称
+        :type VpcName: str
+        :param _Vpc: VPC ID
+        :type Vpc: str
+        :param _InstanceLevel: waf实例等级，如果未绑定实例为0
+        :type InstanceLevel: int
+        :param _PostCLSStatus: clb投递开关
+        :type PostCLSStatus: int
+        :param _PostCKafkaStatus: kafka投递开关
+        :type PostCKafkaStatus: int
+        """
+        self._ObjectId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._PreciseDomains = None
+        self._Status = None
+        self._ClsStatus = None
+        self._VirtualDomain = None
+        self._ObjectName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._VpcName = None
+        self._Vpc = None
+        self._InstanceLevel = None
+        self._PostCLSStatus = None
+        self._PostCKafkaStatus = None
+
+    @property
+    def ObjectId(self):
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PreciseDomains(self):
+        return self._PreciseDomains
+
+    @PreciseDomains.setter
+    def PreciseDomains(self, PreciseDomains):
+        self._PreciseDomains = PreciseDomains
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ClsStatus(self):
+        return self._ClsStatus
+
+    @ClsStatus.setter
+    def ClsStatus(self, ClsStatus):
+        self._ClsStatus = ClsStatus
+
+    @property
+    def VirtualDomain(self):
+        return self._VirtualDomain
+
+    @VirtualDomain.setter
+    def VirtualDomain(self, VirtualDomain):
+        self._VirtualDomain = VirtualDomain
+
+    @property
+    def ObjectName(self):
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def PublicIp(self):
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def Vpc(self):
+        return self._Vpc
+
+    @Vpc.setter
+    def Vpc(self, Vpc):
+        self._Vpc = Vpc
+
+    @property
+    def InstanceLevel(self):
+        return self._InstanceLevel
+
+    @InstanceLevel.setter
+    def InstanceLevel(self, InstanceLevel):
+        self._InstanceLevel = InstanceLevel
+
+    @property
+    def PostCLSStatus(self):
+        return self._PostCLSStatus
+
+    @PostCLSStatus.setter
+    def PostCLSStatus(self, PostCLSStatus):
+        self._PostCLSStatus = PostCLSStatus
+
+    @property
+    def PostCKafkaStatus(self):
+        return self._PostCKafkaStatus
+
+    @PostCKafkaStatus.setter
+    def PostCKafkaStatus(self, PostCKafkaStatus):
+        self._PostCKafkaStatus = PostCKafkaStatus
+
+
+    def _deserialize(self, params):
+        self._ObjectId = params.get("ObjectId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._PreciseDomains = params.get("PreciseDomains")
+        self._Status = params.get("Status")
+        self._ClsStatus = params.get("ClsStatus")
+        self._VirtualDomain = params.get("VirtualDomain")
+        self._ObjectName = params.get("ObjectName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._VpcName = params.get("VpcName")
+        self._Vpc = params.get("Vpc")
+        self._InstanceLevel = params.get("InstanceLevel")
+        self._PostCLSStatus = params.get("PostCLSStatus")
+        self._PostCKafkaStatus = params.get("PostCKafkaStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessExportRequest(AbstractModel):
     """CreateAccessExport请求参数结构体
 
@@ -9051,6 +9252,92 @@ class DescribeIpHitItemsResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = IpHitItemsData()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeObjectsRequest(AbstractModel):
+    """DescribeObjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 支持的过滤器:
+	ObjectId: clb实例ID
+	VIP: clb实例的公网IP
+	InstanceId: waf实例ID
+	Domain: 精准域名
+	Status: waf防护开关状态: 0关闭，1开启
+	ClsStatus: waf日志开关: 0关闭，1开启
+        :type Filters: list of FiltersItemNew
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeObjectsResponse(AbstractModel):
+    """DescribeObjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClbObjects: 对象列表
+        :type ClbObjects: list of ClbObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClbObjects = None
+        self._RequestId = None
+
+    @property
+    def ClbObjects(self):
+        return self._ClbObjects
+
+    @ClbObjects.setter
+    def ClbObjects(self, ClbObjects):
+        self._ClbObjects = ClbObjects
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClbObjects") is not None:
+            self._ClbObjects = []
+            for item in params.get("ClbObjects"):
+                obj = ClbObject()
+                obj._deserialize(item)
+                self._ClbObjects.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17132,6 +17419,100 @@ class ModifyModuleStatusRequest(AbstractModel):
 
 class ModifyModuleStatusResponse(AbstractModel):
     """ModifyModuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyObjectRequest(AbstractModel):
+    """ModifyObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectId: 修改对象标识
+        :type ObjectId: str
+        :param _OpType: 改动作类型:Status修改开关，InstanceId绑定实例
+        :type OpType: str
+        :param _Status: 新的Waf开关状态，如果和已有状态相同认为修改成功
+        :type Status: int
+        :param _InstanceId: 新的实例ID，如果和已绑定的实例相同认为修改成功
+        :type InstanceId: str
+        """
+        self._ObjectId = None
+        self._OpType = None
+        self._Status = None
+        self._InstanceId = None
+
+    @property
+    def ObjectId(self):
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def OpType(self):
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ObjectId = params.get("ObjectId")
+        self._OpType = params.get("OpType")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyObjectResponse(AbstractModel):
+    """ModifyObject返回参数结构体
 
     """
 

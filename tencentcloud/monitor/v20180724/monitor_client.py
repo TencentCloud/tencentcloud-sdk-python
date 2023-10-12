@@ -259,7 +259,7 @@ class MonitorClient(AbstractClient):
 
 
     def CreateGrafanaIntegration(self, request):
-        """创建 Grafana 集成配置
+        """创建 Grafana 集成配置，其中 Prometheus 集成不通过该接口创建，可参考 BindPrometheusManagedGrafana 接口
 
         :param request: Request instance for CreateGrafanaIntegration.
         :type request: :class:`tencentcloud.monitor.v20180724.models.CreateGrafanaIntegrationRequest`

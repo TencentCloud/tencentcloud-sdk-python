@@ -362,6 +362,9 @@ class Cluster(AbstractModel):
         :param _Orders: 订单信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Orders: list of Order
+        :param _SqlGateways: Gateway信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlGateways: list of SqlGatewayItem
         """
         self._ClusterId = None
         self._Name = None
@@ -402,6 +405,7 @@ class Cluster(AbstractModel):
         self._ArchGeneration = None
         self._ClusterType = None
         self._Orders = None
+        self._SqlGateways = None
 
     @property
     def ClusterId(self):
@@ -715,6 +719,14 @@ class Cluster(AbstractModel):
     def Orders(self, Orders):
         self._Orders = Orders
 
+    @property
+    def SqlGateways(self):
+        return self._SqlGateways
+
+    @SqlGateways.setter
+    def SqlGateways(self, SqlGateways):
+        self._SqlGateways = SqlGateways
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -783,6 +795,12 @@ class Cluster(AbstractModel):
                 obj = Order()
                 obj._deserialize(item)
                 self._Orders.append(obj)
+        if params.get("SqlGateways") is not None:
+            self._SqlGateways = []
+            for item in params.get("SqlGateways"):
+                obj = SqlGatewayItem()
+                obj._deserialize(item)
+                self._SqlGateways.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4660,6 +4678,79 @@ class Filter(AbstractModel):
         
 
 
+class GatewayRefItem(AbstractModel):
+    """Gateway引用资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 空间唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _ResourceId: 资源唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _Type: 引用类型，0:用户资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._WorkspaceId = None
+        self._ResourceId = None
+        self._Version = None
+        self._Type = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ResourceId = params.get("ResourceId")
+        self._Version = params.get("Version")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobConfig(AbstractModel):
     """作业配置详情
 
@@ -7571,6 +7662,154 @@ class SlotSharingGroupSpec(AbstractModel):
         self._HeapMemory = params.get("HeapMemory")
         self._OffHeapMemory = params.get("OffHeapMemory")
         self._ManagedMemory = params.get("ManagedMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlGatewayItem(AbstractModel):
+    """SqlGateway配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialId: 唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        :param _FlinkVersion: Flink内核版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlinkVersion: str
+        :param _Status: 状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreatorUin: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param _ResourceRefs: 引用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceRefs: list of GatewayRefItem
+        :param _CuSpec: Cu规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CuSpec: float
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Properties: 配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of Property
+        """
+        self._SerialId = None
+        self._FlinkVersion = None
+        self._Status = None
+        self._CreatorUin = None
+        self._ResourceRefs = None
+        self._CuSpec = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Properties = None
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def ResourceRefs(self):
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
+    def CuSpec(self):
+        return self._CuSpec
+
+    @CuSpec.setter
+    def CuSpec(self, CuSpec):
+        self._CuSpec = CuSpec
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._SerialId = params.get("SerialId")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._Status = params.get("Status")
+        self._CreatorUin = params.get("CreatorUin")
+        if params.get("ResourceRefs") is not None:
+            self._ResourceRefs = []
+            for item in params.get("ResourceRefs"):
+                obj = GatewayRefItem()
+                obj._deserialize(item)
+                self._ResourceRefs.append(obj)
+        self._CuSpec = params.get("CuSpec")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

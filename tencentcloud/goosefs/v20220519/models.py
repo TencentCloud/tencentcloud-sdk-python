@@ -1952,7 +1952,7 @@ class GooseFSxAttribute(AbstractModel):
         r"""
         :param _Model: GooseFSx的型号
         :type Model: str
-        :param _Capacity: 容量单位是GB, 比如4608(4.5TB)
+        :param _Capacity: 容量单位是GB, 例如4608(4.5TB)
         :type Capacity: int
         :param _MappedBucketList: 要关联映射的bucket列表
         :type MappedBucketList: list of MappedBucket
@@ -2031,7 +2031,7 @@ class GooseFSxBuildElement(AbstractModel):
         r"""
         :param _Model: GooseFSx的型号
         :type Model: str
-        :param _Capacity: 容量单位是GB, 比如4608(4.5TB)
+        :param _Capacity: 容量单位是GB, 例如4608(4.5TB)
         :type Capacity: int
         :param _MappedBucketList: 要关联映射的bucket列表
         :type MappedBucketList: list of MappedBucket

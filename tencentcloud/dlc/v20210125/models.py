@@ -20914,12 +20914,19 @@ class TColumn(AbstractModel):
         :type Default: str
         :param _NotNull: 字段是否是非空
         :type NotNull: bool
+        :param _Precision: 表示整个 numeric 的长度,取值1-38
+        :type Precision: int
+        :param _Scale: 表示小数部分的长度
+Scale小于Precision
+        :type Scale: int
         """
         self._Name = None
         self._Type = None
         self._Comment = None
         self._Default = None
         self._NotNull = None
+        self._Precision = None
+        self._Scale = None
 
     @property
     def Name(self):
@@ -20961,6 +20968,22 @@ class TColumn(AbstractModel):
     def NotNull(self, NotNull):
         self._NotNull = NotNull
 
+    @property
+    def Precision(self):
+        return self._Precision
+
+    @Precision.setter
+    def Precision(self, Precision):
+        self._Precision = Precision
+
+    @property
+    def Scale(self):
+        return self._Scale
+
+    @Scale.setter
+    def Scale(self, Scale):
+        self._Scale = Scale
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -20968,6 +20991,8 @@ class TColumn(AbstractModel):
         self._Comment = params.get("Comment")
         self._Default = params.get("Default")
         self._NotNull = params.get("NotNull")
+        self._Precision = params.get("Precision")
+        self._Scale = params.get("Scale")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
