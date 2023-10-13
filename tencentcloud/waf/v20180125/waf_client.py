@@ -72,6 +72,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddAttackWhiteRule(self, request):
+        """供用户控制台调用，增加Tiga规则引擎白名单。
+
+        :param request: Request instance for AddAttackWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddAttackWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddAttackWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAttackWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddAttackWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddCustomRule(self, request):
         """增加访问控制（自定义策略）
 
@@ -293,6 +316,29 @@ class WafClient(AbstractClient):
             body = self.call("DeleteAttackDownloadRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAttackDownloadRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAttackWhiteRule(self, request):
+        """供用户控制台调用，删除Tiga规则引擎白名单。
+
+        :param request: Request instance for DeleteAttackWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteAttackWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteAttackWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAttackWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAttackWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -710,6 +756,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAttackOverview", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAttackOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAttackWhiteRule(self, request):
+        """获取用户规则白名单列表
+
+        :param request: Request instance for DescribeAttackWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAttackWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAttackWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAttackWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1933,6 +2002,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyAreaBanStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAreaBanStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAttackWhiteRule(self, request):
+        """供用户控制台调用，修改Tiga规则引擎白名单。
+
+        :param request: Request instance for ModifyAttackWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyAttackWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyAttackWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAttackWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAttackWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

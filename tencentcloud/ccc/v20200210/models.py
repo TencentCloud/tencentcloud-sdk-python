@@ -2999,10 +2999,14 @@ class DescribeChatMessagesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         return self._InstanceId
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
 
     @property
@@ -3404,6 +3408,154 @@ class DescribeExtensionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIMCdrListRequest(AbstractModel):
+    """DescribeIMCdrList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _StartTimestamp: 起始时间（必填），Unix 秒级时间戳
+        :type StartTimestamp: int
+        :param _EndTimestamp: 结束时间（必填），Unix 秒级时间戳
+        :type EndTimestamp: int
+        :param _Limit: 返回记录条数，最大为100默认20
+        :type Limit: int
+        :param _Offset: 返回记录偏移，默认为 0
+        :type Offset: int
+        :param _Type: 1为全媒体，2为文本客服，不填则查询全部
+        :type Type: int
+        """
+        self._SdkAppId = None
+        self._StartTimestamp = None
+        self._EndTimestamp = None
+        self._Limit = None
+        self._Offset = None
+        self._Type = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTimestamp(self):
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def EndTimestamp(self):
+        return self._EndTimestamp
+
+    @EndTimestamp.setter
+    def EndTimestamp(self, EndTimestamp):
+        self._EndTimestamp = EndTimestamp
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._EndTimestamp = params.get("EndTimestamp")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIMCdrListResponse(AbstractModel):
+    """DescribeIMCdrList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _IMCdrList: 服务记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IMCdrList: list of IMCdrInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._IMCdrList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IMCdrList(self):
+        return self._IMCdrList
+
+    @IMCdrList.setter
+    def IMCdrList(self, IMCdrList):
+        self._IMCdrList = IMCdrList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("IMCdrList") is not None:
+            self._IMCdrList = []
+            for item in params.get("IMCdrList"):
+                obj = IMCdrInfo()
+                obj._deserialize(item)
+                self._IMCdrList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIMCdrsRequest(AbstractModel):
     """DescribeIMCdrs请求参数结构体
 
@@ -3452,10 +3604,14 @@ class DescribeIMCdrsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         return self._InstanceId
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
 
     @property
@@ -3520,11 +3676,15 @@ class DescribeIMCdrsResponse(AbstractModel):
         :type TotalCount: int
         :param _IMCdrs: 服务记录列表
         :type IMCdrs: list of IMCdrInfo
+        :param _IMCdrList: 服务记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IMCdrList: list of IMCdrInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._IMCdrs = None
+        self._IMCdrList = None
         self._RequestId = None
 
     @property
@@ -3537,11 +3697,23 @@ class DescribeIMCdrsResponse(AbstractModel):
 
     @property
     def IMCdrs(self):
+        warnings.warn("parameter `IMCdrs` is deprecated", DeprecationWarning) 
+
         return self._IMCdrs
 
     @IMCdrs.setter
     def IMCdrs(self, IMCdrs):
+        warnings.warn("parameter `IMCdrs` is deprecated", DeprecationWarning) 
+
         self._IMCdrs = IMCdrs
+
+    @property
+    def IMCdrList(self):
+        return self._IMCdrList
+
+    @IMCdrList.setter
+    def IMCdrList(self, IMCdrList):
+        self._IMCdrList = IMCdrList
 
     @property
     def RequestId(self):
@@ -3560,6 +3732,12 @@ class DescribeIMCdrsResponse(AbstractModel):
                 obj = IMCdrInfo()
                 obj._deserialize(item)
                 self._IMCdrs.append(obj)
+        if params.get("IMCdrList") is not None:
+            self._IMCdrList = []
+            for item in params.get("IMCdrList"):
+                obj = IMCdrInfo()
+                obj._deserialize(item)
+                self._IMCdrList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

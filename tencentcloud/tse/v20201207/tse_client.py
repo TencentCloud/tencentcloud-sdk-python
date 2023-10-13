@@ -946,6 +946,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloudNativeAPIGatewayCertificate(self, request):
+        """更新云原生网关证书
+
+        :param request: Request instance for ModifyCloudNativeAPIGatewayCertificate.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayCertificateRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyCloudNativeAPIGatewayCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudNativeAPIGatewayCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudNativeAPIGatewayCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCloudNativeAPIGatewayRoute(self, request):
         """修改云原生网关路由
 

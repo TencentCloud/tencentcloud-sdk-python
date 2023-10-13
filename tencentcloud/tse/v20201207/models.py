@@ -9523,6 +9523,159 @@ class ModifyCloudNativeAPIGatewayCanaryRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCloudNativeAPIGatewayCertificateRequest(AbstractModel):
+    """ModifyCloudNativeAPIGatewayCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Id: 证书id
+        :type Id: str
+        :param _Name: 证书名称，即将废弃
+        :type Name: str
+        :param _Key: 证书私钥，CertSource为native时必填。
+        :type Key: str
+        :param _Crt: 证书pem格式，CertSource为native时必填。
+        :type Crt: str
+        :param _BindDomains: 绑定的域名，即将废弃
+        :type BindDomains: list of str
+        :param _CertId: ssl平台证书 Id，CertSource为ssl时必填。
+        :type CertId: str
+        :param _CertSource: 证书来源
+- ssl (ssl平台证书)，默认值
+- native (kong自定义证书) 
+
+        :type CertSource: str
+        """
+        self._GatewayId = None
+        self._Id = None
+        self._Name = None
+        self._Key = None
+        self._Crt = None
+        self._BindDomains = None
+        self._CertId = None
+        self._CertSource = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        warnings.warn("parameter `Name` is deprecated", DeprecationWarning) 
+
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Crt(self):
+        return self._Crt
+
+    @Crt.setter
+    def Crt(self, Crt):
+        self._Crt = Crt
+
+    @property
+    def BindDomains(self):
+        warnings.warn("parameter `BindDomains` is deprecated", DeprecationWarning) 
+
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        warnings.warn("parameter `BindDomains` is deprecated", DeprecationWarning) 
+
+        self._BindDomains = BindDomains
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CertSource(self):
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        self._Crt = params.get("Crt")
+        self._BindDomains = params.get("BindDomains")
+        self._CertId = params.get("CertId")
+        self._CertSource = params.get("CertSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayCertificateResponse(AbstractModel):
+    """ModifyCloudNativeAPIGatewayCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudNativeAPIGatewayRequest(AbstractModel):
     """ModifyCloudNativeAPIGateway请求参数结构体
 

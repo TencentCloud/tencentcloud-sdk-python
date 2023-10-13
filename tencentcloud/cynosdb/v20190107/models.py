@@ -1441,7 +1441,7 @@ class AuditRuleTemplateInfo(AbstractModel):
         :param _AlarmPolicy: 告警策略。0-不告警，1-告警。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: int
-        :param _Status: 模版状态。0-无任务 ，1-修改中。
+        :param _Status: 模板状态。0-无任务 ，1-修改中。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _AffectedInstances: 规则模板应用在哪些在实例。
@@ -15030,7 +15030,7 @@ class InstanceNetInfo(AbstractModel):
         :param _WanDomain: 外网域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanDomain: str
-        :param _WanIP: 外网Ip
+        :param _WanIP: 外网IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type WanIP: str
         :param _WanPort: 外网端口

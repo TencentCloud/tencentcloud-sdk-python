@@ -17212,6 +17212,7 @@ RideHailingDriverLicense -- 网约车驾驶证
 RideHailingTransportLicense -- 网约车运输证
 WayBill -- 快递运单
 AccountOpeningPermit -- 银行开户许可证
+InvoiceEng -- 海外发票模版
         :type ConfigId: str
         """
         self._ImageUrl = None
@@ -24070,7 +24071,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :param _RegionCode: 地区编码，通用机打电子发票时必填。
 广东:4400，浙江:3300
         :type RegionCode: str
-        :param _SellerTaxCode: 销方税号，通用机打电子发票必填
+        :param _SellerTaxCode: 销方税号，通用机打电子发票必填，区块链发票时必填
         :type SellerTaxCode: str
         :param _EnableCommonElectronic: 是否开启通用机打电子发票，默认为关闭。
         :type EnableCommonElectronic: bool
@@ -24704,9 +24705,9 @@ class VehicleInvoiceInfo(AbstractModel):
         :type TaxtationOrgName: str
         :param _MotorTaxRate: 税率
         :type MotorTaxRate: str
-        :param _MotorBankName: 开户行
+        :param _MotorBankName: 银行账号
         :type MotorBankName: str
-        :param _MotorBankAccount: 账号
+        :param _MotorBankAccount: 开户行
         :type MotorBankAccount: str
         :param _SellerAddress: 销售地址
         :type SellerAddress: str

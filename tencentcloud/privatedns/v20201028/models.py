@@ -1045,7 +1045,7 @@ class DeletePrivateZoneRecordRequest(AbstractModel):
         r"""
         :param _ZoneId: 私有域ID
         :type ZoneId: str
-        :param _RecordId: 记录ID
+        :param _RecordId: 记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
         :type RecordId: str
         :param _RecordIdSet: 记录ID数组，RecordId 优先
         :type RecordIdSet: list of str

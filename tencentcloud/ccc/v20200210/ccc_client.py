@@ -534,6 +534,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIMCdrList(self, request):
+        """获取包括全媒体和文本会话两种类型的服务记录。
+
+        :param request: Request instance for DescribeIMCdrList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeIMCdrListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIMCdrList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIMCdrListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIMCdrs(self, request):
         """获取包括全媒体和文本会话两种类型的服务记录。
 

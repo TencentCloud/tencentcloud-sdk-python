@@ -14618,7 +14618,7 @@ class ModifyTopicRequest(AbstractModel):
         :type EnvironmentId: str
         :param _TopicName: 主题名。
         :type TopicName: str
-        :param _Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
+        :param _Partitions: 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过32个分区。
         :type Partitions: int
         :param _ClusterId: Pulsar 集群的ID
         :type ClusterId: str

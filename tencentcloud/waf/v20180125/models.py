@@ -861,6 +861,129 @@ class AddAntiInfoLeakRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddAttackWhiteRuleRequest(AbstractModel):
+    """AddAttackWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SignatureId: 规则Id
+        :type SignatureId: str
+        :param _Status: 规则状态
+        :type Status: int
+        :param _Rules: 匹配规则项列表
+        :type Rules: list of UserWhiteRuleItem
+        :param _RuleId: 规则序号
+        :type RuleId: int
+        """
+        self._Domain = None
+        self._SignatureId = None
+        self._Status = None
+        self._Rules = None
+        self._RuleId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SignatureId(self):
+        return self._SignatureId
+
+    @SignatureId.setter
+    def SignatureId(self, SignatureId):
+        self._SignatureId = SignatureId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SignatureId = params.get("SignatureId")
+        self._Status = params.get("Status")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = UserWhiteRuleItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAttackWhiteRuleResponse(AbstractModel):
+    """AddAttackWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则总数
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class AddCustomRuleRequest(AbstractModel):
     """AddCustomRule请求参数结构体
 
@@ -4051,6 +4174,89 @@ class DeleteAttackDownloadRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAttackWhiteRuleRequest(AbstractModel):
+    """DeleteAttackWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 规则序号组
+        :type Ids: list of int non-negative
+        :param _Domain: 用户域名
+        :type Domain: str
+        """
+        self._Ids = None
+        self._Domain = None
+
+    @property
+    def Ids(self):
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAttackWhiteRuleResponse(AbstractModel):
+    """DeleteAttackWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailIds: 删除失败的规则序号组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailIds = None
+        self._RequestId = None
+
+    @property
+    def FailIds(self):
+        return self._FailIds
+
+    @FailIds.setter
+    def FailIds(self, FailIds):
+        self._FailIds = FailIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailIds = params.get("FailIds")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCCRuleRequest(AbstractModel):
     """DeleteCCRule请求参数结构体
 
@@ -6272,6 +6478,159 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._IPBlackCount = params.get("IPBlackCount")
         self._TamperCount = params.get("TamperCount")
         self._LeakCount = params.get("LeakCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAttackWhiteRuleRequest(AbstractModel):
+    """DescribeAttackWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要查询的域名
+        :type Domain: str
+        :param _Offset: 分页
+        :type Offset: int
+        :param _Limit: 每页容量
+        :type Limit: int
+        :param _By: 排序字段，支持user_id, signature_id, modify_time
+        :type By: str
+        :param _Order: 排序方式
+        :type Order: str
+        :param _Filters: 筛选条件，支持SignatureId, MatchContent
+        :type Filters: list of FiltersItemNew
+        """
+        self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAttackWhiteRuleResponse(AbstractModel):
+    """DescribeAttackWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 规则总数
+        :type Total: int
+        :param _List: 规则白名单列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of UserWhiteRule
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UserWhiteRule()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15746,6 +16105,129 @@ class ModifyAreaBanStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAttackWhiteRuleRequest(AbstractModel):
+    """ModifyAttackWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则序号
+        :type RuleId: int
+        :param _Domain: 域名
+        :type Domain: str
+        :param _SignatureId: 规则Id
+        :type SignatureId: str
+        :param _Status: 规则状态
+        :type Status: int
+        :param _Rules: 匹配规则项列表
+        :type Rules: list of UserWhiteRuleItem
+        """
+        self._RuleId = None
+        self._Domain = None
+        self._SignatureId = None
+        self._Status = None
+        self._Rules = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SignatureId(self):
+        return self._SignatureId
+
+    @SignatureId.setter
+    def SignatureId(self, SignatureId):
+        self._SignatureId = SignatureId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Domain = params.get("Domain")
+        self._SignatureId = params.get("SignatureId")
+        self._Status = params.get("Status")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = UserWhiteRuleItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAttackWhiteRuleResponse(AbstractModel):
+    """ModifyAttackWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则总数
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBotStatusRequest(AbstractModel):
     """ModifyBotStatus请求参数结构体
 
@@ -21924,6 +22406,180 @@ class UserSignatureRule(AbstractModel):
         self._SubClassName = params.get("SubClassName")
         self._Description = params.get("Description")
         self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserWhiteRule(AbstractModel):
+    """用户规则白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhiteRuleId: 白名单的id
+        :type WhiteRuleId: int
+        :param _SignatureId: 规则id
+        :type SignatureId: str
+        :param _Status: 状态
+        :type Status: int
+        :param _MatchField: 匹配域
+        :type MatchField: str
+        :param _MatchMethod: 匹配方法
+        :type MatchMethod: str
+        :param _MatchContent: 匹配内容
+        :type MatchContent: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        """
+        self._WhiteRuleId = None
+        self._SignatureId = None
+        self._Status = None
+        self._MatchField = None
+        self._MatchMethod = None
+        self._MatchContent = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def WhiteRuleId(self):
+        return self._WhiteRuleId
+
+    @WhiteRuleId.setter
+    def WhiteRuleId(self, WhiteRuleId):
+        self._WhiteRuleId = WhiteRuleId
+
+    @property
+    def SignatureId(self):
+        return self._SignatureId
+
+    @SignatureId.setter
+    def SignatureId(self, SignatureId):
+        self._SignatureId = SignatureId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MatchField(self):
+        return self._MatchField
+
+    @MatchField.setter
+    def MatchField(self, MatchField):
+        self._MatchField = MatchField
+
+    @property
+    def MatchMethod(self):
+        return self._MatchMethod
+
+    @MatchMethod.setter
+    def MatchMethod(self, MatchMethod):
+        self._MatchMethod = MatchMethod
+
+    @property
+    def MatchContent(self):
+        return self._MatchContent
+
+    @MatchContent.setter
+    def MatchContent(self, MatchContent):
+        self._MatchContent = MatchContent
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._WhiteRuleId = params.get("WhiteRuleId")
+        self._SignatureId = params.get("SignatureId")
+        self._Status = params.get("Status")
+        self._MatchField = params.get("MatchField")
+        self._MatchMethod = params.get("MatchMethod")
+        self._MatchContent = params.get("MatchContent")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserWhiteRuleItem(AbstractModel):
+    """用户规则白名单规则子项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchField: 匹配域
+        :type MatchField: str
+        :param _MatchMethod: 匹配方法
+        :type MatchMethod: str
+        :param _MatchContent: 匹配内容
+        :type MatchContent: str
+        """
+        self._MatchField = None
+        self._MatchMethod = None
+        self._MatchContent = None
+
+    @property
+    def MatchField(self):
+        return self._MatchField
+
+    @MatchField.setter
+    def MatchField(self, MatchField):
+        self._MatchField = MatchField
+
+    @property
+    def MatchMethod(self):
+        return self._MatchMethod
+
+    @MatchMethod.setter
+    def MatchMethod(self, MatchMethod):
+        self._MatchMethod = MatchMethod
+
+    @property
+    def MatchContent(self):
+        return self._MatchContent
+
+    @MatchContent.setter
+    def MatchContent(self, MatchContent):
+        self._MatchContent = MatchContent
+
+
+    def _deserialize(self, params):
+        self._MatchField = params.get("MatchField")
+        self._MatchMethod = params.get("MatchMethod")
+        self._MatchContent = params.get("MatchContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

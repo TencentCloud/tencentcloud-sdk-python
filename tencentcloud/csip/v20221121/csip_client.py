@@ -417,6 +417,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRiskCenterPortViewPortRiskList(self, request):
+        """获取端口视角的端口风险列表
+
+        :param request: Request instance for DescribeRiskCenterPortViewPortRiskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterPortViewPortRiskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterPortViewPortRiskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskCenterPortViewPortRiskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskCenterPortViewPortRiskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRiskCenterServerRiskList(self, request):
         """获取风险服务列表
 
@@ -431,6 +454,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeRiskCenterServerRiskList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRiskCenterServerRiskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRiskCenterVULViewVULRiskList(self, request):
+        """获取漏洞视角的漏洞风险列表
+
+        :param request: Request instance for DescribeRiskCenterVULViewVULRiskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterVULViewVULRiskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterVULViewVULRiskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRiskCenterVULViewVULRiskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRiskCenterVULViewVULRiskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -615,6 +661,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVpcAssets", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRiskCenterRiskStatus(self, request):
+        """修改风险中心风险状态
+
+        :param request: Request instance for ModifyRiskCenterRiskStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterRiskStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterRiskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRiskCenterRiskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRiskCenterRiskStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

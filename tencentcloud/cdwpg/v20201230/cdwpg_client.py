@@ -49,6 +49,29 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstance(self, request):
+        """根据实例ID查询某个实例的具体信息
+
+        :param request: Request instance for DescribeInstance.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceState(self, request):
         """集群详情页中显示集群状态、流程进度等
 
