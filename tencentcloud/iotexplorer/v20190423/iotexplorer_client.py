@@ -1360,6 +1360,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDeviceSumStatistics(self, request):
+        """拉取设备统计汇总数据
+
+        :param request: Request instance for GetDeviceSumStatistics.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceSumStatisticsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetDeviceSumStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDeviceSumStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDeviceSumStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetFamilyDeviceUserList(self, request):
         """用于获取设备绑定的用户列表
 

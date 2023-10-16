@@ -7969,6 +7969,172 @@ class GetDeviceLocationHistoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetDeviceSumStatisticsRequest(AbstractModel):
+    """GetDeviceSumStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ProductIds: 产品id列表，长度为0则拉取项目内全部产品
+        :type ProductIds: list of str
+        """
+        self._ProjectId = None
+        self._ProductIds = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProductIds(self):
+        return self._ProductIds
+
+    @ProductIds.setter
+    def ProductIds(self, ProductIds):
+        self._ProductIds = ProductIds
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProductIds = params.get("ProductIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDeviceSumStatisticsResponse(AbstractModel):
+    """GetDeviceSumStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivationCount: 激活设备总数
+        :type ActivationCount: int
+        :param _OnlineCount: 在线设备总数
+        :type OnlineCount: int
+        :param _ActivationBeforeDay: 前一天激活设备数
+        :type ActivationBeforeDay: int
+        :param _ActiveBeforeDay: 前一天活跃设备数
+        :type ActiveBeforeDay: int
+        :param _ActivationWeekDayCount: 前一周激活设备数
+        :type ActivationWeekDayCount: int
+        :param _ActiveWeekDayCount: 前一周活跃设备数
+        :type ActiveWeekDayCount: int
+        :param _ActivationBeforeWeekDayCount: 上一周激活设备数
+        :type ActivationBeforeWeekDayCount: int
+        :param _ActiveBeforeWeekDayCount: 上一周活跃设备数
+        :type ActiveBeforeWeekDayCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActivationCount = None
+        self._OnlineCount = None
+        self._ActivationBeforeDay = None
+        self._ActiveBeforeDay = None
+        self._ActivationWeekDayCount = None
+        self._ActiveWeekDayCount = None
+        self._ActivationBeforeWeekDayCount = None
+        self._ActiveBeforeWeekDayCount = None
+        self._RequestId = None
+
+    @property
+    def ActivationCount(self):
+        return self._ActivationCount
+
+    @ActivationCount.setter
+    def ActivationCount(self, ActivationCount):
+        self._ActivationCount = ActivationCount
+
+    @property
+    def OnlineCount(self):
+        return self._OnlineCount
+
+    @OnlineCount.setter
+    def OnlineCount(self, OnlineCount):
+        self._OnlineCount = OnlineCount
+
+    @property
+    def ActivationBeforeDay(self):
+        return self._ActivationBeforeDay
+
+    @ActivationBeforeDay.setter
+    def ActivationBeforeDay(self, ActivationBeforeDay):
+        self._ActivationBeforeDay = ActivationBeforeDay
+
+    @property
+    def ActiveBeforeDay(self):
+        return self._ActiveBeforeDay
+
+    @ActiveBeforeDay.setter
+    def ActiveBeforeDay(self, ActiveBeforeDay):
+        self._ActiveBeforeDay = ActiveBeforeDay
+
+    @property
+    def ActivationWeekDayCount(self):
+        return self._ActivationWeekDayCount
+
+    @ActivationWeekDayCount.setter
+    def ActivationWeekDayCount(self, ActivationWeekDayCount):
+        self._ActivationWeekDayCount = ActivationWeekDayCount
+
+    @property
+    def ActiveWeekDayCount(self):
+        return self._ActiveWeekDayCount
+
+    @ActiveWeekDayCount.setter
+    def ActiveWeekDayCount(self, ActiveWeekDayCount):
+        self._ActiveWeekDayCount = ActiveWeekDayCount
+
+    @property
+    def ActivationBeforeWeekDayCount(self):
+        return self._ActivationBeforeWeekDayCount
+
+    @ActivationBeforeWeekDayCount.setter
+    def ActivationBeforeWeekDayCount(self, ActivationBeforeWeekDayCount):
+        self._ActivationBeforeWeekDayCount = ActivationBeforeWeekDayCount
+
+    @property
+    def ActiveBeforeWeekDayCount(self):
+        return self._ActiveBeforeWeekDayCount
+
+    @ActiveBeforeWeekDayCount.setter
+    def ActiveBeforeWeekDayCount(self, ActiveBeforeWeekDayCount):
+        self._ActiveBeforeWeekDayCount = ActiveBeforeWeekDayCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActivationCount = params.get("ActivationCount")
+        self._OnlineCount = params.get("OnlineCount")
+        self._ActivationBeforeDay = params.get("ActivationBeforeDay")
+        self._ActiveBeforeDay = params.get("ActiveBeforeDay")
+        self._ActivationWeekDayCount = params.get("ActivationWeekDayCount")
+        self._ActiveWeekDayCount = params.get("ActiveWeekDayCount")
+        self._ActivationBeforeWeekDayCount = params.get("ActivationBeforeWeekDayCount")
+        self._ActiveBeforeWeekDayCount = params.get("ActiveBeforeWeekDayCount")
+        self._RequestId = params.get("RequestId")
+
+
 class GetFamilyDeviceUserListRequest(AbstractModel):
     """GetFamilyDeviceUserList请求参数结构体
 

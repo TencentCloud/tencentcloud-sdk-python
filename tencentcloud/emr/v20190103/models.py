@@ -369,6 +369,161 @@ class ApplicationStatics(AbstractModel):
         
 
 
+class AutoScaleRecord(AbstractModel):
+    """弹性扩缩容记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyName: 扩缩容规则名。
+        :type StrategyName: str
+        :param _ScaleAction: "SCALE_OUT"和"SCALE_IN"，分别表示扩容和缩容。
+        :type ScaleAction: str
+        :param _ActionStatus: 取值为"SUCCESS","FAILED","PART_SUCCESS","IN_PROCESS"，分别表示成功、失败、部分成功和流程中。
+        :type ActionStatus: str
+        :param _ActionTime: 流程触发时间。
+        :type ActionTime: str
+        :param _ScaleInfo: 扩缩容相关描述信息。
+        :type ScaleInfo: str
+        :param _ExpectScaleNum: 只在ScaleAction为SCALE_OUT时有效。
+        :type ExpectScaleNum: int
+        :param _EndTime: 流程结束时间。
+        :type EndTime: str
+        :param _StrategyType: 策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩
+        :type StrategyType: int
+        :param _SpecInfo: 扩容时所使用规格信息。
+        :type SpecInfo: str
+        :param _CompensateFlag: 补偿扩容，0表示不开启，1表示开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompensateFlag: int
+        :param _CompensateCount: 补偿次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompensateCount: int
+        """
+        self._StrategyName = None
+        self._ScaleAction = None
+        self._ActionStatus = None
+        self._ActionTime = None
+        self._ScaleInfo = None
+        self._ExpectScaleNum = None
+        self._EndTime = None
+        self._StrategyType = None
+        self._SpecInfo = None
+        self._CompensateFlag = None
+        self._CompensateCount = None
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def ScaleAction(self):
+        return self._ScaleAction
+
+    @ScaleAction.setter
+    def ScaleAction(self, ScaleAction):
+        self._ScaleAction = ScaleAction
+
+    @property
+    def ActionStatus(self):
+        return self._ActionStatus
+
+    @ActionStatus.setter
+    def ActionStatus(self, ActionStatus):
+        self._ActionStatus = ActionStatus
+
+    @property
+    def ActionTime(self):
+        return self._ActionTime
+
+    @ActionTime.setter
+    def ActionTime(self, ActionTime):
+        self._ActionTime = ActionTime
+
+    @property
+    def ScaleInfo(self):
+        return self._ScaleInfo
+
+    @ScaleInfo.setter
+    def ScaleInfo(self, ScaleInfo):
+        self._ScaleInfo = ScaleInfo
+
+    @property
+    def ExpectScaleNum(self):
+        return self._ExpectScaleNum
+
+    @ExpectScaleNum.setter
+    def ExpectScaleNum(self, ExpectScaleNum):
+        self._ExpectScaleNum = ExpectScaleNum
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def SpecInfo(self):
+        return self._SpecInfo
+
+    @SpecInfo.setter
+    def SpecInfo(self, SpecInfo):
+        self._SpecInfo = SpecInfo
+
+    @property
+    def CompensateFlag(self):
+        return self._CompensateFlag
+
+    @CompensateFlag.setter
+    def CompensateFlag(self, CompensateFlag):
+        self._CompensateFlag = CompensateFlag
+
+    @property
+    def CompensateCount(self):
+        return self._CompensateCount
+
+    @CompensateCount.setter
+    def CompensateCount(self, CompensateCount):
+        self._CompensateCount = CompensateCount
+
+
+    def _deserialize(self, params):
+        self._StrategyName = params.get("StrategyName")
+        self._ScaleAction = params.get("ScaleAction")
+        self._ActionStatus = params.get("ActionStatus")
+        self._ActionTime = params.get("ActionTime")
+        self._ScaleInfo = params.get("ScaleInfo")
+        self._ExpectScaleNum = params.get("ExpectScaleNum")
+        self._EndTime = params.get("EndTime")
+        self._StrategyType = params.get("StrategyType")
+        self._SpecInfo = params.get("SpecInfo")
+        self._CompensateFlag = params.get("CompensateFlag")
+        self._CompensateCount = params.get("CompensateCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BootstrapAction(AbstractModel):
     """引导脚本
 
@@ -2926,6 +3081,134 @@ class DependService(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeAutoScaleRecordsRequest(AbstractModel):
+    """DescribeAutoScaleRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Filters: 记录过滤参数，目前仅能为“StartTime”,“EndTime”和“StrategyName”。StartTime和EndTime支持2006-01-02 15:04:05 或者2006/01/02 15:04:05的时间格式
+        :type Filters: list of KeyValue
+        :param _Offset: 分页参数。
+        :type Offset: int
+        :param _Limit: 分页参数。最大支持100
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScaleRecordsResponse(AbstractModel):
+    """DescribeAutoScaleRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总扩缩容记录数。
+        :type TotalCount: int
+        :param _RecordList: 记录列表。
+        :type RecordList: list of AutoScaleRecord
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RecordList(self):
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RecordList") is not None:
+            self._RecordList = []
+            for item in params.get("RecordList"):
+                obj = AutoScaleRecord()
+                obj._deserialize(item)
+                self._RecordList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClusterNodesRequest(AbstractModel):
@@ -7858,6 +8141,53 @@ class JobResult(AbstractModel):
         self._ActionOnFailure = params.get("ActionOnFailure")
         self._JobState = params.get("JobState")
         self._ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValue(AbstractModel):
+    """键值对，主要用来做Filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

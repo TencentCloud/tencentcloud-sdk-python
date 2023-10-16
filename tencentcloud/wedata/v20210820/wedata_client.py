@@ -812,6 +812,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDsFolder(self, request):
+        """编排空间-创建文件夹
+
+        :param request: Request instance for CreateDsFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateDsFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateDsFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDsFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDsFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFolder(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         创建文件夹
@@ -1244,6 +1267,29 @@ class WedataClient(AbstractClient):
             body = self.call("DeleteDataSources", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataSourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDsFolder(self, request):
+        """编排空间-删除文件夹
+
+        :param request: Request instance for DeleteDsFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteDsFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DeleteDsFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDsFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDsFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2409,6 +2455,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDsFolderTree(self, request):
+        """查询目录树
+
+        :param request: Request instance for DescribeDsFolderTree.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsFolderTreeRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDsFolderTreeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDsFolderTree", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDsFolderTreeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDsParentFolderTree(self, request):
+        """查询父目录树，用于工作流、任务定位
+
+        :param request: Request instance for DescribeDsParentFolderTree.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDsParentFolderTreeRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDsParentFolderTreeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDsParentFolderTree", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDsParentFolderTreeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEvent(self, request):
         """根据项目ID和事件名称查看事件详情
 
@@ -3287,7 +3379,9 @@ class WedataClient(AbstractClient):
 
 
     def DescribeKafkaTopicInfo(self, request):
-        """获取kafka的topic信息
+        """没用到
+
+        获取kafka的topic信息
 
         :param request: Request instance for DescribeKafkaTopicInfo.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeKafkaTopicInfoRequest`
@@ -5339,6 +5433,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FindAllFolder(self, request):
+        """查找全部的文件夹
+
+        :param request: Request instance for FindAllFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.FindAllFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.FindAllFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FindAllFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.FindAllFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ForceSucInstances(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         实例批量置成功
@@ -5845,6 +5962,29 @@ class WedataClient(AbstractClient):
             body = self.call("ModifyDimensionWeight", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDimensionWeightResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDsFolder(self, request):
+        """数据开发模块-文件夹更新
+
+        :param request: Request instance for ModifyDsFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyDsFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyDsFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDsFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDsFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6406,6 +6546,52 @@ class WedataClient(AbstractClient):
             body = self.call("RobAndLockIntegrationTask", params, headers=headers)
             response = json.loads(body)
             model = models.RobAndLockIntegrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunForceSucScheduleInstances(self, request):
+        """实例强制成功
+
+        :param request: Request instance for RunForceSucScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RunForceSucScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RunForceSucScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunForceSucScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunForceSucScheduleInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunRerunScheduleInstances(self, request):
+        """实例批量重跑
+
+        :param request: Request instance for RunRerunScheduleInstances.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.RunRerunScheduleInstancesRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.RunRerunScheduleInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunRerunScheduleInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunRerunScheduleInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

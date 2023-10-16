@@ -3351,6 +3351,8 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type ScanPlanContent: str
         :param _SelfDefiningAssets: ip/域名/url数组
         :type SelfDefiningAssets: list of str
+        :param _ScanFrom: 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+        :type ScanFrom: str
         :param _TaskAdvanceCFG: 高级配置
         :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
         :param _TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
@@ -3363,6 +3365,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._Assets = None
         self._ScanPlanContent = None
         self._SelfDefiningAssets = None
+        self._ScanFrom = None
         self._TaskAdvanceCFG = None
         self._TaskMode = None
 
@@ -3423,6 +3426,14 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._SelfDefiningAssets = SelfDefiningAssets
 
     @property
+    def ScanFrom(self):
+        return self._ScanFrom
+
+    @ScanFrom.setter
+    def ScanFrom(self, ScanFrom):
+        self._ScanFrom = ScanFrom
+
+    @property
     def TaskAdvanceCFG(self):
         return self._TaskAdvanceCFG
 
@@ -3452,6 +3463,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
                 self._Assets.append(obj)
         self._ScanPlanContent = params.get("ScanPlanContent")
         self._SelfDefiningAssets = params.get("SelfDefiningAssets")
+        self._ScanFrom = params.get("ScanFrom")
         if params.get("TaskAdvanceCFG") is not None:
             self._TaskAdvanceCFG = TaskAdvanceCFG()
             self._TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))

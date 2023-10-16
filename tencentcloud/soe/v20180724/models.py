@@ -1367,6 +1367,8 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         :type TextMode: int
         :param _Keyword: 主题词和关键词
         :type Keyword: str
+        :param _COSBucketURL: 音频存储路径，支持通过子路径指定文件夹名称
+        :type COSBucketURL: str
         """
         self._SeqId = None
         self._IsEnd = None
@@ -1386,6 +1388,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         self._IsQuery = None
         self._TextMode = None
         self._Keyword = None
+        self._COSBucketURL = None
 
     @property
     def SeqId(self):
@@ -1477,10 +1480,14 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
 
     @property
     def StorageMode(self):
+        warnings.warn("parameter `StorageMode` is deprecated", DeprecationWarning) 
+
         return self._StorageMode
 
     @StorageMode.setter
     def StorageMode(self, StorageMode):
+        warnings.warn("parameter `StorageMode` is deprecated", DeprecationWarning) 
+
         self._StorageMode = StorageMode
 
     @property
@@ -1531,6 +1538,14 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
     def Keyword(self, Keyword):
         self._Keyword = Keyword
 
+    @property
+    def COSBucketURL(self):
+        return self._COSBucketURL
+
+    @COSBucketURL.setter
+    def COSBucketURL(self, COSBucketURL):
+        self._COSBucketURL = COSBucketURL
+
 
     def _deserialize(self, params):
         self._SeqId = params.get("SeqId")
@@ -1551,6 +1566,7 @@ class TransmitOralProcessWithInitRequest(AbstractModel):
         self._IsQuery = params.get("IsQuery")
         self._TextMode = params.get("TextMode")
         self._Keyword = params.get("Keyword")
+        self._COSBucketURL = params.get("COSBucketURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1654,10 +1670,14 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
 
     @property
     def AudioUrl(self):
+        warnings.warn("parameter `AudioUrl` is deprecated", DeprecationWarning) 
+
         return self._AudioUrl
 
     @AudioUrl.setter
     def AudioUrl(self, AudioUrl):
+        warnings.warn("parameter `AudioUrl` is deprecated", DeprecationWarning) 
+
         self._AudioUrl = AudioUrl
 
     @property
