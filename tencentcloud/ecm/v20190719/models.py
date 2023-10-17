@@ -780,10 +780,14 @@ CMCC：中国移动
 
     @property
     def Ipv6ISP(self):
+        warnings.warn("parameter `Ipv6ISP` is deprecated", DeprecationWarning) 
+
         return self._Ipv6ISP
 
     @Ipv6ISP.setter
     def Ipv6ISP(self, Ipv6ISP):
+        warnings.warn("parameter `Ipv6ISP` is deprecated", DeprecationWarning) 
+
         self._Ipv6ISP = Ipv6ISP
 
 

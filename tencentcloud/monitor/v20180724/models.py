@@ -922,6 +922,9 @@ class AlarmPolicy(AbstractModel):
         :param _Tags: 策略标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _IsSupportAlarmTag: 是否支持告警标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportAlarmTag: int
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -958,6 +961,7 @@ class AlarmPolicy(AbstractModel):
         self._AdvancedMetricNumber = None
         self._IsBindAll = None
         self._Tags = None
+        self._IsSupportAlarmTag = None
 
     @property
     def PolicyId(self):
@@ -1239,6 +1243,14 @@ class AlarmPolicy(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsSupportAlarmTag(self):
+        return self._IsSupportAlarmTag
+
+    @IsSupportAlarmTag.setter
+    def IsSupportAlarmTag(self, IsSupportAlarmTag):
+        self._IsSupportAlarmTag = IsSupportAlarmTag
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
@@ -1302,6 +1314,7 @@ class AlarmPolicy(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsSupportAlarmTag = params.get("IsSupportAlarmTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

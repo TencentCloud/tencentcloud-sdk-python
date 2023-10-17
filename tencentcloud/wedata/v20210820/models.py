@@ -3998,7 +3998,7 @@ class BatchResumeIntegrationTasksRequest(AbstractModel):
         r"""
         :param _TaskIds: 任务id
         :type TaskIds: list of str
-        :param _TaskType: 任务类型
+        :param _TaskType: 任务类型, 201为实时任务，202为离线任务
         :type TaskType: int
         :param _ProjectId: 项目id
         :type ProjectId: str
@@ -17395,7 +17395,7 @@ class DescribeDataTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasourceType: 数据源类型，MYSQL|KAFKA等
+        :param _DatasourceType: 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
         :type DatasourceType: str
         :param _ProjectId: 项目ID。
         :type ProjectId: str
@@ -17484,7 +17484,7 @@ class DescribeDatabaseInfoListRequest(AbstractModel):
         r"""
         :param _Filters: 过滤参数
         :type Filters: list of Filter
-        :param _ConnectionType: 如果是hive这里写rpc，如果是其他类型不传
+        :param _ConnectionType: 连接类型
         :type ConnectionType: str
         """
         self._Filters = None
@@ -23555,7 +23555,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
         :type TaskId: str
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _TaskType: 任务类型：201. stream,   202. offline
+        :param _TaskType: 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
         :type TaskType: int
         :param _InstanceVersion: 提交版本号
         :type InstanceVersion: int
@@ -31700,11 +31700,11 @@ class DescribeTableSchemaInfoRequest(AbstractModel):
         :type Name: str
         :param _DatabaseName: 数据库名称
         :type DatabaseName: str
-        :param _MsType: 表类型
+        :param _MsType: 数据源的类型（例如MYSQL、HIVE、KAFKA等）
         :type MsType: str
         :param _DatasourceId: 数据源id
         :type DatasourceId: str
-        :param _ConnectionType: HIVE传rpc
+        :param _ConnectionType: 连接类型（示例值rpc）
         :type ConnectionType: str
         :param _SchemaName: 元数据Database下的Schema名称
         :type SchemaName: str
@@ -50673,6 +50673,12 @@ class OfflineTaskAddParam(AbstractModel):
         :param _ExecutionStartTime: 调度执行开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
+        :param _TaskAutoSubmit: 是否自动提交
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAutoSubmit: bool
+        :param _InstanceInitStrategy: 实例初始化策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceInitStrategy: str
         """
         self._WorkflowName = None
         self._DependencyWorkflow = None
@@ -50691,6 +50697,8 @@ class OfflineTaskAddParam(AbstractModel):
         self._TaskAction = None
         self._ExecutionEndTime = None
         self._ExecutionStartTime = None
+        self._TaskAutoSubmit = None
+        self._InstanceInitStrategy = None
 
     @property
     def WorkflowName(self):
@@ -50828,6 +50836,22 @@ class OfflineTaskAddParam(AbstractModel):
     def ExecutionStartTime(self, ExecutionStartTime):
         self._ExecutionStartTime = ExecutionStartTime
 
+    @property
+    def TaskAutoSubmit(self):
+        return self._TaskAutoSubmit
+
+    @TaskAutoSubmit.setter
+    def TaskAutoSubmit(self, TaskAutoSubmit):
+        self._TaskAutoSubmit = TaskAutoSubmit
+
+    @property
+    def InstanceInitStrategy(self):
+        return self._InstanceInitStrategy
+
+    @InstanceInitStrategy.setter
+    def InstanceInitStrategy(self, InstanceInitStrategy):
+        self._InstanceInitStrategy = InstanceInitStrategy
+
 
     def _deserialize(self, params):
         self._WorkflowName = params.get("WorkflowName")
@@ -50847,6 +50871,8 @@ class OfflineTaskAddParam(AbstractModel):
         self._TaskAction = params.get("TaskAction")
         self._ExecutionEndTime = params.get("ExecutionEndTime")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._TaskAutoSubmit = params.get("TaskAutoSubmit")
+        self._InstanceInitStrategy = params.get("InstanceInitStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

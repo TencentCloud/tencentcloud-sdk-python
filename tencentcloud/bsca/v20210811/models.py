@@ -403,6 +403,55 @@ class Component(AbstractModel):
         
 
 
+class ComponentVersion(AbstractModel):
+    """描述组件的一条版本信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PURL: 该组件的PURL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        :param _LicenseExpression: 该组件版本的许可证表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseExpression: str
+        """
+        self._PURL = None
+        self._LicenseExpression = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+    @property
+    def LicenseExpression(self):
+        return self._LicenseExpression
+
+    @LicenseExpression.setter
+    def LicenseExpression(self, LicenseExpression):
+        self._LicenseExpression = LicenseExpression
+
+
+    def _deserialize(self, params):
+        if params.get("PURL") is not None:
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        self._LicenseExpression = params.get("LicenseExpression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComponentVulnerabilitySummary(AbstractModel):
     """与输入组件相关的漏洞信息摘要信息。
 
@@ -623,6 +672,83 @@ class DescribeKBComponentResponse(AbstractModel):
         if params.get("Component") is not None:
             self._Component = Component()
             self._Component._deserialize(params.get("Component"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBComponentVersionListRequest(AbstractModel):
+    """DescribeKBComponentVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PURL: 要查询的组件 PURL
+        :type PURL: :class:`tencentcloud.bsca.v20210811.models.PURL`
+        """
+        self._PURL = None
+
+    @property
+    def PURL(self):
+        return self._PURL
+
+    @PURL.setter
+    def PURL(self, PURL):
+        self._PURL = PURL
+
+
+    def _deserialize(self, params):
+        if params.get("PURL") is not None:
+            self._PURL = PURL()
+            self._PURL._deserialize(params.get("PURL"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBComponentVersionListResponse(AbstractModel):
+    """DescribeKBComponentVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionList: 该组件的版本列表信息
+        :type VersionList: list of ComponentVersion
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VersionList = None
+        self._RequestId = None
+
+    @property
+    def VersionList(self):
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = ComponentVersion()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1384,6 +1510,129 @@ class Qualifier(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SearchKBComponentRequest(AbstractModel):
+    """SearchKBComponent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: 需要搜索的组件名
+        :type Query: str
+        :param _Protocol: 需要搜索的组件类型
+        :type Protocol: str
+        :param _PageNumber: 分页参数，从 0 开始
+        :type PageNumber: int
+        :param _PageSize: 分页参数，设置每页返回的结果数量
+        :type PageSize: int
+        """
+        self._Query = None
+        self._Protocol = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        self._Protocol = params.get("Protocol")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchKBComponentResponse(AbstractModel):
+    """SearchKBComponent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentList: 满足搜索条件的组件列表
+        :type ComponentList: list of Component
+        :param _Total: 满足搜索条件的总个数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ComponentList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ComponentList(self):
+        return self._ComponentList
+
+    @ComponentList.setter
+    def ComponentList(self, ComponentList):
+        self._ComponentList = ComponentList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ComponentList") is not None:
+            self._ComponentList = []
+            for item in params.get("ComponentList"):
+                obj = Component()
+                obj._deserialize(item)
+                self._ComponentList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
 
 
 class VulnerabilityDetail(AbstractModel):

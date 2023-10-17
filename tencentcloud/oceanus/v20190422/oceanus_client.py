@@ -555,6 +555,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FetchSqlGatewayStatementResult(self, request):
+        """查询Sql Gateway的Statement执行结果
+
+        :param request: Request instance for FetchSqlGatewayStatementResult.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.FetchSqlGatewayStatementResultRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.FetchSqlGatewayStatementResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FetchSqlGatewayStatementResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.FetchSqlGatewayStatementResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyJob(self, request):
         """更新作业属性，仅允许以下3种操作，不支持组合操作：
         (1)	更新作业名称
@@ -601,6 +624,29 @@ class OceanusClient(AbstractClient):
             body = self.call("RunJobs", params, headers=headers)
             response = json.loads(body)
             model = models.RunJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunSqlGatewayStatement(self, request):
+        """通过Sql gateway执行satement
+
+        :param request: Request instance for RunSqlGatewayStatement.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.RunSqlGatewayStatementRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.RunSqlGatewayStatementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunSqlGatewayStatement", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunSqlGatewayStatementResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

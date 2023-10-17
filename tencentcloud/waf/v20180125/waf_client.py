@@ -765,6 +765,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAttackType(self, request):
+        """查询指定域名TOP N攻击类型
+
+        :param request: Request instance for DescribeAttackType.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAttackTypeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAttackTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAttackType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAttackTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAttackWhiteRule(self, request):
         """获取用户规则白名单列表
 
@@ -1181,6 +1204,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHistogram(self, request):
+        """查询多种条件的聚类分析
+
+        :param request: Request instance for DescribeHistogram.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeHistogramRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeHistogramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHistogram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHistogramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHost(self, request):
         """clb-waf获取防护域名详情
 
@@ -1494,6 +1540,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeTlsVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTlsVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopAttackDomain(self, request):
+        """查询Top5的攻击域名
+
+        :param request: Request instance for DescribeTopAttackDomain.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTopAttackDomainRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeTopAttackDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopAttackDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopAttackDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

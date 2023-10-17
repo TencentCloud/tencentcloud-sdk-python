@@ -317,10 +317,14 @@ class BoundK8SInfo(AbstractModel):
         :param _SyncMode: 服务同步模式，all为全量同步，demand为按需同步
 注意：此字段可能返回 null，表示取不到有效值。
         :type SyncMode: str
+        :param _BindRegion: 绑定的kubernetes集群所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindRegion: str
         """
         self._BoundClusterId = None
         self._BoundClusterType = None
         self._SyncMode = None
+        self._BindRegion = None
 
     @property
     def BoundClusterId(self):
@@ -346,11 +350,80 @@ class BoundK8SInfo(AbstractModel):
     def SyncMode(self, SyncMode):
         self._SyncMode = SyncMode
 
+    @property
+    def BindRegion(self):
+        return self._BindRegion
+
+    @BindRegion.setter
+    def BindRegion(self, BindRegion):
+        self._BindRegion = BindRegion
+
 
     def _deserialize(self, params):
         self._BoundClusterId = params.get("BoundClusterId")
         self._BoundClusterType = params.get("BoundClusterType")
         self._SyncMode = params.get("SyncMode")
+        self._BindRegion = params.get("BindRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLBMultiRegion(AbstractModel):
+    """CLB多可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLBMultiZoneFlag: 是否启用多可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBMultiZoneFlag: bool
+        :param _CLBMasterZone: 主可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBMasterZone: str
+        :param _CLBSlaveZone: 备可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBSlaveZone: str
+        """
+        self._CLBMultiZoneFlag = None
+        self._CLBMasterZone = None
+        self._CLBSlaveZone = None
+
+    @property
+    def CLBMultiZoneFlag(self):
+        return self._CLBMultiZoneFlag
+
+    @CLBMultiZoneFlag.setter
+    def CLBMultiZoneFlag(self, CLBMultiZoneFlag):
+        self._CLBMultiZoneFlag = CLBMultiZoneFlag
+
+    @property
+    def CLBMasterZone(self):
+        return self._CLBMasterZone
+
+    @CLBMasterZone.setter
+    def CLBMasterZone(self, CLBMasterZone):
+        self._CLBMasterZone = CLBMasterZone
+
+    @property
+    def CLBSlaveZone(self):
+        return self._CLBSlaveZone
+
+    @CLBSlaveZone.setter
+    def CLBSlaveZone(self, CLBSlaveZone):
+        self._CLBSlaveZone = CLBSlaveZone
+
+
+    def _deserialize(self, params):
+        self._CLBMultiZoneFlag = params.get("CLBMultiZoneFlag")
+        self._CLBMasterZone = params.get("CLBMasterZone")
+        self._CLBSlaveZone = params.get("CLBSlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6091,18 +6164,34 @@ class DescribeInstanceRegionInfo(AbstractModel):
         :param _SpecId: 引擎在该地域的规格id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecId: str
-        :param _IntranetVpcInfos: 内网的网络信息
+        :param _IntranetVpcInfos: 客户端内网的网络信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntranetVpcInfos: list of VpcInfo
+        :param _ConsoleIntranetVpcInfos: 控制台内网的网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsoleIntranetVpcInfos: list of VpcInfo
         :param _EnableClientInternet: 是否开公网
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableClientInternet: bool
+        :param _LimiterIntranetVpcInfos: 限流客户端内网的网络信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimiterIntranetVpcInfos: list of VpcInfo
+        :param _MainRegion: 是否为主地域，仅在服务治理中心多地域有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainRegion: bool
+        :param _EKSClusterID: 该地域所在的EKS集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EKSClusterID: str
         """
         self._EngineRegion = None
         self._Replica = None
         self._SpecId = None
         self._IntranetVpcInfos = None
+        self._ConsoleIntranetVpcInfos = None
         self._EnableClientInternet = None
+        self._LimiterIntranetVpcInfos = None
+        self._MainRegion = None
+        self._EKSClusterID = None
 
     @property
     def EngineRegion(self):
@@ -6137,12 +6226,44 @@ class DescribeInstanceRegionInfo(AbstractModel):
         self._IntranetVpcInfos = IntranetVpcInfos
 
     @property
+    def ConsoleIntranetVpcInfos(self):
+        return self._ConsoleIntranetVpcInfos
+
+    @ConsoleIntranetVpcInfos.setter
+    def ConsoleIntranetVpcInfos(self, ConsoleIntranetVpcInfos):
+        self._ConsoleIntranetVpcInfos = ConsoleIntranetVpcInfos
+
+    @property
     def EnableClientInternet(self):
         return self._EnableClientInternet
 
     @EnableClientInternet.setter
     def EnableClientInternet(self, EnableClientInternet):
         self._EnableClientInternet = EnableClientInternet
+
+    @property
+    def LimiterIntranetVpcInfos(self):
+        return self._LimiterIntranetVpcInfos
+
+    @LimiterIntranetVpcInfos.setter
+    def LimiterIntranetVpcInfos(self, LimiterIntranetVpcInfos):
+        self._LimiterIntranetVpcInfos = LimiterIntranetVpcInfos
+
+    @property
+    def MainRegion(self):
+        return self._MainRegion
+
+    @MainRegion.setter
+    def MainRegion(self, MainRegion):
+        self._MainRegion = MainRegion
+
+    @property
+    def EKSClusterID(self):
+        return self._EKSClusterID
+
+    @EKSClusterID.setter
+    def EKSClusterID(self, EKSClusterID):
+        self._EKSClusterID = EKSClusterID
 
 
     def _deserialize(self, params):
@@ -6155,7 +6276,21 @@ class DescribeInstanceRegionInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self._IntranetVpcInfos.append(obj)
+        if params.get("ConsoleIntranetVpcInfos") is not None:
+            self._ConsoleIntranetVpcInfos = []
+            for item in params.get("ConsoleIntranetVpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._ConsoleIntranetVpcInfos.append(obj)
         self._EnableClientInternet = params.get("EnableClientInternet")
+        if params.get("LimiterIntranetVpcInfos") is not None:
+            self._LimiterIntranetVpcInfos = []
+            for item in params.get("LimiterIntranetVpcInfos"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._LimiterIntranetVpcInfos.append(obj)
+        self._MainRegion = params.get("MainRegion")
+        self._EKSClusterID = params.get("EKSClusterID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6695,6 +6830,9 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         :param _LimiterAddressInfos: 北极星限流server节点接入IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type LimiterAddressInfos: list of PolarisLimiterAddress
+        :param _CLBMultiRegion: InternetAddress 的公网 CLB 多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBMultiRegion: :class:`tencentcloud.tse.v20201207.models.CLBMultiRegion`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6706,6 +6844,7 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         self._InternetBandWidth = None
         self._ConsoleInternetBandWidth = None
         self._LimiterAddressInfos = None
+        self._CLBMultiRegion = None
         self._RequestId = None
 
     @property
@@ -6773,6 +6912,14 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
         self._LimiterAddressInfos = LimiterAddressInfos
 
     @property
+    def CLBMultiRegion(self):
+        return self._CLBMultiRegion
+
+    @CLBMultiRegion.setter
+    def CLBMultiRegion(self, CLBMultiRegion):
+        self._CLBMultiRegion = CLBMultiRegion
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6800,6 +6947,9 @@ class DescribeSREInstanceAccessAddressResponse(AbstractModel):
                 obj = PolarisLimiterAddress()
                 obj._deserialize(item)
                 self._LimiterAddressInfos.append(obj)
+        if params.get("CLBMultiRegion") is not None:
+            self._CLBMultiRegion = CLBMultiRegion()
+            self._CLBMultiRegion._deserialize(params.get("CLBMultiRegion"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7236,10 +7386,16 @@ class EngineRegionInfo(AbstractModel):
         :type Replica: int
         :param _VpcInfos: 集群网络信息
         :type VpcInfos: list of VpcInfo
+        :param _MainRegion: 是否为主地域
+        :type MainRegion: bool
+        :param _SpecId: 引擎规格ID
+        :type SpecId: str
         """
         self._EngineRegion = None
         self._Replica = None
         self._VpcInfos = None
+        self._MainRegion = None
+        self._SpecId = None
 
     @property
     def EngineRegion(self):
@@ -7265,6 +7421,22 @@ class EngineRegionInfo(AbstractModel):
     def VpcInfos(self, VpcInfos):
         self._VpcInfos = VpcInfos
 
+    @property
+    def MainRegion(self):
+        return self._MainRegion
+
+    @MainRegion.setter
+    def MainRegion(self, MainRegion):
+        self._MainRegion = MainRegion
+
+    @property
+    def SpecId(self):
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
 
     def _deserialize(self, params):
         self._EngineRegion = params.get("EngineRegion")
@@ -7275,6 +7447,8 @@ class EngineRegionInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self._VpcInfos.append(obj)
+        self._MainRegion = params.get("MainRegion")
+        self._SpecId = params.get("SpecId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7307,6 +7481,9 @@ class EnvAddressInfo(AbstractModel):
         :param _InternetBandWidth: 客户端公网带宽
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetBandWidth: int
+        :param _CLBMultiRegion: 客户端公网CLB多可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLBMultiRegion: :class:`tencentcloud.tse.v20201207.models.CLBMultiRegion`
         """
         self._EnvName = None
         self._EnableConfigInternet = None
@@ -7314,6 +7491,7 @@ class EnvAddressInfo(AbstractModel):
         self._ConfigIntranetAddress = None
         self._EnableConfigIntranet = None
         self._InternetBandWidth = None
+        self._CLBMultiRegion = None
 
     @property
     def EnvName(self):
@@ -7363,6 +7541,14 @@ class EnvAddressInfo(AbstractModel):
     def InternetBandWidth(self, InternetBandWidth):
         self._InternetBandWidth = InternetBandWidth
 
+    @property
+    def CLBMultiRegion(self):
+        return self._CLBMultiRegion
+
+    @CLBMultiRegion.setter
+    def CLBMultiRegion(self, CLBMultiRegion):
+        self._CLBMultiRegion = CLBMultiRegion
+
 
     def _deserialize(self, params):
         self._EnvName = params.get("EnvName")
@@ -7371,6 +7557,9 @@ class EnvAddressInfo(AbstractModel):
         self._ConfigIntranetAddress = params.get("ConfigIntranetAddress")
         self._EnableConfigIntranet = params.get("EnableConfigIntranet")
         self._InternetBandWidth = params.get("InternetBandWidth")
+        if params.get("CLBMultiRegion") is not None:
+            self._CLBMultiRegion = CLBMultiRegion()
+            self._CLBMultiRegion._deserialize(params.get("CLBMultiRegion"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10877,6 +11066,79 @@ class NetworkAccessControl(AbstractModel):
         
 
 
+class PolarisCLSTopicInfo(AbstractModel):
+    """北极星日志主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogSetId: 日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSetId: str
+        :param _LogSetName: 日志集名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSetName: str
+        :param _TopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _TopicName: 日志主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        """
+        self._LogSetId = None
+        self._LogSetName = None
+        self._TopicId = None
+        self._TopicName = None
+
+    @property
+    def LogSetId(self):
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def LogSetName(self):
+        return self._LogSetName
+
+    @LogSetName.setter
+    def LogSetName(self, LogSetName):
+        self._LogSetName = LogSetName
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._LogSetId = params.get("LogSetId")
+        self._LogSetName = params.get("LogSetName")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolarisLimiterAddress(AbstractModel):
     """查询Limiter的接入地址
 
@@ -11119,6 +11381,9 @@ class SREInstance(AbstractModel):
         :param _EnableClientIntranet: 引擎实例是否开启客户端内网访问地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableClientIntranet: bool
+        :param _StorageOption: 存储额外配置选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageOption: list of StorageOption
         """
         self._InstanceId = None
         self._Name = None
@@ -11153,6 +11418,7 @@ class SREInstance(AbstractModel):
         self._EKSType = None
         self._FeatureVersion = None
         self._EnableClientIntranet = None
+        self._StorageOption = None
 
     @property
     def InstanceId(self):
@@ -11418,6 +11684,14 @@ class SREInstance(AbstractModel):
     def EnableClientIntranet(self, EnableClientIntranet):
         self._EnableClientIntranet = EnableClientIntranet
 
+    @property
+    def StorageOption(self):
+        return self._StorageOption
+
+    @StorageOption.setter
+    def StorageOption(self, StorageOption):
+        self._StorageOption = StorageOption
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11478,6 +11752,12 @@ class SREInstance(AbstractModel):
         self._EKSType = params.get("EKSType")
         self._FeatureVersion = params.get("FeatureVersion")
         self._EnableClientIntranet = params.get("EnableClientIntranet")
+        if params.get("StorageOption") is not None:
+            self._StorageOption = []
+            for item in params.get("StorageOption"):
+                obj = StorageOption()
+                obj._deserialize(item)
+                self._StorageOption.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11511,6 +11791,9 @@ class ServiceGovernanceInfo(AbstractModel):
         :type PgwVpcInfos: list of VpcInfo
         :param _LimiterVpcInfos: 服务治理限流server引擎绑定的网络信息
         :type LimiterVpcInfos: list of VpcInfo
+        :param _CLSTopics: 引擎关联CLS日志主题信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLSTopics: list of PolarisCLSTopicInfo
         """
         self._EngineRegion = None
         self._BoundK8SInfos = None
@@ -11520,6 +11803,7 @@ class ServiceGovernanceInfo(AbstractModel):
         self._MainPassword = None
         self._PgwVpcInfos = None
         self._LimiterVpcInfos = None
+        self._CLSTopics = None
 
     @property
     def EngineRegion(self):
@@ -11585,6 +11869,14 @@ class ServiceGovernanceInfo(AbstractModel):
     def LimiterVpcInfos(self, LimiterVpcInfos):
         self._LimiterVpcInfos = LimiterVpcInfos
 
+    @property
+    def CLSTopics(self):
+        return self._CLSTopics
+
+    @CLSTopics.setter
+    def CLSTopics(self, CLSTopics):
+        self._CLSTopics = CLSTopics
+
 
     def _deserialize(self, params):
         self._EngineRegion = params.get("EngineRegion")
@@ -11615,6 +11907,72 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = VpcInfo()
                 obj._deserialize(item)
                 self._LimiterVpcInfos.append(obj)
+        if params.get("CLSTopics") is not None:
+            self._CLSTopics = []
+            for item in params.get("CLSTopics"):
+                obj = PolarisCLSTopicInfo()
+                obj._deserialize(item)
+                self._CLSTopics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StorageOption(AbstractModel):
+    """存储的额外选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 存储对象，分为snap和txn两种
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: 存储类型，分为三类CLOUD_PREMIUM/CLOUD_SSD/CLOUD_SSD_PLUS，分别对应高性能云硬盘、SSD云硬盘、增强型SSD云硬盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Capacity: 存储容量，[50, 3200]的范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capacity: int
+        """
+        self._Name = None
+        self._Type = None
+        self._Capacity = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Capacity(self):
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Capacity = params.get("Capacity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

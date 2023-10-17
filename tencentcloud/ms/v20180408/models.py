@@ -1885,6 +1885,8 @@ class CreateEncryptInstanceRequest(AbstractModel):
         :type AndroidPlan: :class:`tencentcloud.ms.v20180408.models.AndroidPlan`
         :param _AppletInfo: 小程序加固信息
         :type AppletInfo: :class:`tencentcloud.ms.v20180408.models.AppletInfo`
+        :param _IOSInfo: iOS混淆信息
+        :type IOSInfo: :class:`tencentcloud.ms.v20180408.models.IOSInfo`
         """
         self._PlatformType = None
         self._OrderType = None
@@ -1893,6 +1895,7 @@ class CreateEncryptInstanceRequest(AbstractModel):
         self._AndroidAppInfo = None
         self._AndroidPlan = None
         self._AppletInfo = None
+        self._IOSInfo = None
 
     @property
     def PlatformType(self):
@@ -1950,6 +1953,14 @@ class CreateEncryptInstanceRequest(AbstractModel):
     def AppletInfo(self, AppletInfo):
         self._AppletInfo = AppletInfo
 
+    @property
+    def IOSInfo(self):
+        return self._IOSInfo
+
+    @IOSInfo.setter
+    def IOSInfo(self, IOSInfo):
+        self._IOSInfo = IOSInfo
+
 
     def _deserialize(self, params):
         self._PlatformType = params.get("PlatformType")
@@ -1965,6 +1976,9 @@ class CreateEncryptInstanceRequest(AbstractModel):
         if params.get("AppletInfo") is not None:
             self._AppletInfo = AppletInfo()
             self._AppletInfo._deserialize(params.get("AppletInfo"))
+        if params.get("IOSInfo") is not None:
+            self._IOSInfo = IOSInfo()
+            self._IOSInfo._deserialize(params.get("IOSInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4373,6 +4387,80 @@ class Filter(AbstractModel):
         
 
 
+class IOSInfo(AbstractModel):
+    """iOS加固信息
+
+    	InfoPListUrl  string `json:"InfoPListUrl"`  //info.plist的url，必须保证不用权限校验就可以下载
+    	InfoPListSize int64  `json:"InfoPListSize"` //info.plist文件的大小
+    	InfoPListMd5  string `json:"InfoPListMd5"`  //info.plist文件的md5
+    	BuildType     string `json:"BuildType"`     //release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoPListUrl: info.plist的url，必须保证不用权限校验就可以下载
+        :type InfoPListUrl: str
+        :param _InfoPListSize: info.plist文件的大小
+        :type InfoPListSize: int
+        :param _InfoPListMd5: info.plist文件的md5
+        :type InfoPListMd5: str
+        :param _BuildType: release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+        :type BuildType: str
+        """
+        self._InfoPListUrl = None
+        self._InfoPListSize = None
+        self._InfoPListMd5 = None
+        self._BuildType = None
+
+    @property
+    def InfoPListUrl(self):
+        return self._InfoPListUrl
+
+    @InfoPListUrl.setter
+    def InfoPListUrl(self, InfoPListUrl):
+        self._InfoPListUrl = InfoPListUrl
+
+    @property
+    def InfoPListSize(self):
+        return self._InfoPListSize
+
+    @InfoPListSize.setter
+    def InfoPListSize(self, InfoPListSize):
+        self._InfoPListSize = InfoPListSize
+
+    @property
+    def InfoPListMd5(self):
+        return self._InfoPListMd5
+
+    @InfoPListMd5.setter
+    def InfoPListMd5(self, InfoPListMd5):
+        self._InfoPListMd5 = InfoPListMd5
+
+    @property
+    def BuildType(self):
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+
+    def _deserialize(self, params):
+        self._InfoPListUrl = params.get("InfoPListUrl")
+        self._InfoPListSize = params.get("InfoPListSize")
+        self._InfoPListMd5 = params.get("InfoPListMd5")
+        self._BuildType = params.get("BuildType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IOSPlan(AbstractModel):
     """渠道合作IOS源码混淆配置
 
@@ -4414,9 +4502,54 @@ class IOSResult(AbstractModel):
     def __init__(self):
         r"""
         :param _ResultId: 加固任务结果Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: str
+        :param _OpUin: 用户uid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpUin: int
+        :param _EncryptType: 加固类型，这里为ios
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptType: str
+        :param _ResourceId: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _EncryptState: 加固状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptState: int
+        :param _EncryptErrno: 业务错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptErrno: int
+        :param _EncryptErrDesc: 业务错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptErrDesc: str
+        :param _CreatTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatTime: str
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _CostTime: 消耗时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostTime: int
+        :param _EncryptPkgUrl: 加固（混淆）包结果url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptPkgUrl: str
         """
         self._ResultId = None
+        self._OpUin = None
+        self._EncryptType = None
+        self._ResourceId = None
+        self._EncryptState = None
+        self._EncryptErrno = None
+        self._EncryptErrDesc = None
+        self._CreatTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CostTime = None
+        self._EncryptPkgUrl = None
 
     @property
     def ResultId(self):
@@ -4426,9 +4559,108 @@ class IOSResult(AbstractModel):
     def ResultId(self, ResultId):
         self._ResultId = ResultId
 
+    @property
+    def OpUin(self):
+        return self._OpUin
+
+    @OpUin.setter
+    def OpUin(self, OpUin):
+        self._OpUin = OpUin
+
+    @property
+    def EncryptType(self):
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def EncryptState(self):
+        return self._EncryptState
+
+    @EncryptState.setter
+    def EncryptState(self, EncryptState):
+        self._EncryptState = EncryptState
+
+    @property
+    def EncryptErrno(self):
+        return self._EncryptErrno
+
+    @EncryptErrno.setter
+    def EncryptErrno(self, EncryptErrno):
+        self._EncryptErrno = EncryptErrno
+
+    @property
+    def EncryptErrDesc(self):
+        return self._EncryptErrDesc
+
+    @EncryptErrDesc.setter
+    def EncryptErrDesc(self, EncryptErrDesc):
+        self._EncryptErrDesc = EncryptErrDesc
+
+    @property
+    def CreatTime(self):
+        return self._CreatTime
+
+    @CreatTime.setter
+    def CreatTime(self, CreatTime):
+        self._CreatTime = CreatTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CostTime(self):
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def EncryptPkgUrl(self):
+        return self._EncryptPkgUrl
+
+    @EncryptPkgUrl.setter
+    def EncryptPkgUrl(self, EncryptPkgUrl):
+        self._EncryptPkgUrl = EncryptPkgUrl
+
 
     def _deserialize(self, params):
         self._ResultId = params.get("ResultId")
+        self._OpUin = params.get("OpUin")
+        self._EncryptType = params.get("EncryptType")
+        self._ResourceId = params.get("ResourceId")
+        self._EncryptState = params.get("EncryptState")
+        self._EncryptErrno = params.get("EncryptErrno")
+        self._EncryptErrDesc = params.get("EncryptErrDesc")
+        self._CreatTime = params.get("CreatTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CostTime = params.get("CostTime")
+        self._EncryptPkgUrl = params.get("EncryptPkgUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

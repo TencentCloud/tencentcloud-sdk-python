@@ -218,6 +218,9 @@ INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEPARAM = 'InvalidParameter.InvalidA
 # 无效的第三方对象存储。
 INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = 'InvalidParameter.InvalidAwsPrivateAccess'
 
+# 无效的第三方对象存储。
+INVALIDPARAMETER_INVALIDAWSSECRETKEY = 'InvalidParameter.InvalidAwsSecretKey'
+
 # 无效的备源回源Host。
 INVALIDPARAMETER_INVALIDBACKUPSERVERNAME = 'InvalidParameter.InvalidBackupServerName'
 
@@ -310,6 +313,9 @@ INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
 
 # 请填写AccessKeyId、SecretAccessKey作为第三方对象存储私有访问参数。
 INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = 'InvalidParameter.InvalidPrivateAccessParams'
+
+# 请指定PrivateAccess参数值为on/off。
+INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = 'InvalidParameter.InvalidPrivateAccessSwitch'
 
 # 套餐包不支持Quic配置。
 INVALIDPARAMETER_INVALIDQUICBILLING = 'InvalidParameter.InvalidQuicBilling'
@@ -583,6 +589,9 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 
 # 共享CNAME已被其他站点绑定，请先解绑才能删除站点
 OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedCNAME'
+
+# 站点存在自定义错误页面引用，请先解绑。
+OPERATIONDENIED_ZONEISREFERENCECUSTOMERRORPAGE = 'OperationDenied.ZoneIsReferenceCustomErrorPage'
 
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'

@@ -86,6 +86,9 @@ FAILEDOPERATION_ILLEGALTAGVALUE = 'FailedOperation.IllegalTagValue'
 # 询价失败。
 FAILEDOPERATION_INQUIREPRICEFAILED = 'FailedOperation.InquirePriceFailed'
 
+# 元数据错误，请重试，或者提交工单联系我们
+FAILEDOPERATION_METASTOREERROR = 'FailedOperation.MetastoreError'
+
 # 实例变配失败。
 FAILEDOPERATION_MODIFYINSTANCEFAILED = 'FailedOperation.ModifyInstanceFailed'
 
@@ -379,6 +382,9 @@ RESOURCENOTFOUND_SESSIONNOTFOUND = 'ResourceNotFound.SessionNotFound'
 
 # session已消亡。
 RESOURCENOTFOUND_SESSIONSTATEDEAD = 'ResourceNotFound.SessionStateDead'
+
+# 任务已经失败
+RESOURCENOTFOUND_TASKALREADYFAILED = 'ResourceNotFound.TaskAlreadyFailed'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'

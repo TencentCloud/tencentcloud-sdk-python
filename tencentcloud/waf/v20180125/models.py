@@ -6481,6 +6481,141 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAttackTypeRequest(AbstractModel):
+    """DescribeAttackType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTime: 起始时间
+        :type FromTime: str
+        :param _ToTime: 结束时间
+        :type ToTime: str
+        :param _Host: 兼容Host，逐步淘汰Host字段
+        :type Host: str
+        :param _Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param _InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        :param _Domain: 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+        :type Domain: str
+        """
+        self._FromTime = None
+        self._ToTime = None
+        self._Host = None
+        self._Edition = None
+        self._InstanceID = None
+        self._Domain = None
+
+    @property
+    def FromTime(self):
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        self._Host = params.get("Host")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAttackTypeResponse(AbstractModel):
+    """DescribeAttackType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Piechart: 数量
+        :type Piechart: list of PiechartItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Piechart = None
+        self._RequestId = None
+
+    @property
+    def Piechart(self):
+        return self._Piechart
+
+    @Piechart.setter
+    def Piechart(self, Piechart):
+        self._Piechart = Piechart
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Piechart") is not None:
+            self._Piechart = []
+            for item in params.get("Piechart"):
+                obj = PiechartItem()
+                obj._deserialize(item)
+                self._Piechart.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAttackWhiteRuleRequest(AbstractModel):
     """DescribeAttackWhiteRule请求参数结构体
 
@@ -8745,6 +8880,160 @@ class DescribeFlowTrendResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHistogramRequest(AbstractModel):
+    """DescribeHistogram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTime: 起始时间
+        :type FromTime: str
+        :param _ToTime: 结束时间
+        :type ToTime: str
+        :param _QueryField: 聚类字段，ip为ip聚合，art为响应耗时聚合，url为url聚合，local为ip转化的城市聚合
+        :type QueryField: str
+        :param _Source: 条件，access为访问日志，attack为攻击日志
+        :type Source: str
+        :param _Host: 兼容Host，逐步淘汰Host字段
+        :type Host: str
+        :param _Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param _InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        :param _Domain: 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+        :type Domain: str
+        """
+        self._FromTime = None
+        self._ToTime = None
+        self._QueryField = None
+        self._Source = None
+        self._Host = None
+        self._Edition = None
+        self._InstanceID = None
+        self._Domain = None
+
+    @property
+    def FromTime(self):
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+    @property
+    def QueryField(self):
+        return self._QueryField
+
+    @QueryField.setter
+    def QueryField(self, QueryField):
+        self._QueryField = QueryField
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        self._QueryField = params.get("QueryField")
+        self._Source = params.get("Source")
+        self._Host = params.get("Host")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHistogramResponse(AbstractModel):
+    """DescribeHistogram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Histogram: 统计数据
+        :type Histogram: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Histogram = None
+        self._RequestId = None
+
+    @property
+    def Histogram(self):
+        return self._Histogram
+
+    @Histogram.setter
+    def Histogram(self, Histogram):
+        self._Histogram = Histogram
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Histogram = params.get("Histogram")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostLimitRequest(AbstractModel):
     """DescribeHostLimit请求参数结构体
 
@@ -10431,6 +10720,146 @@ class DescribeTlsVersionResponse(AbstractModel):
                 obj = TLSVersion()
                 obj._deserialize(item)
                 self._TLS.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopAttackDomainRequest(AbstractModel):
+    """DescribeTopAttackDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FromTime: 查询起始时间
+        :type FromTime: str
+        :param _ToTime: 查询结束时间
+        :type ToTime: str
+        :param _Count: TOP N,可从0-10选择，默认是10
+        :type Count: int
+        :param _Edition: 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+        :type Edition: str
+        :param _InstanceID: WAF实例ID，不传则不过滤
+        :type InstanceID: str
+        """
+        self._FromTime = None
+        self._ToTime = None
+        self._Count = None
+        self._Edition = None
+        self._InstanceID = None
+
+    @property
+    def FromTime(self):
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        self._Count = params.get("Count")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopAttackDomainResponse(AbstractModel):
+    """DescribeTopAttackDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CC: CC攻击域名列表
+        :type CC: list of KVInt
+        :param _Web: Web攻击域名列表
+        :type Web: list of KVInt
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CC = None
+        self._Web = None
+        self._RequestId = None
+
+    @property
+    def CC(self):
+        return self._CC
+
+    @CC.setter
+    def CC(self, CC):
+        self._CC = CC
+
+    @property
+    def Web(self):
+        return self._Web
+
+    @Web.setter
+    def Web(self, Web):
+        self._Web = Web
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CC") is not None:
+            self._CC = []
+            for item in params.get("CC"):
+                obj = KVInt()
+                obj._deserialize(item)
+                self._CC.append(obj)
+        if params.get("Web") is not None:
+            self._Web = []
+            for item in params.get("Web"):
+                obj = KVInt()
+                obj._deserialize(item)
+                self._Web.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14895,6 +15324,51 @@ class IpHitItemsData(AbstractModel):
                 obj._deserialize(item)
                 self._Res.append(obj)
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVInt(AbstractModel):
+    """Key-Value的形式，Value为Int
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key
+        :type Key: str
+        :param _Value: Value
+        :type Value: int
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19437,6 +19911,51 @@ class PeakPointsItem(AbstractModel):
         self._Tamper = params.get("Tamper")
         self._Leak = params.get("Leak")
         self._ACL = params.get("ACL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PiechartItem(AbstractModel):
+    """饼图数据类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型
+        :type Type: str
+        :param _Count: 数量
+        :type Count: int
+        """
+        self._Type = None
+        self._Count = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

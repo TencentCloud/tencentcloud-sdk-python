@@ -17,6 +17,9 @@
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 参数错误。
+INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
+
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 

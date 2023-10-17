@@ -29,6 +29,12 @@ FAILEDOPERATION_DATASOURCECONNECTIONFAILED = 'FailedOperation.DataSourceConnecti
 # 重复的作业名。
 FAILEDOPERATION_DUPLICATEDJOBNAME = 'FailedOperation.DuplicatedJobName'
 
+# 获取SqlGateway结果失败，异常
+FAILEDOPERATION_FAILEDOPERATIONCODE_FETCHSQLGATEWAYSTATEMENT = 'FailedOperation.FailedOperationCode_FetchSqlGatewayStatement'
+
+# 运行SqlGateway失败，异常
+FAILEDOPERATION_FAILEDOPERATIONCODE_RUNSQLGATEWAY = 'FailedOperation.FailedOperationCode_RunSqlGateway'
+
 # 查询资源关联标签失败。
 FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = 'FailedOperation.GetResourceTagsByResourceIds'
 

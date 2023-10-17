@@ -49,6 +49,29 @@ class BscaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKBComponentVersionList(self, request):
+        """查询特定组件的版本列表
+
+        :param request: Request instance for DescribeKBComponentVersionList.
+        :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVersionListRequest`
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.DescribeKBComponentVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKBComponentVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKBComponentVersionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKBComponentVulnerability(self, request):
         """本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
 
@@ -132,6 +155,29 @@ class BscaClient(AbstractClient):
             body = self.call("MatchKBPURLList", params, headers=headers)
             response = json.loads(body)
             model = models.MatchKBPURLListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchKBComponent(self, request):
+        """根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
+
+        :param request: Request instance for SearchKBComponent.
+        :type request: :class:`tencentcloud.bsca.v20210811.models.SearchKBComponentRequest`
+        :rtype: :class:`tencentcloud.bsca.v20210811.models.SearchKBComponentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchKBComponent", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchKBComponentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

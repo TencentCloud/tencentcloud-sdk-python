@@ -4633,6 +4633,37 @@ class ExpertModeConfiguration(AbstractModel):
         
 
 
+class FetchSqlGatewayStatementResultRequest(AbstractModel):
+    """FetchSqlGatewayStatementResult请求参数结构体
+
+    """
+
+
+class FetchSqlGatewayStatementResultResponse(AbstractModel):
+    """FetchSqlGatewayStatementResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """查询作业列表时的过滤器
 
@@ -7311,6 +7342,37 @@ class RunJobsRequest(AbstractModel):
 
 class RunJobsResponse(AbstractModel):
     """RunJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RunSqlGatewayStatementRequest(AbstractModel):
+    """RunSqlGatewayStatement请求参数结构体
+
+    """
+
+
+class RunSqlGatewayStatementResponse(AbstractModel):
+    """RunSqlGatewayStatement返回参数结构体
 
     """
 
