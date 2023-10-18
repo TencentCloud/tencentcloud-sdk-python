@@ -1192,6 +1192,33 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupStreamList(self, request):
+        """返回正在直播中的流列表。适用于推流成功后查询在线流信息。
+
+        注意：
+        1. 该接口仅提供辅助查询在线流列表功能，业务重要场景不可强依赖该接口。
+        2. 该接口仅适用于流数少于2万路的情况，对于流数较大用户请联系售后。
+
+        :param request: Request instance for DescribeBackupStreamList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeBackupStreamListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeBackupStreamListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupStreamList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupStreamListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillBandwidthAndFluxList(self, request):
         """直播播放带宽和流量数据查询。
 
@@ -2965,6 +2992,30 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnableOptimalSwitching(self, request):
+        """启用择优调度。
+        注意：流维度的择优调度，当主备流结束后自动失效。
+
+        :param request: Request instance for EnableOptimalSwitching.
+        :type request: :class:`tencentcloud.live.v20180801.models.EnableOptimalSwitchingRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.EnableOptimalSwitchingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableOptimalSwitching", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableOptimalSwitchingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ForbidLiveDomain(self, request):
         """停止使用某个直播域名。
 
@@ -3541,6 +3592,29 @@ class LiveClient(AbstractClient):
             body = self.call("StopScreenshotTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopScreenshotTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchBackupStream(self, request):
+        """调用该接口实现切换当前播放所使用的主备流。
+
+        :param request: Request instance for SwitchBackupStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.SwitchBackupStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.SwitchBackupStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchBackupStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchBackupStreamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

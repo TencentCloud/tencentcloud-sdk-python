@@ -854,6 +854,100 @@ class ContactInfo(AbstractModel):
         
 
 
+class CreateCustomDnsHostRequest(AbstractModel):
+    """CreateCustomDnsHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名实例ID
+        :type DomainId: str
+        :param _DnsName: Dns名称
+        :type DnsName: str
+        :param _IpSet: IP地址列表
+        :type IpSet: list of str
+        """
+        self._DomainId = None
+        self._DnsName = None
+        self._IpSet = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def IpSet(self):
+        return self._IpSet
+
+    @IpSet.setter
+    def IpSet(self, IpSet):
+        self._IpSet = IpSet
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._DnsName = params.get("DnsName")
+        self._IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomDnsHostResponse(AbstractModel):
+    """CreateCustomDnsHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 异步任务ID
+        :type LogId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDomainBatchRequest(AbstractModel):
     """CreateDomainBatch请求参数结构体
 

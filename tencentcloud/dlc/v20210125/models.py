@@ -2692,6 +2692,8 @@ class CreateDataEngineRequest(AbstractModel):
         :type ElasticLimit: int
         :param _SessionResourceTemplate: spark作业集群session资源配置模板
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        :param _AutoAuthorization: 自动授权
+        :type AutoAuthorization: bool
         """
         self._EngineType = None
         self._DataEngineName = None
@@ -2723,6 +2725,7 @@ class CreateDataEngineRequest(AbstractModel):
         self._ElasticSwitch = None
         self._ElasticLimit = None
         self._SessionResourceTemplate = None
+        self._AutoAuthorization = None
 
     @property
     def EngineType(self):
@@ -2968,6 +2971,14 @@ class CreateDataEngineRequest(AbstractModel):
     def SessionResourceTemplate(self, SessionResourceTemplate):
         self._SessionResourceTemplate = SessionResourceTemplate
 
+    @property
+    def AutoAuthorization(self):
+        return self._AutoAuthorization
+
+    @AutoAuthorization.setter
+    def AutoAuthorization(self, AutoAuthorization):
+        self._AutoAuthorization = AutoAuthorization
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
@@ -3014,6 +3025,7 @@ class CreateDataEngineRequest(AbstractModel):
         if params.get("SessionResourceTemplate") is not None:
             self._SessionResourceTemplate = SessionResourceTemplate()
             self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        self._AutoAuthorization = params.get("AutoAuthorization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6897,6 +6909,9 @@ class DataEngineInfo(AbstractModel):
         :param _SessionResourceTemplate: SessionResourceTemplate
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
+        :param _AutoAuthorization: 自动授权开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoAuthorization: bool
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -6943,6 +6958,7 @@ class DataEngineInfo(AbstractModel):
         self._UserAppId = None
         self._UserUin = None
         self._SessionResourceTemplate = None
+        self._AutoAuthorization = None
 
     @property
     def DataEngineName(self):
@@ -7304,6 +7320,14 @@ class DataEngineInfo(AbstractModel):
     def SessionResourceTemplate(self, SessionResourceTemplate):
         self._SessionResourceTemplate = SessionResourceTemplate
 
+    @property
+    def AutoAuthorization(self):
+        return self._AutoAuthorization
+
+    @AutoAuthorization.setter
+    def AutoAuthorization(self, AutoAuthorization):
+        self._AutoAuthorization = AutoAuthorization
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -7365,6 +7389,7 @@ class DataEngineInfo(AbstractModel):
         if params.get("SessionResourceTemplate") is not None:
             self._SessionResourceTemplate = SessionResourceTemplate()
             self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
+        self._AutoAuthorization = params.get("AutoAuthorization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9983,7 +10008,7 @@ class DescribeDataEnginesRequest(AbstractModel):
         r"""
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
+        :param _Filters: 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu/kyuubi_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH），engine-network-id - String（引擎网络Id）
         :type Filters: list of Filter
         :param _SortBy: 排序字段，支持如下字段类型，create-time
         :type SortBy: str
@@ -9999,7 +10024,7 @@ class DescribeDataEnginesRequest(AbstractModel):
         :type AccessTypes: list of str
         :param _EngineExecType: 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
         :type EngineExecType: str
-        :param _EngineType: 引擎类型，有效值：spark/presto
+        :param _EngineType: 引擎类型，有效值：spark/presto/kyuubi，为空时默认获取非kyuubi引擎（网关引擎）
         :type EngineType: str
         :param _DatasourceConnectionNameSet: 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
         :type DatasourceConnectionNameSet: list of str

@@ -17752,12 +17752,15 @@ class VerifyPdfResponse(AbstractModel):
         :type PdfVerifyResults: list of PdfVerifyResult
         :param _VerifySerialNo: 验签序列号, 为11为数组组成的字符串
         :type VerifySerialNo: str
+        :param _PdfResourceMd5: 合同文件MD5哈希值
+        :type PdfResourceMd5: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VerifyResult = None
         self._PdfVerifyResults = None
         self._VerifySerialNo = None
+        self._PdfResourceMd5 = None
         self._RequestId = None
 
     @property
@@ -17785,6 +17788,14 @@ class VerifyPdfResponse(AbstractModel):
         self._VerifySerialNo = VerifySerialNo
 
     @property
+    def PdfResourceMd5(self):
+        return self._PdfResourceMd5
+
+    @PdfResourceMd5.setter
+    def PdfResourceMd5(self, PdfResourceMd5):
+        self._PdfResourceMd5 = PdfResourceMd5
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -17802,6 +17813,7 @@ class VerifyPdfResponse(AbstractModel):
                 obj._deserialize(item)
                 self._PdfVerifyResults.append(obj)
         self._VerifySerialNo = params.get("VerifySerialNo")
+        self._PdfResourceMd5 = params.get("PdfResourceMd5")
         self._RequestId = params.get("RequestId")
 
 

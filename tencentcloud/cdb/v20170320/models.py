@@ -1979,6 +1979,75 @@ class AuditRuleFilters(AbstractModel):
         
 
 
+class AutoStrategy(AbstractModel):
+    """CPU弹性扩容的自动扩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpandThreshold: 自动扩容阈值，可选值70、80、90，代表CPU利用率达到70%、80%、90%时后台进行自动扩容
+        :type ExpandThreshold: int
+        :param _ExpandPeriod: 自动扩容观测周期，单位s，可选值1、3、5、10、15、30。后台会按照配置的周期进行扩容判断。
+        :type ExpandPeriod: int
+        :param _ShrinkThreshold: 自动缩容阈值，可选值10、20、30，代表CPU利用率达到10%、20%、30%时后台进行自动缩容
+        :type ShrinkThreshold: int
+        :param _ShrinkPeriod: 自动缩容观测周期，单位s，可选值5、10、15、30。后台会按照配置的周期进行缩容判断。
+        :type ShrinkPeriod: int
+        """
+        self._ExpandThreshold = None
+        self._ExpandPeriod = None
+        self._ShrinkThreshold = None
+        self._ShrinkPeriod = None
+
+    @property
+    def ExpandThreshold(self):
+        return self._ExpandThreshold
+
+    @ExpandThreshold.setter
+    def ExpandThreshold(self, ExpandThreshold):
+        self._ExpandThreshold = ExpandThreshold
+
+    @property
+    def ExpandPeriod(self):
+        return self._ExpandPeriod
+
+    @ExpandPeriod.setter
+    def ExpandPeriod(self, ExpandPeriod):
+        self._ExpandPeriod = ExpandPeriod
+
+    @property
+    def ShrinkThreshold(self):
+        return self._ShrinkThreshold
+
+    @ShrinkThreshold.setter
+    def ShrinkThreshold(self, ShrinkThreshold):
+        self._ShrinkThreshold = ShrinkThreshold
+
+    @property
+    def ShrinkPeriod(self):
+        return self._ShrinkPeriod
+
+    @ShrinkPeriod.setter
+    def ShrinkPeriod(self, ShrinkPeriod):
+        self._ShrinkPeriod = ShrinkPeriod
+
+
+    def _deserialize(self, params):
+        self._ExpandThreshold = params.get("ExpandThreshold")
+        self._ExpandPeriod = params.get("ExpandPeriod")
+        self._ShrinkThreshold = params.get("ShrinkThreshold")
+        self._ShrinkPeriod = params.get("ShrinkPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupConfig(AbstractModel):
     """ECDB第二个从库的配置信息，只有ECDB实例才有这个字段
 
@@ -25200,6 +25269,72 @@ class StartCpuExpandRequest(AbstractModel):
     """StartCpuExpand请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例 ID 。
+        :type InstanceId: str
+        :param _Type: 扩容类型。可选值：auto：代表进行自动扩容
+manual：代表进行手动扩容
+        :type Type: str
+        :param _ExpandCpu: 手动扩容时，扩容的CPU核心数。Type 为 manual 时必传。
+        :type ExpandCpu: int
+        :param _AutoStrategy: 自动扩容策略。Type 为 auto 时必传。
+        :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._ExpandCpu = None
+        self._AutoStrategy = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpandCpu(self):
+        return self._ExpandCpu
+
+    @ExpandCpu.setter
+    def ExpandCpu(self, ExpandCpu):
+        self._ExpandCpu = ExpandCpu
+
+    @property
+    def AutoStrategy(self):
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._ExpandCpu = params.get("ExpandCpu")
+        if params.get("AutoStrategy") is not None:
+            self._AutoStrategy = AutoStrategy()
+            self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StartCpuExpandResponse(AbstractModel):

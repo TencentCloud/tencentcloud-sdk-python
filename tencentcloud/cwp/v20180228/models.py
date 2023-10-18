@@ -3143,7 +3143,7 @@ class AssetMachineDetail(AbstractModel):
         :type MachineWanIp: str
         :param _CpuSize: Cpu数量
         :type CpuSize: int
-        :param _CpuLoad: Cpu使用率百分比
+        :param _CpuLoad: Cpu负载
         :type CpuLoad: str
         :param _ProtectLevel: 防护级别：0基础版，1专业版，2旗舰版，3普惠版
         :type ProtectLevel: int
@@ -3193,6 +3193,12 @@ class AssetMachineDetail(AbstractModel):
         :param _MachineExtraInfo: 主机二外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _CpuLoadVul: CpuLoadVul
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuLoadVul: str
+        :param _FirstTime: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstTime: str
         """
         self._Quuid = None
         self._Uuid = None
@@ -3230,6 +3236,8 @@ class AssetMachineDetail(AbstractModel):
         self._InstanceId = None
         self._UpdateTime = None
         self._MachineExtraInfo = None
+        self._CpuLoadVul = None
+        self._FirstTime = None
 
     @property
     def Quuid(self):
@@ -3519,6 +3527,22 @@ class AssetMachineDetail(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def CpuLoadVul(self):
+        return self._CpuLoadVul
+
+    @CpuLoadVul.setter
+    def CpuLoadVul(self, CpuLoadVul):
+        self._CpuLoadVul = CpuLoadVul
+
+    @property
+    def FirstTime(self):
+        return self._FirstTime
+
+    @FirstTime.setter
+    def FirstTime(self, FirstTime):
+        self._FirstTime = FirstTime
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
@@ -3569,6 +3593,8 @@ class AssetMachineDetail(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._CpuLoadVul = params.get("CpuLoadVul")
+        self._FirstTime = params.get("FirstTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

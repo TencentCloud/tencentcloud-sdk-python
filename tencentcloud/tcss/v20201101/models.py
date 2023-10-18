@@ -48255,9 +48255,9 @@ class ModifyAssetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 全部同步
+        :param _All: 全部同步，俩参数必选一个 All优先
         :type All: bool
-        :param _Hosts: 要同步的主机列表 两个参数必选一个 All优先
+        :param _Hosts: 要同步的主机列表uuid ，俩参数必选一个 All优先
         :type Hosts: list of str
         """
         self._All = None

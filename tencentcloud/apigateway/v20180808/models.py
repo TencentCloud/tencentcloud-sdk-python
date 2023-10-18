@@ -14494,8 +14494,6 @@ class ModifyAPIDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiDocId: API文档ID
-        :type ApiDocId: str
         :param _ApiDocName: API文档名称
         :type ApiDocName: str
         :param _ServiceId: 服务名称
@@ -14504,20 +14502,14 @@ class ModifyAPIDocRequest(AbstractModel):
         :type Environment: str
         :param _ApiIds: 生成文档的API列表
         :type ApiIds: list of str
+        :param _ApiDocId: API文档ID
+        :type ApiDocId: str
         """
-        self._ApiDocId = None
         self._ApiDocName = None
         self._ServiceId = None
         self._Environment = None
         self._ApiIds = None
-
-    @property
-    def ApiDocId(self):
-        return self._ApiDocId
-
-    @ApiDocId.setter
-    def ApiDocId(self, ApiDocId):
-        self._ApiDocId = ApiDocId
+        self._ApiDocId = None
 
     @property
     def ApiDocName(self):
@@ -14551,13 +14543,21 @@ class ModifyAPIDocRequest(AbstractModel):
     def ApiIds(self, ApiIds):
         self._ApiIds = ApiIds
 
+    @property
+    def ApiDocId(self):
+        return self._ApiDocId
+
+    @ApiDocId.setter
+    def ApiDocId(self, ApiDocId):
+        self._ApiDocId = ApiDocId
+
 
     def _deserialize(self, params):
-        self._ApiDocId = params.get("ApiDocId")
         self._ApiDocName = params.get("ApiDocName")
         self._ServiceId = params.get("ServiceId")
         self._Environment = params.get("Environment")
         self._ApiIds = params.get("ApiIds")
+        self._ApiDocId = params.get("ApiDocId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2224,7 +2224,7 @@ class DescribeRealtimeScanConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizId: 应用ID
+        :param _BizId: 应用ID。
         :type BizId: int
         """
         self._BizId = None
@@ -2263,9 +2263,11 @@ class DescribeRealtimeScanConfigResponse(AbstractModel):
         :type BizId: int
         :param _AuditType: 送检类型，0: 全量送审，1: 自定义送审
         :type AuditType: int
-        :param _UserIdRegex: 用户号正则表达式
+        :param _UserIdRegex: 用户号正则表达式。
+符合此正则表达式规则的用户号将被送检。示例：^6.*（表示所有以6开头的用户号将被送检）
         :type UserIdRegex: list of str
-        :param _RoomIdRegex: 房间号正则表达式
+        :param _RoomIdRegex: 房间号正则表达式。
+符合此正则表达式规则的房间号将被送检。示例：^6.*（表示所有以6开头的房间号将被送检）
         :type RoomIdRegex: list of str
         :param _UserIdString: 用户号字符串，逗号分隔，示例："0001,0002,0003"
         :type UserIdString: str

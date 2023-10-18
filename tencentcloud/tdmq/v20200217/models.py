@@ -9997,6 +9997,134 @@ class DescribeRocketMQGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQMigratingTopicListRequest(AbstractModel):
+    """DescribeRocketMQMigratingTopicList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 迁移任务名称
+        :type TaskId: str
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Filters: 查询过滤器，支持topicname、MigrationStatus查询
+        :type Filters: list of Filter
+        """
+        self._TaskId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQMigratingTopicListResponse(AbstractModel):
+    """DescribeRocketMQMigratingTopicList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _MigrateTopics: 迁移topic列表
+        :type MigrateTopics: list of MigrateTopic
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MigrateTopics = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MigrateTopics(self):
+        return self._MigrateTopics
+
+    @MigrateTopics.setter
+    def MigrateTopics(self, MigrateTopics):
+        self._MigrateTopics = MigrateTopics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MigrateTopics") is not None:
+            self._MigrateTopics = []
+            for item in params.get("MigrateTopics"):
+                obj = MigrateTopic()
+                obj._deserialize(item)
+                self._MigrateTopics.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQMsgRequest(AbstractModel):
     """DescribeRocketMQMsg请求参数结构体
 
@@ -10661,6 +10789,659 @@ class DescribeRocketMQPublicAccessPointResponse(AbstractModel):
                 self._Rules.append(obj)
         self._Bandwidth = params.get("Bandwidth")
         self._PayMode = params.get("PayMode")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQSmoothMigrationTaskListRequest(AbstractModel):
+    """DescribeRocketMQSmoothMigrationTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 查询起始偏移量
+        :type Offset: int
+        :param _Limit: 查询最大数量
+        :type Limit: int
+        :param _Filters: 查询过滤器，
+支持的字段如下
+TaskStatus, 支持多选
+ConnectionType，支持多选
+ClusterId，精确搜索
+TaskName，支持模糊搜索
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQSmoothMigrationTaskListResponse(AbstractModel):
+    """DescribeRocketMQSmoothMigrationTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 任务总数
+        :type TotalCount: int
+        :param _Data: 任务列表
+        :type Data: list of RocketMQSmoothMigrationTaskItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = RocketMQSmoothMigrationTaskItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQSmoothMigrationTaskRequest(AbstractModel):
+    """DescribeRocketMQSmoothMigrationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQSmoothMigrationTaskResponse(AbstractModel):
+    """DescribeRocketMQSmoothMigrationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _ClusterId: 目标集群ID
+        :type ClusterId: str
+        :param _SourceClusterName: 源集群名称
+        :type SourceClusterName: str
+        :param _ConnectionType: 网络连接类型，
+PUBLIC 公网
+VPC 私有网络
+OTHER 其它
+        :type ConnectionType: str
+        :param _SourceClusterNameServer: 源集群NameServer地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceClusterNameServer: str
+        :param _VpcId: 源集群所在私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 源集群所在子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _EnableACL: 是否开启ACL
+        :type EnableACL: bool
+        :param _AccessKey: 源集群AccessKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _SecretKey: 元集群SecretKey
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _TaskError: 配置源集群时发生的错误
+TIMEOUT 连接超时，
+SERVER_ERROR 服务错误，
+INTERNAL_ERROR 内部错误，
+CONNECT_NAMESERVER_ERROR 连接nameserver错误
+CONNECT_BROKER_ERROR 连接broker错误
+ACL_WRONG ACL信息不正确
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskError: str
+        :param _TaskStatus: 任务状态
+Configuration 迁移配置
+SourceConnecting 连接源集群中
+SourceConnectionFailure 连接源集群失败
+MetaDataImport 元数据导入
+EndpointSetup 切换接入点
+ServiceMigration 切流中
+Completed 已完成
+Cancelled 已取消
+        :type TaskStatus: str
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicTypeDistribution: 主题类型分布情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicTypeDistribution: list of RocketMQTopicDistribution
+        :param _TopicStageDistribution: 主题迁移进度分布情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicStageDistribution: list of RocketMQMigrationTopicDistribution
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskName = None
+        self._ClusterId = None
+        self._SourceClusterName = None
+        self._ConnectionType = None
+        self._SourceClusterNameServer = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._EnableACL = None
+        self._AccessKey = None
+        self._SecretKey = None
+        self._TaskError = None
+        self._TaskStatus = None
+        self._TaskId = None
+        self._TopicTypeDistribution = None
+        self._TopicStageDistribution = None
+        self._RequestId = None
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SourceClusterName(self):
+        return self._SourceClusterName
+
+    @SourceClusterName.setter
+    def SourceClusterName(self, SourceClusterName):
+        self._SourceClusterName = SourceClusterName
+
+    @property
+    def ConnectionType(self):
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def SourceClusterNameServer(self):
+        return self._SourceClusterNameServer
+
+    @SourceClusterNameServer.setter
+    def SourceClusterNameServer(self, SourceClusterNameServer):
+        self._SourceClusterNameServer = SourceClusterNameServer
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def EnableACL(self):
+        return self._EnableACL
+
+    @EnableACL.setter
+    def EnableACL(self, EnableACL):
+        self._EnableACL = EnableACL
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def TaskError(self):
+        return self._TaskError
+
+    @TaskError.setter
+    def TaskError(self, TaskError):
+        self._TaskError = TaskError
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicTypeDistribution(self):
+        return self._TopicTypeDistribution
+
+    @TopicTypeDistribution.setter
+    def TopicTypeDistribution(self, TopicTypeDistribution):
+        self._TopicTypeDistribution = TopicTypeDistribution
+
+    @property
+    def TopicStageDistribution(self):
+        return self._TopicStageDistribution
+
+    @TopicStageDistribution.setter
+    def TopicStageDistribution(self, TopicStageDistribution):
+        self._TopicStageDistribution = TopicStageDistribution
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._ClusterId = params.get("ClusterId")
+        self._SourceClusterName = params.get("SourceClusterName")
+        self._ConnectionType = params.get("ConnectionType")
+        self._SourceClusterNameServer = params.get("SourceClusterNameServer")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._EnableACL = params.get("EnableACL")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        self._TaskError = params.get("TaskError")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskId = params.get("TaskId")
+        if params.get("TopicTypeDistribution") is not None:
+            self._TopicTypeDistribution = []
+            for item in params.get("TopicTypeDistribution"):
+                obj = RocketMQTopicDistribution()
+                obj._deserialize(item)
+                self._TopicTypeDistribution.append(obj)
+        if params.get("TopicStageDistribution") is not None:
+            self._TopicStageDistribution = []
+            for item in params.get("TopicStageDistribution"):
+                obj = RocketMQMigrationTopicDistribution()
+                obj._deserialize(item)
+                self._TopicStageDistribution.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQSourceClusterGroupListRequest(AbstractModel):
+    """DescribeRocketMQSourceClusterGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _TaskId: 迁移任务名称
+        :type TaskId: str
+        :param _Filters: 查询过滤器，支持字段groupName，imported
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._TaskId = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQSourceClusterGroupListResponse(AbstractModel):
+    """DescribeRocketMQSourceClusterGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Groups: group列表
+        :type Groups: list of RocketMQGroupConfigOutput
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Groups = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = RocketMQGroupConfigOutput()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQSourceClusterTopicListRequest(AbstractModel):
+    """DescribeRocketMQSourceClusterTopicList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _TaskId: 迁移任务名
+        :type TaskId: str
+        :param _Filters: 查询过滤器，支持字段如下
+TopicName,
+Type，Imported
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._TaskId = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TaskId = params.get("TaskId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQSourceClusterTopicListResponse(AbstractModel):
+    """DescribeRocketMQSourceClusterTopicList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topics: topic层列表
+        :type Topics: list of RocketMQTopicConfigOutput
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Topics = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = RocketMQTopicConfigOutput()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -12214,6 +12995,156 @@ class FilterSubscription(AbstractModel):
         
 
 
+class ImportRocketMQConsumerGroupsRequest(AbstractModel):
+    """ImportRocketMQConsumerGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Groups: 导入topic
+        :type Groups: list of RocketMQGroupConfig
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._Groups = None
+        self._TaskId = None
+
+    @property
+    def Groups(self):
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = RocketMQGroupConfig()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportRocketMQConsumerGroupsResponse(AbstractModel):
+    """ImportRocketMQConsumerGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ImportRocketMQTopicsRequest(AbstractModel):
+    """ImportRocketMQTopics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topics: 导入topic
+        :type Topics: list of RocketMQTopicConfig
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._Topics = None
+        self._TaskId = None
+
+    @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = RocketMQTopicConfig()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportRocketMQTopicsResponse(AbstractModel):
+    """ImportRocketMQTopics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InstanceNodeDistribution(AbstractModel):
     """实例节点分布信息
 
@@ -12550,6 +13481,109 @@ class InternalTenant(AbstractModel):
         self._MaxPublishRateInBytes = params.get("MaxPublishRateInBytes")
         self._MaxRetentionSizeInMB = params.get("MaxRetentionSizeInMB")
         self._PublicAccessEnabled = params.get("PublicAccessEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MigrateTopic(AbstractModel):
+    """迁移topic列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _TopicName: topic名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _MigrationStatus: 迁移状态
+S_RW_D_NA 源集群读写
+S_RW_D_R 源集群读写目标集群读
+S_RW_D_RW 源集群读写目标集群读写
+S_R_D_RW 源集群读目标集群读写
+S_NA_D_RW 目标集群读写
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrationStatus: str
+        :param _HealthCheckPassed: 是否完成健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckPassed: bool
+        :param _HealthCheckError: 上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。
+NotChecked 未执行检查，
+Unknown 未知错误,
+TopicNotImported 主题未导入,
+ TopicNotExistsInSourceCluster  主题在源集群中不存在,
+    TopicNotExistsInTargetCluster 主题在目标集群中不存在,
+    ConsumerConnectedOnTarget 目标集群上存在消费者连接,
+    SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入,
+TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入,
+    SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入,
+TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入,
+    ConsumerGroupCountNotMatch 订阅组数量不一致,
+    SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckError: str
+        """
+        self._Namespace = None
+        self._TopicName = None
+        self._MigrationStatus = None
+        self._HealthCheckPassed = None
+        self._HealthCheckError = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MigrationStatus(self):
+        return self._MigrationStatus
+
+    @MigrationStatus.setter
+    def MigrationStatus(self, MigrationStatus):
+        self._MigrationStatus = MigrationStatus
+
+    @property
+    def HealthCheckPassed(self):
+        return self._HealthCheckPassed
+
+    @HealthCheckPassed.setter
+    def HealthCheckPassed(self, HealthCheckPassed):
+        self._HealthCheckPassed = HealthCheckPassed
+
+    @property
+    def HealthCheckError(self):
+        return self._HealthCheckError
+
+    @HealthCheckError.setter
+    def HealthCheckError(self, HealthCheckError):
+        self._HealthCheckError = HealthCheckError
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._TopicName = params.get("TopicName")
+        self._MigrationStatus = params.get("MigrationStatus")
+        self._HealthCheckPassed = params.get("HealthCheckPassed")
+        self._HealthCheckError = params.get("HealthCheckError")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18510,6 +19544,174 @@ class RocketMQGroup(AbstractModel):
         
 
 
+class RocketMQGroupConfig(AbstractModel):
+    """RocketMQ消费组配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _GroupName: 消费组名称
+        :type GroupName: str
+        :param _ConsumeBroadcastEnable: 是否开启广播消费
+        :type ConsumeBroadcastEnable: bool
+        :param _ConsumeEnable: 是否开启消费
+        :type ConsumeEnable: bool
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _ConsumerGroupType: 协议类型，支持以下枚举值
+TCP;
+HTTP;
+        :type ConsumerGroupType: str
+        """
+        self._Namespace = None
+        self._GroupName = None
+        self._ConsumeBroadcastEnable = None
+        self._ConsumeEnable = None
+        self._Remark = None
+        self._ConsumerGroupType = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ConsumeBroadcastEnable(self):
+        return self._ConsumeBroadcastEnable
+
+    @ConsumeBroadcastEnable.setter
+    def ConsumeBroadcastEnable(self, ConsumeBroadcastEnable):
+        self._ConsumeBroadcastEnable = ConsumeBroadcastEnable
+
+    @property
+    def ConsumeEnable(self):
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsumerGroupType(self):
+        return self._ConsumerGroupType
+
+    @ConsumerGroupType.setter
+    def ConsumerGroupType(self, ConsumerGroupType):
+        self._ConsumerGroupType = ConsumerGroupType
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._GroupName = params.get("GroupName")
+        self._ConsumeBroadcastEnable = params.get("ConsumeBroadcastEnable")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._Remark = params.get("Remark")
+        self._ConsumerGroupType = params.get("ConsumerGroupType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQGroupConfigOutput(AbstractModel):
+    """RocketMQ消费组配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _GroupName: 消费组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _Imported: 导入状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Imported: bool
+        :param _Remark: remark
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._Namespace = None
+        self._GroupName = None
+        self._Imported = None
+        self._Remark = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Imported(self):
+        return self._Imported
+
+    @Imported.setter
+    def Imported(self, Imported):
+        self._Imported = Imported
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._GroupName = params.get("GroupName")
+        self._Imported = params.get("Imported")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQInstanceConfig(AbstractModel):
     """RocketMQ专享集群实例配置
 
@@ -18756,6 +19958,53 @@ class RocketMQMessageTrack(AbstractModel):
         
 
 
+class RocketMQMigrationTopicDistribution(AbstractModel):
+    """迁移主题的阶段分布
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 迁移主题阶段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stage: str
+        :param _Count: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self._Stage = None
+        self._Count = None
+
+    @property
+    def Stage(self):
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQMsgLog(AbstractModel):
     """rocketmq消息日志
 
@@ -18976,6 +20225,128 @@ class RocketMQNamespace(AbstractModel):
         self._PublicEndpoint = params.get("PublicEndpoint")
         self._VpcEndpoint = params.get("VpcEndpoint")
         self._InternalEndpoint = params.get("InternalEndpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQSmoothMigrationTaskItem(AbstractModel):
+    """RocketMQ平滑迁移任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _SourceClusterName: 源集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceClusterName: str
+        :param _ClusterId: 目标集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ConnectionType: 网络连接类型，
+PUBLIC 公网
+VPC 私有网络
+OTHER 其他
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectionType: str
+        :param _SourceNameServer: 源集群NameServer地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceNameServer: str
+        :param _TaskStatus: 任务状态
+Configuration 迁移配置
+SourceConnecting 连接源集群中
+MetaDataImport 元数据导入
+EndpointSetup 切换接入点
+ServiceMigration 切流中
+Completed 已完成
+Cancelled 已取消
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._SourceClusterName = None
+        self._ClusterId = None
+        self._ConnectionType = None
+        self._SourceNameServer = None
+        self._TaskStatus = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceClusterName(self):
+        return self._SourceClusterName
+
+    @SourceClusterName.setter
+    def SourceClusterName(self, SourceClusterName):
+        self._SourceClusterName = SourceClusterName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ConnectionType(self):
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def SourceNameServer(self):
+        return self._SourceNameServer
+
+    @SourceNameServer.setter
+    def SourceNameServer(self, SourceNameServer):
+        self._SourceNameServer = SourceNameServer
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._SourceClusterName = params.get("SourceClusterName")
+        self._ClusterId = params.get("ClusterId")
+        self._ConnectionType = params.get("ConnectionType")
+        self._SourceNameServer = params.get("SourceNameServer")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19338,6 +20709,195 @@ class RocketMQTopic(AbstractModel):
                 obj = RocketMQSubscription()
                 obj._deserialize(item)
                 self._SubscriptionData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQTopicConfig(AbstractModel):
+    """RocketMQ主题配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _TopicName: 主题名称
+        :type TopicName: str
+        :param _Type: 主题类型：
+Normal，普通
+PartitionedOrder, 分区顺序
+Transaction，事务消息
+DelayScheduled，延迟/定时消息
+        :type Type: str
+        :param _Partitions: 分区个数
+        :type Partitions: int
+        :param _Remark: 备注信息
+        :type Remark: str
+        """
+        self._Namespace = None
+        self._TopicName = None
+        self._Type = None
+        self._Partitions = None
+        self._Remark = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Partitions(self):
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._TopicName = params.get("TopicName")
+        self._Type = params.get("Type")
+        self._Partitions = params.get("Partitions")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQTopicConfigOutput(AbstractModel):
+    """RocketMQ主题配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _Type: 主题类型：
+Normal，普通
+GlobalOrder， 全局顺序
+PartitionedOrder, 分区顺序
+Transaction，事务消息
+DelayScheduled，延迟/定时消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Partitions: 分区个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: int
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _Imported: 是否导入
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Imported: bool
+        """
+        self._Namespace = None
+        self._TopicName = None
+        self._Type = None
+        self._Partitions = None
+        self._Remark = None
+        self._Imported = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Partitions(self):
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Imported(self):
+        return self._Imported
+
+    @Imported.setter
+    def Imported(self, Imported):
+        self._Imported = Imported
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._TopicName = params.get("TopicName")
+        self._Type = params.get("Type")
+        self._Partitions = params.get("Partitions")
+        self._Remark = params.get("Remark")
+        self._Imported = params.get("Imported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

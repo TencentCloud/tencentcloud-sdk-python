@@ -4638,6 +4638,69 @@ class FetchSqlGatewayStatementResultRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _SessionId: Sql Gateway会话ID
+        :type SessionId: str
+        :param _OperationHandleId: sql的查询id
+        :type OperationHandleId: str
+        :param _ResultUri: 下一条结果的获取url，首次获取执行结果时可以为空，当获取下一批查询结果时需要传递
+        :type ResultUri: str
+        """
+        self._ClusterId = None
+        self._SessionId = None
+        self._OperationHandleId = None
+        self._ResultUri = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def OperationHandleId(self):
+        return self._OperationHandleId
+
+    @OperationHandleId.setter
+    def OperationHandleId(self, OperationHandleId):
+        self._OperationHandleId = OperationHandleId
+
+    @property
+    def ResultUri(self):
+        return self._ResultUri
+
+    @ResultUri.setter
+    def ResultUri(self, ResultUri):
+        self._ResultUri = ResultUri
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._SessionId = params.get("SessionId")
+        self._OperationHandleId = params.get("OperationHandleId")
+        self._ResultUri = params.get("ResultUri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class FetchSqlGatewayStatementResultResponse(AbstractModel):
     """FetchSqlGatewayStatementResult返回参数结构体
@@ -4646,10 +4709,82 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorMessage: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: list of str
+        :param _ResultType: 返回类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultType: str
+        :param _IsQueryResult: 是否DQL结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsQueryResult: bool
+        :param _ResultKind: 结果类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultKind: str
+        :param _Results: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: :class:`tencentcloud.oceanus.v20190422.models.StatementResult`
+        :param _NextResultUri: 下一次请求的uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextResultUri: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMessage = None
+        self._ResultType = None
+        self._IsQueryResult = None
+        self._ResultKind = None
+        self._Results = None
+        self._NextResultUri = None
         self._RequestId = None
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultType(self):
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
+    @property
+    def IsQueryResult(self):
+        return self._IsQueryResult
+
+    @IsQueryResult.setter
+    def IsQueryResult(self, IsQueryResult):
+        self._IsQueryResult = IsQueryResult
+
+    @property
+    def ResultKind(self):
+        return self._ResultKind
+
+    @ResultKind.setter
+    def ResultKind(self, ResultKind):
+        self._ResultKind = ResultKind
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def NextResultUri(self):
+        return self._NextResultUri
+
+    @NextResultUri.setter
+    def NextResultUri(self, NextResultUri):
+        self._NextResultUri = NextResultUri
 
     @property
     def RequestId(self):
@@ -4661,6 +4796,14 @@ class FetchSqlGatewayStatementResultResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultType = params.get("ResultType")
+        self._IsQueryResult = params.get("IsQueryResult")
+        self._ResultKind = params.get("ResultKind")
+        if params.get("Results") is not None:
+            self._Results = StatementResult()
+            self._Results._deserialize(params.get("Results"))
+        self._NextResultUri = params.get("NextResultUri")
         self._RequestId = params.get("RequestId")
 
 
@@ -5890,6 +6033,66 @@ class LogContent(AbstractModel):
         
 
 
+class LogicalType(AbstractModel):
+    """SqlGateway返回LogicalType类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _NullAble: 是否允许为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NullAble: bool
+        :param _Length: 长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Length: int
+        """
+        self._Type = None
+        self._NullAble = None
+        self._Length = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NullAble(self):
+        return self._NullAble
+
+    @NullAble.setter
+    def NullAble(self, NullAble):
+        self._NullAble = NullAble
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._NullAble = params.get("NullAble")
+        self._Length = params.get("Length")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyJobRequest(AbstractModel):
     """ModifyJob请求参数结构体
 
@@ -7003,6 +7206,115 @@ class ResourceRefJobInfo(AbstractModel):
         
 
 
+class ResultColumn(AbstractModel):
+    """Sql Gateway返回Column类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _LogicalType: 本地类型描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogicalType: :class:`tencentcloud.oceanus.v20190422.models.LogicalType`
+        :param _Comment: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        """
+        self._Name = None
+        self._LogicalType = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LogicalType(self):
+        return self._LogicalType
+
+    @LogicalType.setter
+    def LogicalType(self, LogicalType):
+        self._LogicalType = LogicalType
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("LogicalType") is not None:
+            self._LogicalType = LogicalType()
+            self._LogicalType._deserialize(params.get("LogicalType"))
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResultData(AbstractModel):
+    """Sql Gateway返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Kind: str
+        :param _Fields: 结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fields: list of str
+        """
+        self._Kind = None
+        self._Fields = None
+
+    @property
+    def Kind(self):
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._Fields = params.get("Fields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RoleAuth(AbstractModel):
     """角色授权信息
 
@@ -7370,6 +7682,57 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Sql: 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+        :type Sql: str
+        :param _SessionId: Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+        :type SessionId: str
+        """
+        self._ClusterId = None
+        self._Sql = None
+        self._SessionId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Sql(self):
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Sql = params.get("Sql")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RunSqlGatewayStatementResponse(AbstractModel):
     """RunSqlGatewayStatement返回参数结构体
@@ -7378,10 +7741,44 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorMessage: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: list of str
+        :param _SessionId: 会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+        :type SessionId: str
+        :param _OperationHandleId: 返回执行id，可以根据该执行id和会话id获取执行结果
+        :type OperationHandleId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorMessage = None
+        self._SessionId = None
+        self._OperationHandleId = None
         self._RequestId = None
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def OperationHandleId(self):
+        return self._OperationHandleId
+
+    @OperationHandleId.setter
+    def OperationHandleId(self, OperationHandleId):
+        self._OperationHandleId = OperationHandleId
 
     @property
     def RequestId(self):
@@ -7393,6 +7790,9 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._SessionId = params.get("SessionId")
+        self._OperationHandleId = params.get("OperationHandleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7872,6 +8272,76 @@ class SqlGatewayItem(AbstractModel):
                 obj = Property()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StatementResult(AbstractModel):
+    """Sql Gateway 返回Result结构类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Columns: 返回结果列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of ResultColumn
+        :param _RowFormat: 格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RowFormat: str
+        :param _Data: 结果值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ResultData
+        """
+        self._Columns = None
+        self._RowFormat = None
+        self._Data = None
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def RowFormat(self):
+        return self._RowFormat
+
+    @RowFormat.setter
+    def RowFormat(self, RowFormat):
+        self._RowFormat = RowFormat
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ResultColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._RowFormat = params.get("RowFormat")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ResultData()
+                obj._deserialize(item)
+                self._Data.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

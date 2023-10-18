@@ -95,6 +95,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomDnsHost(self, request):
+        """创建自定义DNS Host
+
+        :param request: Request instance for CreateCustomDnsHost.
+        :type request: :class:`tencentcloud.domain.v20180808.models.CreateCustomDnsHostRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.CreateCustomDnsHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomDnsHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomDnsHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDomainBatch(self, request):
         """本接口 ( CreateDomainBatch ) 用于批量域名注册 。
 

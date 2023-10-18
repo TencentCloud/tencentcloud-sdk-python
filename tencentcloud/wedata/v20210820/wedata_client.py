@@ -5620,6 +5620,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFileInfo(self, request):
+        """开发空间-获取数据开发脚本信息
+
+        :param request: Request instance for GetFileInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.GetFileInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.GetFileInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFileInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFileInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetIntegrationNodeColumnSchema(self, request):
         """提取数据集成节点字段Schema
 

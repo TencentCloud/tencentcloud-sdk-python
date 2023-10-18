@@ -39819,6 +39819,91 @@ class GeneralTaskParam(AbstractModel):
         
 
 
+class GetFileInfoRequest(AbstractModel):
+    """GetFileInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _FilePath: 文件路径
+        :type FilePath: str
+        """
+        self._ProjectId = None
+        self._FilePath = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFileInfoResponse(AbstractModel):
+    """GetFileInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserFileInfo: 当前脚本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserFileInfo: :class:`tencentcloud.wedata.v20210820.models.UserFileInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UserFileInfo = None
+        self._RequestId = None
+
+    @property
+    def UserFileInfo(self):
+        return self._UserFileInfo
+
+    @UserFileInfo.setter
+    def UserFileInfo(self, UserFileInfo):
+        self._UserFileInfo = UserFileInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserFileInfo") is not None:
+            self._UserFileInfo = UserFileInfo()
+            self._UserFileInfo._deserialize(params.get("UserFileInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetIntegrationNodeColumnSchemaRequest(AbstractModel):
     """GetIntegrationNodeColumnSchema请求参数结构体
 

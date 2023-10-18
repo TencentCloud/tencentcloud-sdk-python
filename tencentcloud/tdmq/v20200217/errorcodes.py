@@ -284,6 +284,9 @@ RESOURCENOTFOUND_ENVIRONMENTROLE = 'ResourceNotFound.EnvironmentRole'
 # 实例不存在。
 RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
 
+# 迁移任务不存在。
+RESOURCENOTFOUND_MIGRATIONTASK = 'ResourceNotFound.MigrationTask'
+
 # 命名空间不存在。
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 

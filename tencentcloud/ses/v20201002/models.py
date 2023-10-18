@@ -2783,8 +2783,8 @@ class SendEmailRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com
-如需填写发件人说明，请按照如下方式(别名与邮箱地址之间使用一个空格隔开)： 
-别名 <邮箱地址>
+如需填写发件人别名，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）： 
+别名 <邮箱地址>，例如：QCLOUDTEAM <noreply@mail.qcloud.com>
         :type FromEmailAddress: str
         :param _Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
         :type Destination: list of str
