@@ -5010,9 +5010,13 @@ class BooleanResponse(AbstractModel):
         :param _Message: 失败返回提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
+        :param _BaselineId: 基线Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaselineId: int
         """
         self._Success = None
         self._Message = None
+        self._BaselineId = None
 
     @property
     def Success(self):
@@ -5030,10 +5034,19 @@ class BooleanResponse(AbstractModel):
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def BaselineId(self):
+        return self._BaselineId
+
+    @BaselineId.setter
+    def BaselineId(self, BaselineId):
+        self._BaselineId = BaselineId
+
 
     def _deserialize(self, params):
         self._Success = params.get("Success")
         self._Message = params.get("Message")
+        self._BaselineId = params.get("BaselineId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8728,7 +8741,7 @@ class CreateHiveTableRequest(AbstractModel):
         r"""
         :param _DatasourceId: 数据源id
         :type DatasourceId: str
-        :param _Database: 数据库
+        :param _Database: 数据库名称
         :type Database: str
         :param _DDLSql: base64转码之后的建表语句
         :type DDLSql: str

@@ -9802,6 +9802,180 @@ class DescribeRocketMQClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQConsumerConnectionsRequest(AbstractModel):
+    """DescribeRocketMQConsumerConnections请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param _GroupId: 消费组ID
+        :type GroupId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 限制数目
+        :type Limit: int
+        :param _SortedBy: 对查询结果排序，此为排序字段，目前支持Accumulative（消息堆积量）
+        :type SortedBy: str
+        :param _SortOrder: 查询结果排序规则，ASC为升序，DESC为降序
+        :type SortOrder: str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._GroupId = None
+        self._Offset = None
+        self._Limit = None
+        self._SortedBy = None
+        self._SortOrder = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortedBy(self):
+        return self._SortedBy
+
+    @SortedBy.setter
+    def SortedBy(self, SortedBy):
+        self._SortedBy = SortedBy
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._GroupId = params.get("GroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SortedBy = params.get("SortedBy")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQConsumerConnectionsResponse(AbstractModel):
+    """DescribeRocketMQConsumerConnections返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _Connections: 在线消费者信息
+        :type Connections: list of RocketMQConsumerConnection
+        :param _GroupDetail: 订阅组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupDetail: :class:`tencentcloud.tdmq.v20200217.models.RocketMQGroup`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Connections = None
+        self._GroupDetail = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Connections(self):
+        return self._Connections
+
+    @Connections.setter
+    def Connections(self, Connections):
+        self._Connections = Connections
+
+    @property
+    def GroupDetail(self):
+        return self._GroupDetail
+
+    @GroupDetail.setter
+    def GroupDetail(self, GroupDetail):
+        self._GroupDetail = GroupDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Connections") is not None:
+            self._Connections = []
+            for item in params.get("Connections"):
+                obj = RocketMQConsumerConnection()
+                obj._deserialize(item)
+                self._Connections.append(obj)
+        if params.get("GroupDetail") is not None:
+            self._GroupDetail = RocketMQGroup()
+            self._GroupDetail._deserialize(params.get("GroupDetail"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQGroupsRequest(AbstractModel):
     """DescribeRocketMQGroups请求参数结构体
 
@@ -19328,6 +19502,87 @@ class RocketMQClusterRecentStats(AbstractModel):
         self._ProducedMsgNum = params.get("ProducedMsgNum")
         self._ConsumedMsgNum = params.get("ConsumedMsgNum")
         self._AccumulativeMsgNum = params.get("AccumulativeMsgNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQConsumerConnection(AbstractModel):
+    """在线消费者情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 消费者实例ID
+        :type ClientId: str
+        :param _ClientAddr: 消费者实例的地址和端口
+        :type ClientAddr: str
+        :param _Language: 消费者应用的语言版本
+        :type Language: str
+        :param _Accumulative: 消息堆积量
+        :type Accumulative: int
+        :param _Version: 消费端版本
+        :type Version: str
+        """
+        self._ClientId = None
+        self._ClientAddr = None
+        self._Language = None
+        self._Accumulative = None
+        self._Version = None
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientAddr(self):
+        return self._ClientAddr
+
+    @ClientAddr.setter
+    def ClientAddr(self, ClientAddr):
+        self._ClientAddr = ClientAddr
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Accumulative(self):
+        return self._Accumulative
+
+    @Accumulative.setter
+    def Accumulative(self, Accumulative):
+        self._Accumulative = Accumulative
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientAddr = params.get("ClientAddr")
+        self._Language = params.get("Language")
+        self._Accumulative = params.get("Accumulative")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

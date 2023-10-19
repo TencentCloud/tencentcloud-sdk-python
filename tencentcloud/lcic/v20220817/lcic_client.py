@@ -1224,6 +1224,52 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendRoomNormalMessage(self, request):
+        """1、按照指定身份发送消息，目前支持表情消息、图片消息、文本消息。
+
+        :param request: Request instance for SendRoomNormalMessage.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SendRoomNormalMessageRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SendRoomNormalMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendRoomNormalMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendRoomNormalMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SendRoomNotificationMessage(self, request):
+        """App 管理员可以通过该接口在群组中发送通知、公告等。目前仅支持文本消息。
+
+        :param request: Request instance for SendRoomNotificationMessage.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.SendRoomNotificationMessageRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.SendRoomNotificationMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendRoomNotificationMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendRoomNotificationMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAppCustomContent(self, request):
         """设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 

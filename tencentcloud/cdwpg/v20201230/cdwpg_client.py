@@ -95,6 +95,29 @@ class CdwpgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstances(self, request):
+        """获取云原生实例列表
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.cdwpg.v20201230.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSimpleInstances(self, request):
         """获取集群实例列表
 

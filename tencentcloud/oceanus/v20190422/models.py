@@ -2367,6 +2367,252 @@ class CreateResourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateWorkSpaceRequest(AbstractModel):
+    """CreateWorkSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceName: 工作空间名称
+        :type WorkSpaceName: str
+        :param _Description: 项目空间备注
+        :type Description: str
+        """
+        self._WorkSpaceName = None
+        self._Description = None
+
+    @property
+    def WorkSpaceName(self):
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkSpaceResponse(AbstractModel):
+    """CreateWorkSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkSpaceId = None
+        self._RequestId = None
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFoldersRequest(AbstractModel):
+    """DeleteFolders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderIds: 需删除的文件夹唯一ID
+        :type FolderIds: list of str
+        :param _FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
+        :type FolderType: int
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._FolderIds = None
+        self._FolderType = None
+        self._WorkSpaceId = None
+
+    @property
+    def FolderIds(self):
+        return self._FolderIds
+
+    @FolderIds.setter
+    def FolderIds(self, FolderIds):
+        self._FolderIds = FolderIds
+
+    @property
+    def FolderType(self):
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._FolderIds = params.get("FolderIds")
+        self._FolderType = params.get("FolderType")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFoldersResponse(AbstractModel):
+    """DeleteFolders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteJobConfigsRequest(AbstractModel):
+    """DeleteJobConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业ID
+        :type JobId: str
+        :param _JobConfigVersions: 作业配置版本数组
+        :type JobConfigVersions: list of int
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._JobId = None
+        self._JobConfigVersions = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobConfigVersions(self):
+        return self._JobConfigVersions
+
+    @JobConfigVersions.setter
+    def JobConfigVersions(self, JobConfigVersions):
+        self._JobConfigVersions = JobConfigVersions
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobConfigVersions = params.get("JobConfigVersions")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJobConfigsResponse(AbstractModel):
+    """DeleteJobConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteJobsRequest(AbstractModel):
     """DeleteJobs请求参数结构体
 
@@ -6093,6 +6339,124 @@ class LogicalType(AbstractModel):
         
 
 
+class ModifyFolderRequest(AbstractModel):
+    """ModifyFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceFolderId: 文件夹ID（必填）
+        :type SourceFolderId: str
+        :param _TargetFolderId: 如需拖拽文件夹，需传入目标文件夹ID
+        :type TargetFolderId: str
+        :param _FolderName: 如需修改文件夹名，需传入FolderName字段
+        :type FolderName: str
+        :param _FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
+        :type FolderType: int
+        :param _SourceJobIds: 批量移动的作业serial id 列表
+        :type SourceJobIds: list of str
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._SourceFolderId = None
+        self._TargetFolderId = None
+        self._FolderName = None
+        self._FolderType = None
+        self._SourceJobIds = None
+        self._WorkSpaceId = None
+
+    @property
+    def SourceFolderId(self):
+        return self._SourceFolderId
+
+    @SourceFolderId.setter
+    def SourceFolderId(self, SourceFolderId):
+        self._SourceFolderId = SourceFolderId
+
+    @property
+    def TargetFolderId(self):
+        return self._TargetFolderId
+
+    @TargetFolderId.setter
+    def TargetFolderId(self, TargetFolderId):
+        self._TargetFolderId = TargetFolderId
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def FolderType(self):
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+    @property
+    def SourceJobIds(self):
+        return self._SourceJobIds
+
+    @SourceJobIds.setter
+    def SourceJobIds(self, SourceJobIds):
+        self._SourceJobIds = SourceJobIds
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._SourceFolderId = params.get("SourceFolderId")
+        self._TargetFolderId = params.get("TargetFolderId")
+        self._FolderName = params.get("FolderName")
+        self._FolderType = params.get("FolderType")
+        self._SourceJobIds = params.get("SourceJobIds")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFolderResponse(AbstractModel):
+    """ModifyFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyJobRequest(AbstractModel):
     """ModifyJob请求参数结构体
 
@@ -6176,6 +6540,88 @@ class ModifyJobRequest(AbstractModel):
 
 class ModifyJobResponse(AbstractModel):
     """ModifyJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyWorkSpaceRequest(AbstractModel):
+    """ModifyWorkSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        :param _WorkSpaceName: 待修改的工作空间名称
+        :type WorkSpaceName: str
+        :param _Description: 待修改的工作空间备注
+        :type Description: str
+        """
+        self._WorkSpaceId = None
+        self._WorkSpaceName = None
+        self._Description = None
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def WorkSpaceName(self):
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkSpaceResponse(AbstractModel):
+    """ModifyWorkSpace返回参数结构体
 
     """
 

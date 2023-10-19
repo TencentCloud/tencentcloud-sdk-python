@@ -14,5 +14,8 @@
 # limitations under the License.
 
 
+# 内部错误。
+INTERNALERROR = 'InternalError'
+
 # InternalError.SystemError
 INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'

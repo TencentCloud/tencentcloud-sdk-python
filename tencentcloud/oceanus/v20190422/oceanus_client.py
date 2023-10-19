@@ -187,6 +187,75 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWorkSpace(self, request):
+        """创建工作空间
+
+        :param request: Request instance for CreateWorkSpace.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateWorkSpaceRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateWorkSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFolders(self, request):
+        """作业列表删除文件夹
+
+        :param request: Request instance for DeleteFolders.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteFoldersRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteFoldersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFolders", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFoldersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteJobConfigs(self, request):
+        """删除作业配置
+
+        :param request: Request instance for DeleteJobConfigs.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteJobConfigsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteJobConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJobConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJobConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteJobs(self, request):
         """批量删除作业接口，批量操作数量上限20
 
@@ -578,6 +647,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyFolder(self, request):
+        """自定义树状结构页面拖拽文件夹
+
+        :param request: Request instance for ModifyFolder.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyFolderRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ModifyFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyJob(self, request):
         """更新作业属性，仅允许以下3种操作，不支持组合操作：
         (1)	更新作业名称
@@ -601,6 +693,29 @@ class OceanusClient(AbstractClient):
             body = self.call("ModifyJob", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWorkSpace(self, request):
+        """修改工作空间
+
+        :param request: Request instance for ModifyWorkSpace.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyWorkSpaceRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ModifyWorkSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWorkSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWorkSpaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

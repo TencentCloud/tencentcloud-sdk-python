@@ -4691,6 +4691,8 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param _VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        :param _ExportExtensionArgs: 视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :type ExportExtensionArgs: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
         :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使用的媒资该操作者需要拥有使用权限。
         :type Operator: str
         """
@@ -4702,6 +4704,7 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self._CoverData = None
         self._CMEExportInfo = None
         self._VODExportInfo = None
+        self._ExportExtensionArgs = None
         self._Operator = None
 
     @property
@@ -4769,6 +4772,14 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         self._VODExportInfo = VODExportInfo
 
     @property
+    def ExportExtensionArgs(self):
+        return self._ExportExtensionArgs
+
+    @ExportExtensionArgs.setter
+    def ExportExtensionArgs(self, ExportExtensionArgs):
+        self._ExportExtensionArgs = ExportExtensionArgs
+
+    @property
     def Operator(self):
         return self._Operator
 
@@ -4790,6 +4801,9 @@ class ExportVideoByEditorTrackDataRequest(AbstractModel):
         if params.get("VODExportInfo") is not None:
             self._VODExportInfo = VODExportInfo()
             self._VODExportInfo._deserialize(params.get("VODExportInfo"))
+        if params.get("ExportExtensionArgs") is not None:
+            self._ExportExtensionArgs = VideoExportExtensionArgs()
+            self._ExportExtensionArgs._deserialize(params.get("ExportExtensionArgs"))
         self._Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4864,6 +4878,8 @@ class ExportVideoByTemplateRequest(AbstractModel):
         :type CMEExportInfo: :class:`tencentcloud.cme.v20191029.models.CMEExportInfo`
         :param _VODExportInfo: 导出的云点播媒资信息。当导出目标为 VOD 时必填。
         :type VODExportInfo: :class:`tencentcloud.cme.v20191029.models.VODExportInfo`
+        :param _ExportExtensionArgs: 视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+        :type ExportExtensionArgs: :class:`tencentcloud.cme.v20191029.models.VideoExportExtensionArgs`
         :param _Operator: 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，则操作者需要有替换媒体及剪辑模板的权限。
         :type Operator: str
         """
@@ -4874,6 +4890,7 @@ class ExportVideoByTemplateRequest(AbstractModel):
         self._SlotReplacements = None
         self._CMEExportInfo = None
         self._VODExportInfo = None
+        self._ExportExtensionArgs = None
         self._Operator = None
 
     @property
@@ -4933,6 +4950,14 @@ class ExportVideoByTemplateRequest(AbstractModel):
         self._VODExportInfo = VODExportInfo
 
     @property
+    def ExportExtensionArgs(self):
+        return self._ExportExtensionArgs
+
+    @ExportExtensionArgs.setter
+    def ExportExtensionArgs(self, ExportExtensionArgs):
+        self._ExportExtensionArgs = ExportExtensionArgs
+
+    @property
     def Operator(self):
         return self._Operator
 
@@ -4958,6 +4983,9 @@ class ExportVideoByTemplateRequest(AbstractModel):
         if params.get("VODExportInfo") is not None:
             self._VODExportInfo = VODExportInfo()
             self._VODExportInfo._deserialize(params.get("VODExportInfo"))
+        if params.get("ExportExtensionArgs") is not None:
+            self._ExportExtensionArgs = VideoExportExtensionArgs()
+            self._ExportExtensionArgs._deserialize(params.get("ExportExtensionArgs"))
         self._Operator = params.get("Operator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -1151,3 +1151,26 @@ class TseClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUpstreamTargets(self, request):
+        """更新网关上游实例列表，仅支持IPList服务类型
+
+        :param request: Request instance for UpdateUpstreamTargets.
+        :type request: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamTargetsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUpstreamTargets", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUpstreamTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

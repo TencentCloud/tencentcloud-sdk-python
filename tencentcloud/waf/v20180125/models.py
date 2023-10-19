@@ -3635,6 +3635,79 @@ class ClbObject(AbstractModel):
         
 
 
+class ClbWafRegionItem(AbstractModel):
+    """Clb-waf地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Text: 地域中文说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Value: 地域英文全拼
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Code: 地域编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        """
+        self._Id = None
+        self._Text = None
+        self._Value = None
+        self._Code = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Text = params.get("Text")
+        self._Value = params.get("Value")
+        self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessExportRequest(AbstractModel):
     """CreateAccessExport请求参数结构体
 
@@ -10675,6 +10748,406 @@ class DescribeSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpartaProtectionInfoRequest(AbstractModel):
+    """DescribeSpartaProtectionInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Edition: 版本
+        :type Edition: str
+        :param _InstanceID: 实例
+        :type InstanceID: str
+        """
+        self._Domain = None
+        self._Edition = None
+        self._InstanceID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpartaProtectionInfoResponse(AbstractModel):
+    """DescribeSpartaProtectionInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _Cname: cname取值
+        :type Cname: str
+        :param _Status: 状态
+        :type Status: str
+        :param _SrcList: 源IP地址列表
+        :type SrcList: list of str
+        :param _CertType: 证书类型
+        :type CertType: str
+        :param _Cert: 证书
+        :type Cert: str
+        :param _PrivateKey: 私有密钥
+        :type PrivateKey: str
+        :param _Sslid: ssl的id
+        :type Sslid: str
+        :param _IsCdn: 是否是cdn
+        :type IsCdn: str
+        :param _GrayAreas: 灰度区域列表
+        :type GrayAreas: list of str
+        :param _Engine: 引擎
+        :type Engine: str
+        :param _HttpsRewrite: HTTPS重写
+        :type HttpsRewrite: str
+        :param _UpstreamType: upstreamType取值
+        :type UpstreamType: str
+        :param _UpstreamDomain: upstreamDomain取值
+        :type UpstreamDomain: str
+        :param _UpstreamScheme: upstreamScheme取值
+        :type UpstreamScheme: str
+        :param _IsHttp2: 是否是HTTP2
+        :type IsHttp2: str
+        :param _IsWebsocket: 是否含有websocket
+        :type IsWebsocket: str
+        :param _LoadBalance: loadBalance信息
+        :type LoadBalance: str
+        :param _HttpsUpstreamPort: httpsUpstreamPort取值
+        :type HttpsUpstreamPort: str
+        :param _Ports: port信息
+        :type Ports: list of PortItem
+        :param _IsGray: 是否灰度
+        :type IsGray: str
+        :param _Mode: 模式
+        :type Mode: str
+        :param _Level: 防御等级,100,200,300
+        :type Level: str
+        :param _IsKeepAlive: 与源站是否保持长连接
+        :type IsKeepAlive: str
+        :param _Anycast: 0：BGP 1：Anycast
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Anycast: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._DomainId = None
+        self._Cname = None
+        self._Status = None
+        self._SrcList = None
+        self._CertType = None
+        self._Cert = None
+        self._PrivateKey = None
+        self._Sslid = None
+        self._IsCdn = None
+        self._GrayAreas = None
+        self._Engine = None
+        self._HttpsRewrite = None
+        self._UpstreamType = None
+        self._UpstreamDomain = None
+        self._UpstreamScheme = None
+        self._IsHttp2 = None
+        self._IsWebsocket = None
+        self._LoadBalance = None
+        self._HttpsUpstreamPort = None
+        self._Ports = None
+        self._IsGray = None
+        self._Mode = None
+        self._Level = None
+        self._IsKeepAlive = None
+        self._Anycast = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SrcList(self):
+        return self._SrcList
+
+    @SrcList.setter
+    def SrcList(self, SrcList):
+        self._SrcList = SrcList
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def Sslid(self):
+        return self._Sslid
+
+    @Sslid.setter
+    def Sslid(self, Sslid):
+        self._Sslid = Sslid
+
+    @property
+    def IsCdn(self):
+        return self._IsCdn
+
+    @IsCdn.setter
+    def IsCdn(self, IsCdn):
+        self._IsCdn = IsCdn
+
+    @property
+    def GrayAreas(self):
+        return self._GrayAreas
+
+    @GrayAreas.setter
+    def GrayAreas(self, GrayAreas):
+        self._GrayAreas = GrayAreas
+
+    @property
+    def Engine(self):
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def HttpsRewrite(self):
+        return self._HttpsRewrite
+
+    @HttpsRewrite.setter
+    def HttpsRewrite(self, HttpsRewrite):
+        self._HttpsRewrite = HttpsRewrite
+
+    @property
+    def UpstreamType(self):
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+    @property
+    def UpstreamDomain(self):
+        return self._UpstreamDomain
+
+    @UpstreamDomain.setter
+    def UpstreamDomain(self, UpstreamDomain):
+        self._UpstreamDomain = UpstreamDomain
+
+    @property
+    def UpstreamScheme(self):
+        return self._UpstreamScheme
+
+    @UpstreamScheme.setter
+    def UpstreamScheme(self, UpstreamScheme):
+        self._UpstreamScheme = UpstreamScheme
+
+    @property
+    def IsHttp2(self):
+        return self._IsHttp2
+
+    @IsHttp2.setter
+    def IsHttp2(self, IsHttp2):
+        self._IsHttp2 = IsHttp2
+
+    @property
+    def IsWebsocket(self):
+        return self._IsWebsocket
+
+    @IsWebsocket.setter
+    def IsWebsocket(self, IsWebsocket):
+        self._IsWebsocket = IsWebsocket
+
+    @property
+    def LoadBalance(self):
+        return self._LoadBalance
+
+    @LoadBalance.setter
+    def LoadBalance(self, LoadBalance):
+        self._LoadBalance = LoadBalance
+
+    @property
+    def HttpsUpstreamPort(self):
+        return self._HttpsUpstreamPort
+
+    @HttpsUpstreamPort.setter
+    def HttpsUpstreamPort(self, HttpsUpstreamPort):
+        self._HttpsUpstreamPort = HttpsUpstreamPort
+
+    @property
+    def Ports(self):
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def IsGray(self):
+        return self._IsGray
+
+    @IsGray.setter
+    def IsGray(self, IsGray):
+        self._IsGray = IsGray
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def IsKeepAlive(self):
+        return self._IsKeepAlive
+
+    @IsKeepAlive.setter
+    def IsKeepAlive(self, IsKeepAlive):
+        self._IsKeepAlive = IsKeepAlive
+
+    @property
+    def Anycast(self):
+        return self._Anycast
+
+    @Anycast.setter
+    def Anycast(self, Anycast):
+        self._Anycast = Anycast
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        self._Cname = params.get("Cname")
+        self._Status = params.get("Status")
+        self._SrcList = params.get("SrcList")
+        self._CertType = params.get("CertType")
+        self._Cert = params.get("Cert")
+        self._PrivateKey = params.get("PrivateKey")
+        self._Sslid = params.get("Sslid")
+        self._IsCdn = params.get("IsCdn")
+        self._GrayAreas = params.get("GrayAreas")
+        self._Engine = params.get("Engine")
+        self._HttpsRewrite = params.get("HttpsRewrite")
+        self._UpstreamType = params.get("UpstreamType")
+        self._UpstreamDomain = params.get("UpstreamDomain")
+        self._UpstreamScheme = params.get("UpstreamScheme")
+        self._IsHttp2 = params.get("IsHttp2")
+        self._IsWebsocket = params.get("IsWebsocket")
+        self._LoadBalance = params.get("LoadBalance")
+        self._HttpsUpstreamPort = params.get("HttpsUpstreamPort")
+        if params.get("Ports") is not None:
+            self._Ports = []
+            for item in params.get("Ports"):
+                obj = PortItem()
+                obj._deserialize(item)
+                self._Ports.append(obj)
+        self._IsGray = params.get("IsGray")
+        self._Mode = params.get("Mode")
+        self._Level = params.get("Level")
+        self._IsKeepAlive = params.get("IsKeepAlive")
+        self._Anycast = params.get("Anycast")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTlsVersionRequest(AbstractModel):
     """DescribeTlsVersion请求参数结构体
 
@@ -10928,10 +11401,14 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
         :param _Data: 地域（标准的ap-格式）列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of str
+        :param _RichDatas: 包含详细属性的地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RichDatas: list of ClbWafRegionItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._RichDatas = None
         self._RequestId = None
 
     @property
@@ -10941,6 +11418,14 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def RichDatas(self):
+        return self._RichDatas
+
+    @RichDatas.setter
+    def RichDatas(self, RichDatas):
+        self._RichDatas = RichDatas
 
     @property
     def RequestId(self):
@@ -10953,6 +11438,12 @@ class DescribeUserClbWafRegionsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        if params.get("RichDatas") is not None:
+            self._RichDatas = []
+            for item in params.get("RichDatas"):
+                obj = ClbWafRegionItem()
+                obj._deserialize(item)
+                self._RichDatas.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11001,6 +11492,76 @@ class DescribeUserDomainInfoResponse(AbstractModel):
                 obj = UserDomainInfo()
                 obj._deserialize(item)
                 self._UsersInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserLevelRequest(AbstractModel):
+    """DescribeUserLevel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserLevelResponse(AbstractModel):
+    """DescribeUserLevel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Level: 300:正常 400:严格
+        :type Level: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Level = None
+        self._RequestId = None
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Level = params.get("Level")
         self._RequestId = params.get("RequestId")
 
 
@@ -11544,6 +12105,88 @@ class DescribeWafThreatenIntelligenceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWebshellStatusRequest(AbstractModel):
+    """DescribeWebshellStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebshellStatusResponse(AbstractModel):
+    """DescribeWebshellStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: webshell域名
+        :type Domain: str
+        :param _Status: 开关状态
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DomainInfo(AbstractModel):
     """domain列表
 
@@ -12038,9 +12681,13 @@ class DomainURI(AbstractModel):
         :type Domain: str
         :param _Edition: 版本
         :type Edition: str
+        :param _InstanceID: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceID: str
         """
         self._Domain = None
         self._Edition = None
+        self._InstanceID = None
 
     @property
     def Domain(self):
@@ -12058,10 +12705,19 @@ class DomainURI(AbstractModel):
     def Edition(self, Edition):
         self._Edition = Edition
 
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._Edition = params.get("Edition")
+        self._InstanceID = params.get("InstanceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

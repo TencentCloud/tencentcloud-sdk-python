@@ -585,6 +585,81 @@ class BatchDeregisterTargetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchModifyTargetTagRequest(AbstractModel):
+    """BatchModifyTargetTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: 负载均衡实例 ID。
+        :type LoadBalancerId: str
+        :param _ModifyList: 要批量修改标签的列表。
+        :type ModifyList: list of RsTagRule
+        """
+        self._LoadBalancerId = None
+        self._ModifyList = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ModifyList(self):
+        return self._ModifyList
+
+    @ModifyList.setter
+    def ModifyList(self, ModifyList):
+        self._ModifyList = ModifyList
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("ModifyList") is not None:
+            self._ModifyList = []
+            for item in params.get("ModifyList"):
+                obj = RsTagRule()
+                obj._deserialize(item)
+                self._ModifyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchModifyTargetTagResponse(AbstractModel):
+    """BatchModifyTargetTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BatchModifyTargetWeightRequest(AbstractModel):
     """BatchModifyTargetWeight请求参数结构体
 
@@ -768,6 +843,8 @@ class BatchTarget(AbstractModel):
         :type Weight: int
         :param _LocationId: 七层规则 ID。
         :type LocationId: str
+        :param _Tag: 标签。
+        :type Tag: str
         """
         self._ListenerId = None
         self._Port = None
@@ -775,6 +852,7 @@ class BatchTarget(AbstractModel):
         self._EniIp = None
         self._Weight = None
         self._LocationId = None
+        self._Tag = None
 
     @property
     def ListenerId(self):
@@ -824,6 +902,14 @@ class BatchTarget(AbstractModel):
     def LocationId(self, LocationId):
         self._LocationId = LocationId
 
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -832,6 +918,7 @@ class BatchTarget(AbstractModel):
         self._EniIp = params.get("EniIp")
         self._Weight = params.get("Weight")
         self._LocationId = params.get("LocationId")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5667,7 +5754,7 @@ class DescribeClusterResourcesRequest(AbstractModel):
         :param _Filters: 查询集群中资源列表条件，详细的过滤条件如下：
 <li> cluster-id - String - 是否必填：否 - （过滤条件）按照 集群 的唯一ID过滤，如 ："tgw-12345678","stgw-12345678","vpcgw-12345678"。</li>
 <li> vip - String - 是否必填：否 - （过滤条件）按照vip过滤。</li>
-<li> loadblancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
+<li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照负载均衡唯一ID过滤。</li>
 <li> idle - String 是否必填：否 - （过滤条件）按照是否闲置过滤，如"True","False"。</li>
         :type Filters: list of Filter
         """
@@ -14820,6 +14907,80 @@ class RewriteTarget(AbstractModel):
         
 
 
+class RsTagRule(AbstractModel):
+    """修改节点标签的数据类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenerId: 负载均衡监听器 ID。
+        :type ListenerId: str
+        :param _Targets: 要修改标签的后端机器列表。
+        :type Targets: list of Target
+        :param _LocationId: 转发规则的ID，七层规则时需要此参数，4层规则不需要。
+        :type LocationId: str
+        :param _Tag: 后端服务修改后的标签。此参数的优先级低于前述[Target](https://cloud.tencent.com/document/api/214/30694#Target)中的Tag参数，即最终的标签以Target中的Tag参数值为准，仅当Target中的Weight参数为空时，才以RsTagRule中的Tag参数为准。
+        :type Tag: str
+        """
+        self._ListenerId = None
+        self._Targets = None
+        self._LocationId = None
+        self._Tag = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def LocationId(self):
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._ListenerId = params.get("ListenerId")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = Target()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._LocationId = params.get("LocationId")
+        self._Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RsWeightRule(AbstractModel):
     """修改节点权重的数据类型
 
@@ -16278,12 +16439,16 @@ class Target(AbstractModel):
 注意：参数 InstanceId、EniIp 有且只能传入其中一个参数。如果绑定双栈IPV6子机，则必须传该参数。如果是跨地域绑定，则必须传该参数，不支持传InstanceId参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniIp: str
+        :param _Tag: 标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
         """
         self._Port = None
         self._Type = None
         self._InstanceId = None
         self._Weight = None
         self._EniIp = None
+        self._Tag = None
 
     @property
     def Port(self):
@@ -16325,6 +16490,14 @@ class Target(AbstractModel):
     def EniIp(self, EniIp):
         self._EniIp = EniIp
 
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._Port = params.get("Port")
@@ -16332,6 +16505,7 @@ class Target(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Weight = params.get("Weight")
         self._EniIp = params.get("EniIp")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

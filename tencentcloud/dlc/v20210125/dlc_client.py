@@ -1383,6 +1383,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLakeFsTaskResult(self, request):
+        """获取LakeFs上task执行结果访问信息
+
+        :param request: Request instance for DescribeLakeFsTaskResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsTaskResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeLakeFsTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLakeFsTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLakeFsTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNotebookSession(self, request):
         """本接口（DescribeNotebookSession）用于查询交互式 session详情信息
 

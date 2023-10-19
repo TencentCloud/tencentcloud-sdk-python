@@ -1526,6 +1526,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSpartaProtectionInfo(self, request):
+        """waf斯巴达-获取防护域名信息
+
+        :param request: Request instance for DescribeSpartaProtectionInfo.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeSpartaProtectionInfoRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeSpartaProtectionInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpartaProtectionInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpartaProtectionInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTlsVersion(self, request):
         """查询用户TLS版本
 
@@ -1632,6 +1655,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeUserDomainInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserDomainInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserLevel(self, request):
+        """获取用户防护规则等级
+
+        :param request: Request instance for DescribeUserLevel.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserLevelRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserLevel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserLevelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1772,6 +1818,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeWafThreatenIntelligence", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWafThreatenIntelligenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWebshellStatus(self, request):
+        """获取域名的webshell状态
+
+        :param request: Request instance for DescribeWebshellStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeWebshellStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeWebshellStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebshellStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebshellStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

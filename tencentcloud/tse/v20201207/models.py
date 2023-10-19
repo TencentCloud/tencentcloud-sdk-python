@@ -851,9 +851,12 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         :param _Description: 负载均衡的描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _SlaType: 负载均衡的规格类型，传 "SLA" 表示性能容量型，返回空为共享型
+        :param _SlaType: 负载均衡的规格类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaType: str
+        :param _SlaName: clb规格名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaName: str
         :param _Vip: clb vip
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
@@ -891,6 +894,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._VpcId = None
         self._Description = None
         self._SlaType = None
+        self._SlaName = None
         self._Vip = None
         self._InternetMaxBandwidthOut = None
         self._MultiZoneFlag = None
@@ -997,6 +1001,14 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._SlaType = SlaType
 
     @property
+    def SlaName(self):
+        return self._SlaName
+
+    @SlaName.setter
+    def SlaName(self, SlaName):
+        self._SlaName = SlaName
+
+    @property
     def Vip(self):
         return self._Vip
 
@@ -1076,6 +1088,7 @@ class CloudNativeAPIGatewayConfig(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._Description = params.get("Description")
         self._SlaType = params.get("SlaType")
+        self._SlaName = params.get("SlaName")
         self._Vip = params.get("Vip")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._MultiZoneFlag = params.get("MultiZoneFlag")
@@ -3175,10 +3188,22 @@ class CreateCloudNativeAPIGatewayServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 网关服务创建结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CreateGatewayServiceResult`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -3190,6 +3215,9 @@ class CreateCloudNativeAPIGatewayServiceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateGatewayServiceResult()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3514,6 +3542,40 @@ class CreateEngineResponse(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateGatewayServiceResult(AbstractModel):
+    """创建云原生网关服务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 网关服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        """
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateNativeGatewayServerGroupRequest(AbstractModel):
@@ -8049,7 +8111,7 @@ class InternetConfig(AbstractModel):
         :type InternetMaxBandwidthOut: int
         :param _Description: 负载均衡描述
         :type Description: str
-        :param _SlaType: 负载均衡的规格类型，传 "SLA" 表示性能容量型，不传为共享型。
+        :param _SlaType: 负载均衡的规格类型，支持clb.c2.medium、clb.c3.small、clb.c3.medium、clb.c4.small、clb.c4.medium、clb.c4.large、clb.c4.xlarge，不传为共享型。
         :type SlaType: str
         :param _MultiZoneFlag: 负载均衡是否多可用区
         :type MultiZoneFlag: bool
@@ -12313,6 +12375,106 @@ class UpdateEngineInternetAccessResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateUpstreamTargetsRequest(AbstractModel):
+    """UpdateUpstreamTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例ID
+        :type GatewayId: str
+        :param _Name: 服务名称或ID
+        :type Name: str
+        :param _Targets: 实例列表
+        :type Targets: list of KongTarget
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._Targets = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = KongTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUpstreamTargetsResponse(AbstractModel):
+    """UpdateUpstreamTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否更新成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 

@@ -97,6 +97,29 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchModifyTargetTag(self, request):
+        """BatchModifyTargetTag 接口用于批量修改负载均衡监听器绑定的后端机器的标签。批量修改的资源数量上限为500。本接口为同步接口。<br/>负载均衡的4层和7层监听器支持此接口，传统型负载均衡不支持。
+
+        :param request: Request instance for BatchModifyTargetTag.
+        :type request: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetTagRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.BatchModifyTargetTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchModifyTargetTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchModifyTargetTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchModifyTargetWeight(self, request):
         """BatchModifyTargetWeight 接口用于批量修改负载均衡监听器绑定的后端机器的转发权重。批量修改的资源数量上限为500。本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。<br/>负载均衡的4层和7层监听器支持此接口，传统型负载均衡不支持。
 

@@ -16107,6 +16107,93 @@ class CreateWhiteListOrderRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _LicenseType: 授权类型
+        :type LicenseType: int
+        :param _LicenseNum: 授权数量,最小为1 最大99999
+        :type LicenseNum: int
+        :param _Deadline: 到期时间,最小为1
+        :type Deadline: int
+        :param _RuleName: 规则名称,大资产中心:asset_center
+        :type RuleName: str
+        :param _RegionId: 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
+        :type RegionId: int
+        :param _ExtraParam: 额外参数,json字符串,包含ResourceId 资源ID,LicenseType 授权类型
+        :type ExtraParam: str
+        """
+        self._LicenseType = None
+        self._LicenseNum = None
+        self._Deadline = None
+        self._RuleName = None
+        self._RegionId = None
+        self._ExtraParam = None
+
+    @property
+    def LicenseType(self):
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
+    def LicenseNum(self):
+        return self._LicenseNum
+
+    @LicenseNum.setter
+    def LicenseNum(self, LicenseNum):
+        self._LicenseNum = LicenseNum
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ExtraParam(self):
+        return self._ExtraParam
+
+    @ExtraParam.setter
+    def ExtraParam(self, ExtraParam):
+        self._ExtraParam = ExtraParam
+
+
+    def _deserialize(self, params):
+        self._LicenseType = params.get("LicenseType")
+        self._LicenseNum = params.get("LicenseNum")
+        self._Deadline = params.get("Deadline")
+        self._RuleName = params.get("RuleName")
+        self._RegionId = params.get("RegionId")
+        self._ExtraParam = params.get("ExtraParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateWhiteListOrderResponse(AbstractModel):
     """CreateWhiteListOrder返回参数结构体
@@ -36239,6 +36326,33 @@ class DescribeLicenseWhiteConfigRequest(AbstractModel):
     """DescribeLicenseWhiteConfig请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称,例如: cwp
+        :type RuleName: str
+        """
+        self._RuleName = None
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeLicenseWhiteConfigResponse(AbstractModel):

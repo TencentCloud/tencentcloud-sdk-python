@@ -5618,6 +5618,51 @@ VisibleOff: 页面不可见
         
 
 
+class FaceMsgContent(AbstractModel):
+    """表情消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 表情索引，用户自定义。
+        :type Index: int
+        :param _Data: 额外数据。
+        :type Data: str
+        """
+        self._Index = None
+        self._Data = None
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetRoomEventRequest(AbstractModel):
     """GetRoomEvent请求参数结构体
 
@@ -6268,6 +6313,159 @@ class GroupInfo(AbstractModel):
         self._TeacherId = params.get("TeacherId")
         self._GroupType = params.get("GroupType")
         self._SubGroupIds = params.get("SubGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageInfo(AbstractModel):
+    """单张图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 图片类型：
+1-原图
+2-大图
+3-缩略图
+
+        :type Type: int
+        :param _Size: 图片数据大小，单位：字节。
+        :type Size: int
+        :param _Width: 图片宽度，单位为像素。
+        :type Width: int
+        :param _Height: 图片高度，单位为像素。
+        :type Height: int
+        :param _URL: 图片下载地址。
+        :type URL: str
+        """
+        self._Type = None
+        self._Size = None
+        self._Width = None
+        self._Height = None
+        self._URL = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Size = params.get("Size")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._URL = params.get("URL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMsgContent(AbstractModel):
+    """图片消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UUID: 图片的唯一标识，客户端用于索引图片的键值。
+        :type UUID: str
+        :param _ImageFormat: 图片格式。
+JPG = 1
+GIF = 2
+PNG = 3
+BMP = 4
+其他 = 255
+
+        :type ImageFormat: int
+        :param _ImageInfoList: 图片信息
+        :type ImageInfoList: list of ImageInfo
+        """
+        self._UUID = None
+        self._ImageFormat = None
+        self._ImageInfoList = None
+
+    @property
+    def UUID(self):
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def ImageFormat(self):
+        return self._ImageFormat
+
+    @ImageFormat.setter
+    def ImageFormat(self, ImageFormat):
+        self._ImageFormat = ImageFormat
+
+    @property
+    def ImageInfoList(self):
+        return self._ImageInfoList
+
+    @ImageInfoList.setter
+    def ImageInfoList(self, ImageInfoList):
+        self._ImageInfoList = ImageInfoList
+
+
+    def _deserialize(self, params):
+        self._UUID = params.get("UUID")
+        self._ImageFormat = params.get("ImageFormat")
+        if params.get("ImageInfoList") is not None:
+            self._ImageInfoList = []
+            for item in params.get("ImageInfoList"):
+                obj = ImageInfo()
+                obj._deserialize(item)
+                self._ImageInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7552,6 +7750,84 @@ class ModifyUserProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MsgBody(AbstractModel):
+    """自定义消息结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgType: TIM 消息对象类型，目前支持的消息对象包括：
+TIMTextElem（文本消息）
+TIMFaceElem（表情消息）
+TIMImageElem（图像消息）
+        :type MsgType: str
+        :param _TextMsgContent: 文本消息，当MsgType 为TIMTextElem（文本消息）必选。
+        :type TextMsgContent: :class:`tencentcloud.lcic.v20220817.models.TextMsgContent`
+        :param _FaceMsgContent: 表情消息，当MsgType 为TIMFaceElem（表情消息）必选。
+        :type FaceMsgContent: :class:`tencentcloud.lcic.v20220817.models.FaceMsgContent`
+        :param _ImageMsgContent: 图像消息，当MsgType为TIMImageElem（图像消息）必选。
+        :type ImageMsgContent: :class:`tencentcloud.lcic.v20220817.models.ImageMsgContent`
+        """
+        self._MsgType = None
+        self._TextMsgContent = None
+        self._FaceMsgContent = None
+        self._ImageMsgContent = None
+
+    @property
+    def MsgType(self):
+        return self._MsgType
+
+    @MsgType.setter
+    def MsgType(self, MsgType):
+        self._MsgType = MsgType
+
+    @property
+    def TextMsgContent(self):
+        return self._TextMsgContent
+
+    @TextMsgContent.setter
+    def TextMsgContent(self, TextMsgContent):
+        self._TextMsgContent = TextMsgContent
+
+    @property
+    def FaceMsgContent(self):
+        return self._FaceMsgContent
+
+    @FaceMsgContent.setter
+    def FaceMsgContent(self, FaceMsgContent):
+        self._FaceMsgContent = FaceMsgContent
+
+    @property
+    def ImageMsgContent(self):
+        return self._ImageMsgContent
+
+    @ImageMsgContent.setter
+    def ImageMsgContent(self, ImageMsgContent):
+        self._ImageMsgContent = ImageMsgContent
+
+
+    def _deserialize(self, params):
+        self._MsgType = params.get("MsgType")
+        if params.get("TextMsgContent") is not None:
+            self._TextMsgContent = TextMsgContent()
+            self._TextMsgContent._deserialize(params.get("TextMsgContent"))
+        if params.get("FaceMsgContent") is not None:
+            self._FaceMsgContent = FaceMsgContent()
+            self._FaceMsgContent._deserialize(params.get("FaceMsgContent"))
+        if params.get("ImageMsgContent") is not None:
+            self._ImageMsgContent = ImageMsgContent()
+            self._ImageMsgContent._deserialize(params.get("ImageMsgContent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuestionInfo(AbstractModel):
     """房间问答问题详情
 
@@ -8305,6 +8581,200 @@ class SceneItem(AbstractModel):
     """
 
 
+class SendRoomNormalMessageRequest(AbstractModel):
+    """SendRoomNormalMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param _RoomId: 房间ID。
+        :type RoomId: int
+        :param _FromAccount: 管理员指定消息发送方账号（若需设置 FromAccount 信息，则该参数取值不能为空）
+        :type FromAccount: str
+        :param _MsgBody: 自定义消息
+        :type MsgBody: list of MsgBody
+        :param _CloudCustomData: 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
+        :type CloudCustomData: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._FromAccount = None
+        self._MsgBody = None
+        self._CloudCustomData = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def FromAccount(self):
+        return self._FromAccount
+
+    @FromAccount.setter
+    def FromAccount(self, FromAccount):
+        self._FromAccount = FromAccount
+
+    @property
+    def MsgBody(self):
+        return self._MsgBody
+
+    @MsgBody.setter
+    def MsgBody(self, MsgBody):
+        self._MsgBody = MsgBody
+
+    @property
+    def CloudCustomData(self):
+        return self._CloudCustomData
+
+    @CloudCustomData.setter
+    def CloudCustomData(self, CloudCustomData):
+        self._CloudCustomData = CloudCustomData
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._FromAccount = params.get("FromAccount")
+        if params.get("MsgBody") is not None:
+            self._MsgBody = []
+            for item in params.get("MsgBody"):
+                obj = MsgBody()
+                obj._deserialize(item)
+                self._MsgBody.append(obj)
+        self._CloudCustomData = params.get("CloudCustomData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendRoomNormalMessageResponse(AbstractModel):
+    """SendRoomNormalMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SendRoomNotificationMessageRequest(AbstractModel):
+    """SendRoomNotificationMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param _RoomId: 房间ID。
+
+        :type RoomId: int
+        :param _MsgContent: 消息。
+        :type MsgContent: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._MsgContent = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def MsgContent(self):
+        return self._MsgContent
+
+    @MsgContent.setter
+    def MsgContent(self, MsgContent):
+        self._MsgContent = MsgContent
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._MsgContent = params.get("MsgContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendRoomNotificationMessageResponse(AbstractModel):
+    """SendRoomNotificationMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SetAppCustomContentRequest(AbstractModel):
     """SetAppCustomContent请求参数结构体
 
@@ -8690,6 +9160,39 @@ class TextMarkConfig(AbstractModel):
     def _deserialize(self, params):
         self._Text = params.get("Text")
         self._Color = params.get("Color")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextMsgContent(AbstractModel):
+    """文本消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本消息。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

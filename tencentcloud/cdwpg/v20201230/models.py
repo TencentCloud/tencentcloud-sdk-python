@@ -579,6 +579,161 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstancesRequest(AbstractModel):
+    """DescribeInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchInstanceId: 搜索的集群id名称
+        :type SearchInstanceId: str
+        :param _SearchInstanceName: 搜索的集群name
+        :type SearchInstanceName: str
+        :param _Offset: 分页参数，第一页为0，第二页为10
+        :type Offset: int
+        :param _Limit: 分页参数，分页步长，默认为10
+        :type Limit: int
+        :param _SearchTags: 搜索标签列表
+        :type SearchTags: list of SearchTags
+        """
+        self._SearchInstanceId = None
+        self._SearchInstanceName = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchTags = None
+
+    @property
+    def SearchInstanceId(self):
+        return self._SearchInstanceId
+
+    @SearchInstanceId.setter
+    def SearchInstanceId(self, SearchInstanceId):
+        self._SearchInstanceId = SearchInstanceId
+
+    @property
+    def SearchInstanceName(self):
+        return self._SearchInstanceName
+
+    @SearchInstanceName.setter
+    def SearchInstanceName(self, SearchInstanceName):
+        self._SearchInstanceName = SearchInstanceName
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchTags(self):
+        return self._SearchTags
+
+    @SearchTags.setter
+    def SearchTags(self, SearchTags):
+        self._SearchTags = SearchTags
+
+
+    def _deserialize(self, params):
+        self._SearchInstanceId = params.get("SearchInstanceId")
+        self._SearchInstanceName = params.get("SearchInstanceName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("SearchTags") is not None:
+            self._SearchTags = []
+            for item in params.get("SearchTags"):
+                obj = SearchTags()
+                obj._deserialize(item)
+                self._SearchTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesResponse(AbstractModel):
+    """DescribeInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _InstancesList: 实例数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstancesList: list of InstanceInfo
+        :param _ErrorMsg: -
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstancesList = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstancesList(self):
+        return self._InstancesList
+
+    @InstancesList.setter
+    def InstancesList(self, InstancesList):
+        self._InstancesList = InstancesList
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstancesList") is not None:
+            self._InstancesList = []
+            for item in params.get("InstancesList"):
+                obj = InstanceInfo()
+                obj._deserialize(item)
+                self._InstancesList.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSimpleInstancesRequest(AbstractModel):
     """DescribeSimpleInstances请求参数结构体
 
@@ -1667,6 +1822,63 @@ class ResourceSpecNew(AbstractModel):
             self._DiskSpec = CBSSpec()
             self._DiskSpec._deserialize(params.get("DiskSpec"))
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchTags(AbstractModel):
+    """列表页搜索的标记列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签的键
+        :type TagKey: str
+        :param _TagValue: 标签的值
+        :type TagValue: str
+        :param _AllValue: 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
+        :type AllValue: int
+        """
+        self._TagKey = None
+        self._TagValue = None
+        self._AllValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def AllValue(self):
+        return self._AllValue
+
+    @AllValue.setter
+    def AllValue(self, AllValue):
+        self._AllValue = AllValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        self._AllValue = params.get("AllValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
