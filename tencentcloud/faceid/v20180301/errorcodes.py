@@ -50,6 +50,9 @@ FAILEDOPERATION_ACTIONOPENMOUTH = 'FailedOperation.ActionOpenMouth'
 # 比对失败。
 FAILEDOPERATION_COMPAREFAIL = 'FailedOperation.CompareFail'
 
+# 比对库源维护中，暂时不可用
+FAILEDOPERATION_COMPARELIBSERVICEUNAVAILABLE = 'FailedOperation.CompareLibServiceUnavailable'
+
 # 比对相似度未达到通过标准。
 FAILEDOPERATION_COMPARELOWSIMILARITY = 'FailedOperation.CompareLowSimilarity'
 
@@ -94,6 +97,9 @@ FAILEDOPERATION_IDPHOTOPOORQUALITY = 'FailedOperation.IdPhotoPoorQuality'
 
 # 客户库自建库或认证中心返照失败，请稍后再试。
 FAILEDOPERATION_IDPHOTOSYSTEMNOANSWER = 'FailedOperation.IdPhotoSystemNoanswer'
+
+# 身份认证次数超限。
+FAILEDOPERATION_IDENTITYAUTHLIMITEXCEEDED = 'FailedOperation.IdentityAuthLimitExceeded'
 
 # 图片模糊。
 FAILEDOPERATION_IMAGEBLUR = 'FailedOperation.ImageBlur'

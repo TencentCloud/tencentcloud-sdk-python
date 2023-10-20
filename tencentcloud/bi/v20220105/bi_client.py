@@ -394,6 +394,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserRoleProjectList(self, request):
+        """项目内-用户角色列表
+
+        :param request: Request instance for DescribeUserRoleProjectList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleProjectListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserRoleProjectListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserRoleProjectList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserRoleProjectListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDatasource(self, request):
         """更新数据源
 

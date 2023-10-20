@@ -210,6 +210,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomDnsHost(self, request):
+        """删除自定义DNS Host
+
+        :param request: Request instance for DeleteCustomDnsHost.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DeleteCustomDnsHostRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DeleteCustomDnsHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomDnsHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomDnsHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeletePhoneEmail(self, request):
         """此接口用于删除已验证的手机邮箱
 
@@ -293,6 +316,29 @@ class DomainClient(AbstractClient):
             body = self.call("DescribeBatchOperationLogs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBatchOperationLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomDnsHostSet(self, request):
+        """查询自定义DNS Host
+
+        :param request: Request instance for DescribeCustomDnsHostSet.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeCustomDnsHostSetRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeCustomDnsHostSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomDnsHostSet", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomDnsHostSetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +509,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCustomDnsHost(self, request):
+        """修改自定义DNS Host
+
+        :param request: Request instance for ModifyCustomDnsHost.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyCustomDnsHostRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyCustomDnsHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomDnsHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomDnsHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDomainDNSBatch(self, request):
         """本接口 ( ModifyDomainDNSBatch) 用于批量域名 DNS 修改 。
 
@@ -500,6 +569,29 @@ class DomainClient(AbstractClient):
             body = self.call("ModifyDomainOwnerBatch", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDomainOwnerBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIntlCustomDnsHost(self, request):
+        """国际站-修改DNS Host
+
+        :param request: Request instance for ModifyIntlCustomDnsHost.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyIntlCustomDnsHostRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyIntlCustomDnsHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIntlCustomDnsHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIntlCustomDnsHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -569,6 +661,29 @@ class DomainClient(AbstractClient):
             body = self.call("SetDomainAutoRenew", params, headers=headers)
             response = json.loads(body)
             model = models.SetDomainAutoRenewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SyncCustomDnsHost(self, request):
+        """同步自定义DNS Host
+
+        :param request: Request instance for SyncCustomDnsHost.
+        :type request: :class:`tencentcloud.domain.v20180808.models.SyncCustomDnsHostRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.SyncCustomDnsHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SyncCustomDnsHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.SyncCustomDnsHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

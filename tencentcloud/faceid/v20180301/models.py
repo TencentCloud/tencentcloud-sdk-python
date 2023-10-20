@@ -1364,7 +1364,7 @@ class DetectAuthRequest(AbstractModel):
         :param _TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
         :param _IdCard: 身份标识（未使用OCR服务时，必须传入）。
-规则：a-zA-Z0-9组合。最长长度32位。
+规则：a-z，A-Z，0-9组合。最长长度32位。
         :type IdCard: str
         :param _Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
         :type Name: str
@@ -3531,7 +3531,7 @@ class GetEidTokenRequest(AbstractModel):
         :param _MerchantId: EID商户id，字段长度最长50位。
         :type MerchantId: str
         :param _IdCard: 身份标识（未使用OCR服务时，必须传入）。
-规则：a-zA-Z0-9组合。最长长度32位。
+规则：a-z，A-Z，0-9组合。最长长度32位。
         :type IdCard: str
         :param _Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
         :type Name: str

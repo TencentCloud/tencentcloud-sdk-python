@@ -3407,6 +3407,129 @@ class DescribeUserRoleListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserRoleProjectListRequest(AbstractModel):
+    """DescribeUserRoleProjectList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _ProjectId: 项目ID
+        :type ProjectId: int
+        """
+        self._PageNo = None
+        self._PageSize = None
+        self._ProjectId = None
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserRoleProjectListResponse(AbstractModel):
+    """DescribeUserRoleProjectList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Extra: 扩展
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Data: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
+        :param _Msg: 消息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Extra = None
+        self._Data = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Extra = params.get("Extra")
+        if params.get("Data") is not None:
+            self._Data = UserRoleListData()
+            self._Data._deserialize(params.get("Data"))
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
 class EmbedTokenInfo(AbstractModel):
     """报表嵌出数据结构-强鉴权
 

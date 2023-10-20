@@ -10815,7 +10815,7 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例组ID
+        :param _InstanceId: 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
         :type InstanceId: str
         """
         self._InstanceId = None

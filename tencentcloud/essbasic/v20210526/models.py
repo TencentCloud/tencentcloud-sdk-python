@@ -236,9 +236,19 @@ class ApproverOption(AbstractModel):
 <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
 </ul>
         :type FillType: int
+        :param _FlowReadLimit: 签署人阅读合同限制参数
+ <br/>取值：
+<ul>
+<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+<li> LimitReadTime，阅读合同仅限制阅读时长</li>
+<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+</ul>
+        :type FlowReadLimit: str
         """
         self._HideOneKeySign = None
         self._FillType = None
+        self._FlowReadLimit = None
 
     @property
     def HideOneKeySign(self):
@@ -256,10 +266,19 @@ class ApproverOption(AbstractModel):
     def FillType(self, FillType):
         self._FillType = FillType
 
+    @property
+    def FlowReadLimit(self):
+        return self._FlowReadLimit
+
+    @FlowReadLimit.setter
+    def FlowReadLimit(self, FlowReadLimit):
+        self._FlowReadLimit = FlowReadLimit
+
 
     def _deserialize(self, params):
         self._HideOneKeySign = params.get("HideOneKeySign")
         self._FillType = params.get("FillType")
+        self._FlowReadLimit = params.get("FlowReadLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

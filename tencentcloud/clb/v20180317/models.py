@@ -326,7 +326,7 @@ class Backend(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 后端服务的类型，可取：CVM、ENI
+        :param _Type: 后端服务的类型，可取：CVM、ENI、CCN
         :type Type: str
         :param _InstanceId: 后端服务的唯一 ID，如 ins-abcd1234
         :type InstanceId: str
@@ -349,6 +349,9 @@ class Backend(AbstractModel):
         :param _EniId: 弹性网卡唯一ID，如 eni-1234abcd
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniId: str
+        :param _Tag: 标签。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: str
         """
         self._Type = None
         self._InstanceId = None
@@ -359,6 +362,7 @@ class Backend(AbstractModel):
         self._InstanceName = None
         self._RegisteredTime = None
         self._EniId = None
+        self._Tag = None
 
     @property
     def Type(self):
@@ -432,6 +436,14 @@ class Backend(AbstractModel):
     def EniId(self, EniId):
         self._EniId = EniId
 
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -443,6 +455,7 @@ class Backend(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._RegisteredTime = params.get("RegisteredTime")
         self._EniId = params.get("EniId")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

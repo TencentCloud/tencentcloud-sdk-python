@@ -1369,6 +1369,133 @@ class CreateTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomDnsHost(AbstractModel):
+    """自定义DNS Host
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsName: DNS名称
+        :type DnsName: str
+        :param _IpSet: IP地址列表
+        :type IpSet: list of str
+        """
+        self._DnsName = None
+        self._IpSet = None
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def IpSet(self):
+        return self._IpSet
+
+    @IpSet.setter
+    def IpSet(self, IpSet):
+        self._IpSet = IpSet
+
+
+    def _deserialize(self, params):
+        self._DnsName = params.get("DnsName")
+        self._IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomDnsHostRequest(AbstractModel):
+    """DeleteCustomDnsHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名实例ID
+        :type DomainId: str
+        :param _DnsName: DNS名称
+        :type DnsName: str
+        """
+        self._DomainId = None
+        self._DnsName = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._DnsName = params.get("DnsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomDnsHostResponse(AbstractModel):
+    """DeleteCustomDnsHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 异步任务ID
+        :type LogId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeletePhoneEmailRequest(AbstractModel):
     """DeletePhoneEmail请求参数结构体
 
@@ -1706,6 +1833,118 @@ class DescribeBatchOperationLogsResponse(AbstractModel):
                 obj = DomainBatchLogSet()
                 obj._deserialize(item)
                 self._DomainBatchLogSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomDnsHostSetRequest(AbstractModel):
+    """DescribeCustomDnsHostSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名实例ID
+        :type DomainId: str
+        :param _Limit: 返回数量，默认为20，取值范围[1,100]
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self._DomainId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomDnsHostSetResponse(AbstractModel):
+    """DescribeCustomDnsHostSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsHostSet: 自定义DNS Host 列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DnsHostSet: list of CustomDnsHost
+        :param _TotalCount: 自定义DNS Host总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DnsHostSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DnsHostSet(self):
+        return self._DnsHostSet
+
+    @DnsHostSet.setter
+    def DnsHostSet(self, DnsHostSet):
+        self._DnsHostSet = DnsHostSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DnsHostSet") is not None:
+            self._DnsHostSet = []
+            for item in params.get("DnsHostSet"):
+                obj = CustomDnsHost()
+                obj._deserialize(item)
+                self._DnsHostSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3247,6 +3486,100 @@ false：关闭锁定
         
 
 
+class ModifyCustomDnsHostRequest(AbstractModel):
+    """ModifyCustomDnsHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名实例ID
+        :type DomainId: str
+        :param _DnsName: DNS名称
+        :type DnsName: str
+        :param _IpSet: IP地址列表
+        :type IpSet: list of str
+        """
+        self._DomainId = None
+        self._DnsName = None
+        self._IpSet = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def IpSet(self):
+        return self._IpSet
+
+    @IpSet.setter
+    def IpSet(self, IpSet):
+        self._IpSet = IpSet
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._DnsName = params.get("DnsName")
+        self._IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomDnsHostResponse(AbstractModel):
+    """ModifyCustomDnsHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 异步任务ID
+        :type LogId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDomainDNSBatchRequest(AbstractModel):
     """ModifyDomainDNSBatch请求参数结构体
 
@@ -3406,6 +3739,100 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _LogId: 日志id
+        :type LogId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIntlCustomDnsHostRequest(AbstractModel):
+    """ModifyIntlCustomDnsHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _DnsName: DNS Host
+        :type DnsName: str
+        :param _IpSet: IP地址
+        :type IpSet: list of str
+        """
+        self._DomainId = None
+        self._DnsName = None
+        self._IpSet = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def DnsName(self):
+        return self._DnsName
+
+    @DnsName.setter
+    def DnsName(self, DnsName):
+        self._DnsName = DnsName
+
+    @property
+    def IpSet(self):
+        return self._IpSet
+
+    @IpSet.setter
+    def IpSet(self, IpSet):
+        self._IpSet = IpSet
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._DnsName = params.get("DnsName")
+        self._IpSet = params.get("IpSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIntlCustomDnsHostResponse(AbstractModel):
+    """ModifyIntlCustomDnsHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 任务ID
         :type LogId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3882,6 +4309,76 @@ class SetDomainAutoRenewResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SyncCustomDnsHostRequest(AbstractModel):
+    """SyncCustomDnsHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名实例ID
+        :type DomainId: str
+        """
+        self._DomainId = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncCustomDnsHostResponse(AbstractModel):
+    """SyncCustomDnsHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: 异步任务ID
+        :type LogId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
         self._RequestId = params.get("RequestId")
 
 

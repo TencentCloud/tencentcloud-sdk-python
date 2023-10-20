@@ -8017,9 +8017,17 @@ class InstancePort(AbstractModel):
         :param _HttpsPort: 监听的 https 端口范围。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsPort: str
+        :param _TcpPort: 监听的 tcp 端口范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcpPort: str
+        :param _UdpPort: 监听的 udp 端口范围。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UdpPort: str
         """
         self._HttpPort = None
         self._HttpsPort = None
+        self._TcpPort = None
+        self._UdpPort = None
 
     @property
     def HttpPort(self):
@@ -8037,10 +8045,28 @@ class InstancePort(AbstractModel):
     def HttpsPort(self, HttpsPort):
         self._HttpsPort = HttpsPort
 
+    @property
+    def TcpPort(self):
+        return self._TcpPort
+
+    @TcpPort.setter
+    def TcpPort(self, TcpPort):
+        self._TcpPort = TcpPort
+
+    @property
+    def UdpPort(self):
+        return self._UdpPort
+
+    @UdpPort.setter
+    def UdpPort(self, UdpPort):
+        self._UdpPort = UdpPort
+
 
     def _deserialize(self, params):
         self._HttpPort = params.get("HttpPort")
         self._HttpsPort = params.get("HttpsPort")
+        self._TcpPort = params.get("TcpPort")
+        self._UdpPort = params.get("UdpPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

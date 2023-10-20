@@ -10753,6 +10753,33 @@ class DescribeLakeFsTaskResultRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _FsPath: 需要访问的任务结果路径
+        :type FsPath: str
+        """
+        self._FsPath = None
+
+    @property
+    def FsPath(self):
+        return self._FsPath
+
+    @FsPath.setter
+    def FsPath(self, FsPath):
+        self._FsPath = FsPath
+
+
+    def _deserialize(self, params):
+        self._FsPath = params.get("FsPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeLakeFsTaskResultResponse(AbstractModel):
     """DescribeLakeFsTaskResult返回参数结构体
@@ -10761,10 +10788,21 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AccessToken: 路径的访问实例
+        :type AccessToken: :class:`tencentcloud.dlc.v20210125.models.LakeFileSystemToken`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AccessToken = None
         self._RequestId = None
+
+    @property
+    def AccessToken(self):
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
 
     @property
     def RequestId(self):
@@ -10776,6 +10814,9 @@ class DescribeLakeFsTaskResultResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AccessToken") is not None:
+            self._AccessToken = LakeFileSystemToken()
+            self._AccessToken._deserialize(params.get("AccessToken"))
         self._RequestId = params.get("RequestId")
 
 
@@ -15628,6 +15669,87 @@ class KerberosInfo(AbstractModel):
         self._Krb5Conf = params.get("Krb5Conf")
         self._KeyTab = params.get("KeyTab")
         self._ServicePrincipal = params.get("ServicePrincipal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LakeFileSystemToken(AbstractModel):
+    """LakeFileSystem使用的临时token
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: Token使用的临时秘钥的ID
+        :type SecretId: str
+        :param _SecretKey: Token使用的临时秘钥
+        :type SecretKey: str
+        :param _Token: Token信息
+        :type Token: str
+        :param _ExpiredTime: 过期时间
+        :type ExpiredTime: int
+        :param _IssueTime: 颁布时间
+        :type IssueTime: int
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._Token = None
+        self._ExpiredTime = None
+        self._IssueTime = None
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Token(self):
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiredTime(self):
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def IssueTime(self):
+        return self._IssueTime
+
+    @IssueTime.setter
+    def IssueTime(self, IssueTime):
+        self._IssueTime = IssueTime
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Token = params.get("Token")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._IssueTime = params.get("IssueTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
