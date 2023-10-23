@@ -299,6 +299,9 @@ UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
+# 资源未释放,不能做删除作业。
+UNSUPPORTEDOPERATION_CANNOTDELETE = 'UnsupportedOperation.CanNotDelete'
+
 # Cls Sql未启用。
 UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = 'UnsupportedOperation.ClsSqlNotEnabled'
 

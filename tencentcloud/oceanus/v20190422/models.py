@@ -1065,6 +1065,219 @@ class ClusterSession(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterGroupSerialId: 集群SerialId
+        :type ClusterGroupSerialId: str
+        :param _AppId: 创建者appId
+        :type AppId: int
+        :param _OwnerUin: 创建者主账号
+        :type OwnerUin: str
+        :param _CreatorUin: 创建者账号
+        :type CreatorUin: str
+        :param _Region: 区域
+        :type Region: str
+        :param _Zone: zone
+        :type Zone: str
+        :param _Status: Session集群状态
+        :type Status: int
+        :param _CuNum: Session集群消耗的cu数量
+        :type CuNum: float
+        :param _FlinkVersion: Session集群的Flink版本
+        :type FlinkVersion: str
+        :param _WebUIUrl: session集群FlinkUi地址
+        :type WebUIUrl: str
+        :param _Properties: session集群高级参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of Property
+        :param _JobManagerCuSpec: JobManager的规格
+        :type JobManagerCuSpec: float
+        :param _TaskManagerCuSpec: TaskManager的规格
+        :type TaskManagerCuSpec: float
+        :param _TaskManagerNum: TaskManager启动的数量
+        :type TaskManagerNum: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._ClusterGroupSerialId = None
+        self._AppId = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._Region = None
+        self._Zone = None
+        self._Status = None
+        self._CuNum = None
+        self._FlinkVersion = None
+        self._WebUIUrl = None
+        self._Properties = None
+        self._JobManagerCuSpec = None
+        self._TaskManagerCuSpec = None
+        self._TaskManagerNum = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ClusterGroupSerialId(self):
+        return self._ClusterGroupSerialId
+
+    @ClusterGroupSerialId.setter
+    def ClusterGroupSerialId(self, ClusterGroupSerialId):
+        self._ClusterGroupSerialId = ClusterGroupSerialId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CuNum(self):
+        return self._CuNum
+
+    @CuNum.setter
+    def CuNum(self, CuNum):
+        self._CuNum = CuNum
+
+    @property
+    def FlinkVersion(self):
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def WebUIUrl(self):
+        return self._WebUIUrl
+
+    @WebUIUrl.setter
+    def WebUIUrl(self, WebUIUrl):
+        self._WebUIUrl = WebUIUrl
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def JobManagerCuSpec(self):
+        return self._JobManagerCuSpec
+
+    @JobManagerCuSpec.setter
+    def JobManagerCuSpec(self, JobManagerCuSpec):
+        self._JobManagerCuSpec = JobManagerCuSpec
+
+    @property
+    def TaskManagerCuSpec(self):
+        return self._TaskManagerCuSpec
+
+    @TaskManagerCuSpec.setter
+    def TaskManagerCuSpec(self, TaskManagerCuSpec):
+        self._TaskManagerCuSpec = TaskManagerCuSpec
+
+    @property
+    def TaskManagerNum(self):
+        return self._TaskManagerNum
+
+    @TaskManagerNum.setter
+    def TaskManagerNum(self, TaskManagerNum):
+        self._TaskManagerNum = TaskManagerNum
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._CreatorUin = params.get("CreatorUin")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Status = params.get("Status")
+        self._CuNum = params.get("CuNum")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._WebUIUrl = params.get("WebUIUrl")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._JobManagerCuSpec = params.get("JobManagerCuSpec")
+        self._TaskManagerCuSpec = params.get("TaskManagerCuSpec")
+        self._TaskManagerNum = params.get("TaskManagerNum")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ClusterVersion(AbstractModel):
     """集群的版本相关信息
@@ -2926,6 +3139,76 @@ class DeleteTableConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWorkSpaceRequest(AbstractModel):
+    """DeleteWorkSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._WorkSpaceId = None
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkSpaceResponse(AbstractModel):
+    """DeleteWorkSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Delete: 是否删除
+        :type Delete: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Delete = None
+        self._RequestId = None
+
+    @property
+    def Delete(self):
+        return self._Delete
+
+    @Delete.setter
+    def Delete(self, Delete):
+        self._Delete = Delete
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Delete = params.get("Delete")
         self._RequestId = params.get("RequestId")
 
 

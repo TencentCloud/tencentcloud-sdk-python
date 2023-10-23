@@ -11357,6 +11357,94 @@ class DescribeDBInstanceInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBInstanceLogToCLSRequest(AbstractModel):
+    """DescribeDBInstanceLogToCLS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceLogToCLSResponse(AbstractModel):
+    """DescribeDBInstanceLogToCLS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorLog: 错误日志投递CLS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
+        :param _SlowLog: 慢日志投递CLS配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorLog = None
+        self._SlowLog = None
+        self._RequestId = None
+
+    @property
+    def ErrorLog(self):
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def SlowLog(self):
+        return self._SlowLog
+
+    @SlowLog.setter
+    def SlowLog(self, SlowLog):
+        self._SlowLog = SlowLog
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorLog") is not None:
+            self._ErrorLog = LogToCLSConfig()
+            self._ErrorLog._deserialize(params.get("ErrorLog"))
+        if params.get("SlowLog") is not None:
+            self._SlowLog = LogToCLSConfig()
+            self._SlowLog._deserialize(params.get("SlowLog"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBInstanceRebootTimeRequest(AbstractModel):
     """DescribeDBInstanceRebootTime请求参数结构体
 
@@ -17968,6 +18056,66 @@ class LogRuleTemplateInfo(AbstractModel):
         
 
 
+class LogToCLSConfig(AbstractModel):
+    """DB实例慢日志、错误日志投递CLS配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 投递状态打开或者关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _LogSetId: CLS日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogSetId: str
+        :param _LogTopicId: 日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTopicId: str
+        """
+        self._Status = None
+        self._LogSetId = None
+        self._LogTopicId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LogSetId(self):
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def LogTopicId(self):
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._LogSetId = params.get("LogSetId")
+        self._LogTopicId = params.get("LogTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MasterInfo(AbstractModel):
     """主实例信息
 
@@ -19803,6 +19951,160 @@ class ModifyCdbProxyParamRequest(AbstractModel):
 
 class ModifyCdbProxyParamResponse(AbstractModel):
     """ModifyCdbProxyParam返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBInstanceLogToCLSRequest(AbstractModel):
+    """ModifyDBInstanceLogToCLS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _LogType: 日志类型：errorLog/slowLog
+        :type LogType: str
+        :param _Status: 投递状态：ON/OFF
+        :type Status: str
+        :param _CreateLogset: 是否需要创建日志集
+        :type CreateLogset: bool
+        :param _Logset: 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+        :type Logset: str
+        :param _CreateLogTopic: 是否需要创建日志主题
+        :type CreateLogTopic: bool
+        :param _LogTopic: 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+        :type LogTopic: str
+        :param _Period: 日志主题有效期，不填写时，默认30天
+        :type Period: int
+        :param _CreateIndex: 创建日志主题时，是否创建索引
+        :type CreateIndex: bool
+        """
+        self._InstanceId = None
+        self._LogType = None
+        self._Status = None
+        self._CreateLogset = None
+        self._Logset = None
+        self._CreateLogTopic = None
+        self._LogTopic = None
+        self._Period = None
+        self._CreateIndex = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateLogset(self):
+        return self._CreateLogset
+
+    @CreateLogset.setter
+    def CreateLogset(self, CreateLogset):
+        self._CreateLogset = CreateLogset
+
+    @property
+    def Logset(self):
+        return self._Logset
+
+    @Logset.setter
+    def Logset(self, Logset):
+        self._Logset = Logset
+
+    @property
+    def CreateLogTopic(self):
+        return self._CreateLogTopic
+
+    @CreateLogTopic.setter
+    def CreateLogTopic(self, CreateLogTopic):
+        self._CreateLogTopic = CreateLogTopic
+
+    @property
+    def LogTopic(self):
+        return self._LogTopic
+
+    @LogTopic.setter
+    def LogTopic(self, LogTopic):
+        self._LogTopic = LogTopic
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CreateIndex(self):
+        return self._CreateIndex
+
+    @CreateIndex.setter
+    def CreateIndex(self, CreateIndex):
+        self._CreateIndex = CreateIndex
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        self._CreateLogset = params.get("CreateLogset")
+        self._Logset = params.get("Logset")
+        self._CreateLogTopic = params.get("CreateLogTopic")
+        self._LogTopic = params.get("LogTopic")
+        self._Period = params.get("Period")
+        self._CreateIndex = params.get("CreateIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceLogToCLSResponse(AbstractModel):
+    """ModifyDBInstanceLogToCLS返回参数结构体
 
     """
 

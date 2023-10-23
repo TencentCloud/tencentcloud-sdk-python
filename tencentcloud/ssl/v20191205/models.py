@@ -4001,6 +4001,9 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         :type Status: int
         :param _CacheTime: 当前结果缓存时间
         :type CacheTime: str
+        :param _TSE: 关联tse资源详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TSE: list of TSEInstanceList
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4016,6 +4019,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         self._TEO = None
         self._Status = None
         self._CacheTime = None
+        self._TSE = None
         self._RequestId = None
 
     @property
@@ -4115,6 +4119,14 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         self._CacheTime = CacheTime
 
     @property
+    def TSE(self):
+        return self._TSE
+
+    @TSE.setter
+    def TSE(self, TSE):
+        self._TSE = TSE
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4186,6 +4198,12 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
                 self._TEO.append(obj)
         self._Status = params.get("Status")
         self._CacheTime = params.get("CacheTime")
+        if params.get("TSE") is not None:
+            self._TSE = []
+            for item in params.get("TSE"):
+                obj = TSEInstanceList()
+                obj._deserialize(item)
+                self._TSE.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9357,6 +9375,92 @@ class Filter(AbstractModel):
         
 
 
+class GatewayCertificate(AbstractModel):
+    """云原生网关证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 网关证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 网关证书名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _BindDomains: 绑定域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindDomains: list of str
+        :param _CertSource: 证书来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertSource: str
+        :param _CertId: 当前绑定的SSL证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._BindDomains = None
+        self._CertSource = None
+        self._CertId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BindDomains(self):
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
+    def CertSource(self):
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BindDomains = params.get("BindDomains")
+        self._CertSource = params.get("CertSource")
+        self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostCertificateRequest(AbstractModel):
     """HostCertificate请求参数结构体
 
@@ -12432,6 +12536,134 @@ class TCBInstanceList(AbstractModel):
                 obj = TCBEnvironments()
                 obj._deserialize(item)
                 self._Environments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TSEInstanceDetail(AbstractModel):
+    """tse实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GatewayName: 网关名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayName: str
+        :param _CertificateList: 网关证书列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertificateList: list of GatewayCertificate
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._CertificateList = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def CertificateList(self):
+        return self._CertificateList
+
+    @CertificateList.setter
+    def CertificateList(self, CertificateList):
+        self._CertificateList = CertificateList
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        if params.get("CertificateList") is not None:
+            self._CertificateList = []
+            for item in params.get("CertificateList"):
+                obj = GatewayCertificate()
+                obj._deserialize(item)
+                self._CertificateList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TSEInstanceList(AbstractModel):
+    """TSE实例详情 - 异步关联云资源数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: TSE实例详情	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceList: list of TSEInstanceDetail
+        :param _TotalCount: 该地域下TSE实例总数	
+        :type TotalCount: int
+        :param _Region: 地域	
+        :type Region: str
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Region = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TSEInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

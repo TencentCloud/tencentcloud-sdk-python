@@ -1402,6 +1402,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceLogToCLS(self, request):
+        """本接口(DescribeDBInstanceLogToCLS)用于查询实例慢日志、错误日志投递CLS的配置，通过appId、Region以及实例ID过滤出当前实例日志投递CLS的配置。
+
+        :param request: Request instance for DescribeDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceLogToCLSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceRebootTime(self, request):
         """本接口(DescribeDBInstanceRebootTime)用于查询云数据库实例重启预计所需的时间。
 
@@ -2552,6 +2575,29 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyCdbProxyParam", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCdbProxyParamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceLogToCLS(self, request):
+        """开启/关闭CDB慢日志、错误日志投递CLS
+
+        :param request: Request instance for ModifyDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceLogToCLSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

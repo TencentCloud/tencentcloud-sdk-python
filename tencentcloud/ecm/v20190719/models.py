@@ -11381,11 +11381,15 @@ class ISPCounter(AbstractModel):
         :type ProvederInstanceNum: int
         :param _ZoneInstanceInfoSet: Zone实例信息结构体数组
         :type ZoneInstanceInfoSet: list of ZoneInstanceInfo
+        :param _ProviderInstanceNum: 实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProviderInstanceNum: int
         """
         self._ProviderName = None
         self._ProviderNodeNum = None
         self._ProvederInstanceNum = None
         self._ZoneInstanceInfoSet = None
+        self._ProviderInstanceNum = None
 
     @property
     def ProviderName(self):
@@ -11405,10 +11409,14 @@ class ISPCounter(AbstractModel):
 
     @property
     def ProvederInstanceNum(self):
+        warnings.warn("parameter `ProvederInstanceNum` is deprecated", DeprecationWarning) 
+
         return self._ProvederInstanceNum
 
     @ProvederInstanceNum.setter
     def ProvederInstanceNum(self, ProvederInstanceNum):
+        warnings.warn("parameter `ProvederInstanceNum` is deprecated", DeprecationWarning) 
+
         self._ProvederInstanceNum = ProvederInstanceNum
 
     @property
@@ -11418,6 +11426,14 @@ class ISPCounter(AbstractModel):
     @ZoneInstanceInfoSet.setter
     def ZoneInstanceInfoSet(self, ZoneInstanceInfoSet):
         self._ZoneInstanceInfoSet = ZoneInstanceInfoSet
+
+    @property
+    def ProviderInstanceNum(self):
+        return self._ProviderInstanceNum
+
+    @ProviderInstanceNum.setter
+    def ProviderInstanceNum(self, ProviderInstanceNum):
+        self._ProviderInstanceNum = ProviderInstanceNum
 
 
     def _deserialize(self, params):
@@ -11430,6 +11446,7 @@ class ISPCounter(AbstractModel):
                 obj = ZoneInstanceInfo()
                 obj._deserialize(item)
                 self._ZoneInstanceInfoSet.append(obj)
+        self._ProviderInstanceNum = params.get("ProviderInstanceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

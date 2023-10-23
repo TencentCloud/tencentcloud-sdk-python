@@ -8794,6 +8794,86 @@ class DeleteWorkGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAdvancedStoreLocationRequest(AbstractModel):
+    """DescribeAdvancedStoreLocation请求参数结构体
+
+    """
+
+
+class DescribeAdvancedStoreLocationResponse(AbstractModel):
+    """DescribeAdvancedStoreLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否启用高级设置：0-否，1-是
+        :type Enable: int
+        :param _StoreLocation: 查询结果保存cos路径
+        :type StoreLocation: str
+        :param _HasLakeFs: 是否有托管存储权限
+        :type HasLakeFs: bool
+        :param _LakeFsStatus: 托管存储状态，HasLakeFs等于true时，该值才有意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LakeFsStatus: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Enable = None
+        self._StoreLocation = None
+        self._HasLakeFs = None
+        self._LakeFsStatus = None
+        self._RequestId = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def StoreLocation(self):
+        return self._StoreLocation
+
+    @StoreLocation.setter
+    def StoreLocation(self, StoreLocation):
+        self._StoreLocation = StoreLocation
+
+    @property
+    def HasLakeFs(self):
+        return self._HasLakeFs
+
+    @HasLakeFs.setter
+    def HasLakeFs(self, HasLakeFs):
+        self._HasLakeFs = HasLakeFs
+
+    @property
+    def LakeFsStatus(self):
+        return self._LakeFsStatus
+
+    @LakeFsStatus.setter
+    def LakeFsStatus(self, LakeFsStatus):
+        self._LakeFsStatus = LakeFsStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._StoreLocation = params.get("StoreLocation")
+        self._HasLakeFs = params.get("HasLakeFs")
+        self._LakeFsStatus = params.get("LakeFsStatus")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDMSDatabaseRequest(AbstractModel):
     """DescribeDMSDatabase请求参数结构体
 
@@ -16213,6 +16293,76 @@ class LockMetaDataResponse(AbstractModel):
     def _deserialize(self, params):
         self._LockId = params.get("LockId")
         self._LockState = params.get("LockState")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAdvancedStoreLocationRequest(AbstractModel):
+    """ModifyAdvancedStoreLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StoreLocation: 查询结果保存cos路径
+        :type StoreLocation: str
+        :param _Enable: 是否启用高级设置：0-否，1-是
+        :type Enable: int
+        """
+        self._StoreLocation = None
+        self._Enable = None
+
+    @property
+    def StoreLocation(self):
+        return self._StoreLocation
+
+    @StoreLocation.setter
+    def StoreLocation(self, StoreLocation):
+        self._StoreLocation = StoreLocation
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._StoreLocation = params.get("StoreLocation")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAdvancedStoreLocationResponse(AbstractModel):
+    """ModifyAdvancedStoreLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

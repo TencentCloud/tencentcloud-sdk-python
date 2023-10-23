@@ -2859,6 +2859,11 @@ class AiRecognitionResult(AbstractModel):
 TransTextRecognition 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
+        :param _ObjectTask: 物体识别结果，当Type 为
+
+ObjectRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
         """
         self._Type = None
         self._FaceTask = None
@@ -2867,6 +2872,7 @@ TransTextRecognition 时有效。
         self._OcrWordsTask = None
         self._OcrFullTextTask = None
         self._TransTextTask = None
+        self._ObjectTask = None
 
     @property
     def Type(self):
@@ -2924,6 +2930,14 @@ TransTextRecognition 时有效。
     def TransTextTask(self, TransTextTask):
         self._TransTextTask = TransTextTask
 
+    @property
+    def ObjectTask(self):
+        return self._ObjectTask
+
+    @ObjectTask.setter
+    def ObjectTask(self, ObjectTask):
+        self._ObjectTask = ObjectTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2945,6 +2959,9 @@ TransTextRecognition 时有效。
         if params.get("TransTextTask") is not None:
             self._TransTextTask = AiRecognitionTaskTransTextResult()
             self._TransTextTask._deserialize(params.get("TransTextTask"))
+        if params.get("ObjectTask") is not None:
+            self._ObjectTask = AiRecognitionTaskObjectResult()
+            self._ObjectTask._deserialize(params.get("ObjectTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3959,6 +3976,282 @@ class AiRecognitionTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResult(AbstractModel):
+    """物体识别结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 物体识别任务输入信息。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultInput`
+        :param _Output: 物体识别任务输出信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiRecognitionTaskObjectResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiRecognitionTaskObjectResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultInput(AbstractModel):
+    """物体识别任务输入类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 物体识别模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultItem(AbstractModel):
+    """单个物体识别结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 识别的物体名称。
+        :type Name: str
+        :param _SegmentSet: 物体出现的片段列表。
+        :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
+        """
+        self._Name = None
+        self._SegmentSet = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskObjectSeqmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultOutput(AbstractModel):
+    """智能物体识别输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultSet: 智能物体识别结果集。
+        :type ResultSet: list of AiRecognitionTaskObjectResultItem
+        """
+        self._ResultSet = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskObjectResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
+    """物体识别结果片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :type EndTimeOffset: float
+        :param _Confidence: 识别片段置信度。取值：0~100。
+        :type Confidence: float
+        :param _AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :type AreaCoordSet: list of int
+        """
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Confidence = None
+        self._AreaCoordSet = None
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def AreaCoordSet(self):
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+
+    def _deserialize(self, params):
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Confidence = params.get("Confidence")
+        self._AreaCoordSet = params.get("AreaCoordSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

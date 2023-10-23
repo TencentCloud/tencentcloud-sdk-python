@@ -14047,9 +14047,15 @@ class DescribePushBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :param _StartTime: 查询开始时间点，精确到分钟粒度，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
         :type StartTime: str
-        :param _EndTime: 结束时间点，格式为 yyyy-mm-dd HH:MM:SS，起始和结束时间跨度不支持超过31天。
+        :param _EndTime: 查询结束时间点，精确到分钟粒度，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F,-ISO%20%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
         :type EndTime: str
         :param _PushDomains: 域名，可以填多个，若不填，表示总体数据。
         :type PushDomains: list of str
@@ -14169,11 +14175,17 @@ class DescribePushBandwidthAndFluxListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PeakBandwidthTime: 峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :param _PeakBandwidthTime: 峰值带宽所在时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type PeakBandwidthTime: str
         :param _PeakBandwidth: 峰值带宽，单位是 Mbps。
         :type PeakBandwidth: float
-        :param _P95PeakBandwidthTime: 95峰值带宽所在时间点，格式为 yyyy-mm-dd HH:MM:SS。
+        :param _P95PeakBandwidthTime: 95峰值带宽所在时间点，
+使用UTC格式时间，
+例如：2019-01-08T10:00:00Z。
+注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
         :type P95PeakBandwidthTime: str
         :param _P95PeakBandwidth: 95峰值带宽，单位是 Mbps。
         :type P95PeakBandwidth: float
@@ -14425,7 +14437,7 @@ class DescribeScreenShotSheetNumListRequest(AbstractModel):
         :param _EndTime: 结束时间点，接口查询支持两种时间格式：
 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
-支持查询最近1年的数据。
+支持最近三个月的查询，查询开始和结束时间跨度不支持超过31天。
         :type EndTime: str
         :param _Zone: 地域信息，可选值包括Mainland，Oversea，前者是查询中国大陆范围内的数据，后者是除中国大陆范围之外的数据，若不传该参数，则查询所有地区的数据。
         :type Zone: str

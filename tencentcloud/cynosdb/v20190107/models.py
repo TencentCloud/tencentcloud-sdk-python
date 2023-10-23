@@ -6232,6 +6232,9 @@ pause
         :param _ResourcePackages: 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
+        :param _InstanceIndexMode: 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIndexMode: str
         """
         self._Uin = None
         self._AppId = None
@@ -6285,6 +6288,7 @@ pause
         self._SlaveZones = None
         self._InstanceNetInfo = None
         self._ResourcePackages = None
+        self._InstanceIndexMode = None
 
     @property
     def Uin(self):
@@ -6702,6 +6706,14 @@ pause
     def ResourcePackages(self, ResourcePackages):
         self._ResourcePackages = ResourcePackages
 
+    @property
+    def InstanceIndexMode(self):
+        return self._InstanceIndexMode
+
+    @InstanceIndexMode.setter
+    def InstanceIndexMode(self, InstanceIndexMode):
+        self._InstanceIndexMode = InstanceIndexMode
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -6776,6 +6788,7 @@ pause
                 obj = ResourcePackage()
                 obj._deserialize(item)
                 self._ResourcePackages.append(obj)
+        self._InstanceIndexMode = params.get("InstanceIndexMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1781,6 +1781,12 @@ video 纯视频
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
+        :param _LiveType: 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+        :type LiveType: int
+        :param _RecordLiveUrl: 伪直播链接
+        :type RecordLiveUrl: str
+        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        :type EnableAutoStart: int
         """
         self._Name = None
         self._StartTime = None
@@ -1805,6 +1811,9 @@ video 纯视频
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
         self._EndDelayTime = None
+        self._LiveType = None
+        self._RecordLiveUrl = None
+        self._EnableAutoStart = None
 
     @property
     def Name(self):
@@ -1990,6 +1999,30 @@ video 纯视频
     def EndDelayTime(self, EndDelayTime):
         self._EndDelayTime = EndDelayTime
 
+    @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def RecordLiveUrl(self):
+        return self._RecordLiveUrl
+
+    @RecordLiveUrl.setter
+    def RecordLiveUrl(self, RecordLiveUrl):
+        self._RecordLiveUrl = RecordLiveUrl
+
+    @property
+    def EnableAutoStart(self):
+        return self._EnableAutoStart
+
+    @EnableAutoStart.setter
+    def EnableAutoStart(self, EnableAutoStart):
+        self._EnableAutoStart = EnableAutoStart
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2015,6 +2048,9 @@ video 纯视频
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
         self._EndDelayTime = params.get("EndDelayTime")
+        self._LiveType = params.get("LiveType")
+        self._RecordLiveUrl = params.get("RecordLiveUrl")
+        self._EnableAutoStart = params.get("EnableAutoStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4217,6 +4253,12 @@ video 纯视频
         :type VideoDuration: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
+        :param _LiveType: 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+        :type LiveType: int
+        :param _RecordLiveUrl: 伪直播链接
+        :type RecordLiveUrl: str
+        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        :type EnableAutoStart: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4243,6 +4285,9 @@ video 纯视频
         self._RoomType = None
         self._VideoDuration = None
         self._EndDelayTime = None
+        self._LiveType = None
+        self._RecordLiveUrl = None
+        self._EnableAutoStart = None
         self._RequestId = None
 
     @property
@@ -4430,6 +4475,30 @@ video 纯视频
         self._EndDelayTime = EndDelayTime
 
     @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def RecordLiveUrl(self):
+        return self._RecordLiveUrl
+
+    @RecordLiveUrl.setter
+    def RecordLiveUrl(self, RecordLiveUrl):
+        self._RecordLiveUrl = RecordLiveUrl
+
+    @property
+    def EnableAutoStart(self):
+        return self._EnableAutoStart
+
+    @EnableAutoStart.setter
+    def EnableAutoStart(self, EnableAutoStart):
+        self._EnableAutoStart = EnableAutoStart
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4462,6 +4531,9 @@ video 纯视频
         self._RoomType = params.get("RoomType")
         self._VideoDuration = params.get("VideoDuration")
         self._EndDelayTime = params.get("EndDelayTime")
+        self._LiveType = params.get("LiveType")
+        self._RecordLiveUrl = params.get("RecordLiveUrl")
+        self._EnableAutoStart = params.get("EnableAutoStart")
         self._RequestId = params.get("RequestId")
 
 
@@ -7419,6 +7491,12 @@ video 纯视频
         :type RecordLayout: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
+        :param _LiveType: 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+        :type LiveType: int
+        :param _RecordLiveUrl: 伪直播链接
+        :type RecordLiveUrl: str
+        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        :type EnableAutoStart: int
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -7441,6 +7519,9 @@ video 纯视频
         self._RoomType = None
         self._RecordLayout = None
         self._EndDelayTime = None
+        self._LiveType = None
+        self._RecordLiveUrl = None
+        self._EnableAutoStart = None
 
     @property
     def RoomId(self):
@@ -7610,6 +7691,30 @@ video 纯视频
     def EndDelayTime(self, EndDelayTime):
         self._EndDelayTime = EndDelayTime
 
+    @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def RecordLiveUrl(self):
+        return self._RecordLiveUrl
+
+    @RecordLiveUrl.setter
+    def RecordLiveUrl(self, RecordLiveUrl):
+        self._RecordLiveUrl = RecordLiveUrl
+
+    @property
+    def EnableAutoStart(self):
+        return self._EnableAutoStart
+
+    @EnableAutoStart.setter
+    def EnableAutoStart(self, EnableAutoStart):
+        self._EnableAutoStart = EnableAutoStart
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -7633,6 +7738,9 @@ video 纯视频
         self._RoomType = params.get("RoomType")
         self._RecordLayout = params.get("RecordLayout")
         self._EndDelayTime = params.get("EndDelayTime")
+        self._LiveType = params.get("LiveType")
+        self._RecordLiveUrl = params.get("RecordLiveUrl")
+        self._EnableAutoStart = params.get("EnableAutoStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8084,6 +8192,12 @@ class RoomInfo(AbstractModel):
         :type RoomType: int
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
         :type EndDelayTime: int
+        :param _LiveType: 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）
+        :type LiveType: int
+        :param _RecordLiveUrl: 伪直播回放链接
+        :type RecordLiveUrl: str
+        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
+        :type EnableAutoStart: int
         """
         self._Name = None
         self._StartTime = None
@@ -8107,6 +8221,9 @@ class RoomInfo(AbstractModel):
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
         self._EndDelayTime = None
+        self._LiveType = None
+        self._RecordLiveUrl = None
+        self._EnableAutoStart = None
 
     @property
     def Name(self):
@@ -8284,6 +8401,30 @@ class RoomInfo(AbstractModel):
     def EndDelayTime(self, EndDelayTime):
         self._EndDelayTime = EndDelayTime
 
+    @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def RecordLiveUrl(self):
+        return self._RecordLiveUrl
+
+    @RecordLiveUrl.setter
+    def RecordLiveUrl(self, RecordLiveUrl):
+        self._RecordLiveUrl = RecordLiveUrl
+
+    @property
+    def EnableAutoStart(self):
+        return self._EnableAutoStart
+
+    @EnableAutoStart.setter
+    def EnableAutoStart(self, EnableAutoStart):
+        self._EnableAutoStart = EnableAutoStart
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8308,6 +8449,9 @@ class RoomInfo(AbstractModel):
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
         self._EndDelayTime = params.get("EndDelayTime")
+        self._LiveType = params.get("LiveType")
+        self._RecordLiveUrl = params.get("RecordLiveUrl")
+        self._EnableAutoStart = params.get("EnableAutoStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8381,6 +8525,15 @@ class RoomItem(AbstractModel):
         :param _EndDelayTime: 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndDelayTime: int
+        :param _LiveType: 直播方式：0 常规模式（默认）1 回放直播模式（伪直播）	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveType: int
+        :param _RecordLiveUrl: 伪直播回放链接	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordLiveUrl: str
+        :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAutoStart: int
         """
         self._Name = None
         self._RoomId = None
@@ -8400,6 +8553,9 @@ class RoomItem(AbstractModel):
         self._IsGradingRequiredPostClass = None
         self._RoomType = None
         self._EndDelayTime = None
+        self._LiveType = None
+        self._RecordLiveUrl = None
+        self._EnableAutoStart = None
 
     @property
     def Name(self):
@@ -8545,6 +8701,30 @@ class RoomItem(AbstractModel):
     def EndDelayTime(self, EndDelayTime):
         self._EndDelayTime = EndDelayTime
 
+    @property
+    def LiveType(self):
+        return self._LiveType
+
+    @LiveType.setter
+    def LiveType(self, LiveType):
+        self._LiveType = LiveType
+
+    @property
+    def RecordLiveUrl(self):
+        return self._RecordLiveUrl
+
+    @RecordLiveUrl.setter
+    def RecordLiveUrl(self, RecordLiveUrl):
+        self._RecordLiveUrl = RecordLiveUrl
+
+    @property
+    def EnableAutoStart(self):
+        return self._EnableAutoStart
+
+    @EnableAutoStart.setter
+    def EnableAutoStart(self, EnableAutoStart):
+        self._EnableAutoStart = EnableAutoStart
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8565,6 +8745,9 @@ class RoomItem(AbstractModel):
         self._IsGradingRequiredPostClass = params.get("IsGradingRequiredPostClass")
         self._RoomType = params.get("RoomType")
         self._EndDelayTime = params.get("EndDelayTime")
+        self._LiveType = params.get("LiveType")
+        self._RecordLiveUrl = params.get("RecordLiveUrl")
+        self._EnableAutoStart = params.get("EnableAutoStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

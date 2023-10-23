@@ -348,6 +348,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteWorkSpace(self, request):
+        """删除工作空间
+
+        :param request: Request instance for DeleteWorkSpace.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DeleteWorkSpaceRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DeleteWorkSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusters(self, request):
         """查询集群
 

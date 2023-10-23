@@ -1500,6 +1500,66 @@ class BlockInfoV2(AbstractModel):
         
 
 
+class BlockTitle(AbstractModel):
+    """块标题
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Src: src
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Src: str
+        :param _Value: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Src = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Src(self):
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Src = params.get("Src")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BloodPressureBlock(AbstractModel):
     """血压
 
@@ -1901,9 +1961,13 @@ class Check(AbstractModel):
         :param _Summary: 结论
 注意：此字段可能返回 null，表示取不到有效值。
         :type Summary: :class:`tencentcloud.mrs.v20200910.models.Summary`
+        :param _BlockTitle: 检查报告块标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockTitle: list of BlockTitle
         """
         self._Desc = None
         self._Summary = None
+        self._BlockTitle = None
 
     @property
     def Desc(self):
@@ -1921,6 +1985,14 @@ class Check(AbstractModel):
     def Summary(self, Summary):
         self._Summary = Summary
 
+    @property
+    def BlockTitle(self):
+        return self._BlockTitle
+
+    @BlockTitle.setter
+    def BlockTitle(self, BlockTitle):
+        self._BlockTitle = BlockTitle
+
 
     def _deserialize(self, params):
         if params.get("Desc") is not None:
@@ -1929,6 +2001,12 @@ class Check(AbstractModel):
         if params.get("Summary") is not None:
             self._Summary = Summary()
             self._Summary._deserialize(params.get("Summary"))
+        if params.get("BlockTitle") is not None:
+            self._BlockTitle = []
+            for item in params.get("BlockTitle"):
+                obj = BlockTitle()
+                obj._deserialize(item)
+                self._BlockTitle.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8389,8 +8467,12 @@ class Indicator(AbstractModel):
         :param _Indicators: 检验指标项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Indicators: list of IndicatorItem
+        :param _BlockTitle: 检验报告块标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockTitle: list of BlockTitle
         """
         self._Indicators = None
+        self._BlockTitle = None
 
     @property
     def Indicators(self):
@@ -8400,6 +8482,14 @@ class Indicator(AbstractModel):
     def Indicators(self, Indicators):
         self._Indicators = Indicators
 
+    @property
+    def BlockTitle(self):
+        return self._BlockTitle
+
+    @BlockTitle.setter
+    def BlockTitle(self, BlockTitle):
+        self._BlockTitle = BlockTitle
+
 
     def _deserialize(self, params):
         if params.get("Indicators") is not None:
@@ -8408,6 +8498,12 @@ class Indicator(AbstractModel):
                 obj = IndicatorItem()
                 obj._deserialize(item)
                 self._Indicators.append(obj)
+        if params.get("BlockTitle") is not None:
+            self._BlockTitle = []
+            for item in params.get("BlockTitle"):
+                obj = BlockTitle()
+                obj._deserialize(item)
+                self._BlockTitle.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
