@@ -116,33 +116,6 @@
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 76 次发布
-
-发布时间：2023-10-23 09:46:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult)
-* [AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput)
-* [AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem)
-* [AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput)
-* [AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem)
-
-修改数据结构：
-
-* [AiRecognitionResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionResult)
-
-	* 新增成员：ObjectTask
-
-
-
-
 ## 医疗报告结构化(mrs) 版本：2020-09-10
 
 ### 第 18 次发布
@@ -80758,29 +80731,6 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
-
-### 第 76 次发布
-
-发布时间：2023-10-23 09:46:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [[AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResult))
-* [[AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultInput))
-* [[AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultItem))
-* [[AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectResultOutput))
-* [[AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem)](https://cloud.tencent.com/document/api/862/37615#[AiRecognitionTaskObjectSeqmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskObjectSeqmentItem))
-
-修改数据结构：
-
-* [AiRecognitionResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionResult)
-
-	* 新增成员：ObjectTask
-
 
 ### 第 75 次发布
 

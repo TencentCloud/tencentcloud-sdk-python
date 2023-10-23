@@ -142,7 +142,7 @@
 | mna | [多网聚合加速](https://cloud.tencent.com/document/product/1385) | 2023-10-18 02:23:34 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2023-09-15 02:08:53 |
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2023-10-19 16:11:02 |
-| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2023-10-23 09:46:19 |
+| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2023-10-11 02:08:20 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2023-10-23 00:16:02 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2023-10-17 01:22:38 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2023-08-17 04:18:22 |
