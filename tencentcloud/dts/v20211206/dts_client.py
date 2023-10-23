@@ -699,6 +699,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMigrateRuntimeAttribute(self, request):
+        """修改任务运行时属性，此接口不同于配置类接口，不会进行状态机判断。
+
+        :param request: Request instance for ModifyMigrateRuntimeAttribute.
+        :type request: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ModifyMigrateRuntimeAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMigrateRuntimeAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMigrateRuntimeAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMigrationJob(self, request):
         """配置迁移服务，配置成功后可通过`CreateMigrationCheckJob` 创建迁移校验任务接口发起校验任务，只有校验通过才能启动迁移任务。
 

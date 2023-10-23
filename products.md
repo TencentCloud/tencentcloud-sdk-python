@@ -86,7 +86,7 @@
 | ds | [文档服务](https://cloud.tencent.com/document/product/869) | 2023-08-17 02:59:40 |
 | dsgc | [数据安全治理中心](https://cloud.tencent.com/document/product/1087) | 2023-10-17 01:15:42 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2022-04-04 06:38:57 |
-| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2023-10-10 01:36:36 |
+| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2023-10-23 15:36:37 |
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2023-10-17 01:16:13 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2023-09-13 01:42:58 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2023-08-17 03:03:04 |
@@ -95,8 +95,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-08-10 01:17:44 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2023-10-16 01:15:50 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2023-10-12 01:57:01 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-10-23 00:11:11 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-10-23 00:11:23 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-10-23 15:56:55 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-10-23 15:56:15 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-09-18 01:48:33 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2023-10-20 01:16:02 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-08-17 03:12:49 |
@@ -142,7 +142,7 @@
 | mna | [多网聚合加速](https://cloud.tencent.com/document/product/1385) | 2023-10-18 02:23:34 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2023-09-15 02:08:53 |
 | monitor | [腾讯云可观测平台](https://cloud.tencent.com/document/product/248) | 2023-10-19 16:11:02 |
-| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2023-10-11 02:08:20 |
+| mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2023-10-23 09:46:19 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2023-10-23 00:16:02 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2023-10-17 01:22:38 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2023-08-17 04:18:22 |

@@ -62,6 +62,9 @@ INTERNALERROR_DATABASEERROR = 'InternalError.DatabaseError'
 # 迁移任务冲突。
 INTERNALERROR_DUPLICATEJOB = 'InternalError.DuplicateJob'
 
+# http请求出错。
+INTERNALERROR_EXECHTTPREQUESTERROR = 'InternalError.ExecHttpRequestError'
+
 # 内部错误。
 INTERNALERROR_INTERNALERRORERROR = 'InternalError.InternalErrorError'
 

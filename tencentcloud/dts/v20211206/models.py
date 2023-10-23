@@ -2350,7 +2350,7 @@ class DBEndpointInfo(AbstractModel):
         :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
-        :param _NodeType: 节点类型，为空或者"simple":表示普通节点，"cluster": 集群节点
+        :param _NodeType: 节点类型，为空或者"simple"表示普通节点、"cluster"表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: str
         :param _Info: 数据库信息
@@ -7585,6 +7585,81 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
 class ModifyMigrateRateLimitResponse(AbstractModel):
     """ModifyMigrateRateLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMigrateRuntimeAttributeRequest(AbstractModel):
+    """ModifyMigrateRuntimeAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 迁移任务id，如：dts-2rgv0f09
+        :type JobId: str
+        :param _OtherOptions: 需要修改的属性，此结构设计为通用结构，用于屏蔽多个业务的定制属性。<br>例如对于Redis:<br>{<br>	 "Key": "DstWriteMode",	//目标库写入模式<br> 	"Value": "normal"	          //clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作，默认为此值) <br>},<br>{<br/>	 "Key": "IsDstReadOnly",	//是否在迁移时设置目标库只读<br/> 	"Value": "true"	          //true(设置只读)、false(不设置只读) <br/>} 
+        :type OtherOptions: list of KeyValuePairOption
+        """
+        self._JobId = None
+        self._OtherOptions = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def OtherOptions(self):
+        return self._OtherOptions
+
+    @OtherOptions.setter
+    def OtherOptions(self, OtherOptions):
+        self._OtherOptions = OtherOptions
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        if params.get("OtherOptions") is not None:
+            self._OtherOptions = []
+            for item in params.get("OtherOptions"):
+                obj = KeyValuePairOption()
+                obj._deserialize(item)
+                self._OtherOptions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMigrateRuntimeAttributeResponse(AbstractModel):
+    """ModifyMigrateRuntimeAttribute返回参数结构体
 
     """
 
