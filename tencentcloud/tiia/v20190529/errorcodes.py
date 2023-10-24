@@ -176,6 +176,9 @@ INVALIDPARAMETERVALUE_PICNAMEALREADYEXIST = 'InvalidParameterValue.PicNameAlread
 # 图片名称为空。
 INVALIDPARAMETERVALUE_PICNAMEEMPTY = 'InvalidParameterValue.PicNameEmpty'
 
+# PicName不合法。
+INVALIDPARAMETERVALUE_PICNAMEINVALID = 'InvalidParameterValue.PicNameInvalid'
+
 # 图片名称超出长度限制。
 INVALIDPARAMETERVALUE_PICNAMETOOLONG = 'InvalidParameterValue.PicNameTooLong'
 

@@ -8939,6 +8939,10 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type PayScene: str
         :param _Operator: 操作人，默认就是用户uin
         :type Operator: str
+        :param _VoucherMainType: 代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+        :type VoucherMainType: str
+        :param _VoucherSubType: 代金券副类型 discount 为折扣券 deduct 为抵扣券
+        :type VoucherSubType: str
         """
         self._Limit = None
         self._Offset = None
@@ -8955,6 +8959,8 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._PayMode = None
         self._PayScene = None
         self._Operator = None
+        self._VoucherMainType = None
+        self._VoucherSubType = None
 
     @property
     def Limit(self):
@@ -9076,6 +9082,22 @@ class DescribeVoucherInfoRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def VoucherMainType(self):
+        return self._VoucherMainType
+
+    @VoucherMainType.setter
+    def VoucherMainType(self, VoucherMainType):
+        self._VoucherMainType = VoucherMainType
+
+    @property
+    def VoucherSubType(self):
+        return self._VoucherSubType
+
+    @VoucherSubType.setter
+    def VoucherSubType(self, VoucherSubType):
+        self._VoucherSubType = VoucherSubType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -9093,6 +9115,8 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._PayScene = params.get("PayScene")
         self._Operator = params.get("Operator")
+        self._VoucherMainType = params.get("VoucherMainType")
+        self._VoucherSubType = params.get("VoucherSubType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

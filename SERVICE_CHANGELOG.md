@@ -1,30 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 数据传输服务(dts) 版本：2021-12-06
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 18 次发布
+### 第 48 次发布
 
-发布时间：2023-10-23 15:36:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyMigrateRuntimeAttribute](https://cloud.tencent.com/document/api/571/100600)
-
-
-
-## 数据传输服务(dts) 版本：2018-03-30
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 130 次发布
-
-发布时间：2023-10-23 15:56:55
+发布时间：2023-10-24 01:07:07
 
 本次发布包含了以下内容：
 
@@ -32,9 +12,132 @@
 
 修改接口：
 
-* [DescribeFlowTemplates](https://cloud.tencent.com/document/api/1323/74803)
+* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
 
-	* 新增入参：WithPreviewUrl
+	* 新增入参：VoucherMainType, VoucherSubType
+
+
+
+
+## 二进制软件成分分析(bsca) 版本：2021-08-11
+
+### 第 5 次发布
+
+发布时间：2023-10-24 01:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKBVulnerability](https://cloud.tencent.com/document/api/1483/72070)
+
+	* 新增入参：CNVDID, CNNVDID
+
+
+新增数据结构：
+
+* [AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent)
+
+修改数据结构：
+
+* [VulnerabilityDetail](https://cloud.tencent.com/document/api/1483/72074#VulnerabilityDetail)
+
+	* 新增成员：AffectedComponentList
+
+
+
+
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 6 次发布
+
+发布时间：2023-10-24 01:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceInfo](https://cloud.tencent.com/document/api/878/100615)
+
+新增数据结构：
+
+* [CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo)
+* [ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo)
+* [SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 71 次发布
+
+发布时间：2023-10-24 01:13:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92838)
+
+	* 新增出参：Statements
+
+
+新增数据结构：
+
+* [StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 44 次发布
+
+发布时间：2023-10-24 01:20:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
+
+* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
+
+	* 新增入参：RecordTypes
+
+* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
+
+	* 新增入参：Filters
+
+	* 新增出参：ParentId, Id, Name, JobSet, Children
+
+
+新增数据结构：
+
+* [DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp)
+* [TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration)
+* [TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets)
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：WebUIType
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
+
+	* <font color="#dd0000">**修改成员**：</font>ClazzLevels, ExpertModeOn, ExpertModeConfiguration
 
 
 
@@ -8285,6 +8388,21 @@
 
 ## 费用中心(billing) 版本：2018-07-09
 
+### 第 48 次发布
+
+发布时间：2023-10-24 01:07:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVoucherInfo](https://cloud.tencent.com/document/api/555/70813)
+
+	* 新增入参：VoucherMainType, VoucherSubType
+
+
 ### 第 47 次发布
 
 发布时间：2023-09-26 01:07:22
@@ -10944,6 +11062,32 @@
 
 
 ## 二进制软件成分分析(bsca) 版本：2021-08-11
+
+### 第 5 次发布
+
+发布时间：2023-10-24 01:07:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKBVulnerability](https://cloud.tencent.com/document/api/1483/72070)
+
+	* 新增入参：CNVDID, CNNVDID
+
+
+新增数据结构：
+
+* [[AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent)](https://cloud.tencent.com/document/api/1483/72074#[AffectedComponent](https://cloud.tencent.com/document/api/1483/72074#AffectedComponent))
+
+修改数据结构：
+
+* [VulnerabilityDetail](https://cloud.tencent.com/document/api/1483/72074#VulnerabilityDetail)
+
+	* 新增成员：AffectedComponentList
+
 
 ### 第 4 次发布
 
@@ -21175,6 +21319,24 @@
 
 
 ## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 6 次发布
+
+发布时间：2023-10-24 01:08:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstanceInfo](https://cloud.tencent.com/document/api/878/100615)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo)](https://cloud.tencent.com/document/api/878/98895#[CBSSpecInfo](https://cloud.tencent.com/document/api/878/98895#CBSSpecInfo))
+* [[ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo)](https://cloud.tencent.com/document/api/878/98895#[ResourceInfo](https://cloud.tencent.com/document/api/878/98895#ResourceInfo))
+* [[SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo)](https://cloud.tencent.com/document/api/878/98895#[SimpleInstanceInfo](https://cloud.tencent.com/document/api/878/98895#SimpleInstanceInfo))
 
 ### 第 5 次发布
 
@@ -45566,6 +45728,25 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 71 次发布
+
+发布时间：2023-10-24 01:13:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92838)
+
+	* 新增出参：Statements
+
+
+新增数据结构：
+
+* [[StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation)](https://cloud.tencent.com/document/api/1342/53778#[StatementInformation](https://cloud.tencent.com/document/api/1342/53778#StatementInformation))
+
 ### 第 70 次发布
 
 发布时间：2023-10-23 00:09:07
@@ -49209,7 +49390,7 @@
 
 新增接口：
 
-* [[ModifyMigrateRuntimeAttribute](https://cloud.tencent.com/document/api/571/100600)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyMigrateRuntimeAttribute](https://cloud.tencent.com/document/api/571/100600)
 
 ### 第 17 次发布
 
@@ -84737,6 +84918,50 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 44 次发布
+
+发布时间：2023-10-24 01:20:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
+
+* [DescribeJobSavepoint](https://cloud.tencent.com/document/api/849/74226)
+
+	* 新增入参：RecordTypes
+
+* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
+
+	* 新增入参：Filters
+
+	* 新增出参：ParentId, Id, Name, JobSet, Children
+
+
+新增数据结构：
+
+* [[DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp)](https://cloud.tencent.com/document/api/849/52010#[DescribeTreeJobsRsp](https://cloud.tencent.com/document/api/849/52010#DescribeTreeJobsRsp))
+* [[TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration)](https://cloud.tencent.com/document/api/849/52010#[TraceModeConfiguration](https://cloud.tencent.com/document/api/849/52010#TraceModeConfiguration))
+* [[TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets)](https://cloud.tencent.com/document/api/849/52010#[TreeJobSets](https://cloud.tencent.com/document/api/849/52010#TreeJobSets))
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：WebUIType
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：TraceModeOn, TraceModeConfiguration, CheckpointRetainedNum, JobGraph
+
+	* <font color="#dd0000">**修改成员**：</font>ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
 
 ### 第 43 次发布
 

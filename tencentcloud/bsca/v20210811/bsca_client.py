@@ -119,7 +119,7 @@ class BscaClient(AbstractClient):
 
 
     def DescribeKBVulnerability(self, request):
-        """本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
+        """本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE、Vul ID、CNVD ID、CNNVD ID查询。
 
         :param request: Request instance for DescribeKBVulnerability.
         :type request: :class:`tencentcloud.bsca.v20210811.models.DescribeKBVulnerabilityRequest`

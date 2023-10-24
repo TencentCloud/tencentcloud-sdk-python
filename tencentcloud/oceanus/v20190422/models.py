@@ -365,6 +365,9 @@ class Cluster(AbstractModel):
         :param _SqlGateways: Gateway信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SqlGateways: list of SqlGatewayItem
+        :param _WebUIType: 0 公网访问 // 1 内网访问	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebUIType: int
         """
         self._ClusterId = None
         self._Name = None
@@ -406,6 +409,7 @@ class Cluster(AbstractModel):
         self._ClusterType = None
         self._Orders = None
         self._SqlGateways = None
+        self._WebUIType = None
 
     @property
     def ClusterId(self):
@@ -727,6 +731,14 @@ class Cluster(AbstractModel):
     def SqlGateways(self, SqlGateways):
         self._SqlGateways = SqlGateways
 
+    @property
+    def WebUIType(self):
+        return self._WebUIType
+
+    @WebUIType.setter
+    def WebUIType(self, WebUIType):
+        self._WebUIType = WebUIType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -801,6 +813,7 @@ class Cluster(AbstractModel):
                 obj = SqlGatewayItem()
                 obj._deserialize(item)
                 self._SqlGateways.append(obj)
+        self._WebUIType = params.get("WebUIType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1833,6 +1846,14 @@ class CreateJobConfigRequest(AbstractModel):
         :type ExpertModeOn: bool
         :param _ExpertModeConfiguration: 专家模式的配置
         :type ExpertModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
+        :param _TraceModeOn: trace链路
+        :type TraceModeOn: bool
+        :param _TraceModeConfiguration: trace链路配置
+        :type TraceModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
+        :param _CheckpointRetainedNum: checkpoint保留个数
+        :type CheckpointRetainedNum: int
+        :param _JobGraph: 算子拓扑图
+        :type JobGraph: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -1856,6 +1877,10 @@ class CreateJobConfigRequest(AbstractModel):
         self._ClazzLevels = None
         self._ExpertModeOn = None
         self._ExpertModeConfiguration = None
+        self._TraceModeOn = None
+        self._TraceModeConfiguration = None
+        self._CheckpointRetainedNum = None
+        self._JobGraph = None
 
     @property
     def JobId(self):
@@ -2033,6 +2058,38 @@ class CreateJobConfigRequest(AbstractModel):
     def ExpertModeConfiguration(self, ExpertModeConfiguration):
         self._ExpertModeConfiguration = ExpertModeConfiguration
 
+    @property
+    def TraceModeOn(self):
+        return self._TraceModeOn
+
+    @TraceModeOn.setter
+    def TraceModeOn(self, TraceModeOn):
+        self._TraceModeOn = TraceModeOn
+
+    @property
+    def TraceModeConfiguration(self):
+        return self._TraceModeConfiguration
+
+    @TraceModeConfiguration.setter
+    def TraceModeConfiguration(self, TraceModeConfiguration):
+        self._TraceModeConfiguration = TraceModeConfiguration
+
+    @property
+    def CheckpointRetainedNum(self):
+        return self._CheckpointRetainedNum
+
+    @CheckpointRetainedNum.setter
+    def CheckpointRetainedNum(self, CheckpointRetainedNum):
+        self._CheckpointRetainedNum = CheckpointRetainedNum
+
+    @property
+    def JobGraph(self):
+        return self._JobGraph
+
+    @JobGraph.setter
+    def JobGraph(self, JobGraph):
+        self._JobGraph = JobGraph
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -2074,6 +2131,14 @@ class CreateJobConfigRequest(AbstractModel):
         if params.get("ExpertModeConfiguration") is not None:
             self._ExpertModeConfiguration = ExpertModeConfiguration()
             self._ExpertModeConfiguration._deserialize(params.get("ExpertModeConfiguration"))
+        self._TraceModeOn = params.get("TraceModeOn")
+        if params.get("TraceModeConfiguration") is not None:
+            self._TraceModeConfiguration = TraceModeConfiguration()
+            self._TraceModeConfiguration._deserialize(params.get("TraceModeConfiguration"))
+        self._CheckpointRetainedNum = params.get("CheckpointRetainedNum")
+        if params.get("JobGraph") is not None:
+            self._JobGraph = JobGraph()
+            self._JobGraph._deserialize(params.get("JobGraph"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3543,11 +3608,16 @@ class DescribeJobSavepointRequest(AbstractModel):
         :type Offset: int
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param _RecordTypes: 2 是checkpoint
+1 是触发savepoint
+3 停止触发的savepoint
+        :type RecordTypes: list of int
         """
         self._JobId = None
         self._Limit = None
         self._Offset = None
         self._WorkSpaceId = None
+        self._RecordTypes = None
 
     @property
     def JobId(self):
@@ -3581,12 +3651,21 @@ class DescribeJobSavepointRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def RecordTypes(self):
+        return self._RecordTypes
+
+    @RecordTypes.setter
+    def RecordTypes(self, RecordTypes):
+        self._RecordTypes = RecordTypes
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._RecordTypes = params.get("RecordTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4658,10 +4737,21 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Filters: 筛选条件字段
+        :type Filters: list of Filter
         :param _WorkSpaceId: 工作空间 Serialid
         :type WorkSpaceId: str
         """
+        self._Filters = None
         self._WorkSpaceId = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def WorkSpaceId(self):
@@ -4673,6 +4763,12 @@ class DescribeTreeJobsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         self._WorkSpaceId = params.get("WorkSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4691,10 +4787,70 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ParentId: 父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param _Id: 当前文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 当前文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _JobSet: 当前文件夹下的作业列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobSet: list of TreeJobSets
+        :param _Children: 迭代子目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of DescribeTreeJobsRsp
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ParentId = None
+        self._Id = None
+        self._Name = None
+        self._JobSet = None
+        self._Children = None
         self._RequestId = None
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def JobSet(self):
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
 
     @property
     def RequestId(self):
@@ -4706,7 +4862,131 @@ class DescribeTreeJobsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ParentId = params.get("ParentId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        if params.get("JobSet") is not None:
+            self._JobSet = []
+            for item in params.get("JobSet"):
+                obj = TreeJobSets()
+                obj._deserialize(item)
+                self._JobSet.append(obj)
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = DescribeTreeJobsRsp()
+                obj._deserialize(item)
+                self._Children.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeTreeJobsRsp(AbstractModel):
+    """自定义树结构遍历子节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParentId: 父节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: str
+        :param _Id: 当前文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 当前文件夹名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _JobSet: 当前文件夹下的作业集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobSet: list of TreeJobSets
+        :param _Children: 迭代子目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of DescribeTreeJobsRsp
+        :param _RequestId: 请求ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        """
+        self._ParentId = None
+        self._Id = None
+        self._Name = None
+        self._JobSet = None
+        self._Children = None
+        self._RequestId = None
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def JobSet(self):
+        return self._JobSet
+
+    @JobSet.setter
+    def JobSet(self, JobSet):
+        self._JobSet = JobSet
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ParentId = params.get("ParentId")
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        if params.get("JobSet") is not None:
+            self._JobSet = []
+            for item in params.get("JobSet"):
+                obj = TreeJobSets()
+                obj._deserialize(item)
+                self._JobSet.append(obj)
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = DescribeTreeJobsRsp()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        self._RequestId = params.get("RequestId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeTreeResourcesRequest(AbstractModel):
@@ -5530,6 +5810,18 @@ class JobConfig(AbstractModel):
         :param _ExpertModeConfiguration: 专家模式的配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpertModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
+        :param _TraceModeOn: trace链路
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceModeOn: bool
+        :param _TraceModeConfiguration: trace链路配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TraceModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
+        :param _CheckpointRetainedNum: checkpoint保留个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckpointRetainedNum: int
+        :param _JobGraph: 算子拓扑图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobGraph: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -5555,6 +5847,10 @@ class JobConfig(AbstractModel):
         self._ClazzLevels = None
         self._ExpertModeOn = None
         self._ExpertModeConfiguration = None
+        self._TraceModeOn = None
+        self._TraceModeConfiguration = None
+        self._CheckpointRetainedNum = None
+        self._JobGraph = None
 
     @property
     def JobId(self):
@@ -5748,6 +6044,38 @@ class JobConfig(AbstractModel):
     def ExpertModeConfiguration(self, ExpertModeConfiguration):
         self._ExpertModeConfiguration = ExpertModeConfiguration
 
+    @property
+    def TraceModeOn(self):
+        return self._TraceModeOn
+
+    @TraceModeOn.setter
+    def TraceModeOn(self, TraceModeOn):
+        self._TraceModeOn = TraceModeOn
+
+    @property
+    def TraceModeConfiguration(self):
+        return self._TraceModeConfiguration
+
+    @TraceModeConfiguration.setter
+    def TraceModeConfiguration(self, TraceModeConfiguration):
+        self._TraceModeConfiguration = TraceModeConfiguration
+
+    @property
+    def CheckpointRetainedNum(self):
+        return self._CheckpointRetainedNum
+
+    @CheckpointRetainedNum.setter
+    def CheckpointRetainedNum(self, CheckpointRetainedNum):
+        self._CheckpointRetainedNum = CheckpointRetainedNum
+
+    @property
+    def JobGraph(self):
+        return self._JobGraph
+
+    @JobGraph.setter
+    def JobGraph(self, JobGraph):
+        self._JobGraph = JobGraph
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -5791,6 +6119,14 @@ class JobConfig(AbstractModel):
         if params.get("ExpertModeConfiguration") is not None:
             self._ExpertModeConfiguration = ExpertModeConfiguration()
             self._ExpertModeConfiguration._deserialize(params.get("ExpertModeConfiguration"))
+        self._TraceModeOn = params.get("TraceModeOn")
+        if params.get("TraceModeConfiguration") is not None:
+            self._TraceModeConfiguration = TraceModeConfiguration()
+            self._TraceModeConfiguration._deserialize(params.get("TraceModeConfiguration"))
+        self._CheckpointRetainedNum = params.get("CheckpointRetainedNum")
+        if params.get("JobGraph") is not None:
+            self._JobGraph = JobGraph()
+            self._JobGraph._deserialize(params.get("JobGraph"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9331,6 +9667,144 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TraceModeConfiguration(AbstractModel):
+    """{
+      "Rate": "0.01",  ///如1%转换为0.01
+      "Operator":  "1:OUT,2:IN_AND_OUT,3:IN"  ///如1%转换为0.01
+    }
+    Operator
+    算子ID顺序配置，可以对每个算子配置IN、OUT、IN_AND_OUT三个值，分别表示采集输入数据、采集输出数据、同时采集输入和输出数据，配置示例:
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rate: 如1%转换为0.01
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rate: str
+        :param _Operator: 按照算子ID顺序配置，可以对每个算子配置IN、OUT、IN_AND_OUT三个值，分别表示采集输入数据、采集输出数据、同时采集输入和输出数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operator: str
+        """
+        self._Rate = None
+        self._Operator = None
+
+    @property
+    def Rate(self):
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Rate = params.get("Rate")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TreeJobSets(AbstractModel):
+    """自定义树结构出参作业列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param _Name: 作业名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _JobType: 作业类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobType: int
+        :param _RunningCu: 作业占用资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningCu: float
+        :param _Status: 作业状态 启动或者停止或者暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._JobId = None
+        self._Name = None
+        self._JobType = None
+        self._RunningCu = None
+        self._Status = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def RunningCu(self):
+        return self._RunningCu
+
+    @RunningCu.setter
+    def RunningCu(self, RunningCu):
+        self._RunningCu = RunningCu
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Name = params.get("Name")
+        self._JobType = params.get("JobType")
+        self._RunningCu = params.get("RunningCu")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

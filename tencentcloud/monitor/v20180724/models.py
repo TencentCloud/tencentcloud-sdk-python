@@ -6179,7 +6179,7 @@ class DeletePolicyGroupRequest(AbstractModel):
         r"""
         :param _Module: 固定值，为"monitor"
         :type Module: str
-        :param _GroupId: 策略组id
+        :param _GroupId: 策略组id,即1.0的告警策略id,可以从策略详情获取
         :type GroupId: list of int
         """
         self._Module = None

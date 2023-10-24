@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AffectedComponent(AbstractModel):
+    """受漏洞影响的组件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 受漏洞影响的组件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _AffectedVersionList: 受漏洞影响的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedVersionList: list of str
+        :param _FixedVersionList: 修复此漏洞的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixedVersionList: list of str
+        """
+        self._Name = None
+        self._AffectedVersionList = None
+        self._FixedVersionList = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AffectedVersionList(self):
+        return self._AffectedVersionList
+
+    @AffectedVersionList.setter
+    def AffectedVersionList(self, AffectedVersionList):
+        self._AffectedVersionList = AffectedVersionList
+
+    @property
+    def FixedVersionList(self):
+        return self._FixedVersionList
+
+    @FixedVersionList.setter
+    def FixedVersionList(self, FixedVersionList):
+        self._FixedVersionList = FixedVersionList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AffectedVersionList = params.get("AffectedVersionList")
+        self._FixedVersionList = params.get("FixedVersionList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CVSSV2Info(AbstractModel):
     """CVSSv2.0详细信息。
 
@@ -925,13 +985,19 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CVEID: CVE ID列表（不能与Vul ID同时存在）
+        :param _CVEID: 根据CVE ID查询（不能与其他参数同时存在）
         :type CVEID: list of str
-        :param _VulID: Vul ID列表（不能与CVE ID 同时存在）
+        :param _VulID: 根据Vul ID查询（不能与其他参数同时存在）
         :type VulID: list of str
+        :param _CNVDID: 根据CNVD ID查询（不能与其他参数同时存在）
+        :type CNVDID: list of str
+        :param _CNNVDID: 根据CNNVD ID查询（不能与其他参数同时存在）
+        :type CNNVDID: list of str
         """
         self._CVEID = None
         self._VulID = None
+        self._CNVDID = None
+        self._CNNVDID = None
 
     @property
     def CVEID(self):
@@ -949,10 +1015,28 @@ class DescribeKBVulnerabilityRequest(AbstractModel):
     def VulID(self, VulID):
         self._VulID = VulID
 
+    @property
+    def CNVDID(self):
+        return self._CNVDID
+
+    @CNVDID.setter
+    def CNVDID(self, CNVDID):
+        self._CNVDID = CNVDID
+
+    @property
+    def CNNVDID(self):
+        return self._CNNVDID
+
+    @CNNVDID.setter
+    def CNNVDID(self, CNNVDID):
+        self._CNNVDID = CNNVDID
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
         self._VulID = params.get("VulID")
+        self._CNVDID = params.get("CNVDID")
+        self._CNNVDID = params.get("CNNVDID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1668,6 +1752,8 @@ class VulnerabilityDetail(AbstractModel):
         :type CVSSv2Vector: str
         :param _CVSSv3Vector: 漏洞CVSSv3向量
         :type CVSSv3Vector: str
+        :param _AffectedComponentList: 漏洞影响的组件列表，仅当查询单个漏洞时有效
+        :type AffectedComponentList: list of AffectedComponent
         """
         self._Category = None
         self._CategoryType = None
@@ -1681,6 +1767,7 @@ class VulnerabilityDetail(AbstractModel):
         self._CWEID = None
         self._CVSSv2Vector = None
         self._CVSSv3Vector = None
+        self._AffectedComponentList = None
 
     @property
     def Category(self):
@@ -1778,6 +1865,14 @@ class VulnerabilityDetail(AbstractModel):
     def CVSSv3Vector(self, CVSSv3Vector):
         self._CVSSv3Vector = CVSSv3Vector
 
+    @property
+    def AffectedComponentList(self):
+        return self._AffectedComponentList
+
+    @AffectedComponentList.setter
+    def AffectedComponentList(self, AffectedComponentList):
+        self._AffectedComponentList = AffectedComponentList
+
 
     def _deserialize(self, params):
         self._Category = params.get("Category")
@@ -1796,6 +1891,12 @@ class VulnerabilityDetail(AbstractModel):
         self._CWEID = params.get("CWEID")
         self._CVSSv2Vector = params.get("CVSSv2Vector")
         self._CVSSv3Vector = params.get("CVSSv3Vector")
+        if params.get("AffectedComponentList") is not None:
+            self._AffectedComponentList = []
+            for item in params.get("AffectedComponentList"):
+                obj = AffectedComponent()
+                obj._deserialize(item)
+                self._AffectedComponentList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

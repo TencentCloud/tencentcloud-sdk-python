@@ -75,6 +75,66 @@ class CBSSpec(AbstractModel):
         
 
 
+class CBSSpecInfo(AbstractModel):
+    """磁盘信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: 盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _DiskSize: 大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param _DiskCount: 个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskCount: int
+        """
+        self._DiskType = None
+        self._DiskSize = None
+        self._DiskCount = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskCount(self):
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChargeProperties(AbstractModel):
     """计费时间参数
 
@@ -83,14 +143,19 @@ class ChargeProperties(AbstractModel):
     def __init__(self):
         r"""
         :param _RenewFlag: 1-需要自动续期
+注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
         :param _TimeSpan: 订单时间范围
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSpan: int
         :param _TimeUnit: 时间单位，一般为h和m
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeUnit: str
         :param _PayMode: 计费类型0-按量计费，1-包年包月
+注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
         :param _ChargeType: PREPAID、POSTPAID_BY_HOUR
+注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeType: str
         """
         self._RenewFlag = None
@@ -342,6 +407,90 @@ class CreateInstanceByApiResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._InstanceId = params.get("InstanceId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceInfoRequest(AbstractModel):
+    """DescribeInstanceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceInfoResponse(AbstractModel):
+    """DescribeInstanceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SimpleInstanceInfo: 1
+        :type SimpleInstanceInfo: :class:`tencentcloud.cdwpg.v20201230.models.SimpleInstanceInfo`
+        :param _ErrorMsg: 1
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SimpleInstanceInfo = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def SimpleInstanceInfo(self):
+        return self._SimpleInstanceInfo
+
+    @SimpleInstanceInfo.setter
+    def SimpleInstanceInfo(self, SimpleInstanceInfo):
+        self._SimpleInstanceInfo = SimpleInstanceInfo
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SimpleInstanceInfo") is not None:
+            self._SimpleInstanceInfo = SimpleInstanceInfo()
+            self._SimpleInstanceInfo._deserialize(params.get("SimpleInstanceInfo"))
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
@@ -1761,6 +1910,81 @@ class ModifyInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceInfo(AbstractModel):
+    """资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param _Count: 资源数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _DiskSpec: 磁盘信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSpec: :class:`tencentcloud.cdwpg.v20201230.models.CBSSpecInfo`
+        :param _Type: 资源类型，DATA
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._SpecName = None
+        self._Count = None
+        self._DiskSpec = None
+        self._Type = None
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def DiskSpec(self):
+        return self._DiskSpec
+
+    @DiskSpec.setter
+    def DiskSpec(self, DiskSpec):
+        self._DiskSpec = DiskSpec
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._SpecName = params.get("SpecName")
+        self._Count = params.get("Count")
+        if params.get("DiskSpec") is not None:
+            self._DiskSpec = CBSSpecInfo()
+            self._DiskSpec._deserialize(params.get("DiskSpec"))
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceSpecNew(AbstractModel):
     """资源规格
 
@@ -1879,6 +2103,247 @@ class SearchTags(AbstractModel):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._AllValue = params.get("AllValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimpleInstanceInfo(AbstractModel):
+    """集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _InstanceId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _Version: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Region: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Zone: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _UserVPCID: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserVPCID: str
+        :param _UserSubnetID: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserSubnetID: str
+        :param _CreateTime: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ExpireTime: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _AccessInfo: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessInfo: str
+        :param _RenewFlag: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _ChargeProperties: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeProperties: :class:`tencentcloud.cdwpg.v20201230.models.ChargeProperties`
+        :param _Resources: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of ResourceInfo
+        :param _Tags: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _Status: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._ID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Version = None
+        self._Region = None
+        self._Zone = None
+        self._UserVPCID = None
+        self._UserSubnetID = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._AccessInfo = None
+        self._RenewFlag = None
+        self._ChargeProperties = None
+        self._Resources = None
+        self._Tags = None
+        self._Status = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def UserVPCID(self):
+        return self._UserVPCID
+
+    @UserVPCID.setter
+    def UserVPCID(self, UserVPCID):
+        self._UserVPCID = UserVPCID
+
+    @property
+    def UserSubnetID(self):
+        return self._UserSubnetID
+
+    @UserSubnetID.setter
+    def UserSubnetID(self, UserSubnetID):
+        self._UserSubnetID = UserSubnetID
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def AccessInfo(self):
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ChargeProperties(self):
+        return self._ChargeProperties
+
+    @ChargeProperties.setter
+    def ChargeProperties(self, ChargeProperties):
+        self._ChargeProperties = ChargeProperties
+
+    @property
+    def Resources(self):
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Version = params.get("Version")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._UserVPCID = params.get("UserVPCID")
+        self._UserSubnetID = params.get("UserSubnetID")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._AccessInfo = params.get("AccessInfo")
+        self._RenewFlag = params.get("RenewFlag")
+        if params.get("ChargeProperties") is not None:
+            self._ChargeProperties = ChargeProperties()
+            self._ChargeProperties._deserialize(params.get("ChargeProperties"))
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = ResourceInfo()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

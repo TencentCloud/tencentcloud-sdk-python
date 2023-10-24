@@ -130,3 +130,6 @@ RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = 'ResourceUnavailable.ServiceNotOpene
 
 # 账号已停服。
 RESOURCEUNAVAILABLE_STOPUSING = 'ResourceUnavailable.StopUsing'
+
+# 资源包余量已用尽。
+UNSUPPORTEDOPERATION_PKGEXHAUSTED = 'UnsupportedOperation.PkgExhausted'

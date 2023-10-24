@@ -23890,9 +23890,11 @@ class DescribeIntegrationVersionNodesInfoRequest(AbstractModel):
         :type TaskId: str
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _TaskVersionPath: task version path
+        :param _TaskVersionPath: 该任务选定版本的存储路径：
+DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 TaskInfo.TaskExt.Properties 下 Base64.encode($region | $bucket | $ftp.file.name) 值
         :type TaskVersionPath: str
-        :param _TaskVersion: task version
+        :param _TaskVersion: 该任务选定版本id：
+DescribeDsTaskVersionList 或者 DescribeDsTaskVersionInfo 返回的对应的 VersionId 取值
         :type TaskVersion: str
         """
         self._TaskId = None
