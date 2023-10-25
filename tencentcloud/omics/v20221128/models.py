@@ -1531,13 +1531,13 @@ class ImportTableFileRequest(AbstractModel):
         r"""
         :param _ProjectId: 表格关联的项目ID。
         :type ProjectId: str
-        :param _Name: 表格名称，支持20个字符内的英文字符、数字和下划线。
+        :param _Name: 表格名称。最多支持200个字符。
         :type Name: str
         :param _CosUri: 表格文件Cos对象路径。
         :type CosUri: str
         :param _DataType: 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
         :type DataType: list of str
-        :param _Description: 表格描述。
+        :param _Description: 表格描述。最多支持500个字符。
         :type Description: str
         """
         self._ProjectId = None

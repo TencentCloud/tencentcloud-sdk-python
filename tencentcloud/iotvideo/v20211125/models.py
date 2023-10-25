@@ -5369,10 +5369,13 @@ class DescribeCloudStorageRequest(AbstractModel):
         :type DeviceName: str
         :param _UserId: 云存用户ID
         :type UserId: str
+        :param _ChannelId: 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -5398,11 +5401,20 @@ class DescribeCloudStorageRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

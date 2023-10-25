@@ -51,6 +51,9 @@ class DetailResults(AbstractModel):
         :param _Tags: 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _HitInfos: 该字段用于返回违规文本命中信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitInfos: list of HitInfo
         """
         self._Label = None
         self._Suggestion = None
@@ -61,6 +64,7 @@ class DetailResults(AbstractModel):
         self._LibName = None
         self._SubLabel = None
         self._Tags = None
+        self._HitInfos = None
 
     @property
     def Label(self):
@@ -134,6 +138,14 @@ class DetailResults(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def HitInfos(self):
+        return self._HitInfos
+
+    @HitInfos.setter
+    def HitInfos(self, HitInfos):
+        self._HitInfos = HitInfos
+
 
     def _deserialize(self, params):
         self._Label = params.get("Label")
@@ -150,6 +162,12 @@ class DetailResults(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("HitInfos") is not None:
+            self._HitInfos = []
+            for item in params.get("HitInfos"):
+                obj = HitInfo()
+                obj._deserialize(item)
+                self._HitInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -257,6 +275,131 @@ class Device(AbstractModel):
         self._IMEI = params.get("IMEI")
         self._IDFA = params.get("IDFA")
         self._IDFV = params.get("IDFV")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HitInfo(AbstractModel):
+    """关键词命中位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 标识模型命中还是关键词命中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Keyword: 命中关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keyword: str
+        :param _LibName: 自定义词库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibName: str
+        :param _Positions: 位置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Positions: list of Positions
+        """
+        self._Type = None
+        self._Keyword = None
+        self._LibName = None
+        self._Positions = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Positions(self):
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Keyword = params.get("Keyword")
+        self._LibName = params.get("LibName")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Positions()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Positions(AbstractModel):
+    """标识命中的违规关键词位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 关键词起始位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Start: int
+        :param _End: 关键词结束位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type End: int
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

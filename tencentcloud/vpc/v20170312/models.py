@@ -19456,11 +19456,17 @@ class DescribeNetworkAclsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最小值为1，最大值为100。
         :type Limit: int
+        :param _OrderField: 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+        :type OrderField: str
+        :param _OrderDirection: 排序方法。顺序：ASC，倒序：DESC。
+        :type OrderDirection: str
         """
         self._Filters = None
         self._NetworkAclIds = None
         self._Offset = None
         self._Limit = None
+        self._OrderField = None
+        self._OrderDirection = None
 
     @property
     def Filters(self):
@@ -19494,6 +19500,22 @@ class DescribeNetworkAclsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDirection(self):
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -19505,6 +19527,8 @@ class DescribeNetworkAclsRequest(AbstractModel):
         self._NetworkAclIds = params.get("NetworkAclIds")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35658,9 +35682,9 @@ class NetworkAcl(AbstractModel):
         :type CreatedTime: str
         :param _SubnetSet: 网络ACL关联的子网数组。
         :type SubnetSet: list of Subnet
-        :param _IngressEntries: 网络ACl入站规则。
+        :param _IngressEntries: 该参数仅对三元组ACL有效，网络ACl入站规则。
         :type IngressEntries: list of NetworkAclEntry
-        :param _EgressEntries: 网络ACL出站规则。
+        :param _EgressEntries: 该参数仅对三元组ACL有效，网络ACL出站规则。
         :type EgressEntries: list of NetworkAclEntry
         :param _NetworkAclType: 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
         :type NetworkAclType: str

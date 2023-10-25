@@ -381,6 +381,8 @@ AnalyzeTaskType_MediaStream：音视频体验
 首尔
 多伦多
         :type City: list of str
+        :param _ScrollID: es scroll查询id
+        :type ScrollID: str
         """
         self._BeginTime = None
         self._EndTime = None
@@ -395,6 +397,7 @@ AnalyzeTaskType_MediaStream：音视频体验
         self._Districts = None
         self._ErrorTypes = None
         self._City = None
+        self._ScrollID = None
 
     @property
     def BeginTime(self):
@@ -500,6 +503,14 @@ AnalyzeTaskType_MediaStream：音视频体验
     def City(self, City):
         self._City = City
 
+    @property
+    def ScrollID(self):
+        return self._ScrollID
+
+    @ScrollID.setter
+    def ScrollID(self, ScrollID):
+        self._ScrollID = ScrollID
+
 
     def _deserialize(self, params):
         self._BeginTime = params.get("BeginTime")
@@ -515,6 +526,7 @@ AnalyzeTaskType_MediaStream：音视频体验
         self._Districts = params.get("Districts")
         self._ErrorTypes = params.get("ErrorTypes")
         self._City = params.get("City")
+        self._ScrollID = params.get("ScrollID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -536,11 +548,14 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
         :type DataSet: list of DetailedSingleDataDefine
         :param _TotalNumber: 符合条件的数据总数
         :type TotalNumber: int
+        :param _ScrollID: es scroll查询的id
+        :type ScrollID: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataSet = None
         self._TotalNumber = None
+        self._ScrollID = None
         self._RequestId = None
 
     @property
@@ -560,6 +575,14 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
         self._TotalNumber = TotalNumber
 
     @property
+    def ScrollID(self):
+        return self._ScrollID
+
+    @ScrollID.setter
+    def ScrollID(self, ScrollID):
+        self._ScrollID = ScrollID
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -576,6 +599,7 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DataSet.append(obj)
         self._TotalNumber = params.get("TotalNumber")
+        self._ScrollID = params.get("ScrollID")
         self._RequestId = params.get("RequestId")
 
 

@@ -16117,6 +16117,8 @@ class CreateWhiteListOrderRequest(AbstractModel):
         :type Deadline: int
         :param _RuleName: 规则名称,大资产中心:asset_center
         :type RuleName: str
+        :param _SourceType: 订单类型, 1 试用 2 赠送 3 体验 4 SSL-证书赠送 5 cvm赠送
+        :type SourceType: int
         :param _RegionId: 地域, 1 广州 9新加坡, 默认为 1. 非必要情况不要选9
         :type RegionId: int
         :param _ExtraParam: 额外参数,json字符串,包含ResourceId 资源ID,LicenseType 授权类型
@@ -16126,6 +16128,7 @@ class CreateWhiteListOrderRequest(AbstractModel):
         self._LicenseNum = None
         self._Deadline = None
         self._RuleName = None
+        self._SourceType = None
         self._RegionId = None
         self._ExtraParam = None
 
@@ -16162,6 +16165,14 @@ class CreateWhiteListOrderRequest(AbstractModel):
         self._RuleName = RuleName
 
     @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
     def RegionId(self):
         return self._RegionId
 
@@ -16183,6 +16194,7 @@ class CreateWhiteListOrderRequest(AbstractModel):
         self._LicenseNum = params.get("LicenseNum")
         self._Deadline = params.get("Deadline")
         self._RuleName = params.get("RuleName")
+        self._SourceType = params.get("SourceType")
         self._RegionId = params.get("RegionId")
         self._ExtraParam = params.get("ExtraParam")
         memeber_set = set(params.keys())
