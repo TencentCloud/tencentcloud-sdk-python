@@ -12691,6 +12691,9 @@ class WhoisInfo(AbstractModel):
         :param _UpdatedDate: 更新日期
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedDate: str
+        :param _Dnssec: dnssec
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dnssec: str
         """
         self._Contacts = None
         self._CreationDate = None
@@ -12702,6 +12705,7 @@ class WhoisInfo(AbstractModel):
         self._Registrar = None
         self._Status = None
         self._UpdatedDate = None
+        self._Dnssec = None
 
     @property
     def Contacts(self):
@@ -12783,6 +12787,14 @@ class WhoisInfo(AbstractModel):
     def UpdatedDate(self, UpdatedDate):
         self._UpdatedDate = UpdatedDate
 
+    @property
+    def Dnssec(self):
+        return self._Dnssec
+
+    @Dnssec.setter
+    def Dnssec(self, Dnssec):
+        self._Dnssec = Dnssec
+
 
     def _deserialize(self, params):
         if params.get("Contacts") is not None:
@@ -12797,6 +12809,7 @@ class WhoisInfo(AbstractModel):
         self._Registrar = params.get("Registrar")
         self._Status = params.get("Status")
         self._UpdatedDate = params.get("UpdatedDate")
+        self._Dnssec = params.get("Dnssec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2356,6 +2356,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGenerateDeals(self, request):
+        """提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单，计费侧接口：https://tcb.woa.com/magical-brush/docs/754661947
+
+        :param request: Request instance for ModifyGenerateDeals.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyGenerateDealsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyGenerateDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGenerateDeals", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGenerateDealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyHost(self, request):
         """clb-waf编辑防护域名配置
 

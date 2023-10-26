@@ -14502,6 +14502,346 @@ class GoodNews(AbstractModel):
         
 
 
+class Goods(AbstractModel):
+    """计费下单接口出入参Goods
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 付费类型，1:预付费，0:后付费
+        :type PayMode: int
+        :param _GoodsNum: 商品数量
+        :type GoodsNum: int
+        :param _GoodsDetail: 商品明细
+        :type GoodsDetail: :class:`tencentcloud.waf.v20180125.models.GoodsDetail`
+        :param _ProjectId: 默认为0
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _GoodsCategoryId: 计费类目ID，对应cid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GoodsCategoryId: int
+        :param _Platform: 平台类型，默认1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Platform: int
+        :param _RegionId: 购买waf实例区域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        """
+        self._PayMode = None
+        self._GoodsNum = None
+        self._GoodsDetail = None
+        self._ProjectId = None
+        self._GoodsCategoryId = None
+        self._Platform = None
+        self._RegionId = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def GoodsDetail(self):
+        return self._GoodsDetail
+
+    @GoodsDetail.setter
+    def GoodsDetail(self, GoodsDetail):
+        self._GoodsDetail = GoodsDetail
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def GoodsCategoryId(self):
+        return self._GoodsCategoryId
+
+    @GoodsCategoryId.setter
+    def GoodsCategoryId(self, GoodsCategoryId):
+        self._GoodsCategoryId = GoodsCategoryId
+
+    @property
+    def Platform(self):
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._GoodsNum = params.get("GoodsNum")
+        if params.get("GoodsDetail") is not None:
+            self._GoodsDetail = GoodsDetail()
+            self._GoodsDetail._deserialize(params.get("GoodsDetail"))
+        self._ProjectId = params.get("ProjectId")
+        self._GoodsCategoryId = params.get("GoodsCategoryId")
+        self._Platform = params.get("Platform")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GoodsDetail(AbstractModel):
+    """产品明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeSpan: 时间间隔
+        :type TimeSpan: int
+        :param _TimeUnit: 单位，支持m、y、d
+        :type TimeUnit: str
+        :param _ProductCode: 产品码
+        :type ProductCode: str
+        :param _SubProductCode: 二级产品码
+        :type SubProductCode: str
+        :param _Pid: 计费策略id
+        :type Pid: int
+        :param _ProductInfo: waf产品码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductInfo: list of ProductInfo
+        :param _InstanceName: waf实例名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _ElasticQps: QPS数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticQps: int
+        :param _FlexBill: 弹性账单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlexBill: int
+        :param _AutoRenewFlag: 1:自动续费，0:不自动续费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _RealRegion: waf购买的实际地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealRegion: int
+        :param _Type: Waf实例对应的二级产品码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _LabelTypes: 计费细项标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelTypes: list of str
+        :param _LabelCounts: 计费细项标签数量，一般和SvLabelType一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelCounts: list of int
+        :param _CurDeadline: 变配使用，实例到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurDeadline: str
+        :param _InstanceId: 对存在的实例购买bot 或api 安全
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        """
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._Pid = None
+        self._ProductInfo = None
+        self._InstanceName = None
+        self._ElasticQps = None
+        self._FlexBill = None
+        self._AutoRenewFlag = None
+        self._RealRegion = None
+        self._Type = None
+        self._LabelTypes = None
+        self._LabelCounts = None
+        self._CurDeadline = None
+        self._InstanceId = None
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def ProductInfo(self):
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ElasticQps(self):
+        return self._ElasticQps
+
+    @ElasticQps.setter
+    def ElasticQps(self, ElasticQps):
+        self._ElasticQps = ElasticQps
+
+    @property
+    def FlexBill(self):
+        return self._FlexBill
+
+    @FlexBill.setter
+    def FlexBill(self, FlexBill):
+        self._FlexBill = FlexBill
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def RealRegion(self):
+        return self._RealRegion
+
+    @RealRegion.setter
+    def RealRegion(self, RealRegion):
+        self._RealRegion = RealRegion
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LabelTypes(self):
+        return self._LabelTypes
+
+    @LabelTypes.setter
+    def LabelTypes(self, LabelTypes):
+        self._LabelTypes = LabelTypes
+
+    @property
+    def LabelCounts(self):
+        return self._LabelCounts
+
+    @LabelCounts.setter
+    def LabelCounts(self, LabelCounts):
+        self._LabelCounts = LabelCounts
+
+    @property
+    def CurDeadline(self):
+        return self._CurDeadline
+
+    @CurDeadline.setter
+    def CurDeadline(self, CurDeadline):
+        self._CurDeadline = CurDeadline
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._Pid = params.get("Pid")
+        if params.get("ProductInfo") is not None:
+            self._ProductInfo = []
+            for item in params.get("ProductInfo"):
+                obj = ProductInfo()
+                obj._deserialize(item)
+                self._ProductInfo.append(obj)
+        self._InstanceName = params.get("InstanceName")
+        self._ElasticQps = params.get("ElasticQps")
+        self._FlexBill = params.get("FlexBill")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._RealRegion = params.get("RealRegion")
+        self._Type = params.get("Type")
+        self._LabelTypes = params.get("LabelTypes")
+        self._LabelCounts = params.get("LabelCounts")
+        self._CurDeadline = params.get("CurDeadline")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GoodsDetailNew(AbstractModel):
     """产品明细
 
@@ -18315,6 +18655,109 @@ class ModifyDomainsCLSStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyGenerateDealsRequest(AbstractModel):
+    """ModifyGenerateDeals请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Goods: 计费下单入参
+        :type Goods: list of Goods
+        """
+        self._Goods = None
+
+    @property
+    def Goods(self):
+        return self._Goods
+
+    @Goods.setter
+    def Goods(self, Goods):
+        self._Goods = Goods
+
+
+    def _deserialize(self, params):
+        if params.get("Goods") is not None:
+            self._Goods = []
+            for item in params.get("Goods"):
+                obj = Goods()
+                obj._deserialize(item)
+                self._Goods.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGenerateDealsResponse(AbstractModel):
+    """ModifyGenerateDeals返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 计费下单响应结构体
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.DealData`
+        :param _Status: 1:成功，0:失败
+        :type Status: int
+        :param _ReturnMessage: 返回message
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnMessage: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Status = None
+        self._ReturnMessage = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ReturnMessage(self):
+        return self._ReturnMessage
+
+    @ReturnMessage.setter
+    def ReturnMessage(self, ReturnMessage):
+        self._ReturnMessage = ReturnMessage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DealData()
+            self._Data._deserialize(params.get("Data"))
+        self._Status = params.get("Status")
+        self._ReturnMessage = params.get("ReturnMessage")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyHostFlowModeRequest(AbstractModel):
     """ModifyHostFlowMode请求参数结构体
 
@@ -20924,6 +21367,53 @@ class PostAttackDownloadTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Flow = params.get("Flow")
         self._RequestId = params.get("RequestId")
+
+
+class ProductInfo(AbstractModel):
+    """waf产品
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QPSPackageNew(AbstractModel):

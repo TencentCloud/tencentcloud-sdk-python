@@ -15798,10 +15798,22 @@ class CreateScanMalwareSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -15813,6 +15825,7 @@ class CreateScanMalwareSettingResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -36382,10 +36395,43 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FlagShip: 旗舰版 配置信息
+        :type FlagShip: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        :param _Professional: 专业版 配置信息
+        :type Professional: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
+        :param _PrattWhitney: 普惠版 配置信息
+        :type PrattWhitney: :class:`tencentcloud.cwp.v20180228.models.VersionWhiteConfig`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FlagShip = None
+        self._Professional = None
+        self._PrattWhitney = None
         self._RequestId = None
+
+    @property
+    def FlagShip(self):
+        return self._FlagShip
+
+    @FlagShip.setter
+    def FlagShip(self, FlagShip):
+        self._FlagShip = FlagShip
+
+    @property
+    def Professional(self):
+        return self._Professional
+
+    @Professional.setter
+    def Professional(self, Professional):
+        self._Professional = Professional
+
+    @property
+    def PrattWhitney(self):
+        return self._PrattWhitney
+
+    @PrattWhitney.setter
+    def PrattWhitney(self, PrattWhitney):
+        self._PrattWhitney = PrattWhitney
 
     @property
     def RequestId(self):
@@ -36397,6 +36443,15 @@ class DescribeLicenseWhiteConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("FlagShip") is not None:
+            self._FlagShip = VersionWhiteConfig()
+            self._FlagShip._deserialize(params.get("FlagShip"))
+        if params.get("Professional") is not None:
+            self._Professional = VersionWhiteConfig()
+            self._Professional._deserialize(params.get("Professional"))
+        if params.get("PrattWhitney") is not None:
+            self._PrattWhitney = VersionWhiteConfig()
+            self._PrattWhitney._deserialize(params.get("PrattWhitney"))
         self._RequestId = params.get("RequestId")
 
 
@@ -85513,6 +85568,75 @@ class ValueInfo(AbstractModel):
         self._Type = params.get("Type")
         self._SqlFlag = params.get("SqlFlag")
         self._ContainZH = params.get("ContainZH")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VersionWhiteConfig(AbstractModel):
+    """授权版本白名单配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deadline: 到期天数
+        :type Deadline: int
+        :param _LicenseNum: 授权数量
+        :type LicenseNum: int
+        :param _IsApplyFor: 是否可申请
+        :type IsApplyFor: bool
+        :param _SourceType: 类型
+        :type SourceType: int
+        """
+        self._Deadline = None
+        self._LicenseNum = None
+        self._IsApplyFor = None
+        self._SourceType = None
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def LicenseNum(self):
+        return self._LicenseNum
+
+    @LicenseNum.setter
+    def LicenseNum(self, LicenseNum):
+        self._LicenseNum = LicenseNum
+
+    @property
+    def IsApplyFor(self):
+        return self._IsApplyFor
+
+    @IsApplyFor.setter
+    def IsApplyFor(self, IsApplyFor):
+        self._IsApplyFor = IsApplyFor
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._Deadline = params.get("Deadline")
+        self._LicenseNum = params.get("LicenseNum")
+        self._IsApplyFor = params.get("IsApplyFor")
+        self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

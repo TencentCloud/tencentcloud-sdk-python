@@ -1103,7 +1103,7 @@ class CallBackTemplateInfo(AbstractModel):
         :type StreamMixNotifyUrl: str
         :param _StreamEndNotifyUrl: 断流回调 URL。
         :type StreamEndNotifyUrl: str
-        :param _RecordNotifyUrl: 录制回调 URL。
+        :param _RecordNotifyUrl: 录制文件回调 URL。
         :type RecordNotifyUrl: str
         :param _SnapshotNotifyUrl: 截图回调 URL。
         :type SnapshotNotifyUrl: str
@@ -2487,9 +2487,12 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         :param _StreamEndNotifyUrl: 断流回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type StreamEndNotifyUrl: str
-        :param _RecordNotifyUrl: 录制回调 URL，
+        :param _RecordNotifyUrl: 录制文件回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type RecordNotifyUrl: str
+        :param _RecordStatusNotifyUrl: 录制状态回调 URL ，
+相关协议文档：[事件消息通知](/document/product/267/32744)。
+        :type RecordStatusNotifyUrl: str
         :param _SnapshotNotifyUrl: 截图回调 URL，
 相关协议文档：[事件消息通知](/document/product/267/32744)。
         :type SnapshotNotifyUrl: str
@@ -2511,6 +2514,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self._StreamBeginNotifyUrl = None
         self._StreamEndNotifyUrl = None
         self._RecordNotifyUrl = None
+        self._RecordStatusNotifyUrl = None
         self._SnapshotNotifyUrl = None
         self._PornCensorshipNotifyUrl = None
         self._CallbackKey = None
@@ -2557,6 +2561,14 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
     @RecordNotifyUrl.setter
     def RecordNotifyUrl(self, RecordNotifyUrl):
         self._RecordNotifyUrl = RecordNotifyUrl
+
+    @property
+    def RecordStatusNotifyUrl(self):
+        return self._RecordStatusNotifyUrl
+
+    @RecordStatusNotifyUrl.setter
+    def RecordStatusNotifyUrl(self, RecordStatusNotifyUrl):
+        self._RecordStatusNotifyUrl = RecordStatusNotifyUrl
 
     @property
     def SnapshotNotifyUrl(self):
@@ -2613,6 +2625,7 @@ class CreateLiveCallbackTemplateRequest(AbstractModel):
         self._StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
         self._StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self._RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self._RecordStatusNotifyUrl = params.get("RecordStatusNotifyUrl")
         self._SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self._PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self._CallbackKey = params.get("CallbackKey")
@@ -18506,8 +18519,10 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         :type StreamBeginNotifyUrl: str
         :param _StreamEndNotifyUrl: 断流回调 URL。
         :type StreamEndNotifyUrl: str
-        :param _RecordNotifyUrl: 录制回调 URL。
+        :param _RecordNotifyUrl: 录制文件回调 URL。
         :type RecordNotifyUrl: str
+        :param _RecordStatusNotifyUrl: 录制状态回调 URL 。
+        :type RecordStatusNotifyUrl: str
         :param _SnapshotNotifyUrl: 截图回调 URL。
         :type SnapshotNotifyUrl: str
         :param _PornCensorshipNotifyUrl: 鉴黄回调 URL。
@@ -18526,6 +18541,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self._StreamBeginNotifyUrl = None
         self._StreamEndNotifyUrl = None
         self._RecordNotifyUrl = None
+        self._RecordStatusNotifyUrl = None
         self._SnapshotNotifyUrl = None
         self._PornCensorshipNotifyUrl = None
         self._CallbackKey = None
@@ -18581,6 +18597,14 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self._RecordNotifyUrl = RecordNotifyUrl
 
     @property
+    def RecordStatusNotifyUrl(self):
+        return self._RecordStatusNotifyUrl
+
+    @RecordStatusNotifyUrl.setter
+    def RecordStatusNotifyUrl(self, RecordStatusNotifyUrl):
+        self._RecordStatusNotifyUrl = RecordStatusNotifyUrl
+
+    @property
     def SnapshotNotifyUrl(self):
         return self._SnapshotNotifyUrl
 
@@ -18628,6 +18652,7 @@ class ModifyLiveCallbackTemplateRequest(AbstractModel):
         self._StreamBeginNotifyUrl = params.get("StreamBeginNotifyUrl")
         self._StreamEndNotifyUrl = params.get("StreamEndNotifyUrl")
         self._RecordNotifyUrl = params.get("RecordNotifyUrl")
+        self._RecordStatusNotifyUrl = params.get("RecordStatusNotifyUrl")
         self._SnapshotNotifyUrl = params.get("SnapshotNotifyUrl")
         self._PornCensorshipNotifyUrl = params.get("PornCensorshipNotifyUrl")
         self._CallbackKey = params.get("CallbackKey")

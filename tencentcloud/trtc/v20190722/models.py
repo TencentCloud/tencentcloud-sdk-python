@@ -979,7 +979,7 @@ class DescribeCallDetailInfoRequest(AbstractModel):
 注意：支持查询14天内的数据。
         :type StartTime: int
         :param _EndTime: 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
+注意：查询起止时间需小于1小时，超过则返回null，即与StartTime间隔时间不超过1小时。
         :type EndTime: int
         :param _SdkAppId: 用户SdkAppId（如：1400xxxxxx）。
         :type SdkAppId: int

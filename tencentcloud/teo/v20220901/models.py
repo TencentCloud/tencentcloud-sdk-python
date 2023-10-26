@@ -109,6 +109,24 @@ class AccelerationDomain(AbstractModel):
         :param _OriginDetail: 源站信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
+        :param _OriginProtocol: 回源协议，取值有：
+<li>FOLLOW: 协议跟随；</li>
+<li>HTTP: HTTP协议回源；</li>
+<li>HTTPS: HTTPS协议回源。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginProtocol: str
+        :param _HttpOriginPort: HTTP回源端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: HTTPS回源端口。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpsOriginPort: int
+        :param _IPv6Status: IPv6状态，取值有：
+<li>follow：遵循站点IPv6配置；</li>
+<li>on：开启状态；</li>
+<li>off：关闭状态。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6Status: str
         :param _Cname: CNAME 地址。
         :type Cname: str
         :param _IdentificationStatus: 加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
@@ -129,6 +147,10 @@ class AccelerationDomain(AbstractModel):
         self._DomainName = None
         self._DomainStatus = None
         self._OriginDetail = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
         self._Cname = None
         self._IdentificationStatus = None
         self._CreatedOn = None
@@ -167,6 +189,38 @@ class AccelerationDomain(AbstractModel):
     @OriginDetail.setter
     def OriginDetail(self, OriginDetail):
         self._OriginDetail = OriginDetail
+
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
 
     @property
     def Cname(self):
@@ -224,6 +278,10 @@ class AccelerationDomain(AbstractModel):
         if params.get("OriginDetail") is not None:
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         self._Cname = params.get("Cname")
         self._IdentificationStatus = params.get("IdentificationStatus")
         self._CreatedOn = params.get("CreatedOn")
@@ -3324,10 +3382,30 @@ class CreateAccelerationDomainRequest(AbstractModel):
         :type DomainName: str
         :param _OriginInfo: 源站信息。
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        :param _OriginProtocol: 回源协议，取值有：
+<li>FOLLOW: 协议跟随；</li>
+<li>HTTP: HTTP协议回源；</li>
+<li>HTTPS: HTTPS协议回源。</li>
+<li>不填默认为： FOLLOW。</li>
+        :type OriginProtocol: str
+        :param _HttpOriginPort: HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填默认为80。
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填默认为443。
+        :type HttpsOriginPort: int
+        :param _IPv6Status: IPv6状态，取值有：
+<li>follow：遵循站点IPv6配置；</li>
+<li>on：开启状态；</li>
+<li>off：关闭状态。</li>
+<li>不填默认为：follow。</li>
+        :type IPv6Status: str
         """
         self._ZoneId = None
         self._DomainName = None
         self._OriginInfo = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
 
     @property
     def ZoneId(self):
@@ -3353,6 +3431,38 @@ class CreateAccelerationDomainRequest(AbstractModel):
     def OriginInfo(self, OriginInfo):
         self._OriginInfo = OriginInfo
 
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3360,6 +3470,10 @@ class CreateAccelerationDomainRequest(AbstractModel):
         if params.get("OriginInfo") is not None:
             self._OriginInfo = OriginInfo()
             self._OriginInfo._deserialize(params.get("OriginInfo"))
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3920,6 +4034,119 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOriginGroupRequest(AbstractModel):
+    """CreateOriginGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Name: 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+        :type Name: str
+        :param _Type: 源站组类型，此参数必填，取值有：
+<li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+<li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+        :type Type: str
+        :param _Records: 源站记录信息，此参数必填。
+        :type Records: list of OriginRecord
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOriginGroupResponse(AbstractModel):
+    """CreateOriginGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginGroupId: 源站组ID。
+        :type OriginGroupId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OriginGroupId = None
+        self._RequestId = None
+
+    @property
+    def OriginGroupId(self):
+        return self._OriginGroupId
+
+    @OriginGroupId.setter
+    def OriginGroupId(self, OriginGroupId):
+        self._OriginGroupId = OriginGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OriginGroupId = params.get("OriginGroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4525,8 +4752,10 @@ class CreateSharedCNAMERequest(AbstractModel):
         :param _ZoneId: 共享 CNAME 所属站点的 ID。	
         :type ZoneId: str
         :param _SharedCNAMEPrefix: 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
-共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
-示例值：example.com
+
+共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。
+
+例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.share.eo.dnse2.com
         :type SharedCNAMEPrefix: str
         :param _Description: 描述。可输入 1-50 个任意字符。
         :type Description: str
@@ -5503,6 +5732,76 @@ class DeleteApplicationProxyRuleRequest(AbstractModel):
 
 class DeleteApplicationProxyRuleResponse(AbstractModel):
     """DeleteApplicationProxyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteOriginGroupRequest(AbstractModel):
+    """DeleteOriginGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _GroupId: 源站组ID，此参数必填。
+        :type GroupId: str
+        """
+        self._ZoneId = None
+        self._GroupId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteOriginGroupResponse(AbstractModel):
+    """DeleteOriginGroup返回参数结构体
 
     """
 
@@ -7242,17 +7541,28 @@ class DescribeOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页查询偏移量，默认为0。
+        :param _ZoneId: 站点ID，此参数必填。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量，不填默认为0。
         :type Offset: int
-        :param _Limit: 分页查询限制数目，默认为10，取值：1-1000。
+        :param _Limit: 分页查询限制数目，不填默认为20，取值：1-1000。
         :type Limit: int
         :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-20hzkd4rdmy0<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   类型：String<br>   必选：否<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
+<li>origin-group-id<br>   按照【<strong>源站组ID</strong>】进行过滤。源站组ID形如：origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   模糊查询：不支持</li><li>origin-group-name<br>   按照【<strong>源站组名称</strong>】进行过滤<br>   模糊查询：支持。使用模糊查询时，仅支持填写一个源站组名称</li>
         :type Filters: list of AdvancedFilter
         """
+        self._ZoneId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def Offset(self):
@@ -7280,6 +7590,7 @@ class DescribeOriginGroupRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
@@ -12238,10 +12549,30 @@ class ModifyAccelerationDomainRequest(AbstractModel):
         :type DomainName: str
         :param _OriginInfo: 源站信息。
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        :param _OriginProtocol: 回源协议，取值有：
+<li>FOLLOW: 协议跟随；</li>
+<li>HTTP: HTTP协议回源；</li>
+<li>HTTPS: HTTPS协议回源。</li>
+<li>不填保持原有配置。</li>
+        :type OriginProtocol: str
+        :param _HttpOriginPort: HTTP回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTP时生效, 不填保持原有配置。
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: HTTPS回源端口，取值为1-65535，当OriginProtocol=FOLLOW/HTTPS时生效，不填保持原有配置。
+        :type HttpsOriginPort: int
+        :param _IPv6Status: IPv6状态，取值有：
+<li>follow：遵循站点IPv6配置；</li>
+<li>on：开启状态；</li>
+<li>off：关闭状态。</li>
+<li>不填保持原有配置。</li>
+        :type IPv6Status: str
         """
         self._ZoneId = None
         self._DomainName = None
         self._OriginInfo = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
 
     @property
     def ZoneId(self):
@@ -12267,6 +12598,38 @@ class ModifyAccelerationDomainRequest(AbstractModel):
     def OriginInfo(self, OriginInfo):
         self._OriginInfo = OriginInfo
 
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -12274,6 +12637,10 @@ class ModifyAccelerationDomainRequest(AbstractModel):
         if params.get("OriginInfo") is not None:
             self._OriginInfo = OriginInfo()
             self._OriginInfo._deserialize(params.get("OriginInfo"))
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13224,6 +13591,119 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
 class ModifyHostsCertificateResponse(AbstractModel):
     """ModifyHostsCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOriginGroupRequest(AbstractModel):
+    """ModifyOriginGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _GroupId: 源站组ID，此参数必填。
+        :type GroupId: str
+        :param _Name: 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+        :type Name: str
+        :param _Type: 源站组类型，取值有：
+<li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
+<li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>不填保持原有配置。
+        :type Type: str
+        :param _Records: 源站记录信息，不填保持原有配置。
+        :type Records: list of OriginRecord
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOriginGroupResponse(AbstractModel):
+    """ModifyOriginGroup返回参数结构体
 
     """
 
@@ -14477,97 +14957,78 @@ class OriginGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
-        :type ZoneId: str
-        :param _ZoneName: 站点名称。
-        :type ZoneName: str
-        :param _OriginGroupId: 源站组ID。
-        :type OriginGroupId: str
-        :param _OriginType: 源站类型，取值有：
-<li>self：自有源站；</li>
-<li>third_party：第三方源站；</li>
-<li>cos：腾讯云COS源站。</li>
-        :type OriginType: str
-        :param _OriginGroupName: 源站组名称。
-        :type OriginGroupName: str
-        :param _ConfigurationType: 源站配置类型，当OriginType=self时，取值有：
-<li>area：按区域配置；</li>
-<li>weight： 按权重配置。</li>
-<li>proto： 按HTTP协议配置。</li>当OriginType=third_party/cos时放空。
-        :type ConfigurationType: str
-        :param _OriginRecords: 源站记录信息。
-        :type OriginRecords: list of OriginRecord
+        :param _GroupId: 源站组ID。
+        :type GroupId: str
+        :param _Name: 源站组名称。
+        :type Name: str
+        :param _Type: 源站组类型，取值有：
+<li>GENERAL：通用型源站组；</li>
+<li>HTTP： HTTP专用型源站组。</li>
+        :type Type: str
+        :param _Records: 源站记录信息。
+        :type Records: list of OriginRecord
+        :param _References: 源站组被引用实例列表。	
+        :type References: list of OriginGroupReference
+        :param _CreateTime: 源站组创建时间。
+        :type CreateTime: str
         :param _UpdateTime: 源站组更新时间。
         :type UpdateTime: str
-        :param _HostHeader: 当OriginType=self时，表示回源Host。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type HostHeader: str
         """
-        self._ZoneId = None
-        self._ZoneName = None
-        self._OriginGroupId = None
-        self._OriginType = None
-        self._OriginGroupName = None
-        self._ConfigurationType = None
-        self._OriginRecords = None
+        self._GroupId = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
+        self._References = None
+        self._CreateTime = None
         self._UpdateTime = None
-        self._HostHeader = None
 
     @property
-    def ZoneId(self):
-        return self._ZoneId
+    def GroupId(self):
+        return self._GroupId
 
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
-    def OriginGroupId(self):
-        return self._OriginGroupId
+    def Name(self):
+        return self._Name
 
-    @OriginGroupId.setter
-    def OriginGroupId(self, OriginGroupId):
-        self._OriginGroupId = OriginGroupId
-
-    @property
-    def OriginType(self):
-        return self._OriginType
-
-    @OriginType.setter
-    def OriginType(self, OriginType):
-        self._OriginType = OriginType
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
-    def OriginGroupName(self):
-        return self._OriginGroupName
+    def Type(self):
+        return self._Type
 
-    @OriginGroupName.setter
-    def OriginGroupName(self, OriginGroupName):
-        self._OriginGroupName = OriginGroupName
-
-    @property
-    def ConfigurationType(self):
-        return self._ConfigurationType
-
-    @ConfigurationType.setter
-    def ConfigurationType(self, ConfigurationType):
-        self._ConfigurationType = ConfigurationType
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
-    def OriginRecords(self):
-        return self._OriginRecords
+    def Records(self):
+        return self._Records
 
-    @OriginRecords.setter
-    def OriginRecords(self, OriginRecords):
-        self._OriginRecords = OriginRecords
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
     @property
     def UpdateTime(self):
@@ -14577,30 +15038,86 @@ class OriginGroup(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
-    @property
-    def HostHeader(self):
-        return self._HostHeader
 
-    @HostHeader.setter
-    def HostHeader(self, HostHeader):
-        self._HostHeader = HostHeader
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = OriginRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = OriginGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupReference(AbstractModel):
+    """源站组引用服务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 引用服务类型，取值有：
+<li>AccelerationDomain: 加速域名；</li>
+<li>RuleEngine: 规则引擎；</li>
+<li>Loadbalance: 负载均衡；</li>
+<li>ApplicationProxy: 四层代理。</li>
+        :type InstanceType: str
+        :param _InstanceId: 引用类型的实例ID。
+        :type InstanceId: str
+        :param _InstanceName: 应用类型的实例名称。
+        :type InstanceName: str
+        """
+        self._InstanceType = None
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
 
 
     def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._ZoneName = params.get("ZoneName")
-        self._OriginGroupId = params.get("OriginGroupId")
-        self._OriginType = params.get("OriginType")
-        self._OriginGroupName = params.get("OriginGroupName")
-        self._ConfigurationType = params.get("ConfigurationType")
-        if params.get("OriginRecords") is not None:
-            self._OriginRecords = []
-            for item in params.get("OriginRecords"):
-                obj = OriginRecord()
-                obj._deserialize(item)
-                self._OriginRecords.append(obj)
-        self._UpdateTime = params.get("UpdateTime")
-        self._HostHeader = params.get("HostHeader")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14844,42 +15361,28 @@ class OriginRecord(AbstractModel):
         r"""
         :param _Record: 源站记录值，不包含端口信息，可以为：IPv4，IPv6，域名格式。
         :type Record: str
+        :param _Type: 源站类型，取值有：
+<li>IP_DOMAIN：IPV4、IPV6、域名类型源站；</li>
+<li>COS：COS源。</li>
+<li>AWS_S3：AWS S3对象存储源站。</li>
+        :type Type: str
         :param _RecordId: 源站记录ID。
         :type RecordId: str
-        :param _Port: 源站端口，取值范围：[1-65535]。
-        :type Port: int
-        :param _Weight: 当源站配置类型ConfigurationType=weight时，表示权重。
-不配置权重信息时，所有源站组记录统一填写为0或者不填写，表示多个源站轮询回源。
-配置权重信息时，取值为[1-100]，多个源站权重总和应为100，表示多个源站按照权重回源。
-当源站配置类型ConfigurationType=proto时，表示权重。
-不配置权重信息时，所有源站组记录统一填写为0或者不填写，表示多个源站轮询回源。
-配置权重信息时，取值为[1-100]，源站组内Proto相同的多个源站权重总和应为100，表示多个源站按照权重回源。
+        :param _Weight: 源站权重，取值为0-100, 不填表示不设置权重，由系统自由调度，填0表示权重为0, 流量将不会调度到此源站。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param _Proto: 当源站配置类型ConfigurationType=proto时，表示源站的协议类型，将按照客户端请求协议回到相应的源站，取值有：
-<li>http：HTTP协议源站；</li>
-<li>https：HTTPS协议源站。</li>
-        :type Proto: str
-        :param _Area: 当源站配置类型ConfigurationType=area时，表示区域，为空表示全部地区。取值为iso-3166中alpha-2编码或者大洲区域代码。大洲区域代码取值为：
-<li>Asia：亚洲；</li>
-<li>Europe：欧洲；</li>
-<li>Africa：非洲；</li>
-<li>Oceania：大洋洲；</li>
-<li>Americas：美洲。</li>源站组记录中，至少需要有一项为全部地区。
-        :type Area: list of str
-        :param _Private: 当源站类型OriginType=third_part时有效
-是否私有鉴权，取值有：
+        :param _Private: 是否私有鉴权，当源站类型 RecordType=COS/AWS_S3 时生效，取值有：
 <li>true：使用私有鉴权；</li>
 <li>false：不使用私有鉴权。</li>不填写，默认值为：false。
+
         :type Private: bool
-        :param _PrivateParameters: 当源站类型Private=true时有效，表示私有鉴权使用参数。
+        :param _PrivateParameters: 私有鉴权参数，当源站类型Private=true时有效。
         :type PrivateParameters: list of PrivateParameter
         """
         self._Record = None
+        self._Type = None
         self._RecordId = None
-        self._Port = None
         self._Weight = None
-        self._Proto = None
-        self._Area = None
         self._Private = None
         self._PrivateParameters = None
 
@@ -14892,6 +15395,14 @@ class OriginRecord(AbstractModel):
         self._Record = Record
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def RecordId(self):
         return self._RecordId
 
@@ -14900,36 +15411,12 @@ class OriginRecord(AbstractModel):
         self._RecordId = RecordId
 
     @property
-    def Port(self):
-        return self._Port
-
-    @Port.setter
-    def Port(self, Port):
-        self._Port = Port
-
-    @property
     def Weight(self):
         return self._Weight
 
     @Weight.setter
     def Weight(self, Weight):
         self._Weight = Weight
-
-    @property
-    def Proto(self):
-        return self._Proto
-
-    @Proto.setter
-    def Proto(self, Proto):
-        self._Proto = Proto
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
 
     @property
     def Private(self):
@@ -14950,11 +15437,9 @@ class OriginRecord(AbstractModel):
 
     def _deserialize(self, params):
         self._Record = params.get("Record")
+        self._Type = params.get("Type")
         self._RecordId = params.get("RecordId")
-        self._Port = params.get("Port")
         self._Weight = params.get("Weight")
-        self._Proto = params.get("Proto")
-        self._Area = params.get("Area")
         self._Private = params.get("Private")
         if params.get("PrivateParameters") is not None:
             self._PrivateParameters = []
@@ -15275,7 +15760,7 @@ class PostMaxSize(AbstractModel):
 
 
 class PrivateParameter(AbstractModel):
-    """源站记录私有鉴权参数
+    """对象存储源站记录私有鉴权参数
 
     """
 
@@ -15283,7 +15768,9 @@ class PrivateParameter(AbstractModel):
         r"""
         :param _Name: 私有鉴权参数名称，取值有：
 <li>AccessKeyId：鉴权参数Access Key ID；</li>
-<li>SecretAccessKey：鉴权参数Secret Access Key。</li>
+<li>SecretAccessKey：鉴权参数Secret Access Key；</li>
+<li>SignatureVersion：鉴权版本，v2或者v4；</li>
+<li>Region：存储桶地域。</li>
         :type Name: str
         :param _Value: 私有鉴权参数值。
         :type Value: str

@@ -176,6 +176,18 @@ class AlarmInfo(AbstractModel):
         :param _Analysis: 多维分析设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Analysis: list of AnalysisDimensional
+        :param _GroupTriggerStatus: 分组触发状态。1：开启，0：关闭（默认）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupTriggerStatus: bool
+        :param _GroupTriggerCondition: 分组触发条件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupTriggerCondition: list of str
+        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorObjectType: int
+        :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmLevel: int
         :param _MultiConditions: 多触发条件。
 
 注意：此字段可能返回 null，表示取不到有效值。
@@ -195,6 +207,10 @@ class AlarmInfo(AbstractModel):
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
+        self._GroupTriggerStatus = None
+        self._GroupTriggerCondition = None
+        self._MonitorObjectType = None
+        self._AlarmLevel = None
         self._MultiConditions = None
 
     @property
@@ -310,6 +326,38 @@ class AlarmInfo(AbstractModel):
         self._Analysis = Analysis
 
     @property
+    def GroupTriggerStatus(self):
+        return self._GroupTriggerStatus
+
+    @GroupTriggerStatus.setter
+    def GroupTriggerStatus(self, GroupTriggerStatus):
+        self._GroupTriggerStatus = GroupTriggerStatus
+
+    @property
+    def GroupTriggerCondition(self):
+        return self._GroupTriggerCondition
+
+    @GroupTriggerCondition.setter
+    def GroupTriggerCondition(self, GroupTriggerCondition):
+        self._GroupTriggerCondition = GroupTriggerCondition
+
+    @property
+    def MonitorObjectType(self):
+        return self._MonitorObjectType
+
+    @MonitorObjectType.setter
+    def MonitorObjectType(self, MonitorObjectType):
+        self._MonitorObjectType = MonitorObjectType
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
     def MultiConditions(self):
         return self._MultiConditions
 
@@ -347,6 +395,10 @@ class AlarmInfo(AbstractModel):
                 obj = AnalysisDimensional()
                 obj._deserialize(item)
                 self._Analysis.append(obj)
+        self._GroupTriggerStatus = params.get("GroupTriggerStatus")
+        self._GroupTriggerCondition = params.get("GroupTriggerCondition")
+        self._MonitorObjectType = params.get("MonitorObjectType")
+        self._AlarmLevel = params.get("AlarmLevel")
         if params.get("MultiConditions") is not None:
             self._MultiConditions = []
             for item in params.get("MultiConditions"):
@@ -2907,7 +2959,11 @@ class CreateAlarmRequest(AbstractModel):
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
+        :param _AlarmPeriod: 告警重复的周期。
+
+单位是分钟。
+
+取值范围是0~1440。
         :type AlarmPeriod: int
         :param _AlarmNoticeIds: 关联的告警通知模板列表。
         :type AlarmNoticeIds: list of str
@@ -2918,15 +2974,25 @@ class CreateAlarmRequest(AbstractModel):
 - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
         :type Condition: str
+        :param _AlarmLevel: 告警级别。
+
+0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+
+注意:  
+- 不填则默认为0。
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :type AlarmLevel: int
         :param _MultiConditions: 多触发条件。
 
  注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 
 
 
         :type MultiConditions: list of MultiCondition
-        :param _Status: 是否开启告警策略。默认值为true
+        :param _Status: 是否开启告警策略。
+
+默认值为true
         :type Status: bool
         :param _MessageTemplate: 用户自定义告警内容
         :type MessageTemplate: str
@@ -2934,6 +3000,23 @@ class CreateAlarmRequest(AbstractModel):
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         :param _Analysis: 多维分析
         :type Analysis: list of AnalysisDimensional
+        :param _GroupTriggerStatus: 分组触发状态。
+
+默认值false
+        :type GroupTriggerStatus: bool
+        :param _GroupTriggerCondition: 分组触发条件。
+        :type GroupTriggerCondition: list of str
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
+
+最大支持10个标签键值对，并且不能有重复的键值对。
+        :type Tags: list of Tag
+        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+
+不填则默认为0。
+
+当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+
+        :type MonitorObjectType: int
         """
         self._Name = None
         self._AlarmTargets = None
@@ -2942,11 +3025,16 @@ class CreateAlarmRequest(AbstractModel):
         self._AlarmPeriod = None
         self._AlarmNoticeIds = None
         self._Condition = None
+        self._AlarmLevel = None
         self._MultiConditions = None
         self._Status = None
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
+        self._GroupTriggerStatus = None
+        self._GroupTriggerCondition = None
+        self._Tags = None
+        self._MonitorObjectType = None
 
     @property
     def Name(self):
@@ -3005,6 +3093,14 @@ class CreateAlarmRequest(AbstractModel):
         self._Condition = Condition
 
     @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
     def MultiConditions(self):
         return self._MultiConditions
 
@@ -3044,6 +3140,38 @@ class CreateAlarmRequest(AbstractModel):
     def Analysis(self, Analysis):
         self._Analysis = Analysis
 
+    @property
+    def GroupTriggerStatus(self):
+        return self._GroupTriggerStatus
+
+    @GroupTriggerStatus.setter
+    def GroupTriggerStatus(self, GroupTriggerStatus):
+        self._GroupTriggerStatus = GroupTriggerStatus
+
+    @property
+    def GroupTriggerCondition(self):
+        return self._GroupTriggerCondition
+
+    @GroupTriggerCondition.setter
+    def GroupTriggerCondition(self, GroupTriggerCondition):
+        self._GroupTriggerCondition = GroupTriggerCondition
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def MonitorObjectType(self):
+        return self._MonitorObjectType
+
+    @MonitorObjectType.setter
+    def MonitorObjectType(self, MonitorObjectType):
+        self._MonitorObjectType = MonitorObjectType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3060,6 +3188,7 @@ class CreateAlarmRequest(AbstractModel):
         self._AlarmPeriod = params.get("AlarmPeriod")
         self._AlarmNoticeIds = params.get("AlarmNoticeIds")
         self._Condition = params.get("Condition")
+        self._AlarmLevel = params.get("AlarmLevel")
         if params.get("MultiConditions") is not None:
             self._MultiConditions = []
             for item in params.get("MultiConditions"):
@@ -3077,6 +3206,15 @@ class CreateAlarmRequest(AbstractModel):
                 obj = AnalysisDimensional()
                 obj._deserialize(item)
                 self._Analysis.append(obj)
+        self._GroupTriggerStatus = params.get("GroupTriggerStatus")
+        self._GroupTriggerCondition = params.get("GroupTriggerCondition")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._MonitorObjectType = params.get("MonitorObjectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13233,6 +13371,14 @@ class ModifyAlarmRequest(AbstractModel):
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         :param _Analysis: 多维分析
         :type Analysis: list of AnalysisDimensional
+        :param _GroupTriggerStatus: 分组触发状态。true：开启，false：关闭（默认）
+        :type GroupTriggerStatus: bool
+        :param _GroupTriggerCondition: 分组触发条件。
+        :type GroupTriggerCondition: list of str
+        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+<li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+
+        :type MonitorObjectType: int
         """
         self._AlarmId = None
         self._Name = None
@@ -13248,6 +13394,9 @@ class ModifyAlarmRequest(AbstractModel):
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
+        self._GroupTriggerStatus = None
+        self._GroupTriggerCondition = None
+        self._MonitorObjectType = None
 
     @property
     def AlarmId(self):
@@ -13361,6 +13510,30 @@ class ModifyAlarmRequest(AbstractModel):
     def Analysis(self, Analysis):
         self._Analysis = Analysis
 
+    @property
+    def GroupTriggerStatus(self):
+        return self._GroupTriggerStatus
+
+    @GroupTriggerStatus.setter
+    def GroupTriggerStatus(self, GroupTriggerStatus):
+        self._GroupTriggerStatus = GroupTriggerStatus
+
+    @property
+    def GroupTriggerCondition(self):
+        return self._GroupTriggerCondition
+
+    @GroupTriggerCondition.setter
+    def GroupTriggerCondition(self, GroupTriggerCondition):
+        self._GroupTriggerCondition = GroupTriggerCondition
+
+    @property
+    def MonitorObjectType(self):
+        return self._MonitorObjectType
+
+    @MonitorObjectType.setter
+    def MonitorObjectType(self, MonitorObjectType):
+        self._MonitorObjectType = MonitorObjectType
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -13396,6 +13569,9 @@ class ModifyAlarmRequest(AbstractModel):
                 obj = AnalysisDimensional()
                 obj._deserialize(item)
                 self._Analysis.append(obj)
+        self._GroupTriggerStatus = params.get("GroupTriggerStatus")
+        self._GroupTriggerCondition = params.get("GroupTriggerCondition")
+        self._MonitorObjectType = params.get("MonitorObjectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
