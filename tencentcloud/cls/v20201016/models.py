@@ -14284,12 +14284,15 @@ class ModifyDataTransformRequest(AbstractModel):
         :type EnableFlag: int
         :param _DstResources: 加工任务目的topic_id以及别名
         :type DstResources: list of DataTransformResouceInfo
+        :param _HasServicesLog: 是否开启投递服务日志。1关闭，2开启
+        :type HasServicesLog: int
         """
         self._TaskId = None
         self._Name = None
         self._EtlContent = None
         self._EnableFlag = None
         self._DstResources = None
+        self._HasServicesLog = None
 
     @property
     def TaskId(self):
@@ -14331,6 +14334,14 @@ class ModifyDataTransformRequest(AbstractModel):
     def DstResources(self, DstResources):
         self._DstResources = DstResources
 
+    @property
+    def HasServicesLog(self):
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -14343,6 +14354,7 @@ class ModifyDataTransformRequest(AbstractModel):
                 obj = DataTransformResouceInfo()
                 obj._deserialize(item)
                 self._DstResources.append(obj)
+        self._HasServicesLog = params.get("HasServicesLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

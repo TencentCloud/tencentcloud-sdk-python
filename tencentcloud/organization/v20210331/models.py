@@ -1063,6 +1063,64 @@ class CreateOrganizationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAccountRequest(AbstractModel):
+    """DeleteAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: 成员uin。
+        :type MemberUin: int
+        """
+        self._MemberUin = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountResponse(AbstractModel):
+    """DeleteAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOrganizationIdentityRequest(AbstractModel):
     """DeleteOrganizationIdentity请求参数结构体
 

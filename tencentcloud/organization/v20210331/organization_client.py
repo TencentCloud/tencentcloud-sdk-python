@@ -256,6 +256,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAccount(self, request):
+        """删除成员账号
+
+        :param request: Request instance for DeleteAccount.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteAccountRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOrganization(self, request):
         """删除企业组织
 

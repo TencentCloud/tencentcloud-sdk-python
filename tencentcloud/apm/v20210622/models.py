@@ -2539,7 +2539,6 @@ class QueryMetricItem(AbstractModel):
 class Span(AbstractModel):
     """Span对象
 
-
     """
 
     def __init__(self):
@@ -2577,6 +2576,9 @@ class Span(AbstractModel):
         :param _StartTimeMillis: 产生时间戳(毫秒)
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTimeMillis: int
+        :param _ParentSpanID: Parent Span Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpanID: str
         """
         self._TraceID = None
         self._Logs = None
@@ -2589,6 +2591,7 @@ class Span(AbstractModel):
         self._Duration = None
         self._SpanID = None
         self._StartTimeMillis = None
+        self._ParentSpanID = None
 
     @property
     def TraceID(self):
@@ -2678,6 +2681,14 @@ class Span(AbstractModel):
     def StartTimeMillis(self, StartTimeMillis):
         self._StartTimeMillis = StartTimeMillis
 
+    @property
+    def ParentSpanID(self):
+        return self._ParentSpanID
+
+    @ParentSpanID.setter
+    def ParentSpanID(self, ParentSpanID):
+        self._ParentSpanID = ParentSpanID
+
 
     def _deserialize(self, params):
         self._TraceID = params.get("TraceID")
@@ -2708,6 +2719,7 @@ class Span(AbstractModel):
         self._Duration = params.get("Duration")
         self._SpanID = params.get("SpanID")
         self._StartTimeMillis = params.get("StartTimeMillis")
+        self._ParentSpanID = params.get("ParentSpanID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

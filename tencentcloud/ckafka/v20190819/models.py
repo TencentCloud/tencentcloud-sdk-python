@@ -20890,57 +20890,89 @@ class MySQLParam(AbstractModel):
     def __init__(self):
         r"""
         :param _Database: MySQL的数据库名称，"*"为全数据库
+注意：此字段可能返回 null，表示取不到有效值。
         :type Database: str
         :param _Table: MySQL的数据表名称，"*"为所监听的所有数据库中的非系统表，可以","间隔，监听多个数据表，但数据表需要以"数据库名.数据表名"的格式进行填写，需要填入正则表达式时，格式为"数据库名\\.数据表名"
+注意：此字段可能返回 null，表示取不到有效值。
         :type Table: str
         :param _Resource: 该MySQL在连接管理内的Id
+注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: str
         :param _SnapshotMode: 复制存量信息(schema_only不复制, initial全量)，默认位initial
+注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotMode: str
         :param _DdlTopic: 存放MySQL的Ddl信息的Topic，为空则默认不存放
+注意：此字段可能返回 null，表示取不到有效值。
         :type DdlTopic: str
         :param _DataSourceMonitorMode: "TABLE" 表示读取项为 table，"QUERY" 表示读取项为 query
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceMonitorMode: str
         :param _DataSourceMonitorResource: 当 "DataMonitorMode"="TABLE" 时，传入需要读取的 Table；当 "DataMonitorMode"="QUERY" 时，传入需要读取的查询 sql 语句
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceMonitorResource: str
         :param _DataSourceIncrementMode: "TIMESTAMP" 表示增量列为时间戳类型，"INCREMENT" 表示增量列为自增 id 类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceIncrementMode: str
         :param _DataSourceIncrementColumn: 传入需要监听的列名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceIncrementColumn: str
         :param _DataSourceStartFrom: "HEAD" 表示复制存量 + 增量数据，"TAIL" 表示只复制增量数据
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceStartFrom: str
         :param _DataTargetInsertMode: "INSERT" 表示使用 Insert 模式插入，"UPSERT" 表示使用 Upsert 模式插入
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetInsertMode: str
         :param _DataTargetPrimaryKeyField: 当 "DataInsertMode"="UPSERT" 时，传入当前 upsert 时依赖的主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetPrimaryKeyField: str
         :param _DataTargetRecordMapping: 表与消息间的映射关系
+注意：此字段可能返回 null，表示取不到有效值。
         :type DataTargetRecordMapping: list of RecordMapping
         :param _TopicRegex: 事件路由到特定主题的正则表达式，默认为(.*)
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicRegex: str
         :param _TopicReplacement: TopicRegex的引用组，指定$1、$2等
+注意：此字段可能返回 null，表示取不到有效值。
         :type TopicReplacement: str
         :param _KeyColumns: 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+注意：此字段可能返回 null，表示取不到有效值。
         :type KeyColumns: str
         :param _DropInvalidMessage: Mysql 是否抛弃解析失败的消息，默认为true
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropInvalidMessage: bool
         :param _DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+注意：此字段可能返回 null，表示取不到有效值。
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         :param _OutputFormat: 输出格式，DEFAULT、CANAL_1、CANAL_2
+注意：此字段可能返回 null，表示取不到有效值。
         :type OutputFormat: str
         :param _IsTablePrefix: 当Table输入的是前缀时，该项值为true，否则为false
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsTablePrefix: bool
         :param _IncludeContentChanges: 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeContentChanges: str
         :param _IncludeQuery: 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeQuery: bool
         :param _RecordWithSchema: 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+注意：此字段可能返回 null，表示取不到有效值。
         :type RecordWithSchema: bool
         :param _SignalDatabase: 存放信令表的数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type SignalDatabase: str
         :param _IsTableRegular: 输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
+注意：此字段可能返回 null，表示取不到有效值。
         :type IsTableRegular: bool
         :param _SignalTable: 信号表
+注意：此字段可能返回 null，表示取不到有效值。
         :type SignalTable: str
+        :param _DateTimeZone: datetime 类型字段转换为时间戳的时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateTimeZone: str
+        :param _SelfBuilt: 自建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfBuilt: bool
         """
         self._Database = None
         self._Table = None
@@ -20968,6 +21000,8 @@ class MySQLParam(AbstractModel):
         self._SignalDatabase = None
         self._IsTableRegular = None
         self._SignalTable = None
+        self._DateTimeZone = None
+        self._SelfBuilt = None
 
     @property
     def Database(self):
@@ -21177,6 +21211,22 @@ class MySQLParam(AbstractModel):
     def SignalTable(self, SignalTable):
         self._SignalTable = SignalTable
 
+    @property
+    def DateTimeZone(self):
+        return self._DateTimeZone
+
+    @DateTimeZone.setter
+    def DateTimeZone(self, DateTimeZone):
+        self._DateTimeZone = DateTimeZone
+
+    @property
+    def SelfBuilt(self):
+        return self._SelfBuilt
+
+    @SelfBuilt.setter
+    def SelfBuilt(self, SelfBuilt):
+        self._SelfBuilt = SelfBuilt
+
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
@@ -21212,6 +21262,8 @@ class MySQLParam(AbstractModel):
         self._SignalDatabase = params.get("SignalDatabase")
         self._IsTableRegular = params.get("IsTableRegular")
         self._SignalTable = params.get("SignalTable")
+        self._DateTimeZone = params.get("DateTimeZone")
+        self._SelfBuilt = params.get("SelfBuilt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

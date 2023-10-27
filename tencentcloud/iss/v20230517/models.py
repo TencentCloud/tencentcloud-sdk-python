@@ -13510,7 +13510,7 @@ class UpdateDeviceData(AbstractModel):
         :param _DeviceId: 设备ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
-        :param _Code: 设备编码（即我们为设备生成的20位国标编码）
+        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
@@ -15337,6 +15337,8 @@ class UpdateUserDeviceRequest(AbstractModel):
         :type Port: int
         :param _Username: 设备用户名（仅网关接入支持）
         :type Username: str
+        :param _ProtocolType: 网关设备接入协议（仅网关接入支持）
+        :type ProtocolType: int
         """
         self._DeviceId = None
         self._Name = None
@@ -15346,6 +15348,7 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._Ip = None
         self._Port = None
         self._Username = None
+        self._ProtocolType = None
 
     @property
     def DeviceId(self):
@@ -15411,6 +15414,14 @@ class UpdateUserDeviceRequest(AbstractModel):
     def Username(self, Username):
         self._Username = Username
 
+    @property
+    def ProtocolType(self):
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -15421,6 +15432,7 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
         self._Username = params.get("Username")
+        self._ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17011,7 +17011,7 @@ class RegionInfo(AbstractModel):
 
 
 class RuleInstanceRelation(AbstractModel):
-    """四七层规则的
+    """四七层规则对应实例与IP的关系
 
     """
 

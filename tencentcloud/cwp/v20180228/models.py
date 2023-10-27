@@ -12388,6 +12388,9 @@ class BruteAttackInfo(AbstractModel):
         :param _Location: 地理位置中文名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
+        :param _RiskLevel: 威胁等级：0低危，1中危，2高危
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: int
         """
         self._Id = None
         self._Uuid = None
@@ -12412,6 +12415,7 @@ class BruteAttackInfo(AbstractModel):
         self._DataStatus = None
         self._MachineExtraInfo = None
         self._Location = None
+        self._RiskLevel = None
 
     @property
     def Id(self):
@@ -12597,6 +12601,14 @@ class BruteAttackInfo(AbstractModel):
     def Location(self, Location):
         self._Location = Location
 
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12624,6 +12636,7 @@ class BruteAttackInfo(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Location = params.get("Location")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78671,7 +78684,7 @@ class ReverseShell(AbstractModel):
         :type MachineName: str
         :param _ProcTree: 进程树
         :type ProcTree: str
-        :param _DetectBy: 检测方法
+        :param _DetectBy: 检测方法: 0行为分析; 1命令特征检测
         :type DetectBy: int
         :param _MachineExtraInfo:  主机额外信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -78679,6 +78692,9 @@ class ReverseShell(AbstractModel):
         :param _Pid: 进程id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pid: int
+        :param _RiskLevel: 威胁等级：0中危，1高危
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: int
         """
         self._Id = None
         self._Uuid = None
@@ -78702,6 +78718,7 @@ class ReverseShell(AbstractModel):
         self._DetectBy = None
         self._MachineExtraInfo = None
         self._Pid = None
+        self._RiskLevel = None
 
     @property
     def Id(self):
@@ -78879,6 +78896,14 @@ class ReverseShell(AbstractModel):
     def Pid(self, Pid):
         self._Pid = Pid
 
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -78905,6 +78930,7 @@ class ReverseShell(AbstractModel):
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Pid = params.get("Pid")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

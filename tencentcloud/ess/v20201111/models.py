@@ -7522,8 +7522,8 @@ class CreateSealRequest(AbstractModel):
 
         :type FileToken: str
         :param _SealStyle: 印章样式, 可以选择的样式如下: 
-<ul><li>**cycle**:(默认)圆形印章</li>
-<li>**ellipse**:椭圆印章</li>
+<ul><li>**circle**:(默认)圆形印章</li>
+<li>**ellipse**:椭圆印章</li></ul>
         :type SealStyle: str
         :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: 
 <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>

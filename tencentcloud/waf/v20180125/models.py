@@ -6122,8 +6122,21 @@ class DescribeAntiInfoLeakageRulesRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
+        :param _Offset: 翻页支持，读取偏移
+        :type Offset: int
+        :param _Limit: 翻页支持，读取长度限制
+        :type Limit: int
+        :param _Order: 排序方式，asc或者desc
+        :type Order: str
+        :param _Filters: 过滤器,可以允许如下的值：
+RuleId,Match_field,Name,Action,Status
+        :type Filters: list of FiltersItemNew
         """
         self._Domain = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._Filters = None
 
     @property
     def Domain(self):
@@ -6133,9 +6146,50 @@ class DescribeAntiInfoLeakageRulesRequest(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

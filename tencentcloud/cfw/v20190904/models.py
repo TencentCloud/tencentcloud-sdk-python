@@ -1790,6 +1790,481 @@ class CreateAddressTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAlertCenterIsolateRequest(AbstractModel):
+    """CreateAlertCenterIsolate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HandleAssetList: 处置对象,资产列表
+        :type HandleAssetList: list of str
+        :param _HandleTime: 处置时间
+1  1天
+7   7天
+-2 永久
+        :type HandleTime: int
+        :param _AlertDirection: 当前日志方向： 0 出向 1 入向
+        :type AlertDirection: int
+        :param _IsolateType: 隔离类型 
+1 互联网入站
+2 互联网出站
+4 内网访问
+        :type IsolateType: list of int
+        :param _OmMode: 运维模式 1 IP白名单 2 身份认证
+        :type OmMode: int
+        """
+        self._HandleAssetList = None
+        self._HandleTime = None
+        self._AlertDirection = None
+        self._IsolateType = None
+        self._OmMode = None
+
+    @property
+    def HandleAssetList(self):
+        return self._HandleAssetList
+
+    @HandleAssetList.setter
+    def HandleAssetList(self, HandleAssetList):
+        self._HandleAssetList = HandleAssetList
+
+    @property
+    def HandleTime(self):
+        return self._HandleTime
+
+    @HandleTime.setter
+    def HandleTime(self, HandleTime):
+        self._HandleTime = HandleTime
+
+    @property
+    def AlertDirection(self):
+        return self._AlertDirection
+
+    @AlertDirection.setter
+    def AlertDirection(self, AlertDirection):
+        self._AlertDirection = AlertDirection
+
+    @property
+    def IsolateType(self):
+        return self._IsolateType
+
+    @IsolateType.setter
+    def IsolateType(self, IsolateType):
+        self._IsolateType = IsolateType
+
+    @property
+    def OmMode(self):
+        return self._OmMode
+
+    @OmMode.setter
+    def OmMode(self, OmMode):
+        self._OmMode = OmMode
+
+
+    def _deserialize(self, params):
+        self._HandleAssetList = params.get("HandleAssetList")
+        self._HandleTime = params.get("HandleTime")
+        self._AlertDirection = params.get("AlertDirection")
+        self._IsolateType = params.get("IsolateType")
+        self._OmMode = params.get("OmMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlertCenterIsolateResponse(AbstractModel):
+    """CreateAlertCenterIsolate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回状态码：
+0 成功
+非0 失败
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回信息：
+success 成功
+其他
+        :type ReturnMsg: str
+        :param _Status: 处置状态码：
+0  处置成功
+-1 通用错误，不用处理
+-3 表示重复，需重新刷新列表
+其他
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAlertCenterOmitRequest(AbstractModel):
+    """CreateAlertCenterOmit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HandleIdList: 处置对象,ID列表，  IdLists和IpList二选一
+        :type HandleIdList: list of str
+        :param _TableType: 忽略数据来源：
+AlertTable 告警中心  InterceptionTable拦截列表
+        :type TableType: str
+        """
+        self._HandleIdList = None
+        self._TableType = None
+
+    @property
+    def HandleIdList(self):
+        return self._HandleIdList
+
+    @HandleIdList.setter
+    def HandleIdList(self, HandleIdList):
+        self._HandleIdList = HandleIdList
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+
+    def _deserialize(self, params):
+        self._HandleIdList = params.get("HandleIdList")
+        self._TableType = params.get("TableType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlertCenterOmitResponse(AbstractModel):
+    """CreateAlertCenterOmit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回状态码：
+0 成功
+非0 失败
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回信息：
+success 成功
+其他
+        :type ReturnMsg: str
+        :param _Status: 处置状态码：
+0  处置成功
+-1 通用错误，不用处理
+-3 表示重复，需重新刷新列表
+其他
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAlertCenterRuleRequest(AbstractModel):
+    """CreateAlertCenterRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HandleTime: 处置时间
+1  1天
+7   7天
+-2 永久
+        :type HandleTime: int
+        :param _HandleType: 处置类型
+当HandleIdList 不为空时：1封禁 2放通  
+当HandleIpList 不为空时：3放通 4封禁
+        :type HandleType: int
+        :param _AlertDirection: 当前日志方向： 0 出向 1 入向
+        :type AlertDirection: int
+        :param _HandleDirection: 处置方向： 0出向 1入向 0,1出入向 3内网
+        :type HandleDirection: str
+        :param _HandleIdList: 处置对象,ID列表，  IdLists和IpList二选一
+        :type HandleIdList: list of str
+        :param _HandleIpList: 处置对象,IP列表，  IdLists和IpList二选一
+        :type HandleIpList: list of str
+        :param _HandleComment: 处置描述
+        :type HandleComment: str
+        :param _IgnoreReason: 放通原因:
+0默认 1重复 2误报 3紧急放通
+        :type IgnoreReason: int
+        :param _BlockDomain: 封禁域名-保留字段
+        :type BlockDomain: str
+        """
+        self._HandleTime = None
+        self._HandleType = None
+        self._AlertDirection = None
+        self._HandleDirection = None
+        self._HandleIdList = None
+        self._HandleIpList = None
+        self._HandleComment = None
+        self._IgnoreReason = None
+        self._BlockDomain = None
+
+    @property
+    def HandleTime(self):
+        return self._HandleTime
+
+    @HandleTime.setter
+    def HandleTime(self, HandleTime):
+        self._HandleTime = HandleTime
+
+    @property
+    def HandleType(self):
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+    @property
+    def AlertDirection(self):
+        return self._AlertDirection
+
+    @AlertDirection.setter
+    def AlertDirection(self, AlertDirection):
+        self._AlertDirection = AlertDirection
+
+    @property
+    def HandleDirection(self):
+        return self._HandleDirection
+
+    @HandleDirection.setter
+    def HandleDirection(self, HandleDirection):
+        self._HandleDirection = HandleDirection
+
+    @property
+    def HandleIdList(self):
+        return self._HandleIdList
+
+    @HandleIdList.setter
+    def HandleIdList(self, HandleIdList):
+        self._HandleIdList = HandleIdList
+
+    @property
+    def HandleIpList(self):
+        return self._HandleIpList
+
+    @HandleIpList.setter
+    def HandleIpList(self, HandleIpList):
+        self._HandleIpList = HandleIpList
+
+    @property
+    def HandleComment(self):
+        return self._HandleComment
+
+    @HandleComment.setter
+    def HandleComment(self, HandleComment):
+        self._HandleComment = HandleComment
+
+    @property
+    def IgnoreReason(self):
+        return self._IgnoreReason
+
+    @IgnoreReason.setter
+    def IgnoreReason(self, IgnoreReason):
+        self._IgnoreReason = IgnoreReason
+
+    @property
+    def BlockDomain(self):
+        return self._BlockDomain
+
+    @BlockDomain.setter
+    def BlockDomain(self, BlockDomain):
+        self._BlockDomain = BlockDomain
+
+
+    def _deserialize(self, params):
+        self._HandleTime = params.get("HandleTime")
+        self._HandleType = params.get("HandleType")
+        self._AlertDirection = params.get("AlertDirection")
+        self._HandleDirection = params.get("HandleDirection")
+        self._HandleIdList = params.get("HandleIdList")
+        self._HandleIpList = params.get("HandleIpList")
+        self._HandleComment = params.get("HandleComment")
+        self._IgnoreReason = params.get("IgnoreReason")
+        self._BlockDomain = params.get("BlockDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlertCenterRuleResponse(AbstractModel):
+    """CreateAlertCenterRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回状态码：
+0 成功
+非0 失败
+        :type ReturnCode: int
+        :param _ReturnMsg: 返回信息：
+success 成功
+其他
+        :type ReturnMsg: str
+        :param _Status: 处置状态码：
+0  处置成功
+-1 通用错误，不用处理
+-3 表示重复，需重新刷新列表
+其他
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateBlockIgnoreRuleListRequest(AbstractModel):
     """CreateBlockIgnoreRuleList请求参数结构体
 
@@ -10185,7 +10660,7 @@ class FwGroupSwitchShow(AbstractModel):
         :param _FwInsRegion: 网络经过VPC防火墙CVM所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type FwInsRegion: list of str
-        :param _IpsAction: 0 观察 1 拦截 2 严格 3 关闭
+        :param _IpsAction: 0 观察 1 拦截 2 严格 3 关闭 4 不支持ips 前端展示tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpsAction: int
         :param _FwInsLst: 开关关联的防火墙实例列表
@@ -14465,6 +14940,15 @@ class NatInstanceInfo(AbstractModel):
         :param _NeedProbeEngineUpdate: 是的需要升级引擎 支持 nat拨测 1需要 0不需要
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedProbeEngineUpdate: int
+        :param _TrafficMode: 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficMode: str
+        :param _Zone: 实例主所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ZoneBak: 实例备所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneBak: str
         """
         self._NatinsId = None
         self._NatinsName = None
@@ -14486,6 +14970,9 @@ class NatInstanceInfo(AbstractModel):
         self._EngineVersion = None
         self._UpdateEnable = None
         self._NeedProbeEngineUpdate = None
+        self._TrafficMode = None
+        self._Zone = None
+        self._ZoneBak = None
 
     @property
     def NatinsId(self):
@@ -14647,6 +15134,30 @@ class NatInstanceInfo(AbstractModel):
     def NeedProbeEngineUpdate(self, NeedProbeEngineUpdate):
         self._NeedProbeEngineUpdate = NeedProbeEngineUpdate
 
+    @property
+    def TrafficMode(self):
+        return self._TrafficMode
+
+    @TrafficMode.setter
+    def TrafficMode(self, TrafficMode):
+        self._TrafficMode = TrafficMode
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneBak(self):
+        return self._ZoneBak
+
+    @ZoneBak.setter
+    def ZoneBak(self, ZoneBak):
+        self._ZoneBak = ZoneBak
+
 
     def _deserialize(self, params):
         self._NatinsId = params.get("NatinsId")
@@ -14669,6 +15180,9 @@ class NatInstanceInfo(AbstractModel):
         self._EngineVersion = params.get("EngineVersion")
         self._UpdateEnable = params.get("UpdateEnable")
         self._NeedProbeEngineUpdate = params.get("NeedProbeEngineUpdate")
+        self._TrafficMode = params.get("TrafficMode")
+        self._Zone = params.get("Zone")
+        self._ZoneBak = params.get("ZoneBak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18167,6 +18681,12 @@ class VpcFwCvmInsInfo(AbstractModel):
         :param _BandWidth: 防火墙CVM带宽值
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandWidth: int
+        :param _Zone: 实例主机所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _ZoneBak: 实例备机所在可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneBak: str
         """
         self._FwInsId = None
         self._Region = None
@@ -18175,6 +18695,8 @@ class VpcFwCvmInsInfo(AbstractModel):
         self._ZoneZh = None
         self._ZoneZhBack = None
         self._BandWidth = None
+        self._Zone = None
+        self._ZoneBak = None
 
     @property
     def FwInsId(self):
@@ -18232,6 +18754,22 @@ class VpcFwCvmInsInfo(AbstractModel):
     def BandWidth(self, BandWidth):
         self._BandWidth = BandWidth
 
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneBak(self):
+        return self._ZoneBak
+
+    @ZoneBak.setter
+    def ZoneBak(self, ZoneBak):
+        self._ZoneBak = ZoneBak
+
 
     def _deserialize(self, params):
         self._FwInsId = params.get("FwInsId")
@@ -18241,6 +18779,8 @@ class VpcFwCvmInsInfo(AbstractModel):
         self._ZoneZh = params.get("ZoneZh")
         self._ZoneZhBack = params.get("ZoneZhBack")
         self._BandWidth = params.get("BandWidth")
+        self._Zone = params.get("Zone")
+        self._ZoneBak = params.get("ZoneBak")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18579,6 +19119,9 @@ class VpcFwInstanceInfo(AbstractModel):
         :param _UpdateEnable: 引擎是否可升级：0，不可升级；1，可升级
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateEnable: int
+        :param _TrafficMode: 引擎运行模式，Normal:正常, OnlyRoute:透明模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficMode: str
         """
         self._FwInsName = None
         self._FwInsId = None
@@ -18603,6 +19146,7 @@ class VpcFwInstanceInfo(AbstractModel):
         self._FlowMax = None
         self._EngineVersion = None
         self._UpdateEnable = None
+        self._TrafficMode = None
 
     @property
     def FwInsName(self):
@@ -18788,6 +19332,14 @@ class VpcFwInstanceInfo(AbstractModel):
     def UpdateEnable(self, UpdateEnable):
         self._UpdateEnable = UpdateEnable
 
+    @property
+    def TrafficMode(self):
+        return self._TrafficMode
+
+    @TrafficMode.setter
+    def TrafficMode(self, TrafficMode):
+        self._TrafficMode = TrafficMode
+
 
     def _deserialize(self, params):
         self._FwInsName = params.get("FwInsName")
@@ -18828,6 +19380,7 @@ class VpcFwInstanceInfo(AbstractModel):
         self._FlowMax = params.get("FlowMax")
         self._EngineVersion = params.get("EngineVersion")
         self._UpdateEnable = params.get("UpdateEnable")
+        self._TrafficMode = params.get("TrafficMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

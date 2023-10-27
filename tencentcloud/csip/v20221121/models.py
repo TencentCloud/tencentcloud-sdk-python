@@ -891,6 +891,53 @@ class AssetInfoDetail(AbstractModel):
         
 
 
+class AssetTag(AbstractModel):
+    """安全中心资产标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签的key值,可以是字母、数字、下划线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 标签的vale值,可以是字母、数字、下划线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetViewCFGRisk(AbstractModel):
     """资产视角配置风险
 
@@ -3267,10 +3314,13 @@ class CreateDomainAndIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: -
+        :param _Content: 公网IP/域名
         :type Content: list of str
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Content = None
+        self._Tags = None
 
     @property
     def Content(self):
@@ -3280,9 +3330,23 @@ class CreateDomainAndIpRequest(AbstractModel):
     def Content(self, Content):
         self._Content = Content
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3357,6 +3421,8 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
         :param _TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
         :type TaskMode: int
+        :param _Tags: 资产标签
+        :type Tags: :class:`tencentcloud.csip.v20221121.models.AssetTag`
         """
         self._TaskName = None
         self._ScanAssetType = None
@@ -3368,6 +3434,7 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
         self._ScanFrom = None
         self._TaskAdvanceCFG = None
         self._TaskMode = None
+        self._Tags = None
 
     @property
     def TaskName(self):
@@ -3449,6 +3516,14 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
     def TaskMode(self, TaskMode):
         self._TaskMode = TaskMode
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -3468,6 +3543,9 @@ class CreateRiskCenterScanTaskRequest(AbstractModel):
             self._TaskAdvanceCFG = TaskAdvanceCFG()
             self._TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))
         self._TaskMode = params.get("TaskMode")
+        if params.get("Tags") is not None:
+            self._Tags = AssetTag()
+            self._Tags._deserialize(params.get("Tags"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4180,10 +4258,16 @@ class DeleteDomainAndIpRequest(AbstractModel):
         :type RetainPath: int
         :param _IgnoreAsset: 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
         :type IgnoreAsset: int
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
+        :param _Type: 删除类型，取值： ALL， 删除全部，将直接忽略Content的内容；                                           其他值 ,非全部，则Centent必填，  默认为其他值。
+        :type Type: str
         """
         self._Content = None
         self._RetainPath = None
         self._IgnoreAsset = None
+        self._Tags = None
+        self._Type = None
 
     @property
     def Content(self):
@@ -4209,6 +4293,22 @@ class DeleteDomainAndIpRequest(AbstractModel):
     def IgnoreAsset(self, IgnoreAsset):
         self._IgnoreAsset = IgnoreAsset
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         if params.get("Content") is not None:
@@ -4219,6 +4319,13 @@ class DeleteDomainAndIpRequest(AbstractModel):
                 self._Content.append(obj)
         self._RetainPath = params.get("RetainPath")
         self._IgnoreAsset = params.get("IgnoreAsset")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5069,8 +5176,11 @@ class DescribeDomainAssetsRequest(AbstractModel):
         r"""
         :param _Filter: -
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 安全中心自定义标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -5080,11 +5190,25 @@ class DescribeDomainAssetsRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5323,8 +5447,11 @@ class DescribePublicIpAssetsRequest(AbstractModel):
         r"""
         :param _Filter: filte过滤条件
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 安全中心自定义标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -5334,11 +5461,25 @@ class DescribePublicIpAssetsRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5521,8 +5662,11 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -5532,11 +5676,25 @@ class DescribeRiskCenterAssetViewCFGRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5712,8 +5870,11 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -5723,11 +5884,25 @@ class DescribeRiskCenterAssetViewPortRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5886,8 +6061,11 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -5897,11 +6075,25 @@ class DescribeRiskCenterAssetViewVULRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6060,8 +6252,11 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6071,11 +6266,25 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6234,8 +6443,11 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6245,11 +6457,25 @@ class DescribeRiskCenterPortViewPortRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6374,8 +6600,11 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6385,11 +6614,25 @@ class DescribeRiskCenterServerRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6480,8 +6723,11 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6491,11 +6737,25 @@ class DescribeRiskCenterVULViewVULRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6620,8 +6880,11 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 资产标签
+        :type Tags: list of AssetTag
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6631,11 +6894,25 @@ class DescribeRiskCenterWebsiteRiskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6880,8 +7157,11 @@ class DescribeScanTaskListRequest(AbstractModel):
         r"""
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _Tags: 标签
+        :type Tags: list of Tags
         """
         self._Filter = None
+        self._Tags = None
 
     @property
     def Filter(self):
@@ -6891,11 +7171,25 @@ class DescribeScanTaskListRequest(AbstractModel):
     def Filter(self, Filter):
         self._Filter = Filter
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7370,13 +7664,24 @@ class DescribeTaskLogURLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportItemKeyList: 任务报告Id 列表
-        :type ReportItemKeyList: list of ReportItemKey
         :param _Type: 0: 预览， 1: 下载
         :type Type: int
+        :param _ReportItemKeyList: 任务报告Id 列表
+        :type ReportItemKeyList: list of ReportItemKey
+        :param _ReportTaskIdList: 报告中任务id列表
+        :type ReportTaskIdList: list of ReportTaskIdList
         """
-        self._ReportItemKeyList = None
         self._Type = None
+        self._ReportItemKeyList = None
+        self._ReportTaskIdList = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def ReportItemKeyList(self):
@@ -7387,22 +7692,28 @@ class DescribeTaskLogURLRequest(AbstractModel):
         self._ReportItemKeyList = ReportItemKeyList
 
     @property
-    def Type(self):
-        return self._Type
+    def ReportTaskIdList(self):
+        return self._ReportTaskIdList
 
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
+    @ReportTaskIdList.setter
+    def ReportTaskIdList(self, ReportTaskIdList):
+        self._ReportTaskIdList = ReportTaskIdList
 
 
     def _deserialize(self, params):
+        self._Type = params.get("Type")
         if params.get("ReportItemKeyList") is not None:
             self._ReportItemKeyList = []
             for item in params.get("ReportItemKeyList"):
                 obj = ReportItemKey()
                 obj._deserialize(item)
                 self._ReportItemKeyList.append(obj)
-        self._Type = params.get("Type")
+        if params.get("ReportTaskIdList") is not None:
+            self._ReportTaskIdList = []
+            for item in params.get("ReportTaskIdList"):
+                obj = ReportTaskIdList()
+                obj._deserialize(item)
+                self._ReportTaskIdList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9132,6 +9443,51 @@ class ReportItemKey(AbstractModel):
         
 
 
+class ReportTaskIdList(AbstractModel):
+    """报告中的task_id list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdList: 任务id列表
+        :type TaskIdList: list of str
+        :param _AppId: 租户ID
+        :type AppId: str
+        """
+        self._TaskIdList = None
+        self._AppId = None
+
+    @property
+    def TaskIdList(self):
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._TaskIdList = params.get("TaskIdList")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RiskCenterStatusKey(AbstractModel):
     """风险中心状态处理Key
 
@@ -10679,6 +11035,53 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tags(AbstractModel):
+    """主机标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagKey: str
+        :param _TagValue: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

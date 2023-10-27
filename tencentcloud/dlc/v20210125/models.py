@@ -10486,6 +10486,8 @@ DatasourceConnectionType   （数据源连接连接类型）
         :type DatasourceConnectionNames: list of str
         :param _DatasourceConnectionTypes: 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
         :type DatasourceConnectionTypes: list of str
+        :param _HiveVersion: 返回指定hive版本的数据源，该参数指定后，会过滤掉该参数指定版本以外的hive数据源，非hive数据源正常返回
+        :type HiveVersion: list of str
         """
         self._DatasourceConnectionIds = None
         self._Filters = None
@@ -10497,6 +10499,7 @@ DatasourceConnectionType   （数据源连接连接类型）
         self._EndTime = None
         self._DatasourceConnectionNames = None
         self._DatasourceConnectionTypes = None
+        self._HiveVersion = None
 
     @property
     def DatasourceConnectionIds(self):
@@ -10578,6 +10581,14 @@ DatasourceConnectionType   （数据源连接连接类型）
     def DatasourceConnectionTypes(self, DatasourceConnectionTypes):
         self._DatasourceConnectionTypes = DatasourceConnectionTypes
 
+    @property
+    def HiveVersion(self):
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
 
     def _deserialize(self, params):
         self._DatasourceConnectionIds = params.get("DatasourceConnectionIds")
@@ -10595,6 +10606,7 @@ DatasourceConnectionType   （数据源连接连接类型）
         self._EndTime = params.get("EndTime")
         self._DatasourceConnectionNames = params.get("DatasourceConnectionNames")
         self._DatasourceConnectionTypes = params.get("DatasourceConnectionTypes")
+        self._HiveVersion = params.get("HiveVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

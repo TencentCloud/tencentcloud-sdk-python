@@ -4876,6 +4876,153 @@ class DescribeMerchantsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePlanQRCodesRequest(AbstractModel):
+    """DescribePlanQRCodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlanId: 计划ID
+        :type PlanId: int
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        """
+        self._PlanId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNo = None
+        self._PageSize = None
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PlanId = params.get("PlanId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlanQRCodesResponse(AbstractModel):
+    """DescribePlanQRCodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ret: 返回码
+        :type Ret: int
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 数据
+        :type Data: list of PlanQRCode
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ret = None
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Ret(self):
+        return self._Ret
+
+    @Ret.setter
+    def Ret(self, Ret):
+        self._Ret = Ret
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ret = params.get("Ret")
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = PlanQRCode()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProductByIdRequest(AbstractModel):
     """DescribeProductById请求参数结构体
 
@@ -7913,6 +8060,53 @@ class PhaseData(AbstractModel):
         self._AppId = params.get("AppId")
         self._AppPath = params.get("AppPath")
         self._AppName = params.get("AppName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlanQRCode(AbstractModel):
+    """安心计划二维码
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 二维码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _Status: 状态，0:未激活 1:已激活 2:已冻结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._Url = None
+        self._Status = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

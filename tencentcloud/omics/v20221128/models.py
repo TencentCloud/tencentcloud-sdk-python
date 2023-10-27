@@ -18,6 +18,144 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApplicationVersion(AbstractModel):
+    """应用版本。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 版本类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _ApplicationVersionId: 版本ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationVersionId: str
+        :param _Name: 发布名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: 发布描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Entrypoint: 入口文件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Entrypoint: str
+        :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreatorName: 创建者名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorName: str
+        :param _CreatorId: 创建者ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorId: str
+        :param _GitInfo: Git信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GitInfo: str
+        """
+        self._Type = None
+        self._ApplicationVersionId = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._CreateTime = None
+        self._CreatorName = None
+        self._CreatorId = None
+        self._GitInfo = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ApplicationVersionId(self):
+        return self._ApplicationVersionId
+
+    @ApplicationVersionId.setter
+    def ApplicationVersionId(self, ApplicationVersionId):
+        self._ApplicationVersionId = ApplicationVersionId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreatorName(self):
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def CreatorId(self):
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def GitInfo(self):
+        return self._GitInfo
+
+    @GitInfo.setter
+    def GitInfo(self, GitInfo):
+        self._GitInfo = GitInfo
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._ApplicationVersionId = params.get("ApplicationVersionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._CreateTime = params.get("CreateTime")
+        self._CreatorName = params.get("CreatorName")
+        self._CreatorId = params.get("CreatorId")
+        self._GitInfo = params.get("GitInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CVMOption(AbstractModel):
     """云服务器配置。
 
@@ -53,6 +191,66 @@ class CVMOption(AbstractModel):
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CacheInfo(AbstractModel):
+    """缓存信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CacheClearDelay: 缓存清理时间(小时)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheClearDelay: int
+        :param _CacheClearTime: 缓存清理计划时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheClearTime: str
+        :param _CacheCleared: 缓存是否已被清理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheCleared: bool
+        """
+        self._CacheClearDelay = None
+        self._CacheClearTime = None
+        self._CacheCleared = None
+
+    @property
+    def CacheClearDelay(self):
+        return self._CacheClearDelay
+
+    @CacheClearDelay.setter
+    def CacheClearDelay(self, CacheClearDelay):
+        self._CacheClearDelay = CacheClearDelay
+
+    @property
+    def CacheClearTime(self):
+        return self._CacheClearTime
+
+    @CacheClearTime.setter
+    def CacheClearTime(self, CacheClearTime):
+        self._CacheClearTime = CacheClearTime
+
+    @property
+    def CacheCleared(self):
+        return self._CacheCleared
+
+    @CacheCleared.setter
+    def CacheCleared(self, CacheCleared):
+        self._CacheCleared = CacheCleared
+
+
+    def _deserialize(self, params):
+        self._CacheClearDelay = params.get("CacheClearDelay")
+        self._CacheClearTime = params.get("CacheClearTime")
+        self._CacheCleared = params.get("CacheCleared")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1348,14 +1546,14 @@ class GetRunCallsRequest(AbstractModel):
         r"""
         :param _RunUuid: 任务Uuid。
         :type RunUuid: str
-        :param _ProjectId: 项目ID。
-        :type ProjectId: str
         :param _Path: 作业路径
         :type Path: str
+        :param _ProjectId: 项目ID。
+        :type ProjectId: str
         """
         self._RunUuid = None
-        self._ProjectId = None
         self._Path = None
+        self._ProjectId = None
 
     @property
     def RunUuid(self):
@@ -1366,14 +1564,6 @@ class GetRunCallsRequest(AbstractModel):
         self._RunUuid = RunUuid
 
     @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
     def Path(self):
         return self._Path
 
@@ -1381,11 +1571,19 @@ class GetRunCallsRequest(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._RunUuid = params.get("RunUuid")
-        self._ProjectId = params.get("ProjectId")
         self._Path = params.get("Path")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1640,6 +1838,79 @@ class ImportTableFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class NFOption(AbstractModel):
+    """Nextflow选项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Config: Config。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        :param _Profile: Profile。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Profile: str
+        :param _Report: Report。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Report: bool
+        :param _Resume: Resume。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resume: bool
+        """
+        self._Config = None
+        self._Profile = None
+        self._Report = None
+        self._Resume = None
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Report(self):
+        return self._Report
+
+    @Report.setter
+    def Report(self, Report):
+        self._Report = Report
+
+    @property
+    def Resume(self):
+        return self._Resume
+
+    @Resume.setter
+    def Resume(self, Resume):
+        self._Resume = Resume
+
+
+    def _deserialize(self, params):
+        self._Config = params.get("Config")
+        self._Profile = params.get("Profile")
+        self._Report = params.get("Report")
+        self._Resume = params.get("Resume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceIds(AbstractModel):
     """云资源ID。
 
@@ -1873,6 +2144,9 @@ class Run(AbstractModel):
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _ExecutionTime: 执行时间。
         :type ExecutionTime: :class:`tencentcloud.omics.v20221128.models.ExecutionTime`
+        :param _Cache: 缓存信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cache: :class:`tencentcloud.omics.v20221128.models.CacheInfo`
         :param _ErrorMessage: 错误信息。
         :type ErrorMessage: str
         :param _CreateTime: 创建时间。
@@ -1892,6 +2166,7 @@ class Run(AbstractModel):
         self._Input = None
         self._Option = None
         self._ExecutionTime = None
+        self._Cache = None
         self._ErrorMessage = None
         self._CreateTime = None
         self._UpdateTime = None
@@ -1993,6 +2268,14 @@ class Run(AbstractModel):
         self._ExecutionTime = ExecutionTime
 
     @property
+    def Cache(self):
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
     def ErrorMessage(self):
         return self._ErrorMessage
 
@@ -2034,6 +2317,9 @@ class Run(AbstractModel):
         if params.get("ExecutionTime") is not None:
             self._ExecutionTime = ExecutionTime()
             self._ExecutionTime._deserialize(params.get("ExecutionTime"))
+        if params.get("Cache") is not None:
+            self._Cache = CacheInfo()
+            self._Cache._deserialize(params.get("Cache"))
         self._ErrorMessage = params.get("ErrorMessage")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
@@ -2273,8 +2559,11 @@ class RunGroup(AbstractModel):
         :type Status: str
         :param _Input: 任务输入。
         :type Input: str
-        :param _Option: 运行选项。
+        :param _Option: WDL运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
+        :param _NFOption: Nextflow运行选项。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
         :param _TotalRun: 任务总数量。
         :type TotalRun: int
         :param _RunStatusCounts: 各状态任务的数量。
@@ -2287,6 +2576,18 @@ class RunGroup(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 更新时间。
         :type UpdateTime: str
+        :param _Creator: 创建者。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _CreatorId: 创建者ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorId: str
+        :param _ResultNotify: 运行结果通知方式。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultNotify: str
+        :param _ApplicationVersion: 应用版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationVersion: :class:`tencentcloud.omics.v20221128.models.ApplicationVersion`
         """
         self._RunGroupId = None
         self._ProjectId = None
@@ -2302,12 +2603,17 @@ class RunGroup(AbstractModel):
         self._Status = None
         self._Input = None
         self._Option = None
+        self._NFOption = None
         self._TotalRun = None
         self._RunStatusCounts = None
         self._ExecutionTime = None
         self._ErrorMessage = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Creator = None
+        self._CreatorId = None
+        self._ResultNotify = None
+        self._ApplicationVersion = None
 
     @property
     def RunGroupId(self):
@@ -2422,6 +2728,14 @@ class RunGroup(AbstractModel):
         self._Option = Option
 
     @property
+    def NFOption(self):
+        return self._NFOption
+
+    @NFOption.setter
+    def NFOption(self, NFOption):
+        self._NFOption = NFOption
+
+    @property
     def TotalRun(self):
         return self._TotalRun
 
@@ -2469,6 +2783,38 @@ class RunGroup(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorId(self):
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def ResultNotify(self):
+        return self._ResultNotify
+
+    @ResultNotify.setter
+    def ResultNotify(self, ResultNotify):
+        self._ResultNotify = ResultNotify
+
+    @property
+    def ApplicationVersion(self):
+        return self._ApplicationVersion
+
+    @ApplicationVersion.setter
+    def ApplicationVersion(self, ApplicationVersion):
+        self._ApplicationVersion = ApplicationVersion
+
 
     def _deserialize(self, params):
         self._RunGroupId = params.get("RunGroupId")
@@ -2487,6 +2833,9 @@ class RunGroup(AbstractModel):
         if params.get("Option") is not None:
             self._Option = RunOption()
             self._Option._deserialize(params.get("Option"))
+        if params.get("NFOption") is not None:
+            self._NFOption = NFOption()
+            self._NFOption._deserialize(params.get("NFOption"))
         self._TotalRun = params.get("TotalRun")
         if params.get("RunStatusCounts") is not None:
             self._RunStatusCounts = []
@@ -2500,6 +2849,12 @@ class RunGroup(AbstractModel):
         self._ErrorMessage = params.get("ErrorMessage")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Creator = params.get("Creator")
+        self._CreatorId = params.get("CreatorId")
+        self._ResultNotify = params.get("ResultNotify")
+        if params.get("ApplicationVersion") is not None:
+            self._ApplicationVersion = ApplicationVersion()
+            self._ApplicationVersion._deserialize(params.get("ApplicationVersion"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2577,6 +2932,9 @@ class RunMetadata(AbstractModel):
         :param _Stderr: 错误输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stderr: str
+        :param _Meta: 其他信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Meta: str
         """
         self._RunType = None
         self._RunId = None
@@ -2598,6 +2956,7 @@ class RunMetadata(AbstractModel):
         self._CallCached = None
         self._Stdout = None
         self._Stderr = None
+        self._Meta = None
 
     @property
     def RunType(self):
@@ -2759,6 +3118,14 @@ class RunMetadata(AbstractModel):
     def Stderr(self, Stderr):
         self._Stderr = Stderr
 
+    @property
+    def Meta(self):
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
 
     def _deserialize(self, params):
         self._RunType = params.get("RunType")
@@ -2781,6 +3148,7 @@ class RunMetadata(AbstractModel):
         self._CallCached = params.get("CallCached")
         self._Stdout = params.get("Stdout")
         self._Stderr = params.get("Stderr")
+        self._Meta = params.get("Meta")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

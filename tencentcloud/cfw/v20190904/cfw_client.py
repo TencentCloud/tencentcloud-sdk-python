@@ -187,6 +187,75 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlertCenterIsolate(self, request):
+        """用户告警中心-封隔离处置按钮
+
+        :param request: Request instance for CreateAlertCenterIsolate.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterIsolateRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterIsolateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlertCenterIsolate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlertCenterIsolateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAlertCenterOmit(self, request):
+        """用户告警中心-忽略处置按钮
+
+        :param request: Request instance for CreateAlertCenterOmit.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterOmitRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterOmitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlertCenterOmit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlertCenterOmitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAlertCenterRule(self, request):
+        """用户告警中心-封禁、放通处置按钮
+
+        :param request: Request instance for CreateAlertCenterRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateAlertCenterRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlertCenterRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlertCenterRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlockIgnoreRuleList(self, request):
         """批量添加入侵防御封禁列表、放通列表规则
 

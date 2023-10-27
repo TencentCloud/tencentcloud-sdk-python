@@ -167,7 +167,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateOriginGroup(self, request):
-        """创建源站组
+        """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
         :param request: Request instance for CreateOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupRequest`
@@ -952,6 +952,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityTemplateBindings(self, request):
+        """查询指定策略模板的绑定关系列表。
+
+        :param request: Request instance for DescribeSecurityTemplateBindings.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityTemplateBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityTemplateBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTimingL4Data(self, request):
         """本接口（DescribeTimingL4Data）用于查询四层时序流量数据列表。
 
@@ -1392,7 +1415,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginGroup(self, request):
-        """修改源站组
+        """修改源站组配置，新提交的源站记录将会覆盖原有源站组中的源站记录。
 
         :param request: Request instance for ModifyOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupRequest`

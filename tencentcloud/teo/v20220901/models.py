@@ -4044,21 +4044,24 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID
         :type ZoneId: str
-        :param _Name: 源站组名称，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。
+        :param _Name: 源站组名称，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。
         :type Name: str
         :param _Type: 源站组类型，此参数必填，取值有：
-<li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
-<li>HTTP： HTTP专用型源站组，支持添加 IP/域名、对象存储源站，无法被四层代理引用。</li>
+<li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡、HTTP 专用型负载均衡引用；</li>
+<li>HTTP： HTTP 专用型源站组，支持添加 IP/域名、对象存储源站作为源站，无法被四层代理引用，仅支持被添加加速域名、规则引擎-修改源站、HTTP 专用型负载均衡引用。</li>
         :type Type: str
         :param _Records: 源站记录信息，此参数必填。
         :type Records: list of OriginRecord
+        :param _HostHeader: 回源 Host Header，仅 Type = HTTP 时传入生效，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+        :type HostHeader: str
         """
         self._ZoneId = None
         self._Name = None
         self._Type = None
         self._Records = None
+        self._HostHeader = None
 
     @property
     def ZoneId(self):
@@ -4092,6 +4095,14 @@ class CreateOriginGroupRequest(AbstractModel):
     def Records(self, Records):
         self._Records = Records
 
+    @property
+    def HostHeader(self):
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -4103,6 +4114,7 @@ class CreateOriginGroupRequest(AbstractModel):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8440,6 +8452,99 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityTemplateBindingsRequest(AbstractModel):
+    """DescribeSecurityTemplateBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 要查询的站点 ID。
+        :type ZoneId: str
+        :param _TemplateId: 要查询的策略模板 ID。
+        :type TemplateId: list of str
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityTemplateBindingsResponse(AbstractModel):
+    """DescribeSecurityTemplateBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityTemplate: 指定策略模板的绑定关系列表。
+
+当某个站点中的域名包含在指定策略模板的绑定关系中时，绑定关系列表 `TemplateScope` 中会包含该站点的 `ZoneId`，和该站点下的和该策略模板有关的域名绑定关系。
+
+注意：当没有任何域名正在绑定或已经绑定到指定策略模板时，绑定关系为空。即：返回结构体中，`TemplateScope` 数组长度为 0。
+
+绑定关系中，同一域名可能在 `EntityStatus` 列表中重复出现，并标记为不同 `Status` 。例如，正在被绑定到其他策略模板的域名，会同时标记为 `online` 和 `pending` 。
+        :type SecurityTemplate: list of SecurityTemplateBinding
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecurityTemplate = None
+        self._RequestId = None
+
+    @property
+    def SecurityTemplate(self):
+        return self._SecurityTemplate
+
+    @SecurityTemplate.setter
+    def SecurityTemplate(self, SecurityTemplate):
+        self._SecurityTemplate = SecurityTemplate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityTemplate") is not None:
+            self._SecurityTemplate = []
+            for item in params.get("SecurityTemplate"):
+                obj = SecurityTemplateBinding()
+                obj._deserialize(item)
+                self._SecurityTemplate.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     """DescribeTimingL4Data请求参数结构体
 
@@ -10560,6 +10665,64 @@ class DropPageDetail(AbstractModel):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._CustomResponseId = params.get("CustomResponseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EntityStatus(AbstractModel):
+    """安全实例状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entity: 实例名，现在只有子域名。
+        :type Entity: str
+        :param _Status: 实例配置下发状态，取值有：
+<li>online：配置已生效；</li><li>fail：配置失败；</li><li> process：配置下发中。</li>
+        :type Status: str
+        :param _Message: 实例配置下发信息提示。
+        :type Message: str
+        """
+        self._Entity = None
+        self._Status = None
+        self._Message = None
+
+    @property
+    def Entity(self):
+        return self._Entity
+
+    @Entity.setter
+    def Entity(self, Entity):
+        self._Entity = Entity
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Entity = params.get("Entity")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13621,11 +13784,11 @@ class ModifyOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID
         :type ZoneId: str
-        :param _GroupId: 源站组ID，此参数必填。
+        :param _GroupId: 源站组 ID，此参数必填。
         :type GroupId: str
-        :param _Name: 源站组名称，不填保持原有配置，可输入1-200个字符，允许的字符为 a-z, A-Z, 0-9, _, - 。	
+        :param _Name: 源站组名称，不填保持原有配置，可输入1 - 200个字符，允许的字符为 a - z, A - Z, 0 - 9, _, - 。	
         :type Name: str
         :param _Type: 源站组类型，取值有：
 <li>GENERAL：通用型源站组，仅支持添加 IP/域名 源站，可以被域名服务、规则引擎、四层代理、通用型负载均衡引用；</li>
@@ -13633,12 +13796,15 @@ class ModifyOriginGroupRequest(AbstractModel):
         :type Type: str
         :param _Records: 源站记录信息，不填保持原有配置。
         :type Records: list of OriginRecord
+        :param _HostHeader: 回源 Host Header，仅 Type = HTTP 时生效， 不填或者填空表示不配置回源Host，规则引擎修改 Host Header 配置优先级高于源站组的 Host Header。
+        :type HostHeader: str
         """
         self._ZoneId = None
         self._GroupId = None
         self._Name = None
         self._Type = None
         self._Records = None
+        self._HostHeader = None
 
     @property
     def ZoneId(self):
@@ -13680,6 +13846,14 @@ class ModifyOriginGroupRequest(AbstractModel):
     def Records(self, Records):
         self._Records = Records
 
+    @property
+    def HostHeader(self):
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -13692,6 +13866,7 @@ class ModifyOriginGroupRequest(AbstractModel):
                 obj = OriginRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18056,6 +18231,56 @@ class SecurityConfig(AbstractModel):
         
 
 
+class SecurityTemplateBinding(AbstractModel):
+    """安全策略模板的绑定关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板ID
+        :type TemplateId: str
+        :param _TemplateScope: 模板绑定状态。
+        :type TemplateScope: list of TemplateScope
+        """
+        self._TemplateId = None
+        self._TemplateScope = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateScope(self):
+        return self._TemplateScope
+
+    @TemplateScope.setter
+    def TemplateScope(self, TemplateScope):
+        self._TemplateScope = TemplateScope
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        if params.get("TemplateScope") is not None:
+            self._TemplateScope = []
+            for item in params.get("TemplateScope"):
+                obj = TemplateScope()
+                obj._deserialize(item)
+                self._TemplateScope.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityType(AbstractModel):
     """安全类型配置项。
 
@@ -18971,6 +19196,58 @@ class TemplateConfig(AbstractModel):
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
         self._TemplateName = params.get("TemplateName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateScope(AbstractModel):
+    """安全模板绑定域名状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param _EntityStatus: 实例状态列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntityStatus: list of EntityStatus
+        """
+        self._ZoneId = None
+        self._EntityStatus = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EntityStatus(self):
+        return self._EntityStatus
+
+    @EntityStatus.setter
+    def EntityStatus(self, EntityStatus):
+        self._EntityStatus = EntityStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("EntityStatus") is not None:
+            self._EntityStatus = []
+            for item in params.get("EntityStatus"):
+                obj = EntityStatus()
+                obj._deserialize(item)
+                self._EntityStatus.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1383,6 +1383,52 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRabbitMQQueueDetail(self, request):
+        """查询RabbitMQ队列详情
+
+        :param request: Request instance for DescribeRabbitMQQueueDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueueDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueueDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQQueueDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQQueueDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRabbitMQQueues(self, request):
+        """查询RabbitMQ队列列表
+
+        :param request: Request instance for DescribeRabbitMQQueues.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueuesRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQQueuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQQueues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQQueuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRabbitMQUser(self, request):
         """查询RabbitMQ用户列表
 

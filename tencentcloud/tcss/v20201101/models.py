@@ -24122,7 +24122,13 @@ class DescribeCheckItemListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 每次查询的最大记录数量
         :type Limit: int
-        :param _Filters: Name 可取值：risk_level风险等级, risk_target检查对象，风险对象,risk_type风险类别,risk_attri检测项所属的风险类型
+        :param _Filters: Name 可取值：
+Name: 检查项名称
+RiskType: 风险类别
+RiskLevel: 风险等级
+RiskTarget: 检查对象
+RiskAttribute: 检测项所属分型线类型
+Enable: 检查项是否开启(0:关闭 1:开启)
         :type Filters: list of ComplianceFilters
         """
         self._Offset = None

@@ -287,6 +287,9 @@ UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWDELETE = 'UnsupportedOperation.CreateMe
 # 创建的成员不允许退出。
 UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWQUIT = 'UnsupportedOperation.CreateMemberNotAllowQuit'
 
+# 成员删除许可未开启。
+UNSUPPORTEDOPERATION_DELETEACCOUNTDISABLED = 'UnsupportedOperation.DeleteAccountDisabled'
+
 # 不允许删除代付关系。
 UNSUPPORTEDOPERATION_DELETEDELEGATEPAYERNOTALLOW = 'UnsupportedOperation.DeleteDelegatePayerNotAllow'
 
@@ -299,11 +302,17 @@ UNSUPPORTEDOPERATION_EXISTEDCLIENT = 'UnsupportedOperation.ExistedClient'
 # 用户类型不一致。
 UNSUPPORTEDOPERATION_INCONSISTENTUSERTYPES = 'UnsupportedOperation.InconsistentUserTypes'
 
+# 邀请的成员不允许删除。
+UNSUPPORTEDOPERATION_INVITEACCOUNTNOTALLOWDELETE = 'UnsupportedOperation.InviteAccountNotAllowDelete'
+
 # 调用经管系统报错。
 UNSUPPORTEDOPERATION_MANAGEMENTSYSTEMERROR = 'UnsupportedOperation.ManagementSystemError'
 
 # 成员账户欠费。
 UNSUPPORTEDOPERATION_MEMBERACCOUNTARREARS = 'UnsupportedOperation.MemberAccountArrears'
+
+# 成员账号存在资源，不允许删除。
+UNSUPPORTEDOPERATION_MEMBERACCOUNTEXISTRESOURCE = 'UnsupportedOperation.MemberAccountExistResource'
 
 # 成员存在优惠继承。
 UNSUPPORTEDOPERATION_MEMBERDISCOUNTINHERITEXISTED = 'UnsupportedOperation.MemberDiscountInheritExisted'

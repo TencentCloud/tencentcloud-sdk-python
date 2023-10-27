@@ -8838,6 +8838,577 @@ class DescribeRabbitMQNodeListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQQueueDetailRequest(AbstractModel):
+    """DescribeRabbitMQQueueDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+        :type VirtualHost: str
+        :param _QueueName: 队列名称
+        :type QueueName: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._QueueName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._QueueName = params.get("QueueName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQQueueDetailResponse(AbstractModel):
+    """DescribeRabbitMQQueueDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualHost: str
+        :param _QueueName: 队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
+        :param _QueueType: 队列类型,取值classic或quorum
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueType: str
+        :param _Consumers: 在线消费者数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consumers: int
+        :param _Durable: 持久标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Durable: bool
+        :param _AutoDelete: 自动清除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoDelete: bool
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _MessageTTL: MessageTTL参数,classic类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageTTL: int
+        :param _AutoExpire: AutoExpire参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoExpire: int
+        :param _MaxLength: MaxLength参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxLength: int
+        :param _MaxLengthBytes: MaxLengthBytes参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxLengthBytes: int
+        :param _DeliveryLimit: DeliveryLimit参数,quorum类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliveryLimit: int
+        :param _OverflowBehaviour: OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OverflowBehaviour: str
+        :param _DeadLetterExchange: DeadLetterExchange参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterExchange: str
+        :param _DeadLetterRoutingKey: DeadLetterRoutingKey参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadLetterRoutingKey: str
+        :param _SingleActiveConsumer: SingleActiveConsumer参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SingleActiveConsumer: bool
+        :param _MaximumPriority: MaximumPriority参数,classic类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaximumPriority: int
+        :param _LazyMode: LazyMode参数,classic类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LazyMode: bool
+        :param _MasterLocator: MasterLocator参数,classic类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterLocator: str
+        :param _MaxInMemoryLength: MaxInMemoryLength参数,quorum类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxInMemoryLength: int
+        :param _MaxInMemoryBytes: MaxInMemoryBytes参数,quorum类型专用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxInMemoryBytes: int
+        :param _CreateTime: 创建时间戳,单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _Node: 节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Node: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._QueueName = None
+        self._QueueType = None
+        self._Consumers = None
+        self._Durable = None
+        self._AutoDelete = None
+        self._Remark = None
+        self._MessageTTL = None
+        self._AutoExpire = None
+        self._MaxLength = None
+        self._MaxLengthBytes = None
+        self._DeliveryLimit = None
+        self._OverflowBehaviour = None
+        self._DeadLetterExchange = None
+        self._DeadLetterRoutingKey = None
+        self._SingleActiveConsumer = None
+        self._MaximumPriority = None
+        self._LazyMode = None
+        self._MasterLocator = None
+        self._MaxInMemoryLength = None
+        self._MaxInMemoryBytes = None
+        self._CreateTime = None
+        self._Node = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def QueueType(self):
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+    @property
+    def Consumers(self):
+        return self._Consumers
+
+    @Consumers.setter
+    def Consumers(self, Consumers):
+        self._Consumers = Consumers
+
+    @property
+    def Durable(self):
+        return self._Durable
+
+    @Durable.setter
+    def Durable(self, Durable):
+        self._Durable = Durable
+
+    @property
+    def AutoDelete(self):
+        return self._AutoDelete
+
+    @AutoDelete.setter
+    def AutoDelete(self, AutoDelete):
+        self._AutoDelete = AutoDelete
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MessageTTL(self):
+        return self._MessageTTL
+
+    @MessageTTL.setter
+    def MessageTTL(self, MessageTTL):
+        self._MessageTTL = MessageTTL
+
+    @property
+    def AutoExpire(self):
+        return self._AutoExpire
+
+    @AutoExpire.setter
+    def AutoExpire(self, AutoExpire):
+        self._AutoExpire = AutoExpire
+
+    @property
+    def MaxLength(self):
+        return self._MaxLength
+
+    @MaxLength.setter
+    def MaxLength(self, MaxLength):
+        self._MaxLength = MaxLength
+
+    @property
+    def MaxLengthBytes(self):
+        return self._MaxLengthBytes
+
+    @MaxLengthBytes.setter
+    def MaxLengthBytes(self, MaxLengthBytes):
+        self._MaxLengthBytes = MaxLengthBytes
+
+    @property
+    def DeliveryLimit(self):
+        return self._DeliveryLimit
+
+    @DeliveryLimit.setter
+    def DeliveryLimit(self, DeliveryLimit):
+        self._DeliveryLimit = DeliveryLimit
+
+    @property
+    def OverflowBehaviour(self):
+        return self._OverflowBehaviour
+
+    @OverflowBehaviour.setter
+    def OverflowBehaviour(self, OverflowBehaviour):
+        self._OverflowBehaviour = OverflowBehaviour
+
+    @property
+    def DeadLetterExchange(self):
+        return self._DeadLetterExchange
+
+    @DeadLetterExchange.setter
+    def DeadLetterExchange(self, DeadLetterExchange):
+        self._DeadLetterExchange = DeadLetterExchange
+
+    @property
+    def DeadLetterRoutingKey(self):
+        return self._DeadLetterRoutingKey
+
+    @DeadLetterRoutingKey.setter
+    def DeadLetterRoutingKey(self, DeadLetterRoutingKey):
+        self._DeadLetterRoutingKey = DeadLetterRoutingKey
+
+    @property
+    def SingleActiveConsumer(self):
+        return self._SingleActiveConsumer
+
+    @SingleActiveConsumer.setter
+    def SingleActiveConsumer(self, SingleActiveConsumer):
+        self._SingleActiveConsumer = SingleActiveConsumer
+
+    @property
+    def MaximumPriority(self):
+        return self._MaximumPriority
+
+    @MaximumPriority.setter
+    def MaximumPriority(self, MaximumPriority):
+        self._MaximumPriority = MaximumPriority
+
+    @property
+    def LazyMode(self):
+        return self._LazyMode
+
+    @LazyMode.setter
+    def LazyMode(self, LazyMode):
+        self._LazyMode = LazyMode
+
+    @property
+    def MasterLocator(self):
+        return self._MasterLocator
+
+    @MasterLocator.setter
+    def MasterLocator(self, MasterLocator):
+        self._MasterLocator = MasterLocator
+
+    @property
+    def MaxInMemoryLength(self):
+        return self._MaxInMemoryLength
+
+    @MaxInMemoryLength.setter
+    def MaxInMemoryLength(self, MaxInMemoryLength):
+        self._MaxInMemoryLength = MaxInMemoryLength
+
+    @property
+    def MaxInMemoryBytes(self):
+        return self._MaxInMemoryBytes
+
+    @MaxInMemoryBytes.setter
+    def MaxInMemoryBytes(self, MaxInMemoryBytes):
+        self._MaxInMemoryBytes = MaxInMemoryBytes
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Node(self):
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._QueueName = params.get("QueueName")
+        self._QueueType = params.get("QueueType")
+        self._Consumers = params.get("Consumers")
+        self._Durable = params.get("Durable")
+        self._AutoDelete = params.get("AutoDelete")
+        self._Remark = params.get("Remark")
+        self._MessageTTL = params.get("MessageTTL")
+        self._AutoExpire = params.get("AutoExpire")
+        self._MaxLength = params.get("MaxLength")
+        self._MaxLengthBytes = params.get("MaxLengthBytes")
+        self._DeliveryLimit = params.get("DeliveryLimit")
+        self._OverflowBehaviour = params.get("OverflowBehaviour")
+        self._DeadLetterExchange = params.get("DeadLetterExchange")
+        self._DeadLetterRoutingKey = params.get("DeadLetterRoutingKey")
+        self._SingleActiveConsumer = params.get("SingleActiveConsumer")
+        self._MaximumPriority = params.get("MaximumPriority")
+        self._LazyMode = params.get("LazyMode")
+        self._MasterLocator = params.get("MasterLocator")
+        self._MaxInMemoryLength = params.get("MaxInMemoryLength")
+        self._MaxInMemoryBytes = params.get("MaxInMemoryBytes")
+        self._CreateTime = params.get("CreateTime")
+        self._Node = params.get("Node")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQQueuesRequest(AbstractModel):
+    """DescribeRabbitMQQueues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _VirtualHost: Vhost参数
+        :type VirtualHost: str
+        :param _Offset: 分页Offset
+        :type Offset: int
+        :param _Limit: 分页Limit
+        :type Limit: int
+        :param _SearchWord: 搜索关键词
+        :type SearchWord: str
+        :param _QueueType: 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+        :type QueueType: str
+        :param _SortElement: 排序依据的字段：
+MessageHeapCount - 消息堆积数；
+MessageRateInOut - 生产消费速率之和；
+MessageRateIn - 生产速率；
+MessageRateOut - 消费速率；
+        :type SortElement: str
+        :param _SortOrder: 排序顺序，ascend 或 descend
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchWord = None
+        self._QueueType = None
+        self._SortElement = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchWord(self):
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def QueueType(self):
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+    @property
+    def SortElement(self):
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchWord = params.get("SearchWord")
+        self._QueueType = params.get("QueueType")
+        self._SortElement = params.get("SortElement")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQQueuesResponse(AbstractModel):
+    """DescribeRabbitMQQueues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueueInfoList: 列表信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueInfoList: list of RabbitMQQueueListInfo
+        :param _TotalCount: 数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QueueInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def QueueInfoList(self):
+        return self._QueueInfoList
+
+    @QueueInfoList.setter
+    def QueueInfoList(self, QueueInfoList):
+        self._QueueInfoList = QueueInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QueueInfoList") is not None:
+            self._QueueInfoList = []
+            for item in params.get("QueueInfoList"):
+                obj = RabbitMQQueueListInfo()
+                obj._deserialize(item)
+                self._QueueInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQUserRequest(AbstractModel):
     """DescribeRabbitMQUser请求参数结构体
 
@@ -17837,6 +18408,153 @@ class RabbitMQPrivateVirtualHost(AbstractModel):
     def _deserialize(self, params):
         self._VirtualHostName = params.get("VirtualHostName")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQQueueListConsumerDetailInfo(AbstractModel):
+    """RabbitMQ队列列表消费者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumersNumber: 消费者数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumersNumber: int
+        """
+        self._ConsumersNumber = None
+
+    @property
+    def ConsumersNumber(self):
+        return self._ConsumersNumber
+
+    @ConsumersNumber.setter
+    def ConsumersNumber(self, ConsumersNumber):
+        self._ConsumersNumber = ConsumersNumber
+
+
+    def _deserialize(self, params):
+        self._ConsumersNumber = params.get("ConsumersNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQQueueListInfo(AbstractModel):
+    """RabbitMQ队列列表成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueueName: 队列名
+        :type QueueName: str
+        :param _Remark: 备注说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _ConsumerDetail: 消费者信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerDetail: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQQueueListConsumerDetailInfo`
+        :param _QueueType: 队列类型，取值 "classic"，"quorum"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueType: str
+        :param _MessageHeapCount: 消息堆积数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageHeapCount: int
+        :param _MessageRateIn: 消息生产速率，每秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateIn: float
+        :param _MessageRateOut: 消息消费速率，每秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageRateOut: float
+        """
+        self._QueueName = None
+        self._Remark = None
+        self._ConsumerDetail = None
+        self._QueueType = None
+        self._MessageHeapCount = None
+        self._MessageRateIn = None
+        self._MessageRateOut = None
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ConsumerDetail(self):
+        return self._ConsumerDetail
+
+    @ConsumerDetail.setter
+    def ConsumerDetail(self, ConsumerDetail):
+        self._ConsumerDetail = ConsumerDetail
+
+    @property
+    def QueueType(self):
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+    @property
+    def MessageHeapCount(self):
+        return self._MessageHeapCount
+
+    @MessageHeapCount.setter
+    def MessageHeapCount(self, MessageHeapCount):
+        self._MessageHeapCount = MessageHeapCount
+
+    @property
+    def MessageRateIn(self):
+        return self._MessageRateIn
+
+    @MessageRateIn.setter
+    def MessageRateIn(self, MessageRateIn):
+        self._MessageRateIn = MessageRateIn
+
+    @property
+    def MessageRateOut(self):
+        return self._MessageRateOut
+
+    @MessageRateOut.setter
+    def MessageRateOut(self, MessageRateOut):
+        self._MessageRateOut = MessageRateOut
+
+
+    def _deserialize(self, params):
+        self._QueueName = params.get("QueueName")
+        self._Remark = params.get("Remark")
+        if params.get("ConsumerDetail") is not None:
+            self._ConsumerDetail = RabbitMQQueueListConsumerDetailInfo()
+            self._ConsumerDetail._deserialize(params.get("ConsumerDetail"))
+        self._QueueType = params.get("QueueType")
+        self._MessageHeapCount = params.get("MessageHeapCount")
+        self._MessageRateIn = params.get("MessageRateIn")
+        self._MessageRateOut = params.get("MessageRateOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
