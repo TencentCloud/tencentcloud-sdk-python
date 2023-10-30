@@ -1257,6 +1257,9 @@ reject：拒绝，高风险恶意
         :param _ConstId: 唯一ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConstId: str
+        :param _RiskInformation: 扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskInformation: str
         """
         self._UserId = None
         self._PostTime = None
@@ -1265,6 +1268,7 @@ reject：拒绝，高风险恶意
         self._RiskLevel = None
         self._RiskType = None
         self._ConstId = None
+        self._RiskInformation = None
 
     @property
     def UserId(self):
@@ -1322,6 +1326,14 @@ reject：拒绝，高风险恶意
     def ConstId(self, ConstId):
         self._ConstId = ConstId
 
+    @property
+    def RiskInformation(self):
+        return self._RiskInformation
+
+    @RiskInformation.setter
+    def RiskInformation(self, RiskInformation):
+        self._RiskInformation = RiskInformation
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -1331,6 +1343,7 @@ reject：拒绝，高风险恶意
         self._RiskLevel = params.get("RiskLevel")
         self._RiskType = params.get("RiskType")
         self._ConstId = params.get("ConstId")
+        self._RiskInformation = params.get("RiskInformation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

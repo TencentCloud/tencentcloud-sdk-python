@@ -3153,15 +3153,15 @@ class CreateModuleRequest(AbstractModel):
         r"""
         :param _ModuleName: 模块名称，如视频直播模块。限制：模块名称不得以空格开头，长度不得超过60个字符。
         :type ModuleName: str
-        :param _DefaultBandWidth: 默认带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+        :param _DefaultBandWidth: 默认带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
         :type DefaultBandWidth: int
-        :param _DefaultImageId: 默认镜像，如img-qsdf3ff2。
+        :param _DefaultImageId: 默认镜像。
         :type DefaultImageId: str
         :param _InstanceType: 机型ID。
         :type InstanceType: str
-        :param _DefaultSystemDiskSize: 默认系统盘大小，单位：G，默认大小为50G。范围不得超过系统盘上下限制，详看DescribeConfig。
+        :param _DefaultSystemDiskSize: 默认系统盘大小，单位：GB，默认大小为50GB。范围不得超过系统盘上下限制，详看DescribeConfig。
         :type DefaultSystemDiskSize: int
-        :param _DefaultDataDiskSize: 默认数据盘大小，单位：G。范围不得超过数据盘范围大小，详看DescribeConfig。
+        :param _DefaultDataDiskSize: 默认数据盘大小，单位：GB。范围不得超过数据盘范围大小，详看DescribeConfig。
         :type DefaultDataDiskSize: int
         :param _CloseIpDirect: 是否关闭IP直通。取值范围：
 true：表示关闭IP直通
@@ -3171,7 +3171,7 @@ false：表示开通IP直通
         :type TagSpecification: list of TagSpecification
         :param _SecurityGroups: 模块默认安全组列表
         :type SecurityGroups: list of str
-        :param _DefaultBandWidthIn: 默认入带宽，单位：M。范围不得超过带宽上下限，详看DescribeConfig。
+        :param _DefaultBandWidthIn: 默认入带宽，单位：Mbps。范围不得超过带宽上下限，详看DescribeConfig。
         :type DefaultBandWidthIn: int
         :param _DisableWanIp: 是否禁止分配外网IP
         :type DisableWanIp: bool

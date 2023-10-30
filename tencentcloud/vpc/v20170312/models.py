@@ -3481,6 +3481,149 @@ class BatchModifySnapshotPolicy(AbstractModel):
         
 
 
+class BgpConfig(AbstractModel):
+    """BgpConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TunnelCidr: BGP隧道网段。
+        :type TunnelCidr: str
+        :param _LocalBgpIp: 云端BGP地址。必须从BGP隧道网段内分配。
+        :type LocalBgpIp: str
+        :param _RemoteBgpIp: 用户端BGP地址。必须从BGP隧道网段内分配。
+        :type RemoteBgpIp: str
+        """
+        self._TunnelCidr = None
+        self._LocalBgpIp = None
+        self._RemoteBgpIp = None
+
+    @property
+    def TunnelCidr(self):
+        return self._TunnelCidr
+
+    @TunnelCidr.setter
+    def TunnelCidr(self, TunnelCidr):
+        self._TunnelCidr = TunnelCidr
+
+    @property
+    def LocalBgpIp(self):
+        return self._LocalBgpIp
+
+    @LocalBgpIp.setter
+    def LocalBgpIp(self, LocalBgpIp):
+        self._LocalBgpIp = LocalBgpIp
+
+    @property
+    def RemoteBgpIp(self):
+        return self._RemoteBgpIp
+
+    @RemoteBgpIp.setter
+    def RemoteBgpIp(self, RemoteBgpIp):
+        self._RemoteBgpIp = RemoteBgpIp
+
+
+    def _deserialize(self, params):
+        self._TunnelCidr = params.get("TunnelCidr")
+        self._LocalBgpIp = params.get("LocalBgpIp")
+        self._RemoteBgpIp = params.get("RemoteBgpIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BgpConfigAndAsn(AbstractModel):
+    """VPN通道BGP配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TunnelCidr: BGP通道CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TunnelCidr: str
+        :param _LocalBgpIp: 本端BGP IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalBgpIp: str
+        :param _RemoteBgpIp: 对端BGP IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteBgpIp: str
+        :param _LocalBgpAsn: 本端BGP ASN号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LocalBgpAsn: str
+        :param _RemoteBgpAsn: 对端BGP ASN号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteBgpAsn: str
+        """
+        self._TunnelCidr = None
+        self._LocalBgpIp = None
+        self._RemoteBgpIp = None
+        self._LocalBgpAsn = None
+        self._RemoteBgpAsn = None
+
+    @property
+    def TunnelCidr(self):
+        return self._TunnelCidr
+
+    @TunnelCidr.setter
+    def TunnelCidr(self, TunnelCidr):
+        self._TunnelCidr = TunnelCidr
+
+    @property
+    def LocalBgpIp(self):
+        return self._LocalBgpIp
+
+    @LocalBgpIp.setter
+    def LocalBgpIp(self, LocalBgpIp):
+        self._LocalBgpIp = LocalBgpIp
+
+    @property
+    def RemoteBgpIp(self):
+        return self._RemoteBgpIp
+
+    @RemoteBgpIp.setter
+    def RemoteBgpIp(self, RemoteBgpIp):
+        self._RemoteBgpIp = RemoteBgpIp
+
+    @property
+    def LocalBgpAsn(self):
+        return self._LocalBgpAsn
+
+    @LocalBgpAsn.setter
+    def LocalBgpAsn(self, LocalBgpAsn):
+        self._LocalBgpAsn = LocalBgpAsn
+
+    @property
+    def RemoteBgpAsn(self):
+        return self._RemoteBgpAsn
+
+    @RemoteBgpAsn.setter
+    def RemoteBgpAsn(self, RemoteBgpAsn):
+        self._RemoteBgpAsn = RemoteBgpAsn
+
+
+    def _deserialize(self, params):
+        self._TunnelCidr = params.get("TunnelCidr")
+        self._LocalBgpIp = params.get("LocalBgpIp")
+        self._RemoteBgpIp = params.get("RemoteBgpIp")
+        self._LocalBgpAsn = params.get("LocalBgpAsn")
+        self._RemoteBgpAsn = params.get("RemoteBgpAsn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CCN(AbstractModel):
     """云联网（CCN）对象
 
@@ -6155,10 +6298,13 @@ class CreateCustomerGatewayRequest(AbstractModel):
         :type IpAddress: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
         :type Tags: list of Tag
+        :param _BgpAsn: BGP ASN。ASN取值范围为1- 4294967295，其中139341、45090和58835不可用。
+        :type BgpAsn: int
         """
         self._CustomerGatewayName = None
         self._IpAddress = None
         self._Tags = None
+        self._BgpAsn = None
 
     @property
     def CustomerGatewayName(self):
@@ -6184,6 +6330,14 @@ class CreateCustomerGatewayRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def BgpAsn(self):
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._CustomerGatewayName = params.get("CustomerGatewayName")
@@ -6194,6 +6348,7 @@ class CreateCustomerGatewayRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10018,6 +10173,51 @@ class CreateVpcResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVpnConnRoute(AbstractModel):
+    """创建路由添加的指向此通道的路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestinationCidrBlock: 目的端IDC网段
+        :type DestinationCidrBlock: str
+        :param _Priority: 优先级；可选值0，100。
+        :type Priority: int
+        """
+        self._DestinationCidrBlock = None
+        self._Priority = None
+
+    @property
+    def DestinationCidrBlock(self):
+        return self._DestinationCidrBlock
+
+    @DestinationCidrBlock.setter
+    def DestinationCidrBlock(self, DestinationCidrBlock):
+        self._DestinationCidrBlock = DestinationCidrBlock
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._DestinationCidrBlock = params.get("DestinationCidrBlock")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateVpnConnectionRequest(AbstractModel):
     """CreateVpnConnection请求参数结构体
 
@@ -10060,6 +10260,10 @@ CCN VPN 形的通道 可以不传VPCID
         :type DpdTimeout: str
         :param _DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
         :type DpdAction: str
+        :param _Route: 创建通道路由信息。
+        :type Route: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnRoute`
+        :param _BgpConfig: BGP配置。
+        :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
         """
         self._VpnGatewayId = None
         self._CustomerGatewayId = None
@@ -10078,6 +10282,8 @@ CCN VPN 形的通道 可以不传VPCID
         self._DpdEnable = None
         self._DpdTimeout = None
         self._DpdAction = None
+        self._Route = None
+        self._BgpConfig = None
 
     @property
     def VpnGatewayId(self):
@@ -10215,6 +10421,22 @@ CCN VPN 形的通道 可以不传VPCID
     def DpdAction(self, DpdAction):
         self._DpdAction = DpdAction
 
+    @property
+    def Route(self):
+        return self._Route
+
+    @Route.setter
+    def Route(self, Route):
+        self._Route = Route
+
+    @property
+    def BgpConfig(self):
+        return self._BgpConfig
+
+    @BgpConfig.setter
+    def BgpConfig(self, BgpConfig):
+        self._BgpConfig = BgpConfig
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -10248,6 +10470,12 @@ CCN VPN 形的通道 可以不传VPCID
         self._DpdEnable = params.get("DpdEnable")
         self._DpdTimeout = params.get("DpdTimeout")
         self._DpdAction = params.get("DpdAction")
+        if params.get("Route") is not None:
+            self._Route = CreateVpnConnRoute()
+            self._Route._deserialize(params.get("Route"))
+        if params.get("BgpConfig") is not None:
+            self._BgpConfig = BgpConfig()
+            self._BgpConfig._deserialize(params.get("BgpConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11265,11 +11493,14 @@ class CustomerGateway(AbstractModel):
         :type IpAddress: str
         :param _CreatedTime: 创建时间
         :type CreatedTime: str
+        :param _BgpAsn: BGP ASN。
+        :type BgpAsn: int
         """
         self._CustomerGatewayId = None
         self._CustomerGatewayName = None
         self._IpAddress = None
         self._CreatedTime = None
+        self._BgpAsn = None
 
     @property
     def CustomerGatewayId(self):
@@ -11303,12 +11534,21 @@ class CustomerGateway(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def BgpAsn(self):
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._CustomerGatewayId = params.get("CustomerGatewayId")
         self._CustomerGatewayName = params.get("CustomerGatewayName")
         self._IpAddress = params.get("IpAddress")
         self._CreatedTime = params.get("CreatedTime")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28490,28 +28730,40 @@ class IKEOptionsSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _PropoEncryAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBS-192', 'AES-CBC-256', 'DES-CBC'，'SM4', 默认为3DES-CBC
+注意：此字段可能返回 null，表示取不到有效值。
         :type PropoEncryAlgorithm: str
         :param _PropoAuthenAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为MD5
+注意：此字段可能返回 null，表示取不到有效值。
         :type PropoAuthenAlgorithm: str
         :param _ExchangeMode: 协商模式：可选值：'AGGRESSIVE', 'MAIN'，默认为MAIN
+注意：此字段可能返回 null，表示取不到有效值。
         :type ExchangeMode: str
         :param _LocalIdentity: 本端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+注意：此字段可能返回 null，表示取不到有效值。
         :type LocalIdentity: str
         :param _RemoteIdentity: 对端标识类型：可选值：'ADDRESS', 'FQDN'，默认为ADDRESS
+注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteIdentity: str
         :param _LocalAddress: 本端标识，当LocalIdentity选为ADDRESS时，LocalAddress必填。localAddress默认为vpn网关公网IP
+注意：此字段可能返回 null，表示取不到有效值。
         :type LocalAddress: str
         :param _RemoteAddress: 对端标识，当RemoteIdentity选为ADDRESS时，RemoteAddress必填
+注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteAddress: str
         :param _LocalFqdnName: 本端标识，当LocalIdentity选为FQDN时，LocalFqdnName必填
+注意：此字段可能返回 null，表示取不到有效值。
         :type LocalFqdnName: str
         :param _RemoteFqdnName: 对端标识，当remoteIdentity选为FQDN时，RemoteFqdnName必填
+注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteFqdnName: str
         :param _DhGroupName: DH group，指定IKE交换密钥时使用的DH组，可选值：'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', 'GROUP24'，
+注意：此字段可能返回 null，表示取不到有效值。
         :type DhGroupName: str
         :param _IKESaLifetimeSeconds: IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800
+注意：此字段可能返回 null，表示取不到有效值。
         :type IKESaLifetimeSeconds: int
         :param _IKEVersion: IKE版本
+注意：此字段可能返回 null，表示取不到有效值。
         :type IKEVersion: str
         """
         self._PropoEncryAlgorithm = None
@@ -28655,14 +28907,19 @@ class IPSECOptionsSpecification(AbstractModel):
     def __init__(self):
         r"""
         :param _EncryptAlgorithm: 加密算法，可选值：'3DES-CBC', 'AES-CBC-128', 'AES-CBC-192', 'AES-CBC-256', 'DES-CBC', 'SM4', 'NULL'， 默认为AES-CBC-128
+注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptAlgorithm: str
         :param _IntegrityAlgorith: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrityAlgorith: str
         :param _IPSECSaLifetimeSeconds: IPsec SA lifetime(s)：单位秒，取值范围：180-604800
+注意：此字段可能返回 null，表示取不到有效值。
         :type IPSECSaLifetimeSeconds: int
         :param _PfsDhGroup: PFS：可选值：'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', 'DH-GROUP24'，默认为NULL
+注意：此字段可能返回 null，表示取不到有效值。
         :type PfsDhGroup: str
         :param _IPSECSaLifetimeTraffic: IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
+注意：此字段可能返回 null，表示取不到有效值。
         :type IPSECSaLifetimeTraffic: int
         """
         self._EncryptAlgorithm = None
@@ -40830,8 +41087,10 @@ class SecurityPolicyDatabase(AbstractModel):
     def __init__(self):
         r"""
         :param _LocalCidrBlock: 本端网段
+注意：此字段可能返回 null，表示取不到有效值。
         :type LocalCidrBlock: str
         :param _RemoteCidrBlock: 对端网段
+注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteCidrBlock: list of str
         """
         self._LocalCidrBlock = None
@@ -44031,6 +44290,9 @@ class VpnConnection(AbstractModel):
         :param _NegotiationType: 协商类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type NegotiationType: str
+        :param _BgpConfig: Bgp配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
         """
         self._VpnConnectionId = None
         self._VpnConnectionName = None
@@ -44056,6 +44318,7 @@ class VpnConnection(AbstractModel):
         self._DpdAction = None
         self._TagSet = None
         self._NegotiationType = None
+        self._BgpConfig = None
 
     @property
     def VpnConnectionId(self):
@@ -44249,6 +44512,14 @@ class VpnConnection(AbstractModel):
     def NegotiationType(self, NegotiationType):
         self._NegotiationType = NegotiationType
 
+    @property
+    def BgpConfig(self):
+        return self._BgpConfig
+
+    @BgpConfig.setter
+    def BgpConfig(self, BgpConfig):
+        self._BgpConfig = BgpConfig
+
 
     def _deserialize(self, params):
         self._VpnConnectionId = params.get("VpnConnectionId")
@@ -44289,6 +44560,9 @@ class VpnConnection(AbstractModel):
                 obj._deserialize(item)
                 self._TagSet.append(obj)
         self._NegotiationType = params.get("NegotiationType")
+        if params.get("BgpConfig") is not None:
+            self._BgpConfig = BgpConfigAndAsn()
+            self._BgpConfig._deserialize(params.get("BgpConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

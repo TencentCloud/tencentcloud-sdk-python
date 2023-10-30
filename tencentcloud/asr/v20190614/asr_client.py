@@ -55,7 +55,8 @@ class AsrClient(AbstractClient):
         <br>•   每个热词表最多可添加1000个词，每个词最长10个汉字或30个英文字符，不能超出限制。
         <br>•   热词表可以通过数组或者本地文件形式上传。
         <br>•   本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
-        <br>•   热词权重取值范围为[1,10]之间的整数，权重越大代表该词被识别出来的概率越大。
+        <br>•   热词权重取值范围为[1,11]之间的整数，权重越大代表该词被识别出来的概率越大。
+        <br>• 注意:  热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
 
         :param request: Request instance for CreateAsrVocab.
         :type request: :class:`tencentcloud.asr.v20190614.models.CreateAsrVocabRequest`

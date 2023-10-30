@@ -50,6 +50,9 @@ FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = 'FailedOperation.InquiryRefundPriceFa
 # 镜像状态繁忙，请稍后重试。
 FAILEDOPERATION_INVALIDIMAGESTATE = 'FailedOperation.InvalidImageState'
 
+# 不支持操作的applicationRole实例
+FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = 'FailedOperation.InvalidInstanceApplicationRole'
+
 # 请求不支持`EMR`的实例`ins-xxxxxxxx`。
 FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = 'FailedOperation.InvalidInstanceApplicationRoleEmr'
 

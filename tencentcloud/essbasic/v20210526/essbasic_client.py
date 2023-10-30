@@ -27,18 +27,22 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelBatchCancelFlows(self, request):
-        """指定需要批量撤销的签署流程Id，批量撤销合同
-        客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
+        """用于批量撤销合同流程<br/>
+        适用场景：
+        如果某些合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
+        通过签署流程编号批量撤销合同，单次最多支持撤销100份合同。只有合同的发起人或者发起方企业的超管/法人才能进行合同撤销。需要注意的是，若合同处于以下已终止状态，则不可撤销：<br/>
+        - 已全部签署完成
+        - 已拒签
+        - 已过期
+        - 已撤回
+        - 拒绝填写
+        - 已解除
 
-        可以撤回：未全部签署完成
-         不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
-
-        **满足撤销条件的合同会发起异步撤销流程，不满足撤销条件的合同返回失败原因。**
-
-        **合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方 [具体可参考回调消息](https://qian.tencent.com/developers/scenes/partner/callback_data_types#-%E5%90%88%E5%90%8C%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5---flowstatuschange)**
-
-        **注意:
-        能撤回合同的只能是合同的发起人或者发起企业的超管、法人**
+        <br/>
+        满足撤销条件的合同会发起异步撤销流程，而不满足撤销条件的合同将返回失败原因。合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方。具体的回调消息内容可参考 <a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">合同状态变更回调消息</a>。
+        <br/><br/>
+        注:
+        `如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，`签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 
         :param request: Request instance for ChannelBatchCancelFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelBatchCancelFlowsRequest`
@@ -598,8 +602,7 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateFlowSignUrl(self, request):
-        """创建个人签署H5签署链接，请联系客户经理申请使用<br/>
-        该接口用于发起合同后，生成C端签署人的签署链接<br/>
+        """该接口用于发起合同后，生成C端签署人的签署链接<br/>
         注意：该接口目前签署人类型仅支持个人签署方（PERSON）<br/>
         注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
         注意：该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。微信小程序请使用小程序跳转或半屏弹窗的方式<br/>
@@ -1103,7 +1106,9 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDescribeUserAutoSignStatus(self, request):
-        """企业方可以通过此接口查询个人用户自动签开启状态
+        """通过此接口获取个人用户自动签的开通状态。
+
+        注意: `处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。`
 
         :param request: Request instance for ChannelDescribeUserAutoSignStatus.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDescribeUserAutoSignStatusRequest`
@@ -1126,7 +1131,13 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelDisableUserAutoSign(self, request):
-        """企业方可以通过此接口关闭个人的自动签功能
+        """通过此接口可以关闭个人用户自动签功能。
+        无需对应的用户刷脸等方式同意即可关闭。
+
+        注意:
+
+        <ul><li>处方单等特殊场景专用，此接口为白名单功能，使用前请联系对接的客户经理沟通。</li>
+        <li>如果此用户在开通时候绑定过个人自动签账号许可,  关闭此用户的自动签不会归还个人自动签账号许可的额度。</li></ul>
 
         :param request: Request instance for ChannelDisableUserAutoSign.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelDisableUserAutoSignRequest`

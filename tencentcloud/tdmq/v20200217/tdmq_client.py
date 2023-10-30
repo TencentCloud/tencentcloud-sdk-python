@@ -1843,6 +1843,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQSubscriptions(self, request):
+        """用于获取RocketMQ消费组订阅关系数据
+
+        :param request: Request instance for DescribeRocketMQSubscriptions.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSubscriptionsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQSubscriptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQSubscriptions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQSubscriptionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQTopicMsgs(self, request):
         """rocketmq 消息查询
 

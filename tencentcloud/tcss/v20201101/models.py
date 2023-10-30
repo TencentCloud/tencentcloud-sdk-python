@@ -7426,6 +7426,12 @@ RESULT_FAILED: 未通过
         :param _ApplicableVersion: 检测项适用的版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicableVersion: str
+        :param _Description: 检查项描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _AuditProcedure: 检查项审计方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditProcedure: str
         """
         self._CustomerPolicyItemId = None
         self._BasePolicyItemId = None
@@ -7443,6 +7449,8 @@ RESULT_FAILED: 未通过
         self._FixSuggestion = None
         self._BenchmarkStandardId = None
         self._ApplicableVersion = None
+        self._Description = None
+        self._AuditProcedure = None
 
     @property
     def CustomerPolicyItemId(self):
@@ -7572,6 +7580,22 @@ RESULT_FAILED: 未通过
     def ApplicableVersion(self, ApplicableVersion):
         self._ApplicableVersion = ApplicableVersion
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AuditProcedure(self):
+        return self._AuditProcedure
+
+    @AuditProcedure.setter
+    def AuditProcedure(self, AuditProcedure):
+        self._AuditProcedure = AuditProcedure
+
 
     def _deserialize(self, params):
         self._CustomerPolicyItemId = params.get("CustomerPolicyItemId")
@@ -7590,6 +7614,8 @@ RESULT_FAILED: 未通过
         self._FixSuggestion = params.get("FixSuggestion")
         self._BenchmarkStandardId = params.get("BenchmarkStandardId")
         self._ApplicableVersion = params.get("ApplicableVersion")
+        self._Description = params.get("Description")
+        self._AuditProcedure = params.get("AuditProcedure")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26671,8 +26697,11 @@ class DescribeEscapeEventDetailRequest(AbstractModel):
         r"""
         :param _EventId: 事件唯一id
         :type EventId: str
+        :param _EventType: 事件类型
+        :type EventType: str
         """
         self._EventId = None
+        self._EventType = None
 
     @property
     def EventId(self):
@@ -26682,9 +26711,18 @@ class DescribeEscapeEventDetailRequest(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def EventType(self):
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
+        self._EventType = params.get("EventType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26802,7 +26840,13 @@ class DescribeEscapeEventInfoRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
-        :param _Filters: 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
+        :param _Filters: 过滤参数,
+Status：状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
+EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器 PRIVILEGE:提权事件 
+    ESCAPE_VUL_OCCURRED:逃逸漏洞利用 ESCAPE_DOCKER_API:访问Docker API接口逃逸 ESCAPE_TAMPER_SENSITIVE_FILE:篡改敏感文件逃逸 ESCAPE_CGROUPS:利用cgroup机制逃逸)
+ContainerNetStatus: 容器隔离状态 (NORMAL:正常 ISOLATED:已隔离 ISOLATE_FAILED:隔离失败 ISOLATE_FAILED:解除隔离失败 RESTORING:解除隔离中 ISOLATING:隔离中)
+ContainerStatus: 容器状态(CREATED:已创建 RUNNING:正常运行 PAUSED:暂停运行 STOPPED:停止运行 RESTARTING:重启中 REMOVING:迁移中 DEAD:DEAD UNKNOWN：未知 DESTROYED:已销毁)
+ForeignUniqueKey:镜像ID及事件类型唯一值
         :type Filters: list of RunTimeFilters
         :param _Order: 升序降序,asc desc
         :type Order: str

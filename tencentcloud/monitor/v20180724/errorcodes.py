@@ -68,6 +68,9 @@ FAILEDOPERATION_ALERTTRIGGERRULEDELETEFAILED = 'FailedOperation.AlertTriggerRule
 # Yaml 格式不正确。
 FAILEDOPERATION_BADYAMLFORMAT = 'FailedOperation.BadYamlFormat'
 
+# 集群不存在。
+FAILEDOPERATION_CLUSTERNOTFOUND = 'FailedOperation.ClusterNotFound'
+
 # FailedOperation.ComponentClientCommon
 FAILEDOPERATION_COMPONENTCLIENTCOMMON = 'FailedOperation.ComponentClientCommon'
 

@@ -62042,6 +62042,8 @@ class SubmitSqlTaskRequest(AbstractModel):
         :type RunParams: str
         :param _ConfParams: 高级设置
         :type ConfParams: str
+        :param _ScriptEncryption: 脚本内容是否base64加密
+        :type ScriptEncryption: bool
         """
         self._DatabaseType = None
         self._DatasourceId = None
@@ -62056,6 +62058,7 @@ class SubmitSqlTaskRequest(AbstractModel):
         self._ComputeResource = None
         self._RunParams = None
         self._ConfParams = None
+        self._ScriptEncryption = None
 
     @property
     def DatabaseType(self):
@@ -62161,6 +62164,14 @@ class SubmitSqlTaskRequest(AbstractModel):
     def ConfParams(self, ConfParams):
         self._ConfParams = ConfParams
 
+    @property
+    def ScriptEncryption(self):
+        return self._ScriptEncryption
+
+    @ScriptEncryption.setter
+    def ScriptEncryption(self, ScriptEncryption):
+        self._ScriptEncryption = ScriptEncryption
+
 
     def _deserialize(self, params):
         self._DatabaseType = params.get("DatabaseType")
@@ -62176,6 +62187,7 @@ class SubmitSqlTaskRequest(AbstractModel):
         self._ComputeResource = params.get("ComputeResource")
         self._RunParams = params.get("RunParams")
         self._ConfParams = params.get("ConfParams")
+        self._ScriptEncryption = params.get("ScriptEncryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

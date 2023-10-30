@@ -13183,8 +13183,11 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
         r"""
         :param _LoadBalancerSla: 负载均衡实例信息。
         :type LoadBalancerSla: list of SlaUpdateParam
+        :param _Force: 是否强制升级，默认否。
+        :type Force: bool
         """
         self._LoadBalancerSla = None
+        self._Force = None
 
     @property
     def LoadBalancerSla(self):
@@ -13194,6 +13197,14 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
     def LoadBalancerSla(self, LoadBalancerSla):
         self._LoadBalancerSla = LoadBalancerSla
 
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
 
     def _deserialize(self, params):
         if params.get("LoadBalancerSla") is not None:
@@ -13202,6 +13213,7 @@ class ModifyLoadBalancerSlaRequest(AbstractModel):
                 obj = SlaUpdateParam()
                 obj._deserialize(item)
                 self._LoadBalancerSla.append(obj)
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

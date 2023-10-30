@@ -7793,14 +7793,19 @@ class StartOnlineRecordRequest(AbstractModel):
         r"""
         :param _SdkAppId: 客户的SdkAppId
         :type SdkAppId: int
-        :param _RoomId: 需要录制的房间号，取值范围: (1, 4294967295)
+        :param _RoomId: 需要录制的白板房间号，取值范围: (1, 4294967295)。
+
+1. 在没有指定`GroupId`的情况下，实时录制默认以`RoomId`的字符串表达形式作为同步白板信令的IM群组ID（比如`RoomId`为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始录制前确保相应IM群组已创建完成，否则会导致录制失败。
+2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为TRTC房间号进房拉流进行录制。
         :type RoomId: int
         :param _RecordUserId: 用于录制服务进房的用户ID，最大长度不能大于60个字节，格式为`tic_record_user_${RoomId}_${Random}`，其中 `${RoomId} `与录制房间号对应，`${Random}`为一个随机字符串。
 该ID必须是一个单独的未在SDK中使用的ID，录制服务使用这个用户ID进入房间进行音视频与白板录制，若该ID和SDK中使用的ID重复，会导致SDK和录制服务互踢，影响正常录制。
         :type RecordUserId: str
-        :param _RecordUserSig: 与RecordUserId对应的签名
+        :param _RecordUserSig: 与`RecordUserId`对应的IM签名
         :type RecordUserSig: str
-        :param _GroupId: （已废弃，设置无效）白板的 IM 群组 Id，默认同房间号
+        :param _GroupId: 白板进行信令同步的 IM 群组 ID。
+在没有指定`GroupId`的情况下，实时录制服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+在指定了`GroupId`的情况下，实时录制将优先使用`GroupId`作为同步白板信令的群组ID。请在开始录制前确保相应的IM群组已创建完成，否则会导致录制失败。
         :type GroupId: str
         :param _Concat: 录制视频拼接参数
         :type Concat: :class:`tencentcloud.tiw.v20190919.models.Concat`
@@ -7834,6 +7839,16 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
         :type AutoStopTimeout: int
         :param _ExtraData: 内部参数，可忽略
         :type ExtraData: str
+        :param _TRTCRoomId: TRTC数字类型房间号，取值范围: (1, 4294967295)。
+
+在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为实时录制拉TRTC流的TRTC房间号。
+
+当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
+        :type TRTCRoomId: int
+        :param _TRTCRoomIdStr: TRTC字符串类型房间号。
+
+在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为实时录制拉TRTC流的TRTC房间号。
+        :type TRTCRoomIdStr: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -7850,6 +7865,8 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
         self._ChatGroupId = None
         self._AutoStopTimeout = None
         self._ExtraData = None
+        self._TRTCRoomId = None
+        self._TRTCRoomIdStr = None
 
     @property
     def SdkAppId(self):
@@ -7971,6 +7988,22 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
     def ExtraData(self, ExtraData):
         self._ExtraData = ExtraData
 
+    @property
+    def TRTCRoomId(self):
+        return self._TRTCRoomId
+
+    @TRTCRoomId.setter
+    def TRTCRoomId(self, TRTCRoomId):
+        self._TRTCRoomId = TRTCRoomId
+
+    @property
+    def TRTCRoomIdStr(self):
+        return self._TRTCRoomIdStr
+
+    @TRTCRoomIdStr.setter
+    def TRTCRoomIdStr(self, TRTCRoomIdStr):
+        self._TRTCRoomIdStr = TRTCRoomIdStr
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -7996,6 +8029,8 @@ VIDEO_GENERATION_MODE - 视频生成模式（内测中，需邮件申请开通�
         self._ChatGroupId = params.get("ChatGroupId")
         self._AutoStopTimeout = params.get("AutoStopTimeout")
         self._ExtraData = params.get("ExtraData")
+        self._TRTCRoomId = params.get("TRTCRoomId")
+        self._TRTCRoomIdStr = params.get("TRTCRoomIdStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8054,13 +8089,13 @@ class StartWhiteboardPushRequest(AbstractModel):
         :type SdkAppId: int
         :param _RoomId: 需要推流的白板房间号，取值范围: (1, 4294967295)。
 
-1. 白板推流默认以RoomId的字符串表达形式作为IM群组的GroupID（比如RoomId为1234，则IM群组的GroupID为"1234"）加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
-2. 在没有指定TRTCRoomId和TRTCRoomIdStr的情况下，默认会以RoomId作为白板流进行推流的TRTC房间号。
+1. 在没有指定`GroupId`的情况下，白板推流默认以`RoomId`的字符串表达形式作为IM群组ID（比如RoomId为1234，则IM群组ID为"1234"），并加群进行信令同步，请在开始推流前确保相应IM群组已创建完成，否则会导致推流失败。
+2. 在没有指定`TRTCRoomId`和`TRTCRoomIdStr`的情况下，默认会以`RoomId`作为白板流进行推流的TRTC房间号。
         :type RoomId: int
         :param _PushUserId: 用于白板推流服务进入白板房间的用户ID。在没有额外指定`IMAuthParam`和`TRTCAuthParam`的情况下，这个用户ID同时会用于IM登录、IM加群、TRTC进房推流等操作。
 用户ID最大长度不能大于60个字节，该用户ID必须是一个单独的未同时在其他地方使用的用户ID，白板推流服务使用这个用户ID进入房间进行白板音视频推流，若该用户ID和其他地方同时在使用的用户ID重复，会导致白板推流服务与其他使用场景帐号互踢，影响正常推流。
         :type PushUserId: str
-        :param _PushUserSig: 与PushUserId对应的IM签名(usersig)。
+        :param _PushUserSig: 与`PushUserId`对应的IM签名(usersig)。
         :type PushUserSig: str
         :param _Whiteboard: 白板参数，例如白板宽高、背景颜色等
         :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
@@ -8088,7 +8123,7 @@ class StartWhiteboardPushRequest(AbstractModel):
 
 如果实时音视频的云端录制模式选择为 `全局自动录制` 模式，可忽略此参数。
         :type AutoRecord: bool
-        :param _UserDefinedRecordId: 指定白板推流录制的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
+        :param _UserDefinedRecordId: 指定白板推流这路流在音视频云端录制中的RecordID，指定的RecordID会用于填充实时音视频云端录制完成后的回调消息中的 "userdefinerecordid" 字段内容，便于您更方便的识别录制回调，以及在点播媒体资源管理中查找相应的录制视频文件。
 
 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 
@@ -8107,7 +8142,7 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 
 如果实时音视频的旁路推流模式选择为 `全局自动旁路` 模式，可忽略此参数。
         :type AutoPublish: bool
-        :param _UserDefinedStreamId: 指定实时音视频在旁路白板推流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
+        :param _UserDefinedStreamId: 指定实时音视频在旁路白板推流这路流时的StreamID，设置之后，您就可以在腾讯云直播 CDN 上通过标准直播方案（FLV或HLS）播放该用户的音视频流。
 
 限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符。
 
@@ -8124,13 +8159,13 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
         :type ExtraData: str
         :param _TRTCRoomId: TRTC数字类型房间号，取值范围: (1, 4294967295)。
 
-在同时指定了RoomId与TRTCRoomId的情况下，优先使用TRTCRoomId作为白板流进行推流的TRTC房间号。
+在同时指定了`RoomId`与`TRTCRoomId`的情况下，优先使用`TRTCRoomId`作为白板流进行推流的TRTC房间号。
 
-当指定了TRTCRoomIdStr的情况下，此字段将被忽略。
+当指定了`TRTCRoomIdStr`的情况下，此字段将被忽略。
         :type TRTCRoomId: int
         :param _TRTCRoomIdStr: TRTC字符串类型房间号。
 
-在指定了TRTCRoomIdStr的情况下，会优先使用TRTCRoomIdStr作为白板流进行推流的TRTC房间号。
+在指定了`TRTCRoomIdStr`的情况下，会优先使用`TRTCRoomIdStr`作为白板流进行推流的TRTC房间号。
         :type TRTCRoomIdStr: str
         :param _IMAuthParam: IM鉴权信息参数，用于IM鉴权。
 当白板信令所使用的IM应用与白板应用的SdkAppId不一致时，可以通过此参数提供对应IM应用鉴权信息。
@@ -8147,6 +8182,10 @@ SdkAppID = 12345678，RoomID = 12345，PushUserID = push_user_1
 TRTCAppSceneVideoCall - 视频通话场景，即绝大多数时间都是两人或两人以上视频通话的场景，内部编码器和网络协议优化侧重流畅性，降低通话延迟和卡顿率。
 TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶尔有多人视频互动的场景，内部编码器和网络协议优化侧重性能和兼容性，性能和清晰度表现更佳。
         :type TRTCEnterRoomMode: str
+        :param _GroupId: 白板进行信令同步的 IM 群组 ID。
+在没有指定`GroupId`的情况下，白板推流服务将使用 `RoomId` 的字符串形式作为同步白板信令的IM群组ID。
+在指定了`GroupId`的情况下，白板推流将优先`GroupId`作为同步白板信令的群组ID。请在开始推流前确保指定的IM群组已创建完成，否则会导致推流失败。
+        :type GroupId: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -8169,6 +8208,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
         self._IMAuthParam = None
         self._TRTCAuthParam = None
         self._TRTCEnterRoomMode = None
+        self._GroupId = None
 
     @property
     def SdkAppId(self):
@@ -8338,6 +8378,14 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
     def TRTCEnterRoomMode(self, TRTCEnterRoomMode):
         self._TRTCEnterRoomMode = TRTCEnterRoomMode
 
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -8369,6 +8417,7 @@ TRTCAppSceneLIVE - 直播场景，即绝大多数时间都是一人直播，偶�
             self._TRTCAuthParam = AuthParam()
             self._TRTCAuthParam._deserialize(params.get("TRTCAuthParam"))
         self._TRTCEnterRoomMode = params.get("TRTCEnterRoomMode")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -374,6 +374,9 @@ INVALIDPARAMETERVALUE_TOOLARGE = 'InvalidParameterValue.TooLarge'
 # 参数取值过长，超过最大长度。
 INVALIDPARAMETERVALUE_TOOLONG = 'InvalidParameterValue.TooLong'
 
+# 参数值非法，小于有效值。
+INVALIDPARAMETERVALUE_TOOSMALL = 'InvalidParameterValue.TooSmall'
+
 # 非法的可用区。
 INVALIDPARAMETERVALUE_ZONEINVALID = 'InvalidParameterValue.ZoneInvalid'
 

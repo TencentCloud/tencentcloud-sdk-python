@@ -80,6 +80,9 @@ INTERNALERROR_CONFIGCGWERROR = 'InternalError.ConfigCgwError'
 # 内部服务调用异常。
 INTERNALERROR_CVMERROR = 'InternalError.CvmError'
 
+# DB查询异常。
+INTERNALERROR_DBQUERYEXCEPTION = 'InternalError.DBQueryException'
+
 # 调用EKS报错。
 INTERNALERROR_EKSERROR = 'InternalError.EKSError'
 

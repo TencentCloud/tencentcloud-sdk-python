@@ -20225,7 +20225,6 @@ class Zone(AbstractModel):
 <li> full：NS 接入；</li>
 <li> partial：CNAME 接入；</li>
 <li> noDomainAccess：无域名接入；</li>
-<li> vodeo：vodeo默认站点。</li>
         :type Type: str
         :param _Paused: 站点是否关闭。
         :type Paused: bool

@@ -12190,6 +12190,142 @@ class DescribeRocketMQSourceClusterTopicListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQSubscriptionsRequest(AbstractModel):
+    """DescribeRocketMQSubscriptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Namespace: 命名空间名称
+        :type Namespace: str
+        :param _Group: 消费组名称
+        :type Group: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询限制条数
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._Namespace = None
+        self._Group = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQSubscriptionsResponse(AbstractModel):
+    """DescribeRocketMQSubscriptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Subscriptions: 订阅关系列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscriptions: list of RocketMQSubscription
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Subscriptions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Subscriptions(self):
+        return self._Subscriptions
+
+    @Subscriptions.setter
+    def Subscriptions(self, Subscriptions):
+        self._Subscriptions = Subscriptions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Subscriptions") is not None:
+            self._Subscriptions = []
+            for item in params.get("Subscriptions"):
+                obj = RocketMQSubscription()
+                obj._deserialize(item)
+                self._Subscriptions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQTopicMsgsRequest(AbstractModel):
     """DescribeRocketMQTopicMsgs请求参数结构体
 

@@ -11854,6 +11854,8 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RiskId: 风险ID
+        :type RiskId: str
         :param _VULName: 漏洞名称
         :type VULName: str
         :param _RiskLevel: 风险等级
@@ -11888,6 +11890,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImpactComponent: str
         """
+        self._RiskId = None
         self._VULName = None
         self._RiskLevel = None
         self._CheckFrom = None
@@ -11901,6 +11904,14 @@ class VULRiskAdvanceCFGList(AbstractModel):
         self._EMGCVulType = None
         self._VULDescribe = None
         self._ImpactComponent = None
+
+    @property
+    def RiskId(self):
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
 
     @property
     def VULName(self):
@@ -12008,6 +12019,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
         self._VULName = params.get("VULName")
         self._RiskLevel = params.get("RiskLevel")
         self._CheckFrom = params.get("CheckFrom")

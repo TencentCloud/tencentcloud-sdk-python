@@ -10621,9 +10621,12 @@ class GenerateSignedVideoURLRequest(AbstractModel):
         :type VideoURL: str
         :param _ExpireTime: 播放链接过期时间
         :type ExpireTime: int
+        :param _ChannelId: 通道ID 非NVR设备不填 NVR设备必填 默认为无	
+        :type ChannelId: int
         """
         self._VideoURL = None
         self._ExpireTime = None
+        self._ChannelId = None
 
     @property
     def VideoURL(self):
@@ -10641,10 +10644,19 @@ class GenerateSignedVideoURLRequest(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._VideoURL = params.get("VideoURL")
         self._ExpireTime = params.get("ExpireTime")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
