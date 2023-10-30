@@ -1657,6 +1657,117 @@ class DeleteLogstashPipelinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDiagnoseRequest(AbstractModel):
+    """DescribeDiagnose请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES实例ID
+        :type InstanceId: str
+        :param _Date: 报告日期，格式20210301
+        :type Date: str
+        :param _Limit: 报告返回份数
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Date = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Date = params.get("Date")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDiagnoseResponse(AbstractModel):
+    """DescribeDiagnose返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 诊断报告个数
+        :type Total: int
+        :param _DiagnoseResults: 诊断报告列表
+        :type DiagnoseResults: list of DiagnoseResult
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._DiagnoseResults = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def DiagnoseResults(self):
+        return self._DiagnoseResults
+
+    @DiagnoseResults.setter
+    def DiagnoseResults(self, DiagnoseResults):
+        self._DiagnoseResults = DiagnoseResults
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("DiagnoseResults") is not None:
+            self._DiagnoseResults = []
+            for item in params.get("DiagnoseResults"):
+                obj = DiagnoseResult()
+                obj._deserialize(item)
+                self._DiagnoseResults.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIndexListRequest(AbstractModel):
     """DescribeIndexList请求参数结构体
 
@@ -2284,6 +2395,258 @@ class DescribeInstanceOperationsResponse(AbstractModel):
                 obj = Operation()
                 obj._deserialize(item)
                 self._Operations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancePluginInfo(AbstractModel):
+    """插件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginName: 插件名
+        :type PluginName: str
+        :param _PluginVersion: 插件版本
+        :type PluginVersion: str
+        :param _PluginDesc: 插件描述
+        :type PluginDesc: str
+        :param _Status: 插件状态：-2 已卸载 -1 卸载中 0 安装中 1 已安装
+        :type Status: int
+        :param _Removable: 插件是否可卸载
+        :type Removable: bool
+        :param _PluginType: 0：系统插件
+        :type PluginType: int
+        :param _PluginUpdateTime: 插件变更时间
+        :type PluginUpdateTime: str
+        """
+        self._PluginName = None
+        self._PluginVersion = None
+        self._PluginDesc = None
+        self._Status = None
+        self._Removable = None
+        self._PluginType = None
+        self._PluginUpdateTime = None
+
+    @property
+    def PluginName(self):
+        return self._PluginName
+
+    @PluginName.setter
+    def PluginName(self, PluginName):
+        self._PluginName = PluginName
+
+    @property
+    def PluginVersion(self):
+        return self._PluginVersion
+
+    @PluginVersion.setter
+    def PluginVersion(self, PluginVersion):
+        self._PluginVersion = PluginVersion
+
+    @property
+    def PluginDesc(self):
+        return self._PluginDesc
+
+    @PluginDesc.setter
+    def PluginDesc(self, PluginDesc):
+        self._PluginDesc = PluginDesc
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Removable(self):
+        return self._Removable
+
+    @Removable.setter
+    def Removable(self, Removable):
+        self._Removable = Removable
+
+    @property
+    def PluginType(self):
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+    @property
+    def PluginUpdateTime(self):
+        return self._PluginUpdateTime
+
+    @PluginUpdateTime.setter
+    def PluginUpdateTime(self, PluginUpdateTime):
+        self._PluginUpdateTime = PluginUpdateTime
+
+
+    def _deserialize(self, params):
+        self._PluginName = params.get("PluginName")
+        self._PluginVersion = params.get("PluginVersion")
+        self._PluginDesc = params.get("PluginDesc")
+        self._Status = params.get("Status")
+        self._Removable = params.get("Removable")
+        self._PluginType = params.get("PluginType")
+        self._PluginUpdateTime = params.get("PluginUpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancePluginListRequest(AbstractModel):
+    """DescribeInstancePluginList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Offset: 分页起始值, 默认值0
+        :type Offset: int
+        :param _Limit: 分页大小，默认值10
+        :type Limit: int
+        :param _OrderBy: 排序字段<li>1：插件名 pluginName
+        :type OrderBy: str
+        :param _OrderByType: 排序方式<li>0：升序 asc</li><li>1：降序 desc</li>
+        :type OrderByType: str
+        :param _PluginType: 0：系统插件
+        :type PluginType: int
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._PluginType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def PluginType(self):
+        return self._PluginType
+
+    @PluginType.setter
+    def PluginType(self, PluginType):
+        self._PluginType = PluginType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._PluginType = params.get("PluginType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancePluginListResponse(AbstractModel):
+    """DescribeInstancePluginList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 返回的插件个数
+        :type TotalCount: int
+        :param _PluginList: 插件信息列表
+        :type PluginList: list of DescribeInstancePluginInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PluginList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PluginList(self):
+        return self._PluginList
+
+    @PluginList.setter
+    def PluginList(self, PluginList):
+        self._PluginList = PluginList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PluginList") is not None:
+            self._PluginList = []
+            for item in params.get("PluginList"):
+                obj = DescribeInstancePluginInfo()
+                obj._deserialize(item)
+                self._PluginList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3288,6 +3651,334 @@ class DiagnoseInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiagnoseJobMeta(AbstractModel):
+    """智能运维支持的诊断项和元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobName: 智能运维诊断项英文名
+        :type JobName: str
+        :param _JobZhName: 智能运维诊断项中文名
+        :type JobZhName: str
+        :param _JobDescription: 智能运维诊断项描述
+        :type JobDescription: str
+        """
+        self._JobName = None
+        self._JobZhName = None
+        self._JobDescription = None
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobZhName(self):
+        return self._JobZhName
+
+    @JobZhName.setter
+    def JobZhName(self, JobZhName):
+        self._JobZhName = JobZhName
+
+    @property
+    def JobDescription(self):
+        return self._JobDescription
+
+    @JobDescription.setter
+    def JobDescription(self, JobDescription):
+        self._JobDescription = JobDescription
+
+
+    def _deserialize(self, params):
+        self._JobName = params.get("JobName")
+        self._JobZhName = params.get("JobZhName")
+        self._JobDescription = params.get("JobDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiagnoseJobResult(AbstractModel):
+    """智能运维诊断项结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobName: 诊断项名
+        :type JobName: str
+        :param _Status: 诊断项状态：-2失败，-1待重试，0运行中，1成功
+        :type Status: int
+        :param _Score: 诊断项得分
+        :type Score: int
+        :param _Summary: 诊断摘要
+        :type Summary: str
+        :param _Advise: 诊断建议
+        :type Advise: str
+        :param _Detail: 诊断详情
+        :type Detail: str
+        :param _MetricDetails: 诊断指标详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricDetails: list of MetricDetail
+        :param _LogDetails: 诊断日志详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogDetails: list of LogDetail
+        :param _SettingDetails: 诊断配置详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SettingDetails: list of SettingDetail
+        """
+        self._JobName = None
+        self._Status = None
+        self._Score = None
+        self._Summary = None
+        self._Advise = None
+        self._Detail = None
+        self._MetricDetails = None
+        self._LogDetails = None
+        self._SettingDetails = None
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Advise(self):
+        return self._Advise
+
+    @Advise.setter
+    def Advise(self, Advise):
+        self._Advise = Advise
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def MetricDetails(self):
+        return self._MetricDetails
+
+    @MetricDetails.setter
+    def MetricDetails(self, MetricDetails):
+        self._MetricDetails = MetricDetails
+
+    @property
+    def LogDetails(self):
+        return self._LogDetails
+
+    @LogDetails.setter
+    def LogDetails(self, LogDetails):
+        self._LogDetails = LogDetails
+
+    @property
+    def SettingDetails(self):
+        return self._SettingDetails
+
+    @SettingDetails.setter
+    def SettingDetails(self, SettingDetails):
+        self._SettingDetails = SettingDetails
+
+
+    def _deserialize(self, params):
+        self._JobName = params.get("JobName")
+        self._Status = params.get("Status")
+        self._Score = params.get("Score")
+        self._Summary = params.get("Summary")
+        self._Advise = params.get("Advise")
+        self._Detail = params.get("Detail")
+        if params.get("MetricDetails") is not None:
+            self._MetricDetails = []
+            for item in params.get("MetricDetails"):
+                obj = MetricDetail()
+                obj._deserialize(item)
+                self._MetricDetails.append(obj)
+        if params.get("LogDetails") is not None:
+            self._LogDetails = []
+            for item in params.get("LogDetails"):
+                obj = LogDetail()
+                obj._deserialize(item)
+                self._LogDetails.append(obj)
+        if params.get("SettingDetails") is not None:
+            self._SettingDetails = []
+            for item in params.get("SettingDetails"):
+                obj = SettingDetail()
+                obj._deserialize(item)
+                self._SettingDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiagnoseResult(AbstractModel):
+    """智能运维诊断结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES实例ID
+        :type InstanceId: str
+        :param _RequestId: 诊断报告ID
+        :type RequestId: str
+        :param _CreateTime: 诊断触发时间
+        :type CreateTime: str
+        :param _Completed: 诊断是否完成
+        :type Completed: bool
+        :param _Score: 诊断总得分
+        :type Score: int
+        :param _JobType: 诊断类型，2 定时诊断，3 客户手动触发诊断
+        :type JobType: int
+        :param _JobParam: 诊断参数，如诊断时间，诊断索引等
+        :type JobParam: :class:`tencentcloud.es.v20180416.models.JobParam`
+        :param _JobResults: 诊断项结果列表
+        :type JobResults: list of DiagnoseJobResult
+        """
+        self._InstanceId = None
+        self._RequestId = None
+        self._CreateTime = None
+        self._Completed = None
+        self._Score = None
+        self._JobType = None
+        self._JobParam = None
+        self._JobResults = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Completed(self):
+        return self._Completed
+
+    @Completed.setter
+    def Completed(self, Completed):
+        self._Completed = Completed
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def JobType(self):
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobParam(self):
+        return self._JobParam
+
+    @JobParam.setter
+    def JobParam(self, JobParam):
+        self._JobParam = JobParam
+
+    @property
+    def JobResults(self):
+        return self._JobResults
+
+    @JobResults.setter
+    def JobResults(self, JobResults):
+        self._JobResults = JobResults
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+        self._CreateTime = params.get("CreateTime")
+        self._Completed = params.get("Completed")
+        self._Score = params.get("Score")
+        self._JobType = params.get("JobType")
+        if params.get("JobParam") is not None:
+            self._JobParam = JobParam()
+            self._JobParam._deserialize(params.get("JobParam"))
+        if params.get("JobResults") is not None:
+            self._JobResults = []
+            for item in params.get("JobResults"):
+                obj = DiagnoseJobResult()
+                obj._deserialize(item)
+                self._JobResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DictInfo(AbstractModel):
     """ik插件词典信息
 
@@ -3335,6 +4026,51 @@ class DictInfo(AbstractModel):
         self._Key = params.get("Key")
         self._Name = params.get("Name")
         self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Dimension(AbstractModel):
+    """智能运维指标维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 智能运维指标维度Key
+        :type Key: str
+        :param _Value: 智能运维指标维度值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3579,6 +4315,129 @@ class EsPublicAcl(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetDiagnoseSettingsRequest(AbstractModel):
+    """GetDiagnoseSettings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ES实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDiagnoseSettingsResponse(AbstractModel):
+    """GetDiagnoseSettings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiagnoseJobMetas: 智能运维诊断项和元信息
+        :type DiagnoseJobMetas: list of DiagnoseJobMeta
+        :param _Status: 0：开启智能运维；-1：关闭智能运维
+        :type Status: int
+        :param _CronTime: 智能运维每天定时巡检时间
+        :type CronTime: str
+        :param _Count: 智能运维当天已手动触发诊断次数
+        :type Count: int
+        :param _MaxCount: 智能运维每天最大可手动触发次数
+        :type MaxCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DiagnoseJobMetas = None
+        self._Status = None
+        self._CronTime = None
+        self._Count = None
+        self._MaxCount = None
+        self._RequestId = None
+
+    @property
+    def DiagnoseJobMetas(self):
+        return self._DiagnoseJobMetas
+
+    @DiagnoseJobMetas.setter
+    def DiagnoseJobMetas(self, DiagnoseJobMetas):
+        self._DiagnoseJobMetas = DiagnoseJobMetas
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CronTime(self):
+        return self._CronTime
+
+    @CronTime.setter
+    def CronTime(self, CronTime):
+        self._CronTime = CronTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def MaxCount(self):
+        return self._MaxCount
+
+    @MaxCount.setter
+    def MaxCount(self, MaxCount):
+        self._MaxCount = MaxCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DiagnoseJobMetas") is not None:
+            self._DiagnoseJobMetas = []
+            for item in params.get("DiagnoseJobMetas"):
+                obj = DiagnoseJobMeta()
+                obj._deserialize(item)
+                self._DiagnoseJobMetas.append(obj)
+        self._Status = params.get("Status")
+        self._CronTime = params.get("CronTime")
+        self._Count = params.get("Count")
+        self._MaxCount = params.get("MaxCount")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRequestTargetNodeTypesRequest(AbstractModel):
@@ -5353,6 +6212,64 @@ class InstanceLog(AbstractModel):
         
 
 
+class JobParam(AbstractModel):
+    """智能运维诊断参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Jobs: 诊断项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Jobs: list of str
+        :param _Indices: 诊断索引
+        :type Indices: str
+        :param _Interval: 历史诊断时间
+        :type Interval: int
+        """
+        self._Jobs = None
+        self._Indices = None
+        self._Interval = None
+
+    @property
+    def Jobs(self):
+        return self._Jobs
+
+    @Jobs.setter
+    def Jobs(self, Jobs):
+        self._Jobs = Jobs
+
+    @property
+    def Indices(self):
+        return self._Indices
+
+    @Indices.setter
+    def Indices(self, Indices):
+        self._Indices = Indices
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+
+    def _deserialize(self, params):
+        self._Jobs = params.get("Jobs")
+        self._Indices = params.get("Indices")
+        self._Interval = params.get("Interval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyValue(AbstractModel):
     """OperationDetail使用此结构的数组描述新旧配置
 
@@ -5667,6 +6584,63 @@ class LocalDiskInfo(AbstractModel):
         self._LocalDiskType = params.get("LocalDiskType")
         self._LocalDiskSize = params.get("LocalDiskSize")
         self._LocalDiskCount = params.get("LocalDiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogDetail(AbstractModel):
+    """智能运维日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 日志异常名
+        :type Key: str
+        :param _Advise: 日志异常处理建议
+        :type Advise: str
+        :param _Count: 日志异常名出现次数
+        :type Count: int
+        """
+        self._Key = None
+        self._Advise = None
+        self._Count = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Advise(self):
+        return self._Advise
+
+    @Advise.setter
+    def Advise(self, Advise):
+        self._Advise = Advise
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Advise = params.get("Advise")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6608,6 +7582,106 @@ class MasterNodeInfo(AbstractModel):
         self._MasterNodeMemSize = params.get("MasterNodeMemSize")
         self._MasterNodeDiskSize = params.get("MasterNodeDiskSize")
         self._MasterNodeDiskType = params.get("MasterNodeDiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metric(AbstractModel):
+    """智能运维指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimensions: 指标维度族
+        :type Dimensions: list of Dimension
+        :param _Value: 指标值
+        :type Value: float
+        """
+        self._Dimensions = None
+        self._Value = None
+
+    @property
+    def Dimensions(self):
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        if params.get("Dimensions") is not None:
+            self._Dimensions = []
+            for item in params.get("Dimensions"):
+                obj = Dimension()
+                obj._deserialize(item)
+                self._Dimensions.append(obj)
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDetail(AbstractModel):
+    """智能运维指标详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 指标详情名
+        :type Key: str
+        :param _Metrics: 指标详情值
+        :type Metrics: list of Metric
+        """
+        self._Key = None
+        self._Metrics = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = Metric()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8004,6 +9078,63 @@ class SaveAndDeployLogstashPipelineResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SettingDetail(AbstractModel):
+    """智能运维集群配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 配置key
+        :type Key: str
+        :param _Value: 配置当前值
+        :type Value: str
+        :param _Advise: 配置处理建议
+        :type Advise: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Advise = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Advise(self):
+        return self._Advise
+
+    @Advise.setter
+    def Advise(self, Advise):
+        self._Advise = Advise
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Advise = params.get("Advise")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StartLogstashPipelinesRequest(AbstractModel):

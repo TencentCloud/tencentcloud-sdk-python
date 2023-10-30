@@ -210,6 +210,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetRunMetadataFile(self, request):
+        """查询任务详情文件。
+
+        :param request: Request instance for GetRunMetadataFile.
+        :type request: :class:`tencentcloud.omics.v20221128.models.GetRunMetadataFileRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.GetRunMetadataFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRunMetadataFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRunMetadataFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRunStatus(self, request):
         """查询任务详情。
 
@@ -293,6 +316,52 @@ class OmicsClient(AbstractClient):
             body = self.call("RunApplication", params, headers=headers)
             response = json.loads(body)
             model = models.RunApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunWorkflow(self, request):
+        """运行工作流。
+
+        :param request: Request instance for RunWorkflow.
+        :type request: :class:`tencentcloud.omics.v20221128.models.RunWorkflowRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RunWorkflowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunWorkflow", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateRunGroup(self, request):
+        """终止任务批次。
+
+        :param request: Request instance for TerminateRunGroup.
+        :type request: :class:`tencentcloud.omics.v20221128.models.TerminateRunGroupRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.TerminateRunGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateRunGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateRunGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

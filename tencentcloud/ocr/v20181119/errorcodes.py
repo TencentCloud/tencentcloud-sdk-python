@@ -74,6 +74,12 @@ FAILEDOPERATION_INVOICEMISMATCH = 'FailedOperation.InvoiceMismatch'
 # 输入的Language不支持。
 FAILEDOPERATION_LANGUAGENOTSUPPORT = 'FailedOperation.LanguageNotSupport'
 
+# 入参CardSide错误，与实际上传的卡证正副页类型不符
+FAILEDOPERATION_LICENSECARDSIDEERROR = 'FailedOperation.LicenseCardSideError'
+
+# 图片中存在两张及以上同面卡证，请上传卡证单面图片或一正一反双面图片
+FAILEDOPERATION_LICENSEMULTICARDERROR = 'FailedOperation.LicenseMultiCardError'
+
 # 图片中存在两张及以上同面卡证，请上传卡证单面图片或一正一反双面图片。
 FAILEDOPERATION_MULTICARDERROR = 'FailedOperation.MultiCardError'
 
@@ -83,6 +89,9 @@ FAILEDOPERATION_NOBANKCARDERROR = 'FailedOperation.NoBankCardError'
 # 非营业执照。
 FAILEDOPERATION_NOBIZLICENSE = 'FailedOperation.NoBizLicense'
 
+# 上传的图片非驾驶证
+FAILEDOPERATION_NODRIVERLICENSEERROR = 'FailedOperation.NoDriverLicenseError'
+
 # 非香港身份证。
 FAILEDOPERATION_NOHKIDCARD = 'FailedOperation.NoHKIDCard'
 
@@ -91,6 +100,9 @@ FAILEDOPERATION_NOMASIDCARD = 'FailedOperation.NoMASIDCard'
 
 # 非护照。
 FAILEDOPERATION_NOPASSPORT = 'FailedOperation.NoPassport'
+
+# 上传的图片非行驶证
+FAILEDOPERATION_NOVEHICLELICENSEERROR = 'FailedOperation.NoVehicleLicenseError'
 
 # OCR识别失败。
 FAILEDOPERATION_OCRFAILED = 'FailedOperation.OcrFailed'

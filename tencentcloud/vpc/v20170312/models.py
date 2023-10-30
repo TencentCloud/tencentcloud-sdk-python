@@ -34747,6 +34747,196 @@ class ModifyVpnGatewayRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyVpnGatewaySslServerRequest(AbstractModel):
+    """ModifyVpnGatewaySslServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SslVpnServerId: SSL-VPN SERVER 实例ID
+        :type SslVpnServerId: str
+        :param _SslVpnServerName: SSL-VPN SERVER NAME
+        :type SslVpnServerName: str
+        :param _LocalAddress: 本端地址
+        :type LocalAddress: list of str
+        :param _RemoteAddress: 客户端地址
+        :type RemoteAddress: str
+        :param _SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+        :type SslVpnProtocol: str
+        :param _SslVpnPort: SSL VPN服务端监听协议端口。
+        :type SslVpnPort: int
+        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+        :type EncryptAlgorithm: str
+        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+        :type IntegrityAlgorithm: str
+        :param _Compress: 是否支持压缩。当前仅支持不支持压缩。默认False
+        :type Compress: bool
+        :param _SsoEnabled: 是否开启SSO认证，默认False
+        :type SsoEnabled: bool
+        :param _SamlData: SAML-DATA
+        :type SamlData: str
+        """
+        self._SslVpnServerId = None
+        self._SslVpnServerName = None
+        self._LocalAddress = None
+        self._RemoteAddress = None
+        self._SslVpnProtocol = None
+        self._SslVpnPort = None
+        self._EncryptAlgorithm = None
+        self._IntegrityAlgorithm = None
+        self._Compress = None
+        self._SsoEnabled = None
+        self._SamlData = None
+
+    @property
+    def SslVpnServerId(self):
+        return self._SslVpnServerId
+
+    @SslVpnServerId.setter
+    def SslVpnServerId(self, SslVpnServerId):
+        self._SslVpnServerId = SslVpnServerId
+
+    @property
+    def SslVpnServerName(self):
+        return self._SslVpnServerName
+
+    @SslVpnServerName.setter
+    def SslVpnServerName(self, SslVpnServerName):
+        self._SslVpnServerName = SslVpnServerName
+
+    @property
+    def LocalAddress(self):
+        return self._LocalAddress
+
+    @LocalAddress.setter
+    def LocalAddress(self, LocalAddress):
+        self._LocalAddress = LocalAddress
+
+    @property
+    def RemoteAddress(self):
+        return self._RemoteAddress
+
+    @RemoteAddress.setter
+    def RemoteAddress(self, RemoteAddress):
+        self._RemoteAddress = RemoteAddress
+
+    @property
+    def SslVpnProtocol(self):
+        return self._SslVpnProtocol
+
+    @SslVpnProtocol.setter
+    def SslVpnProtocol(self, SslVpnProtocol):
+        self._SslVpnProtocol = SslVpnProtocol
+
+    @property
+    def SslVpnPort(self):
+        return self._SslVpnPort
+
+    @SslVpnPort.setter
+    def SslVpnPort(self, SslVpnPort):
+        self._SslVpnPort = SslVpnPort
+
+    @property
+    def EncryptAlgorithm(self):
+        return self._EncryptAlgorithm
+
+    @EncryptAlgorithm.setter
+    def EncryptAlgorithm(self, EncryptAlgorithm):
+        self._EncryptAlgorithm = EncryptAlgorithm
+
+    @property
+    def IntegrityAlgorithm(self):
+        return self._IntegrityAlgorithm
+
+    @IntegrityAlgorithm.setter
+    def IntegrityAlgorithm(self, IntegrityAlgorithm):
+        self._IntegrityAlgorithm = IntegrityAlgorithm
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def SsoEnabled(self):
+        return self._SsoEnabled
+
+    @SsoEnabled.setter
+    def SsoEnabled(self, SsoEnabled):
+        self._SsoEnabled = SsoEnabled
+
+    @property
+    def SamlData(self):
+        return self._SamlData
+
+    @SamlData.setter
+    def SamlData(self, SamlData):
+        self._SamlData = SamlData
+
+
+    def _deserialize(self, params):
+        self._SslVpnServerId = params.get("SslVpnServerId")
+        self._SslVpnServerName = params.get("SslVpnServerName")
+        self._LocalAddress = params.get("LocalAddress")
+        self._RemoteAddress = params.get("RemoteAddress")
+        self._SslVpnProtocol = params.get("SslVpnProtocol")
+        self._SslVpnPort = params.get("SslVpnPort")
+        self._EncryptAlgorithm = params.get("EncryptAlgorithm")
+        self._IntegrityAlgorithm = params.get("IntegrityAlgorithm")
+        self._Compress = params.get("Compress")
+        self._SsoEnabled = params.get("SsoEnabled")
+        self._SamlData = params.get("SamlData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVpnGatewaySslServerResponse(AbstractModel):
+    """ModifyVpnGatewaySslServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务TASKID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class NatDirectConnectGatewayRoute(AbstractModel):
     """查询nat路由的返回路由对象
 

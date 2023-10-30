@@ -1933,6 +1933,117 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class BindSecurityTemplateToEntityRequest(AbstractModel):
+    """BindSecurityTemplateToEntity请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 需要绑定或解绑的策略模板所属站点 ID。
+        :type ZoneId: str
+        :param _Entities: 绑定至策略模板（或者从策略模板解绑）的域名列表。
+        :type Entities: list of str
+        :param _Operate: 绑定或解绑操作选项，取值有：
+<li>bind：绑定域名至策略模板；</li>
+<li>unbind-keep-policy：将域名从策略模板解绑，解绑时保留当前策略；</li>
+<li>unbind-use-default：将域名从策略模板解绑，并使用默认空白策略。</li>注意：解绑操作当前仅支持单个域名解绑。即：当 Operate 参数取值为 unbind-keep-policy 或 unbind-use-default 时，Entities 参数列表仅支持填写一个域名。
+        :type Operate: str
+        :param _TemplateId: 指定绑定或解绑的策略模板 ID 。
+        :type TemplateId: str
+        :param _OverWrite: 如指定的域名已经绑定了策略模板，是否替换该模板。支持下列取值：
+<li>true： 替换域名当前绑定的模板；</li>
+<li>false：不替换域名当前绑定的模板。</li>注意：当选择不替换已有策略模板时，若指定域名已经绑定策略模板，API 将返回错误。
+        :type OverWrite: bool
+        """
+        self._ZoneId = None
+        self._Entities = None
+        self._Operate = None
+        self._TemplateId = None
+        self._OverWrite = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Entities(self):
+        return self._Entities
+
+    @Entities.setter
+    def Entities(self, Entities):
+        self._Entities = Entities
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def OverWrite(self):
+        return self._OverWrite
+
+    @OverWrite.setter
+    def OverWrite(self, OverWrite):
+        self._OverWrite = OverWrite
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Entities = params.get("Entities")
+        self._Operate = params.get("Operate")
+        self._TemplateId = params.get("TemplateId")
+        self._OverWrite = params.get("OverWrite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindSecurityTemplateToEntityResponse(AbstractModel):
+    """BindSecurityTemplateToEntity返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BindZoneToPlanRequest(AbstractModel):
     """BindZoneToPlan请求参数结构体
 

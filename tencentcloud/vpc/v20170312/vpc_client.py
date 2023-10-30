@@ -6775,6 +6775,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyVpnGatewaySslServer(self, request):
+        """本接口用于修改 SSL-VPN 服务端属性
+
+        :param request: Request instance for ModifyVpnGatewaySslServer.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewaySslServerRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyVpnGatewaySslServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVpnGatewaySslServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVpnGatewaySslServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def NotifyRoutes(self, request):
         """本接口（NotifyRoutes）用于路由表列表页操作增加“发布到云联网”，发布路由到云联网。
 

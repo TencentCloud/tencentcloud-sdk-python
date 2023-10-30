@@ -1122,7 +1122,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zones: 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+        :param _Zones: 分片节点可用区分布，可填写多个可用区。
 注意当前可售卖的可用区需要通过DescribeDCDBSaleInfo接口拉取。
         :type Zones: list of str
         :param _Period: 欲购买的时长，单位：月。
@@ -1170,6 +1170,8 @@ class CreateDCDBInstanceRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param _SecurityGroupIds: 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
         :type SecurityGroupIds: list of str
+        :param _DcnSyncMode: DCN同步模式，0：异步， 1：强同步 
+        :type DcnSyncMode: int
         """
         self._Zones = None
         self._Period = None
@@ -1193,6 +1195,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self._DcnInstanceId = None
         self._AutoRenewFlag = None
         self._SecurityGroupIds = None
+        self._DcnSyncMode = None
 
     @property
     def Zones(self):
@@ -1370,6 +1373,14 @@ class CreateDCDBInstanceRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DcnSyncMode(self):
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
 
     def _deserialize(self, params):
         self._Zones = params.get("Zones")
@@ -1404,6 +1415,7 @@ class CreateDCDBInstanceRequest(AbstractModel):
         self._DcnInstanceId = params.get("DcnInstanceId")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DcnSyncMode = params.get("DcnSyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1530,6 +1542,8 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         :type RollbackInstanceId: str
         :param _RollbackTime: 回档时间
         :type RollbackTime: str
+        :param _DcnSyncMode: DCN同步模式，0：异步， 1：强同步
+        :type DcnSyncMode: int
         """
         self._GoodsNum = None
         self._ShardNum = None
@@ -1560,6 +1574,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         self._SlaveHostIds = None
         self._RollbackInstanceId = None
         self._RollbackTime = None
+        self._DcnSyncMode = None
 
     @property
     def GoodsNum(self):
@@ -1793,6 +1808,14 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
     def RollbackTime(self, RollbackTime):
         self._RollbackTime = RollbackTime
 
+    @property
+    def DcnSyncMode(self):
+        return self._DcnSyncMode
+
+    @DcnSyncMode.setter
+    def DcnSyncMode(self, DcnSyncMode):
+        self._DcnSyncMode = DcnSyncMode
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
@@ -1834,6 +1857,7 @@ class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
         self._SlaveHostIds = params.get("SlaveHostIds")
         self._RollbackInstanceId = params.get("RollbackInstanceId")
         self._RollbackTime = params.get("RollbackTime")
+        self._DcnSyncMode = params.get("DcnSyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1946,7 +1970,7 @@ class CreateHourDCDBInstanceRequest(AbstractModel):
         :type RollbackTime: str
         :param _SecurityGroupIds: 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
         :type SecurityGroupIds: list of str
-        :param _DcnSyncMode: DCN同步模式，0：普通DCN同步，1：一致性同步
+        :param _DcnSyncMode: DCN同步模式，0：异步， 1：强同步
         :type DcnSyncMode: int
         """
         self._ShardMemory = None
@@ -3733,6 +3757,24 @@ class DcnDetailItem(AbstractModel):
         :type InstanceType: int
         :param _EncryptStatus: 是否开启了 kms
         :type EncryptStatus: int
+        :param _DcnStatusDesc: 实例DCN状态描述信息
+        :type DcnStatusDesc: str
+        :param _PolarisInstanceId: DCN实例绑定的北极星服务所属的北极星实例Id，若未绑定则为空
+        :type PolarisInstanceId: str
+        :param _PolarisInstanceName: DCN实例绑定的北极星服务所属的北极星实例名，若未绑定则为空
+        :type PolarisInstanceName: str
+        :param _PolarisNamespace: DCN实例绑定的北极星服务所属的北极星命名空间，若未绑定则为空
+        :type PolarisNamespace: str
+        :param _PolarisService: DCN实例绑定的北极星服务，若未绑定则为空
+        :type PolarisService: str
+        :param _PolarisServiceStatus: DCN实例在北极星服务中的状态 0:未开启; 1:已开启; 2:已隔离; 3:切换中
+        :type PolarisServiceStatus: int
+        :param _PolarisServiceStatusDesc: DCN实例在北极星服务中的状态的描述信息
+        :type PolarisServiceStatusDesc: str
+        :param _PolarisRegion: 北极星管控地域
+        :type PolarisRegion: str
+        :param _IsDcnSwitchSupported: 是否支持DCN切换
+        :type IsDcnSwitchSupported: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -3753,6 +3795,15 @@ class DcnDetailItem(AbstractModel):
         self._PeriodEndTime = None
         self._InstanceType = None
         self._EncryptStatus = None
+        self._DcnStatusDesc = None
+        self._PolarisInstanceId = None
+        self._PolarisInstanceName = None
+        self._PolarisNamespace = None
+        self._PolarisService = None
+        self._PolarisServiceStatus = None
+        self._PolarisServiceStatusDesc = None
+        self._PolarisRegion = None
+        self._IsDcnSwitchSupported = None
 
     @property
     def InstanceId(self):
@@ -3906,6 +3957,78 @@ class DcnDetailItem(AbstractModel):
     def EncryptStatus(self, EncryptStatus):
         self._EncryptStatus = EncryptStatus
 
+    @property
+    def DcnStatusDesc(self):
+        return self._DcnStatusDesc
+
+    @DcnStatusDesc.setter
+    def DcnStatusDesc(self, DcnStatusDesc):
+        self._DcnStatusDesc = DcnStatusDesc
+
+    @property
+    def PolarisInstanceId(self):
+        return self._PolarisInstanceId
+
+    @PolarisInstanceId.setter
+    def PolarisInstanceId(self, PolarisInstanceId):
+        self._PolarisInstanceId = PolarisInstanceId
+
+    @property
+    def PolarisInstanceName(self):
+        return self._PolarisInstanceName
+
+    @PolarisInstanceName.setter
+    def PolarisInstanceName(self, PolarisInstanceName):
+        self._PolarisInstanceName = PolarisInstanceName
+
+    @property
+    def PolarisNamespace(self):
+        return self._PolarisNamespace
+
+    @PolarisNamespace.setter
+    def PolarisNamespace(self, PolarisNamespace):
+        self._PolarisNamespace = PolarisNamespace
+
+    @property
+    def PolarisService(self):
+        return self._PolarisService
+
+    @PolarisService.setter
+    def PolarisService(self, PolarisService):
+        self._PolarisService = PolarisService
+
+    @property
+    def PolarisServiceStatus(self):
+        return self._PolarisServiceStatus
+
+    @PolarisServiceStatus.setter
+    def PolarisServiceStatus(self, PolarisServiceStatus):
+        self._PolarisServiceStatus = PolarisServiceStatus
+
+    @property
+    def PolarisServiceStatusDesc(self):
+        return self._PolarisServiceStatusDesc
+
+    @PolarisServiceStatusDesc.setter
+    def PolarisServiceStatusDesc(self, PolarisServiceStatusDesc):
+        self._PolarisServiceStatusDesc = PolarisServiceStatusDesc
+
+    @property
+    def PolarisRegion(self):
+        return self._PolarisRegion
+
+    @PolarisRegion.setter
+    def PolarisRegion(self, PolarisRegion):
+        self._PolarisRegion = PolarisRegion
+
+    @property
+    def IsDcnSwitchSupported(self):
+        return self._IsDcnSwitchSupported
+
+    @IsDcnSwitchSupported.setter
+    def IsDcnSwitchSupported(self, IsDcnSwitchSupported):
+        self._IsDcnSwitchSupported = IsDcnSwitchSupported
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3927,6 +4050,15 @@ class DcnDetailItem(AbstractModel):
         self._PeriodEndTime = params.get("PeriodEndTime")
         self._InstanceType = params.get("InstanceType")
         self._EncryptStatus = params.get("EncryptStatus")
+        self._DcnStatusDesc = params.get("DcnStatusDesc")
+        self._PolarisInstanceId = params.get("PolarisInstanceId")
+        self._PolarisInstanceName = params.get("PolarisInstanceName")
+        self._PolarisNamespace = params.get("PolarisNamespace")
+        self._PolarisService = params.get("PolarisService")
+        self._PolarisServiceStatus = params.get("PolarisServiceStatus")
+        self._PolarisServiceStatusDesc = params.get("PolarisServiceStatusDesc")
+        self._PolarisRegion = params.get("PolarisRegion")
+        self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5588,6 +5720,10 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         :type ReservedNetResources: list of ReservedNetResource
         :param _IsPhysicalReplicationSupported: 是否支持物理复制
         :type IsPhysicalReplicationSupported: bool
+        :param _IsDcnStrongSyncSupported: 是否支持强同步DCN
+        :type IsDcnStrongSyncSupported: int
+        :param _IsDcnSwitchSupported: 是否支持DCN切换
+        :type IsDcnSwitchSupported: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5643,6 +5779,8 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self._RsAccessStrategy = None
         self._ReservedNetResources = None
         self._IsPhysicalReplicationSupported = None
+        self._IsDcnStrongSyncSupported = None
+        self._IsDcnSwitchSupported = None
         self._RequestId = None
 
     @property
@@ -6062,6 +6200,22 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
         self._IsPhysicalReplicationSupported = IsPhysicalReplicationSupported
 
     @property
+    def IsDcnStrongSyncSupported(self):
+        return self._IsDcnStrongSyncSupported
+
+    @IsDcnStrongSyncSupported.setter
+    def IsDcnStrongSyncSupported(self, IsDcnStrongSyncSupported):
+        self._IsDcnStrongSyncSupported = IsDcnStrongSyncSupported
+
+    @property
+    def IsDcnSwitchSupported(self):
+        return self._IsDcnSwitchSupported
+
+    @IsDcnSwitchSupported.setter
+    def IsDcnSwitchSupported(self, IsDcnSwitchSupported):
+        self._IsDcnSwitchSupported = IsDcnSwitchSupported
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6138,6 +6292,8 @@ class DescribeDCDBInstanceDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ReservedNetResources.append(obj)
         self._IsPhysicalReplicationSupported = params.get("IsPhysicalReplicationSupported")
+        self._IsDcnStrongSyncSupported = params.get("IsDcnStrongSyncSupported")
+        self._IsDcnSwitchSupported = params.get("IsDcnSwitchSupported")
         self._RequestId = params.get("RequestId")
 
 

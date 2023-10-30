@@ -187,6 +187,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDiagnose(self, request):
+        """查询智能运维诊断结果报告
+
+        :param request: Request instance for DescribeDiagnose.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeDiagnoseRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeDiagnoseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDiagnose", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDiagnoseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIndexList(self, request):
         """获取索引列表
 
@@ -270,6 +293,29 @@ class EsClient(AbstractClient):
             body = self.call("DescribeInstanceOperations", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceOperationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstancePluginList(self, request):
+        """查询实例插件列表
+
+        :param request: Request instance for DescribeInstancePluginList.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeInstancePluginListRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeInstancePluginListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePluginList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePluginListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +477,29 @@ class EsClient(AbstractClient):
             body = self.call("DiagnoseInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DiagnoseInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetDiagnoseSettings(self, request):
+        """查看智能运维配置
+
+        :param request: Request instance for GetDiagnoseSettings.
+        :type request: :class:`tencentcloud.es.v20180416.models.GetDiagnoseSettingsRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.GetDiagnoseSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDiagnoseSettings", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDiagnoseSettingsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

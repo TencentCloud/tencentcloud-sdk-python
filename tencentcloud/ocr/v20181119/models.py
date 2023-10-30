@@ -2776,6 +2776,7 @@ class DriverLicenseOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param _CardSide: FRONT 为驾驶证主页正面（有红色印章的一面），
 BACK 为驾驶证副页正面（有档案编号的一面）。
+DOUBLE 支持自动识别驾驶证正副页单面，和正副双面同框识别
 默认值为：FRONT。
         :type CardSide: str
         """
@@ -2829,7 +2830,7 @@ class DriverLicenseOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 姓名
+        :param _Name: 驾驶证正页姓名
         :type Name: str
         :param _Sex: 性别
         :type Sex: str
@@ -2848,7 +2849,7 @@ class DriverLicenseOCRResponse(AbstractModel):
         :param _EndDate: 有效期截止时间（新版驾驶证返回 YYYY-MM-DD，
 老版驾驶证返回有效期限 X年）
         :type EndDate: str
-        :param _CardCode: 证号
+        :param _CardCode: 驾驶证正页证号
         :type CardCode: str
         :param _ArchivesCode: 档案编号
         :type ArchivesCode: str
@@ -2874,6 +2875,10 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         :type CurrentTime: str
         :param _GenerateTime: 生成时间（仅电子驾驶证支持返回该字段）
         :type GenerateTime: str
+        :param _BackPageName: 驾驶证副页姓名
+        :type BackPageName: str
+        :param _BackPageCardCode: 驾驶证副页证号
+        :type BackPageCardCode: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2896,6 +2901,8 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._CumulativeScore = None
         self._CurrentTime = None
         self._GenerateTime = None
+        self._BackPageName = None
+        self._BackPageCardCode = None
         self._RequestId = None
 
     @property
@@ -3051,6 +3058,22 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._GenerateTime = GenerateTime
 
     @property
+    def BackPageName(self):
+        return self._BackPageName
+
+    @BackPageName.setter
+    def BackPageName(self, BackPageName):
+        self._BackPageName = BackPageName
+
+    @property
+    def BackPageCardCode(self):
+        return self._BackPageCardCode
+
+    @BackPageCardCode.setter
+    def BackPageCardCode(self, BackPageCardCode):
+        self._BackPageCardCode = BackPageCardCode
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3079,6 +3102,8 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         self._CumulativeScore = params.get("CumulativeScore")
         self._CurrentTime = params.get("CurrentTime")
         self._GenerateTime = params.get("GenerateTime")
+        self._BackPageName = params.get("BackPageName")
+        self._BackPageCardCode = params.get("BackPageCardCode")
         self._RequestId = params.get("RequestId")
 
 

@@ -7766,6 +7766,162 @@ class DescribeTaskLogURLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
+    """DescribeVULRiskAdvanceCFGList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._TaskId = None
+        self._Filter = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
+    """DescribeVULRiskAdvanceCFGList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 配置项列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of VULRiskAdvanceCFGList
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RiskLevelLists: 风险等级过滤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevelLists: list of FilterDataObject
+        :param _VULTypeLists: 漏洞类型过滤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VULTypeLists: list of FilterDataObject
+        :param _CheckFromLists: 识别来源过滤列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckFromLists: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RiskLevelLists = None
+        self._VULTypeLists = None
+        self._CheckFromLists = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RiskLevelLists(self):
+        return self._RiskLevelLists
+
+    @RiskLevelLists.setter
+    def RiskLevelLists(self, RiskLevelLists):
+        self._RiskLevelLists = RiskLevelLists
+
+    @property
+    def VULTypeLists(self):
+        return self._VULTypeLists
+
+    @VULTypeLists.setter
+    def VULTypeLists(self, VULTypeLists):
+        self._VULTypeLists = VULTypeLists
+
+    @property
+    def CheckFromLists(self):
+        return self._CheckFromLists
+
+    @CheckFromLists.setter
+    def CheckFromLists(self, CheckFromLists):
+        self._CheckFromLists = CheckFromLists
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VULRiskAdvanceCFGList()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RiskLevelLists") is not None:
+            self._RiskLevelLists = []
+            for item in params.get("RiskLevelLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._RiskLevelLists.append(obj)
+        if params.get("VULTypeLists") is not None:
+            self._VULTypeLists = []
+            for item in params.get("VULTypeLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VULTypeLists.append(obj)
+        if params.get("CheckFromLists") is not None:
+            self._CheckFromLists = []
+            for item in params.get("CheckFromLists"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._CheckFromLists.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVpcAssetsRequest(AbstractModel):
     """DescribeVpcAssets请求参数结构体
 
@@ -11681,6 +11837,190 @@ class TaskLogURL(AbstractModel):
         self._LogId = params.get("LogId")
         self._TaskLogName = params.get("TaskLogName")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VULRiskAdvanceCFGList(AbstractModel):
+    """漏洞风险高级配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VULName: 漏洞名称
+        :type VULName: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _CheckFrom: 识别来源
+        :type CheckFrom: str
+        :param _Enable: 是否启用，1-启用，0-禁用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param _VULType: 风险类型
+        :type VULType: str
+        :param _ImpactVersion: 影响版本
+        :type ImpactVersion: str
+        :param _CVE: CVE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVE: str
+        :param _VULTag: 漏洞标签
+        :type VULTag: list of str
+        :param _FixMethod: 修复方式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixMethod: list of str
+        :param _ReleaseTime: 披露时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EMGCVulType: int
+        :param _VULDescribe: 漏洞描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VULDescribe: str
+        :param _ImpactComponent: 影响组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImpactComponent: str
+        """
+        self._VULName = None
+        self._RiskLevel = None
+        self._CheckFrom = None
+        self._Enable = None
+        self._VULType = None
+        self._ImpactVersion = None
+        self._CVE = None
+        self._VULTag = None
+        self._FixMethod = None
+        self._ReleaseTime = None
+        self._EMGCVulType = None
+        self._VULDescribe = None
+        self._ImpactComponent = None
+
+    @property
+    def VULName(self):
+        return self._VULName
+
+    @VULName.setter
+    def VULName(self, VULName):
+        self._VULName = VULName
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def CheckFrom(self):
+        return self._CheckFrom
+
+    @CheckFrom.setter
+    def CheckFrom(self, CheckFrom):
+        self._CheckFrom = CheckFrom
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VULType(self):
+        return self._VULType
+
+    @VULType.setter
+    def VULType(self, VULType):
+        self._VULType = VULType
+
+    @property
+    def ImpactVersion(self):
+        return self._ImpactVersion
+
+    @ImpactVersion.setter
+    def ImpactVersion(self, ImpactVersion):
+        self._ImpactVersion = ImpactVersion
+
+    @property
+    def CVE(self):
+        return self._CVE
+
+    @CVE.setter
+    def CVE(self, CVE):
+        self._CVE = CVE
+
+    @property
+    def VULTag(self):
+        return self._VULTag
+
+    @VULTag.setter
+    def VULTag(self, VULTag):
+        self._VULTag = VULTag
+
+    @property
+    def FixMethod(self):
+        return self._FixMethod
+
+    @FixMethod.setter
+    def FixMethod(self, FixMethod):
+        self._FixMethod = FixMethod
+
+    @property
+    def ReleaseTime(self):
+        return self._ReleaseTime
+
+    @ReleaseTime.setter
+    def ReleaseTime(self, ReleaseTime):
+        self._ReleaseTime = ReleaseTime
+
+    @property
+    def EMGCVulType(self):
+        return self._EMGCVulType
+
+    @EMGCVulType.setter
+    def EMGCVulType(self, EMGCVulType):
+        self._EMGCVulType = EMGCVulType
+
+    @property
+    def VULDescribe(self):
+        return self._VULDescribe
+
+    @VULDescribe.setter
+    def VULDescribe(self, VULDescribe):
+        self._VULDescribe = VULDescribe
+
+    @property
+    def ImpactComponent(self):
+        return self._ImpactComponent
+
+    @ImpactComponent.setter
+    def ImpactComponent(self, ImpactComponent):
+        self._ImpactComponent = ImpactComponent
+
+
+    def _deserialize(self, params):
+        self._VULName = params.get("VULName")
+        self._RiskLevel = params.get("RiskLevel")
+        self._CheckFrom = params.get("CheckFrom")
+        self._Enable = params.get("Enable")
+        self._VULType = params.get("VULType")
+        self._ImpactVersion = params.get("ImpactVersion")
+        self._CVE = params.get("CVE")
+        self._VULTag = params.get("VULTag")
+        self._FixMethod = params.get("FixMethod")
+        self._ReleaseTime = params.get("ReleaseTime")
+        self._EMGCVulType = params.get("EMGCVulType")
+        self._VULDescribe = params.get("VULDescribe")
+        self._ImpactComponent = params.get("ImpactComponent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

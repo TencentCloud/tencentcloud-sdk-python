@@ -645,6 +645,7 @@ class DescribeRunGroupsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
         :type ProjectId: str
         :param _Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
@@ -776,6 +777,7 @@ class DescribeRunsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
         :type ProjectId: str
         :param _Limit: 返回数量，默认为10，最大值为100。
         :type Limit: int
@@ -1549,6 +1551,7 @@ class GetRunCallsRequest(AbstractModel):
         :param _Path: 作业路径
         :type Path: str
         :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
         :type ProjectId: str
         """
         self._RunUuid = None
@@ -1636,6 +1639,110 @@ class GetRunCallsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetRunMetadataFileRequest(AbstractModel):
+    """GetRunMetadataFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunUuid: 任务Uuid。
+        :type RunUuid: str
+        :param _Key: 需要获取的文件名。
+
+默认支持以下文件：
+- nextflow.log
+
+提交时NFOption中report指定为true时，额外支持以下文件：
+- execution_report.html
+- execution_timeline.html
+- execution_trace.txt
+- pipeline_dag.html
+        :type Key: str
+        :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
+        :type ProjectId: str
+        """
+        self._RunUuid = None
+        self._Key = None
+        self._ProjectId = None
+
+    @property
+    def RunUuid(self):
+        return self._RunUuid
+
+    @RunUuid.setter
+    def RunUuid(self, RunUuid):
+        self._RunUuid = RunUuid
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._RunUuid = params.get("RunUuid")
+        self._Key = params.get("Key")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRunMetadataFileResponse(AbstractModel):
+    """GetRunMetadataFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosSignedUrl: 文件预签名链接，一分钟内有效。
+        :type CosSignedUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosSignedUrl = None
+        self._RequestId = None
+
+    @property
+    def CosSignedUrl(self):
+        return self._CosSignedUrl
+
+    @CosSignedUrl.setter
+    def CosSignedUrl(self, CosSignedUrl):
+        self._CosSignedUrl = CosSignedUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CosSignedUrl = params.get("CosSignedUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class GetRunStatusRequest(AbstractModel):
     """GetRunStatus请求参数结构体
 
@@ -1646,6 +1753,7 @@ class GetRunStatusRequest(AbstractModel):
         :param _RunUuid: 任务Uuid。
         :type RunUuid: str
         :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
         :type ProjectId: str
         """
         self._RunUuid = None
@@ -1718,6 +1826,87 @@ class GetRunStatusResponse(AbstractModel):
             self._Metadata = RunMetadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._RequestId = params.get("RequestId")
+
+
+class GitInfo(AbstractModel):
+    """Git信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GitHttpPath: Git地址。
+        :type GitHttpPath: str
+        :param _GitUserName: Git用户名。
+        :type GitUserName: str
+        :param _GitTokenOrPassword: Git密码或者Token。
+        :type GitTokenOrPassword: str
+        :param _Branch: 分支。
+        :type Branch: str
+        :param _Tag: 标签。
+        :type Tag: str
+        """
+        self._GitHttpPath = None
+        self._GitUserName = None
+        self._GitTokenOrPassword = None
+        self._Branch = None
+        self._Tag = None
+
+    @property
+    def GitHttpPath(self):
+        return self._GitHttpPath
+
+    @GitHttpPath.setter
+    def GitHttpPath(self, GitHttpPath):
+        self._GitHttpPath = GitHttpPath
+
+    @property
+    def GitUserName(self):
+        return self._GitUserName
+
+    @GitUserName.setter
+    def GitUserName(self, GitUserName):
+        self._GitUserName = GitUserName
+
+    @property
+    def GitTokenOrPassword(self):
+        return self._GitTokenOrPassword
+
+    @GitTokenOrPassword.setter
+    def GitTokenOrPassword(self, GitTokenOrPassword):
+        self._GitTokenOrPassword = GitTokenOrPassword
+
+    @property
+    def Branch(self):
+        return self._Branch
+
+    @Branch.setter
+    def Branch(self, Branch):
+        self._Branch = Branch
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._GitHttpPath = params.get("GitHttpPath")
+        self._GitUserName = params.get("GitUserName")
+        self._GitTokenOrPassword = params.get("GitTokenOrPassword")
+        self._Branch = params.get("Branch")
+        self._Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ImportTableFileRequest(AbstractModel):
@@ -2253,10 +2442,14 @@ class Run(AbstractModel):
 
     @property
     def Option(self):
+        warnings.warn("parameter `Option` is deprecated", DeprecationWarning) 
+
         return self._Option
 
     @Option.setter
     def Option(self, Option):
+        warnings.warn("parameter `Option` is deprecated", DeprecationWarning) 
+
         self._Option = Option
 
     @property
@@ -3289,6 +3482,194 @@ class RunStatusCount(AbstractModel):
         
 
 
+class RunWorkflowRequest(AbstractModel):
+    """RunWorkflow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 任务批次名称。
+        :type Name: str
+        :param _EnvironmentId: 投递环境ID。
+        :type EnvironmentId: str
+        :param _GitSource: 工作流Git仓库信息。
+        :type GitSource: :class:`tencentcloud.omics.v20221128.models.GitInfo`
+        :param _Type: 工作流类型。
+
+支持类型：
+- NEXTFLOW
+        :type Type: str
+        :param _NFOption: Nextflow选项。
+        :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
+        :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
+        :type ProjectId: str
+        :param _Description: 任务批次描述。
+        :type Description: str
+        :param _InputBase64: 任务输入JSON。需要进行base64编码。
+（InputBase64和InputCosUri必选其一）
+        :type InputBase64: str
+        :param _InputCosUri: 任务输入COS地址。
+（InputBase64和InputCosUri必选其一）
+        :type InputCosUri: str
+        :param _CacheClearDelay: 任务缓存清理时间。不填表示不清理。
+        :type CacheClearDelay: int
+        """
+        self._Name = None
+        self._EnvironmentId = None
+        self._GitSource = None
+        self._Type = None
+        self._NFOption = None
+        self._ProjectId = None
+        self._Description = None
+        self._InputBase64 = None
+        self._InputCosUri = None
+        self._CacheClearDelay = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def GitSource(self):
+        return self._GitSource
+
+    @GitSource.setter
+    def GitSource(self, GitSource):
+        self._GitSource = GitSource
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NFOption(self):
+        return self._NFOption
+
+    @NFOption.setter
+    def NFOption(self, NFOption):
+        self._NFOption = NFOption
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InputBase64(self):
+        return self._InputBase64
+
+    @InputBase64.setter
+    def InputBase64(self, InputBase64):
+        self._InputBase64 = InputBase64
+
+    @property
+    def InputCosUri(self):
+        return self._InputCosUri
+
+    @InputCosUri.setter
+    def InputCosUri(self, InputCosUri):
+        self._InputCosUri = InputCosUri
+
+    @property
+    def CacheClearDelay(self):
+        return self._CacheClearDelay
+
+    @CacheClearDelay.setter
+    def CacheClearDelay(self, CacheClearDelay):
+        self._CacheClearDelay = CacheClearDelay
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EnvironmentId = params.get("EnvironmentId")
+        if params.get("GitSource") is not None:
+            self._GitSource = GitInfo()
+            self._GitSource._deserialize(params.get("GitSource"))
+        self._Type = params.get("Type")
+        if params.get("NFOption") is not None:
+            self._NFOption = NFOption()
+            self._NFOption._deserialize(params.get("NFOption"))
+        self._ProjectId = params.get("ProjectId")
+        self._Description = params.get("Description")
+        self._InputBase64 = params.get("InputBase64")
+        self._InputCosUri = params.get("InputCosUri")
+        self._CacheClearDelay = params.get("CacheClearDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunWorkflowResponse(AbstractModel):
+    """RunWorkflow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunGroupId: 任务批次ID。
+        :type RunGroupId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RunGroupId = None
+        self._RequestId = None
+
+    @property
+    def RunGroupId(self):
+        return self._RunGroupId
+
+    @RunGroupId.setter
+    def RunGroupId(self, RunGroupId):
+        self._RunGroupId = RunGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RunGroupId = params.get("RunGroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class StorageOption(AbstractModel):
     """文件存储配置。
 
@@ -3561,6 +3942,77 @@ class TableRow(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateRunGroupRequest(AbstractModel):
+    """TerminateRunGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunGroupId: 任务批次ID。
+        :type RunGroupId: str
+        :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
+        :type ProjectId: str
+        """
+        self._RunGroupId = None
+        self._ProjectId = None
+
+    @property
+    def RunGroupId(self):
+        return self._RunGroupId
+
+    @RunGroupId.setter
+    def RunGroupId(self, RunGroupId):
+        self._RunGroupId = RunGroupId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._RunGroupId = params.get("RunGroupId")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateRunGroupResponse(AbstractModel):
+    """TerminateRunGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class VPCOption(AbstractModel):

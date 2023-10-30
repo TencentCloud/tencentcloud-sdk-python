@@ -26,6 +26,29 @@ class TeoClient(AbstractClient):
     _service = 'teo'
 
 
+    def BindSecurityTemplateToEntity(self, request):
+        """操作安全策略模板，支持将域名绑定或换绑到指定的策略模板，或者从指定的策略模板解绑。
+
+        :param request: Request instance for BindSecurityTemplateToEntity.
+        :type request: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindSecurityTemplateToEntity", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindSecurityTemplateToEntityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindZoneToPlan(self, request):
         """将未绑定套餐的站点绑定到已有套餐
 
