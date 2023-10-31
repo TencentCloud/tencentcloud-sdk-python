@@ -18030,6 +18030,12 @@ class RabbitMQClusterInfo(AbstractModel):
         :type ExceptionInformation: str
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
         :type ClusterStatus: int
+        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoRenewFlag: int
+        :param _MirrorQueuePolicyFlag: 是否开启镜像队列策略。1表示开启，0表示没开启。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MirrorQueuePolicyFlag: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -18049,6 +18055,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ExchangeNumber = None
         self._ExceptionInformation = None
         self._ClusterStatus = None
+        self._AutoRenewFlag = None
+        self._MirrorQueuePolicyFlag = None
 
     @property
     def ClusterId(self):
@@ -18194,6 +18202,22 @@ class RabbitMQClusterInfo(AbstractModel):
     def ClusterStatus(self, ClusterStatus):
         self._ClusterStatus = ClusterStatus
 
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def MirrorQueuePolicyFlag(self):
+        return self._MirrorQueuePolicyFlag
+
+    @MirrorQueuePolicyFlag.setter
+    def MirrorQueuePolicyFlag(self, MirrorQueuePolicyFlag):
+        self._MirrorQueuePolicyFlag = MirrorQueuePolicyFlag
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -18219,6 +18243,8 @@ class RabbitMQClusterInfo(AbstractModel):
         self._ExchangeNumber = params.get("ExchangeNumber")
         self._ExceptionInformation = params.get("ExceptionInformation")
         self._ClusterStatus = params.get("ClusterStatus")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

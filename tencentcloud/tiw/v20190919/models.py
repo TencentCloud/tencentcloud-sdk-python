@@ -2368,6 +2368,9 @@ class DescribePPTCheckResponse(AbstractModel):
         :type Status: str
         :param _Progress: 当前进度,取值范围为0~100
         :type Progress: int
+        :param _Errs: 错误列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Errs: list of PPTErr
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2377,6 +2380,7 @@ class DescribePPTCheckResponse(AbstractModel):
         self._Slides = None
         self._Status = None
         self._Progress = None
+        self._Errs = None
         self._RequestId = None
 
     @property
@@ -2428,6 +2432,14 @@ class DescribePPTCheckResponse(AbstractModel):
         self._Progress = Progress
 
     @property
+    def Errs(self):
+        return self._Errs
+
+    @Errs.setter
+    def Errs(self, Errs):
+        self._Errs = Errs
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2448,6 +2460,12 @@ class DescribePPTCheckResponse(AbstractModel):
                 self._Slides.append(obj)
         self._Status = params.get("Status")
         self._Progress = params.get("Progress")
+        if params.get("Errs") is not None:
+            self._Errs = []
+            for item in params.get("Errs"):
+                obj = PPTErr()
+                obj._deserialize(item)
+                self._Errs.append(obj)
         self._RequestId = params.get("RequestId")
 
 

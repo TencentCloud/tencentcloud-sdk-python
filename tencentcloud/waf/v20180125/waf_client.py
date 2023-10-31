@@ -441,7 +441,9 @@ class WafClient(AbstractClient):
 
 
     def DeleteDownloadRecord(self, request):
-        """删除访问日志下载记录
+        """废弃接口，无有效调用
+
+        删除访问日志下载记录
 
         :param request: Request instance for DeleteDownloadRecord.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteDownloadRecordRequest`

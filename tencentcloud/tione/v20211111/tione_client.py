@@ -601,6 +601,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillingResourceInstanceRunningJobs(self, request):
+        """查询资源组节点运行中的任务
+
+        :param request: Request instance for DescribeBillingResourceInstanceRunningJobs.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceInstanceRunningJobsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceInstanceRunningJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingResourceInstanceRunningJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingResourceInstanceRunningJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillingSpecs(self, request):
         """本接口(DescribeBillingSpecs)用于查询计费项列表
 

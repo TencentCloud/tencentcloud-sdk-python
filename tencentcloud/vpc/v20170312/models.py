@@ -40072,7 +40072,9 @@ EIP：云服务器的公网IP；
 LOCAL_GATEWAY：本地网关。
         :type GatewayType: str
         :param _GatewayId: 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
-特殊说明：GatewayType为NORMAL_CVM时，GatewayId填写实例的内网IP。
+特殊说明：
+GatewayType为NORMAL_CVM时，GatewayId填写实例的内网IP。
+GatewayType为EIP时，GatewayId填写0。
         :type GatewayId: str
         :param _RouteId: 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。
 该字段在删除时必填，其他字段无需填写。
@@ -40090,6 +40092,7 @@ CCN：云联网路由，系统默认下发，不可编辑与删除。
         :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
         :type RouteTableId: str
         :param _DestinationIpv6CidrBlock: 目的IPv6网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
+注意：此字段可能返回 null，表示取不到有效值。
         :type DestinationIpv6CidrBlock: str
         :param _RouteItemId: 路由唯一策略ID。
         :type RouteItemId: str

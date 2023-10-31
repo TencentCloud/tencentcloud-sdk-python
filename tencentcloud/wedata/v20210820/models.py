@@ -11992,6 +11992,274 @@ class DatabaseInfo(AbstractModel):
         
 
 
+class DatabaseMeta(AbstractModel):
+    """数据源元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _MetastoreType: 技术类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetastoreType: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatasourceId: 数据源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _ProjectName: 项目英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _Category: 数据源类别：绑定引擎、绑定数据库,可用值:DB,ENGINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param _Description: 数据源描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Instance: 数据源引擎的实例ID，如CDB实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instance: str
+        :param _Region: 数据源引擎所属区域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Status: 数据源数据源的可见性，1为可见、0为不可见。默认为1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _DatabaseName: db名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _ProjectDisplayName: 项目中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectDisplayName: str
+        :param _OwnerAccountName: 责任人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccountName: str
+        :param _DisplayName: 数据来源展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
+        :param _DatabaseId: 数据库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _Catalog: 数据来源类型：hive/mysql/hbase等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Catalog: str
+        :param _StorageSize: 存储量大小,单位为 byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param _StorageSizeWithUnit: 格式化后的存储量大小，带单位，如 12B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSizeWithUnit: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._ProjectId = None
+        self._MetastoreType = None
+        self._DatasourceName = None
+        self._DatasourceId = None
+        self._ProjectName = None
+        self._Category = None
+        self._Description = None
+        self._Instance = None
+        self._Region = None
+        self._Status = None
+        self._DatabaseName = None
+        self._ProjectDisplayName = None
+        self._OwnerAccountName = None
+        self._DisplayName = None
+        self._DatabaseId = None
+        self._Catalog = None
+        self._StorageSize = None
+        self._StorageSizeWithUnit = None
+        self._CreateTime = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def MetastoreType(self):
+        return self._MetastoreType
+
+    @MetastoreType.setter
+    def MetastoreType(self, MetastoreType):
+        self._MetastoreType = MetastoreType
+
+    @property
+    def DatasourceName(self):
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatasourceId(self):
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Instance(self):
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def ProjectDisplayName(self):
+        return self._ProjectDisplayName
+
+    @ProjectDisplayName.setter
+    def ProjectDisplayName(self, ProjectDisplayName):
+        self._ProjectDisplayName = ProjectDisplayName
+
+    @property
+    def OwnerAccountName(self):
+        return self._OwnerAccountName
+
+    @OwnerAccountName.setter
+    def OwnerAccountName(self, OwnerAccountName):
+        self._OwnerAccountName = OwnerAccountName
+
+    @property
+    def DisplayName(self):
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def DatabaseId(self):
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def StorageSize(self):
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def StorageSizeWithUnit(self):
+        return self._StorageSizeWithUnit
+
+    @StorageSizeWithUnit.setter
+    def StorageSizeWithUnit(self, StorageSizeWithUnit):
+        self._StorageSizeWithUnit = StorageSizeWithUnit
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._MetastoreType = params.get("MetastoreType")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._ProjectName = params.get("ProjectName")
+        self._Category = params.get("Category")
+        self._Description = params.get("Description")
+        self._Instance = params.get("Instance")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._DatabaseName = params.get("DatabaseName")
+        self._ProjectDisplayName = params.get("ProjectDisplayName")
+        self._OwnerAccountName = params.get("OwnerAccountName")
+        self._DisplayName = params.get("DisplayName")
+        self._DatabaseId = params.get("DatabaseId")
+        self._Catalog = params.get("Catalog")
+        self._StorageSize = params.get("StorageSize")
+        self._StorageSizeWithUnit = params.get("StorageSizeWithUnit")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatasourceBaseInfo(AbstractModel):
     """数据源对象
 
@@ -17577,6 +17845,104 @@ class DescribeDatabaseInfoListResponse(AbstractModel):
                 obj = DatabaseInfo()
                 obj._deserialize(item)
                 self._DatabaseInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseMetasRequest(AbstractModel):
+    """DescribeDatabaseMetas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤字段，projectIds/msTypes/createTime/modifiedTime
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段，如name
+        :type OrderFields: list of OrderField
+        """
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseMetasResponse(AbstractModel):
+    """DescribeDatabaseMetas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseMeta: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseMeta: list of DatabaseMeta
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatabaseMeta = None
+        self._RequestId = None
+
+    @property
+    def DatabaseMeta(self):
+        return self._DatabaseMeta
+
+    @DatabaseMeta.setter
+    def DatabaseMeta(self, DatabaseMeta):
+        self._DatabaseMeta = DatabaseMeta
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseMeta") is not None:
+            self._DatabaseMeta = []
+            for item in params.get("DatabaseMeta"):
+                obj = DatabaseMeta()
+                obj._deserialize(item)
+                self._DatabaseMeta.append(obj)
         self._RequestId = params.get("RequestId")
 
 

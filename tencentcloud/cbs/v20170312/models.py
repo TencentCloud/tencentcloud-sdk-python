@@ -2310,6 +2310,8 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         :type DiskUsage: str
         :param _CPU: 实例CPU核数。
         :type CPU: int
+        :param _DedicatedClusterId: 专用集群ID。
+        :type DedicatedClusterId: str
         """
         self._InquiryType = None
         self._DiskChargeType = None
@@ -2319,6 +2321,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         self._Memory = None
         self._DiskUsage = None
         self._CPU = None
+        self._DedicatedClusterId = None
 
     @property
     def InquiryType(self):
@@ -2384,6 +2387,14 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
     def CPU(self, CPU):
         self._CPU = CPU
 
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
 
     def _deserialize(self, params):
         self._InquiryType = params.get("InquiryType")
@@ -2394,6 +2405,7 @@ class DescribeDiskConfigQuotaRequest(AbstractModel):
         self._Memory = params.get("Memory")
         self._DiskUsage = params.get("DiskUsage")
         self._CPU = params.get("CPU")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -142,3 +142,49 @@ class MrsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TurnPDFToObjectAsync(self, request):
+        """体检报告PDF文件结构化-异步接口
+
+        :param request: Request instance for TurnPDFToObjectAsync.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectAsyncRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TurnPDFToObjectAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TurnPDFToObjectAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TurnPDFToObjectAsyncGetResult(self, request):
+        """体检报告PDF文件结构化异步获取结果接口
+
+        :param request: Request instance for TurnPDFToObjectAsyncGetResult.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectAsyncGetResultRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.TurnPDFToObjectAsyncGetResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TurnPDFToObjectAsyncGetResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.TurnPDFToObjectAsyncGetResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

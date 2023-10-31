@@ -19969,6 +19969,8 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         :param _SensitiveInfoCnt: 敏感信息数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveInfoCnt: int
+        :param _Id: Id
+        :type Id: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -20005,6 +20007,7 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._RegistryRegion = None
         self._ImageCreateTime = None
         self._SensitiveInfoCnt = None
+        self._Id = None
         self._RequestId = None
 
     @property
@@ -20276,6 +20279,14 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._SensitiveInfoCnt = SensitiveInfoCnt
 
     @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -20318,6 +20329,7 @@ class DescribeAssetImageRegistryDetailResponse(AbstractModel):
         self._RegistryRegion = params.get("RegistryRegion")
         self._ImageCreateTime = params.get("ImageCreateTime")
         self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 

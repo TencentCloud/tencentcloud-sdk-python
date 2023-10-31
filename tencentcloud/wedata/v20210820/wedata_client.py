@@ -2223,6 +2223,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabaseMetas(self, request):
+        """查询数据库列表
+
+        :param request: Request instance for DescribeDatabaseMetas.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseMetasRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseMetasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseMetas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseMetasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatasource(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         数据源详情

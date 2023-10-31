@@ -6749,6 +6749,94 @@ class DescribeBillingResourceGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillingResourceInstanceRunningJobsRequest(AbstractModel):
+    """DescribeBillingResourceInstanceRunningJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: 资源组id
+        :type ResourceGroupId: str
+        :param _ResourceInstanceId: 资源组节点id
+        :type ResourceInstanceId: str
+        """
+        self._ResourceGroupId = None
+        self._ResourceInstanceId = None
+
+    @property
+    def ResourceGroupId(self):
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceInstanceId(self):
+        return self._ResourceInstanceId
+
+    @ResourceInstanceId.setter
+    def ResourceInstanceId(self, ResourceInstanceId):
+        self._ResourceInstanceId = ResourceInstanceId
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceInstanceId = params.get("ResourceInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingResourceInstanceRunningJobsResponse(AbstractModel):
+    """DescribeBillingResourceInstanceRunningJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceInstanceRunningJobInfos: 资源组节点运行中的任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceInstanceRunningJobInfos: list of ResourceInstanceRunningJobInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceInstanceRunningJobInfos = None
+        self._RequestId = None
+
+    @property
+    def ResourceInstanceRunningJobInfos(self):
+        return self._ResourceInstanceRunningJobInfos
+
+    @ResourceInstanceRunningJobInfos.setter
+    def ResourceInstanceRunningJobInfos(self, ResourceInstanceRunningJobInfos):
+        self._ResourceInstanceRunningJobInfos = ResourceInstanceRunningJobInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceInstanceRunningJobInfos") is not None:
+            self._ResourceInstanceRunningJobInfos = []
+            for item in params.get("ResourceInstanceRunningJobInfos"):
+                obj = ResourceInstanceRunningJobInfo()
+                obj._deserialize(item)
+                self._ResourceInstanceRunningJobInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillingSpecsPriceRequest(AbstractModel):
     """DescribeBillingSpecsPrice请求参数结构体
 
@@ -15860,6 +15948,79 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
                 obj = GpuDetail()
                 obj._deserialize(item)
                 self._RealGpuDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceInstanceRunningJobInfo(AbstractModel):
+    """资源组节点运行任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: pod名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskName: 任务自定义名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        """
+        self._PodName = None
+        self._TaskType = None
+        self._TaskId = None
+        self._TaskName = None
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        self._TaskType = params.get("TaskType")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
