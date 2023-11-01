@@ -145,6 +145,29 @@ class DrmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDRMLicense(self, request):
+        """开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+
+        :param request: Request instance for DescribeDRMLicense.
+        :type request: :class:`tencentcloud.drm.v20181115.models.DescribeDRMLicenseRequest`
+        :rtype: :class:`tencentcloud.drm.v20181115.models.DescribeDRMLicenseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDRMLicense", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDRMLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFairPlayPem(self, request):
         """该接口用来查询设置的FairPlay私钥校验信息。可用该接口校验设置的私钥与本身的私钥是否一致。
 

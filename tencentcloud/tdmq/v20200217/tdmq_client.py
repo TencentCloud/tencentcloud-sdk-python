@@ -1590,6 +1590,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQConsumeStats(self, request):
+        """获取消费详情列表
+
+        :param request: Request instance for DescribeRocketMQConsumeStats.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumeStatsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumeStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQConsumeStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQConsumeStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQConsumerConnections(self, request):
         """获取指定消费组下当前客户端的连接情况
 
@@ -2776,6 +2799,29 @@ class TdmqClient(AbstractClient):
             body = self.call("UnbindCmqDeadLetter", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindCmqDeadLetterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyRocketMQConsume(self, request):
+        """Rocketmq消费验证
+
+        :param request: Request instance for VerifyRocketMQConsume.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.VerifyRocketMQConsumeRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.VerifyRocketMQConsumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyRocketMQConsume", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyRocketMQConsumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

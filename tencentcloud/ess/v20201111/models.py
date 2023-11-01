@@ -256,7 +256,9 @@ class ApproverInfo(AbstractModel):
 <li>   **3** :见证人</li></ul>
 注: `收据场景为白名单功能，使用前请联系对接的客户经理沟通。`
         :type ApproverRole: int
-        :param _ApproverRoleName: 自定义签署人角色名：收款人、开具人、见证人
+        :param _ApproverRoleName: 可以自定义签署人角色名：收款人、开具人、见证人等，长度不能超过20，只能由中文、字母、数字和下划线组成。
+
+注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
         :type ApproverRoleName: str
         :param _VerifyChannel: 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 
@@ -289,7 +291,7 @@ class ApproverInfo(AbstractModel):
 </li></ul>
 注: 
 <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-<li>此字段不可传多个校验方式</li></ul>
+<li>此字段可传多个校验方式</li></ul>
         :type ApproverVerifyTypes: list of int
         :param _ApproverSignTypes: 您可以指定签署方签署合同的认证校验方式，可传递以下值：
 <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
@@ -2260,6 +2262,173 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
         self._FailMessages = params.get("FailMessages")
         self._UrlExpireOn = params.get("UrlExpireOn")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBatchQuickSignUrlRequest(AbstractModel):
+    """CreateBatchQuickSignUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowIds: 批量签署的合同流程ID数组。
+注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+        :type FlowIds: list of str
+        :param _FlowApproverInfo: 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
+注:
+`1. ApproverType目前只支持个人类型的签署人。`
+`2. 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。`
+`3. 当需要通过短信验证码签署时，手机号ApproverMobile需要与发起合同时填写的用户手机号一致。`
+        :type FlowApproverInfo: :class:`tencentcloud.ess.v20201111.models.FlowCreateApprover`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId(子企业的组织ID)为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
+        :type JumpUrl: str
+        :param _SignatureTypes: 指定批量签署合同的签名类型，可传递以下值：
+<ul><li>**0**：手写签名(默认)</li>
+<li>**1**：OCR楷体</li></ul>
+注：
+<ul><li>默认情况下，签名类型为手写签名</li>
+<li>您可以传递多种值，表示可用多种签名类型。</li></ul>
+        :type SignatureTypes: list of int
+        :param _ApproverSignTypes: 指定批量签署合同的认证校验方式，可传递以下值：
+<ul><li>**1**：人脸认证(默认)，需进行人脸识别成功后才能签署合同</li>
+<li>**3**：运营商三要素，需到运营商处比对手机号实名信息(名字、手机号、证件号)校验一致才能成功进行合同签署。</li></ul>
+注：
+<ul><li>默认情况下，认证校验方式为人脸认证</li>
+<li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
+        :type ApproverSignTypes: list of int
+        """
+        self._FlowIds = None
+        self._FlowApproverInfo = None
+        self._Agent = None
+        self._Operator = None
+        self._JumpUrl = None
+        self._SignatureTypes = None
+        self._ApproverSignTypes = None
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def FlowApproverInfo(self):
+        return self._FlowApproverInfo
+
+    @FlowApproverInfo.setter
+    def FlowApproverInfo(self, FlowApproverInfo):
+        self._FlowApproverInfo = FlowApproverInfo
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def JumpUrl(self):
+        return self._JumpUrl
+
+    @JumpUrl.setter
+    def JumpUrl(self, JumpUrl):
+        self._JumpUrl = JumpUrl
+
+    @property
+    def SignatureTypes(self):
+        return self._SignatureTypes
+
+    @SignatureTypes.setter
+    def SignatureTypes(self, SignatureTypes):
+        self._SignatureTypes = SignatureTypes
+
+    @property
+    def ApproverSignTypes(self):
+        return self._ApproverSignTypes
+
+    @ApproverSignTypes.setter
+    def ApproverSignTypes(self, ApproverSignTypes):
+        self._ApproverSignTypes = ApproverSignTypes
+
+
+    def _deserialize(self, params):
+        self._FlowIds = params.get("FlowIds")
+        if params.get("FlowApproverInfo") is not None:
+            self._FlowApproverInfo = FlowCreateApprover()
+            self._FlowApproverInfo._deserialize(params.get("FlowApproverInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._JumpUrl = params.get("JumpUrl")
+        self._SignatureTypes = params.get("SignatureTypes")
+        self._ApproverSignTypes = params.get("ApproverSignTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchQuickSignUrlResponse(AbstractModel):
+    """CreateBatchQuickSignUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowApproverUrlInfo: 签署人签署链接信息
+        :type FlowApproverUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowApproverUrlInfo`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowApproverUrlInfo = None
+        self._RequestId = None
+
+    @property
+    def FlowApproverUrlInfo(self):
+        return self._FlowApproverUrlInfo
+
+    @FlowApproverUrlInfo.setter
+    def FlowApproverUrlInfo(self, FlowApproverUrlInfo):
+        self._FlowApproverUrlInfo = FlowApproverUrlInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FlowApproverUrlInfo") is not None:
+            self._FlowApproverUrlInfo = FlowApproverUrlInfo()
+            self._FlowApproverUrlInfo._deserialize(params.get("FlowApproverUrlInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -12866,7 +13035,7 @@ class FlowCreateApprover(AbstractModel):
 </li></ul>
 注: 
 <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-<li>此字段不可传多个校验方式</li></ul>
+<li>此字段可传多个校验方式</li></ul>
 
 `此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主`
 

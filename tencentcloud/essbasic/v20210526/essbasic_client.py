@@ -173,6 +173,36 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChannelCreateBatchQuickSignUrl(self, request):
+        """该接口用于发起合同后，生成个人用户的批量签署链接, 暂时不支持企业端签署 <br/>
+        `注意：`<br/>
+        `1. 该接口目前仅支持签署人类型是个人签署方的批量签署场景(ApproverType=PERSON)。` <br/>
+        `2. 该接口可生成批量签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，不支持填写控件 。` <br/>
+        `3. 请确保C端签署人在批量签署合同中为待签署状态，如需顺序签署请待前一位参与人签署完成后，再创建该C端用户的签署链接。` <br/>
+        `4. 该签署链接有效期为30分钟，过期后将失效，如需签署可重新创建批量签署链接 。` <br/>
+        `5. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。`<br/>
+        跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+
+        :param request: Request instance for ChannelCreateBatchQuickSignUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateBatchQuickSignUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateBatchQuickSignUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChannelCreateBatchQuickSignUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChannelCreateBatchQuickSignUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ChannelCreateBatchSignUrl(self, request):
         """通过此接口，创建小程序批量签署链接，个人/企业员工点击此链接即可跳转小程序进行批量签署。
         请确保生成链接时候的身份信息和签署合同参与方的信息保持一致。
@@ -226,7 +256,14 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreateConvertTaskApi(self, request):
-        """上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
+        """此接口（ChannelCreateConvertTaskApi）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
+        前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
+        适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
+        适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
+        转换文件是一个耗时操作，若想查看转换任务是否完成，可以通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>接口获取任务状态。<br />
+        注:
+        1. `支持的文件类型有doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt`
+        2. `可通过发起合同时设置预览来检查转换文件是否达到预期效果`
 
         :param request: Request instance for ChannelCreateConvertTaskApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateConvertTaskApiRequest`
@@ -1160,8 +1197,12 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelGetTaskResultApi(self, request):
-        """查询转换任务的状态。转换任务Id通过发起转换任务接口（ChannelCreateConvertTaskApi）获取。
-        注意：大文件转换所需的时间可能会比较长。
+        """此接口（ChannelGetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
+        前提条件：已调用 <a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+
+        适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+        注：
+        1. `大文件转换所需的时间可能会比较长`
 
         :param request: Request instance for ChannelGetTaskResultApi.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelGetTaskResultApiRequest`
@@ -1665,6 +1706,11 @@ class EssbasicClient(AbstractClient):
         >- 签署控件 SignComponents
         >- 生成模板的文件基础信息 FileInfos
 
+        注意：
+
+        >1. 查询条件TemplateId、TemplateName与ChannelTemplateId可同时存在，即可查询同时满足这些条件的模板。
+        >2. TemplateId 和TemplateIds互为独立，若两个参数都传入，则以TemplateId为准
+
         :param request: Request instance for DescribeTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeTemplatesRequest`
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeTemplatesResponse`
@@ -1830,7 +1876,7 @@ class EssbasicClient(AbstractClient):
     def PrepareFlows(self, request):
         """该接口 (PrepareFlows) 用于创建待发起文件
         用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
-        目前该接口只支持B2C，不建议使用，将会废弃。
+        目前该接口只支持B2C，不建议使用，将会**废弃**。
 
         :param request: Request instance for PrepareFlows.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.PrepareFlowsRequest`

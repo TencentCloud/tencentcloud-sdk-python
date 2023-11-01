@@ -599,6 +599,124 @@ class DescribeAllKeysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDRMLicenseRequest(AbstractModel):
+    """DescribeDRMLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DrmType: 使用的DRM方案类型，接口取值 NORMALAES 。
+        :type DrmType: str
+        :param _Tracks: 加密的track列表，接口取值 SD 。
+        :type Tracks: list of str
+        :param _ContentId: 一个加密内容的唯一标识。
+        :type ContentId: str
+        :param _ContentType: 内容类型。接口取值 LiveVideo 。
+        :type ContentType: str
+        """
+        self._DrmType = None
+        self._Tracks = None
+        self._ContentId = None
+        self._ContentType = None
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+
+    def _deserialize(self, params):
+        self._DrmType = params.get("DrmType")
+        self._Tracks = params.get("Tracks")
+        self._ContentId = params.get("ContentId")
+        self._ContentType = params.get("ContentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDRMLicenseResponse(AbstractModel):
+    """DescribeDRMLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentId: 内容ID。
+        :type ContentId: str
+        :param _TXEncryptionToken: 加密密钥。
+        :type TXEncryptionToken: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ContentId = None
+        self._TXEncryptionToken = None
+        self._RequestId = None
+
+    @property
+    def ContentId(self):
+        return self._ContentId
+
+    @ContentId.setter
+    def ContentId(self, ContentId):
+        self._ContentId = ContentId
+
+    @property
+    def TXEncryptionToken(self):
+        return self._TXEncryptionToken
+
+    @TXEncryptionToken.setter
+    def TXEncryptionToken(self, TXEncryptionToken):
+        self._TXEncryptionToken = TXEncryptionToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ContentId = params.get("ContentId")
+        self._TXEncryptionToken = params.get("TXEncryptionToken")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFairPlayPemRequest(AbstractModel):
     """DescribeFairPlayPem请求参数结构体
 

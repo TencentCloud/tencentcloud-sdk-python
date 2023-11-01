@@ -2095,6 +2095,131 @@ class Consumer(AbstractModel):
         
 
 
+class ConsumerStats(AbstractModel):
+    """消费详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 主题名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _BrokerName: 所属Broker
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerName: str
+        :param _QueueId: 队列编号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueId: int
+        :param _ConsumerClientId: 消费者ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerClientId: str
+        :param _ConsumerOffset: 消费位点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerOffset: int
+        :param _BrokerOffset: 服务端位点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerOffset: int
+        :param _DiffTotal: 消息堆积条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffTotal: int
+        :param _LastTimestamp: 最近消费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTimestamp: int
+        """
+        self._TopicName = None
+        self._BrokerName = None
+        self._QueueId = None
+        self._ConsumerClientId = None
+        self._ConsumerOffset = None
+        self._BrokerOffset = None
+        self._DiffTotal = None
+        self._LastTimestamp = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def BrokerName(self):
+        return self._BrokerName
+
+    @BrokerName.setter
+    def BrokerName(self, BrokerName):
+        self._BrokerName = BrokerName
+
+    @property
+    def QueueId(self):
+        return self._QueueId
+
+    @QueueId.setter
+    def QueueId(self, QueueId):
+        self._QueueId = QueueId
+
+    @property
+    def ConsumerClientId(self):
+        return self._ConsumerClientId
+
+    @ConsumerClientId.setter
+    def ConsumerClientId(self, ConsumerClientId):
+        self._ConsumerClientId = ConsumerClientId
+
+    @property
+    def ConsumerOffset(self):
+        return self._ConsumerOffset
+
+    @ConsumerOffset.setter
+    def ConsumerOffset(self, ConsumerOffset):
+        self._ConsumerOffset = ConsumerOffset
+
+    @property
+    def BrokerOffset(self):
+        return self._BrokerOffset
+
+    @BrokerOffset.setter
+    def BrokerOffset(self, BrokerOffset):
+        self._BrokerOffset = BrokerOffset
+
+    @property
+    def DiffTotal(self):
+        return self._DiffTotal
+
+    @DiffTotal.setter
+    def DiffTotal(self, DiffTotal):
+        self._DiffTotal = DiffTotal
+
+    @property
+    def LastTimestamp(self):
+        return self._LastTimestamp
+
+    @LastTimestamp.setter
+    def LastTimestamp(self, LastTimestamp):
+        self._LastTimestamp = LastTimestamp
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._BrokerName = params.get("BrokerName")
+        self._QueueId = params.get("QueueId")
+        self._ConsumerClientId = params.get("ConsumerClientId")
+        self._ConsumerOffset = params.get("ConsumerOffset")
+        self._BrokerOffset = params.get("BrokerOffset")
+        self._DiffTotal = params.get("DiffTotal")
+        self._LastTimestamp = params.get("LastTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumersSchedule(AbstractModel):
     """消费进度详情
 
@@ -10370,6 +10495,105 @@ class DescribeRocketMQClustersResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ClusterList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQConsumeStatsRequest(AbstractModel):
+    """DescribeRocketMQConsumeStats请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 实例ID
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param _ConsumerGroup: 消费组
+        :type ConsumerGroup: str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._ConsumerGroup = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQConsumeStatsResponse(AbstractModel):
+    """DescribeRocketMQConsumeStats返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerStatsList: 消费详情列表
+        :type ConsumerStatsList: list of ConsumerStats
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsumerStatsList = None
+        self._RequestId = None
+
+    @property
+    def ConsumerStatsList(self):
+        return self._ConsumerStatsList
+
+    @ConsumerStatsList.setter
+    def ConsumerStatsList(self, ConsumerStatsList):
+        self._ConsumerStatsList = ConsumerStatsList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConsumerStatsList") is not None:
+            self._ConsumerStatsList = []
+            for item in params.get("ConsumerStatsList"):
+                obj = ConsumerStats()
+                obj._deserialize(item)
+                self._ConsumerStatsList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24074,6 +24298,124 @@ class UnbindCmqDeadLetterRequest(AbstractModel):
 
 class UnbindCmqDeadLetterResponse(AbstractModel):
     """UnbindCmqDeadLetter返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyRocketMQConsumeRequest(AbstractModel):
+    """VerifyRocketMQConsume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间
+        :type NamespaceId: str
+        :param _GroupId: 消费组ID
+        :type GroupId: str
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _TopicName: topic名称
+        :type TopicName: str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._GroupId = None
+        self._MsgId = None
+        self._ClientId = None
+        self._TopicName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._GroupId = params.get("GroupId")
+        self._MsgId = params.get("MsgId")
+        self._ClientId = params.get("ClientId")
+        self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyRocketMQConsumeResponse(AbstractModel):
+    """VerifyRocketMQConsume返回参数结构体
 
     """
 
