@@ -15259,6 +15259,9 @@ class OriginGroup(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 源站组更新时间。
         :type UpdateTime: str
+        :param _HostHeader: 回源Host Header。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostHeader: str
         """
         self._GroupId = None
         self._Name = None
@@ -15267,6 +15270,7 @@ class OriginGroup(AbstractModel):
         self._References = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._HostHeader = None
 
     @property
     def GroupId(self):
@@ -15324,6 +15328,14 @@ class OriginGroup(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def HostHeader(self):
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -15343,6 +15355,7 @@ class OriginGroup(AbstractModel):
                 self._References.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
