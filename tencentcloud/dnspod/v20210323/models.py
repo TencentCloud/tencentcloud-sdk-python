@@ -1275,6 +1275,100 @@ class CreateDomainBatchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDomainCustomLineRequest(AbstractModel):
+    """CreateDomainCustomLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Name: 自定义线路名称
+        :type Name: str
+        :param _Area: 自定义线路IP段，用-分割
+        :type Area: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._Name = None
+        self._Area = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._Area = params.get("Area")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDomainCustomLineResponse(AbstractModel):
+    """CreateDomainCustomLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDomainGroupRequest(AbstractModel):
     """CreateDomainGroup请求参数结构体
 
@@ -2232,6 +2326,87 @@ class CreateSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomLineInfo(AbstractModel):
+    """自定义线路详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名ID
+        :type DomainId: int
+        :param _Name: 自定义线路名称
+        :type Name: str
+        :param _Area: 自定义线路IP段
+        :type Area: str
+        :param _UseCount: 已使用IP段个数
+        :type UseCount: int
+        :param _MaxCount: 允许使用IP段最大个数
+        :type MaxCount: int
+        """
+        self._DomainId = None
+        self._Name = None
+        self._Area = None
+        self._UseCount = None
+        self._MaxCount = None
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def UseCount(self):
+        return self._UseCount
+
+    @UseCount.setter
+    def UseCount(self, UseCount):
+        self._UseCount = UseCount
+
+    @property
+    def MaxCount(self):
+        return self._MaxCount
+
+    @MaxCount.setter
+    def MaxCount(self, MaxCount):
+        self._MaxCount = MaxCount
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._Name = params.get("Name")
+        self._Area = params.get("Area")
+        self._UseCount = params.get("UseCount")
+        self._MaxCount = params.get("MaxCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Deals(AbstractModel):
     """子订单号列表
 
@@ -2525,6 +2700,88 @@ class DeleteDomainBatchResponse(AbstractModel):
                 obj = DeleteDomainBatchDetail()
                 obj._deserialize(item)
                 self._DetailList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDomainCustomLineRequest(AbstractModel):
+    """DeleteDomainCustomLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Name: 自定义线路名称
+        :type Name: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._Name = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDomainCustomLineResponse(AbstractModel):
+    """DeleteDomainCustomLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3609,6 +3866,105 @@ class DescribeDomainAnalyticsResponse(AbstractModel):
                 obj = DomainAliasAnalyticsItem()
                 obj._deserialize(item)
                 self._AliasData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDomainCustomLineListRequest(AbstractModel):
+    """DescribeDomainCustomLineList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDomainCustomLineListResponse(AbstractModel):
+    """DescribeDomainCustomLineList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineList: 自定义线路列表
+        :type LineList: list of CustomLineInfo
+        :param _AvailableCount: 可添加的自定义线路条数
+        :type AvailableCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LineList = None
+        self._AvailableCount = None
+        self._RequestId = None
+
+    @property
+    def LineList(self):
+        return self._LineList
+
+    @LineList.setter
+    def LineList(self, LineList):
+        self._LineList = LineList
+
+    @property
+    def AvailableCount(self):
+        return self._AvailableCount
+
+    @AvailableCount.setter
+    def AvailableCount(self, AvailableCount):
+        self._AvailableCount = AvailableCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LineList") is not None:
+            self._LineList = []
+            for item in params.get("LineList"):
+                obj = CustomLineInfo()
+                obj._deserialize(item)
+                self._LineList.append(obj)
+        self._AvailableCount = params.get("AvailableCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8487,6 +8843,112 @@ class LockInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyDomainCustomLineRequest(AbstractModel):
+    """ModifyDomainCustomLine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Name: 修改后的自定义线路名称，如果不修改名称，需要和PreName保持一致
+        :type Name: str
+        :param _Area: 自定义线路IP段，用-分割
+        :type Area: str
+        :param _PreName: 修改前的自定义线路名称
+        :type PreName: str
+        :param _DomainId: 域名ID，如果传了DomainId，系统将会忽略Domain参数，优先使用DomainId
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._Name = None
+        self._Area = None
+        self._PreName = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def PreName(self):
+        return self._PreName
+
+    @PreName.setter
+    def PreName(self, PreName):
+        self._PreName = PreName
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._Area = params.get("Area")
+        self._PreName = params.get("PreName")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainCustomLineResponse(AbstractModel):
+    """ModifyDomainCustomLine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDomainLockRequest(AbstractModel):

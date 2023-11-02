@@ -1088,13 +1088,14 @@ class MergeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 输入图片base64
+        :param _Image: 输入图片base64。
         :type Image: str
-        :param _Url: 输入图片url
+        :param _Url: 输入图片url。
+Url、Image必须提供一个，如果都提供，只使用 Url。
         :type Url: str
-        :param _InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
+        :param _InputImageFaceRect: 输入图片人脸位置信息（人脸框）。不填默认取输入图中最大人脸。
         :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20181201.models.FaceRect`
-        :param _TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸
+        :param _TemplateFaceID: 素材人脸ID，不填默认取素材中最大人脸。
         :type TemplateFaceID: str
         """
         self._Image = None

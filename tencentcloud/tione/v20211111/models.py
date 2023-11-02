@@ -4353,6 +4353,53 @@ class CronScaleJob(AbstractModel):
         
 
 
+class CrossTenantENIInfo(AbstractModel):
+    """跨租户弹性网卡下Pod调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrimaryIP: Pod IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrimaryIP: str
+        :param _Port: Pod Port
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: str
+        """
+        self._PrimaryIP = None
+        self._Port = None
+
+    @property
+    def PrimaryIP(self):
+        return self._PrimaryIP
+
+    @PrimaryIP.setter
+    def PrimaryIP(self, PrimaryIP):
+        self._PrimaryIP = PrimaryIP
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._PrimaryIP = params.get("PrimaryIP")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomTrainingData(AbstractModel):
     """自定义指标
 
@@ -15102,6 +15149,9 @@ class Pod(AbstractModel):
         :param _ContainerInfos: 容器列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerInfos: list of Container
+        :param _CrossTenantENIInfo: 容器调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrossTenantENIInfo: :class:`tencentcloud.tione.v20211111.models.CrossTenantENIInfo`
         """
         self._Name = None
         self._Uid = None
@@ -15111,6 +15161,7 @@ class Pod(AbstractModel):
         self._CreateTime = None
         self._Containers = None
         self._ContainerInfos = None
+        self._CrossTenantENIInfo = None
 
     @property
     def Name(self):
@@ -15176,6 +15227,14 @@ class Pod(AbstractModel):
     def ContainerInfos(self, ContainerInfos):
         self._ContainerInfos = ContainerInfos
 
+    @property
+    def CrossTenantENIInfo(self):
+        return self._CrossTenantENIInfo
+
+    @CrossTenantENIInfo.setter
+    def CrossTenantENIInfo(self, CrossTenantENIInfo):
+        self._CrossTenantENIInfo = CrossTenantENIInfo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -15193,6 +15252,9 @@ class Pod(AbstractModel):
                 obj = Container()
                 obj._deserialize(item)
                 self._ContainerInfos.append(obj)
+        if params.get("CrossTenantENIInfo") is not None:
+            self._CrossTenantENIInfo = CrossTenantENIInfo()
+            self._CrossTenantENIInfo._deserialize(params.get("CrossTenantENIInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7604,12 +7604,16 @@ class DescribeTaskLogListResponse(AbstractModel):
         :param _NotViewNumber: 待查看数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotViewNumber: int
+        :param _ReportTemplateNumber: 报告模板数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTemplateNumber: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Data = None
         self._NotViewNumber = None
+        self._ReportTemplateNumber = None
         self._RequestId = None
 
     @property
@@ -7637,6 +7641,14 @@ class DescribeTaskLogListResponse(AbstractModel):
         self._NotViewNumber = NotViewNumber
 
     @property
+    def ReportTemplateNumber(self):
+        return self._ReportTemplateNumber
+
+    @ReportTemplateNumber.setter
+    def ReportTemplateNumber(self, ReportTemplateNumber):
+        self._ReportTemplateNumber = ReportTemplateNumber
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7654,6 +7666,7 @@ class DescribeTaskLogListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._NotViewNumber = params.get("NotViewNumber")
+        self._ReportTemplateNumber = params.get("ReportTemplateNumber")
         self._RequestId = params.get("RequestId")
 
 
@@ -11640,6 +11653,12 @@ class TaskLogInfo(AbstractModel):
         :param _UserName: 用户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
+        :param _ReportType: 报告类型： 1安全体检 2日报 3周报 4月报
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportType: int
+        :param _TemplateId: 报告模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: int
         """
         self._TaskLogName = None
         self._TaskLogId = None
@@ -11653,6 +11672,8 @@ class TaskLogInfo(AbstractModel):
         self._AppId = None
         self._UIN = None
         self._UserName = None
+        self._ReportType = None
+        self._TemplateId = None
 
     @property
     def TaskLogName(self):
@@ -11750,6 +11771,22 @@ class TaskLogInfo(AbstractModel):
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
 
     def _deserialize(self, params):
         self._TaskLogName = params.get("TaskLogName")
@@ -11764,6 +11801,8 @@ class TaskLogInfo(AbstractModel):
         self._AppId = params.get("AppId")
         self._UIN = params.get("UIN")
         self._UserName = params.get("UserName")
+        self._ReportType = params.get("ReportType")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

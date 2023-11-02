@@ -674,7 +674,9 @@ class WafClient(AbstractClient):
 
 
     def DescribeAntiFakeUrl(self, request):
-        """获取防篡改url
+        """废弃接口
+
+        获取防篡改url
 
         :param request: Request instance for DescribeAntiFakeUrl.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAntiFakeUrlRequest`
@@ -862,7 +864,9 @@ class WafClient(AbstractClient):
 
 
     def DescribeCCRule(self, request):
-        """Waf  CC V2 Query接口
+        """没有在使用。
+
+        Waf  CC V2 Query接口
 
         :param request: Request instance for DescribeCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleRequest`

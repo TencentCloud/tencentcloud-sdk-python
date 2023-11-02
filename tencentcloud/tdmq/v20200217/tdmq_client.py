@@ -2027,6 +2027,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopicMsgs(self, request):
+        """消息查询
+
+        :param request: Request instance for DescribeTopicMsgs.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicMsgsRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeTopicMsgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopicMsgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopicMsgsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopics(self, request):
         """获取环境下主题列表
 

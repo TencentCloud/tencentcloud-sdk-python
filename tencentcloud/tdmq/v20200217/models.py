@@ -13468,6 +13468,177 @@ class DescribeSubscriptionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopicMsgsRequest(AbstractModel):
+    """DescribeTopicMsgs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _TopicName: 主题名。
+        :type TopicName: str
+        :param _StartTime: 开始时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间。
+        :type EndTime: str
+        :param _Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._MsgId = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MsgId = params.get("MsgId")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopicMsgsResponse(AbstractModel):
+    """DescribeTopicMsgs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数。
+        :type TotalCount: int
+        :param _TopicMsgLogSets: 消息日志列表。
+        :type TopicMsgLogSets: list of MsgLog
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TopicMsgLogSets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TopicMsgLogSets(self):
+        return self._TopicMsgLogSets
+
+    @TopicMsgLogSets.setter
+    def TopicMsgLogSets(self, TopicMsgLogSets):
+        self._TopicMsgLogSets = TopicMsgLogSets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TopicMsgLogSets") is not None:
+            self._TopicMsgLogSets = []
+            for item in params.get("TopicMsgLogSets"):
+                obj = MsgLog()
+                obj._deserialize(item)
+                self._TopicMsgLogSets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopicsRequest(AbstractModel):
     """DescribeTopics请求参数结构体
 
@@ -16887,6 +17058,75 @@ class ModifyTopicResponse(AbstractModel):
         self._Partitions = params.get("Partitions")
         self._Remark = params.get("Remark")
         self._RequestId = params.get("RequestId")
+
+
+class MsgLog(AbstractModel):
+    """消息日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ProducerName: 生产者名称。
+        :type ProducerName: str
+        :param _ProduceTime: 生产时间。
+        :type ProduceTime: str
+        :param _ProducerAddr: 生产客户端地址。
+        :type ProducerAddr: str
+        """
+        self._MsgId = None
+        self._ProducerName = None
+        self._ProduceTime = None
+        self._ProducerAddr = None
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ProducerName(self):
+        return self._ProducerName
+
+    @ProducerName.setter
+    def ProducerName(self, ProducerName):
+        self._ProducerName = ProducerName
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def ProducerAddr(self):
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._ProducerName = params.get("ProducerName")
+        self._ProduceTime = params.get("ProduceTime")
+        self._ProducerAddr = params.get("ProducerAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PartitionsTopic(AbstractModel):

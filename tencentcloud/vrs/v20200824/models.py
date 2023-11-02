@@ -128,8 +128,13 @@ class CreateVRSTaskRequest(AbstractModel):
         :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :type CallbackUrl: str
-        :param _ModelType: 任务类型 1:在线 2:离线  默认为1
+        :param _ModelType: 模型类型 1:在线 2:离线  默认为1
         :type ModelType: int
+        :param _TaskType: 任务类型 0:默认类型 1:轻量级复刻
+默认为0
+        :type TaskType: int
+        :param _VPRAudioId: 校验音频ID
+        :type VPRAudioId: str
         """
         self._SessionId = None
         self._VoiceName = None
@@ -140,6 +145,8 @@ class CreateVRSTaskRequest(AbstractModel):
         self._AudioIdList = None
         self._CallbackUrl = None
         self._ModelType = None
+        self._TaskType = None
+        self._VPRAudioId = None
 
     @property
     def SessionId(self):
@@ -213,6 +220,22 @@ class CreateVRSTaskRequest(AbstractModel):
     def ModelType(self, ModelType):
         self._ModelType = ModelType
 
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def VPRAudioId(self):
+        return self._VPRAudioId
+
+    @VPRAudioId.setter
+    def VPRAudioId(self, VPRAudioId):
+        self._VPRAudioId = VPRAudioId
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -224,6 +247,8 @@ class CreateVRSTaskRequest(AbstractModel):
         self._AudioIdList = params.get("AudioIdList")
         self._CallbackUrl = params.get("CallbackUrl")
         self._ModelType = params.get("ModelType")
+        self._TaskType = params.get("TaskType")
+        self._VPRAudioId = params.get("VPRAudioId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
