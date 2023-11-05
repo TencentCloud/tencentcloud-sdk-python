@@ -1222,6 +1222,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMsgTrace(self, request):
+        """查询消息轨迹
+
+        :param request: Request instance for DescribeMsgTrace.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeMsgTraceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeMsgTraceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMsgTrace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMsgTraceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNamespaceBundlesOpt(self, request):
         """运营端获取命名空间bundle列表
 

@@ -3452,6 +3452,8 @@ class ManagerNode(AbstractModel):
         :type InstanceName: str
         :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
+        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+        :type EnhancedService: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -3461,6 +3463,7 @@ class ManagerNode(AbstractModel):
         self._InternetAccessible = None
         self._InstanceName = None
         self._ProjectId = None
+        self._EnhancedService = None
 
     @property
     def InstanceChargeType(self):
@@ -3526,6 +3529,14 @@ class ManagerNode(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def EnhancedService(self):
+        return self._EnhancedService
+
+    @EnhancedService.setter
+    def EnhancedService(self, EnhancedService):
+        self._EnhancedService = EnhancedService
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -3547,6 +3558,9 @@ class ManagerNode(AbstractModel):
             self._InternetAccessible._deserialize(params.get("InternetAccessible"))
         self._InstanceName = params.get("InstanceName")
         self._ProjectId = params.get("ProjectId")
+        if params.get("EnhancedService") is not None:
+            self._EnhancedService = EnhancedService()
+            self._EnhancedService._deserialize(params.get("EnhancedService"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9743,13 +9743,22 @@ class DescribeFlowDetailInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowIds: 合同(流程)编号数组，最多支持100个。
-<br/>备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参
+        :param _FlowIds: 需要查询的流程ID列表，最多可传入100个ID。
+如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
         :type FlowIds: list of str
-        :param _FlowGroupId: 合同组编号
-<br/>备注：该参数和合同(流程)编号数组必须二选一
+        :param _FlowGroupId: 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。
+
+合同组由<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByTemplates" target="_blank">通过多模板创建合同组签署流程</a>和<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
         :type FlowGroupId: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -9822,17 +9831,18 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationId: 第三方平台应用号Id
+        :param _ApplicationId: 合同归属的第三方平台应用号ID
         :type ApplicationId: str
-        :param _ProxyOrganizationOpenId: 第三方平台子客企业OpenId
+        :param _ProxyOrganizationOpenId: 合同归属的第三方平台子客企业OpenId
         :type ProxyOrganizationOpenId: str
-        :param _FlowInfo: 合同(签署流程)的具体详细描述信息
+        :param _FlowInfo: 合同流程的详细信息。
+如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowInfo: list of FlowDetailInfo
-        :param _FlowGroupId: 合同组编号
+        :param _FlowGroupId: 合同组ID，只有在查询合同组信息时才会返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupId: str
-        :param _FlowGroupName: 合同组名称
+        :param _FlowGroupName: 合同组名称，只有在查询合同组信息时才会返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupName: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11743,36 +11753,38 @@ class FlowDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同(流程)的Id
+        :param _FlowId: 合同流程ID，为32位字符串。
         :type FlowId: str
-        :param _FlowName: 合同(流程)的名字
+        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowName: str
-        :param _FlowType: 合同(流程)的类型
+        :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
         :type FlowType: str
-        :param _FlowStatus: 合同(流程)的状态, 状态如下
-
-INIT 合同创建
-PART 合同签署中
-REJECT 合同拒签
-ALL 合同签署完成
-DEADLINE 合同流签(合同过期)
-CANCEL 合同撤回
-RELIEVED 解除协议（已解除）
+        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值
+<ul><li> **INIT** :合同创建</li>
+<li> **PART** :合同签署中(至少有一个签署方已经签署)</li>
+<li> **REJECT** :合同拒签</li>
+<li> **ALL** :合同签署完成</li>
+<li> **DEADLINE** :合同流签(合同过期)</li>
+<li> **CANCEL** :合同撤回</li>
+<li> **RELIEVED** :解除协议（已解除）</li></ul>
  
         :type FlowStatus: str
-        :param _FlowMessage: 合同(流程)的信息
+        :param _FlowMessage: 当合同流程状态为已拒签（即 FlowStatus=REJECT）或已撤销（即 FlowStatus=CANCEL ）时，此字段 FlowMessage 为拒签或撤销原因。
         :type FlowMessage: str
-        :param _CreateOn: 合同(流程)的创建时间戳，单位秒
+        :param _CreateOn: 合同流程的创建时间戳，格式为Unix标准时间戳（秒）。
         :type CreateOn: int
-        :param _DeadLine: 合同(流程)的签署截止时间戳，单位秒
+        :param _DeadLine: 签署流程的签署截止时间, 值为unix时间戳, 精确到秒。
         :type DeadLine: int
-        :param _CustomData: 用户自定义数据
+        :param _CustomData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 1000长度。
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
         :type CustomData: str
-        :param _FlowApproverInfos: 合同(流程)的签署人数组
+        :param _FlowApproverInfos: 合同流程的签署方数组
         :type FlowApproverInfos: list of FlowApproverDetail
-        :param _CcInfos: 合同(流程)关注方信息列表
+        :param _CcInfos: 合同流程的关注方信息数组
         :type CcInfos: list of FlowApproverDetail
-        :param _NeedCreateReview: 是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
+        :param _NeedCreateReview: 是否需要发起前审批
+<ul><li>当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程</li>
+<li>当NeedCreateReview为false，不需要发起前审核的合同</li></ul>
         :type NeedCreateReview: bool
         """
         self._FlowId = None
@@ -14110,29 +14122,29 @@ class PrepareFlowsResponse(AbstractModel):
 
 
 class ProxyOrganizationOperator(AbstractModel):
-    """合作企业经办人列表信息
+    """同步的员工的信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 对应Agent-ProxyOperator-OpenId。第三方应用平台自定义，对子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
+        :param _Id: 员工的唯一标识(即OpenId),  定义Agent中的OpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
         :type Id: str
-        :param _Name: 经办人姓名，最大长度50个字符
+        :param _Name: 员工的姓名，最大长度50个字符
+员工的姓名将用于身份认证和电子签名，请确保填写的姓名为真实姓名，而非昵称等代名。
         :type Name: str
-        :param _IdCardType: 经办人身份证件类型
-1.ID_CARD 居民身份证
-2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
-3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
+        :param _IdCardType: 签署方经办人的证件类型，支持以下类型
+<ul><li>ID_CARD : 居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+
         :type IdCardType: str
         :param _IdCardNumber: 经办人证件号
         :type IdCardNumber: str
-        :param _Mobile: 经办人手机号，大陆手机号输入11位，暂不支持海外手机号。
+        :param _Mobile: 员工的手机号，支持国内手机号11位数字(无需加+86前缀或其他字符)，不支持海外手机号。
         :type Mobile: str
-        :param _DefaultRole: 默认角色，值为以下三个对应的英文：
-业务管理员：admin
-经办人：channel-normal-operator
-业务员：channel-sales-man
+        :param _DefaultRole: 预先分配员工的角色, 可以分配的角色如下:
+<table> <thead> <tr> <th>可以分配的角色</th> <th>角色名称</th> <th>角色描述</th> </tr> </thead> <tbody> <tr> <td>admin</td> <td>业务管理员（IT 系统负责人，e.g. CTO）</td> <td>有企业合同模块、印章模块、模板模块等全量功能及数据权限。</td> </tr> <tr> <td>channel-normal-operator</td> <td>经办人（企业法务负责人）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看企业所有合同数据。</td> </tr> <tr> <td>channel-sales-man</td> <td>业务员（一般为销售员、采购员）</td> <td>有发起合同、签署合同（含填写、拒签）、撤销合同、持有印章等权限能力，可查看自己相关所有合同数据。</td> </tr> </tbody> </table>
         :type DefaultRole: str
         """
         self._Id = None
@@ -14425,71 +14437,73 @@ class RecipientComponentInfo(AbstractModel):
 
 
 class ReleasedApprover(AbstractModel):
-    """解除协议的签署人，如不指定，默认使用待解除流程（即原流程）中的签署人。
-    注意：不支持更换C端（个人身份类型）签署人，如果原流程中含有C端签署人，默认使用原流程中的该签署人。
-    注意：目前不支持替换C端（个人身份类型）签署人，但是可以指定C端签署人的签署方自定义控件别名，具体见参数ApproverSignRole描述。
-    注意：当指定C端签署人的签署方自定义控件别名不空时，除参数ApproverNumber外，可以只参数ApproverSignRole。
+    """解除协议的签署人，如不指定，默认使用待解除流程(原流程)中的签署人。</br>
+    `注意`:
+     - 不支持更换C端(个人身份类型)签署人，如果原流程中含有C端签署人，默认使用原流程中的该签署人。
+     - 目前不支持替换C端(个人身份类型)签署人，但是可以指定C端签署人的签署方自定义控件别名，具体见参数ApproverSignRole描述。
+     - 当指定C端签署人的签署方自定义控件别名不空时，除参数ApproverNumber外，可以只传参数ApproverSignRole。
 
-    如果需要指定B端（机构身份类型）签署人，其中ReleasedApprover需要传递的参数如下：
-    ApproverNumber, OrganizationName, ApproverType必传。
-    对于其他身份标识
-    - 子客企业指定经办人：OpenId必传，OrganizationOpenId必传；
-    - 非子客企业：Name、Mobile必传。
+    如果需要指定B端(企业身份类型)签署人，其中ReleasedApprover需要传递的参数如下：
+    `ApproverNumber`, `OrganizationName`, `ApproverType`必传。</br>
+    对于其他身份标识：
+    - **子客企业指定经办人**：OpenId必传，OrganizationOpenId必传；
+    - **非子客企业经办人**：Name、Mobile必传。
 
     """
 
     def __init__(self):
         r"""
-        :param _OrganizationName: 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符
-        :type OrganizationName: str
-        :param _ApproverNumber: 签署人在原流程中的签署人列表中的顺序序号（从0开始，按顺序依次递增），如果不清楚原流程中的签署人列表，可以通过DescribeFlows接口查看
+        :param _ApproverNumber: 签署人在原合同签署人列表中的顺序序号(从0开始，按顺序依次递增)。</br>
+可以通过<a href="https://qian.tencent.com/developers/partnerApis/flows/DescribeFlowDetailInfo" target="_blank">DescribeFlowDetailInfo</a>接口查看原流程中的签署人列表。
         :type ApproverNumber: int
-        :param _ApproverType: 签署人类型，目前仅支持
-ORGANIZATION-企业
-ENTERPRISESERVER-企业静默签
+        :param _ApproverType: 指定签署人类型，目前支持
+<ul><li> **ORGANIZATION**：企业（默认值）</li>
+<li> **ENTERPRISESERVER**：企业静默签</li></ul>
         :type ApproverType: str
-        :param _Name: 签署人姓名，最大长度50个字符
+        :param _Name: 签署人姓名，最大长度50个字。
         :type Name: str
-        :param _IdCardType: 签署人身份证件类型
-1.ID_CARD 居民身份证
-2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
-3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
+        :param _IdCardType: 签署方经办人的证件类型，支持以下类型
+<ul><li>ID_CARD : 居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
         :type IdCardType: str
-        :param _IdCardNumber: 签署人证件号
+        :param _IdCardNumber: 证件号码，应符合以下规则
+<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
-        :param _Mobile: 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号
+        :param _Mobile: 签署人手机号。
         :type Mobile: str
-        :param _OrganizationOpenId: 企业签署方在同一第三方应用下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
+        :type OrganizationName: str
+        :param _OrganizationOpenId: 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>。</br>
+当为子客企业指定经办人时，此OrganizationOpenId必传。
         :type OrganizationOpenId: str
-        :param _OpenId: 用户侧第三方id，最大长度64个字符
-当签署方为同一第三方应用下的员工时，该字必传
+        :param _OpenId: 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成。</br>
+当签署方为同一第三方平台下的员工时，此OpenId必传。
         :type OpenId: str
-        :param _ApproverSignComponentType: 签署控件类型，支持自定义企业签署方的签署控件为“印章”或“签名”
-- SIGN_SEAL-默认为印章控件类型
-- SIGN_SIGNATURE-手写签名控件类型
+        :param _ApproverSignComponentType: 签署控件类型，支持自定义企业签署方的签署控件类型
+<ul><li> **SIGN_SEAL**：默认为印章控件类型(默认值)</li>
+<li> **SIGN_SIGNATURE**：手写签名控件类型</li></ul>
         :type ApproverSignComponentType: str
-        :param _ApproverSignRole: 签署方自定义控件别名，最大长度20个字符
+        :param _ApproverSignRole: 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。</br>
+如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
         :type ApproverSignRole: str
         """
-        self._OrganizationName = None
         self._ApproverNumber = None
         self._ApproverType = None
         self._Name = None
         self._IdCardType = None
         self._IdCardNumber = None
         self._Mobile = None
+        self._OrganizationName = None
         self._OrganizationOpenId = None
         self._OpenId = None
         self._ApproverSignComponentType = None
         self._ApproverSignRole = None
-
-    @property
-    def OrganizationName(self):
-        return self._OrganizationName
-
-    @OrganizationName.setter
-    def OrganizationName(self, OrganizationName):
-        self._OrganizationName = OrganizationName
 
     @property
     def ApproverNumber(self):
@@ -14540,6 +14554,14 @@ ENTERPRISESERVER-企业静默签
         self._Mobile = Mobile
 
     @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
     def OrganizationOpenId(self):
         return self._OrganizationOpenId
 
@@ -14573,13 +14595,13 @@ ENTERPRISESERVER-企业静默签
 
 
     def _deserialize(self, params):
-        self._OrganizationName = params.get("OrganizationName")
         self._ApproverNumber = params.get("ApproverNumber")
         self._ApproverType = params.get("ApproverType")
         self._Name = params.get("Name")
         self._IdCardType = params.get("IdCardType")
         self._IdCardNumber = params.get("IdCardNumber")
         self._Mobile = params.get("Mobile")
+        self._OrganizationName = params.get("OrganizationName")
         self._OrganizationOpenId = params.get("OrganizationOpenId")
         self._OpenId = params.get("OpenId")
         self._ApproverSignComponentType = params.get("ApproverSignComponentType")
@@ -15327,16 +15349,15 @@ class StaffRole(AbstractModel):
 
 
 class SyncFailReason(AbstractModel):
-    """同步经办人失败原因
+    """同步员工失败原因
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: 对应Agent-ProxyOperator-OpenId。第三方应用平台自定义，对子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
+        :param _Id: 企业员工标识(即OpenId)
         :type Id: str
-        :param _Message: 失败原因
-例如：Id不符合规范、证件号码不合法等
+        :param _Message: 新增员工或者员工离职失败原因, 可能存证ID不符合规范、证件号码不合法等原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
         """
@@ -15380,11 +15401,21 @@ class SyncProxyOrganizationOperatorsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.AppId 和 Agent.ProxyOrganizationOpenId必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+</ul>
+第三方平台子客企业必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _OperatorType: 操作类型，新增:"CREATE"，修改:"UPDATE"，离职:"RESIGN"
+        :param _OperatorType: 操作类型，对应的操作
+<ul><li> **CREATE** :新增员工</li>
+<li> **UPDATE** :修改员工</li>
+<li> **RESIGN** :离职员工</li></ul>
         :type OperatorType: str
-        :param _ProxyOrganizationOperators: 经办人信息列表，最大长度200
+        :param _ProxyOrganizationOperators: 员工信息列表，最多支持200个
         :type ProxyOrganizationOperators: list of ProxyOrganizationOperator
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -15462,12 +15493,13 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Status 同步状态,全部同步失败接口会直接报错
-1-成功 
-2-部分成功
+        :param _Status:  同步的状态,  全部同步失败接口是接口会直接报错
+
+<ul><li> **1** :全部成功</li>
+<li> **2** :部分成功</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _FailedList: 同步失败经办人及其失败原因
+        :param _FailedList: 同步失败员工ID及其失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedList: list of SyncFailReason
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

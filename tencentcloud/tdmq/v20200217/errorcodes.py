@@ -287,6 +287,9 @@ RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
 # 迁移任务不存在。
 RESOURCENOTFOUND_MIGRATIONTASK = 'ResourceNotFound.MigrationTask'
 
+# 消息生产日志不存在。
+RESOURCENOTFOUND_MSGPRODUCELOG = 'ResourceNotFound.MsgProduceLog'
+
 # 命名空间不存在。
 RESOURCENOTFOUND_NAMESPACE = 'ResourceNotFound.Namespace'
 

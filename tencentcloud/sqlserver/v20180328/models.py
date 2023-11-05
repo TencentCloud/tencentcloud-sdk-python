@@ -5693,6 +5693,9 @@ class DbNormalDetail(AbstractModel):
         :type UserAccessDesc: str
         :param _CreateTime: 数据库创建时间
         :type CreateTime: str
+        :param _IsFullTextEnabled: 是否全文启用 0：否 1：是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsFullTextEnabled: str
         """
         self._IsSubscribed = None
         self._CollationName = None
@@ -5713,6 +5716,7 @@ class DbNormalDetail(AbstractModel):
         self._StateDesc = None
         self._UserAccessDesc = None
         self._CreateTime = None
+        self._IsFullTextEnabled = None
 
     @property
     def IsSubscribed(self):
@@ -5772,10 +5776,14 @@ class DbNormalDetail(AbstractModel):
 
     @property
     def IsFulltextEnabled(self):
+        warnings.warn("parameter `IsFulltextEnabled` is deprecated", DeprecationWarning) 
+
         return self._IsFulltextEnabled
 
     @IsFulltextEnabled.setter
     def IsFulltextEnabled(self, IsFulltextEnabled):
+        warnings.warn("parameter `IsFulltextEnabled` is deprecated", DeprecationWarning) 
+
         self._IsFulltextEnabled = IsFulltextEnabled
 
     @property
@@ -5866,6 +5874,14 @@ class DbNormalDetail(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def IsFullTextEnabled(self):
+        return self._IsFullTextEnabled
+
+    @IsFullTextEnabled.setter
+    def IsFullTextEnabled(self, IsFullTextEnabled):
+        self._IsFullTextEnabled = IsFullTextEnabled
+
 
     def _deserialize(self, params):
         self._IsSubscribed = params.get("IsSubscribed")
@@ -5887,6 +5903,7 @@ class DbNormalDetail(AbstractModel):
         self._StateDesc = params.get("StateDesc")
         self._UserAccessDesc = params.get("UserAccessDesc")
         self._CreateTime = params.get("CreateTime")
+        self._IsFullTextEnabled = params.get("IsFullTextEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11565,11 +11582,14 @@ class DescribeSlowlogsResponse(AbstractModel):
         :type TotalCount: int
         :param _Slowlogs: 慢查询日志信息列表
         :type Slowlogs: list of SlowlogInfo
+        :param _SlowLogs: 慢查询日志信息列表
+        :type SlowLogs: list of SlowLog
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Slowlogs = None
+        self._SlowLogs = None
         self._RequestId = None
 
     @property
@@ -11582,11 +11602,23 @@ class DescribeSlowlogsResponse(AbstractModel):
 
     @property
     def Slowlogs(self):
+        warnings.warn("parameter `Slowlogs` is deprecated", DeprecationWarning) 
+
         return self._Slowlogs
 
     @Slowlogs.setter
     def Slowlogs(self, Slowlogs):
+        warnings.warn("parameter `Slowlogs` is deprecated", DeprecationWarning) 
+
         self._Slowlogs = Slowlogs
+
+    @property
+    def SlowLogs(self):
+        return self._SlowLogs
+
+    @SlowLogs.setter
+    def SlowLogs(self, SlowLogs):
+        self._SlowLogs = SlowLogs
 
     @property
     def RequestId(self):
@@ -11605,6 +11637,12 @@ class DescribeSlowlogsResponse(AbstractModel):
                 obj = SlowlogInfo()
                 obj._deserialize(item)
                 self._Slowlogs.append(obj)
+        if params.get("SlowLogs") is not None:
+            self._SlowLogs = []
+            for item in params.get("SlowLogs"):
+                obj = SlowLog()
+                obj._deserialize(item)
+                self._SlowLogs.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11676,6 +11714,8 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
         :type StartTime: str
         :param _ExpiredTime: 临时密钥到期时间
         :type ExpiredTime: str
+        :param _CosSecurityToken: 临时密钥Token
+        :type CosSecurityToken: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11687,6 +11727,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
         self._XCosSecurityToken = None
         self._StartTime = None
         self._ExpiredTime = None
+        self._CosSecurityToken = None
         self._RequestId = None
 
     @property
@@ -11731,10 +11772,14 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
 
     @property
     def XCosSecurityToken(self):
+        warnings.warn("parameter `XCosSecurityToken` is deprecated", DeprecationWarning) 
+
         return self._XCosSecurityToken
 
     @XCosSecurityToken.setter
     def XCosSecurityToken(self, XCosSecurityToken):
+        warnings.warn("parameter `XCosSecurityToken` is deprecated", DeprecationWarning) 
+
         self._XCosSecurityToken = XCosSecurityToken
 
     @property
@@ -11754,6 +11799,14 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
         self._ExpiredTime = ExpiredTime
 
     @property
+    def CosSecurityToken(self):
+        return self._CosSecurityToken
+
+    @CosSecurityToken.setter
+    def CosSecurityToken(self, CosSecurityToken):
+        self._CosSecurityToken = CosSecurityToken
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11771,6 +11824,7 @@ class DescribeUploadBackupInfoResponse(AbstractModel):
         self._XCosSecurityToken = params.get("XCosSecurityToken")
         self._StartTime = params.get("StartTime")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._CosSecurityToken = params.get("CosSecurityToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -11854,6 +11908,8 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
         :type StartTime: str
         :param _ExpiredTime: 临时密钥到期时间
         :type ExpiredTime: str
+        :param _CosSecurityToken: 临时密钥Token
+        :type CosSecurityToken: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11865,6 +11921,7 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
         self._XCosSecurityToken = None
         self._StartTime = None
         self._ExpiredTime = None
+        self._CosSecurityToken = None
         self._RequestId = None
 
     @property
@@ -11909,10 +11966,14 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
 
     @property
     def XCosSecurityToken(self):
+        warnings.warn("parameter `XCosSecurityToken` is deprecated", DeprecationWarning) 
+
         return self._XCosSecurityToken
 
     @XCosSecurityToken.setter
     def XCosSecurityToken(self, XCosSecurityToken):
+        warnings.warn("parameter `XCosSecurityToken` is deprecated", DeprecationWarning) 
+
         self._XCosSecurityToken = XCosSecurityToken
 
     @property
@@ -11932,6 +11993,14 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
         self._ExpiredTime = ExpiredTime
 
     @property
+    def CosSecurityToken(self):
+        return self._CosSecurityToken
+
+    @CosSecurityToken.setter
+    def CosSecurityToken(self, CosSecurityToken):
+        self._CosSecurityToken = CosSecurityToken
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11949,6 +12018,7 @@ class DescribeUploadIncrementalInfoResponse(AbstractModel):
         self._XCosSecurityToken = params.get("XCosSecurityToken")
         self._StartTime = params.get("StartTime")
         self._ExpiredTime = params.get("ExpiredTime")
+        self._CosSecurityToken = params.get("CosSecurityToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -14623,19 +14693,26 @@ class ModifyBackupStrategyResponse(AbstractModel):
         :type Errno: int
         :param _Msg: 返回错误信息
         :type Msg: str
+        :param _Code: 返回错误码
+        :type Code: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Errno = None
         self._Msg = None
+        self._Code = None
         self._RequestId = None
 
     @property
     def Errno(self):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
         return self._Errno
 
     @Errno.setter
     def Errno(self, Errno):
+        warnings.warn("parameter `Errno` is deprecated", DeprecationWarning) 
+
         self._Errno = Errno
 
     @property
@@ -14645,6 +14722,14 @@ class ModifyBackupStrategyResponse(AbstractModel):
     @Msg.setter
     def Msg(self, Msg):
         self._Msg = Msg
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
 
     @property
     def RequestId(self):
@@ -14658,6 +14743,7 @@ class ModifyBackupStrategyResponse(AbstractModel):
     def _deserialize(self, params):
         self._Errno = params.get("Errno")
         self._Msg = params.get("Msg")
+        self._Code = params.get("Code")
         self._RequestId = params.get("RequestId")
 
 
@@ -18858,6 +18944,124 @@ class SlaveZones(AbstractModel):
     def _deserialize(self, params):
         self._SlaveZone = params.get("SlaveZone")
         self._SlaveZoneName = params.get("SlaveZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlowLog(AbstractModel):
+    """慢查询日志文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 慢查询日志文件唯一标识
+        :type Id: int
+        :param _StartTime: 文件生成的开始时间
+        :type StartTime: str
+        :param _EndTime: 文件生成的结束时间
+        :type EndTime: str
+        :param _Size: 文件大小（KB）
+        :type Size: int
+        :param _Count: 文件中log条数
+        :type Count: int
+        :param _InternalAddr: 内网下载地址
+        :type InternalAddr: str
+        :param _ExternalAddr: 外网下载地址
+        :type ExternalAddr: str
+        :param _Status: 状态（1成功 2失败）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._Id = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Size = None
+        self._Count = None
+        self._InternalAddr = None
+        self._ExternalAddr = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def InternalAddr(self):
+        return self._InternalAddr
+
+    @InternalAddr.setter
+    def InternalAddr(self, InternalAddr):
+        self._InternalAddr = InternalAddr
+
+    @property
+    def ExternalAddr(self):
+        return self._ExternalAddr
+
+    @ExternalAddr.setter
+    def ExternalAddr(self, ExternalAddr):
+        self._ExternalAddr = ExternalAddr
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Size = params.get("Size")
+        self._Count = params.get("Count")
+        self._InternalAddr = params.get("InternalAddr")
+        self._ExternalAddr = params.get("ExternalAddr")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

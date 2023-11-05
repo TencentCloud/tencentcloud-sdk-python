@@ -2095,6 +2095,163 @@ class Consumer(AbstractModel):
         
 
 
+class ConsumerLog(AbstractModel):
+    """消费日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ConsumerGroup: 消费组。
+        :type ConsumerGroup: str
+        :param _ConsumerName: 消费组名称。
+        :type ConsumerName: str
+        :param _ConsumeTime: 消费时间。
+        :type ConsumeTime: str
+        :param _ConsumerAddr: 消费者客户端地址。
+        :type ConsumerAddr: str
+        :param _ConsumeUseTime: 消费耗时（毫秒）。
+        :type ConsumeUseTime: int
+        :param _Status: 消费状态。
+        :type Status: str
+        """
+        self._MsgId = None
+        self._ConsumerGroup = None
+        self._ConsumerName = None
+        self._ConsumeTime = None
+        self._ConsumerAddr = None
+        self._ConsumeUseTime = None
+        self._Status = None
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def ConsumerName(self):
+        return self._ConsumerName
+
+    @ConsumerName.setter
+    def ConsumerName(self, ConsumerName):
+        self._ConsumerName = ConsumerName
+
+    @property
+    def ConsumeTime(self):
+        return self._ConsumeTime
+
+    @ConsumeTime.setter
+    def ConsumeTime(self, ConsumeTime):
+        self._ConsumeTime = ConsumeTime
+
+    @property
+    def ConsumerAddr(self):
+        return self._ConsumerAddr
+
+    @ConsumerAddr.setter
+    def ConsumerAddr(self, ConsumerAddr):
+        self._ConsumerAddr = ConsumerAddr
+
+    @property
+    def ConsumeUseTime(self):
+        return self._ConsumeUseTime
+
+    @ConsumeUseTime.setter
+    def ConsumeUseTime(self, ConsumeUseTime):
+        self._ConsumeUseTime = ConsumeUseTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._ConsumerName = params.get("ConsumerName")
+        self._ConsumeTime = params.get("ConsumeTime")
+        self._ConsumerAddr = params.get("ConsumerAddr")
+        self._ConsumeUseTime = params.get("ConsumeUseTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLogs(AbstractModel):
+    """消费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _ConsumerLogSets: 消费日志。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLogSets: list of ConsumerLog
+        """
+        self._TotalCount = None
+        self._ConsumerLogSets = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConsumerLogSets(self):
+        return self._ConsumerLogSets
+
+    @ConsumerLogSets.setter
+    def ConsumerLogSets(self, ConsumerLogSets):
+        self._ConsumerLogSets = ConsumerLogSets
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConsumerLogSets") is not None:
+            self._ConsumerLogSets = []
+            for item in params.get("ConsumerLogSets"):
+                obj = ConsumerLog()
+                obj._deserialize(item)
+                self._ConsumerLogSets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumerStats(AbstractModel):
     """消费详情
 
@@ -8014,6 +8171,181 @@ class DescribeEnvironmentsResponse(AbstractModel):
                 obj = Environment()
                 obj._deserialize(item)
                 self._EnvironmentSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMsgTraceRequest(AbstractModel):
+    """DescribeMsgTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）。
+        :type EnvironmentId: str
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ProduceTime: 消息生产时间。
+        :type ProduceTime: str
+        :param _Offset: 起始下标，不填默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，不填则默认为10，最大值为20。
+        :type Limit: int
+        :param _SubscriptionName: 消费组名称模糊匹配。
+        :type SubscriptionName: str
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._MsgId = None
+        self._ProduceTime = None
+        self._Offset = None
+        self._Limit = None
+        self._SubscriptionName = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SubscriptionName(self):
+        return self._SubscriptionName
+
+    @SubscriptionName.setter
+    def SubscriptionName(self, SubscriptionName):
+        self._SubscriptionName = SubscriptionName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._MsgId = params.get("MsgId")
+        self._ProduceTime = params.get("ProduceTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SubscriptionName = params.get("SubscriptionName")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMsgTraceResponse(AbstractModel):
+    """DescribeMsgTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProducerLog: 生产信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerLog: :class:`tencentcloud.tdmq.v20200217.models.ProducerLog`
+        :param _ServerLog: 服务方信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerLog: :class:`tencentcloud.tdmq.v20200217.models.ServerLog`
+        :param _ConsumerLogs: 消费信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerLogs: :class:`tencentcloud.tdmq.v20200217.models.ConsumerLogs`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProducerLog = None
+        self._ServerLog = None
+        self._ConsumerLogs = None
+        self._RequestId = None
+
+    @property
+    def ProducerLog(self):
+        return self._ProducerLog
+
+    @ProducerLog.setter
+    def ProducerLog(self, ProducerLog):
+        self._ProducerLog = ProducerLog
+
+    @property
+    def ServerLog(self):
+        return self._ServerLog
+
+    @ServerLog.setter
+    def ServerLog(self, ServerLog):
+        self._ServerLog = ServerLog
+
+    @property
+    def ConsumerLogs(self):
+        return self._ConsumerLogs
+
+    @ConsumerLogs.setter
+    def ConsumerLogs(self, ConsumerLogs):
+        self._ConsumerLogs = ConsumerLogs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProducerLog") is not None:
+            self._ProducerLog = ProducerLog()
+            self._ProducerLog._deserialize(params.get("ProducerLog"))
+        if params.get("ServerLog") is not None:
+            self._ServerLog = ServerLog()
+            self._ServerLog._deserialize(params.get("ServerLog"))
+        if params.get("ConsumerLogs") is not None:
+            self._ConsumerLogs = ConsumerLogs()
+            self._ConsumerLogs._deserialize(params.get("ConsumerLogs"))
         self._RequestId = params.get("RequestId")
 
 
@@ -17319,6 +17651,99 @@ class PartitionsTopic(AbstractModel):
         
 
 
+class ProducerLog(AbstractModel):
+    """消息生产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ProducerName: 生产者名称。
+        :type ProducerName: str
+        :param _ProduceTime: 消息生产时间。
+        :type ProduceTime: str
+        :param _ProducerAddr: 生产者客户端。
+        :type ProducerAddr: str
+        :param _ProduceUseTime: 生产耗时（秒）。
+        :type ProduceUseTime: int
+        :param _Status: 状态。
+        :type Status: str
+        """
+        self._MsgId = None
+        self._ProducerName = None
+        self._ProduceTime = None
+        self._ProducerAddr = None
+        self._ProduceUseTime = None
+        self._Status = None
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ProducerName(self):
+        return self._ProducerName
+
+    @ProducerName.setter
+    def ProducerName(self, ProducerName):
+        self._ProducerName = ProducerName
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def ProducerAddr(self):
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def ProduceUseTime(self):
+        return self._ProduceUseTime
+
+    @ProduceUseTime.setter
+    def ProduceUseTime(self, ProduceUseTime):
+        self._ProduceUseTime = ProduceUseTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._ProducerName = params.get("ProducerName")
+        self._ProduceTime = params.get("ProduceTime")
+        self._ProducerAddr = params.get("ProducerAddr")
+        self._ProduceUseTime = params.get("ProduceUseTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusEndpointInfo(AbstractModel):
     """rabbitmq Prometheus信息
 
@@ -23529,6 +23954,51 @@ class SendRocketMQMessageResponse(AbstractModel):
         self._Result = params.get("Result")
         self._MsgId = params.get("MsgId")
         self._RequestId = params.get("RequestId")
+
+
+class ServerLog(AbstractModel):
+    """服务方信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SaveTime: 存储时间。
+        :type SaveTime: str
+        :param _Status: 状态。
+        :type Status: str
+        """
+        self._SaveTime = None
+        self._Status = None
+
+    @property
+    def SaveTime(self):
+        return self._SaveTime
+
+    @SaveTime.setter
+    def SaveTime(self, SaveTime):
+        self._SaveTime = SaveTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._SaveTime = params.get("SaveTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SetRocketMQPublicAccessPointRequest(AbstractModel):
