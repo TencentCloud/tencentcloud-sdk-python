@@ -101,6 +101,9 @@ FAILEDOPERATION_RENEWRESOURCESFAILED = 'FailedOperation.RenewResourcesFailed'
 # 请求错误。
 FAILEDOPERATION_REQUESTERROR = 'FailedOperation.RequestError'
 
+# 跨账号共享镜像失败，请稍后重试。
+FAILEDOPERATION_SHAREBLUEPRINTACROSSACCOUNTFAILED = 'FailedOperation.ShareBlueprintAcrossAccountFailed'
+
 # 快照操作失败。
 FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFailed'
 
@@ -197,6 +200,9 @@ INVALIDPARAMETER_INVALIDFILTERINVALIDNAMENOTSTR = 'InvalidParameter.InvalidFilte
 # 参数非法，Filter 参数中的 Values 不是列表。
 INVALIDPARAMETER_INVALIDFILTERINVALIDVALUESNOTLIST = 'InvalidParameter.InvalidFilterInvalidValuesNotList'
 
+# Filter参数名称不正确。
+INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
+
 # 参数非法，Filter 参数不是字典。
 INVALIDPARAMETER_INVALIDFILTERNOTDICT = 'InvalidParameter.InvalidFilterNotDict'
 
@@ -214,6 +220,15 @@ INVALIDPARAMETER_PARAMETERCONFLICT = 'InvalidParameter.ParameterConflict'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 镜像不允许共享至不同站点的账号。
+INVALIDPARAMETERVALUE_ACCOUNTIDINVALIDACCOUNTAREA = 'InvalidParameterValue.AccountIdInvalidAccountArea'
+
+# 账号ID不存在。
+INVALIDPARAMETERVALUE_ACCOUNTIDSNOTEXIST = 'InvalidParameterValue.AccountIdsNotExist'
+
+# 账号ID不为主账号。
+INVALIDPARAMETERVALUE_ACCOUNTIDSNOTOWNERACCOUNT = 'InvalidParameterValue.AccountIdsNotOwnerAccount'
 
 # 该实例配置不符合指定镜像的要求。
 INVALIDPARAMETERVALUE_BLUEPRINTCONFIGNOTMATCH = 'InvalidParameterValue.BlueprintConfigNotMatch'
@@ -416,6 +431,9 @@ LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = 'LimitExceeded.IsolateResourcesLim
 # 超过密钥对配额。
 LIMITEXCEEDED_KEYPAIRLIMITEXCEEDED = 'LimitExceeded.KeyPairLimitExceeded'
 
+# 镜像当前配额不足，无法共享至指定账号。
+LIMITEXCEEDED_SHAREBLUEPRINTACROSSACCOUNTQUOTALIMITEXCEEDED = 'LimitExceeded.ShareBlueprintAcrossAccountQuotaLimitExceeded'
+
 # 超过快照配额。
 LIMITEXCEEDED_SNAPSHOTQUOTALIMITEXCEEDED = 'LimitExceeded.SnapshotQuotaLimitExceeded'
 
@@ -424,6 +442,9 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # 必须传入参数Period或CurInstanceDeadline。
 MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = 'MissingParameter.MissingParameterPeriodCurInstanceDeadline'
+
+# 镜像在操作中。请稍后再试。
+OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = 'OperationDenied.BlueprintOperationInProgress'
 
 # 该实例不支持升级套餐操作。
 OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = 'OperationDenied.BundleNotSupportModify'
@@ -599,8 +620,17 @@ UNSUPPORTEDOPERATION_ATTACHCCNCONDITIONUNSATISFIED = 'UnsupportedOperation.Attac
 # 关联云联网失败。请检查云联网状态并稍后再试。
 UNSUPPORTEDOPERATION_ATTACHCCNFAILED = 'UnsupportedOperation.AttachCcnFailed'
 
+# 镜像已经被共享。不支持此操作。
+UNSUPPORTEDOPERATION_BLUEPRINTALREADYSHARED = 'UnsupportedOperation.BlueprintAlreadyShared'
+
 # 镜像当前状态不支持该操作。
 UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = 'UnsupportedOperation.BlueprintCurStateInvalid'
+
+# 镜像没有被共享。不支持此操作。
+UNSUPPORTEDOPERATION_BLUEPRINTHASNOTSHARED = 'UnsupportedOperation.BlueprintHasNotShared'
+
+# 镜像最近一次的操作尚未完成。
+UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = 'UnsupportedOperation.BlueprintLatestOperationUnfinished'
 
 # 镜像被使用中，不支持该操作。
 UNSUPPORTEDOPERATION_BLUEPRINTOCCUPIED = 'UnsupportedOperation.BlueprintOccupied'

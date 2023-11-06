@@ -1204,6 +1204,76 @@ class Bundle(AbstractModel):
         
 
 
+class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
+    """CancelShareBlueprintAcrossAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+        :type BlueprintId: str
+        :param _AccountIds: 接收共享镜像的账号ID列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+        :type AccountIds: list of str
+        """
+        self._BlueprintId = None
+        self._AccountIds = None
+
+    @property
+    def BlueprintId(self):
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def AccountIds(self):
+        return self._AccountIds
+
+    @AccountIds.setter
+    def AccountIds(self, AccountIds):
+        self._AccountIds = AccountIds
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
+        self._AccountIds = params.get("AccountIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelShareBlueprintAcrossAccountsResponse(AbstractModel):
+    """CancelShareBlueprintAcrossAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CcnAttachedInstance(AbstractModel):
     """云联网关联的实例列表。
 
@@ -13956,6 +14026,76 @@ class SceneInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ShareBlueprintAcrossAccountsRequest(AbstractModel):
+    """ShareBlueprintAcrossAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
+        :type BlueprintId: str
+        :param _AccountIds: 接收共享镜像的账号Id列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+        :type AccountIds: list of str
+        """
+        self._BlueprintId = None
+        self._AccountIds = None
+
+    @property
+    def BlueprintId(self):
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def AccountIds(self):
+        return self._AccountIds
+
+    @AccountIds.setter
+    def AccountIds(self, AccountIds):
+        self._AccountIds = AccountIds
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
+        self._AccountIds = params.get("AccountIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareBlueprintAcrossAccountsResponse(AbstractModel):
+    """ShareBlueprintAcrossAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Snapshot(AbstractModel):

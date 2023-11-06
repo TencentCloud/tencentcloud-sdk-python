@@ -179,6 +179,9 @@ INVALIDPARAMETER_INVALIDCUSTOMIZEDPODPARAM = 'InvalidParameter.InvalidCustomized
 # DependService和EnableKerberos参数冲突。
 INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = 'InvalidParameter.InvalidDependServiceAndEnableKerberosConflict'
 
+# 无效的磁盘数量。
+INVALIDPARAMETER_INVALIDDISKNUM = 'InvalidParameter.InvalidDiskNum'
+
 # 无效的磁盘大小。
 INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
 

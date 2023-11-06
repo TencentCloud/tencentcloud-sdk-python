@@ -83,8 +83,10 @@ class BatchSendEmailRequest(AbstractModel):
         :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
         :type ReplyToAddresses: str
         :param _Template: 使用模板发送时，填写的模板相关参数
+<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param _Simple: 已废弃
+<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert> 
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param _Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
         :type Attachments: list of Attachment
@@ -2796,9 +2798,11 @@ class SendEmailRequest(AbstractModel):
         :type Cc: list of str
         :param _Bcc: 密送人邮箱地址，最多支持抄送20人。
         :type Bcc: list of str
-        :param _Template: 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
+        :param _Template: 使用模板发送时，填写模板相关参数。
+<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
         :param _Simple: 已废弃
+<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
         :param _Attachments: 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
         :type Attachments: list of Attachment

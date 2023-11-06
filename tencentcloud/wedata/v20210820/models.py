@@ -12658,8 +12658,11 @@ class DeleteDataSourcesRequest(AbstractModel):
         r"""
         :param _Ids: id列表
         :type Ids: list of int non-negative
+        :param _ProjectId: 项目id
+        :type ProjectId: str
         """
         self._Ids = None
+        self._ProjectId = None
 
     @property
     def Ids(self):
@@ -12669,9 +12672,18 @@ class DeleteDataSourcesRequest(AbstractModel):
     def Ids(self, Ids):
         self._Ids = Ids
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._Ids = params.get("Ids")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19120,6 +19132,8 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         :type IncludeWorkflow: bool
         :param _IncludeTask: 是否包含任务
         :type IncludeTask: bool
+        :param _IncludeVirtualTask: 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
+        :type IncludeVirtualTask: bool
         """
         self._ProjectId = None
         self._FirstLevelPull = None
@@ -19128,6 +19142,7 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         self._Keyword = None
         self._IncludeWorkflow = None
         self._IncludeTask = None
+        self._IncludeVirtualTask = None
 
     @property
     def ProjectId(self):
@@ -19185,6 +19200,14 @@ class DescribeDsFolderTreeRequest(AbstractModel):
     def IncludeTask(self, IncludeTask):
         self._IncludeTask = IncludeTask
 
+    @property
+    def IncludeVirtualTask(self):
+        return self._IncludeVirtualTask
+
+    @IncludeVirtualTask.setter
+    def IncludeVirtualTask(self, IncludeVirtualTask):
+        self._IncludeVirtualTask = IncludeVirtualTask
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -19194,6 +19217,7 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._IncludeWorkflow = params.get("IncludeWorkflow")
         self._IncludeTask = params.get("IncludeTask")
+        self._IncludeVirtualTask = params.get("IncludeVirtualTask")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47695,6 +47719,8 @@ class ModifyDataSourceRequest(AbstractModel):
         :type COSBucket: str
         :param _COSRegion: cos region
         :type COSRegion: str
+        :param _ProjectId: 操作项目id
+        :type ProjectId: str
         """
         self._Name = None
         self._Category = None
@@ -47714,6 +47740,7 @@ class ModifyDataSourceRequest(AbstractModel):
         self._OwnerProjectIdent = None
         self._COSBucket = None
         self._COSRegion = None
+        self._ProjectId = None
 
     @property
     def Name(self):
@@ -47859,6 +47886,14 @@ class ModifyDataSourceRequest(AbstractModel):
     def COSRegion(self, COSRegion):
         self._COSRegion = COSRegion
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -47879,6 +47914,7 @@ class ModifyDataSourceRequest(AbstractModel):
         self._OwnerProjectIdent = params.get("OwnerProjectIdent")
         self._COSBucket = params.get("COSBucket")
         self._COSRegion = params.get("COSRegion")
+        self._ProjectId = params.get("ProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

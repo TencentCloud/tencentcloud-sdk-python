@@ -179,6 +179,30 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelShareBlueprintAcrossAccounts(self, request):
+        """本接口（CancelShareBlueprintAcrossAccounts）用于取消镜像跨账号共享。
+        指定的镜像ID必须为自定义镜像，且指定账号ID必须已进行共享。
+
+        :param request: Request instance for CancelShareBlueprintAcrossAccounts.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.CancelShareBlueprintAcrossAccountsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.CancelShareBlueprintAcrossAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelShareBlueprintAcrossAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelShareBlueprintAcrossAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBlueprint(self, request):
         """本接口 (CreateBlueprint) 用于创建镜像。
 
@@ -2415,6 +2439,31 @@ class LighthouseClient(AbstractClient):
             body = self.call("RunDockerContainers", params, headers=headers)
             response = json.loads(body)
             model = models.RunDockerContainersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ShareBlueprintAcrossAccounts(self, request):
+        """本接口（ShareBlueprintAcrossAccounts）用于跨账号共享镜像。
+        仅支持共享自定义镜像， 且用于共享的镜像状态必须为NORMAL。
+        共享的账号必须为主账号。
+
+        :param request: Request instance for ShareBlueprintAcrossAccounts.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ShareBlueprintAcrossAccountsRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ShareBlueprintAcrossAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ShareBlueprintAcrossAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.ShareBlueprintAcrossAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -302,9 +302,10 @@ class EssClient(AbstractClient):
 
 
     def CreateExtendedServiceAuthInfos(self, request):
-        """创建企业扩展服务授权，当前仅支持授权 “企业自动签” 给企业员工。
+        """创建企业扩展服务授权，当前仅支持授权 “企业自动签” 和 “批量签署” 给企业员工。
+        该接口作用和电子签控制台 企业设置-扩展服务-企业自动签署和批量签署授权 两个模块功能相同，可通过该接口授权给企业员工。
 
-        注：支持集团代子企业操作，请联系运营开通此功能。
+        注：“企业自动签授权”支持集团代子企业操作，请联系运营开通此功能。
 
         :param request: Request instance for CreateExtendedServiceAuthInfos.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateExtendedServiceAuthInfosRequest`
@@ -1080,7 +1081,8 @@ class EssClient(AbstractClient):
 
 
     def DeleteExtendedServiceAuthInfos(self, request):
-        """删除企业扩展服务授权，当前仅支持 “企业自动签” 取消授权。
+        """删除企业扩展服务授权，当前仅支持 “企业自动签” 和“批量签署”  的取消授权。
+        该接口作用和电子签控制台 企业设置-扩展服务-企业自动签署和批量签署授权 两个模块功能相同，可通过该接口取消企业员工授权。
 
         注：支持集团代子企业操作，请联系运营开通此功能。
 
@@ -1366,6 +1368,8 @@ class EssClient(AbstractClient):
         >- 填写控件 Components
         >- 签署控件 SignComponents
         >- 生成模板的文件基础信息 FileInfos
+
+        ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
 
         当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
 

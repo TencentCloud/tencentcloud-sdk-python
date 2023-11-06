@@ -3314,7 +3314,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _ExclusiveCluster: 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param _SlaType: 性能容量型规格。
-<ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> SLA：超强型1规格。当您开通了超大型规格的性能容量型时，SLA对应超强型4规格 </li><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li>如需超大型规格（超强型2及以上），请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。</ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
+<ul><li>若需要创建性能容量型实例，则此参数必填，取值范围：<ul><li> SLA：超强型4规格 </li><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)。
         :type SlaType: str
         :param _ClusterIds: 集群ID，集群标识，在需要配置公有云独占集群或本地专有集群时使用。公有云独占集群申请请[提交工单](https://console.cloud.tencent.com/workorder/category)，本地专有集群请参考[本地专有集群](https://cloud.tencent.com/document/product/1346)描述。
         :type ClusterIds: list of str
@@ -9514,9 +9514,7 @@ BANDWIDTH_PACKAGE 按带宽包计费;
         :type InternetChargeType: str
         :param _InternetMaxBandwidthOut: 最大出带宽，单位Mbps，仅对公网属性的共享型、性能容量型和独占型 CLB 实例、以及内网属性的性能容量型 CLB 实例生效。
 - 对于公网属性的共享型和独占型 CLB 实例，最大出带宽的范围为1Mbps-2048Mbps。
-- 对于公网属性和内网属性的性能容量型 CLB实例
-  - 默认为普通规格的性能容量型实例，SLA对应超强型1规格，最大出带宽的范围为1Mbps-10240Mbps。
-  - 当您开通了超大型规格的性能容量型时，最大出带宽的范围为1Mbps-61440Mbps。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。
+- 对于公网属性和内网属性的性能容量型 CLB实例，最大出带宽的范围为1Mbps-61440Mbps。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetMaxBandwidthOut: int
         :param _BandwidthpkgSubType: 带宽包的类型，如SINGLEISP
@@ -16274,14 +16272,14 @@ class SlaUpdateParam(AbstractModel):
         :param _LoadBalancerId: lb的字符串ID
         :type LoadBalancerId: str
         :param _SlaType: 性能容量型规格，取值范围：
-<li> SLA：超强型1规格。当您开通了超大型规格的性能容量型时，SLA对应超强型4规格 </li>
+<li> SLA：超强型4规格 </li>
 <li> clb.c2.medium：标准型规格 </li>
 <li> clb.c3.small：高阶型1规格 </li>
 <li> clb.c3.medium：高阶型2规格 </li>
 <li> clb.c4.small：超强型1规格 </li>
 <li> clb.c4.medium：超强型2规格 </li>
 <li> clb.c4.large：超强型3规格 </li>
-<li> clb.c4.xlarge：超强型4规格 </li>如需超大型规格（超强型2及以上），请提交[工单申请](https://console.cloud.tencent.com/workorder/category)。如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)
+<li> clb.c4.xlarge：超强型4规格 </li>如需了解规格详情，请参见[实例规格对比](https://cloud.tencent.com/document/product/214/84689)
         :type SlaType: str
         """
         self._LoadBalancerId = None

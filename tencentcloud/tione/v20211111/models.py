@@ -10058,7 +10058,7 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
         :param _TotalCount: 数量
         :type TotalCount: int
         :param _PodInfoList: pod详细信息
-        :type PodInfoList: :class:`tencentcloud.tione.v20211111.models.PodInfo`
+        :type PodInfoList: list of PodInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10104,8 +10104,11 @@ class DescribeTrainingTaskPodsResponse(AbstractModel):
         self._PodNames = params.get("PodNames")
         self._TotalCount = params.get("TotalCount")
         if params.get("PodInfoList") is not None:
-            self._PodInfoList = PodInfo()
-            self._PodInfoList._deserialize(params.get("PodInfoList"))
+            self._PodInfoList = []
+            for item in params.get("PodInfoList"):
+                obj = PodInfo()
+                obj._deserialize(item)
+                self._PodInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

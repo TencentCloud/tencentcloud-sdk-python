@@ -3220,12 +3220,10 @@ class CreateExtendedServiceAuthInfosRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _UserIds: 本企业员工的id，需要已实名，正常在职员工
         :type UserIds: list of str
-        :param _ExtendServiceType: 要查询的扩展服务类型。
-默认为空，即查询当前支持的所有扩展服务信息。
-若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+        :param _ExtendServiceType: 取值
 <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+<li>BATCH_SIGN：批量签署</li>
 </ul>
-
         :type ExtendServiceType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -8505,12 +8503,10 @@ class DeleteExtendedServiceAuthInfosRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _UserIds: 本企业员工的id，需要已实名，正常在职员工
         :type UserIds: list of str
-        :param _ExtendServiceType: 要查询的扩展服务类型。
-默认为空，即查询当前支持的所有扩展服务信息。
-若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
+        :param _ExtendServiceType: 取值如下所示：
 <ul><li>OPEN_SERVER_SIGN：企业自动签</li>
+<li>BATCH_SIGN：批量签署</li>
 </ul>
-
         :type ExtendServiceType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -12670,30 +12666,32 @@ class FlowApproverDetail(AbstractModel):
 
 
 class FlowApproverUrlInfo(AbstractModel):
-    """签署链接信息
+    """签署链接信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _SignUrl: 签署链接(短链形式呈现)。请注意保密，不要将其外泄给无关用户。
-注: `注意该链接有效期为30分钟`
+        :param _SignUrl: 签署短链接。</br>
+注意:
+- 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+- 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignUrl: str
-        :param _ApproverType: 签署参与人类型 
-<ul><li> **1** :个人参与方</li></ul>
-
-注: `现在仅支持个人参与方`
+        :param _ApproverType: 签署人类型。
+- **1**: 个人
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: int
-        :param _ApproverName: 签署人姓名
+        :param _ApproverName: 签署人姓名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverName: str
-        :param _ApproverMobile: 签署人手机号
+        :param _ApproverMobile: 签署人手机号。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
-        :param _LongUrl: 签署链接(长链形式呈现)。请注意保密，不要将其外泄给无关用户。
-注: `注意该链接有效期为30分钟`
+        :param _LongUrl: 签署长链接。</br>
+注意:
+- 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+- 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LongUrl: str
         """
@@ -15266,27 +15264,37 @@ class PdfVerifyResult(AbstractModel):
         r"""
         :param _VerifyResult: 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
         :type VerifyResult: int
-        :param _SignPlatform: 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
+        :param _SignPlatform: 签署平台
+如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
+如果文件不在腾讯电子签平台签署，则为**其他平台**。
         :type SignPlatform: str
-        :param _SignerName: 签署人名称
+        :param _SignerName: 申请证书的主体的名字
+
+如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+**企业**:  ESS@企业名称@编码
+**个人**: ESS@个人姓名@证件号@808854
+
+如果在其他平台签署的, 主体的名字参考其他平台的说明
         :type SignerName: str
-        :param _SignTime: 签署时间戳，单位秒
+        :param _SignTime: 签署时间的Unix时间戳，单位毫秒
         :type SignTime: int
-        :param _SignAlgorithm: 签名算法
+        :param _SignAlgorithm: 证书签名算法,  如SHA1withRSA等算法
         :type SignAlgorithm: str
-        :param _CertSn: 签名证书序列号
+        :param _CertSn: CA供应商下发给用户的证书编号
+
+注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下`。
         :type CertSn: str
-        :param _CertNotBefore: 证书起始时间戳，单位毫秒
+        :param _CertNotBefore: 证书起始时间的Unix时间戳，单位毫秒
         :type CertNotBefore: int
-        :param _CertNotAfter: 证书过期时间戳，单位毫秒
+        :param _CertNotAfter: 证书过期时间的时间戳，单位毫秒
         :type CertNotAfter: int
-        :param _ComponentPosX: 签名域横坐标，单位pt
+        :param _ComponentPosX: 签名域横坐标，单位px
         :type ComponentPosX: float
-        :param _ComponentPosY: 签名域纵坐标，单位pt
+        :param _ComponentPosY: 签名域纵坐标，单位px
         :type ComponentPosY: float
-        :param _ComponentWidth: 签名域宽度，单位pt
+        :param _ComponentWidth: 签名域宽度，单位px
         :type ComponentWidth: float
-        :param _ComponentHeight: 签名域高度，单位pt
+        :param _ComponentHeight: 签名域高度，单位px
         :type ComponentHeight: float
         :param _ComponentPage: 签名域所在页码，1～N
         :type ComponentPage: int

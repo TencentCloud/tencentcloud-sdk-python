@@ -89,6 +89,9 @@ FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = 'FailedOperation.Containe
 # 健康检查配置失败。
 FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = 'FailedOperation.CvmCaeMasterHealthCheckConfigError'
 
+# TSF暂时不能响应请求。
+FAILEDOPERATION_DISPATCHCOMMONERROR = 'FailedOperation.DispatchCommonError'
+
 # 远端访问错误: %s。
 FAILEDOPERATION_GATEWAYREMOTECALLERROR = 'FailedOperation.GatewayRemoteCallError'
 
