@@ -73,7 +73,7 @@ class CarClient(AbstractClient):
 
 
     def DestroySession(self, request):
-        """销毁会话
+        """销毁会话。如果该会话开启了云端推流，那么销毁会话时会结束云端推流。
 
         :param request: Request instance for DestroySession.
         :type request: :class:`tencentcloud.car.v20220110.models.DestroySessionRequest`

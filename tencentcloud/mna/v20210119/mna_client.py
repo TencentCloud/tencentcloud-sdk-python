@@ -256,6 +256,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetNetMonitor(self, request):
+        """获取单设备的实时流量统计指标
+
+        :param request: Request instance for GetNetMonitor.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetNetMonitorRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetNetMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetNetMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetNetMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetPublicKey(self, request):
         """获取公钥用于验签
 

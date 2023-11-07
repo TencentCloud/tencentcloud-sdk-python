@@ -49,6 +49,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindSharedCNAME(self, request):
+        """用于加速域名绑定或解绑共享 CNAME，该功能白名单内测中。
+
+        :param request: Request instance for BindSharedCNAME.
+        :type request: :class:`tencentcloud.teo.v20220901.models.BindSharedCNAMERequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BindSharedCNAMEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindSharedCNAME", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindSharedCNAMEResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindZoneToPlan(self, request):
         """将未绑定套餐的站点绑定到已有套餐
 
@@ -330,7 +353,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateSharedCNAME(self, request):
-        """创建共享 CNAME
+        """用于创建共享 CNAME，该功能白名单内测中。
 
         :param request: Request instance for CreateSharedCNAME.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateSharedCNAMERequest`
@@ -529,6 +552,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteSecurityIPGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSharedCNAME(self, request):
+        """用于删除共享 CNAME，该功能白名单内测中。
+
+        :param request: Request instance for DeleteSharedCNAME.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteSharedCNAMERequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteSharedCNAMEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSharedCNAME", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSharedCNAMEResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -927,6 +927,173 @@ class AutoSignConfig(AbstractModel):
         
 
 
+class BillUsageDetail(AbstractModel):
+    """用户计费使用情况详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。
+建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param _OperatorName: 经办人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorName: str
+        :param _CreateOrganizationName: 发起方组织机构名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateOrganizationName: str
+        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+该名称还将用于合同签署完成后的下载文件名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param _Status: 0 还没有发起 1等待签署 2部分签署 3拒签 4已签署 5已过期 6已撤销 7还没有预发起 8等待填写 9部分填写 10拒填 11已解除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _QuotaType: 套餐类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaType: str
+        :param _UseCount: 合同使用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UseCount: int
+        :param _CostTime: 消耗的时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostTime: int
+        :param _QuotaName: 套餐名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaName: str
+        :param _CostType:  消耗类型	1.扣费 2.撤销返还
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostType: int
+        :param _Remark: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        """
+        self._FlowId = None
+        self._OperatorName = None
+        self._CreateOrganizationName = None
+        self._FlowName = None
+        self._Status = None
+        self._QuotaType = None
+        self._UseCount = None
+        self._CostTime = None
+        self._QuotaName = None
+        self._CostType = None
+        self._Remark = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def CreateOrganizationName(self):
+        return self._CreateOrganizationName
+
+    @CreateOrganizationName.setter
+    def CreateOrganizationName(self, CreateOrganizationName):
+        self._CreateOrganizationName = CreateOrganizationName
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def UseCount(self):
+        return self._UseCount
+
+    @UseCount.setter
+    def UseCount(self, UseCount):
+        self._UseCount = UseCount
+
+    @property
+    def CostTime(self):
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def QuotaName(self):
+        return self._QuotaName
+
+    @QuotaName.setter
+    def QuotaName(self, QuotaName):
+        self._QuotaName = QuotaName
+
+    @property
+    def CostType(self):
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._OperatorName = params.get("OperatorName")
+        self._CreateOrganizationName = params.get("CreateOrganizationName")
+        self._FlowName = params.get("FlowName")
+        self._Status = params.get("Status")
+        self._QuotaType = params.get("QuotaType")
+        self._UseCount = params.get("UseCount")
+        self._CostTime = params.get("CostTime")
+        self._QuotaName = params.get("QuotaName")
+        self._CostType = params.get("CostType")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindEmployeeUserIdWithClientOpenIdRequest(AbstractModel):
     """BindEmployeeUserIdWithClientOpenId请求参数结构体
 
@@ -7653,7 +7820,7 @@ class CreateSealRequest(AbstractModel):
         :param _SealType: 电子印章类型 , 可选类型如下: 
 <ul><li>**OFFICIAL**: (默认)公章</li>
 <li>**CONTRACT**: 合同专用章;</li>
-<li>**FINANCE**: 合财务专用章;</li>
+<li>**FINANCE**: 财务专用章;</li>
 <li>**PERSONNEL**: 人事专用章</li>
 </ul>
 注: `同企业下只能有一个公章, 重复创建会报错`
@@ -9139,6 +9306,171 @@ class Department(AbstractModel):
         
 
 
+class DescribeBillUsageDetailRequest(AbstractModel):
+    """DescribeBillUsageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间，时间跨度不能大于31天
+        :type StartTime: str
+        :param _EndTime: 查询结束时间，时间跨度不能大于31天
+        :type EndTime: str
+        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        :type Offset: int
+        :param _Limit: 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+        :type Limit: int
+        :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；
+对应关系如下
+CloudEnterprise-企业版合同
+SingleSignature-单方签章
+CloudProve-签署报告
+CloudOnlineSign-腾讯会议在线签约
+ChannelWeCard-微工卡
+SignFlow-合同套餐
+SignFace-签署意愿（人脸识别）
+SignPassword-签署意愿（密码）
+SignSMS-签署意愿（短信）
+PersonalEssAuth-签署人实名（腾讯电子签认证）
+PersonalThirdAuth-签署人实名（信任第三方认证）
+OrgEssAuth-签署企业实名
+FlowNotify-短信通知
+AuthService-企业工商信息查询
+        :type QuotaType: str
+        :param _Agent: 非必填，查询某个渠道企业的消耗情况。
+关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._QuotaType = None
+        self._Agent = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._QuotaType = params.get("QuotaType")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillUsageDetailResponse(AbstractModel):
+    """DescribeBillUsageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Details: 消耗详情
+        :type Details: list of BillUsageDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = BillUsageDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
     """DescribeExtendedServiceAuthInfos请求参数结构体
 
@@ -10368,6 +10700,7 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
   <li>Key:**"UserId"**，根据用户ID查询员工，Values为指定的用户ID：**["UserId"]**</li>
   <li>Key:**"UserWeWorkOpenId"**，根据用户企微账号ID查询员工，Values为指定用户的企微账号ID：**["UserWeWorkOpenId"]**</li>
   <li>Key:**"StaffOpenId"**，根据第三方系统用户OpenId查询员工，Values为第三方系统用户OpenId列表：**["OpenId1","OpenId2",...]**</li>
+  <li>Key:**"RoleId"**，根据电子签角色ID查询员工，Values为指定的角色ID，满足其中任意一个角色即可：**["RoleId1","RoleId2",...]**</li>
 </ul>
         :type Filters: list of Filter
         :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。

@@ -1202,6 +1202,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillUsageDetail(self, request):
+        """查询企业使用情况
+
+        :param request: Request instance for DescribeBillUsageDetail.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeBillUsageDetailRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeBillUsageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillUsageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillUsageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExtendedServiceAuthInfos(self, request):
         """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
         1. 企业自动签

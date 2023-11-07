@@ -10608,7 +10608,7 @@ class DescribeRocketMQClusterResponse(AbstractModel):
         :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
         :param _ClusterConfig: 集群配置
         :type ClusterConfig: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterConfig`
-        :param _ClusterStats: 集群最近使用量
+        :param _ClusterStats: 集群最近使用量，即将废弃，请使用云监控获取相关数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStats: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterRecentStats`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20795,6 +20795,9 @@ class RocketMQClusterConfig(AbstractModel):
         :param _MaxQueuesPerTopic: 单个主题最大队列数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQueuesPerTopic: int
+        :param _TopicDistribution: topic分布
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicDistribution: list of RocketMQTopicDistribution
         """
         self._MaxTpsPerNamespace = None
         self._MaxNamespaceNum = None
@@ -20806,6 +20809,7 @@ class RocketMQClusterConfig(AbstractModel):
         self._MaxRetentionTime = None
         self._MaxLatencyTime = None
         self._MaxQueuesPerTopic = None
+        self._TopicDistribution = None
 
     @property
     def MaxTpsPerNamespace(self):
@@ -20887,6 +20891,14 @@ class RocketMQClusterConfig(AbstractModel):
     def MaxQueuesPerTopic(self, MaxQueuesPerTopic):
         self._MaxQueuesPerTopic = MaxQueuesPerTopic
 
+    @property
+    def TopicDistribution(self):
+        return self._TopicDistribution
+
+    @TopicDistribution.setter
+    def TopicDistribution(self, TopicDistribution):
+        self._TopicDistribution = TopicDistribution
+
 
     def _deserialize(self, params):
         self._MaxTpsPerNamespace = params.get("MaxTpsPerNamespace")
@@ -20899,6 +20911,12 @@ class RocketMQClusterConfig(AbstractModel):
         self._MaxRetentionTime = params.get("MaxRetentionTime")
         self._MaxLatencyTime = params.get("MaxLatencyTime")
         self._MaxQueuesPerTopic = params.get("MaxQueuesPerTopic")
+        if params.get("TopicDistribution") is not None:
+            self._TopicDistribution = []
+            for item in params.get("TopicDistribution"):
+                obj = RocketMQTopicDistribution()
+                obj._deserialize(item)
+                self._TopicDistribution.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21023,6 +21041,24 @@ class RocketMQClusterInfo(AbstractModel):
         :param _HttpInternalEndpoint: HTTP协议内部接入地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpInternalEndpoint: str
+        :param _AclEnabled: 是否开启ACL鉴权，专享实例支持关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclEnabled: bool
+        :param _PublicClbId: 公网CLB实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicClbId: str
+        :param _Vip: vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _VpcId: 所属VPC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SupportMigration: 是否支持迁移
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportMigration: bool
+        :param _InstanceStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -21041,6 +21077,12 @@ class RocketMQClusterInfo(AbstractModel):
         self._HttpVpcEndpoint = None
         self._InternalEndpoint = None
         self._HttpInternalEndpoint = None
+        self._AclEnabled = None
+        self._PublicClbId = None
+        self._Vip = None
+        self._VpcId = None
+        self._SupportMigration = None
+        self._InstanceStatus = None
 
     @property
     def ClusterId(self):
@@ -21178,6 +21220,54 @@ class RocketMQClusterInfo(AbstractModel):
     def HttpInternalEndpoint(self, HttpInternalEndpoint):
         self._HttpInternalEndpoint = HttpInternalEndpoint
 
+    @property
+    def AclEnabled(self):
+        return self._AclEnabled
+
+    @AclEnabled.setter
+    def AclEnabled(self, AclEnabled):
+        self._AclEnabled = AclEnabled
+
+    @property
+    def PublicClbId(self):
+        return self._PublicClbId
+
+    @PublicClbId.setter
+    def PublicClbId(self, PublicClbId):
+        self._PublicClbId = PublicClbId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SupportMigration(self):
+        return self._SupportMigration
+
+    @SupportMigration.setter
+    def SupportMigration(self, SupportMigration):
+        self._SupportMigration = SupportMigration
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -21202,6 +21292,12 @@ class RocketMQClusterInfo(AbstractModel):
         self._HttpVpcEndpoint = params.get("HttpVpcEndpoint")
         self._InternalEndpoint = params.get("InternalEndpoint")
         self._HttpInternalEndpoint = params.get("HttpInternalEndpoint")
+        self._AclEnabled = params.get("AclEnabled")
+        self._PublicClbId = params.get("PublicClbId")
+        self._Vip = params.get("Vip")
+        self._VpcId = params.get("VpcId")
+        self._SupportMigration = params.get("SupportMigration")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24511,8 +24607,10 @@ class Tag(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签的key的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签的Value的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None

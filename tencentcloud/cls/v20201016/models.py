@@ -1253,6 +1253,117 @@ class CallBackInfo(AbstractModel):
         
 
 
+class CheckFunctionRequest(AbstractModel):
+    """CheckFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EtlContent: 用户输入的加工语句
+        :type EtlContent: str
+        :param _DstResources: 加工任务目的topic_id以及别名
+        :type DstResources: list of DataTransformResouceInfo
+        :param _FuncType: 数据加工目标主题的类型. 1 固定主题 2动态创建
+        :type FuncType: int
+        """
+        self._EtlContent = None
+        self._DstResources = None
+        self._FuncType = None
+
+    @property
+    def EtlContent(self):
+        return self._EtlContent
+
+    @EtlContent.setter
+    def EtlContent(self, EtlContent):
+        self._EtlContent = EtlContent
+
+    @property
+    def DstResources(self):
+        return self._DstResources
+
+    @DstResources.setter
+    def DstResources(self, DstResources):
+        self._DstResources = DstResources
+
+    @property
+    def FuncType(self):
+        return self._FuncType
+
+    @FuncType.setter
+    def FuncType(self, FuncType):
+        self._FuncType = FuncType
+
+
+    def _deserialize(self, params):
+        self._EtlContent = params.get("EtlContent")
+        if params.get("DstResources") is not None:
+            self._DstResources = []
+            for item in params.get("DstResources"):
+                obj = DataTransformResouceInfo()
+                obj._deserialize(item)
+                self._DstResources.append(obj)
+        self._FuncType = params.get("FuncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckFunctionResponse(AbstractModel):
+    """CheckFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: 失败错误码
+        :type ErrorCode: int
+        :param _ErrorMsg: 失败错误信息
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class CheckRechargeKafkaServerRequest(AbstractModel):
     """CheckRechargeKafkaServer请求参数结构体
 

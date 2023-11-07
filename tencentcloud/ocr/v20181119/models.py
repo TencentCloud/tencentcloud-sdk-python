@@ -22275,6 +22275,16 @@ Y: 有清单 N：无清单
         :type TaxBureau: str
         :param _TrafficFreeFlag: 通行费标志:Y、是;N、否
         :type TrafficFreeFlag: str
+        :param _RedLetterInvoiceMark: 是否为红票
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedLetterInvoiceMark: bool
+        :param _IssuingTypeMark: 开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssuingTypeMark: int
+        :param _SellerAgentName: 代开销售方名称
+        :type SellerAgentName: str
+        :param _SellerAgentTaxID: 代开销售方税号
+        :type SellerAgentTaxID: str
         """
         self._Code = None
         self._Number = None
@@ -22301,6 +22311,10 @@ Y: 有清单 N：无清单
         self._Items = None
         self._TaxBureau = None
         self._TrafficFreeFlag = None
+        self._RedLetterInvoiceMark = None
+        self._IssuingTypeMark = None
+        self._SellerAgentName = None
+        self._SellerAgentTaxID = None
 
     @property
     def Code(self):
@@ -22502,6 +22516,38 @@ Y: 有清单 N：无清单
     def TrafficFreeFlag(self, TrafficFreeFlag):
         self._TrafficFreeFlag = TrafficFreeFlag
 
+    @property
+    def RedLetterInvoiceMark(self):
+        return self._RedLetterInvoiceMark
+
+    @RedLetterInvoiceMark.setter
+    def RedLetterInvoiceMark(self, RedLetterInvoiceMark):
+        self._RedLetterInvoiceMark = RedLetterInvoiceMark
+
+    @property
+    def IssuingTypeMark(self):
+        return self._IssuingTypeMark
+
+    @IssuingTypeMark.setter
+    def IssuingTypeMark(self, IssuingTypeMark):
+        self._IssuingTypeMark = IssuingTypeMark
+
+    @property
+    def SellerAgentName(self):
+        return self._SellerAgentName
+
+    @SellerAgentName.setter
+    def SellerAgentName(self, SellerAgentName):
+        self._SellerAgentName = SellerAgentName
+
+    @property
+    def SellerAgentTaxID(self):
+        return self._SellerAgentTaxID
+
+    @SellerAgentTaxID.setter
+    def SellerAgentTaxID(self, SellerAgentTaxID):
+        self._SellerAgentTaxID = SellerAgentTaxID
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -22534,6 +22580,10 @@ Y: 有清单 N：无清单
                 self._Items.append(obj)
         self._TaxBureau = params.get("TaxBureau")
         self._TrafficFreeFlag = params.get("TrafficFreeFlag")
+        self._RedLetterInvoiceMark = params.get("RedLetterInvoiceMark")
+        self._IssuingTypeMark = params.get("IssuingTypeMark")
+        self._SellerAgentName = params.get("SellerAgentName")
+        self._SellerAgentTaxID = params.get("SellerAgentTaxID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

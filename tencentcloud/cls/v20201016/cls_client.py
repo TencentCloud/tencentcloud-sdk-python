@@ -72,6 +72,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckFunction(self, request):
+        """本接口用于数据加工DSL函数的语法校验。
+
+        :param request: Request instance for CheckFunction.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CheckFunctionRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CheckFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckRechargeKafkaServer(self, request):
         """本接口用于校验Kafka服务集群是否可以正常访问
 

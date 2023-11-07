@@ -1933,6 +1933,118 @@ class GetMultiFlowStatisticResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetNetMonitorRequest(AbstractModel):
+    """GetNetMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备id
+        :type DeviceId: str
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Metrics: 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
+        :type Metrics: str
+        """
+        self._DeviceId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Metrics = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metrics(self):
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Metrics = params.get("Metrics")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetNetMonitorResponse(AbstractModel):
+    """GetNetMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorData: 监控数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorData: list of MonitorData
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MonitorData = None
+        self._RequestId = None
+
+    @property
+    def MonitorData(self):
+        return self._MonitorData
+
+    @MonitorData.setter
+    def MonitorData(self, MonitorData):
+        self._MonitorData = MonitorData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MonitorData") is not None:
+            self._MonitorData = []
+            for item in params.get("MonitorData"):
+                obj = MonitorData()
+                obj._deserialize(item)
+                self._MonitorData.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class GetPublicKeyRequest(AbstractModel):
     """GetPublicKey请求参数结构体
 
@@ -2084,6 +2196,70 @@ class GetStatisticDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MonitorData(AbstractModel):
+    """流量监控指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 时间点：s
+        :type Time: str
+        :param _BusinessMetrics: 业务指标（bps/ms/%）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessMetrics: float
+        :param _SlotNetInfo: 网卡状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlotNetInfo: list of SlotNetInfo
+        """
+        self._Time = None
+        self._BusinessMetrics = None
+        self._SlotNetInfo = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def BusinessMetrics(self):
+        return self._BusinessMetrics
+
+    @BusinessMetrics.setter
+    def BusinessMetrics(self, BusinessMetrics):
+        self._BusinessMetrics = BusinessMetrics
+
+    @property
+    def SlotNetInfo(self):
+        return self._SlotNetInfo
+
+    @SlotNetInfo.setter
+    def SlotNetInfo(self, SlotNetInfo):
+        self._SlotNetInfo = SlotNetInfo
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._BusinessMetrics = params.get("BusinessMetrics")
+        if params.get("SlotNetInfo") is not None:
+            self._SlotNetInfo = []
+            for item in params.get("SlotNetInfo"):
+                obj = SlotNetInfo()
+                obj._deserialize(item)
+                self._SlotNetInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NetDetails(AbstractModel):
     """网络详细信息
 
@@ -2188,6 +2364,66 @@ class NetworkData(AbstractModel):
         self._Loss = params.get("Loss")
         self._Jitter = params.get("Jitter")
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlotNetInfo(AbstractModel):
+    """网卡流量指标数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetInfoName: 网卡名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetInfoName: str
+        :param _PublicIP: 公网IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIP: str
+        :param _Current: 指标数据（bps/ms/%）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: float
+        """
+        self._NetInfoName = None
+        self._PublicIP = None
+        self._Current = None
+
+    @property
+    def NetInfoName(self):
+        return self._NetInfoName
+
+    @NetInfoName.setter
+    def NetInfoName(self, NetInfoName):
+        self._NetInfoName = NetInfoName
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def Current(self):
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+
+    def _deserialize(self, params):
+        self._NetInfoName = params.get("NetInfoName")
+        self._PublicIP = params.get("PublicIP")
+        self._Current = params.get("Current")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
