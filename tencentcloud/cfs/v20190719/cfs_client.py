@@ -995,3 +995,26 @@ class CfsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFileSystemBandwidthLimit(self, request):
+        """更新文件系统带宽
+
+        :param request: Request instance for UpdateFileSystemBandwidthLimit.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.UpdateFileSystemBandwidthLimitRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.UpdateFileSystemBandwidthLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFileSystemBandwidthLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFileSystemBandwidthLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

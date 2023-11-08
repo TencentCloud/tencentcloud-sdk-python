@@ -1203,7 +1203,7 @@ class EssClient(AbstractClient):
 
 
     def DescribeBillUsageDetail(self, request):
-        """查询企业使用情况
+        """通过此接口（DescribeBillUsageDetail）查询该企业的套餐消耗详情。
 
         :param request: Request instance for DescribeBillUsageDetail.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeBillUsageDetailRequest`
@@ -1385,20 +1385,23 @@ class EssClient(AbstractClient):
 
     def DescribeFlowTemplates(self, request):
         """此接口（DescribeFlowTemplates）用于查询本企业模板列表信息。
-        >  一个模板通常会包含以下结构信息
-        >- 模板基本信息
-        >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
-        >- 填写控件 Components
-        >- 签署控件 SignComponents
-        >- 生成模板的文件基础信息 FileInfos
+
+
+        **适用场景**
+        该接口常用来配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">模板发起合同-创建电子文档</a>接口，作为创建电子文档的前置接口使用。
+        通过此接口查询到模板信息后，再通过调用创建电子文档接口，指定模板ID，指定模板中需要的填写控件内容等，完成电子文档的创建。
+
+        **一个模板通常会包含以下结构信息**
+
+        - 模板模版ID, 模板名字等基本信息
+        - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+        - 发起方和签署方的填写控件 Components
+        - 签署方的签署控件 SignComponents
 
         ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
 
-        当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
-
-        适用场景：
-        该接口常用来配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">模板发起合同-创建电子文档</a>接口，作为创建电子文档的前置接口使用。
-        通过此接口查询到模板信息后，再通过调用创建电子文档接口，指定模板ID，指定模板中需要的填写控件内容等，完成电子文档的创建。
+        模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/45c638bd93f9c8024763add9ab47c27f.png)
 
         :param request: Request instance for DescribeFlowTemplates.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeFlowTemplatesRequest`

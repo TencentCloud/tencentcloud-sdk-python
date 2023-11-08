@@ -4149,6 +4149,94 @@ class DescribeQuestionListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRoomForbiddenUserRequest(AbstractModel):
+    """DescribeRoomForbiddenUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param _RoomId: 房间ID。
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoomForbiddenUserResponse(AbstractModel):
+    """DescribeRoomForbiddenUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MutedAccountList: 禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MutedAccountList: list of MutedAccountList
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MutedAccountList = None
+        self._RequestId = None
+
+    @property
+    def MutedAccountList(self):
+        return self._MutedAccountList
+
+    @MutedAccountList.setter
+    def MutedAccountList(self, MutedAccountList):
+        self._MutedAccountList = MutedAccountList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MutedAccountList") is not None:
+            self._MutedAccountList = []
+            for item in params.get("MutedAccountList"):
+                obj = MutedAccountList()
+                obj._deserialize(item)
+                self._MutedAccountList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRoomRequest(AbstractModel):
     """DescribeRoom请求参数结构体
 
@@ -5733,6 +5821,100 @@ class FaceMsgContent(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ForbidSendMsgRequest(AbstractModel):
+    """ForbidSendMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 低代码互动课堂的SdkAppId。
+        :type SdkAppId: int
+        :param _RoomId: 房间ID。
+        :type RoomId: int
+        :param _MembersAccount: 需要禁言的用户账号，最多支持500个账号
+        :type MembersAccount: list of str
+        :param _MuteTime: 需禁言时间，单位为秒，为0时表示取消禁言，4294967295为永久禁言。
+        :type MuteTime: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._MembersAccount = None
+        self._MuteTime = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def MembersAccount(self):
+        return self._MembersAccount
+
+    @MembersAccount.setter
+    def MembersAccount(self, MembersAccount):
+        self._MembersAccount = MembersAccount
+
+    @property
+    def MuteTime(self):
+        return self._MuteTime
+
+    @MuteTime.setter
+    def MuteTime(self, MuteTime):
+        self._MuteTime = MuteTime
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._MembersAccount = params.get("MembersAccount")
+        self._MuteTime = params.get("MuteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForbidSendMsgResponse(AbstractModel):
+    """ForbidSendMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class GetRoomEventRequest(AbstractModel):
@@ -7936,6 +8118,53 @@ TIMImageElem（图像消息）
         
 
 
+class MutedAccountList(AbstractModel):
+    """禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberAccount: 用户 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberAccount: str
+        :param _MutedUntil: 禁言到的时间（使用 UTC 时间，即世界协调时间）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MutedUntil: int
+        """
+        self._MemberAccount = None
+        self._MutedUntil = None
+
+    @property
+    def MemberAccount(self):
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
+    @property
+    def MutedUntil(self):
+        return self._MutedUntil
+
+    @MutedUntil.setter
+    def MutedUntil(self, MutedUntil):
+        self._MutedUntil = MutedUntil
+
+
+    def _deserialize(self, params):
+        self._MemberAccount = params.get("MemberAccount")
+        self._MutedUntil = params.get("MutedUntil")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QuestionInfo(AbstractModel):
     """房间问答问题详情
 
@@ -8781,12 +9010,15 @@ class SendRoomNormalMessageRequest(AbstractModel):
         :type MsgBody: list of MsgBody
         :param _CloudCustomData: 消息自定义数据（云端保存，会发送到对端，程序卸载重装后还能拉取到）。
         :type CloudCustomData: str
+        :param _NickName: 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
+        :type NickName: str
         """
         self._SdkAppId = None
         self._RoomId = None
         self._FromAccount = None
         self._MsgBody = None
         self._CloudCustomData = None
+        self._NickName = None
 
     @property
     def SdkAppId(self):
@@ -8828,6 +9060,14 @@ class SendRoomNormalMessageRequest(AbstractModel):
     def CloudCustomData(self, CloudCustomData):
         self._CloudCustomData = CloudCustomData
 
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -8840,6 +9080,7 @@ class SendRoomNormalMessageRequest(AbstractModel):
                 obj._deserialize(item)
                 self._MsgBody.append(obj)
         self._CloudCustomData = params.get("CloudCustomData")
+        self._NickName = params.get("NickName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

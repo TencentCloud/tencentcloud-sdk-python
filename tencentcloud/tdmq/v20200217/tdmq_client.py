@@ -233,6 +233,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProCluster(self, request):
+        """创建专业集群——预付费，仅通过api调用
+
+        :param request: Request instance for CreateProCluster.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateProClusterRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateProClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRabbitMQUser(self, request):
         """创建RabbitMQ的用户
 

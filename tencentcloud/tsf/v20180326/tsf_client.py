@@ -2582,7 +2582,7 @@ class TsfClient(AbstractClient):
 
 
     def DescribeImageRepository(self, request):
-        """镜像仓库列表
+        """查询镜像仓库列表
 
         :param request: Request instance for DescribeImageRepository.
         :type request: :class:`tencentcloud.tsf.v20180326.models.DescribeImageRepositoryRequest`

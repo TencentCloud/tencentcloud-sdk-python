@@ -5271,6 +5271,15 @@ class ContainerGroupDeploy(AbstractModel):
         :param _GatewayConfig: Envoy网关服务配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayConfig: :class:`tencentcloud.tsf.v20180326.models.GatewayConfig`
+        :param _ContainerName: 容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _AdditionalContainerList: 附加容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdditionalContainerList: list of GroupContainerInfo
+        :param _InternalContainerList: 内部容器列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalContainerList: list of GroupContainerInfo
         """
         self._GroupId = None
         self._GroupName = None
@@ -5310,6 +5319,9 @@ class ContainerGroupDeploy(AbstractModel):
         self._RepoType = None
         self._WarmupSetting = None
         self._GatewayConfig = None
+        self._ContainerName = None
+        self._AdditionalContainerList = None
+        self._InternalContainerList = None
 
     @property
     def GroupId(self):
@@ -5615,6 +5627,30 @@ class ContainerGroupDeploy(AbstractModel):
     def GatewayConfig(self, GatewayConfig):
         self._GatewayConfig = GatewayConfig
 
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def AdditionalContainerList(self):
+        return self._AdditionalContainerList
+
+    @AdditionalContainerList.setter
+    def AdditionalContainerList(self, AdditionalContainerList):
+        self._AdditionalContainerList = AdditionalContainerList
+
+    @property
+    def InternalContainerList(self):
+        return self._InternalContainerList
+
+    @InternalContainerList.setter
+    def InternalContainerList(self, InternalContainerList):
+        self._InternalContainerList = InternalContainerList
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -5683,6 +5719,19 @@ class ContainerGroupDeploy(AbstractModel):
         if params.get("GatewayConfig") is not None:
             self._GatewayConfig = GatewayConfig()
             self._GatewayConfig._deserialize(params.get("GatewayConfig"))
+        self._ContainerName = params.get("ContainerName")
+        if params.get("AdditionalContainerList") is not None:
+            self._AdditionalContainerList = []
+            for item in params.get("AdditionalContainerList"):
+                obj = GroupContainerInfo()
+                obj._deserialize(item)
+                self._AdditionalContainerList.append(obj)
+        if params.get("InternalContainerList") is not None:
+            self._InternalContainerList = []
+            for item in params.get("InternalContainerList"):
+                obj = GroupContainerInfo()
+                obj._deserialize(item)
+                self._InternalContainerList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19199,6 +19248,8 @@ class DescribeImageRepositoryRequest(AbstractModel):
         :type ApplicationId: str
         :param _TcrRepoInfo: TcrRepoInfo值
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param _RepoName: 镜像仓库
+        :type RepoName: str
         """
         self._SearchWord = None
         self._Offset = None
@@ -19206,6 +19257,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
         self._RepoType = None
         self._ApplicationId = None
         self._TcrRepoInfo = None
+        self._RepoName = None
 
     @property
     def SearchWord(self):
@@ -19255,6 +19307,14 @@ class DescribeImageRepositoryRequest(AbstractModel):
     def TcrRepoInfo(self, TcrRepoInfo):
         self._TcrRepoInfo = TcrRepoInfo
 
+    @property
+    def RepoName(self):
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
@@ -19265,6 +19325,7 @@ class DescribeImageRepositoryRequest(AbstractModel):
         if params.get("TcrRepoInfo") is not None:
             self._TcrRepoInfo = TcrRepoInfo()
             self._TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self._RepoName = params.get("RepoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19335,6 +19396,8 @@ class DescribeImageTagsRequest(AbstractModel):
         :type RepoType: str
         :param _TcrRepoInfo: TcrRepoInfo值
         :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param _RepoName: 仓库名
+        :type RepoName: str
         """
         self._ApplicationId = None
         self._Offset = None
@@ -19343,6 +19406,7 @@ class DescribeImageTagsRequest(AbstractModel):
         self._SearchWord = None
         self._RepoType = None
         self._TcrRepoInfo = None
+        self._RepoName = None
 
     @property
     def ApplicationId(self):
@@ -19400,6 +19464,14 @@ class DescribeImageTagsRequest(AbstractModel):
     def TcrRepoInfo(self, TcrRepoInfo):
         self._TcrRepoInfo = TcrRepoInfo
 
+    @property
+    def RepoName(self):
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -19411,6 +19483,7 @@ class DescribeImageTagsRequest(AbstractModel):
         if params.get("TcrRepoInfo") is not None:
             self._TcrRepoInfo = TcrRepoInfo()
             self._TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self._RepoName = params.get("RepoName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27154,6 +27227,253 @@ class GroupApiUseStatistics(AbstractModel):
         if params.get("Quantile") is not None:
             self._Quantile = QuantileEntity()
             self._Quantile._deserialize(params.get("Quantile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupContainerInfo(AbstractModel):
+    """部署组容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagName: 镜像版本名称
+        :type TagName: str
+        :param _ContainerName: 容器名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _RepoName: 镜像名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoName: str
+        :param _RepoType: 仓库类型,tcr，address，personal，默认personal
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepoType: str
+        :param _TcrRepoInfo: tcr仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcrRepoInfo: :class:`tencentcloud.tsf.v20180326.models.TcrRepoInfo`
+        :param _Server: 镜像server
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Server: str
+        :param _SecretName: 凭证名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param _JvmOpts: jvm 参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JvmOpts: str
+        :param _CpuLimit: 容器最大的 CPU 核数，对应 K8S 的 limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuLimit: str
+        :param _CpuRequest: 容器分配的 CPU 核数，对应 K8S 的 request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuRequest: str
+        :param _MemRequest: 容器分配的内存 MiB 数，对应 K8S 的 request
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemRequest: str
+        :param _MemLimit: 容器最大的内存 MiB 数，对应 K8S 的 limit
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemLimit: str
+        :param _HealthCheckSettings: 健康检查配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckSettings: :class:`tencentcloud.tsf.v20180326.models.HealthCheckSettings`
+        :param _Envs: 环境变量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Envs: list of Env
+        :param _UserEnvs: 环境变量,作为入参时不用填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserEnvs: list of Env
+        :param _VolumeMountInfoList: 数据卷挂载点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeMountInfoList: list of VolumeMountInfo
+        """
+        self._TagName = None
+        self._ContainerName = None
+        self._RepoName = None
+        self._RepoType = None
+        self._TcrRepoInfo = None
+        self._Server = None
+        self._SecretName = None
+        self._JvmOpts = None
+        self._CpuLimit = None
+        self._CpuRequest = None
+        self._MemRequest = None
+        self._MemLimit = None
+        self._HealthCheckSettings = None
+        self._Envs = None
+        self._UserEnvs = None
+        self._VolumeMountInfoList = None
+
+    @property
+    def TagName(self):
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def RepoName(self):
+        return self._RepoName
+
+    @RepoName.setter
+    def RepoName(self, RepoName):
+        self._RepoName = RepoName
+
+    @property
+    def RepoType(self):
+        return self._RepoType
+
+    @RepoType.setter
+    def RepoType(self, RepoType):
+        self._RepoType = RepoType
+
+    @property
+    def TcrRepoInfo(self):
+        return self._TcrRepoInfo
+
+    @TcrRepoInfo.setter
+    def TcrRepoInfo(self, TcrRepoInfo):
+        self._TcrRepoInfo = TcrRepoInfo
+
+    @property
+    def Server(self):
+        return self._Server
+
+    @Server.setter
+    def Server(self, Server):
+        self._Server = Server
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def JvmOpts(self):
+        return self._JvmOpts
+
+    @JvmOpts.setter
+    def JvmOpts(self, JvmOpts):
+        self._JvmOpts = JvmOpts
+
+    @property
+    def CpuLimit(self):
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def CpuRequest(self):
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def MemRequest(self):
+        return self._MemRequest
+
+    @MemRequest.setter
+    def MemRequest(self, MemRequest):
+        self._MemRequest = MemRequest
+
+    @property
+    def MemLimit(self):
+        return self._MemLimit
+
+    @MemLimit.setter
+    def MemLimit(self, MemLimit):
+        self._MemLimit = MemLimit
+
+    @property
+    def HealthCheckSettings(self):
+        return self._HealthCheckSettings
+
+    @HealthCheckSettings.setter
+    def HealthCheckSettings(self, HealthCheckSettings):
+        self._HealthCheckSettings = HealthCheckSettings
+
+    @property
+    def Envs(self):
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def UserEnvs(self):
+        return self._UserEnvs
+
+    @UserEnvs.setter
+    def UserEnvs(self, UserEnvs):
+        self._UserEnvs = UserEnvs
+
+    @property
+    def VolumeMountInfoList(self):
+        return self._VolumeMountInfoList
+
+    @VolumeMountInfoList.setter
+    def VolumeMountInfoList(self, VolumeMountInfoList):
+        self._VolumeMountInfoList = VolumeMountInfoList
+
+
+    def _deserialize(self, params):
+        self._TagName = params.get("TagName")
+        self._ContainerName = params.get("ContainerName")
+        self._RepoName = params.get("RepoName")
+        self._RepoType = params.get("RepoType")
+        if params.get("TcrRepoInfo") is not None:
+            self._TcrRepoInfo = TcrRepoInfo()
+            self._TcrRepoInfo._deserialize(params.get("TcrRepoInfo"))
+        self._Server = params.get("Server")
+        self._SecretName = params.get("SecretName")
+        self._JvmOpts = params.get("JvmOpts")
+        self._CpuLimit = params.get("CpuLimit")
+        self._CpuRequest = params.get("CpuRequest")
+        self._MemRequest = params.get("MemRequest")
+        self._MemLimit = params.get("MemLimit")
+        if params.get("HealthCheckSettings") is not None:
+            self._HealthCheckSettings = HealthCheckSettings()
+            self._HealthCheckSettings._deserialize(params.get("HealthCheckSettings"))
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("UserEnvs") is not None:
+            self._UserEnvs = []
+            for item in params.get("UserEnvs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._UserEnvs.append(obj)
+        if params.get("VolumeMountInfoList") is not None:
+            self._VolumeMountInfoList = []
+            for item in params.get("VolumeMountInfoList"):
+                obj = VolumeMountInfo()
+                obj._deserialize(item)
+                self._VolumeMountInfoList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

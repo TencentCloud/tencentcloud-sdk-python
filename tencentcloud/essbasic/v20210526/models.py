@@ -21,8 +21,6 @@ from tencentcloud.common.abstract_model import AbstractModel
 class Agent(AbstractModel):
     """应用相关信息, 整体应用的层级图如下
 
-    ![image](https://qcloudimg.tencent-cloud.cn/raw/bc5cb933c604b28be9ad84dc780a5f81.png)
-
     注:
       1. `不同的业务系统可以采用不同的应用，不同应用下的数据是隔离的,  应用A中的某个企业已经实名, 在应用B中此企业还需要重新认证`
 
@@ -3296,12 +3294,13 @@ class ChannelCreateFlowRemindsRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowIds: 需执行催办的签署流程ID数组，最多包含100个。
+        :param _FlowIds: 需执行催办的合同流程ID数组，最多支持100个。
         :type FlowIds: list of str
         """
         self._Agent = None
@@ -11406,49 +11405,49 @@ class FlowApproverDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReceiptId: 模板配置时候的签署人id,与控件绑定
+        :param _ReceiptId: 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
         :type ReceiptId: str
-        :param _ProxyOrganizationOpenId: 平台企业的第三方id
+        :param _ProxyOrganizationOpenId: 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationOpenId: str
-        :param _ProxyOperatorOpenId: 平台企业操作人的第三方id
+        :param _ProxyOperatorOpenId: 第三方平台子客企业员工的唯一标识
         :type ProxyOperatorOpenId: str
-        :param _ProxyOrganizationName: 平台企业名称
+        :param _ProxyOrganizationName: 第三方平台子客企业名称，与企业营业执照中注册的名称一致。
         :type ProxyOrganizationName: str
         :param _Mobile: 签署人手机号
         :type Mobile: str
-        :param _SignOrder: 签署人签署顺序
+        :param _SignOrder: 签署顺序，如果是有序签署，签署顺序从小到大
         :type SignOrder: int
-        :param _ApproveName: 签署人姓名
+        :param _ApproveName: 签署方经办人的姓名。
+经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveName: str
         :param _ApproveStatus: 当前签署人的状态, 状态如下
-<br/>PENDING 待签署	
-<br/>FILLPENDING 待填写
-<br/>FILLACCEPT 填写完成	
-<br/>FILLREJECT 拒绝填写	
-<br/>WAITPICKUP 待领取	
-<br/>ACCEPT 已签署	
-<br/>REJECT 拒签 
-<br/>DEADLINE 过期没人处理 
-<br/>CANCEL 流程已撤回	
-<br/>FORWARD 已经转他人处理
-<br/>STOP 流程已终止	
-<br/>RELIEVED 解除协议（已解除）
-
+<ul><li> **PENDING** :待签署</li>
+<li> **FILLPENDING** :待填写</li>
+<li> **FILLACCEPT** :填写完成</li>
+<li> **FILLREJECT** :拒绝填写</li>
+<li> **WAITPICKUP** :待领取</li>
+<li> **ACCEPT** :已签署</li>
+<li> **REJECT** :拒签</li>
+<li> **DEADLINE** :过期没人处理</li>
+<li> **CANCEL** :流程已撤回</li>
+<li> **FORWARD** :已经转他人处理</li>
+<li> **STOP** :流程已终止</li>
+<li> **RELIEVED** :解除协议（已解除）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveStatus: str
-        :param _ApproveMessage: 签署人自定义信息
+        :param _ApproveMessage: 签署人拒签等情况的时候填写的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveMessage: str
         :param _ApproveTime: 签署人签署时间戳，单位秒
         :type ApproveTime: int
         :param _ApproveType: 参与者类型 
-<br/>ORGANIZATION：企业签署人
-<br/>PERSON：个人签署人
+<ul><li> **ORGANIZATION** :企业签署人</li>
+<li> **PERSON** :个人签署人</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveType: str
-        :param _ApproverRoleName: 自定义签署人角色
+        :param _ApproverRoleName: 自定义签署人的角色名, 如: 收款人、开具人、见证人等
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverRoleName: str
         """

@@ -3416,6 +3416,221 @@ class CreateEnvironmentRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProClusterRequest(AbstractModel):
+    """CreateProCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneIds: 多可用区部署选择三个可用区，示例"200002","200003","200004"
+
+单可用区部署选择一个可用区，示例"200002"
+        :type ZoneIds: str
+        :param _ProductName: 集群规格代号
+参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :type ProductName: str
+        :param _StorageSize: 存储规格
+参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :type StorageSize: int
+        :param _AutoRenewFlag: 1: true，开启自动按月续费
+
+0: false，关闭自动按月续费
+        :type AutoRenewFlag: int
+        :param _TimeSpan: 购买时长，取值范围：1～50
+        :type TimeSpan: int
+        :param _Tags: 集群的标签列表(已废弃)
+        :type Tags: list of Tag
+        :param _ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+        :type ClusterName: str
+        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :type AutoVoucher: int
+        :param _Vpcs: vpc网络标签
+        :type Vpcs: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
+        """
+        self._ZoneIds = None
+        self._ProductName = None
+        self._StorageSize = None
+        self._AutoRenewFlag = None
+        self._TimeSpan = None
+        self._Tags = None
+        self._ClusterName = None
+        self._AutoVoucher = None
+        self._Vpcs = None
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def StorageSize(self):
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def Vpcs(self):
+        return self._Vpcs
+
+    @Vpcs.setter
+    def Vpcs(self, Vpcs):
+        self._Vpcs = Vpcs
+
+
+    def _deserialize(self, params):
+        self._ZoneIds = params.get("ZoneIds")
+        self._ProductName = params.get("ProductName")
+        self._StorageSize = params.get("StorageSize")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._TimeSpan = params.get("TimeSpan")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClusterName = params.get("ClusterName")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("Vpcs") is not None:
+            self._Vpcs = VpcInfo()
+            self._Vpcs._deserialize(params.get("Vpcs"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProClusterResponse(AbstractModel):
+    """CreateProCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 子订单号
+        :type DealName: str
+        :param _BigDealId: 订单号
+        :type BigDealId: str
+        :param _ClusterId: 集群Id
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._BigDealId = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._BigDealId = params.get("BigDealId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRabbitMQUserRequest(AbstractModel):
     """CreateRabbitMQUser请求参数结构体
 

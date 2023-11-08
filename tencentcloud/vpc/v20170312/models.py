@@ -34781,10 +34781,13 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
         :type VpnGatewayName: str
         :param _InstanceChargeType: VPN网关计费模式，目前只支持预付费（即包年包月）到后付费（即按量计费）的转换。即参数只支持：POSTPAID_BY_HOUR。
         :type InstanceChargeType: str
+        :param _BgpAsn: BGP ASN。ASN取值范围为1- 4294967295，默认值64551，其中139341、45090和58835不可用。
+        :type BgpAsn: int
         """
         self._VpnGatewayId = None
         self._VpnGatewayName = None
         self._InstanceChargeType = None
+        self._BgpAsn = None
 
     @property
     def VpnGatewayId(self):
@@ -34810,11 +34813,20 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
 
+    @property
+    def BgpAsn(self):
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
         self._VpnGatewayName = params.get("VpnGatewayName")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

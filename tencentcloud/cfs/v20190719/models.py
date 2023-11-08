@@ -6837,6 +6837,76 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateFileSystemBandwidthLimitRequest(AbstractModel):
+    """UpdateFileSystemBandwidthLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统 ID
+        :type FileSystemId: str
+        :param _BandwidthLimit: 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
+        :type BandwidthLimit: int
+        """
+        self._FileSystemId = None
+        self._BandwidthLimit = None
+
+    @property
+    def FileSystemId(self):
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def BandwidthLimit(self):
+        return self._BandwidthLimit
+
+    @BandwidthLimit.setter
+    def BandwidthLimit(self, BandwidthLimit):
+        self._BandwidthLimit = BandwidthLimit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._BandwidthLimit = params.get("BandwidthLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFileSystemBandwidthLimitResponse(AbstractModel):
+    """UpdateFileSystemBandwidthLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UserQuota(AbstractModel):
     """文件系统配额信息
 

@@ -37876,7 +37876,7 @@ class VirtualNodePool(AbstractModel):
 
 
 class VirtualNodeSpec(AbstractModel):
-    """虚拟节点
+    """超级节点
 
     """
 

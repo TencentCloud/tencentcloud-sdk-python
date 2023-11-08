@@ -810,6 +810,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRoomForbiddenUser(self, request):
+        """根据房间ID获取群组中被禁言的用户列表。
+
+        :param request: Request instance for DescribeRoomForbiddenUser.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomForbiddenUserRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeRoomForbiddenUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRoomForbiddenUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRoomForbiddenUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRoomStatistics(self, request):
         """获取房间统计信息，仅可在房间结束后调用。
 
@@ -939,6 +962,31 @@ class LcicClient(AbstractClient):
             body = self.call("EndRoom", params, headers=headers)
             response = json.loads(body)
             model = models.EndRoomResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ForbidSendMsg(self, request):
+        """禁止指定房间中某些用户在一段时间内发言。
+        取消对某些用户的禁言。
+        被禁言用户退出房间之后再进入同一房间，禁言仍然有效。
+
+        :param request: Request instance for ForbidSendMsg.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ForbidSendMsgRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ForbidSendMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForbidSendMsg", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForbidSendMsgResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

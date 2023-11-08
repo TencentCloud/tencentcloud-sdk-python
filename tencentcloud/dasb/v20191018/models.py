@@ -1143,6 +1143,9 @@ class Command(AbstractModel):
         :param _FromIp: source ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromIp: str
+        :param _SessionTime: 该命令所属会话的会话开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionTime: str
         :param _SessTime: 该命令所属会话的会话开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessTime: str
@@ -1171,6 +1174,7 @@ class Command(AbstractModel):
         self._Account = None
         self._InstanceId = None
         self._FromIp = None
+        self._SessionTime = None
         self._SessTime = None
         self._ConfirmTime = None
         self._UserDepartmentId = None
@@ -1251,11 +1255,23 @@ class Command(AbstractModel):
         self._FromIp = FromIp
 
     @property
+    def SessionTime(self):
+        return self._SessionTime
+
+    @SessionTime.setter
+    def SessionTime(self, SessionTime):
+        self._SessionTime = SessionTime
+
+    @property
     def SessTime(self):
+        warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
+
         return self._SessTime
 
     @SessTime.setter
     def SessTime(self, SessTime):
+        warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
+
         self._SessTime = SessTime
 
     @property
@@ -1309,6 +1325,7 @@ class Command(AbstractModel):
         self._Account = params.get("Account")
         self._InstanceId = params.get("InstanceId")
         self._FromIp = params.get("FromIp")
+        self._SessionTime = params.get("SessionTime")
         self._SessTime = params.get("SessTime")
         self._ConfirmTime = params.get("ConfirmTime")
         self._UserDepartmentId = params.get("UserDepartmentId")
@@ -2175,10 +2192,22 @@ class CreateResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ResourceId: 实例Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ResourceId = None
         self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
     @property
     def RequestId(self):
@@ -2190,6 +2219,7 @@ class CreateResourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5936,10 +5966,22 @@ class ImportExternalDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeviceIdSet: 资产ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceIdSet: list of int non-negative
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DeviceIdSet = None
         self._RequestId = None
+
+    @property
+    def DeviceIdSet(self):
+        return self._DeviceIdSet
+
+    @DeviceIdSet.setter
+    def DeviceIdSet(self, DeviceIdSet):
+        self._DeviceIdSet = DeviceIdSet
 
     @property
     def RequestId(self):
@@ -5951,6 +5993,7 @@ class ImportExternalDeviceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DeviceIdSet = params.get("DeviceIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -8211,7 +8254,10 @@ class SearchCommandResult(AbstractModel):
         :param _FromIp: source ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromIp: str
-        :param _SessTime: 该命令所属会话的会话开始时间
+        :param _SessionTime: 该命令所属会话的会话开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionTime: str
+        :param _SessTime: 该命令所属会话的会话开始时间（废弃，使用SessionTime）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessTime: str
         :param _ConfirmTime: 复核时间
@@ -8243,6 +8289,7 @@ class SearchCommandResult(AbstractModel):
         self._TimeOffset = None
         self._Account = None
         self._FromIp = None
+        self._SessionTime = None
         self._SessTime = None
         self._ConfirmTime = None
         self._UserDepartmentId = None
@@ -8355,11 +8402,23 @@ class SearchCommandResult(AbstractModel):
         self._FromIp = FromIp
 
     @property
+    def SessionTime(self):
+        return self._SessionTime
+
+    @SessionTime.setter
+    def SessionTime(self, SessionTime):
+        self._SessionTime = SessionTime
+
+    @property
     def SessTime(self):
+        warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
+
         return self._SessTime
 
     @SessTime.setter
     def SessTime(self, SessTime):
+        warnings.warn("parameter `SessTime` is deprecated", DeprecationWarning) 
+
         self._SessTime = SessTime
 
     @property
@@ -8417,6 +8476,7 @@ class SearchCommandResult(AbstractModel):
         self._TimeOffset = params.get("TimeOffset")
         self._Account = params.get("Account")
         self._FromIp = params.get("FromIp")
+        self._SessionTime = params.get("SessionTime")
         self._SessTime = params.get("SessTime")
         self._ConfirmTime = params.get("ConfirmTime")
         self._UserDepartmentId = params.get("UserDepartmentId")
