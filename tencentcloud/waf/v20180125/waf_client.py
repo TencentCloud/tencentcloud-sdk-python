@@ -816,9 +816,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeAutoDenyIP(self, request):
-        """接口已废弃
-
-        描述WAF自动封禁IP详情,对齐自动封堵状态
+        """描述WAF自动封禁IP详情,对齐自动封堵状态
 
         :param request: Request instance for DescribeAutoDenyIP.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAutoDenyIPRequest`

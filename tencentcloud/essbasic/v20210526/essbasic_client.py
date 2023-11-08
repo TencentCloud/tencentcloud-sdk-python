@@ -1595,6 +1595,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillUsageDetail(self, request):
+        """通过此接口（DescribeBillUsageDetail）查询该第三方平台子客企业的套餐消耗详情。
+
+        :param request: Request instance for DescribeBillUsageDetail.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeBillUsageDetailRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeBillUsageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillUsageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillUsageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeChannelFlowEvidenceReport(self, request):
         """获取出证报告任务执行结果，返回报告 URL。
 

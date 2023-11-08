@@ -6940,10 +6940,13 @@ class CreatePrepareFlowResponse(AbstractModel):
         r"""
         :param _Url: 发起流程的web页面链接，有效期5分钟
         :type Url: str
+        :param _FlowId: 创建的合同id（还未实际发起），每次调用会生成新的id，用户可以记录此字段对应后续页面发起的合同，若在页面上未成功发起，则此字段无效。
+        :type FlowId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
+        self._FlowId = None
         self._RequestId = None
 
     @property
@@ -6953,6 +6956,14 @@ class CreatePrepareFlowResponse(AbstractModel):
     @Url.setter
     def Url(self, Url):
         self._Url = Url
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def RequestId(self):
@@ -6965,6 +6976,7 @@ class CreatePrepareFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

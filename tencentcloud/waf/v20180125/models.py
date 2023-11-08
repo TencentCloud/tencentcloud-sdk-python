@@ -10318,6 +10318,33 @@ class DescribeModuleStatusRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Domain: 要查询状态的域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeModuleStatusResponse(AbstractModel):
     """DescribeModuleStatus返回参数结构体
@@ -10326,10 +10353,76 @@ class DescribeModuleStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _WebSecurity: WEB安全规则是否开启
+        :type WebSecurity: int
+        :param _AccessControl: 访问控制规则是否开启
+        :type AccessControl: int
+        :param _CcProtection: CC防护是否开启
+        :type CcProtection: int
+        :param _AntiTamper: 网页防篡改是否开启
+        :type AntiTamper: int
+        :param _AntiLeakage: 信息防泄漏是否开启
+        :type AntiLeakage: int
+        :param _ApiProtection: API安全是否开启
+        :type ApiProtection: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._WebSecurity = None
+        self._AccessControl = None
+        self._CcProtection = None
+        self._AntiTamper = None
+        self._AntiLeakage = None
+        self._ApiProtection = None
         self._RequestId = None
+
+    @property
+    def WebSecurity(self):
+        return self._WebSecurity
+
+    @WebSecurity.setter
+    def WebSecurity(self, WebSecurity):
+        self._WebSecurity = WebSecurity
+
+    @property
+    def AccessControl(self):
+        return self._AccessControl
+
+    @AccessControl.setter
+    def AccessControl(self, AccessControl):
+        self._AccessControl = AccessControl
+
+    @property
+    def CcProtection(self):
+        return self._CcProtection
+
+    @CcProtection.setter
+    def CcProtection(self, CcProtection):
+        self._CcProtection = CcProtection
+
+    @property
+    def AntiTamper(self):
+        return self._AntiTamper
+
+    @AntiTamper.setter
+    def AntiTamper(self, AntiTamper):
+        self._AntiTamper = AntiTamper
+
+    @property
+    def AntiLeakage(self):
+        return self._AntiLeakage
+
+    @AntiLeakage.setter
+    def AntiLeakage(self, AntiLeakage):
+        self._AntiLeakage = AntiLeakage
+
+    @property
+    def ApiProtection(self):
+        return self._ApiProtection
+
+    @ApiProtection.setter
+    def ApiProtection(self, ApiProtection):
+        self._ApiProtection = ApiProtection
 
     @property
     def RequestId(self):
@@ -10341,6 +10434,12 @@ class DescribeModuleStatusResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._WebSecurity = params.get("WebSecurity")
+        self._AccessControl = params.get("AccessControl")
+        self._CcProtection = params.get("CcProtection")
+        self._AntiTamper = params.get("AntiTamper")
+        self._AntiLeakage = params.get("AntiLeakage")
+        self._ApiProtection = params.get("ApiProtection")
         self._RequestId = params.get("RequestId")
 
 
@@ -19853,6 +19952,105 @@ class ModifyModuleStatusRequest(AbstractModel):
     """ModifyModuleStatus请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 需要设置的domain
+        :type Domain: str
+        :param _WebSecurity: WEB 安全模块开关，0或1
+        :type WebSecurity: int
+        :param _AccessControl: 访问控制模块开关，0或者1
+        :type AccessControl: int
+        :param _CcProtection: CC模块开关，0或者1
+        :type CcProtection: int
+        :param _ApiProtection: API安全模块开关，0或者1
+        :type ApiProtection: int
+        :param _AntiTamper: 防篡改模块开关，0或者1
+        :type AntiTamper: int
+        :param _AntiLeakage: 防泄漏模块开关，0或者1
+        :type AntiLeakage: int
+        """
+        self._Domain = None
+        self._WebSecurity = None
+        self._AccessControl = None
+        self._CcProtection = None
+        self._ApiProtection = None
+        self._AntiTamper = None
+        self._AntiLeakage = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def WebSecurity(self):
+        return self._WebSecurity
+
+    @WebSecurity.setter
+    def WebSecurity(self, WebSecurity):
+        self._WebSecurity = WebSecurity
+
+    @property
+    def AccessControl(self):
+        return self._AccessControl
+
+    @AccessControl.setter
+    def AccessControl(self, AccessControl):
+        self._AccessControl = AccessControl
+
+    @property
+    def CcProtection(self):
+        return self._CcProtection
+
+    @CcProtection.setter
+    def CcProtection(self, CcProtection):
+        self._CcProtection = CcProtection
+
+    @property
+    def ApiProtection(self):
+        return self._ApiProtection
+
+    @ApiProtection.setter
+    def ApiProtection(self, ApiProtection):
+        self._ApiProtection = ApiProtection
+
+    @property
+    def AntiTamper(self):
+        return self._AntiTamper
+
+    @AntiTamper.setter
+    def AntiTamper(self, AntiTamper):
+        self._AntiTamper = AntiTamper
+
+    @property
+    def AntiLeakage(self):
+        return self._AntiLeakage
+
+    @AntiLeakage.setter
+    def AntiLeakage(self, AntiLeakage):
+        self._AntiLeakage = AntiLeakage
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._WebSecurity = params.get("WebSecurity")
+        self._AccessControl = params.get("AccessControl")
+        self._CcProtection = params.get("CcProtection")
+        self._ApiProtection = params.get("ApiProtection")
+        self._AntiTamper = params.get("AntiTamper")
+        self._AntiLeakage = params.get("AntiLeakage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyModuleStatusResponse(AbstractModel):

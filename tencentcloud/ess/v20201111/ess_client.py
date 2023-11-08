@@ -1469,8 +1469,6 @@ class EssClient(AbstractClient):
     def DescribeIntegrationRoles(self, request):
         """此接口（DescribeIntegrationRoles）用于分页查询企业角色列表，列表按照角色创建时间升序排列。
 
-        注：`法人角色是系统保留角色，因此返回列表中不含法人角色。`
-
         :param request: Request instance for DescribeIntegrationRoles.
         :type request: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationRolesRequest`
         :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeIntegrationRolesResponse`
