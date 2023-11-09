@@ -5135,7 +5135,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTemplateDimCount(self, request):
-        """查询规则模版维度分布情况
+        """查询规则模板维度分布情况
 
         :param request: Request instance for DescribeTemplateDimCount.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateDimCountRequest`
@@ -5158,7 +5158,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeTemplateHistory(self, request):
-        """查询规则模版操作记录
+        """查询规则模板操作记录
 
         :param request: Request instance for DescribeTemplateHistory.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTemplateHistoryRequest`
@@ -6203,7 +6203,7 @@ class WedataClient(AbstractClient):
 
 
     def ModifyRuleTemplate(self, request):
-        """编辑规则模版
+        """编辑规则模板
 
         :param request: Request instance for ModifyRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyRuleTemplateRequest`

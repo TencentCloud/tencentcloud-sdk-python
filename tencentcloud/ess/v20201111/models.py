@@ -935,69 +935,62 @@ class BillUsageDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _OperatorName: 合同经办人名称
 如果有多个经办人用分号隔开。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorName: str
         :param _CreateOrganizationName: 发起方组织机构名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type CreateOrganizationName: str
-        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-该名称还将用于合同签署完成后的下载文件名。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _FlowName: 合同流程的名称。
         :type FlowName: str
         :param _Status: 当前合同状态,如下是状态码对应的状态。
-0-还没有发起
-1-等待签署
-2-部分签署 
-3-拒签
-4-已签署 
-5-已过期 
-6-已撤销 
-7-还没有预发起
-8-等待填写
-9-部分填写 
-10-拒填
-11-已解除
-注意：此字段可能返回 null，表示取不到有效值。
+<ul>
+<li>**0**: 还没有发起</li>
+<li>**1**: 等待签署</li>
+<li>**2**: 部分签署 </li>
+<li>**3**: 拒签</li>
+<li>**4**: 已签署 </li>
+<li>**5**: 已过期 </li>
+<li>**6**: 已撤销 </li>
+<li>**7**: 还没有预发起</li>
+<li>**8**: 等待填写</li>
+<li>**9**: 部分填写 </li>
+<li>**10**: 拒填</li>
+<li>**11**: 已解除</li>
+</ul>
         :type Status: int
-        :param _QuotaType: 套餐类型
-对应关系如下
-CloudEnterprise-企业版合同
-SingleSignature-单方签章
-CloudProve-签署报告
-CloudOnlineSign-腾讯会议在线签约
-ChannelWeCard-微工卡
-SignFlow-合同套餐
-SignFace-签署意愿（人脸识别）
-SignPassword-签署意愿（密码）
-SignSMS-签署意愿（短信）
-PersonalEssAuth-签署人实名（腾讯电子签认证）
-PersonalThirdAuth-签署人实名（信任第三方认证）
-OrgEssAuth-签署企业实名
-FlowNotify-短信通知
-AuthService-企业工商信息查询
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _QuotaType: 查询的套餐类型
+对应关系如下:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
         :type QuotaType: str
         :param _UseCount: 合同使用量
-注意：此字段可能返回 null，表示取不到有效值。
+注: `如果消耗类型是撤销返还，此值为负值代表返还的合同数量`
         :type UseCount: int
         :param _CostTime: 消耗的时间戳，格式为Unix标准时间戳（秒）。
-注意：此字段可能返回 null，表示取不到有效值。
         :type CostTime: int
         :param _QuotaName: 消耗的套餐名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type QuotaName: str
         :param _CostType: 消耗类型
-1.扣费 2.撤销返还
-注意：此字段可能返回 null，表示取不到有效值。
+**1**.扣费
+**2**.撤销返还
         :type CostType: int
         :param _Remark: 备注
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         """
         self._FlowId = None
@@ -9363,21 +9356,23 @@ class DescribeBillUsageDetailRequest(AbstractModel):
         :param _Limit: 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
         :type Limit: int
         :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；
-对应关系如下
-CloudEnterprise-企业版合同
-SingleSignature-单方签章
-CloudProve-签署报告
-CloudOnlineSign-腾讯会议在线签约
-ChannelWeCard-微工卡
-SignFlow-合同套餐
-SignFace-签署意愿（人脸识别）
-SignPassword-签署意愿（密码）
-SignSMS-签署意愿（短信）
-PersonalEssAuth-签署人实名（腾讯电子签认证）
-PersonalThirdAuth-签署人实名（信任第三方认证）
-OrgEssAuth-签署企业实名
-FlowNotify-短信通知
-AuthService-企业工商信息查询
+目前支持:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
         :type QuotaType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。

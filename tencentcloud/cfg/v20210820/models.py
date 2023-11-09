@@ -450,6 +450,8 @@ class DescribeTaskListRequest(AbstractModel):
         :type TaskStartTime: str
         :param _TaskEndTime: 结束时间，固定格式%Y-%m-%d %H:%M:%S
         :type TaskEndTime: str
+        :param _TaskUpdateTime: 更新时间，固定格式%Y-%m-%d %H:%M:%S
+        :type TaskUpdateTime: str
         :param _Tags: 标签对
         :type Tags: list of TagWithDescribe
         :param _Filters: 筛选条件
@@ -460,6 +462,8 @@ class DescribeTaskListRequest(AbstractModel):
         :type ApplicationId: list of str
         :param _ApplicationName: 关联应用筛选
         :type ApplicationName: list of str
+        :param _TaskStatusList: 任务状态筛选--支持多选 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
+        :type TaskStatusList: list of int non-negative
         """
         self._Limit = None
         self._Offset = None
@@ -468,11 +472,13 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskStatus = None
         self._TaskStartTime = None
         self._TaskEndTime = None
+        self._TaskUpdateTime = None
         self._Tags = None
         self._Filters = None
         self._TaskId = None
         self._ApplicationId = None
         self._ApplicationName = None
+        self._TaskStatusList = None
 
     @property
     def Limit(self):
@@ -531,6 +537,14 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskEndTime = TaskEndTime
 
     @property
+    def TaskUpdateTime(self):
+        return self._TaskUpdateTime
+
+    @TaskUpdateTime.setter
+    def TaskUpdateTime(self, TaskUpdateTime):
+        self._TaskUpdateTime = TaskUpdateTime
+
+    @property
     def Tags(self):
         return self._Tags
 
@@ -570,6 +584,14 @@ class DescribeTaskListRequest(AbstractModel):
     def ApplicationName(self, ApplicationName):
         self._ApplicationName = ApplicationName
 
+    @property
+    def TaskStatusList(self):
+        return self._TaskStatusList
+
+    @TaskStatusList.setter
+    def TaskStatusList(self, TaskStatusList):
+        self._TaskStatusList = TaskStatusList
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -579,6 +601,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._TaskStartTime = params.get("TaskStartTime")
         self._TaskEndTime = params.get("TaskEndTime")
+        self._TaskUpdateTime = params.get("TaskUpdateTime")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -594,6 +617,7 @@ class DescribeTaskListRequest(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationName = params.get("ApplicationName")
+        self._TaskStatusList = params.get("TaskStatusList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1447,6 +1471,9 @@ class Task(AbstractModel):
         :param _ApmServiceList: 关联的APM服务
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApmServiceList: list of ApmServiceInfo
+        :param _VerifyId: 关联的隐患验证项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyId: int
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -1475,6 +1502,7 @@ class Task(AbstractModel):
         self._ApplicationName = None
         self._AlarmPolicy = None
         self._ApmServiceList = None
+        self._VerifyId = None
 
     @property
     def TaskId(self):
@@ -1692,6 +1720,14 @@ class Task(AbstractModel):
     def ApmServiceList(self, ApmServiceList):
         self._ApmServiceList = ApmServiceList
 
+    @property
+    def VerifyId(self):
+        return self._VerifyId
+
+    @VerifyId.setter
+    def VerifyId(self, VerifyId):
+        self._VerifyId = VerifyId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1743,6 +1779,7 @@ class Task(AbstractModel):
                 obj = ApmServiceInfo()
                 obj._deserialize(item)
                 self._ApmServiceList.append(obj)
+        self._VerifyId = params.get("VerifyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2722,6 +2759,12 @@ class TaskListItem(AbstractModel):
         :param _ApplicationName: 关联应用名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationName: str
+        :param _VerifyId: 验证项ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyId: int
+        :param _TaskStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatusType: int
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -2735,6 +2778,8 @@ class TaskListItem(AbstractModel):
         self._TaskExpect = None
         self._ApplicationId = None
         self._ApplicationName = None
+        self._VerifyId = None
+        self._TaskStatusType = None
 
     @property
     def TaskId(self):
@@ -2832,6 +2877,22 @@ class TaskListItem(AbstractModel):
     def ApplicationName(self, ApplicationName):
         self._ApplicationName = ApplicationName
 
+    @property
+    def VerifyId(self):
+        return self._VerifyId
+
+    @VerifyId.setter
+    def VerifyId(self, VerifyId):
+        self._VerifyId = VerifyId
+
+    @property
+    def TaskStatusType(self):
+        return self._TaskStatusType
+
+    @TaskStatusType.setter
+    def TaskStatusType(self, TaskStatusType):
+        self._TaskStatusType = TaskStatusType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -2846,6 +2907,8 @@ class TaskListItem(AbstractModel):
         self._TaskExpect = params.get("TaskExpect")
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationName = params.get("ApplicationName")
+        self._VerifyId = params.get("VerifyId")
+        self._TaskStatusType = params.get("TaskStatusType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

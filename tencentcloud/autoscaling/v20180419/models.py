@@ -722,6 +722,9 @@ class AutoScalingGroup(AbstractModel):
 <br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
 <br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: 实例名称序号相关设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -754,6 +757,7 @@ class AutoScalingGroup(AbstractModel):
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupId(self):
@@ -1003,6 +1007,14 @@ class AutoScalingGroup(AbstractModel):
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -1050,6 +1062,9 @@ class AutoScalingGroup(AbstractModel):
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1693,6 +1708,8 @@ class CreateAutoScalingGroupRequest(AbstractModel):
 
 默认取 FALSE。
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: 实例名称序号相关设置。若不指定该参数，则默认不开启。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupName = None
         self._LaunchConfigurationId = None
@@ -1718,6 +1735,7 @@ class CreateAutoScalingGroupRequest(AbstractModel):
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupName(self):
@@ -1911,6 +1929,14 @@ class CreateAutoScalingGroupRequest(AbstractModel):
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupName = params.get("AutoScalingGroupName")
@@ -1951,6 +1977,9 @@ class CreateAutoScalingGroupRequest(AbstractModel):
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6267,6 +6296,53 @@ class InstanceMarketOptionsRequest(AbstractModel):
         
 
 
+class InstanceNameIndexSettings(AbstractModel):
+    """实例名称序号相关设置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 是否开启实例创建序号，默认不开启。取值范围：<li>TRUE：表示开启实例创建序号<li>FALSE：表示不开启实例创建序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _BeginIndex: 初始序号，取值范围为 [0, 99999999]。当序号递增后超出取值范围时，扩容活动会失败。<li>首次开启实例名称序号：默认值为 0。<li>非首次开启实例名称序号：若不指定该参数，沿用历史序号。下调初始序号可能会造成伸缩组内实例名称序号重复。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginIndex: int
+        """
+        self._Enabled = None
+        self._BeginIndex = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def BeginIndex(self):
+        return self._BeginIndex
+
+    @BeginIndex.setter
+    def BeginIndex(self, BeginIndex):
+        self._BeginIndex = BeginIndex
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._BeginIndex = params.get("BeginIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceNameSettings(AbstractModel):
     """云服务器实例名称（InstanceName）的相关设置
 
@@ -7557,6 +7633,8 @@ INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加�
 <br><li> TRUE，开启该功能，当伸缩组内的竞价实例即将被竞价实例服务自动回收前，AS 主动发起竞价实例销毁流程，如果有配置过缩容 hook，则销毁前 hook 会生效。销毁流程启动后，AS 会异步开启一个扩容活动，用于补齐期望实例数。
 <br><li> FALSE，不开启该功能，则 AS 等待竞价实例被销毁后才会去扩容补齐伸缩组期望实例数。
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: 实例名称序号相关设置。开启后为伸缩组内自动创建的实例名称添加递增的数字序号。
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -7580,6 +7658,7 @@ INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加�
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupId(self):
@@ -7757,6 +7836,14 @@ INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加�
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -7785,6 +7872,9 @@ INCREMENTAL_INTERVALS，间隔递增重试，随着连续失败次数的增加�
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

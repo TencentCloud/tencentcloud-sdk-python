@@ -721,7 +721,8 @@ class CreateVideoModerationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BizType: 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
+        :param _BizType: 该字段表示策略的具体编号，用于接口调度，在[内容安全控制台](https://console.cloud.tencent.com/cms/clouds/manage)中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
         :type BizType: str
         :param _Type: 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
         :type Type: str
@@ -953,9 +954,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _AudioSegments: 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioSegments: list of AudioSegments
-        :param _ErrorType: 当任务状态为Error时，返回对应错误的类型，取值：**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
+        :param _ErrorType: 当任务状态为Error时，返回对应错误的类型，取值：
+**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
 **URL_ERROR**：下载地址验证失败。
-**TIMEOUT_ERROR**：处理超时。任务状态非Error时默认返回为空。
+**TIMEOUT_ERROR**：处理超时。
+**CALLBACK_ERRORR**：回调错误。
+**MODERATION_ERROR**：审核失败。
+**URL_NOT_SUPPORTED**：源文件太大或没有图片音频帧
+任务状态非Error时默认返回为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorType: str
         :param _ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
@@ -970,6 +976,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _Asrs: 该字段用于返回音频文件识别出的对应文本内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Asrs: list of RcbAsr
+        :param _SegmentCosUrlList: 该字段用于返回检测结果明细数据相关的cos url	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SegmentCosUrlList: :class:`tencentcloud.vm.v20210922.models.SegmentCosUrlList`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -993,6 +1002,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._Label = None
         self._AudioText = None
         self._Asrs = None
+        self._SegmentCosUrlList = None
         self._RequestId = None
 
     @property
@@ -1156,6 +1166,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._Asrs = Asrs
 
     @property
+    def SegmentCosUrlList(self):
+        return self._SegmentCosUrlList
+
+    @SegmentCosUrlList.setter
+    def SegmentCosUrlList(self, SegmentCosUrlList):
+        self._SegmentCosUrlList = SegmentCosUrlList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1209,6 +1227,9 @@ class DescribeTaskDetailResponse(AbstractModel):
                 obj = RcbAsr()
                 obj._deserialize(item)
                 self._Asrs.append(obj)
+        if params.get("SegmentCosUrlList") is not None:
+            self._SegmentCosUrlList = SegmentCosUrlList()
+            self._SegmentCosUrlList._deserialize(params.get("SegmentCosUrlList"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1530,7 +1551,7 @@ Block 确认违规
         :param _Score: 分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param _Names: 如果命中场景为涉政，则该数据为人物姓名列表，否则null
+        :param _Names: 人物名称列表，如未识别，则为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Names: list of str
         :param _Text: 图片OCR文本
@@ -2177,6 +2198,92 @@ class RecognitionResult(AbstractModel):
         
 
 
+class SegmentCosUrlList(AbstractModel):
+    """明细数据相关的cos url
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageAllUrl: 全量图片片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageAllUrl: str
+        :param _AudioAllUrl: 全量音频片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioAllUrl: str
+        :param _ImageBlockUrl: 违规图片片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageBlockUrl: str
+        :param _AudioBlockUrl: 违规音频片段的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioBlockUrl: str
+        :param _AsrUrl: 全量音频识别文本的cos url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrUrl: str
+        """
+        self._ImageAllUrl = None
+        self._AudioAllUrl = None
+        self._ImageBlockUrl = None
+        self._AudioBlockUrl = None
+        self._AsrUrl = None
+
+    @property
+    def ImageAllUrl(self):
+        return self._ImageAllUrl
+
+    @ImageAllUrl.setter
+    def ImageAllUrl(self, ImageAllUrl):
+        self._ImageAllUrl = ImageAllUrl
+
+    @property
+    def AudioAllUrl(self):
+        return self._AudioAllUrl
+
+    @AudioAllUrl.setter
+    def AudioAllUrl(self, AudioAllUrl):
+        self._AudioAllUrl = AudioAllUrl
+
+    @property
+    def ImageBlockUrl(self):
+        return self._ImageBlockUrl
+
+    @ImageBlockUrl.setter
+    def ImageBlockUrl(self, ImageBlockUrl):
+        self._ImageBlockUrl = ImageBlockUrl
+
+    @property
+    def AudioBlockUrl(self):
+        return self._AudioBlockUrl
+
+    @AudioBlockUrl.setter
+    def AudioBlockUrl(self, AudioBlockUrl):
+        self._AudioBlockUrl = AudioBlockUrl
+
+    @property
+    def AsrUrl(self):
+        return self._AsrUrl
+
+    @AsrUrl.setter
+    def AsrUrl(self, AsrUrl):
+        self._AsrUrl = AsrUrl
+
+
+    def _deserialize(self, params):
+        self._ImageAllUrl = params.get("ImageAllUrl")
+        self._AudioAllUrl = params.get("AudioAllUrl")
+        self._ImageBlockUrl = params.get("ImageBlockUrl")
+        self._AudioBlockUrl = params.get("AudioBlockUrl")
+        self._AsrUrl = params.get("AsrUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageInfo(AbstractModel):
     """数据存储信息
 
@@ -2653,10 +2760,14 @@ Block 确认违规
         :param _Score: 得分，分数是 0 ～ 100
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
+        :param _SubLabel: 命中的二级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubLabel: str
         """
         self._Label = None
         self._Suggestion = None
         self._Score = None
+        self._SubLabel = None
 
     @property
     def Label(self):
@@ -2682,11 +2793,20 @@ Block 确认违规
     def Score(self, Score):
         self._Score = Score
 
+    @property
+    def SubLabel(self):
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
 
     def _deserialize(self, params):
         self._Label = params.get("Label")
         self._Suggestion = params.get("Suggestion")
         self._Score = params.get("Score")
+        self._SubLabel = params.get("SubLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

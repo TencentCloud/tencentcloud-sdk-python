@@ -215,6 +215,29 @@ class DrmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GenerateTDRMKey(self, request):
+        """开发者需要指定使用的DRM类型取值 NORMALAES、和需要加密的Track类型取值 SD,ContentType取值 LiveVideo
+
+        :param request: Request instance for GenerateTDRMKey.
+        :type request: :class:`tencentcloud.drm.v20181115.models.GenerateTDRMKeyRequest`
+        :rtype: :class:`tencentcloud.drm.v20181115.models.GenerateTDRMKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateTDRMKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateTDRMKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFairPlayPem(self, request):
         """本接口用来设置fairplay方案所需的私钥、私钥密钥、ask等信息。
         如需使用fairplay方案，请务必先设置私钥。

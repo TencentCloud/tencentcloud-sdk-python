@@ -6833,13 +6833,13 @@ class CommitRuleGroupExecResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: preject id
+        :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _RuleGroupExecId: rule group exec id
+        :param _RuleGroupExecId: 规则组执行ID
         :type RuleGroupExecId: int
-        :param _RuleGroupState: group exec state
+        :param _RuleGroupState: 规则组执行状态
         :type RuleGroupState: str
-        :param _RuleExecResults: runner rule exec result list
+        :param _RuleExecResults: 规则执行结果集合
         :type RuleExecResults: list of RunnerRuleExecResult
         """
         self._ProjectId = None
@@ -34378,7 +34378,7 @@ class DescribeTemplateDimCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 模版类型
+        :param _Type: 模板类型
         :type Type: int
         :param _ProjectId: 项目ID
         :type ProjectId: str
@@ -49045,7 +49045,7 @@ class ModifyRuleRequest(AbstractModel):
         :type RuleTemplateId: int
         :param _Type: 规则类型 1.系统模版, 2.自定义模版, 3.自定义SQL
         :type Type: int
-        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+        :param _QualityDim: 规则所属质量维度（1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性）
         :type QualityDim: int
         :param _SourceObjectDataTypeName: 源字段详细类型，int、string
         :type SourceObjectDataTypeName: str
@@ -49370,11 +49370,11 @@ class ModifyRuleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版ID
+        :param _TemplateId: 模板ID
         :type TemplateId: int
-        :param _Type: 模版类型  1.系统模版   2.自定义模版
+        :param _Type: 模板类型  1.系统模板   2.自定义模板
         :type Type: int
-        :param _Name: 模版名称
+        :param _Name: 模板名称
         :type Name: str
         :param _QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
         :type QualityDim: int

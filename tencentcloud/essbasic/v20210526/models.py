@@ -1181,6 +1181,191 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelBillUsageDetail(AbstractModel):
+    """用户计费使用情况详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。
+        :type FlowId: str
+        :param _OperatorName: 合同经办人名称
+如果有多个经办人用分号隔开。
+        :type OperatorName: str
+        :param _CreateOrganizationName: 发起方组织机构名称
+        :type CreateOrganizationName: str
+        :param _FlowName: 合同流程的名称。
+        :type FlowName: str
+        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值
+<ul>
+<li>**INIT**: 合同创建</li>
+<li>**PART**: 合同签署中(至少有一个签署方已经签署)</li>
+<li>**REJECT**: 合同拒签</li>
+<li>**ALL**: 合同签署完成</li>
+<li>**DEADLINE**: 合同流签(合同过期)</li>
+<li>**CANCEL**: 合同撤回</li>
+<li>**RELIEVED**: 解除协议（已解除）</li>
+<li>**WILLEXPIRE**: 合同即将过期</li>
+<li>**EXCEPTION**: 合同异常</li>
+</ul>
+        :type FlowStatus: str
+        :param _QuotaType: 查询的套餐类型
+对应关系如下:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
+        :type QuotaType: str
+        :param _UseCount: 合同使用量
+注: `如果消耗类型是撤销返还，此值为负值代表返还的合同数量`
+        :type UseCount: int
+        :param _CostTime: 消耗的时间戳，格式为Unix标准时间戳（秒）。
+        :type CostTime: int
+        :param _QuotaName: 消耗的套餐名称
+        :type QuotaName: str
+        :param _CostType: 消耗类型
+**1**.扣费 
+**2**.撤销返还
+        :type CostType: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._FlowId = None
+        self._OperatorName = None
+        self._CreateOrganizationName = None
+        self._FlowName = None
+        self._FlowStatus = None
+        self._QuotaType = None
+        self._UseCount = None
+        self._CostTime = None
+        self._QuotaName = None
+        self._CostType = None
+        self._Remark = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def CreateOrganizationName(self):
+        return self._CreateOrganizationName
+
+    @CreateOrganizationName.setter
+    def CreateOrganizationName(self, CreateOrganizationName):
+        self._CreateOrganizationName = CreateOrganizationName
+
+    @property
+    def FlowName(self):
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowStatus(self):
+        return self._FlowStatus
+
+    @FlowStatus.setter
+    def FlowStatus(self, FlowStatus):
+        self._FlowStatus = FlowStatus
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def UseCount(self):
+        return self._UseCount
+
+    @UseCount.setter
+    def UseCount(self, UseCount):
+        self._UseCount = UseCount
+
+    @property
+    def CostTime(self):
+        return self._CostTime
+
+    @CostTime.setter
+    def CostTime(self, CostTime):
+        self._CostTime = CostTime
+
+    @property
+    def QuotaName(self):
+        return self._QuotaName
+
+    @QuotaName.setter
+    def QuotaName(self, QuotaName):
+        self._QuotaName = QuotaName
+
+    @property
+    def CostType(self):
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._OperatorName = params.get("OperatorName")
+        self._CreateOrganizationName = params.get("CreateOrganizationName")
+        self._FlowName = params.get("FlowName")
+        self._FlowStatus = params.get("FlowStatus")
+        self._QuotaType = params.get("QuotaType")
+        self._UseCount = params.get("UseCount")
+        self._CostTime = params.get("CostTime")
+        self._QuotaName = params.get("QuotaName")
+        self._CostType = params.get("CostType")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelCancelFlowRequest(AbstractModel):
     """ChannelCancelFlow请求参数结构体
 
@@ -1323,12 +1508,13 @@ class ChannelCancelMultiFlowSignQRCodeRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _QrCodeId: 二维码ID，为32位字符串。
+        :param _QrCodeId: 需要取消签署的二维码ID，为32位字符串。由[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/partnerApis/templates/ChannelCreateMultiFlowSignQRCode)返回
         :type QrCodeId: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -2047,10 +2233,17 @@ class ChannelCreateBoundFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用信息
-此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证,  合同会领取给对应的Agent.ProxyOperator.OpenId指定的员工来处理
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowIds: 领取的合同id列表
+        :param _FlowIds: 需要领取的合同流程的ID列表
         :type FlowIds: list of str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -3686,13 +3879,13 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _TemplateId: 合同模板ID，为32位字符串。
-建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
         :type TemplateId: str
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
         :type FlowName: str
@@ -5987,6 +6180,180 @@ class ChannelDeleteSealPoliciesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelDescribeBillUsageDetailRequest(AbstractModel):
+    """ChannelDescribeBillUsageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _StartTime: 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        :type StartTime: str
+        :param _EndTime: 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        :type EndTime: str
+        :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；
+目前支持:
+<ul>
+<li>**CloudEnterprise**: 企业版合同</li>
+<li>**SingleSignature**: 单方签章</li>
+<li>**CloudProve**: 签署报告</li>
+<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
+<li>**ChannelWeCard**: 微工卡</li>
+<li>**SignFlow**: 合同套餐</li>
+<li>**SignFace**: 签署意愿（人脸识别）</li>
+<li>**SignPassword**: 签署意愿（密码）</li>
+<li>**SignSMS**: 签署意愿（短信）</li>
+<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
+<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
+<li>**OrgEssAuth**: 签署企业实名</li>
+<li>**FlowNotify**: 短信通知</li>
+<li>**AuthService**: 企业工商信息查询</li>
+</ul>
+        :type QuotaType: str
+        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        :type Offset: int
+        :param _Limit: 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+        :type Limit: int
+        """
+        self._Agent = None
+        self._StartTime = None
+        self._EndTime = None
+        self._QuotaType = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def QuotaType(self):
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._QuotaType = params.get("QuotaType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeBillUsageDetailResponse(AbstractModel):
+    """ChannelDescribeBillUsageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 返回查询记录总数
+        :type Total: int
+        :param _Details: 消耗记录详情
+        :type Details: list of ChannelBillUsageDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = ChannelBillUsageDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelDescribeEmployeesRequest(AbstractModel):
     """ChannelDescribeEmployees请求参数结构体
 
@@ -6183,9 +6550,17 @@ class ChannelDescribeFlowComponentsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowId: 电子签流程的Id
+        :param _FlowId: 需要获取填写控件填写内容的合同流程ID
         :type FlowId: str
         """
         self._Agent = None
@@ -6230,8 +6605,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientComponentInfos: 流程关联的填写控件信息，控件会按照参与方进行分类。
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _RecipientComponentInfos: 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
         :type RecipientComponentInfos: list of RecipientComponentInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10766,20 +11140,33 @@ class DescribeUsageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用信息，此接口Agent.AppId必填
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+</ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _StartDate: 开始时间，例如：2021-03-21
+        :param _StartDate: 查询日期范围的开始时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-03-21)
+
+注: `查询日期范围区间长度大于90天`。
         :type StartDate: str
-        :param _EndDate: 结束时间，例如：2021-06-21；
-开始时间到结束时间的区间长度小于等于90天。
+        :param _EndDate: 查询日期范围的结束时间, 查询会包含此日期的数据 , 格式为yyyy-mm-dd (例如：2021-04-21)
+
+注: `查询日期范围区间长度大于90天`。
         :type EndDate: str
         :param _NeedAggregate: 是否汇总数据，默认不汇总。
-不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
+<ul><li> **true** :  汇总数据,  即每个企业一条数据, 对日志范围内的数据相加</li>
+<li> **false** :  不会总数据,  返回企业每日明细,   按日期返回每个企业的数据(如果企业对应天数没有操作则无此企业此日期的数据)</li></ul>
+
         :type NeedAggregate: bool
-        :param _Limit: 单次返回的最多条目数量。默认为1000，且不能超过1000。
+        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。
+
+注: `默认值为1000，单页做大值为1000`
         :type Limit: int
-        :param _Offset: 偏移量，默认是0。
+        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
+
+注：`offset从0开始，即第一页为0。`
         :type Offset: int
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -11274,20 +11661,19 @@ class FilledComponent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ComponentId: 控件Id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ComponentId: 填写控件ID
         :type ComponentId: str
         :param _ComponentName: 控件名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentName: str
-        :param _ComponentFillStatus: 控件填写状态；0-未填写；1-已填写
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _ComponentFillStatus: 此填写控件的填写状态
+ **0** : 此填写控件**未填写**
+**1** : 此填写控件**已填写**
         :type ComponentFillStatus: str
         :param _ComponentValue: 控件填写内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentValue: str
         :param _ImageUrl: 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
-注意：此字段可能返回 null，表示取不到有效值。
+
+注: `链接不是永久链接,  默认有效期5分钟后, 到期后链接失效`
         :type ImageUrl: str
         """
         self._ComponentId = None
@@ -14810,16 +15196,20 @@ class RecipientComponentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 参与方Id
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _RecipientId: 参与方的角色ID
         :type RecipientId: str
         :param _RecipientFillStatus: 参与方填写状态
-注意：此字段可能返回 null，表示取不到有效值。
+
+<ul><li> **0** : 还没有填写</li>
+<li> **1** : 已经填写</li></ul>
         :type RecipientFillStatus: str
-        :param _IsPromoter: 是否发起方
+        :param _IsPromoter: 此角色是否是发起方角色
+
+<ul><li> **true** : 是发起方角色</li>
+<li> **false** : 不是发起方角色</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPromoter: bool
-        :param _Components: 填写控件内容
+        :param _Components: 此角色的填写控件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: list of FilledComponent
         """
@@ -15267,10 +15657,13 @@ class SignQrCode(AbstractModel):
     def __init__(self):
         r"""
         :param _QrCodeId: 二维码ID，为32位字符串。	
+
+注: 需要保留此二维码ID, 用于后序通过<a href="https://qian.tencent.com/developers/partnerApis/templates/ChannelCancelMultiFlowSignQRCode" target="_blank">取消一码多扫二维码</a>关闭这个二维码的签署功能。	
         :type QrCodeId: str
         :param _QrCodeUrl: 二维码URL，可通过转换二维码的工具或代码组件将此URL转化为二维码，以便用户扫描进行流程签署。	
         :type QrCodeUrl: str
-        :param _ExpiredTime: 二维码的有截止时间，格式为Unix标准时间戳（秒）。 一旦超过二维码的有效期限，该二维码将自动失效。	
+        :param _ExpiredTime: 二维码的有截止时间，格式为Unix标准时间戳（秒），可以通过入参的QrEffectiveDay来设置有效期，默认为7天有效期。 
+一旦超过二维码的有效期限，该二维码将自动失效。	
         :type ExpiredTime: int
         """
         self._QrCodeId = None
@@ -16687,17 +17080,17 @@ class UsageDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyOrganizationOpenId: 子客企业唯一标识
+        :param _ProxyOrganizationOpenId: 子客企业标识
         :type ProxyOrganizationOpenId: str
         :param _ProxyOrganizationName: 子客企业名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyOrganizationName: str
-        :param _Date: 日期，当需要汇总数据时日期为空
+        :param _Date: 对应的消耗日期, **如果是汇总数据则为1970-01-01**
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
-        :param _Usage: 消耗数量
+        :param _Usage: 消耗合同数量
         :type Usage: int
-        :param _Cancel: 撤回数量
+        :param _Cancel: 撤回合同数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cancel: int
         :param _FlowChannel: 消耗渠道

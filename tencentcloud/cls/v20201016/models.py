@@ -7163,6 +7163,12 @@ class DescribeAlarmNoticesRequest(AbstractModel):
 类型：String
 必选：否
 
+<li> deliverFlag
+按照【投递状态】进行过滤。
+类型：String
+必选：否
+可选值： "1":未启用,  "2": 已启用, "3":投递异常
+
 每次请求的Filters的上限为10，Filter.Values的上限为5。
         :type Filters: list of Filter
         :param _Offset: 分页的偏移量，默认值为0。
@@ -10368,9 +10374,7 @@ class DescribeTopicsResponse(AbstractModel):
 
 
 class DynamicIndex(AbstractModel):
-    """动态更新索引配置
-
-    注意：该功能尚处于内测阶段，如需使用请联系技术支持
+    """动态索引配置，启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
 
     """
 
@@ -16903,9 +16907,8 @@ class RuleInfo(AbstractModel):
         :param _Tag: 元字段索引配置，如果为空时代表未开启元字段索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
-        :param _DynamicIndex: 动态索引配置，如果为空时代表未开启动态段索引
-
-注意：该功能尚处于内测阶段，如需使用请联系技术支持
+        :param _DynamicIndex: 动态索引配置，为空时代表未开启动态索引。
+启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicIndex: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
         """
