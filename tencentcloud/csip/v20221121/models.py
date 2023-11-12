@@ -1230,7 +1230,7 @@ class AssetViewPortRisk(AbstractModel):
         :type Suggestion: int
         :param _Status: 状态，0未处理、1已处置、2已忽略
         :type Status: int
-        :param _Id: 资产唯一id
+        :param _Id: 风险ID
         :type Id: str
         :param _Index: 前端索引
         :type Index: str
@@ -1246,7 +1246,7 @@ class AssetViewPortRisk(AbstractModel):
         :param _Uin: 用户uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
-        :param _From: 来源
+        :param _From: 识别来源，详细看枚举返回。
         :type From: str
         """
         self._Port = None

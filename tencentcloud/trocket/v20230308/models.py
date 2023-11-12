@@ -18,6 +18,100 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ConsumeGroupItem(AbstractModel):
+    """消费组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ConsumerGroup: 消费组名称
+        :type ConsumerGroup: str
+        :param _ConsumeEnable: 是否开启消费
+        :type ConsumeEnable: bool
+        :param _ConsumeMessageOrderly: 顺序投递：true
+并发投递：false
+        :type ConsumeMessageOrderly: bool
+        :param _MaxRetryTimes: 最大重试次数
+        :type MaxRetryTimes: int
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._ConsumerGroup = None
+        self._ConsumeEnable = None
+        self._ConsumeMessageOrderly = None
+        self._MaxRetryTimes = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumerGroup(self):
+        return self._ConsumerGroup
+
+    @ConsumerGroup.setter
+    def ConsumerGroup(self, ConsumerGroup):
+        self._ConsumerGroup = ConsumerGroup
+
+    @property
+    def ConsumeEnable(self):
+        return self._ConsumeEnable
+
+    @ConsumeEnable.setter
+    def ConsumeEnable(self, ConsumeEnable):
+        self._ConsumeEnable = ConsumeEnable
+
+    @property
+    def ConsumeMessageOrderly(self):
+        return self._ConsumeMessageOrderly
+
+    @ConsumeMessageOrderly.setter
+    def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
+        self._ConsumeMessageOrderly = ConsumeMessageOrderly
+
+    @property
+    def MaxRetryTimes(self):
+        return self._MaxRetryTimes
+
+    @MaxRetryTimes.setter
+    def MaxRetryTimes(self, MaxRetryTimes):
+        self._MaxRetryTimes = MaxRetryTimes
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumerGroup = params.get("ConsumerGroup")
+        self._ConsumeEnable = params.get("ConsumeEnable")
+        self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateConsumerGroupRequest(AbstractModel):
     """CreateConsumerGroup请求参数结构体
 
@@ -881,6 +975,147 @@ class DeleteTopicResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerGroupListRequest(AbstractModel):
+    """DescribeConsumerGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        :param _FromTopic: 查询指定主题下的消费组
+        :type FromTopic: str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._FromTopic = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def FromTopic(self):
+        return self._FromTopic
+
+    @FromTopic.setter
+    def FromTopic(self, FromTopic):
+        self._FromTopic = FromTopic
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._FromTopic = params.get("FromTopic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerGroupListResponse(AbstractModel):
+    """DescribeConsumerGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 消费组列表
+        :type Data: list of ConsumeGroupItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumeGroupItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

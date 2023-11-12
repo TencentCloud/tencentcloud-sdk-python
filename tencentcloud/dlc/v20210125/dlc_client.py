@@ -1199,6 +1199,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataEngineEvents(self, request):
+        """查询数据引擎事件
+
+        :param request: Request instance for DescribeDataEngineEvents.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineEventsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngineEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEngineEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataEngineImageVersions(self, request):
         """本接口（DescribeDataEngineImageVersions）用于获取独享集群大版本镜像列表。
 

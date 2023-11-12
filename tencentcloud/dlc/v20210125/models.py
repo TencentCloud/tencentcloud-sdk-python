@@ -9863,6 +9863,158 @@ class DescribeDMSTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataEngineEventsRequest(AbstractModel):
+    """DescribeDataEngineEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: 虚拟集群名称
+        :type DataEngineName: str
+        :param _Limit: 返回数量，默认为10，最大为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        """
+        self._DataEngineName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataEngineEventsResponse(AbstractModel):
+    """DescribeDataEngineEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: 事件详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of HouseEventsInfo
+        :param _Page: 分页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
+        :param _Size: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _TotalPages: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPages: int
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Page = None
+        self._Size = None
+        self._TotalPages = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def TotalPages(self):
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = HouseEventsInfo()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Page = params.get("Page")
+        self._Size = params.get("Size")
+        self._TotalPages = params.get("TotalPages")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDataEngineImageVersionsRequest(AbstractModel):
     """DescribeDataEngineImageVersions请求参数结构体
 
@@ -15495,6 +15647,66 @@ class HiveInfo(AbstractModel):
             self._KerberosInfo = KerberosInfo()
             self._KerberosInfo._deserialize(params.get("KerberosInfo"))
         self._KerberosEnable = params.get("KerberosEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HouseEventsInfo(AbstractModel):
+    """集群事件日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 事件时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: list of str
+        :param _EventsAction: 事件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventsAction: list of str
+        :param _ClusterInfo: 集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterInfo: list of str
+        """
+        self._Time = None
+        self._EventsAction = None
+        self._ClusterInfo = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def EventsAction(self):
+        return self._EventsAction
+
+    @EventsAction.setter
+    def EventsAction(self, EventsAction):
+        self._EventsAction = EventsAction
+
+    @property
+    def ClusterInfo(self):
+        return self._ClusterInfo
+
+    @ClusterInfo.setter
+    def ClusterInfo(self, ClusterInfo):
+        self._ClusterInfo = ClusterInfo
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._EventsAction = params.get("EventsAction")
+        self._ClusterInfo = params.get("ClusterInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -233,6 +233,32 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConsumerGroupList(self, request):
+        """获取消费组列表，Filter参数使用说明如下：
+
+        1. ConsumerGroupName，名称模糊查询
+        2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+
+        :param request: Request instance for DescribeConsumerGroupList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerGroupListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeConsumerGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumerGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumerGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstance(self, request):
         """查询实例信息
 

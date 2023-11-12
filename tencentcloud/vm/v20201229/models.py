@@ -44,7 +44,7 @@ class AudioResult(AbstractModel):
         :param _Url: 该字段用于返回音频片段存储的链接地址，该地址有效期为1天。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param _Duration: 该字段用于返回音频文件的时长，单位为秒。
+        :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: str
         :param _Extra: 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
