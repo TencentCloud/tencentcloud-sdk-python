@@ -2814,6 +2814,8 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         :type IsEncrypt: bool
         :param _Encryption: 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _IsEncryptResponse: 是否对回包整体进行加密
+        :type IsEncryptResponse: bool
         """
         self._BizToken = None
         self._RuleId = None
@@ -2823,6 +2825,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         self._IsNeedIdCardAvatar = None
         self._IsEncrypt = None
         self._Encryption = None
+        self._IsEncryptResponse = None
 
     @property
     def BizToken(self):
@@ -2888,6 +2891,14 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
     def Encryption(self, Encryption):
         self._Encryption = Encryption
 
+    @property
+    def IsEncryptResponse(self):
+        return self._IsEncryptResponse
+
+    @IsEncryptResponse.setter
+    def IsEncryptResponse(self, IsEncryptResponse):
+        self._IsEncryptResponse = IsEncryptResponse
+
 
     def _deserialize(self, params):
         self._BizToken = params.get("BizToken")
@@ -2900,6 +2911,7 @@ class GetDetectInfoEnhancedRequest(AbstractModel):
         if params.get("Encryption") is not None:
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
+        self._IsEncryptResponse = params.get("IsEncryptResponse")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2941,6 +2953,9 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
+        :param _EncryptedBody: 加密后的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptedBody: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2952,6 +2967,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self._IntentionVerifyData = None
         self._IntentionQuestionResult = None
         self._IntentionActionResult = None
+        self._EncryptedBody = None
         self._RequestId = None
 
     @property
@@ -3019,6 +3035,14 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         self._IntentionActionResult = IntentionActionResult
 
     @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3052,6 +3076,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         if params.get("IntentionActionResult") is not None:
             self._IntentionActionResult = IntentionActionResult()
             self._IntentionActionResult._deserialize(params.get("IntentionActionResult"))
+        self._EncryptedBody = params.get("EncryptedBody")
         self._RequestId = params.get("RequestId")
 
 
