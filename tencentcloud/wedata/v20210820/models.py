@@ -31944,6 +31944,141 @@ class DescribeTableLineageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableMetasRequest(AbstractModel):
+    """DescribeTableMetas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页页码
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _Filters: 过滤字段
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段
+        :type OrderFields: list of OrderField
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableMetasResponse(AbstractModel):
+    """DescribeTableMetas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableMetas: 表元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableMetas: list of TableMeta
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableMetas = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TableMetas(self):
+        return self._TableMetas
+
+    @TableMetas.setter
+    def TableMetas(self, TableMetas):
+        self._TableMetas = TableMetas
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableMetas") is not None:
+            self._TableMetas = []
+            for item in params.get("TableMetas"):
+                obj = TableMeta()
+                obj._deserialize(item)
+                self._TableMetas.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTableQualityDetailsRequest(AbstractModel):
     """DescribeTableQualityDetails请求参数结构体
 
@@ -60505,6 +60640,196 @@ class ScriptRequestInfo(AbstractModel):
         
 
 
+class SearchColumnDocVO(AbstractModel):
+    """表字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ChineseName: 字段中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChineseName: str
+        :param _Type: 字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Length: 字段类型长度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Length: int
+        :param _Precision: 字段类型精度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Precision: int
+        :param _Scale: 字段类型scale
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scale: int
+        :param _DefaultValue: 字段默认值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param _Description: 字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Position: 字段的顺序
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param _IsPartition: 是否为分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartition: bool
+        :param _ColumnKey: 列上的索引类型 主键: PRI,唯一索引: UNI,一般索引: MUL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnKey: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifiedTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        """
+        self._Name = None
+        self._ChineseName = None
+        self._Type = None
+        self._Length = None
+        self._Precision = None
+        self._Scale = None
+        self._DefaultValue = None
+        self._Description = None
+        self._Position = None
+        self._IsPartition = None
+        self._ColumnKey = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ChineseName(self):
+        return self._ChineseName
+
+    @ChineseName.setter
+    def ChineseName(self, ChineseName):
+        self._ChineseName = ChineseName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def Precision(self):
+        return self._Precision
+
+    @Precision.setter
+    def Precision(self, Precision):
+        self._Precision = Precision
+
+    @property
+    def Scale(self):
+        return self._Scale
+
+    @Scale.setter
+    def Scale(self, Scale):
+        self._Scale = Scale
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def IsPartition(self):
+        return self._IsPartition
+
+    @IsPartition.setter
+    def IsPartition(self, IsPartition):
+        self._IsPartition = IsPartition
+
+    @property
+    def ColumnKey(self):
+        return self._ColumnKey
+
+    @ColumnKey.setter
+    def ColumnKey(self, ColumnKey):
+        self._ColumnKey = ColumnKey
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ChineseName = params.get("ChineseName")
+        self._Type = params.get("Type")
+        self._Length = params.get("Length")
+        self._Precision = params.get("Precision")
+        self._Scale = params.get("Scale")
+        self._DefaultValue = params.get("DefaultValue")
+        self._Description = params.get("Description")
+        self._Position = params.get("Position")
+        self._IsPartition = params.get("IsPartition")
+        self._ColumnKey = params.get("ColumnKey")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchCondition(AbstractModel):
     """查询实例条件
 
@@ -63558,6 +63883,79 @@ class TableConfig(AbstractModel):
         
 
 
+class TableHeat(AbstractModel):
+    """过去七天（不算当天）表的热度值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _DayTime: 统计日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayTime: str
+        :param _Heat: 表热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Heat: float
+        :param _MaxHeat: 表热度最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxHeat: float
+        """
+        self._TableId = None
+        self._DayTime = None
+        self._Heat = None
+        self._MaxHeat = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def DayTime(self):
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def Heat(self):
+        return self._Heat
+
+    @Heat.setter
+    def Heat(self, Heat):
+        self._Heat = Heat
+
+    @property
+    def MaxHeat(self):
+        return self._MaxHeat
+
+    @MaxHeat.setter
+    def MaxHeat(self, MaxHeat):
+        self._MaxHeat = MaxHeat
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._DayTime = params.get("DayTime")
+        self._Heat = params.get("Heat")
+        self._MaxHeat = params.get("MaxHeat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TableInfo(AbstractModel):
     """元数据表详细信息
 
@@ -63899,6 +64297,764 @@ class TableLineageInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Tasks = params.get("Tasks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableMeta(AbstractModel):
+    """表的元数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表的全局唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableOwnerName: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _DatasourceId: 数据源全局唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _ClusterName: 所属集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _DatasourceName: 数据源名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _TablePath: 表路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePath: str
+        :param _TableNameCn: 表中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNameCn: str
+        :param _MetastoreId: 元数据租户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetastoreId: int
+        :param _MetastoreType: 技术类型，可用值:HIVE,MYSQL,KAFKA, HBASE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetastoreType: str
+        :param _Description: 表描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ColumnSeparator: 列分隔符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnSeparator: str
+        :param _StorageFormat: 存储格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageFormat: str
+        :param _StorageSize: 存储量，字节数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param _TableType: 表类型，如hive MANAGED_TABLE;EXTERNAL_TABLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableType: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 最近数据变更时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _DdlModifyTime: 最近DDL变更时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DdlModifyTime: str
+        :param _LastAccessTime: 数据最后访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAccessTime: str
+        :param _ProjectName: 所属项目英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _BizCatalogIds: 所属数据目录id（可能多个）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogIds: list of str
+        :param _BizCatalogNames: 所属数据目录（可能多个）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogNames: list of str
+        :param _HasFavorite: true已收藏/false表示未收藏状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasFavorite: bool
+        :param _LifeCycleTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeCycleTime: int
+        :param _StorageSizeWithUnit: 存储量，已转为适合的单位展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSizeWithUnit: str
+        :param _InstanceId: 数据源引擎的实例ID：如EMR集群实例ID/数据源实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _TechnologyType: 数据来源技术类型：HIVE/MYSQL/HBASE/KAFKA等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TechnologyType: str
+        :param _TableNameEn: 表英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNameEn: str
+        :param _ProjectId: 项目Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _Partitions: Kafka Topic 分区数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Partitions: str
+        :param _ReplicationFactor: Kafka Topic 副本数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationFactor: str
+        :param _ProjectDisplayName: 所属项目英中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectDisplayName: str
+        :param _DataModifyTime: 数据最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataModifyTime: str
+        :param _ClusterId: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _HasAdminAuthority: 当前用户是否有管理员权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAdminAuthority: bool
+        :param _DatasourceDisplayName: 数据源展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceDisplayName: str
+        :param _DatabaseId: 数据库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _FavoriteCount: 租户下对表的收藏总次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FavoriteCount: int
+        :param _LikeCount: 租户下对表的点赞总次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LikeCount: int
+        :param _HasLike: true已点赞/false表示未点赞状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasLike: bool
+        :param _TablePropertyScore: 表的资产评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePropertyScore: :class:`tencentcloud.wedata.v20210820.models.TablePropertyScore`
+        :param _TableHeat: 表的热度值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableHeat: :class:`tencentcloud.wedata.v20210820.models.TableHeat`
+        :param _OwnerProjectId: 数据源ownerProjectId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerProjectId: str
+        :param _TableOwnerId: 表负责人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerId: str
+        :param _DataSourceCategory: 系统源-CLUSTER, DB-自定义源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceCategory: str
+        :param _Columns: 表字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of SearchColumnDocVO
+        """
+        self._TableId = None
+        self._TableName = None
+        self._TableOwnerName = None
+        self._DatasourceId = None
+        self._ClusterName = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._TablePath = None
+        self._TableNameCn = None
+        self._MetastoreId = None
+        self._MetastoreType = None
+        self._Description = None
+        self._ColumnSeparator = None
+        self._StorageFormat = None
+        self._StorageSize = None
+        self._TableType = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._DdlModifyTime = None
+        self._LastAccessTime = None
+        self._ProjectName = None
+        self._BizCatalogIds = None
+        self._BizCatalogNames = None
+        self._HasFavorite = None
+        self._LifeCycleTime = None
+        self._StorageSizeWithUnit = None
+        self._InstanceId = None
+        self._TechnologyType = None
+        self._TableNameEn = None
+        self._ProjectId = None
+        self._Partitions = None
+        self._ReplicationFactor = None
+        self._ProjectDisplayName = None
+        self._DataModifyTime = None
+        self._ClusterId = None
+        self._HasAdminAuthority = None
+        self._DatasourceDisplayName = None
+        self._DatabaseId = None
+        self._FavoriteCount = None
+        self._LikeCount = None
+        self._HasLike = None
+        self._TablePropertyScore = None
+        self._TableHeat = None
+        self._OwnerProjectId = None
+        self._TableOwnerId = None
+        self._DataSourceCategory = None
+        self._Columns = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableOwnerName(self):
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def DatasourceId(self):
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def DatasourceName(self):
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TablePath(self):
+        return self._TablePath
+
+    @TablePath.setter
+    def TablePath(self, TablePath):
+        self._TablePath = TablePath
+
+    @property
+    def TableNameCn(self):
+        return self._TableNameCn
+
+    @TableNameCn.setter
+    def TableNameCn(self, TableNameCn):
+        self._TableNameCn = TableNameCn
+
+    @property
+    def MetastoreId(self):
+        return self._MetastoreId
+
+    @MetastoreId.setter
+    def MetastoreId(self, MetastoreId):
+        self._MetastoreId = MetastoreId
+
+    @property
+    def MetastoreType(self):
+        return self._MetastoreType
+
+    @MetastoreType.setter
+    def MetastoreType(self, MetastoreType):
+        self._MetastoreType = MetastoreType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ColumnSeparator(self):
+        return self._ColumnSeparator
+
+    @ColumnSeparator.setter
+    def ColumnSeparator(self, ColumnSeparator):
+        self._ColumnSeparator = ColumnSeparator
+
+    @property
+    def StorageFormat(self):
+        return self._StorageFormat
+
+    @StorageFormat.setter
+    def StorageFormat(self, StorageFormat):
+        self._StorageFormat = StorageFormat
+
+    @property
+    def StorageSize(self):
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def DdlModifyTime(self):
+        return self._DdlModifyTime
+
+    @DdlModifyTime.setter
+    def DdlModifyTime(self, DdlModifyTime):
+        self._DdlModifyTime = DdlModifyTime
+
+    @property
+    def LastAccessTime(self):
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def BizCatalogIds(self):
+        return self._BizCatalogIds
+
+    @BizCatalogIds.setter
+    def BizCatalogIds(self, BizCatalogIds):
+        self._BizCatalogIds = BizCatalogIds
+
+    @property
+    def BizCatalogNames(self):
+        return self._BizCatalogNames
+
+    @BizCatalogNames.setter
+    def BizCatalogNames(self, BizCatalogNames):
+        self._BizCatalogNames = BizCatalogNames
+
+    @property
+    def HasFavorite(self):
+        return self._HasFavorite
+
+    @HasFavorite.setter
+    def HasFavorite(self, HasFavorite):
+        self._HasFavorite = HasFavorite
+
+    @property
+    def LifeCycleTime(self):
+        return self._LifeCycleTime
+
+    @LifeCycleTime.setter
+    def LifeCycleTime(self, LifeCycleTime):
+        self._LifeCycleTime = LifeCycleTime
+
+    @property
+    def StorageSizeWithUnit(self):
+        return self._StorageSizeWithUnit
+
+    @StorageSizeWithUnit.setter
+    def StorageSizeWithUnit(self, StorageSizeWithUnit):
+        self._StorageSizeWithUnit = StorageSizeWithUnit
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TechnologyType(self):
+        return self._TechnologyType
+
+    @TechnologyType.setter
+    def TechnologyType(self, TechnologyType):
+        self._TechnologyType = TechnologyType
+
+    @property
+    def TableNameEn(self):
+        return self._TableNameEn
+
+    @TableNameEn.setter
+    def TableNameEn(self, TableNameEn):
+        self._TableNameEn = TableNameEn
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Partitions(self):
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def ReplicationFactor(self):
+        return self._ReplicationFactor
+
+    @ReplicationFactor.setter
+    def ReplicationFactor(self, ReplicationFactor):
+        self._ReplicationFactor = ReplicationFactor
+
+    @property
+    def ProjectDisplayName(self):
+        return self._ProjectDisplayName
+
+    @ProjectDisplayName.setter
+    def ProjectDisplayName(self, ProjectDisplayName):
+        self._ProjectDisplayName = ProjectDisplayName
+
+    @property
+    def DataModifyTime(self):
+        return self._DataModifyTime
+
+    @DataModifyTime.setter
+    def DataModifyTime(self, DataModifyTime):
+        self._DataModifyTime = DataModifyTime
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def HasAdminAuthority(self):
+        return self._HasAdminAuthority
+
+    @HasAdminAuthority.setter
+    def HasAdminAuthority(self, HasAdminAuthority):
+        self._HasAdminAuthority = HasAdminAuthority
+
+    @property
+    def DatasourceDisplayName(self):
+        return self._DatasourceDisplayName
+
+    @DatasourceDisplayName.setter
+    def DatasourceDisplayName(self, DatasourceDisplayName):
+        self._DatasourceDisplayName = DatasourceDisplayName
+
+    @property
+    def DatabaseId(self):
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def FavoriteCount(self):
+        return self._FavoriteCount
+
+    @FavoriteCount.setter
+    def FavoriteCount(self, FavoriteCount):
+        self._FavoriteCount = FavoriteCount
+
+    @property
+    def LikeCount(self):
+        return self._LikeCount
+
+    @LikeCount.setter
+    def LikeCount(self, LikeCount):
+        self._LikeCount = LikeCount
+
+    @property
+    def HasLike(self):
+        return self._HasLike
+
+    @HasLike.setter
+    def HasLike(self, HasLike):
+        self._HasLike = HasLike
+
+    @property
+    def TablePropertyScore(self):
+        return self._TablePropertyScore
+
+    @TablePropertyScore.setter
+    def TablePropertyScore(self, TablePropertyScore):
+        self._TablePropertyScore = TablePropertyScore
+
+    @property
+    def TableHeat(self):
+        return self._TableHeat
+
+    @TableHeat.setter
+    def TableHeat(self, TableHeat):
+        self._TableHeat = TableHeat
+
+    @property
+    def OwnerProjectId(self):
+        return self._OwnerProjectId
+
+    @OwnerProjectId.setter
+    def OwnerProjectId(self, OwnerProjectId):
+        self._OwnerProjectId = OwnerProjectId
+
+    @property
+    def TableOwnerId(self):
+        return self._TableOwnerId
+
+    @TableOwnerId.setter
+    def TableOwnerId(self, TableOwnerId):
+        self._TableOwnerId = TableOwnerId
+
+    @property
+    def DataSourceCategory(self):
+        return self._DataSourceCategory
+
+    @DataSourceCategory.setter
+    def DataSourceCategory(self, DataSourceCategory):
+        self._DataSourceCategory = DataSourceCategory
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._TableName = params.get("TableName")
+        self._TableOwnerName = params.get("TableOwnerName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._ClusterName = params.get("ClusterName")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TablePath = params.get("TablePath")
+        self._TableNameCn = params.get("TableNameCn")
+        self._MetastoreId = params.get("MetastoreId")
+        self._MetastoreType = params.get("MetastoreType")
+        self._Description = params.get("Description")
+        self._ColumnSeparator = params.get("ColumnSeparator")
+        self._StorageFormat = params.get("StorageFormat")
+        self._StorageSize = params.get("StorageSize")
+        self._TableType = params.get("TableType")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._DdlModifyTime = params.get("DdlModifyTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._ProjectName = params.get("ProjectName")
+        self._BizCatalogIds = params.get("BizCatalogIds")
+        self._BizCatalogNames = params.get("BizCatalogNames")
+        self._HasFavorite = params.get("HasFavorite")
+        self._LifeCycleTime = params.get("LifeCycleTime")
+        self._StorageSizeWithUnit = params.get("StorageSizeWithUnit")
+        self._InstanceId = params.get("InstanceId")
+        self._TechnologyType = params.get("TechnologyType")
+        self._TableNameEn = params.get("TableNameEn")
+        self._ProjectId = params.get("ProjectId")
+        self._Partitions = params.get("Partitions")
+        self._ReplicationFactor = params.get("ReplicationFactor")
+        self._ProjectDisplayName = params.get("ProjectDisplayName")
+        self._DataModifyTime = params.get("DataModifyTime")
+        self._ClusterId = params.get("ClusterId")
+        self._HasAdminAuthority = params.get("HasAdminAuthority")
+        self._DatasourceDisplayName = params.get("DatasourceDisplayName")
+        self._DatabaseId = params.get("DatabaseId")
+        self._FavoriteCount = params.get("FavoriteCount")
+        self._LikeCount = params.get("LikeCount")
+        self._HasLike = params.get("HasLike")
+        if params.get("TablePropertyScore") is not None:
+            self._TablePropertyScore = TablePropertyScore()
+            self._TablePropertyScore._deserialize(params.get("TablePropertyScore"))
+        if params.get("TableHeat") is not None:
+            self._TableHeat = TableHeat()
+            self._TableHeat._deserialize(params.get("TableHeat"))
+        self._OwnerProjectId = params.get("OwnerProjectId")
+        self._TableOwnerId = params.get("TableOwnerId")
+        self._DataSourceCategory = params.get("DataSourceCategory")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = SearchColumnDocVO()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TablePropertyScore(AbstractModel):
+    """按天更新的表的资产评分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        :param _DayTime: 统计日期
+        :type DayTime: str
+        :param _Integrity: 表完整性评分
+        :type Integrity: float
+        :param _Safety: 表保障性评分
+        :type Safety: float
+        :param _Timeliness: 表及时性评分
+        :type Timeliness: float
+        :param _Stability: 表稳定性评分
+        :type Stability: float
+        :param _Normative: 表规范性评分
+        :type Normative: float
+        :param _Average: 资产评分平均分
+        :type Average: float
+        """
+        self._TableId = None
+        self._DayTime = None
+        self._Integrity = None
+        self._Safety = None
+        self._Timeliness = None
+        self._Stability = None
+        self._Normative = None
+        self._Average = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def DayTime(self):
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def Integrity(self):
+        return self._Integrity
+
+    @Integrity.setter
+    def Integrity(self, Integrity):
+        self._Integrity = Integrity
+
+    @property
+    def Safety(self):
+        return self._Safety
+
+    @Safety.setter
+    def Safety(self, Safety):
+        self._Safety = Safety
+
+    @property
+    def Timeliness(self):
+        return self._Timeliness
+
+    @Timeliness.setter
+    def Timeliness(self, Timeliness):
+        self._Timeliness = Timeliness
+
+    @property
+    def Stability(self):
+        return self._Stability
+
+    @Stability.setter
+    def Stability(self, Stability):
+        self._Stability = Stability
+
+    @property
+    def Normative(self):
+        return self._Normative
+
+    @Normative.setter
+    def Normative(self, Normative):
+        self._Normative = Normative
+
+    @property
+    def Average(self):
+        return self._Average
+
+    @Average.setter
+    def Average(self, Average):
+        self._Average = Average
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._DayTime = params.get("DayTime")
+        self._Integrity = params.get("Integrity")
+        self._Safety = params.get("Safety")
+        self._Timeliness = params.get("Timeliness")
+        self._Stability = params.get("Stability")
+        self._Normative = params.get("Normative")
+        self._Average = params.get("Average")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

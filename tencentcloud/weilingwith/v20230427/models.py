@@ -49,6 +49,219 @@ class AddAlarmProcessRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApplicationInfo(AbstractModel):
+    """应用描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: 应用分配的appId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param _Name: 应用中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Address: 应用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Address: str
+        :param _ApplicationLogo: 应用logo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationLogo: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationLogo`
+        :param _Type: 应用类型，0:saas应用 1:平台应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _EnglishName: engine
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnglishName: str
+        :param _Description: 能源管理应用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._ApplicationId = None
+        self._Name = None
+        self._Address = None
+        self._ApplicationLogo = None
+        self._Type = None
+        self._EnglishName = None
+        self._Description = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def ApplicationLogo(self):
+        return self._ApplicationLogo
+
+    @ApplicationLogo.setter
+    def ApplicationLogo(self, ApplicationLogo):
+        self._ApplicationLogo = ApplicationLogo
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EnglishName(self):
+        return self._EnglishName
+
+    @EnglishName.setter
+    def EnglishName(self, EnglishName):
+        self._EnglishName = EnglishName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._Name = params.get("Name")
+        self._Address = params.get("Address")
+        if params.get("ApplicationLogo") is not None:
+            self._ApplicationLogo = ApplicationLogo()
+            self._ApplicationLogo._deserialize(params.get("ApplicationLogo"))
+        self._Type = params.get("Type")
+        self._EnglishName = params.get("EnglishName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationList(AbstractModel):
+    """应用列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationInfoList: 应用列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationInfoList: list of ApplicationInfo
+        :param _TotalCount: 当前查询条件命中的数据总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: str
+        """
+        self._ApplicationInfoList = None
+        self._TotalCount = None
+
+    @property
+    def ApplicationInfoList(self):
+        return self._ApplicationInfoList
+
+    @ApplicationInfoList.setter
+    def ApplicationInfoList(self, ApplicationInfoList):
+        self._ApplicationInfoList = ApplicationInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("ApplicationInfoList") is not None:
+            self._ApplicationInfoList = []
+            for item in params.get("ApplicationInfoList"):
+                obj = ApplicationInfo()
+                obj._deserialize(item)
+                self._ApplicationInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationLogo(AbstractModel):
+    """应用logo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: logo图片对应的fileId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileId: str
+        :param _Url: logo图片地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        """
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchCreateDeviceRequest(AbstractModel):
     """BatchCreateDevice请求参数结构体
 
@@ -457,6 +670,81 @@ class DescribeApplicationListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 项目空间id，本次查询返回的应用均关联至该空间
+        :type WorkspaceId: int
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _ApplicationId: 应用id数组，可选，填了则表示根据id批量查询
+        :type ApplicationId: list of int non-negative
+        :param _PageNumber: 请求页号
+        :type PageNumber: int
+        :param _PageSize: 页容量，默认为10
+        :type PageSize: int
+        """
+        self._WorkspaceId = None
+        self._ApplicationToken = None
+        self._ApplicationId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._ApplicationId = params.get("ApplicationId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeApplicationListResponse(AbstractModel):
     """DescribeApplicationList返回参数结构体
@@ -465,10 +753,21 @@ class DescribeApplicationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 应用列表
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationList`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -480,6 +779,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ApplicationList()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -674,6 +976,129 @@ class DescribeDeviceShadowListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _WIDSet: WID
+        :type WIDSet: list of str
+        :param _PageNumber: 分页查询，第几页
+        :type PageNumber: int
+        :param _PageSize: 每页条数
+        :type PageSize: int
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _DeviceTypeSet: 设备类型code
+        :type DeviceTypeSet: list of str
+        :param _ProductIdSet: 产品 pid
+        :type ProductIdSet: list of int
+        :param _SpaceCodeSet: 空间层级，（支持空间多层，比如具体建筑、具体楼层）
+        :type SpaceCodeSet: list of str
+        :param _DeviceTagSet: 设备标签名
+        :type DeviceTagSet: list of str
+        """
+        self._WorkspaceId = None
+        self._WIDSet = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._ApplicationToken = None
+        self._DeviceTypeSet = None
+        self._ProductIdSet = None
+        self._SpaceCodeSet = None
+        self._DeviceTagSet = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def WIDSet(self):
+        return self._WIDSet
+
+    @WIDSet.setter
+    def WIDSet(self, WIDSet):
+        self._WIDSet = WIDSet
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def DeviceTypeSet(self):
+        return self._DeviceTypeSet
+
+    @DeviceTypeSet.setter
+    def DeviceTypeSet(self, DeviceTypeSet):
+        self._DeviceTypeSet = DeviceTypeSet
+
+    @property
+    def ProductIdSet(self):
+        return self._ProductIdSet
+
+    @ProductIdSet.setter
+    def ProductIdSet(self, ProductIdSet):
+        self._ProductIdSet = ProductIdSet
+
+    @property
+    def SpaceCodeSet(self):
+        return self._SpaceCodeSet
+
+    @SpaceCodeSet.setter
+    def SpaceCodeSet(self, SpaceCodeSet):
+        self._SpaceCodeSet = SpaceCodeSet
+
+    @property
+    def DeviceTagSet(self):
+        return self._DeviceTagSet
+
+    @DeviceTagSet.setter
+    def DeviceTagSet(self, DeviceTagSet):
+        self._DeviceTagSet = DeviceTagSet
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._WIDSet = params.get("WIDSet")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._DeviceTypeSet = params.get("DeviceTypeSet")
+        self._ProductIdSet = params.get("ProductIdSet")
+        self._SpaceCodeSet = params.get("SpaceCodeSet")
+        self._DeviceTagSet = params.get("DeviceTagSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDeviceShadowListResponse(AbstractModel):
     """DescribeDeviceShadowList返回参数结构体
@@ -682,10 +1107,21 @@ class DescribeDeviceShadowListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 获取设备影子结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceShadowRes`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -697,6 +1133,9 @@ class DescribeDeviceShadowListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DeviceShadowRes()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1816,6 +2255,134 @@ class DescribeVideoRecordStreamRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _WID: 设备唯一标识
+        :type WID: str
+        :param _Protocol: 枚举如下：
+flvsh
+rtmp
+hls
+webrtc
+raw (视频原始帧)
+        :type Protocol: str
+        :param _StartTime: 开始时间（精确到毫秒）
+        :type StartTime: int
+        :param _EndTime: 结束时间（精确到毫秒）
+        :type EndTime: int
+        :param _PlayBackRate: 倍速 0.5、1、2、4
+        :type PlayBackRate: float
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _Stream: 流的唯一标识，播放链接尾缀
+        :type Stream: str
+        :param _Env: 公有云私有化项目传0或者不传；混合云项目一般传空间id
+        :type Env: str
+        """
+        self._WID = None
+        self._Protocol = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PlayBackRate = None
+        self._WorkspaceId = None
+        self._ApplicationToken = None
+        self._Stream = None
+        self._Env = None
+
+    @property
+    def WID(self):
+        return self._WID
+
+    @WID.setter
+    def WID(self, WID):
+        self._WID = WID
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PlayBackRate(self):
+        return self._PlayBackRate
+
+    @PlayBackRate.setter
+    def PlayBackRate(self, PlayBackRate):
+        self._PlayBackRate = PlayBackRate
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def Stream(self):
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def Env(self):
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+
+    def _deserialize(self, params):
+        self._WID = params.get("WID")
+        self._Protocol = params.get("Protocol")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PlayBackRate = params.get("PlayBackRate")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._Stream = params.get("Stream")
+        self._Env = params.get("Env")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeVideoRecordStreamResponse(AbstractModel):
     """DescribeVideoRecordStream返回参数结构体
@@ -2036,6 +2603,157 @@ class DescribeWorkspaceUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeviceShadowInfo(AbstractModel):
+    """设备影子信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WID: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WID: str
+        :param _DeviceShadow: 设备影子数据,返回有效数据为"x-json:"后字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceShadow: str
+        :param _DeviceShadowUpdateTime: 设备影子更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceShadowUpdateTime: str
+        """
+        self._WID = None
+        self._DeviceShadow = None
+        self._DeviceShadowUpdateTime = None
+
+    @property
+    def WID(self):
+        return self._WID
+
+    @WID.setter
+    def WID(self, WID):
+        self._WID = WID
+
+    @property
+    def DeviceShadow(self):
+        return self._DeviceShadow
+
+    @DeviceShadow.setter
+    def DeviceShadow(self, DeviceShadow):
+        self._DeviceShadow = DeviceShadow
+
+    @property
+    def DeviceShadowUpdateTime(self):
+        return self._DeviceShadowUpdateTime
+
+    @DeviceShadowUpdateTime.setter
+    def DeviceShadowUpdateTime(self, DeviceShadowUpdateTime):
+        self._DeviceShadowUpdateTime = DeviceShadowUpdateTime
+
+
+    def _deserialize(self, params):
+        self._WID = params.get("WID")
+        self._DeviceShadow = params.get("DeviceShadow")
+        self._DeviceShadowUpdateTime = params.get("DeviceShadowUpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceShadowRes(AbstractModel):
+    """设备影子查询列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 第几页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 每页条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalPage: 总页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param _TotalRow: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRow: int
+        :param _Set: 设备影子列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Set: list of DeviceShadowInfo
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalPage = None
+        self._TotalRow = None
+        self._Set = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def TotalRow(self):
+        return self._TotalRow
+
+    @TotalRow.setter
+    def TotalRow(self, TotalRow):
+        self._TotalRow = TotalRow
+
+    @property
+    def Set(self):
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalPage = params.get("TotalPage")
+        self._TotalRow = params.get("TotalRow")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = DeviceShadowInfo()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyDeviceNameRequest(AbstractModel):
     """ModifyDeviceName请求参数结构体
 
@@ -2223,7 +2941,7 @@ class SsoTeamUser(AbstractModel):
         :param _RealName: 用户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
-        :param _UserType: 用户类型
+        :param _UserType: 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserType: str
         :param _TenantId: 所属租户ID
@@ -2442,7 +3160,7 @@ class SsoUser(AbstractModel):
         :param _RealName: 用户名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RealName: str
-        :param _UserType: 用户类型
+        :param _UserType: 用户类型，1-超级管理员；2-1号管理员；3-普通管理员；99-普通用户
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserType: str
         :param _TenantId: 所属租户ID
@@ -2457,7 +3175,7 @@ class SsoUser(AbstractModel):
         :param _Phone: 电话
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param _Status: 用户状态
+        :param _Status: 用户状态，0待审核，1正常启用，2禁用
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _CreateAt: 创建时间
@@ -2466,13 +3184,13 @@ class SsoUser(AbstractModel):
         :param _UpdateAt: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateAt: int
-        :param _BelongTeam: 是否属于团队
+        :param _BelongTeam: 是否属于团队，0不可用，1属于，2不属
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongTeam: int
-        :param _DepartmentId: ID
+        :param _DepartmentId: 部门ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentId: str
-        :param _DepartmentName: 名称
+        :param _DepartmentName: 部门名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DepartmentName: str
         :param _DepartmentUserId: 子账户ID

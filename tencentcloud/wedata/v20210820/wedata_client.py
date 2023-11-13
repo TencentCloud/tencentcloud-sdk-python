@@ -4740,6 +4740,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableMetas(self, request):
+        """获取表元数据list
+
+        :param request: Request instance for DescribeTableMetas.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableMetasRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableMetasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableMetas", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableMetasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTableQualityDetails(self, request):
         """质量报告-查询表质量详情
 

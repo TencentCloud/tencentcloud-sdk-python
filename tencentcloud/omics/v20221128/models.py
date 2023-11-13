@@ -273,9 +273,15 @@ class ClusterOption(AbstractModel):
         :param _Type: 计算集群类型，取值范围：
 - KUBERNETES
         :type Type: str
+        :param _ResourceQuota: 资源配额。
+        :type ResourceQuota: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
+        :param _LimitRange: 限制范围。
+        :type LimitRange: :class:`tencentcloud.omics.v20221128.models.LimitRange`
         """
         self._Zone = None
         self._Type = None
+        self._ResourceQuota = None
+        self._LimitRange = None
 
     @property
     def Zone(self):
@@ -293,10 +299,32 @@ class ClusterOption(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ResourceQuota(self):
+        return self._ResourceQuota
+
+    @ResourceQuota.setter
+    def ResourceQuota(self, ResourceQuota):
+        self._ResourceQuota = ResourceQuota
+
+    @property
+    def LimitRange(self):
+        return self._LimitRange
+
+    @LimitRange.setter
+    def LimitRange(self, LimitRange):
+        self._LimitRange = LimitRange
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._Type = params.get("Type")
+        if params.get("ResourceQuota") is not None:
+            self._ResourceQuota = ResourceQuota()
+            self._ResourceQuota._deserialize(params.get("ResourceQuota"))
+        if params.get("LimitRange") is not None:
+            self._LimitRange = LimitRange()
+            self._LimitRange._deserialize(params.get("LimitRange"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -320,10 +348,13 @@ class CreateEnvironmentRequest(AbstractModel):
         :type Config: :class:`tencentcloud.omics.v20221128.models.EnvironmentConfig`
         :param _Description: 环境描述。
         :type Description: str
+        :param _IsDefault: 是否为默认环境。
+        :type IsDefault: bool
         """
         self._Name = None
         self._Config = None
         self._Description = None
+        self._IsDefault = None
 
     @property
     def Name(self):
@@ -349,6 +380,14 @@ class CreateEnvironmentRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -356,6 +395,7 @@ class CreateEnvironmentRequest(AbstractModel):
             self._Config = EnvironmentConfig()
             self._Config._deserialize(params.get("Config"))
         self._Description = params.get("Description")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1356,12 +1396,15 @@ class EnvironmentConfig(AbstractModel):
         :type StorageOption: :class:`tencentcloud.omics.v20221128.models.StorageOption`
         :param _CVMOption: 云服务器配置。
         :type CVMOption: :class:`tencentcloud.omics.v20221128.models.CVMOption`
+        :param _SecurityGroupOption: 安全组配置。
+        :type SecurityGroupOption: :class:`tencentcloud.omics.v20221128.models.SecurityGroupOption`
         """
         self._VPCOption = None
         self._ClusterOption = None
         self._DatabaseOption = None
         self._StorageOption = None
         self._CVMOption = None
+        self._SecurityGroupOption = None
 
     @property
     def VPCOption(self):
@@ -1403,6 +1446,14 @@ class EnvironmentConfig(AbstractModel):
     def CVMOption(self, CVMOption):
         self._CVMOption = CVMOption
 
+    @property
+    def SecurityGroupOption(self):
+        return self._SecurityGroupOption
+
+    @SecurityGroupOption.setter
+    def SecurityGroupOption(self, SecurityGroupOption):
+        self._SecurityGroupOption = SecurityGroupOption
+
 
     def _deserialize(self, params):
         if params.get("VPCOption") is not None:
@@ -1420,6 +1471,9 @@ class EnvironmentConfig(AbstractModel):
         if params.get("CVMOption") is not None:
             self._CVMOption = CVMOption()
             self._CVMOption._deserialize(params.get("CVMOption"))
+        if params.get("SecurityGroupOption") is not None:
+            self._SecurityGroupOption = SecurityGroupOption()
+            self._SecurityGroupOption._deserialize(params.get("SecurityGroupOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2027,6 +2081,53 @@ class ImportTableFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LimitRange(AbstractModel):
+    """资源限制范围。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxCPU: 最大CPU设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxCPU: str
+        :param _MaxMemory: 最大内存设置（单位：Mi，Gi，Ti，M，G，T）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxMemory: str
+        """
+        self._MaxCPU = None
+        self._MaxMemory = None
+
+    @property
+    def MaxCPU(self):
+        return self._MaxCPU
+
+    @MaxCPU.setter
+    def MaxCPU(self, MaxCPU):
+        self._MaxCPU = MaxCPU
+
+    @property
+    def MaxMemory(self):
+        return self._MaxMemory
+
+    @MaxMemory.setter
+    def MaxMemory(self, MaxMemory):
+        self._MaxMemory = MaxMemory
+
+
+    def _deserialize(self, params):
+        self._MaxCPU = params.get("MaxCPU")
+        self._MaxMemory = params.get("MaxMemory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NFOption(AbstractModel):
     """Nextflow选项。
 
@@ -2219,6 +2320,66 @@ class ResourceIds(AbstractModel):
         self._CFSStorageType = params.get("CFSStorageType")
         self._CVMId = params.get("CVMId")
         self._EKSId = params.get("EKSId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceQuota(AbstractModel):
+    """资源配额。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CPULimit: CPU Limit设置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPULimit: str
+        :param _MemoryLimit: 内存Limit设置（单位：Mi，Gi，Ti，M，G，T）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemoryLimit: str
+        :param _Pods: Pods数量设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Pods: str
+        """
+        self._CPULimit = None
+        self._MemoryLimit = None
+        self._Pods = None
+
+    @property
+    def CPULimit(self):
+        return self._CPULimit
+
+    @CPULimit.setter
+    def CPULimit(self, CPULimit):
+        self._CPULimit = CPULimit
+
+    @property
+    def MemoryLimit(self):
+        return self._MemoryLimit
+
+    @MemoryLimit.setter
+    def MemoryLimit(self, MemoryLimit):
+        self._MemoryLimit = MemoryLimit
+
+    @property
+    def Pods(self):
+        return self._Pods
+
+    @Pods.setter
+    def Pods(self, Pods):
+        self._Pods = Pods
+
+
+    def _deserialize(self, params):
+        self._CPULimit = params.get("CPULimit")
+        self._MemoryLimit = params.get("MemoryLimit")
+        self._Pods = params.get("Pods")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3670,6 +3831,39 @@ class RunWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SecurityGroupOption(AbstractModel):
+    """安全组配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityGroupId: 安全组ID。
+        :type SecurityGroupId: str
+        """
+        self._SecurityGroupId = None
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+
+    def _deserialize(self, params):
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageOption(AbstractModel):
     """文件存储配置。
 
@@ -4022,6 +4216,10 @@ class VPCOption(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VPCId: 私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+        :type VPCId: str
+        :param _SubnetId: 子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+        :type SubnetId: str
         :param _SubnetZone: 子网可用区。
         :type SubnetZone: str
         :param _VPCCIDRBlock: 私有网络CIDR。
@@ -4029,9 +4227,27 @@ class VPCOption(AbstractModel):
         :param _SubnetCIDRBlock: 子网CIDR。
         :type SubnetCIDRBlock: str
         """
+        self._VPCId = None
+        self._SubnetId = None
         self._SubnetZone = None
         self._VPCCIDRBlock = None
         self._SubnetCIDRBlock = None
+
+    @property
+    def VPCId(self):
+        return self._VPCId
+
+    @VPCId.setter
+    def VPCId(self, VPCId):
+        self._VPCId = VPCId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
     @property
     def SubnetZone(self):
@@ -4059,6 +4275,8 @@ class VPCOption(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VPCId = params.get("VPCId")
+        self._SubnetId = params.get("SubnetId")
         self._SubnetZone = params.get("SubnetZone")
         self._VPCCIDRBlock = params.get("VPCCIDRBlock")
         self._SubnetCIDRBlock = params.get("SubnetCIDRBlock")

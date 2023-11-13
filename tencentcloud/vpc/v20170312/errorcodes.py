@@ -530,6 +530,9 @@ LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = 'LimitExceeded.ModifyAddres
 # 每月地址找回配额超过限制。
 LIMITEXCEEDED_MONTHLYADDRESSRECOVERYQUOTA = 'LimitExceeded.MonthlyAddressRecoveryQuota'
 
+# NAT网关的DNAT转换规则数量已达到上限。
+LIMITEXCEEDED_NATGATEWAYDNATLIMITEXCEEDED = 'LimitExceeded.NatGatewayDnatLimitExceeded'
+
 # NAT网关数量已达到上限。
 LIMITEXCEEDED_NATGATEWAYLIMITEXCEEDED = 'LimitExceeded.NatGatewayLimitExceeded'
 

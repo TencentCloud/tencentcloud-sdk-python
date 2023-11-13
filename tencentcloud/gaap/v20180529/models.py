@@ -14687,6 +14687,9 @@ CrossBorder表示跨境通道。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
+        :param _IsAutoScaleProxy: 是否是开启了auto scale的通道，0表示否，1表示是。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAutoScaleProxy: int
         """
         self._InstanceId = None
         self._CreateTime = None
@@ -14723,6 +14726,7 @@ CrossBorder表示跨境通道。
         self._Http3Supported = None
         self._InBanBlacklist = None
         self._FeatureBitmap = None
+        self._IsAutoScaleProxy = None
 
     @property
     def InstanceId(self):
@@ -15004,6 +15008,14 @@ CrossBorder表示跨境通道。
     def FeatureBitmap(self, FeatureBitmap):
         self._FeatureBitmap = FeatureBitmap
 
+    @property
+    def IsAutoScaleProxy(self):
+        return self._IsAutoScaleProxy
+
+    @IsAutoScaleProxy.setter
+    def IsAutoScaleProxy(self, IsAutoScaleProxy):
+        self._IsAutoScaleProxy = IsAutoScaleProxy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15055,6 +15067,7 @@ CrossBorder表示跨境通道。
         self._Http3Supported = params.get("Http3Supported")
         self._InBanBlacklist = params.get("InBanBlacklist")
         self._FeatureBitmap = params.get("FeatureBitmap")
+        self._IsAutoScaleProxy = params.get("IsAutoScaleProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

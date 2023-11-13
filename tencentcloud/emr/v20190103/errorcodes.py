@@ -164,6 +164,9 @@ INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 # Core节点数量无效。
 INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
 
+# 参数错误。
+INVALIDPARAMETER_INVALIDCOREDISKTYPE = 'InvalidParameter.InvalidCoreDiskType'
+
 # CosFileUri参数值无效。
 INVALIDPARAMETER_INVALIDCOSFILEURI = 'InvalidParameter.InvalidCosFileURI'
 

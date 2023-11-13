@@ -9237,10 +9237,14 @@ class MainlandPermitOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param _RetProfile: 是否返回头像。默认不返回。
         :type RetProfile: bool
+        :param _CardSide: 图片正反面
+FRONT：正面、BACK：反面，默认为FRONT
+        :type CardSide: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._RetProfile = None
+        self._CardSide = None
 
     @property
     def ImageBase64(self):
@@ -9266,11 +9270,20 @@ class MainlandPermitOCRRequest(AbstractModel):
     def RetProfile(self, RetProfile):
         self._RetProfile = RetProfile
 
+    @property
+    def CardSide(self):
+        return self._CardSide
+
+    @CardSide.setter
+    def CardSide(self, CardSide):
+        self._CardSide = CardSide
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._RetProfile = params.get("RetProfile")
+        self._CardSide = params.get("CardSide")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9310,6 +9323,8 @@ class MainlandPermitOCRResponse(AbstractModel):
         :type Type: str
         :param _Profile: RetProfile为True时返回头像字段， Base64编码
         :type Profile: str
+        :param _MainlandTravelPermitBackInfos: 背面字段信息
+        :type MainlandTravelPermitBackInfos: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9324,6 +9339,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = None
         self._Type = None
         self._Profile = None
+        self._MainlandTravelPermitBackInfos = None
         self._RequestId = None
 
     @property
@@ -9415,6 +9431,14 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._Profile = Profile
 
     @property
+    def MainlandTravelPermitBackInfos(self):
+        return self._MainlandTravelPermitBackInfos
+
+    @MainlandTravelPermitBackInfos.setter
+    def MainlandTravelPermitBackInfos(self, MainlandTravelPermitBackInfos):
+        self._MainlandTravelPermitBackInfos = MainlandTravelPermitBackInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9435,7 +9459,83 @@ class MainlandPermitOCRResponse(AbstractModel):
         self._IssueNumber = params.get("IssueNumber")
         self._Type = params.get("Type")
         self._Profile = params.get("Profile")
+        if params.get("MainlandTravelPermitBackInfos") is not None:
+            self._MainlandTravelPermitBackInfos = MainlandTravelPermitBackInfos()
+            self._MainlandTravelPermitBackInfos._deserialize(params.get("MainlandTravelPermitBackInfos"))
         self._RequestId = params.get("RequestId")
+
+
+class MainlandTravelPermitBackInfos(AbstractModel):
+    """港澳台来往内地通行证背面字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: String	证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Name: 卡证背面的中文姓名	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _IDNumber: 卡证背面的身份证号码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IDNumber: str
+        :param _HistoryNumber: 历史通行证号码	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HistoryNumber: str
+        """
+        self._Type = None
+        self._Name = None
+        self._IDNumber = None
+        self._HistoryNumber = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IDNumber(self):
+        return self._IDNumber
+
+    @IDNumber.setter
+    def IDNumber(self, IDNumber):
+        self._IDNumber = IDNumber
+
+    @property
+    def HistoryNumber(self):
+        return self._HistoryNumber
+
+    @HistoryNumber.setter
+    def HistoryNumber(self, HistoryNumber):
+        self._HistoryNumber = HistoryNumber
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._IDNumber = params.get("IDNumber")
+        self._HistoryNumber = params.get("HistoryNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MedicalInvoice(AbstractModel):

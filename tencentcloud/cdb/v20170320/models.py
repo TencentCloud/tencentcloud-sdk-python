@@ -19983,7 +19983,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _LogType: 日志类型：errorLog/slowLog
+        :param _LogType: 日志类型：error/slowLog
         :type LogType: str
         :param _Status: 投递状态：ON/OFF
         :type Status: str

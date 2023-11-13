@@ -236,6 +236,8 @@ class ApproverOption(AbstractModel):
         r"""
         :param _NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
         :type NoRefuse: bool
+        :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
+        :type NoTransfer: bool
         :param _HideOneKeySign: 是否隐藏一键签署 默认false-不隐藏true-隐藏
         :type HideOneKeySign: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
@@ -254,6 +256,7 @@ class ApproverOption(AbstractModel):
         :type FlowReadLimit: str
         """
         self._NoRefuse = None
+        self._NoTransfer = None
         self._HideOneKeySign = None
         self._FillType = None
         self._FlowReadLimit = None
@@ -265,6 +268,14 @@ class ApproverOption(AbstractModel):
     @NoRefuse.setter
     def NoRefuse(self, NoRefuse):
         self._NoRefuse = NoRefuse
+
+    @property
+    def NoTransfer(self):
+        return self._NoTransfer
+
+    @NoTransfer.setter
+    def NoTransfer(self, NoTransfer):
+        self._NoTransfer = NoTransfer
 
     @property
     def HideOneKeySign(self):
@@ -293,6 +304,7 @@ class ApproverOption(AbstractModel):
 
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
+        self._NoTransfer = params.get("NoTransfer")
         self._HideOneKeySign = params.get("HideOneKeySign")
         self._FillType = params.get("FillType")
         self._FlowReadLimit = params.get("FlowReadLimit")
@@ -2351,6 +2363,7 @@ class ChannelCreateConvertTaskApiRequest(AbstractModel):
 <li>jpeg</li>
 <li>png</li>
 <li>bmp</li>
+<li>html</li>
 <li>txt</li></ul>
         :type ResourceType: str
         :param _ResourceName: 需要进行转换操作的文件资源名称，带资源后缀名。
@@ -6097,12 +6110,13 @@ class ChannelDeleteSealPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SealId: 指定印章ID
+        :param _SealId: 操作的印章ID
         :type SealId: str
-        :param _UserIds: 指定用户ID数组，电子签系统用户ID
-可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权取消。
+        :param _UserIds: 需要删除授权的用户ID数组，可以传入电子签系统用户ID或OpenId。
+注: 
+1. `填写OpenId时，系统会通过组织+渠道+OpenId查询得到对应的UserId进行授权取消操作`
         :type UserIds: list of str
         :param _Organization: 组织机构信息，不用传
         :type Organization: :class:`tencentcloud.essbasic.v20210526.models.OrganizationInfo`
@@ -6678,23 +6692,30 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _Limit: 返回最大数量，最大为100
         :type Limit: int
-        :param _Offset: 偏移量，默认为0，最大为20000
+        :param _Offset: 分页查询偏移量，默认为0，最大为20000
         :type Offset: int
-        :param _InfoType: 查询信息类型，为1时返回授权用户，为其他值时不返回
+        :param _InfoType: 查询信息类型
+支持的值如下：
+<ul><li>0-默认，不返回授权用户信息</li>
+<li>1-返回授权用户信息</li>
+</ul>
         :type InfoType: int
         :param _SealId: 印章id（没有输入返回所有）
+
+注:  `没有输入返回所有记录，最大返回100条。`
         :type SealId: str
-        :param _SealTypes: 印章类型列表（都是组织机构印章）。
-为空时查询所有类型的印章。
-目前支持以下类型：
-OFFICIAL：企业公章；
-CONTRACT：合同专用章；
-ORGANIZATION_SEAL：企业印章(图片上传创建)；
-LEGAL_PERSON_SEAL：法定代表人章
+        :param _SealTypes: 印章类型列表，目前支持传入以下类型：
+<ul><li>OFFICIAL-企业公章</li>
+<li>CONTRACT-合同专用章</li>
+<li>ORGANIZATION_SEAL-企业印章(图片上传创建)</li>
+<li>LEGAL_PERSON_SEAL-法定代表人章</li>
+</ul>
+
+注:  `为空时查询所有类型的印章。`
         :type SealTypes: list of str
         """
         self._Agent = None
@@ -6843,14 +6864,26 @@ class ChannelDescribeRolesRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Limit: 指定每页多少条数据，单页最大200
+        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
+
+注: `因为历史原因, 此字段为字符串类型`
         :type Limit: str
         :param _Filters: 查询的关键字段:
-Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
-Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
-Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
+Key:"**RoleType**",Values:["**1**"]查询系统角色，
+Key:"**RoleType**",Values:["**2**"]查询自定义角色
+Key:"**RoleStatus**",Values:["**1**"]查询启用角色
+Key:"**RoleStatus**",Values:["**2**"]查询禁用角色
+Key:"**IsReturnPermissionGroup**"，Values:["**0**"]表示接口不返回角色对应的权限树字段
+Key:"**IsReturnPermissionGroup**"，Values:["**1**"]表示接口返回角色对应的权限树字段
+
+注: `同名字的Key的过滤条件会冲突, 只能填写一个`
+
         :type Filters: list of Filter
-        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
+
+注：
+1.`offset从0开始，即第一页为0。`
+2.`默认从第一页返回。`
         :type Offset: int
         :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -6938,13 +6971,13 @@ class ChannelDescribeRolesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用，最大2000条。
         :type Offset: int
-        :param _Limit: 指定每页多少条数据，单页最大200
+        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用，单页最大200。
         :type Limit: int
         :param _TotalCount: 查询角色的总数量
         :type TotalCount: int
-        :param _ChannelRoles: 角色信息
+        :param _ChannelRoles: 查询的角色信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelRoles: list of ChannelRole
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7673,9 +7706,10 @@ class ChannelUpdateSealStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Status: 操作的印章状态，DISABLE-停用印章
+        :param _Status: 印章状态，目前支持传入以下类型：
+<ul><li>DISABLE-停用印章</li></ul>
         :type Status: str
         :param _SealId: 印章ID
         :type SealId: str

@@ -14433,7 +14433,7 @@ class ModifyBackupNameRequest(AbstractModel):
         :type InstanceId: str
         :param _BackupName: 修改的备份名称
         :type BackupName: str
-        :param _BackupId: 要修改名称的备份ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。
+        :param _BackupId: 备份ID 可通过 [DescribeBackups](https://cloud.tencent.com/document/product/238/19943)  接口获取。当GroupId为空时，BackupId必填。
         :type BackupId: int
         :param _GroupId: 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
  BackupId 和 GroupId 同时存在，按照BackupId进行修改。
@@ -14532,11 +14532,11 @@ class ModifyBackupStrategyRequest(AbstractModel):
         :type BackupTime: int
         :param _BackupDay: BackupType取值为daily时，表示备份间隔天数。当前取值只能为1
         :type BackupDay: int
-        :param _BackupModel: 备份模式，master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
+        :param _BackupModel: 备份模式（必填），master_pkg-主节点上打包备份文件；master_no_pkg-主节点单库备份文件；slave_pkg-从节点上打包备份文件；slave_no_pkg-从节点上单库备份文件，从节点上备份只有在always on容灾模式下支持。
         :type BackupModel: str
         :param _BackupCycle: BackupType取值为weekly时，表示每周的星期N做备份。（如果数据备份保留时间<7天，则取值[1,2,3,4,5,6,7]。如果数据备份保留时间>=7天，则备份周期取值至少是一周的任意2天）
         :type BackupCycle: list of int non-negative
-        :param _BackupSaveDays: 数据(日志)备份保留时间，取值[3-1830]天，默认7天
+        :param _BackupSaveDays: 数据(日志)备份保留天数（必填），取值[3-1830]天，默认7天
         :type BackupSaveDays: int
         :param _RegularBackupEnable: 定期备份状态 enable-开启，disable-关闭，默认关闭
         :type RegularBackupEnable: str
@@ -17852,11 +17852,11 @@ class RemoveBackupsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，形如mssql-j8kv137v
         :type InstanceId: str
-        :param _BackupNames: 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得。单次请求批量删除备份数不能超过10个。
+        :param _BackupNames: 待删除的备份名称，备份名称可通过DescribeBackups接口的FileName字段获得，单次请求批量删除备份数不能超过10个。当StartTime、EndTime为空时，此字段必填。
         :type BackupNames: list of str
-        :param _StartTime: 批量删除手动备份起始时间
+        :param _StartTime: 批量删除手动备份起始时间。当BackupNames为空时，此字段必填。
         :type StartTime: str
-        :param _EndTime: 批量删除手动备份截止时间
+        :param _EndTime: 批量删除手动备份截止时间。当BackupNames为空时，此字段必填。
         :type EndTime: str
         """
         self._InstanceId = None

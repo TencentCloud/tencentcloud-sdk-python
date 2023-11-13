@@ -9986,6 +9986,136 @@ class DescribeBinlogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterDatabasesRequest(AbstractModel):
+    """DescribeClusterDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Limit: 分页限制数量
+        :type Limit: int
+        """
+        self._ClusterId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterDatabasesResponse(AbstractModel):
+    """DescribeClusterDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Databases: 数据库列表
+        :type Databases: list of str
+        :param _Limit: 分页限制数
+        :type Limit: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Offset = None
+        self._Databases = None
+        self._Limit = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Databases(self):
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Databases = params.get("Databases")
+        self._Limit = params.get("Limit")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterDetailDatabasesRequest(AbstractModel):
     """DescribeClusterDetailDatabases请求参数结构体
 

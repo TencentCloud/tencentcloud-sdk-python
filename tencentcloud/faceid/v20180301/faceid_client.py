@@ -210,6 +210,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetectAIFakeFaces(self, request):
+        """提供对人脸图片/视频的AI合成、翻拍、水印等攻击痕迹的检测，增强图片/视频防伪能力
+
+        :param request: Request instance for DetectAIFakeFaces.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.DetectAIFakeFacesRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.DetectAIFakeFacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectAIFakeFaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectAIFakeFacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetectAuth(self, request):
         """每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 

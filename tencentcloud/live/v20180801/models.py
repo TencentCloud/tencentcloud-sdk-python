@@ -3041,6 +3041,8 @@ PullVodPushLive -点播。
         :type VodLocalMode: int
         :param _RecordTemplateId: 录制模板 ID。
         :type RecordTemplateId: str
+        :param _BackupToUrl: 新的目标地址，用于任务同时推两路场景。
+        :type BackupToUrl: str
         """
         self._SourceType = None
         self._SourceUrls = None
@@ -3064,6 +3066,7 @@ PullVodPushLive -点播。
         self._WatermarkList = None
         self._VodLocalMode = None
         self._RecordTemplateId = None
+        self._BackupToUrl = None
 
     @property
     def SourceType(self):
@@ -3241,6 +3244,14 @@ PullVodPushLive -点播。
     def RecordTemplateId(self, RecordTemplateId):
         self._RecordTemplateId = RecordTemplateId
 
+    @property
+    def BackupToUrl(self):
+        return self._BackupToUrl
+
+    @BackupToUrl.setter
+    def BackupToUrl(self, BackupToUrl):
+        self._BackupToUrl = BackupToUrl
+
 
     def _deserialize(self, params):
         self._SourceType = params.get("SourceType")
@@ -3270,6 +3281,7 @@ PullVodPushLive -点播。
                 self._WatermarkList.append(obj)
         self._VodLocalMode = params.get("VodLocalMode")
         self._RecordTemplateId = params.get("RecordTemplateId")
+        self._BackupToUrl = params.get("BackupToUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19358,6 +19370,9 @@ PullVodPushLive -点播。
 1 - 启用。
 注意：启用本地模式后，会将源列表中的 MP4 文件进行本地下载，优先使用本地已下载文件进行推流，提高点播源推流稳定性。使用本地下载文件推流时，会产生增值费用。
         :type VodLocalMode: int
+        :param _BackupToUrl: 新的目标地址。传空值，则取消该地址的推流。
+传入新值，则替换原有地址。
+        :type BackupToUrl: str
         """
         self._TaskId = None
         self._Operator = None
@@ -19378,6 +19393,7 @@ PullVodPushLive -点播。
         self._BackupSourceUrl = None
         self._WatermarkList = None
         self._VodLocalMode = None
+        self._BackupToUrl = None
 
     @property
     def TaskId(self):
@@ -19531,6 +19547,14 @@ PullVodPushLive -点播。
     def VodLocalMode(self, VodLocalMode):
         self._VodLocalMode = VodLocalMode
 
+    @property
+    def BackupToUrl(self):
+        return self._BackupToUrl
+
+    @BackupToUrl.setter
+    def BackupToUrl(self, BackupToUrl):
+        self._BackupToUrl = BackupToUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -19557,6 +19581,7 @@ PullVodPushLive -点播。
                 obj._deserialize(item)
                 self._WatermarkList.append(obj)
         self._VodLocalMode = params.get("VodLocalMode")
+        self._BackupToUrl = params.get("BackupToUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -923,6 +923,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterDatabases(self, request):
+        """获取database列表
+
+        :param request: Request instance for DescribeClusterDatabases.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabasesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterDetail(self, request):
         """该接口（DescribeClusterDetail）显示集群详情
 

@@ -194,6 +194,9 @@ INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = 'InvalidParameter.ErrInval
 # 修改源站操作不支持ELSE。
 INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidElseWhenModifyOriginActionConfigured'
 
+# 条件为空。
+INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
+
 # 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
 INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
 
@@ -211,6 +214,9 @@ INVALIDPARAMETER_INVALIDACCELERATETYPE = 'InvalidParameter.InvalidAccelerateType
 
 # 无效的token鉴权。
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
+
+# 无效的token鉴权过期时间。
+INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPEEXPIRETIME = 'InvalidParameter.InvalidAuthenticationTypeExpireTime'
 
 # 无效的token鉴权密钥。
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESECRETKEY = 'InvalidParameter.InvalidAuthenticationTypeSecretKey'
@@ -434,6 +440,9 @@ INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitEx
 # 实例名称重复。
 INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
 
+# 规则源站信息格式错误。
+INVALIDPARAMETER_RULEORIGINFORMATERROR = 'InvalidParameter.RuleOriginFormatError'
+
 # 规则源站不支持多域名。
 INVALIDPARAMETER_RULEORIGINMULTIDOMAIN = 'InvalidParameter.RuleOriginMultiDomain'
 
@@ -445,6 +454,12 @@ INVALIDPARAMETER_RULEORIGINVALUEERROR = 'InvalidParameter.RuleOriginValueError'
 
 # 规则端口重复。
 INVALIDPARAMETER_RULEPORTDUPLICATING = 'InvalidParameter.RulePortDuplicating'
+
+# 规则端口段错误。
+INVALIDPARAMETER_RULEPORTGROUP = 'InvalidParameter.RulePortGroup'
+
+# 规则端口必须为整数。
+INVALIDPARAMETER_RULEPORTINTEGER = 'InvalidParameter.RulePortInteger'
 
 # 参数错误
 INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
