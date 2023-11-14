@@ -861,10 +861,31 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCCRule(self, request):
-        """没有在使用。
+    def DescribeCCAutoStatus(self, request):
+        """Waf 斯巴达版本查询cc自动封堵状态
 
-        Waf  CC V2 Query接口
+        :param request: Request instance for DescribeCCAutoStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCAutoStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeCCAutoStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCCAutoStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCCAutoStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCCRule(self, request):
+        """Waf  CC V2 Query接口
 
         :param request: Request instance for DescribeCCRule.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCCRuleRequest`
@@ -2775,29 +2796,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyWafAutoDenyStatus(self, request):
-        """配置WAF自动封禁模块状态
-
-        :param request: Request instance for ModifyWafAutoDenyStatus.
-        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyWafAutoDenyStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyWafAutoDenyStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyWafAutoDenyStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyWafThreatenIntelligence(self, request):
         """配置WAF威胁情报封禁模块详情
 
@@ -2973,6 +2971,29 @@ class WafClient(AbstractClient):
             body = self.call("SwitchElasticMode", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchElasticModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpsertCCAutoStatus(self, request):
+        """Waf 斯巴达版本更新cc自动封堵状态
+
+        :param request: Request instance for UpsertCCAutoStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.UpsertCCAutoStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UpsertCCAutoStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpsertCCAutoStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpsertCCAutoStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1985,13 +1985,6 @@ class ApiPkg(AbstractModel):
         :param _BillingItem: 计费项
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingItem: str
-        :param _APICPWaf: 1 API安全6折
-注意：此字段可能返回 null，表示取不到有效值。
-        :type APICPWaf: int
-        :param _APINPWaf: 1 表示5折折扣
-2 表示4折折扣
-注意：此字段可能返回 null，表示取不到有效值。
-        :type APINPWaf: int
         :param _IsAPISecurityTrial: api安全7天试用标识。1试用。0没试用
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAPISecurityTrial: int
@@ -2005,8 +1998,6 @@ class ApiPkg(AbstractModel):
         self._UsedNum = None
         self._RenewFlag = None
         self._BillingItem = None
-        self._APICPWaf = None
-        self._APINPWaf = None
         self._IsAPISecurityTrial = None
 
     @property
@@ -2082,22 +2073,6 @@ class ApiPkg(AbstractModel):
         self._BillingItem = BillingItem
 
     @property
-    def APICPWaf(self):
-        return self._APICPWaf
-
-    @APICPWaf.setter
-    def APICPWaf(self, APICPWaf):
-        self._APICPWaf = APICPWaf
-
-    @property
-    def APINPWaf(self):
-        return self._APINPWaf
-
-    @APINPWaf.setter
-    def APINPWaf(self, APINPWaf):
-        self._APINPWaf = APINPWaf
-
-    @property
     def IsAPISecurityTrial(self):
         return self._IsAPISecurityTrial
 
@@ -2116,8 +2091,6 @@ class ApiPkg(AbstractModel):
         self._UsedNum = params.get("UsedNum")
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
-        self._APICPWaf = params.get("APICPWaf")
-        self._APINPWaf = params.get("APINPWaf")
         self._IsAPISecurityTrial = params.get("IsAPISecurityTrial")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3005,6 +2978,260 @@ class CCRuleItem(AbstractModel):
         self._Url = params.get("Url")
         self._ValidTime = params.get("ValidTime")
         self._OptionsArr = params.get("OptionsArr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCRuleItems(AbstractModel):
+    """CC规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名字
+        :type Name: str
+        :param _Status: 状态
+        :type Status: int
+        :param _Advance: 模式
+        :type Advance: int
+        :param _Limit: 限制
+        :type Limit: int
+        :param _Interval: 范围
+        :type Interval: int
+        :param _Url: 网址
+        :type Url: str
+        :param _MatchFunc: 匹配类型
+        :type MatchFunc: int
+        :param _ActionType: 动作
+        :type ActionType: int
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _ValidTime: 有效时间
+        :type ValidTime: int
+        :param _TsVersion: 版本
+        :type TsVersion: int
+        :param _Options: 规则详情
+        :type Options: str
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _EventId: 事件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param _SessionApplied: 关联的Session规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionApplied: list of int
+        """
+        self._Name = None
+        self._Status = None
+        self._Advance = None
+        self._Limit = None
+        self._Interval = None
+        self._Url = None
+        self._MatchFunc = None
+        self._ActionType = None
+        self._Priority = None
+        self._ValidTime = None
+        self._TsVersion = None
+        self._Options = None
+        self._RuleId = None
+        self._EventId = None
+        self._SessionApplied = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Advance(self):
+        return self._Advance
+
+    @Advance.setter
+    def Advance(self, Advance):
+        self._Advance = Advance
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MatchFunc(self):
+        return self._MatchFunc
+
+    @MatchFunc.setter
+    def MatchFunc(self, MatchFunc):
+        self._MatchFunc = MatchFunc
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ValidTime(self):
+        return self._ValidTime
+
+    @ValidTime.setter
+    def ValidTime(self, ValidTime):
+        self._ValidTime = ValidTime
+
+    @property
+    def TsVersion(self):
+        return self._TsVersion
+
+    @TsVersion.setter
+    def TsVersion(self, TsVersion):
+        self._TsVersion = TsVersion
+
+    @property
+    def Options(self):
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def SessionApplied(self):
+        return self._SessionApplied
+
+    @SessionApplied.setter
+    def SessionApplied(self, SessionApplied):
+        self._SessionApplied = SessionApplied
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Advance = params.get("Advance")
+        self._Limit = params.get("Limit")
+        self._Interval = params.get("Interval")
+        self._Url = params.get("Url")
+        self._MatchFunc = params.get("MatchFunc")
+        self._ActionType = params.get("ActionType")
+        self._Priority = params.get("Priority")
+        self._ValidTime = params.get("ValidTime")
+        self._TsVersion = params.get("TsVersion")
+        self._Options = params.get("Options")
+        self._RuleId = params.get("RuleId")
+        self._EventId = params.get("EventId")
+        self._SessionApplied = params.get("SessionApplied")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CCRuleLists(AbstractModel):
+    """CC规则总览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Res: 规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Res: list of CCRuleItems
+        """
+        self._TotalCount = None
+        self._Res = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Res(self):
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Res") is not None:
+            self._Res = []
+            for item in params.get("Res"):
+                obj = CCRuleItems()
+                obj._deserialize(item)
+                self._Res.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7405,6 +7632,76 @@ class DescribeBatchIpAccessControlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCCAutoStatusRequest(AbstractModel):
+    """DescribeCCAutoStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCCAutoStatusResponse(AbstractModel):
+    """DescribeCCAutoStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoCCSwitch: 配置状态
+        :type AutoCCSwitch: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AutoCCSwitch = None
+        self._RequestId = None
+
+    @property
+    def AutoCCSwitch(self):
+        return self._AutoCCSwitch
+
+    @AutoCCSwitch.setter
+    def AutoCCSwitch(self, AutoCCSwitch):
+        self._AutoCCSwitch = AutoCCSwitch
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AutoCCSwitch = params.get("AutoCCSwitch")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCCRuleListRequest(AbstractModel):
     """DescribeCCRuleList请求参数结构体
 
@@ -7510,10 +7807,22 @@ class DescribeCCRuleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: 查询到的CC规则的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.waf.v20180125.models.CCRuleLists`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -7525,6 +7834,9 @@ class DescribeCCRuleListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CCRuleLists()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -21086,80 +21398,6 @@ class ModifyWafAutoDenyRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyWafAutoDenyStatusRequest(AbstractModel):
-    """ModifyWafAutoDenyStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _WafAutoDenyDetails: WAF 自动封禁配置项
-        :type WafAutoDenyDetails: :class:`tencentcloud.waf.v20180125.models.AutoDenyDetail`
-        """
-        self._WafAutoDenyDetails = None
-
-    @property
-    def WafAutoDenyDetails(self):
-        return self._WafAutoDenyDetails
-
-    @WafAutoDenyDetails.setter
-    def WafAutoDenyDetails(self, WafAutoDenyDetails):
-        self._WafAutoDenyDetails = WafAutoDenyDetails
-
-
-    def _deserialize(self, params):
-        if params.get("WafAutoDenyDetails") is not None:
-            self._WafAutoDenyDetails = AutoDenyDetail()
-            self._WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyWafAutoDenyStatusResponse(AbstractModel):
-    """ModifyWafAutoDenyStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _WafAutoDenyDetails: WAF 自动封禁配置项
-        :type WafAutoDenyDetails: :class:`tencentcloud.waf.v20180125.models.AutoDenyDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._WafAutoDenyDetails = None
-        self._RequestId = None
-
-    @property
-    def WafAutoDenyDetails(self):
-        return self._WafAutoDenyDetails
-
-    @WafAutoDenyDetails.setter
-    def WafAutoDenyDetails(self, WafAutoDenyDetails):
-        self._WafAutoDenyDetails = WafAutoDenyDetails
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("WafAutoDenyDetails") is not None:
-            self._WafAutoDenyDetails = AutoDenyDetail()
-            self._WafAutoDenyDetails._deserialize(params.get("WafAutoDenyDetails"))
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyWafThreatenIntelligenceRequest(AbstractModel):
     """ModifyWafThreatenIntelligence请求参数结构体
 
@@ -23776,6 +24014,101 @@ class TargetEntity(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpsertCCAutoStatusRequest(AbstractModel):
+    """UpsertCCAutoStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _Value: 状态值
+        :type Value: int
+        :param _Edition: 版本：clb-waf, spart-waf
+        :type Edition: str
+        """
+        self._Domain = None
+        self._Value = None
+        self._Edition = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Edition(self):
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Value = params.get("Value")
+        self._Edition = params.get("Edition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpsertCCAutoStatusResponse(AbstractModel):
+    """UpsertCCAutoStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 正常情况为null
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
 
 
 class UpsertCCRuleRequest(AbstractModel):
