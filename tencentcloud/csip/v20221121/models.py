@@ -9733,10 +9733,10 @@ class ScanTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务日志Id
+        :param _TaskId: 任务Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务日志名称
+        :param _TaskName: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
         :param _Status: 任务状态码：1等待开始  2正在扫描  3扫描出错 4扫描完成
@@ -9745,13 +9745,13 @@ class ScanTaskInfo(AbstractModel):
         :param _Progress: 任务进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: int
-        :param _TaskTime: 对应的展示时间
+        :param _TaskTime: 任务完成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTime: str
-        :param _ReportId: 报表id
+        :param _ReportId: 报告ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportId: str
-        :param _ReportName: 报表名称
+        :param _ReportName: 报告名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportName: str
         :param _ScanPlan: 扫描计划，0-周期任务,1-立即扫描,2-定时扫描,3-自定义
@@ -11343,7 +11343,7 @@ class TaskAssetObject(AbstractModel):
         :param _AssetName: 资产名
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
-        :param _InstanceType: 	资产类型
+        :param _InstanceType: 资产类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _AssetType: 资产分类
@@ -11629,7 +11629,7 @@ class TaskLogInfo(AbstractModel):
         :param _RiskNumber: 安全风险数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskNumber: int
-        :param _Time: 报告生成时间,任务结束时间
+        :param _Time: 报告生成时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type Time: str
         :param _Status: 任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
@@ -12101,11 +12101,11 @@ class VULViewVULRisk(AbstractModel):
         :type RecentTime: str
         :param _FirstTime: 首次识别时间
         :type FirstTime: str
-        :param _AffectAssetCount: 状态，0未处理、1已处置、2已忽略
+        :param _AffectAssetCount: 影响资产数量
         :type AffectAssetCount: int
-        :param _Id: 资产唯一id
+        :param _Id: 风险ID
         :type Id: str
-        :param _From: 资产子类型
+        :param _From: 扫描来源，具体看接口返回枚举类型
         :type From: str
         :param _Index: 前端索引
         :type Index: str
@@ -12117,15 +12117,15 @@ class VULViewVULRisk(AbstractModel):
         :type CVE: str
         :param _Describe: 描述
         :type Describe: str
-        :param _Payload: 负载
+        :param _Payload: 漏洞payload
         :type Payload: str
-        :param _AppName: 版本名
+        :param _AppName: 漏洞影响组件
         :type AppName: str
-        :param _References: 相关引用
+        :param _References: 技术参考
         :type References: str
-        :param _AppVersion: 版本
+        :param _AppVersion: 漏洞影响版本
         :type AppVersion: str
-        :param _VULURL: 漏洞链接
+        :param _VULURL: 风险点
         :type VULURL: str
         :param _Nick: 用户昵称
 注意：此字段可能返回 null，表示取不到有效值。

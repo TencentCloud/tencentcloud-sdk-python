@@ -6721,12 +6721,17 @@ Config = {"CropIdCard":true,"CropPortrait":true}
         :type Config: str
         :param _EnableRecognitionRectify: 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
         :type EnableRecognitionRectify: bool
+        :param _EnableReflectDetail: 默认值为false。
+
+此开关需要在反光检测开关开启下才会生效（即此开关生效的前提是config入参里的"ReflectWarn":true），若EnableReflectDetail设置为true，则会返回反光点覆盖区域详情。反光点覆盖区域详情分为四部分：人像照片位置、国徽位置、识别字段位置、其他位置。一个反光点允许覆盖多个区域，且一张图片可能存在多个反光点。
+        :type EnableReflectDetail: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._CardSide = None
         self._Config = None
         self._EnableRecognitionRectify = None
+        self._EnableReflectDetail = None
 
     @property
     def ImageBase64(self):
@@ -6768,6 +6773,14 @@ Config = {"CropIdCard":true,"CropPortrait":true}
     def EnableRecognitionRectify(self, EnableRecognitionRectify):
         self._EnableRecognitionRectify = EnableRecognitionRectify
 
+    @property
+    def EnableReflectDetail(self):
+        return self._EnableReflectDetail
+
+    @EnableReflectDetail.setter
+    def EnableReflectDetail(self, EnableReflectDetail):
+        self._EnableReflectDetail = EnableReflectDetail
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -6775,6 +6788,7 @@ Config = {"CropIdCard":true,"CropPortrait":true}
         self._CardSide = params.get("CardSide")
         self._Config = params.get("Config")
         self._EnableRecognitionRectify = params.get("EnableRecognitionRectify")
+        self._EnableReflectDetail = params.get("EnableReflectDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6825,6 +6839,8 @@ WarnInfos，告警信息，Code 告警码列表和释义：
 -9106	身份证疑似存在PS痕迹告警，
 -9107       身份证反光告警。
         :type AdvancedInfo: str
+        :param _ReflectDetailInfos: 反光点覆盖区域详情结果，具体内容请点击左侧链接
+        :type ReflectDetailInfos: list of ReflectDetailInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6837,6 +6853,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         self._Authority = None
         self._ValidDate = None
         self._AdvancedInfo = None
+        self._ReflectDetailInfos = None
         self._RequestId = None
 
     @property
@@ -6912,6 +6929,14 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         self._AdvancedInfo = AdvancedInfo
 
     @property
+    def ReflectDetailInfos(self):
+        return self._ReflectDetailInfos
+
+    @ReflectDetailInfos.setter
+    def ReflectDetailInfos(self, ReflectDetailInfos):
+        self._ReflectDetailInfos = ReflectDetailInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6930,6 +6955,12 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         self._Authority = params.get("Authority")
         self._ValidDate = params.get("ValidDate")
         self._AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("ReflectDetailInfos") is not None:
+            self._ReflectDetailInfos = []
+            for item in params.get("ReflectDetailInfos"):
+                obj = ReflectDetailInfo()
+                obj._deserialize(item)
+                self._ReflectDetailInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16247,6 +16278,42 @@ class Rect(AbstractModel):
         self._Y = params.get("Y")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReflectDetailInfo(AbstractModel):
+    """反光点覆盖区域详情结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Position: NationalEmblem 国徽位置
+Portrait 人像照片位置
+RecognitionField 识别字段位置
+Others 其他位置
+        :type Position: str
+        """
+        self._Position = None
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+
+    def _deserialize(self, params):
+        self._Position = params.get("Position")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

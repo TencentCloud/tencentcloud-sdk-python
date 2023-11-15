@@ -1402,7 +1402,7 @@ class EssClient(AbstractClient):
         - 发起方和签署方的填写控件 Components
         - 签署方的签署控件 SignComponents
 
-        ![image](https://dyn.ess.tencent.cn/guide/capi/channel_DescribeTemplates.png)
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 
         模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
         ![image](https://qcloudimg.tencent-cloud.cn/raw/45c638bd93f9c8024763add9ab47c27f.png)

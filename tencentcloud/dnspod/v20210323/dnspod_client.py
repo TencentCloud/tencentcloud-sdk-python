@@ -464,7 +464,7 @@ class DnspodClient(AbstractClient):
 
 
     def DeleteShareDomain(self, request):
-        """删除域名共享
+        """按账号删除域名共享
 
         :param request: Request instance for DeleteShareDomain.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DeleteShareDomainRequest`

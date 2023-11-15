@@ -47,3 +47,26 @@ class HaiClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateInstances(self, request):
+        """本接口 (TerminateInstances) 用于主动退还实例。
+
+        :param request: Request instance for TerminateInstances.
+        :type request: :class:`tencentcloud.hai.v20230812.models.TerminateInstancesRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.TerminateInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

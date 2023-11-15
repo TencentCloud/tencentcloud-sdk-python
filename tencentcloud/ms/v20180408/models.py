@@ -5100,6 +5100,15 @@ class PlanInfo(AbstractModel):
         :type AntiScreenshot: int
         :param _AntiSSL: SSL证书防窃取，0关闭，1开启
         :type AntiSSL: int
+        :param _SetFile: Dex分离，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetFile: str
+        :param _FileSign: Dex签名校验，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSign: str
+        :param _AntiRoot: root检测，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AntiRoot: str
         """
         self._ApkSizeOpt = None
         self._Dex = None
@@ -5117,6 +5126,9 @@ class PlanInfo(AbstractModel):
         self._AntiAssets = None
         self._AntiScreenshot = None
         self._AntiSSL = None
+        self._SetFile = None
+        self._FileSign = None
+        self._AntiRoot = None
 
     @property
     def ApkSizeOpt(self):
@@ -5160,10 +5172,14 @@ class PlanInfo(AbstractModel):
 
     @property
     def SeperateDex(self):
+        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
+
         return self._SeperateDex
 
     @SeperateDex.setter
     def SeperateDex(self, SeperateDex):
+        warnings.warn("parameter `SeperateDex` is deprecated", DeprecationWarning) 
+
         self._SeperateDex = SeperateDex
 
     @property
@@ -5176,10 +5192,14 @@ class PlanInfo(AbstractModel):
 
     @property
     def DexSig(self):
+        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
+
         return self._DexSig
 
     @DexSig.setter
     def DexSig(self, DexSig):
+        warnings.warn("parameter `DexSig` is deprecated", DeprecationWarning) 
+
         self._DexSig = DexSig
 
     @property
@@ -5216,10 +5236,14 @@ class PlanInfo(AbstractModel):
 
     @property
     def AntiQemuRoot(self):
+        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
+
         return self._AntiQemuRoot
 
     @AntiQemuRoot.setter
     def AntiQemuRoot(self, AntiQemuRoot):
+        warnings.warn("parameter `AntiQemuRoot` is deprecated", DeprecationWarning) 
+
         self._AntiQemuRoot = AntiQemuRoot
 
     @property
@@ -5246,6 +5270,30 @@ class PlanInfo(AbstractModel):
     def AntiSSL(self, AntiSSL):
         self._AntiSSL = AntiSSL
 
+    @property
+    def SetFile(self):
+        return self._SetFile
+
+    @SetFile.setter
+    def SetFile(self, SetFile):
+        self._SetFile = SetFile
+
+    @property
+    def FileSign(self):
+        return self._FileSign
+
+    @FileSign.setter
+    def FileSign(self, FileSign):
+        self._FileSign = FileSign
+
+    @property
+    def AntiRoot(self):
+        return self._AntiRoot
+
+    @AntiRoot.setter
+    def AntiRoot(self, AntiRoot):
+        self._AntiRoot = AntiRoot
+
 
     def _deserialize(self, params):
         self._ApkSizeOpt = params.get("ApkSizeOpt")
@@ -5266,6 +5314,9 @@ class PlanInfo(AbstractModel):
         self._AntiAssets = params.get("AntiAssets")
         self._AntiScreenshot = params.get("AntiScreenshot")
         self._AntiSSL = params.get("AntiSSL")
+        self._SetFile = params.get("SetFile")
+        self._FileSign = params.get("FileSign")
+        self._AntiRoot = params.get("AntiRoot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

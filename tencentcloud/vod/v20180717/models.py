@@ -40120,10 +40120,14 @@ class OutputAudioStream(AbstractModel):
 <li>2：双声道</li>
 默认值：2。
         :type AudioChannel: int
+        :param _Bitrate: 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+当取值为 0，将自动设置音频码率。
+        :type Bitrate: int
         """
         self._Codec = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -40149,11 +40153,20 @@ class OutputAudioStream(AbstractModel):
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

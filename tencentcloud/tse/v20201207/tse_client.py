@@ -693,6 +693,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudNativeAPIGatewayUpstream(self, request):
+        """获取云原生网关服务详情下的Upstream列表
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayUpstream.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayUpstreamRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayUpstreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayUpstream", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayUpstreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGateways(self, request):
         """获取云原生API网关实例列表
 
@@ -845,6 +868,29 @@ class TseClient(AbstractClient):
             body = self.call("DescribeSREInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSREInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpstreamHealthCheckConfig(self, request):
+        """获取云原生网关服务健康检查配置
+
+        :param request: Request instance for DescribeUpstreamHealthCheckConfig.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeUpstreamHealthCheckConfigRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeUpstreamHealthCheckConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpstreamHealthCheckConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpstreamHealthCheckConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1084,6 +1130,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUpstreamNodeStatus(self, request):
+        """修改云原生网关上游实例节点健康状态
+
+        :param request: Request instance for ModifyUpstreamNodeStatus.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyUpstreamNodeStatusRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyUpstreamNodeStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUpstreamNodeStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUpstreamNodeStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateCloudNativeAPIGatewayCertificateInfo(self, request):
         """修改云原生网关证书信息
 
@@ -1144,6 +1213,29 @@ class TseClient(AbstractClient):
             body = self.call("UpdateEngineInternetAccess", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateEngineInternetAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUpstreamHealthCheckConfig(self, request):
+        """更新云原生网关健康检查配置
+
+        :param request: Request instance for UpdateUpstreamHealthCheckConfig.
+        :type request: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamHealthCheckConfigRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.UpdateUpstreamHealthCheckConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUpstreamHealthCheckConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUpstreamHealthCheckConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -594,6 +594,8 @@ class DescribeFraudUltimateResponse(AbstractModel):
         :type SceneRiskInfos: list of RiskInfo
         :param _SuggestionLevel: 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
         :type SuggestionLevel: int
+        :param _Unionid: 图灵盾统一ID
+        :type Unionid: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -611,6 +613,7 @@ class DescribeFraudUltimateResponse(AbstractModel):
         self._Openid = None
         self._SceneRiskInfos = None
         self._SuggestionLevel = None
+        self._Unionid = None
         self._RequestId = None
 
     @property
@@ -726,6 +729,14 @@ class DescribeFraudUltimateResponse(AbstractModel):
         self._SuggestionLevel = SuggestionLevel
 
     @property
+    def Unionid(self):
+        return self._Unionid
+
+    @Unionid.setter
+    def Unionid(self, Unionid):
+        self._Unionid = Unionid
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -764,6 +775,7 @@ class DescribeFraudUltimateResponse(AbstractModel):
                 obj._deserialize(item)
                 self._SceneRiskInfos.append(obj)
         self._SuggestionLevel = params.get("SuggestionLevel")
+        self._Unionid = params.get("Unionid")
         self._RequestId = params.get("RequestId")
 
 

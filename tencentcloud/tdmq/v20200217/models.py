@@ -5596,6 +5596,88 @@ class DeleteEnvironmentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteProClustersRequest(AbstractModel):
+    """DeleteProClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群Id列表
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProClustersResponse(AbstractModel):
+    """DeleteProClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: 退还实例订单号
+        :type DealNames: list of str
+        :param _ClusterIds: 集群ID
+        :type ClusterIds: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealNames = None
+        self._ClusterIds = None
+        self._RequestId = None
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
+        self._ClusterIds = params.get("ClusterIds")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRabbitMQUserRequest(AbstractModel):
     """DeleteRabbitMQUser请求参数结构体
 

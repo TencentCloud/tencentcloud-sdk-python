@@ -118,29 +118,6 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeAssetsMappingList(self, request):
-        """资产测绘-测绘列表
-
-        :param request: Request instance for DescribeAssetsMappingList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetsMappingListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeAssetsMappingListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeAssetsMappingList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeAssetsMappingListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeCheckConfigAssetList(self, request):
         """云安全配置管理资产组列表
 
@@ -371,29 +348,6 @@ class SsaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeSafetyEventList(self, request):
-        """获取安全事件列表
-
-        :param request: Request instance for DescribeSafetyEventList.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.DescribeSafetyEventListRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.DescribeSafetyEventListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeSafetyEventList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeSafetyEventListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeSocAlertDetails(self, request):
         """返回告警详情
 
@@ -546,29 +500,6 @@ class SsaClient(AbstractClient):
             body = self.call("DescribeVulList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVulListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SaDivulgeDataQueryPub(self, request):
-        """查询【通用字段】【泄露监测数据列表】
-
-        :param request: Request instance for SaDivulgeDataQueryPub.
-        :type request: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubRequest`
-        :rtype: :class:`tencentcloud.ssa.v20180608.models.SaDivulgeDataQueryPubResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SaDivulgeDataQueryPub", params, headers=headers)
-            response = json.loads(body)
-            model = models.SaDivulgeDataQueryPubResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -6930,6 +6930,12 @@ class DataEngineInfo(AbstractModel):
         :param _AutoAuthorization: 自动授权开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoAuthorization: bool
+        :param _EngineGeneration: 引擎版本，支持Native/SuperSQL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineGeneration: str
+        :param _EngineTypeDetail: 引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineTypeDetail: str
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -6977,6 +6983,8 @@ class DataEngineInfo(AbstractModel):
         self._UserUin = None
         self._SessionResourceTemplate = None
         self._AutoAuthorization = None
+        self._EngineGeneration = None
+        self._EngineTypeDetail = None
 
     @property
     def DataEngineName(self):
@@ -7346,6 +7354,22 @@ class DataEngineInfo(AbstractModel):
     def AutoAuthorization(self, AutoAuthorization):
         self._AutoAuthorization = AutoAuthorization
 
+    @property
+    def EngineGeneration(self):
+        return self._EngineGeneration
+
+    @EngineGeneration.setter
+    def EngineGeneration(self, EngineGeneration):
+        self._EngineGeneration = EngineGeneration
+
+    @property
+    def EngineTypeDetail(self):
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -7408,6 +7432,8 @@ class DataEngineInfo(AbstractModel):
             self._SessionResourceTemplate = SessionResourceTemplate()
             self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
         self._AutoAuthorization = params.get("AutoAuthorization")
+        self._EngineGeneration = params.get("EngineGeneration")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

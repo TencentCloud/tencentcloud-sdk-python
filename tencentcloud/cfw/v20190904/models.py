@@ -1686,12 +1686,16 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
         :type IpString: str
         :param _Type: 1 ip模板
 5 域名模板
+6 协议端口模板
         :type Type: int
+        :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议，Type=6时必填
+        :type ProtocolType: str
         """
         self._Name = None
         self._Detail = None
         self._IpString = None
         self._Type = None
+        self._ProtocolType = None
 
     @property
     def Name(self):
@@ -1725,12 +1729,21 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ProtocolType(self):
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Detail = params.get("Detail")
         self._IpString = params.get("IpString")
         self._Type = params.get("Type")
+        self._ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5229,6 +5242,10 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         :type SearchValue: str
         :param _Uuid: 检索地址模板唯一id
         :type Uuid: str
+        :param _TemplateType: 1：ip模板，5：域名模板，6：协议端口模板
+        :type TemplateType: str
+        :param _TemplateId: 模板Id
+        :type TemplateId: str
         """
         self._Offset = None
         self._Limit = None
@@ -5236,6 +5253,8 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         self._Order = None
         self._SearchValue = None
         self._Uuid = None
+        self._TemplateType = None
+        self._TemplateId = None
 
     @property
     def Offset(self):
@@ -5285,6 +5304,22 @@ class DescribeAddressTemplateListRequest(AbstractModel):
     def Uuid(self, Uuid):
         self._Uuid = Uuid
 
+    @property
+    def TemplateType(self):
+        return self._TemplateType
+
+    @TemplateType.setter
+    def TemplateType(self, TemplateType):
+        self._TemplateType = TemplateType
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -5293,6 +5328,8 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         self._Order = params.get("Order")
         self._SearchValue = params.get("SearchValue")
         self._Uuid = params.get("Uuid")
+        self._TemplateType = params.get("TemplateType")
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5316,12 +5353,21 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         :type Data: list of TemplateListInfo
         :param _NameList: 模板名称列表
         :type NameList: list of str
+        :param _IpTemplateCount: Ip地址模板数量
+        :type IpTemplateCount: int
+        :param _DomainTemplateCount: 域名地址模板数量
+        :type DomainTemplateCount: int
+        :param _PortTemplateCount: 协议端口模板数量
+        :type PortTemplateCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
         self._Data = None
         self._NameList = None
+        self._IpTemplateCount = None
+        self._DomainTemplateCount = None
+        self._PortTemplateCount = None
         self._RequestId = None
 
     @property
@@ -5349,6 +5395,30 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._NameList = NameList
 
     @property
+    def IpTemplateCount(self):
+        return self._IpTemplateCount
+
+    @IpTemplateCount.setter
+    def IpTemplateCount(self, IpTemplateCount):
+        self._IpTemplateCount = IpTemplateCount
+
+    @property
+    def DomainTemplateCount(self):
+        return self._DomainTemplateCount
+
+    @DomainTemplateCount.setter
+    def DomainTemplateCount(self, DomainTemplateCount):
+        self._DomainTemplateCount = DomainTemplateCount
+
+    @property
+    def PortTemplateCount(self):
+        return self._PortTemplateCount
+
+    @PortTemplateCount.setter
+    def PortTemplateCount(self, PortTemplateCount):
+        self._PortTemplateCount = PortTemplateCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5366,6 +5436,9 @@ class DescribeAddressTemplateListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._NameList = params.get("NameList")
+        self._IpTemplateCount = params.get("IpTemplateCount")
+        self._DomainTemplateCount = params.get("DomainTemplateCount")
+        self._PortTemplateCount = params.get("PortTemplateCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9972,6 +10045,9 @@ class EdgeIpInfo(AbstractModel):
         :param _SwitchWeight: 开关权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchWeight: int
+        :param _Domain: 域名化CLB的域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
         """
         self._PublicIp = None
         self._PublicIpType = None
@@ -9994,6 +10070,7 @@ class EdgeIpInfo(AbstractModel):
         self._EndpointIp = None
         self._SwitchMode = None
         self._SwitchWeight = None
+        self._Domain = None
 
     @property
     def PublicIp(self):
@@ -10163,6 +10240,14 @@ class EdgeIpInfo(AbstractModel):
     def SwitchWeight(self, SwitchWeight):
         self._SwitchWeight = SwitchWeight
 
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
 
     def _deserialize(self, params):
         self._PublicIp = params.get("PublicIp")
@@ -10186,6 +10271,7 @@ class EdgeIpInfo(AbstractModel):
         self._EndpointIp = params.get("EndpointIp")
         self._SwitchMode = params.get("SwitchMode")
         self._SwitchWeight = params.get("SwitchWeight")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11621,12 +11707,15 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
         :param _Type: 1 ip模板
 5 域名模板
         :type Type: int
+        :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议。Type=6时必填。
+        :type ProtocolType: str
         """
         self._Uuid = None
         self._Name = None
         self._Detail = None
         self._IpString = None
         self._Type = None
+        self._ProtocolType = None
 
     @property
     def Uuid(self):
@@ -11668,6 +11757,14 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ProtocolType(self):
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
@@ -11675,6 +11772,7 @@ Type为5，域名模板eg：www.qq.com,www.tencent.com
         self._Detail = params.get("Detail")
         self._IpString = params.get("IpString")
         self._Type = params.get("Type")
+        self._ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18282,6 +18380,12 @@ class TemplateListInfo(AbstractModel):
         :param _RulesNum: 关联规则条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RulesNum: int
+        :param _TemplateId: 模板Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolType: str
         """
         self._Uuid = None
         self._Name = None
@@ -18291,6 +18395,8 @@ class TemplateListInfo(AbstractModel):
         self._UpdateTime = None
         self._Type = None
         self._RulesNum = None
+        self._TemplateId = None
+        self._ProtocolType = None
 
     @property
     def Uuid(self):
@@ -18356,6 +18462,22 @@ class TemplateListInfo(AbstractModel):
     def RulesNum(self, RulesNum):
         self._RulesNum = RulesNum
 
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ProtocolType(self):
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
@@ -18366,6 +18488,8 @@ class TemplateListInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Type = params.get("Type")
         self._RulesNum = params.get("RulesNum")
+        self._TemplateId = params.get("TemplateId")
+        self._ProtocolType = params.get("ProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

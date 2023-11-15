@@ -6057,6 +6057,90 @@ class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayUpstreamRequest(AbstractModel):
+    """DescribeCloudNativeAPIGatewayUpstream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _ServiceName: 服务名字
+        :type ServiceName: str
+        """
+        self._GatewayId = None
+        self._ServiceName = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayUpstreamResponse(AbstractModel):
+    """DescribeCloudNativeAPIGatewayUpstream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongUpstreamList`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongUpstreamList()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewaysRequest(AbstractModel):
     """DescribeCloudNativeAPIGateways请求参数结构体
 
@@ -7152,6 +7236,91 @@ class DescribeSREInstancesResponse(AbstractModel):
                 obj = SREInstance()
                 obj._deserialize(item)
                 self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUpstreamHealthCheckConfigRequest(AbstractModel):
+    """DescribeUpstreamHealthCheckConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 网关服务名称
+        :type Name: str
+        """
+        self._GatewayId = None
+        self._Name = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpstreamHealthCheckConfigResponse(AbstractModel):
+    """DescribeUpstreamHealthCheckConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.UpstreamHealthCheckConfig`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = UpstreamHealthCheckConfig()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8331,6 +8500,66 @@ class KVPair(AbstractModel):
         
 
 
+class KongActiveHealthCheck(AbstractModel):
+    """Kong网关主动健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthyInterval: 主动健康检查健康探测间隔，单位：秒，0表示不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyInterval: int
+        :param _UnHealthyInterval: 主动健康检查异常探测间隔，单位：秒，0表示不开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnHealthyInterval: int
+        :param _HttpPath: 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HttpPath: str
+        """
+        self._HealthyInterval = None
+        self._UnHealthyInterval = None
+        self._HttpPath = None
+
+    @property
+    def HealthyInterval(self):
+        return self._HealthyInterval
+
+    @HealthyInterval.setter
+    def HealthyInterval(self, HealthyInterval):
+        self._HealthyInterval = HealthyInterval
+
+    @property
+    def UnHealthyInterval(self):
+        return self._UnHealthyInterval
+
+    @UnHealthyInterval.setter
+    def UnHealthyInterval(self, UnHealthyInterval):
+        self._UnHealthyInterval = UnHealthyInterval
+
+    @property
+    def HttpPath(self):
+        return self._HttpPath
+
+    @HttpPath.setter
+    def HttpPath(self, HttpPath):
+        self._HttpPath = HttpPath
+
+
+    def _deserialize(self, params):
+        self._HealthyInterval = params.get("HealthyInterval")
+        self._UnHealthyInterval = params.get("UnHealthyInterval")
+        self._HttpPath = params.get("HttpPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KongCertificate(AbstractModel):
     """云原生网关证书
 
@@ -8592,6 +8821,40 @@ class KongCertificatesPreview(AbstractModel):
         self._IssueTime = params.get("IssueTime")
         self._CertSource = params.get("CertSource")
         self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongPassiveHealthCheck(AbstractModel):
+    """Kong网关被动健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 后端target协议类型，被动健康检查支持http和tcp，主动健康检查支持http
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9599,6 +9862,110 @@ class KongUpstreamInfo(AbstractModel):
         self._SourceName = params.get("SourceName")
         self._RealSourceType = params.get("RealSourceType")
         self._HealthStatus = params.get("HealthStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUpstreamList(AbstractModel):
+    """kong后端upstream列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpstreamList: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamList: list of KongUpstreamPreview
+        """
+        self._UpstreamList = None
+
+    @property
+    def UpstreamList(self):
+        return self._UpstreamList
+
+    @UpstreamList.setter
+    def UpstreamList(self, UpstreamList):
+        self._UpstreamList = UpstreamList
+
+
+    def _deserialize(self, params):
+        if params.get("UpstreamList") is not None:
+            self._UpstreamList = []
+            for item in params.get("UpstreamList"):
+                obj = KongUpstreamPreview()
+                obj._deserialize(item)
+                self._UpstreamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUpstreamPreview(AbstractModel):
+    """云原生网关Upstream信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 服务名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Target: 后端配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Target: list of KongTarget
+        """
+        self._ID = None
+        self._Name = None
+        self._Target = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Target(self):
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        if params.get("Target") is not None:
+            self._Target = []
+            for item in params.get("Target"):
+                obj = KongTarget()
+                obj._deserialize(item)
+                self._Target.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10725,6 +11092,125 @@ class ModifyNativeGatewayServerGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUpstreamNodeStatusRequest(AbstractModel):
+    """ModifyUpstreamNodeStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例ID
+        :type GatewayId: str
+        :param _ServiceName: 服务名称
+        :type ServiceName: str
+        :param _Host: 访问IP地址或域名
+        :type Host: str
+        :param _Port: 访问端口
+        :type Port: int
+        :param _Status: HEALTHY或UNHEALTHY
+        :type Status: str
+        """
+        self._GatewayId = None
+        self._ServiceName = None
+        self._Host = None
+        self._Port = None
+        self._Status = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServiceName = params.get("ServiceName")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUpstreamNodeStatusResponse(AbstractModel):
+    """ModifyUpstreamNodeStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -12404,6 +12890,103 @@ class UpdateEngineInternetAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateUpstreamHealthCheckConfigRequest(AbstractModel):
+    """UpdateUpstreamHealthCheckConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Name: 网关服务名称
+        :type Name: str
+        :param _HealthCheckConfig: 健康检查配置
+        :type HealthCheckConfig: :class:`tencentcloud.tse.v20201207.models.UpstreamHealthCheckConfig`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._HealthCheckConfig = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def HealthCheckConfig(self):
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = UpstreamHealthCheckConfig()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUpstreamHealthCheckConfigResponse(AbstractModel):
+    """UpdateUpstreamHealthCheckConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateUpstreamTargetsRequest(AbstractModel):
     """UpdateUpstreamTargets请求参数结构体
 
@@ -12502,6 +13085,148 @@ class UpdateUpstreamTargetsResponse(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
+
+
+class UpstreamHealthCheckConfig(AbstractModel):
+    """云原生网关健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableActiveHealthCheck: 开启主动健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableActiveHealthCheck: bool
+        :param _ActiveHealthCheck: 主动健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveHealthCheck: :class:`tencentcloud.tse.v20201207.models.KongActiveHealthCheck`
+        :param _EnablePassiveHealthCheck: 开启被动健康检查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnablePassiveHealthCheck: bool
+        :param _PassiveHealthCheck: 被动健康检查配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassiveHealthCheck: :class:`tencentcloud.tse.v20201207.models.KongPassiveHealthCheck`
+        :param _Successes: 连续健康阈值，单位：次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Successes: int
+        :param _Failures: 连续异常阈值，单位：次	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Failures: int
+        :param _Timeouts: 超时阈值，单位：次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeouts: int
+        :param _HealthyHttpStatuses: 健康HTTP状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyHttpStatuses: list of int non-negative
+        :param _UnhealthyHttpStatuses: 异常HTTP状态码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnhealthyHttpStatuses: list of int non-negative
+        """
+        self._EnableActiveHealthCheck = None
+        self._ActiveHealthCheck = None
+        self._EnablePassiveHealthCheck = None
+        self._PassiveHealthCheck = None
+        self._Successes = None
+        self._Failures = None
+        self._Timeouts = None
+        self._HealthyHttpStatuses = None
+        self._UnhealthyHttpStatuses = None
+
+    @property
+    def EnableActiveHealthCheck(self):
+        return self._EnableActiveHealthCheck
+
+    @EnableActiveHealthCheck.setter
+    def EnableActiveHealthCheck(self, EnableActiveHealthCheck):
+        self._EnableActiveHealthCheck = EnableActiveHealthCheck
+
+    @property
+    def ActiveHealthCheck(self):
+        return self._ActiveHealthCheck
+
+    @ActiveHealthCheck.setter
+    def ActiveHealthCheck(self, ActiveHealthCheck):
+        self._ActiveHealthCheck = ActiveHealthCheck
+
+    @property
+    def EnablePassiveHealthCheck(self):
+        return self._EnablePassiveHealthCheck
+
+    @EnablePassiveHealthCheck.setter
+    def EnablePassiveHealthCheck(self, EnablePassiveHealthCheck):
+        self._EnablePassiveHealthCheck = EnablePassiveHealthCheck
+
+    @property
+    def PassiveHealthCheck(self):
+        return self._PassiveHealthCheck
+
+    @PassiveHealthCheck.setter
+    def PassiveHealthCheck(self, PassiveHealthCheck):
+        self._PassiveHealthCheck = PassiveHealthCheck
+
+    @property
+    def Successes(self):
+        return self._Successes
+
+    @Successes.setter
+    def Successes(self, Successes):
+        self._Successes = Successes
+
+    @property
+    def Failures(self):
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def Timeouts(self):
+        return self._Timeouts
+
+    @Timeouts.setter
+    def Timeouts(self, Timeouts):
+        self._Timeouts = Timeouts
+
+    @property
+    def HealthyHttpStatuses(self):
+        return self._HealthyHttpStatuses
+
+    @HealthyHttpStatuses.setter
+    def HealthyHttpStatuses(self, HealthyHttpStatuses):
+        self._HealthyHttpStatuses = HealthyHttpStatuses
+
+    @property
+    def UnhealthyHttpStatuses(self):
+        return self._UnhealthyHttpStatuses
+
+    @UnhealthyHttpStatuses.setter
+    def UnhealthyHttpStatuses(self, UnhealthyHttpStatuses):
+        self._UnhealthyHttpStatuses = UnhealthyHttpStatuses
+
+
+    def _deserialize(self, params):
+        self._EnableActiveHealthCheck = params.get("EnableActiveHealthCheck")
+        if params.get("ActiveHealthCheck") is not None:
+            self._ActiveHealthCheck = KongActiveHealthCheck()
+            self._ActiveHealthCheck._deserialize(params.get("ActiveHealthCheck"))
+        self._EnablePassiveHealthCheck = params.get("EnablePassiveHealthCheck")
+        if params.get("PassiveHealthCheck") is not None:
+            self._PassiveHealthCheck = KongPassiveHealthCheck()
+            self._PassiveHealthCheck._deserialize(params.get("PassiveHealthCheck"))
+        self._Successes = params.get("Successes")
+        self._Failures = params.get("Failures")
+        self._Timeouts = params.get("Timeouts")
+        self._HealthyHttpStatuses = params.get("HealthyHttpStatuses")
+        self._UnhealthyHttpStatuses = params.get("UnhealthyHttpStatuses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VpcInfo(AbstractModel):

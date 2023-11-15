@@ -207,3 +207,73 @@ class SystemDisk(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TerminateInstancesRequest(AbstractModel):
+    """TerminateInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 实例ID列表
+        :type InstanceIds: list of str
+        :param _DryRun: 默认为False，True代表只验证接口连通性
+        :type DryRun: bool
+        """
+        self._InstanceIds = None
+        self._DryRun = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def DryRun(self):
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateInstancesResponse(AbstractModel):
+    """TerminateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")

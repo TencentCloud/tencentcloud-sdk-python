@@ -31599,9 +31599,12 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
         :type CustomerGatewayId: str
         :param _CustomerGatewayName: 对端网关名称，可任意命名，但不得超过60个字符。
         :type CustomerGatewayName: str
+        :param _BgpAsn: BGP ASN。只有开启BGP白名单才可以修改此参数。
+        :type BgpAsn: int
         """
         self._CustomerGatewayId = None
         self._CustomerGatewayName = None
+        self._BgpAsn = None
 
     @property
     def CustomerGatewayId(self):
@@ -31619,10 +31622,19 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
     def CustomerGatewayName(self, CustomerGatewayName):
         self._CustomerGatewayName = CustomerGatewayName
 
+    @property
+    def BgpAsn(self):
+        return self._BgpAsn
+
+    @BgpAsn.setter
+    def BgpAsn(self, BgpAsn):
+        self._BgpAsn = BgpAsn
+
 
     def _deserialize(self, params):
         self._CustomerGatewayId = params.get("CustomerGatewayId")
         self._CustomerGatewayName = params.get("CustomerGatewayName")
+        self._BgpAsn = params.get("BgpAsn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

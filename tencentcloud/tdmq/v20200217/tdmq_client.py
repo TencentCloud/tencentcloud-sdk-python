@@ -647,6 +647,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteProClusters(self, request):
+        """删除专业集群——预付费，仅通过API 调用，支持同时删除多个集群
+
+        :param request: Request instance for DeleteProClusters.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteProClustersRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteProClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRabbitMQUser(self, request):
         """删除RabbitMQ的用户
 
