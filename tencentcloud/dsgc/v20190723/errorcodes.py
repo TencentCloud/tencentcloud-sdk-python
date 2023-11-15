@@ -64,3 +64,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# 不允许多次人工打标，请回退后重试！
+UNSUPPORTEDOPERATION_MULTIPLEMARKINGNOTALLOWED = 'UnsupportedOperation.MultipleMarkingNotAllowed'

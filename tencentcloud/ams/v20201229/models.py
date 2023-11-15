@@ -1745,7 +1745,7 @@ class MediaInfo(AbstractModel):
         r"""
         :param _Codecs: 该字段用于返回传入的媒体文件的编码格式，如wav、mp3、aac、flac、amr、3gp、 m4a、wma、ogg、ape等。
         :type Codecs: str
-        :param _Duration: 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为秒。**默认值为15秒**，支持用户自定义配置。
+        :param _Duration: 该字段用于返回对传入的流媒体文件进行分片的片段时长，单位为毫秒。**默认值为15秒**，支持用户自定义配置。
         :type Duration: int
         :param _Width: *内测中，敬请期待*
         :type Width: int
@@ -1824,7 +1824,7 @@ class MoanResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表改音频中无呻吟/娇喘相关违规内容；
+        :param _Label: 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Score: 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
@@ -2551,10 +2551,10 @@ class TextResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
+        :param _Label: 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告。
 以及其他令人反感、不安全或不适宜的内容类型。
 
-如音频中无复杂类型「TextResults」的返回则代表改音频中无相关违规内容；
+如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
         :param _Keywords: 命中的关键词，为空则代表该违规内容出自于模型的判断；

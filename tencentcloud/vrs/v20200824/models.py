@@ -900,6 +900,51 @@ class GetTrainingTextResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetVRSVoiceTypesRequest(AbstractModel):
+    """GetVRSVoiceTypes请求参数结构体
+
+    """
+
+
+class GetVRSVoiceTypesResponse(AbstractModel):
+    """GetVRSVoiceTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 数据
+        :type Data: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeListData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VoiceTypeListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class TrainingText(AbstractModel):
     """训练文本
 
@@ -976,6 +1021,144 @@ class TrainingTexts(AbstractModel):
                 obj = TrainingText()
                 obj._deserialize(item)
                 self._TrainingTextList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceTypeInfo(AbstractModel):
+    """复刻音色详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceType: 音色id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceType: int
+        :param _VoiceName: 音色名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceName: str
+        :param _VoiceGender: 音色性别: 1-male 2-female
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceGender: int
+        :param _TaskType: 复刻类型: 0-轻量版复刻 1-基础版复刻
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: int
+        :param _TaskID: 复刻任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskID: str
+        :param _DateCreated: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DateCreated: str
+        """
+        self._VoiceType = None
+        self._VoiceName = None
+        self._VoiceGender = None
+        self._TaskType = None
+        self._TaskID = None
+        self._DateCreated = None
+
+    @property
+    def VoiceType(self):
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def VoiceName(self):
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def VoiceGender(self):
+        return self._VoiceGender
+
+    @VoiceGender.setter
+    def VoiceGender(self, VoiceGender):
+        self._VoiceGender = VoiceGender
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def DateCreated(self):
+        return self._DateCreated
+
+    @DateCreated.setter
+    def DateCreated(self, DateCreated):
+        self._DateCreated = DateCreated
+
+
+    def _deserialize(self, params):
+        self._VoiceType = params.get("VoiceType")
+        self._VoiceName = params.get("VoiceName")
+        self._VoiceGender = params.get("VoiceGender")
+        self._TaskType = params.get("TaskType")
+        self._TaskID = params.get("TaskID")
+        self._DateCreated = params.get("DateCreated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceTypeListData(AbstractModel):
+    """音色信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceTypeList: 音色信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceTypeList: list of VoiceTypeInfo
+        """
+        self._VoiceTypeList = None
+
+    @property
+    def VoiceTypeList(self):
+        return self._VoiceTypeList
+
+    @VoiceTypeList.setter
+    def VoiceTypeList(self, VoiceTypeList):
+        self._VoiceTypeList = VoiceTypeList
+
+
+    def _deserialize(self, params):
+        if params.get("VoiceTypeList") is not None:
+            self._VoiceTypeList = []
+            for item in params.get("VoiceTypeList"):
+                obj = VoiceTypeInfo()
+                obj._deserialize(item)
+                self._VoiceTypeList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

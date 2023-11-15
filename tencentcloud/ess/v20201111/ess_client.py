@@ -1397,14 +1397,14 @@ class EssClient(AbstractClient):
 
         **一个模板通常会包含以下结构信息**
 
-        - 模板模版ID, 模板名字等基本信息
+        - 模板模板ID, 模板名字等基本信息
         - 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
         - 发起方和签署方的填写控件 Components
         - 签署方的签署控件 SignComponents
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/ab81fa948a0a6fea14f48cac91d0e36a/channel_DescribeTemplates.png)
 
-        模版中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
+        模板中各元素的层级关系, 所有的填写控件和签署控件都归属某一个角色(通过控件的ComponentRecipientId来关联)
         ![image](https://qcloudimg.tencent-cloud.cn/raw/45c638bd93f9c8024763add9ab47c27f.png)
 
         :param request: Request instance for DescribeFlowTemplates.

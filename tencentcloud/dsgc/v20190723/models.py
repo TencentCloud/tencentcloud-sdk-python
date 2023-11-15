@@ -13508,12 +13508,16 @@ class DescribeDSPAESDataAssetDetailRequest(AbstractModel):
         :type Limit: int
         :param _Filters: 过滤条件
         :type Filters: list of Filter
+        :param _CreditScore: 可信分排序，ASC升序
+DESC降序
+        :type CreditScore: str
         """
         self._DspaId = None
         self._ComplianceId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._CreditScore = None
 
     @property
     def DspaId(self):
@@ -13555,6 +13559,14 @@ class DescribeDSPAESDataAssetDetailRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def CreditScore(self):
+        return self._CreditScore
+
+    @CreditScore.setter
+    def CreditScore(self, CreditScore):
+        self._CreditScore = CreditScore
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -13567,6 +13579,7 @@ class DescribeDSPAESDataAssetDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._CreditScore = params.get("CreditScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14208,9 +14221,13 @@ class DescribeDSPARDBDataAssetDetailRequest(AbstractModel):
         :type DspaId: str
         :param _ComplianceId: 合规组Id
         :type ComplianceId: int
+        :param _CreditScore: 可信分排序，ASC-升序
+DESC降序
+        :type CreditScore: str
         """
         self._DspaId = None
         self._ComplianceId = None
+        self._CreditScore = None
 
     @property
     def DspaId(self):
@@ -14228,10 +14245,19 @@ class DescribeDSPARDBDataAssetDetailRequest(AbstractModel):
     def ComplianceId(self, ComplianceId):
         self._ComplianceId = ComplianceId
 
+    @property
+    def CreditScore(self):
+        return self._CreditScore
+
+    @CreditScore.setter
+    def CreditScore(self, CreditScore):
+        self._CreditScore = CreditScore
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
+        self._CreditScore = params.get("CreditScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19467,6 +19493,15 @@ class DspaRDBDataAssetDetail(AbstractModel):
         :param _CategoryFullPath: 分类路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
+        :param _IdentifyType: 0.系统识别，1人工打标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentifyType: int
+        :param _CheckStatus: 0未核查 1已核查
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckStatus: int
+        :param _IsSensitiveData: 0非敏感，1敏感
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSensitiveData: int
         """
         self._DataSourceId = None
         self._DbType = None
@@ -19486,6 +19521,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
         self._DataSourceName = None
         self._SafeGuard = None
         self._CategoryFullPath = None
+        self._IdentifyType = None
+        self._CheckStatus = None
+        self._IsSensitiveData = None
 
     @property
     def DataSourceId(self):
@@ -19631,6 +19669,30 @@ class DspaRDBDataAssetDetail(AbstractModel):
     def CategoryFullPath(self, CategoryFullPath):
         self._CategoryFullPath = CategoryFullPath
 
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def CheckStatus(self):
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def IsSensitiveData(self):
+        return self._IsSensitiveData
+
+    @IsSensitiveData.setter
+    def IsSensitiveData(self, IsSensitiveData):
+        self._IsSensitiveData = IsSensitiveData
+
 
     def _deserialize(self, params):
         self._DataSourceId = params.get("DataSourceId")
@@ -19653,6 +19715,9 @@ class DspaRDBDataAssetDetail(AbstractModel):
             self._SafeGuard = DspaSafeGuard()
             self._SafeGuard._deserialize(params.get("SafeGuard"))
         self._CategoryFullPath = params.get("CategoryFullPath")
+        self._IdentifyType = params.get("IdentifyType")
+        self._CheckStatus = params.get("CheckStatus")
+        self._IsSensitiveData = params.get("IsSensitiveData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20458,6 +20523,10 @@ class ESDataAssetDetail(AbstractModel):
         :param _RuleName: 规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
+        :param _IdentifyType: 0系统识别，1人工打标
+        :type IdentifyType: int
+        :param _CheckStatus: 0未核查，1已核查
+        :type CheckStatus: int
         """
         self._FieldResultId = None
         self._DataSourceId = None
@@ -20475,6 +20544,8 @@ class ESDataAssetDetail(AbstractModel):
         self._TrustedScore = None
         self._RuleId = None
         self._RuleName = None
+        self._IdentifyType = None
+        self._CheckStatus = None
 
     @property
     def FieldResultId(self):
@@ -20604,6 +20675,22 @@ class ESDataAssetDetail(AbstractModel):
     def RuleName(self, RuleName):
         self._RuleName = RuleName
 
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def CheckStatus(self):
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
 
     def _deserialize(self, params):
         self._FieldResultId = params.get("FieldResultId")
@@ -20622,6 +20709,8 @@ class ESDataAssetDetail(AbstractModel):
         self._TrustedScore = params.get("TrustedScore")
         self._RuleId = params.get("RuleId")
         self._RuleName = params.get("RuleName")
+        self._IdentifyType = params.get("IdentifyType")
+        self._CheckStatus = params.get("CheckStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23851,6 +23940,14 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
         :type DestCategoryId: int
         :param _DestLevelId: 调整后新的分级ID
         :type DestLevelId: int
+        :param _SrcRuleId: 调整前的规则id（系统识别的id）
+        :type SrcRuleId: int
+        :param _SrcCategoryId: 调整前的规则id（系统识别的id）
+        :type SrcCategoryId: int
+        :param _SrcLevelId: 调整前的等级id
+        :type SrcLevelId: int
+        :param _IdentifyType: 0系统识别，1人工打标
+        :type IdentifyType: int
         """
         self._DspaId = None
         self._FieldResultId = None
@@ -23859,6 +23956,10 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
         self._DestRuleId = None
         self._DestCategoryId = None
         self._DestLevelId = None
+        self._SrcRuleId = None
+        self._SrcCategoryId = None
+        self._SrcLevelId = None
+        self._IdentifyType = None
 
     @property
     def DspaId(self):
@@ -23916,6 +24017,38 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
     def DestLevelId(self, DestLevelId):
         self._DestLevelId = DestLevelId
 
+    @property
+    def SrcRuleId(self):
+        return self._SrcRuleId
+
+    @SrcRuleId.setter
+    def SrcRuleId(self, SrcRuleId):
+        self._SrcRuleId = SrcRuleId
+
+    @property
+    def SrcCategoryId(self):
+        return self._SrcCategoryId
+
+    @SrcCategoryId.setter
+    def SrcCategoryId(self, SrcCategoryId):
+        self._SrcCategoryId = SrcCategoryId
+
+    @property
+    def SrcLevelId(self):
+        return self._SrcLevelId
+
+    @SrcLevelId.setter
+    def SrcLevelId(self, SrcLevelId):
+        self._SrcLevelId = SrcLevelId
+
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -23925,6 +24058,10 @@ class ModifyDSPAESTaskResultRequest(AbstractModel):
         self._DestRuleId = params.get("DestRuleId")
         self._DestCategoryId = params.get("DestCategoryId")
         self._DestLevelId = params.get("DestLevelId")
+        self._SrcRuleId = params.get("SrcRuleId")
+        self._SrcCategoryId = params.get("SrcCategoryId")
+        self._SrcLevelId = params.get("SrcLevelId")
+        self._IdentifyType = params.get("IdentifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23981,6 +24118,16 @@ class ModifyDSPATaskResultRequest(AbstractModel):
         :type DestCategoryId: int
         :param _DestLevelId: 调整后新的分级ID
         :type DestLevelId: int
+        :param _SrcRuleId: 调整前的规则ID
+
+        :type SrcRuleId: int
+        :param _SrcCategoryId: 调整之前的分类id
+        :type SrcCategoryId: int
+        :param _SrcLevelId: 调整之前的分级id
+        :type SrcLevelId: int
+        :param _IdentifyType: 识别方式
+0-系统识别，1-人工打标
+        :type IdentifyType: int
         """
         self._DspaId = None
         self._FieldResultId = None
@@ -23989,6 +24136,10 @@ class ModifyDSPATaskResultRequest(AbstractModel):
         self._DestRuleId = None
         self._DestCategoryId = None
         self._DestLevelId = None
+        self._SrcRuleId = None
+        self._SrcCategoryId = None
+        self._SrcLevelId = None
+        self._IdentifyType = None
 
     @property
     def DspaId(self):
@@ -24046,6 +24197,38 @@ class ModifyDSPATaskResultRequest(AbstractModel):
     def DestLevelId(self, DestLevelId):
         self._DestLevelId = DestLevelId
 
+    @property
+    def SrcRuleId(self):
+        return self._SrcRuleId
+
+    @SrcRuleId.setter
+    def SrcRuleId(self, SrcRuleId):
+        self._SrcRuleId = SrcRuleId
+
+    @property
+    def SrcCategoryId(self):
+        return self._SrcCategoryId
+
+    @SrcCategoryId.setter
+    def SrcCategoryId(self, SrcCategoryId):
+        self._SrcCategoryId = SrcCategoryId
+
+    @property
+    def SrcLevelId(self):
+        return self._SrcLevelId
+
+    @SrcLevelId.setter
+    def SrcLevelId(self, SrcLevelId):
+        self._SrcLevelId = SrcLevelId
+
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -24055,6 +24238,10 @@ class ModifyDSPATaskResultRequest(AbstractModel):
         self._DestRuleId = params.get("DestRuleId")
         self._DestCategoryId = params.get("DestCategoryId")
         self._DestLevelId = params.get("DestLevelId")
+        self._SrcRuleId = params.get("SrcRuleId")
+        self._SrcCategoryId = params.get("SrcCategoryId")
+        self._SrcLevelId = params.get("SrcLevelId")
+        self._IdentifyType = params.get("IdentifyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

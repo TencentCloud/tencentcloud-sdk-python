@@ -5003,7 +5003,7 @@ class McuPublishCdnParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PublishCdnUrl: CDN转推URL。
+        :param _PublishCdnUrl: CDN转推URL。注：若更新转推时，URL有任何变化，都会断流重推。
         :type PublishCdnUrl: str
         :param _IsTencentCdn: 是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。注意：1，为避免误产生转推费用，该参数建议明确填写，转推非腾讯云CDN时会产生转推费用，详情参见接口文档说明；2，国内站默认只支持转推腾讯云CDN，如您有转推第三方CDN需求，请联系腾讯云技术支持。
         :type IsTencentCdn: int
@@ -5253,6 +5253,8 @@ class McuWaterMarkImage(AbstractModel):
         :type LocationY: int
         :param _ZOrder: 水印在输出时的层级，不填默认为0。
         :type ZOrder: int
+        :param _DynamicPosType: 动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+        :type DynamicPosType: int
         """
         self._WaterMarkUrl = None
         self._WaterMarkWidth = None
@@ -5260,6 +5262,7 @@ class McuWaterMarkImage(AbstractModel):
         self._LocationX = None
         self._LocationY = None
         self._ZOrder = None
+        self._DynamicPosType = None
 
     @property
     def WaterMarkUrl(self):
@@ -5309,6 +5312,14 @@ class McuWaterMarkImage(AbstractModel):
     def ZOrder(self, ZOrder):
         self._ZOrder = ZOrder
 
+    @property
+    def DynamicPosType(self):
+        return self._DynamicPosType
+
+    @DynamicPosType.setter
+    def DynamicPosType(self, DynamicPosType):
+        self._DynamicPosType = DynamicPosType
+
 
     def _deserialize(self, params):
         self._WaterMarkUrl = params.get("WaterMarkUrl")
@@ -5317,6 +5328,7 @@ class McuWaterMarkImage(AbstractModel):
         self._LocationX = params.get("LocationX")
         self._LocationY = params.get("LocationY")
         self._ZOrder = params.get("ZOrder")
+        self._DynamicPosType = params.get("DynamicPosType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5411,6 +5423,8 @@ class McuWaterMarkText(AbstractModel):
         :type FontColor: str
         :param _BackGroundColor: 字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
         :type BackGroundColor: str
+        :param _DynamicPosType: 动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
+        :type DynamicPosType: int
         """
         self._Text = None
         self._WaterMarkWidth = None
@@ -5420,6 +5434,7 @@ class McuWaterMarkText(AbstractModel):
         self._FontSize = None
         self._FontColor = None
         self._BackGroundColor = None
+        self._DynamicPosType = None
 
     @property
     def Text(self):
@@ -5485,6 +5500,14 @@ class McuWaterMarkText(AbstractModel):
     def BackGroundColor(self, BackGroundColor):
         self._BackGroundColor = BackGroundColor
 
+    @property
+    def DynamicPosType(self):
+        return self._DynamicPosType
+
+    @DynamicPosType.setter
+    def DynamicPosType(self, DynamicPosType):
+        self._DynamicPosType = DynamicPosType
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -5495,6 +5518,7 @@ class McuWaterMarkText(AbstractModel):
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._BackGroundColor = params.get("BackGroundColor")
+        self._DynamicPosType = params.get("DynamicPosType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

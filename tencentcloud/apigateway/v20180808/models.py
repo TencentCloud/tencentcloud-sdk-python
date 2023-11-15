@@ -31,10 +31,14 @@ class APIDoc(AbstractModel):
         :type ApiDocName: str
         :param _ApiDocStatus: API文档构建状态
         :type ApiDocStatus: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._ApiDocId = None
         self._ApiDocName = None
         self._ApiDocStatus = None
+        self._Tags = None
 
     @property
     def ApiDocId(self):
@@ -60,11 +64,25 @@ class APIDoc(AbstractModel):
     def ApiDocStatus(self, ApiDocStatus):
         self._ApiDocStatus = ApiDocStatus
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ApiDocId = params.get("ApiDocId")
         self._ApiDocName = params.get("ApiDocName")
         self._ApiDocStatus = params.get("ApiDocStatus")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -110,6 +128,9 @@ class APIDocInfo(AbstractModel):
         :type ServiceName: str
         :param _ApiNames: 生成API文档的API名称
         :type ApiNames: list of str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._ApiDocId = None
         self._ApiDocName = None
@@ -125,6 +146,7 @@ class APIDocInfo(AbstractModel):
         self._ApiIds = None
         self._ServiceName = None
         self._ApiNames = None
+        self._Tags = None
 
     @property
     def ApiDocId(self):
@@ -238,6 +260,14 @@ class APIDocInfo(AbstractModel):
     def ApiNames(self, ApiNames):
         self._ApiNames = ApiNames
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ApiDocId = params.get("ApiDocId")
@@ -254,6 +284,12 @@ class APIDocInfo(AbstractModel):
         self._ApiIds = params.get("ApiIds")
         self._ServiceName = params.get("ServiceName")
         self._ApiNames = params.get("ApiNames")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1859,6 +1895,9 @@ class ApiKey(AbstractModel):
         :type Status: int
         :param _CreatedTime: 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
         :type CreatedTime: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._AccessKeyId = None
         self._AccessKeySecret = None
@@ -1867,6 +1906,7 @@ class ApiKey(AbstractModel):
         self._ModifiedTime = None
         self._Status = None
         self._CreatedTime = None
+        self._Tags = None
 
     @property
     def AccessKeyId(self):
@@ -1924,6 +1964,14 @@ class ApiKey(AbstractModel):
     def CreatedTime(self, CreatedTime):
         self._CreatedTime = CreatedTime
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._AccessKeyId = params.get("AccessKeyId")
@@ -1933,6 +1981,12 @@ class ApiKey(AbstractModel):
         self._ModifiedTime = params.get("ModifiedTime")
         self._Status = params.get("Status")
         self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2092,6 +2146,9 @@ class ApiUsagePlan(AbstractModel):
         :param _ServiceName: 服务名称。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._ServiceId = None
         self._ApiId = None
@@ -2108,6 +2165,7 @@ class ApiUsagePlan(AbstractModel):
         self._CreatedTime = None
         self._ModifiedTime = None
         self._ServiceName = None
+        self._Tags = None
 
     @property
     def ServiceId(self):
@@ -2229,6 +2287,14 @@ class ApiUsagePlan(AbstractModel):
     def ServiceName(self, ServiceName):
         self._ServiceName = ServiceName
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -2246,6 +2312,12 @@ class ApiUsagePlan(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
         self._ServiceName = params.get("ServiceName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3801,11 +3873,14 @@ class CreateAPIDocRequest(AbstractModel):
         :type Environment: str
         :param _ApiIds: 生成文档的API列表
         :type ApiIds: list of str
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._ApiDocName = None
         self._ServiceId = None
         self._Environment = None
         self._ApiIds = None
+        self._Tags = None
 
     @property
     def ApiDocName(self):
@@ -3839,12 +3914,26 @@ class CreateAPIDocRequest(AbstractModel):
     def ApiIds(self, ApiIds):
         self._ApiIds = ApiIds
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ApiDocName = params.get("ApiDocName")
         self._ServiceId = params.get("ServiceId")
         self._Environment = params.get("Environment")
         self._ApiIds = params.get("ApiIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3994,11 +4083,14 @@ class CreateApiKeyRequest(AbstractModel):
         :type AccessKeyId: str
         :param _AccessKeySecret: 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
         :type AccessKeySecret: str
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._SecretName = None
         self._AccessKeyType = None
         self._AccessKeyId = None
         self._AccessKeySecret = None
+        self._Tags = None
 
     @property
     def SecretName(self):
@@ -4032,12 +4124,26 @@ class CreateApiKeyRequest(AbstractModel):
     def AccessKeySecret(self, AccessKeySecret):
         self._AccessKeySecret = AccessKeySecret
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._AccessKeyType = params.get("AccessKeyType")
         self._AccessKeyId = params.get("AccessKeyId")
         self._AccessKeySecret = params.get("AccessKeySecret")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5811,11 +5917,14 @@ class CreateUsagePlanRequest(AbstractModel):
         :type MaxRequestNum: int
         :param _MaxRequestNumPreSec: 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
         :type MaxRequestNumPreSec: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._UsagePlanName = None
         self._UsagePlanDesc = None
         self._MaxRequestNum = None
         self._MaxRequestNumPreSec = None
+        self._Tags = None
 
     @property
     def UsagePlanName(self):
@@ -5849,12 +5958,26 @@ class CreateUsagePlanRequest(AbstractModel):
     def MaxRequestNumPreSec(self, MaxRequestNumPreSec):
         self._MaxRequestNumPreSec = MaxRequestNumPreSec
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._UsagePlanName = params.get("UsagePlanName")
         self._UsagePlanDesc = params.get("UsagePlanDesc")
         self._MaxRequestNum = params.get("MaxRequestNum")
         self._MaxRequestNumPreSec = params.get("MaxRequestNumPreSec")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21121,6 +21244,9 @@ class UsagePlanInfo(AbstractModel):
         :param _BindEnvironments: 绑定环境详情。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindEnvironments: list of UsagePlanBindEnvironment
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._UsagePlanId = None
         self._UsagePlanName = None
@@ -21133,6 +21259,7 @@ class UsagePlanInfo(AbstractModel):
         self._BindSecretIds = None
         self._BindEnvironmentTotalCount = None
         self._BindEnvironments = None
+        self._Tags = None
 
     @property
     def UsagePlanId(self):
@@ -21222,6 +21349,14 @@ class UsagePlanInfo(AbstractModel):
     def BindEnvironments(self, BindEnvironments):
         self._BindEnvironments = BindEnvironments
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._UsagePlanId = params.get("UsagePlanId")
@@ -21240,6 +21375,12 @@ class UsagePlanInfo(AbstractModel):
                 obj = UsagePlanBindEnvironment()
                 obj._deserialize(item)
                 self._BindEnvironments.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21278,6 +21419,9 @@ class UsagePlanStatusInfo(AbstractModel):
         :param _ModifiedTime: 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifiedTime: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._UsagePlanId = None
         self._UsagePlanName = None
@@ -21286,6 +21430,7 @@ class UsagePlanStatusInfo(AbstractModel):
         self._MaxRequestNum = None
         self._CreatedTime = None
         self._ModifiedTime = None
+        self._Tags = None
 
     @property
     def UsagePlanId(self):
@@ -21343,6 +21488,14 @@ class UsagePlanStatusInfo(AbstractModel):
     def ModifiedTime(self, ModifiedTime):
         self._ModifiedTime = ModifiedTime
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._UsagePlanId = params.get("UsagePlanId")
@@ -21352,6 +21505,12 @@ class UsagePlanStatusInfo(AbstractModel):
         self._MaxRequestNum = params.get("MaxRequestNum")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

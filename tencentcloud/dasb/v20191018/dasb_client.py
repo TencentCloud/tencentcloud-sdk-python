@@ -1038,6 +1038,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUserGroup(self, request):
+        """修改用户组
+
+        :param request: Request instance for ModifyUserGroup.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyUserGroupRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResetDeviceAccountPassword(self, request):
         """清除设备账号绑定密码
 

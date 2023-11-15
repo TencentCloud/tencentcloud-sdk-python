@@ -10309,8 +10309,12 @@ class MotorVehicleSaleInvoice(AbstractModel):
         :type FormName: str
         :param _Issuer: 开票人
         :type Issuer: str
-        :param _TaxNum: 完税凭证号码
+        :param _TaxNum: 进口证明书号
         :type TaxNum: str
+        :param _TaxPayNum: 完税凭证号码
+        :type TaxPayNum: str
+        :param _TaxCode: 税控码
+        :type TaxCode: str
         :param _MaxPeopleNum: 限乘人数
         :type MaxPeopleNum: str
         :param _Origin: 产地
@@ -10359,6 +10363,8 @@ class MotorVehicleSaleInvoice(AbstractModel):
         self._FormName = None
         self._Issuer = None
         self._TaxNum = None
+        self._TaxPayNum = None
+        self._TaxCode = None
         self._MaxPeopleNum = None
         self._Origin = None
         self._MachineCode = None
@@ -10662,6 +10668,22 @@ class MotorVehicleSaleInvoice(AbstractModel):
         self._TaxNum = TaxNum
 
     @property
+    def TaxPayNum(self):
+        return self._TaxPayNum
+
+    @TaxPayNum.setter
+    def TaxPayNum(self, TaxPayNum):
+        self._TaxPayNum = TaxPayNum
+
+    @property
+    def TaxCode(self):
+        return self._TaxCode
+
+    @TaxCode.setter
+    def TaxCode(self, TaxCode):
+        self._TaxCode = TaxCode
+
+    @property
     def MaxPeopleNum(self):
         return self._MaxPeopleNum
 
@@ -10740,6 +10762,8 @@ class MotorVehicleSaleInvoice(AbstractModel):
         self._FormName = params.get("FormName")
         self._Issuer = params.get("Issuer")
         self._TaxNum = params.get("TaxNum")
+        self._TaxPayNum = params.get("TaxPayNum")
+        self._TaxCode = params.get("TaxCode")
         self._MaxPeopleNum = params.get("MaxPeopleNum")
         self._Origin = params.get("Origin")
         self._MachineCode = params.get("MachineCode")
@@ -22039,6 +22063,26 @@ class UsedCarPurchaseInvoice(AbstractModel):
         :type FormName: str
         :param _CompanySealMark: 是否有公司印章（0：没有，1：有）
         :type CompanySealMark: int
+        :param _AuctionOrgName: 经营拍卖单位
+        :type AuctionOrgName: str
+        :param _AuctionOrgAddress: 经营拍卖单位地址
+        :type AuctionOrgAddress: str
+        :param _AuctionOrgTaxID: 经营拍卖单位纳税人识别号
+        :type AuctionOrgTaxID: str
+        :param _AuctionOrgBankAccount: 经营拍卖单位开户银行账号
+        :type AuctionOrgBankAccount: str
+        :param _AuctionOrgPhone: 经营拍卖单位电话
+        :type AuctionOrgPhone: str
+        :param _Issuer: 开票人
+        :type Issuer: str
+        :param _TaxCode: 税控码
+        :type TaxCode: str
+        :param _MachineSerialNumber: 机器编号
+        :type MachineSerialNumber: str
+        :param _MachineCode: 机打发票代码
+        :type MachineCode: str
+        :param _MachineNumber: 机打发票号码
+        :type MachineNumber: str
         """
         self._Title = None
         self._QRCodeMark = None
@@ -22073,6 +22117,16 @@ class UsedCarPurchaseInvoice(AbstractModel):
         self._FormType = None
         self._FormName = None
         self._CompanySealMark = None
+        self._AuctionOrgName = None
+        self._AuctionOrgAddress = None
+        self._AuctionOrgTaxID = None
+        self._AuctionOrgBankAccount = None
+        self._AuctionOrgPhone = None
+        self._Issuer = None
+        self._TaxCode = None
+        self._MachineSerialNumber = None
+        self._MachineCode = None
+        self._MachineNumber = None
 
     @property
     def Title(self):
@@ -22338,6 +22392,86 @@ class UsedCarPurchaseInvoice(AbstractModel):
     def CompanySealMark(self, CompanySealMark):
         self._CompanySealMark = CompanySealMark
 
+    @property
+    def AuctionOrgName(self):
+        return self._AuctionOrgName
+
+    @AuctionOrgName.setter
+    def AuctionOrgName(self, AuctionOrgName):
+        self._AuctionOrgName = AuctionOrgName
+
+    @property
+    def AuctionOrgAddress(self):
+        return self._AuctionOrgAddress
+
+    @AuctionOrgAddress.setter
+    def AuctionOrgAddress(self, AuctionOrgAddress):
+        self._AuctionOrgAddress = AuctionOrgAddress
+
+    @property
+    def AuctionOrgTaxID(self):
+        return self._AuctionOrgTaxID
+
+    @AuctionOrgTaxID.setter
+    def AuctionOrgTaxID(self, AuctionOrgTaxID):
+        self._AuctionOrgTaxID = AuctionOrgTaxID
+
+    @property
+    def AuctionOrgBankAccount(self):
+        return self._AuctionOrgBankAccount
+
+    @AuctionOrgBankAccount.setter
+    def AuctionOrgBankAccount(self, AuctionOrgBankAccount):
+        self._AuctionOrgBankAccount = AuctionOrgBankAccount
+
+    @property
+    def AuctionOrgPhone(self):
+        return self._AuctionOrgPhone
+
+    @AuctionOrgPhone.setter
+    def AuctionOrgPhone(self, AuctionOrgPhone):
+        self._AuctionOrgPhone = AuctionOrgPhone
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def TaxCode(self):
+        return self._TaxCode
+
+    @TaxCode.setter
+    def TaxCode(self, TaxCode):
+        self._TaxCode = TaxCode
+
+    @property
+    def MachineSerialNumber(self):
+        return self._MachineSerialNumber
+
+    @MachineSerialNumber.setter
+    def MachineSerialNumber(self, MachineSerialNumber):
+        self._MachineSerialNumber = MachineSerialNumber
+
+    @property
+    def MachineCode(self):
+        return self._MachineCode
+
+    @MachineCode.setter
+    def MachineCode(self, MachineCode):
+        self._MachineCode = MachineCode
+
+    @property
+    def MachineNumber(self):
+        return self._MachineNumber
+
+    @MachineNumber.setter
+    def MachineNumber(self, MachineNumber):
+        self._MachineNumber = MachineNumber
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -22373,6 +22507,16 @@ class UsedCarPurchaseInvoice(AbstractModel):
         self._FormType = params.get("FormType")
         self._FormName = params.get("FormName")
         self._CompanySealMark = params.get("CompanySealMark")
+        self._AuctionOrgName = params.get("AuctionOrgName")
+        self._AuctionOrgAddress = params.get("AuctionOrgAddress")
+        self._AuctionOrgTaxID = params.get("AuctionOrgTaxID")
+        self._AuctionOrgBankAccount = params.get("AuctionOrgBankAccount")
+        self._AuctionOrgPhone = params.get("AuctionOrgPhone")
+        self._Issuer = params.get("Issuer")
+        self._TaxCode = params.get("TaxCode")
+        self._MachineSerialNumber = params.get("MachineSerialNumber")
+        self._MachineCode = params.get("MachineCode")
+        self._MachineNumber = params.get("MachineNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

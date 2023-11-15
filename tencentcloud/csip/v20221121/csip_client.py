@@ -487,7 +487,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeRiskCenterWebsiteRiskList(self, request):
-        """获取网站风险列表
+        """获取内容风险列表
 
         :param request: Request instance for DescribeRiskCenterWebsiteRiskList.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeRiskCenterWebsiteRiskListRequest`

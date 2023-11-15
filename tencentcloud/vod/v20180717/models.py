@@ -13763,6 +13763,116 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名字，长度限制64个字符。
+        :type Name: str
+        :param _VideoConfigure: 视频参数配置。
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param _WatermarkConfigure: 水印参数配置。
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureInfo`
+        :param _Comment: 模板描述，长度限制256个字符。
+        :type Comment: str
+        """
+        self._Name = None
+        self._VideoConfigure = None
+        self._SubAppId = None
+        self._WatermarkConfigure = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfo()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        self._SubAppId = params.get("SubAppId")
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureInfo()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample请求参数结构体
 
@@ -16904,6 +17014,76 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
 class DeleteImageSpriteTemplateResponse(AbstractModel):
     """DeleteImageSpriteTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名字。
+        :type Name: str
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        """
+        self._Name = None
+        self._SubAppId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplate返回参数结构体
 
     """
 
@@ -20933,6 +21113,143 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
                 obj = ImageSpriteTemplate()
                 obj._deserialize(item)
                 self._ImageSpriteTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: 模板名过滤条件，数组长度限制：100。
+        :type Names: list of str
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param _Type: 模板类型过滤条件，可选值：
+<li>Preset：系统预置任务流模板；</li>
+<li>Custom：用户自定义任务流模板。</li>
+        :type Type: str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :type Limit: int
+        """
+        self._Names = None
+        self._SubAppId = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        self._SubAppId = params.get("SubAppId")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的记录总数。
+        :type TotalCount: int
+        :param _JustInTimeTranscodeTemplateSet: 模板详情列表。
+        :type JustInTimeTranscodeTemplateSet: list of JustInTimeTranscodeTemplate
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._JustInTimeTranscodeTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JustInTimeTranscodeTemplateSet(self):
+        return self._JustInTimeTranscodeTemplateSet
+
+    @JustInTimeTranscodeTemplateSet.setter
+    def JustInTimeTranscodeTemplateSet(self, JustInTimeTranscodeTemplateSet):
+        self._JustInTimeTranscodeTemplateSet = JustInTimeTranscodeTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("JustInTimeTranscodeTemplateSet") is not None:
+            self._JustInTimeTranscodeTemplateSet = []
+            for item in params.get("JustInTimeTranscodeTemplateSet"):
+                obj = JustInTimeTranscodeTemplate()
+                obj._deserialize(item)
+                self._JustInTimeTranscodeTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29675,6 +29992,93 @@ class JitterConfigureInfoForUpdate(AbstractModel):
         
 
 
+class JustInTimeTranscodeTemplate(AbstractModel):
+    """即时转码模板详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 模板类型。
+        :type Type: str
+        :param _Name: 模板名。
+        :type Name: str
+        :param _Comment: 模板描述。
+        :type Comment: str
+        :param _VideoConfigure: 视频参数配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
+        :param _WatermarkConfigure: 水印参数配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureData`
+        """
+        self._Type = None
+        self._Name = None
+        self._Comment = None
+        self._VideoConfigure = None
+        self._WatermarkConfigure = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfo()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureData()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseUsageDataItem(AbstractModel):
     """License 请求次数统计数据。
 
@@ -36852,6 +37256,116 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
 
 class ModifyImageSpriteTemplateResponse(AbstractModel):
     """ModifyImageSpriteTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """ModifyJustInTimeTranscodeTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名字。
+        :type Name: str
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param _VideoConfigure: 视频参数配置。
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfoForUpdate`
+        :param _WatermarkConfigure: 水印参数配置。
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureInfoForUpdate`
+        :param _Comment: 模板描述，长度限制256个字符。
+        :type Comment: str
+        """
+        self._Name = None
+        self._SubAppId = None
+        self._VideoConfigure = None
+        self._WatermarkConfigure = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfoForUpdate()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureInfoForUpdate()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """ModifyJustInTimeTranscodeTemplate返回参数结构体
 
     """
 
@@ -55698,6 +56212,178 @@ class VerifyDomainRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VideoConfigureInfo(AbstractModel):
+    """即时转码视频模板配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Width: int
+        :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Height: int
+        :param _ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        """
+        self._Width = None
+        self._Height = None
+        self._ResolutionAdaptive = None
+        self._Bitrate = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ResolutionAdaptive(self):
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoConfigureInfoForUpdate(AbstractModel):
+    """即时转码视频模板更新配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Width: int
+        :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 1920]，单位：px。
+<li>当 Width、Height 均为 0，则分辨率同源；</li>
+<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+
+默认值：0。
+        :type Height: int
+        :param _ResolutionAdaptive: 分辨率自适应，可选值：
+<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+
+默认值：open。
+        :type ResolutionAdaptive: str
+        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
+当取值为 0，表示视频码率和原始视频保持一致。
+        :type Bitrate: int
+        """
+        self._Width = None
+        self._Height = None
+        self._ResolutionAdaptive = None
+        self._Bitrate = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ResolutionAdaptive(self):
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoDenoiseInfo(AbstractModel):
     """视频降噪控制参数
 
@@ -56416,6 +57102,297 @@ class VoiceConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureData(AbstractModel):
+    """即时转码水印模板配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 是否启用水印。可取值：
+<li>ON：表示启用水印；</li>
+<li>OFF：表示关闭水印。</li>
+        :type Switch: str
+        :param _Url: 水印 Url。
+        :type Url: str
+        :param _Width: 水印的宽度。
+<li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+        :type Width: str
+        :param _Height: 水印的高度。
+<li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+        :type Height: str
+        :param _XPos: 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+        :type XPos: str
+        :param _YPos: 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+        :type YPos: str
+        """
+        self._Switch = None
+        self._Url = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Url = params.get("Url")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureInfo(AbstractModel):
+    """即时转码水印模板配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 是否启用水印。可取值：
+<li>ON：表示启用水印；</li>
+<li>OFF：表示关闭水印。</li>
+        :type Switch: str
+        :param _ImageContent: 水印图片 Base64 编码后的字符串。支持 jpeg、png 图片格式。
+        :type ImageContent: str
+        :param _Width: 水印的宽度。
+<li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+        :type Width: str
+        :param _Height: 水印的高度。
+<li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+        :type Height: str
+        :param _XPos: 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+        :type XPos: str
+        :param _YPos: 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+        :type YPos: str
+        """
+        self._Switch = None
+        self._ImageContent = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageContent(self):
+        return self._ImageContent
+
+    @ImageContent.setter
+    def ImageContent(self, ImageContent):
+        self._ImageContent = ImageContent
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ImageContent = params.get("ImageContent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureInfoForUpdate(AbstractModel):
+    """即时转码水印模板更新配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 是否启用水印。可取值：
+<li>ON：表示启用水印；</li>
+<li>OFF：表示关闭水印。</li>
+        :type Switch: str
+        :param _ImageContent: 水印图片 Base64 编码后的字符串。支持 jpeg、png 图片格式。
+        :type ImageContent: str
+        :param _Width: 水印的宽度。
+<li>字符串以 % 结尾，表示水印 Width 为视频宽度的百分比大小，如 10% 表示 Width 为视频宽度的 10%；</li>
+        :type Width: str
+        :param _Height: 水印的高度。
+<li>字符串以 % 结尾，表示水印 Height 为视频高度的百分比大小，如 10% 表示 Height 为视频高度的 10%；</li>
+        :type Height: str
+        :param _XPos: 水印原点距离视频图像坐标原点的水平位置。字符串以 % 结尾，表示水印 XPos 为视频宽度指定百分比，如 10% 表示 XPos 为视频宽度的 10%；
+        :type XPos: str
+        :param _YPos: 水印原点距离视频图像坐标原点的垂直位置。当字符串以 % 结尾，表示水印 YPos 为视频高度指定百分比，如 10% 表示 YPos 为视频高度的 10%。
+        :type YPos: str
+        """
+        self._Switch = None
+        self._ImageContent = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageContent(self):
+        return self._ImageContent
+
+    @ImageContent.setter
+    def ImageContent(self, ImageContent):
+        self._ImageContent = ImageContent
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ImageContent = params.get("ImageContent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

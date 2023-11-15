@@ -172,3 +172,26 @@ class VrsClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetVRSVoiceTypes(self, request):
+        """查询复刻音色
+
+        :param request: Request instance for GetVRSVoiceTypes.
+        :type request: :class:`tencentcloud.vrs.v20200824.models.GetVRSVoiceTypesRequest`
+        :rtype: :class:`tencentcloud.vrs.v20200824.models.GetVRSVoiceTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVRSVoiceTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVRSVoiceTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

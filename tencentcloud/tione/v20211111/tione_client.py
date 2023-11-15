@@ -739,6 +739,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEvents(self, request):
+        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
+
+        :param request: Request instance for DescribeEvents.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeEventsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInferTemplates(self, request):
         """查询推理镜像模板
 
@@ -786,7 +809,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeLogs(self, request):
-        """获取训练、推理、Notebook服务的日志 API
+        """获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
 
         :param request: Request instance for DescribeLogs.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeLogsRequest`

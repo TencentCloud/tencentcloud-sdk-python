@@ -1475,7 +1475,7 @@ class AssetViewVULRisk(AbstractModel):
         :type FirstTime: str
         :param _Status: 状态，0未处理、1已处置、2已忽略
         :type Status: int
-        :param _Id: 资产唯一id
+        :param _Id: 风险ID
         :type Id: str
         :param _Index: 前端索引
         :type Index: str
@@ -1495,25 +1495,25 @@ class AssetViewVULRisk(AbstractModel):
         :type VULType: str
         :param _Port: 端口
         :type Port: str
-        :param _Describe: 描述
+        :param _Describe: 漏洞描述
         :type Describe: str
-        :param _AppName: 版本名
+        :param _AppName: 漏洞影响组件
         :type AppName: str
-        :param _References: 相关信息
+        :param _References: 技术参考
         :type References: str
-        :param _AppVersion: 版本
+        :param _AppVersion: 漏洞影响版本
         :type AppVersion: str
-        :param _VULURL: 漏洞url
+        :param _VULURL: 风险点
         :type VULURL: str
         :param _VULName: 漏洞名称
         :type VULName: str
         :param _CVE: cve
         :type CVE: str
-        :param _Fix: 修复建议
+        :param _Fix: 修复方案
         :type Fix: str
         :param _POCId: pocid
         :type POCId: str
-        :param _From: 来源
+        :param _From: 扫描来源
         :type From: str
         :param _CWPVersion: 主机版本
         :type CWPVersion: int
@@ -1523,7 +1523,7 @@ class AssetViewVULRisk(AbstractModel):
         :type IsSupportDetect: bool
         :param _InstanceUUID: 实例uuid
         :type InstanceUUID: str
-        :param _Payload: 负载
+        :param _Payload: 攻击载荷
         :type Payload: str
         :param _EMGCVulType: 应急漏洞类型，1-应急漏洞，0-非应急漏洞
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6495,7 +6495,7 @@ class DescribeRiskCenterPortViewPortRiskListResponse(AbstractModel):
         r"""
         :param _TotalCount: 总条数
         :type TotalCount: int
-        :param _Data: 资产视角的端口风险列表
+        :param _Data: 端口视角的端口风险列表
         :type Data: list of PortViewPortRisk
         :param _LevelLists: 危险等级列表
         :type LevelLists: list of FilterDataObject
@@ -6932,7 +6932,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
         r"""
         :param _TotalCount: 总条数
         :type TotalCount: int
-        :param _Data: 资产视角的端口风险列表
+        :param _Data: 内容风险列表
         :type Data: list of WebsiteRisk
         :param _StatusLists: 状态列表
         :type StatusLists: list of FilterDataObject
@@ -9931,7 +9931,7 @@ class ScanTaskInfoList(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _SelfDefiningAssets: 排除扫描资产信息
+        :param _SelfDefiningAssets: 自定义指定扫描资产信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDefiningAssets: list of str
         :param _PredictTime: 预估时间
@@ -9955,7 +9955,7 @@ class ScanTaskInfoList(AbstractModel):
         :param _ScanItem: port/poc/weakpass/webcontent/configrisk
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanItem: str
-        :param _ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫
+        :param _ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫，3-自定义指定资产扫描
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanAssetType: int
         :param _VSSTaskId: vss子任务id

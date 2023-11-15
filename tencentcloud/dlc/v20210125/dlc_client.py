@@ -1866,6 +1866,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUpdatableDataEngines(self, request):
+        """查询可更新配置的引擎列表
+
+        :param request: Request instance for DescribeUpdatableDataEngines.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpdatableDataEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpdatableDataEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserDataEngineConfig(self, request):
         """查询用户自定义引擎参数
 

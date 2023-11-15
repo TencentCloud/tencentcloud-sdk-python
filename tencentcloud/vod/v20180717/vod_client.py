@@ -413,6 +413,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJustInTimeTranscodeTemplate(self, request):
+        """创建即时转码模板。
+
+        :param request: Request instance for CreateJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         """该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、不适宜视频识别等视频处理。
 
@@ -990,6 +1013,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteImageSpriteTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteJustInTimeTranscodeTemplate(self, request):
+        """删除即时转码模板。
+
+        :param request: Request instance for DeleteJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJustInTimeTranscodeTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1886,6 +1932,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageSpriteTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJustInTimeTranscodeTemplates(self, request):
+        """获取即时转码模板列表。
+
+        :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJustInTimeTranscodeTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3003,6 +3072,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyImageSpriteTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyJustInTimeTranscodeTemplate(self, request):
+        """修改即时转码模板。
+
+        :param request: Request instance for ModifyJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyJustInTimeTranscodeTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

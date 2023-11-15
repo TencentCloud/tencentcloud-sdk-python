@@ -26,6 +26,167 @@ class HaiClient(AbstractClient):
     _service = 'hai'
 
 
+    def DescribeApplications(self, request):
+        """查询应用
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceNetworkStatus(self, request):
+        """查询实例的网络配置及消耗情况
+
+        :param request: Request instance for DescribeInstanceNetworkStatus.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeInstanceNetworkStatusRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeInstanceNetworkStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceNetworkStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceNetworkStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstances(self, request):
+        """查询实例
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRegions(self, request):
+        """查询地域列表
+
+        :param request: Request instance for DescribeRegions.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeRegionsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScenes(self, request):
+        """查询场景
+
+        :param request: Request instance for DescribeScenes.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeScenesRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeScenesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScenes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScenesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServiceLoginSettings(self, request):
+        """查询服务登录配置
+
+        :param request: Request instance for DescribeServiceLoginSettings.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeServiceLoginSettingsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeServiceLoginSettingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceLoginSettings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceLoginSettingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquirePriceRunInstances(self, request):
+        """本接口 (InquirePriceRunInstances) 用于实例询价。
+
+        :param request: Request instance for InquirePriceRunInstances.
+        :type request: :class:`tencentcloud.hai.v20230812.models.InquirePriceRunInstancesRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.InquirePriceRunInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceRunInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceRunInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunInstances(self, request):
         """本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
 

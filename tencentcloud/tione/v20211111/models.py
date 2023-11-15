@@ -7597,6 +7597,216 @@ class DescribeDatasetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEventsRequest(AbstractModel):
+    """DescribeEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+枚举值：
+- TRAIN
+- NOTEBOOK
+- INFER
+- BATCH
+        :type Service: str
+        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :type ServiceId: str
+        :param _StartTime: 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+        :type StartTime: str
+        :param _EndTime: 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+        :type EndTime: str
+        :param _Limit: 分页Limit，默认值为100，最大值为100
+        :type Limit: int
+        :param _Offset: 分页Offset，默认值为0
+        :type Offset: int
+        :param _Order: 排列顺序（可选值为ASC, DESC ），默认为DESC
+        :type Order: str
+        :param _OrderField: 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+        :type OrderField: str
+        :param _Filters: 过滤条件
+注意: 
+1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
+2. Filter.Values：
+对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
+对于Name为Type，Values的可选取值仅为Normal或者Warning；
+Values为多个的时候表示同时满足
+3. Filter. Negative和Filter. Fuzzy没有使用
+        :type Filters: list of Filter
+        """
+        self._Service = None
+        self._ServiceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderField = None
+        self._Filters = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._ServiceId = params.get("ServiceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventsResponse(AbstractModel):
+    """DescribeEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: 事件的列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of Event
+        :param _TotalCount: 此次查询的事件的个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = Event()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInferTemplatesRequest(AbstractModel):
     """DescribeInferTemplates请求参数结构体
 
@@ -7742,7 +7952,12 @@ class DescribeLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Service: 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
+        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+枚举值：
+- TRAIN
+- NOTEBOOK
+- INFER
+- BATCH
         :type Service: str
         :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
         :type StartTime: str
@@ -7750,7 +7965,26 @@ class DescribeLogsRequest(AbstractModel):
         :type EndTime: str
         :param _Limit: 日志查询条数，默认值100，最大值100
         :type Limit: int
-        :param _PodName: 查询哪个Pod的日志（支持结尾通配符*)
+        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :type ServiceId: str
+        :param _PodName: Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+- Service类型为TRAIN：
+  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+- Service类型为NOTEBOOK：
+  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+- Service类型为INFER：
+  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+- Service类型为BATCH：
+  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+注：支持结尾通配符*
         :type PodName: str
         :param _Order: 排序方向（可选值为ASC, DESC ），默认为DESC
         :type Order: str
@@ -7769,6 +8003,7 @@ class DescribeLogsRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Limit = None
+        self._ServiceId = None
         self._PodName = None
         self._Order = None
         self._OrderField = None
@@ -7806,6 +8041,14 @@ class DescribeLogsRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
 
     @property
     def PodName(self):
@@ -7853,6 +8096,7 @@ class DescribeLogsRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Limit = params.get("Limit")
+        self._ServiceId = params.get("ServiceId")
         self._PodName = params.get("PodName")
         self._Order = params.get("Order")
         self._OrderField = params.get("OrderField")
@@ -10523,6 +10767,131 @@ class EnvVar(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Event(AbstractModel):
+    """K8s的Event
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 事件的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Message: 事件的具体信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _FirstTimestamp: 事件第一次发生的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstTimestamp: str
+        :param _LastTimestamp: 事件最后一次发生的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastTimestamp: str
+        :param _Count: 事件发生的次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _Type: 事件的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _ResourceKind: 事件关联的资源的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceKind: str
+        :param _ResourceName: 事件关联的资源的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        """
+        self._Id = None
+        self._Message = None
+        self._FirstTimestamp = None
+        self._LastTimestamp = None
+        self._Count = None
+        self._Type = None
+        self._ResourceKind = None
+        self._ResourceName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def FirstTimestamp(self):
+        return self._FirstTimestamp
+
+    @FirstTimestamp.setter
+    def FirstTimestamp(self, FirstTimestamp):
+        self._FirstTimestamp = FirstTimestamp
+
+    @property
+    def LastTimestamp(self):
+        return self._LastTimestamp
+
+    @LastTimestamp.setter
+    def LastTimestamp(self, LastTimestamp):
+        self._LastTimestamp = LastTimestamp
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ResourceKind(self):
+        return self._ResourceKind
+
+    @ResourceKind.setter
+    def ResourceKind(self, ResourceKind):
+        self._ResourceKind = ResourceKind
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Message = params.get("Message")
+        self._FirstTimestamp = params.get("FirstTimestamp")
+        self._LastTimestamp = params.get("LastTimestamp")
+        self._Count = params.get("Count")
+        self._Type = params.get("Type")
+        self._ResourceKind = params.get("ResourceKind")
+        self._ResourceName = params.get("ResourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2656,7 +2656,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type Size: int
         :param _PayMode: 计费类型，后付费：0，预付费：1。当前只支持后付费，不填默认为后付费。
         :type PayMode: int
-        :param _TimeSpan: 资源使用时长，后付费：固定填3600，预付费：最少填1，代表购买资源一个月，最长不超过120。默认3600
+        :param _TimeSpan: 资源使用时长，后付费：固定填3600，预付费：最少填1，代表购买资源一个月，最长不超过120。默认1
         :type TimeSpan: int
         :param _TimeUnit: 资源使用时长的单位，后付费：s，预付费：m。默认为s
         :type TimeUnit: str
@@ -2694,6 +2694,10 @@ class CreateDataEngineRequest(AbstractModel):
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         :param _AutoAuthorization: 自动授权
         :type AutoAuthorization: bool
+        :param _EngineNetworkId: 引擎网络ID
+        :type EngineNetworkId: str
+        :param _EngineGeneration: 引擎世代，SuperSQL：代表supersql引擎，Native：代表标准引擎。默认值为SuperSQL
+        :type EngineGeneration: str
         """
         self._EngineType = None
         self._DataEngineName = None
@@ -2726,6 +2730,8 @@ class CreateDataEngineRequest(AbstractModel):
         self._ElasticLimit = None
         self._SessionResourceTemplate = None
         self._AutoAuthorization = None
+        self._EngineNetworkId = None
+        self._EngineGeneration = None
 
     @property
     def EngineType(self):
@@ -2979,6 +2985,22 @@ class CreateDataEngineRequest(AbstractModel):
     def AutoAuthorization(self, AutoAuthorization):
         self._AutoAuthorization = AutoAuthorization
 
+    @property
+    def EngineNetworkId(self):
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
+    @property
+    def EngineGeneration(self):
+        return self._EngineGeneration
+
+    @EngineGeneration.setter
+    def EngineGeneration(self, EngineGeneration):
+        self._EngineGeneration = EngineGeneration
+
 
     def _deserialize(self, params):
         self._EngineType = params.get("EngineType")
@@ -3026,6 +3048,8 @@ class CreateDataEngineRequest(AbstractModel):
             self._SessionResourceTemplate = SessionResourceTemplate()
             self._SessionResourceTemplate._deserialize(params.get("SessionResourceTemplate"))
         self._AutoAuthorization = params.get("AutoAuthorization")
+        self._EngineNetworkId = params.get("EngineNetworkId")
+        self._EngineGeneration = params.get("EngineGeneration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6546,6 +6570,139 @@ class DMSTableInfo(AbstractModel):
         if params.get("Asset") is not None:
             self._Asset = Asset()
             self._Asset._deserialize(params.get("Asset"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataEngineBasicInfo(AbstractModel):
+    """DataEngine基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineName: DataEngine名称
+        :type DataEngineName: str
+        :param _State: 数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
+        :type State: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _Message: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _DataEngineId: 引擎id
+        :type DataEngineId: str
+        :param _DataEngineType: 引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataEngineType: str
+        :param _AppId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _UserUin: 账号ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserUin: str
+        """
+        self._DataEngineName = None
+        self._State = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Message = None
+        self._DataEngineId = None
+        self._DataEngineType = None
+        self._AppId = None
+        self._UserUin = None
+
+    @property
+    def DataEngineName(self):
+        return self._DataEngineName
+
+    @DataEngineName.setter
+    def DataEngineName(self, DataEngineName):
+        self._DataEngineName = DataEngineName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def DataEngineId(self):
+        return self._DataEngineId
+
+    @DataEngineId.setter
+    def DataEngineId(self, DataEngineId):
+        self._DataEngineId = DataEngineId
+
+    @property
+    def DataEngineType(self):
+        return self._DataEngineType
+
+    @DataEngineType.setter
+    def DataEngineType(self, DataEngineType):
+        self._DataEngineType = DataEngineType
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def UserUin(self):
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+
+    def _deserialize(self, params):
+        self._DataEngineName = params.get("DataEngineName")
+        self._State = params.get("State")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Message = params.get("Message")
+        self._DataEngineId = params.get("DataEngineId")
+        self._DataEngineType = params.get("DataEngineType")
+        self._AppId = params.get("AppId")
+        self._UserUin = params.get("UserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10304,6 +10461,10 @@ class DescribeDataEnginesRequest(AbstractModel):
         :type EngineType: str
         :param _DatasourceConnectionNameSet: 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
         :type DatasourceConnectionNameSet: list of str
+        :param _EngineGeneration: 引擎版本，有效值：Native/SuperSQL，为空时默认获取SuperSQL引擎
+        :type EngineGeneration: str
+        :param _EngineTypeDetail: 引擎类型，支持：SparkSQL、SparkBatch、PrestoSQL、Kyuubi
+        :type EngineTypeDetail: str
         """
         self._Offset = None
         self._Filters = None
@@ -10316,6 +10477,8 @@ class DescribeDataEnginesRequest(AbstractModel):
         self._EngineExecType = None
         self._EngineType = None
         self._DatasourceConnectionNameSet = None
+        self._EngineGeneration = None
+        self._EngineTypeDetail = None
 
     @property
     def Offset(self):
@@ -10405,6 +10568,22 @@ class DescribeDataEnginesRequest(AbstractModel):
     def DatasourceConnectionNameSet(self, DatasourceConnectionNameSet):
         self._DatasourceConnectionNameSet = DatasourceConnectionNameSet
 
+    @property
+    def EngineGeneration(self):
+        return self._EngineGeneration
+
+    @EngineGeneration.setter
+    def EngineGeneration(self, EngineGeneration):
+        self._EngineGeneration = EngineGeneration
+
+    @property
+    def EngineTypeDetail(self):
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -10423,6 +10602,8 @@ class DescribeDataEnginesRequest(AbstractModel):
         self._EngineExecType = params.get("EngineExecType")
         self._EngineType = params.get("EngineType")
         self._DatasourceConnectionNameSet = params.get("DatasourceConnectionNameSet")
+        self._EngineGeneration = params.get("EngineGeneration")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13361,6 +13542,93 @@ class DescribeTasksResponse(AbstractModel):
         if params.get("TasksOverview") is not None:
             self._TasksOverview = TasksOverview()
             self._TasksOverview._deserialize(params.get("TasksOverview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUpdatableDataEnginesRequest(AbstractModel):
+    """DescribeUpdatableDataEngines请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineConfigCommand: 引擎配置操作命令，UpdateSparkSQLLakefsPath 更新托管表路径，UpdateSparkSQLResultPath 更新结果桶路径
+        :type DataEngineConfigCommand: str
+        """
+        self._DataEngineConfigCommand = None
+
+    @property
+    def DataEngineConfigCommand(self):
+        return self._DataEngineConfigCommand
+
+    @DataEngineConfigCommand.setter
+    def DataEngineConfigCommand(self, DataEngineConfigCommand):
+        self._DataEngineConfigCommand = DataEngineConfigCommand
+
+
+    def _deserialize(self, params):
+        self._DataEngineConfigCommand = params.get("DataEngineConfigCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUpdatableDataEnginesResponse(AbstractModel):
+    """DescribeUpdatableDataEngines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataEngineBasicInfos: 集群基础信息
+        :type DataEngineBasicInfos: list of DataEngineBasicInfo
+        :param _TotalCount: 集群个数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataEngineBasicInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataEngineBasicInfos(self):
+        return self._DataEngineBasicInfos
+
+    @DataEngineBasicInfos.setter
+    def DataEngineBasicInfos(self, DataEngineBasicInfos):
+        self._DataEngineBasicInfos = DataEngineBasicInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataEngineBasicInfos") is not None:
+            self._DataEngineBasicInfos = []
+            for item in params.get("DataEngineBasicInfos"):
+                obj = DataEngineBasicInfo()
+                obj._deserialize(item)
+                self._DataEngineBasicInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

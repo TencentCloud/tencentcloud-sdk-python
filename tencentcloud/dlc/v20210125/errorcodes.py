@@ -299,6 +299,9 @@ INVALIDPARAMETER_INVALIDDRIVERSIZE = 'InvalidParameter.InvalidDriverSize'
 # 指定Excutor动态数量必须为当前最大值
 INVALIDPARAMETER_INVALIDDYNAMICALLOCATIONMAXEXECUTORS = 'InvalidParameter.InvalidDynamicAllocationMaxExecutors'
 
+# 引擎执行类型不合法
+INVALIDPARAMETER_INVALIDENGINEEXECTYPE = 'InvalidParameter.InvalidEngineExecType'
+
 # 引擎类型不合法
 INVALIDPARAMETER_INVALIDENGINETYPE = 'InvalidParameter.InvalidEngineType'
 
