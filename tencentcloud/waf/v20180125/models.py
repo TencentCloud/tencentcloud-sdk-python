@@ -23355,6 +23355,18 @@ class SessionItem(AbstractModel):
         :type Source: str
         :param _TsVersion: 更新时间戳
         :type TsVersion: str
+        :param _SessionId: SessionID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: int
+        :param _SessionName: Session名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionName: str
+        :param _SessionInUsed: Session是否正在被启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionInUsed: bool
+        :param _RelatedRuleID: Session关联的CC规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedRuleID: list of int
         """
         self._Category = None
         self._KeyOrStartMat = None
@@ -23363,6 +23375,10 @@ class SessionItem(AbstractModel):
         self._EndOffset = None
         self._Source = None
         self._TsVersion = None
+        self._SessionId = None
+        self._SessionName = None
+        self._SessionInUsed = None
+        self._RelatedRuleID = None
 
     @property
     def Category(self):
@@ -23420,6 +23436,38 @@ class SessionItem(AbstractModel):
     def TsVersion(self, TsVersion):
         self._TsVersion = TsVersion
 
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionName(self):
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def SessionInUsed(self):
+        return self._SessionInUsed
+
+    @SessionInUsed.setter
+    def SessionInUsed(self, SessionInUsed):
+        self._SessionInUsed = SessionInUsed
+
+    @property
+    def RelatedRuleID(self):
+        return self._RelatedRuleID
+
+    @RelatedRuleID.setter
+    def RelatedRuleID(self, RelatedRuleID):
+        self._RelatedRuleID = RelatedRuleID
+
 
     def _deserialize(self, params):
         self._Category = params.get("Category")
@@ -23429,6 +23477,10 @@ class SessionItem(AbstractModel):
         self._EndOffset = params.get("EndOffset")
         self._Source = params.get("Source")
         self._TsVersion = params.get("TsVersion")
+        self._SessionId = params.get("SessionId")
+        self._SessionName = params.get("SessionName")
+        self._SessionInUsed = params.get("SessionInUsed")
+        self._RelatedRuleID = params.get("RelatedRuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
