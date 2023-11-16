@@ -22832,6 +22832,9 @@ DeadLetter 死信
         :param _MaxRetryTimes: 最大重试次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetryTimes: int
+        :param _ClientProtocol: 协议类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientProtocol: str
         """
         self._Topic = None
         self._Type = None
@@ -22847,6 +22850,7 @@ DeadLetter 死信
         self._Consistency = None
         self._LastUpdateTime = None
         self._MaxRetryTimes = None
+        self._ClientProtocol = None
 
     @property
     def Topic(self):
@@ -22960,6 +22964,14 @@ DeadLetter 死信
     def MaxRetryTimes(self, MaxRetryTimes):
         self._MaxRetryTimes = MaxRetryTimes
 
+    @property
+    def ClientProtocol(self):
+        return self._ClientProtocol
+
+    @ClientProtocol.setter
+    def ClientProtocol(self, ClientProtocol):
+        self._ClientProtocol = ClientProtocol
+
 
     def _deserialize(self, params):
         self._Topic = params.get("Topic")
@@ -22976,6 +22988,7 @@ DeadLetter 死信
         self._Consistency = params.get("Consistency")
         self._LastUpdateTime = params.get("LastUpdateTime")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
+        self._ClientProtocol = params.get("ClientProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23416,6 +23429,12 @@ class RocketMQVipInstance(AbstractModel):
         :param _Retention: 实例消息保留时间，小时为单位
 注意：此字段可能返回 null，表示取不到有效值。
         :type Retention: int
+        :param _AclEnabled: 是否开启ACL鉴权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclEnabled: bool
+        :param _DestroyTime: 销毁时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DestroyTime: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -23434,6 +23453,8 @@ class RocketMQVipInstance(AbstractModel):
         self._MaxRetention = None
         self._MinRetention = None
         self._Retention = None
+        self._AclEnabled = None
+        self._DestroyTime = None
 
     @property
     def InstanceId(self):
@@ -23571,6 +23592,22 @@ class RocketMQVipInstance(AbstractModel):
     def Retention(self, Retention):
         self._Retention = Retention
 
+    @property
+    def AclEnabled(self):
+        return self._AclEnabled
+
+    @AclEnabled.setter
+    def AclEnabled(self, AclEnabled):
+        self._AclEnabled = AclEnabled
+
+    @property
+    def DestroyTime(self):
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -23590,6 +23627,8 @@ class RocketMQVipInstance(AbstractModel):
         self._MaxRetention = params.get("MaxRetention")
         self._MinRetention = params.get("MinRetention")
         self._Retention = params.get("Retention")
+        self._AclEnabled = params.get("AclEnabled")
+        self._DestroyTime = params.get("DestroyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

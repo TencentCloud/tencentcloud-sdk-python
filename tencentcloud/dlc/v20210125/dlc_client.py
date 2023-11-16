@@ -1820,6 +1820,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTablesName(self, request):
+        """本接口（DescribeTables）用于查询数据表名称列表
+
+        :param request: Request instance for DescribeTablesName.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablesName", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablesNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskResult(self, request):
         """查询任务结果
 

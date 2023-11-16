@@ -913,7 +913,7 @@ class GetVRSVoiceTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 数据
+        :param _Data: 复刻音色信息
         :type Data: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeListData`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1039,22 +1039,16 @@ class VoiceTypeInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _VoiceType: 音色id
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceType: int
         :param _VoiceName: 音色名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceName: str
         :param _VoiceGender: 音色性别: 1-male 2-female
-注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceGender: int
         :param _TaskType: 复刻类型: 0-轻量版复刻 1-基础版复刻
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
         :param _TaskID: 复刻任务 ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskID: str
         :param _DateCreated: 创建时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type DateCreated: str
         """
         self._VoiceType = None

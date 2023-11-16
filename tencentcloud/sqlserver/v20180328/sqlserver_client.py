@@ -762,6 +762,75 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupMonitor(self, request):
+        """本接口(DescribeBackupMonitor)用于查询备份空间使用详情。
+
+        :param request: Request instance for DescribeBackupMonitor.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMonitorRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupStatistical(self, request):
+        """本接口(DescribeBackupStatistical)用于查询备份实时统计列表。
+
+        :param request: Request instance for DescribeBackupStatistical.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupStatisticalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupStatisticalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupStatistical", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupStatisticalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBackupSummary(self, request):
+        """本接口(DescribeBackupSummary)用于查询数据库备份概览信息。
+
+        :param request: Request instance for DescribeBackupSummary.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupSummaryRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupUploadSize(self, request):
         """本接口（DescribeBackupUploadSize）用于查询上传的备份文件大小。在备份上传类型是COS_UPLOAD(备份放在业务的对象存储上)时有效。
 
@@ -822,6 +891,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeBusinessIntelligenceFile", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBusinessIntelligenceFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCrossBackupStatistical(self, request):
+        """本接口(DescribeCrossBackupStatistical)用于查询跨地域备份实时统计列表。
+
+        :param request: Request instance for DescribeCrossBackupStatistical.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossBackupStatisticalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossBackupStatisticalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossBackupStatistical", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCrossBackupStatisticalResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1006,6 +1098,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeDBsNormal", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBsNormalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabases(self, request):
+        """本接口（DescribeDatabases）用于查询数据库列表。
+
+        :param request: Request instance for DescribeDatabases.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabasesNormal(self, request):
+        """本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
+
+        :param request: Request instance for DescribeDatabasesNormal.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesNormalRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabasesNormalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabasesNormal", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabasesNormalResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1429,6 +1567,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRegularBackupPlan(self, request):
+        """本接口（DescribeRegularBackupPlan）用于查询实例定期备份保留计划
+
+        :param request: Request instance for DescribeRegularBackupPlan.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegularBackupPlanRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRegularBackupPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRegularBackupPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRegularBackupPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRollbackTime(self, request):
         """本接口（DescribeRollbackTime）用于查询实例可回档时间范围
 
@@ -1774,6 +1935,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCrossBackupStrategy(self, request):
+        """本接口(ModifyCrossBackupStrategy)用于开启、关闭地域备份策略。
+
+        :param request: Request instance for ModifyCrossBackupStrategy.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCrossBackupStrategyRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCrossBackupStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCrossBackupStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCrossBackupStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBEncryptAttributes(self, request):
         """本接口（ModifyDBEncryptAttributes）用于开启、关闭数据库的TDE加密功能。
 
@@ -2018,6 +2202,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDatabaseMdf", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDatabaseMdfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDatabaseShrinkMDF(self, request):
+        """本接口(ModifyDatabaseShrinkDMF)用于收缩数据库mdf(Shrink mdf)。
+
+        :param request: Request instance for ModifyDatabaseShrinkMDF.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDatabaseShrinkMDFResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDatabaseShrinkMDF", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDatabaseShrinkMDFResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -8157,7 +8157,7 @@ class DomainAssetVO(AbstractModel):
         :param _SeverIp: 解析ip
 注意：此字段可能返回 null，表示取不到有效值。
         :type SeverIp: list of str
-        :param _BotCount: boi访问数量
+        :param _BotCount: bot攻击数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotCount: int
         :param _WeakPassword: 弱口令风险
@@ -8196,7 +8196,7 @@ class DomainAssetVO(AbstractModel):
         :param _VerifyStatus: 待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyStatus: int
-        :param _BotAccessCount: bot访问数据
+        :param _BotAccessCount: bot访问数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotAccessCount: int
         """
@@ -12869,7 +12869,7 @@ class WhereFilter(AbstractModel):
         :type Values: list of str
         :param _OperatorType: 中台定义：
 1等于 2大于 3小于 4大于等于 5小于等于 6不等于 9模糊匹配 13非模糊匹配 14按位与
-精确匹配填 7 模糊匹配填9 兼容 中台定的结构
+精确匹配填 7 模糊匹配填9 
 
         :type OperatorType: int
         """

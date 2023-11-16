@@ -11464,7 +11464,7 @@ class CwpClient(AbstractClient):
 
 
     def ScanVul(self, request):
-        """一键检测
+        """漏洞一键检测
 
         :param request: Request instance for ScanVul.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ScanVulRequest`

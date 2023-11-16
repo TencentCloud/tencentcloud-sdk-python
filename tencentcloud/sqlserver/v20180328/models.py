@@ -4427,6 +4427,195 @@ class CrossRegionStatus(AbstractModel):
         
 
 
+class CrossSummaryDetailRes(AbstractModel):
+    """跨地域备份实时统计列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 实例状态
+        :type Status: int
+        :param _Region: 实例所属地域
+        :type Region: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Name: 实例名称
+        :type Name: str
+        :param _CrossBackupEnabled: 跨地域备份状态 enable-开启，disable-关闭
+        :type CrossBackupEnabled: str
+        :param _CrossRegions: 跨地域备份目标地域
+        :type CrossRegions: list of str
+        :param _LastBackupStartTime: 最新备份开始时间
+        :type LastBackupStartTime: str
+        :param _CrossBackupSaveDays: 跨地域备份保留天数
+        :type CrossBackupSaveDays: int
+        :param _DataBackupSpace: 跨地域数据备份总空间
+        :type DataBackupSpace: int
+        :param _DataBackupCount: 跨地域数据备份文件总个数
+        :type DataBackupCount: int
+        :param _LogBackupSpace: 跨地域日志备份总空间
+        :type LogBackupSpace: int
+        :param _LogBackupCount: 跨地域日志备份文件总个数
+        :type LogBackupCount: int
+        :param _ActualUsedSpace: 跨地域备份总空间
+        :type ActualUsedSpace: int
+        :param _ActualUsedCount: 跨地域备份总个数
+        :type ActualUsedCount: int
+        """
+        self._Status = None
+        self._Region = None
+        self._InstanceId = None
+        self._Name = None
+        self._CrossBackupEnabled = None
+        self._CrossRegions = None
+        self._LastBackupStartTime = None
+        self._CrossBackupSaveDays = None
+        self._DataBackupSpace = None
+        self._DataBackupCount = None
+        self._LogBackupSpace = None
+        self._LogBackupCount = None
+        self._ActualUsedSpace = None
+        self._ActualUsedCount = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CrossBackupEnabled(self):
+        return self._CrossBackupEnabled
+
+    @CrossBackupEnabled.setter
+    def CrossBackupEnabled(self, CrossBackupEnabled):
+        self._CrossBackupEnabled = CrossBackupEnabled
+
+    @property
+    def CrossRegions(self):
+        return self._CrossRegions
+
+    @CrossRegions.setter
+    def CrossRegions(self, CrossRegions):
+        self._CrossRegions = CrossRegions
+
+    @property
+    def LastBackupStartTime(self):
+        return self._LastBackupStartTime
+
+    @LastBackupStartTime.setter
+    def LastBackupStartTime(self, LastBackupStartTime):
+        self._LastBackupStartTime = LastBackupStartTime
+
+    @property
+    def CrossBackupSaveDays(self):
+        return self._CrossBackupSaveDays
+
+    @CrossBackupSaveDays.setter
+    def CrossBackupSaveDays(self, CrossBackupSaveDays):
+        self._CrossBackupSaveDays = CrossBackupSaveDays
+
+    @property
+    def DataBackupSpace(self):
+        return self._DataBackupSpace
+
+    @DataBackupSpace.setter
+    def DataBackupSpace(self, DataBackupSpace):
+        self._DataBackupSpace = DataBackupSpace
+
+    @property
+    def DataBackupCount(self):
+        return self._DataBackupCount
+
+    @DataBackupCount.setter
+    def DataBackupCount(self, DataBackupCount):
+        self._DataBackupCount = DataBackupCount
+
+    @property
+    def LogBackupSpace(self):
+        return self._LogBackupSpace
+
+    @LogBackupSpace.setter
+    def LogBackupSpace(self, LogBackupSpace):
+        self._LogBackupSpace = LogBackupSpace
+
+    @property
+    def LogBackupCount(self):
+        return self._LogBackupCount
+
+    @LogBackupCount.setter
+    def LogBackupCount(self, LogBackupCount):
+        self._LogBackupCount = LogBackupCount
+
+    @property
+    def ActualUsedSpace(self):
+        return self._ActualUsedSpace
+
+    @ActualUsedSpace.setter
+    def ActualUsedSpace(self, ActualUsedSpace):
+        self._ActualUsedSpace = ActualUsedSpace
+
+    @property
+    def ActualUsedCount(self):
+        return self._ActualUsedCount
+
+    @ActualUsedCount.setter
+    def ActualUsedCount(self, ActualUsedCount):
+        self._ActualUsedCount = ActualUsedCount
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._CrossBackupEnabled = params.get("CrossBackupEnabled")
+        self._CrossRegions = params.get("CrossRegions")
+        self._LastBackupStartTime = params.get("LastBackupStartTime")
+        self._CrossBackupSaveDays = params.get("CrossBackupSaveDays")
+        self._DataBackupSpace = params.get("DataBackupSpace")
+        self._DataBackupCount = params.get("DataBackupCount")
+        self._LogBackupSpace = params.get("LogBackupSpace")
+        self._LogBackupCount = params.get("LogBackupCount")
+        self._ActualUsedSpace = params.get("ActualUsedSpace")
+        self._ActualUsedCount = params.get("ActualUsedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBCreateInfo(AbstractModel):
     """数据库创建信息
 
@@ -7531,6 +7720,607 @@ class DescribeBackupMigrationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupMonitorRequest(AbstractModel):
+    """DescribeBackupMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 备份空间使用详情开始时间
+        :type StartTime: str
+        :param _EndTime: 备份空间使用详情结束时间
+        :type EndTime: str
+        :param _Type: 备份趋势查询类型，local-本地备份，cross-跨地域备份
+        :type Type: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupMonitorResponse(AbstractModel):
+    """DescribeBackupMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeStamp: 备份趋势图时间轴
+        :type TimeStamp: list of str
+        :param _FreeSpace: 免费备份空间
+        :type FreeSpace: list of float
+        :param _ActualUsedSpace: 实际总备份空间
+        :type ActualUsedSpace: list of float
+        :param _LogBackupSpace: 日志备份空间
+        :type LogBackupSpace: list of float
+        :param _DataBackupSpace: 数据备份空间
+        :type DataBackupSpace: list of float
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TimeStamp = None
+        self._FreeSpace = None
+        self._ActualUsedSpace = None
+        self._LogBackupSpace = None
+        self._DataBackupSpace = None
+        self._RequestId = None
+
+    @property
+    def TimeStamp(self):
+        return self._TimeStamp
+
+    @TimeStamp.setter
+    def TimeStamp(self, TimeStamp):
+        self._TimeStamp = TimeStamp
+
+    @property
+    def FreeSpace(self):
+        return self._FreeSpace
+
+    @FreeSpace.setter
+    def FreeSpace(self, FreeSpace):
+        self._FreeSpace = FreeSpace
+
+    @property
+    def ActualUsedSpace(self):
+        return self._ActualUsedSpace
+
+    @ActualUsedSpace.setter
+    def ActualUsedSpace(self, ActualUsedSpace):
+        self._ActualUsedSpace = ActualUsedSpace
+
+    @property
+    def LogBackupSpace(self):
+        return self._LogBackupSpace
+
+    @LogBackupSpace.setter
+    def LogBackupSpace(self, LogBackupSpace):
+        self._LogBackupSpace = LogBackupSpace
+
+    @property
+    def DataBackupSpace(self):
+        return self._DataBackupSpace
+
+    @DataBackupSpace.setter
+    def DataBackupSpace(self, DataBackupSpace):
+        self._DataBackupSpace = DataBackupSpace
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TimeStamp = params.get("TimeStamp")
+        self._FreeSpace = params.get("FreeSpace")
+        self._ActualUsedSpace = params.get("ActualUsedSpace")
+        self._LogBackupSpace = params.get("LogBackupSpace")
+        self._DataBackupSpace = params.get("DataBackupSpace")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupStatisticalRequest(AbstractModel):
+    """DescribeBackupStatistical请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页返回，每页返回的数目，取值为1-100，默认值为100
+        :type Limit: int
+        :param _Offset: 分页返回，页编号，默认值为第0页。
+        :type Offset: int
+        :param _InstanceIdSet: 一个或者多个实例ID。实例ID，格式如：mssql-si2823jyl。
+        :type InstanceIdSet: list of str
+        :param _InstanceNameSet: 实例名称列表，模糊查询。
+        :type InstanceNameSet: list of str
+        :param _OrderBy: 排序字段，默认default，则按照备份空间降序。
+default 按照备份空间排序
+data 数据备份排序
+log 日志备份排序
+auto 自动备份排序
+manual 手动备份排序
+        :type OrderBy: str
+        :param _OrderByType: 默认降序，[desc-降序，asc-升序]。
+        :type OrderByType: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._InstanceIdSet = None
+        self._InstanceNameSet = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def InstanceNameSet(self):
+        return self._InstanceNameSet
+
+    @InstanceNameSet.setter
+    def InstanceNameSet(self, InstanceNameSet):
+        self._InstanceNameSet = InstanceNameSet
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceNameSet = params.get("InstanceNameSet")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupStatisticalResponse(AbstractModel):
+    """DescribeBackupStatistical返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的实例总数。分页返回的话，这个值指的是所有符合条件的实例的个数，而非当前根据Limit和Offset值返回的实例个数。
+        :type TotalCount: int
+        :param _Items: 实例列表。
+        :type Items: list of SummaryDetailRes
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SummaryDetailRes()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackupSummaryRequest(AbstractModel):
+    """DescribeBackupSummary请求参数结构体
+
+    """
+
+
+class DescribeBackupSummaryResponse(AbstractModel):
+    """DescribeBackupSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FreeSpace: 实际免费总空间，单位(KB)。
+        :type FreeSpace: int
+        :param _ActualUsedSpace: 备份实际使用空间，单位(KB)。
+        :type ActualUsedSpace: int
+        :param _BackupFilesTotal: 备份文件总个数。
+        :type BackupFilesTotal: int
+        :param _BillingSpace: 备份占用收费空间，单位(KB)。
+        :type BillingSpace: int
+        :param _DataBackupSpace: 数据备份使用空间，单位(KB)。
+        :type DataBackupSpace: int
+        :param _DataBackupCount: 数据备份文件总个数。
+        :type DataBackupCount: int
+        :param _ManualBackupSpace: 数据备份中手动备份使用空间，单位(KB)。
+        :type ManualBackupSpace: int
+        :param _ManualBackupCount: 数据备份中手动备份文件总个数。
+        :type ManualBackupCount: int
+        :param _AutoBackupSpace: 数据备份中自动备份使用空间，单位(KB)。
+        :type AutoBackupSpace: int
+        :param _AutoBackupCount: 数据备份中自动备份文件总个数。
+        :type AutoBackupCount: int
+        :param _LogBackupSpace: 日志备份使用空间，单位(KB)。
+        :type LogBackupSpace: int
+        :param _LogBackupCount: 日志备份文件总个数。
+        :type LogBackupCount: int
+        :param _EstimatedAmount: 预估收费金额，单位（元/小时）。
+        :type EstimatedAmount: float
+        :param _LocalBackupFilesTotal: 本地备份文件总个数
+        :type LocalBackupFilesTotal: int
+        :param _CrossBackupFilesTotal: 跨地域备份文件总个数
+        :type CrossBackupFilesTotal: int
+        :param _CrossBillingSpace: 跨地域备份占用收费空间，单位（KB）
+        :type CrossBillingSpace: int
+        :param _CrossAutoBackupSpace: 跨地域自动数据备份使用空间，单位（KB）
+        :type CrossAutoBackupSpace: int
+        :param _CrossAutoBackupCount: 跨地域自动数据备份文件总个数
+        :type CrossAutoBackupCount: int
+        :param _LocalLogBackupSpace: 本地日志备份使用空间，单位（KB）
+        :type LocalLogBackupSpace: int
+        :param _LocalLogBackupCount: 本地日志备份文件总个数
+        :type LocalLogBackupCount: int
+        :param _CrossLogBackupSpace: 跨地域日志备份使用空间，单位（KB）
+        :type CrossLogBackupSpace: int
+        :param _CrossLogBackupCount: 跨地域日志备份文件总个数
+        :type CrossLogBackupCount: int
+        :param _CrossEstimatedAmount: 跨地域备份预估收费金额，单位（元/小时）
+        :type CrossEstimatedAmount: float
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FreeSpace = None
+        self._ActualUsedSpace = None
+        self._BackupFilesTotal = None
+        self._BillingSpace = None
+        self._DataBackupSpace = None
+        self._DataBackupCount = None
+        self._ManualBackupSpace = None
+        self._ManualBackupCount = None
+        self._AutoBackupSpace = None
+        self._AutoBackupCount = None
+        self._LogBackupSpace = None
+        self._LogBackupCount = None
+        self._EstimatedAmount = None
+        self._LocalBackupFilesTotal = None
+        self._CrossBackupFilesTotal = None
+        self._CrossBillingSpace = None
+        self._CrossAutoBackupSpace = None
+        self._CrossAutoBackupCount = None
+        self._LocalLogBackupSpace = None
+        self._LocalLogBackupCount = None
+        self._CrossLogBackupSpace = None
+        self._CrossLogBackupCount = None
+        self._CrossEstimatedAmount = None
+        self._RequestId = None
+
+    @property
+    def FreeSpace(self):
+        return self._FreeSpace
+
+    @FreeSpace.setter
+    def FreeSpace(self, FreeSpace):
+        self._FreeSpace = FreeSpace
+
+    @property
+    def ActualUsedSpace(self):
+        return self._ActualUsedSpace
+
+    @ActualUsedSpace.setter
+    def ActualUsedSpace(self, ActualUsedSpace):
+        self._ActualUsedSpace = ActualUsedSpace
+
+    @property
+    def BackupFilesTotal(self):
+        return self._BackupFilesTotal
+
+    @BackupFilesTotal.setter
+    def BackupFilesTotal(self, BackupFilesTotal):
+        self._BackupFilesTotal = BackupFilesTotal
+
+    @property
+    def BillingSpace(self):
+        return self._BillingSpace
+
+    @BillingSpace.setter
+    def BillingSpace(self, BillingSpace):
+        self._BillingSpace = BillingSpace
+
+    @property
+    def DataBackupSpace(self):
+        return self._DataBackupSpace
+
+    @DataBackupSpace.setter
+    def DataBackupSpace(self, DataBackupSpace):
+        self._DataBackupSpace = DataBackupSpace
+
+    @property
+    def DataBackupCount(self):
+        return self._DataBackupCount
+
+    @DataBackupCount.setter
+    def DataBackupCount(self, DataBackupCount):
+        self._DataBackupCount = DataBackupCount
+
+    @property
+    def ManualBackupSpace(self):
+        return self._ManualBackupSpace
+
+    @ManualBackupSpace.setter
+    def ManualBackupSpace(self, ManualBackupSpace):
+        self._ManualBackupSpace = ManualBackupSpace
+
+    @property
+    def ManualBackupCount(self):
+        return self._ManualBackupCount
+
+    @ManualBackupCount.setter
+    def ManualBackupCount(self, ManualBackupCount):
+        self._ManualBackupCount = ManualBackupCount
+
+    @property
+    def AutoBackupSpace(self):
+        return self._AutoBackupSpace
+
+    @AutoBackupSpace.setter
+    def AutoBackupSpace(self, AutoBackupSpace):
+        self._AutoBackupSpace = AutoBackupSpace
+
+    @property
+    def AutoBackupCount(self):
+        return self._AutoBackupCount
+
+    @AutoBackupCount.setter
+    def AutoBackupCount(self, AutoBackupCount):
+        self._AutoBackupCount = AutoBackupCount
+
+    @property
+    def LogBackupSpace(self):
+        return self._LogBackupSpace
+
+    @LogBackupSpace.setter
+    def LogBackupSpace(self, LogBackupSpace):
+        self._LogBackupSpace = LogBackupSpace
+
+    @property
+    def LogBackupCount(self):
+        return self._LogBackupCount
+
+    @LogBackupCount.setter
+    def LogBackupCount(self, LogBackupCount):
+        self._LogBackupCount = LogBackupCount
+
+    @property
+    def EstimatedAmount(self):
+        return self._EstimatedAmount
+
+    @EstimatedAmount.setter
+    def EstimatedAmount(self, EstimatedAmount):
+        self._EstimatedAmount = EstimatedAmount
+
+    @property
+    def LocalBackupFilesTotal(self):
+        return self._LocalBackupFilesTotal
+
+    @LocalBackupFilesTotal.setter
+    def LocalBackupFilesTotal(self, LocalBackupFilesTotal):
+        self._LocalBackupFilesTotal = LocalBackupFilesTotal
+
+    @property
+    def CrossBackupFilesTotal(self):
+        return self._CrossBackupFilesTotal
+
+    @CrossBackupFilesTotal.setter
+    def CrossBackupFilesTotal(self, CrossBackupFilesTotal):
+        self._CrossBackupFilesTotal = CrossBackupFilesTotal
+
+    @property
+    def CrossBillingSpace(self):
+        return self._CrossBillingSpace
+
+    @CrossBillingSpace.setter
+    def CrossBillingSpace(self, CrossBillingSpace):
+        self._CrossBillingSpace = CrossBillingSpace
+
+    @property
+    def CrossAutoBackupSpace(self):
+        return self._CrossAutoBackupSpace
+
+    @CrossAutoBackupSpace.setter
+    def CrossAutoBackupSpace(self, CrossAutoBackupSpace):
+        self._CrossAutoBackupSpace = CrossAutoBackupSpace
+
+    @property
+    def CrossAutoBackupCount(self):
+        return self._CrossAutoBackupCount
+
+    @CrossAutoBackupCount.setter
+    def CrossAutoBackupCount(self, CrossAutoBackupCount):
+        self._CrossAutoBackupCount = CrossAutoBackupCount
+
+    @property
+    def LocalLogBackupSpace(self):
+        return self._LocalLogBackupSpace
+
+    @LocalLogBackupSpace.setter
+    def LocalLogBackupSpace(self, LocalLogBackupSpace):
+        self._LocalLogBackupSpace = LocalLogBackupSpace
+
+    @property
+    def LocalLogBackupCount(self):
+        return self._LocalLogBackupCount
+
+    @LocalLogBackupCount.setter
+    def LocalLogBackupCount(self, LocalLogBackupCount):
+        self._LocalLogBackupCount = LocalLogBackupCount
+
+    @property
+    def CrossLogBackupSpace(self):
+        return self._CrossLogBackupSpace
+
+    @CrossLogBackupSpace.setter
+    def CrossLogBackupSpace(self, CrossLogBackupSpace):
+        self._CrossLogBackupSpace = CrossLogBackupSpace
+
+    @property
+    def CrossLogBackupCount(self):
+        return self._CrossLogBackupCount
+
+    @CrossLogBackupCount.setter
+    def CrossLogBackupCount(self, CrossLogBackupCount):
+        self._CrossLogBackupCount = CrossLogBackupCount
+
+    @property
+    def CrossEstimatedAmount(self):
+        return self._CrossEstimatedAmount
+
+    @CrossEstimatedAmount.setter
+    def CrossEstimatedAmount(self, CrossEstimatedAmount):
+        self._CrossEstimatedAmount = CrossEstimatedAmount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FreeSpace = params.get("FreeSpace")
+        self._ActualUsedSpace = params.get("ActualUsedSpace")
+        self._BackupFilesTotal = params.get("BackupFilesTotal")
+        self._BillingSpace = params.get("BillingSpace")
+        self._DataBackupSpace = params.get("DataBackupSpace")
+        self._DataBackupCount = params.get("DataBackupCount")
+        self._ManualBackupSpace = params.get("ManualBackupSpace")
+        self._ManualBackupCount = params.get("ManualBackupCount")
+        self._AutoBackupSpace = params.get("AutoBackupSpace")
+        self._AutoBackupCount = params.get("AutoBackupCount")
+        self._LogBackupSpace = params.get("LogBackupSpace")
+        self._LogBackupCount = params.get("LogBackupCount")
+        self._EstimatedAmount = params.get("EstimatedAmount")
+        self._LocalBackupFilesTotal = params.get("LocalBackupFilesTotal")
+        self._CrossBackupFilesTotal = params.get("CrossBackupFilesTotal")
+        self._CrossBillingSpace = params.get("CrossBillingSpace")
+        self._CrossAutoBackupSpace = params.get("CrossAutoBackupSpace")
+        self._CrossAutoBackupCount = params.get("CrossAutoBackupCount")
+        self._LocalLogBackupSpace = params.get("LocalLogBackupSpace")
+        self._LocalLogBackupCount = params.get("LocalLogBackupCount")
+        self._CrossLogBackupSpace = params.get("CrossLogBackupSpace")
+        self._CrossLogBackupCount = params.get("CrossLogBackupCount")
+        self._CrossEstimatedAmount = params.get("CrossEstimatedAmount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupUploadSizeRequest(AbstractModel):
     """DescribeBackupUploadSize请求参数结构体
 
@@ -8041,6 +8831,177 @@ class DescribeBusinessIntelligenceFileResponse(AbstractModel):
                 obj = BusinessIntelligenceFile()
                 obj._deserialize(item)
                 self._BackupMigrationSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCrossBackupStatisticalRequest(AbstractModel):
+    """DescribeCrossBackupStatistical请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 分页,页数
+        :type Offset: int
+        :param _Limit: 分页，页大小
+        :type Limit: int
+        :param _InstanceIdSet: 实例ID列表
+        :type InstanceIdSet: list of str
+        :param _InstanceNameSet: 实例名称列表
+        :type InstanceNameSet: list of str
+        :param _CrossBackupStatus: 跨地域备份状态，enable-开启，disable-关闭
+        :type CrossBackupStatus: str
+        :param _CrossRegion: 跨地域备份目标地域
+        :type CrossRegion: str
+        :param _OrderBy: 排序字段，默认default-按照备份空间降序排序，data-按照数据备份排序，log-按照日志备份培训
+        :type OrderBy: str
+        :param _OrderByType: 排序规则（desc-降序，asc-升序），默认desc
+        :type OrderByType: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._InstanceIdSet = None
+        self._InstanceNameSet = None
+        self._CrossBackupStatus = None
+        self._CrossRegion = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def InstanceNameSet(self):
+        return self._InstanceNameSet
+
+    @InstanceNameSet.setter
+    def InstanceNameSet(self, InstanceNameSet):
+        self._InstanceNameSet = InstanceNameSet
+
+    @property
+    def CrossBackupStatus(self):
+        return self._CrossBackupStatus
+
+    @CrossBackupStatus.setter
+    def CrossBackupStatus(self, CrossBackupStatus):
+        self._CrossBackupStatus = CrossBackupStatus
+
+    @property
+    def CrossRegion(self):
+        return self._CrossRegion
+
+    @CrossRegion.setter
+    def CrossRegion(self, CrossRegion):
+        self._CrossRegion = CrossRegion
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceNameSet = params.get("InstanceNameSet")
+        self._CrossBackupStatus = params.get("CrossBackupStatus")
+        self._CrossRegion = params.get("CrossRegion")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCrossBackupStatisticalResponse(AbstractModel):
+    """DescribeCrossBackupStatistical返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 跨地域备份概览实时统计总条数
+        :type TotalCount: int
+        :param _Items: 跨地域备份概览实时统计列表
+        :type Items: list of CrossSummaryDetailRes
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = CrossSummaryDetailRes()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9059,6 +10020,240 @@ class DescribeDBsRequest(AbstractModel):
 
 class DescribeDBsResponse(AbstractModel):
     """DescribeDBs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据库数量
+        :type TotalCount: int
+        :param _DBInstances: 实例数据库列表
+        :type DBInstances: list of InstanceDBDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DBInstances = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DBInstances(self):
+        return self._DBInstances
+
+    @DBInstances.setter
+    def DBInstances(self, DBInstances):
+        self._DBInstances = DBInstances
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DBInstances") is not None:
+            self._DBInstances = []
+            for item in params.get("DBInstances"):
+                obj = InstanceDBDetail()
+                obj._deserialize(item)
+                self._DBInstances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesNormalRequest(AbstractModel):
+    """DescribeDatabasesNormal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，形如mssql-7vfv3rk3
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabasesNormalResponse(AbstractModel):
+    """DescribeDatabasesNormal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 表示当前实例下的数据库总个数
+        :type TotalCount: int
+        :param _DBList: 返回数据库的详细配置信息，例如：数据库是否开启CDC、CT等
+        :type DBList: list of DbNormalDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DBList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DBList(self):
+        return self._DBList
+
+    @DBList.setter
+    def DBList(self, DBList):
+        self._DBList = DBList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DBList") is not None:
+            self._DBList = []
+            for item in params.get("DBList"):
+                obj = DbNormalDetail()
+                obj._deserialize(item)
+                self._DBList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabasesRequest(AbstractModel):
+    """DescribeDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIdSet: 实例ID
+        :type InstanceIdSet: list of str
+        :param _Limit: 分页返回，每页返回的数目，取值为1-100，默认值为20
+        :type Limit: int
+        :param _Offset: 分页返回，页编号，默认值为第0页
+        :type Offset: int
+        :param _Name: 数据库名称
+        :type Name: str
+        :param _OrderByType: 排序规则（desc-降序，asc-升序），默认desc
+        :type OrderByType: str
+        :param _Encryption: 是否已开启TDE加密，enable-已加密，disable-未加密
+        :type Encryption: str
+        """
+        self._InstanceIdSet = None
+        self._Limit = None
+        self._Offset = None
+        self._Name = None
+        self._OrderByType = None
+        self._Encryption = None
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Name = params.get("Name")
+        self._OrderByType = params.get("OrderByType")
+        self._Encryption = params.get("Encryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabasesResponse(AbstractModel):
+    """DescribeDatabases返回参数结构体
 
     """
 
@@ -11400,6 +12595,148 @@ class DescribeRegionsResponse(AbstractModel):
                 obj = RegionInfo()
                 obj._deserialize(item)
                 self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegularBackupPlanRequest(AbstractModel):
+    """DescribeRegularBackupPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RegularBackupSaveDays: 定期备份保留天数 [90 - 3650]天，默认365天
+        :type RegularBackupSaveDays: int
+        :param _RegularBackupStrategy: 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+        :type RegularBackupStrategy: str
+        :param _RegularBackupCounts: 定期备份保留个数，默认1个
+        :type RegularBackupCounts: int
+        :param _RegularBackupStartTime: 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+        :type RegularBackupStartTime: str
+        :param _BackupCycle: 常规备份周期
+        :type BackupCycle: list of int non-negative
+        """
+        self._InstanceId = None
+        self._RegularBackupSaveDays = None
+        self._RegularBackupStrategy = None
+        self._RegularBackupCounts = None
+        self._RegularBackupStartTime = None
+        self._BackupCycle = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RegularBackupSaveDays(self):
+        return self._RegularBackupSaveDays
+
+    @RegularBackupSaveDays.setter
+    def RegularBackupSaveDays(self, RegularBackupSaveDays):
+        self._RegularBackupSaveDays = RegularBackupSaveDays
+
+    @property
+    def RegularBackupStrategy(self):
+        return self._RegularBackupStrategy
+
+    @RegularBackupStrategy.setter
+    def RegularBackupStrategy(self, RegularBackupStrategy):
+        self._RegularBackupStrategy = RegularBackupStrategy
+
+    @property
+    def RegularBackupCounts(self):
+        return self._RegularBackupCounts
+
+    @RegularBackupCounts.setter
+    def RegularBackupCounts(self, RegularBackupCounts):
+        self._RegularBackupCounts = RegularBackupCounts
+
+    @property
+    def RegularBackupStartTime(self):
+        return self._RegularBackupStartTime
+
+    @RegularBackupStartTime.setter
+    def RegularBackupStartTime(self, RegularBackupStartTime):
+        self._RegularBackupStartTime = RegularBackupStartTime
+
+    @property
+    def BackupCycle(self):
+        return self._BackupCycle
+
+    @BackupCycle.setter
+    def BackupCycle(self, BackupCycle):
+        self._BackupCycle = BackupCycle
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RegularBackupSaveDays = params.get("RegularBackupSaveDays")
+        self._RegularBackupStrategy = params.get("RegularBackupStrategy")
+        self._RegularBackupCounts = params.get("RegularBackupCounts")
+        self._RegularBackupStartTime = params.get("RegularBackupStartTime")
+        self._BackupCycle = params.get("BackupCycle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRegularBackupPlanResponse(AbstractModel):
+    """DescribeRegularBackupPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SaveModePeriod: 常规备份计划
+        :type SaveModePeriod: list of str
+        :param _SaveModeRegular: 定期备份计划
+        :type SaveModeRegular: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SaveModePeriod = None
+        self._SaveModeRegular = None
+        self._RequestId = None
+
+    @property
+    def SaveModePeriod(self):
+        return self._SaveModePeriod
+
+    @SaveModePeriod.setter
+    def SaveModePeriod(self, SaveModePeriod):
+        self._SaveModePeriod = SaveModePeriod
+
+    @property
+    def SaveModeRegular(self):
+        return self._SaveModeRegular
+
+    @SaveModeRegular.setter
+    def SaveModeRegular(self, SaveModeRegular):
+        self._SaveModeRegular = SaveModeRegular
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SaveModePeriod = params.get("SaveModePeriod")
+        self._SaveModeRegular = params.get("SaveModeRegular")
         self._RequestId = params.get("RequestId")
 
 
@@ -14747,6 +16084,124 @@ class ModifyBackupStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCrossBackupStrategyRequest(AbstractModel):
+    """ModifyCrossBackupStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CrossBackupEnabled: 跨地域备份开关(数据备份&日志备份) enable-开启，disable-关闭
+        :type CrossBackupEnabled: str
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _InstanceIdSet: 实例ID列表
+        :type InstanceIdSet: list of str
+        :param _CrossBackupSaveDays: 跨地域备份保留天数，取值：7~1830，默认7天
+        :type CrossBackupSaveDays: int
+        :param _CrossBackupRegion: 跨地域备份的目标地域ID，最多两个，最少一个
+        :type CrossBackupRegion: list of str
+        :param _CleanUpCrossBackup: 是否立即清理跨地域备份(数据备份&日志备份) ，只有在BackupEnabled = disable时有效。1-是，0-否，默认：0
+        :type CleanUpCrossBackup: int
+        """
+        self._CrossBackupEnabled = None
+        self._InstanceId = None
+        self._InstanceIdSet = None
+        self._CrossBackupSaveDays = None
+        self._CrossBackupRegion = None
+        self._CleanUpCrossBackup = None
+
+    @property
+    def CrossBackupEnabled(self):
+        return self._CrossBackupEnabled
+
+    @CrossBackupEnabled.setter
+    def CrossBackupEnabled(self, CrossBackupEnabled):
+        self._CrossBackupEnabled = CrossBackupEnabled
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceIdSet(self):
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def CrossBackupSaveDays(self):
+        return self._CrossBackupSaveDays
+
+    @CrossBackupSaveDays.setter
+    def CrossBackupSaveDays(self, CrossBackupSaveDays):
+        self._CrossBackupSaveDays = CrossBackupSaveDays
+
+    @property
+    def CrossBackupRegion(self):
+        return self._CrossBackupRegion
+
+    @CrossBackupRegion.setter
+    def CrossBackupRegion(self, CrossBackupRegion):
+        self._CrossBackupRegion = CrossBackupRegion
+
+    @property
+    def CleanUpCrossBackup(self):
+        return self._CleanUpCrossBackup
+
+    @CleanUpCrossBackup.setter
+    def CleanUpCrossBackup(self, CleanUpCrossBackup):
+        self._CleanUpCrossBackup = CleanUpCrossBackup
+
+
+    def _deserialize(self, params):
+        self._CrossBackupEnabled = params.get("CrossBackupEnabled")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._CrossBackupSaveDays = params.get("CrossBackupSaveDays")
+        self._CrossBackupRegion = params.get("CrossBackupRegion")
+        self._CleanUpCrossBackup = params.get("CleanUpCrossBackup")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCrossBackupStrategyResponse(AbstractModel):
+    """ModifyCrossBackupStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBEncryptAttributesRequest(AbstractModel):
     """ModifyDBEncryptAttributes请求参数结构体
 
@@ -15665,6 +17120,88 @@ class ModifyDatabaseMdfRequest(AbstractModel):
 
 class ModifyDatabaseMdfResponse(AbstractModel):
     """ModifyDatabaseMdf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 流程ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDatabaseShrinkMDFRequest(AbstractModel):
+    """ModifyDatabaseShrinkMDF请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBNames: 数据库名数组
+        :type DBNames: list of str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        """
+        self._DBNames = None
+        self._InstanceId = None
+
+    @property
+    def DBNames(self):
+        return self._DBNames
+
+    @DBNames.setter
+    def DBNames(self, DBNames):
+        self._DBNames = DBNames
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._DBNames = params.get("DBNames")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseShrinkMDFResponse(AbstractModel):
+    """ModifyDatabaseShrinkMDF返回参数结构体
 
     """
 
@@ -19850,6 +21387,195 @@ class StopMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class SummaryDetailRes(AbstractModel):
+    """备份概览实时统计项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: 地域标识
+        :type RegionId: int
+        :param _Status: 实例状态。1：申请中2：运行中3：受限运行中 (主备切换中)4：已隔离5：回收中6：已回收7：任务执行中 (实例做备份、回档等操作)8：已下线9：实例扩容中10：实例迁移中
+        :type Status: int
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Name: 实例名称
+        :type Name: str
+        :param _ActualUsedSpace: 备份空间
+        :type ActualUsedSpace: int
+        :param _DataBackupSpace: 数据备份空间
+        :type DataBackupSpace: int
+        :param _DataBackupCount: 数据备份文件总个数
+        :type DataBackupCount: int
+        :param _LogBackupSpace: 日志备份空间
+        :type LogBackupSpace: int
+        :param _LogBackupCount: 日志备份文件总个数
+        :type LogBackupCount: int
+        :param _AutoBackupSpace: 自动备份空间
+        :type AutoBackupSpace: int
+        :param _AutoBackupCount: 自动备份文件总个数
+        :type AutoBackupCount: int
+        :param _ManualBackupSpace: 手动备份空间
+        :type ManualBackupSpace: int
+        :param _ManualBackupCount: 手动备份文件总个数
+        :type ManualBackupCount: int
+        :param _Region: 实例所属地域码
+        :type Region: str
+        """
+        self._RegionId = None
+        self._Status = None
+        self._InstanceId = None
+        self._Name = None
+        self._ActualUsedSpace = None
+        self._DataBackupSpace = None
+        self._DataBackupCount = None
+        self._LogBackupSpace = None
+        self._LogBackupCount = None
+        self._AutoBackupSpace = None
+        self._AutoBackupCount = None
+        self._ManualBackupSpace = None
+        self._ManualBackupCount = None
+        self._Region = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ActualUsedSpace(self):
+        return self._ActualUsedSpace
+
+    @ActualUsedSpace.setter
+    def ActualUsedSpace(self, ActualUsedSpace):
+        self._ActualUsedSpace = ActualUsedSpace
+
+    @property
+    def DataBackupSpace(self):
+        return self._DataBackupSpace
+
+    @DataBackupSpace.setter
+    def DataBackupSpace(self, DataBackupSpace):
+        self._DataBackupSpace = DataBackupSpace
+
+    @property
+    def DataBackupCount(self):
+        return self._DataBackupCount
+
+    @DataBackupCount.setter
+    def DataBackupCount(self, DataBackupCount):
+        self._DataBackupCount = DataBackupCount
+
+    @property
+    def LogBackupSpace(self):
+        return self._LogBackupSpace
+
+    @LogBackupSpace.setter
+    def LogBackupSpace(self, LogBackupSpace):
+        self._LogBackupSpace = LogBackupSpace
+
+    @property
+    def LogBackupCount(self):
+        return self._LogBackupCount
+
+    @LogBackupCount.setter
+    def LogBackupCount(self, LogBackupCount):
+        self._LogBackupCount = LogBackupCount
+
+    @property
+    def AutoBackupSpace(self):
+        return self._AutoBackupSpace
+
+    @AutoBackupSpace.setter
+    def AutoBackupSpace(self, AutoBackupSpace):
+        self._AutoBackupSpace = AutoBackupSpace
+
+    @property
+    def AutoBackupCount(self):
+        return self._AutoBackupCount
+
+    @AutoBackupCount.setter
+    def AutoBackupCount(self, AutoBackupCount):
+        self._AutoBackupCount = AutoBackupCount
+
+    @property
+    def ManualBackupSpace(self):
+        return self._ManualBackupSpace
+
+    @ManualBackupSpace.setter
+    def ManualBackupSpace(self, ManualBackupSpace):
+        self._ManualBackupSpace = ManualBackupSpace
+
+    @property
+    def ManualBackupCount(self):
+        return self._ManualBackupCount
+
+    @ManualBackupCount.setter
+    def ManualBackupCount(self, ManualBackupCount):
+        self._ManualBackupCount = ManualBackupCount
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._ActualUsedSpace = params.get("ActualUsedSpace")
+        self._DataBackupSpace = params.get("DataBackupSpace")
+        self._DataBackupCount = params.get("DataBackupCount")
+        self._LogBackupSpace = params.get("LogBackupSpace")
+        self._LogBackupCount = params.get("LogBackupCount")
+        self._AutoBackupSpace = params.get("AutoBackupSpace")
+        self._AutoBackupCount = params.get("AutoBackupCount")
+        self._ManualBackupSpace = params.get("ManualBackupSpace")
+        self._ManualBackupCount = params.get("ManualBackupCount")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SwitchCloudInstanceHARequest(AbstractModel):

@@ -19,19 +19,19 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class ACTemplate(AbstractModel):
-    """权限控制模版对象
+    """权限控制模板对象
 
     """
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
-        :param _Description: 模版描述
+        :param _Description: 模板描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         """

@@ -13038,6 +13038,215 @@ class DescribeTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTablesNameRequest(AbstractModel):
+    """DescribeTablesName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 列出该数据库下所属数据表。
+        :type DatabaseName: str
+        :param _Limit: 返回数量，默认为10，最大值为100。
+        :type Limit: int
+        :param _Offset: 数据偏移量，从0开始，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为其一
+table-name - String - （过滤条件）数据表名称,形如：table-001。
+table-id - String - （过滤条件）table id形如：12342。
+        :type Filters: list of Filter
+        :param _DatasourceConnectionName: 指定查询的数据源名称，默认为DataLakeCatalog
+        :type DatasourceConnectionName: str
+        :param _StartTime: 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        :type StartTime: str
+        :param _EndTime: 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
+        :type EndTime: str
+        :param _Sort: 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
+        :type Sort: str
+        :param _Asc: 排序字段，false：降序（默认）；true：升序
+        :type Asc: bool
+        :param _TableType: table type，表类型查询,可用值:EXTERNAL_TABLE,INDEX_TABLE,MANAGED_TABLE,MATERIALIZED_VIEW,TABLE,VIEW,VIRTUAL_VIEW
+        :type TableType: str
+        :param _TableFormat: 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
+        :type TableFormat: str
+        """
+        self._DatabaseName = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._DatasourceConnectionName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Sort = None
+        self._Asc = None
+        self._TableType = None
+        self._TableFormat = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def DatasourceConnectionName(self):
+        return self._DatasourceConnectionName
+
+    @DatasourceConnectionName.setter
+    def DatasourceConnectionName(self, DatasourceConnectionName):
+        self._DatasourceConnectionName = DatasourceConnectionName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Asc(self):
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def TableFormat(self):
+        return self._TableFormat
+
+    @TableFormat.setter
+    def TableFormat(self, TableFormat):
+        self._TableFormat = TableFormat
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._DatasourceConnectionName = params.get("DatasourceConnectionName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Sort = params.get("Sort")
+        self._Asc = params.get("Asc")
+        self._TableType = params.get("TableType")
+        self._TableFormat = params.get("TableFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTablesNameResponse(AbstractModel):
+    """DescribeTablesName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNameList: 数据表名称对象列表。
+        :type TableNameList: list of str
+        :param _TotalCount: 实例总数。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableNameList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TableNameList(self):
+        return self._TableNameList
+
+    @TableNameList.setter
+    def TableNameList(self, TableNameList):
+        self._TableNameList = TableNameList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TableNameList = params.get("TableNameList")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTablesRequest(AbstractModel):
     """DescribeTables请求参数结构体
 

@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM权限错误。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 任务状态错误。
 FAILEDOPERATION_ERRORINVALIDTASKSTATUS = 'FailedOperation.ErrorInvalidTaskStatus'
 

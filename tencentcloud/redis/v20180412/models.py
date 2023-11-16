@@ -8208,11 +8208,11 @@ class HotKeyInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 热Key
+        :param _Key: 热 Key 的名称。
         :type Key: str
-        :param _Type: 类型
+        :param _Type: Key 类型。
         :type Type: str
-        :param _Count: 数量
+        :param _Count: 某段时间内热 Key 的访问次数
         :type Count: int
         """
         self._Key = None

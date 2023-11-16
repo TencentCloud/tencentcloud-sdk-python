@@ -3900,6 +3900,8 @@ POSTPAID_BY_HOUR 按量计费
         :type DataSource: str
         :param _CallbackUrl: 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
         :type CallbackUrl: str
+        :param _PreTrainModel: 太极预训练模型ID
+        :type PreTrainModel: :class:`tencentcloud.tione.v20211111.models.PreTrainModel`
         """
         self._Name = None
         self._ChargeType = None
@@ -3923,6 +3925,7 @@ POSTPAID_BY_HOUR 按量计费
         self._Remark = None
         self._DataSource = None
         self._CallbackUrl = None
+        self._PreTrainModel = None
 
     @property
     def Name(self):
@@ -4100,6 +4103,14 @@ POSTPAID_BY_HOUR 按量计费
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def PreTrainModel(self):
+        return self._PreTrainModel
+
+    @PreTrainModel.setter
+    def PreTrainModel(self, PreTrainModel):
+        self._PreTrainModel = PreTrainModel
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4149,6 +4160,9 @@ POSTPAID_BY_HOUR 按量计费
         self._Remark = params.get("Remark")
         self._DataSource = params.get("DataSource")
         self._CallbackUrl = params.get("CallbackUrl")
+        if params.get("PreTrainModel") is not None:
+            self._PreTrainModel = PreTrainModel()
+            self._PreTrainModel._deserialize(params.get("PreTrainModel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15775,6 +15789,53 @@ class PointInfo(AbstractModel):
     def _deserialize(self, params):
         self._X = params.get("X")
         self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreTrainModel(AbstractModel):
+    """太极任务预训练模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 模型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _ModelName: 模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelName: str
+        """
+        self._ModelId = None
+        self._ModelName = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

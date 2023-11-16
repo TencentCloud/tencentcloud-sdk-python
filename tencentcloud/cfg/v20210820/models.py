@@ -64,7 +64,7 @@ class ActionFilter(AbstractModel):
 
 
 class ApmServiceInfo(AbstractModel):
-    """应用性能观测产品中应用信息
+    """应用性能监控产品中应用信息
 
     """
 
