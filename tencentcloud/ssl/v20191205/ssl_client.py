@@ -510,7 +510,7 @@ class SslClient(AbstractClient):
 
 
     def DescribeDeployedResources(self, request):
-        """证书查询关联资源
+        """证书查询关联资源， 最新查询接口请使用CreateCertificateBindResourceSyncTask， 可以查询更多支持的云资源
 
         :param request: Request instance for DescribeDeployedResources.
         :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeDeployedResourcesRequest`

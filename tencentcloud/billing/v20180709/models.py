@@ -9338,9 +9338,9 @@ class DescribeTagListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Limit: 数量，最大值为1000
         :type Limit: int
-        :param _Offset: 数量，最大值为1000
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :type Offset: int
         :param _TagKey: 分账标签键，用作模糊搜索
         :type TagKey: str

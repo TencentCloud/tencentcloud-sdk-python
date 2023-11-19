@@ -259,6 +259,214 @@ class AgentStatus(AbstractModel):
         
 
 
+class AlarmDsVO(AbstractModel):
+    """告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmId: 告警策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmId: str
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Status: 告警是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _AlarmType: 告警类别，目前支持失败告警，超时告警
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmType: str
+        :param _AlarmWay: 告警方式 ，目前支持email提醒，短信提醒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmWay: str
+        :param _Creator: 告警创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _AlarmRecipient: 告警接收人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipient: str
+        :param _AlarmRecipientId: 告警接收人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmRecipientId: str
+        :param _ModifyTime: 告警修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _LastFailTime: 最近失败告警实例数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastFailTime: str
+        :param _LastOverTime: 最近超时告警实例数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOverTime: str
+        :param _LastAlarmTime: 最新告警时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAlarmTime: str
+        :param _AlarmExt: AlarmExt信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmExt: list of AlarmExtDsVO
+        :param _CreateTime: 告警创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        """
+        self._AlarmId = None
+        self._TaskId = None
+        self._Status = None
+        self._AlarmType = None
+        self._AlarmWay = None
+        self._Creator = None
+        self._AlarmRecipient = None
+        self._AlarmRecipientId = None
+        self._ModifyTime = None
+        self._LastFailTime = None
+        self._LastOverTime = None
+        self._LastAlarmTime = None
+        self._AlarmExt = None
+        self._CreateTime = None
+
+    @property
+    def AlarmId(self):
+        return self._AlarmId
+
+    @AlarmId.setter
+    def AlarmId(self, AlarmId):
+        self._AlarmId = AlarmId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AlarmType(self):
+        return self._AlarmType
+
+    @AlarmType.setter
+    def AlarmType(self, AlarmType):
+        self._AlarmType = AlarmType
+
+    @property
+    def AlarmWay(self):
+        return self._AlarmWay
+
+    @AlarmWay.setter
+    def AlarmWay(self, AlarmWay):
+        self._AlarmWay = AlarmWay
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def AlarmRecipient(self):
+        return self._AlarmRecipient
+
+    @AlarmRecipient.setter
+    def AlarmRecipient(self, AlarmRecipient):
+        self._AlarmRecipient = AlarmRecipient
+
+    @property
+    def AlarmRecipientId(self):
+        return self._AlarmRecipientId
+
+    @AlarmRecipientId.setter
+    def AlarmRecipientId(self, AlarmRecipientId):
+        self._AlarmRecipientId = AlarmRecipientId
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def LastFailTime(self):
+        return self._LastFailTime
+
+    @LastFailTime.setter
+    def LastFailTime(self, LastFailTime):
+        self._LastFailTime = LastFailTime
+
+    @property
+    def LastOverTime(self):
+        return self._LastOverTime
+
+    @LastOverTime.setter
+    def LastOverTime(self, LastOverTime):
+        self._LastOverTime = LastOverTime
+
+    @property
+    def LastAlarmTime(self):
+        return self._LastAlarmTime
+
+    @LastAlarmTime.setter
+    def LastAlarmTime(self, LastAlarmTime):
+        self._LastAlarmTime = LastAlarmTime
+
+    @property
+    def AlarmExt(self):
+        return self._AlarmExt
+
+    @AlarmExt.setter
+    def AlarmExt(self, AlarmExt):
+        self._AlarmExt = AlarmExt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._AlarmId = params.get("AlarmId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._AlarmType = params.get("AlarmType")
+        self._AlarmWay = params.get("AlarmWay")
+        self._Creator = params.get("Creator")
+        self._AlarmRecipient = params.get("AlarmRecipient")
+        self._AlarmRecipientId = params.get("AlarmRecipientId")
+        self._ModifyTime = params.get("ModifyTime")
+        self._LastFailTime = params.get("LastFailTime")
+        self._LastOverTime = params.get("LastOverTime")
+        self._LastAlarmTime = params.get("LastAlarmTime")
+        if params.get("AlarmExt") is not None:
+            self._AlarmExt = []
+            for item in params.get("AlarmExt"):
+                obj = AlarmExtDsVO()
+                obj._deserialize(item)
+                self._AlarmExt.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmEventInfo(AbstractModel):
     """告警事件详情
 
@@ -534,6 +742,92 @@ class AlarmEventInfo(AbstractModel):
         self._AlarmRecipientName = params.get("AlarmRecipientName")
         self._TaskType = params.get("TaskType")
         self._SendResult = params.get("SendResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmExtDsVO(AbstractModel):
+    """AlarmExtVO信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmId: 告警策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmId: str
+        :param _PropName: 扩展字段key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropName: str
+        :param _PropValue: 扩展字段value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropValue: str
+        :param _CreateTime: 告警创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        """
+        self._AlarmId = None
+        self._PropName = None
+        self._PropValue = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def AlarmId(self):
+        return self._AlarmId
+
+    @AlarmId.setter
+    def AlarmId(self, AlarmId):
+        self._AlarmId = AlarmId
+
+    @property
+    def PropName(self):
+        return self._PropName
+
+    @PropName.setter
+    def PropName(self, PropName):
+        self._PropName = PropName
+
+    @property
+    def PropValue(self):
+        return self._PropValue
+
+    @PropValue.setter
+    def PropValue(self, PropValue):
+        self._PropValue = PropValue
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._AlarmId = params.get("AlarmId")
+        self._PropName = params.get("PropName")
+        self._PropValue = params.get("PropValue")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1000,6 +1294,279 @@ class AlarmRuleDto(AbstractModel):
     def _deserialize(self, params):
         self._AlarmRuleId = params.get("AlarmRuleId")
         self._AlarmLevelType = params.get("AlarmLevelType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Apply(AbstractModel):
+    """审批列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicantId: 申请人id
+        :type ApplicantId: str
+        :param _ApplicantName: 申请人名称
+        :type ApplicantName: str
+        :param _Remark: 审批备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _ApproveClassification: 审批分类key
+        :type ApproveClassification: str
+        :param _ApproveId: 审批单id
+        :type ApproveId: str
+        :param _ApproveType: 审批类型key
+        :type ApproveType: str
+        :param _Reason: 申请原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ApproveTime: 审批时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveTime: str
+        :param _ApproveClassificationName: 审批分类名称
+        :type ApproveClassificationName: str
+        :param _Status: 状态
+        :type Status: str
+        :param _ApproveTypeName: 审批类型名称
+        :type ApproveTypeName: str
+        """
+        self._ApplicantId = None
+        self._ApplicantName = None
+        self._Remark = None
+        self._ApproveClassification = None
+        self._ApproveId = None
+        self._ApproveType = None
+        self._Reason = None
+        self._CreateTime = None
+        self._ApproveTime = None
+        self._ApproveClassificationName = None
+        self._Status = None
+        self._ApproveTypeName = None
+
+    @property
+    def ApplicantId(self):
+        return self._ApplicantId
+
+    @ApplicantId.setter
+    def ApplicantId(self, ApplicantId):
+        self._ApplicantId = ApplicantId
+
+    @property
+    def ApplicantName(self):
+        return self._ApplicantName
+
+    @ApplicantName.setter
+    def ApplicantName(self, ApplicantName):
+        self._ApplicantName = ApplicantName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ApproveClassification(self):
+        return self._ApproveClassification
+
+    @ApproveClassification.setter
+    def ApproveClassification(self, ApproveClassification):
+        self._ApproveClassification = ApproveClassification
+
+    @property
+    def ApproveId(self):
+        return self._ApproveId
+
+    @ApproveId.setter
+    def ApproveId(self, ApproveId):
+        self._ApproveId = ApproveId
+
+    @property
+    def ApproveType(self):
+        return self._ApproveType
+
+    @ApproveType.setter
+    def ApproveType(self, ApproveType):
+        self._ApproveType = ApproveType
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ApproveTime(self):
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+    @property
+    def ApproveClassificationName(self):
+        return self._ApproveClassificationName
+
+    @ApproveClassificationName.setter
+    def ApproveClassificationName(self, ApproveClassificationName):
+        self._ApproveClassificationName = ApproveClassificationName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApproveTypeName(self):
+        return self._ApproveTypeName
+
+    @ApproveTypeName.setter
+    def ApproveTypeName(self, ApproveTypeName):
+        self._ApproveTypeName = ApproveTypeName
+
+
+    def _deserialize(self, params):
+        self._ApplicantId = params.get("ApplicantId")
+        self._ApplicantName = params.get("ApplicantName")
+        self._Remark = params.get("Remark")
+        self._ApproveClassification = params.get("ApproveClassification")
+        self._ApproveId = params.get("ApproveId")
+        self._ApproveType = params.get("ApproveType")
+        self._Reason = params.get("Reason")
+        self._CreateTime = params.get("CreateTime")
+        self._ApproveTime = params.get("ApproveTime")
+        self._ApproveClassificationName = params.get("ApproveClassificationName")
+        self._Status = params.get("Status")
+        self._ApproveTypeName = params.get("ApproveTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproveModify(AbstractModel):
+    """修改审批单状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproveId: 审批单id
+        :type ApproveId: str
+        :param _Success: 是否修改成功
+        :type Success: bool
+        """
+        self._ApproveId = None
+        self._Success = None
+
+    @property
+    def ApproveId(self):
+        return self._ApproveId
+
+    @ApproveId.setter
+    def ApproveId(self, ApproveId):
+        self._ApproveId = ApproveId
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+
+    def _deserialize(self, params):
+        self._ApproveId = params.get("ApproveId")
+        self._Success = params.get("Success")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AttributeItemDsVO(AbstractModel):
+    """AttributeItemVO参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: Value值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2599,6 +3166,254 @@ class BatchCreateIntegrationTaskAlarmsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchCreateTaskVersionDTO(AbstractModel):
+    """BatchCreateTaskVersion使用，描述任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VersionRemark: VersionRemark
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRemark: str
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        """
+        self._TaskId = None
+        self._VersionRemark = None
+        self._FolderId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VersionRemark(self):
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._VersionRemark = params.get("VersionRemark")
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateTaskVersionDsDTOLite(AbstractModel):
+    """BatchCreateTaskVersionDs使用的TaskVersionDsDTO
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VersionRemark: 版本备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionRemark: str
+        :param _TaskInfo: 任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: :class:`tencentcloud.wedata.v20210820.models.TaskDsDTOLiteV2`
+        """
+        self._TaskId = None
+        self._VersionRemark = None
+        self._TaskInfo = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VersionRemark(self):
+        return self._VersionRemark
+
+    @VersionRemark.setter
+    def VersionRemark(self, VersionRemark):
+        self._VersionRemark = VersionRemark
+
+    @property
+    def TaskInfo(self):
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._VersionRemark = params.get("VersionRemark")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = TaskDsDTOLiteV2()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateTaskVersionDsRequest(AbstractModel):
+    """BatchCreateTaskVersionDs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskVersionDTOs: 任务版本信息
+        :type TaskVersionDTOs: list of BatchCreateTaskVersionDsDTOLite
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _AutoRun: 是否自动运行
+        :type AutoRun: bool
+        :param _AlarmWays: 告警方式:email-邮件;sms-短信;wecom-企业微信
+        :type AlarmWays: str
+        :param _AlarmRecipientTypes: 告警对象:1-项目管理员，2-任务责任人
+        :type AlarmRecipientTypes: str
+        """
+        self._TaskVersionDTOs = None
+        self._ProjectId = None
+        self._AutoRun = None
+        self._AlarmWays = None
+        self._AlarmRecipientTypes = None
+
+    @property
+    def TaskVersionDTOs(self):
+        return self._TaskVersionDTOs
+
+    @TaskVersionDTOs.setter
+    def TaskVersionDTOs(self, TaskVersionDTOs):
+        self._TaskVersionDTOs = TaskVersionDTOs
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AutoRun(self):
+        return self._AutoRun
+
+    @AutoRun.setter
+    def AutoRun(self, AutoRun):
+        self._AutoRun = AutoRun
+
+    @property
+    def AlarmWays(self):
+        return self._AlarmWays
+
+    @AlarmWays.setter
+    def AlarmWays(self, AlarmWays):
+        self._AlarmWays = AlarmWays
+
+    @property
+    def AlarmRecipientTypes(self):
+        return self._AlarmRecipientTypes
+
+    @AlarmRecipientTypes.setter
+    def AlarmRecipientTypes(self, AlarmRecipientTypes):
+        self._AlarmRecipientTypes = AlarmRecipientTypes
+
+
+    def _deserialize(self, params):
+        if params.get("TaskVersionDTOs") is not None:
+            self._TaskVersionDTOs = []
+            for item in params.get("TaskVersionDTOs"):
+                obj = BatchCreateTaskVersionDsDTOLite()
+                obj._deserialize(item)
+                self._TaskVersionDTOs.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._AutoRun = params.get("AutoRun")
+        self._AlarmWays = params.get("AlarmWays")
+        self._AlarmRecipientTypes = params.get("AlarmRecipientTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateTaskVersionDsResponse(AbstractModel):
+    """BatchCreateTaskVersionDs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.BatchOperateResultDs`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchOperateResultDs()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class BatchDeleteIntegrationTasksRequest(AbstractModel):
     """BatchDeleteIntegrationTasks请求参数结构体
 
@@ -3679,6 +4494,66 @@ class BatchOperateResult(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchOperateResultDs(AbstractModel):
+    """BatchOperateResultDs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: result
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _ErrorId: errorId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorId: str
+        :param _ErrorDesc: errorDesc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorDesc: str
+        """
+        self._Result = None
+        self._ErrorId = None
+        self._ErrorDesc = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorId(self):
+        return self._ErrorId
+
+    @ErrorId.setter
+    def ErrorId(self, ErrorId):
+        self._ErrorId = ErrorId
+
+    @property
+    def ErrorDesc(self):
+        return self._ErrorDesc
+
+    @ErrorDesc.setter
+    def ErrorDesc(self, ErrorDesc):
+        self._ErrorDesc = ErrorDesc
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorId = params.get("ErrorId")
+        self._ErrorDesc = params.get("ErrorDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5112,6 +5987,53 @@ class BytesSpeed(AbstractModel):
                 obj = SpeedValue()
                 obj._deserialize(item)
                 self._Values.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CandidateDsDTo(AbstractModel):
+    """CandidateDsDTo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: 取值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _ValueDesc: 取值描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueDesc: str
+        """
+        self._Value = None
+        self._ValueDesc = None
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueDesc(self):
+        return self._ValueDesc
+
+    @ValueDesc.setter
+    def ValueDesc(self, ValueDesc):
+        self._ValueDesc = ValueDesc
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._ValueDesc = params.get("ValueDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10783,6 +11705,139 @@ class CreateTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTaskVersionDsRequest(AbstractModel):
+    """CreateTaskVersionDs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Task: 任务id
+        :type Task: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionDTO`
+        :param _NeedCheckParentSubmitted: 是否需要校验父任务已经提交到调度
+        :type NeedCheckParentSubmitted: bool
+        :param _AutoRun: 是否自动运行
+        :type AutoRun: bool
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _AlarmWays: 告警方式:email-邮件;sms-短信;wecom-企业微信
+        :type AlarmWays: str
+        :param _AlarmRecipientTypes: 告警对象:1-项目管理员，2-任务责任人
+        :type AlarmRecipientTypes: str
+        """
+        self._Task = None
+        self._NeedCheckParentSubmitted = None
+        self._AutoRun = None
+        self._ProjectId = None
+        self._AlarmWays = None
+        self._AlarmRecipientTypes = None
+
+    @property
+    def Task(self):
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def NeedCheckParentSubmitted(self):
+        return self._NeedCheckParentSubmitted
+
+    @NeedCheckParentSubmitted.setter
+    def NeedCheckParentSubmitted(self, NeedCheckParentSubmitted):
+        self._NeedCheckParentSubmitted = NeedCheckParentSubmitted
+
+    @property
+    def AutoRun(self):
+        return self._AutoRun
+
+    @AutoRun.setter
+    def AutoRun(self, AutoRun):
+        self._AutoRun = AutoRun
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AlarmWays(self):
+        return self._AlarmWays
+
+    @AlarmWays.setter
+    def AlarmWays(self, AlarmWays):
+        self._AlarmWays = AlarmWays
+
+    @property
+    def AlarmRecipientTypes(self):
+        return self._AlarmRecipientTypes
+
+    @AlarmRecipientTypes.setter
+    def AlarmRecipientTypes(self, AlarmRecipientTypes):
+        self._AlarmRecipientTypes = AlarmRecipientTypes
+
+
+    def _deserialize(self, params):
+        if params.get("Task") is not None:
+            self._Task = BatchCreateTaskVersionDTO()
+            self._Task._deserialize(params.get("Task"))
+        self._NeedCheckParentSubmitted = params.get("NeedCheckParentSubmitted")
+        self._AutoRun = params.get("AutoRun")
+        self._ProjectId = params.get("ProjectId")
+        self._AlarmWays = params.get("AlarmWays")
+        self._AlarmRecipientTypes = params.get("AlarmRecipientTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTaskVersionDsResponse(AbstractModel):
+    """CreateTaskVersionDs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWorkflowRequest(AbstractModel):
     """CreateWorkflow请求参数结构体
 
@@ -14536,6 +15591,132 @@ class DependencyConfig(AbstractModel):
         
 
 
+class DependencyConfigDsDTONoRecurV2(AbstractModel):
+    """依赖配置无循环递归属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParentTask: ParentTask任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentTask: :class:`tencentcloud.wedata.v20210820.models.TaskDsDTONoRecurV2`
+        :param _SonTask: SonTask任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SonTask: :class:`tencentcloud.wedata.v20210820.models.TaskDsDTONoRecurV2`
+        :param _MainCyclicConfig: the dependency config
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainCyclicConfig: str
+        :param _SubordinateCyclicConfig: SubordinateCyclicConfig配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubordinateCyclicConfig: str
+        :param _DependencyStrategy: DependencyStrategy策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyStrategy: :class:`tencentcloud.wedata.v20210820.models.DependencyStrategyDs`
+        """
+        self._ParentTask = None
+        self._SonTask = None
+        self._MainCyclicConfig = None
+        self._SubordinateCyclicConfig = None
+        self._DependencyStrategy = None
+
+    @property
+    def ParentTask(self):
+        return self._ParentTask
+
+    @ParentTask.setter
+    def ParentTask(self, ParentTask):
+        self._ParentTask = ParentTask
+
+    @property
+    def SonTask(self):
+        return self._SonTask
+
+    @SonTask.setter
+    def SonTask(self, SonTask):
+        self._SonTask = SonTask
+
+    @property
+    def MainCyclicConfig(self):
+        return self._MainCyclicConfig
+
+    @MainCyclicConfig.setter
+    def MainCyclicConfig(self, MainCyclicConfig):
+        self._MainCyclicConfig = MainCyclicConfig
+
+    @property
+    def SubordinateCyclicConfig(self):
+        return self._SubordinateCyclicConfig
+
+    @SubordinateCyclicConfig.setter
+    def SubordinateCyclicConfig(self, SubordinateCyclicConfig):
+        self._SubordinateCyclicConfig = SubordinateCyclicConfig
+
+    @property
+    def DependencyStrategy(self):
+        return self._DependencyStrategy
+
+    @DependencyStrategy.setter
+    def DependencyStrategy(self, DependencyStrategy):
+        self._DependencyStrategy = DependencyStrategy
+
+
+    def _deserialize(self, params):
+        if params.get("ParentTask") is not None:
+            self._ParentTask = TaskDsDTONoRecurV2()
+            self._ParentTask._deserialize(params.get("ParentTask"))
+        if params.get("SonTask") is not None:
+            self._SonTask = TaskDsDTONoRecurV2()
+            self._SonTask._deserialize(params.get("SonTask"))
+        self._MainCyclicConfig = params.get("MainCyclicConfig")
+        self._SubordinateCyclicConfig = params.get("SubordinateCyclicConfig")
+        if params.get("DependencyStrategy") is not None:
+            self._DependencyStrategy = DependencyStrategyDs()
+            self._DependencyStrategy._deserialize(params.get("DependencyStrategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DependencyStrategyDs(AbstractModel):
+    """依赖配置策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PollingNullStrategy: 等待（默认策略）或 执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PollingNullStrategy: str
+        """
+        self._PollingNullStrategy = None
+
+    @property
+    def PollingNullStrategy(self):
+        return self._PollingNullStrategy
+
+    @PollingNullStrategy.setter
+    def PollingNullStrategy(self, PollingNullStrategy):
+        self._PollingNullStrategy = PollingNullStrategy
+
+
+    def _deserialize(self, params):
+        self._PollingNullStrategy = params.get("PollingNullStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAlarmEventsRequest(AbstractModel):
     """DescribeAlarmEvents请求参数结构体
 
@@ -15369,6 +16550,223 @@ class DescribeAllUsedVersionSonResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = CollectionTaskOpsDto()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApply(AbstractModel):
+    """申请列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: 申请列表详情
+        :type Rows: list of Apply
+        :param _TotalPageNumber: 总分页页码
+        :type TotalPageNumber: int
+        :param _TotalCount: 总个数
+        :type TotalCount: int
+        :param _PageNumber: 分页页码
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        """
+        self._Rows = None
+        self._TotalPageNumber = None
+        self._TotalCount = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def TotalPageNumber(self):
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Apply()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._TotalCount = params.get("TotalCount")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApproveListRequest(AbstractModel):
+    """DescribeApproveList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproveClassification: 审批分类key
+        :type ApproveClassification: str
+        :param _PageSize: 分页大小
+        :type PageSize: int
+        :param _PageNumber: 分页数
+        :type PageNumber: int
+        :param _Filters: 自定义条件查询
+        :type Filters: list of FilterOptional
+        :param _OrderFields: 排序字段
+        :type OrderFields: list of OrderFieldOptional
+        """
+        self._ApproveClassification = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Filters = None
+        self._OrderFields = None
+
+    @property
+    def ApproveClassification(self):
+        return self._ApproveClassification
+
+    @ApproveClassification.setter
+    def ApproveClassification(self, ApproveClassification):
+        self._ApproveClassification = ApproveClassification
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+
+    def _deserialize(self, params):
+        self._ApproveClassification = params.get("ApproveClassification")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FilterOptional()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderFieldOptional()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApproveListResponse(AbstractModel):
+    """DescribeApproveList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 待审批列表详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DescribeApply`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeApply()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -38510,6 +39908,51 @@ class Filter(AbstractModel):
         
 
 
+class FilterOptional(AbstractModel):
+    """通用过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤字段名称
+        :type Name: str
+        :param _Values: 过滤值列表
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FindAllFolderRequest(AbstractModel):
     """FindAllFolder请求参数结构体
 
@@ -47619,6 +49062,105 @@ class ModifyAlarmRuleRequest(AbstractModel):
         
 
 
+class ModifyApproveStatusRequest(AbstractModel):
+    """ModifyApproveStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproveIds: 审批单ids
+        :type ApproveIds: list of str
+        :param _Remark: 审批备注
+        :type Remark: str
+        :param _Status: 状态
+        :type Status: str
+        """
+        self._ApproveIds = None
+        self._Remark = None
+        self._Status = None
+
+    @property
+    def ApproveIds(self):
+        return self._ApproveIds
+
+    @ApproveIds.setter
+    def ApproveIds(self, ApproveIds):
+        self._ApproveIds = ApproveIds
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ApproveIds = params.get("ApproveIds")
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApproveStatusResponse(AbstractModel):
+    """ModifyApproveStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 修改审批单状态
+        :type Data: list of ApproveModify
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApproveModify()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBaselineAlarmStatusRequest(AbstractModel):
     """ModifyBaselineAlarmStatus请求参数结构体
 
@@ -52410,6 +53952,51 @@ class OrderField(AbstractModel):
         
 
 
+class OrderFieldOptional(AbstractModel):
+    """通用排序字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 排序字段名称
+        :type Name: str
+        :param _Direction: 排序方向：ASC|DESC
+        :type Direction: str
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrganizationalFunction(AbstractModel):
     """包含层级信息的函数
 
@@ -52787,6 +54374,465 @@ class ParamInfo(AbstractModel):
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
         self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParamInfoDs(AbstractModel):
+    """参数参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamKey: 参数名
+        :type ParamKey: str
+        :param _ParamValue: 参数值
+        :type ParamValue: str
+        """
+        self._ParamKey = None
+        self._ParamValue = None
+
+    @property
+    def ParamKey(self):
+        return self._ParamKey
+
+    @ParamKey.setter
+    def ParamKey(self, ParamKey):
+        self._ParamKey = ParamKey
+
+    @property
+    def ParamValue(self):
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+
+    def _deserialize(self, params):
+        self._ParamKey = params.get("ParamKey")
+        self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterTaskDsDto(AbstractModel):
+    """任务参数Dto
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _ParamKey: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamKey: str
+        :param _ParamDefine: 参数定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDefine: str
+        :param _ParamValue: 参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamValue: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        """
+        self._TaskId = None
+        self._ParamKey = None
+        self._ParamDefine = None
+        self._ParamValue = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ParamKey(self):
+        return self._ParamKey
+
+    @ParamKey.setter
+    def ParamKey(self, ParamKey):
+        self._ParamKey = ParamKey
+
+    @property
+    def ParamDefine(self):
+        return self._ParamDefine
+
+    @ParamDefine.setter
+    def ParamDefine(self, ParamDefine):
+        self._ParamDefine = ParamDefine
+
+    @property
+    def ParamValue(self):
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ParamKey = params.get("ParamKey")
+        self._ParamDefine = params.get("ParamDefine")
+        self._ParamValue = params.get("ParamValue")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterTaskInDsDto(AbstractModel):
+    """查询任务输入参数Dto
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _ParamKey: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamKey: str
+        :param _ParamDesc: 参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDesc: str
+        :param _FromTaskId: 父任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromTaskId: str
+        :param _FromParamKey: 父任务参数key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromParamKey: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 升级时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _FromTaskName: 父任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromTaskName: str
+        :param _FromProjectId: 父任务项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromProjectId: str
+        :param _FromProjectName: 父任务项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromProjectName: str
+        """
+        self._Id = None
+        self._TaskId = None
+        self._ParamKey = None
+        self._ParamDesc = None
+        self._FromTaskId = None
+        self._FromParamKey = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FromTaskName = None
+        self._FromProjectId = None
+        self._FromProjectName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ParamKey(self):
+        return self._ParamKey
+
+    @ParamKey.setter
+    def ParamKey(self, ParamKey):
+        self._ParamKey = ParamKey
+
+    @property
+    def ParamDesc(self):
+        return self._ParamDesc
+
+    @ParamDesc.setter
+    def ParamDesc(self, ParamDesc):
+        self._ParamDesc = ParamDesc
+
+    @property
+    def FromTaskId(self):
+        return self._FromTaskId
+
+    @FromTaskId.setter
+    def FromTaskId(self, FromTaskId):
+        self._FromTaskId = FromTaskId
+
+    @property
+    def FromParamKey(self):
+        return self._FromParamKey
+
+    @FromParamKey.setter
+    def FromParamKey(self, FromParamKey):
+        self._FromParamKey = FromParamKey
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FromTaskName(self):
+        return self._FromTaskName
+
+    @FromTaskName.setter
+    def FromTaskName(self, FromTaskName):
+        self._FromTaskName = FromTaskName
+
+    @property
+    def FromProjectId(self):
+        return self._FromProjectId
+
+    @FromProjectId.setter
+    def FromProjectId(self, FromProjectId):
+        self._FromProjectId = FromProjectId
+
+    @property
+    def FromProjectName(self):
+        return self._FromProjectName
+
+    @FromProjectName.setter
+    def FromProjectName(self, FromProjectName):
+        self._FromProjectName = FromProjectName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TaskId = params.get("TaskId")
+        self._ParamKey = params.get("ParamKey")
+        self._ParamDesc = params.get("ParamDesc")
+        self._FromTaskId = params.get("FromTaskId")
+        self._FromParamKey = params.get("FromParamKey")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FromTaskName = params.get("FromTaskName")
+        self._FromProjectId = params.get("FromProjectId")
+        self._FromProjectName = params.get("FromProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ParameterTaskOutDsDto(AbstractModel):
+    """任务参数输出dto
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _ParamKey: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamKey: str
+        :param _ParamDesc: 参数描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDesc: str
+        :param _ParamDefine: 参数定义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamDefine: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        """
+        self._Id = None
+        self._TaskId = None
+        self._ParamKey = None
+        self._ParamDesc = None
+        self._ParamDefine = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._TaskName = None
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ParamKey(self):
+        return self._ParamKey
+
+    @ParamKey.setter
+    def ParamKey(self, ParamKey):
+        self._ParamKey = ParamKey
+
+    @property
+    def ParamDesc(self):
+        return self._ParamDesc
+
+    @ParamDesc.setter
+    def ParamDesc(self, ParamDesc):
+        self._ParamDesc = ParamDesc
+
+    @property
+    def ParamDefine(self):
+        return self._ParamDefine
+
+    @ParamDefine.setter
+    def ParamDefine(self, ParamDefine):
+        self._ParamDefine = ParamDefine
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TaskId = params.get("TaskId")
+        self._ParamKey = params.get("ParamKey")
+        self._ParamDesc = params.get("ParamDesc")
+        self._ParamDefine = params.get("ParamDefine")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TaskName = params.get("TaskName")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66394,6 +68440,2526 @@ class TaskCanvasInfo(AbstractModel):
         
 
 
+class TaskDsDTOLiteV2(AbstractModel):
+    """TaskDsDTO 减少嵌套层数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VirtualTaskId: 虚拟任务标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTaskId: str
+        :param _VirtualFlag: 虚拟任务标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualFlag: bool
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _RealWorkflowId: 真实工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealWorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _FolderId: 文件夹id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _LastUpdate: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdate: str
+        :param _Status: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _InCharge: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _InChargeId: 责任人用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeId: str
+        :param _StartTime: 生效日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ExecutionStartTime: 执行时间左闭区间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 执行时间右闭区间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectIdent: 项目标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectIdent: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _CycleType: 周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _CycleStep: 步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param _CrontabExpression: 对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrontabExpression: str
+        :param _DelayTime: 延时调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: int
+        :param _StartupTime: 延时执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupTime: int
+        :param _RetryWait: 重试等待时间,单位分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWait: int
+        :param _Retriable: 是否可重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retriable: int
+        :param _TaskAction: 调度扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAction: str
+        :param _TryLimit: 运行次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryLimit: int
+        :param _RunPriority: 运行优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriority: int
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeDsVO`
+        :param _BrokerIp: 指定的运行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
+        :param _ClusterId: 集群name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _MinDateTime: 最小数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinDateTime: str
+        :param _MaxDateTime: 最大数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDateTime: str
+        :param _ExecutionTTL: 运行耗时超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTL: int
+        :param _SelfDepend: 是否自身依赖 是1 否2 并行3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfDepend: str
+        :param _LeftCoordinate: LeftCoordinate坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftCoordinate: float
+        :param _TopCoordinate: TopCoordinate坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopCoordinate: float
+        :param _TaskExt: TaskExt信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExt: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
+        :param _Properties: taskExt 导入导出json使用 private Map  properties;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: str
+        :param _Notes: 任务备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notes: str
+        :param _InstanceInitStrategy: 实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1
+     * 表示当前周期生成下一周期数据时间任务实例
+     *
+     * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceInitStrategy: str
+        :param _YarnQueue: 资源池队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnQueue: str
+        :param _Alarms: 任务告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarms: list of AlarmDsVO
+        :param _Alarm: alarmDTO 导入导出json使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarm: str
+        :param _ScriptChange: 任务脚本是否发生变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptChange: bool
+        :param _Submit: 任务版本是否已提交
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Submit: bool
+        :param _LastSchedulerCommitTime: 最新调度计划变更时间 仅生产态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSchedulerCommitTime: str
+        :param _NormalizedJobStartTime: 仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalizedJobStartTime: str
+        :param _RecoverFreezeStartTime: 启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecoverFreezeStartTime: str
+        :param _SourceServer: 源数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServer: str
+        :param _TargetServer: 目标数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServer: str
+        :param _Tasks: 父子节点树
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of TaskDsDTONoRecurV2
+        :param _Creater: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creater: str
+        :param _DependencyRel: 分支，依赖关系，and/or, 默认and
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyRel: str
+        :param _DependencyWorkflow: 是否支持工作流依赖 yes / no 默认 no
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyWorkflow: str
+        :param _EventListenerConfig: 支持事件监听器配置导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventListenerConfig: str
+        :param _EventPublisherConfig: 支持事件触发器配置导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventPublisherConfig: str
+        :param _DependencyConfigList: 依赖配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyConfigList: list of DependencyConfigDsDTONoRecurV2
+        :param _VirtualTaskStatus: 虚拟任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTaskStatus: str
+        :param _RecycleTips: 回收站还原提示语
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecycleTips: str
+        :param _RecycleUser: 回收站所属用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecycleUser: str
+        :param _NewOrUpdate: 新增 或 修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewOrUpdate: str
+        :param _Params: 任务上游依赖信息 用于发布管理导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of ParameterTaskDsDto
+        :param _TaskLinkInfo: 任务上游依赖信息 用于发布管理导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLinkInfo: list of TaskLinkDsDTO
+        :param _ImportResult: 导入结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportResult: bool
+        :param _ImportErrMsg: 导入失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportErrMsg: str
+        :param _ContentType: 任务内容 全部内容 配置内容 资源内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentType: str
+        :param _TaskAutoSubmit: 是否导入提交运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAutoSubmit: bool
+        :param _ProductName: 上层产品 数据质量 / 数据开发 / ...
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _OwnId: 创建者帐号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnId: str
+        :param _UserId: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _UpdateUser: 最后修改的人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUser: str
+        :param _UpdateTime: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _UpdateUserId: 最后修改的人的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserId: str
+        :param _SchedulerDesc: 调度计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerDesc: str
+        :param _ResourceGroup: 资源组
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
+        :param _VersionDesc: 版本提交说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionDesc: str
+        :param _LinkId: 编排-删除添加的链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkId: str
+        :param _UserFileId: 脚本引用关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserFileId: str
+        :param _SourceServiceId: 来源数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceId: str
+        :param _SourceServiceType: 来源数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceType: str
+        :param _TargetServiceId: 去向数据源ID（离线同步）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceId: str
+        :param _TargetServiceType: 去向数据源类型（离线同步）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceType: str
+        :param _ParamInList: TaskInputParam输入参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamInList: list of ParameterTaskInDsDto
+        :param _ParamOutList: TaskOutputParam输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamOutList: list of ParameterTaskOutDsDto
+        """
+        self._TaskId = None
+        self._VirtualTaskId = None
+        self._VirtualFlag = None
+        self._TaskName = None
+        self._WorkflowId = None
+        self._RealWorkflowId = None
+        self._WorkflowName = None
+        self._FolderId = None
+        self._FolderName = None
+        self._CreateTime = None
+        self._LastUpdate = None
+        self._Status = None
+        self._InCharge = None
+        self._InChargeId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._ProjectId = None
+        self._ProjectIdent = None
+        self._ProjectName = None
+        self._CycleType = None
+        self._CycleStep = None
+        self._CrontabExpression = None
+        self._DelayTime = None
+        self._StartupTime = None
+        self._RetryWait = None
+        self._Retriable = None
+        self._TaskAction = None
+        self._TryLimit = None
+        self._RunPriority = None
+        self._TaskType = None
+        self._BrokerIp = None
+        self._ClusterId = None
+        self._MinDateTime = None
+        self._MaxDateTime = None
+        self._ExecutionTTL = None
+        self._SelfDepend = None
+        self._LeftCoordinate = None
+        self._TopCoordinate = None
+        self._TaskExt = None
+        self._Properties = None
+        self._Notes = None
+        self._InstanceInitStrategy = None
+        self._YarnQueue = None
+        self._Alarms = None
+        self._Alarm = None
+        self._ScriptChange = None
+        self._Submit = None
+        self._LastSchedulerCommitTime = None
+        self._NormalizedJobStartTime = None
+        self._RecoverFreezeStartTime = None
+        self._SourceServer = None
+        self._TargetServer = None
+        self._Tasks = None
+        self._Creater = None
+        self._DependencyRel = None
+        self._DependencyWorkflow = None
+        self._EventListenerConfig = None
+        self._EventPublisherConfig = None
+        self._DependencyConfigList = None
+        self._VirtualTaskStatus = None
+        self._RecycleTips = None
+        self._RecycleUser = None
+        self._NewOrUpdate = None
+        self._Params = None
+        self._TaskLinkInfo = None
+        self._ImportResult = None
+        self._ImportErrMsg = None
+        self._ContentType = None
+        self._TaskAutoSubmit = None
+        self._ProductName = None
+        self._OwnId = None
+        self._UserId = None
+        self._TenantId = None
+        self._UpdateUser = None
+        self._UpdateTime = None
+        self._UpdateUserId = None
+        self._SchedulerDesc = None
+        self._ResourceGroup = None
+        self._VersionDesc = None
+        self._LinkId = None
+        self._UserFileId = None
+        self._SourceServiceId = None
+        self._SourceServiceType = None
+        self._TargetServiceId = None
+        self._TargetServiceType = None
+        self._ParamInList = None
+        self._ParamOutList = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VirtualTaskId(self):
+        return self._VirtualTaskId
+
+    @VirtualTaskId.setter
+    def VirtualTaskId(self, VirtualTaskId):
+        self._VirtualTaskId = VirtualTaskId
+
+    @property
+    def VirtualFlag(self):
+        return self._VirtualFlag
+
+    @VirtualFlag.setter
+    def VirtualFlag(self, VirtualFlag):
+        self._VirtualFlag = VirtualFlag
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def RealWorkflowId(self):
+        return self._RealWorkflowId
+
+    @RealWorkflowId.setter
+    def RealWorkflowId(self, RealWorkflowId):
+        self._RealWorkflowId = RealWorkflowId
+
+    @property
+    def WorkflowName(self):
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastUpdate(self):
+        return self._LastUpdate
+
+    @LastUpdate.setter
+    def LastUpdate(self, LastUpdate):
+        self._LastUpdate = LastUpdate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def InChargeId(self):
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionStartTime(self):
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectIdent(self):
+        return self._ProjectIdent
+
+    @ProjectIdent.setter
+    def ProjectIdent(self, ProjectIdent):
+        self._ProjectIdent = ProjectIdent
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def CycleType(self):
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def CycleStep(self):
+        return self._CycleStep
+
+    @CycleStep.setter
+    def CycleStep(self, CycleStep):
+        self._CycleStep = CycleStep
+
+    @property
+    def CrontabExpression(self):
+        return self._CrontabExpression
+
+    @CrontabExpression.setter
+    def CrontabExpression(self, CrontabExpression):
+        self._CrontabExpression = CrontabExpression
+
+    @property
+    def DelayTime(self):
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def StartupTime(self):
+        return self._StartupTime
+
+    @StartupTime.setter
+    def StartupTime(self, StartupTime):
+        self._StartupTime = StartupTime
+
+    @property
+    def RetryWait(self):
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        self._RetryWait = RetryWait
+
+    @property
+    def Retriable(self):
+        return self._Retriable
+
+    @Retriable.setter
+    def Retriable(self, Retriable):
+        self._Retriable = Retriable
+
+    @property
+    def TaskAction(self):
+        return self._TaskAction
+
+    @TaskAction.setter
+    def TaskAction(self, TaskAction):
+        self._TaskAction = TaskAction
+
+    @property
+    def TryLimit(self):
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def RunPriority(self):
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        self._RunPriority = RunPriority
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def BrokerIp(self):
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MinDateTime(self):
+        return self._MinDateTime
+
+    @MinDateTime.setter
+    def MinDateTime(self, MinDateTime):
+        self._MinDateTime = MinDateTime
+
+    @property
+    def MaxDateTime(self):
+        return self._MaxDateTime
+
+    @MaxDateTime.setter
+    def MaxDateTime(self, MaxDateTime):
+        self._MaxDateTime = MaxDateTime
+
+    @property
+    def ExecutionTTL(self):
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def SelfDepend(self):
+        return self._SelfDepend
+
+    @SelfDepend.setter
+    def SelfDepend(self, SelfDepend):
+        self._SelfDepend = SelfDepend
+
+    @property
+    def LeftCoordinate(self):
+        return self._LeftCoordinate
+
+    @LeftCoordinate.setter
+    def LeftCoordinate(self, LeftCoordinate):
+        self._LeftCoordinate = LeftCoordinate
+
+    @property
+    def TopCoordinate(self):
+        return self._TopCoordinate
+
+    @TopCoordinate.setter
+    def TopCoordinate(self, TopCoordinate):
+        self._TopCoordinate = TopCoordinate
+
+    @property
+    def TaskExt(self):
+        return self._TaskExt
+
+    @TaskExt.setter
+    def TaskExt(self, TaskExt):
+        self._TaskExt = TaskExt
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Notes(self):
+        return self._Notes
+
+    @Notes.setter
+    def Notes(self, Notes):
+        self._Notes = Notes
+
+    @property
+    def InstanceInitStrategy(self):
+        return self._InstanceInitStrategy
+
+    @InstanceInitStrategy.setter
+    def InstanceInitStrategy(self, InstanceInitStrategy):
+        self._InstanceInitStrategy = InstanceInitStrategy
+
+    @property
+    def YarnQueue(self):
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def Alarms(self):
+        return self._Alarms
+
+    @Alarms.setter
+    def Alarms(self, Alarms):
+        self._Alarms = Alarms
+
+    @property
+    def Alarm(self):
+        return self._Alarm
+
+    @Alarm.setter
+    def Alarm(self, Alarm):
+        self._Alarm = Alarm
+
+    @property
+    def ScriptChange(self):
+        return self._ScriptChange
+
+    @ScriptChange.setter
+    def ScriptChange(self, ScriptChange):
+        self._ScriptChange = ScriptChange
+
+    @property
+    def Submit(self):
+        return self._Submit
+
+    @Submit.setter
+    def Submit(self, Submit):
+        self._Submit = Submit
+
+    @property
+    def LastSchedulerCommitTime(self):
+        return self._LastSchedulerCommitTime
+
+    @LastSchedulerCommitTime.setter
+    def LastSchedulerCommitTime(self, LastSchedulerCommitTime):
+        self._LastSchedulerCommitTime = LastSchedulerCommitTime
+
+    @property
+    def NormalizedJobStartTime(self):
+        return self._NormalizedJobStartTime
+
+    @NormalizedJobStartTime.setter
+    def NormalizedJobStartTime(self, NormalizedJobStartTime):
+        self._NormalizedJobStartTime = NormalizedJobStartTime
+
+    @property
+    def RecoverFreezeStartTime(self):
+        return self._RecoverFreezeStartTime
+
+    @RecoverFreezeStartTime.setter
+    def RecoverFreezeStartTime(self, RecoverFreezeStartTime):
+        self._RecoverFreezeStartTime = RecoverFreezeStartTime
+
+    @property
+    def SourceServer(self):
+        return self._SourceServer
+
+    @SourceServer.setter
+    def SourceServer(self, SourceServer):
+        self._SourceServer = SourceServer
+
+    @property
+    def TargetServer(self):
+        return self._TargetServer
+
+    @TargetServer.setter
+    def TargetServer(self, TargetServer):
+        self._TargetServer = TargetServer
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Creater(self):
+        return self._Creater
+
+    @Creater.setter
+    def Creater(self, Creater):
+        self._Creater = Creater
+
+    @property
+    def DependencyRel(self):
+        return self._DependencyRel
+
+    @DependencyRel.setter
+    def DependencyRel(self, DependencyRel):
+        self._DependencyRel = DependencyRel
+
+    @property
+    def DependencyWorkflow(self):
+        return self._DependencyWorkflow
+
+    @DependencyWorkflow.setter
+    def DependencyWorkflow(self, DependencyWorkflow):
+        self._DependencyWorkflow = DependencyWorkflow
+
+    @property
+    def EventListenerConfig(self):
+        return self._EventListenerConfig
+
+    @EventListenerConfig.setter
+    def EventListenerConfig(self, EventListenerConfig):
+        self._EventListenerConfig = EventListenerConfig
+
+    @property
+    def EventPublisherConfig(self):
+        return self._EventPublisherConfig
+
+    @EventPublisherConfig.setter
+    def EventPublisherConfig(self, EventPublisherConfig):
+        self._EventPublisherConfig = EventPublisherConfig
+
+    @property
+    def DependencyConfigList(self):
+        return self._DependencyConfigList
+
+    @DependencyConfigList.setter
+    def DependencyConfigList(self, DependencyConfigList):
+        self._DependencyConfigList = DependencyConfigList
+
+    @property
+    def VirtualTaskStatus(self):
+        return self._VirtualTaskStatus
+
+    @VirtualTaskStatus.setter
+    def VirtualTaskStatus(self, VirtualTaskStatus):
+        self._VirtualTaskStatus = VirtualTaskStatus
+
+    @property
+    def RecycleTips(self):
+        return self._RecycleTips
+
+    @RecycleTips.setter
+    def RecycleTips(self, RecycleTips):
+        self._RecycleTips = RecycleTips
+
+    @property
+    def RecycleUser(self):
+        return self._RecycleUser
+
+    @RecycleUser.setter
+    def RecycleUser(self, RecycleUser):
+        self._RecycleUser = RecycleUser
+
+    @property
+    def NewOrUpdate(self):
+        return self._NewOrUpdate
+
+    @NewOrUpdate.setter
+    def NewOrUpdate(self, NewOrUpdate):
+        self._NewOrUpdate = NewOrUpdate
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def TaskLinkInfo(self):
+        return self._TaskLinkInfo
+
+    @TaskLinkInfo.setter
+    def TaskLinkInfo(self, TaskLinkInfo):
+        self._TaskLinkInfo = TaskLinkInfo
+
+    @property
+    def ImportResult(self):
+        return self._ImportResult
+
+    @ImportResult.setter
+    def ImportResult(self, ImportResult):
+        self._ImportResult = ImportResult
+
+    @property
+    def ImportErrMsg(self):
+        return self._ImportErrMsg
+
+    @ImportErrMsg.setter
+    def ImportErrMsg(self, ImportErrMsg):
+        self._ImportErrMsg = ImportErrMsg
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def TaskAutoSubmit(self):
+        return self._TaskAutoSubmit
+
+    @TaskAutoSubmit.setter
+    def TaskAutoSubmit(self, TaskAutoSubmit):
+        self._TaskAutoSubmit = TaskAutoSubmit
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def OwnId(self):
+        return self._OwnId
+
+    @OwnId.setter
+    def OwnId(self, OwnId):
+        self._OwnId = OwnId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def UpdateUser(self):
+        return self._UpdateUser
+
+    @UpdateUser.setter
+    def UpdateUser(self, UpdateUser):
+        self._UpdateUser = UpdateUser
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def UpdateUserId(self):
+        return self._UpdateUserId
+
+    @UpdateUserId.setter
+    def UpdateUserId(self, UpdateUserId):
+        self._UpdateUserId = UpdateUserId
+
+    @property
+    def SchedulerDesc(self):
+        return self._SchedulerDesc
+
+    @SchedulerDesc.setter
+    def SchedulerDesc(self, SchedulerDesc):
+        self._SchedulerDesc = SchedulerDesc
+
+    @property
+    def ResourceGroup(self):
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def VersionDesc(self):
+        return self._VersionDesc
+
+    @VersionDesc.setter
+    def VersionDesc(self, VersionDesc):
+        self._VersionDesc = VersionDesc
+
+    @property
+    def LinkId(self):
+        return self._LinkId
+
+    @LinkId.setter
+    def LinkId(self, LinkId):
+        self._LinkId = LinkId
+
+    @property
+    def UserFileId(self):
+        return self._UserFileId
+
+    @UserFileId.setter
+    def UserFileId(self, UserFileId):
+        self._UserFileId = UserFileId
+
+    @property
+    def SourceServiceId(self):
+        return self._SourceServiceId
+
+    @SourceServiceId.setter
+    def SourceServiceId(self, SourceServiceId):
+        self._SourceServiceId = SourceServiceId
+
+    @property
+    def SourceServiceType(self):
+        return self._SourceServiceType
+
+    @SourceServiceType.setter
+    def SourceServiceType(self, SourceServiceType):
+        self._SourceServiceType = SourceServiceType
+
+    @property
+    def TargetServiceId(self):
+        return self._TargetServiceId
+
+    @TargetServiceId.setter
+    def TargetServiceId(self, TargetServiceId):
+        self._TargetServiceId = TargetServiceId
+
+    @property
+    def TargetServiceType(self):
+        return self._TargetServiceType
+
+    @TargetServiceType.setter
+    def TargetServiceType(self, TargetServiceType):
+        self._TargetServiceType = TargetServiceType
+
+    @property
+    def ParamInList(self):
+        return self._ParamInList
+
+    @ParamInList.setter
+    def ParamInList(self, ParamInList):
+        self._ParamInList = ParamInList
+
+    @property
+    def ParamOutList(self):
+        return self._ParamOutList
+
+    @ParamOutList.setter
+    def ParamOutList(self, ParamOutList):
+        self._ParamOutList = ParamOutList
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._VirtualTaskId = params.get("VirtualTaskId")
+        self._VirtualFlag = params.get("VirtualFlag")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._RealWorkflowId = params.get("RealWorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._CreateTime = params.get("CreateTime")
+        self._LastUpdate = params.get("LastUpdate")
+        self._Status = params.get("Status")
+        self._InCharge = params.get("InCharge")
+        self._InChargeId = params.get("InChargeId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectIdent = params.get("ProjectIdent")
+        self._ProjectName = params.get("ProjectName")
+        self._CycleType = params.get("CycleType")
+        self._CycleStep = params.get("CycleStep")
+        self._CrontabExpression = params.get("CrontabExpression")
+        self._DelayTime = params.get("DelayTime")
+        self._StartupTime = params.get("StartupTime")
+        self._RetryWait = params.get("RetryWait")
+        self._Retriable = params.get("Retriable")
+        self._TaskAction = params.get("TaskAction")
+        self._TryLimit = params.get("TryLimit")
+        self._RunPriority = params.get("RunPriority")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeDsVO()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._BrokerIp = params.get("BrokerIp")
+        self._ClusterId = params.get("ClusterId")
+        self._MinDateTime = params.get("MinDateTime")
+        self._MaxDateTime = params.get("MaxDateTime")
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._SelfDepend = params.get("SelfDepend")
+        self._LeftCoordinate = params.get("LeftCoordinate")
+        self._TopCoordinate = params.get("TopCoordinate")
+        if params.get("TaskExt") is not None:
+            self._TaskExt = TaskExtDsVO()
+            self._TaskExt._deserialize(params.get("TaskExt"))
+        self._Properties = params.get("Properties")
+        self._Notes = params.get("Notes")
+        self._InstanceInitStrategy = params.get("InstanceInitStrategy")
+        self._YarnQueue = params.get("YarnQueue")
+        if params.get("Alarms") is not None:
+            self._Alarms = []
+            for item in params.get("Alarms"):
+                obj = AlarmDsVO()
+                obj._deserialize(item)
+                self._Alarms.append(obj)
+        self._Alarm = params.get("Alarm")
+        self._ScriptChange = params.get("ScriptChange")
+        self._Submit = params.get("Submit")
+        self._LastSchedulerCommitTime = params.get("LastSchedulerCommitTime")
+        self._NormalizedJobStartTime = params.get("NormalizedJobStartTime")
+        self._RecoverFreezeStartTime = params.get("RecoverFreezeStartTime")
+        self._SourceServer = params.get("SourceServer")
+        self._TargetServer = params.get("TargetServer")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskDsDTONoRecurV2()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Creater = params.get("Creater")
+        self._DependencyRel = params.get("DependencyRel")
+        self._DependencyWorkflow = params.get("DependencyWorkflow")
+        self._EventListenerConfig = params.get("EventListenerConfig")
+        self._EventPublisherConfig = params.get("EventPublisherConfig")
+        if params.get("DependencyConfigList") is not None:
+            self._DependencyConfigList = []
+            for item in params.get("DependencyConfigList"):
+                obj = DependencyConfigDsDTONoRecurV2()
+                obj._deserialize(item)
+                self._DependencyConfigList.append(obj)
+        self._VirtualTaskStatus = params.get("VirtualTaskStatus")
+        self._RecycleTips = params.get("RecycleTips")
+        self._RecycleUser = params.get("RecycleUser")
+        self._NewOrUpdate = params.get("NewOrUpdate")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ParameterTaskDsDto()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        if params.get("TaskLinkInfo") is not None:
+            self._TaskLinkInfo = []
+            for item in params.get("TaskLinkInfo"):
+                obj = TaskLinkDsDTO()
+                obj._deserialize(item)
+                self._TaskLinkInfo.append(obj)
+        self._ImportResult = params.get("ImportResult")
+        self._ImportErrMsg = params.get("ImportErrMsg")
+        self._ContentType = params.get("ContentType")
+        self._TaskAutoSubmit = params.get("TaskAutoSubmit")
+        self._ProductName = params.get("ProductName")
+        self._OwnId = params.get("OwnId")
+        self._UserId = params.get("UserId")
+        self._TenantId = params.get("TenantId")
+        self._UpdateUser = params.get("UpdateUser")
+        self._UpdateTime = params.get("UpdateTime")
+        self._UpdateUserId = params.get("UpdateUserId")
+        self._SchedulerDesc = params.get("SchedulerDesc")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._VersionDesc = params.get("VersionDesc")
+        self._LinkId = params.get("LinkId")
+        self._UserFileId = params.get("UserFileId")
+        self._SourceServiceId = params.get("SourceServiceId")
+        self._SourceServiceType = params.get("SourceServiceType")
+        self._TargetServiceId = params.get("TargetServiceId")
+        self._TargetServiceType = params.get("TargetServiceType")
+        if params.get("ParamInList") is not None:
+            self._ParamInList = []
+            for item in params.get("ParamInList"):
+                obj = ParameterTaskInDsDto()
+                obj._deserialize(item)
+                self._ParamInList.append(obj)
+        if params.get("ParamOutList") is not None:
+            self._ParamOutList = []
+            for item in params.get("ParamOutList"):
+                obj = ParameterTaskOutDsDto()
+                obj._deserialize(item)
+                self._ParamOutList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskDsDTONoRecurV2(AbstractModel):
+    """任务信息无循环递归属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _VirtualTaskId: 虚拟任务标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTaskId: str
+        :param _VirtualFlag: 虚拟任务标记
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualFlag: bool
+        :param _TaskName: 任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _RealWorkflowId: 真实工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealWorkflowId: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _FolderId: 文件夹id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: str
+        :param _FolderName: 文件夹名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderName: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _LastUpdate: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdate: str
+        :param _Status: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _InCharge: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _InChargeId: 责任人用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InChargeId: str
+        :param _StartTime: 生效日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ExecutionStartTime: 执行时间左闭区间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 执行时间右闭区间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectIdent: 项目标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectIdent: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _CycleType: 周期类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
+        :param _CycleStep: 步长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleStep: int
+        :param _CrontabExpression: 对于crontab类型调度配置其为用户输入 对于周期类型调度配置其为系统计算
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CrontabExpression: str
+        :param _DelayTime: 延时调度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: int
+        :param _StartupTime: 延时执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartupTime: int
+        :param _RetryWait: 重试等待时间,单位分钟
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWait: int
+        :param _Retriable: 是否可重试
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Retriable: int
+        :param _TaskAction: 调度扩展信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAction: str
+        :param _TryLimit: 运行次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryLimit: int
+        :param _RunPriority: 运行优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriority: int
+        :param _TaskType: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeDsVO`
+        :param _BrokerIp: 指定的运行节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerIp: str
+        :param _ClusterId: 集群name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _MinDateTime: 最小数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinDateTime: str
+        :param _MaxDateTime: 最大数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDateTime: str
+        :param _ExecutionTTL: 运行耗时超时时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTL: int
+        :param _SelfDepend: 是否自身依赖 是1 否2 并行3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfDepend: int
+        :param _LeftCoordinate: LeftCoordinate坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LeftCoordinate: float
+        :param _TopCoordinate: TopCoordinate坐标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopCoordinate: float
+        :param _TaskExt: TaskExt信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExt: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
+        :param _Properties: taskExt 导入导出json使用 private Map  properties;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: str
+        :param _Notes: 任务备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notes: str
+        :param _InstanceInitStrategy: 实例生成策略 T+1 表示当前周期生成上一周期数据时间任务实例 默认T+1 T+0 表示当前周期生成当前周期数据时间任务实例 T-1
+     * 表示当前周期生成下一周期数据时间任务实例
+     *
+     * service不做默认策略处理, 下沉到数据初始化默认T+1, service涉及到多个更新task的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceInitStrategy: str
+        :param _YarnQueue: 资源池队列名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnQueue: str
+        :param _Alarms: 任务告警信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarms: list of AlarmDsVO
+        :param _Alarm: alarmDTO 导入导出json使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alarm: str
+        :param _ScriptChange: 任务脚本是否发生变化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScriptChange: bool
+        :param _Submit: 任务版本是否已提交
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Submit: bool
+        :param _LastSchedulerCommitTime: 最新调度计划变更时间 仅生产态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSchedulerCommitTime: str
+        :param _NormalizedJobStartTime: 仅生产态存储于生产态序列化任务信息, 减少base CPU重复密集计算
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NormalizedJobStartTime: str
+        :param _RecoverFreezeStartTime: 启动暂停的任务时，选择不补录中间实例，通过此字段来标识从哪个时间开始生成实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecoverFreezeStartTime: str
+        :param _SourceServer: 源数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServer: str
+        :param _TargetServer: 目标数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServer: str
+        :param _Tasks: 父子节点树
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of str
+        :param _Creater: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creater: str
+        :param _DependencyRel: 分支，依赖关系，and/or, 默认and
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyRel: str
+        :param _DependencyWorkflow: 是否支持工作流依赖 yes / no 默认 no
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyWorkflow: str
+        :param _EventListenerConfig: 支持事件监听器配置导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventListenerConfig: str
+        :param _EventPublisherConfig: 支持事件触发器配置导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventPublisherConfig: str
+        :param _DependencyConfigList: 依赖配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyConfigList: list of str
+        :param _VirtualTaskStatus: 虚拟任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTaskStatus: str
+        :param _RecycleTips: 回收站还原提示语
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecycleTips: str
+        :param _RecycleUser: 回收站所属用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecycleUser: str
+        :param _NewOrUpdate: 新增 或 修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewOrUpdate: str
+        :param _Params: 任务上游依赖信息 用于发布管理导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Params: list of ParameterTaskDsDto
+        :param _TaskLinkInfo: 任务上游依赖信息 用于发布管理导入导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskLinkInfo: list of TaskLinkDsDTO
+        :param _ImportResult: 导入结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportResult: bool
+        :param _ImportErrMsg: 导入失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportErrMsg: str
+        :param _ContentType: 任务内容 全部内容 配置内容 资源内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentType: str
+        :param _TaskAutoSubmit: 是否导入提交运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAutoSubmit: bool
+        :param _ProductName: 上层产品 数据质量 / 数据开发 / ...
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductName: str
+        :param _OwnId: 创建者帐号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnId: str
+        :param _UserId: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _TenantId: 租户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TenantId: str
+        :param _UpdateUser: 最后修改的人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUser: str
+        :param _UpdateTime: 最后修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _UpdateUserId: 最后修改的人的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserId: str
+        :param _SchedulerDesc: 调度计划
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerDesc: str
+        :param _ResourceGroup: 资源组
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroup: str
+        :param _VersionDesc: 版本提交说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionDesc: str
+        :param _LinkId: 编排-删除添加的链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkId: str
+        :param _UserFileId: 脚本引用关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserFileId: str
+        :param _SourceServiceId: 来源数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceId: str
+        :param _SourceServiceType: 来源数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServiceType: str
+        :param _TargetServiceId: 去向数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceId: str
+        :param _TargetServiceType: 去向数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServiceType: str
+        :param _ParamInList: 输入参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamInList: list of ParameterTaskInDsDto
+        :param _ParamOutList: 输出参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamOutList: list of ParameterTaskOutDsDto
+        """
+        self._TaskId = None
+        self._VirtualTaskId = None
+        self._VirtualFlag = None
+        self._TaskName = None
+        self._WorkflowId = None
+        self._RealWorkflowId = None
+        self._WorkflowName = None
+        self._FolderId = None
+        self._FolderName = None
+        self._CreateTime = None
+        self._LastUpdate = None
+        self._Status = None
+        self._InCharge = None
+        self._InChargeId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._ProjectId = None
+        self._ProjectIdent = None
+        self._ProjectName = None
+        self._CycleType = None
+        self._CycleStep = None
+        self._CrontabExpression = None
+        self._DelayTime = None
+        self._StartupTime = None
+        self._RetryWait = None
+        self._Retriable = None
+        self._TaskAction = None
+        self._TryLimit = None
+        self._RunPriority = None
+        self._TaskType = None
+        self._BrokerIp = None
+        self._ClusterId = None
+        self._MinDateTime = None
+        self._MaxDateTime = None
+        self._ExecutionTTL = None
+        self._SelfDepend = None
+        self._LeftCoordinate = None
+        self._TopCoordinate = None
+        self._TaskExt = None
+        self._Properties = None
+        self._Notes = None
+        self._InstanceInitStrategy = None
+        self._YarnQueue = None
+        self._Alarms = None
+        self._Alarm = None
+        self._ScriptChange = None
+        self._Submit = None
+        self._LastSchedulerCommitTime = None
+        self._NormalizedJobStartTime = None
+        self._RecoverFreezeStartTime = None
+        self._SourceServer = None
+        self._TargetServer = None
+        self._Tasks = None
+        self._Creater = None
+        self._DependencyRel = None
+        self._DependencyWorkflow = None
+        self._EventListenerConfig = None
+        self._EventPublisherConfig = None
+        self._DependencyConfigList = None
+        self._VirtualTaskStatus = None
+        self._RecycleTips = None
+        self._RecycleUser = None
+        self._NewOrUpdate = None
+        self._Params = None
+        self._TaskLinkInfo = None
+        self._ImportResult = None
+        self._ImportErrMsg = None
+        self._ContentType = None
+        self._TaskAutoSubmit = None
+        self._ProductName = None
+        self._OwnId = None
+        self._UserId = None
+        self._TenantId = None
+        self._UpdateUser = None
+        self._UpdateTime = None
+        self._UpdateUserId = None
+        self._SchedulerDesc = None
+        self._ResourceGroup = None
+        self._VersionDesc = None
+        self._LinkId = None
+        self._UserFileId = None
+        self._SourceServiceId = None
+        self._SourceServiceType = None
+        self._TargetServiceId = None
+        self._TargetServiceType = None
+        self._ParamInList = None
+        self._ParamOutList = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VirtualTaskId(self):
+        return self._VirtualTaskId
+
+    @VirtualTaskId.setter
+    def VirtualTaskId(self, VirtualTaskId):
+        self._VirtualTaskId = VirtualTaskId
+
+    @property
+    def VirtualFlag(self):
+        return self._VirtualFlag
+
+    @VirtualFlag.setter
+    def VirtualFlag(self, VirtualFlag):
+        self._VirtualFlag = VirtualFlag
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def RealWorkflowId(self):
+        return self._RealWorkflowId
+
+    @RealWorkflowId.setter
+    def RealWorkflowId(self, RealWorkflowId):
+        self._RealWorkflowId = RealWorkflowId
+
+    @property
+    def WorkflowName(self):
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastUpdate(self):
+        return self._LastUpdate
+
+    @LastUpdate.setter
+    def LastUpdate(self, LastUpdate):
+        self._LastUpdate = LastUpdate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def InChargeId(self):
+        return self._InChargeId
+
+    @InChargeId.setter
+    def InChargeId(self, InChargeId):
+        self._InChargeId = InChargeId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionStartTime(self):
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectIdent(self):
+        return self._ProjectIdent
+
+    @ProjectIdent.setter
+    def ProjectIdent(self, ProjectIdent):
+        self._ProjectIdent = ProjectIdent
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def CycleType(self):
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def CycleStep(self):
+        return self._CycleStep
+
+    @CycleStep.setter
+    def CycleStep(self, CycleStep):
+        self._CycleStep = CycleStep
+
+    @property
+    def CrontabExpression(self):
+        return self._CrontabExpression
+
+    @CrontabExpression.setter
+    def CrontabExpression(self, CrontabExpression):
+        self._CrontabExpression = CrontabExpression
+
+    @property
+    def DelayTime(self):
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def StartupTime(self):
+        return self._StartupTime
+
+    @StartupTime.setter
+    def StartupTime(self, StartupTime):
+        self._StartupTime = StartupTime
+
+    @property
+    def RetryWait(self):
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        self._RetryWait = RetryWait
+
+    @property
+    def Retriable(self):
+        return self._Retriable
+
+    @Retriable.setter
+    def Retriable(self, Retriable):
+        self._Retriable = Retriable
+
+    @property
+    def TaskAction(self):
+        return self._TaskAction
+
+    @TaskAction.setter
+    def TaskAction(self, TaskAction):
+        self._TaskAction = TaskAction
+
+    @property
+    def TryLimit(self):
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def RunPriority(self):
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        self._RunPriority = RunPriority
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def BrokerIp(self):
+        return self._BrokerIp
+
+    @BrokerIp.setter
+    def BrokerIp(self, BrokerIp):
+        self._BrokerIp = BrokerIp
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def MinDateTime(self):
+        return self._MinDateTime
+
+    @MinDateTime.setter
+    def MinDateTime(self, MinDateTime):
+        self._MinDateTime = MinDateTime
+
+    @property
+    def MaxDateTime(self):
+        return self._MaxDateTime
+
+    @MaxDateTime.setter
+    def MaxDateTime(self, MaxDateTime):
+        self._MaxDateTime = MaxDateTime
+
+    @property
+    def ExecutionTTL(self):
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def SelfDepend(self):
+        return self._SelfDepend
+
+    @SelfDepend.setter
+    def SelfDepend(self, SelfDepend):
+        self._SelfDepend = SelfDepend
+
+    @property
+    def LeftCoordinate(self):
+        return self._LeftCoordinate
+
+    @LeftCoordinate.setter
+    def LeftCoordinate(self, LeftCoordinate):
+        self._LeftCoordinate = LeftCoordinate
+
+    @property
+    def TopCoordinate(self):
+        return self._TopCoordinate
+
+    @TopCoordinate.setter
+    def TopCoordinate(self, TopCoordinate):
+        self._TopCoordinate = TopCoordinate
+
+    @property
+    def TaskExt(self):
+        return self._TaskExt
+
+    @TaskExt.setter
+    def TaskExt(self, TaskExt):
+        self._TaskExt = TaskExt
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Notes(self):
+        return self._Notes
+
+    @Notes.setter
+    def Notes(self, Notes):
+        self._Notes = Notes
+
+    @property
+    def InstanceInitStrategy(self):
+        return self._InstanceInitStrategy
+
+    @InstanceInitStrategy.setter
+    def InstanceInitStrategy(self, InstanceInitStrategy):
+        self._InstanceInitStrategy = InstanceInitStrategy
+
+    @property
+    def YarnQueue(self):
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def Alarms(self):
+        return self._Alarms
+
+    @Alarms.setter
+    def Alarms(self, Alarms):
+        self._Alarms = Alarms
+
+    @property
+    def Alarm(self):
+        return self._Alarm
+
+    @Alarm.setter
+    def Alarm(self, Alarm):
+        self._Alarm = Alarm
+
+    @property
+    def ScriptChange(self):
+        return self._ScriptChange
+
+    @ScriptChange.setter
+    def ScriptChange(self, ScriptChange):
+        self._ScriptChange = ScriptChange
+
+    @property
+    def Submit(self):
+        return self._Submit
+
+    @Submit.setter
+    def Submit(self, Submit):
+        self._Submit = Submit
+
+    @property
+    def LastSchedulerCommitTime(self):
+        return self._LastSchedulerCommitTime
+
+    @LastSchedulerCommitTime.setter
+    def LastSchedulerCommitTime(self, LastSchedulerCommitTime):
+        self._LastSchedulerCommitTime = LastSchedulerCommitTime
+
+    @property
+    def NormalizedJobStartTime(self):
+        return self._NormalizedJobStartTime
+
+    @NormalizedJobStartTime.setter
+    def NormalizedJobStartTime(self, NormalizedJobStartTime):
+        self._NormalizedJobStartTime = NormalizedJobStartTime
+
+    @property
+    def RecoverFreezeStartTime(self):
+        return self._RecoverFreezeStartTime
+
+    @RecoverFreezeStartTime.setter
+    def RecoverFreezeStartTime(self, RecoverFreezeStartTime):
+        self._RecoverFreezeStartTime = RecoverFreezeStartTime
+
+    @property
+    def SourceServer(self):
+        return self._SourceServer
+
+    @SourceServer.setter
+    def SourceServer(self, SourceServer):
+        self._SourceServer = SourceServer
+
+    @property
+    def TargetServer(self):
+        return self._TargetServer
+
+    @TargetServer.setter
+    def TargetServer(self, TargetServer):
+        self._TargetServer = TargetServer
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Creater(self):
+        return self._Creater
+
+    @Creater.setter
+    def Creater(self, Creater):
+        self._Creater = Creater
+
+    @property
+    def DependencyRel(self):
+        return self._DependencyRel
+
+    @DependencyRel.setter
+    def DependencyRel(self, DependencyRel):
+        self._DependencyRel = DependencyRel
+
+    @property
+    def DependencyWorkflow(self):
+        return self._DependencyWorkflow
+
+    @DependencyWorkflow.setter
+    def DependencyWorkflow(self, DependencyWorkflow):
+        self._DependencyWorkflow = DependencyWorkflow
+
+    @property
+    def EventListenerConfig(self):
+        return self._EventListenerConfig
+
+    @EventListenerConfig.setter
+    def EventListenerConfig(self, EventListenerConfig):
+        self._EventListenerConfig = EventListenerConfig
+
+    @property
+    def EventPublisherConfig(self):
+        return self._EventPublisherConfig
+
+    @EventPublisherConfig.setter
+    def EventPublisherConfig(self, EventPublisherConfig):
+        self._EventPublisherConfig = EventPublisherConfig
+
+    @property
+    def DependencyConfigList(self):
+        return self._DependencyConfigList
+
+    @DependencyConfigList.setter
+    def DependencyConfigList(self, DependencyConfigList):
+        self._DependencyConfigList = DependencyConfigList
+
+    @property
+    def VirtualTaskStatus(self):
+        return self._VirtualTaskStatus
+
+    @VirtualTaskStatus.setter
+    def VirtualTaskStatus(self, VirtualTaskStatus):
+        self._VirtualTaskStatus = VirtualTaskStatus
+
+    @property
+    def RecycleTips(self):
+        return self._RecycleTips
+
+    @RecycleTips.setter
+    def RecycleTips(self, RecycleTips):
+        self._RecycleTips = RecycleTips
+
+    @property
+    def RecycleUser(self):
+        return self._RecycleUser
+
+    @RecycleUser.setter
+    def RecycleUser(self, RecycleUser):
+        self._RecycleUser = RecycleUser
+
+    @property
+    def NewOrUpdate(self):
+        return self._NewOrUpdate
+
+    @NewOrUpdate.setter
+    def NewOrUpdate(self, NewOrUpdate):
+        self._NewOrUpdate = NewOrUpdate
+
+    @property
+    def Params(self):
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def TaskLinkInfo(self):
+        return self._TaskLinkInfo
+
+    @TaskLinkInfo.setter
+    def TaskLinkInfo(self, TaskLinkInfo):
+        self._TaskLinkInfo = TaskLinkInfo
+
+    @property
+    def ImportResult(self):
+        return self._ImportResult
+
+    @ImportResult.setter
+    def ImportResult(self, ImportResult):
+        self._ImportResult = ImportResult
+
+    @property
+    def ImportErrMsg(self):
+        return self._ImportErrMsg
+
+    @ImportErrMsg.setter
+    def ImportErrMsg(self, ImportErrMsg):
+        self._ImportErrMsg = ImportErrMsg
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def TaskAutoSubmit(self):
+        return self._TaskAutoSubmit
+
+    @TaskAutoSubmit.setter
+    def TaskAutoSubmit(self, TaskAutoSubmit):
+        self._TaskAutoSubmit = TaskAutoSubmit
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def OwnId(self):
+        return self._OwnId
+
+    @OwnId.setter
+    def OwnId(self, OwnId):
+        self._OwnId = OwnId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TenantId(self):
+        return self._TenantId
+
+    @TenantId.setter
+    def TenantId(self, TenantId):
+        self._TenantId = TenantId
+
+    @property
+    def UpdateUser(self):
+        return self._UpdateUser
+
+    @UpdateUser.setter
+    def UpdateUser(self, UpdateUser):
+        self._UpdateUser = UpdateUser
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def UpdateUserId(self):
+        return self._UpdateUserId
+
+    @UpdateUserId.setter
+    def UpdateUserId(self, UpdateUserId):
+        self._UpdateUserId = UpdateUserId
+
+    @property
+    def SchedulerDesc(self):
+        return self._SchedulerDesc
+
+    @SchedulerDesc.setter
+    def SchedulerDesc(self, SchedulerDesc):
+        self._SchedulerDesc = SchedulerDesc
+
+    @property
+    def ResourceGroup(self):
+        return self._ResourceGroup
+
+    @ResourceGroup.setter
+    def ResourceGroup(self, ResourceGroup):
+        self._ResourceGroup = ResourceGroup
+
+    @property
+    def VersionDesc(self):
+        return self._VersionDesc
+
+    @VersionDesc.setter
+    def VersionDesc(self, VersionDesc):
+        self._VersionDesc = VersionDesc
+
+    @property
+    def LinkId(self):
+        return self._LinkId
+
+    @LinkId.setter
+    def LinkId(self, LinkId):
+        self._LinkId = LinkId
+
+    @property
+    def UserFileId(self):
+        return self._UserFileId
+
+    @UserFileId.setter
+    def UserFileId(self, UserFileId):
+        self._UserFileId = UserFileId
+
+    @property
+    def SourceServiceId(self):
+        return self._SourceServiceId
+
+    @SourceServiceId.setter
+    def SourceServiceId(self, SourceServiceId):
+        self._SourceServiceId = SourceServiceId
+
+    @property
+    def SourceServiceType(self):
+        return self._SourceServiceType
+
+    @SourceServiceType.setter
+    def SourceServiceType(self, SourceServiceType):
+        self._SourceServiceType = SourceServiceType
+
+    @property
+    def TargetServiceId(self):
+        return self._TargetServiceId
+
+    @TargetServiceId.setter
+    def TargetServiceId(self, TargetServiceId):
+        self._TargetServiceId = TargetServiceId
+
+    @property
+    def TargetServiceType(self):
+        return self._TargetServiceType
+
+    @TargetServiceType.setter
+    def TargetServiceType(self, TargetServiceType):
+        self._TargetServiceType = TargetServiceType
+
+    @property
+    def ParamInList(self):
+        return self._ParamInList
+
+    @ParamInList.setter
+    def ParamInList(self, ParamInList):
+        self._ParamInList = ParamInList
+
+    @property
+    def ParamOutList(self):
+        return self._ParamOutList
+
+    @ParamOutList.setter
+    def ParamOutList(self, ParamOutList):
+        self._ParamOutList = ParamOutList
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._VirtualTaskId = params.get("VirtualTaskId")
+        self._VirtualFlag = params.get("VirtualFlag")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowId = params.get("WorkflowId")
+        self._RealWorkflowId = params.get("RealWorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._CreateTime = params.get("CreateTime")
+        self._LastUpdate = params.get("LastUpdate")
+        self._Status = params.get("Status")
+        self._InCharge = params.get("InCharge")
+        self._InChargeId = params.get("InChargeId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectIdent = params.get("ProjectIdent")
+        self._ProjectName = params.get("ProjectName")
+        self._CycleType = params.get("CycleType")
+        self._CycleStep = params.get("CycleStep")
+        self._CrontabExpression = params.get("CrontabExpression")
+        self._DelayTime = params.get("DelayTime")
+        self._StartupTime = params.get("StartupTime")
+        self._RetryWait = params.get("RetryWait")
+        self._Retriable = params.get("Retriable")
+        self._TaskAction = params.get("TaskAction")
+        self._TryLimit = params.get("TryLimit")
+        self._RunPriority = params.get("RunPriority")
+        if params.get("TaskType") is not None:
+            self._TaskType = TaskTypeDsVO()
+            self._TaskType._deserialize(params.get("TaskType"))
+        self._BrokerIp = params.get("BrokerIp")
+        self._ClusterId = params.get("ClusterId")
+        self._MinDateTime = params.get("MinDateTime")
+        self._MaxDateTime = params.get("MaxDateTime")
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._SelfDepend = params.get("SelfDepend")
+        self._LeftCoordinate = params.get("LeftCoordinate")
+        self._TopCoordinate = params.get("TopCoordinate")
+        if params.get("TaskExt") is not None:
+            self._TaskExt = TaskExtDsVO()
+            self._TaskExt._deserialize(params.get("TaskExt"))
+        self._Properties = params.get("Properties")
+        self._Notes = params.get("Notes")
+        self._InstanceInitStrategy = params.get("InstanceInitStrategy")
+        self._YarnQueue = params.get("YarnQueue")
+        if params.get("Alarms") is not None:
+            self._Alarms = []
+            for item in params.get("Alarms"):
+                obj = AlarmDsVO()
+                obj._deserialize(item)
+                self._Alarms.append(obj)
+        self._Alarm = params.get("Alarm")
+        self._ScriptChange = params.get("ScriptChange")
+        self._Submit = params.get("Submit")
+        self._LastSchedulerCommitTime = params.get("LastSchedulerCommitTime")
+        self._NormalizedJobStartTime = params.get("NormalizedJobStartTime")
+        self._RecoverFreezeStartTime = params.get("RecoverFreezeStartTime")
+        self._SourceServer = params.get("SourceServer")
+        self._TargetServer = params.get("TargetServer")
+        self._Tasks = params.get("Tasks")
+        self._Creater = params.get("Creater")
+        self._DependencyRel = params.get("DependencyRel")
+        self._DependencyWorkflow = params.get("DependencyWorkflow")
+        self._EventListenerConfig = params.get("EventListenerConfig")
+        self._EventPublisherConfig = params.get("EventPublisherConfig")
+        self._DependencyConfigList = params.get("DependencyConfigList")
+        self._VirtualTaskStatus = params.get("VirtualTaskStatus")
+        self._RecycleTips = params.get("RecycleTips")
+        self._RecycleUser = params.get("RecycleUser")
+        self._NewOrUpdate = params.get("NewOrUpdate")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ParameterTaskDsDto()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        if params.get("TaskLinkInfo") is not None:
+            self._TaskLinkInfo = []
+            for item in params.get("TaskLinkInfo"):
+                obj = TaskLinkDsDTO()
+                obj._deserialize(item)
+                self._TaskLinkInfo.append(obj)
+        self._ImportResult = params.get("ImportResult")
+        self._ImportErrMsg = params.get("ImportErrMsg")
+        self._ContentType = params.get("ContentType")
+        self._TaskAutoSubmit = params.get("TaskAutoSubmit")
+        self._ProductName = params.get("ProductName")
+        self._OwnId = params.get("OwnId")
+        self._UserId = params.get("UserId")
+        self._TenantId = params.get("TenantId")
+        self._UpdateUser = params.get("UpdateUser")
+        self._UpdateTime = params.get("UpdateTime")
+        self._UpdateUserId = params.get("UpdateUserId")
+        self._SchedulerDesc = params.get("SchedulerDesc")
+        self._ResourceGroup = params.get("ResourceGroup")
+        self._VersionDesc = params.get("VersionDesc")
+        self._LinkId = params.get("LinkId")
+        self._UserFileId = params.get("UserFileId")
+        self._SourceServiceId = params.get("SourceServiceId")
+        self._SourceServiceType = params.get("SourceServiceType")
+        self._TargetServiceId = params.get("TargetServiceId")
+        self._TargetServiceType = params.get("TargetServiceType")
+        if params.get("ParamInList") is not None:
+            self._ParamInList = []
+            for item in params.get("ParamInList"):
+                obj = ParameterTaskInDsDto()
+                obj._deserialize(item)
+                self._ParamInList.append(obj)
+        if params.get("ParamOutList") is not None:
+            self._ParamOutList = []
+            for item in params.get("ParamOutList"):
+                obj = ParameterTaskOutDsDto()
+                obj._deserialize(item)
+                self._ParamOutList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskExtDsVO(AbstractModel):
+    """属性配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Properties: 任务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of ParamInfoDs
+        :param _DryRunExtAttributes: 任务试运行扩展业务属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunExtAttributes: list of AttributeItemDsVO
+        :param _DryRunParameter: 任务试运行动态传参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DryRunParameter: list of AttributeItemDsVO
+        """
+        self._TaskId = None
+        self._Properties = None
+        self._DryRunExtAttributes = None
+        self._DryRunParameter = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def DryRunExtAttributes(self):
+        return self._DryRunExtAttributes
+
+    @DryRunExtAttributes.setter
+    def DryRunExtAttributes(self, DryRunExtAttributes):
+        self._DryRunExtAttributes = DryRunExtAttributes
+
+    @property
+    def DryRunParameter(self):
+        return self._DryRunParameter
+
+    @DryRunParameter.setter
+    def DryRunParameter(self, DryRunParameter):
+        self._DryRunParameter = DryRunParameter
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = ParamInfoDs()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("DryRunExtAttributes") is not None:
+            self._DryRunExtAttributes = []
+            for item in params.get("DryRunExtAttributes"):
+                obj = AttributeItemDsVO()
+                obj._deserialize(item)
+                self._DryRunExtAttributes.append(obj)
+        if params.get("DryRunParameter") is not None:
+            self._DryRunParameter = []
+            for item in params.get("DryRunParameter"):
+                obj = AttributeItemDsVO()
+                obj._deserialize(item)
+                self._DryRunParameter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskExtInfo(AbstractModel):
     """任务扩展信息
 
@@ -68156,6 +72722,235 @@ class TaskInstanceInfo(AbstractModel):
         
 
 
+class TaskLinkDsDTO(AbstractModel):
+    """Task Link 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskTo: TaskTo信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTo: str
+        :param _TaskFrom: TaskFrom信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskFrom: str
+        :param _LinkType: LinkType信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkType: str
+        :param _LinkKey: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkKey: str
+        :param _Id: LinkId信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _InCharge: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _LinkDependencyType: 父子任务之间的依赖关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LinkDependencyType: str
+        :param _Offset: 父子任务之间依赖偏移量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Offset: int
+        :param _WorkflowId: 工作流id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _RealFromTaskId: 实体任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealFromTaskId: str
+        :param _RealFromTaskName: 实体任务名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealFromTaskName: str
+        :param _RealFromWorkflowId: 实体任务所属工作流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealFromWorkflowId: str
+        :param _RealFromWorkflowName: 实体任务所属工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealFromWorkflowName: str
+        :param _RealProjectId: 实体任务所属项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealProjectId: str
+        :param _RealProjectIdent: 实体任务所属项目标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealProjectIdent: str
+        :param _RealProjectName: 实体任务所属项目名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealProjectName: str
+        """
+        self._TaskTo = None
+        self._TaskFrom = None
+        self._LinkType = None
+        self._LinkKey = None
+        self._Id = None
+        self._InCharge = None
+        self._LinkDependencyType = None
+        self._Offset = None
+        self._WorkflowId = None
+        self._RealFromTaskId = None
+        self._RealFromTaskName = None
+        self._RealFromWorkflowId = None
+        self._RealFromWorkflowName = None
+        self._RealProjectId = None
+        self._RealProjectIdent = None
+        self._RealProjectName = None
+
+    @property
+    def TaskTo(self):
+        return self._TaskTo
+
+    @TaskTo.setter
+    def TaskTo(self, TaskTo):
+        self._TaskTo = TaskTo
+
+    @property
+    def TaskFrom(self):
+        return self._TaskFrom
+
+    @TaskFrom.setter
+    def TaskFrom(self, TaskFrom):
+        self._TaskFrom = TaskFrom
+
+    @property
+    def LinkType(self):
+        return self._LinkType
+
+    @LinkType.setter
+    def LinkType(self, LinkType):
+        self._LinkType = LinkType
+
+    @property
+    def LinkKey(self):
+        return self._LinkKey
+
+    @LinkKey.setter
+    def LinkKey(self, LinkKey):
+        self._LinkKey = LinkKey
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def LinkDependencyType(self):
+        return self._LinkDependencyType
+
+    @LinkDependencyType.setter
+    def LinkDependencyType(self, LinkDependencyType):
+        self._LinkDependencyType = LinkDependencyType
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def RealFromTaskId(self):
+        return self._RealFromTaskId
+
+    @RealFromTaskId.setter
+    def RealFromTaskId(self, RealFromTaskId):
+        self._RealFromTaskId = RealFromTaskId
+
+    @property
+    def RealFromTaskName(self):
+        return self._RealFromTaskName
+
+    @RealFromTaskName.setter
+    def RealFromTaskName(self, RealFromTaskName):
+        self._RealFromTaskName = RealFromTaskName
+
+    @property
+    def RealFromWorkflowId(self):
+        return self._RealFromWorkflowId
+
+    @RealFromWorkflowId.setter
+    def RealFromWorkflowId(self, RealFromWorkflowId):
+        self._RealFromWorkflowId = RealFromWorkflowId
+
+    @property
+    def RealFromWorkflowName(self):
+        return self._RealFromWorkflowName
+
+    @RealFromWorkflowName.setter
+    def RealFromWorkflowName(self, RealFromWorkflowName):
+        self._RealFromWorkflowName = RealFromWorkflowName
+
+    @property
+    def RealProjectId(self):
+        return self._RealProjectId
+
+    @RealProjectId.setter
+    def RealProjectId(self, RealProjectId):
+        self._RealProjectId = RealProjectId
+
+    @property
+    def RealProjectIdent(self):
+        return self._RealProjectIdent
+
+    @RealProjectIdent.setter
+    def RealProjectIdent(self, RealProjectIdent):
+        self._RealProjectIdent = RealProjectIdent
+
+    @property
+    def RealProjectName(self):
+        return self._RealProjectName
+
+    @RealProjectName.setter
+    def RealProjectName(self, RealProjectName):
+        self._RealProjectName = RealProjectName
+
+
+    def _deserialize(self, params):
+        self._TaskTo = params.get("TaskTo")
+        self._TaskFrom = params.get("TaskFrom")
+        self._LinkType = params.get("LinkType")
+        self._LinkKey = params.get("LinkKey")
+        self._Id = params.get("Id")
+        self._InCharge = params.get("InCharge")
+        self._LinkDependencyType = params.get("LinkDependencyType")
+        self._Offset = params.get("Offset")
+        self._WorkflowId = params.get("WorkflowId")
+        self._RealFromTaskId = params.get("RealFromTaskId")
+        self._RealFromTaskName = params.get("RealFromTaskName")
+        self._RealFromWorkflowId = params.get("RealFromWorkflowId")
+        self._RealFromWorkflowName = params.get("RealFromWorkflowName")
+        self._RealProjectId = params.get("RealProjectId")
+        self._RealProjectIdent = params.get("RealProjectIdent")
+        self._RealProjectName = params.get("RealProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskLinkInfo(AbstractModel):
     """任务依赖的边信息
 
@@ -69826,6 +74621,666 @@ class TaskTypeCnt(AbstractModel):
         self._Number = params.get("Number")
         self._TaskType = params.get("TaskType")
         self._TypeName = params.get("TypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskTypeDsVO(AbstractModel):
+    """任务类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeId: 任务类型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeId: int
+        :param _TypeDesc: TypeDesc描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeDesc: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _SourceServerType: 服务器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceServerType: str
+        :param _TargetServerType: 目标服务器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetServerType: str
+        :param _RunJarName: RunJarName名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunJarName: str
+        :param _KillAble: Killable参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KillAble: int
+        :param _TypeSort: TypeSort类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeSort: str
+        :param _InCharge: InCharge参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _BrokerParallelism: 节点对应任务类型运行上限（暂时不考虑）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BrokerParallelism: int
+        :param _TaskParallelism: 每个任务运行上限（暂时不考虑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskParallelism: int
+        :param _DoRedoParallelism: 补录和重跑上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DoRedoParallelism: int
+        :param _DowngradePriorityTries: 0 为不可创建任务; >0 可创建任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DowngradePriorityTries: int
+        :param _RetryWait: 重试等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWait: int
+        :param _RetryLimit: 重试次数（在任务属性配置中设置）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryLimit: int
+        :param _DefaultAliveWait: DefaultAliveWait参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultAliveWait: int
+        :param _PollingSeconds: PollingSeconds秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PollingSeconds: int
+        :param _ParamList: 参数列表xml
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamList: str
+        :param _TaskTypeExtension: TaskTypeExts参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeExtension: list of TaskTypeExtParamDsVO
+        :param _FileType: 对应文件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileType: str
+        :param _SelectFilePath: 是否选择脚本路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelectFilePath: bool
+        :param _ExcludeCommonLib: classpath是否要排除掉common-lib，默认是0不排除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeCommonLib: bool
+        :param _PostHooks: runner任务完成后需要触发的hook
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostHooks: str
+        """
+        self._TypeId = None
+        self._TypeDesc = None
+        self._CreateTime = None
+        self._SourceServerType = None
+        self._TargetServerType = None
+        self._RunJarName = None
+        self._KillAble = None
+        self._TypeSort = None
+        self._InCharge = None
+        self._BrokerParallelism = None
+        self._TaskParallelism = None
+        self._DoRedoParallelism = None
+        self._DowngradePriorityTries = None
+        self._RetryWait = None
+        self._RetryLimit = None
+        self._DefaultAliveWait = None
+        self._PollingSeconds = None
+        self._ParamList = None
+        self._TaskTypeExtension = None
+        self._FileType = None
+        self._SelectFilePath = None
+        self._ExcludeCommonLib = None
+        self._PostHooks = None
+
+    @property
+    def TypeId(self):
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def TypeDesc(self):
+        return self._TypeDesc
+
+    @TypeDesc.setter
+    def TypeDesc(self, TypeDesc):
+        self._TypeDesc = TypeDesc
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SourceServerType(self):
+        return self._SourceServerType
+
+    @SourceServerType.setter
+    def SourceServerType(self, SourceServerType):
+        self._SourceServerType = SourceServerType
+
+    @property
+    def TargetServerType(self):
+        return self._TargetServerType
+
+    @TargetServerType.setter
+    def TargetServerType(self, TargetServerType):
+        self._TargetServerType = TargetServerType
+
+    @property
+    def RunJarName(self):
+        return self._RunJarName
+
+    @RunJarName.setter
+    def RunJarName(self, RunJarName):
+        self._RunJarName = RunJarName
+
+    @property
+    def KillAble(self):
+        return self._KillAble
+
+    @KillAble.setter
+    def KillAble(self, KillAble):
+        self._KillAble = KillAble
+
+    @property
+    def TypeSort(self):
+        return self._TypeSort
+
+    @TypeSort.setter
+    def TypeSort(self, TypeSort):
+        self._TypeSort = TypeSort
+
+    @property
+    def InCharge(self):
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def BrokerParallelism(self):
+        return self._BrokerParallelism
+
+    @BrokerParallelism.setter
+    def BrokerParallelism(self, BrokerParallelism):
+        self._BrokerParallelism = BrokerParallelism
+
+    @property
+    def TaskParallelism(self):
+        return self._TaskParallelism
+
+    @TaskParallelism.setter
+    def TaskParallelism(self, TaskParallelism):
+        self._TaskParallelism = TaskParallelism
+
+    @property
+    def DoRedoParallelism(self):
+        return self._DoRedoParallelism
+
+    @DoRedoParallelism.setter
+    def DoRedoParallelism(self, DoRedoParallelism):
+        self._DoRedoParallelism = DoRedoParallelism
+
+    @property
+    def DowngradePriorityTries(self):
+        return self._DowngradePriorityTries
+
+    @DowngradePriorityTries.setter
+    def DowngradePriorityTries(self, DowngradePriorityTries):
+        self._DowngradePriorityTries = DowngradePriorityTries
+
+    @property
+    def RetryWait(self):
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        self._RetryWait = RetryWait
+
+    @property
+    def RetryLimit(self):
+        return self._RetryLimit
+
+    @RetryLimit.setter
+    def RetryLimit(self, RetryLimit):
+        self._RetryLimit = RetryLimit
+
+    @property
+    def DefaultAliveWait(self):
+        return self._DefaultAliveWait
+
+    @DefaultAliveWait.setter
+    def DefaultAliveWait(self, DefaultAliveWait):
+        self._DefaultAliveWait = DefaultAliveWait
+
+    @property
+    def PollingSeconds(self):
+        return self._PollingSeconds
+
+    @PollingSeconds.setter
+    def PollingSeconds(self, PollingSeconds):
+        self._PollingSeconds = PollingSeconds
+
+    @property
+    def ParamList(self):
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def TaskTypeExtension(self):
+        return self._TaskTypeExtension
+
+    @TaskTypeExtension.setter
+    def TaskTypeExtension(self, TaskTypeExtension):
+        self._TaskTypeExtension = TaskTypeExtension
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def SelectFilePath(self):
+        return self._SelectFilePath
+
+    @SelectFilePath.setter
+    def SelectFilePath(self, SelectFilePath):
+        self._SelectFilePath = SelectFilePath
+
+    @property
+    def ExcludeCommonLib(self):
+        return self._ExcludeCommonLib
+
+    @ExcludeCommonLib.setter
+    def ExcludeCommonLib(self, ExcludeCommonLib):
+        self._ExcludeCommonLib = ExcludeCommonLib
+
+    @property
+    def PostHooks(self):
+        return self._PostHooks
+
+    @PostHooks.setter
+    def PostHooks(self, PostHooks):
+        self._PostHooks = PostHooks
+
+
+    def _deserialize(self, params):
+        self._TypeId = params.get("TypeId")
+        self._TypeDesc = params.get("TypeDesc")
+        self._CreateTime = params.get("CreateTime")
+        self._SourceServerType = params.get("SourceServerType")
+        self._TargetServerType = params.get("TargetServerType")
+        self._RunJarName = params.get("RunJarName")
+        self._KillAble = params.get("KillAble")
+        self._TypeSort = params.get("TypeSort")
+        self._InCharge = params.get("InCharge")
+        self._BrokerParallelism = params.get("BrokerParallelism")
+        self._TaskParallelism = params.get("TaskParallelism")
+        self._DoRedoParallelism = params.get("DoRedoParallelism")
+        self._DowngradePriorityTries = params.get("DowngradePriorityTries")
+        self._RetryWait = params.get("RetryWait")
+        self._RetryLimit = params.get("RetryLimit")
+        self._DefaultAliveWait = params.get("DefaultAliveWait")
+        self._PollingSeconds = params.get("PollingSeconds")
+        self._ParamList = params.get("ParamList")
+        if params.get("TaskTypeExtension") is not None:
+            self._TaskTypeExtension = []
+            for item in params.get("TaskTypeExtension"):
+                obj = TaskTypeExtParamDsVO()
+                obj._deserialize(item)
+                self._TaskTypeExtension.append(obj)
+        self._FileType = params.get("FileType")
+        self._SelectFilePath = params.get("SelectFilePath")
+        self._ExcludeCommonLib = params.get("ExcludeCommonLib")
+        self._PostHooks = params.get("PostHooks")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskTypeExtDsVO(AbstractModel):
+    """属性类型扩展
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeId: 类型ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TypeId: int
+        :param _PropName: 属性名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropName: str
+        :param _PropLabel: 属性标签(ui展示用)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropLabel: str
+        :param _DefaultFlag: 缺省标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultFlag: int
+        :param _VisibleFlag: 可视标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VisibleFlag: int
+        :param _PropDesc: 属性描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PropDesc: str
+        :param _RankId: 排列id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RankId: int
+        :param _InputType: 控件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param _ValueType: 值类型(integer，string)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: str
+        :param _DefaultValue: 缺省值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param _CandidateValues: 候选值列表(，分隔)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CandidateValues: str
+        :param _IsMandatory: 是否必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMandatory: int
+        :param _MaxValue: 最大值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxValue: int
+        :param _MinValue: 最小值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinValue: int
+        :param _ConfLevel: 配置等级(1-普通，2-高级，3-管理员)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfLevel: int
+        :param _CandidateTexts: 候选文本列表(，分隔)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CandidateTexts: str
+        :param _CopyKey: 复制时是否需要修改
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CopyKey: int
+        :param _Regex: 字段正则表达式校验
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regex: str
+        :param _Tip: 字段正则表达式校验证提示tip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tip: str
+        :param _Candidates: 可选值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Candidates: list of CandidateDsDTo
+        """
+        self._TypeId = None
+        self._PropName = None
+        self._PropLabel = None
+        self._DefaultFlag = None
+        self._VisibleFlag = None
+        self._PropDesc = None
+        self._RankId = None
+        self._InputType = None
+        self._ValueType = None
+        self._DefaultValue = None
+        self._CandidateValues = None
+        self._IsMandatory = None
+        self._MaxValue = None
+        self._MinValue = None
+        self._ConfLevel = None
+        self._CandidateTexts = None
+        self._CopyKey = None
+        self._Regex = None
+        self._Tip = None
+        self._Candidates = None
+
+    @property
+    def TypeId(self):
+        return self._TypeId
+
+    @TypeId.setter
+    def TypeId(self, TypeId):
+        self._TypeId = TypeId
+
+    @property
+    def PropName(self):
+        return self._PropName
+
+    @PropName.setter
+    def PropName(self, PropName):
+        self._PropName = PropName
+
+    @property
+    def PropLabel(self):
+        return self._PropLabel
+
+    @PropLabel.setter
+    def PropLabel(self, PropLabel):
+        self._PropLabel = PropLabel
+
+    @property
+    def DefaultFlag(self):
+        return self._DefaultFlag
+
+    @DefaultFlag.setter
+    def DefaultFlag(self, DefaultFlag):
+        self._DefaultFlag = DefaultFlag
+
+    @property
+    def VisibleFlag(self):
+        return self._VisibleFlag
+
+    @VisibleFlag.setter
+    def VisibleFlag(self, VisibleFlag):
+        self._VisibleFlag = VisibleFlag
+
+    @property
+    def PropDesc(self):
+        return self._PropDesc
+
+    @PropDesc.setter
+    def PropDesc(self, PropDesc):
+        self._PropDesc = PropDesc
+
+    @property
+    def RankId(self):
+        return self._RankId
+
+    @RankId.setter
+    def RankId(self, RankId):
+        self._RankId = RankId
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def ValueType(self):
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def CandidateValues(self):
+        return self._CandidateValues
+
+    @CandidateValues.setter
+    def CandidateValues(self, CandidateValues):
+        self._CandidateValues = CandidateValues
+
+    @property
+    def IsMandatory(self):
+        return self._IsMandatory
+
+    @IsMandatory.setter
+    def IsMandatory(self, IsMandatory):
+        self._IsMandatory = IsMandatory
+
+    @property
+    def MaxValue(self):
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def MinValue(self):
+        return self._MinValue
+
+    @MinValue.setter
+    def MinValue(self, MinValue):
+        self._MinValue = MinValue
+
+    @property
+    def ConfLevel(self):
+        return self._ConfLevel
+
+    @ConfLevel.setter
+    def ConfLevel(self, ConfLevel):
+        self._ConfLevel = ConfLevel
+
+    @property
+    def CandidateTexts(self):
+        return self._CandidateTexts
+
+    @CandidateTexts.setter
+    def CandidateTexts(self, CandidateTexts):
+        self._CandidateTexts = CandidateTexts
+
+    @property
+    def CopyKey(self):
+        return self._CopyKey
+
+    @CopyKey.setter
+    def CopyKey(self, CopyKey):
+        self._CopyKey = CopyKey
+
+    @property
+    def Regex(self):
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+    @property
+    def Tip(self):
+        return self._Tip
+
+    @Tip.setter
+    def Tip(self, Tip):
+        self._Tip = Tip
+
+    @property
+    def Candidates(self):
+        return self._Candidates
+
+    @Candidates.setter
+    def Candidates(self, Candidates):
+        self._Candidates = Candidates
+
+
+    def _deserialize(self, params):
+        self._TypeId = params.get("TypeId")
+        self._PropName = params.get("PropName")
+        self._PropLabel = params.get("PropLabel")
+        self._DefaultFlag = params.get("DefaultFlag")
+        self._VisibleFlag = params.get("VisibleFlag")
+        self._PropDesc = params.get("PropDesc")
+        self._RankId = params.get("RankId")
+        self._InputType = params.get("InputType")
+        self._ValueType = params.get("ValueType")
+        self._DefaultValue = params.get("DefaultValue")
+        self._CandidateValues = params.get("CandidateValues")
+        self._IsMandatory = params.get("IsMandatory")
+        self._MaxValue = params.get("MaxValue")
+        self._MinValue = params.get("MinValue")
+        self._ConfLevel = params.get("ConfLevel")
+        self._CandidateTexts = params.get("CandidateTexts")
+        self._CopyKey = params.get("CopyKey")
+        self._Regex = params.get("Regex")
+        self._Tip = params.get("Tip")
+        if params.get("Candidates") is not None:
+            self._Candidates = []
+            for item in params.get("Candidates"):
+                obj = CandidateDsDTo()
+                obj._deserialize(item)
+                self._Candidates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskTypeExtParamDsVO(AbstractModel):
+    """TaskTypeExts参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskTypeExtKey: TaskTypeExts的Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeExtKey: str
+        :param _TaskTypeExtValue: TaskTypeExts的Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeExtValue: :class:`tencentcloud.wedata.v20210820.models.TaskTypeExtDsVO`
+        """
+        self._TaskTypeExtKey = None
+        self._TaskTypeExtValue = None
+
+    @property
+    def TaskTypeExtKey(self):
+        return self._TaskTypeExtKey
+
+    @TaskTypeExtKey.setter
+    def TaskTypeExtKey(self, TaskTypeExtKey):
+        self._TaskTypeExtKey = TaskTypeExtKey
+
+    @property
+    def TaskTypeExtValue(self):
+        return self._TaskTypeExtValue
+
+    @TaskTypeExtValue.setter
+    def TaskTypeExtValue(self, TaskTypeExtValue):
+        self._TaskTypeExtValue = TaskTypeExtValue
+
+
+    def _deserialize(self, params):
+        self._TaskTypeExtKey = params.get("TaskTypeExtKey")
+        if params.get("TaskTypeExtValue") is not None:
+            self._TaskTypeExtValue = TaskTypeExtDsVO()
+            self._TaskTypeExtValue._deserialize(params.get("TaskTypeExtValue"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

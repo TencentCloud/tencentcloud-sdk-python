@@ -49,6 +49,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchCreateTaskVersionDs(self, request):
+        """批量创建任务版本Ds
+
+        :param request: Request instance for BatchCreateTaskVersionDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchCreateTaskVersionDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateTaskVersionDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateTaskVersionDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchDeleteIntegrationTasks(self, request):
         """批量删除集成任务
 
@@ -1159,6 +1182,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTaskVersionDs(self, request):
+        """创建任务版本
+
+        :param request: Request instance for CreateTaskVersionDs.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskVersionDsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateTaskVersionDsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskVersionDs", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskVersionDsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkflow(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         创建工作流
@@ -1798,6 +1844,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeAllUsedVersionSon", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAllUsedVersionSonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApproveList(self, request):
+        """获取待审批列表
+
+        :param request: Request instance for DescribeApproveList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApproveList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApproveListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5938,6 +6007,29 @@ class WedataClient(AbstractClient):
             body = self.call("MakeUpWorkflowNew", params, headers=headers)
             response = json.loads(body)
             model = models.MakeUpWorkflowNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyApproveStatus(self, request):
+        """修改审批单状态
+
+        :param request: Request instance for ModifyApproveStatus.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.ModifyApproveStatusRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.ModifyApproveStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApproveStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApproveStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -8591,21 +8591,21 @@ class MLIDPassportOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 护照ID
+        :param _ID: 护照ID（机读码区的解析结果）
         :type ID: str
-        :param _Name: 姓名
+        :param _Name: 姓名（机读码区的解析结果）
         :type Name: str
-        :param _DateOfBirth: 出生日期
+        :param _DateOfBirth: 出生日期（机读码区的解析结果）
         :type DateOfBirth: str
-        :param _Sex: 性别（F女，M男）
+        :param _Sex: 性别（F女，M男）（机读码区的解析结果）
         :type Sex: str
-        :param _DateOfExpiration: 有效期
+        :param _DateOfExpiration: 有效期（机读码区的解析结果）
         :type DateOfExpiration: str
-        :param _IssuingCountry: 发行国
+        :param _IssuingCountry: 发行国（机读码区的解析结果）
         :type IssuingCountry: str
-        :param _Nationality: 国家地区代码
+        :param _Nationality: 国家地区代码（机读码区的解析结果）
         :type Nationality: str
-        :param _Warn: 告警码
+        :param _Warn: 告警码：
 -9103	证照翻拍告警
 -9102	证照复印件告警（包括黑白复印件、彩色复印件）
 -9106       证件遮挡告警
@@ -8626,12 +8626,16 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type CodeSet: str
         :param _CodeCrc: 最下方第二行 MRZ Code 序列
         :type CodeCrc: str
-        :param _Surname: 姓
+        :param _Surname: 姓（机读码区的解析结果）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Surname: str
-        :param _GivenName: 名
+        :param _GivenName: 名（机读码区的解析结果）
 注意：此字段可能返回 null，表示取不到有效值。
         :type GivenName: str
+        :param _Type: 类型（机读码区的解析结果）
+        :type Type: str
+        :param _PassportRecognizeInfos: 信息区证件内容
+        :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8649,6 +8653,8 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._CodeCrc = None
         self._Surname = None
         self._GivenName = None
+        self._Type = None
+        self._PassportRecognizeInfos = None
         self._RequestId = None
 
     @property
@@ -8764,6 +8770,22 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._GivenName = GivenName
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PassportRecognizeInfos(self):
+        return self._PassportRecognizeInfos
+
+    @PassportRecognizeInfos.setter
+    def PassportRecognizeInfos(self, PassportRecognizeInfos):
+        self._PassportRecognizeInfos = PassportRecognizeInfos
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8787,6 +8809,10 @@ class MLIDPassportOCRResponse(AbstractModel):
         self._CodeCrc = params.get("CodeCrc")
         self._Surname = params.get("Surname")
         self._GivenName = params.get("GivenName")
+        self._Type = params.get("Type")
+        if params.get("PassportRecognizeInfos") is not None:
+            self._PassportRecognizeInfos = PassportRecognizeInfos()
+            self._PassportRecognizeInfos._deserialize(params.get("PassportRecognizeInfos"))
         self._RequestId = params.get("RequestId")
 
 
@@ -11899,6 +11925,159 @@ class PassportOCRResponse(AbstractModel):
         self._FamilyName = params.get("FamilyName")
         self._FirstName = params.get("FirstName")
         self._RequestId = params.get("RequestId")
+
+
+class PassportRecognizeInfos(AbstractModel):
+    """信息区证件内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 证件类型（护照信息页识别结果）
+        :type Type: str
+        :param _IssuingCountry: 发行国家（护照信息页识别结果）
+        :type IssuingCountry: str
+        :param _PassportID: 护照号码（护照信息页识别结果）
+        :type PassportID: str
+        :param _Surname: 姓（护照信息页识别结果）
+        :type Surname: str
+        :param _GivenName: 名（护照信息页识别结果）
+        :type GivenName: str
+        :param _Name: 姓名（护照信息页识别结果）
+        :type Name: str
+        :param _Nationality: 国籍信息（护照信息页识别结果）
+        :type Nationality: str
+        :param _DateOfBirth: 出生日期（护照信息页识别结果）
+        :type DateOfBirth: str
+        :param _Sex: 性别（护照信息页识别结果）
+        :type Sex: str
+        :param _DateOfIssuance: 发行日期（护照信息页识别结果）
+        :type DateOfIssuance: str
+        :param _DateOfExpiration: 截止日期（护照信息页识别结果）
+        :type DateOfExpiration: str
+        """
+        self._Type = None
+        self._IssuingCountry = None
+        self._PassportID = None
+        self._Surname = None
+        self._GivenName = None
+        self._Name = None
+        self._Nationality = None
+        self._DateOfBirth = None
+        self._Sex = None
+        self._DateOfIssuance = None
+        self._DateOfExpiration = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IssuingCountry(self):
+        return self._IssuingCountry
+
+    @IssuingCountry.setter
+    def IssuingCountry(self, IssuingCountry):
+        self._IssuingCountry = IssuingCountry
+
+    @property
+    def PassportID(self):
+        return self._PassportID
+
+    @PassportID.setter
+    def PassportID(self, PassportID):
+        self._PassportID = PassportID
+
+    @property
+    def Surname(self):
+        return self._Surname
+
+    @Surname.setter
+    def Surname(self, Surname):
+        self._Surname = Surname
+
+    @property
+    def GivenName(self):
+        return self._GivenName
+
+    @GivenName.setter
+    def GivenName(self, GivenName):
+        self._GivenName = GivenName
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def DateOfBirth(self):
+        return self._DateOfBirth
+
+    @DateOfBirth.setter
+    def DateOfBirth(self, DateOfBirth):
+        self._DateOfBirth = DateOfBirth
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def DateOfIssuance(self):
+        return self._DateOfIssuance
+
+    @DateOfIssuance.setter
+    def DateOfIssuance(self, DateOfIssuance):
+        self._DateOfIssuance = DateOfIssuance
+
+    @property
+    def DateOfExpiration(self):
+        return self._DateOfExpiration
+
+    @DateOfExpiration.setter
+    def DateOfExpiration(self, DateOfExpiration):
+        self._DateOfExpiration = DateOfExpiration
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._IssuingCountry = params.get("IssuingCountry")
+        self._PassportID = params.get("PassportID")
+        self._Surname = params.get("Surname")
+        self._GivenName = params.get("GivenName")
+        self._Name = params.get("Name")
+        self._Nationality = params.get("Nationality")
+        self._DateOfBirth = params.get("DateOfBirth")
+        self._Sex = params.get("Sex")
+        self._DateOfIssuance = params.get("DateOfIssuance")
+        self._DateOfExpiration = params.get("DateOfExpiration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PermitOCRRequest(AbstractModel):
