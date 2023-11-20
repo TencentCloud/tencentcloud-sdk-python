@@ -479,6 +479,9 @@ OPERATIONDENIED_OPERATIONDENIEDCREATESNAPSHOT = 'OperationDenied.OperationDenied
 # 使用存储型套餐的实例不支持创建快照。
 OPERATIONDENIED_OPERATIONDENIEDCREATESNAPSHOTFORSTORAGEBUNDLE = 'OperationDenied.OperationDeniedCreateSnapshotForStorageBundle'
 
+# 镜像正在修改共享属性操作中。不支持此操作。
+RESOURCEINUSE_BLUEPRINTMODIFYINGSHAREPERMISSION = 'ResourceInUse.BlueprintModifyingSharePermission'
+
 # 磁盘备份点正在使用中，不支持此操作。
 RESOURCEINUSE_DISKBACKUPINUSE = 'ResourceInUse.DiskBackupInUse'
 

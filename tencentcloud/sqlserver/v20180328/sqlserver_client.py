@@ -49,6 +49,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BalanceReadOnlyGroup(self, request):
+        """本接口（BalanceReadOnlyGroup）用于根据预定义的权重平衡每个只读实例的路由权重。预定义权重可根据接口DescribeReadOnlyGroupAutoWeight查询。
+
+        :param request: Request instance for BalanceReadOnlyGroup.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.BalanceReadOnlyGroupRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.BalanceReadOnlyGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BalanceReadOnlyGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.BalanceReadOnlyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneDB(self, request):
         """本接口（CloneDB）用于克隆数据库，只支持克隆到本实例，克隆时必须指定新库名称。
 
@@ -647,6 +670,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteRestoreTask(self, request):
+        """本接口(DeleteRestoreTask)用于删除回档任务记录。
+
+        :param request: Request instance for DeleteRestoreTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteRestoreTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteRestoreTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRestoreTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRestoreTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccountPrivilegeByDB(self, request):
+        """本接口(DescribeAccountPrivilegeByDB)用于查询数据库关联的账号和权限信息
+
+        :param request: Request instance for DescribeAccountPrivilegeByDB.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountPrivilegeByDBRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeAccountPrivilegeByDBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountPrivilegeByDB", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountPrivilegeByDBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccounts(self, request):
         """本接口（DescribeAccounts）用于拉取实例账户列表。
 
@@ -900,6 +969,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCollationTimeZone(self, request):
+        """本接口(DescribeCollationTimeZone)用于查询实例支持的字符集和时区。
+
+        :param request: Request instance for DescribeCollationTimeZone.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCollationTimeZoneRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCollationTimeZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCollationTimeZone", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCollationTimeZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCrossBackupStatistical(self, request):
         """本接口(DescribeCrossBackupStatistical)用于查询跨地域备份实时统计列表。
 
@@ -937,6 +1029,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeCrossRegionZone", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCrossRegionZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCrossRegions(self, request):
+        """本接口(DescribeCrossRegions)用于查询跨地域备份的目标地域。
+
+        :param request: Request instance for DescribeCrossRegions.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeCrossRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCrossRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCrossRegionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1038,6 +1153,52 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBPrivilegeByAccount(self, request):
+        """本接口(DescribeDBPrivilegeByAccount)用于查询账号关联的数据库和权限信息
+
+        :param request: Request instance for DescribeDBPrivilegeByAccount.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBPrivilegeByAccountRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBPrivilegeByAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBPrivilegeByAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBPrivilegeByAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBRestoreTime(self, request):
+        """本接口（DescribeDBRestoreTime）用于查询可回档的数据库
+
+        :param request: Request instance for DescribeDBRestoreTime.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBRestoreTimeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDBRestoreTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBRestoreTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBRestoreTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBSecurityGroups(self, request):
         """本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
 
@@ -1098,6 +1259,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeDBsNormal", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBsNormalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabaseNames(self, request):
+        """本接口（DescribeDatabaseNames）查询账户关联的数据库名称。
+
+        :param request: Request instance for DescribeDatabaseNames.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabaseNamesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeDatabaseNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseNamesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1222,6 +1406,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInquiryPriceParameter(self, request):
+        """本接口（DescribeInquiryPriceParameter）用于查询实例询价计费参数。当前接口查询实例新购的计费参数。内部接口用于活动页售卖场景。
+
+        :param request: Request instance for DescribeInquiryPriceParameter.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInquiryPriceParameterRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInquiryPriceParameterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInquiryPriceParameter", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInquiryPriceParameterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceByOrders(self, request):
         """本接口（DescribeInstanceByOrders）用于根据订单号查询资源ID
 
@@ -1282,6 +1489,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeInstanceParams", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceParamsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceTasks(self, request):
+        """本接口（DescribeInstanceTasks）用于查询实例相关的异步任务列表。
+
+        :param request: Request instance for DescribeInstanceTasks.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTasksRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceTradeParameter(self, request):
+        """本接口（DescribeInstanceTradeParameter）用于查询实例的计费参数，当前接口默认返回创建实例时需要的计费参数。内部接口用于活动页售卖场景。
+
+        :param request: Request instance for DescribeInstanceTradeParameter.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceTradeParameterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceTradeParameter", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceTradeParameterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1429,6 +1682,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProductSpec(self, request):
+        """本接口 (DescribeProductSpec) 用于查询全地域售卖规格配置（内部前端使用不公开）
+
+        :param request: Request instance for DescribeProductSpec.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProductSpecRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeProductSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProjectSecurityGroups(self, request):
         """本接口(DescribeProjectSecurityGroups)用于查询项目的安全组详情。
 
@@ -1466,6 +1742,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribePublishSubscribe", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePublishSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReadOnlyGroupAutoWeight(self, request):
+        """本接口（DescribeReadOnlyGroupAutoWeight）用于查询只读组的自动权重分配结果，在接口BalanceReadOnlyGroup接口中按照自动权重分配结果进行路由权重分配。
+
+        :param request: Request instance for DescribeReadOnlyGroupAutoWeight.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupAutoWeightRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeReadOnlyGroupAutoWeightResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReadOnlyGroupAutoWeight", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReadOnlyGroupAutoWeightResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1590,6 +1889,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRestoreTask(self, request):
+        """本接口（DescribeRestoreTask）用于查询回档任务列表。
+
+        :param request: Request instance for DescribeRestoreTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeRestoreTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRestoreTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRestoreTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRollbackTime(self, request):
         """本接口（DescribeRollbackTime）用于查询实例可回档时间范围
 
@@ -1627,6 +1949,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeSlowlogs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSlowlogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSpecSellStatus(self, request):
+        """本接口（DescribeSpecSellStatus）用于查询售卖规格状态信息，其中包括售卖状态，参考价格等(实际价格以询价接口为准)。
+
+        :param request: Request instance for DescribeSpecSellStatus.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSpecSellStatusRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeSpecSellStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpecSellStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpecSellStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpgradeInstanceCheck(self, request):
+        """本接口（DescribeUpgradeInstanceCheck）用于在实例变配前，预检查实例变配的影响情况等。
+
+        :param request: Request instance for DescribeUpgradeInstanceCheck.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUpgradeInstanceCheckRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeUpgradeInstanceCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpgradeInstanceCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpgradeInstanceCheckResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1935,6 +2303,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloseWanIp(self, request):
+        """本接口(ModifyCloseWanIp)用于关闭实例外网。
+
+        :param request: Request instance for ModifyCloseWanIp.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCloseWanIpRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyCloseWanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloseWanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloseWanIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCrossBackupStrategy(self, request):
         """本接口(ModifyCrossBackupStrategy)用于开启、关闭地域备份策略。
 
@@ -2018,6 +2409,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyDBInstanceNetwork", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBInstanceNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceNote(self, request):
+        """本接口（ModifyDBInstanceNote）用于修改实例备注信息。
+
+        :param request: Request instance for ModifyDBInstanceNote.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNoteRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceNoteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceNote", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceNoteResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2342,6 +2756,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyMigration", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOpenWanIp(self, request):
+        """本接口(ModifyOpenWanIp)用于开通实例外网。
+
+        :param request: Request instance for ModifyOpenWanIp.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyOpenWanIpRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyOpenWanIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOpenWanIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOpenWanIpResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPublishSubscribe(self, request):
+        """本接口（ModifyPublishSubscribe）用于修改实例的发布订阅关系。
+
+        :param request: Request instance for ModifyPublishSubscribe.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyPublishSubscribeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPublishSubscribe", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPublishSubscribeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

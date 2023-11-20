@@ -2496,6 +2496,156 @@ class Filter(AbstractModel):
         
 
 
+class ImportSourceClusterConsumerGroupsRequest(AbstractModel):
+    """ImportSourceClusterConsumerGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _GroupList: 待导入的消费组列表
+        :type GroupList: list of SourceClusterGroupConfig
+        """
+        self._TaskId = None
+        self._GroupList = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def GroupList(self):
+        return self._GroupList
+
+    @GroupList.setter
+    def GroupList(self, GroupList):
+        self._GroupList = GroupList
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("GroupList") is not None:
+            self._GroupList = []
+            for item in params.get("GroupList"):
+                obj = SourceClusterGroupConfig()
+                obj._deserialize(item)
+                self._GroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportSourceClusterConsumerGroupsResponse(AbstractModel):
+    """ImportSourceClusterConsumerGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ImportSourceClusterTopicsRequest(AbstractModel):
+    """ImportSourceClusterTopics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TopicList: 待导入的主题列表
+        :type TopicList: list of SourceClusterTopicConfig
+        """
+        self._TaskId = None
+        self._TopicList = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicList(self):
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("TopicList") is not None:
+            self._TopicList = []
+            for item in params.get("TopicList"):
+                obj = SourceClusterTopicConfig()
+                obj._deserialize(item)
+                self._TopicList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportSourceClusterTopicsResponse(AbstractModel):
+    """ImportSourceClusterTopics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InstanceItem(AbstractModel):
     """实例列表页中的实例信息
 
@@ -3375,6 +3525,225 @@ class RoleItem(AbstractModel):
         self._Remark = params.get("Remark")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceClusterGroupConfig(AbstractModel):
+    """消费组配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 消费组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _Imported: 是否已导入，作为入参时无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Imported: bool
+        :param _Namespace: 命名空间，仅4.x集群有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _ImportStatus: 导入状态
+Unknown 未知
+Success 成功
+Failure 失败
+AlreadyExists 已存在
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportStatus: str
+        """
+        self._GroupName = None
+        self._Remark = None
+        self._Imported = None
+        self._Namespace = None
+        self._ImportStatus = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Imported(self):
+        return self._Imported
+
+    @Imported.setter
+    def Imported(self, Imported):
+        self._Imported = Imported
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ImportStatus(self):
+        return self._ImportStatus
+
+    @ImportStatus.setter
+    def ImportStatus(self, ImportStatus):
+        self._ImportStatus = ImportStatus
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
+        self._Imported = params.get("Imported")
+        self._Namespace = params.get("Namespace")
+        self._ImportStatus = params.get("ImportStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceClusterTopicConfig(AbstractModel):
+    """源集群主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicName: 主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _TopicType: 主题类型，
+5.x版本
+UNSPECIFIED 未指定
+NORMAL 普通消息
+FIFO 顺序消息
+DELAY 延迟消息
+TRANSACTION 事务消息
+
+4.x版本
+Normal 普通消息
+PartitionedOrder 分区顺序消息
+Transaction 事务消息
+DelayScheduled 延时消息
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicType: str
+        :param _QueueNum: 队列数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueNum: int
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _Imported: 是否已导入，作为入参时无效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Imported: bool
+        :param _Namespace: 命名空间，仅4.x集群有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _ImportStatus: 导入状态，
+Unknown 未知，
+AlreadyExists 已存在，
+Success 成功，
+Failure 失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImportStatus: str
+        """
+        self._TopicName = None
+        self._TopicType = None
+        self._QueueNum = None
+        self._Remark = None
+        self._Imported = None
+        self._Namespace = None
+        self._ImportStatus = None
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def TopicType(self):
+        return self._TopicType
+
+    @TopicType.setter
+    def TopicType(self, TopicType):
+        self._TopicType = TopicType
+
+    @property
+    def QueueNum(self):
+        return self._QueueNum
+
+    @QueueNum.setter
+    def QueueNum(self, QueueNum):
+        self._QueueNum = QueueNum
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Imported(self):
+        return self._Imported
+
+    @Imported.setter
+    def Imported(self, Imported):
+        self._Imported = Imported
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ImportStatus(self):
+        return self._ImportStatus
+
+    @ImportStatus.setter
+    def ImportStatus(self, ImportStatus):
+        self._ImportStatus = ImportStatus
+
+
+    def _deserialize(self, params):
+        self._TopicName = params.get("TopicName")
+        self._TopicType = params.get("TopicType")
+        self._QueueNum = params.get("QueueNum")
+        self._Remark = params.get("Remark")
+        self._Imported = params.get("Imported")
+        self._Namespace = params.get("Namespace")
+        self._ImportStatus = params.get("ImportStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -587,6 +587,367 @@ class ChainMakerTransactionResult(AbstractModel):
         
 
 
+class DescribeFabricBlockRequest(AbstractModel):
+    """DescribeFabricBlock请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param _ChannelId: 通道ID，可在通道列表或通道详情获取
+        :type ChannelId: str
+        :param _BlockHeight: 区块高度，从0开始
+        :type BlockHeight: int
+        """
+        self._ClusterId = None
+        self._ChannelId = None
+        self._BlockHeight = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ChannelId = params.get("ChannelId")
+        self._BlockHeight = params.get("BlockHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFabricBlockResponse(AbstractModel):
+    """DescribeFabricBlock返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlockHeight: 区块高度
+        :type BlockHeight: int
+        :param _BlockHash: 区块Hash
+        :type BlockHash: str
+        :param _PreBlockHash: 前置区块Hash
+        :type PreBlockHash: str
+        :param _TxCount: 区块中交易数量
+        :type TxCount: int
+        :param _TransactionList: 区块中交易列表
+        :type TransactionList: list of Transaction
+        :param _CreateTimestamp: 创建时间戳
+        :type CreateTimestamp: str
+        :param _ProposerOrg: 提案组织
+        :type ProposerOrg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BlockHeight = None
+        self._BlockHash = None
+        self._PreBlockHash = None
+        self._TxCount = None
+        self._TransactionList = None
+        self._CreateTimestamp = None
+        self._ProposerOrg = None
+        self._RequestId = None
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+    @property
+    def BlockHash(self):
+        return self._BlockHash
+
+    @BlockHash.setter
+    def BlockHash(self, BlockHash):
+        self._BlockHash = BlockHash
+
+    @property
+    def PreBlockHash(self):
+        return self._PreBlockHash
+
+    @PreBlockHash.setter
+    def PreBlockHash(self, PreBlockHash):
+        self._PreBlockHash = PreBlockHash
+
+    @property
+    def TxCount(self):
+        return self._TxCount
+
+    @TxCount.setter
+    def TxCount(self, TxCount):
+        self._TxCount = TxCount
+
+    @property
+    def TransactionList(self):
+        return self._TransactionList
+
+    @TransactionList.setter
+    def TransactionList(self, TransactionList):
+        self._TransactionList = TransactionList
+
+    @property
+    def CreateTimestamp(self):
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def ProposerOrg(self):
+        return self._ProposerOrg
+
+    @ProposerOrg.setter
+    def ProposerOrg(self, ProposerOrg):
+        self._ProposerOrg = ProposerOrg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BlockHeight = params.get("BlockHeight")
+        self._BlockHash = params.get("BlockHash")
+        self._PreBlockHash = params.get("PreBlockHash")
+        self._TxCount = params.get("TxCount")
+        if params.get("TransactionList") is not None:
+            self._TransactionList = []
+            for item in params.get("TransactionList"):
+                obj = Transaction()
+                obj._deserialize(item)
+                self._TransactionList.append(obj)
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._ProposerOrg = params.get("ProposerOrg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFabricTransactionRequest(AbstractModel):
+    """DescribeFabricTransaction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 网络ID，可在区块链网络详情或列表中获取
+        :type ClusterId: str
+        :param _ChannelId: 通道ID，可在通道列表或通道详情获取
+        :type ChannelId: str
+        :param _TxId: 交易ID
+        :type TxId: str
+        """
+        self._ClusterId = None
+        self._ChannelId = None
+        self._TxId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ChannelId = params.get("ChannelId")
+        self._TxId = params.get("TxId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFabricTransactionResponse(AbstractModel):
+    """DescribeFabricTransaction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TxId: 交易ID
+        :type TxId: str
+        :param _TxHash: 交易Hash
+        :type TxHash: str
+        :param _TxStatus: 交易状态
+        :type TxStatus: str
+        :param _JoinOrgList: 参与的组织列表
+        :type JoinOrgList: list of str
+        :param _Sender: 交易发送者
+        :type Sender: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _BlockHeight: 区块高度
+        :type BlockHeight: int
+        :param _ChaincodeName: 交易所属合约
+        :type ChaincodeName: str
+        :param _TransactionData: 交易数据，base64编码，解码后为json化的字符串
+        :type TransactionData: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TxId = None
+        self._TxHash = None
+        self._TxStatus = None
+        self._JoinOrgList = None
+        self._Sender = None
+        self._CreateTime = None
+        self._BlockHeight = None
+        self._ChaincodeName = None
+        self._TransactionData = None
+        self._RequestId = None
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
+
+    @property
+    def TxHash(self):
+        return self._TxHash
+
+    @TxHash.setter
+    def TxHash(self, TxHash):
+        self._TxHash = TxHash
+
+    @property
+    def TxStatus(self):
+        return self._TxStatus
+
+    @TxStatus.setter
+    def TxStatus(self, TxStatus):
+        self._TxStatus = TxStatus
+
+    @property
+    def JoinOrgList(self):
+        return self._JoinOrgList
+
+    @JoinOrgList.setter
+    def JoinOrgList(self, JoinOrgList):
+        self._JoinOrgList = JoinOrgList
+
+    @property
+    def Sender(self):
+        return self._Sender
+
+    @Sender.setter
+    def Sender(self, Sender):
+        self._Sender = Sender
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+    @property
+    def ChaincodeName(self):
+        return self._ChaincodeName
+
+    @ChaincodeName.setter
+    def ChaincodeName(self, ChaincodeName):
+        self._ChaincodeName = ChaincodeName
+
+    @property
+    def TransactionData(self):
+        return self._TransactionData
+
+    @TransactionData.setter
+    def TransactionData(self, TransactionData):
+        self._TransactionData = TransactionData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TxId = params.get("TxId")
+        self._TxHash = params.get("TxHash")
+        self._TxStatus = params.get("TxStatus")
+        self._JoinOrgList = params.get("JoinOrgList")
+        self._Sender = params.get("Sender")
+        self._CreateTime = params.get("CreateTime")
+        self._BlockHeight = params.get("BlockHeight")
+        self._ChaincodeName = params.get("ChaincodeName")
+        self._TransactionData = params.get("TransactionData")
+        self._RequestId = params.get("RequestId")
+
+
 class DownloadUserCertRequest(AbstractModel):
     """DownloadUserCert请求参数结构体
 
@@ -2539,6 +2900,160 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InvokeFabricChaincodeRequest(AbstractModel):
+    """InvokeFabricChaincode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 网络ID，可在区块链网络详情获取
+        :type ClusterId: str
+        :param _ChannelId: 通道ID，可在通道列表或通道详情获取
+        :type ChannelId: str
+        :param _ChaincodeName: 合约名称，可在合约列表或合约详情获取
+        :type ChaincodeName: str
+        :param _FuncName: 合约方法
+        :type FuncName: str
+        :param _FuncParam: 合约方法入参
+        :type FuncParam: list of str
+        :param _WithAsyncResult: 是否异步执行，如果异步执行，可使用返回值中的交易TxID查询执行结果
+        :type WithAsyncResult: bool
+        """
+        self._ClusterId = None
+        self._ChannelId = None
+        self._ChaincodeName = None
+        self._FuncName = None
+        self._FuncParam = None
+        self._WithAsyncResult = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChaincodeName(self):
+        return self._ChaincodeName
+
+    @ChaincodeName.setter
+    def ChaincodeName(self, ChaincodeName):
+        self._ChaincodeName = ChaincodeName
+
+    @property
+    def FuncName(self):
+        return self._FuncName
+
+    @FuncName.setter
+    def FuncName(self, FuncName):
+        self._FuncName = FuncName
+
+    @property
+    def FuncParam(self):
+        return self._FuncParam
+
+    @FuncParam.setter
+    def FuncParam(self, FuncParam):
+        self._FuncParam = FuncParam
+
+    @property
+    def WithAsyncResult(self):
+        return self._WithAsyncResult
+
+    @WithAsyncResult.setter
+    def WithAsyncResult(self, WithAsyncResult):
+        self._WithAsyncResult = WithAsyncResult
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ChannelId = params.get("ChannelId")
+        self._ChaincodeName = params.get("ChaincodeName")
+        self._FuncName = params.get("FuncName")
+        self._FuncParam = params.get("FuncParam")
+        self._WithAsyncResult = params.get("WithAsyncResult")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InvokeFabricChaincodeResponse(AbstractModel):
+    """InvokeFabricChaincode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TxId: 交易ID
+        :type TxId: str
+        :param _TxStatus: 交易状态
+        :type TxStatus: str
+        :param _TxResult: 交易结果
+        :type TxResult: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TxId = None
+        self._TxStatus = None
+        self._TxResult = None
+        self._RequestId = None
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
+
+    @property
+    def TxStatus(self):
+        return self._TxStatus
+
+    @TxStatus.setter
+    def TxStatus(self, TxStatus):
+        self._TxStatus = TxStatus
+
+    @property
+    def TxResult(self):
+        return self._TxResult
+
+    @TxResult.setter
+    def TxResult(self, TxResult):
+        self._TxResult = TxResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TxId = params.get("TxId")
+        self._TxStatus = params.get("TxStatus")
+        self._TxResult = params.get("TxResult")
+        self._RequestId = params.get("RequestId")
+
+
 class InvokeRequest(AbstractModel):
     """Invoke请求参数结构体
 
@@ -3489,6 +4004,148 @@ class QueryChainMakerTransactionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueryFabricChaincodeRequest(AbstractModel):
+    """QueryFabricChaincode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 网络ID，可在区块链网络详情获取
+        :type ClusterId: str
+        :param _ChannelId: 通道ID，可在通道列表或通道详情获取
+        :type ChannelId: str
+        :param _ChaincodeName: 合约名称，可在合约列表或合约详情获取
+        :type ChaincodeName: str
+        :param _FuncName: 合约方法
+        :type FuncName: str
+        :param _FuncParam: 合约方法入参
+        :type FuncParam: list of str
+        """
+        self._ClusterId = None
+        self._ChannelId = None
+        self._ChaincodeName = None
+        self._FuncName = None
+        self._FuncParam = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChaincodeName(self):
+        return self._ChaincodeName
+
+    @ChaincodeName.setter
+    def ChaincodeName(self, ChaincodeName):
+        self._ChaincodeName = ChaincodeName
+
+    @property
+    def FuncName(self):
+        return self._FuncName
+
+    @FuncName.setter
+    def FuncName(self, FuncName):
+        self._FuncName = FuncName
+
+    @property
+    def FuncParam(self):
+        return self._FuncParam
+
+    @FuncParam.setter
+    def FuncParam(self, FuncParam):
+        self._FuncParam = FuncParam
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ChannelId = params.get("ChannelId")
+        self._ChaincodeName = params.get("ChaincodeName")
+        self._FuncName = params.get("FuncName")
+        self._FuncParam = params.get("FuncParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryFabricChaincodeResponse(AbstractModel):
+    """QueryFabricChaincode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TxId: 交易ID
+        :type TxId: str
+        :param _TxStatus: 交易状态
+        :type TxStatus: str
+        :param _TxResult: 交易结果
+        :type TxResult: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TxId = None
+        self._TxStatus = None
+        self._TxResult = None
+        self._RequestId = None
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
+
+    @property
+    def TxStatus(self):
+        return self._TxStatus
+
+    @TxStatus.setter
+    def TxStatus(self, TxStatus):
+        self._TxStatus = TxStatus
+
+    @property
+    def TxResult(self):
+        return self._TxResult
+
+    @TxResult.setter
+    def TxResult(self, TxResult):
+        self._TxResult = TxResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TxId = params.get("TxId")
+        self._TxStatus = params.get("TxStatus")
+        self._TxResult = params.get("TxResult")
+        self._RequestId = params.get("RequestId")
+
+
 class QueryRequest(AbstractModel):
     """Query请求参数结构体
 
@@ -3821,6 +4478,105 @@ class SrvInvokeResponse(AbstractModel):
         self._RetMsg = params.get("RetMsg")
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class Transaction(AbstractModel):
+    """交易显示概述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TxId: 交易ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxId: str
+        :param _ChaincodeName: 合约名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChaincodeName: str
+        :param _Sender: 交易发送者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sender: str
+        :param _CreateTime: 交易创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _BlockHeight: 交易所在区块高度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockHeight: int
+        :param _TxIndex: 交易在区块中的序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TxIndex: int
+        """
+        self._TxId = None
+        self._ChaincodeName = None
+        self._Sender = None
+        self._CreateTime = None
+        self._BlockHeight = None
+        self._TxIndex = None
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
+
+    @property
+    def ChaincodeName(self):
+        return self._ChaincodeName
+
+    @ChaincodeName.setter
+    def ChaincodeName(self, ChaincodeName):
+        self._ChaincodeName = ChaincodeName
+
+    @property
+    def Sender(self):
+        return self._Sender
+
+    @Sender.setter
+    def Sender(self, Sender):
+        self._Sender = Sender
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def BlockHeight(self):
+        return self._BlockHeight
+
+    @BlockHeight.setter
+    def BlockHeight(self, BlockHeight):
+        self._BlockHeight = BlockHeight
+
+    @property
+    def TxIndex(self):
+        return self._TxIndex
+
+    @TxIndex.setter
+    def TxIndex(self, TxIndex):
+        self._TxIndex = TxIndex
+
+
+    def _deserialize(self, params):
+        self._TxId = params.get("TxId")
+        self._ChaincodeName = params.get("ChaincodeName")
+        self._Sender = params.get("Sender")
+        self._CreateTime = params.get("CreateTime")
+        self._BlockHeight = params.get("BlockHeight")
+        self._TxIndex = params.get("TxIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TransactionItem(AbstractModel):

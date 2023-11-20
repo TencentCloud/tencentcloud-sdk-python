@@ -214,11 +214,6 @@ def test_import_car():
     from tencentcloud.car.v20220110 import models
 
 
-def test_import_casb():
-    from tencentcloud.casb.v20200507 import casb_client
-    from tencentcloud.casb.v20200507 import models
-
-
 def test_import_cat():
     from tencentcloud.cat.v20180409 import cat_client
     from tencentcloud.cat.v20180409 import models
@@ -332,11 +327,6 @@ def test_import_cloudaudit():
 def test_import_cloudhsm():
     from tencentcloud.cloudhsm.v20191112 import cloudhsm_client
     from tencentcloud.cloudhsm.v20191112 import models
-
-
-def test_import_cloudstudio():
-    from tencentcloud.cloudstudio.v20210524 import cloudstudio_client
-    from tencentcloud.cloudstudio.v20210524 import models
 
 
 def test_import_cloudstudio():

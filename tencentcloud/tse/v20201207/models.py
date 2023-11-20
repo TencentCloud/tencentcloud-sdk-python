@@ -9512,6 +9512,12 @@ class KongTarget(AbstractModel):
         :param _Source: Target的来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
+        :param _CvmInstanceId: CVM实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmInstanceId: str
+        :param _CvmInstanceName: CVM实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmInstanceName: str
         """
         self._Host = None
         self._Port = None
@@ -9519,6 +9525,8 @@ class KongTarget(AbstractModel):
         self._Health = None
         self._CreatedTime = None
         self._Source = None
+        self._CvmInstanceId = None
+        self._CvmInstanceName = None
 
     @property
     def Host(self):
@@ -9568,6 +9576,22 @@ class KongTarget(AbstractModel):
     def Source(self, Source):
         self._Source = Source
 
+    @property
+    def CvmInstanceId(self):
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def CvmInstanceName(self):
+        return self._CvmInstanceName
+
+    @CvmInstanceName.setter
+    def CvmInstanceName(self, CvmInstanceName):
+        self._CvmInstanceName = CvmInstanceName
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
@@ -9576,6 +9600,8 @@ class KongTarget(AbstractModel):
         self._Health = params.get("Health")
         self._CreatedTime = params.get("CreatedTime")
         self._Source = params.get("Source")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._CvmInstanceName = params.get("CvmInstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

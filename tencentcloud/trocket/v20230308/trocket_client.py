@@ -410,6 +410,52 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportSourceClusterConsumerGroups(self, request):
+        """导入消费者组列表
+
+        :param request: Request instance for ImportSourceClusterConsumerGroups.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ImportSourceClusterConsumerGroupsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ImportSourceClusterConsumerGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportSourceClusterConsumerGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportSourceClusterConsumerGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportSourceClusterTopics(self, request):
+        """导入topic列表
+
+        :param request: Request instance for ImportSourceClusterTopics.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.ImportSourceClusterTopicsRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ImportSourceClusterTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportSourceClusterTopics", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportSourceClusterTopicsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConsumerGroup(self, request):
         """修改消费组属性
 

@@ -3522,23 +3522,24 @@ class CreateFlowApproversRequest(AbstractModel):
 
 - 如果不指定，则使用姓名和手机号进行补充。
         :type Approvers: list of FillApproverInfo
+        :param _FillApproverType: 签署人信息补充方式
+
+<ul><li>**0**: 添加或签人候选人，或签支持一个节点传多个签署人，不传值默认或签。
+注: `或签只支持企业签署方`</li>
+<li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
+        :type FillApproverType: int
         :param _Initiator: 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。
         :type Initiator: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FillApproverType: 签署人信息补充方式
-
-<ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
-<li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
-        :type FillApproverType: int
         """
         self._Operator = None
         self._FlowId = None
         self._Approvers = None
+        self._FillApproverType = None
         self._Initiator = None
         self._Agent = None
-        self._FillApproverType = None
 
     @property
     def Operator(self):
@@ -3565,6 +3566,14 @@ class CreateFlowApproversRequest(AbstractModel):
         self._Approvers = Approvers
 
     @property
+    def FillApproverType(self):
+        return self._FillApproverType
+
+    @FillApproverType.setter
+    def FillApproverType(self, FillApproverType):
+        self._FillApproverType = FillApproverType
+
+    @property
     def Initiator(self):
         return self._Initiator
 
@@ -3580,14 +3589,6 @@ class CreateFlowApproversRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
-    @property
-    def FillApproverType(self):
-        return self._FillApproverType
-
-    @FillApproverType.setter
-    def FillApproverType(self, FillApproverType):
-        self._FillApproverType = FillApproverType
-
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -3600,11 +3601,11 @@ class CreateFlowApproversRequest(AbstractModel):
                 obj = FillApproverInfo()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._FillApproverType = params.get("FillApproverType")
         self._Initiator = params.get("Initiator")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
-        self._FillApproverType = params.get("FillApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -339,7 +339,7 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例元组
         :type InstanceIds: list of str
-        :param _Filters: 描述键值对过滤器，用于条件过滤查询。
+        :param _Filters: 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0
 
@@ -519,7 +519,7 @@ class DescribeScenesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneIds: ["sc-abcdefgh"]
+        :param _SceneIds: 场景id列表
         :type SceneIds: list of str
         """
         self._SceneIds = None
@@ -552,7 +552,7 @@ class DescribeScenesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneSet: scene info
+        :param _SceneSet: 场景详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneSet: list of SceneInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -947,7 +947,7 @@ FAILED：表示操作失败
         :param _MaxOutBandwidth: 公网出带宽上限，默认5Mbps
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxOutBandwidth: str
-        :param _MaxFreeTraffic: 每月免费流量，默认1000G
+        :param _MaxFreeTraffic: 每月免费流量，默认500G
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxFreeTraffic: str
         :param _ConfigurationEnvironment: 应用配置环境

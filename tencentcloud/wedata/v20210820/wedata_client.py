@@ -1876,6 +1876,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApproveTypeList(self, request):
+        """获取审批分类列表
+
+        :param request: Request instance for DescribeApproveTypeList.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveTypeListRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeApproveTypeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApproveTypeList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApproveTypeListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBaselineAllTaskDag(self, request):
         """查询基线DAG
 

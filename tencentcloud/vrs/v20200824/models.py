@@ -1050,6 +1050,8 @@ class VoiceTypeInfo(AbstractModel):
         :type TaskID: str
         :param _DateCreated: 创建时间
         :type DateCreated: str
+        :param _IsDeployed: 部署状态。若已部署，则可通过语音合成接口调用该音色
+        :type IsDeployed: bool
         """
         self._VoiceType = None
         self._VoiceName = None
@@ -1057,6 +1059,7 @@ class VoiceTypeInfo(AbstractModel):
         self._TaskType = None
         self._TaskID = None
         self._DateCreated = None
+        self._IsDeployed = None
 
     @property
     def VoiceType(self):
@@ -1106,6 +1109,14 @@ class VoiceTypeInfo(AbstractModel):
     def DateCreated(self, DateCreated):
         self._DateCreated = DateCreated
 
+    @property
+    def IsDeployed(self):
+        return self._IsDeployed
+
+    @IsDeployed.setter
+    def IsDeployed(self, IsDeployed):
+        self._IsDeployed = IsDeployed
+
 
     def _deserialize(self, params):
         self._VoiceType = params.get("VoiceType")
@@ -1114,6 +1125,7 @@ class VoiceTypeInfo(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._TaskID = params.get("TaskID")
         self._DateCreated = params.get("DateCreated")
+        self._IsDeployed = params.get("IsDeployed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

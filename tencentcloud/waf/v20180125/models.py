@@ -90,16 +90,23 @@ class AccessHistogramItem(AbstractModel):
         :type BTime: int
         :param _Count: 日志条数
         :type Count: int
+        :param _BeginTime: 时间，单位ms
+        :type BeginTime: int
         """
         self._BTime = None
         self._Count = None
+        self._BeginTime = None
 
     @property
     def BTime(self):
+        warnings.warn("parameter `BTime` is deprecated", DeprecationWarning) 
+
         return self._BTime
 
     @BTime.setter
     def BTime(self, BTime):
+        warnings.warn("parameter `BTime` is deprecated", DeprecationWarning) 
+
         self._BTime = BTime
 
     @property
@@ -110,10 +117,19 @@ class AccessHistogramItem(AbstractModel):
     def Count(self, Count):
         self._Count = Count
 
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
 
     def _deserialize(self, params):
         self._BTime = params.get("BTime")
         self._Count = params.get("Count")
+        self._BeginTime = params.get("BeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3889,6 +3905,12 @@ class ClbObject(AbstractModel):
         :type PostCLSStatus: int
         :param _PostCKafkaStatus: kafka投递开关
         :type PostCKafkaStatus: int
+        :param _Type: 对象类型：CLB:负载均衡器，TSE:云原生网关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Region: 对象地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
         """
         self._ObjectId = None
         self._InstanceId = None
@@ -3905,6 +3927,8 @@ class ClbObject(AbstractModel):
         self._InstanceLevel = None
         self._PostCLSStatus = None
         self._PostCKafkaStatus = None
+        self._Type = None
+        self._Region = None
 
     @property
     def ObjectId(self):
@@ -4026,6 +4050,22 @@ class ClbObject(AbstractModel):
     def PostCKafkaStatus(self, PostCKafkaStatus):
         self._PostCKafkaStatus = PostCKafkaStatus
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
@@ -4043,6 +4083,8 @@ class ClbObject(AbstractModel):
         self._InstanceLevel = params.get("InstanceLevel")
         self._PostCLSStatus = params.get("PostCLSStatus")
         self._PostCKafkaStatus = params.get("PostCKafkaStatus")
+        self._Type = params.get("Type")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8359,6 +8401,15 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         :param _EventId: 事件id
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventId: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ValidStatus: 生效状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidStatus: int
+        :param _Source: 来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
         """
         self._ActionType = None
         self._Bypass = None
@@ -8371,6 +8422,9 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
         self._Status = None
         self._Strategies = None
         self._EventId = None
+        self._ModifyTime = None
+        self._ValidStatus = None
+        self._Source = None
 
     @property
     def ActionType(self):
@@ -8460,6 +8514,30 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
     def EventId(self, EventId):
         self._EventId = EventId
 
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ValidStatus(self):
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._ActionType = params.get("ActionType")
@@ -8478,6 +8556,9 @@ class DescribeCustomRulesRspRuleListItem(AbstractModel):
                 obj._deserialize(item)
                 self._Strategies.append(obj)
         self._EventId = params.get("EventId")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ValidStatus = params.get("ValidStatus")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10236,6 +10317,10 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type Ip: str
         :param _ValidStatus: 生效状态
         :type ValidStatus: int
+        :param _ValidTimeStampMin: 最小有效时间的时间戳
+        :type ValidTimeStampMin: str
+        :param _ValidTimeStampMax: 最大有效时间的时间戳
+        :type ValidTimeStampMax: str
         """
         self._Domain = None
         self._Count = None
@@ -10250,6 +10335,8 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._Sort = None
         self._Ip = None
         self._ValidStatus = None
+        self._ValidTimeStampMin = None
+        self._ValidTimeStampMax = None
 
     @property
     def Domain(self):
@@ -10277,18 +10364,26 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def VtsMin(self):
+        warnings.warn("parameter `VtsMin` is deprecated", DeprecationWarning) 
+
         return self._VtsMin
 
     @VtsMin.setter
     def VtsMin(self, VtsMin):
+        warnings.warn("parameter `VtsMin` is deprecated", DeprecationWarning) 
+
         self._VtsMin = VtsMin
 
     @property
     def VtsMax(self):
+        warnings.warn("parameter `VtsMax` is deprecated", DeprecationWarning) 
+
         return self._VtsMax
 
     @VtsMax.setter
     def VtsMax(self, VtsMax):
+        warnings.warn("parameter `VtsMax` is deprecated", DeprecationWarning) 
+
         self._VtsMax = VtsMax
 
     @property
@@ -10355,6 +10450,22 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def ValidTimeStampMin(self):
+        return self._ValidTimeStampMin
+
+    @ValidTimeStampMin.setter
+    def ValidTimeStampMin(self, ValidTimeStampMin):
+        self._ValidTimeStampMin = ValidTimeStampMin
+
+    @property
+    def ValidTimeStampMax(self):
+        return self._ValidTimeStampMax
+
+    @ValidTimeStampMax.setter
+    def ValidTimeStampMax(self, ValidTimeStampMax):
+        self._ValidTimeStampMax = ValidTimeStampMax
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10370,6 +10481,8 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._Sort = params.get("Sort")
         self._Ip = params.get("Ip")
         self._ValidStatus = params.get("ValidStatus")
+        self._ValidTimeStampMin = params.get("ValidTimeStampMin")
+        self._ValidTimeStampMax = params.get("ValidTimeStampMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10451,6 +10564,10 @@ class DescribeIpHitItemsRequest(AbstractModel):
         :type Sort: str
         :param _Ip: IP
         :type Ip: str
+        :param _ValidTimeStampMin: 有效时间最小时间戳
+        :type ValidTimeStampMin: int
+        :param _ValidTimeStampMax: 有效时间最大时间戳
+        :type ValidTimeStampMax: int
         """
         self._Domain = None
         self._Count = None
@@ -10464,6 +10581,8 @@ class DescribeIpHitItemsRequest(AbstractModel):
         self._Name = None
         self._Sort = None
         self._Ip = None
+        self._ValidTimeStampMin = None
+        self._ValidTimeStampMax = None
 
     @property
     def Domain(self):
@@ -10491,18 +10610,26 @@ class DescribeIpHitItemsRequest(AbstractModel):
 
     @property
     def VtsMin(self):
+        warnings.warn("parameter `VtsMin` is deprecated", DeprecationWarning) 
+
         return self._VtsMin
 
     @VtsMin.setter
     def VtsMin(self, VtsMin):
+        warnings.warn("parameter `VtsMin` is deprecated", DeprecationWarning) 
+
         self._VtsMin = VtsMin
 
     @property
     def VtsMax(self):
+        warnings.warn("parameter `VtsMax` is deprecated", DeprecationWarning) 
+
         return self._VtsMax
 
     @VtsMax.setter
     def VtsMax(self, VtsMax):
+        warnings.warn("parameter `VtsMax` is deprecated", DeprecationWarning) 
+
         self._VtsMax = VtsMax
 
     @property
@@ -10561,6 +10688,22 @@ class DescribeIpHitItemsRequest(AbstractModel):
     def Ip(self, Ip):
         self._Ip = Ip
 
+    @property
+    def ValidTimeStampMin(self):
+        return self._ValidTimeStampMin
+
+    @ValidTimeStampMin.setter
+    def ValidTimeStampMin(self, ValidTimeStampMin):
+        self._ValidTimeStampMin = ValidTimeStampMin
+
+    @property
+    def ValidTimeStampMax(self):
+        return self._ValidTimeStampMax
+
+    @ValidTimeStampMax.setter
+    def ValidTimeStampMax(self, ValidTimeStampMax):
+        self._ValidTimeStampMax = ValidTimeStampMax
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10575,6 +10718,8 @@ class DescribeIpHitItemsRequest(AbstractModel):
         self._Name = params.get("Name")
         self._Sort = params.get("Sort")
         self._Ip = params.get("Ip")
+        self._ValidTimeStampMin = params.get("ValidTimeStampMin")
+        self._ValidTimeStampMax = params.get("ValidTimeStampMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10677,6 +10822,8 @@ class DescribeModuleStatusResponse(AbstractModel):
         :type AntiLeakage: int
         :param _ApiProtection: API安全是否开启
         :type ApiProtection: int
+        :param _RateLimit: 限流模块开关
+        :type RateLimit: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10686,6 +10833,7 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiTamper = None
         self._AntiLeakage = None
         self._ApiProtection = None
+        self._RateLimit = None
         self._RequestId = None
 
     @property
@@ -10737,6 +10885,14 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._ApiProtection = ApiProtection
 
     @property
+    def RateLimit(self):
+        return self._RateLimit
+
+    @RateLimit.setter
+    def RateLimit(self, RateLimit):
+        self._RateLimit = RateLimit
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10752,6 +10908,7 @@ class DescribeModuleStatusResponse(AbstractModel):
         self._AntiTamper = params.get("AntiTamper")
         self._AntiLeakage = params.get("AntiLeakage")
         self._ApiProtection = params.get("ApiProtection")
+        self._RateLimit = params.get("RateLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -10858,7 +11015,7 @@ class DescribePeakPointsRequest(AbstractModel):
         :type Edition: str
         :param _InstanceID: WAF实例ID，不传则不过滤
         :type InstanceID: str
-        :param _MetricName: 十一个值可选：
+        :param _MetricName: 十二个值可选：
 access-峰值qps趋势图
 botAccess- bot峰值qps趋势图
 down-下行峰值带宽趋势图
@@ -10870,6 +11027,7 @@ tamper-防篡改攻击总数趋势图
 leak-防泄露攻击总数趋势图
 acl-访问控制攻击总数趋势图
 http_status-状态码各次数趋势图
+wx_access-微信小程序峰值qps趋势图
         :type MetricName: str
         """
         self._FromTime = None
@@ -17717,9 +17875,9 @@ class ModifyAccessPeriodRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 访问日志保存期限，范围为[1, 30]
+        :param _Period: 访问日志保存期限，范围为[1, 180]
         :type Period: int
-        :param _TopicId: 日志主题
+        :param _TopicId: 日志主题，新版本不需要再传
         :type TopicId: str
         """
         self._Period = None
@@ -20281,6 +20439,8 @@ class ModifyModuleStatusRequest(AbstractModel):
         :type AntiTamper: int
         :param _AntiLeakage: 防泄漏模块开关，0或者1
         :type AntiLeakage: int
+        :param _RateLimit: 限流模块开关，0或1
+        :type RateLimit: int
         """
         self._Domain = None
         self._WebSecurity = None
@@ -20289,6 +20449,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._ApiProtection = None
         self._AntiTamper = None
         self._AntiLeakage = None
+        self._RateLimit = None
 
     @property
     def Domain(self):
@@ -20346,6 +20507,14 @@ class ModifyModuleStatusRequest(AbstractModel):
     def AntiLeakage(self, AntiLeakage):
         self._AntiLeakage = AntiLeakage
 
+    @property
+    def RateLimit(self):
+        return self._RateLimit
+
+    @RateLimit.setter
+    def RateLimit(self, RateLimit):
+        self._RateLimit = RateLimit
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -20355,6 +20524,7 @@ class ModifyModuleStatusRequest(AbstractModel):
         self._ApiProtection = params.get("ApiProtection")
         self._AntiTamper = params.get("AntiTamper")
         self._AntiLeakage = params.get("AntiLeakage")
+        self._RateLimit = params.get("RateLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21645,6 +21815,9 @@ class PeakPointsItem(AbstractModel):
         :param _ACL: 访问控制 
 注意：此字段可能返回 null，表示取不到有效值。
         :type ACL: int
+        :param _WxAccess: 小程序 qps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WxAccess: int
         """
         self._Time = None
         self._Access = None
@@ -21664,6 +21837,7 @@ class PeakPointsItem(AbstractModel):
         self._Tamper = None
         self._Leak = None
         self._ACL = None
+        self._WxAccess = None
 
     @property
     def Time(self):
@@ -21809,6 +21983,14 @@ class PeakPointsItem(AbstractModel):
     def ACL(self, ACL):
         self._ACL = ACL
 
+    @property
+    def WxAccess(self):
+        return self._WxAccess
+
+    @WxAccess.setter
+    def WxAccess(self, WxAccess):
+        self._WxAccess = WxAccess
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -21829,6 +22011,7 @@ class PeakPointsItem(AbstractModel):
         self._Tamper = params.get("Tamper")
         self._Leak = params.get("Leak")
         self._ACL = params.get("ACL")
+        self._WxAccess = params.get("WxAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24532,11 +24715,15 @@ class UpsertIpAccessControlResponse(AbstractModel):
         :param _FailedCount: 添加或修改失败的数目
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedCount: int
+        :param _Ids: 添加或修改的IP数据Id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ids: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailedItems = None
         self._FailedCount = None
+        self._Ids = None
         self._RequestId = None
 
     @property
@@ -24556,6 +24743,14 @@ class UpsertIpAccessControlResponse(AbstractModel):
         self._FailedCount = FailedCount
 
     @property
+    def Ids(self):
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24567,6 +24762,7 @@ class UpsertIpAccessControlResponse(AbstractModel):
     def _deserialize(self, params):
         self._FailedItems = params.get("FailedItems")
         self._FailedCount = params.get("FailedCount")
+        self._Ids = params.get("Ids")
         self._RequestId = params.get("RequestId")
 
 
@@ -24721,10 +24917,14 @@ class UpsertSessionResponse(AbstractModel):
         :param _Data: 结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
+        :param _SessionID: SessionID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionID: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._SessionID = None
         self._RequestId = None
 
     @property
@@ -24734,6 +24934,14 @@ class UpsertSessionResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def SessionID(self):
+        return self._SessionID
+
+    @SessionID.setter
+    def SessionID(self, SessionID):
+        self._SessionID = SessionID
 
     @property
     def RequestId(self):
@@ -24746,6 +24954,7 @@ class UpsertSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._SessionID = params.get("SessionID")
         self._RequestId = params.get("RequestId")
 
 

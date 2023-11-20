@@ -89,6 +89,9 @@ FAILEDOPERATION_DEPLOYCONTRACTNOTCOMPILE = 'FailedOperation.DeployContractNotCom
 # 区块详情查询失败。
 FAILEDOPERATION_FABRICBLOCKDETAIL = 'FailedOperation.FabricBlockDetail'
 
+# 区块不存在。
+FAILEDOPERATION_FABRICBLOCKNOEXIST = 'FailedOperation.FabricBlockNoExist'
+
 # 区块列表查询失败。
 FAILEDOPERATION_FABRICBLOCKQUERY = 'FailedOperation.FabricBlockQuery'
 
@@ -130,6 +133,9 @@ FAILEDOPERATION_FRONTREQUESTFAIL = 'FailedOperation.FrontRequestFail'
 
 # 用户非法操作。
 FAILEDOPERATION_GROUPILLEGAL = 'FailedOperation.GroupIllegal'
+
+# 用户无权限访问。
+FAILEDOPERATION_INVALIDAUTH = 'FailedOperation.InvalidAuth'
 
 # Bcos无效的群组编号。
 FAILEDOPERATION_INVALIDGROUPPK = 'FailedOperation.InvalidGroupPk'

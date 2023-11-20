@@ -2298,6 +2298,8 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         :type Insecure: int
         :param _ConnDetectConfig: 联通性检测的记录ID
         :type ConnDetectConfig: list of ConnDetectConfig
+        :param _NeedScan: ”授权&扫描"开关
+        :type NeedScan: bool
         """
         self._Name = None
         self._Username = None
@@ -2310,6 +2312,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
         self._SpeedLimit = None
         self._Insecure = None
         self._ConnDetectConfig = None
+        self._NeedScan = None
 
     @property
     def Name(self):
@@ -2399,6 +2402,14 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
     def ConnDetectConfig(self, ConnDetectConfig):
         self._ConnDetectConfig = ConnDetectConfig
 
+    @property
+    def NeedScan(self):
+        return self._NeedScan
+
+    @NeedScan.setter
+    def NeedScan(self, NeedScan):
+        self._NeedScan = NeedScan
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2417,6 +2428,7 @@ class AddAssetImageRegistryRegistryDetailRequest(AbstractModel):
                 obj = ConnDetectConfig()
                 obj._deserialize(item)
                 self._ConnDetectConfig.append(obj)
+        self._NeedScan = params.get("NeedScan")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2847,6 +2859,10 @@ class AddEditImageAutoAuthorizedRuleRequest(AbstractModel):
         :type HostIdFilters: list of AssetFilters
         :param _ExcludeHostIdSet: 根据条件过滤而且排除指定主机id
         :type ExcludeHostIdSet: list of str
+        :param _AutoScanEnabled: 自动扫描开关
+        :type AutoScanEnabled: int
+        :param _ScanType: 自动扫描范围
+        :type ScanType: list of str
         """
         self._RangeType = None
         self._MaxDailyCount = None
@@ -2855,6 +2871,8 @@ class AddEditImageAutoAuthorizedRuleRequest(AbstractModel):
         self._RuleId = None
         self._HostIdFilters = None
         self._ExcludeHostIdSet = None
+        self._AutoScanEnabled = None
+        self._ScanType = None
 
     @property
     def RangeType(self):
@@ -2912,6 +2930,22 @@ class AddEditImageAutoAuthorizedRuleRequest(AbstractModel):
     def ExcludeHostIdSet(self, ExcludeHostIdSet):
         self._ExcludeHostIdSet = ExcludeHostIdSet
 
+    @property
+    def AutoScanEnabled(self):
+        return self._AutoScanEnabled
+
+    @AutoScanEnabled.setter
+    def AutoScanEnabled(self, AutoScanEnabled):
+        self._AutoScanEnabled = AutoScanEnabled
+
+    @property
+    def ScanType(self):
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
 
     def _deserialize(self, params):
         self._RangeType = params.get("RangeType")
@@ -2926,6 +2960,8 @@ class AddEditImageAutoAuthorizedRuleRequest(AbstractModel):
                 obj._deserialize(item)
                 self._HostIdFilters.append(obj)
         self._ExcludeHostIdSet = params.get("ExcludeHostIdSet")
+        self._AutoScanEnabled = params.get("AutoScanEnabled")
+        self._ScanType = params.get("ScanType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9337,7 +9373,8 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         r"""
         :param _Enable: 开关
         :type Enable: bool
-        :param _ScanTime: 扫描时间
+        :param _ScanTime: 扫描开始时间
+01:00 时分
         :type ScanTime: str
         :param _ScanPeriod: 扫描周期
         :type ScanPeriod: int
@@ -9351,6 +9388,13 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         :type All: bool
         :param _Images: 自定义镜像
         :type Images: list of str
+        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :type ContainerRunning: bool
+        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :type ScanScope: int
+        :param _ScanEndTime: 扫描结束时间
+02:00 时分
+        :type ScanEndTime: str
         """
         self._Enable = None
         self._ScanTime = None
@@ -9360,6 +9404,9 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ScanVul = None
         self._All = None
         self._Images = None
+        self._ContainerRunning = None
+        self._ScanScope = None
+        self._ScanEndTime = None
 
     @property
     def Enable(self):
@@ -9411,10 +9458,14 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -9424,6 +9475,30 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
     @Images.setter
     def Images(self, Images):
         self._Images = Images
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
 
 
     def _deserialize(self, params):
@@ -9435,6 +9510,9 @@ class CreateAssetImageScanSettingRequest(AbstractModel):
         self._ScanVul = params.get("ScanVul")
         self._All = params.get("All")
         self._Images = params.get("Images")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanScope = params.get("ScanScope")
+        self._ScanEndTime = params.get("ScanEndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9491,6 +9569,12 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         :type Filters: list of AssetFilters
         :param _ExcludeImageIds: 根据过滤条件筛选出镜像，再排除个别镜像
         :type ExcludeImageIds: list of str
+        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :type ContainerRunning: bool
+        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :type ScanScope: int
+        :param _Timeout: 任务超时时长单位秒，默认1小时
+        :type Timeout: int
         """
         self._All = None
         self._Images = None
@@ -9499,13 +9583,20 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
         self._ScanRisk = None
         self._Filters = None
         self._ExcludeImageIds = None
+        self._ContainerRunning = None
+        self._ScanScope = None
+        self._Timeout = None
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -9556,6 +9647,30 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
     def ExcludeImageIds(self, ExcludeImageIds):
         self._ExcludeImageIds = ExcludeImageIds
 
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
 
     def _deserialize(self, params):
         self._All = params.get("All")
@@ -9570,6 +9685,9 @@ class CreateAssetImageScanTaskRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ExcludeImageIds = params.get("ExcludeImageIds")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanScope = params.get("ScanScope")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19016,6 +19134,8 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         :type ImageID: str
         :param _ImageName: 镜像名称
         :type ImageName: str
+        :param _ImageDigest: 镜像摘要
+        :type ImageDigest: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _Size: 镜像大小
@@ -19094,6 +19214,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         """
         self._ImageID = None
         self._ImageName = None
+        self._ImageDigest = None
         self._CreateTime = None
         self._Size = None
         self._HostCnt = None
@@ -19137,6 +19258,14 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @ImageName.setter
     def ImageName(self, ImageName):
         self._ImageName = ImageName
+
+    @property
+    def ImageDigest(self):
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
 
     @property
     def CreateTime(self):
@@ -19358,6 +19487,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     def _deserialize(self, params):
         self._ImageID = params.get("ImageID")
         self._ImageName = params.get("ImageName")
+        self._ImageDigest = params.get("ImageDigest")
         self._CreateTime = params.get("CreateTime")
         self._Size = params.get("Size")
         self._HostCnt = params.get("HostCnt")
@@ -22323,6 +22453,12 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         :type All: bool
         :param _Images: 自定义扫描镜像
         :type Images: list of str
+        :param _ContainerRunning: 镜像是否存在运行中的容器
+        :type ContainerRunning: bool
+        :param _ScanScope: 扫描范围 0 全部授权镜像，1自选镜像，2 推荐扫描
+        :type ScanScope: int
+        :param _ScanEndTime: 扫描结束时间 02:00 时分
+        :type ScanEndTime: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -22334,6 +22470,9 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ScanVul = None
         self._All = None
         self._Images = None
+        self._ContainerRunning = None
+        self._ScanScope = None
+        self._ScanEndTime = None
         self._RequestId = None
 
     @property
@@ -22386,10 +22525,14 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -22399,6 +22542,30 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
     @Images.setter
     def Images(self, Images):
         self._Images = Images
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
 
     @property
     def RequestId(self):
@@ -22418,6 +22585,9 @@ class DescribeAssetImageScanSettingResponse(AbstractModel):
         self._ScanVul = params.get("ScanVul")
         self._All = params.get("All")
         self._Images = params.get("Images")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanScope = params.get("ScanScope")
+        self._ScanEndTime = params.get("ScanEndTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -23611,6 +23781,14 @@ class DescribeAssetSummaryResponse(AbstractModel):
         :type SuperNodeCnt: int
         :param _SuperNodeRunningCnt: 超级节点运行个数
         :type SuperNodeRunningCnt: int
+        :param _TodayNewImageCnt: 今日新增镜像个数
+        :type TodayNewImageCnt: int
+        :param _TodayUnsafeImageCnt: 今日新增风险镜像个数
+        :type TodayUnsafeImageCnt: int
+        :param _RecommendedFixImageCnt: 推荐处置镜像个数
+        :type RecommendedFixImageCnt: int
+        :param _ScannedImageCnt: 已扫描镜像个数
+        :type ScannedImageCnt: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23636,6 +23814,10 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._HostUnInstallCnt = None
         self._SuperNodeCnt = None
         self._SuperNodeRunningCnt = None
+        self._TodayNewImageCnt = None
+        self._TodayUnsafeImageCnt = None
+        self._RecommendedFixImageCnt = None
+        self._ScannedImageCnt = None
         self._RequestId = None
 
     @property
@@ -23815,6 +23997,38 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._SuperNodeRunningCnt = SuperNodeRunningCnt
 
     @property
+    def TodayNewImageCnt(self):
+        return self._TodayNewImageCnt
+
+    @TodayNewImageCnt.setter
+    def TodayNewImageCnt(self, TodayNewImageCnt):
+        self._TodayNewImageCnt = TodayNewImageCnt
+
+    @property
+    def TodayUnsafeImageCnt(self):
+        return self._TodayUnsafeImageCnt
+
+    @TodayUnsafeImageCnt.setter
+    def TodayUnsafeImageCnt(self, TodayUnsafeImageCnt):
+        self._TodayUnsafeImageCnt = TodayUnsafeImageCnt
+
+    @property
+    def RecommendedFixImageCnt(self):
+        return self._RecommendedFixImageCnt
+
+    @RecommendedFixImageCnt.setter
+    def RecommendedFixImageCnt(self, RecommendedFixImageCnt):
+        self._RecommendedFixImageCnt = RecommendedFixImageCnt
+
+    @property
+    def ScannedImageCnt(self):
+        return self._ScannedImageCnt
+
+    @ScannedImageCnt.setter
+    def ScannedImageCnt(self, ScannedImageCnt):
+        self._ScannedImageCnt = ScannedImageCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23846,6 +24060,10 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._HostUnInstallCnt = params.get("HostUnInstallCnt")
         self._SuperNodeCnt = params.get("SuperNodeCnt")
         self._SuperNodeRunningCnt = params.get("SuperNodeRunningCnt")
+        self._TodayNewImageCnt = params.get("TodayNewImageCnt")
+        self._TodayUnsafeImageCnt = params.get("TodayUnsafeImageCnt")
+        self._RecommendedFixImageCnt = params.get("RecommendedFixImageCnt")
+        self._ScannedImageCnt = params.get("ScannedImageCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -28116,6 +28334,10 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         :param _RuleId: 规则id，用未设置时为0
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: int
+        :param _AutoScanEnabled: 自动扫描开关，0：关闭，1：开启
+        :type AutoScanEnabled: int
+        :param _ScanType: 自动扫描范围
+        :type ScanType: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -28124,6 +28346,8 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         self._HostCount = None
         self._MaxDailyCount = None
         self._RuleId = None
+        self._AutoScanEnabled = None
+        self._ScanType = None
         self._RequestId = None
 
     @property
@@ -28167,6 +28391,22 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         self._RuleId = RuleId
 
     @property
+    def AutoScanEnabled(self):
+        return self._AutoScanEnabled
+
+    @AutoScanEnabled.setter
+    def AutoScanEnabled(self, AutoScanEnabled):
+        self._AutoScanEnabled = AutoScanEnabled
+
+    @property
+    def ScanType(self):
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -28181,6 +28421,8 @@ class DescribeImageAutoAuthorizedRuleResponse(AbstractModel):
         self._HostCount = params.get("HostCount")
         self._MaxDailyCount = params.get("MaxDailyCount")
         self._RuleId = params.get("RuleId")
+        self._AutoScanEnabled = params.get("AutoScanEnabled")
+        self._ScanType = params.get("ScanType")
         self._RequestId = params.get("RequestId")
 
 
@@ -44662,6 +44904,8 @@ class ImageRepoInfo(AbstractModel):
         :param _SensitiveInfoCnt: 敏感信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveInfoCnt: int
+        :param _RecommendedFix: 是否推荐处置
+        :type RecommendedFix: bool
         """
         self._ImageDigest = None
         self._ImageRepoAddress = None
@@ -44706,6 +44950,7 @@ class ImageRepoInfo(AbstractModel):
         self._IsRunning = None
         self._HasNeedFixVul = None
         self._SensitiveInfoCnt = None
+        self._RecommendedFix = None
 
     @property
     def ImageDigest(self):
@@ -45055,6 +45300,14 @@ class ImageRepoInfo(AbstractModel):
     def SensitiveInfoCnt(self, SensitiveInfoCnt):
         self._SensitiveInfoCnt = SensitiveInfoCnt
 
+    @property
+    def RecommendedFix(self):
+        return self._RecommendedFix
+
+    @RecommendedFix.setter
+    def RecommendedFix(self, RecommendedFix):
+        self._RecommendedFix = RecommendedFix
+
 
     def _deserialize(self, params):
         self._ImageDigest = params.get("ImageDigest")
@@ -45100,6 +45353,7 @@ class ImageRepoInfo(AbstractModel):
         self._IsRunning = params.get("IsRunning")
         self._HasNeedFixVul = params.get("HasNeedFixVul")
         self._SensitiveInfoCnt = params.get("SensitiveInfoCnt")
+        self._RecommendedFix = params.get("RecommendedFix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45850,6 +46104,9 @@ class ImageVul(AbstractModel):
         :param _AttackLevel: 攻击热度 0-3
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttackLevel: int
+        :param _LayerInfos: 镜像层信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayerInfos: list of ImageVulLayerInfo
         """
         self._CVEID = None
         self._POCID = None
@@ -45871,6 +46128,7 @@ class ImageVul(AbstractModel):
         self._Component = None
         self._Version = None
         self._AttackLevel = None
+        self._LayerInfos = None
 
     @property
     def CVEID(self):
@@ -46032,6 +46290,14 @@ class ImageVul(AbstractModel):
     def AttackLevel(self, AttackLevel):
         self._AttackLevel = AttackLevel
 
+    @property
+    def LayerInfos(self):
+        return self._LayerInfos
+
+    @LayerInfos.setter
+    def LayerInfos(self, LayerInfos):
+        self._LayerInfos = LayerInfos
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -46059,6 +46325,59 @@ class ImageVul(AbstractModel):
         self._Component = params.get("Component")
         self._Version = params.get("Version")
         self._AttackLevel = params.get("AttackLevel")
+        if params.get("LayerInfos") is not None:
+            self._LayerInfos = []
+            for item in params.get("LayerInfos"):
+                obj = ImageVulLayerInfo()
+                obj._deserialize(item)
+                self._LayerInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageVulLayerInfo(AbstractModel):
+    """漏洞列表中的层信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayerId: 层id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayerId: str
+        :param _LayerCmd: 层cmd
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LayerCmd: str
+        """
+        self._LayerId = None
+        self._LayerCmd = None
+
+    @property
+    def LayerId(self):
+        return self._LayerId
+
+    @LayerId.setter
+    def LayerId(self, LayerId):
+        self._LayerId = LayerId
+
+    @property
+    def LayerCmd(self):
+        return self._LayerCmd
+
+    @LayerCmd.setter
+    def LayerCmd(self, LayerCmd):
+        self._LayerCmd = LayerCmd
+
+
+    def _deserialize(self, params):
+        self._LayerId = params.get("LayerId")
+        self._LayerCmd = params.get("LayerCmd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46227,6 +46546,18 @@ class ImagesInfo(AbstractModel):
         :type IsAuthorized: int
         :param _ComponentCnt: 组件个数
         :type ComponentCnt: int
+        :param _CriticalLevelVulCnt: 严重漏洞数
+        :type CriticalLevelVulCnt: int
+        :param _HighLevelVulCnt: 高危漏洞数
+        :type HighLevelVulCnt: int
+        :param _MediumLevelVulCnt: 中危漏洞数
+        :type MediumLevelVulCnt: int
+        :param _LowLevelVulCnt: 低危漏洞数
+        :type LowLevelVulCnt: int
+        :param _IsLatestImage: 是否最新版本镜像
+        :type IsLatestImage: bool
+        :param _RecommendedFix: 是否推荐处置
+        :type RecommendedFix: bool
         """
         self._ImageID = None
         self._ImageName = None
@@ -46249,6 +46580,12 @@ class ImagesInfo(AbstractModel):
         self._IsSuggest = None
         self._IsAuthorized = None
         self._ComponentCnt = None
+        self._CriticalLevelVulCnt = None
+        self._HighLevelVulCnt = None
+        self._MediumLevelVulCnt = None
+        self._LowLevelVulCnt = None
+        self._IsLatestImage = None
+        self._RecommendedFix = None
 
     @property
     def ImageID(self):
@@ -46418,6 +46755,54 @@ class ImagesInfo(AbstractModel):
     def ComponentCnt(self, ComponentCnt):
         self._ComponentCnt = ComponentCnt
 
+    @property
+    def CriticalLevelVulCnt(self):
+        return self._CriticalLevelVulCnt
+
+    @CriticalLevelVulCnt.setter
+    def CriticalLevelVulCnt(self, CriticalLevelVulCnt):
+        self._CriticalLevelVulCnt = CriticalLevelVulCnt
+
+    @property
+    def HighLevelVulCnt(self):
+        return self._HighLevelVulCnt
+
+    @HighLevelVulCnt.setter
+    def HighLevelVulCnt(self, HighLevelVulCnt):
+        self._HighLevelVulCnt = HighLevelVulCnt
+
+    @property
+    def MediumLevelVulCnt(self):
+        return self._MediumLevelVulCnt
+
+    @MediumLevelVulCnt.setter
+    def MediumLevelVulCnt(self, MediumLevelVulCnt):
+        self._MediumLevelVulCnt = MediumLevelVulCnt
+
+    @property
+    def LowLevelVulCnt(self):
+        return self._LowLevelVulCnt
+
+    @LowLevelVulCnt.setter
+    def LowLevelVulCnt(self, LowLevelVulCnt):
+        self._LowLevelVulCnt = LowLevelVulCnt
+
+    @property
+    def IsLatestImage(self):
+        return self._IsLatestImage
+
+    @IsLatestImage.setter
+    def IsLatestImage(self, IsLatestImage):
+        self._IsLatestImage = IsLatestImage
+
+    @property
+    def RecommendedFix(self):
+        return self._RecommendedFix
+
+    @RecommendedFix.setter
+    def RecommendedFix(self, RecommendedFix):
+        self._RecommendedFix = RecommendedFix
+
 
     def _deserialize(self, params):
         self._ImageID = params.get("ImageID")
@@ -46441,6 +46826,12 @@ class ImagesInfo(AbstractModel):
         self._IsSuggest = params.get("IsSuggest")
         self._IsAuthorized = params.get("IsAuthorized")
         self._ComponentCnt = params.get("ComponentCnt")
+        self._CriticalLevelVulCnt = params.get("CriticalLevelVulCnt")
+        self._HighLevelVulCnt = params.get("HighLevelVulCnt")
+        self._MediumLevelVulCnt = params.get("MediumLevelVulCnt")
+        self._LowLevelVulCnt = params.get("LowLevelVulCnt")
+        self._IsLatestImage = params.get("IsLatestImage")
+        self._RecommendedFix = params.get("RecommendedFix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46494,6 +46885,9 @@ class ImagesVul(AbstractModel):
         :param _Tag: 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of str
+        :param _AttackLevel: 攻击热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackLevel: int
         """
         self._CVEID = None
         self._Name = None
@@ -46512,6 +46906,7 @@ class ImagesVul(AbstractModel):
         self._IsSuggest = None
         self._FixedVersions = None
         self._Tag = None
+        self._AttackLevel = None
 
     @property
     def CVEID(self):
@@ -46649,6 +47044,14 @@ class ImagesVul(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def AttackLevel(self):
+        return self._AttackLevel
+
+    @AttackLevel.setter
+    def AttackLevel(self, AttackLevel):
+        self._AttackLevel = AttackLevel
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -46668,6 +47071,7 @@ class ImagesVul(AbstractModel):
         self._IsSuggest = params.get("IsSuggest")
         self._FixedVersions = params.get("FixedVersions")
         self._Tag = params.get("Tag")
+        self._AttackLevel = params.get("AttackLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52926,9 +53330,15 @@ class RenewImageAuthorizeStateRequest(AbstractModel):
         :type AllImages: bool
         :param _ImageIds: 镜像ids
         :type ImageIds: list of str
+        :param _NeedScan: 是否授权后自动扫描
+        :type NeedScan: bool
+        :param _ScanType: 扫描类型
+        :type ScanType: list of str
         """
         self._AllImages = None
         self._ImageIds = None
+        self._NeedScan = None
+        self._ScanType = None
 
     @property
     def AllImages(self):
@@ -52946,10 +53356,28 @@ class RenewImageAuthorizeStateRequest(AbstractModel):
     def ImageIds(self, ImageIds):
         self._ImageIds = ImageIds
 
+    @property
+    def NeedScan(self):
+        return self._NeedScan
+
+    @NeedScan.setter
+    def NeedScan(self, NeedScan):
+        self._NeedScan = NeedScan
+
+    @property
+    def ScanType(self):
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
 
     def _deserialize(self, params):
         self._AllImages = params.get("AllImages")
         self._ImageIds = params.get("ImageIds")
+        self._NeedScan = params.get("NeedScan")
+        self._ScanType = params.get("ScanType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57225,6 +57653,45 @@ class SyncAssetImageRegistryAssetRequest(AbstractModel):
     """SyncAssetImageRegistryAsset请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _All: 是否同步所有镜像仓库
+        :type All: bool
+        :param _RegistryIds: 需要同步的部分镜像仓库
+        :type RegistryIds: list of int non-negative
+        """
+        self._All = None
+        self._RegistryIds = None
+
+    @property
+    def All(self):
+        return self._All
+
+    @All.setter
+    def All(self, All):
+        self._All = All
+
+    @property
+    def RegistryIds(self):
+        return self._RegistryIds
+
+    @RegistryIds.setter
+    def RegistryIds(self, RegistryIds):
+        self._RegistryIds = RegistryIds
+
+
+    def _deserialize(self, params):
+        self._All = params.get("All")
+        self._RegistryIds = params.get("RegistryIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncAssetImageRegistryAssetResponse(AbstractModel):

@@ -2669,18 +2669,18 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
 
 - 如果不指定，则使用姓名和手机号进行补充。
         :type Approvers: list of FillApproverInfo
-        :param _Operator: 操作人信息
-        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _FillApproverType: 签署人信息补充方式
 
-<ul><li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+<ul><li>**1**: 表示往未指定签署人的节点，添加一个明确的签署人，支持企业或个人签署方。</li></ul>
         :type FillApproverType: int
+        :param _Operator: 操作人信息
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
         self._FlowId = None
         self._Approvers = None
-        self._Operator = None
         self._FillApproverType = None
+        self._Operator = None
 
     @property
     def Agent(self):
@@ -2707,20 +2707,20 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
         self._Approvers = Approvers
 
     @property
-    def Operator(self):
-        return self._Operator
-
-    @Operator.setter
-    def Operator(self, Operator):
-        self._Operator = Operator
-
-    @property
     def FillApproverType(self):
         return self._FillApproverType
 
     @FillApproverType.setter
     def FillApproverType(self, FillApproverType):
         self._FillApproverType = FillApproverType
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
 
 
     def _deserialize(self, params):
@@ -2734,10 +2734,10 @@ class ChannelCreateFlowApproversRequest(AbstractModel):
                 obj = FillApproverInfo()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._FillApproverType = params.get("FillApproverType")
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
-        self._FillApproverType = params.get("FillApproverType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9464,7 +9464,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
         :type NeedPreview: bool
         :param _PreviewType: 预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 注: `此参数在NeedPreview 为true时有效`
 
@@ -12186,7 +12186,7 @@ class FlowApproverInfo(AbstractModel):
         :type PreReadTime: int
         :param _JumpUrl: 签署完前端跳转的url，此字段的用法场景请联系客户经理确认
         :type JumpUrl: str
-        :param _ApproverOption: 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人等。
+        :param _ApproverOption: 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人、是否为动态补充签署人等。
 详细操作可以参考开发者中心的ApproverOption结构体。
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.ApproverOption`
         :param _ApproverNeedSignReview: 当前签署方进行签署操作是否需要企业内部审批，true 则为需要

@@ -323,6 +323,9 @@ INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 # 不支持填写内网IP/回环地址作为源站地址
 INVALIDPARAMETER_INVALIDORIGINIP = 'InvalidParameter.InvalidOriginIp'
 
+# 源站类型错误。
+INVALIDPARAMETER_INVALIDORIGINTYPE = 'InvalidParameter.InvalidOriginType'
+
 # 参数错误。
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
@@ -377,6 +380,9 @@ INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = 'InvalidParameter.InvalidRu
 # 无效的规则引擎URL条件。
 INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = 'InvalidParameter.InvalidRuleEngineTargetsUrl'
 
+# 规则协议错误。（TCP/UDP）。
+INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
+
 # 无效的回源Host。
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
@@ -427,6 +433,9 @@ INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = 'InvalidParameter.OriginOriginG
 
 # 源站格式错误。
 INVALIDPARAMETER_ORIGINRECORDFORMATERROR = 'InvalidParameter.OriginRecordFormatError'
+
+# 秘钥格式错误。
+INVALIDPARAMETER_ORIGINTHIRDPARTYPARAMFORMATERROR = 'InvalidParameter.OriginThirdPartyParamFormatError'
 
 # 参数错误: 无效 "结束时间", 不在允许的查询范围内: [开始时间, 开始+ 7天]
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
@@ -667,6 +676,9 @@ OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedC
 
 # 站点存在自定义错误页面引用，请先解绑。
 OPERATIONDENIED_ZONEISREFERENCECUSTOMERRORPAGE = 'OperationDenied.ZoneIsReferenceCustomErrorPage'
+
+# 站点未启用。
+OPERATIONDENIED_ZONENOTACTIVE = 'OperationDenied.ZoneNotActive'
 
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'

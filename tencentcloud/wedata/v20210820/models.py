@@ -1338,6 +1338,20 @@ class Apply(AbstractModel):
         :type Status: str
         :param _ApproveTypeName: 审批类型名称
         :type ApproveTypeName: str
+        :param _ErrorMessage: 审批异常或者失败信息
+        :type ErrorMessage: str
+        :param _ApplyName: 申请名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyName: str
+        :param _ApproverId: 审批人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverId: str
+        :param _ApproverName: 审批人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproverName: str
+        :param _ApproveProjectName: 审批所属项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApproveProjectName: str
         """
         self._ApplicantId = None
         self._ApplicantName = None
@@ -1351,6 +1365,11 @@ class Apply(AbstractModel):
         self._ApproveClassificationName = None
         self._Status = None
         self._ApproveTypeName = None
+        self._ErrorMessage = None
+        self._ApplyName = None
+        self._ApproverId = None
+        self._ApproverName = None
+        self._ApproveProjectName = None
 
     @property
     def ApplicantId(self):
@@ -1448,6 +1467,46 @@ class Apply(AbstractModel):
     def ApproveTypeName(self, ApproveTypeName):
         self._ApproveTypeName = ApproveTypeName
 
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ApplyName(self):
+        return self._ApplyName
+
+    @ApplyName.setter
+    def ApplyName(self, ApplyName):
+        self._ApplyName = ApplyName
+
+    @property
+    def ApproverId(self):
+        return self._ApproverId
+
+    @ApproverId.setter
+    def ApproverId(self, ApproverId):
+        self._ApproverId = ApproverId
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproveProjectName(self):
+        return self._ApproveProjectName
+
+    @ApproveProjectName.setter
+    def ApproveProjectName(self, ApproveProjectName):
+        self._ApproveProjectName = ApproveProjectName
+
 
     def _deserialize(self, params):
         self._ApplicantId = params.get("ApplicantId")
@@ -1462,6 +1521,11 @@ class Apply(AbstractModel):
         self._ApproveClassificationName = params.get("ApproveClassificationName")
         self._Status = params.get("Status")
         self._ApproveTypeName = params.get("ApproveTypeName")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ApplyName = params.get("ApplyName")
+        self._ApproverId = params.get("ApproverId")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproveProjectName = params.get("ApproveProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1507,6 +1571,63 @@ class ApproveModify(AbstractModel):
     def _deserialize(self, params):
         self._ApproveId = params.get("ApproveId")
         self._Success = params.get("Success")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApproveType(AbstractModel):
+    """审批分类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 申请分类key
+        :type Type: str
+        :param _TypeName: 类型名称
+        :type TypeName: str
+        :param _Classification: 申请类型key
+        :type Classification: str
+        """
+        self._Type = None
+        self._TypeName = None
+        self._Classification = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TypeName(self):
+        return self._TypeName
+
+    @TypeName.setter
+    def TypeName(self, TypeName):
+        self._TypeName = TypeName
+
+    @property
+    def Classification(self):
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._TypeName = params.get("TypeName")
+        self._Classification = params.get("Classification")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16768,6 +16889,81 @@ class DescribeApproveListResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = DescribeApply()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApproveTypeListRequest(AbstractModel):
+    """DescribeApproveTypeList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Classification: 类型key
+        :type Classification: str
+        """
+        self._Classification = None
+
+    @property
+    def Classification(self):
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+
+    def _deserialize(self, params):
+        self._Classification = params.get("Classification")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApproveTypeListResponse(AbstractModel):
+    """DescribeApproveTypeList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 获取审批分类列表
+        :type Data: list of ApproveType
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApproveType()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

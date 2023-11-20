@@ -3439,24 +3439,24 @@ class CreateProClusterRequest(AbstractModel):
         :type AutoRenewFlag: int
         :param _TimeSpan: 购买时长，取值范围：1～50
         :type TimeSpan: int
-        :param _Tags: 集群的标签列表(已废弃)
-        :type Tags: list of Tag
         :param _ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
         :type ClusterName: str
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
         :param _Vpcs: vpc网络标签
         :type Vpcs: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
+        :param _Tags: 集群的标签列表(已废弃)
+        :type Tags: list of Tag
         """
         self._ZoneIds = None
         self._ProductName = None
         self._StorageSize = None
         self._AutoRenewFlag = None
         self._TimeSpan = None
-        self._Tags = None
         self._ClusterName = None
         self._AutoVoucher = None
         self._Vpcs = None
+        self._Tags = None
 
     @property
     def ZoneIds(self):
@@ -3499,14 +3499,6 @@ class CreateProClusterRequest(AbstractModel):
         self._TimeSpan = TimeSpan
 
     @property
-    def Tags(self):
-        return self._Tags
-
-    @Tags.setter
-    def Tags(self, Tags):
-        self._Tags = Tags
-
-    @property
     def ClusterName(self):
         return self._ClusterName
 
@@ -3530,6 +3522,14 @@ class CreateProClusterRequest(AbstractModel):
     def Vpcs(self, Vpcs):
         self._Vpcs = Vpcs
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
@@ -3537,17 +3537,17 @@ class CreateProClusterRequest(AbstractModel):
         self._StorageSize = params.get("StorageSize")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._TimeSpan = params.get("TimeSpan")
+        self._ClusterName = params.get("ClusterName")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("Vpcs") is not None:
+            self._Vpcs = VpcInfo()
+            self._Vpcs._deserialize(params.get("Vpcs"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
-        self._ClusterName = params.get("ClusterName")
-        self._AutoVoucher = params.get("AutoVoucher")
-        if params.get("Vpcs") is not None:
-            self._Vpcs = VpcInfo()
-            self._Vpcs._deserialize(params.get("Vpcs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

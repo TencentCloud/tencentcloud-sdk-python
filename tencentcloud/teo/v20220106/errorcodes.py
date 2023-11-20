@@ -29,6 +29,9 @@ INTERNALERROR_FAILEDTOGENERATEURL = 'InternalError.FailedToGenerateUrl'
 # 配额系统处理失败。
 INTERNALERROR_QUOTASYSTEM = 'InternalError.QuotaSystem'
 
+# 后端服务路由地址错误。
+INTERNALERROR_ROUTEERROR = 'InternalError.RouteError'
+
 # 域名不存在或不属于该账号。
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 

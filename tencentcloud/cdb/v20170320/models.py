@@ -23425,10 +23425,13 @@ class RenewDBInstanceRequest(AbstractModel):
         :type TimeSpan: int
         :param _ModifyPayType: 如果需要将按量计费实例续费为包年包月的实例，该入参的值需要指定为 "PREPAID" 。
         :type ModifyPayType: str
+        :param _AutoRenew: 自动续费标记，0表示不自动续费，1表示进行自动续费
+        :type AutoRenew: int
         """
         self._InstanceId = None
         self._TimeSpan = None
         self._ModifyPayType = None
+        self._AutoRenew = None
 
     @property
     def InstanceId(self):
@@ -23454,11 +23457,20 @@ class RenewDBInstanceRequest(AbstractModel):
     def ModifyPayType(self, ModifyPayType):
         self._ModifyPayType = ModifyPayType
 
+    @property
+    def AutoRenew(self):
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._TimeSpan = params.get("TimeSpan")
         self._ModifyPayType = params.get("ModifyPayType")
+        self._AutoRenew = params.get("AutoRenew")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

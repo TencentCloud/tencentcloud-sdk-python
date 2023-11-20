@@ -1820,6 +1820,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterExtraArgs(self, request):
+        """查询集群自定义参数
+
+        :param request: Request instance for DescribeClusterExtraArgs.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterExtraArgsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterExtraArgs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterExtraArgsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterInspectionResultsOverview(self, request):
         """查询用户单个Region下的所有集群巡检结果概览信息
 
@@ -2616,6 +2639,52 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeExternalClusterSpec", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeExternalClusterSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExternalNodeSupportConfig(self, request):
+        """查看开启第三方节点池配置信息
+
+        :param request: Request instance for DescribeExternalNodeSupportConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalNodeSupportConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalNodeSupportConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIPAMD(self, request):
+        """获取eniipamd组件信息
+
+        :param request: Request instance for DescribeIPAMD.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeIPAMDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPAMD", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPAMDResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

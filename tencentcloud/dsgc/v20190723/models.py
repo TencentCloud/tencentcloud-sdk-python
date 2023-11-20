@@ -149,7 +149,7 @@ class AssessmentControlItem(AbstractModel):
         :type CreatedTime: str
         :param _Status: 评估项启用状态，启用/未启用，取值draft / launched
         :type Status: str
-        :param _TemplateCount: 评估项关联的模版数量
+        :param _TemplateCount: 评估项关联的模板数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateCount: int
         """
@@ -268,9 +268,9 @@ class AssessmentRisk(AbstractModel):
         :param _RiskDescription: 风险项描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskDescription: str
-        :param _TemplateId: 评估模版Id
+        :param _TemplateId: 评估模板Id
         :type TemplateId: str
-        :param _TemplateName: 评估模版名称
+        :param _TemplateName: 评估模板名称
         :type TemplateName: str
         :param _ControlItemId: 评估项Id
         :type ControlItemId: str
@@ -552,7 +552,7 @@ class AssessmentRiskItem(AbstractModel):
         :param _RiskType: 风险类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskType: str
-        :param _ReferTemplateCount: 关联模版个数
+        :param _ReferTemplateCount: 关联模板个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReferTemplateCount: int
         :param _SupportDataSource: 支持的数据源
@@ -561,7 +561,7 @@ class AssessmentRiskItem(AbstractModel):
         :param _RiskSide: 风险面
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSide: str
-        :param _ReferTemplateList: 关联模版列表
+        :param _ReferTemplateList: 关联模板列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReferTemplateList: list of TemplateInfo
         """
@@ -694,13 +694,13 @@ class AssessmentTask(AbstractModel):
         :type BusinessDept: str
         :param _BusinessOwner: 业务负责人
         :type BusinessOwner: str
-        :param _TemplateId: 评估模版Id
+        :param _TemplateId: 评估模板Id
         :type TemplateId: str
-        :param _TemplateName: 评估模版名称
+        :param _TemplateName: 评估模板名称
         :type TemplateName: str
-        :param _ComplianceGroupId: 分类分级模版Id
+        :param _ComplianceGroupId: 分类分级模板Id
         :type ComplianceGroupId: int
-        :param _ComplianceGroupName: 分类分级模版名称
+        :param _ComplianceGroupName: 分类分级模板名称
         :type ComplianceGroupName: str
         :param _ControlItemCount: 评估项数量
         :type ControlItemCount: int
@@ -720,7 +720,7 @@ class AssessmentTask(AbstractModel):
         :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
         :param _ErrorInfo: 评估任务失败信息
         :type ErrorInfo: str
-        :param _TemplateUid: 模版主键id
+        :param _TemplateUid: 模板主键id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateUid: int
         :param _ProgressPercent: 进度百分比
@@ -957,24 +957,24 @@ class AssessmentTemplate(AbstractModel):
         :param _Id: id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _TemplateId: 评估模版Id
+        :param _TemplateId: 评估模板Id
         :type TemplateId: str
-        :param _TemplateName: 评估模版名称
+        :param _TemplateName: 评估模板名称
         :type TemplateName: str
         :param _Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Source: 模版来源，内置/用户自定，取值（system，user）
+        :param _Source: 模板来源，内置/用户自定，取值（system，user）
         :type Source: str
-        :param _UseType: 模版类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
+        :param _UseType: 模板类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
         :type UseType: str
-        :param _CreatedTime: 评估模版创建时间
+        :param _CreatedTime: 评估模板创建时间
         :type CreatedTime: str
-        :param _ControlItemCount: 模版关联的评估项数量
+        :param _ControlItemCount: 模板关联的评估项数量
         :type ControlItemCount: int
-        :param _AppliedItemCount: 模版已启用的评估项数量
+        :param _AppliedItemCount: 模板已启用的评估项数量
         :type AppliedItemCount: int
-        :param _Status: 模版启用状态，草稿/已启用，取值draft / launched
+        :param _Status: 模板启用状态，草稿/已启用，取值draft / launched
         :type Status: str
         :param _SupportDataSource: 支持的数据源类型
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19109,7 +19109,7 @@ class DspaInstance(AbstractModel):
         :type DbTotalQuota: int
         :param _CosTotalQuota: COS已购配额。
         :type CosTotalQuota: int
-        :param _CosQuotaUnit: COS配额单位，比如TB。
+        :param _CosQuotaUnit: COS配额单位，例如:TB。
         :type CosQuotaUnit: str
         :param _RenewFlag: 0: 默认状态(用户未设置)
 1: 开启自动续费
@@ -24780,10 +24780,10 @@ class Note(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 通用key，比如分类名称
+        :param _Key: 通用key，例如分类名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Key: str
-        :param _Value: 通用value，比如分类个数
+        :param _Value: 通用value，例如分类个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: int
         """
@@ -26187,7 +26187,7 @@ class RiskLevelRisk(AbstractModel):
         :param _RiskLevelDescription: 风险级别描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelDescription: str
-        :param _IdentifyComplianceName: 引用的分类分级模版
+        :param _IdentifyComplianceName: 引用的分类分级模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceName: str
         :param _Type: 类型，区分自定义还是系统内置
@@ -27220,10 +27220,10 @@ class TemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
         """

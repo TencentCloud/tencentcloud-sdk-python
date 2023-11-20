@@ -11664,6 +11664,9 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         :param _SecurityGroup: 外网安全组
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroup: str
+        :param _ClusterIntranetSubnetId: 内网访问所属子网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIntranetSubnetId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11675,6 +11678,7 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._ClusterExternalDomain = None
         self._ClusterIntranetDomain = None
         self._SecurityGroup = None
+        self._ClusterIntranetSubnetId = None
         self._RequestId = None
 
     @property
@@ -11742,6 +11746,14 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._SecurityGroup = SecurityGroup
 
     @property
+    def ClusterIntranetSubnetId(self):
+        return self._ClusterIntranetSubnetId
+
+    @ClusterIntranetSubnetId.setter
+    def ClusterIntranetSubnetId(self, ClusterIntranetSubnetId):
+        self._ClusterIntranetSubnetId = ClusterIntranetSubnetId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -11759,6 +11771,80 @@ class DescribeClusterEndpointsResponse(AbstractModel):
         self._ClusterExternalDomain = params.get("ClusterExternalDomain")
         self._ClusterIntranetDomain = params.get("ClusterIntranetDomain")
         self._SecurityGroup = params.get("SecurityGroup")
+        self._ClusterIntranetSubnetId = params.get("ClusterIntranetSubnetId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterExtraArgsRequest(AbstractModel):
+    """DescribeClusterExtraArgs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterExtraArgsResponse(AbstractModel):
+    """DescribeClusterExtraArgs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterExtraArgs: 集群自定义参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterExtraArgs = None
+        self._RequestId = None
+
+    @property
+    def ClusterExtraArgs(self):
+        return self._ClusterExtraArgs
+
+    @ClusterExtraArgs.setter
+    def ClusterExtraArgs(self, ClusterExtraArgs):
+        self._ClusterExtraArgs = ClusterExtraArgs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterExtraArgs") is not None:
+            self._ClusterExtraArgs = ClusterExtraArgs()
+            self._ClusterExtraArgs._deserialize(params.get("ClusterExtraArgs"))
         self._RequestId = params.get("RequestId")
 
 
@@ -15790,6 +15876,370 @@ class DescribeExternalClusterSpecResponse(AbstractModel):
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
         self._Expiration = params.get("Expiration")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExternalNodeSupportConfigRequest(AbstractModel):
+    """DescribeExternalNodeSupportConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalNodeSupportConfigResponse(AbstractModel):
+    """DescribeExternalNodeSupportConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterCIDR: str
+        :param _NetworkType: 集群网络插件类型，支持：CiliumBGP、CiliumVXLan
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkType: str
+        :param _SubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _Enabled: 是否开启第三方节点专线连接支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _AS: 节点所属交换机的BGP AS 号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AS: str
+        :param _SwitchIP: 节点所属交换机的交换机 IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchIP: str
+        :param _Status: 开启第三方节点池状态
+        :type Status: str
+        :param _FailedReason: 如果开启失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedReason: str
+        :param _Master: 内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Master: str
+        :param _Proxy: 镜像仓库代理地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Proxy: str
+        :param _Progress: 用于记录开启第三方节点的过程进行到哪一步了
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: list of Step
+        :param _EnabledPublicConnect: 是否开启第三方节点公网连接支持
+        :type EnabledPublicConnect: bool
+        :param _PublicConnectUrl: 公网连接地址
+        :type PublicConnectUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterCIDR = None
+        self._NetworkType = None
+        self._SubnetId = None
+        self._Enabled = None
+        self._AS = None
+        self._SwitchIP = None
+        self._Status = None
+        self._FailedReason = None
+        self._Master = None
+        self._Proxy = None
+        self._Progress = None
+        self._EnabledPublicConnect = None
+        self._PublicConnectUrl = None
+        self._RequestId = None
+
+    @property
+    def ClusterCIDR(self):
+        return self._ClusterCIDR
+
+    @ClusterCIDR.setter
+    def ClusterCIDR(self, ClusterCIDR):
+        self._ClusterCIDR = ClusterCIDR
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def AS(self):
+        return self._AS
+
+    @AS.setter
+    def AS(self, AS):
+        self._AS = AS
+
+    @property
+    def SwitchIP(self):
+        return self._SwitchIP
+
+    @SwitchIP.setter
+    def SwitchIP(self, SwitchIP):
+        self._SwitchIP = SwitchIP
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FailedReason(self):
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
+
+    @property
+    def Master(self):
+        return self._Master
+
+    @Master.setter
+    def Master(self, Master):
+        self._Master = Master
+
+    @property
+    def Proxy(self):
+        return self._Proxy
+
+    @Proxy.setter
+    def Proxy(self, Proxy):
+        self._Proxy = Proxy
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def EnabledPublicConnect(self):
+        return self._EnabledPublicConnect
+
+    @EnabledPublicConnect.setter
+    def EnabledPublicConnect(self, EnabledPublicConnect):
+        self._EnabledPublicConnect = EnabledPublicConnect
+
+    @property
+    def PublicConnectUrl(self):
+        return self._PublicConnectUrl
+
+    @PublicConnectUrl.setter
+    def PublicConnectUrl(self, PublicConnectUrl):
+        self._PublicConnectUrl = PublicConnectUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterCIDR = params.get("ClusterCIDR")
+        self._NetworkType = params.get("NetworkType")
+        self._SubnetId = params.get("SubnetId")
+        self._Enabled = params.get("Enabled")
+        self._AS = params.get("AS")
+        self._SwitchIP = params.get("SwitchIP")
+        self._Status = params.get("Status")
+        self._FailedReason = params.get("FailedReason")
+        self._Master = params.get("Master")
+        self._Proxy = params.get("Proxy")
+        if params.get("Progress") is not None:
+            self._Progress = []
+            for item in params.get("Progress"):
+                obj = Step()
+                obj._deserialize(item)
+                self._Progress.append(obj)
+        self._EnabledPublicConnect = params.get("EnabledPublicConnect")
+        self._PublicConnectUrl = params.get("PublicConnectUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIPAMDRequest(AbstractModel):
+    """DescribeIPAMD请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPAMDResponse(AbstractModel):
+    """DescribeIPAMD返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableIPAMD: 是否安装了eniipamd组件
+        :type EnableIPAMD: bool
+        :param _EnableCustomizedPodCidr: 是否开启自定义podcidr，默认为false，已安装eniipamd组件才意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCustomizedPodCidr: bool
+        :param _DisableVpcCniMode: 是否不开启vpccni模式，默认为false，已安装eniipamd组件才意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableVpcCniMode: bool
+        :param _Phase: 组件状态，已安装eniipamd组件才会有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Phase: str
+        :param _Reason: 错误信息，已安装eniipamd组件且状态为非running才会有错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _SubnetIds: 子网信息，已安装eniipamd组件才会有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnableIPAMD = None
+        self._EnableCustomizedPodCidr = None
+        self._DisableVpcCniMode = None
+        self._Phase = None
+        self._Reason = None
+        self._SubnetIds = None
+        self._RequestId = None
+
+    @property
+    def EnableIPAMD(self):
+        return self._EnableIPAMD
+
+    @EnableIPAMD.setter
+    def EnableIPAMD(self, EnableIPAMD):
+        self._EnableIPAMD = EnableIPAMD
+
+    @property
+    def EnableCustomizedPodCidr(self):
+        return self._EnableCustomizedPodCidr
+
+    @EnableCustomizedPodCidr.setter
+    def EnableCustomizedPodCidr(self, EnableCustomizedPodCidr):
+        self._EnableCustomizedPodCidr = EnableCustomizedPodCidr
+
+    @property
+    def DisableVpcCniMode(self):
+        return self._DisableVpcCniMode
+
+    @DisableVpcCniMode.setter
+    def DisableVpcCniMode(self, DisableVpcCniMode):
+        self._DisableVpcCniMode = DisableVpcCniMode
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def SubnetIds(self):
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnableIPAMD = params.get("EnableIPAMD")
+        self._EnableCustomizedPodCidr = params.get("EnableCustomizedPodCidr")
+        self._DisableVpcCniMode = params.get("DisableVpcCniMode")
+        self._Phase = params.get("Phase")
+        self._Reason = params.get("Reason")
+        self._SubnetIds = params.get("SubnetIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -35122,6 +35572,91 @@ class SetNodePoolNodeProtectionResponse(AbstractModel):
         self._SucceedInstanceIds = params.get("SucceedInstanceIds")
         self._FailedInstanceIds = params.get("FailedInstanceIds")
         self._RequestId = params.get("RequestId")
+
+
+class Step(AbstractModel):
+    """执行步骤信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _StartAt: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartAt: str
+        :param _EndAt: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndAt: str
+        :param _Status: 当前状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Message: 执行信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._Name = None
+        self._StartAt = None
+        self._EndAt = None
+        self._Status = None
+        self._Message = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartAt(self):
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def EndAt(self):
+        return self._EndAt
+
+    @EndAt.setter
+    def EndAt(self, EndAt):
+        self._EndAt = EndAt
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._StartAt = params.get("StartAt")
+        self._EndAt = params.get("EndAt")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubnetInfos(AbstractModel):

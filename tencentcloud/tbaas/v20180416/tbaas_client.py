@@ -72,6 +72,52 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFabricBlock(self, request):
+        """获取Fabric某区块的详细信息
+
+        :param request: Request instance for DescribeFabricBlock.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricBlockRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricBlockResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFabricBlock", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFabricBlockResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFabricTransaction(self, request):
+        """获取Fabric交易的详细信息
+
+        :param request: Request instance for DescribeFabricTransaction.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricTransactionRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.DescribeFabricTransactionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFabricTransaction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFabricTransactionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadUserCert(self, request):
         """下载用户证书
 
@@ -325,6 +371,29 @@ class TbaasClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InvokeFabricChaincode(self, request):
+        """调用Fabric用户合约执行交易
+
+        :param request: Request instance for InvokeFabricChaincode.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.InvokeFabricChaincodeRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.InvokeFabricChaincodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InvokeFabricChaincode", params, headers=headers)
+            response = json.loads(body)
+            model = models.InvokeFabricChaincodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def Query(self, request):
         """查询交易
 
@@ -477,6 +546,29 @@ class TbaasClient(AbstractClient):
             body = self.call("QueryChainMakerTransaction", params, headers=headers)
             response = json.loads(body)
             model = models.QueryChainMakerTransactionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryFabricChaincode(self, request):
+        """调用Fabric用户合约查询
+
+        :param request: Request instance for QueryFabricChaincode.
+        :type request: :class:`tencentcloud.tbaas.v20180416.models.QueryFabricChaincodeRequest`
+        :rtype: :class:`tencentcloud.tbaas.v20180416.models.QueryFabricChaincodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryFabricChaincode", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryFabricChaincodeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

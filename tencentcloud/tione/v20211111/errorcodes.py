@@ -254,6 +254,9 @@ INTERNALERROR_QUERYRESOURCESPECFAILED = 'InternalError.QueryResourceSpecFailed'
 # 查询子网信息失败。
 INTERNALERROR_QUERYSUBNETINFOFAILED = 'InternalError.QuerySubnetInfoFailed'
 
+# 查询用户临时秘钥失败
+INTERNALERROR_QUERYUSERTMPCREDENTIALFAILED = 'InternalError.QueryUserTMPCredentialFailed'
+
 # 停止任务失败。
 INTERNALERROR_STOPJOBINSTANCEFAILED = 'InternalError.StopJobInstanceFailed'
 
@@ -367,6 +370,9 @@ INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = 'InvalidParameterValue.ResourceCon
 
 # 子网不存在。
 INVALIDPARAMETERVALUE_SUBNETNOTFOUND = 'InvalidParameterValue.SubnetNotFound'
+
+# 创建精调任务失败，请按照模版推荐资源进行配置。
+INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = 'InvalidParameterValue.TAIJIResourceConfigIllegal'
 
 # 未找到当前日志主题。
 INVALIDPARAMETERVALUE_TOPICNOTFOUND = 'InvalidParameterValue.TopicNotFound'
