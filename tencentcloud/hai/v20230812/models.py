@@ -1775,9 +1775,13 @@ class SystemDisk(AbstractModel):
         :param _DiskSize: 系统盘大小，单位：GB。默认值为 80
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
+        :param _DiskName: 系统盘分区盘符
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskName: str
         """
         self._DiskType = None
         self._DiskSize = None
+        self._DiskName = None
 
     @property
     def DiskType(self):
@@ -1795,10 +1799,19 @@ class SystemDisk(AbstractModel):
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
 
+    @property
+    def DiskName(self):
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._DiskName = params.get("DiskName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

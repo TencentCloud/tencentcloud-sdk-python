@@ -164,6 +164,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAuditService(self, request):
+        """实例关闭审计服务
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseCDBProxy(self, request):
         """关闭数据库代理
 
@@ -316,6 +339,29 @@ class CdbClient(AbstractClient):
             body = self.call("CreateAuditRule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAuditRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAuditRuleTemplate(self, request):
+        """创建审计规则模板
+
+        :param request: Request instance for CreateAuditRuleTemplate.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleTemplateRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateAuditRuleTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditRuleTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditRuleTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -689,6 +735,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAuditRuleTemplates(self, request):
+        """删除审计规则模版
+
+        :param request: Request instance for DeleteAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditRuleTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteBackup(self, request):
         """本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
 
@@ -703,6 +772,29 @@ class CdbClient(AbstractClient):
             body = self.call("DeleteBackup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDatabase(self, request):
+        """本接口(DeleteDatabase)用于在云数据库实例中删除数据库。
+
+        :param request: Request instance for DeleteDatabase.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DeleteDatabaseRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DeleteDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -873,6 +965,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuditInstanceList(self, request):
+        """获取审计实例列表
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAuditLogFiles(self, request):
         """本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
 
@@ -933,6 +1048,52 @@ class CdbClient(AbstractClient):
             body = self.call("DescribeAuditPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditRuleTemplateModifyHistory(self, request):
+        """查询规则模板变更记录
+
+        :param request: Request instance for DescribeAuditRuleTemplateModifyHistory.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplateModifyHistoryRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplateModifyHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleTemplateModifyHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditRuleTemplateModifyHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditRuleTemplates(self, request):
+        """查询审计规则模板信息
+
+        :param request: Request instance for DescribeAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditRuleTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2414,6 +2575,52 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyAuditRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuditRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditRuleTemplates(self, request):
+        """修改审计规则模板
+
+        :param request: Request instance for ModifyAuditRuleTemplates.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleTemplatesRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditRuleTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditRuleTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditRuleTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditService(self, request):
+        """本接口(ModifyAuditService)用于修改云数据库审计日志保存时长、审计规则等服务配置
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

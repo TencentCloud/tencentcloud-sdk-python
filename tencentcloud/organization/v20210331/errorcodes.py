@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-# 该帐号已被注册。
+# 该账号已被注册。
 FAILEDOPERATION_ACCOUNTALREADYREGISTER = 'FailedOperation.AccountAlreadyRegister'
 
 # 用户未实名。

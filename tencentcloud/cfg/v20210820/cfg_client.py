@@ -141,6 +141,29 @@ class CfgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskPolicyTriggerLog(self, request):
+        """获取护栏触发日志
+
+        :param request: Request instance for DescribeTaskPolicyTriggerLog.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskPolicyTriggerLogRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribeTaskPolicyTriggerLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskPolicyTriggerLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskPolicyTriggerLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTemplate(self, request):
         """查询经验库
 
@@ -247,6 +270,29 @@ class CfgClient(AbstractClient):
             body = self.call("ModifyTaskRunStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTaskRunStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TriggerPolicy(self, request):
+        """用于触发混沌演练护栏（类型为触发和恢复2种）
+
+        :param request: Request instance for TriggerPolicy.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.TriggerPolicyRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.TriggerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.TriggerPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

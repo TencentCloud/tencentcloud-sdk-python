@@ -23730,11 +23730,12 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>FastClipMedia：快速剪辑任务；</li>
 <li>RemoveWatermarkTask：智能去除水印任务；</li>
 <li>DescribeFileAttributesTask：获取文件属性任务；</li>
-<li>RebuildMedia：音画质重生任务；</li>
+<li>RebuildMedia：音画质重生任务（不推荐使用）；</li>
 <li>ReviewAudioVideo：音视频审核任务；</li>
 <li>ExtractTraceWatermark：提取溯源水印任务；</li>
 <li>ExtractCopyRightWatermark：提取版权水印任务；</li>
-<li>QualityInspect：音画质检测任务。</li>
+<li>QualityInspect：音画质检测任务；</li>
+<li>QualityEnhance：音画质重生任务。</li>
         :type TaskType: str
         :param _Status: 任务状态，取值：
 <li>WAITING：等待中；</li>
@@ -23807,6 +23808,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _QualityInspectTask: 音画质检测任务信息，仅当 TaskType 为 QualityInspect 时该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityInspectTask: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
+        :param _QualityEnhanceTask: 音画质重生任务信息，仅当 TaskType 为 QualityEnhance，该字段有值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityEnhanceTask: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23835,6 +23839,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ReduceMediaBitrateTask = None
         self._DescribeFileAttributesTask = None
         self._QualityInspectTask = None
+        self._QualityEnhanceTask = None
         self._RequestId = None
 
     @property
@@ -24038,6 +24043,14 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._QualityInspectTask = QualityInspectTask
 
     @property
+    def QualityEnhanceTask(self):
+        return self._QualityEnhanceTask
+
+    @QualityEnhanceTask.setter
+    def QualityEnhanceTask(self, QualityEnhanceTask):
+        self._QualityEnhanceTask = QualityEnhanceTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24112,6 +24125,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("QualityInspectTask") is not None:
             self._QualityInspectTask = QualityInspectTask()
             self._QualityInspectTask._deserialize(params.get("QualityInspectTask"))
+        if params.get("QualityEnhanceTask") is not None:
+            self._QualityEnhanceTask = QualityEnhanceTask()
+            self._QualityEnhanceTask._deserialize(params.get("QualityEnhanceTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -44790,6 +44806,312 @@ class QRCodeConfigureInfoForUpdate(AbstractModel):
         
 
 
+class QualityEnhanceTask(AbstractModel):
+    """音画质重生任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务 ID。
+        :type TaskId: str
+        :param _Status: 任务流状态，取值：
+<li>PROCESSING：处理中；</li>
+<li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: 错误码，0 表示成功，其他值表示失败：
+<li>40000：输入参数不合法，请检查输入参数；</li>
+<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+<li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :type ErrCodeExt: str
+        :param _Progress: 音画质重生任务进度，取值范围 [0-100] 。
+        :type Progress: int
+        :param _Input: 音画质重生任务的输入。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskInput`
+        :param _Output: 音画质重生任务的输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskOutput`
+        :param _MetaData: 音画质重生输出视频的元信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._MetaData = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def MetaData(self):
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = QualityEnhanceTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = QualityEnhanceTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self._MetaData = MediaMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEnhanceTaskInput(AbstractModel):
+    """音画质重生任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体文件 ID。
+        :type FileId: str
+        :param _Definition: 音画质重生模板 ID。
+        :type Definition: int
+        """
+        self._FileId = None
+        self._Definition = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEnhanceTaskOutput(AbstractModel):
+    """音画质重生任务输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: 文件类型，例如 mp4、flv 等。
+        :type FileType: str
+        :param _FileUrl: 媒体文件播放地址。
+        :type FileUrl: str
+        :param _FileId: 媒体文件 ID。
+        :type FileId: str
+        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self._FileType = None
+        self._FileUrl = None
+        self._FileId = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MediaName(self):
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._FileId = params.get("FileId")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityEvaluationConfigureInfo(AbstractModel):
     """视频画面质量评价的控制参数。
 
@@ -53398,6 +53720,7 @@ class SvgWatermarkInputForUpdate(AbstractModel):
 花括号 {} 表示由 A、B、C、D 4 个水印组成的大周期，可以看出每个大周期持续 20 秒。
 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
 此配置项即用来描述单个水印的周期配置。
+注意：此字段可能返回 null，表示取不到有效值。
         :type CycleConfig: :class:`tencentcloud.vod.v20180717.models.WatermarkCycleConfigForUpdate`
         """
         self._Width = None

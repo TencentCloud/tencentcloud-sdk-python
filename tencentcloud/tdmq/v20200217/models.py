@@ -675,6 +675,12 @@ class Cluster(AbstractModel):
 1: 包年包月
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _ProjectName: 项目名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -703,6 +709,8 @@ class Cluster(AbstractModel):
         self._PublicAccessEnabled = None
         self._Tags = None
         self._PayMode = None
+        self._ProjectId = None
+        self._ProjectName = None
 
     @property
     def ClusterId(self):
@@ -920,6 +928,22 @@ class Cluster(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -954,6 +978,8 @@ class Cluster(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._PayMode = params.get("PayMode")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3443,8 +3469,8 @@ class CreateProClusterRequest(AbstractModel):
         :type ClusterName: str
         :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
         :type AutoVoucher: int
-        :param _Vpcs: vpc网络标签
-        :type Vpcs: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
+        :param _Vpc: vpc网络标签
+        :type Vpc: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _Tags: 集群的标签列表(已废弃)
         :type Tags: list of Tag
         """
@@ -3455,7 +3481,7 @@ class CreateProClusterRequest(AbstractModel):
         self._TimeSpan = None
         self._ClusterName = None
         self._AutoVoucher = None
-        self._Vpcs = None
+        self._Vpc = None
         self._Tags = None
 
     @property
@@ -3515,12 +3541,12 @@ class CreateProClusterRequest(AbstractModel):
         self._AutoVoucher = AutoVoucher
 
     @property
-    def Vpcs(self):
-        return self._Vpcs
+    def Vpc(self):
+        return self._Vpc
 
-    @Vpcs.setter
-    def Vpcs(self, Vpcs):
-        self._Vpcs = Vpcs
+    @Vpc.setter
+    def Vpc(self, Vpc):
+        self._Vpc = Vpc
 
     @property
     def Tags(self):
@@ -3539,9 +3565,9 @@ class CreateProClusterRequest(AbstractModel):
         self._TimeSpan = params.get("TimeSpan")
         self._ClusterName = params.get("ClusterName")
         self._AutoVoucher = params.get("AutoVoucher")
-        if params.get("Vpcs") is not None:
-            self._Vpcs = VpcInfo()
-            self._Vpcs._deserialize(params.get("Vpcs"))
+        if params.get("Vpc") is not None:
+            self._Vpc = VpcInfo()
+            self._Vpc._deserialize(params.get("Vpc"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):

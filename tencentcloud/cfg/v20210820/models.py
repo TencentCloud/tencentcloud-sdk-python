@@ -682,6 +682,106 @@ class DescribeTaskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskPolicyTriggerLogRequest(AbstractModel):
+    """DescribeTaskPolicyTriggerLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 演练ID
+        :type TaskId: int
+        :param _Page: 页码
+        :type Page: int
+        :param _PageSize: 页数量
+        :type PageSize: int
+        """
+        self._TaskId = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskPolicyTriggerLogResponse(AbstractModel):
+    """DescribeTaskPolicyTriggerLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerLogs: 触发日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerLogs: list of PolicyTriggerLog
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TriggerLogs = None
+        self._RequestId = None
+
+    @property
+    def TriggerLogs(self):
+        return self._TriggerLogs
+
+    @TriggerLogs.setter
+    def TriggerLogs(self, TriggerLogs):
+        self._TriggerLogs = TriggerLogs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TriggerLogs") is not None:
+            self._TriggerLogs = []
+            for item in params.get("TriggerLogs"):
+                obj = PolicyTriggerLog()
+                obj._deserialize(item)
+                self._TriggerLogs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskRequest(AbstractModel):
     """DescribeTask请求参数结构体
 
@@ -1302,6 +1402,92 @@ class ModifyTaskRunStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class PolicyTriggerLog(AbstractModel):
+    """护栏策略触发日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 演练ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _TriggerType: 类型，0--触发，1--恢复
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: int
+        :param _Content: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _CreatTime: 触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatTime: str
+        """
+        self._TaskId = None
+        self._Name = None
+        self._TriggerType = None
+        self._Content = None
+        self._CreatTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TriggerType(self):
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CreatTime(self):
+        return self._CreatTime
+
+    @CreatTime.setter
+    def CreatTime(self, CreatTime):
+        self._CreatTime = CreatTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._TriggerType = params.get("TriggerType")
+        self._Content = params.get("Content")
+        self._CreatTime = params.get("CreatTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagWithCreate(AbstractModel):
@@ -3988,3 +4174,122 @@ class TemplatePolicy(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TriggerPolicyRequest(AbstractModel):
+    """TriggerPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 混沌演练ID
+
+        :type TaskId: int
+        :param _Name: 名称
+        :type Name: str
+        :param _Content: 触发内容
+        :type Content: str
+        :param _TriggerType: 触发类型，0--触发；1--恢复
+        :type TriggerType: int
+        """
+        self._TaskId = None
+        self._Name = None
+        self._Content = None
+        self._TriggerType = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def TriggerType(self):
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._TriggerType = params.get("TriggerType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerPolicyResponse(AbstractModel):
+    """TriggerPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 演练ID
+        :type TaskId: int
+        :param _Success: 是否触发成功
+        :type Success: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")

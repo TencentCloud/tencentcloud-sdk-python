@@ -8130,10 +8130,9 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 <li>l7Flow_flux: 访问请求上行+下行流量；</li>
 <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合。
-若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
-        :param _Domains: 查询的域名集合，不填默认查询所有子域名。
+        :param _Domains: 查询的域名集合，此参数已经废弃。
         :type Domains: list of str
         :param _Protocol: 查询的协议类型，取值有：
 <li>http: http协议；</li>
@@ -8149,6 +8148,7 @@ class DescribeOverviewL7DataRequest(AbstractModel):
         :type Interval: str
         :param _Filters: 过滤条件，详细的过滤条件Key值如下：
 <li>socket<br>   按照【<strong>HTTP协议类型</strong>】进行过滤。<br>   对应的Value可选项如下：<br>   HTTP：HTTP 协议；<br>   HTTPS：HTTPS协议；<br>   QUIC：QUIC协议。</li>
+<li>domain<br>   按照【<strong>域名</strong>】进行过滤。</li>
 <li>tagKey<br>   按照【<strong>标签Key</strong>】进行过滤。</li>
 <li>tagValue<br>   按照【<strong>标签Value</strong>】进行过滤。</li>
         :type Filters: list of QueryCondition
@@ -8328,6 +8328,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: 站点ID。
+必填参数。
+        :type ZoneId: str
         :param _StartTime: 查询起始时间。
         :type StartTime: str
         :param _EndTime: 查询结束时间。
@@ -8336,15 +8339,23 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页查询限制数目，默认值：20，上限：1000。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
+        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
         :type Filters: list of AdvancedFilter
         """
+        self._ZoneId = None
         self._StartTime = None
         self._EndTime = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def StartTime(self):
@@ -8388,6 +8399,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Offset = params.get("Offset")
@@ -8469,7 +8481,8 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 字段已废弃，请使用Filters中的zone-id。
+        :param _ZoneId: 站点ID。
+必填参数。
         :type ZoneId: str
         :param _StartTime: 查询起始时间。
         :type StartTime: str
@@ -8479,7 +8492,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页查限制数目，默认值：20，最大值：1000。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
+        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -8875,12 +8888,9 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>l4Flow_connections: 访问连接数；</li>
 <li>l4Flow_flux: 访问总流量；</li>
 <li>l4Flow_inFlux: 访问入流量；</li>
-<li>l4Flow_outFlux: 访问出流量；</li>
-<li> l4Flow_outPkt: 访问出包量。</li>
+<li>l4Flow_outFlux: 访问出流量。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合。
-若不填写，默认选择全部站点，且最多只能查询近30天的数据；
-若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
         :param _ProxyIds: 四层实例列表, 不填表示选择全部实例。
         :type ProxyIds: list of str
@@ -9065,16 +9075,15 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :param _EndTime: 结束时间。
         :type EndTime: str
         :param _MetricNames: 指标列表，取值有:
-<li>l7Flow_outFlux: Edgeone响应流量；</li>
-<li>l7Flow_inFlux: Edgeone请求流量；</li>
-<li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
-<li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
+<li>l7Flow_outFlux: Edgeone 响应流量；</li>
+<li>l7Flow_inFlux: Edgeone 请求流量；</li>
+<li>l7Flow_outBandwidth: Edgeone 响应带宽；</li>
+<li>l7Flow_inBandwidth：Edgeone 请求带宽；</li>
 <li>l7Flow_request: 访问请求数；</li>
 <li>l7Flow_flux: 访问请求上行+下行流量；</li>
 <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合。
-若不填写，默认选择全部站点，且最多只能查询近30天的数据；若填写，则可查询站点绑定套餐支持的<a href="https://cloud.tencent.com/document/product/1552/77380#edgeone-.E5.A5.97.E9.A4.90">数据分析最大查询范围</a>。
+        :param _ZoneIds: 站点 ID 集合, 此参数必填。
         :type ZoneIds: list of str
         :param _Interval: 查询时间粒度，取值有：
 <li>min: 1分钟；</li>
@@ -9266,7 +9275,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 <li>l7Cache_request：响应请求数；</li>
 <li> l7Cache_outBandwidth：响应带宽。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
         :param _Filters: 过滤条件，详细的过滤条件如下：
 <li>domain<br>   按照【<strong>子域名</strong>】进行过滤，子域名形如： test.example.com。<br>   类型：String<br>   必选：否</li>
@@ -9466,7 +9475,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
 
         :type MetricName: str
-        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
         :param _Limit: 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
         :type Limit: int
@@ -9671,7 +9680,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 <li> l7Cache_outFlux_resourceType：资源类型；</li>
 <li> l7Cache_outFlux_statusCode：状态码。</li>
         :type MetricName: str
-        :param _ZoneIds: 站点id集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
         :param _Limit: 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
         :type Limit: int
@@ -10558,7 +10567,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间。
         :type EndTime: str
-        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
         :param _ProxyIds: 四层实例 ID 集合。
         :type ProxyIds: list of str
@@ -10705,7 +10714,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间。
         :type EndTime: str
-        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
+        :param _ZoneIds: 站点ID集合，此参数必填。
         :type ZoneIds: list of str
         :param _Domains: 子域名集合，不填默认选择全部子域名。
         :type Domains: list of str

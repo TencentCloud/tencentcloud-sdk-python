@@ -16165,6 +16165,9 @@ class DescribeIPAMDResponse(AbstractModel):
         :param _SubnetIds: 子网信息，已安装eniipamd组件才会有值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetIds: list of str
+        :param _ClaimExpiredDuration: 固定ip回收时间，已安装eniipamd组件才会有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClaimExpiredDuration: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16174,6 +16177,7 @@ class DescribeIPAMDResponse(AbstractModel):
         self._Phase = None
         self._Reason = None
         self._SubnetIds = None
+        self._ClaimExpiredDuration = None
         self._RequestId = None
 
     @property
@@ -16225,6 +16229,14 @@ class DescribeIPAMDResponse(AbstractModel):
         self._SubnetIds = SubnetIds
 
     @property
+    def ClaimExpiredDuration(self):
+        return self._ClaimExpiredDuration
+
+    @ClaimExpiredDuration.setter
+    def ClaimExpiredDuration(self, ClaimExpiredDuration):
+        self._ClaimExpiredDuration = ClaimExpiredDuration
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16240,6 +16252,7 @@ class DescribeIPAMDResponse(AbstractModel):
         self._Phase = params.get("Phase")
         self._Reason = params.get("Reason")
         self._SubnetIds = params.get("SubnetIds")
+        self._ClaimExpiredDuration = params.get("ClaimExpiredDuration")
         self._RequestId = params.get("RequestId")
 
 

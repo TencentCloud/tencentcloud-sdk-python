@@ -10305,9 +10305,9 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type CtsMin: int
         :param _CtsMax: 最大创建时间的时间戳
         :type CtsMax: int
-        :param _OffSet: 分页开始条数
+        :param _OffSet: 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
         :type OffSet: int
-        :param _Limit: 每页的条数
+        :param _Limit: 每页返回的数量
         :type Limit: int
         :param _Source: 来源
         :type Source: str

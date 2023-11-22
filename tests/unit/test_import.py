@@ -354,6 +354,11 @@ def test_import_cms():
     from tencentcloud.cms.v20190321 import models
 
 
+def test_import_config():
+    from tencentcloud.config.v20220802 import config_client
+    from tencentcloud.config.v20220802 import models
+
+
 def test_import_cpdp():
     from tencentcloud.cpdp.v20190820 import cpdp_client
     from tencentcloud.cpdp.v20190820 import models
