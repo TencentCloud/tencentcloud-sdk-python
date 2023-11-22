@@ -486,6 +486,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteWafDomains(self, request):
+        """删除 WAF 防护域名
+
+        :param request: Request instance for DeleteWafDomains.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteWafDomainsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteWafDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWafDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWafDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGateway(self, request):
         """获取云原生API网关实例信息
 
@@ -937,6 +960,52 @@ class TseClient(AbstractClient):
             body = self.call("DescribeUpstreamHealthCheckConfig", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUpstreamHealthCheckConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWafDomains(self, request):
+        """获取 WAF 防护域名
+
+        :param request: Request instance for DescribeWafDomains.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeWafDomainsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeWafDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWafDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWafDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWafProtection(self, request):
+        """获取 WAF 防护状态
+
+        :param request: Request instance for DescribeWafProtection.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeWafProtectionRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeWafProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWafProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWafProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

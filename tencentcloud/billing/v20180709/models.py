@@ -4466,6 +4466,8 @@ class CreateSavingPlanOrderRequest(AbstractModel):
         :type PromiseUseAmount: int
         :param _SpecifyEffectTime: 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
         :type SpecifyEffectTime: str
+        :param _ClientToken: 可重入ID
+        :type ClientToken: str
         """
         self._RegionId = None
         self._ZoneId = None
@@ -4475,6 +4477,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
         self._CommodityCode = None
         self._PromiseUseAmount = None
         self._SpecifyEffectTime = None
+        self._ClientToken = None
 
     @property
     def RegionId(self):
@@ -4540,6 +4543,14 @@ class CreateSavingPlanOrderRequest(AbstractModel):
     def SpecifyEffectTime(self, SpecifyEffectTime):
         self._SpecifyEffectTime = SpecifyEffectTime
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._RegionId = params.get("RegionId")
@@ -4550,6 +4561,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
         self._CommodityCode = params.get("CommodityCode")
         self._PromiseUseAmount = params.get("PromiseUseAmount")
         self._SpecifyEffectTime = params.get("SpecifyEffectTime")
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

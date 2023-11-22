@@ -10931,7 +10931,7 @@ class DescribeRocketMQClusterResponse(AbstractModel):
         :type ClusterInfo: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterInfo`
         :param _ClusterConfig: 集群配置
         :type ClusterConfig: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterConfig`
-        :param _ClusterStats: 集群最近使用量，即将废弃，请使用云监控获取相关数据。
+        :param _ClusterStats: 集群最近使用量，即将废弃，请使用腾讯云可观测平台获取相关数据。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterStats: :class:`tencentcloud.tdmq.v20200217.models.RocketMQClusterRecentStats`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

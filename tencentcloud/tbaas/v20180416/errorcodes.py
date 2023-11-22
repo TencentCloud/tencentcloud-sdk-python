@@ -95,6 +95,15 @@ FAILEDOPERATION_FABRICBLOCKNOEXIST = 'FailedOperation.FabricBlockNoExist'
 # 区块列表查询失败。
 FAILEDOPERATION_FABRICBLOCKQUERY = 'FailedOperation.FabricBlockQuery'
 
+# 合约调用失败。
+FAILEDOPERATION_FABRICCHAINCODEINVOKEFAILED = 'FailedOperation.FabricChaincodeInvokeFailed'
+
+# 合约不存在。
+FAILEDOPERATION_FABRICCHAINCODENOEXIST = 'FailedOperation.FabricChaincodeNoExist'
+
+# 合约查询失败。
+FAILEDOPERATION_FABRICCHAINCODEQUERYFAILED = 'FailedOperation.FabricChaincodeQueryFailed'
+
 # 提交失败。
 FAILEDOPERATION_FABRICCOMMIT = 'FailedOperation.FabricCommit'
 
@@ -112,6 +121,9 @@ FAILEDOPERATION_FABRICREQUSTPARAMS = 'FailedOperation.FabricRequstParams'
 
 # 交易详情查询失败。
 FAILEDOPERATION_FABRICTRANSACTIONDETAIL = 'FailedOperation.FabricTransactionDetail'
+
+# 交易不存在。
+FAILEDOPERATION_FABRICTRANSACTIONNOEXIST = 'FailedOperation.FabricTransactionNoExist'
 
 # 交易列表查询失败。
 FAILEDOPERATION_FABRICTRANSACTIONQUERY = 'FailedOperation.FabricTransactionQuery'

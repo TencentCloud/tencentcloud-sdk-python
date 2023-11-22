@@ -7603,6 +7603,136 @@ class ColumnLineageInfo(AbstractModel):
         
 
 
+class ColumnMeta(AbstractModel):
+    """列的元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameEn: 字段英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameEn: str
+        :param _NameCn: 字段中文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameCn: str
+        :param _Type: 字段类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Description: 字段描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Position: 字段序号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Position: int
+        :param _IsPartition: 是否为分区字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartition: bool
+        :param _Name: 字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ColumnFamiliesFieldSet: HBase列簇属性集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnFamiliesFieldSet: list of Pair
+        """
+        self._NameEn = None
+        self._NameCn = None
+        self._Type = None
+        self._Description = None
+        self._Position = None
+        self._IsPartition = None
+        self._Name = None
+        self._ColumnFamiliesFieldSet = None
+
+    @property
+    def NameEn(self):
+        return self._NameEn
+
+    @NameEn.setter
+    def NameEn(self, NameEn):
+        self._NameEn = NameEn
+
+    @property
+    def NameCn(self):
+        return self._NameCn
+
+    @NameCn.setter
+    def NameCn(self, NameCn):
+        self._NameCn = NameCn
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Position(self):
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def IsPartition(self):
+        return self._IsPartition
+
+    @IsPartition.setter
+    def IsPartition(self, IsPartition):
+        self._IsPartition = IsPartition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ColumnFamiliesFieldSet(self):
+        return self._ColumnFamiliesFieldSet
+
+    @ColumnFamiliesFieldSet.setter
+    def ColumnFamiliesFieldSet(self, ColumnFamiliesFieldSet):
+        self._ColumnFamiliesFieldSet = ColumnFamiliesFieldSet
+
+
+    def _deserialize(self, params):
+        self._NameEn = params.get("NameEn")
+        self._NameCn = params.get("NameCn")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._Position = params.get("Position")
+        self._IsPartition = params.get("IsPartition")
+        self._Name = params.get("Name")
+        if params.get("ColumnFamiliesFieldSet") is not None:
+            self._ColumnFamiliesFieldSet = []
+            for item in params.get("ColumnFamiliesFieldSet"):
+                obj = Pair()
+                obj._deserialize(item)
+                self._ColumnFamiliesFieldSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommitExportTaskRequest(AbstractModel):
     """CommitExportTask请求参数结构体
 
@@ -18583,6 +18713,164 @@ class DescribeColumnLineageResponse(AbstractModel):
         if params.get("ColumnAggregationLineage") is not None:
             self._ColumnAggregationLineage = ColumnAggregationLineage()
             self._ColumnAggregationLineage._deserialize(params.get("ColumnAggregationLineage"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeColumnsMetaRequest(AbstractModel):
+    """DescribeColumnsMeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _FilterSet: 过滤器
+        :type FilterSet: list of Filter
+        :param _OrderFieldSet: 排序字段
+        :type OrderFieldSet: list of OrderField
+        :param _IsPartitionQuery: 是否查询分区字段，默认false
+        :type IsPartitionQuery: bool
+        """
+        self._TableId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._FilterSet = None
+        self._OrderFieldSet = None
+        self._IsPartitionQuery = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def FilterSet(self):
+        return self._FilterSet
+
+    @FilterSet.setter
+    def FilterSet(self, FilterSet):
+        self._FilterSet = FilterSet
+
+    @property
+    def OrderFieldSet(self):
+        return self._OrderFieldSet
+
+    @OrderFieldSet.setter
+    def OrderFieldSet(self, OrderFieldSet):
+        self._OrderFieldSet = OrderFieldSet
+
+    @property
+    def IsPartitionQuery(self):
+        return self._IsPartitionQuery
+
+    @IsPartitionQuery.setter
+    def IsPartitionQuery(self, IsPartitionQuery):
+        self._IsPartitionQuery = IsPartitionQuery
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("FilterSet") is not None:
+            self._FilterSet = []
+            for item in params.get("FilterSet"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterSet.append(obj)
+        if params.get("OrderFieldSet") is not None:
+            self._OrderFieldSet = []
+            for item in params.get("OrderFieldSet"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFieldSet.append(obj)
+        self._IsPartitionQuery = params.get("IsPartitionQuery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeColumnsMetaResponse(AbstractModel):
+    """DescribeColumnsMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnMetaSet: 分页返回的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnMetaSet: list of ColumnMeta
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ColumnMetaSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ColumnMetaSet(self):
+        return self._ColumnMetaSet
+
+    @ColumnMetaSet.setter
+    def ColumnMetaSet(self, ColumnMetaSet):
+        self._ColumnMetaSet = ColumnMetaSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ColumnMetaSet") is not None:
+            self._ColumnMetaSet = []
+            for item in params.get("ColumnMetaSet"):
+                obj = ColumnMeta()
+                obj._deserialize(item)
+                self._ColumnMetaSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -54478,6 +54766,51 @@ class OrganizationalFunction(AbstractModel):
         self._OwnerUserIds = params.get("OwnerUserIds")
         self._DbName = params.get("DbName")
         self._SubmitErrorMsg = params.get("SubmitErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Pair(AbstractModel):
+    """键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键名
+        :type Key: str
+        :param _Value: 值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

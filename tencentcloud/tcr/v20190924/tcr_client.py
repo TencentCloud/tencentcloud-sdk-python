@@ -142,7 +142,9 @@ class TcrClient(AbstractClient):
 
 
     def CreateCustomAccount(self, request):
-        """创建自定义账户
+        """接口未使用
+
+        创建自定义账户
 
         :param request: Request instance for CreateCustomAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateCustomAccountRequest`
@@ -648,7 +650,9 @@ class TcrClient(AbstractClient):
 
 
     def DeleteCustomAccount(self, request):
-        """删除自定义账号
+        """接口未使用
+
+        删除自定义账号
 
         :param request: Request instance for DeleteCustomAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteCustomAccountRequest`
@@ -1225,7 +1229,9 @@ class TcrClient(AbstractClient):
 
 
     def DescribeCustomAccounts(self, request):
-        """查询自定义账号
+        """接口未使用
+
+        查询自定义账号
 
         :param request: Request instance for DescribeCustomAccounts.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsRequest`
@@ -2260,7 +2266,9 @@ class TcrClient(AbstractClient):
 
 
     def ModifyCustomAccount(self, request):
-        """更新自定义账户
+        """接口未使用
+
+        更新自定义账户
 
         :param request: Request instance for ModifyCustomAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyCustomAccountRequest`

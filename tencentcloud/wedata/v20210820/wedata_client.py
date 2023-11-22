@@ -2129,6 +2129,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeColumnsMeta(self, request):
+        """查询表的所有列元数据
+
+        :param request: Request instance for DescribeColumnsMeta.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnsMetaRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeColumnsMetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeColumnsMeta", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeColumnsMetaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataBases(self, request):
         """查询数据来源列表
 

@@ -1052,11 +1052,14 @@ class DownloadUserCertResponse(AbstractModel):
         :type CertName: str
         :param _CertCtx: 证书内容
         :type CertCtx: str
+        :param _Cert: 证书内容
+        :type Cert: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertName = None
         self._CertCtx = None
+        self._Cert = None
         self._RequestId = None
 
     @property
@@ -1069,11 +1072,23 @@ class DownloadUserCertResponse(AbstractModel):
 
     @property
     def CertCtx(self):
+        warnings.warn("parameter `CertCtx` is deprecated", DeprecationWarning) 
+
         return self._CertCtx
 
     @CertCtx.setter
     def CertCtx(self, CertCtx):
+        warnings.warn("parameter `CertCtx` is deprecated", DeprecationWarning) 
+
         self._CertCtx = CertCtx
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
 
     @property
     def RequestId(self):
@@ -1087,6 +1102,7 @@ class DownloadUserCertResponse(AbstractModel):
     def _deserialize(self, params):
         self._CertName = params.get("CertName")
         self._CertCtx = params.get("CertCtx")
+        self._Cert = params.get("Cert")
         self._RequestId = params.get("RequestId")
 
 
@@ -3211,19 +3227,26 @@ class InvokeResponse(AbstractModel):
         :type Txid: str
         :param _Events: 交易执行结果
         :type Events: str
+        :param _TxId: 交易ID
+        :type TxId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Txid = None
         self._Events = None
+        self._TxId = None
         self._RequestId = None
 
     @property
     def Txid(self):
+        warnings.warn("parameter `Txid` is deprecated", DeprecationWarning) 
+
         return self._Txid
 
     @Txid.setter
     def Txid(self, Txid):
+        warnings.warn("parameter `Txid` is deprecated", DeprecationWarning) 
+
         self._Txid = Txid
 
     @property
@@ -3233,6 +3256,14 @@ class InvokeResponse(AbstractModel):
     @Events.setter
     def Events(self, Events):
         self._Events = Events
+
+    @property
+    def TxId(self):
+        return self._TxId
+
+    @TxId.setter
+    def TxId(self, TxId):
+        self._TxId = TxId
 
     @property
     def RequestId(self):
@@ -3246,6 +3277,7 @@ class InvokeResponse(AbstractModel):
     def _deserialize(self, params):
         self._Txid = params.get("Txid")
         self._Events = params.get("Events")
+        self._TxId = params.get("TxId")
         self._RequestId = params.get("RequestId")
 
 

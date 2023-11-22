@@ -13472,8 +13472,7 @@ class ModifyApplicationProxyRequest(AbstractModel):
 不填写保持原有配置。
         :type SessionPersistTime: int
         :param _ProxyType: 四层代理模式，取值有：
-<li>hostname：表示子域名模式；</li>
-<li>instance：表示实例模式。</li>不填写保持原有配置。
+<li>instance：表示实例模式。</li>不填写使用默认值instance。
         :type ProxyType: str
         :param _Ipv6: Ipv6 访问配置，不填写保持原有配置。
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
@@ -19080,7 +19079,7 @@ class StandardDebug(AbstractModel):
 <li>on：开启；</li>
 <li>off：关闭。</li>
         :type Switch: str
-        :param _AllowClientIPList: 允许的客户端来源。支持填写 IPV4 以及 IPV6 的 IP/IP 段。
+        :param _AllowClientIPList: 允许的客户端来源。支持填写 IPv4 以及 IPv6 的 IP/IP 段。0.0.0.0/0 表示允许所有 IPv4 客户端进行调试，::/0 表示允许所有 IPv6 客户端进行调试。
         :type AllowClientIPList: list of str
         :param _ExpireTime: Debug 功能到期时间。超出设置的时间，则功能失效。
         :type ExpireTime: str

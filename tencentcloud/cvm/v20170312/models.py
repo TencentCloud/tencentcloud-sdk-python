@@ -12650,13 +12650,15 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         :param _InstanceName: 修改后实例名称。可任意命名，但不得超过60个字符。
 <dx-alert infotype="explain" title="">必须指定InstanceName与SecurityGroups的其中一个，但不能同时设置</dx-alert>
         :type InstanceName: str
+        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 [Windows](https://cloud.tencent.com/document/product/213/17526) 和 [Linux](https://cloud.tencent.com/document/product/213/17525) 启动时运行命令。
+        :type UserData: str
         :param _SecurityGroups: 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。<dx-alert infotype="explain" title="">必须指定SecurityGroups与InstanceName的其中一个，但不能同时设置</dx-alert>
         :type SecurityGroups: list of str
         :param _CamRoleName: 给实例绑定用户角色，传空值为解绑操作
         :type CamRoleName: str
-        :param _HostName: 修改后实例的主机名。<br><li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。<br><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。<br><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。<br> 注意点：修改主机名后实例会立即重启，重启后新的主机名生效。
+        :param _HostName: 修改后实例的主机名。<li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li>注意点：修改主机名后实例会立即重启，重启后新的主机名生效。
         :type HostName: str
-        :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例<br><li>false：表示关闭实例保护，允许通过api接口删除实例<br><br>默认取值：false。
+        :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li>默认取值：false。
         :type DisableApiTermination: bool
         :param _CamRoleType: 角色类别，与CamRoleName搭配使用，该值可从CAM DescribeRoleList, GetRole接口返回RoleType字段获取，当前只接受user、system和service_linked三种类别。
 举例：一般CamRoleName中包含“LinkedRoleIn”（如TKE_QCSLinkedRoleInPrometheusService）时，DescribeRoleList和GetRole返回的RoleType为service_linked，则本参数也需要传递service_linked。
@@ -12665,6 +12667,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         """
         self._InstanceIds = None
         self._InstanceName = None
+        self._UserData = None
         self._SecurityGroups = None
         self._CamRoleName = None
         self._HostName = None
@@ -12686,6 +12689,14 @@ class ModifyInstancesAttributeRequest(AbstractModel):
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
+
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
 
     @property
     def SecurityGroups(self):
@@ -12731,6 +12742,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceIds = params.get("InstanceIds")
         self._InstanceName = params.get("InstanceName")
+        self._UserData = params.get("UserData")
         self._SecurityGroups = params.get("SecurityGroups")
         self._CamRoleName = params.get("CamRoleName")
         self._HostName = params.get("HostName")

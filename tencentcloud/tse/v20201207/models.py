@@ -4659,6 +4659,76 @@ class DeleteNativeGatewayServerGroupResult(AbstractModel):
         
 
 
+class DeleteWafDomainsRequest(AbstractModel):
+    """DeleteWafDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Domains: WAF 防护域名列表
+        :type Domains: list of str
+        """
+        self._GatewayId = None
+        self._Domains = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWafDomainsResponse(AbstractModel):
+    """DeleteWafDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
     """DescribeCloudNativeAPIGatewayCanaryRules请求参数结构体
 
@@ -7478,6 +7548,300 @@ class DescribeUpstreamHealthCheckConfigResponse(AbstractModel):
             self._Result = UpstreamHealthCheckConfig()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeWafDomainsRequest(AbstractModel):
+    """DescribeWafDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        """
+        self._GatewayId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafDomainsResponse(AbstractModel):
+    """DescribeWafDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 已被 WAF 防护域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeWafDomainsResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeWafDomainsResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWafDomainsResult(AbstractModel):
+    """获取WAF保护域名列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: WAF防护域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domains: list of str
+        """
+        self._Domains = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafProtectionRequest(AbstractModel):
+    """DescribeWafProtection请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _Type:  防护资源的类型。
+- Global  实例
+- Service  服务
+- Route  路由
+- Object  对象
+        :type Type: str
+        :param _TypeList: 防护资源类型列表，支持查询多个类型（Global、Service、Route、Object）。为空时，默认查询Global类型。
+        :type TypeList: list of str
+        """
+        self._GatewayId = None
+        self._Type = None
+        self._TypeList = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Type(self):
+        warnings.warn("parameter `Type` is deprecated", DeprecationWarning) 
+
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        warnings.warn("parameter `Type` is deprecated", DeprecationWarning) 
+
+        self._Type = Type
+
+    @property
+    def TypeList(self):
+        return self._TypeList
+
+    @TypeList.setter
+    def TypeList(self, TypeList):
+        self._TypeList = TypeList
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Type = params.get("Type")
+        self._TypeList = params.get("TypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWafProtectionResponse(AbstractModel):
+    """DescribeWafProtection返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 保护状态
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeWafProtectionResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeWafProtectionResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWafProtectionResult(AbstractModel):
+    """获取WAF保护资源状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalStatus: 全局防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalStatus: str
+        :param _ServicesStatus: 服务防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServicesStatus: list of ServiceWafStatus
+        :param _RouteStatus: 路由防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteStatus: list of RouteWafStatus
+        :param _ObjectStatus: 对象防护状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectStatus: str
+        """
+        self._GlobalStatus = None
+        self._ServicesStatus = None
+        self._RouteStatus = None
+        self._ObjectStatus = None
+
+    @property
+    def GlobalStatus(self):
+        return self._GlobalStatus
+
+    @GlobalStatus.setter
+    def GlobalStatus(self, GlobalStatus):
+        self._GlobalStatus = GlobalStatus
+
+    @property
+    def ServicesStatus(self):
+        return self._ServicesStatus
+
+    @ServicesStatus.setter
+    def ServicesStatus(self, ServicesStatus):
+        self._ServicesStatus = ServicesStatus
+
+    @property
+    def RouteStatus(self):
+        return self._RouteStatus
+
+    @RouteStatus.setter
+    def RouteStatus(self, RouteStatus):
+        self._RouteStatus = RouteStatus
+
+    @property
+    def ObjectStatus(self):
+        return self._ObjectStatus
+
+    @ObjectStatus.setter
+    def ObjectStatus(self, ObjectStatus):
+        self._ObjectStatus = ObjectStatus
+
+
+    def _deserialize(self, params):
+        self._GlobalStatus = params.get("GlobalStatus")
+        if params.get("ServicesStatus") is not None:
+            self._ServicesStatus = []
+            for item in params.get("ServicesStatus"):
+                obj = ServiceWafStatus()
+                obj._deserialize(item)
+                self._ServicesStatus.append(obj)
+        if params.get("RouteStatus") is not None:
+            self._RouteStatus = []
+            for item in params.get("RouteStatus"):
+                obj = RouteWafStatus()
+                obj._deserialize(item)
+                self._RouteStatus.append(obj)
+        self._ObjectStatus = params.get("ObjectStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeZookeeperReplicasRequest(AbstractModel):
@@ -12125,6 +12489,131 @@ class RateLimitResponse(AbstractModel):
         
 
 
+class RouteWafStatus(AbstractModel):
+    """路由 WAF 状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 路由的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Id: 路由的 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Status:  路由是否开启 WAF 防护
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Methods: 方法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Methods: list of str
+        :param _Paths: 路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paths: list of str
+        :param _Hosts: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hosts: list of str
+        :param _ServiceName: 路由对应服务的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _ServiceId: 路由对应服务的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: str
+        """
+        self._Name = None
+        self._Id = None
+        self._Status = None
+        self._Methods = None
+        self._Paths = None
+        self._Hosts = None
+        self._ServiceName = None
+        self._ServiceId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Methods(self):
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Paths(self):
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Hosts(self):
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._Methods = params.get("Methods")
+        self._Paths = params.get("Paths")
+        self._Hosts = params.get("Hosts")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SREInstance(AbstractModel):
     """微服务注册引擎实例
 
@@ -12755,6 +13244,79 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj = PolarisCLSTopicInfo()
                 obj._deserialize(item)
                 self._CLSTopics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceWafStatus(AbstractModel):
+    """服务的 WAF 状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name:  服务的名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Id: 服务的 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Type: 服务的类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Status:  服务是否开启 WAF 防护
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._Name = None
+        self._Id = None
+        self._Type = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

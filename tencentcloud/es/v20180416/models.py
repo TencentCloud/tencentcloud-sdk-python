@@ -5133,7 +5133,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _MultiZoneInfo: 多可用区网络信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiZoneInfo: list of ZoneDetail
-        :param _DeployMode: 部署模式<li>0：单可用区</li><li>1：多可用区</li>
+        :param _DeployMode: 部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployMode: int
         :param _PublicAccess: ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
@@ -5237,7 +5237,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _ProcessPercent: 流程进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessPercent: float
-        :param _KibanaAlteringPublicAccess: Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+        :param _KibanaAlteringPublicAccess: Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaAlteringPublicAccess: str
         :param _HasKernelUpgrade: 本月是否有内核可以更新：false-无，true-有
@@ -5246,6 +5246,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _CdcId: cdcId，使用cdc子网时传递
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
+        :param _KibanaPrivateVip: kibana内网vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPrivateVip: str
+        :param _CustomKibanaPrivateUrl: 自定义kibana内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomKibanaPrivateUrl: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5330,6 +5336,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._KibanaAlteringPublicAccess = None
         self._HasKernelUpgrade = None
         self._CdcId = None
+        self._KibanaPrivateVip = None
+        self._CustomKibanaPrivateUrl = None
 
     @property
     def InstanceId(self):
@@ -5995,6 +6003,22 @@ RENEW_FLAG_DEFAULT：不自动续费
     def CdcId(self, CdcId):
         self._CdcId = CdcId
 
+    @property
+    def KibanaPrivateVip(self):
+        return self._KibanaPrivateVip
+
+    @KibanaPrivateVip.setter
+    def KibanaPrivateVip(self, KibanaPrivateVip):
+        self._KibanaPrivateVip = KibanaPrivateVip
+
+    @property
+    def CustomKibanaPrivateUrl(self):
+        return self._CustomKibanaPrivateUrl
+
+    @CustomKibanaPrivateUrl.setter
+    def CustomKibanaPrivateUrl(self, CustomKibanaPrivateUrl):
+        self._CustomKibanaPrivateUrl = CustomKibanaPrivateUrl
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6121,6 +6145,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         self._HasKernelUpgrade = params.get("HasKernelUpgrade")
         self._CdcId = params.get("CdcId")
+        self._KibanaPrivateVip = params.get("KibanaPrivateVip")
+        self._CustomKibanaPrivateUrl = params.get("CustomKibanaPrivateUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8520,6 +8546,12 @@ class OptionalWebServiceInfo(AbstractModel):
         :param _Version: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _PrivateVip: web服务内网vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateVip: str
+        :param _CustomPrivateUrl: 自定义cerebro内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomPrivateUrl: str
         """
         self._Type = None
         self._Status = None
@@ -8528,6 +8560,8 @@ class OptionalWebServiceInfo(AbstractModel):
         self._PublicAccess = None
         self._PrivateAccess = None
         self._Version = None
+        self._PrivateVip = None
+        self._CustomPrivateUrl = None
 
     @property
     def Type(self):
@@ -8585,6 +8619,22 @@ class OptionalWebServiceInfo(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def PrivateVip(self):
+        return self._PrivateVip
+
+    @PrivateVip.setter
+    def PrivateVip(self, PrivateVip):
+        self._PrivateVip = PrivateVip
+
+    @property
+    def CustomPrivateUrl(self):
+        return self._CustomPrivateUrl
+
+    @CustomPrivateUrl.setter
+    def CustomPrivateUrl(self, CustomPrivateUrl):
+        self._CustomPrivateUrl = CustomPrivateUrl
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -8594,6 +8644,8 @@ class OptionalWebServiceInfo(AbstractModel):
         self._PublicAccess = params.get("PublicAccess")
         self._PrivateAccess = params.get("PrivateAccess")
         self._Version = params.get("Version")
+        self._PrivateVip = params.get("PrivateVip")
+        self._CustomPrivateUrl = params.get("CustomPrivateUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8693,10 +8745,13 @@ class RestartInstanceRequest(AbstractModel):
         :type ForceRestart: bool
         :param _RestartMode: 重启模式：0 滚动重启； 1 全量重启
         :type RestartMode: int
+        :param _UpgradeKernel: 重启时选择是否升级内核patch版本
+        :type UpgradeKernel: bool
         """
         self._InstanceId = None
         self._ForceRestart = None
         self._RestartMode = None
+        self._UpgradeKernel = None
 
     @property
     def InstanceId(self):
@@ -8722,11 +8777,20 @@ class RestartInstanceRequest(AbstractModel):
     def RestartMode(self, RestartMode):
         self._RestartMode = RestartMode
 
+    @property
+    def UpgradeKernel(self):
+        return self._UpgradeKernel
+
+    @UpgradeKernel.setter
+    def UpgradeKernel(self, UpgradeKernel):
+        self._UpgradeKernel = UpgradeKernel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ForceRestart = params.get("ForceRestart")
         self._RestartMode = params.get("RestartMode")
+        self._UpgradeKernel = params.get("UpgradeKernel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9972,6 +10036,10 @@ CLOSE 关闭
 OPEN 开启
 CLOSE 关闭
         :type KibanaAlteringPublicAccess: str
+        :param _KibanaPrivateDomain: kibana内网自定义域名
+        :type KibanaPrivateDomain: str
+        :param _CerebroPrivateDomain: cerebro内网自定义域名
+        :type CerebroPrivateDomain: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10005,6 +10073,8 @@ CLOSE 关闭
         self._EsConfigSet = None
         self._OperationDuration = None
         self._KibanaAlteringPublicAccess = None
+        self._KibanaPrivateDomain = None
+        self._CerebroPrivateDomain = None
 
     @property
     def InstanceId(self):
@@ -10262,6 +10332,22 @@ CLOSE 关闭
     def KibanaAlteringPublicAccess(self, KibanaAlteringPublicAccess):
         self._KibanaAlteringPublicAccess = KibanaAlteringPublicAccess
 
+    @property
+    def KibanaPrivateDomain(self):
+        return self._KibanaPrivateDomain
+
+    @KibanaPrivateDomain.setter
+    def KibanaPrivateDomain(self, KibanaPrivateDomain):
+        self._KibanaPrivateDomain = KibanaPrivateDomain
+
+    @property
+    def CerebroPrivateDomain(self):
+        return self._CerebroPrivateDomain
+
+    @CerebroPrivateDomain.setter
+    def CerebroPrivateDomain(self, CerebroPrivateDomain):
+        self._CerebroPrivateDomain = CerebroPrivateDomain
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10318,6 +10404,8 @@ CLOSE 关闭
             self._OperationDuration = OperationDurationUpdated()
             self._OperationDuration._deserialize(params.get("OperationDuration"))
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
+        self._KibanaPrivateDomain = params.get("KibanaPrivateDomain")
+        self._CerebroPrivateDomain = params.get("CerebroPrivateDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

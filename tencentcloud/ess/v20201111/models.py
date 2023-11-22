@@ -202,7 +202,7 @@ class ApproverComponentLimitType(AbstractModel):
 
 
 class ApproverInfo(AbstractModel):
-    """参与者信息。
+    """合同参与者信息。
 
     """
 
@@ -297,9 +297,11 @@ class ApproverInfo(AbstractModel):
 <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
 <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
 <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。</li></ul>
+
 注：
-<ul><li>默认情况下，认证校验方式为人脸认证和签署密码两种形式；</li>
-<li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
+1. 默认情况下，认证校验方式为人脸认证和签署密码两种形式
+2. 您可以传递多种值，表示可用多种认证校验方式
+3. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/company/mobile_support)得到具体的支持说明
         :type ApproverSignTypes: list of int
         :param _ApproverNeedSignReview: 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
 <ul><li>**false**：（默认）不需要审批，直接签署。</li>
@@ -631,7 +633,7 @@ class ApproverOption(AbstractModel):
         :type NoTransfer: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
 
-<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
 </ul>
         :type FillType: int
         :param _FlowReadLimit: 签署人阅读合同限制参数
@@ -7447,6 +7449,16 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type Name: str
         :param _Mobile: 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
         :type Mobile: str
+        :param _IdCardType: 证件类型，支持以下类型
+<ul><li>ID_CARD : 居民身份证(默认值)</li>
+<li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
+        :type IdCardType: str
+        :param _IdCardNumber: 证件号码，应符合以下规则
+<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
+<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
+<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :type IdCardNumber: str
         :param _EndPoint: 要跳转的链接类型
 
 <ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li>
@@ -7490,6 +7502,8 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._OrganizationName = None
         self._Name = None
         self._Mobile = None
+        self._IdCardType = None
+        self._IdCardNumber = None
         self._EndPoint = None
         self._FlowId = None
         self._FlowGroupId = None
@@ -7530,6 +7544,22 @@ class CreateSchemeUrlRequest(AbstractModel):
     @Mobile.setter
     def Mobile(self, Mobile):
         self._Mobile = Mobile
+
+    @property
+    def IdCardType(self):
+        return self._IdCardType
+
+    @IdCardType.setter
+    def IdCardType(self, IdCardType):
+        self._IdCardType = IdCardType
+
+    @property
+    def IdCardNumber(self):
+        return self._IdCardNumber
+
+    @IdCardNumber.setter
+    def IdCardNumber(self, IdCardNumber):
+        self._IdCardNumber = IdCardNumber
 
     @property
     def EndPoint(self):
@@ -7603,6 +7633,8 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._OrganizationName = params.get("OrganizationName")
         self._Name = params.get("Name")
         self._Mobile = params.get("Mobile")
+        self._IdCardType = params.get("IdCardType")
+        self._IdCardNumber = params.get("IdCardNumber")
         self._EndPoint = params.get("EndPoint")
         self._FlowId = params.get("FlowId")
         self._FlowGroupId = params.get("FlowGroupId")
