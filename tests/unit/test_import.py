@@ -619,6 +619,11 @@ def test_import_hcm():
     from tencentcloud.hcm.v20181106 import models
 
 
+def test_import_hunyuan():
+    from tencentcloud.hunyuan.v20230901 import hunyuan_client
+    from tencentcloud.hunyuan.v20230901 import models
+
+
 def test_import_iai():
     from tencentcloud.iai.v20180301 import iai_client
     from tencentcloud.iai.v20180301 import models
