@@ -1660,6 +1660,9 @@ class Task(AbstractModel):
         :param _VerifyId: 关联的隐患验证项ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyId: int
+        :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDealType: int
         """
         self._TaskId = None
         self._TaskTitle = None
@@ -1689,6 +1692,7 @@ class Task(AbstractModel):
         self._AlarmPolicy = None
         self._ApmServiceList = None
         self._VerifyId = None
+        self._PolicyDealType = None
 
     @property
     def TaskId(self):
@@ -1914,6 +1918,14 @@ class Task(AbstractModel):
     def VerifyId(self, VerifyId):
         self._VerifyId = VerifyId
 
+    @property
+    def PolicyDealType(self):
+        return self._PolicyDealType
+
+    @PolicyDealType.setter
+    def PolicyDealType(self, PolicyDealType):
+        self._PolicyDealType = PolicyDealType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -1966,6 +1978,7 @@ class Task(AbstractModel):
                 obj._deserialize(item)
                 self._ApmServiceList.append(obj)
         self._VerifyId = params.get("VerifyId")
+        self._PolicyDealType = params.get("PolicyDealType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1995,6 +2008,8 @@ class TaskConfig(AbstractModel):
         :type TaskPauseDuration: int
         :param _Tags: 演练标签信息，不填则默认取经验标签
         :type Tags: list of TagWithCreate
+        :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
+        :type PolicyDealType: int
         """
         self._TaskGroupsConfig = None
         self._TaskTitle = None
@@ -2002,6 +2017,7 @@ class TaskConfig(AbstractModel):
         self._TaskMode = None
         self._TaskPauseDuration = None
         self._Tags = None
+        self._PolicyDealType = None
 
     @property
     def TaskGroupsConfig(self):
@@ -2051,6 +2067,14 @@ class TaskConfig(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def PolicyDealType(self):
+        return self._PolicyDealType
+
+    @PolicyDealType.setter
+    def PolicyDealType(self, PolicyDealType):
+        self._PolicyDealType = PolicyDealType
+
 
     def _deserialize(self, params):
         if params.get("TaskGroupsConfig") is not None:
@@ -2069,6 +2093,7 @@ class TaskConfig(AbstractModel):
                 obj = TagWithCreate()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._PolicyDealType = params.get("PolicyDealType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3357,6 +3382,9 @@ class Template(AbstractModel):
         :param _AlarmPolicy: 告警指标
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicy: list of str
+        :param _PolicyDealType: 护栏处理方式，1--顺序回滚，2--演练暂停
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDealType: int
         """
         self._TemplateId = None
         self._TemplateTitle = None
@@ -3376,6 +3404,7 @@ class Template(AbstractModel):
         self._TemplateSource = None
         self._ApmServiceList = None
         self._AlarmPolicy = None
+        self._PolicyDealType = None
 
     @property
     def TemplateId(self):
@@ -3521,6 +3550,14 @@ class Template(AbstractModel):
     def AlarmPolicy(self, AlarmPolicy):
         self._AlarmPolicy = AlarmPolicy
 
+    @property
+    def PolicyDealType(self):
+        return self._PolicyDealType
+
+    @PolicyDealType.setter
+    def PolicyDealType(self, PolicyDealType):
+        self._PolicyDealType = PolicyDealType
+
 
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
@@ -3563,6 +3600,7 @@ class Template(AbstractModel):
                 obj._deserialize(item)
                 self._ApmServiceList.append(obj)
         self._AlarmPolicy = params.get("AlarmPolicy")
+        self._PolicyDealType = params.get("PolicyDealType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

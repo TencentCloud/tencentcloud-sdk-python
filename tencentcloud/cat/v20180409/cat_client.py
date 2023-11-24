@@ -95,6 +95,29 @@ class CatClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstantTasks(self, request):
+        """获取历史即时拨测任务
+
+        :param request: Request instance for DescribeInstantTasks.
+        :type request: :class:`tencentcloud.cat.v20180409.models.DescribeInstantTasksRequest`
+        :rtype: :class:`tencentcloud.cat.v20180409.models.DescribeInstantTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstantTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstantTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNodes(self, request):
         """获取拨测节点
 

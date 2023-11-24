@@ -501,7 +501,7 @@ class AutoSignConfig(AbstractModel):
         :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。
 
 <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
-</ul>
+<li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
         :type LicenseType: int
         """
         self._UserInfo = None
@@ -1618,7 +1618,8 @@ class ChannelCancelUserAutoSignEnableUrlRequest(AbstractModel):
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _Operator: 操作人信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _SceneKey: 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
@@ -5276,9 +5277,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -5291,7 +5290,7 @@ class ChannelCreateUserAutoSignEnableUrlRequest(AbstractModel):
         :type UrlType: str
         :param _NotifyType: 是否通知开通方，通知类型:
 <ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li><ul>
+<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :type NotifyType: str
         :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :type NotifyAddress: str
@@ -5514,9 +5513,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
         :param _Agent: 渠道应用相关信息。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 自动签开通个人用户信息，包括名字，身份证等。
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
@@ -7054,9 +7051,7 @@ class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
         :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 要查询状态的用户信息, 包括名字,身份证等
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
@@ -7212,7 +7207,7 @@ class ChannelDisableUserAutoSignRequest(AbstractModel):
         :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** 电子处方</li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 需要关闭自动签的个人的信息，如姓名，证件信息等。
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
@@ -9934,7 +9929,7 @@ class CreateSignUrlsRequest(AbstractModel):
 注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
         :type Mobile: str
         :param _IdCardType: 证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证(默认值)</li>
+<ul><li>ID_CARD : 居民身份证</li>
 <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
         :type IdCardType: str
@@ -13194,6 +13189,7 @@ class FlowInfo(AbstractModel):
 示例值：1604912664
         :type Deadline: int
         :param _TemplateId: 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
+如果使用模板发起接口，此参数为必填。
 
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在**企业模板**中得到合同模板ID。
         :type TemplateId: str

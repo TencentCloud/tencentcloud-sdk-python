@@ -565,11 +565,15 @@ class ConnectionDescription(AbstractModel):
         :param _DTSParams: data transfer service (DTS)参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type DTSParams: :class:`tencentcloud.eb.v20210416.models.DTSParams`
+        :param _TDMQParams: tdmq参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TDMQParams: :class:`tencentcloud.eb.v20210416.models.TDMQParams`
         """
         self._ResourceDescription = None
         self._APIGWParams = None
         self._CkafkaParams = None
         self._DTSParams = None
+        self._TDMQParams = None
 
     @property
     def ResourceDescription(self):
@@ -603,6 +607,14 @@ class ConnectionDescription(AbstractModel):
     def DTSParams(self, DTSParams):
         self._DTSParams = DTSParams
 
+    @property
+    def TDMQParams(self):
+        return self._TDMQParams
+
+    @TDMQParams.setter
+    def TDMQParams(self, TDMQParams):
+        self._TDMQParams = TDMQParams
+
 
     def _deserialize(self, params):
         self._ResourceDescription = params.get("ResourceDescription")
@@ -615,6 +627,9 @@ class ConnectionDescription(AbstractModel):
         if params.get("DTSParams") is not None:
             self._DTSParams = DTSParams()
             self._DTSParams._deserialize(params.get("DTSParams"))
+        if params.get("TDMQParams") is not None:
+            self._TDMQParams = TDMQParams()
+            self._TDMQParams._deserialize(params.get("TDMQParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1192,6 +1207,58 @@ class DTSParams(AbstractModel):
     """Data Transfer Service参数
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ConsumerGroupName: Consumer Group Name
+        :type ConsumerGroupName: str
+        :param _Account: 账户名
+        :type Account: str
+        :param _Password: 密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        """
+        self._ConsumerGroupName = None
+        self._Account = None
+        self._Password = None
+
+    @property
+    def ConsumerGroupName(self):
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def Account(self):
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._Account = params.get("Account")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeadLetterConfig(AbstractModel):
@@ -4591,6 +4658,53 @@ class SearchLogResult(AbstractModel):
         self._Subject = params.get("Subject")
         self._Region = params.get("Region")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDMQParams(AbstractModel):
+    """TDMQ参数详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterType: 集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _ClusterEndPoint: 集群支撑网接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterEndPoint: str
+        """
+        self._ClusterType = None
+        self._ClusterEndPoint = None
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterEndPoint(self):
+        return self._ClusterEndPoint
+
+    @ClusterEndPoint.setter
+    def ClusterEndPoint(self, ClusterEndPoint):
+        self._ClusterEndPoint = ClusterEndPoint
+
+
+    def _deserialize(self, params):
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterEndPoint = params.get("ClusterEndPoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -363,6 +363,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamIngest(self, request):
+        """您可以查询转推任务的状态。
+
+        :param request: Request instance for DescribeStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTRTCMarketQualityData(self, request):
         """查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
@@ -1098,6 +1121,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartStreamIngest(self, request):
+        """将一个在线媒体流推到TRTC房间。
+
+        :param request: Request instance for StartStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopMCUMixTranscode(self, request):
         """接口说明：结束云端混流
 
@@ -1158,6 +1204,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopPublishCdnStream", params, headers=headers)
             response = json.loads(body)
             model = models.StopPublishCdnStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopStreamIngest(self, request):
+        """停止一个拉流转推任务。
+
+        :param request: Request instance for StopStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopStreamIngestResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -958,6 +958,9 @@ class CertificateExtra(AbstractModel):
         :param _SMCert: 是否是国密证书
 注意：此字段可能返回 null，表示取不到有效值。
         :type SMCert: int
+        :param _CompanyType: 公司类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyType: int
         """
         self._DomainNumber = None
         self._OriginCertificateId = None
@@ -965,6 +968,7 @@ class CertificateExtra(AbstractModel):
         self._ReplacedFor = None
         self._RenewOrder = None
         self._SMCert = None
+        self._CompanyType = None
 
     @property
     def DomainNumber(self):
@@ -1014,6 +1018,14 @@ class CertificateExtra(AbstractModel):
     def SMCert(self, SMCert):
         self._SMCert = SMCert
 
+    @property
+    def CompanyType(self):
+        return self._CompanyType
+
+    @CompanyType.setter
+    def CompanyType(self, CompanyType):
+        self._CompanyType = CompanyType
+
 
     def _deserialize(self, params):
         self._DomainNumber = params.get("DomainNumber")
@@ -1022,6 +1034,7 @@ class CertificateExtra(AbstractModel):
         self._ReplacedFor = params.get("ReplacedFor")
         self._RenewOrder = params.get("RenewOrder")
         self._SMCert = params.get("SMCert")
+        self._CompanyType = params.get("CompanyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1116,7 +1129,7 @@ null = 用户上传证书（没有套餐类型），
         :param _IsVulnerability: 是否启用了漏洞扫描功能。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVulnerability: bool
-        :param _RenewAble: 是否可重颁发证书。
+        :param _RenewAble: 是否可续费。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewAble: bool
         :param _ProjectInfo: 项目信息。
@@ -1164,6 +1177,30 @@ null = 用户上传证书（没有套餐类型），
         :param _HostingRenewCertId: 托管新证书ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostingRenewCertId: str
+        :param _HasRenewOrder: 存在的续费证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasRenewOrder: str
+        :param _ReplaceOriCertIsDelete: 重颁发证书原证书是否删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplaceOriCertIsDelete: bool
+        :param _IsExpiring: 是否即将过期， 证书即将到期的30天内为即将过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExpiring: bool
+        :param _DVAuthDeadline: DV证书添加验证截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DVAuthDeadline: str
+        :param _ValidationPassedTime: 域名验证通过时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValidationPassedTime: str
+        :param _CertSANs: 证书关联的多域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertSANs: list of str
+        :param _AwaitingValidationMsg: 域名验证驳回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AwaitingValidationMsg: str
+        :param _AllowDownload: 是否允许下载
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowDownload: bool
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1206,6 +1243,14 @@ null = 用户上传证书（没有套餐类型），
         self._HostingStatus = None
         self._HostingCompleteTime = None
         self._HostingRenewCertId = None
+        self._HasRenewOrder = None
+        self._ReplaceOriCertIsDelete = None
+        self._IsExpiring = None
+        self._DVAuthDeadline = None
+        self._ValidationPassedTime = None
+        self._CertSANs = None
+        self._AwaitingValidationMsg = None
+        self._AllowDownload = None
 
     @property
     def OwnerUin(self):
@@ -1535,6 +1580,70 @@ null = 用户上传证书（没有套餐类型），
     def HostingRenewCertId(self, HostingRenewCertId):
         self._HostingRenewCertId = HostingRenewCertId
 
+    @property
+    def HasRenewOrder(self):
+        return self._HasRenewOrder
+
+    @HasRenewOrder.setter
+    def HasRenewOrder(self, HasRenewOrder):
+        self._HasRenewOrder = HasRenewOrder
+
+    @property
+    def ReplaceOriCertIsDelete(self):
+        return self._ReplaceOriCertIsDelete
+
+    @ReplaceOriCertIsDelete.setter
+    def ReplaceOriCertIsDelete(self, ReplaceOriCertIsDelete):
+        self._ReplaceOriCertIsDelete = ReplaceOriCertIsDelete
+
+    @property
+    def IsExpiring(self):
+        return self._IsExpiring
+
+    @IsExpiring.setter
+    def IsExpiring(self, IsExpiring):
+        self._IsExpiring = IsExpiring
+
+    @property
+    def DVAuthDeadline(self):
+        return self._DVAuthDeadline
+
+    @DVAuthDeadline.setter
+    def DVAuthDeadline(self, DVAuthDeadline):
+        self._DVAuthDeadline = DVAuthDeadline
+
+    @property
+    def ValidationPassedTime(self):
+        return self._ValidationPassedTime
+
+    @ValidationPassedTime.setter
+    def ValidationPassedTime(self, ValidationPassedTime):
+        self._ValidationPassedTime = ValidationPassedTime
+
+    @property
+    def CertSANs(self):
+        return self._CertSANs
+
+    @CertSANs.setter
+    def CertSANs(self, CertSANs):
+        self._CertSANs = CertSANs
+
+    @property
+    def AwaitingValidationMsg(self):
+        return self._AwaitingValidationMsg
+
+    @AwaitingValidationMsg.setter
+    def AwaitingValidationMsg(self, AwaitingValidationMsg):
+        self._AwaitingValidationMsg = AwaitingValidationMsg
+
+    @property
+    def AllowDownload(self):
+        return self._AllowDownload
+
+    @AllowDownload.setter
+    def AllowDownload(self, AllowDownload):
+        self._AllowDownload = AllowDownload
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1589,6 +1698,14 @@ null = 用户上传证书（没有套餐类型），
         self._HostingStatus = params.get("HostingStatus")
         self._HostingCompleteTime = params.get("HostingCompleteTime")
         self._HostingRenewCertId = params.get("HostingRenewCertId")
+        self._HasRenewOrder = params.get("HasRenewOrder")
+        self._ReplaceOriCertIsDelete = params.get("ReplaceOriCertIsDelete")
+        self._IsExpiring = params.get("IsExpiring")
+        self._DVAuthDeadline = params.get("DVAuthDeadline")
+        self._ValidationPassedTime = params.get("ValidationPassedTime")
+        self._CertSANs = params.get("CertSANs")
+        self._AwaitingValidationMsg = params.get("AwaitingValidationMsg")
+        self._AllowDownload = params.get("AllowDownload")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

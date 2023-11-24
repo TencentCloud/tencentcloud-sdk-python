@@ -138,6 +138,51 @@ class AlarmAnalysisConfig(AbstractModel):
         
 
 
+class AlarmClassification(AbstractModel):
+    """告警分类信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 分类键
+        :type Key: str
+        :param _Value: 分类值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmInfo(AbstractModel):
     """告警策略描述
 
@@ -3105,6 +3150,8 @@ class CreateAlarmRequest(AbstractModel):
 
 默认值为true
         :type Status: bool
+        :param _Enable: 是否开启告警策略。默认值为true
+        :type Enable: bool
         :param _MessageTemplate: 用户自定义告警内容
         :type MessageTemplate: str
         :param _CallBack: 用户自定义回调
@@ -3128,6 +3175,14 @@ class CreateAlarmRequest(AbstractModel):
 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 
         :type MonitorObjectType: int
+        :param _Classifications: 告警附加分类信息列表。
+
+Classifications元素个数不能超过20个。
+
+Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，字符规则 ^[a-z]([a-z0-9_]{0,49})$。
+
+Classifications元素的Value长度不能超过200个字符。
+        :type Classifications: list of AlarmClassification
         """
         self._Name = None
         self._AlarmTargets = None
@@ -3139,6 +3194,7 @@ class CreateAlarmRequest(AbstractModel):
         self._AlarmLevel = None
         self._MultiConditions = None
         self._Status = None
+        self._Enable = None
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
@@ -3146,6 +3202,7 @@ class CreateAlarmRequest(AbstractModel):
         self._GroupTriggerCondition = None
         self._Tags = None
         self._MonitorObjectType = None
+        self._Classifications = None
 
     @property
     def Name(self):
@@ -3228,6 +3285,14 @@ class CreateAlarmRequest(AbstractModel):
         self._Status = Status
 
     @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
     def MessageTemplate(self):
         return self._MessageTemplate
 
@@ -3283,6 +3348,14 @@ class CreateAlarmRequest(AbstractModel):
     def MonitorObjectType(self, MonitorObjectType):
         self._MonitorObjectType = MonitorObjectType
 
+    @property
+    def Classifications(self):
+        return self._Classifications
+
+    @Classifications.setter
+    def Classifications(self, Classifications):
+        self._Classifications = Classifications
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3307,6 +3380,7 @@ class CreateAlarmRequest(AbstractModel):
                 obj._deserialize(item)
                 self._MultiConditions.append(obj)
         self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
         self._MessageTemplate = params.get("MessageTemplate")
         if params.get("CallBack") is not None:
             self._CallBack = CallBackInfo()
@@ -3326,6 +3400,12 @@ class CreateAlarmRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._MonitorObjectType = params.get("MonitorObjectType")
+        if params.get("Classifications") is not None:
+            self._Classifications = []
+            for item in params.get("Classifications"):
+                obj = AlarmClassification()
+                obj._deserialize(item)
+                self._Classifications.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5467,7 +5547,7 @@ class CreateTopicRequest(AbstractModel):
         :param _HotPeriod: 0：关闭日志沉降。
 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
         :type HotPeriod: int
-        :param _IsWebTracking: webtracking开关； false: 关闭 true： 开启
+        :param _IsWebTracking: 免鉴权开关； false: 关闭 true： 开启
         :type IsWebTracking: bool
         """
         self._LogsetId = None
@@ -13299,6 +13379,53 @@ class MetaTagInfo(AbstractModel):
         
 
 
+class MetricLabel(AbstractModel):
+    """过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 指标内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAlarmNoticeRequest(AbstractModel):
     """ModifyAlarmNotice请求参数结构体
 
@@ -13480,6 +13607,8 @@ class ModifyAlarmRequest(AbstractModel):
         :type AlarmTargets: list of AlarmTarget
         :param _Status: 是否开启告警策略。
         :type Status: bool
+        :param _Enable: 是否开启告警策略。默认值为true
+        :type Enable: bool
         :param _MessageTemplate: 用户自定义告警内容
         :type MessageTemplate: str
         :param _CallBack: 用户自定义回调
@@ -13490,10 +13619,17 @@ class ModifyAlarmRequest(AbstractModel):
         :type GroupTriggerStatus: bool
         :param _GroupTriggerCondition: 分组触发条件。
         :type GroupTriggerCondition: list of str
+        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+        :type Tags: list of Tag
         :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-<li> 当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
+当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
 
         :type MonitorObjectType: int
+        :param _Classifications: 告警附加分类信息列表。
+Classifications元素个数不能超过20个。
+Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
+Classifications元素的Value长度不能超过200个字符。
+        :type Classifications: list of AlarmClassification
         """
         self._AlarmId = None
         self._Name = None
@@ -13506,12 +13642,15 @@ class ModifyAlarmRequest(AbstractModel):
         self._AlarmNoticeIds = None
         self._AlarmTargets = None
         self._Status = None
+        self._Enable = None
         self._MessageTemplate = None
         self._CallBack = None
         self._Analysis = None
         self._GroupTriggerStatus = None
         self._GroupTriggerCondition = None
+        self._Tags = None
         self._MonitorObjectType = None
+        self._Classifications = None
 
     @property
     def AlarmId(self):
@@ -13602,6 +13741,14 @@ class ModifyAlarmRequest(AbstractModel):
         self._Status = Status
 
     @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
     def MessageTemplate(self):
         return self._MessageTemplate
 
@@ -13642,12 +13789,28 @@ class ModifyAlarmRequest(AbstractModel):
         self._GroupTriggerCondition = GroupTriggerCondition
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def MonitorObjectType(self):
         return self._MonitorObjectType
 
     @MonitorObjectType.setter
     def MonitorObjectType(self, MonitorObjectType):
         self._MonitorObjectType = MonitorObjectType
+
+    @property
+    def Classifications(self):
+        return self._Classifications
+
+    @Classifications.setter
+    def Classifications(self, Classifications):
+        self._Classifications = Classifications
 
 
     def _deserialize(self, params):
@@ -13674,6 +13837,7 @@ class ModifyAlarmRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AlarmTargets.append(obj)
         self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
         self._MessageTemplate = params.get("MessageTemplate")
         if params.get("CallBack") is not None:
             self._CallBack = CallBackInfo()
@@ -13686,7 +13850,19 @@ class ModifyAlarmRequest(AbstractModel):
                 self._Analysis.append(obj)
         self._GroupTriggerStatus = params.get("GroupTriggerStatus")
         self._GroupTriggerCondition = params.get("GroupTriggerCondition")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._MonitorObjectType = params.get("MonitorObjectType")
+        if params.get("Classifications") is not None:
+            self._Classifications = []
+            for item in params.get("Classifications"):
+                obj = AlarmClassification()
+                obj._deserialize(item)
+                self._Classifications.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17088,11 +17264,24 @@ class ScheduledSqlResouceInfo(AbstractModel):
         :type BizType: int
         :param _MetricName: 指标名称
         :type MetricName: str
+        :param _MetricNames: 指标名称
+BizType为1时，优先使用MetricNames字段信息。多指标只能填充到MetricNames字段，单指标建议填充到MetricNames字段
+        :type MetricNames: list of str
+        :param _MetricLabels: 指标项
+        :type MetricLabels: list of str
+        :param _CustomTime: 自定义时间
+        :type CustomTime: str
+        :param _CustomMetricLabels: 自定义标签
+        :type CustomMetricLabels: list of MetricLabel
         """
         self._TopicId = None
         self._Region = None
         self._BizType = None
         self._MetricName = None
+        self._MetricNames = None
+        self._MetricLabels = None
+        self._CustomTime = None
+        self._CustomMetricLabels = None
 
     @property
     def TopicId(self):
@@ -17126,12 +17315,53 @@ class ScheduledSqlResouceInfo(AbstractModel):
     def MetricName(self, MetricName):
         self._MetricName = MetricName
 
+    @property
+    def MetricNames(self):
+        return self._MetricNames
+
+    @MetricNames.setter
+    def MetricNames(self, MetricNames):
+        self._MetricNames = MetricNames
+
+    @property
+    def MetricLabels(self):
+        return self._MetricLabels
+
+    @MetricLabels.setter
+    def MetricLabels(self, MetricLabels):
+        self._MetricLabels = MetricLabels
+
+    @property
+    def CustomTime(self):
+        return self._CustomTime
+
+    @CustomTime.setter
+    def CustomTime(self, CustomTime):
+        self._CustomTime = CustomTime
+
+    @property
+    def CustomMetricLabels(self):
+        return self._CustomMetricLabels
+
+    @CustomMetricLabels.setter
+    def CustomMetricLabels(self, CustomMetricLabels):
+        self._CustomMetricLabels = CustomMetricLabels
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
         self._Region = params.get("Region")
         self._BizType = params.get("BizType")
         self._MetricName = params.get("MetricName")
+        self._MetricNames = params.get("MetricNames")
+        self._MetricLabels = params.get("MetricLabels")
+        self._CustomTime = params.get("CustomTime")
+        if params.get("CustomMetricLabels") is not None:
+            self._CustomMetricLabels = []
+            for item in params.get("CustomMetricLabels"):
+                obj = MetricLabel()
+                obj._deserialize(item)
+                self._CustomMetricLabels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18763,6 +18993,16 @@ class TopicInfo(AbstractModel):
 热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HotPeriod: int
+        :param _BizType: 主题类型。
+- 0: 日志主题 
+- 1: 指标主题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizType: int
+        :param _IsWebTracking: 免鉴权开关。
+- false: 关闭
+- true: 开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWebTracking: bool
         """
         self._LogsetId = None
         self._TopicId = None
@@ -18780,6 +19020,8 @@ class TopicInfo(AbstractModel):
         self._SubAssumerName = None
         self._Describes = None
         self._HotPeriod = None
+        self._BizType = None
+        self._IsWebTracking = None
 
     @property
     def LogsetId(self):
@@ -18909,6 +19151,22 @@ class TopicInfo(AbstractModel):
     def HotPeriod(self, HotPeriod):
         self._HotPeriod = HotPeriod
 
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def IsWebTracking(self):
+        return self._IsWebTracking
+
+    @IsWebTracking.setter
+    def IsWebTracking(self, IsWebTracking):
+        self._IsWebTracking = IsWebTracking
+
 
     def _deserialize(self, params):
         self._LogsetId = params.get("LogsetId")
@@ -18932,6 +19190,8 @@ class TopicInfo(AbstractModel):
         self._SubAssumerName = params.get("SubAssumerName")
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
+        self._BizType = params.get("BizType")
+        self._IsWebTracking = params.get("IsWebTracking")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

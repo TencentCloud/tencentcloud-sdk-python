@@ -12219,6 +12219,8 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         :param _SpecFeatures: 计费项特性列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecFeatures: list of str
+        :param _CvmInstanceId: 纳管cvmid
+        :type CvmInstanceId: str
         """
         self._InstanceId = None
         self._UsedResource = None
@@ -12231,6 +12233,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._SpecId = None
         self._SpecAlias = None
         self._SpecFeatures = None
+        self._CvmInstanceId = None
 
     @property
     def InstanceId(self):
@@ -12320,6 +12323,14 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
     def SpecFeatures(self, SpecFeatures):
         self._SpecFeatures = SpecFeatures
 
+    @property
+    def CvmInstanceId(self):
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12337,6 +12348,7 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._SpecId = params.get("SpecId")
         self._SpecAlias = params.get("SpecAlias")
         self._SpecFeatures = params.get("SpecFeatures")
+        self._CvmInstanceId = params.get("CvmInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

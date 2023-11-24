@@ -27,13 +27,13 @@ class CreateProbeTasksRequest(AbstractModel):
         r"""
         :param _BatchTasks: 批量任务名-地址
         :type BatchTasks: list of ProbeTaskBasicConfiguration
-        :param _TaskType: 任务类型
+        :param _TaskType: 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
         :type TaskType: int
-        :param _Nodes: 拨测节点
+        :param _Nodes: 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
         :type Nodes: list of str
         :param _Interval: 拨测间隔
         :type Interval: int
-        :param _Parameters: 拨测参数
+        :param _Parameters: 拨测参数，如{}，详细可参考云拨测官方文档。
         :type Parameters: str
         :param _TaskCategory: 任务分类
 <li>1 = PC</li>
@@ -43,12 +43,14 @@ class CreateProbeTasksRequest(AbstractModel):
         :type Cron: str
         :param _Tag: 资源标签值
         :type Tag: list of Tag
-        :param _ProbeType: 测试类型，包含定时测试与即时测试
+        :param _ProbeType: 测试类型，包含定时测试与即时测试。1-定时拨测，其它表示即时拨测。
         :type ProbeType: int
-        :param _PluginSource: 插件类型
+        :param _PluginSource: 插件类型，如CDN，详情参考云拨测官方文档。
         :type PluginSource: str
         :param _ClientNum: 客户端ID
         :type ClientNum: str
+        :param _NodeIpType: 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+        :type NodeIpType: int
         """
         self._BatchTasks = None
         self._TaskType = None
@@ -61,6 +63,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self._ProbeType = None
         self._PluginSource = None
         self._ClientNum = None
+        self._NodeIpType = None
 
     @property
     def BatchTasks(self):
@@ -150,6 +153,14 @@ class CreateProbeTasksRequest(AbstractModel):
     def ClientNum(self, ClientNum):
         self._ClientNum = ClientNum
 
+    @property
+    def NodeIpType(self):
+        return self._NodeIpType
+
+    @NodeIpType.setter
+    def NodeIpType(self, NodeIpType):
+        self._NodeIpType = NodeIpType
+
 
     def _deserialize(self, params):
         if params.get("BatchTasks") is not None:
@@ -173,6 +184,7 @@ class CreateProbeTasksRequest(AbstractModel):
         self._ProbeType = params.get("ProbeType")
         self._PluginSource = params.get("PluginSource")
         self._ClientNum = params.get("ClientNum")
+        self._NodeIpType = params.get("NodeIpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -600,6 +612,106 @@ class DescribeDetailedSingleProbeDataResponse(AbstractModel):
                 self._DataSet.append(obj)
         self._TotalNumber = params.get("TotalNumber")
         self._ScrollID = params.get("ScrollID")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstantTasksRequest(AbstractModel):
+    """DescribeInstantTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量
+        :type Limit: int
+        :param _Offset: 起始位置
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstantTasksResponse(AbstractModel):
+    """DescribeInstantTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of SingleInstantTask
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = SingleInstantTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -1837,6 +1949,9 @@ class ProbeTask(AbstractModel):
         :type TaskType: int
         :param _Nodes: 拨测节点列表
         :type Nodes: list of str
+        :param _NodeIpType: 拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeIpType: int
         :param _Interval: 拨测间隔
         :type Interval: int
         :param _Parameters: 拨测参数
@@ -1885,6 +2000,7 @@ class ProbeTask(AbstractModel):
         self._TaskId = None
         self._TaskType = None
         self._Nodes = None
+        self._NodeIpType = None
         self._Interval = None
         self._Parameters = None
         self._Status = None
@@ -1928,6 +2044,14 @@ class ProbeTask(AbstractModel):
     @Nodes.setter
     def Nodes(self, Nodes):
         self._Nodes = Nodes
+
+    @property
+    def NodeIpType(self):
+        return self._NodeIpType
+
+    @NodeIpType.setter
+    def NodeIpType(self, NodeIpType):
+        self._NodeIpType = NodeIpType
 
     @property
     def Interval(self):
@@ -2023,6 +2147,7 @@ class ProbeTask(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._TaskType = params.get("TaskType")
         self._Nodes = params.get("Nodes")
+        self._NodeIpType = params.get("NodeIpType")
         self._Interval = params.get("Interval")
         self._Parameters = params.get("Parameters")
         self._Status = params.get("Status")
@@ -2193,6 +2318,123 @@ class ResumeProbeTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Results.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class SingleInstantTask(AbstractModel):
+    """单个即时拨测任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _TargetAddress: 任务地址
+        :type TargetAddress: str
+        :param _TaskType: 任务类型
+        :type TaskType: int
+        :param _ProbeTime: 测试时间
+        :type ProbeTime: int
+        :param _Status: 任务状态
+        :type Status: str
+        :param _SuccessRate: 成功率
+        :type SuccessRate: float
+        :param _NodeCount: 节点数量
+        :type NodeCount: int
+        :param _TaskCategory: 节点类型
+        :type TaskCategory: int
+        """
+        self._TaskId = None
+        self._TargetAddress = None
+        self._TaskType = None
+        self._ProbeTime = None
+        self._Status = None
+        self._SuccessRate = None
+        self._NodeCount = None
+        self._TaskCategory = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TargetAddress(self):
+        return self._TargetAddress
+
+    @TargetAddress.setter
+    def TargetAddress(self, TargetAddress):
+        self._TargetAddress = TargetAddress
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def ProbeTime(self):
+        return self._ProbeTime
+
+    @ProbeTime.setter
+    def ProbeTime(self, ProbeTime):
+        self._ProbeTime = ProbeTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SuccessRate(self):
+        return self._SuccessRate
+
+    @SuccessRate.setter
+    def SuccessRate(self, SuccessRate):
+        self._SuccessRate = SuccessRate
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def TaskCategory(self):
+        return self._TaskCategory
+
+    @TaskCategory.setter
+    def TaskCategory(self, TaskCategory):
+        self._TaskCategory = TaskCategory
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TargetAddress = params.get("TargetAddress")
+        self._TaskType = params.get("TaskType")
+        self._ProbeTime = params.get("ProbeTime")
+        self._Status = params.get("Status")
+        self._SuccessRate = params.get("SuccessRate")
+        self._NodeCount = params.get("NodeCount")
+        self._TaskCategory = params.get("TaskCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SuspendProbeTaskRequest(AbstractModel):
@@ -2477,19 +2719,21 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIds: 任务 ID
+        :param _TaskIds: 任务 ID，如task-n1wchki8
         :type TaskIds: list of str
-        :param _Nodes: 拨测节点
+        :param _Nodes: 拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
         :type Nodes: list of str
-        :param _Interval: 拨测间隔
+        :param _Interval: 拨测间隔，如30，单位为分钟。
         :type Interval: int
-        :param _Parameters: 拨测参数
+        :param _Parameters: 拨测参数，详细参数配置可参考云拨测官网文档。
         :type Parameters: str
         :param _Cron: 定时任务cron表达式
         :type Cron: str
         :param _ResourceIDs: 预付费套餐id
 需要与taskId对应
         :type ResourceIDs: list of str
+        :param _NodeIpType: 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+        :type NodeIpType: int
         """
         self._TaskIds = None
         self._Nodes = None
@@ -2497,6 +2741,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Parameters = None
         self._Cron = None
         self._ResourceIDs = None
+        self._NodeIpType = None
 
     @property
     def TaskIds(self):
@@ -2546,6 +2791,14 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
     def ResourceIDs(self, ResourceIDs):
         self._ResourceIDs = ResourceIDs
 
+    @property
+    def NodeIpType(self):
+        return self._NodeIpType
+
+    @NodeIpType.setter
+    def NodeIpType(self, NodeIpType):
+        self._NodeIpType = NodeIpType
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -2554,6 +2807,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
         self._Parameters = params.get("Parameters")
         self._Cron = params.get("Cron")
         self._ResourceIDs = params.get("ResourceIDs")
+        self._NodeIpType = params.get("NodeIpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

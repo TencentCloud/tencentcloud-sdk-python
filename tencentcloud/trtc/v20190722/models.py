@@ -276,6 +276,63 @@ class AudioEncode(AbstractModel):
         
 
 
+class AudioEncodeParams(AbstractModel):
+    """音频转码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SampleRate: 音频采样率，取值为[48000, 44100]，单位是Hz。
+        :type SampleRate: int
+        :param _Channel: 音频声道数，取值范围[1,2]，1表示音频为单声道，2表示音频为双声道。
+        :type Channel: int
+        :param _BitRate: 音频码率，取值范围[8,500]，单位为kbps。
+        :type BitRate: int
+        """
+        self._SampleRate = None
+        self._Channel = None
+        self._BitRate = None
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def Channel(self):
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def BitRate(self):
+        return self._BitRate
+
+    @BitRate.setter
+    def BitRate(self, BitRate):
+        self._BitRate = BitRate
+
+
+    def _deserialize(self, params):
+        self._SampleRate = params.get("SampleRate")
+        self._Channel = params.get("Channel")
+        self._BitRate = params.get("BitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioParams(AbstractModel):
     """录制音频转码参数。
 
@@ -2123,6 +2180,91 @@ class DescribeScaleInfoResponse(AbstractModel):
                 obj = ScaleInfomation()
                 obj._deserialize(item)
                 self._ScaleList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamIngestRequest(AbstractModel):
+    """DescribeStreamIngest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同
+        :type SdkAppId: int
+        :param _TaskId: 任务的唯一Id，在启动任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamIngestResponse(AbstractModel):
+    """DescribeStreamIngest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务的状态信息。
+InProgress：表示当前任务正在进行中。
+NotExist：表示当前任务不存在。
+示例值：InProgress
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -8092,6 +8234,179 @@ class StartPublishCdnStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartStreamIngestRequest(AbstractModel):
+    """StartStreamIngest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+        :type RoomId: str
+        :param _RoomIdType: TRTC房间号的类型。
+【*注意】必须和录制的房间所对应的RoomId类型相同:
+0: 字符串类型的RoomId
+1: 32位整型的RoomId（默认）
+        :type RoomIdType: int
+        :param _UserId: 拉流转推机器人的UserId，用于进房发起拉流转推任务。
+        :type UserId: str
+        :param _UserSig: 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        :param _SourceUrl: 源流URL。示例值：https://a.b/test.mp4
+        :type SourceUrl: list of str
+        :param _PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+        :type PrivateMapKey: str
+        :param _VideoEncodeParams: 视频编码参数。可选，如果不填，保持原始流的参数。
+        :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
+        :param _AudioEncodeParams: 音频编码参数。可选，如果不填，保持原始流的参数。
+        :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._UserId = None
+        self._UserSig = None
+        self._SourceUrl = None
+        self._PrivateMapKey = None
+        self._VideoEncodeParams = None
+        self._AudioEncodeParams = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SourceUrl(self):
+        return self._SourceUrl
+
+    @SourceUrl.setter
+    def SourceUrl(self, SourceUrl):
+        self._SourceUrl = SourceUrl
+
+    @property
+    def PrivateMapKey(self):
+        return self._PrivateMapKey
+
+    @PrivateMapKey.setter
+    def PrivateMapKey(self, PrivateMapKey):
+        self._PrivateMapKey = PrivateMapKey
+
+    @property
+    def VideoEncodeParams(self):
+        return self._VideoEncodeParams
+
+    @VideoEncodeParams.setter
+    def VideoEncodeParams(self, VideoEncodeParams):
+        self._VideoEncodeParams = VideoEncodeParams
+
+    @property
+    def AudioEncodeParams(self):
+        return self._AudioEncodeParams
+
+    @AudioEncodeParams.setter
+    def AudioEncodeParams(self, AudioEncodeParams):
+        self._AudioEncodeParams = AudioEncodeParams
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._SourceUrl = params.get("SourceUrl")
+        self._PrivateMapKey = params.get("PrivateMapKey")
+        if params.get("VideoEncodeParams") is not None:
+            self._VideoEncodeParams = VideoEncodeParams()
+            self._VideoEncodeParams._deserialize(params.get("VideoEncodeParams"))
+        if params.get("AudioEncodeParams") is not None:
+            self._AudioEncodeParams = AudioEncodeParams()
+            self._AudioEncodeParams._deserialize(params.get("AudioEncodeParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamIngestResponse(AbstractModel):
+    """StartStreamIngest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 拉流转推的任务 ID。任务 ID 是对一次拉流转推生命周期过程的唯一标识，结束任务时会失去意义。任务 ID 需要业务保存下来，作为下次针对这个任务操作的参数。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """StopMCUMixTranscodeByStrRoomId请求参数结构体
 
@@ -8311,6 +8626,76 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopStreamIngestRequest(AbstractModel):
+    """StopStreamIngest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和任务的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 任务的唯一Id，在启动任务成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopStreamIngestResponse(AbstractModel):
+    """StopStreamIngest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9233,6 +9618,87 @@ class VideoEncode(AbstractModel):
         :param _BitRate: 输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
         :type BitRate: int
         :param _Gop: 输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+        :type Gop: int
+        """
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+        self._BitRate = None
+        self._Gop = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def BitRate(self):
+        return self._BitRate
+
+    @BitRate.setter
+    def BitRate(self, BitRate):
+        self._BitRate = BitRate
+
+    @property
+    def Gop(self):
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._BitRate = params.get("BitRate")
+        self._Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodeParams(AbstractModel):
+    """视频转码参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 宽。取值范围[0,1920]，单位为像素值。
+        :type Width: int
+        :param _Height: 高。取值范围[0,1080]，单位为像素值。
+        :type Height: int
+        :param _Fps: 帧率。取值范围[1,60]，表示帧率可选范围为1到60fps。
+        :type Fps: int
+        :param _BitRate: 码率。取值范围[1,10000]，单位为kbps。
+        :type BitRate: int
+        :param _Gop: gop。取值范围[1,2]，单位为秒。
         :type Gop: int
         """
         self._Width = None

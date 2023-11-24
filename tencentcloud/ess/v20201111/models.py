@@ -837,7 +837,7 @@ class AutoSignConfig(AbstractModel):
         :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。
 
 <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
-</ul>
+<li>**1**: 不绑定自动签账号许可开通，后续使用合同份额进行合同发起</li></ul>
         :type LicenseType: int
         """
         self._UserInfo = None
@@ -1587,9 +1587,7 @@ class CancelUserAutoSignEnableUrlRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 预撤销链接的用户信息，包含姓名、证件类型、证件号码等信息。
 
@@ -3036,14 +3034,14 @@ class CreateDocumentRequest(AbstractModel):
         :param _Operator: 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
-此接口的合同流程ID需要由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>接口创建得到。
+此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
         :type FlowId: str
         :param _TemplateId: 用户配置的合同模板ID，会基于此模板创建合同文档，为32位字符串。
 可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
         :type TemplateId: str
         :param _FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
         :type FileNames: list of str
-        :param _FormFields: 电子文档的填写控件的填充内容。具体方式可以参考<a href="https://qian.tencent.com/developers/companyApis/dataTypes/#formfield" target="_blank">FormField</a>结构体的定义。
+        :param _FormFields: 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
         :type FormFields: list of FormField
         :param _NeedPreview: 是否为预览模式，取值如下：
 <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
@@ -3051,7 +3049,7 @@ class CreateDocumentRequest(AbstractModel):
 注: `当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容，动态表格合成完后会触发文档合成完成的回调通知`
         :type NeedPreview: bool
         :param _PreviewType: 预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子。</li></ul>
 注: `1.此参数在NeedPreview 为true时有效`
 `2.动态表格控件不支持H5链接方式预览`
@@ -3184,7 +3182,7 @@ class CreateDocumentResponse(AbstractModel):
         :param _DocumentId: 合同流程的底层电子文档ID，为32位字符串。
 
 注:
-后续需用同样的FlowId再次调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>，合同才能进入签署环节
+后续需用同样的FlowId再次调用[发起签署流程](https://qian.tencent.com/developers/companyApis/startFlows/StartFlow)，合同才能进入签署环节
         :type DocumentId: str
         :param _PreviewFileUrl: 合同预览链接URL。
 
@@ -3683,7 +3681,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 
 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
         :type Approvers: list of ApproverInfo
-        :param _FileIds: 本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
+        :param _FileIds: 本合同流程需包含的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。
 
 注:  `目前，此接口仅支持单个文件发起。`
         :type FileIds: list of str
@@ -3711,7 +3709,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 <li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
         :type NeedPreview: bool
         :param _PreviewType: 预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后后下载预览的合同PDF文件 </li>
+<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
 <li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
 注: `此参数在NeedPreview 为true时有效`
 
@@ -3753,7 +3751,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type NeedSignReview: bool
         :param _UserData: 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
 
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的[回调通知](https://qian.tencent.com/developers/company/callback_types_v2)模块。
         :type UserData: str
         :param _ApproverVerifyType: 指定个人签署方查看合同的校验方式
 <ul><li>   **VerifyCheck**  :（默认）人脸识别,人脸识别后才能合同内容 </li>
@@ -6489,8 +6487,6 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :type UserName: str
         :param _IdCardType: 证件类型，支持以下类型
 <ul><li> ID_CARD  : 居民身份证 (默认值)</li>
-<li> PASSPORT  : 护照</li>
-<li> FOREIGN_ID_CARD  : 外国人永久居留身份证</li>
 <li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
 <li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
         :type IdCardType: str
@@ -6502,12 +6498,18 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+
+注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+        :type SceneKey: str
         """
         self._Operator = None
         self._UserName = None
         self._IdCardType = None
         self._IdCardNumber = None
         self._Agent = None
+        self._SceneKey = None
 
     @property
     def Operator(self):
@@ -6549,6 +6551,14 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6560,6 +6570,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7064,6 +7075,11 @@ BLUE 蓝色。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _LicenseType: 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
         :type LicenseType: int
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+
+注: `不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN`
+        :type SceneKey: str
         """
         self._UserName = None
         self._IdCardNumber = None
@@ -7079,6 +7095,7 @@ BLUE 蓝色。
         self._FileId = None
         self._Agent = None
         self._LicenseType = None
+        self._SceneKey = None
 
     @property
     def UserName(self):
@@ -7196,6 +7213,14 @@ BLUE 蓝色。
     def LicenseType(self, LicenseType):
         self._LicenseType = LicenseType
 
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -7216,6 +7241,7 @@ BLUE 蓝色。
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._LicenseType = params.get("LicenseType")
+        self._SceneKey = params.get("SceneKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7450,7 +7476,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         :param _Mobile: 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
         :type Mobile: str
         :param _IdCardType: 证件类型，支持以下类型
-<ul><li>ID_CARD : 居民身份证(默认值)</li>
+<ul><li>ID_CARD : 居民身份证</li>
 <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li></ul>
         :type IdCardType: str
@@ -8219,9 +8245,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _AutoSignConfig: 自动签开通配置信息, 包括开通的人员的信息等
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
@@ -8231,7 +8255,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
         :type UrlType: str
         :param _NotifyType: 是否通知开通方，通知类型:
 <ul><li>默认不设置为不通知开通方</li>
-<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li><ul>
+<li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
         :type NotifyType: str
         :param _NotifyAddress: 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
         :type NotifyAddress: str
@@ -8458,9 +8482,7 @@ class CreateUserAutoSignSealUrlRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 自动签开通个人用户信息, 包括名字,身份证等。
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -9849,7 +9871,7 @@ class DescribeFileUrlsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FileUrls: 文件URL信息；
-链接不是永久链接,  过期时间收UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。
+链接不是永久链接,  过期时间受UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。
         :type FileUrls: list of FileUrl
         :param _TotalCount: URL数量
         :type TotalCount: int
@@ -11557,8 +11579,7 @@ class DescribePersonCertificateRequest(AbstractModel):
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _SceneKey: 证书使用场景，可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         """
         self._Operator = None
@@ -11771,9 +11792,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
-
-注: `现在仅支持电子处方场景`
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 要查询状态的用户信息, 包括名字,身份证等
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -11930,7 +11949,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN** 电子处方</li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: 需要关闭自动签的个人的信息，如姓名，证件信息等。
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -13387,7 +13406,7 @@ class FlowCreateApprover(AbstractModel):
         :type CustomApproverTag: str
         :param _RegisterInfo: 已经废弃, 快速注册相关信息
         :type RegisterInfo: :class:`tencentcloud.ess.v20201111.models.RegisterInfo`
-        :param _ApproverOption: 签署人个性化能力值，如是否可以转发他人处理、是否可以拒签等功能开关。
+        :param _ApproverOption: 签署人个性化能力值，如是否可以转发他人处理、是否可以拒签、是否为动态补充签署人等功能开关。
         :type ApproverOption: :class:`tencentcloud.ess.v20201111.models.ApproverOption`
         :param _JumpUrl: 签署完前端跳转的url，暂未使用
         :type JumpUrl: str
@@ -14779,9 +14798,13 @@ MainOrg：在集团企业的场景下，返回此值代表是归属主企业
 CurrentOrg：在普通企业场景下返回此值；或者在集团企业的场景下，返回此值代表归属子企业
 注意：此字段可能返回 null，表示取不到有效值。
         :type BelongTo: str
+        :param _MainOrganizationId: 集团主企业id，当前企业为集团子企业时，该字段有值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MainOrganizationId: str
         """
         self._UserId = None
         self._BelongTo = None
+        self._MainOrganizationId = None
 
     @property
     def UserId(self):
@@ -14799,10 +14822,19 @@ CurrentOrg：在普通企业场景下返回此值；或者在集团企业的场�
     def BelongTo(self, BelongTo):
         self._BelongTo = BelongTo
 
+    @property
+    def MainOrganizationId(self):
+        return self._MainOrganizationId
+
+    @MainOrganizationId.setter
+    def MainOrganizationId(self, MainOrganizationId):
+        self._MainOrganizationId = MainOrganizationId
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
         self._BelongTo = params.get("BelongTo")
+        self._MainOrganizationId = params.get("MainOrganizationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

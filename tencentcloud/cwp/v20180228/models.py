@@ -35998,6 +35998,8 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         :type AutoRepurchaseRenewSwitch: bool
         :param _DestroyOrderNum: 已销毁订单数
         :type DestroyOrderNum: int
+        :param _RepurchaseRenewSwitch: 是否自动续费开关,true 开启,false 关闭
+        :type RepurchaseRenewSwitch: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -36019,6 +36021,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoRepurchaseSwitch = None
         self._AutoRepurchaseRenewSwitch = None
         self._DestroyOrderNum = None
+        self._RepurchaseRenewSwitch = None
         self._RequestId = None
 
     @property
@@ -36166,6 +36169,14 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._DestroyOrderNum = DestroyOrderNum
 
     @property
+    def RepurchaseRenewSwitch(self):
+        return self._RepurchaseRenewSwitch
+
+    @RepurchaseRenewSwitch.setter
+    def RepurchaseRenewSwitch(self, RepurchaseRenewSwitch):
+        self._RepurchaseRenewSwitch = RepurchaseRenewSwitch
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -36193,6 +36204,7 @@ class DescribeLicenseGeneralResponse(AbstractModel):
         self._AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
         self._AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
         self._DestroyOrderNum = params.get("DestroyOrderNum")
+        self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
         self._RequestId = params.get("RequestId")
 
 
@@ -68348,10 +68360,13 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
         :type AutoRepurchaseSwitch: int
         :param _AutoRepurchaseRenewSwitch: 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
         :type AutoRepurchaseRenewSwitch: int
+        :param _RepurchaseRenewSwitch: 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
+        :type RepurchaseRenewSwitch: int
         """
         self._Status = None
         self._AutoRepurchaseSwitch = None
         self._AutoRepurchaseRenewSwitch = None
+        self._RepurchaseRenewSwitch = None
 
     @property
     def Status(self):
@@ -68377,11 +68392,20 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
     def AutoRepurchaseRenewSwitch(self, AutoRepurchaseRenewSwitch):
         self._AutoRepurchaseRenewSwitch = AutoRepurchaseRenewSwitch
 
+    @property
+    def RepurchaseRenewSwitch(self):
+        return self._RepurchaseRenewSwitch
+
+    @RepurchaseRenewSwitch.setter
+    def RepurchaseRenewSwitch(self, RepurchaseRenewSwitch):
+        self._RepurchaseRenewSwitch = RepurchaseRenewSwitch
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._AutoRepurchaseSwitch = params.get("AutoRepurchaseSwitch")
         self._AutoRepurchaseRenewSwitch = params.get("AutoRepurchaseRenewSwitch")
+        self._RepurchaseRenewSwitch = params.get("RepurchaseRenewSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

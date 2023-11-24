@@ -3614,6 +3614,116 @@ class Compression(AbstractModel):
         
 
 
+class ConfigGroupVersionInfo(AbstractModel):
+    """配置组版本信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: 版本 ID。
+        :type VersionId: str
+        :param _VersionNumber: 版本号。
+        :type VersionNumber: str
+        :param _GroupId: 配置组 ID。
+        :type GroupId: str
+        :param _GroupType: 配置组类型。取值有：
+<li>l7_acceleration ：七层加速配置组。</li>
+<li>edge_functions ：边缘函数配置组。</li>
+        :type GroupType: str
+        :param _Description: 版本描述。
+        :type Description: str
+        :param _Status: 版本状态，取值有：
+<li>creating：创建中；</li>
+<li>inactive：未生效；</li>
+<li>active：已生效。</li>
+        :type Status: str
+        :param _CreateTime: 版本创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type CreateTime: str
+        """
+        self._VersionId = None
+        self._VersionNumber = None
+        self._GroupId = None
+        self._GroupType = None
+        self._Description = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionNumber(self):
+        return self._VersionNumber
+
+    @VersionNumber.setter
+    def VersionNumber(self, VersionNumber):
+        self._VersionNumber = VersionNumber
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._VersionNumber = params.get("VersionNumber")
+        self._GroupId = params.get("GroupId")
+        self._GroupType = params.get("GroupType")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccelerationDomainRequest(AbstractModel):
     """CreateAccelerationDomain请求参数结构体
 
@@ -4279,6 +4389,112 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConfigGroupVersionRequest(AbstractModel):
+    """CreateConfigGroupVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GroupId: 待新建版本的配置组 ID。
+        :type GroupId: str
+        :param _Content: 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置文件内容可参考下方示例。
+        :type Content: str
+        :param _Description: 版本描述，可输入最大长度为 50 个字符，可以通过本字段填写该版本的使用场景等。
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Content = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Content = params.get("Content")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigGroupVersionResponse(AbstractModel):
+    """CreateConfigGroupVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: 版本 ID。
+        :type VersionId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6350,6 +6566,219 @@ class DeleteZoneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeployConfigGroupVersionRequest(AbstractModel):
+    """DeployConfigGroupVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _EnvId: 环境 ID。请填写版本需要发布到的环境 ID。
+        :type EnvId: str
+        :param _ConfigGroupVersionInfos: 需要发布的版本信息。可以同时变更多个不同配置组的版本，每个配置组一次仅支持变更一个版本。
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _Description: 变更说明。用于描述此次变更的内容、原因，最大支持 100 个字符。
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._EnvId = None
+        self._ConfigGroupVersionInfos = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EnvId = params.get("EnvId")
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployConfigGroupVersionResponse(AbstractModel):
+    """DeployConfigGroupVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 发布记录 ID。
+        :type RecordId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeployRecord(AbstractModel):
+    """配置组版本发布记录详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupVersionInfos: 发布版本的详细信息。
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _DeployTime: 发布时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type DeployTime: str
+        :param _Status: 发布状态，取值有：
+<li> deploying ：发布中；</li>
+<li>failure ：发布失败；</li>
+<li>success： 发布成功。</li>
+        :type Status: str
+        :param _Message: 发布结果信息。
+        :type Message: str
+        :param _RecordId: 发布记录 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _Description: 变更说明。
+        :type Description: str
+        """
+        self._ConfigGroupVersionInfos = None
+        self._DeployTime = None
+        self._Status = None
+        self._Message = None
+        self._RecordId = None
+        self._Description = None
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
+        self._DeployTime = params.get("DeployTime")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._RecordId = params.get("RecordId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAccelerationDomainsRequest(AbstractModel):
     """DescribeAccelerationDomains请求参数结构体
 
@@ -6817,6 +7246,243 @@ class DescribeAvailablePlansResponse(AbstractModel):
                 obj = PlanInfo()
                 obj._deserialize(item)
                 self._PlanInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigGroupVersionDetailRequest(AbstractModel):
+    """DescribeConfigGroupVersionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _VersionId: 版本 ID。
+        :type VersionId: str
+        """
+        self._ZoneId = None
+        self._VersionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigGroupVersionDetailResponse(AbstractModel):
+    """DescribeConfigGroupVersionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupVersionInfo: 版本信息。
+        :type ConfigGroupVersionInfo: :class:`tencentcloud.teo.v20220901.models.ConfigGroupVersionInfo`
+        :param _Content: 版本文件的内容。以 JSON 格式返回。
+        :type Content: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConfigGroupVersionInfo = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def ConfigGroupVersionInfo(self):
+        return self._ConfigGroupVersionInfo
+
+    @ConfigGroupVersionInfo.setter
+    def ConfigGroupVersionInfo(self, ConfigGroupVersionInfo):
+        self._ConfigGroupVersionInfo = ConfigGroupVersionInfo
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigGroupVersionInfo") is not None:
+            self._ConfigGroupVersionInfo = ConfigGroupVersionInfo()
+            self._ConfigGroupVersionInfo._deserialize(params.get("ConfigGroupVersionInfo"))
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigGroupVersionsRequest(AbstractModel):
+    """DescribeConfigGroupVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _GroupId: 配置组 ID。
+        :type GroupId: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20，该参数不填写时，返回所选配置组下的所有版本信息。详细的过滤条件如下：
+<li>version-id：按照版本 ID 进行过滤；</li>
+        :type Filters: list of AdvancedFilter
+        :param _Offset: 分页查询偏移量。默认值为 0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值为 20，最大值为 100。 
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigGroupVersionsResponse(AbstractModel):
+    """DescribeConfigGroupVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 版本总数。
+        :type TotalCount: int
+        :param _ConfigGroupVersionInfos: 版本信息列表。
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigGroupVersionInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7612,6 +8278,210 @@ class DescribeDefaultCertificatesResponse(AbstractModel):
                 obj = DefaultServerCertInfo()
                 obj._deserialize(item)
                 self._DefaultServerCertInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeployHistoryRequest(AbstractModel):
+    """DescribeDeployHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _EnvId: 环境 ID。
+        :type EnvId: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20，详细的过滤条件如下：
+<li>record-id：按照发布记录 ID 进行过滤进行过滤。</li>
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._EnvId = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EnvId = params.get("EnvId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeployHistoryResponse(AbstractModel):
+    """DescribeDeployHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 发布记录总数。
+        :type TotalCount: int
+        :param _Records: 发布记录详情。
+        :type Records: list of DeployRecord
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Records = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = DeployRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentsRequest(AbstractModel):
+    """DescribeEnvironments请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentsResponse(AbstractModel):
+    """DescribeEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 环境总数。
+        :type TotalCount: int
+        :param _EnvInfos: 环境列表。
+        :type EnvInfos: list of EnvInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._EnvInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvInfos(self):
+        return self._EnvInfos
+
+    @EnvInfos.setter
+    def EnvInfos(self, EnvInfos):
+        self._EnvInfos = EnvInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("EnvInfos") is not None:
+            self._EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self._EnvInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -11047,6 +11917,124 @@ class EntityStatus(AbstractModel):
         self._Entity = params.get("Entity")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvInfo(AbstractModel):
+    """环境信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID。
+        :type EnvId: str
+        :param _EnvType: 环境类型，取值有：
+<li>production: 生产环境；</li><li>staging: 测试环境。</li>
+        :type EnvType: str
+        :param _Status: 环境状态，取值有：
+<li>creating：创建中；</li>
+<li>running：稳定运行中，可进行版本变更；</li>
+<li>version_deploying：版本部署中，不能进行新的变更。</li>
+        :type Status: str
+        :param _Scope: 当前环境的配置生效范围：
+<li>当 EnvType 取值为 production 时，该参数值为 ["ALL"]，代表全网生效；</li>
+<li>当 EnvType 取值为 staging 时，会返回测试节点 IP，可用于绑定 host 测试。</li>
+        :type Scope: list of str
+        :param _CurrentConfigGroupVersionInfos: 当前环境中各配置组实际生效的版本，根据 Status 的取值有以下两种情况：
+<li>当 Status 取值为 version_deploying 时，本字段返回的值为执行变更动作之前生效的版本，即新版本部署期间，实际生效的版本为执行变更动作之前的版本；</li>
+<li>当 Status 取值为 running 时，本字段返回的值即为当前实际生效的版本。</li>
+        :type CurrentConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _CreateTime: 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :type UpdateTime: str
+        """
+        self._EnvId = None
+        self._EnvType = None
+        self._Status = None
+        self._Scope = None
+        self._CurrentConfigGroupVersionInfos = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def CurrentConfigGroupVersionInfos(self):
+        return self._CurrentConfigGroupVersionInfos
+
+    @CurrentConfigGroupVersionInfos.setter
+    def CurrentConfigGroupVersionInfos(self, CurrentConfigGroupVersionInfos):
+        self._CurrentConfigGroupVersionInfos = CurrentConfigGroupVersionInfos
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._EnvType = params.get("EnvType")
+        self._Status = params.get("Status")
+        self._Scope = params.get("Scope")
+        if params.get("CurrentConfigGroupVersionInfos") is not None:
+            self._CurrentConfigGroupVersionInfos = []
+            for item in params.get("CurrentConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._CurrentConfigGroupVersionInfos.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

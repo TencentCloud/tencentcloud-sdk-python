@@ -1213,7 +1213,7 @@ class CancelShareBlueprintAcrossAccountsRequest(AbstractModel):
         r"""
         :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
         :type BlueprintId: str
-        :param _AccountIds: 接收共享镜像的账号ID列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+        :param _AccountIds: 接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :type AccountIds: list of str
         """
         self._BlueprintId = None
@@ -5587,7 +5587,7 @@ class DescribeGeneralResourceQuotasRequest(AbstractModel):
 - EXCLUSIVE_BUNDLE_INSTANCE 专属型套餐实例
 - BEFAST_BUNDLE_INSTANCE 蜂驰型套餐实例
 - STARTER_BUNDLE_INSTANCE 入门型套餐实例
-- HK_EXCLUSIVE_BUNDLE_INSTANCE 香港专属型套餐实例
+- HK_EXCLUSIVE_BUNDLE_INSTANCE 中国香港专属型套餐实例
 - CAREFREE_BUNDLE_INSTANCE 无忧型套餐实例
 - USER_KEY_PAIR 密钥对
 - SNAPSHOT 快照
@@ -14037,7 +14037,7 @@ class ShareBlueprintAcrossAccountsRequest(AbstractModel):
         r"""
         :param _BlueprintId: 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
         :type BlueprintId: str
-        :param _AccountIds: 接收共享镜像的账号Id列表。帐号ID不同于QQ号，查询用户帐号ID请查看帐号信息中的帐号ID栏。账号个数取值最大为10。
+        :param _AccountIds: 接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
         :type AccountIds: list of str
         """
         self._BlueprintId = None

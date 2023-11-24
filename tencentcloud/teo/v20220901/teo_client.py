@@ -212,6 +212,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConfigGroupVersion(self, request):
+        """在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for CreateConfigGroupVersion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigGroupVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConfigGroupVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
@@ -607,6 +630,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeployConfigGroupVersion(self, request):
+        """在版本管理模式下，用于版本发布，可通过 EnvId 将版本发布至测试环境或生产环境。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for DeployConfigGroupVersion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployConfigGroupVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployConfigGroupVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccelerationDomains(self, request):
         """您可以通过本接口查看站点下的域名信息，包括加速域名、源站以及域名状态等信息。您可以查看站点下全部域名的信息，也可以指定过滤条件查询对应的域名信息。
 
@@ -690,6 +736,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeAvailablePlans", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailablePlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigGroupVersionDetail(self, request):
+        """在版本管理模式下，用于获取版本的详细信息，包括版本 ID、描述、状态、创建时间、所属配置组信息以及版本配置文件的内容。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for DescribeConfigGroupVersionDetail.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigGroupVersionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigGroupVersionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigGroupVersions(self, request):
+        """在版本管理模式下，用于查询指定配置组的版本列表。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for DescribeConfigGroupVersions.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigGroupVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigGroupVersionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -805,6 +897,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeDefaultCertificates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDefaultCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeployHistory(self, request):
+        """在版本管理模式下，用于查询生产/测试环境的版本发布历史。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for DescribeDeployHistory.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeployHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeployHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEnvironments(self, request):
+        """在版本管理模式下，用于查询环境信息，可获取环境 ID、类型、当前生效版本等。版本管理功能内测中，当前仅白名单开放。
+
+        :param request: Request instance for DescribeEnvironments.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvironmentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

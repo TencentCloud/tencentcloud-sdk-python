@@ -3899,12 +3899,21 @@ class GetFunctionResponse(AbstractModel):
         :param _TraceEnable: 是否开启事件追踪
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceEnable: str
+        :param _ImageConfig: 镜像配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageConfig: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
         :param _ProtocolType: HTTP函数支持的访问协议。当前支持WebSockets协议。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: str
         :param _ProtocolParams: HTTP函数配置ProtocolType访问协议，当前协议配置的参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
+        :param _DnsCache: 是否开启DNS缓存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DnsCache: str
+        :param _IntranetConfig: 内网访问配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetConfig: :class:`tencentcloud.scf.v20180416.models.IntranetConfigOut`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3950,8 +3959,11 @@ class GetFunctionResponse(AbstractModel):
         self._StatusReasons = None
         self._AsyncRunEnable = None
         self._TraceEnable = None
+        self._ImageConfig = None
         self._ProtocolType = None
         self._ProtocolParams = None
+        self._DnsCache = None
+        self._IntranetConfig = None
         self._RequestId = None
 
     @property
@@ -4291,6 +4303,14 @@ class GetFunctionResponse(AbstractModel):
         self._TraceEnable = TraceEnable
 
     @property
+    def ImageConfig(self):
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
+    @property
     def ProtocolType(self):
         return self._ProtocolType
 
@@ -4305,6 +4325,22 @@ class GetFunctionResponse(AbstractModel):
     @ProtocolParams.setter
     def ProtocolParams(self, ProtocolParams):
         self._ProtocolParams = ProtocolParams
+
+    @property
+    def DnsCache(self):
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def IntranetConfig(self):
+        return self._IntranetConfig
+
+    @IntranetConfig.setter
+    def IntranetConfig(self, IntranetConfig):
+        self._IntranetConfig = IntranetConfig
 
     @property
     def RequestId(self):
@@ -4392,10 +4428,17 @@ class GetFunctionResponse(AbstractModel):
                 self._StatusReasons.append(obj)
         self._AsyncRunEnable = params.get("AsyncRunEnable")
         self._TraceEnable = params.get("TraceEnable")
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
         self._ProtocolType = params.get("ProtocolType")
         if params.get("ProtocolParams") is not None:
             self._ProtocolParams = ProtocolParams()
             self._ProtocolParams._deserialize(params.get("ProtocolParams"))
+        self._DnsCache = params.get("DnsCache")
+        if params.get("IntranetConfig") is not None:
+            self._IntranetConfig = IntranetConfigOut()
+            self._IntranetConfig._deserialize(params.get("IntranetConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4935,9 +4978,9 @@ class ImageConfig(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerImageAccelerate: bool
         :param _ImagePort: 镜像函数端口设置
+默认值: 9000
 -1: 无端口镜像函数
-0: 默认端口，当前默认端口是9000
-其他: 特殊端口
+其他: 取值范围 0 ~ 65535
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImagePort: int
         """
@@ -5071,6 +5114,54 @@ class InstanceConcurrencyConfig(AbstractModel):
     def _deserialize(self, params):
         self._DynamicEnabled = params.get("DynamicEnabled")
         self._MaxConcurrency = params.get("MaxConcurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntranetConfigOut(AbstractModel):
+    """内网配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpFixed: 是否启用固定内网IP
+ENABLE 为启用
+DISABLE 为不启用
+        :type IpFixed: str
+        :param _IpAddress: 若已启用固定内网IP，则该字段返回使用的IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpAddress: list of str
+        """
+        self._IpFixed = None
+        self._IpAddress = None
+
+    @property
+    def IpFixed(self):
+        return self._IpFixed
+
+    @IpFixed.setter
+    def IpFixed(self, IpFixed):
+        self._IpFixed = IpFixed
+
+    @property
+    def IpAddress(self):
+        return self._IpAddress
+
+    @IpAddress.setter
+    def IpAddress(self, IpAddress):
+        self._IpAddress = IpAddress
+
+
+    def _deserialize(self, params):
+        self._IpFixed = params.get("IpFixed")
+        self._IpAddress = params.get("IpAddress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
