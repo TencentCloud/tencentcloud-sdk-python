@@ -5863,6 +5863,12 @@ class JobConfig(AbstractModel):
         :param _JobGraph: 算子拓扑图
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobGraph: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
+        :param _EsServerlessIndex: es索引
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsServerlessIndex: str
+        :param _EsServerlessSpace: es空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsServerlessSpace: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -5892,6 +5898,8 @@ class JobConfig(AbstractModel):
         self._TraceModeConfiguration = None
         self._CheckpointRetainedNum = None
         self._JobGraph = None
+        self._EsServerlessIndex = None
+        self._EsServerlessSpace = None
 
     @property
     def JobId(self):
@@ -6117,6 +6125,22 @@ class JobConfig(AbstractModel):
     def JobGraph(self, JobGraph):
         self._JobGraph = JobGraph
 
+    @property
+    def EsServerlessIndex(self):
+        return self._EsServerlessIndex
+
+    @EsServerlessIndex.setter
+    def EsServerlessIndex(self, EsServerlessIndex):
+        self._EsServerlessIndex = EsServerlessIndex
+
+    @property
+    def EsServerlessSpace(self):
+        return self._EsServerlessSpace
+
+    @EsServerlessSpace.setter
+    def EsServerlessSpace(self, EsServerlessSpace):
+        self._EsServerlessSpace = EsServerlessSpace
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6168,6 +6192,8 @@ class JobConfig(AbstractModel):
         if params.get("JobGraph") is not None:
             self._JobGraph = JobGraph()
             self._JobGraph._deserialize(params.get("JobGraph"))
+        self._EsServerlessIndex = params.get("EsServerlessIndex")
+        self._EsServerlessSpace = params.get("EsServerlessSpace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

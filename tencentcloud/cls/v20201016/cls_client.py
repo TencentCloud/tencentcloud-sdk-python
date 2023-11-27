@@ -302,6 +302,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDeliverCloudFunction(self, request):
+        """本接口用于创建投递SCF任务
+
+        :param request: Request instance for CreateDeliverCloudFunction.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeliverCloudFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeliverCloudFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExport(self, request):
         """本接口仅创建下载任务，任务返回的下载地址，请用户调用DescribeExports查看任务列表。其中有下载地址CosPath参数。参考文档https://cloud.tencent.com/document/product/614/56449
 

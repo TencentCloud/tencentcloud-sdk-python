@@ -6634,6 +6634,178 @@ class DescribeBatchTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillingResourceGroupRequest(AbstractModel):
+    """DescribeBillingResourceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+        :type ResourceGroupId: str
+        :param _Filters: 过滤条件
+注意: 
+1. Filter.Name 只支持以下枚举值:
+    InstanceId (资源组节点id)
+    InstanceStatus (资源组节点状态)
+2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
+3. 每次请求的Filters的上限为10，Filter.Values的上限为100
+        :type Filters: list of Filter
+        :param _Offset: 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
+        :type Offset: int
+        :param _Limit: 分页查询每页大小，最大30; 默认20
+        :type Limit: int
+        :param _Order: 排序方向; 枚举值: ASC | DESC；默认DESC
+        :type Order: str
+        :param _OrderField: 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+        :type OrderField: str
+        """
+        self._ResourceGroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._OrderField = None
+
+    @property
+    def ResourceGroupId(self):
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingResourceGroupResponse(AbstractModel):
+    """DescribeBillingResourceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _InstanceSet: 资源组节点信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceSet: list of Instance
+        :param _ResourceGroupSWType: 资源组纳管类型
+        :type ResourceGroupSWType: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceSet = None
+        self._ResourceGroupSWType = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceSet(self):
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def ResourceGroupSWType(self):
+        return self._ResourceGroupSWType
+
+    @ResourceGroupSWType.setter
+    def ResourceGroupSWType(self, ResourceGroupSWType):
+        self._ResourceGroupSWType = ResourceGroupSWType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = Instance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._ResourceGroupSWType = params.get("ResourceGroupSWType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillingResourceGroupsRequest(AbstractModel):
     """DescribeBillingResourceGroups请求参数结构体
 

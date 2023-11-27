@@ -501,6 +501,94 @@ ConfigurationItemChangeNotification：变更触发
         
 
 
+class Evaluation(AbstractModel):
+    """自定义规则评估结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplianceResourceId: 已评估资源ID。长度为0~256个字符
+        :type ComplianceResourceId: str
+        :param _ComplianceResourceType: 已评估资源类型。
+支持:
+QCS::CVM::Instance、 QCS::CBS::Disk、QCS::VPC::Vpc、QCS::VPC::Subnet、QCS::VPC::SecurityGroup、 QCS::CAM::User、QCS::CAM::Group、QCS::CAM::Policy、QCS::CAM::Role、QCS::COS::Bucket
+        :type ComplianceResourceType: str
+        :param _ComplianceRegion: 已评估资源地域。
+长度为0~32个字符
+        :type ComplianceRegion: str
+        :param _ComplianceType: 合规类型。取值：
+COMPLIANT：合规、
+NON_COMPLIANT：不合规
+        :type ComplianceType: str
+        :param _Annotation: 不合规资源的补充信息。
+        :type Annotation: :class:`tencentcloud.config.v20220802.models.Annotation`
+        """
+        self._ComplianceResourceId = None
+        self._ComplianceResourceType = None
+        self._ComplianceRegion = None
+        self._ComplianceType = None
+        self._Annotation = None
+
+    @property
+    def ComplianceResourceId(self):
+        return self._ComplianceResourceId
+
+    @ComplianceResourceId.setter
+    def ComplianceResourceId(self, ComplianceResourceId):
+        self._ComplianceResourceId = ComplianceResourceId
+
+    @property
+    def ComplianceResourceType(self):
+        return self._ComplianceResourceType
+
+    @ComplianceResourceType.setter
+    def ComplianceResourceType(self, ComplianceResourceType):
+        self._ComplianceResourceType = ComplianceResourceType
+
+    @property
+    def ComplianceRegion(self):
+        return self._ComplianceRegion
+
+    @ComplianceRegion.setter
+    def ComplianceRegion(self, ComplianceRegion):
+        self._ComplianceRegion = ComplianceRegion
+
+    @property
+    def ComplianceType(self):
+        return self._ComplianceType
+
+    @ComplianceType.setter
+    def ComplianceType(self, ComplianceType):
+        self._ComplianceType = ComplianceType
+
+    @property
+    def Annotation(self):
+        return self._Annotation
+
+    @Annotation.setter
+    def Annotation(self, Annotation):
+        self._Annotation = Annotation
+
+
+    def _deserialize(self, params):
+        self._ComplianceResourceId = params.get("ComplianceResourceId")
+        self._ComplianceResourceType = params.get("ComplianceResourceType")
+        self._ComplianceRegion = params.get("ComplianceRegion")
+        self._ComplianceType = params.get("ComplianceType")
+        if params.get("Annotation") is not None:
+            self._Annotation = Annotation()
+            self._Annotation._deserialize(params.get("Annotation"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputParameter(AbstractModel):
     """参数值
 
@@ -990,6 +1078,81 @@ class ListConfigRulesResponse(AbstractModel):
                 obj = ConfigRule()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class PutEvaluationsRequest(AbstractModel):
+    """PutEvaluations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultToken: 回调令牌。从自定义规则所选的scf云函数Context中取参数ResultToken值
+        :type ResultToken: str
+        :param _Evaluations: 自定义规则评估结果信息。
+        :type Evaluations: list of Evaluation
+        """
+        self._ResultToken = None
+        self._Evaluations = None
+
+    @property
+    def ResultToken(self):
+        return self._ResultToken
+
+    @ResultToken.setter
+    def ResultToken(self, ResultToken):
+        self._ResultToken = ResultToken
+
+    @property
+    def Evaluations(self):
+        return self._Evaluations
+
+    @Evaluations.setter
+    def Evaluations(self, Evaluations):
+        self._Evaluations = Evaluations
+
+
+    def _deserialize(self, params):
+        self._ResultToken = params.get("ResultToken")
+        if params.get("Evaluations") is not None:
+            self._Evaluations = []
+            for item in params.get("Evaluations"):
+                obj = Evaluation()
+                obj._deserialize(item)
+                self._Evaluations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutEvaluationsResponse(AbstractModel):
+    """PutEvaluations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

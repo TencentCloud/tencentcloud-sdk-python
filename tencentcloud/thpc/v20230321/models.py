@@ -2552,7 +2552,7 @@ class DescribeQueuesResponse(AbstractModel):
 
 
 class EnhancedService(AbstractModel):
-    """描述了实例的增强服务启用情况与其设置，如云安全，云监控等实例 Agent
+    """描述了实例的增强服务启用情况与其设置，如云安全，腾讯云可观测平台等实例 Agent
 
     """
 
@@ -2561,7 +2561,7 @@ class EnhancedService(AbstractModel):
         :param _SecurityService: 开启云安全服务。若不指定该参数，则默认开启云安全服务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityService: :class:`tencentcloud.thpc.v20230321.models.RunSecurityServiceEnabled`
-        :param _MonitorService: 开启云监控服务。若不指定该参数，则默认开启云监控服务。
+        :param _MonitorService: 开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorService: :class:`tencentcloud.thpc.v20230321.models.RunMonitorServiceEnabled`
         :param _AutomationService: 开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
@@ -3452,7 +3452,7 @@ class ManagerNode(AbstractModel):
         :type InstanceName: str
         :param _ProjectId: 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
         :type ProjectId: int
-        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
         :type EnhancedService: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         self._InstanceChargeType = None
@@ -3990,7 +3990,7 @@ class QueueConfig(AbstractModel):
 - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
 - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
         :type ScaleUpMemRatio: int
-        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认开启腾讯云可观测平台、云安全服务、自动化助手服务。
         :type EnhancedService: :class:`tencentcloud.thpc.v20230321.models.EnhancedService`
         """
         self._QueueName = None
@@ -4420,13 +4420,13 @@ class RunAutomationServiceEnabled(AbstractModel):
 
 
 class RunMonitorServiceEnabled(AbstractModel):
-    """描述了 “云监控” 服务相关的信息。
+    """描述了 “腾讯云可观测平台” 服务相关的信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+        :param _Enabled: 是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务<br><li>FALSE：表示不开启腾讯云可观测平台服务<br><br>默认取值：TRUE。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enabled: bool
         """

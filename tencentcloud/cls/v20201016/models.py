@@ -4353,6 +4353,124 @@ class CreateDataTransformResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDeliverCloudFunctionRequest(AbstractModel):
+    """CreateDeliverCloudFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 投递规则属于的 topic id
+        :type TopicId: str
+        :param _FunctionName: 投递的云函数名字
+        :type FunctionName: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Qualifier: 函数版本
+        :type Qualifier: str
+        :param _Timeout: 投递最长等待时间，单位：秒
+        :type Timeout: int
+        :param _MaxMsgNum: 投递最大消息数
+        :type MaxMsgNum: int
+        """
+        self._TopicId = None
+        self._FunctionName = None
+        self._Namespace = None
+        self._Qualifier = None
+        self._Timeout = None
+        self._MaxMsgNum = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Qualifier(self):
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def MaxMsgNum(self):
+        return self._MaxMsgNum
+
+    @MaxMsgNum.setter
+    def MaxMsgNum(self, MaxMsgNum):
+        self._MaxMsgNum = MaxMsgNum
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._FunctionName = params.get("FunctionName")
+        self._Namespace = params.get("Namespace")
+        self._Qualifier = params.get("Qualifier")
+        self._Timeout = params.get("Timeout")
+        self._MaxMsgNum = params.get("MaxMsgNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeliverCloudFunctionResponse(AbstractModel):
+    """CreateDeliverCloudFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateExportRequest(AbstractModel):
     """CreateExport请求参数结构体
 

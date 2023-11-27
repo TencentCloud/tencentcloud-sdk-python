@@ -70,3 +70,26 @@ class ConfigClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PutEvaluations(self, request):
+        """上报自定义规则评估结果
+
+        :param request: Request instance for PutEvaluations.
+        :type request: :class:`tencentcloud.config.v20220802.models.PutEvaluationsRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.PutEvaluationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PutEvaluations", params, headers=headers)
+            response = json.loads(body)
+            model = models.PutEvaluationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

@@ -302,8 +302,13 @@ class EssbasicClient(AbstractClient):
 
     def ChannelCreateEmbedWebUrl(self, request):
         """本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
-        本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
-        进入web连接后与当前控制台操作保持一致
+
+        本接口下面功能的签署页面链接的生成
+        - 创建印章
+        - 创建模板
+        - 修改模板
+        - 预览模板
+        - 预览合同流程
 
         :param request: Request instance for ChannelCreateEmbedWebUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreateEmbedWebUrlRequest`
@@ -778,11 +783,14 @@ class EssbasicClient(AbstractClient):
 
 
     def ChannelCreatePrepareFlow(self, request):
-        """创建预发起合同
-        通过此接口指定：合同，签署人，填写控件信息，生成预创建合同链接，点击后跳转到web页面完成合同创建并发起
-        可指定合同信息不可更改，签署人信息不可更改
-        合同发起后，填写及签署流程与现有操作流程一致
-        注意：目前仅支持模板发起
+        """通过此接口指定合同、签署人、填写控件等信息，生成嵌入式链接，此链接可以嵌入到其他网页或者直接打开，打开后进入发起页面。在此页面上，合同信息和签署人信息均不可更改。
+
+        注意：
+        1. **仅支持模板**发起
+        2. 只支持PC浏览器操作使用
+
+        嵌入的页面样式如下：
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/b2ae013fb4d747891dd3815bbe897208.png)
 
         :param request: Request instance for ChannelCreatePrepareFlow.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.ChannelCreatePrepareFlowRequest`
@@ -1449,6 +1457,11 @@ class EssbasicClient(AbstractClient):
         <li>印章:   会删除所有的印章所有的机构公章和合同专用章,  然后用新企业名称生成新的机构公章 和合同专用章,  而法人章, 财务专用章和人事专用章不会处理</li>
         <li>证书:   企业证书会重新请求CA机构用新企业名称生成新的证书</li>
         </ul>
+
+
+        注意：
+        1. 生成的电子签小程序链接<font color='red'>只能由企业的法人或者超管</font>点击后进行操作， 其他员工打开后会提示“无权查看该内容”
+        2. 法人可以无需生成链接，直接在电子签小程序中更换本企业的超管
 
         :param request: Request instance for CreateChannelOrganizationInfoChangeUrl.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateChannelOrganizationInfoChangeUrlRequest`

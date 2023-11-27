@@ -96,7 +96,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def BatchReportAppMessage(self, request):
-        """批量消息上报
+        """批量上报应用消息
 
         :param request: Request instance for BatchReportAppMessage.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchReportAppMessageRequest`
@@ -1269,7 +1269,7 @@ class WeilingwithClient(AbstractClient):
 
 
     def ReportAppMessage(self, request):
-        """单条消息上报
+        """上报应用消息
 
         :param request: Request instance for ReportAppMessage.
         :type request: :class:`tencentcloud.weilingwith.v20230427.models.ReportAppMessageRequest`
