@@ -47,7 +47,7 @@ FAILEDOPERATION_CREATEPULSARCLIENTERROR = 'FailedOperation.CreatePulsarClientErr
 # 角色创建失败。
 FAILEDOPERATION_CREATEROLE = 'FailedOperation.CreateRole'
 
-# 创建秘钥失败。
+# 创建密钥失败。
 FAILEDOPERATION_CREATESECRETKEY = 'FailedOperation.CreateSecretKey'
 
 # 创建订阅关系失败。
@@ -113,7 +113,7 @@ FAILEDOPERATION_RESETMSGSUBOFFSETBYTIMESTAMPFAILED = 'FailedOperation.ResetMsgSu
 # 必须先清除关联角色数据才能继续操作。
 FAILEDOPERATION_ROLEINUSE = 'FailedOperation.RoleInUse'
 
-# 保存秘钥失败。
+# 保存密钥失败。
 FAILEDOPERATION_SAVESECRETKEY = 'FailedOperation.SaveSecretKey'
 
 # 消息发送超时。

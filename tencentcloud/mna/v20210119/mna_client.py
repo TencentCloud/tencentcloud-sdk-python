@@ -26,6 +26,29 @@ class MnaClient(AbstractClient):
     _service = 'mna'
 
 
+    def ActivateHardware(self, request):
+        """激活硬件设备
+
+        :param request: Request instance for ActivateHardware.
+        :type request: :class:`tencentcloud.mna.v20210119.models.ActivateHardwareRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.ActivateHardwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateHardware", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateHardwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddDevice(self, request):
         """新建设备记录
 
@@ -40,6 +63,29 @@ class MnaClient(AbstractClient):
             body = self.call("AddDevice", params, headers=headers)
             response = json.loads(body)
             model = models.AddDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddHardware(self, request):
+        """添加硬件设备，生成未激活的硬件设备，可支持批量添加
+
+        :param request: Request instance for AddHardware.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddHardwareRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddHardwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddHardware", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddHardwareResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +279,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetHardwareList(self, request):
+        """租户获取厂商硬件列表
+
+        :param request: Request instance for GetHardwareList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetHardwareListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetHardwareListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetHardwareList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetHardwareListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetMultiFlowStatistic(self, request):
         """批量获取设备流量统计曲线
 
@@ -325,6 +394,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetVendorHardware(self, request):
+        """获取厂商硬件设备列表
+
+        :param request: Request instance for GetVendorHardware.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetVendorHardwareRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetVendorHardwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVendorHardware", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVendorHardwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateDevice(self, request):
         """更新设备信息
 
@@ -339,6 +431,29 @@ class MnaClient(AbstractClient):
             body = self.call("UpdateDevice", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateHardware(self, request):
+        """更新硬件信息
+
+        :param request: Request instance for UpdateHardware.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateHardwareRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateHardwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateHardware", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateHardwareResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

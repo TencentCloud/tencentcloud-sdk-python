@@ -185,6 +185,9 @@ FAILEDOPERATION_RBACFORBIDDEN = 'FailedOperation.RBACForbidden'
 # 记录没有发现。
 FAILEDOPERATION_RECORDNOTFOUND = 'FailedOperation.RecordNotFound'
 
+# tag错误
+FAILEDOPERATION_TAGCOMMON = 'FailedOperation.TagCommon'
+
 # 已有相同任务执行中。
 FAILEDOPERATION_TASKALREADYRUNNING = 'FailedOperation.TaskAlreadyRunning'
 

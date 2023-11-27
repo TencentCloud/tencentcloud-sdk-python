@@ -455,6 +455,140 @@ class RiskDetails(AbstractModel):
         
 
 
+class SentimentAnalysis(AbstractModel):
+    """情感分析结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 情感标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _Score: 标签分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param _Detail: 情感分析明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
+        :param _Code: 响应码，成功为"OK"，失败为"InternalError"
+        :type Code: str
+        :param _Message: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._Label = None
+        self._Score = None
+        self._Detail = None
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Score = params.get("Score")
+        if params.get("Detail") is not None:
+            self._Detail = SentimentDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SentimentDetail(AbstractModel):
+    """情感分析明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Positive: 正向分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Positive: int
+        :param _Negative: 负向分数，取值范围0到100
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Negative: int
+        """
+        self._Positive = None
+        self._Negative = None
+
+    @property
+    def Positive(self):
+        return self._Positive
+
+    @Positive.setter
+    def Positive(self, Positive):
+        self._Positive = Positive
+
+    @property
+    def Negative(self):
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+
+    def _deserialize(self, params):
+        self._Positive = params.get("Positive")
+        self._Negative = params.get("Negative")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """该字段用于返回审核结果明细字段的标签及分数
 
@@ -636,6 +770,9 @@ class TextModerationResponse(AbstractModel):
         :param _ContextText: 该字段用于返回上下文关联文本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContextText: str
+        :param _SentimentAnalysis: 情感分析结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -650,6 +787,7 @@ class TextModerationResponse(AbstractModel):
         self._DataId = None
         self._SubLabel = None
         self._ContextText = None
+        self._SentimentAnalysis = None
         self._RequestId = None
 
     @property
@@ -741,6 +879,14 @@ class TextModerationResponse(AbstractModel):
         self._ContextText = ContextText
 
     @property
+    def SentimentAnalysis(self):
+        return self._SentimentAnalysis
+
+    @SentimentAnalysis.setter
+    def SentimentAnalysis(self, SentimentAnalysis):
+        self._SentimentAnalysis = SentimentAnalysis
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -771,6 +917,9 @@ class TextModerationResponse(AbstractModel):
         self._DataId = params.get("DataId")
         self._SubLabel = params.get("SubLabel")
         self._ContextText = params.get("ContextText")
+        if params.get("SentimentAnalysis") is not None:
+            self._SentimentAnalysis = SentimentAnalysis()
+            self._SentimentAnalysis._deserialize(params.get("SentimentAnalysis"))
         self._RequestId = params.get("RequestId")
 
 

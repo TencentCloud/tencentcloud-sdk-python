@@ -25045,8 +25045,11 @@ class DomainHTTPSConfig(AbstractModel):
         :param _CertExpireTime: 证书过期时间。
 <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
         :type CertExpireTime: str
+        :param _CloudCertId: 腾讯云 SSL 产品中的证书 ID。
+        :type CloudCertId: str
         """
         self._CertExpireTime = None
+        self._CloudCertId = None
 
     @property
     def CertExpireTime(self):
@@ -25056,9 +25059,18 @@ class DomainHTTPSConfig(AbstractModel):
     def CertExpireTime(self, CertExpireTime):
         self._CertExpireTime = CertExpireTime
 
+    @property
+    def CloudCertId(self):
+        return self._CloudCertId
+
+    @CloudCertId.setter
+    def CloudCertId(self, CloudCertId):
+        self._CloudCertId = CloudCertId
+
 
     def _deserialize(self, params):
         self._CertExpireTime = params.get("CertExpireTime")
+        self._CloudCertId = params.get("CloudCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31369,8 +31381,6 @@ class MediaBasicInfo(AbstractModel):
 <li>Image: 图片文件</li>
         :type Category: str
         :param _Status: 文件状态：Normal：正常，Forbidden：封禁。
-
-*注意：此字段暂不支持。	
         :type Status: str
         :param _StorageClass: 媒体文件的存储类别：
 <li> STANDARD：标准存储。</li>

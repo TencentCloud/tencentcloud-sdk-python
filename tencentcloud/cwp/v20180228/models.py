@@ -70431,7 +70431,7 @@ class ModifyLogKafkaDeliverTypeRequest(AbstractModel):
         r"""
         :param _SecurityType: 安全模块类型 1: 入侵检测 2: 漏洞管理 3: 基线管理 4: 高级防御 5:客户端相关 6: 资产指纹
         :type SecurityType: int
-        :param _LogType: 安全模块下的日志类型，http://tapd.woa.com/Teneyes/markdown_wikis/show/#1210131751002328905
+        :param _LogType: 安全模块下的日志类型，
         :type LogType: list of int non-negative
         :param _Switch: 投递开关 0关闭 1开启
         :type Switch: int

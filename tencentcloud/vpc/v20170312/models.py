@@ -22812,7 +22812,7 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
         :type Limit: int
         :param _EndPointServiceIds: 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
         :type EndPointServiceIds: list of str
-        :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+        :param _IsListAuthorizedEndPointService: <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
         :type IsListAuthorizedEndPointService: bool
         """
         self._Filters = None
@@ -27589,6 +27589,12 @@ class EndPointService(AbstractModel):
         :type CreateTime: str
         :param _ServiceType: 挂载的PAAS服务类型，CLB,CDB,CRS
         :type ServiceType: str
+        :param _ServiceUin: Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceUin: str
+        :param _BusinessIpType: 服务IP类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessIpType: int
         """
         self._EndPointServiceId = None
         self._VpcId = None
@@ -27601,6 +27607,8 @@ class EndPointService(AbstractModel):
         self._EndPointSet = None
         self._CreateTime = None
         self._ServiceType = None
+        self._ServiceUin = None
+        self._BusinessIpType = None
 
     @property
     def EndPointServiceId(self):
@@ -27690,6 +27698,22 @@ class EndPointService(AbstractModel):
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def ServiceUin(self):
+        return self._ServiceUin
+
+    @ServiceUin.setter
+    def ServiceUin(self, ServiceUin):
+        self._ServiceUin = ServiceUin
+
+    @property
+    def BusinessIpType(self):
+        return self._BusinessIpType
+
+    @BusinessIpType.setter
+    def BusinessIpType(self, BusinessIpType):
+        self._BusinessIpType = BusinessIpType
+
 
     def _deserialize(self, params):
         self._EndPointServiceId = params.get("EndPointServiceId")
@@ -27708,6 +27732,8 @@ class EndPointService(AbstractModel):
                 self._EndPointSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._ServiceType = params.get("ServiceType")
+        self._ServiceUin = params.get("ServiceUin")
+        self._BusinessIpType = params.get("BusinessIpType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

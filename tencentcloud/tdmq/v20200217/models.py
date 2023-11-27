@@ -3449,10 +3449,10 @@ class CreateProClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: 多可用区部署选择三个可用区，示例"200002","200003","200004"
+        :param _ZoneIds: 多可用区部署选择三个可用区，示例[200002,200003,200004]
 
-单可用区部署选择一个可用区，示例"200002"
-        :type ZoneIds: str
+单可用区部署选择一个可用区，示例[200002]
+        :type ZoneIds: list of int
         :param _ProductName: 集群规格代号
 参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
         :type ProductName: str
@@ -5619,6 +5619,76 @@ class DeleteEnvironmentsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvironmentIds = params.get("EnvironmentIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProClusterRequest(AbstractModel):
+    """DeleteProCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProClusterResponse(AbstractModel):
+    """DeleteProCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 退还实例订单号
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
 
 

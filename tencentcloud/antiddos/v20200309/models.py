@@ -6247,10 +6247,13 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
         :type IdList: list of str
         :param _FilterRegion: 地域名称
         :type FilterRegion: int
+        :param _CnameWafIdList: cnameWaf资源
+        :type CnameWafIdList: list of str
         """
         self._IpList = None
         self._IdList = None
         self._FilterRegion = None
+        self._CnameWafIdList = None
 
     @property
     def IpList(self):
@@ -6276,11 +6279,20 @@ class DescribeBasicDeviceStatusRequest(AbstractModel):
     def FilterRegion(self, FilterRegion):
         self._FilterRegion = FilterRegion
 
+    @property
+    def CnameWafIdList(self):
+        return self._CnameWafIdList
+
+    @CnameWafIdList.setter
+    def CnameWafIdList(self, CnameWafIdList):
+        self._CnameWafIdList = CnameWafIdList
+
 
     def _deserialize(self, params):
         self._IpList = params.get("IpList")
         self._IdList = params.get("IdList")
         self._FilterRegion = params.get("FilterRegion")
+        self._CnameWafIdList = params.get("CnameWafIdList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6306,11 +6318,15 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
         :param _CLBData: 域名化资产的名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLBData: list of KeyValue
+        :param _CnameWafData: cnamewaf资源状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CnameWafData: list of KeyValue
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
         self._CLBData = None
+        self._CnameWafData = None
         self._RequestId = None
 
     @property
@@ -6328,6 +6344,14 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
     @CLBData.setter
     def CLBData(self, CLBData):
         self._CLBData = CLBData
+
+    @property
+    def CnameWafData(self):
+        return self._CnameWafData
+
+    @CnameWafData.setter
+    def CnameWafData(self, CnameWafData):
+        self._CnameWafData = CnameWafData
 
     @property
     def RequestId(self):
@@ -6351,6 +6375,12 @@ class DescribeBasicDeviceStatusResponse(AbstractModel):
                 obj = KeyValue()
                 obj._deserialize(item)
                 self._CLBData.append(obj)
+        if params.get("CnameWafData") is not None:
+            self._CnameWafData = []
+            for item in params.get("CnameWafData"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._CnameWafData.append(obj)
         self._RequestId = params.get("RequestId")
 
 

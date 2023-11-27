@@ -929,9 +929,9 @@ class CreateRegisterCodeRequest(AbstractModel):
         r"""
         :param _Description: 注册码描述。
         :type Description: str
-        :param _InstanceNamePrefix: 注册实列名称前缀。
+        :param _InstanceNamePrefix: 注册实例名称前缀。
         :type InstanceNamePrefix: str
-        :param _RegisterLimit: 该注册码允许注册的实列数目。默认限制为10个。
+        :param _RegisterLimit: 该注册码允许注册的实例数目。默认限制为10个。
         :type RegisterLimit: int
         :param _EffectiveTime: 该注册码的有效时间，单位为小时。默认为4小时。
         :type EffectiveTime: int

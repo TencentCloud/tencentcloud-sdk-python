@@ -18,6 +18,171 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ActivateHardware(AbstractModel):
+    """激活设备
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 厂商名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vendor: str
+        :param _SN: 设备SN序列号
+        :type SN: str
+        :param _DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _DataKey: 设备密钥
+        :type DataKey: str
+        """
+        self._Vendor = None
+        self._SN = None
+        self._DeviceName = None
+        self._Description = None
+        self._DataKey = None
+
+    @property
+    def Vendor(self):
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DataKey(self):
+        return self._DataKey
+
+    @DataKey.setter
+    def DataKey(self, DataKey):
+        self._DataKey = DataKey
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._SN = params.get("SN")
+        self._DeviceName = params.get("DeviceName")
+        self._Description = params.get("Description")
+        self._DataKey = params.get("DataKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHardwareRequest(AbstractModel):
+    """ActivateHardware请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: 待激活的设备列表
+        :type Hardware: list of ActivateHardware
+        """
+        self._Hardware = None
+
+    @property
+    def Hardware(self):
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = ActivateHardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateHardwareResponse(AbstractModel):
+    """ActivateHardware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareInfo: 完成激活的设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareInfo: list of ActivateHardware
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HardwareInfo = None
+        self._RequestId = None
+
+    @property
+    def HardwareInfo(self):
+        return self._HardwareInfo
+
+    @HardwareInfo.setter
+    def HardwareInfo(self, HardwareInfo):
+        self._HardwareInfo = HardwareInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HardwareInfo") is not None:
+            self._HardwareInfo = []
+            for item in params.get("HardwareInfo"):
+                obj = ActivateHardware()
+                obj._deserialize(item)
+                self._HardwareInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AddDeviceRequest(AbstractModel):
     """AddDevice请求参数结构体
 
@@ -146,6 +311,86 @@ class AddDeviceResponse(AbstractModel):
         self._DataKey = params.get("DataKey")
         self._DeviceId = params.get("DeviceId")
         self._Signature = params.get("Signature")
+        self._RequestId = params.get("RequestId")
+
+
+class AddHardwareRequest(AbstractModel):
+    """AddHardware请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: 硬件列表
+        :type Hardware: list of Hardware
+        """
+        self._Hardware = None
+
+    @property
+    def Hardware(self):
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = Hardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddHardwareResponse(AbstractModel):
+    """AddHardware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Hardware: 硬件设备
+        :type Hardware: list of Hardware
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Hardware = None
+        self._RequestId = None
+
+    @property
+    def Hardware(self):
+        return self._Hardware
+
+    @Hardware.setter
+    def Hardware(self, Hardware):
+        self._Hardware = Hardware
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Hardware") is not None:
+            self._Hardware = []
+            for item in params.get("Hardware"):
+                obj = Hardware()
+                obj._deserialize(item)
+                self._Hardware.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1810,6 +2055,129 @@ class GetFlowStatisticResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetHardwareListRequest(AbstractModel):
+    """GetHardwareList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页面设备数量
+        :type PageSize: int
+        :param _Keyword: 关键字
+        :type Keyword: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetHardwareListResponse(AbstractModel):
+    """GetHardwareList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareInfos: 硬件信息列表
+        :type HardwareInfos: list of HardwareInfo
+        :param _Length: 硬件总数
+        :type Length: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HardwareInfos = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def HardwareInfos(self):
+        return self._HardwareInfos
+
+    @HardwareInfos.setter
+    def HardwareInfos(self, HardwareInfos):
+        self._HardwareInfos = HardwareInfos
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HardwareInfos") is not None:
+            self._HardwareInfos = []
+            for item in params.get("HardwareInfos"):
+                obj = HardwareInfo()
+                obj._deserialize(item)
+                self._HardwareInfos.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
 class GetMultiFlowStatisticRequest(AbstractModel):
     """GetMultiFlowStatistic请求参数结构体
 
@@ -2194,6 +2562,358 @@ class GetStatisticDataResponse(AbstractModel):
     def _deserialize(self, params):
         self._FilePath = params.get("FilePath")
         self._RequestId = params.get("RequestId")
+
+
+class GetVendorHardwareRequest(AbstractModel):
+    """GetVendorHardware请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页面数量
+        :type PageSize: int
+        :param _Keyword: 关键字
+        :type Keyword: str
+        :param _Status: 激活状态，
+空：全部；
+1:待激活；
+2:已激活；
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Keyword = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVendorHardwareResponse(AbstractModel):
+    """GetVendorHardware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VendorHardware: 硬件信息列表
+        :type VendorHardware: list of VendorHardware
+        :param _Length: 设备总数
+        :type Length: int
+        :param _TotalPage: 总页数
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VendorHardware = None
+        self._Length = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def VendorHardware(self):
+        return self._VendorHardware
+
+    @VendorHardware.setter
+    def VendorHardware(self, VendorHardware):
+        self._VendorHardware = VendorHardware
+
+    @property
+    def Length(self):
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def TotalPage(self):
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VendorHardware") is not None:
+            self._VendorHardware = []
+            for item in params.get("VendorHardware"):
+                obj = VendorHardware()
+                obj._deserialize(item)
+                self._VendorHardware.append(obj)
+        self._Length = params.get("Length")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class Hardware(AbstractModel):
+    """新建Hardware入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SN: 硬件序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SN: str
+        :param _LicenseChargingMode: license计费模式：
+1，租户月付费
+2，厂商月付费
+3，license永久授权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseChargingMode: int
+        :param _Description: 设备描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _HardwareId: 硬件ID，入参无需传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareId: str
+        """
+        self._SN = None
+        self._LicenseChargingMode = None
+        self._Description = None
+        self._HardwareId = None
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def LicenseChargingMode(self):
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HardwareId(self):
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+
+    def _deserialize(self, params):
+        self._SN = params.get("SN")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._Description = params.get("Description")
+        self._HardwareId = params.get("HardwareId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HardwareInfo(AbstractModel):
+    """硬件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _ActiveTime: 激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveTime: str
+        :param _LastOnlineTime: 最后在线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOnlineTime: str
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _VendorDescription: 厂商备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VendorDescription: str
+        :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseChargingMode: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _SN: 硬件序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SN: str
+        """
+        self._DeviceId = None
+        self._DeviceName = None
+        self._ActiveTime = None
+        self._LastOnlineTime = None
+        self._Description = None
+        self._VendorDescription = None
+        self._LicenseChargingMode = None
+        self._CreateTime = None
+        self._SN = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def LastOnlineTime(self):
+        return self._LastOnlineTime
+
+    @LastOnlineTime.setter
+    def LastOnlineTime(self, LastOnlineTime):
+        self._LastOnlineTime = LastOnlineTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VendorDescription(self):
+        return self._VendorDescription
+
+    @VendorDescription.setter
+    def VendorDescription(self, VendorDescription):
+        self._VendorDescription = VendorDescription
+
+    @property
+    def LicenseChargingMode(self):
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._ActiveTime = params.get("ActiveTime")
+        self._LastOnlineTime = params.get("LastOnlineTime")
+        self._Description = params.get("Description")
+        self._VendorDescription = params.get("VendorDescription")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._CreateTime = params.get("CreateTime")
+        self._SN = params.get("SN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MonitorData(AbstractModel):
@@ -2590,6 +3310,88 @@ class UpdateDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateHardwareRequest(AbstractModel):
+    """UpdateHardware请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareId: 硬件ID
+        :type HardwareId: str
+        :param _SN: 硬件序列号
+        :type SN: str
+        :param _Description: 设备备注
+        :type Description: str
+        """
+        self._HardwareId = None
+        self._SN = None
+        self._Description = None
+
+    @property
+    def HardwareId(self):
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._HardwareId = params.get("HardwareId")
+        self._SN = params.get("SN")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateHardwareResponse(AbstractModel):
+    """UpdateHardware返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateNetInfo(AbstractModel):
     """更新设备网络状态信息
 
@@ -2663,6 +3465,144 @@ class UpdateNetInfo(AbstractModel):
         self._UploadLimit = params.get("UploadLimit")
         self._DownloadLimit = params.get("DownloadLimit")
         self._NetInfoName = params.get("NetInfoName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VendorHardware(AbstractModel):
+    """厂商硬件详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HardwareId: 硬件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HardwareId: str
+        :param _SN: 硬件序列号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SN: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Status: 激活状态， 空：全部； 1:待激活； 2:已激活
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _ActiveTime: 激活时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActiveTime: str
+        :param _Description: 厂商备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _DeviceId: 设备id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _LicenseChargingMode: license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LicenseChargingMode: int
+        :param _LastOnlineTime: 最后在线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOnlineTime: str
+        """
+        self._HardwareId = None
+        self._SN = None
+        self._CreateTime = None
+        self._Status = None
+        self._ActiveTime = None
+        self._Description = None
+        self._DeviceId = None
+        self._LicenseChargingMode = None
+        self._LastOnlineTime = None
+
+    @property
+    def HardwareId(self):
+        return self._HardwareId
+
+    @HardwareId.setter
+    def HardwareId(self, HardwareId):
+        self._HardwareId = HardwareId
+
+    @property
+    def SN(self):
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def LicenseChargingMode(self):
+        return self._LicenseChargingMode
+
+    @LicenseChargingMode.setter
+    def LicenseChargingMode(self, LicenseChargingMode):
+        self._LicenseChargingMode = LicenseChargingMode
+
+    @property
+    def LastOnlineTime(self):
+        return self._LastOnlineTime
+
+    @LastOnlineTime.setter
+    def LastOnlineTime(self, LastOnlineTime):
+        self._LastOnlineTime = LastOnlineTime
+
+
+    def _deserialize(self, params):
+        self._HardwareId = params.get("HardwareId")
+        self._SN = params.get("SN")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._ActiveTime = params.get("ActiveTime")
+        self._Description = params.get("Description")
+        self._DeviceId = params.get("DeviceId")
+        self._LicenseChargingMode = params.get("LicenseChargingMode")
+        self._LastOnlineTime = params.get("LastOnlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -8360,9 +8360,12 @@ class DescribeResourceGroupRequest(AbstractModel):
         :type QueryType: str
         :param _GroupId: 资产组id  全部传0
         :type GroupId: str
+        :param _ShowType: all  包含子组 own自己
+        :type ShowType: str
         """
         self._QueryType = None
         self._GroupId = None
+        self._ShowType = None
 
     @property
     def QueryType(self):
@@ -8380,10 +8383,19 @@ class DescribeResourceGroupRequest(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def ShowType(self):
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
+
 
     def _deserialize(self, params):
         self._QueryType = params.get("QueryType")
         self._GroupId = params.get("GroupId")
+        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

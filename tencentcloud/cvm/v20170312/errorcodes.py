@@ -953,6 +953,9 @@ UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = 'UnsupportedOperation.L
 # 不支持正在本地盘转云盘的磁盘，请稍后发起请求。
 UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = 'UnsupportedOperation.LocalDiskMigratingToCloudDisk'
 
+# 此请求不支持该区域镜像,请更换其他镜像。
+UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = 'UnsupportedOperation.LocationImageNotSupported'
+
 # 从市场镜像创建的自定义镜像不支持导出。
 UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.MarketImageExportUnsupported'
 
