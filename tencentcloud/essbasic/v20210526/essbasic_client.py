@@ -1740,6 +1740,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeChannelSealPolicyWorkflowUrl(self, request):
+        """生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序方式查看）
+
+        :param request: Request instance for DescribeChannelSealPolicyWorkflowUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeChannelSealPolicyWorkflowUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeChannelSealPolicyWorkflowUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannelSealPolicyWorkflowUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelSealPolicyWorkflowUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExtendedServiceAuthInfo(self, request):
         """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
         1. 企业自动签

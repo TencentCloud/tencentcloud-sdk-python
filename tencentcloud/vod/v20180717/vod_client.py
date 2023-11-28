@@ -4008,6 +4008,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetVodDomainCertificate(self, request):
+        """设置点播域名 HTTPS 证书。
+
+        :param request: Request instance for SetVodDomainCertificate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetVodDomainCertificateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetVodDomainCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetVodDomainCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetVodDomainCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SimpleHlsClip(self, request):
         """对 HLS 视频进行按时间段裁剪，实时生成一个新的视频（HLS 格式），开发者可以将其立即分享出去，或者长久保存起来。
 

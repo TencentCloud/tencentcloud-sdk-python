@@ -992,6 +992,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorageThumbnailList(self, request):
+        """批量拉取云存事件缩略图
+
+        :param request: Request instance for DescribeCloudStorageThumbnailList.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageThumbnailListRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeCloudStorageThumbnailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageThumbnailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageThumbnailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudStorageTime(self, request):
         """获取某一天云存时间轴
 

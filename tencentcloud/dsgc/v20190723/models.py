@@ -2323,7 +2323,7 @@ class CopyDSPATemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2851,7 +2851,7 @@ class CreateDSPAAssessmentRiskLevelRequest(AbstractModel):
         :type DspaId: str
         :param _RiskLevelName: 风险等级名称
         :type RiskLevelName: str
-        :param _IdentifyComplianceId: 识别模版
+        :param _IdentifyComplianceId: 识别模板
         :type IdentifyComplianceId: int
         :param _RiskLevelRule: 风险等级矩阵
         :type RiskLevelRule: list of RiskLevelMatrix
@@ -3068,7 +3068,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         :type DspaId: str
         :param _Name: 评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :type Name: str
-        :param _TemplateId: 评估模版Id，格式“template-xxxxxxxx”
+        :param _TemplateId: 评估模板Id，格式“template-xxxxxxxx”
         :type TemplateId: str
         :param _BusinessName: 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :type BusinessName: str
@@ -3076,7 +3076,7 @@ class CreateDSPAAssessmentTaskRequest(AbstractModel):
         :type BusinessDept: str
         :param _BusinessOwner: 业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
         :type BusinessOwner: str
-        :param _ComplianceId: 分类分级模版Id
+        :param _ComplianceId: 分类分级模板Id
         :type ComplianceId: int
         :param _DiscoveryCondition: 敏感数据扫描数据源条件。
         :type DiscoveryCondition: :class:`tencentcloud.dsgc.v20190723.models.DiscoveryCondition`
@@ -7500,7 +7500,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例Id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         :param _Filter: 过滤条件， rdb（数据库）cos（对象存储）
 不传就是全部
@@ -7601,7 +7601,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例Id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         :param _RiskId: 风险id
         :type RiskId: int
@@ -7665,10 +7665,10 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
         :param _AssetName: 资产对象名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetName: str
-        :param _AssessmentTemplateId: 风险评估模版id
+        :param _AssessmentTemplateId: 风险评估模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssessmentTemplateId: int
-        :param _IdentifyTemplateId: 分类分级的模版id
+        :param _IdentifyTemplateId: 分类分级的模板id
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyTemplateId: int
         :param _RiskType: 风险类型
@@ -7950,7 +7950,7 @@ class DescribeDSPAAssessmentLatestRiskListRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例Id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         :param _Limit: 限制条数
         :type Limit: int
@@ -8182,7 +8182,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -8288,7 +8288,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -8394,7 +8394,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -8500,7 +8500,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -8780,7 +8780,7 @@ class DescribeDSPAAssessmentRiskDealedTrendRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期
         :type EndTime: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: str
         """
         self._DspaId = None
@@ -8888,7 +8888,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例Id
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         :param _Filter: 风险资产分布的过滤条件
 （rdb，cos，不传就筛选全部）
@@ -9152,7 +9152,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
         :param _IdentifyComplianceId: 分类分级id
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentifyComplianceId: int
-        :param _IdentifyComplianceName: 分类分级模版名称
+        :param _IdentifyComplianceName: 分类分级模板名称
         :type IdentifyComplianceName: str
         :param _RiskLevelMatrix: 风险数据
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9355,7 +9355,7 @@ class DescribeDSPAAssessmentRiskLevelTrendRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时日期
         :type EndTime: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: str
         """
         self._DspaId = None
@@ -9657,7 +9657,7 @@ class DescribeDSPAAssessmentRiskSideDistributedRequest(AbstractModel):
         r"""
         :param _DspaId: DSPA实例ID
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -9745,7 +9745,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
         r"""
         :param _DspaId: DSPA实例ID
         :type DspaId: str
-        :param _TemplateId: 评估模版id
+        :param _TemplateId: 评估模板id
         :type TemplateId: int
         """
         self._DspaId = None
@@ -9833,7 +9833,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
         :type TemplateId: int
         :param _Limit: 限制条数
         :type Limit: int
@@ -9900,11 +9900,11 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
         :type TemplateId: int
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param _TemplateDescription: 模版的描述
+        :param _TemplateDescription: 模板的描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateDescription: str
         :param _RiskLevelId: 风险等级
@@ -10458,7 +10458,7 @@ class DescribeDSPAAssessmentTemplateControlItemsRequest(AbstractModel):
         r"""
         :param _DspaId: DSPA实例Id。格式“dspa-xxxxxxxx”
         :type DspaId: str
-        :param _TemplateId: 评估模版Id。格式“template-xxxxxxxx”
+        :param _TemplateId: 评估模板Id。格式“template-xxxxxxxx”
         :type TemplateId: str
         :param _Offset: 偏移量。默认为0
         :type Offset: int
@@ -10550,7 +10550,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
         r"""
         :param _TotalCount: 符合条件的评估项数目
         :type TotalCount: int
-        :param _Items: 模版关联的评估项列表
+        :param _Items: 模板关联的评估项列表
         :type Items: list of AssessmentControlItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21581,7 +21581,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
         :type DbRemainQuota: int
         :param _CosRemainQuota: 用户可用的COS存储量配额。
         :type CosRemainQuota: float
-        :param _CosQuotaUnit: COS存储量单位，比如TB。
+        :param _CosQuotaUnit: COS存储量单位，例如TB。
         :type CosQuotaUnit: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22776,11 +22776,11 @@ class ModifyDSPAAssessmentRiskTemplateRequest(AbstractModel):
         r"""
         :param _DspaId: dspa实例id
         :type DspaId: str
-        :param _TemplateName: 模版名称
+        :param _TemplateName: 模板名称
         :type TemplateName: str
-        :param _TemplateDescription: 模版的描述
+        :param _TemplateDescription: 模板的描述
         :type TemplateDescription: str
-        :param _TemplateId: 模版id
+        :param _TemplateId: 模板id
         :type TemplateId: int
         :param _RiskLevelId: 修改的风险等级id
         :type RiskLevelId: int

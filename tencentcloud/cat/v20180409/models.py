@@ -879,9 +879,9 @@ AnalyzeTaskType_Transport：端口性能
 AnalyzeTaskType_UploadDownload：文件传输
 AnalyzeTaskType_MediaStream：音视频体验
         :type AnalyzeTaskType: str
-        :param _MetricType: 指标类型，指标查询默认传gauge
+        :param _MetricType: 指标类型（counter、gauge以及histogram），指标查询默认传gauge
         :type MetricType: str
-        :param _Field: 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)
+        :param _Field: 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)；不同的任务类型支持不同的field查询，以及聚合规则，详情可联系云拨测。
         :type Field: str
         :param _Filter: 过滤条件可以传单个过滤条件也可以拼接多个参数
         :type Filter: str

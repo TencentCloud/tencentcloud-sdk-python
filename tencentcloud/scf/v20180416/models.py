@@ -1070,6 +1070,10 @@ class CreateFunctionRequest(AbstractModel):
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         :param _InstanceConcurrencyConfig: 单实例多并发配置。只支持Web函数。
         :type InstanceConcurrencyConfig: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        :param _DnsCache: 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+        :type DnsCache: str
+        :param _IntranetConfig: 内网访问配置
+        :type IntranetConfig: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
         """
         self._FunctionName = None
         self._Code = None
@@ -1100,6 +1104,8 @@ class CreateFunctionRequest(AbstractModel):
         self._ProtocolType = None
         self._ProtocolParams = None
         self._InstanceConcurrencyConfig = None
+        self._DnsCache = None
+        self._IntranetConfig = None
 
     @property
     def FunctionName(self):
@@ -1333,6 +1339,22 @@ class CreateFunctionRequest(AbstractModel):
     def InstanceConcurrencyConfig(self, InstanceConcurrencyConfig):
         self._InstanceConcurrencyConfig = InstanceConcurrencyConfig
 
+    @property
+    def DnsCache(self):
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def IntranetConfig(self):
+        return self._IntranetConfig
+
+    @IntranetConfig.setter
+    def IntranetConfig(self, IntranetConfig):
+        self._IntranetConfig = IntranetConfig
+
 
     def _deserialize(self, params):
         self._FunctionName = params.get("FunctionName")
@@ -1390,6 +1412,10 @@ class CreateFunctionRequest(AbstractModel):
         if params.get("InstanceConcurrencyConfig") is not None:
             self._InstanceConcurrencyConfig = InstanceConcurrencyConfig()
             self._InstanceConcurrencyConfig._deserialize(params.get("InstanceConcurrencyConfig"))
+        self._DnsCache = params.get("DnsCache")
+        if params.get("IntranetConfig") is not None:
+            self._IntranetConfig = IntranetConfigIn()
+            self._IntranetConfig._deserialize(params.get("IntranetConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5114,6 +5140,42 @@ class InstanceConcurrencyConfig(AbstractModel):
     def _deserialize(self, params):
         self._DynamicEnabled = params.get("DynamicEnabled")
         self._MaxConcurrency = params.get("MaxConcurrency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntranetConfigIn(AbstractModel):
+    """内网配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpFixed: 是否开启固定内网IP
+ENABLE 为开启
+DISABLE 为不开启
+
+        :type IpFixed: str
+        """
+        self._IpFixed = None
+
+    @property
+    def IpFixed(self):
+        return self._IpFixed
+
+    @IpFixed.setter
+    def IpFixed(self, IpFixed):
+        self._IpFixed = IpFixed
+
+
+    def _deserialize(self, params):
+        self._IpFixed = params.get("IpFixed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

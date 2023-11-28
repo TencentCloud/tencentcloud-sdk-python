@@ -10062,7 +10062,15 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
         :type Name: str
         :param _TaskId: 任务id
         :type TaskId: str
-        :param _Filters: <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配，类型：String必选：否<br><li>srcTopicId按照【源日志主题ID】进行过滤。类型：String必选：否<br><li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String必选：否<br><li>bizType按照【主题类型】进行过滤,0日志主题1指标主题,，。类型：String必选：否<br><li>status按照【任务状态】进行过滤。类型：String必选：否<br><li>taskName按照【任务名称】进行过滤，模糊匹配，。类型：String必选：否<br><li>taskId按照【任务ID】进行过滤，模糊匹配，。类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :param _Filters: <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配，类型：String必选：否</li>
+<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配，类型：String必选：否</li>
+<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String必选：否</li>
+<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String必选：否</li>
+<li>bizType按照【主题类型】进行过滤,0日志主题1指标主题,。类型：String必选：否</li>
+<li>status按照【任务状态】进行过滤。类型：String必选：否</li>
+<li>taskName按照【任务名称】进行过滤，模糊匹配，。类型：String必选：否</li>
+<li>taskId按照【任务ID】进行过滤，模糊匹配，。类型：String必选：否</li>
+
         :type Filters: list of Filter
         """
         self._Offset = None

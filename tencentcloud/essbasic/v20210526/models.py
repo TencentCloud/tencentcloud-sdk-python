@@ -10664,6 +10664,97 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeChannelSealPolicyWorkflowUrlRequest(AbstractModel):
+    """DescribeChannelSealPolicyWorkflowUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+
+渠道应用标识: Agent.AppId
+第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _WorkflowInstanceId: 用印审批单的ID，可通过用印申请回调获取。
+        :type WorkflowInstanceId: str
+        """
+        self._Agent = None
+        self._WorkflowInstanceId = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def WorkflowInstanceId(self):
+        return self._WorkflowInstanceId
+
+    @WorkflowInstanceId.setter
+    def WorkflowInstanceId(self, WorkflowInstanceId):
+        self._WorkflowInstanceId = WorkflowInstanceId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._WorkflowInstanceId = params.get("WorkflowInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
+    """DescribeChannelSealPolicyWorkflowUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowUrl: 用印审批小程序链接，链接类型（通过H5唤起小程序方式查看），一年内有效。
+        :type WorkflowUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkflowUrl = None
+        self._RequestId = None
+
+    @property
+    def WorkflowUrl(self):
+        return self._WorkflowUrl
+
+    @WorkflowUrl.setter
+    def WorkflowUrl(self, WorkflowUrl):
+        self._WorkflowUrl = WorkflowUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WorkflowUrl = params.get("WorkflowUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
     """DescribeExtendedServiceAuthInfo请求参数结构体
 

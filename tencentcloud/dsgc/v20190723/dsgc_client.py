@@ -96,7 +96,7 @@ class DsgcClient(AbstractClient):
 
 
     def CopyDSPATemplate(self, request):
-        """复制合规组模版
+        """复制合规组模板
 
         :param request: Request instance for CopyDSPATemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CopyDSPATemplateRequest`
@@ -211,7 +211,7 @@ class DsgcClient(AbstractClient):
 
 
     def CreateDSPAAssessmentRiskTemplate(self, request):
-        """风险评估模版---创建风险评估模版
+        """风险评估模板---创建风险评估模板
 
         :param request: Request instance for CreateDSPAAssessmentRiskTemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.CreateDSPAAssessmentRiskTemplateRequest`
@@ -1369,7 +1369,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskTemplateDetail(self, request):
-        """风险项页面--查看评估模版详情
+        """风险项页面--查看评估模板详情
 
         :param request: Request instance for DescribeDSPAAssessmentRiskTemplateDetail.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskTemplateDetailRequest`
@@ -1392,7 +1392,7 @@ class DsgcClient(AbstractClient):
 
 
     def DescribeDSPAAssessmentRiskTemplateVulnerableList(self, request):
-        """风险模版页面--查询风险模版中的脆弱项配置
+        """风险模板页面--查询风险模板中的脆弱项配置
 
         :param request: Request instance for DescribeDSPAAssessmentRiskTemplateVulnerableList.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.DescribeDSPAAssessmentRiskTemplateVulnerableListRequest`
@@ -2873,7 +2873,7 @@ class DsgcClient(AbstractClient):
 
 
     def ModifyDSPAAssessmentRiskTemplate(self, request):
-        """风险模版---修改风险模版
+        """风险模板---修改风险模板
 
         :param request: Request instance for ModifyDSPAAssessmentRiskTemplate.
         :type request: :class:`tencentcloud.dsgc.v20190723.models.ModifyDSPAAssessmentRiskTemplateRequest`

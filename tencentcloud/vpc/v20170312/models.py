@@ -639,6 +639,10 @@ class Address(AbstractModel):
         :type Egress: str
         :param _AntiDDoSPackageId: 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
         :type AntiDDoSPackageId: str
+        :param _RenewFlag: 当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
+<li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
+
+        :type RenewFlag: str
         """
         self._AddressId = None
         self._AddressName = None
@@ -663,6 +667,7 @@ class Address(AbstractModel):
         self._InstanceType = None
         self._Egress = None
         self._AntiDDoSPackageId = None
+        self._RenewFlag = None
 
     @property
     def AddressId(self):
@@ -848,6 +853,14 @@ class Address(AbstractModel):
     def AntiDDoSPackageId(self, AntiDDoSPackageId):
         self._AntiDDoSPackageId = AntiDDoSPackageId
 
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -880,6 +893,7 @@ class Address(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._Egress = params.get("Egress")
         self._AntiDDoSPackageId = params.get("AntiDDoSPackageId")
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

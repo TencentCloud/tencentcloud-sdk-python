@@ -5617,6 +5617,105 @@ class DescribeCloudStorageStreamDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageThumbnailListRequest(AbstractModel):
+    """DescribeCloudStorageThumbnailList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ThumbnailList: 缩略图文件名列表
+        :type ThumbnailList: list of str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ThumbnailList = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ThumbnailList(self):
+        return self._ThumbnailList
+
+    @ThumbnailList.setter
+    def ThumbnailList(self, ThumbnailList):
+        self._ThumbnailList = ThumbnailList
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ThumbnailList = params.get("ThumbnailList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageThumbnailListResponse(AbstractModel):
+    """DescribeCloudStorageThumbnailList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbnailURLInfoList: 缩略图访问地址
+        :type ThumbnailURLInfoList: list of ThumbnailURLInfoList
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ThumbnailURLInfoList = None
+        self._RequestId = None
+
+    @property
+    def ThumbnailURLInfoList(self):
+        return self._ThumbnailURLInfoList
+
+    @ThumbnailURLInfoList.setter
+    def ThumbnailURLInfoList(self, ThumbnailURLInfoList):
+        self._ThumbnailURLInfoList = ThumbnailURLInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ThumbnailURLInfoList") is not None:
+            self._ThumbnailURLInfoList = []
+            for item in params.get("ThumbnailURLInfoList"):
+                obj = ThumbnailURLInfoList()
+                obj._deserialize(item)
+                self._ThumbnailURLInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudStorageThumbnailRequest(AbstractModel):
     """DescribeCloudStorageThumbnail请求参数结构体
 
@@ -13486,6 +13585,53 @@ class TRTCParams(AbstractModel):
         self._UserSig = params.get("UserSig")
         self._StrRoomId = params.get("StrRoomId")
         self._PrivateMapKey = params.get("PrivateMapKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThumbnailURLInfoList(AbstractModel):
+    """缩略图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbnailURL: 缩略图访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThumbnailURL: str
+        :param _ExpireTime: 缩略图访问地址的过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        """
+        self._ThumbnailURL = None
+        self._ExpireTime = None
+
+    @property
+    def ThumbnailURL(self):
+        return self._ThumbnailURL
+
+    @ThumbnailURL.setter
+    def ThumbnailURL(self, ThumbnailURL):
+        self._ThumbnailURL = ThumbnailURL
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._ThumbnailURL = params.get("ThumbnailURL")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

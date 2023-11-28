@@ -20681,7 +20681,7 @@ Windows 实例：名字符长度为[2, 15]，允许字母（不限制大小写�
         :type HostName: str
         :param _ClientToken: 用于保证请求幂等性的字符串。目前为保留参数，请勿使用。
         :type ClientToken: str
-        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认公共镜像开启云监控、云安全服务
+        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、腾讯云可观测平台等服务。若不指定该参数，则默认公共镜像开启腾讯云可观测平台、云安全服务
         :type EnhancedService: :class:`tencentcloud.ecm.v20190719.models.EnhancedService`
         :param _TagSpecification: 标签列表
         :type TagSpecification: list of TagSpecification

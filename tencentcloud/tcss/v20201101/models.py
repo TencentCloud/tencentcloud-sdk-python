@@ -24082,10 +24082,19 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
         r"""
         :param _AssetSyncLastTime: 资产最近同步时间
         :type AssetSyncLastTime: str
+        :param _TaskStatus: 任务状态
+PENDING:待处理
+PROCESSING:处理中
+PROCESSED:已完成
+        :type TaskStatus: str
+        :param _TaskProcess: 任务进度(百分比)
+        :type TaskProcess: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AssetSyncLastTime = None
+        self._TaskStatus = None
+        self._TaskProcess = None
         self._RequestId = None
 
     @property
@@ -24095,6 +24104,22 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
     @AssetSyncLastTime.setter
     def AssetSyncLastTime(self, AssetSyncLastTime):
         self._AssetSyncLastTime = AssetSyncLastTime
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskProcess(self):
+        return self._TaskProcess
+
+    @TaskProcess.setter
+    def TaskProcess(self, TaskProcess):
+        self._TaskProcess = TaskProcess
 
     @property
     def RequestId(self):
@@ -24107,6 +24132,8 @@ class DescribeAssetSyncLastTimeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AssetSyncLastTime = params.get("AssetSyncLastTime")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskProcess = params.get("TaskProcess")
         self._RequestId = params.get("RequestId")
 
 
@@ -33242,6 +33269,10 @@ EVENT_ADD_WHITE：已加白
         :type NodeID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _Namespace: Namespace
+        :type Namespace: str
+        :param _WorkloadType: 工作负载类型
+        :type WorkloadType: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -33299,6 +33330,8 @@ EVENT_ADD_WHITE：已加白
         self._NodeUniqueID = None
         self._NodeID = None
         self._ClusterName = None
+        self._Namespace = None
+        self._WorkloadType = None
         self._RequestId = None
 
     @property
@@ -33734,6 +33767,22 @@ EVENT_ADD_WHITE：已加白
         self._ClusterName = ClusterName
 
     @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -33797,6 +33846,8 @@ EVENT_ADD_WHITE：已加白
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._NodeID = params.get("NodeID")
         self._ClusterName = params.get("ClusterName")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         self._RequestId = params.get("RequestId")
 
 
@@ -37783,6 +37834,10 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         :type NodeID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _Namespace: Namespace
+        :type Namespace: str
+        :param _WorkloadType: 工作负载类型
+        :type WorkloadType: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -37845,6 +37900,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._NodeType = None
         self._NodeID = None
         self._ClusterName = None
+        self._Namespace = None
+        self._WorkloadType = None
         self._RequestId = None
 
     @property
@@ -38320,6 +38377,22 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._ClusterName = ClusterName
 
     @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -38388,6 +38461,8 @@ CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
         self._NodeType = params.get("NodeType")
         self._NodeID = params.get("NodeID")
         self._ClusterName = params.get("ClusterName")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         self._RequestId = params.get("RequestId")
 
 
@@ -55355,6 +55430,10 @@ MountNamespace逃逸、
         :type NodeUniqueID: str
         :param _HostID: uuid
         :type HostID: str
+        :param _Namespace: Namespace
+        :type Namespace: str
+        :param _WorkloadType: WorkloadType
+        :type WorkloadType: str
         """
         self._EventId = None
         self._FoundTime = None
@@ -55385,6 +55464,8 @@ MountNamespace逃逸、
         self._ClusterName = None
         self._NodeUniqueID = None
         self._HostID = None
+        self._Namespace = None
+        self._WorkloadType = None
 
     @property
     def EventId(self):
@@ -55618,6 +55699,22 @@ MountNamespace逃逸、
     def HostID(self, HostID):
         self._HostID = HostID
 
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
@@ -55649,6 +55746,8 @@ MountNamespace逃逸、
         self._ClusterName = params.get("ClusterName")
         self._NodeUniqueID = params.get("NodeUniqueID")
         self._HostID = params.get("HostID")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60711,6 +60810,10 @@ class VulDefenceEventDetail(AbstractModel):
         :type ClusterID: str
         :param _ClusterName: 集群名称
         :type ClusterName: str
+        :param _Namespace: Namespace
+        :type Namespace: str
+        :param _WorkloadType: 工作负载
+        :type WorkloadType: str
         """
         self._CVEID = None
         self._VulName = None
@@ -60756,6 +60859,8 @@ class VulDefenceEventDetail(AbstractModel):
         self._NodeSubNetID = None
         self._ClusterID = None
         self._ClusterName = None
+        self._Namespace = None
+        self._WorkloadType = None
 
     @property
     def CVEID(self):
@@ -61109,6 +61214,22 @@ class VulDefenceEventDetail(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -61160,6 +61281,8 @@ class VulDefenceEventDetail(AbstractModel):
         self._NodeSubNetID = params.get("NodeSubNetID")
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

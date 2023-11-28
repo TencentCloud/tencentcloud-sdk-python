@@ -1338,7 +1338,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """获取制定机器组下的机器状态
+        """获取指定机器组下的机器状态
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachinesRequest`
