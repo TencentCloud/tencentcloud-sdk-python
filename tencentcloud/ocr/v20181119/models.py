@@ -3929,6 +3929,569 @@ class EduPaperOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ElectronicFlightTicketFull(AbstractModel):
+    """电子发票（机票行程单）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: 旅客姓名
+        :type UserName: str
+        :param _UserID: 有效身份证件号码
+        :type UserID: str
+        :param _Endorsement: 签注
+        :type Endorsement: str
+        :param _GPOrder: GP单号
+        :type GPOrder: str
+        :param _Number: 发票号码
+        :type Number: str
+        :param _Fare: 票价
+        :type Fare: str
+        :param _FuelSurcharge: 燃油附加费
+        :type FuelSurcharge: str
+        :param _TaxRate: 增值税税率
+        :type TaxRate: str
+        :param _Tax: 增值税税额
+        :type Tax: str
+        :param _DevelopmentFund: 民航发展基金
+        :type DevelopmentFund: str
+        :param _OtherTax: 其他税费
+        :type OtherTax: str
+        :param _Total: 合计
+        :type Total: str
+        :param _ElectronicTicketNum: 电子客票号码
+        :type ElectronicTicketNum: str
+        :param _VerificationCode: 验证码
+        :type VerificationCode: str
+        :param _PromptInformation: 提示信息
+        :type PromptInformation: str
+        :param _Insurance: 保险费
+        :type Insurance: str
+        :param _Issuer: 填开单位
+        :type Issuer: str
+        :param _Date: 填开时间
+        :type Date: str
+        :param _DomesticInternationalTag: 国内国际标识
+        :type DomesticInternationalTag: str
+        :param _Buyer: 购买方名称
+        :type Buyer: str
+        :param _Seller: 销售方名称
+        :type Seller: str
+        :param _BuyerTaxID: 统一社会信用代码
+        :type BuyerTaxID: str
+        :param _FlightItems: 机票详细信息元组
+        :type FlightItems: list of FlightItemInfo
+        """
+        self._UserName = None
+        self._UserID = None
+        self._Endorsement = None
+        self._GPOrder = None
+        self._Number = None
+        self._Fare = None
+        self._FuelSurcharge = None
+        self._TaxRate = None
+        self._Tax = None
+        self._DevelopmentFund = None
+        self._OtherTax = None
+        self._Total = None
+        self._ElectronicTicketNum = None
+        self._VerificationCode = None
+        self._PromptInformation = None
+        self._Insurance = None
+        self._Issuer = None
+        self._Date = None
+        self._DomesticInternationalTag = None
+        self._Buyer = None
+        self._Seller = None
+        self._BuyerTaxID = None
+        self._FlightItems = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserID(self):
+        return self._UserID
+
+    @UserID.setter
+    def UserID(self, UserID):
+        self._UserID = UserID
+
+    @property
+    def Endorsement(self):
+        return self._Endorsement
+
+    @Endorsement.setter
+    def Endorsement(self, Endorsement):
+        self._Endorsement = Endorsement
+
+    @property
+    def GPOrder(self):
+        return self._GPOrder
+
+    @GPOrder.setter
+    def GPOrder(self, GPOrder):
+        self._GPOrder = GPOrder
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Fare(self):
+        return self._Fare
+
+    @Fare.setter
+    def Fare(self, Fare):
+        self._Fare = Fare
+
+    @property
+    def FuelSurcharge(self):
+        return self._FuelSurcharge
+
+    @FuelSurcharge.setter
+    def FuelSurcharge(self, FuelSurcharge):
+        self._FuelSurcharge = FuelSurcharge
+
+    @property
+    def TaxRate(self):
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def Tax(self):
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def DevelopmentFund(self):
+        return self._DevelopmentFund
+
+    @DevelopmentFund.setter
+    def DevelopmentFund(self, DevelopmentFund):
+        self._DevelopmentFund = DevelopmentFund
+
+    @property
+    def OtherTax(self):
+        return self._OtherTax
+
+    @OtherTax.setter
+    def OtherTax(self, OtherTax):
+        self._OtherTax = OtherTax
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ElectronicTicketNum(self):
+        return self._ElectronicTicketNum
+
+    @ElectronicTicketNum.setter
+    def ElectronicTicketNum(self, ElectronicTicketNum):
+        self._ElectronicTicketNum = ElectronicTicketNum
+
+    @property
+    def VerificationCode(self):
+        return self._VerificationCode
+
+    @VerificationCode.setter
+    def VerificationCode(self, VerificationCode):
+        self._VerificationCode = VerificationCode
+
+    @property
+    def PromptInformation(self):
+        return self._PromptInformation
+
+    @PromptInformation.setter
+    def PromptInformation(self, PromptInformation):
+        self._PromptInformation = PromptInformation
+
+    @property
+    def Insurance(self):
+        return self._Insurance
+
+    @Insurance.setter
+    def Insurance(self, Insurance):
+        self._Insurance = Insurance
+
+    @property
+    def Issuer(self):
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def DomesticInternationalTag(self):
+        return self._DomesticInternationalTag
+
+    @DomesticInternationalTag.setter
+    def DomesticInternationalTag(self, DomesticInternationalTag):
+        self._DomesticInternationalTag = DomesticInternationalTag
+
+    @property
+    def Buyer(self):
+        return self._Buyer
+
+    @Buyer.setter
+    def Buyer(self, Buyer):
+        self._Buyer = Buyer
+
+    @property
+    def Seller(self):
+        return self._Seller
+
+    @Seller.setter
+    def Seller(self, Seller):
+        self._Seller = Seller
+
+    @property
+    def BuyerTaxID(self):
+        return self._BuyerTaxID
+
+    @BuyerTaxID.setter
+    def BuyerTaxID(self, BuyerTaxID):
+        self._BuyerTaxID = BuyerTaxID
+
+    @property
+    def FlightItems(self):
+        return self._FlightItems
+
+    @FlightItems.setter
+    def FlightItems(self, FlightItems):
+        self._FlightItems = FlightItems
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._UserID = params.get("UserID")
+        self._Endorsement = params.get("Endorsement")
+        self._GPOrder = params.get("GPOrder")
+        self._Number = params.get("Number")
+        self._Fare = params.get("Fare")
+        self._FuelSurcharge = params.get("FuelSurcharge")
+        self._TaxRate = params.get("TaxRate")
+        self._Tax = params.get("Tax")
+        self._DevelopmentFund = params.get("DevelopmentFund")
+        self._OtherTax = params.get("OtherTax")
+        self._Total = params.get("Total")
+        self._ElectronicTicketNum = params.get("ElectronicTicketNum")
+        self._VerificationCode = params.get("VerificationCode")
+        self._PromptInformation = params.get("PromptInformation")
+        self._Insurance = params.get("Insurance")
+        self._Issuer = params.get("Issuer")
+        self._Date = params.get("Date")
+        self._DomesticInternationalTag = params.get("DomesticInternationalTag")
+        self._Buyer = params.get("Buyer")
+        self._Seller = params.get("Seller")
+        self._BuyerTaxID = params.get("BuyerTaxID")
+        if params.get("FlightItems") is not None:
+            self._FlightItems = []
+            for item in params.get("FlightItems"):
+                obj = FlightItemInfo()
+                obj._deserialize(item)
+                self._FlightItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ElectronicTrainTicketFull(AbstractModel):
+    """电子发票（火车票）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TypeOfVoucher: 电子发票类型
+        :type TypeOfVoucher: str
+        :param _ElectronicTicketNum: 电子客票号
+        :type ElectronicTicketNum: str
+        :param _Date: 开票日期
+        :type Date: str
+        :param _StationGetOn: 始发站
+        :type StationGetOn: str
+        :param _StationGetOff: 到达站
+        :type StationGetOff: str
+        :param _TrainNumber: 火车号
+        :type TrainNumber: str
+        :param _DateGetOn: 乘车日期
+        :type DateGetOn: str
+        :param _TimeGetOn: 始发时间
+        :type TimeGetOn: str
+        :param _Seat: 座位类型
+        :type Seat: str
+        :param _SeatNumber: 座位号
+        :type SeatNumber: str
+        :param _Fare: 票价
+        :type Fare: str
+        :param _Number: 发票号码
+        :type Number: str
+        :param _UserID: 身份证号
+        :type UserID: str
+        :param _UserName: 乘车人姓名
+        :type UserName: str
+        :param _Total: 金额
+        :type Total: str
+        :param _TaxRate: 税率
+        :type TaxRate: str
+        :param _Tax: 税额
+        :type Tax: str
+        :param _Buyer: 购买方名称
+        :type Buyer: str
+        :param _BuyerTaxID: 统一社会信用代码
+        :type BuyerTaxID: str
+        :param _OriginalNumber: 原发票号码
+        :type OriginalNumber: str
+        """
+        self._TypeOfVoucher = None
+        self._ElectronicTicketNum = None
+        self._Date = None
+        self._StationGetOn = None
+        self._StationGetOff = None
+        self._TrainNumber = None
+        self._DateGetOn = None
+        self._TimeGetOn = None
+        self._Seat = None
+        self._SeatNumber = None
+        self._Fare = None
+        self._Number = None
+        self._UserID = None
+        self._UserName = None
+        self._Total = None
+        self._TaxRate = None
+        self._Tax = None
+        self._Buyer = None
+        self._BuyerTaxID = None
+        self._OriginalNumber = None
+
+    @property
+    def TypeOfVoucher(self):
+        return self._TypeOfVoucher
+
+    @TypeOfVoucher.setter
+    def TypeOfVoucher(self, TypeOfVoucher):
+        self._TypeOfVoucher = TypeOfVoucher
+
+    @property
+    def ElectronicTicketNum(self):
+        return self._ElectronicTicketNum
+
+    @ElectronicTicketNum.setter
+    def ElectronicTicketNum(self, ElectronicTicketNum):
+        self._ElectronicTicketNum = ElectronicTicketNum
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def StationGetOn(self):
+        return self._StationGetOn
+
+    @StationGetOn.setter
+    def StationGetOn(self, StationGetOn):
+        self._StationGetOn = StationGetOn
+
+    @property
+    def StationGetOff(self):
+        return self._StationGetOff
+
+    @StationGetOff.setter
+    def StationGetOff(self, StationGetOff):
+        self._StationGetOff = StationGetOff
+
+    @property
+    def TrainNumber(self):
+        return self._TrainNumber
+
+    @TrainNumber.setter
+    def TrainNumber(self, TrainNumber):
+        self._TrainNumber = TrainNumber
+
+    @property
+    def DateGetOn(self):
+        return self._DateGetOn
+
+    @DateGetOn.setter
+    def DateGetOn(self, DateGetOn):
+        self._DateGetOn = DateGetOn
+
+    @property
+    def TimeGetOn(self):
+        return self._TimeGetOn
+
+    @TimeGetOn.setter
+    def TimeGetOn(self, TimeGetOn):
+        self._TimeGetOn = TimeGetOn
+
+    @property
+    def Seat(self):
+        return self._Seat
+
+    @Seat.setter
+    def Seat(self, Seat):
+        self._Seat = Seat
+
+    @property
+    def SeatNumber(self):
+        return self._SeatNumber
+
+    @SeatNumber.setter
+    def SeatNumber(self, SeatNumber):
+        self._SeatNumber = SeatNumber
+
+    @property
+    def Fare(self):
+        return self._Fare
+
+    @Fare.setter
+    def Fare(self, Fare):
+        self._Fare = Fare
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def UserID(self):
+        return self._UserID
+
+    @UserID.setter
+    def UserID(self, UserID):
+        self._UserID = UserID
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TaxRate(self):
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def Tax(self):
+        return self._Tax
+
+    @Tax.setter
+    def Tax(self, Tax):
+        self._Tax = Tax
+
+    @property
+    def Buyer(self):
+        return self._Buyer
+
+    @Buyer.setter
+    def Buyer(self, Buyer):
+        self._Buyer = Buyer
+
+    @property
+    def BuyerTaxID(self):
+        return self._BuyerTaxID
+
+    @BuyerTaxID.setter
+    def BuyerTaxID(self, BuyerTaxID):
+        self._BuyerTaxID = BuyerTaxID
+
+    @property
+    def OriginalNumber(self):
+        return self._OriginalNumber
+
+    @OriginalNumber.setter
+    def OriginalNumber(self, OriginalNumber):
+        self._OriginalNumber = OriginalNumber
+
+
+    def _deserialize(self, params):
+        self._TypeOfVoucher = params.get("TypeOfVoucher")
+        self._ElectronicTicketNum = params.get("ElectronicTicketNum")
+        self._Date = params.get("Date")
+        self._StationGetOn = params.get("StationGetOn")
+        self._StationGetOff = params.get("StationGetOff")
+        self._TrainNumber = params.get("TrainNumber")
+        self._DateGetOn = params.get("DateGetOn")
+        self._TimeGetOn = params.get("TimeGetOn")
+        self._Seat = params.get("Seat")
+        self._SeatNumber = params.get("SeatNumber")
+        self._Fare = params.get("Fare")
+        self._Number = params.get("Number")
+        self._UserID = params.get("UserID")
+        self._UserName = params.get("UserName")
+        self._Total = params.get("Total")
+        self._TaxRate = params.get("TaxRate")
+        self._Tax = params.get("Tax")
+        self._Buyer = params.get("Buyer")
+        self._BuyerTaxID = params.get("BuyerTaxID")
+        self._OriginalNumber = params.get("OriginalNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnglishOCRRequest(AbstractModel):
     """EnglishOCR请求参数结构体
 
@@ -5051,6 +5614,135 @@ class FlightItem(AbstractModel):
         self._StationGetOff = params.get("StationGetOff")
         self._Allow = params.get("Allow")
         self._FareBasis = params.get("FareBasis")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlightItemInfo(AbstractModel):
+    """机票详细信息元组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TerminalGetOn: 出发站
+        :type TerminalGetOn: str
+        :param _TerminalGetOff: 到达站
+        :type TerminalGetOff: str
+        :param _Carrier: 承运人
+        :type Carrier: str
+        :param _FlightNumber: 航班号
+        :type FlightNumber: str
+        :param _Seat: 座位等级
+        :type Seat: str
+        :param _DateGetOn: 乘机日期
+        :type DateGetOn: str
+        :param _TimeGetOn: 乘机时间
+        :type TimeGetOn: str
+        :param _FareBasis: 客票级别/客票类别
+        :type FareBasis: str
+        :param _Allow: 免费行李额
+        :type Allow: str
+        """
+        self._TerminalGetOn = None
+        self._TerminalGetOff = None
+        self._Carrier = None
+        self._FlightNumber = None
+        self._Seat = None
+        self._DateGetOn = None
+        self._TimeGetOn = None
+        self._FareBasis = None
+        self._Allow = None
+
+    @property
+    def TerminalGetOn(self):
+        return self._TerminalGetOn
+
+    @TerminalGetOn.setter
+    def TerminalGetOn(self, TerminalGetOn):
+        self._TerminalGetOn = TerminalGetOn
+
+    @property
+    def TerminalGetOff(self):
+        return self._TerminalGetOff
+
+    @TerminalGetOff.setter
+    def TerminalGetOff(self, TerminalGetOff):
+        self._TerminalGetOff = TerminalGetOff
+
+    @property
+    def Carrier(self):
+        return self._Carrier
+
+    @Carrier.setter
+    def Carrier(self, Carrier):
+        self._Carrier = Carrier
+
+    @property
+    def FlightNumber(self):
+        return self._FlightNumber
+
+    @FlightNumber.setter
+    def FlightNumber(self, FlightNumber):
+        self._FlightNumber = FlightNumber
+
+    @property
+    def Seat(self):
+        return self._Seat
+
+    @Seat.setter
+    def Seat(self, Seat):
+        self._Seat = Seat
+
+    @property
+    def DateGetOn(self):
+        return self._DateGetOn
+
+    @DateGetOn.setter
+    def DateGetOn(self, DateGetOn):
+        self._DateGetOn = DateGetOn
+
+    @property
+    def TimeGetOn(self):
+        return self._TimeGetOn
+
+    @TimeGetOn.setter
+    def TimeGetOn(self, TimeGetOn):
+        self._TimeGetOn = TimeGetOn
+
+    @property
+    def FareBasis(self):
+        return self._FareBasis
+
+    @FareBasis.setter
+    def FareBasis(self, FareBasis):
+        self._FareBasis = FareBasis
+
+    @property
+    def Allow(self):
+        return self._Allow
+
+    @Allow.setter
+    def Allow(self, Allow):
+        self._Allow = Allow
+
+
+    def _deserialize(self, params):
+        self._TerminalGetOn = params.get("TerminalGetOn")
+        self._TerminalGetOff = params.get("TerminalGetOff")
+        self._Carrier = params.get("Carrier")
+        self._FlightNumber = params.get("FlightNumber")
+        self._Seat = params.get("Seat")
+        self._DateGetOn = params.get("DateGetOn")
+        self._TimeGetOn = params.get("TimeGetOn")
+        self._FareBasis = params.get("FareBasis")
+        self._Allow = params.get("Allow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17954,6 +18646,12 @@ class SingleInvoiceItem(AbstractModel):
         :param _VatSalesList: 增值税销货清单
 注意：此字段可能返回 null，表示取不到有效值。
         :type VatSalesList: :class:`tencentcloud.ocr.v20181119.models.VatInvoiceInfo`
+        :param _ElectronicTrainTicketFull: 电子发票（火车票）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElectronicTrainTicketFull: :class:`tencentcloud.ocr.v20181119.models.ElectronicTrainTicketFull`
+        :param _ElectronicFlightTicketFull: 电子发票（机票行程单）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElectronicFlightTicketFull: :class:`tencentcloud.ocr.v20181119.models.ElectronicFlightTicketFull`
         """
         self._VatSpecialInvoice = None
         self._VatCommonInvoice = None
@@ -17980,6 +18678,8 @@ class SingleInvoiceItem(AbstractModel):
         self._MedicalOutpatientInvoice = None
         self._MedicalHospitalizedInvoice = None
         self._VatSalesList = None
+        self._ElectronicTrainTicketFull = None
+        self._ElectronicFlightTicketFull = None
 
     @property
     def VatSpecialInvoice(self):
@@ -18181,6 +18881,22 @@ class SingleInvoiceItem(AbstractModel):
     def VatSalesList(self, VatSalesList):
         self._VatSalesList = VatSalesList
 
+    @property
+    def ElectronicTrainTicketFull(self):
+        return self._ElectronicTrainTicketFull
+
+    @ElectronicTrainTicketFull.setter
+    def ElectronicTrainTicketFull(self, ElectronicTrainTicketFull):
+        self._ElectronicTrainTicketFull = ElectronicTrainTicketFull
+
+    @property
+    def ElectronicFlightTicketFull(self):
+        return self._ElectronicFlightTicketFull
+
+    @ElectronicFlightTicketFull.setter
+    def ElectronicFlightTicketFull(self, ElectronicFlightTicketFull):
+        self._ElectronicFlightTicketFull = ElectronicFlightTicketFull
+
 
     def _deserialize(self, params):
         if params.get("VatSpecialInvoice") is not None:
@@ -18258,6 +18974,12 @@ class SingleInvoiceItem(AbstractModel):
         if params.get("VatSalesList") is not None:
             self._VatSalesList = VatInvoiceInfo()
             self._VatSalesList._deserialize(params.get("VatSalesList"))
+        if params.get("ElectronicTrainTicketFull") is not None:
+            self._ElectronicTrainTicketFull = ElectronicTrainTicketFull()
+            self._ElectronicTrainTicketFull._deserialize(params.get("ElectronicTrainTicketFull"))
+        if params.get("ElectronicFlightTicketFull") is not None:
+            self._ElectronicFlightTicketFull = ElectronicFlightTicketFull()
+            self._ElectronicFlightTicketFull._deserialize(params.get("ElectronicFlightTicketFull"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

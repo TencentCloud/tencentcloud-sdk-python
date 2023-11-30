@@ -12068,7 +12068,7 @@ class DeleteLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true / false
+        :param _Result: 删除成功: true / 删除失败: false
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15172,7 +15172,7 @@ class DescribeBasicResourceUsageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _All: 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+        :param _All: 是否拥有权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
         :type All: bool
         """
         self._All = None
@@ -23411,7 +23411,7 @@ class DescribeSimpleNamespacesRequest(AbstractModel):
         :type NamespaceTypeList: list of str
         :param _NamespaceName: 通过命名空间名精确过滤
         :type NamespaceName: str
-        :param _IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认，命名空间。1：非默认命名空间
+        :param _IsDefault: 通过是否是默认命名空间过滤，不传表示拉取全部命名空间。0：默认命名空间。1：非默认命名空间
         :type IsDefault: str
         :param _DisableProgramAuthCheck: 无
         :type DisableProgramAuthCheck: bool
@@ -32090,7 +32090,8 @@ class ModifyApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: true/false
+        :param _Result: true：操作成功
+false：操作失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -32634,7 +32635,7 @@ class ModifyLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作状态
+        :param _Result: 编辑成功: true / 编辑失败: false
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

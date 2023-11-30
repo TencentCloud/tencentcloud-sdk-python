@@ -16461,6 +16461,94 @@ class DescribeImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogSwitchesRequest(AbstractModel):
+    """DescribeLogSwitches请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: 集群ID列表
+        :type ClusterIds: list of str
+        :param _ClusterType: 集群类型，tke 或eks
+        :type ClusterType: str
+        """
+        self._ClusterIds = None
+        self._ClusterType = None
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogSwitchesResponse(AbstractModel):
+    """DescribeLogSwitches返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SwitchSet: 集群日志开关集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchSet: list of Switch
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SwitchSet = None
+        self._RequestId = None
+
+    @property
+    def SwitchSet(self):
+        return self._SwitchSet
+
+    @SwitchSet.setter
+    def SwitchSet(self, SwitchSet):
+        self._SwitchSet = SwitchSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SwitchSet") is not None:
+            self._SwitchSet = []
+            for item in params.get("SwitchSet"):
+                obj = Switch()
+                obj._deserialize(item)
+                self._SwitchSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePodDeductionRateRequest(AbstractModel):
     """DescribePodDeductionRate请求参数结构体
 
@@ -35829,6 +35917,198 @@ class SuperNodeResource(AbstractModel):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._Gpu = params.get("Gpu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Switch(AbstractModel):
+    """集群日志开关集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Audit: 审计开关的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Audit: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        :param _Event: 事件开关的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Event: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        :param _Log: 普通日志的详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        :param _MasterLog: master 日志详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterLog: :class:`tencentcloud.tke.v20180525.models.SwitchInfo`
+        """
+        self._ClusterId = None
+        self._Audit = None
+        self._Event = None
+        self._Log = None
+        self._MasterLog = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Audit(self):
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Log(self):
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def MasterLog(self):
+        return self._MasterLog
+
+    @MasterLog.setter
+    def MasterLog(self, MasterLog):
+        self._MasterLog = MasterLog
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("Audit") is not None:
+            self._Audit = SwitchInfo()
+            self._Audit._deserialize(params.get("Audit"))
+        if params.get("Event") is not None:
+            self._Event = SwitchInfo()
+            self._Event._deserialize(params.get("Event"))
+        if params.get("Log") is not None:
+            self._Log = SwitchInfo()
+            self._Log._deserialize(params.get("Log"))
+        if params.get("MasterLog") is not None:
+            self._MasterLog = SwitchInfo()
+            self._MasterLog._deserialize(params.get("MasterLog"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchInfo(AbstractModel):
+    """日志开关详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 开启标识符 true代表开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _LogsetId: CLS日志集ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        :param _TopicId: CLS日志主题ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _Version: 当前log-agent版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _UpgradeAble: 是否可升级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpgradeAble: bool
+        :param _TopicRegion: CLS日志主题所属region
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicRegion: str
+        """
+        self._Enable = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._Version = None
+        self._UpgradeAble = None
+        self._TopicRegion = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def UpgradeAble(self):
+        return self._UpgradeAble
+
+    @UpgradeAble.setter
+    def UpgradeAble(self, UpgradeAble):
+        self._UpgradeAble = UpgradeAble
+
+    @property
+    def TopicRegion(self):
+        return self._TopicRegion
+
+    @TopicRegion.setter
+    def TopicRegion(self, TopicRegion):
+        self._TopicRegion = TopicRegion
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._Version = params.get("Version")
+        self._UpgradeAble = params.get("UpgradeAble")
+        self._TopicRegion = params.get("TopicRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

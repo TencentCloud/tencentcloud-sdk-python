@@ -851,6 +851,129 @@ class Asset(AbstractModel):
         
 
 
+class AssignMangedTablePropertiesRequest(AbstractModel):
+    """AssignMangedTableProperties请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableBaseInfo: 表基本信息
+        :type TableBaseInfo: :class:`tencentcloud.dlc.v20210125.models.TableBaseInfo`
+        :param _Columns: 表字段信息
+        :type Columns: list of TColumn
+        :param _Partitions: 表分区信息
+        :type Partitions: list of TPartition
+        :param _Properties: 表属性信息
+        :type Properties: list of Property
+        :param _UpsertKeys: V2 upsert表 upsert键
+        :type UpsertKeys: list of str
+        """
+        self._TableBaseInfo = None
+        self._Columns = None
+        self._Partitions = None
+        self._Properties = None
+        self._UpsertKeys = None
+
+    @property
+    def TableBaseInfo(self):
+        return self._TableBaseInfo
+
+    @TableBaseInfo.setter
+    def TableBaseInfo(self, TableBaseInfo):
+        self._TableBaseInfo = TableBaseInfo
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Partitions(self):
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def UpsertKeys(self):
+        return self._UpsertKeys
+
+    @UpsertKeys.setter
+    def UpsertKeys(self, UpsertKeys):
+        self._UpsertKeys = UpsertKeys
+
+
+    def _deserialize(self, params):
+        if params.get("TableBaseInfo") is not None:
+            self._TableBaseInfo = TableBaseInfo()
+            self._TableBaseInfo._deserialize(params.get("TableBaseInfo"))
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = TColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Partitions") is not None:
+            self._Partitions = []
+            for item in params.get("Partitions"):
+                obj = TPartition()
+                obj._deserialize(item)
+                self._Partitions.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._UpsertKeys = params.get("UpsertKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssignMangedTablePropertiesResponse(AbstractModel):
+    """AssignMangedTableProperties返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AttachUserPolicyRequest(AbstractModel):
     """AttachUserPolicy请求参数结构体
 

@@ -900,7 +900,7 @@ class CreateAliasRequest(AbstractModel):
         :type FunctionVersion: str
         :param _Namespace: 函数所在的命名空间
         :type Namespace: str
-        :param _RoutingConfig: 别名的请求路由配置
+        :param _RoutingConfig: 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         :param _Description: 别名的描述信息
         :type Description: str
@@ -8686,6 +8686,7 @@ class RetryConfig(AbstractModel):
 
 class RoutingConfig(AbstractModel):
     """别名的版本路由配置
+    其中：随机权重路由附加版本和规则路由附加版本不可以同时配置
 
     """
 
@@ -9647,7 +9648,7 @@ class UpdateAliasRequest(AbstractModel):
         :type FunctionVersion: str
         :param _Namespace: 函数所在的命名空间
         :type Namespace: str
-        :param _RoutingConfig: 别名的路由信息，需要为别名指定附加版本时，必须提供此参数
+        :param _RoutingConfig: 别名的路由信息，需要为别名指定附加版本时，必须提供此参数；	  附加版本指的是：除主版本 FunctionVersion 外，为此别名再指定一个函数可正常使用的版本；   这里附加版本中的 Version 值 不能是别名指向的主版本；  要注意的是：如果想要某个版本的流量全部指向这个别名，不需配置此参数； 目前一个别名最多只能指定一个附加版本
         :type RoutingConfig: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
         :param _Description: 别名的描述
         :type Description: str
@@ -9994,6 +9995,10 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type ProtocolParams: :class:`tencentcloud.scf.v20180416.models.ProtocolParams`
         :param _InstanceConcurrencyConfig: 单实例多并发配置。只支持Web函数。
         :type InstanceConcurrencyConfig: :class:`tencentcloud.scf.v20180416.models.InstanceConcurrencyConfig`
+        :param _DnsCache: 是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭
+        :type DnsCache: str
+        :param _IntranetConfig: 内网访问配置
+        :type IntranetConfig: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
         """
         self._FunctionName = None
         self._Description = None
@@ -10016,6 +10021,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self._InitTimeout = None
         self._ProtocolParams = None
         self._InstanceConcurrencyConfig = None
+        self._DnsCache = None
+        self._IntranetConfig = None
 
     @property
     def FunctionName(self):
@@ -10185,6 +10192,22 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
     def InstanceConcurrencyConfig(self, InstanceConcurrencyConfig):
         self._InstanceConcurrencyConfig = InstanceConcurrencyConfig
 
+    @property
+    def DnsCache(self):
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def IntranetConfig(self):
+        return self._IntranetConfig
+
+    @IntranetConfig.setter
+    def IntranetConfig(self, IntranetConfig):
+        self._IntranetConfig = IntranetConfig
+
 
     def _deserialize(self, params):
         self._FunctionName = params.get("FunctionName")
@@ -10227,6 +10250,10 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("InstanceConcurrencyConfig") is not None:
             self._InstanceConcurrencyConfig = InstanceConcurrencyConfig()
             self._InstanceConcurrencyConfig._deserialize(params.get("InstanceConcurrencyConfig"))
+        self._DnsCache = params.get("DnsCache")
+        if params.get("IntranetConfig") is not None:
+            self._IntranetConfig = IntranetConfigIn()
+            self._IntranetConfig._deserialize(params.get("IntranetConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

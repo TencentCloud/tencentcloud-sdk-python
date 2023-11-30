@@ -1201,6 +1201,18 @@ null = 用户上传证书（没有套餐类型），
         :param _AllowDownload: 是否允许下载
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDownload: bool
+        :param _IsDNSPODResolve: 证书域名是否全部在DNSPOD托管解析
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDNSPODResolve: bool
+        :param _IsPackage: 是否是权益点购买的证书
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPackage: bool
+        :param _KeyPasswordCustomFlag: 是否存在私钥密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyPasswordCustomFlag: bool
+        :param _SupportDownloadType: 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1251,6 +1263,10 @@ null = 用户上传证书（没有套餐类型），
         self._CertSANs = None
         self._AwaitingValidationMsg = None
         self._AllowDownload = None
+        self._IsDNSPODResolve = None
+        self._IsPackage = None
+        self._KeyPasswordCustomFlag = None
+        self._SupportDownloadType = None
 
     @property
     def OwnerUin(self):
@@ -1644,6 +1660,38 @@ null = 用户上传证书（没有套餐类型），
     def AllowDownload(self, AllowDownload):
         self._AllowDownload = AllowDownload
 
+    @property
+    def IsDNSPODResolve(self):
+        return self._IsDNSPODResolve
+
+    @IsDNSPODResolve.setter
+    def IsDNSPODResolve(self, IsDNSPODResolve):
+        self._IsDNSPODResolve = IsDNSPODResolve
+
+    @property
+    def IsPackage(self):
+        return self._IsPackage
+
+    @IsPackage.setter
+    def IsPackage(self, IsPackage):
+        self._IsPackage = IsPackage
+
+    @property
+    def KeyPasswordCustomFlag(self):
+        return self._KeyPasswordCustomFlag
+
+    @KeyPasswordCustomFlag.setter
+    def KeyPasswordCustomFlag(self, KeyPasswordCustomFlag):
+        self._KeyPasswordCustomFlag = KeyPasswordCustomFlag
+
+    @property
+    def SupportDownloadType(self):
+        return self._SupportDownloadType
+
+    @SupportDownloadType.setter
+    def SupportDownloadType(self, SupportDownloadType):
+        self._SupportDownloadType = SupportDownloadType
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1706,6 +1754,12 @@ null = 用户上传证书（没有套餐类型），
         self._CertSANs = params.get("CertSANs")
         self._AwaitingValidationMsg = params.get("AwaitingValidationMsg")
         self._AllowDownload = params.get("AllowDownload")
+        self._IsDNSPODResolve = params.get("IsDNSPODResolve")
+        self._IsPackage = params.get("IsPackage")
+        self._KeyPasswordCustomFlag = params.get("KeyPasswordCustomFlag")
+        if params.get("SupportDownloadType") is not None:
+            self._SupportDownloadType = SupportDownloadType()
+            self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12104,6 +12158,111 @@ class SubmittedData(AbstractModel):
         
 
 
+class SupportDownloadType(AbstractModel):
+    """支持下载的类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NGINX: 是否可以下载nginx可用格式
+        :type NGINX: bool
+        :param _APACHE: 是否可以下载apache可用格式
+        :type APACHE: bool
+        :param _TOMCAT: 是否可以下载tomcat可用格式
+        :type TOMCAT: bool
+        :param _IIS: 是否可以下载iis可用格式
+        :type IIS: bool
+        :param _JKS: 是否可以下载JKS可用格式
+        :type JKS: bool
+        :param _OTHER: 是否可以下载其他格式
+        :type OTHER: bool
+        :param _ROOT: 是否可以下载根证书
+        :type ROOT: bool
+        """
+        self._NGINX = None
+        self._APACHE = None
+        self._TOMCAT = None
+        self._IIS = None
+        self._JKS = None
+        self._OTHER = None
+        self._ROOT = None
+
+    @property
+    def NGINX(self):
+        return self._NGINX
+
+    @NGINX.setter
+    def NGINX(self, NGINX):
+        self._NGINX = NGINX
+
+    @property
+    def APACHE(self):
+        return self._APACHE
+
+    @APACHE.setter
+    def APACHE(self, APACHE):
+        self._APACHE = APACHE
+
+    @property
+    def TOMCAT(self):
+        return self._TOMCAT
+
+    @TOMCAT.setter
+    def TOMCAT(self, TOMCAT):
+        self._TOMCAT = TOMCAT
+
+    @property
+    def IIS(self):
+        return self._IIS
+
+    @IIS.setter
+    def IIS(self, IIS):
+        self._IIS = IIS
+
+    @property
+    def JKS(self):
+        return self._JKS
+
+    @JKS.setter
+    def JKS(self, JKS):
+        self._JKS = JKS
+
+    @property
+    def OTHER(self):
+        return self._OTHER
+
+    @OTHER.setter
+    def OTHER(self, OTHER):
+        self._OTHER = OTHER
+
+    @property
+    def ROOT(self):
+        return self._ROOT
+
+    @ROOT.setter
+    def ROOT(self, ROOT):
+        self._ROOT = ROOT
+
+
+    def _deserialize(self, params):
+        self._NGINX = params.get("NGINX")
+        self._APACHE = params.get("APACHE")
+        self._TOMCAT = params.get("TOMCAT")
+        self._IIS = params.get("IIS")
+        self._JKS = params.get("JKS")
+        self._OTHER = params.get("OTHER")
+        self._ROOT = params.get("ROOT")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncTaskBindResourceResult(AbstractModel):
     """异步任务证书关联云资源结果
 
@@ -13295,29 +13454,29 @@ class UpdateCertificateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OldCertificateId: 一键更新原证书ID
+        :param _OldCertificateId: 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
         :type OldCertificateId: str
-        :param _ResourceTypes: 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
+        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse
         :type ResourceTypes: list of str
-        :param _CertificateId: 一键更新新证书ID
+        :param _CertificateId: 一键更新新证书ID，不传该则证书公钥和私钥必传
         :type CertificateId: str
         :param _Regions: 需要部署的地域列表（废弃）
         :type Regions: list of str
-        :param _ResourceTypesRegions: 云资源需要部署的地域列表
+        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
         :type ResourceTypesRegions: list of ResourceTypeRegions
         :param _CertificatePublicKey: 证书公钥， 若上传证书公钥， 则CertificateId不用传
         :type CertificatePublicKey: str
-        :param _CertificatePrivateKey: 证书私钥，若上传证书公钥， 则证书私钥必填
+        :param _CertificatePrivateKey: 证书私钥，若上传证书公钥， 则CertificateId不用传
         :type CertificatePrivateKey: str
-        :param _ExpiringNotificationSwitch: 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知
+        :param _ExpiringNotificationSwitch: 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
         :type ExpiringNotificationSwitch: int
-        :param _Repeatable: 相同的证书是否允许重复上传，若上传证书公钥， 则可以配置该参数
+        :param _Repeatable: 相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
         :type Repeatable: bool
-        :param _AllowDownload: 是否允许下载，若上传证书公钥， 则可以配置该参数
+        :param _AllowDownload: 是否允许下载，若选择上传证书， 则可以配置该参数
         :type AllowDownload: bool
-        :param _Tags: 标签列表，若上传证书公钥， 则可以配置该参数
+        :param _Tags: 标签列表，若选择上传证书， 则可以配置该参数
         :type Tags: list of Tags
-        :param _ProjectId: 项目 ID，若上传证书公钥， 则可以配置该参数
+        :param _ProjectId: 项目 ID，若选择上传证书， 则可以配置该参数
         :type ProjectId: int
         """
         self._OldCertificateId = None
@@ -13479,11 +13638,15 @@ class UpdateCertificateInstanceResponse(AbstractModel):
         :type DeployRecordId: int
         :param _DeployStatus: 部署状态，1表示部署成功，0表示部署失败
         :type DeployStatus: int
+        :param _UpdateSyncProgress: 更新异步创建任务进度详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateSyncProgress: list of UpdateSyncProgress
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployRecordId = None
         self._DeployStatus = None
+        self._UpdateSyncProgress = None
         self._RequestId = None
 
     @property
@@ -13503,6 +13666,14 @@ class UpdateCertificateInstanceResponse(AbstractModel):
         self._DeployStatus = DeployStatus
 
     @property
+    def UpdateSyncProgress(self):
+        return self._UpdateSyncProgress
+
+    @UpdateSyncProgress.setter
+    def UpdateSyncProgress(self, UpdateSyncProgress):
+        self._UpdateSyncProgress = UpdateSyncProgress
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -13514,6 +13685,12 @@ class UpdateCertificateInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._DeployRecordId = params.get("DeployRecordId")
         self._DeployStatus = params.get("DeployStatus")
+        if params.get("UpdateSyncProgress") is not None:
+            self._UpdateSyncProgress = []
+            for item in params.get("UpdateSyncProgress"):
+                obj = UpdateSyncProgress()
+                obj._deserialize(item)
+                self._UpdateSyncProgress.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14127,6 +14304,144 @@ class UpdateRecordInfo(AbstractModel):
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSyncProgress(AbstractModel):
+    """更新异步任务进度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _UpdateSyncProgressRegions: 地域结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateSyncProgressRegions: list of UpdateSyncProgressRegion
+        :param _Status: 异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._ResourceType = None
+        self._UpdateSyncProgressRegions = None
+        self._Status = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def UpdateSyncProgressRegions(self):
+        return self._UpdateSyncProgressRegions
+
+    @UpdateSyncProgressRegions.setter
+    def UpdateSyncProgressRegions(self, UpdateSyncProgressRegions):
+        self._UpdateSyncProgressRegions = UpdateSyncProgressRegions
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("UpdateSyncProgressRegions") is not None:
+            self._UpdateSyncProgressRegions = []
+            for item in params.get("UpdateSyncProgressRegions"):
+                obj = UpdateSyncProgressRegion()
+                obj._deserialize(item)
+                self._UpdateSyncProgressRegions.append(obj)
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSyncProgressRegion(AbstractModel):
+    """更新异步任务进度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _OffsetCount: 执行完成数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OffsetCount: int
+        :param _Status: 异步更新进度状态：0， 待处理， 1 已处理， 3 处理中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        """
+        self._Region = None
+        self._TotalCount = None
+        self._OffsetCount = None
+        self._Status = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OffsetCount(self):
+        return self._OffsetCount
+
+    @OffsetCount.setter
+    def OffsetCount(self, OffsetCount):
+        self._OffsetCount = OffsetCount
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._TotalCount = params.get("TotalCount")
+        self._OffsetCount = params.get("OffsetCount")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3042,6 +3042,9 @@ class CreateDocumentRequest(AbstractModel):
         :param _FileNames: 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
         :type FileNames: list of str
         :param _FormFields: 电子文档的填写控件的填充内容。具体方式可以参考[FormField](https://qian.tencent.com/developers/companyApis/dataTypes/#formfield)结构体的定义。
+<ul>
+<li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
+</ul>
         :type FormFields: list of FormField
         :param _NeedPreview: 是否为预览模式，取值如下：
 <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
@@ -14192,6 +14195,14 @@ class FlowGroupOptions(AbstractModel):
 class FormField(AbstractModel):
     """电子文档的控件填充信息。按照控件类型进行相应的填充。
 
+    当控件的 ComponentType=‘SIGN_SEAL'时，FormField.ComponentValue填入印章id。
+    ```
+    FormField输入示例：
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "sealId（印章id）"
+    }
+    ```
     当控件的 ComponentType='TEXT'时，FormField.ComponentValue填入文本内容
     ```
     FormField输入示例：

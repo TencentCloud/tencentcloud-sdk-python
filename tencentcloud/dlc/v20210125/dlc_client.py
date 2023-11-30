@@ -141,6 +141,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AssignMangedTableProperties(self, request):
+        """分配原生表表属性
+
+        :param request: Request instance for AssignMangedTableProperties.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AssignMangedTablePropertiesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AssignMangedTablePropertiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssignMangedTableProperties", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssignMangedTablePropertiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AttachUserPolicy(self, request):
         """绑定鉴权策略到用户
 

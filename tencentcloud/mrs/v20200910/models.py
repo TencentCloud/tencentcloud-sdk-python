@@ -7695,6 +7695,9 @@ class Hospitalization(AbstractModel):
         :param _DischargeInstruction: 出院医嘱
 注意：此字段可能返回 null，表示取不到有效值。
         :type DischargeInstruction: str
+        :param _AdmissionDiagnosis: 入院诊断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionDiagnosis: str
         """
         self._AdmissionTime = None
         self._DischargeTime = None
@@ -7704,6 +7707,7 @@ class Hospitalization(AbstractModel):
         self._DiagnosisTreatment = None
         self._DischargeDiagnosis = None
         self._DischargeInstruction = None
+        self._AdmissionDiagnosis = None
 
     @property
     def AdmissionTime(self):
@@ -7731,10 +7735,14 @@ class Hospitalization(AbstractModel):
 
     @property
     def AdmissionDignosis(self):
+        warnings.warn("parameter `AdmissionDignosis` is deprecated", DeprecationWarning) 
+
         return self._AdmissionDignosis
 
     @AdmissionDignosis.setter
     def AdmissionDignosis(self, AdmissionDignosis):
+        warnings.warn("parameter `AdmissionDignosis` is deprecated", DeprecationWarning) 
+
         self._AdmissionDignosis = AdmissionDignosis
 
     @property
@@ -7769,6 +7777,14 @@ class Hospitalization(AbstractModel):
     def DischargeInstruction(self, DischargeInstruction):
         self._DischargeInstruction = DischargeInstruction
 
+    @property
+    def AdmissionDiagnosis(self):
+        return self._AdmissionDiagnosis
+
+    @AdmissionDiagnosis.setter
+    def AdmissionDiagnosis(self, AdmissionDiagnosis):
+        self._AdmissionDiagnosis = AdmissionDiagnosis
+
 
     def _deserialize(self, params):
         self._AdmissionTime = params.get("AdmissionTime")
@@ -7779,6 +7795,7 @@ class Hospitalization(AbstractModel):
         self._DiagnosisTreatment = params.get("DiagnosisTreatment")
         self._DischargeDiagnosis = params.get("DischargeDiagnosis")
         self._DischargeInstruction = params.get("DischargeInstruction")
+        self._AdmissionDiagnosis = params.get("AdmissionDiagnosis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8897,16 +8914,24 @@ class IndicatorV3(AbstractModel):
         :param _Version: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _TableIndicators: 检验报告V3结论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableIndicators: list of TableIndicators
         """
         self._TableIndictors = None
         self._Version = None
+        self._TableIndicators = None
 
     @property
     def TableIndictors(self):
+        warnings.warn("parameter `TableIndictors` is deprecated", DeprecationWarning) 
+
         return self._TableIndictors
 
     @TableIndictors.setter
     def TableIndictors(self, TableIndictors):
+        warnings.warn("parameter `TableIndictors` is deprecated", DeprecationWarning) 
+
         self._TableIndictors = TableIndictors
 
     @property
@@ -8917,6 +8942,14 @@ class IndicatorV3(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def TableIndicators(self):
+        return self._TableIndicators
+
+    @TableIndicators.setter
+    def TableIndicators(self, TableIndicators):
+        self._TableIndicators = TableIndicators
+
 
     def _deserialize(self, params):
         if params.get("TableIndictors") is not None:
@@ -8926,6 +8959,12 @@ class IndicatorV3(AbstractModel):
                 obj._deserialize(item)
                 self._TableIndictors.append(obj)
         self._Version = params.get("Version")
+        if params.get("TableIndicators") is not None:
+            self._TableIndicators = []
+            for item in params.get("TableIndicators"):
+                obj = TableIndicators()
+                obj._deserialize(item)
+                self._TableIndicators.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20613,6 +20652,9 @@ class TreatmentRecord(AbstractModel):
         :param _ObservationDays: 观测天数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObservationDays: str
+        :param _AdmissionCondition: 入院
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdmissionCondition: str
         """
         self._DmissionCondition = None
         self._ChiefComplaint = None
@@ -20641,13 +20683,18 @@ class TreatmentRecord(AbstractModel):
         self._DeathDate = None
         self._RelapseDate = None
         self._ObservationDays = None
+        self._AdmissionCondition = None
 
     @property
     def DmissionCondition(self):
+        warnings.warn("parameter `DmissionCondition` is deprecated", DeprecationWarning) 
+
         return self._DmissionCondition
 
     @DmissionCondition.setter
     def DmissionCondition(self, DmissionCondition):
+        warnings.warn("parameter `DmissionCondition` is deprecated", DeprecationWarning) 
+
         self._DmissionCondition = DmissionCondition
 
     @property
@@ -20858,6 +20905,14 @@ class TreatmentRecord(AbstractModel):
     def ObservationDays(self, ObservationDays):
         self._ObservationDays = ObservationDays
 
+    @property
+    def AdmissionCondition(self):
+        return self._AdmissionCondition
+
+    @AdmissionCondition.setter
+    def AdmissionCondition(self, AdmissionCondition):
+        self._AdmissionCondition = AdmissionCondition
+
 
     def _deserialize(self, params):
         self._DmissionCondition = params.get("DmissionCondition")
@@ -20887,6 +20942,7 @@ class TreatmentRecord(AbstractModel):
         self._DeathDate = params.get("DeathDate")
         self._RelapseDate = params.get("RelapseDate")
         self._ObservationDays = params.get("ObservationDays")
+        self._AdmissionCondition = params.get("AdmissionCondition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

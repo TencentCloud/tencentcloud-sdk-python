@@ -2740,6 +2740,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogSwitches(self, request):
+        """查询集群日志（审计、事件、普通日志）开关列表
+
+        :param request: Request instance for DescribeLogSwitches.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeLogSwitchesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogSwitches", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogSwitchesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePodDeductionRate(self, request):
         """查询各个规格的 Pod 的抵扣率
 

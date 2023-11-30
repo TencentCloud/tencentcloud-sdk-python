@@ -4805,6 +4805,84 @@ class BatchOperationOpsDto(AbstractModel):
         
 
 
+class BatchOpsDTO(AbstractModel):
+    """批量操作结果，带失败原因
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _SuccessCount: 成功数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param _FailCount: 失败数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailCount: int
+        :param _FailMessageList: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailMessageList: list of FailMessage
+        """
+        self._TotalCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._FailMessageList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessCount(self):
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def FailMessageList(self):
+        return self._FailMessageList
+
+    @FailMessageList.setter
+    def FailMessageList(self, FailMessageList):
+        self._FailMessageList = FailMessageList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        if params.get("FailMessageList") is not None:
+            self._FailMessageList = []
+            for item in params.get("FailMessageList"):
+                obj = FailMessage()
+                obj._deserialize(item)
+                self._FailMessageList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchRerunIntegrationTaskInstancesRequest(AbstractModel):
     """BatchRerunIntegrationTaskInstances请求参数结构体
 
@@ -39499,6 +39577,99 @@ class EventCaseConsumeLogOptDtoCollection(AbstractModel):
         
 
 
+class EventCaseDTO(AbstractModel):
+    """事件实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaseId: 事件实例id
+        :type CaseId: str
+        :param _Name: 事件名
+        :type Name: str
+        :param _Dimension: 事件格式
+        :type Dimension: str
+        :param _CreationTs: 创建时间
+        :type CreationTs: str
+        :param _ConsumerId: 消费者id
+        :type ConsumerId: str
+        :param _Description: 描述信息
+        :type Description: str
+        """
+        self._CaseId = None
+        self._Name = None
+        self._Dimension = None
+        self._CreationTs = None
+        self._ConsumerId = None
+        self._Description = None
+
+    @property
+    def CaseId(self):
+        return self._CaseId
+
+    @CaseId.setter
+    def CaseId(self, CaseId):
+        self._CaseId = CaseId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Dimension(self):
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def CreationTs(self):
+        return self._CreationTs
+
+    @CreationTs.setter
+    def CreationTs(self, CreationTs):
+        self._CreationTs = CreationTs
+
+    @property
+    def ConsumerId(self):
+        return self._ConsumerId
+
+    @ConsumerId.setter
+    def ConsumerId(self, ConsumerId):
+        self._ConsumerId = ConsumerId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._CaseId = params.get("CaseId")
+        self._Name = params.get("Name")
+        self._Dimension = params.get("Dimension")
+        self._CreationTs = params.get("CreationTs")
+        self._ConsumerId = params.get("ConsumerId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EventCaseOpsDto(AbstractModel):
     """EventCaseOpsDto
 
@@ -40277,6 +40448,53 @@ class ExportTaskInfo(AbstractModel):
         self._SchedulerTaskId = params.get("SchedulerTaskId")
         self._SchedulerCurRunDate = params.get("SchedulerCurRunDate")
         self._FilePath = params.get("FilePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FailMessage(AbstractModel):
+    """错误处理结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 数据唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _ErrorMessage: 失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        """
+        self._Key = None
+        self._ErrorMessage = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76182,6 +76400,96 @@ class TopTableStatItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TriggerDsEventRequest(AbstractModel):
+    """TriggerDsEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _EventCaseList: 事件实例信息
+        :type EventCaseList: list of EventCaseDTO
+        """
+        self._ProjectId = None
+        self._EventCaseList = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def EventCaseList(self):
+        return self._EventCaseList
+
+    @EventCaseList.setter
+    def EventCaseList(self, EventCaseList):
+        self._EventCaseList = EventCaseList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("EventCaseList") is not None:
+            self._EventCaseList = []
+            for item in params.get("EventCaseList"):
+                obj = EventCaseDTO()
+                obj._deserialize(item)
+                self._EventCaseList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerDsEventResponse(AbstractModel):
+    """TriggerDsEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.BatchOpsDTO`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchOpsDTO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class TriggerEventRequest(AbstractModel):

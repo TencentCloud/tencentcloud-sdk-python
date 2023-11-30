@@ -1113,14 +1113,22 @@ class DescribeConnectionConfigResponse(AbstractModel):
         :type InNetLimit: int
         :param _OutNetLimit: 单分片出流量带宽限制，单位：MB。
         :type OutNetLimit: int
-        :param _ClientLimit: 单分片连接数限制。
+        :param _ClientLimit: 实例当前单分片连接数限制。
         :type ClientLimit: int
+        :param _ClientLimitMin: 单分片连接数限制最小值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientLimitMin: int
+        :param _ClientLimitMax: 单分片连接数限制最大值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientLimitMax: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InNetLimit = None
         self._OutNetLimit = None
         self._ClientLimit = None
+        self._ClientLimitMin = None
+        self._ClientLimitMax = None
         self._RequestId = None
 
     @property
@@ -1148,6 +1156,22 @@ class DescribeConnectionConfigResponse(AbstractModel):
         self._ClientLimit = ClientLimit
 
     @property
+    def ClientLimitMin(self):
+        return self._ClientLimitMin
+
+    @ClientLimitMin.setter
+    def ClientLimitMin(self, ClientLimitMin):
+        self._ClientLimitMin = ClientLimitMin
+
+    @property
+    def ClientLimitMax(self):
+        return self._ClientLimitMax
+
+    @ClientLimitMax.setter
+    def ClientLimitMax(self, ClientLimitMax):
+        self._ClientLimitMax = ClientLimitMax
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1160,6 +1184,8 @@ class DescribeConnectionConfigResponse(AbstractModel):
         self._InNetLimit = params.get("InNetLimit")
         self._OutNetLimit = params.get("OutNetLimit")
         self._ClientLimit = params.get("ClientLimit")
+        self._ClientLimitMin = params.get("ClientLimitMin")
+        self._ClientLimitMax = params.get("ClientLimitMax")
         self._RequestId = params.get("RequestId")
 
 
@@ -5947,6 +5973,8 @@ class ModifyNetworkConfigResponse(AbstractModel):
         :type VpcId: str
         :param _Vip: 修改后的 VIP 地址。
         :type Vip: str
+        :param _TaskId: 任务ID。
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5954,6 +5982,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self._SubnetId = None
         self._VpcId = None
         self._Vip = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -5989,6 +6018,14 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self._Vip = Vip
 
     @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6002,6 +6039,7 @@ class ModifyNetworkConfigResponse(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._VpcId = params.get("VpcId")
         self._Vip = params.get("Vip")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

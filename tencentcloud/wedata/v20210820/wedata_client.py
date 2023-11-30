@@ -7157,6 +7157,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TriggerDsEvent(self, request):
+        """事件管理-触发事件
+
+        :param request: Request instance for TriggerDsEvent.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.TriggerDsEventRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TriggerDsEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerDsEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.TriggerDsEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TriggerEvent(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         触发事件
