@@ -33,6 +33,7 @@ def test_serialization():
                 "InstanceChargeType": "PREPAID",
                 "DataDisks": [
                     {
+                        "BurstPerformance": None,
                         "DeleteWithInstance": None,
                         "Encrypt": None,
                         "DiskType": "CLOUD_BASIC",
