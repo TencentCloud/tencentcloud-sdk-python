@@ -528,6 +528,15 @@ class AlarmEventInfo(AbstractModel):
         :param _SendResult: 发送结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendResult: str
+        :param _MonitorObjectId: 监控对象id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorObjectId: str
+        :param _MonitorObjectName: 监控对象名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorObjectName: str
+        :param _Threshold: 指标阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: float
         """
         self._AlarmId = None
         self._AlarmTime = None
@@ -550,6 +559,9 @@ class AlarmEventInfo(AbstractModel):
         self._AlarmRecipientName = None
         self._TaskType = None
         self._SendResult = None
+        self._MonitorObjectId = None
+        self._MonitorObjectName = None
+        self._Threshold = None
 
     @property
     def AlarmId(self):
@@ -719,6 +731,30 @@ class AlarmEventInfo(AbstractModel):
     def SendResult(self, SendResult):
         self._SendResult = SendResult
 
+    @property
+    def MonitorObjectId(self):
+        return self._MonitorObjectId
+
+    @MonitorObjectId.setter
+    def MonitorObjectId(self, MonitorObjectId):
+        self._MonitorObjectId = MonitorObjectId
+
+    @property
+    def MonitorObjectName(self):
+        return self._MonitorObjectName
+
+    @MonitorObjectName.setter
+    def MonitorObjectName(self, MonitorObjectName):
+        self._MonitorObjectName = MonitorObjectName
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -742,6 +778,9 @@ class AlarmEventInfo(AbstractModel):
         self._AlarmRecipientName = params.get("AlarmRecipientName")
         self._TaskType = params.get("TaskType")
         self._SendResult = params.get("SendResult")
+        self._MonitorObjectId = params.get("MonitorObjectId")
+        self._MonitorObjectName = params.get("MonitorObjectName")
+        self._Threshold = params.get("Threshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -848,7 +887,7 @@ class AlarmIndicatorInfo(AbstractModel):
         :param _Id: 指标id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _AlarmIndicator: 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+        :param _AlarmIndicator: 告警指标,0任务失败,1任务运行超时,2任务停止,3任务暂停, 4读取速度,5写入速度,6读取吞吐 7写入吞吐, 8脏数据字节数,9脏数据条数,10任务异常,11任务检测异常, 12重启次数, 13任务延时, 14近20分内的重启次数 15传输延迟,16业务延迟, 50离线包CPU使用率, 51离线包内存使用率, 52离线包并行度使用率, 53离线包排队中的实例数, 54实时包资源使用率, 55实时包运行中的任务数
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmIndicator: int
         :param _AlarmIndicatorDesc: 告警指标描述
@@ -860,7 +899,7 @@ class AlarmIndicatorInfo(AbstractModel):
         :param _EstimatedTime: 预计的超时时间，分钟级别
 注意：此字段可能返回 null，表示取不到有效值。
         :type EstimatedTime: int
-        :param _Operator: 实时任务告警需要的参数
+        :param _Operator: 告警阈值的算子,1 大于,2 小于
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: int
         :param _AlarmIndicatorUnit: 告警指标阈值单位：ms(毫秒)、s(秒)、min(分钟)
@@ -868,10 +907,13 @@ class AlarmIndicatorInfo(AbstractModel):
         :type AlarmIndicatorUnit: str
         :param _Duration: 告警周期
         :type Duration: int
-        :param _DurationUnit: 告警周期单位
+        :param _DurationUnit: 告警周期单位:hour,minute,day
         :type DurationUnit: str
         :param _MaxTimes: 周期内最多告警次数
         :type MaxTimes: int
+        :param _Threshold: 指标阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: float
         """
         self._Id = None
         self._AlarmIndicator = None
@@ -883,6 +925,7 @@ class AlarmIndicatorInfo(AbstractModel):
         self._Duration = None
         self._DurationUnit = None
         self._MaxTimes = None
+        self._Threshold = None
 
     @property
     def Id(self):
@@ -964,6 +1007,14 @@ class AlarmIndicatorInfo(AbstractModel):
     def MaxTimes(self, MaxTimes):
         self._MaxTimes = MaxTimes
 
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -976,6 +1027,7 @@ class AlarmIndicatorInfo(AbstractModel):
         self._Duration = params.get("Duration")
         self._DurationUnit = params.get("DurationUnit")
         self._MaxTimes = params.get("MaxTimes")
+        self._Threshold = params.get("Threshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5957,11 +6009,14 @@ class BatchUpdateIntegrationTasksRequest(AbstractModel):
         :type TaskType: int
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _InchargeIds: 责任人Id（多个责任人用小写分号隔开）
+        :type InchargeIds: str
         """
         self._TaskIds = None
         self._Incharge = None
         self._TaskType = None
         self._ProjectId = None
+        self._InchargeIds = None
 
     @property
     def TaskIds(self):
@@ -5995,12 +6050,21 @@ class BatchUpdateIntegrationTasksRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def InchargeIds(self):
+        return self._InchargeIds
+
+    @InchargeIds.setter
+    def InchargeIds(self, InchargeIds):
+        self._InchargeIds = InchargeIds
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
         self._Incharge = params.get("Incharge")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
+        self._InchargeIds = params.get("InchargeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6315,12 +6379,15 @@ class CheckAlarmRegularNameExistRequest(AbstractModel):
         :type Id: str
         :param _TaskType: 任务类型:201.实时,202.离线
         :type TaskType: int
+        :param _MonitorType: 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+        :type MonitorType: int
         """
         self._ProjectId = None
         self._AlarmRegularName = None
         self._TaskId = None
         self._Id = None
         self._TaskType = None
+        self._MonitorType = None
 
     @property
     def ProjectId(self):
@@ -6366,6 +6433,14 @@ class CheckAlarmRegularNameExistRequest(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def MonitorType(self):
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -6373,6 +6448,7 @@ class CheckAlarmRegularNameExistRequest(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Id = params.get("Id")
         self._TaskType = params.get("TaskType")
+        self._MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16053,6 +16129,12 @@ class DescribeAlarmEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _PageNumber: 当前页
+        :type PageNumber: int
+        :param _PageSize: 每页记录数
+        :type PageSize: int
         :param _Filters: 过滤条件(key可以是：AlarmLevel,AlarmIndicator,KeyWord)
         :type Filters: list of Filter
         :param _OrderFields: 排序字段（AlarmTime）
@@ -16063,21 +16145,42 @@ class DescribeAlarmEventsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _ProjectId: 项目ID
-        :type ProjectId: str
-        :param _PageNumber: 当前页
-        :type PageNumber: int
-        :param _PageSize: 每页记录数
-        :type PageSize: int
+        :param _MonitorType: 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+        :type MonitorType: int
         """
+        self._ProjectId = None
+        self._PageNumber = None
+        self._PageSize = None
         self._Filters = None
         self._OrderFields = None
         self._TaskType = None
         self._StartTime = None
         self._EndTime = None
-        self._ProjectId = None
-        self._PageNumber = None
-        self._PageSize = None
+        self._MonitorType = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
 
     @property
     def Filters(self):
@@ -16120,31 +16223,18 @@ class DescribeAlarmEventsRequest(AbstractModel):
         self._EndTime = EndTime
 
     @property
-    def ProjectId(self):
-        return self._ProjectId
+    def MonitorType(self):
+        return self._MonitorType
 
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def PageNumber(self):
-        return self._PageNumber
-
-    @PageNumber.setter
-    def PageNumber(self, PageNumber):
-        self._PageNumber = PageNumber
-
-    @property
-    def PageSize(self):
-        return self._PageSize
-
-    @PageSize.setter
-    def PageSize(self, PageSize):
-        self._PageSize = PageSize
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
 
 
     def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -16160,9 +16250,7 @@ class DescribeAlarmEventsRequest(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
-        self._ProjectId = params.get("ProjectId")
-        self._PageNumber = params.get("PageNumber")
-        self._PageSize = params.get("PageSize")
+        self._MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16253,6 +16341,8 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         :type AlarmRecipientName: str
         :param _AlarmTime: 告警时间
         :type AlarmTime: str
+        :param _MonitorType: 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
+        :type MonitorType: int
         """
         self._AlarmId = None
         self._PageNumber = None
@@ -16263,6 +16353,7 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._AlarmRecipient = None
         self._AlarmRecipientName = None
         self._AlarmTime = None
+        self._MonitorType = None
 
     @property
     def AlarmId(self):
@@ -16336,6 +16427,14 @@ class DescribeAlarmReceiverRequest(AbstractModel):
     def AlarmTime(self, AlarmTime):
         self._AlarmTime = AlarmTime
 
+    @property
+    def MonitorType(self):
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -16347,6 +16446,7 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._AlarmRecipient = params.get("AlarmRecipient")
         self._AlarmRecipientName = params.get("AlarmRecipientName")
         self._AlarmTime = params.get("AlarmTime")
+        self._MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19267,19 +19367,19 @@ class DescribeDataSourceInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 工作空间id
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _PageNumber: 页码
         :type PageNumber: int
         :param _PageSize: 页数
         :type PageSize: int
-        :param _Filters: 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+        :param _Filters: 过滤条件（暂不支持）
         :type Filters: :class:`tencentcloud.wedata.v20210820.models.Filter`
         :param _OrderFields: 排序配置
         :type OrderFields: :class:`tencentcloud.wedata.v20210820.models.OrderField`
-        :param _Type: 数据源类型
+        :param _Type: 数据源类型，必选（如MYSQL、DLC等）
         :type Type: str
-        :param _DatasourceName: 数据源名称过滤用
+        :param _DatasourceName: 数据源名称过滤
         :type DatasourceName: str
         """
         self._ProjectId = None
@@ -21350,7 +21450,11 @@ class DescribeEventCasesRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _Category: 事件实例目录
+        :param _Category: 事件实例目录,示例取值:
+- 已过期: expired
+- 未过期: consuming
+- 全部: all
+
         :type Category: str
         :param _PageNumber: 页码
         :type PageNumber: int
@@ -21364,7 +21468,11 @@ class DescribeEventCasesRequest(AbstractModel):
         :type EventSubType: str
         :param _EventBroadcastType: 事件广播类型
         :type EventBroadcastType: str
-        :param _Status: 事件实例状态
+        :param _Status: 事件实例状态,示例取值:
+- 已消费: COMSUMED
+- 已过期: EXPIRED
+- 待消费: ACTIVE
+- 消费中: CONSUMING
         :type Status: str
         :param _CreationTimeStart: 事件实例最小创建时间
         :type CreationTimeStart: str
@@ -21380,6 +21488,12 @@ class DescribeEventCasesRequest(AbstractModel):
         :type LogTimeEnd: str
         :param _Dimension: 事件实例数据时间
         :type Dimension: str
+        :param _TimeToLive: 事件实例有效时间
+        :type TimeToLive: str
+        :param _SortItem: 排序字段
+        :type SortItem: str
+        :param _SortType: 排序顺序
+        :type SortType: str
         """
         self._ProjectId = None
         self._Category = None
@@ -21397,6 +21511,9 @@ class DescribeEventCasesRequest(AbstractModel):
         self._LogTimeStart = None
         self._LogTimeEnd = None
         self._Dimension = None
+        self._TimeToLive = None
+        self._SortItem = None
+        self._SortType = None
 
     @property
     def ProjectId(self):
@@ -21440,10 +21557,14 @@ class DescribeEventCasesRequest(AbstractModel):
 
     @property
     def EventType(self):
+        warnings.warn("parameter `EventType` is deprecated", DeprecationWarning) 
+
         return self._EventType
 
     @EventType.setter
     def EventType(self, EventType):
+        warnings.warn("parameter `EventType` is deprecated", DeprecationWarning) 
+
         self._EventType = EventType
 
     @property
@@ -21456,18 +21577,26 @@ class DescribeEventCasesRequest(AbstractModel):
 
     @property
     def EventBroadcastType(self):
+        warnings.warn("parameter `EventBroadcastType` is deprecated", DeprecationWarning) 
+
         return self._EventBroadcastType
 
     @EventBroadcastType.setter
     def EventBroadcastType(self, EventBroadcastType):
+        warnings.warn("parameter `EventBroadcastType` is deprecated", DeprecationWarning) 
+
         self._EventBroadcastType = EventBroadcastType
 
     @property
     def Status(self):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         return self._Status
 
     @Status.setter
     def Status(self, Status):
+        warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
+
         self._Status = Status
 
     @property
@@ -21526,6 +21655,30 @@ class DescribeEventCasesRequest(AbstractModel):
     def Dimension(self, Dimension):
         self._Dimension = Dimension
 
+    @property
+    def TimeToLive(self):
+        return self._TimeToLive
+
+    @TimeToLive.setter
+    def TimeToLive(self, TimeToLive):
+        self._TimeToLive = TimeToLive
+
+    @property
+    def SortItem(self):
+        return self._SortItem
+
+    @SortItem.setter
+    def SortItem(self, SortItem):
+        self._SortItem = SortItem
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -21544,6 +21697,9 @@ class DescribeEventCasesRequest(AbstractModel):
         self._LogTimeStart = params.get("LogTimeStart")
         self._LogTimeEnd = params.get("LogTimeEnd")
         self._Dimension = params.get("Dimension")
+        self._TimeToLive = params.get("TimeToLive")
+        self._SortItem = params.get("SortItem")
+        self._SortType = params.get("SortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39102,6 +39258,123 @@ class EditBaselineResponse(AbstractModel):
             self._Data = BooleanResponse()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class EventBatchCaseDTO(AbstractModel):
+    """事件连续时间实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaseId: 事件实例id
+        :type CaseId: str
+        :param _Name: 事件名
+        :type Name: str
+        :param _StartDimension: 事件触发起始时间
+        :type StartDimension: str
+        :param _CreationTs: 创建时间
+        :type CreationTs: str
+        :param _ConsumerId: 消费者id
+        :type ConsumerId: str
+        :param _Description: 描述信息
+        :type Description: str
+        :param _EndDimension: 事件触发结束时间
+        :type EndDimension: str
+        :param _EventSubType: 事件周期
+        :type EventSubType: str
+        """
+        self._CaseId = None
+        self._Name = None
+        self._StartDimension = None
+        self._CreationTs = None
+        self._ConsumerId = None
+        self._Description = None
+        self._EndDimension = None
+        self._EventSubType = None
+
+    @property
+    def CaseId(self):
+        return self._CaseId
+
+    @CaseId.setter
+    def CaseId(self, CaseId):
+        self._CaseId = CaseId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartDimension(self):
+        return self._StartDimension
+
+    @StartDimension.setter
+    def StartDimension(self, StartDimension):
+        self._StartDimension = StartDimension
+
+    @property
+    def CreationTs(self):
+        return self._CreationTs
+
+    @CreationTs.setter
+    def CreationTs(self, CreationTs):
+        self._CreationTs = CreationTs
+
+    @property
+    def ConsumerId(self):
+        return self._ConsumerId
+
+    @ConsumerId.setter
+    def ConsumerId(self, ConsumerId):
+        self._ConsumerId = ConsumerId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EndDimension(self):
+        return self._EndDimension
+
+    @EndDimension.setter
+    def EndDimension(self, EndDimension):
+        self._EndDimension = EndDimension
+
+    @property
+    def EventSubType(self):
+        return self._EventSubType
+
+    @EventSubType.setter
+    def EventSubType(self, EventSubType):
+        self._EventSubType = EventSubType
+
+
+    def _deserialize(self, params):
+        self._CaseId = params.get("CaseId")
+        self._Name = params.get("Name")
+        self._StartDimension = params.get("StartDimension")
+        self._CreationTs = params.get("CreationTs")
+        self._ConsumerId = params.get("ConsumerId")
+        self._Description = params.get("Description")
+        self._EndDimension = params.get("EndDimension")
+        self._EventSubType = params.get("EventSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EventCaseAuditLogOptDto(AbstractModel):
@@ -76413,9 +76686,12 @@ class TriggerDsEventRequest(AbstractModel):
         :type ProjectId: str
         :param _EventCaseList: 事件实例信息
         :type EventCaseList: list of EventCaseDTO
+        :param _EventBatchCaseList: 事件实例信息(连续时间)
+        :type EventBatchCaseList: list of EventBatchCaseDTO
         """
         self._ProjectId = None
         self._EventCaseList = None
+        self._EventBatchCaseList = None
 
     @property
     def ProjectId(self):
@@ -76433,6 +76709,14 @@ class TriggerDsEventRequest(AbstractModel):
     def EventCaseList(self, EventCaseList):
         self._EventCaseList = EventCaseList
 
+    @property
+    def EventBatchCaseList(self):
+        return self._EventBatchCaseList
+
+    @EventBatchCaseList.setter
+    def EventBatchCaseList(self, EventBatchCaseList):
+        self._EventBatchCaseList = EventBatchCaseList
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -76442,6 +76726,12 @@ class TriggerDsEventRequest(AbstractModel):
                 obj = EventCaseDTO()
                 obj._deserialize(item)
                 self._EventCaseList.append(obj)
+        if params.get("EventBatchCaseList") is not None:
+            self._EventBatchCaseList = []
+            for item in params.get("EventBatchCaseList"):
+                obj = EventBatchCaseDTO()
+                obj._deserialize(item)
+                self._EventBatchCaseList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

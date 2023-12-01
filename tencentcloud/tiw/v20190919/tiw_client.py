@@ -72,31 +72,6 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateOfflineRecord(self, request):
-        """课后录制服务已下线
-
-        创建课后录制任务
-
-        :param request: Request instance for CreateOfflineRecord.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOfflineRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOfflineRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreatePPTCheckTask(self, request):
         """检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
 
@@ -295,56 +270,6 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeIMApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIMApplicationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineRecord(self, request):
-        """课后录制服务已下线
-
-        查询课后录制任务的进度与录制结果等相关信息
-
-        :param request: Request instance for DescribeOfflineRecord.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineRecordCallback(self, request):
-        """课后录制服务已下线
-
-        查询课后录制回调地址
-
-        :param request: Request instance for DescribeOfflineRecordCallback.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineRecordCallback", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineRecordCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1131,31 +1056,6 @@ class TiwClient(AbstractClient):
             body = self.call("ResumeOnlineRecord", params, headers=headers)
             response = json.loads(body)
             model = models.ResumeOnlineRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SetOfflineRecordCallback(self, request):
-        """课后录制服务已下线
-
-        设置课后录制回调地址
-
-        :param request: Request instance for SetOfflineRecordCallback.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SetOfflineRecordCallback", params, headers=headers)
-            response = json.loads(body)
-            model = models.SetOfflineRecordCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

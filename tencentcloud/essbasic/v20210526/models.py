@@ -2556,12 +2556,25 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
         :type HiddenComponents: bool
         :param _Operator: 渠道操作者信息
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _UserData: 用户自定义参数
+<ul>
+<li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
+<li>指定后，创建，编辑，删除模版时，回调都会携带该userData</li>
+<li>支持的格式：json字符串的BASE64编码字符串</li>
+<li>示例：<ul>
+                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
+                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
+</ul>
+</li>
+</ul>
+        :type UserData: str
         """
         self._Agent = None
         self._EmbedType = None
         self._BusinessId = None
         self._HiddenComponents = None
         self._Operator = None
+        self._UserData = None
 
     @property
     def Agent(self):
@@ -2607,6 +2620,14 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def UserData(self):
+        return self._UserData
+
+    @UserData.setter
+    def UserData(self, UserData):
+        self._UserData = UserData
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -2618,6 +2639,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._UserData = params.get("UserData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4388,9 +4410,15 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 合同模板ID，为32位字符串。
+        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id</li>
+</ul>
         :type ResourceId: str
-        :param _ResourceType: 资源类型，此接口固定为**1**表示为用模板发起
+        :param _ResourceType: 资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件（默认值）</li></ul>
         :type ResourceType: int
         :param _FlowInfo: 要创建的合同信息
         :type FlowInfo: :class:`tencentcloud.essbasic.v20210526.models.BaseFlowInfo`
@@ -4408,7 +4436,8 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
         :param _FlowApproverList: 合同签署人信息
         :type FlowApproverList: list of CommonFlowApprover
-        :param _FlowId: 用过去已经通过此接口发起的合同的ID复制个新的合同创建链接
+        :param _FlowId: 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
+注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
         :type FlowId: str
         :param _NeedPreview: 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
         :type NeedPreview: bool
@@ -9465,6 +9494,11 @@ class CreateFlowOption(AbstractModel):
 **true**：禁止编辑填写控件
 **false**：（默认）允许编辑填写控件
         :type ForbidEditFillComponent: bool
+        :param _SkipUploadFile: 跳过上传文件步骤
+
+**true**：跳过
+**false**：（默认）不跳过，需要传ResourceId
+        :type SkipUploadFile: str
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -9473,6 +9507,7 @@ class CreateFlowOption(AbstractModel):
         self._CanSkipAddApprover = None
         self._CustomCreateFlowDescription = None
         self._ForbidEditFillComponent = None
+        self._SkipUploadFile = None
 
     @property
     def CanEditFlow(self):
@@ -9530,6 +9565,14 @@ class CreateFlowOption(AbstractModel):
     def ForbidEditFillComponent(self, ForbidEditFillComponent):
         self._ForbidEditFillComponent = ForbidEditFillComponent
 
+    @property
+    def SkipUploadFile(self):
+        return self._SkipUploadFile
+
+    @SkipUploadFile.setter
+    def SkipUploadFile(self, SkipUploadFile):
+        self._SkipUploadFile = SkipUploadFile
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -9539,6 +9582,7 @@ class CreateFlowOption(AbstractModel):
         self._CanSkipAddApprover = params.get("CanSkipAddApprover")
         self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
         self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
+        self._SkipUploadFile = params.get("SkipUploadFile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

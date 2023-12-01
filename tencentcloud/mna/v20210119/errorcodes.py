@@ -50,6 +50,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 无法获取到可加速的运营商信息
 INVALIDPARAMETERVALUE_VENDORNOTFOUND = 'InvalidParameterValue.VendorNotFound'
 
+# 超过配额限制。
+LIMITEXCEEDED = 'LimitExceeded'
+
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
@@ -95,5 +98,17 @@ OPERATIONDENIED_VENDORSERVERERROR = 'OperationDenied.VendorServerError'
 # 请求的次数超过了频率限制。
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 
+# 资源被占用。
+RESOURCEINUSE = 'ResourceInUse'
+
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# 未授权操作。
+UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 未验证服务权限
+UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
+
+# 直播服务未开通
+UNAUTHORIZEDOPERATION_UNOPENEDLIVESERVICE = 'UnauthorizedOperation.UnopenedLiveService'

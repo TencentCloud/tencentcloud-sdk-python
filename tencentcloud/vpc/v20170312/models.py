@@ -28975,12 +28975,16 @@ class IPSECOptionsSpecification(AbstractModel):
         :param _IPSECSaLifetimeTraffic: IPsec SA lifetime(KB)：单位KB，取值范围：2560-604800
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPSECSaLifetimeTraffic: int
+        :param _IntegrityAlgorithm: 认证算法：可选值：'MD5', 'SHA1'，'SHA-256' 默认为
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntegrityAlgorithm: str
         """
         self._EncryptAlgorithm = None
         self._IntegrityAlgorith = None
         self._IPSECSaLifetimeSeconds = None
         self._PfsDhGroup = None
         self._IPSECSaLifetimeTraffic = None
+        self._IntegrityAlgorithm = None
 
     @property
     def EncryptAlgorithm(self):
@@ -28992,10 +28996,14 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IntegrityAlgorith(self):
+        warnings.warn("parameter `IntegrityAlgorith` is deprecated", DeprecationWarning) 
+
         return self._IntegrityAlgorith
 
     @IntegrityAlgorith.setter
     def IntegrityAlgorith(self, IntegrityAlgorith):
+        warnings.warn("parameter `IntegrityAlgorith` is deprecated", DeprecationWarning) 
+
         self._IntegrityAlgorith = IntegrityAlgorith
 
     @property
@@ -29022,6 +29030,14 @@ class IPSECOptionsSpecification(AbstractModel):
     def IPSECSaLifetimeTraffic(self, IPSECSaLifetimeTraffic):
         self._IPSECSaLifetimeTraffic = IPSECSaLifetimeTraffic
 
+    @property
+    def IntegrityAlgorithm(self):
+        return self._IntegrityAlgorithm
+
+    @IntegrityAlgorithm.setter
+    def IntegrityAlgorithm(self, IntegrityAlgorithm):
+        self._IntegrityAlgorithm = IntegrityAlgorithm
+
 
     def _deserialize(self, params):
         self._EncryptAlgorithm = params.get("EncryptAlgorithm")
@@ -29029,6 +29045,7 @@ class IPSECOptionsSpecification(AbstractModel):
         self._IPSECSaLifetimeSeconds = params.get("IPSECSaLifetimeSeconds")
         self._PfsDhGroup = params.get("PfsDhGroup")
         self._IPSECSaLifetimeTraffic = params.get("IPSECSaLifetimeTraffic")
+        self._IntegrityAlgorithm = params.get("IntegrityAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

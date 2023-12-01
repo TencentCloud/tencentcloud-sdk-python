@@ -233,6 +233,29 @@ class CaptchaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCaptchaRceResult(self, request):
+        """Rce融合验证核查验证码票据结果(Web及APP)
+
+        :param request: Request instance for DescribeCaptchaRceResult.
+        :type request: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaRceResultRequest`
+        :rtype: :class:`tencentcloud.captcha.v20190722.models.DescribeCaptchaRceResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCaptchaRceResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCaptchaRceResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCaptchaResult(self, request):
         """核查验证码票据结果(Web及APP)
 

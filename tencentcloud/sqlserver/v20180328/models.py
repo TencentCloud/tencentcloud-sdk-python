@@ -9858,6 +9858,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type EventSaveDays: int
         :param _TDEConfig: TDE透明数据加密配置
         :type TDEConfig: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
+        :param _SSLConfig: SSL加密
+        :type SSLConfig: :class:`tencentcloud.sqlserver.v20180328.models.SSLConfig`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9870,6 +9872,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._BlockedThreshold = None
         self._EventSaveDays = None
         self._TDEConfig = None
+        self._SSLConfig = None
         self._RequestId = None
 
     @property
@@ -9945,6 +9948,14 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._TDEConfig = TDEConfig
 
     @property
+    def SSLConfig(self):
+        return self._SSLConfig
+
+    @SSLConfig.setter
+    def SSLConfig(self, SSLConfig):
+        self._SSLConfig = SSLConfig
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9965,6 +9976,9 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         if params.get("TDEConfig") is not None:
             self._TDEConfig = TDEConfigAttribute()
             self._TDEConfig._deserialize(params.get("TDEConfig"))
+        if params.get("SSLConfig") is not None:
+            self._SSLConfig = SSLConfig()
+            self._SSLConfig._deserialize(params.get("SSLConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -19210,6 +19224,100 @@ class ModifyDBInstanceRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceSSLRequest(AbstractModel):
+    """ModifyDBInstanceSSL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Type: 操作类型。enable-开启SSL，disable-关闭SSL，renew-更新证书有效期
+        :type Type: str
+        :param _WaitSwitch: 操作设置。0-立即执行，1- 维护时间内执行，默认取值0。
+        :type WaitSwitch: int
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._WaitSwitch = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def WaitSwitch(self):
+        return self._WaitSwitch
+
+    @WaitSwitch.setter
+    def WaitSwitch(self, WaitSwitch):
+        self._WaitSwitch = WaitSwitch
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._WaitSwitch = params.get("WaitSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceSSLResponse(AbstractModel):
+    """ModifyDBInstanceSSL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 异步任务流程ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups请求参数结构体
 
@@ -23354,6 +23462,72 @@ class RunMigrationResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class SSLConfig(AbstractModel):
+    """SSL加密配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Encryption: SSL加密状态，
+enable-已开启
+disable-未开启
+enable_doing-开启中
+disable_doing-关闭中
+renew_doing-更新中
+wait_doing-等待维护时间内执行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encryption: str
+        :param _SSLValidityPeriod: SSL证书有效期，时间格式 YYYY-MM-DD HH:MM:SS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLValidityPeriod: str
+        :param _SSLValidity: SSL证书有效性，0-无效，1-有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLValidity: int
+        """
+        self._Encryption = None
+        self._SSLValidityPeriod = None
+        self._SSLValidity = None
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def SSLValidityPeriod(self):
+        return self._SSLValidityPeriod
+
+    @SSLValidityPeriod.setter
+    def SSLValidityPeriod(self, SSLValidityPeriod):
+        self._SSLValidityPeriod = SSLValidityPeriod
+
+    @property
+    def SSLValidity(self):
+        return self._SSLValidity
+
+    @SSLValidity.setter
+    def SSLValidity(self, SSLValidity):
+        self._SSLValidity = SSLValidity
+
+
+    def _deserialize(self, params):
+        self._Encryption = params.get("Encryption")
+        self._SSLValidityPeriod = params.get("SSLValidityPeriod")
+        self._SSLValidity = params.get("SSLValidity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SecurityGroup(AbstractModel):

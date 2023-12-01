@@ -9943,6 +9943,10 @@ class WaterMarkChar(AbstractModel):
         :type FontColor: str
         :param _BackGroundColor: 水印文字的背景色，为空代表背景透明，默认为空
         :type BackGroundColor: str
+        :param _Font: 文字水印的字体，支持设置以下值：
+1. Tencent （默认）
+2. SourceHanSans
+        :type Font: str
         """
         self._Top = None
         self._Left = None
@@ -9952,6 +9956,7 @@ class WaterMarkChar(AbstractModel):
         self._FontSize = None
         self._FontColor = None
         self._BackGroundColor = None
+        self._Font = None
 
     @property
     def Top(self):
@@ -10017,6 +10022,14 @@ class WaterMarkChar(AbstractModel):
     def BackGroundColor(self, BackGroundColor):
         self._BackGroundColor = BackGroundColor
 
+    @property
+    def Font(self):
+        return self._Font
+
+    @Font.setter
+    def Font(self, Font):
+        self._Font = Font
+
 
     def _deserialize(self, params):
         self._Top = params.get("Top")
@@ -10027,6 +10040,7 @@ class WaterMarkChar(AbstractModel):
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._BackGroundColor = params.get("BackGroundColor")
+        self._Font = params.get("Font")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10222,9 +10236,14 @@ class WaterMarkTimestamp(AbstractModel):
         :type Pos: int
         :param _TimeZone: 显示时间戳的时区，默认东八区
         :type TimeZone: int
+        :param _Font: 文字水印的字体，支持设置以下值：
+1. Tencent （默认）
+2. SourceHanSans
+        :type Font: str
         """
         self._Pos = None
         self._TimeZone = None
+        self._Font = None
 
     @property
     def Pos(self):
@@ -10242,10 +10261,19 @@ class WaterMarkTimestamp(AbstractModel):
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
 
+    @property
+    def Font(self):
+        return self._Font
+
+    @Font.setter
+    def Font(self, Font):
+        self._Font = Font
+
 
     def _deserialize(self, params):
         self._Pos = params.get("Pos")
         self._TimeZone = params.get("TimeZone")
+        self._Font = params.get("Font")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

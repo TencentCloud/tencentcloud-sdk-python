@@ -2487,6 +2487,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBInstanceSSL(self, request):
+        """本接口（DescribeDBInstancesAttribute）用于开启\关闭\更新SSL加密
+
+        :param request: Request instance for ModifyDBInstanceSSL.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSSLRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBInstanceSSLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceSSL", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceSSLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """本接口(ModifyDBInstanceSecurityGroups)用于修改实例绑定的安全组。
 

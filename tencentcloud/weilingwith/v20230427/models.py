@@ -1027,6 +1027,66 @@ class AlarmLevelInfo(AbstractModel):
         
 
 
+class AlarmStatusData(AbstractModel):
+    """告警状态返回结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusID: 告警状态ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusID: str
+        :param _StatusName: 告警状态名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusName: str
+        :param _StatusType: 告警状态类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusType: str
+        """
+        self._StatusID = None
+        self._StatusName = None
+        self._StatusType = None
+
+    @property
+    def StatusID(self):
+        return self._StatusID
+
+    @StatusID.setter
+    def StatusID(self, StatusID):
+        self._StatusID = StatusID
+
+    @property
+    def StatusName(self):
+        return self._StatusName
+
+    @StatusName.setter
+    def StatusName(self, StatusName):
+        self._StatusName = StatusName
+
+    @property
+    def StatusType(self):
+        return self._StatusType
+
+    @StatusType.setter
+    def StatusType(self, StatusType):
+        self._StatusType = StatusType
+
+
+    def _deserialize(self, params):
+        self._StatusID = params.get("StatusID")
+        self._StatusName = params.get("StatusName")
+        self._StatusType = params.get("StatusType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmTypeDetailInfo(AbstractModel):
     """告警类型详情信息
 
@@ -4578,6 +4638,84 @@ class DescribeAlarmStatusListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _WorkspaceId: 工作空间ID
+        :type WorkspaceId: str
+        """
+        self._ApplicationToken = None
+        self._WorkspaceId = None
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmStatusListRes(AbstractModel):
+    """告警状态列表返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 告警状态返回结构
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of AlarmStatusData
+        """
+        self._List = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = AlarmStatusData()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAlarmStatusListResponse(AbstractModel):
     """DescribeAlarmStatusList返回参数结构体
@@ -4586,10 +4724,21 @@ class DescribeAlarmStatusListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 告警状态返回结构
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmStatusListRes`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -4601,6 +4750,9 @@ class DescribeAlarmStatusListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAlarmStatusListRes()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 

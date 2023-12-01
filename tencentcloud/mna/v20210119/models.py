@@ -1538,6 +1538,78 @@ class DeviceNetInfo(AbstractModel):
         
 
 
+class DevicePayModeInfo(AbstractModel):
+    """设备付费模式信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID
+        :type DeviceId: str
+        :param _PayMode: 付费模式。
+1：预付费流量包
+0：按流量后付费
+        :type PayMode: int
+        :param _PayModeDesc: 付费模式描述
+        :type PayModeDesc: str
+        :param _ResourceId: 流量包ID，仅当付费模式为流量包类型时才有。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        """
+        self._DeviceId = None
+        self._PayMode = None
+        self._PayModeDesc = None
+        self._ResourceId = None
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeDesc(self):
+        return self._PayModeDesc
+
+    @PayModeDesc.setter
+    def PayModeDesc(self, PayModeDesc):
+        self._PayModeDesc = PayModeDesc
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._PayMode = params.get("PayMode")
+        self._PayModeDesc = params.get("PayModeDesc")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExpectedThreshold(AbstractModel):
     """用户期望门限
 
@@ -1684,6 +1756,230 @@ class FlowDetails(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class FlowPackageInfo(AbstractModel):
+    """流量包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 流量包的唯一资源ID
+        :type ResourceId: str
+        :param _AppId: 流量包所属的用户AppId
+        :type AppId: int
+        :param _PackageType: 流量包规格类型。可取值如下：
+DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
+DEVICE_3_FLOW_100G、
+DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
+档位也影响流量包可绑定的设备数量上限：
+20G：最多绑定1个设备
+50G：最多绑定2个设备
+100G：最多绑定3个设备
+500G：最多绑定5个设备
+        :type PackageType: str
+        :param _Status: 流量包状态，0：未生效，1：有效期内，2：已过期
+        :type Status: int
+        :param _ActiveTime: 生效时间，Unix时间戳格式，单位：秒
+        :type ActiveTime: int
+        :param _ExpireTime: 过期时间，Unix时间戳格式，单位：秒
+        :type ExpireTime: int
+        :param _DeviceList: 流量包绑定的设备ID列表
+        :type DeviceList: list of str
+        :param _CapacitySize: 流量包总容量，单位：MB
+        :type CapacitySize: int
+        :param _CapacityRemain: 流量包余量，单位：MB
+        :type CapacityRemain: int
+        :param _RenewFlag: 自动续费标识。true代表自动续费，false代表不自动续费
+        :type RenewFlag: bool
+        """
+        self._ResourceId = None
+        self._AppId = None
+        self._PackageType = None
+        self._Status = None
+        self._ActiveTime = None
+        self._ExpireTime = None
+        self._DeviceList = None
+        self._CapacitySize = None
+        self._CapacityRemain = None
+        self._RenewFlag = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PackageType(self):
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ActiveTime(self):
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def CapacitySize(self):
+        return self._CapacitySize
+
+    @CapacitySize.setter
+    def CapacitySize(self, CapacitySize):
+        self._CapacitySize = CapacitySize
+
+    @property
+    def CapacityRemain(self):
+        return self._CapacityRemain
+
+    @CapacityRemain.setter
+    def CapacityRemain(self, CapacityRemain):
+        self._CapacityRemain = CapacityRemain
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._AppId = params.get("AppId")
+        self._PackageType = params.get("PackageType")
+        self._Status = params.get("Status")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeviceList = params.get("DeviceList")
+        self._CapacitySize = params.get("CapacitySize")
+        self._CapacityRemain = params.get("CapacityRemain")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDevicePayModeRequest(AbstractModel):
+    """GetDevicePayMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIdList: 设备ID列表
+        :type DeviceIdList: list of str
+        """
+        self._DeviceIdList = None
+
+    @property
+    def DeviceIdList(self):
+        return self._DeviceIdList
+
+    @DeviceIdList.setter
+    def DeviceIdList(self, DeviceIdList):
+        self._DeviceIdList = DeviceIdList
+
+
+    def _deserialize(self, params):
+        self._DeviceIdList = params.get("DeviceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetDevicePayModeResponse(AbstractModel):
+    """GetDevicePayMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 结果信息
+        :type Result: list of DevicePayModeInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = DevicePayModeInfo()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class GetDeviceRequest(AbstractModel):
@@ -1893,6 +2189,142 @@ class GetDevicesResponse(AbstractModel):
                 self._DeviceInfos.append(obj)
         self._Length = params.get("Length")
         self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFlowPackagesRequest(AbstractModel):
+    """GetFlowPackages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 页码，从1开始
+        :type PageNumber: int
+        :param _PageSize: 每页个数
+        :type PageSize: int
+        :param _ResourceId: 流量包的唯一资源ID
+        :type ResourceId: str
+        :param _DeviceId: 流量包绑定的设备ID
+        :type DeviceId: str
+        :param _Status: 流量包状态，0：未生效，1：有效期内，2：已过期
+
+        :type Status: int
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._ResourceId = None
+        self._DeviceId = None
+        self._Status = None
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ResourceId = params.get("ResourceId")
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFlowPackagesResponse(AbstractModel):
+    """GetFlowPackages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageList: 流量包列表
+        :type PackageList: list of FlowPackageInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PackageList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def PackageList(self):
+        return self._PackageList
+
+    @PackageList.setter
+    def PackageList(self, PackageList):
+        self._PackageList = PackageList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PackageList") is not None:
+            self._PackageList = []
+            for item in params.get("PackageList"):
+                obj = FlowPackageInfo()
+                obj._deserialize(item)
+                self._PackageList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -2916,6 +3348,76 @@ class HardwareInfo(AbstractModel):
         
 
 
+class ModifyPackageRenewFlagRequest(AbstractModel):
+    """ModifyPackageRenewFlag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 流量包的唯一资源ID
+        :type ResourceId: str
+        :param _RenewFlag: 自动续费标识。true代表自动续费，false代表不自动续费
+        :type RenewFlag: bool
+        """
+        self._ResourceId = None
+        self._RenewFlag = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPackageRenewFlagResponse(AbstractModel):
+    """ModifyPackageRenewFlag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MonitorData(AbstractModel):
     """流量监控指标
 
@@ -3092,6 +3594,124 @@ class NetworkData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OrderFlowPackageRequest(AbstractModel):
+    """OrderFlowPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageType: 流量包规格类型。可取值如下：
+DEVICE_1_FLOW_20G、DEVICE_2_FLOW_50G、
+DEVICE_3_FLOW_100G、
+DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
+档位也影响流量包可绑定的设备数量上限：
+20G：最多绑定1个设备
+50G：最多绑定2个设备
+100G：最多绑定3个设备
+500G：最多绑定5个设备
+        :type PackageType: str
+        :param _DeviceList: 流量包绑定的设备ID列表。捆绑设备个数上限取决于包的规格档位：
+20G：最多绑定1个设备
+50G：最多绑定2个设备
+100G：最多绑定3个设备
+500G：最多绑定5个设备
+        :type DeviceList: list of str
+        :param _AutoRenewFlag: 是否自动续费
+        :type AutoRenewFlag: bool
+        :param _PackageRegion: 区域标识，0：国内，1：国外
+        :type PackageRegion: int
+        """
+        self._PackageType = None
+        self._DeviceList = None
+        self._AutoRenewFlag = None
+        self._PackageRegion = None
+
+    @property
+    def PackageType(self):
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def DeviceList(self):
+        return self._DeviceList
+
+    @DeviceList.setter
+    def DeviceList(self, DeviceList):
+        self._DeviceList = DeviceList
+
+    @property
+    def AutoRenewFlag(self):
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def PackageRegion(self):
+        return self._PackageRegion
+
+    @PackageRegion.setter
+    def PackageRegion(self, PackageRegion):
+        self._PackageRegion = PackageRegion
+
+
+    def _deserialize(self, params):
+        self._PackageType = params.get("PackageType")
+        self._DeviceList = params.get("DeviceList")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._PackageRegion = params.get("PackageRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrderFlowPackageResponse(AbstractModel):
+    """OrderFlowPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 流量包的唯一资源ID
+        :type ResourceId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
 
 
 class SlotNetInfo(AbstractModel):

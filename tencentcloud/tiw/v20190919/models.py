@@ -420,117 +420,6 @@ class CreateApplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateOfflineRecordRequest(AbstractModel):
-    """CreateOfflineRecord请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: 客户的SdkAppId
-        :type SdkAppId: int
-        :param _RoomId: 录制任务对应的房间号
-        :type RoomId: int
-        :param _GroupId: 录制任务对应的群组Id
-        :type GroupId: str
-        :param _MixStream: 混流参数配置
-目前课后录制暂未支持自定义混流布局Custom参数
-        :type MixStream: :class:`tencentcloud.tiw.v20190919.models.MixStream`
-        :param _Whiteboard: 白板参数配置
-        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
-        """
-        self._SdkAppId = None
-        self._RoomId = None
-        self._GroupId = None
-        self._MixStream = None
-        self._Whiteboard = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def RoomId(self):
-        return self._RoomId
-
-    @RoomId.setter
-    def RoomId(self, RoomId):
-        self._RoomId = RoomId
-
-    @property
-    def GroupId(self):
-        return self._GroupId
-
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
-
-    @property
-    def MixStream(self):
-        return self._MixStream
-
-    @MixStream.setter
-    def MixStream(self, MixStream):
-        self._MixStream = MixStream
-
-    @property
-    def Whiteboard(self):
-        return self._Whiteboard
-
-    @Whiteboard.setter
-    def Whiteboard(self, Whiteboard):
-        self._Whiteboard = Whiteboard
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._RoomId = params.get("RoomId")
-        self._GroupId = params.get("GroupId")
-        if params.get("MixStream") is not None:
-            self._MixStream = MixStream()
-            self._MixStream._deserialize(params.get("MixStream"))
-        if params.get("Whiteboard") is not None:
-            self._Whiteboard = Whiteboard()
-            self._Whiteboard._deserialize(params.get("Whiteboard"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOfflineRecordResponse(AbstractModel):
-    """CreateOfflineRecord返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class CreatePPTCheckTaskRequest(AbstractModel):
     """CreatePPTCheckTask请求参数结构体
 
@@ -818,6 +707,8 @@ tar.gz： 生成`.tar.gz`压缩包
 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
 3. 已损坏音视频：移除PPT上对损坏音视频的引用
         :type AutoHandleUnsupportedElement: bool
+        :param _ExcelParam: Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+        :type ExcelParam: :class:`tencentcloud.tiw.v20190919.models.ExcelParam`
         """
         self._SdkAppId = None
         self._Url = None
@@ -829,6 +720,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self._Priority = None
         self._MinScaleResolution = None
         self._AutoHandleUnsupportedElement = None
+        self._ExcelParam = None
 
     @property
     def SdkAppId(self):
@@ -910,6 +802,14 @@ tar.gz： 生成`.tar.gz`压缩包
     def AutoHandleUnsupportedElement(self, AutoHandleUnsupportedElement):
         self._AutoHandleUnsupportedElement = AutoHandleUnsupportedElement
 
+    @property
+    def ExcelParam(self):
+        return self._ExcelParam
+
+    @ExcelParam.setter
+    def ExcelParam(self, ExcelParam):
+        self._ExcelParam = ExcelParam
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -922,6 +822,9 @@ tar.gz： 生成`.tar.gz`压缩包
         self._Priority = params.get("Priority")
         self._MinScaleResolution = params.get("MinScaleResolution")
         self._AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
+        if params.get("ExcelParam") is not None:
+            self._ExcelParam = ExcelParam()
+            self._ExcelParam._deserialize(params.get("ExcelParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1723,134 +1626,6 @@ class DescribeIMApplicationsRequest(AbstractModel):
 
 class DescribeIMApplicationsResponse(AbstractModel):
     """DescribeIMApplications返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeOfflineRecordCallbackRequest(AbstractModel):
-    """DescribeOfflineRecordCallback请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: 应用的SdkAppId
-        :type SdkAppId: int
-        """
-        self._SdkAppId = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOfflineRecordCallbackResponse(AbstractModel):
-    """DescribeOfflineRecordCallback返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeOfflineRecordRequest(AbstractModel):
-    """DescribeOfflineRecord请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: 客户的SdkAppId
-        :type SdkAppId: int
-        :param _TaskId: 课后录制任务的Id
-        :type TaskId: str
-        """
-        self._SdkAppId = None
-        self._TaskId = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def TaskId(self):
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._TaskId = params.get("TaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOfflineRecordResponse(AbstractModel):
-    """DescribeOfflineRecord返回参数结构体
 
     """
 
@@ -5194,6 +4969,58 @@ class Detail(AbstractModel):
         
 
 
+class ExcelParam(AbstractModel):
+    """Excel转码相关参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PaperSize: 表格转码纸张（画布）大小，默认为0。
+0 -- A4
+1 -- A2 
+2 -- A0
+
+注：当设置的值超出合法取值范围时，将采用默认值。
+        :type PaperSize: int
+        :param _PaperDirection: 表格文件转换纸张方向，默认为0。
+0 -- 代表垂直方向
+非0 -- 代表水平方向
+        :type PaperDirection: int
+        """
+        self._PaperSize = None
+        self._PaperDirection = None
+
+    @property
+    def PaperSize(self):
+        return self._PaperSize
+
+    @PaperSize.setter
+    def PaperSize(self, PaperSize):
+        self._PaperSize = PaperSize
+
+    @property
+    def PaperDirection(self):
+        return self._PaperDirection
+
+    @PaperDirection.setter
+    def PaperDirection(self, PaperDirection):
+        self._PaperDirection = PaperDirection
+
+
+    def _deserialize(self, params):
+        self._PaperSize = params.get("PaperSize")
+        self._PaperDirection = params.get("PaperDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Interrupt(AbstractModel):
     """实时录制中出现的用户视频流断流次数统计
 
@@ -6735,76 +6562,6 @@ class RunningTaskItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class SetOfflineRecordCallbackRequest(AbstractModel):
-    """SetOfflineRecordCallback请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: 客户的SdkAppId
-        :type SdkAppId: int
-        :param _Callback: 课后录制任务结果回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持 http或https协议，即回调地址以http://或https://开头
-        :type Callback: str
-        """
-        self._SdkAppId = None
-        self._Callback = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def Callback(self):
-        return self._Callback
-
-    @Callback.setter
-    def Callback(self, Callback):
-        self._Callback = Callback
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._Callback = params.get("Callback")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SetOfflineRecordCallbackResponse(AbstractModel):
-    """SetOfflineRecordCallback返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class SetOnlineRecordCallbackKeyRequest(AbstractModel):

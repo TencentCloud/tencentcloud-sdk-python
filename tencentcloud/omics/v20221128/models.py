@@ -2704,7 +2704,7 @@ class RunApplicationRequest(AbstractModel):
         :type EnvironmentId: str
         :param _InputBase64: 任务输入JSON。需要进行base64编码。
         :type InputBase64: str
-        :param _CacheClearDelay: 任务缓存清理时间。不填表示不清理。
+        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填表示不清理。
         :type CacheClearDelay: int
         :param _Option: 运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
@@ -3674,7 +3674,7 @@ class RunWorkflowRequest(AbstractModel):
         :param _InputCosUri: 任务输入COS地址。
 （InputBase64和InputCosUri必选其一）
         :type InputCosUri: str
-        :param _CacheClearDelay: 任务缓存清理时间。不填表示不清理。
+        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填表示不清理。
         :type CacheClearDelay: int
         """
         self._Name = None

@@ -5027,7 +5027,7 @@ class CreateMachineGroupRequest(AbstractModel):
         :type ServiceLogging: bool
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
-        :param _OSType: 系统类型，默认0，0：Linux，1: windows
+        :param _OSType: 系统类型，默认0，0：Linux，1: Windows
         :type OSType: int
         """
         self._GroupName = None
@@ -10966,7 +10966,7 @@ auto：自动匹配rfc3164或者rfc5424其中一种协议
         :type PathRegex: str
         :param _MetaTags: 用户自定义元数据信息，MetadataType为2时必填
         :type MetaTags: list of MetaTagInfo
-        :param _EventLogRules: windows事件日志采集
+        :param _EventLogRules: Windows事件日志采集
         :type EventLogRules: list of EventLog
         """
         self._TimeKey = None

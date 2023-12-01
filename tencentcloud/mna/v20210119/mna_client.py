@@ -233,6 +233,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetDevicePayMode(self, request):
+        """获取设备付费模式
+
+        :param request: Request instance for GetDevicePayMode.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetDevicePayModeRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetDevicePayModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetDevicePayMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetDevicePayModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetDevices(self, request):
         """获取设备信息列表
 
@@ -247,6 +270,29 @@ class MnaClient(AbstractClient):
             body = self.call("GetDevices", params, headers=headers)
             response = json.loads(body)
             model = models.GetDevicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFlowPackages(self, request):
+        """获取流量包列表
+
+        :param request: Request instance for GetFlowPackages.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetFlowPackagesRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetFlowPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFlowPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFlowPackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -280,7 +326,7 @@ class MnaClient(AbstractClient):
 
 
     def GetHardwareList(self, request):
-        """租户获取厂商硬件列表
+        """获取厂商硬件列表
 
         :param request: Request instance for GetHardwareList.
         :type request: :class:`tencentcloud.mna.v20210119.models.GetHardwareListRequest`
@@ -408,6 +454,52 @@ class MnaClient(AbstractClient):
             body = self.call("GetVendorHardware", params, headers=headers)
             response = json.loads(body)
             model = models.GetVendorHardwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPackageRenewFlag(self, request):
+        """可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
+
+        :param request: Request instance for ModifyPackageRenewFlag.
+        :type request: :class:`tencentcloud.mna.v20210119.models.ModifyPackageRenewFlagRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.ModifyPackageRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPackageRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPackageRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OrderFlowPackage(self, request):
+        """购买预付费流量包
+
+        :param request: Request instance for OrderFlowPackage.
+        :type request: :class:`tencentcloud.mna.v20210119.models.OrderFlowPackageRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.OrderFlowPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OrderFlowPackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.OrderFlowPackageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

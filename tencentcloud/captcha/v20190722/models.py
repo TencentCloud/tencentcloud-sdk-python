@@ -2274,6 +2274,284 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCaptchaRceResultRequest(AbstractModel):
+    """DescribeCaptchaRceResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaType: 固定填值：9。可在控制台配置不同验证码类型。
+        :type CaptchaType: int
+        :param _Ticket: 前端回调函数返回的用户验证票据
+        :type Ticket: str
+        :param _UserIp: 业务侧获取到的验证码使用者的外网IP
+        :type UserIp: str
+        :param _Randstr: 前端回调函数返回的随机字符串
+        :type Randstr: str
+        :param _CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        :type CaptchaAppId: int
+        :param _AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        :type AppSecretKey: str
+        :param _BusinessId: 预留字段
+        :type BusinessId: int
+        :param _SceneId: 预留字段
+        :type SceneId: int
+        :param _MacAddress: mac 地址或设备唯一标识
+        :type MacAddress: str
+        :param _Imei: 手机设备号
+        :type Imei: str
+        :param _NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回
+        :type NeedGetCaptchaTime: int
+        """
+        self._CaptchaType = None
+        self._Ticket = None
+        self._UserIp = None
+        self._Randstr = None
+        self._CaptchaAppId = None
+        self._AppSecretKey = None
+        self._BusinessId = None
+        self._SceneId = None
+        self._MacAddress = None
+        self._Imei = None
+        self._NeedGetCaptchaTime = None
+
+    @property
+    def CaptchaType(self):
+        return self._CaptchaType
+
+    @CaptchaType.setter
+    def CaptchaType(self, CaptchaType):
+        self._CaptchaType = CaptchaType
+
+    @property
+    def Ticket(self):
+        return self._Ticket
+
+    @Ticket.setter
+    def Ticket(self, Ticket):
+        self._Ticket = Ticket
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def Randstr(self):
+        return self._Randstr
+
+    @Randstr.setter
+    def Randstr(self, Randstr):
+        self._Randstr = Randstr
+
+    @property
+    def CaptchaAppId(self):
+        return self._CaptchaAppId
+
+    @CaptchaAppId.setter
+    def CaptchaAppId(self, CaptchaAppId):
+        self._CaptchaAppId = CaptchaAppId
+
+    @property
+    def AppSecretKey(self):
+        return self._AppSecretKey
+
+    @AppSecretKey.setter
+    def AppSecretKey(self, AppSecretKey):
+        self._AppSecretKey = AppSecretKey
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def SceneId(self):
+        return self._SceneId
+
+    @SceneId.setter
+    def SceneId(self, SceneId):
+        self._SceneId = SceneId
+
+    @property
+    def MacAddress(self):
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def Imei(self):
+        return self._Imei
+
+    @Imei.setter
+    def Imei(self, Imei):
+        self._Imei = Imei
+
+    @property
+    def NeedGetCaptchaTime(self):
+        return self._NeedGetCaptchaTime
+
+    @NeedGetCaptchaTime.setter
+    def NeedGetCaptchaTime(self, NeedGetCaptchaTime):
+        self._NeedGetCaptchaTime = NeedGetCaptchaTime
+
+
+    def _deserialize(self, params):
+        self._CaptchaType = params.get("CaptchaType")
+        self._Ticket = params.get("Ticket")
+        self._UserIp = params.get("UserIp")
+        self._Randstr = params.get("Randstr")
+        self._CaptchaAppId = params.get("CaptchaAppId")
+        self._AppSecretKey = params.get("AppSecretKey")
+        self._BusinessId = params.get("BusinessId")
+        self._SceneId = params.get("SceneId")
+        self._MacAddress = params.get("MacAddress")
+        self._Imei = params.get("Imei")
+        self._NeedGetCaptchaTime = params.get("NeedGetCaptchaTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCaptchaRceResultResponse(AbstractModel):
+    """DescribeCaptchaRceResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaCode: 1 OK 验证通过
+7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
+8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
+9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
+15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致
+16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】->【基础配置】中获取
+21 diff 票据校验异常，可能的原因是（1）若Ticket包含terror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含terror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
+100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
+        :type CaptchaCode: int
+        :param _CaptchaMsg: 状态描述及验证错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaptchaMsg: str
+        :param _EvilLevel: 无感验证模式下，该参数返回验证结果：
+EvilLevel=0 请求无恶意
+EvilLevel=100 请求有恶意
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilLevel: int
+        :param _GetCaptchaTime: 前端获取验证码时间，时间戳格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GetCaptchaTime: int
+        :param _EvilBitmap: 拦截类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EvilBitmap: int
+        :param _SubmitCaptchaTime: 提交验证码时间
+        :type SubmitCaptchaTime: int
+        :param _RceResult: rce检测结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RceResult: :class:`tencentcloud.captcha.v20190722.models.RceResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CaptchaCode = None
+        self._CaptchaMsg = None
+        self._EvilLevel = None
+        self._GetCaptchaTime = None
+        self._EvilBitmap = None
+        self._SubmitCaptchaTime = None
+        self._RceResult = None
+        self._RequestId = None
+
+    @property
+    def CaptchaCode(self):
+        return self._CaptchaCode
+
+    @CaptchaCode.setter
+    def CaptchaCode(self, CaptchaCode):
+        self._CaptchaCode = CaptchaCode
+
+    @property
+    def CaptchaMsg(self):
+        return self._CaptchaMsg
+
+    @CaptchaMsg.setter
+    def CaptchaMsg(self, CaptchaMsg):
+        self._CaptchaMsg = CaptchaMsg
+
+    @property
+    def EvilLevel(self):
+        return self._EvilLevel
+
+    @EvilLevel.setter
+    def EvilLevel(self, EvilLevel):
+        self._EvilLevel = EvilLevel
+
+    @property
+    def GetCaptchaTime(self):
+        return self._GetCaptchaTime
+
+    @GetCaptchaTime.setter
+    def GetCaptchaTime(self, GetCaptchaTime):
+        self._GetCaptchaTime = GetCaptchaTime
+
+    @property
+    def EvilBitmap(self):
+        return self._EvilBitmap
+
+    @EvilBitmap.setter
+    def EvilBitmap(self, EvilBitmap):
+        self._EvilBitmap = EvilBitmap
+
+    @property
+    def SubmitCaptchaTime(self):
+        return self._SubmitCaptchaTime
+
+    @SubmitCaptchaTime.setter
+    def SubmitCaptchaTime(self, SubmitCaptchaTime):
+        self._SubmitCaptchaTime = SubmitCaptchaTime
+
+    @property
+    def RceResult(self):
+        return self._RceResult
+
+    @RceResult.setter
+    def RceResult(self, RceResult):
+        self._RceResult = RceResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CaptchaCode = params.get("CaptchaCode")
+        self._CaptchaMsg = params.get("CaptchaMsg")
+        self._EvilLevel = params.get("EvilLevel")
+        self._GetCaptchaTime = params.get("GetCaptchaTime")
+        self._EvilBitmap = params.get("EvilBitmap")
+        self._SubmitCaptchaTime = params.get("SubmitCaptchaTime")
+        if params.get("RceResult") is not None:
+            self._RceResult = RceResult()
+            self._RceResult._deserialize(params.get("RceResult"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCaptchaResultRequest(AbstractModel):
     """DescribeCaptchaResult请求参数结构体
 
@@ -3433,6 +3711,131 @@ reject：拒绝，高风险恶意
         self._UserIp = params.get("UserIp")
         self._RiskLevel = params.get("RiskLevel")
         self._RiskType = params.get("RiskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RceResult(AbstractModel):
+    """验证码拼装Rce结果，Rce结果部分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _PostTime: 操作时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostTime: int
+        :param _AssociateAccount: 业务参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateAccount: str
+        :param _UserIp: 用户Ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIp: str
+        :param _RiskLevel: 风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskLevel: str
+        :param _RiskType: 风险类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskType: list of int
+        :param _ConstId: 设备唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConstId: str
+        :param _RiskInformation: 风险扩展参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskInformation: str
+        """
+        self._UserId = None
+        self._PostTime = None
+        self._AssociateAccount = None
+        self._UserIp = None
+        self._RiskLevel = None
+        self._RiskType = None
+        self._ConstId = None
+        self._RiskInformation = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PostTime(self):
+        return self._PostTime
+
+    @PostTime.setter
+    def PostTime(self, PostTime):
+        self._PostTime = PostTime
+
+    @property
+    def AssociateAccount(self):
+        return self._AssociateAccount
+
+    @AssociateAccount.setter
+    def AssociateAccount(self, AssociateAccount):
+        self._AssociateAccount = AssociateAccount
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def RiskLevel(self):
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def RiskType(self):
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def ConstId(self):
+        return self._ConstId
+
+    @ConstId.setter
+    def ConstId(self, ConstId):
+        self._ConstId = ConstId
+
+    @property
+    def RiskInformation(self):
+        return self._RiskInformation
+
+    @RiskInformation.setter
+    def RiskInformation(self, RiskInformation):
+        self._RiskInformation = RiskInformation
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._PostTime = params.get("PostTime")
+        self._AssociateAccount = params.get("AssociateAccount")
+        self._UserIp = params.get("UserIp")
+        self._RiskLevel = params.get("RiskLevel")
+        self._RiskType = params.get("RiskType")
+        self._ConstId = params.get("ConstId")
+        self._RiskInformation = params.get("RiskInformation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -43,7 +43,7 @@ class CreateProbeTasksRequest(AbstractModel):
         :type Cron: str
         :param _Tag: 资源标签值
         :type Tag: list of Tag
-        :param _ProbeType: 测试类型，包含定时测试与即时测试。1-定时拨测，其它表示即时拨测。
+        :param _ProbeType: 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
         :type ProbeType: int
         :param _PluginSource: 插件类型，如CDN，详情参考云拨测官方文档。
         :type PluginSource: str

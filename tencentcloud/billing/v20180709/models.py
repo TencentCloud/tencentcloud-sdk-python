@@ -277,6 +277,12 @@ class BillDetail(AbstractModel):
         :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type FormulaUrl: str
+        :param _BillDay: 账单归属日
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDay: str
+        :param _BillMonth: 账单归属月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -306,6 +312,8 @@ class BillDetail(AbstractModel):
         self._AssociatedOrder = None
         self._Formula = None
         self._FormulaUrl = None
+        self._BillDay = None
+        self._BillMonth = None
 
     @property
     def BusinessCodeName(self):
@@ -531,6 +539,22 @@ class BillDetail(AbstractModel):
     def FormulaUrl(self, FormulaUrl):
         self._FormulaUrl = FormulaUrl
 
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -573,6 +597,8 @@ class BillDetail(AbstractModel):
             self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
         self._Formula = params.get("Formula")
         self._FormulaUrl = params.get("FormulaUrl")
+        self._BillDay = params.get("BillDay")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1220,6 +1246,9 @@ class BillDistributionResourceSummary(AbstractModel):
         :type SPDeduction: str
         :param _OriginalCostWithSP: 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
         :type OriginalCostWithSP: str
+        :param _BillMonth: 账单归属月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -1258,6 +1287,7 @@ class BillDistributionResourceSummary(AbstractModel):
         self._OriginalCostWithRI = None
         self._SPDeduction = None
         self._OriginalCostWithSP = None
+        self._BillMonth = None
 
     @property
     def BusinessCodeName(self):
@@ -1559,6 +1589,14 @@ class BillDistributionResourceSummary(AbstractModel):
     def OriginalCostWithSP(self, OriginalCostWithSP):
         self._OriginalCostWithSP = OriginalCostWithSP
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -1603,6 +1641,7 @@ class BillDistributionResourceSummary(AbstractModel):
         self._OriginalCostWithRI = params.get("OriginalCostWithRI")
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1698,6 +1737,9 @@ class BillResourceSummary(AbstractModel):
         :type SPDeduction: str
         :param _OriginalCostWithSP: 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
         :type OriginalCostWithSP: str
+        :param _BillMonth: 账单归属月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -1737,6 +1779,7 @@ class BillResourceSummary(AbstractModel):
         self._OriginalCostWithRI = None
         self._SPDeduction = None
         self._OriginalCostWithSP = None
+        self._BillMonth = None
 
     @property
     def BusinessCodeName(self):
@@ -2046,6 +2089,14 @@ class BillResourceSummary(AbstractModel):
     def OriginalCostWithSP(self, OriginalCostWithSP):
         self._OriginalCostWithSP = OriginalCostWithSP
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -2091,6 +2142,7 @@ class BillResourceSummary(AbstractModel):
         self._OriginalCostWithRI = params.get("OriginalCostWithRI")
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10100,6 +10152,12 @@ class DistributionBillDetail(AbstractModel):
         :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type FormulaUrl: str
+        :param _BillMonth: 账单归属月
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillMonth: str
+        :param _BillDay: 账单归属日
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDay: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -10128,6 +10186,8 @@ class DistributionBillDetail(AbstractModel):
         self._AssociatedOrder = None
         self._Formula = None
         self._FormulaUrl = None
+        self._BillMonth = None
+        self._BillDay = None
 
     @property
     def BusinessCodeName(self):
@@ -10345,6 +10405,22 @@ class DistributionBillDetail(AbstractModel):
     def FormulaUrl(self, FormulaUrl):
         self._FormulaUrl = FormulaUrl
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -10386,6 +10462,8 @@ class DistributionBillDetail(AbstractModel):
             self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
         self._Formula = params.get("Formula")
         self._FormulaUrl = params.get("FormulaUrl")
+        self._BillMonth = params.get("BillMonth")
+        self._BillDay = params.get("BillDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

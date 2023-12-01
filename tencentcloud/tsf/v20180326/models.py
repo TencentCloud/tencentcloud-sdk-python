@@ -16248,7 +16248,7 @@ class DescribeConfigTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigTemplateId: 无
+        :param _ConfigTemplateId: 配置模板Id
         :type ConfigTemplateId: str
         """
         self._ConfigTemplateId = None
@@ -16281,7 +16281,7 @@ class DescribeConfigTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Result
+        :param _Result: 导入结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tsf.v20180326.models.ConfigTemplate`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -32635,7 +32635,7 @@ class ModifyLaneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 编辑成功: true / 编辑失败: false
+        :param _Result: 更新成功: true / 更新失败: false
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43448,7 +43448,7 @@ class UpdateConfigTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 结果true：成功；false：失败；
+        :param _Result: 更新成功: true / 更新失败: false
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
