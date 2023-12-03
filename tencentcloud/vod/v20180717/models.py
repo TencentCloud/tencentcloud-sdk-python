@@ -26425,12 +26425,13 @@ class EventContent(AbstractModel):
 <li>ComposeMediaComplete：制作媒体文件完成；</li>
 <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 <li>RemoveWatermark：智能去除水印完成。</li>
-<li>RebuildMediaComplete：音画质重生完成事件。</li>
+<li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li>
 <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
-<li>QualityInspectComplete：音画质检测完成。</li>
+<li>QualityInspectComplete：音画质检测完成；</li>
+<li>QualityEnhanceComplete：音画质重生任务完成。</li>
 <b>兼容 2017 版的事件类型：</b>
 <li>TranscodeComplete：视频转码完成；</li>
 <li>ConcatComplete：视频拼接完成；</li>
@@ -26507,6 +26508,9 @@ class EventContent(AbstractModel):
         :param _QualityInspectCompleteEvent: 音画质检测完成事件，当事件类型为 QualityInspectComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityInspectCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
+        :param _QualityEnhanceCompleteEvent: 音画质重生完成事件，当事件类型为 QualityEnhanceComplete 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualityEnhanceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -26533,6 +26537,7 @@ class EventContent(AbstractModel):
         self._ReduceMediaBitrateCompleteEvent = None
         self._DescribeFileAttributesCompleteEvent = None
         self._QualityInspectCompleteEvent = None
+        self._QualityEnhanceCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -26734,6 +26739,14 @@ class EventContent(AbstractModel):
     def QualityInspectCompleteEvent(self, QualityInspectCompleteEvent):
         self._QualityInspectCompleteEvent = QualityInspectCompleteEvent
 
+    @property
+    def QualityEnhanceCompleteEvent(self):
+        return self._QualityEnhanceCompleteEvent
+
+    @QualityEnhanceCompleteEvent.setter
+    def QualityEnhanceCompleteEvent(self, QualityEnhanceCompleteEvent):
+        self._QualityEnhanceCompleteEvent = QualityEnhanceCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -26807,6 +26820,9 @@ class EventContent(AbstractModel):
         if params.get("QualityInspectCompleteEvent") is not None:
             self._QualityInspectCompleteEvent = QualityInspectTask()
             self._QualityInspectCompleteEvent._deserialize(params.get("QualityInspectCompleteEvent"))
+        if params.get("QualityEnhanceCompleteEvent") is not None:
+            self._QualityEnhanceCompleteEvent = QualityEnhanceTask()
+            self._QualityEnhanceCompleteEvent._deserialize(params.get("QualityEnhanceCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

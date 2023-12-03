@@ -25,7 +25,7 @@ class AssociateTargetGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Associations: 绑定的关系数组。
+        :param _Associations: 绑定的关系数组。一次请求最多支持20个。
         :type Associations: list of TargetGroupAssociation
         """
         self._Associations = None

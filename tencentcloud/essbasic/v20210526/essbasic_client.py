@@ -786,8 +786,7 @@ class EssbasicClient(AbstractClient):
         """通过此接口指定合同、签署人、填写控件等信息，生成嵌入式链接，此链接可以嵌入到其他网页或者直接打开，打开后进入发起页面。在此页面上，合同信息和签署人信息均不可更改。
 
         注意：
-        1. **仅支持模板**发起
-        2. 只支持PC浏览器操作使用
+        1. 只支持PC浏览器操作使用
 
         嵌入的页面样式如下：
         ![image](https://qcloudimg.tencent-cloud.cn/raw/b2ae013fb4d747891dd3815bbe897208.png)
