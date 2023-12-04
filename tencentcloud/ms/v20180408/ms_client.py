@@ -470,6 +470,30 @@ class MsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DestroyResourceInstances(self, request):
+        """渠道合作资源销毁
+        安卓应用加固-按年收费资源销毁，其他类型暂不支持
+
+        :param request: Request instance for DestroyResourceInstances.
+        :type request: :class:`tencentcloud.ms.v20180408.models.DestroyResourceInstancesRequest`
+        :rtype: :class:`tencentcloud.ms.v20180408.models.DestroyResourceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyResourceInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyResourceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RequestLocalTask(self, request):
         """client任务请求
 

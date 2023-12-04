@@ -297,6 +297,9 @@ INVALIDPARAMETER_INVALIDCACHEKEYCOOKIE = 'InvalidParameter.InvalidCacheKeyCookie
 INVALIDPARAMETER_INVALIDCACHEKEYIGNORECASE = 'InvalidParameter.InvalidCacheKeyIgnoreCase'
 
 # 无效的查询字符串。
+INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGACTION = 'InvalidParameter.InvalidCacheKeyQueryStringAction'
+
+# 无效的查询字符串。
 INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = 'InvalidParameter.InvalidCacheKeyQueryStringValue'
 
 # 无效的自定义Cache Key Scheme无效。
@@ -584,6 +587,9 @@ INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsNa
 # 入参中的域名与站点参数不匹配，请更正后重试。
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
 
+# 别称域名名称不合法，别称域名应该由数字、英文字母、连词符组成，且连词符不能位于开头和结尾处。
+INVALIDPARAMETERVALUE_INVALIDALIASDOMAINNAME = 'InvalidParameterValue.InvalidAliasDomainName'
+
 # 无效的别称域名后缀（该域名为内部接入域名，暂不支持作为别称域名接入）。
 INVALIDPARAMETERVALUE_INVALIDALIASNAMESUFFIX = 'InvalidParameterValue.InvalidAliasNameSuffix'
 
@@ -655,6 +661,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = 'OperationDenied.AccelerateMainlandD
 
 # 中国大陆加速与IPv6冲突，不能同时配置。
 OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = 'OperationDenied.AccelerateMainlandIpv6Conflict'
+
+# 当前站点下存在域名功能与中国大陆网络优化冲突，不能同时配置。
+OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.AccelerateMainlandMultiplyLayerConflict'
 
 # 引用源站组的7层域名服务正在部署中，请稍后再编辑。
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'

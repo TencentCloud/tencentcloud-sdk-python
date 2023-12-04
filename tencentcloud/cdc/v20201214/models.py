@@ -3231,7 +3231,7 @@ class HostInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostIp: 宿主机IP
+        :param _HostIp: 宿主机IP（废弃）
         :type HostIp: str
         :param _ServiceType: 云服务类型
         :type ServiceType: str

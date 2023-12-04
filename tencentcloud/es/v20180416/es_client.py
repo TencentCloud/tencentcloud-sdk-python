@@ -532,6 +532,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquirePriceRenewInstance(self, request):
+        """集群续费询价接口，续费前通过调用该接口，可获取集群续费的价格。
+
+        :param request: Request instance for InquirePriceRenewInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.InquirePriceRenewInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.InquirePriceRenewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceRenewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceRenewInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyEsVipSecurityGroup(self, request):
         """修改绑定VIP的安全组，传安全组id列表
 

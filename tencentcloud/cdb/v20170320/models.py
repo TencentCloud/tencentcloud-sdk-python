@@ -6131,7 +6131,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DeployGroupId: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
+        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板id。
         :type ParamTemplateId: int
@@ -6659,7 +6659,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeployGroupId: str
         :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间在48小时内唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
         :type ClientToken: str
-        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。 不指定则默认为通用型实例。
+        :param _DeviceType: 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC_V2" - ONTKE单节点实例。 不指定则默认为通用型实例。
         :type DeviceType: str
         :param _ParamTemplateId: 参数模板id。
         :type ParamTemplateId: int

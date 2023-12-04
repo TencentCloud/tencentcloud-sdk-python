@@ -1552,6 +1552,10 @@ WARN_RESHOOT_SCREENED_CARD 翻拍件告警
         :type IsDuplication: int
         :param _RegistrationDate: 登记日期
         :type RegistrationDate: str
+        :param _Angle:  图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
+
+
+        :type Angle: float
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1569,6 +1573,7 @@ WARN_RESHOOT_SCREENED_CARD 翻拍件告警
         self._RecognizeWarnMsg = None
         self._IsDuplication = None
         self._RegistrationDate = None
+        self._Angle = None
         self._RequestId = None
 
     @property
@@ -1684,6 +1689,14 @@ WARN_RESHOOT_SCREENED_CARD 翻拍件告警
         self._RegistrationDate = RegistrationDate
 
     @property
+    def Angle(self):
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1707,6 +1720,7 @@ WARN_RESHOOT_SCREENED_CARD 翻拍件告警
         self._RecognizeWarnMsg = params.get("RecognizeWarnMsg")
         self._IsDuplication = params.get("IsDuplication")
         self._RegistrationDate = params.get("RegistrationDate")
+        self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")
 
 

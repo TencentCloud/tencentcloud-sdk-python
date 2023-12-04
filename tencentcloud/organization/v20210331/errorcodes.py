@@ -248,6 +248,9 @@ RESOURCENOTFOUND_MEMBERNOTEXIST = 'ResourceNotFound.MemberNotExist'
 # 组织成员策略不存在。
 RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = 'ResourceNotFound.MemberPolicyNotExist'
 
+# 认证主体不存在。
+RESOURCENOTFOUND_ORGANIZATIONAUTHRELATIONNOTEXIST = 'ResourceNotFound.OrganizationAuthRelationNotExist'
+
 # 组织身份不存在。
 RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = 'ResourceNotFound.OrganizationIdentityNotExist'
 

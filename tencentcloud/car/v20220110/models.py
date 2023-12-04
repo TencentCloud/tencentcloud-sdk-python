@@ -31,7 +31,7 @@ class ApplyConcurrentRequest(AbstractModel):
         :type UserIp: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _ApplicationVersionId: 应用版本ID
+        :param _ApplicationVersionId: 应用版本ID。如果请求应用的当前版本，可以不用填写该字段。如果请求应用的其它版本时，才需要通过该字段来指定应用的版本。
         :type ApplicationVersionId: str
         :param _ApplicationId: 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
         :type ApplicationId: str

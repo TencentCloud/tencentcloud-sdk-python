@@ -242,6 +242,30 @@ class AlarmHistory(AbstractModel):
         :param _AlarmLevel: 告警等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: str
+        :param _ShieldFlag: 是否有配置告警屏蔽规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldFlag: int
+        :param _AlarmShieldingType: 屏蔽类型（英文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldingType: str
+        :param _AlarmShieldingTime: 屏蔽时间（英文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldingTime: str
+        :param _AlarmShieldingShowType: 屏蔽类型（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldingShowType: str
+        :param _AlarmShieldingShowTime: 屏蔽时间（中文）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldingShowTime: str
+        :param _AlarmShieldReason: 屏蔽原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmShieldReason: str
+        :param _InternalDimensions: 告警实例的维度信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalDimensions: str
+        :param _MetricName: 指标名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
         """
         self._AlarmId = None
         self._MonitorType = None
@@ -268,6 +292,14 @@ class AlarmHistory(AbstractModel):
         self._MetricsInfo = None
         self._Dimensions = None
         self._AlarmLevel = None
+        self._ShieldFlag = None
+        self._AlarmShieldingType = None
+        self._AlarmShieldingTime = None
+        self._AlarmShieldingShowType = None
+        self._AlarmShieldingShowTime = None
+        self._AlarmShieldReason = None
+        self._InternalDimensions = None
+        self._MetricName = None
 
     @property
     def AlarmId(self):
@@ -469,6 +501,70 @@ class AlarmHistory(AbstractModel):
     def AlarmLevel(self, AlarmLevel):
         self._AlarmLevel = AlarmLevel
 
+    @property
+    def ShieldFlag(self):
+        return self._ShieldFlag
+
+    @ShieldFlag.setter
+    def ShieldFlag(self, ShieldFlag):
+        self._ShieldFlag = ShieldFlag
+
+    @property
+    def AlarmShieldingType(self):
+        return self._AlarmShieldingType
+
+    @AlarmShieldingType.setter
+    def AlarmShieldingType(self, AlarmShieldingType):
+        self._AlarmShieldingType = AlarmShieldingType
+
+    @property
+    def AlarmShieldingTime(self):
+        return self._AlarmShieldingTime
+
+    @AlarmShieldingTime.setter
+    def AlarmShieldingTime(self, AlarmShieldingTime):
+        self._AlarmShieldingTime = AlarmShieldingTime
+
+    @property
+    def AlarmShieldingShowType(self):
+        return self._AlarmShieldingShowType
+
+    @AlarmShieldingShowType.setter
+    def AlarmShieldingShowType(self, AlarmShieldingShowType):
+        self._AlarmShieldingShowType = AlarmShieldingShowType
+
+    @property
+    def AlarmShieldingShowTime(self):
+        return self._AlarmShieldingShowTime
+
+    @AlarmShieldingShowTime.setter
+    def AlarmShieldingShowTime(self, AlarmShieldingShowTime):
+        self._AlarmShieldingShowTime = AlarmShieldingShowTime
+
+    @property
+    def AlarmShieldReason(self):
+        return self._AlarmShieldReason
+
+    @AlarmShieldReason.setter
+    def AlarmShieldReason(self, AlarmShieldReason):
+        self._AlarmShieldReason = AlarmShieldReason
+
+    @property
+    def InternalDimensions(self):
+        return self._InternalDimensions
+
+    @InternalDimensions.setter
+    def InternalDimensions(self, InternalDimensions):
+        self._InternalDimensions = InternalDimensions
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -506,6 +602,14 @@ class AlarmHistory(AbstractModel):
                 self._MetricsInfo.append(obj)
         self._Dimensions = params.get("Dimensions")
         self._AlarmLevel = params.get("AlarmLevel")
+        self._ShieldFlag = params.get("ShieldFlag")
+        self._AlarmShieldingType = params.get("AlarmShieldingType")
+        self._AlarmShieldingTime = params.get("AlarmShieldingTime")
+        self._AlarmShieldingShowType = params.get("AlarmShieldingShowType")
+        self._AlarmShieldingShowTime = params.get("AlarmShieldingShowTime")
+        self._AlarmShieldReason = params.get("AlarmShieldReason")
+        self._InternalDimensions = params.get("InternalDimensions")
+        self._MetricName = params.get("MetricName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3856,10 +3960,10 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         :type InstanceId: str
         :param _ChannelName: 告警通道名称，例如：test
         :type ChannelName: str
-        :param _OrgId: 默认为1，建议使用 OrganizationIds
-        :type OrgId: int
         :param _Receivers: 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
         :type Receivers: list of str
+        :param _OrgId: 默认为1，建议使用 OrganizationIds
+        :type OrgId: int
         :param _ExtraOrgIds: 额外组织 ID 数组，已废弃，请使用 OrganizationIds
         :type ExtraOrgIds: list of str
         :param _OrganizationIds: 生效的所有组织 ID 数组，默认为 ["1"]
@@ -3867,8 +3971,8 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         """
         self._InstanceId = None
         self._ChannelName = None
-        self._OrgId = None
         self._Receivers = None
+        self._OrgId = None
         self._ExtraOrgIds = None
         self._OrganizationIds = None
 
@@ -3889,20 +3993,20 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
         self._ChannelName = ChannelName
 
     @property
-    def OrgId(self):
-        return self._OrgId
-
-    @OrgId.setter
-    def OrgId(self, OrgId):
-        self._OrgId = OrgId
-
-    @property
     def Receivers(self):
         return self._Receivers
 
     @Receivers.setter
     def Receivers(self, Receivers):
         self._Receivers = Receivers
+
+    @property
+    def OrgId(self):
+        return self._OrgId
+
+    @OrgId.setter
+    def OrgId(self, OrgId):
+        self._OrgId = OrgId
 
     @property
     def ExtraOrgIds(self):
@@ -3924,8 +4028,8 @@ class CreateGrafanaNotificationChannelRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ChannelName = params.get("ChannelName")
-        self._OrgId = params.get("OrgId")
         self._Receivers = params.get("Receivers")
+        self._OrgId = params.get("OrgId")
         self._ExtraOrgIds = params.get("ExtraOrgIds")
         self._OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())
@@ -7514,7 +7618,7 @@ class DescribeAlarmHistoriesRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 结束时间，默认当前时间戳。对应 `FirstOccurTime` 告警首次出现时间，告警历史的 `FirstOccurTime` 早于 `EndTime` 才可能被搜索到。
         :type EndTime: int
-        :param _MonitorTypes: 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能观测；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
+        :param _MonitorTypes: 根据监控类型过滤，不选默认查所有类型。"MT_QCE"=云产品监控，支持的枚举值有："MT_QCE"=云产品监控；"MT_TAW"=应用性能监控；"MT_RUM"=前端性能监控；"MT_PROBE"=云拨测
         :type MonitorTypes: list of str
         :param _AlarmObject: 根据告警对象过滤 字符串模糊搜索
         :type AlarmObject: str
@@ -29382,10 +29486,10 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         :type ChannelId: str
         :param _InstanceId: Grafana 实例 ID，例如：grafana-12345678
         :type InstanceId: str
-        :param _ChannelName: 告警通道名称，例如：test
-        :type ChannelName: str
         :param _Receivers: 接受告警通道 ID 数组
         :type Receivers: list of str
+        :param _ChannelName: 告警通道名称，已废弃，名称不可修改。
+        :type ChannelName: str
         :param _ExtraOrgIds: 已废弃，请使用 OrganizationIds
         :type ExtraOrgIds: list of str
         :param _OrganizationIds: 生效的组织 ID 数组
@@ -29393,8 +29497,8 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         """
         self._ChannelId = None
         self._InstanceId = None
-        self._ChannelName = None
         self._Receivers = None
+        self._ChannelName = None
         self._ExtraOrgIds = None
         self._OrganizationIds = None
 
@@ -29415,20 +29519,20 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
-    def ChannelName(self):
-        return self._ChannelName
-
-    @ChannelName.setter
-    def ChannelName(self, ChannelName):
-        self._ChannelName = ChannelName
-
-    @property
     def Receivers(self):
         return self._Receivers
 
     @Receivers.setter
     def Receivers(self, Receivers):
         self._Receivers = Receivers
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
 
     @property
     def ExtraOrgIds(self):
@@ -29450,8 +29554,8 @@ class UpdateGrafanaNotificationChannelRequest(AbstractModel):
     def _deserialize(self, params):
         self._ChannelId = params.get("ChannelId")
         self._InstanceId = params.get("InstanceId")
-        self._ChannelName = params.get("ChannelName")
         self._Receivers = params.get("Receivers")
+        self._ChannelName = params.get("ChannelName")
         self._ExtraOrgIds = params.get("ExtraOrgIds")
         self._OrganizationIds = params.get("OrganizationIds")
         memeber_set = set(params.keys())

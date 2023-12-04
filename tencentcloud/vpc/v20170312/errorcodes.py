@@ -821,6 +821,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = 'UnsupportedOperation.InstanceS
 # 账户余额不足。
 UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = 'UnsupportedOperation.InsufficientFunds'
 
+# 至少需要两个运营商
+UNSUPPORTEDOPERATION_INSUFFICIENTINTERNETSERVICEPROVIDERS = 'UnsupportedOperation.InsufficientInternetServiceProviders'
+
 # 不支持该操作。
 UNSUPPORTEDOPERATION_INVALIDACTION = 'UnsupportedOperation.InvalidAction'
 
@@ -976,6 +979,9 @@ UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = 'UnsupportedOperation.RouteTableCa
 
 # 路由表绑定了子网。
 UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = 'UnsupportedOperation.RouteTableHasSubnetRule'
+
+# SslVpnClientIds：`vpnc-20f9b3d7` 证书状态已禁用或Client证书状态不可用，不支持禁用证书。
+UNSUPPORTEDOPERATION_SSLCLIENTCERTALREADYDISABLEORCERTABNORMAL = 'UnsupportedOperation.SSLClientCertAlreadyDisableOrCertAbnormal'
 
 # SslVpnClientIds：`vpnc-20f9b3d7` 证书状态已启用或Client证书状态不可用，不支持启用证书。
 UNSUPPORTEDOPERATION_SSLCLIENTCERTALREADYENABLEORCERTABNORMAL = 'UnsupportedOperation.SSLClientCertAlreadyEnableOrCertAbnormal'

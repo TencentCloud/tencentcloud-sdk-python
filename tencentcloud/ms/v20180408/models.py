@@ -4165,6 +4165,124 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DestroyResourceInstancesRequest(AbstractModel):
+    """DestroyResourceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: ResourceId 资源id，在创建订单时，返回的resourceId
+        :type ResourceId: str
+        :param _AppPkgName: 资源绑定的包名，为了防止误删除，需要指定绑定时的包名
+        :type AppPkgName: str
+        """
+        self._ResourceId = None
+        self._AppPkgName = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def AppPkgName(self):
+        return self._AppPkgName
+
+    @AppPkgName.setter
+    def AppPkgName(self, AppPkgName):
+        self._AppPkgName = AppPkgName
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._AppPkgName = params.get("AppPkgName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyResourceInstancesResponse(AbstractModel):
+    """DestroyResourceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _Result: 返回状态
+        :type Result: str
+        :param _PlatformType: 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+        :type PlatformType: int
+        :param _OrderType: 订单采购类型 1-免费试用 2-按年收费 3-按次收费  
+        :type OrderType: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._Result = None
+        self._PlatformType = None
+        self._OrderType = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def PlatformType(self):
+        return self._PlatformType
+
+    @PlatformType.setter
+    def PlatformType(self, PlatformType):
+        self._PlatformType = PlatformType
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Result = params.get("Result")
+        self._PlatformType = params.get("PlatformType")
+        self._OrderType = params.get("OrderType")
+        self._RequestId = params.get("RequestId")
+
+
 class EncryptResults(AbstractModel):
     """渠道合作加固结果信息
 

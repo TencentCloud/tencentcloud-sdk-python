@@ -2528,13 +2528,13 @@ class DBInfo(AbstractModel):
         :param _AccountMode: 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountMode: str
-        :param _TmpSecretId: 临时密钥Id
+        :param _TmpSecretId: 临时密钥Id，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Key
+        :param _TmpSecretKey: 临时密钥Key，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param _TmpToken: 临时Token
+        :param _TmpToken: 临时Token，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         """
@@ -3312,7 +3312,7 @@ class DatabaseTableObject(AbstractModel):
         :param _Databases: 迁移对象，当 ObjectMode 为 partial 时，不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of DBItem
-        :param _AdvancedObjects: 高级对象类型，如trigger、function、procedure、event
+        :param _AdvancedObjects: 高级对象类型，如trigger、function、procedure、event。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         """
@@ -5835,13 +5835,13 @@ class Endpoint(AbstractModel):
         :param _RoleExternalId: 外部角色id
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleExternalId: str
-        :param _TmpSecretId: 临时密钥Id，如果为跨账号实例此项必填
+        :param _TmpSecretId: 临时密钥Id，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Key，如果为跨账号实例此项必填
+        :param _TmpSecretKey: 临时密钥Key，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpSecretKey: str
-        :param _TmpToken: 临时Token，如果为跨账号实例此项必填
+        :param _TmpToken: 临时Token，可通过获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195，，如果为跨账号实例此项必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
         :param _EncryptConn: 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
@@ -8065,7 +8065,7 @@ class Objects(AbstractModel):
         :param _Databases: 同步对象，当 Mode 为 Partial 时，不为空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of Database
-        :param _AdvancedObjects: 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
+        :param _AdvancedObjects: 高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedObjects: list of str
         :param _OnlineDDL: OnlineDDL类型，冗余字段不做配置用途

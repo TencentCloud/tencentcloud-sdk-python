@@ -185,6 +185,9 @@ INTERNALERROR_CAUTHEXCEPTION = 'InternalError.CauthException'
 # CLB内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 INTERNALERROR_CLBEXCEPTION = 'InternalError.ClbException'
 
+# 数据库操作失败，请稍后重试。若无法解决，请联系智能客服或提交工单。
+INTERNALERROR_DBEXCEPTION = 'InternalError.DbException'
+
 # oss内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
 

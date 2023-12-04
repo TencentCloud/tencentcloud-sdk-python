@@ -14404,6 +14404,54 @@ class FormField(AbstractModel):
     }
     ```
 
+    输入示例3（表格设置字体加粗颜色）：
+
+    ```
+    {
+        "headers":[
+            {
+                "content":"head1"
+            },
+            {
+                "content":"head2"
+            },
+            {
+                "content":"head3"
+            }
+        ],
+        "rowCount":3,
+        "body":{
+            "cells":[
+                {
+                    "rowStart":1,
+                    "rowEnd":1,
+                    "columnStart":1,
+                    "columnEnd":1,
+                    "content":"123",
+                    "style": "{\"color\": \"#b50000\", \"fontSize\": 12,\"bold\": true,\"align\": \"CENTER\"}"
+                },
+                {
+                    "rowStart":2,
+                    "rowEnd":3,
+                    "columnStart":1,
+                    "columnEnd":2,
+                    "content":"456",
+                    "style": "{\"color\": \"#b50000\", \"fontSize\": 12,\"bold\": true,\"align\": \"LEFT\"}"
+                },
+                {
+                    "rowStart":3,
+                    "rowEnd":3,
+                    "columnStart":3,
+                    "columnEnd":3,
+                    "content":"789",
+                    "style": "{\"color\": \"#b500bf\", \"fontSize\": 12,\"bold\": false,\"align\": \"RIGHT\"}"
+                }
+            ]
+        }
+    }
+
+    ```
+
     表格参数说明
 
     | 名称                | 类型    | 描述                                              |
@@ -14415,10 +14463,15 @@ class FormField(AbstractModel):
     | cells.N.columnStart | Integer | 单元格坐标：列起始index                           |
     | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
     | cells.N.content     | String  | 单元格内容，字数不超过100                         |
+    | cells.N.style         | String  | 单元格字体风格配置 ，风格配置的json字符串  如： {"font":"黑体","fontSize":12,"color":"FFFFFF","bold":true,"align":"CENTER"}      |
 
     表格参数headers说明
     widthPercent Integer 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35
+
     content String 表头单元格内容，字数不超过100
+
+
+    style String 为字体风格设置 风格支持： font : 目前支持 黑体、宋体; fontSize： 6-72; color：000000-FFFFFF  字符串形如：  "FFFFFF"; bold ： 是否加粗， true ： 加粗 false： 不加粗; align: 对其方式， 支持 LEFT / RIGHT / CENTER
 
     """
 

@@ -586,7 +586,7 @@ class CreateInstanceRequest(AbstractModel):
 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
         :type NodeType: str
         :param _DiskType: 已废弃请使用NodeInfoList
-节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
+节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li> CLOUD_HSSD：增强型SSD云硬盘</li><li> CLOUD_BSSD：通用型SSD云硬盘</li>默认值CLOUD_SSD
         :type DiskType: str
         :param _DiskSize: 已废弃请使用NodeInfoList
 节点磁盘容量（单位GB）
@@ -611,7 +611,7 @@ class CreateInstanceRequest(AbstractModel):
         :type MasterNodeDiskSize: int
         :param _ClusterNameInConf: 集群配置文件中的ClusterName（系统默认配置为实例ID，暂不支持自定义）
         :type ClusterNameInConf: str
-        :param _DeployMode: 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署</li>默认为0
+        :param _DeployMode: 集群部署方式<li>0：单可用区部署</li><li>1：多可用区部署，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>默认为0
         :type DeployMode: int
         :param _MultiZoneInfo: 多可用区部署时可用区的详细信息(DeployMode为1时必传)
         :type MultiZoneInfo: list of ZoneDetail
@@ -5019,6 +5019,112 @@ class IndexSettingsField(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InquirePriceRenewInstanceRequest(AbstractModel):
+    """InquirePriceRenewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例Id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceRenewInstanceResponse(AbstractModel):
+    """InquirePriceRenewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginalPrice: 刊例价，即集群原始价格
+        :type OriginalPrice: float
+        :param _DiscountPrice: 折后价
+        :type DiscountPrice: float
+        :param _Discount: 折扣，如65折
+        :type Discount: float
+        :param _Currency: 货币，如CNY代表人民币
+        :type Currency: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OriginalPrice = None
+        self._DiscountPrice = None
+        self._Discount = None
+        self._Currency = None
+        self._RequestId = None
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._Discount = params.get("Discount")
+        self._Currency = params.get("Currency")
+        self._RequestId = params.get("RequestId")
 
 
 class InstanceInfo(AbstractModel):
