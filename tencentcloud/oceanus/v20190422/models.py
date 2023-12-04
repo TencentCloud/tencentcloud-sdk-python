@@ -3453,6 +3453,167 @@ class DescribeClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFolderRequest(AbstractModel):
+    """DescribeFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: folder id
+        :type FolderId: str
+        :param _WorkSpaceId: workspace id
+        :type WorkSpaceId: str
+        :param _FolderType: 1:资源文件夹
+其他:作业文件夹
+        :type FolderType: int
+        """
+        self._FolderId = None
+        self._WorkSpaceId = None
+        self._FolderType = None
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def FolderType(self):
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._FolderType = params.get("FolderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFolderResponse(AbstractModel):
+    """DescribeFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: folder id
+        :type FolderId: str
+        :param _FolderName: folder name
+        :type FolderName: str
+        :param _ParentId: 父文件夹id
+        :type ParentId: str
+        :param _FolderType: 文件夹类型
+        :type FolderType: int
+        :param _WorkSpaceId: workspace id
+        :type WorkSpaceId: str
+        :param _SubFolderInfo: 子文件夹信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubFolderInfo: list of SubFolderInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FolderId = None
+        self._FolderName = None
+        self._ParentId = None
+        self._FolderType = None
+        self._WorkSpaceId = None
+        self._SubFolderInfo = None
+        self._RequestId = None
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+    @property
+    def FolderType(self):
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def SubFolderInfo(self):
+        return self._SubFolderInfo
+
+    @SubFolderInfo.setter
+    def SubFolderInfo(self, SubFolderInfo):
+        self._SubFolderInfo = SubFolderInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        self._ParentId = params.get("ParentId")
+        self._FolderType = params.get("FolderType")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        if params.get("SubFolderInfo") is not None:
+            self._SubFolderInfo = []
+            for item in params.get("SubFolderInfo"):
+                obj = SubFolderInfo()
+                obj._deserialize(item)
+                self._SubFolderInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobConfigsRequest(AbstractModel):
     """DescribeJobConfigs请求参数结构体
 
@@ -9626,6 +9787,51 @@ class StopJobsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SubFolderInfo(AbstractModel):
+    """子目录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: folder id
+        :type FolderId: str
+        :param _FolderName: folder name
+        :type FolderName: str
+        """
+        self._FolderId = None
+        self._FolderName = None
+
+    @property
+    def FolderId(self):
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def FolderName(self):
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._FolderName = params.get("FolderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SystemResourceItem(AbstractModel):

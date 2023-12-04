@@ -394,6 +394,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFolder(self, request):
+        """查询指定文件夹及其相应的子文件夹信息
+
+        :param request: Request instance for DescribeFolder.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeFolderRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobConfigs(self, request):
         """查询作业配置列表，一次最多查询100个
 
