@@ -4889,6 +4889,152 @@ class ImageRecognitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ImageRecognitionV2Request(AbstractModel):
+    """ImageRecognitionV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdCard: 身份证号
+        :type IdCard: str
+        :param _Name: 姓名。中文请使用UTF-8编码。
+        :type Name: str
+        :param _ImageBase64: 用于人脸比对的照片，图片的Base64值；
+Base64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
+请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :type ImageBase64: str
+        :param _Optional: 本接口不需要传递此参数。
+        :type Optional: str
+        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        """
+        self._IdCard = None
+        self._Name = None
+        self._ImageBase64 = None
+        self._Optional = None
+        self._Encryption = None
+
+    @property
+    def IdCard(self):
+        return self._IdCard
+
+    @IdCard.setter
+    def IdCard(self, IdCard):
+        self._IdCard = IdCard
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def Optional(self):
+        return self._Optional
+
+    @Optional.setter
+    def Optional(self, Optional):
+        self._Optional = Optional
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._IdCard = params.get("IdCard")
+        self._Name = params.get("Name")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._Optional = params.get("Optional")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageRecognitionV2Response(AbstractModel):
+    """ImageRecognitionV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sim: 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+        :type Sim: float
+        :param _Result: 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+        :type Result: str
+        :param _Description: 业务结果描述。
+        :type Description: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Sim = None
+        self._Result = None
+        self._Description = None
+        self._RequestId = None
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Sim = params.get("Sim")
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._RequestId = params.get("RequestId")
+
+
 class IntentionActionConfig(AbstractModel):
     """意愿核身（点头确认模式）配置
 

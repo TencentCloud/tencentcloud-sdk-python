@@ -3286,7 +3286,7 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         :param _UserData: 用户自定义参数
 <ul>
 <li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-<li>指定后，创建，编辑，删除模版时，回调都会携带该userData</li>
+<li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
 <li>支持的格式：json字符串的BASE64编码字符串</li>
 <li>示例：<ul>
                  <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
@@ -14220,7 +14220,7 @@ class FormField(AbstractModel):
 
     当控件的 ComponentType=‘SIGN_SEAL'时，FormField.ComponentValue填入印章id。
 
-    * 可用于指定自动签模版未设置自动签印章时，可由接口传入自动签印章
+    * 可用于指定自动签模板未设置自动签印章时，可由接口传入自动签印章
     * 若指定的控件上已设置ComponentValue，那以已经设置的ComponentValue为准
 
     ```

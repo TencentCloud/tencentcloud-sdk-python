@@ -555,6 +555,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImageRecognitionV2(self, request):
+        """传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人。
+
+        :param request: Request instance for ImageRecognitionV2.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionV2Request`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ImageRecognitionV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageRecognitionV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageRecognitionV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def Liveness(self, request):
         """活体检测
 

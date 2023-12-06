@@ -19761,6 +19761,9 @@ refund-已退费。
         :param _ExpireTime: 失效时间：2022-08-01 00:00:00
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
+        :param _HistoryBindResourceInfos: 资源包历史绑定（已解绑）实例信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HistoryBindResourceInfos: list of BindInstanceInfo
         """
         self._AppId = None
         self._PackageId = None
@@ -19774,6 +19777,7 @@ refund-已退费。
         self._BindInstanceInfos = None
         self._StartTime = None
         self._ExpireTime = None
+        self._HistoryBindResourceInfos = None
 
     @property
     def AppId(self):
@@ -19871,6 +19875,14 @@ refund-已退费。
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def HistoryBindResourceInfos(self):
+        return self._HistoryBindResourceInfos
+
+    @HistoryBindResourceInfos.setter
+    def HistoryBindResourceInfos(self, HistoryBindResourceInfos):
+        self._HistoryBindResourceInfos = HistoryBindResourceInfos
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -19890,6 +19902,12 @@ refund-已退费。
                 self._BindInstanceInfos.append(obj)
         self._StartTime = params.get("StartTime")
         self._ExpireTime = params.get("ExpireTime")
+        if params.get("HistoryBindResourceInfos") is not None:
+            self._HistoryBindResourceInfos = []
+            for item in params.get("HistoryBindResourceInfos"):
+                obj = BindInstanceInfo()
+                obj._deserialize(item)
+                self._HistoryBindResourceInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

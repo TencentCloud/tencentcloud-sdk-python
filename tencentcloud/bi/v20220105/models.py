@@ -471,6 +471,8 @@ class CreateDatasourceCloudRequest(AbstractModel):
         :type DataOriginProjectId: str
         :param _DataOriginDatasourceId: 第三方数据源id
         :type DataOriginDatasourceId: str
+        :param _ClusterId: 集群id
+        :type ClusterId: str
         """
         self._ServiceType = None
         self._DbType = None
@@ -491,6 +493,7 @@ class CreateDatasourceCloudRequest(AbstractModel):
         self._DataOrigin = None
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
+        self._ClusterId = None
 
     @property
     def ServiceType(self):
@@ -644,6 +647,14 @@ class CreateDatasourceCloudRequest(AbstractModel):
     def DataOriginDatasourceId(self, DataOriginDatasourceId):
         self._DataOriginDatasourceId = DataOriginDatasourceId
 
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -665,6 +676,7 @@ class CreateDatasourceCloudRequest(AbstractModel):
         self._DataOrigin = params.get("DataOrigin")
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1077,6 +1089,8 @@ class CreateEmbedTokenRequest(AbstractModel):
         :type UserCorpId: str
         :param _UserId: 使用者Id(仅用于多用户)
         :type UserId: str
+        :param _TicketNum: 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+        :type TicketNum: int
         """
         self._ProjectId = None
         self._PageId = None
@@ -1085,6 +1099,7 @@ class CreateEmbedTokenRequest(AbstractModel):
         self._ExtraParam = None
         self._UserCorpId = None
         self._UserId = None
+        self._TicketNum = None
 
     @property
     def ProjectId(self):
@@ -1142,6 +1157,14 @@ class CreateEmbedTokenRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def TicketNum(self):
+        return self._TicketNum
+
+    @TicketNum.setter
+    def TicketNum(self, TicketNum):
+        self._TicketNum = TicketNum
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -1151,6 +1174,7 @@ class CreateEmbedTokenRequest(AbstractModel):
         self._ExtraParam = params.get("ExtraParam")
         self._UserCorpId = params.get("UserCorpId")
         self._UserId = params.get("UserId")
+        self._TicketNum = params.get("TicketNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3576,6 +3600,9 @@ class EmbedTokenInfo(AbstractModel):
         :param _UserId: 使用者Id(仅用于多用户)
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
+        :param _TicketNum: 访问次数限制，限制范围1-99999，为空则不设置访问次数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketNum: int
         """
         self._Id = None
         self._BIToken = None
@@ -3590,6 +3617,7 @@ class EmbedTokenInfo(AbstractModel):
         self._ExpireTime = None
         self._UserCorpId = None
         self._UserId = None
+        self._TicketNum = None
 
     @property
     def Id(self):
@@ -3695,6 +3723,14 @@ class EmbedTokenInfo(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def TicketNum(self):
+        return self._TicketNum
+
+    @TicketNum.setter
+    def TicketNum(self, TicketNum):
+        self._TicketNum = TicketNum
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3710,6 +3746,7 @@ class EmbedTokenInfo(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._UserCorpId = params.get("UserCorpId")
         self._UserId = params.get("UserId")
+        self._TicketNum = params.get("TicketNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3853,6 +3890,8 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         :type DataOriginProjectId: str
         :param _DataOriginDatasourceId: 第三方数据源id
         :type DataOriginDatasourceId: str
+        :param _ClusterId: 集群id
+        :type ClusterId: str
         """
         self._ServiceType = None
         self._DbType = None
@@ -3874,6 +3913,7 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         self._DataOrigin = None
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
+        self._ClusterId = None
 
     @property
     def ServiceType(self):
@@ -4035,6 +4075,14 @@ class ModifyDatasourceCloudRequest(AbstractModel):
     def DataOriginDatasourceId(self, DataOriginDatasourceId):
         self._DataOriginDatasourceId = DataOriginDatasourceId
 
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -4057,6 +4105,7 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         self._DataOrigin = params.get("DataOrigin")
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

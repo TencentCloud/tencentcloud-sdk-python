@@ -6799,6 +6799,9 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 <li>backup-origin： 按照备用源站地址进行过滤；</li>
 <li>domain-cname：按照 CNAME 进行过滤；</li>
 <li>share-cname：按照共享 CNAME 进行过滤；</li>
+<li>vodeo-sub-app-id：按照【 vodeo 子应用 ID】进行过滤；</li>
+<li>vodeo-distribution-range：按照【 vodeo 分发范围】进行过滤；</li>
+<li>vodeo-bucket-id：按照【vodeo 存储桶 ID】进行过滤；</li>
         :type Filters: list of AdvancedFilter
         :param _Order: 可根据该字段对返回结果进行排序，取值有：
 <li>created_on：加速域名创建时间；</li>
@@ -16326,27 +16329,42 @@ class OriginDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _OriginType: 源站类型，取值有：
-<li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
-<li>COS：COS源。</li>
-<li>ORIGIN_GROUP：源站组类型源站。</li>
-<li>AWS_S3：AWS S3对象存储源站。</li>
+<li>IP_DOMAIN：IPV4、IPV6 或域名类型源站；</li>
+<li>COS：腾讯云 COS 对象存储源站；</li>
+<li>AWS_S3：AWS S3 对象存储源站；</li>
+<li>ORIGIN_GROUP：源站组类型源站；</li>
+ <li>VODEO：云点播（混合云版）；</li>
+<li>SPACE：源站卸载，当前仅白名单开放；</li>
+<li>LB：负载均衡，当前仅白名单开放。</li>
         :type OriginType: str
-        :param _Origin: 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+        :param _Origin: 源站地址，根据 OriginType 的取值分为以下情况：
+<li>当 OriginType = IP_DOMAIN 时，该参数为 IPv4、IPv6 地址或域名；</li>
+<li>当 OriginType = COS 时，该参数为 COS 桶的访问域名；</li>
+<li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
+<li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
+<li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数为 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数为对应存储桶域名。</li>
+
         :type Origin: str
-        :param _BackupOrigin: 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+        :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
         :type BackupOrigin: str
-        :param _OriginGroupName: 主源源站组名称，当OriginType参数指定为ORIGIN_GROUP时该参数生效。
+        :param _OriginGroupName: 主源源站组名称，当 OriginType = ORIGIN_GROUP 时该参数会返回值。
         :type OriginGroupName: str
-        :param _BackOriginGroupName: 备用源站源站组名称，当OriginType参数指定为ORIGIN_GROUP，且用户指定了被用源站时该参数生效。
+        :param _BackOriginGroupName: 备用源站组名称，该参数仅当 OriginType = ORIGIN_GROUP 且配置了备用源站组时会生效。
         :type BackOriginGroupName: str
-        :param _PrivateAccess: 指定是否允许访问私有对象存储源站。当源站类型OriginType=COS或AWS_S3时有效 取值有：
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWS_S3 时会生效，取值有：
 <li>on：使用私有鉴权；</li>
 <li>off：不使用私有鉴权。</li>
 不填写，默认值为off。
         :type PrivateAccess: str
-        :param _PrivateParameters: 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+        :param _PrivateParameters: 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrivateParameters: list of PrivateParameter
+        :param _VodeoSubAppId: MO 子应用 ID
+        :type VodeoSubAppId: int
+        :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>	
+        :type VodeoDistributionRange: str
+        :param _VodeoBucketId: MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填
+        :type VodeoBucketId: str
         """
         self._OriginType = None
         self._Origin = None
@@ -16355,6 +16373,9 @@ class OriginDetail(AbstractModel):
         self._BackOriginGroupName = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._VodeoSubAppId = None
+        self._VodeoDistributionRange = None
+        self._VodeoBucketId = None
 
     @property
     def OriginType(self):
@@ -16412,6 +16433,30 @@ class OriginDetail(AbstractModel):
     def PrivateParameters(self, PrivateParameters):
         self._PrivateParameters = PrivateParameters
 
+    @property
+    def VodeoSubAppId(self):
+        return self._VodeoSubAppId
+
+    @VodeoSubAppId.setter
+    def VodeoSubAppId(self, VodeoSubAppId):
+        self._VodeoSubAppId = VodeoSubAppId
+
+    @property
+    def VodeoDistributionRange(self):
+        return self._VodeoDistributionRange
+
+    @VodeoDistributionRange.setter
+    def VodeoDistributionRange(self, VodeoDistributionRange):
+        self._VodeoDistributionRange = VodeoDistributionRange
+
+    @property
+    def VodeoBucketId(self):
+        return self._VodeoBucketId
+
+    @VodeoBucketId.setter
+    def VodeoBucketId(self, VodeoBucketId):
+        self._VodeoBucketId = VodeoBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -16426,6 +16471,9 @@ class OriginDetail(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._VodeoSubAppId = params.get("VodeoSubAppId")
+        self._VodeoDistributionRange = params.get("VodeoDistributionRange")
+        self._VodeoBucketId = params.get("VodeoBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16652,12 +16700,21 @@ class OriginInfo(AbstractModel):
         :type PrivateAccess: str
         :param _PrivateParameters: 私有鉴权使用参数，当源站类型 PrivateAccess=on 时有效。
         :type PrivateParameters: list of PrivateParameter
+        :param _VodeoSubAppId: MO 子应用 ID
+        :type VodeoSubAppId: int
+        :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
+        :type VodeoDistributionRange: str
+        :param _VodeoBucketId: MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填	
+        :type VodeoBucketId: str
         """
         self._OriginType = None
         self._Origin = None
         self._BackupOrigin = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._VodeoSubAppId = None
+        self._VodeoDistributionRange = None
+        self._VodeoBucketId = None
 
     @property
     def OriginType(self):
@@ -16699,6 +16756,30 @@ class OriginInfo(AbstractModel):
     def PrivateParameters(self, PrivateParameters):
         self._PrivateParameters = PrivateParameters
 
+    @property
+    def VodeoSubAppId(self):
+        return self._VodeoSubAppId
+
+    @VodeoSubAppId.setter
+    def VodeoSubAppId(self, VodeoSubAppId):
+        self._VodeoSubAppId = VodeoSubAppId
+
+    @property
+    def VodeoDistributionRange(self):
+        return self._VodeoDistributionRange
+
+    @VodeoDistributionRange.setter
+    def VodeoDistributionRange(self, VodeoDistributionRange):
+        self._VodeoDistributionRange = VodeoDistributionRange
+
+    @property
+    def VodeoBucketId(self):
+        return self._VodeoBucketId
+
+    @VodeoBucketId.setter
+    def VodeoBucketId(self, VodeoBucketId):
+        self._VodeoBucketId = VodeoBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -16711,6 +16792,9 @@ class OriginInfo(AbstractModel):
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._VodeoSubAppId = params.get("VodeoSubAppId")
+        self._VodeoDistributionRange = params.get("VodeoDistributionRange")
+        self._VodeoBucketId = params.get("VodeoBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18162,6 +18246,9 @@ class Resource(AbstractModel):
         :param _ZoneNumber: 当前资源绑定的站点数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneNumber: int
+        :param _Type: 资源标记类型，取值有：
+<li>vodeo：vodeo资源。</li>
+        :type Type: str
         """
         self._Id = None
         self._PayMode = None
@@ -18175,6 +18262,7 @@ class Resource(AbstractModel):
         self._Area = None
         self._Group = None
         self._ZoneNumber = None
+        self._Type = None
 
     @property
     def Id(self):
@@ -18272,6 +18360,14 @@ class Resource(AbstractModel):
     def ZoneNumber(self, ZoneNumber):
         self._ZoneNumber = ZoneNumber
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -18291,6 +18387,7 @@ class Resource(AbstractModel):
         self._Area = params.get("Area")
         self._Group = params.get("Group")
         self._ZoneNumber = params.get("ZoneNumber")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

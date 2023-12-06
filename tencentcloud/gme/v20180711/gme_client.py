@@ -27,7 +27,9 @@ class GmeClient(AbstractClient):
 
 
     def CreateAgeDetectTask(self, request):
-        """用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+        """目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+
+        用于创建年龄语音识别任务的接口，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
         </br>
         <h4><b>接口功能说明：</b></h4>
         <li>支持对语音文件进行检测，判断是否为未成年人。</li>
@@ -198,7 +200,9 @@ class GmeClient(AbstractClient):
 
 
     def DescribeAgeDetectTask(self, request):
-        """查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
+        """目前该功能底层能力已不具备，不对外提供，目前需要下线，走预下线流程。
+
+        查询年龄语音识别任务结果，请求频率10次/秒。该接口目前通过白名单开放试用，如有需求，请提交工单申请。
 
         :param request: Request instance for DescribeAgeDetectTask.
         :type request: :class:`tencentcloud.gme.v20180711.models.DescribeAgeDetectTaskRequest`
