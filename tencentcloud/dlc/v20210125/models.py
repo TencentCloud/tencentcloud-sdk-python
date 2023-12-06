@@ -6848,7 +6848,7 @@ class DataEngineConfigInstanceInfo(AbstractModel):
         :type DataEngineId: str
         :param _DataEngineConfigPairs: 用户自定义配置项集合
         :type DataEngineConfigPairs: list of DataEngineConfigPair
-        :param _SessionResourceTemplate: 作业集群资源参数配置模版
+        :param _SessionResourceTemplate: 作业集群资源参数配置模板
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`
         """
         self._DataEngineId = None
@@ -16634,9 +16634,9 @@ class LakeFileSystemToken(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretId: Token使用的临时秘钥的ID
+        :param _SecretId: Token使用的临时密钥的ID
         :type SecretId: str
-        :param _SecretKey: Token使用的临时秘钥
+        :param _SecretKey: Token使用的临时密钥
         :type SecretKey: str
         :param _Token: Token信息
         :type Token: str
@@ -22663,6 +22663,9 @@ class TableResponseInfo(AbstractModel):
         :param _MapMaterializedViewName: xxxx
 注意：此字段可能返回 null，表示取不到有效值。
         :type MapMaterializedViewName: str
+        :param _HeatValue: 访问热点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeatValue: int
         """
         self._TableBaseInfo = None
         self._Columns = None
@@ -22675,6 +22678,7 @@ class TableResponseInfo(AbstractModel):
         self._StorageSize = None
         self._RecordCount = None
         self._MapMaterializedViewName = None
+        self._HeatValue = None
 
     @property
     def TableBaseInfo(self):
@@ -22764,6 +22768,14 @@ class TableResponseInfo(AbstractModel):
     def MapMaterializedViewName(self, MapMaterializedViewName):
         self._MapMaterializedViewName = MapMaterializedViewName
 
+    @property
+    def HeatValue(self):
+        return self._HeatValue
+
+    @HeatValue.setter
+    def HeatValue(self, HeatValue):
+        self._HeatValue = HeatValue
+
 
     def _deserialize(self, params):
         if params.get("TableBaseInfo") is not None:
@@ -22794,6 +22806,7 @@ class TableResponseInfo(AbstractModel):
         self._StorageSize = params.get("StorageSize")
         self._RecordCount = params.get("RecordCount")
         self._MapMaterializedViewName = params.get("MapMaterializedViewName")
+        self._HeatValue = params.get("HeatValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23012,6 +23025,9 @@ class TaskResponseInfo(AbstractModel):
         :param _PrestoMonitorMetrics: presto任务指标数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
+        :param _ResultFormat: 结果文件格式：默认为csv
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultFormat: str
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -23053,6 +23069,7 @@ class TaskResponseInfo(AbstractModel):
         self._CommonMetrics = None
         self._SparkMonitorMetrics = None
         self._PrestoMonitorMetrics = None
+        self._ResultFormat = None
 
     @property
     def DatabaseName(self):
@@ -23374,6 +23391,14 @@ class TaskResponseInfo(AbstractModel):
     def PrestoMonitorMetrics(self, PrestoMonitorMetrics):
         self._PrestoMonitorMetrics = PrestoMonitorMetrics
 
+    @property
+    def ResultFormat(self):
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -23422,6 +23447,7 @@ class TaskResponseInfo(AbstractModel):
         if params.get("PrestoMonitorMetrics") is not None:
             self._PrestoMonitorMetrics = PrestoMonitorMetrics()
             self._PrestoMonitorMetrics._deserialize(params.get("PrestoMonitorMetrics"))
+        self._ResultFormat = params.get("ResultFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -432,7 +432,7 @@ class BgpPeer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Asn: 用户侧，BGP Asn
+        :param _Asn: 用户侧BGP ASN
         :type Asn: int
         :param _AuthKey: 用户侧BGP密钥
         :type AuthKey: str
@@ -796,54 +796,47 @@ class CreateDirectConnectTunnelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectId: 专线 ID，例如：dc-kd7d06of
+        :param _DirectConnectId: 物理专线ID，例如：dc-kd7d06of。
         :type DirectConnectId: str
-        :param _DirectConnectTunnelName: 专用通道名称
+        :param _DirectConnectTunnelName: 专用通道名称。
         :type DirectConnectTunnelName: str
-        :param _DirectConnectOwnerAccount: 物理专线 owner，缺省为当前客户（物理专线 owner）
-共享专线时这里需要填写共享专线的开发商账号 ID
+        :param _DirectConnectOwnerAccount: 物理专线owner，缺省为当前客户（物理专线 owner）
+共享专线时这里需要填写共享专线的开发商账号 ID。
         :type DirectConnectOwnerAccount: str
-        :param _NetworkType: 网络类型，分别为VPC、BMVPC，CCN，默认是VPC
-VPC：私有网络
-BMVPC：黑石网络
-CCN：云联网
+        :param _NetworkType: 网络类型，枚举：VPC、BMVPC、CCN；默认为VPC。VPC：私有网络；BMVPC：黑石网络；CCN：云联网）。
         :type NetworkType: str
-        :param _NetworkRegion: 网络地域
+        :param _NetworkRegion: 网络地域。
         :type NetworkRegion: str
-        :param _VpcId: 私有网络统一 ID 或者黑石网络统一 ID
+        :param _VpcId: 私有网络统一ID或黑石网络统一ID。
         :type VpcId: str
-        :param _DirectConnectGatewayId: 专线网关 ID，例如 dcg-d545ddf
+        :param _DirectConnectGatewayId: 专线网关ID，例如 dcg-d545ddf。
         :type DirectConnectGatewayId: str
-        :param _Bandwidth: 专线带宽，单位：Mbps
-默认是物理专线带宽值
+        :param _Bandwidth: 专线带宽，单位：Mbps；默认是物理专线带宽值。
         :type Bandwidth: int
-        :param _RouteType: BGP ：BGP路由
-STATIC：静态
-默认为 BGP 路由
+        :param _RouteType: 路由类型，枚举：BGP、STATIC；默认为BGP 。（BGP ：BGP路由；STATIC：静态）。
         :type RouteType: str
-        :param _BgpPeer: BgpPeer，用户侧bgp信息，包括Asn和AuthKey
+        :param _BgpPeer: BgpPeer，用户侧bgp信息，包括Asn和AuthKey。
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param _RouteFilterPrefixes: 静态路由，用户IDC的网段地址
+        :param _RouteFilterPrefixes: 静态路由，用户IDC的网段地址。
         :type RouteFilterPrefixes: list of RouteFilterPrefix
-        :param _Vlan: vlan，范围：0 ~ 3000
-0：不开启子接口
-默认值是非0
+        :param _Vlan: vlan，范围：0 ~ 3000。
+0：不开启子接口，默认值是非0。
         :type Vlan: int
-        :param _TencentAddress: TencentAddress，腾讯侧互联 IP
+        :param _TencentAddress: TencentAddress，腾讯侧互联 IP。
         :type TencentAddress: str
-        :param _CustomerAddress: CustomerAddress，用户侧互联 IP
+        :param _CustomerAddress: CustomerAddress，用户侧互联 IP。
         :type CustomerAddress: str
-        :param _TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP
+        :param _TencentBackupAddress: TencentBackupAddress，腾讯侧备用互联 IP。
         :type TencentBackupAddress: str
-        :param _CloudAttachId: 高速上云服务ID
+        :param _CloudAttachId: 高速上云服务ID。
         :type CloudAttachId: str
-        :param _BfdEnable: 是否开启BFD
+        :param _BfdEnable: 是否开启BFD。
         :type BfdEnable: int
-        :param _NqaEnable: 是否开启NQA
+        :param _NqaEnable: 是否开启NQA。
         :type NqaEnable: int
-        :param _BfdInfo: BFD配置信息
+        :param _BfdInfo: BFD配置信息。
         :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
-        :param _NqaInfo: NQA配置信息
+        :param _NqaInfo: NQA配置信息。
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
         """
         self._DirectConnectId = None
@@ -1077,7 +1070,7 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelIdSet: 专用通道ID
+        :param _DirectConnectTunnelIdSet: 专用通道ID。
         :type DirectConnectTunnelIdSet: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

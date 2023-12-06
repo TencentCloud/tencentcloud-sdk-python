@@ -6911,7 +6911,7 @@ class DeleteRecordingRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleIds: 规则 ID 列表
+        :param _RuleIds: 规则 ID 列表(规则 ID 可通过 DescribeRecordingRules 接口获取)
         :type RuleIds: list of str
         :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
@@ -10580,14 +10580,14 @@ class DescribeExporterIntegrationsRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID
         :type InstanceId: str
-        :param _KubeType: Kubernetes 集群类型，取值如下：
+        :param _KubeType: Kubernetes 集群类型，可不填。取值如下：
 <li> 1= 容器集群(TKE) </li>
-<li> 2=弹性集群<EKS> </li>
-<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
         :type KubeType: int
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: 集群 ID，可不填
         :type ClusterId: str
-        :param _Kind: 类型
+        :param _Kind: 类型(不填返回全部集成。可通过 DescribePrometheusIntegrations 接口获取，取每一项中的 ExporterType 字段)
         :type Kind: str
         :param _Name: 名字
         :type Name: str
@@ -23831,11 +23831,11 @@ class PrometheusAgentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterType: 集群类型
+        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
         :type ClusterType: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: 集成容器服务中关联的集群ID
         :type ClusterId: str
-        :param _Describe: 备注
+        :param _Describe: 该参数未使用，不需要填写
         :type Describe: str
         """
         self._ClusterType = None
@@ -28789,7 +28789,7 @@ class UpdateAlertRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: Prometheus 报警规则 ID
+        :param _RuleId: Prometheus 高警规则 ID
         :type RuleId: str
         :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
@@ -28799,13 +28799,13 @@ class UpdateAlertRuleRequest(AbstractModel):
 <li>3=RuleDisabled</li>
 默认状态码为 2 启用。
         :type RuleState: int
-        :param _RuleName: 报警规则名称
+        :param _RuleName: 告警规则名称
         :type RuleName: str
-        :param _Expr: 报警规则表达式
+        :param _Expr: 告警规则表达式
         :type Expr: str
-        :param _Duration: 报警规则持续时间
+        :param _Duration: 告警规则持续时间
         :type Duration: str
-        :param _Receivers: 报警规则接收组列表
+        :param _Receivers: 告警规则接收组列表(当前规则绑定的接收组列表可通过 DescribeAlertRules 接口获取；用户已有的接收组列表可通过 DescribeAlarmNotices 接口获取)
         :type Receivers: list of str
         :param _Labels: 报警规则标签列表
         :type Labels: list of PrometheusRuleKV
@@ -28813,7 +28813,7 @@ class UpdateAlertRuleRequest(AbstractModel):
 
 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
         :type Annotations: list of PrometheusRuleKV
-        :param _Type: 报警策略模板分类
+        :param _Type: 报警策略模板分类(自定义，可不填)
         :type Type: str
         """
         self._RuleId = None
@@ -29138,18 +29138,18 @@ class UpdateExporterIntegrationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: Prometheus 实例 ID
         :type InstanceId: str
-        :param _Kind: 类型
+        :param _Kind: 类型(可通过 DescribeExporterIntegrations 获取对应集成的 Kind)
         :type Kind: str
-        :param _Content: 配置内容
+        :param _Content: 配置内容(可通过 DescribeExporterIntegrations 接口获取对应集成的 Content，并在此基础上做修改)
         :type Content: str
-        :param _KubeType: Kubernetes 集群类型，取值如下：
+        :param _KubeType: Kubernetes 集群类型，可不填。取值如下：
 <li> 1= 容器集群(TKE) </li>
-<li> 2=弹性集群<EKS> </li>
-<li> 3= Prometheus管理的弹性集群<MEKS> </li>
+<li> 2=弹性集群(EKS) </li>
+<li> 3= Prometheus管理的弹性集群(MEKS) </li>
         :type KubeType: int
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: 集群 ID，可不填
         :type ClusterId: str
         """
         self._InstanceId = None
@@ -29755,13 +29755,13 @@ class UpdatePrometheusScrapeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Prometheus 实例 ID，例如：prom-abcd1234
+        :param _InstanceId: Prometheus 实例 ID(可通过 DescribePrometheusInstances 接口获取)
         :type InstanceId: str
-        :param _AgentId: Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
+        :param _AgentId: Agent ID(可通过DescribePrometheusAgents 接口获取)
         :type AgentId: str
-        :param _JobId: 抓取任务 ID，例如：job-abcd1234，可在控制台 Agent 管理-抓取任务配置中获取
+        :param _JobId: 抓取任务 ID(可通过 DescribePrometheusScrapeJobs 接口获取)
         :type JobId: str
-        :param _Config: 抓取任务配置，格式：job_name:xx
+        :param _Config: 抓取任务配置
         :type Config: str
         """
         self._InstanceId = None
@@ -29853,9 +29853,9 @@ class UpdateRecordingRuleRequest(AbstractModel):
         :type Name: str
         :param _Group: 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
         :type Group: str
-        :param _InstanceId: Prometheus 实例 ID
+        :param _InstanceId: Prometheus 实例 ID(可通过 DescribePrometheusInstances 接口获取)
         :type InstanceId: str
-        :param _RuleId: Prometheus 聚合规则 ID
+        :param _RuleId: Prometheus 聚合规则 ID(可通过 DescribeRecordingRules 接口获取)
         :type RuleId: str
         :param _RuleState: 规则状态码，取值如下：
 <li>1=RuleDeleted</li>

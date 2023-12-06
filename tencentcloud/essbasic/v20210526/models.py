@@ -9498,7 +9498,7 @@ class CreateFlowOption(AbstractModel):
 
 **true**：跳过
 **false**：（默认）不跳过，需要传ResourceId
-        :type SkipUploadFile: str
+        :type SkipUploadFile: bool
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None

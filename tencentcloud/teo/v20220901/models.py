@@ -8617,6 +8617,81 @@ class DescribeHostsSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIPRegionRequest(AbstractModel):
+    """DescribeIPRegion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPs: 待查询的 IP 列表，支持 IPV4 和 IPV6，最大可查询 100 条。
+        :type IPs: list of str
+        """
+        self._IPs = None
+
+    @property
+    def IPs(self):
+        return self._IPs
+
+    @IPs.setter
+    def IPs(self, IPs):
+        self._IPs = IPs
+
+
+    def _deserialize(self, params):
+        self._IPs = params.get("IPs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPRegionResponse(AbstractModel):
+    """DescribeIPRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPRegionInfo: IP 归属信息列表。
+        :type IPRegionInfo: list of IPRegionInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IPRegionInfo = None
+        self._RequestId = None
+
+    @property
+    def IPRegionInfo(self):
+        return self._IPRegionInfo
+
+    @IPRegionInfo.setter
+    def IPRegionInfo(self, IPRegionInfo):
+        self._IPRegionInfo = IPRegionInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IPRegionInfo") is not None:
+            self._IPRegionInfo = []
+            for item in params.get("IPRegionInfo"):
+                obj = IPRegionInfo()
+                obj._deserialize(item)
+                self._IPRegionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIdentificationsRequest(AbstractModel):
     """DescribeIdentifications请求参数结构体
 
@@ -13107,6 +13182,53 @@ class IPGroup(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._Name = params.get("Name")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPRegionInfo(AbstractModel):
+    """IP 归属信息查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: IP 地址，IPV4 或 IPV6。
+        :type IP: str
+        :param _IsEdgeOneIP: IP 是否属于 EdgeOne 节点，取值有：
+<li>yes：该 IP 属于 EdgeOne 节点；</li>
+<li>no：该 IP 不属于 EdgeOne 节点。</li>
+        :type IsEdgeOneIP: str
+        """
+        self._IP = None
+        self._IsEdgeOneIP = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def IsEdgeOneIP(self):
+        return self._IsEdgeOneIP
+
+    @IsEdgeOneIP.setter
+    def IsEdgeOneIP(self, IsEdgeOneIP):
+        self._IsEdgeOneIP = IsEdgeOneIP
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._IsEdgeOneIP = params.get("IsEdgeOneIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

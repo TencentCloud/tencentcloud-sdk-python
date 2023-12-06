@@ -975,6 +975,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPRegion(self, request):
+        """该接口可用于查询 IP 是否为 EdgeOne IP。
+
+        :param request: Request instance for DescribeIPRegion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIdentifications(self, request):
         """查询站点的验证信息。
 

@@ -1332,6 +1332,8 @@ class AiAnalysisResult(AbstractModel):
 <li>Tag：智能标签</li>
 <li>FrameTag：智能按帧标签</li>
 <li>Highlight：智能精彩集锦</li>
+<li>DeLogo：智能去水印</li>
+<li>Description：大模型摘要</li>
         :type Type: str
         :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1351,6 +1353,9 @@ class AiAnalysisResult(AbstractModel):
         :param _DeLogoTask: 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        :param _DescriptionTask: 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1359,6 +1364,7 @@ class AiAnalysisResult(AbstractModel):
         self._FrameTagTask = None
         self._HighlightTask = None
         self._DeLogoTask = None
+        self._DescriptionTask = None
 
     @property
     def Type(self):
@@ -1416,6 +1422,14 @@ class AiAnalysisResult(AbstractModel):
     def DeLogoTask(self, DeLogoTask):
         self._DeLogoTask = DeLogoTask
 
+    @property
+    def DescriptionTask(self):
+        return self._DescriptionTask
+
+    @DescriptionTask.setter
+    def DescriptionTask(self, DescriptionTask):
+        self._DescriptionTask = DescriptionTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1437,6 +1451,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("DeLogoTask") is not None:
             self._DeLogoTask = AiAnalysisTaskDelLogoResult()
             self._DeLogoTask._deserialize(params.get("DeLogoTask"))
+        if params.get("DescriptionTask") is not None:
+            self._DescriptionTask = AiAnalysisTaskDescriptionResult()
+            self._DescriptionTask._deserialize(params.get("DescriptionTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1954,6 +1971,163 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskDelLogoOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionInput(AbstractModel):
+    """智能分类任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 视频智能描述模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionOutput(AbstractModel):
+    """智能描述结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DescriptionSet: 视频智能描述列表。
+        :type DescriptionSet: list of MediaAiAnalysisDescriptionItem
+        """
+        self._DescriptionSet = None
+
+    @property
+    def DescriptionSet(self):
+        return self._DescriptionSet
+
+    @DescriptionSet.setter
+    def DescriptionSet(self, DescriptionSet):
+        self._DescriptionSet = DescriptionSet
+
+
+    def _deserialize(self, params):
+        if params.get("DescriptionSet") is not None:
+            self._DescriptionSet = []
+            for item in params.get("DescriptionSet"):
+                obj = MediaAiAnalysisDescriptionItem()
+                obj._deserialize(item)
+                self._DescriptionSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionResult(AbstractModel):
+    """智能描述结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 智能描述任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionInput`
+        :param _Output: 智能描述任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDescriptionInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDescriptionOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2762,6 +2936,66 @@ class AiContentReviewTaskInput(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiParagraphInfo(AbstractModel):
+    """分段信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 分段摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: str
+        :param _StartTimeOffset: 分段起始时间点，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 分段结束时间点，秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTimeOffset: float
+        """
+        self._Summary = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27081,6 +27315,69 @@ class MediaAiAnalysisCoverItem(AbstractModel):
     def _deserialize(self, params):
         self._CoverPath = params.get("CoverPath")
         self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaAiAnalysisDescriptionItem(AbstractModel):
+    """智能描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: 智能描述。
+        :type Description: str
+        :param _Confidence: 智能描述的可信度，取值范围是 0 到 100。
+        :type Confidence: float
+        :param _Paragraphs: 分段结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paragraphs: list of AiParagraphInfo
+        """
+        self._Description = None
+        self._Confidence = None
+        self._Paragraphs = None
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Paragraphs(self):
+        return self._Paragraphs
+
+    @Paragraphs.setter
+    def Paragraphs(self, Paragraphs):
+        self._Paragraphs = Paragraphs
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._Confidence = params.get("Confidence")
+        if params.get("Paragraphs") is not None:
+            self._Paragraphs = []
+            for item in params.get("Paragraphs"):
+                obj = AiParagraphInfo()
+                obj._deserialize(item)
+                self._Paragraphs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

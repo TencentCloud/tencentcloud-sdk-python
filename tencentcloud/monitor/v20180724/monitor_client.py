@@ -1415,7 +1415,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeExporterIntegrations(self, request):
-        """查询 exporter 集成列表
+        """查询集成中心 exporter 集成列表
 
         :param request: Request instance for DescribeExporterIntegrations.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeExporterIntegrationsRequest`
@@ -3130,7 +3130,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdateAlertRule(self, request):
-        """更新 Prometheus 的报警规则。
+        """更新 Prometheus 的告警规则。
 
         请注意，**告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description**，，请参考 [Prometheus Rule更多配置请参考](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)。
 
@@ -3362,7 +3362,7 @@ class MonitorClient(AbstractClient):
 
 
     def UpdatePrometheusScrapeJob(self, request):
-        """更新 Prometheus 抓取任务
+        """更新 Prometheus Agent 抓取任务
 
         :param request: Request instance for UpdatePrometheusScrapeJob.
         :type request: :class:`tencentcloud.monitor.v20180724.models.UpdatePrometheusScrapeJobRequest`

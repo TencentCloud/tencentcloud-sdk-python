@@ -21194,6 +21194,12 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         :type IncludeTask: bool
         :param _IncludeVirtualTask: 是否包含虚拟任务，当 IncludeTask 为 true 的时候，该参数才生效，默认为 true
         :type IncludeVirtualTask: bool
+        :param _TaskFolderId: 任务目录id
+        :type TaskFolderId: str
+        :param _DisplayType: classification.分类展示  catalog.目录展示
+        :type DisplayType: str
+        :param _IncludeTaskFolder: 是否包含任务目录
+        :type IncludeTaskFolder: bool
         """
         self._ProjectId = None
         self._FirstLevelPull = None
@@ -21203,6 +21209,9 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         self._IncludeWorkflow = None
         self._IncludeTask = None
         self._IncludeVirtualTask = None
+        self._TaskFolderId = None
+        self._DisplayType = None
+        self._IncludeTaskFolder = None
 
     @property
     def ProjectId(self):
@@ -21268,6 +21277,30 @@ class DescribeDsFolderTreeRequest(AbstractModel):
     def IncludeVirtualTask(self, IncludeVirtualTask):
         self._IncludeVirtualTask = IncludeVirtualTask
 
+    @property
+    def TaskFolderId(self):
+        return self._TaskFolderId
+
+    @TaskFolderId.setter
+    def TaskFolderId(self, TaskFolderId):
+        self._TaskFolderId = TaskFolderId
+
+    @property
+    def DisplayType(self):
+        return self._DisplayType
+
+    @DisplayType.setter
+    def DisplayType(self, DisplayType):
+        self._DisplayType = DisplayType
+
+    @property
+    def IncludeTaskFolder(self):
+        return self._IncludeTaskFolder
+
+    @IncludeTaskFolder.setter
+    def IncludeTaskFolder(self, IncludeTaskFolder):
+        self._IncludeTaskFolder = IncludeTaskFolder
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -21278,6 +21311,9 @@ class DescribeDsFolderTreeRequest(AbstractModel):
         self._IncludeWorkflow = params.get("IncludeWorkflow")
         self._IncludeTask = params.get("IncludeTask")
         self._IncludeVirtualTask = params.get("IncludeVirtualTask")
+        self._TaskFolderId = params.get("TaskFolderId")
+        self._DisplayType = params.get("DisplayType")
+        self._IncludeTaskFolder = params.get("IncludeTaskFolder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21345,11 +21381,14 @@ class DescribeDsParentFolderTreeRequest(AbstractModel):
         :type WorkflowId: str
         :param _TaskId: 任务id
         :type TaskId: str
+        :param _DisplayType:  classification:分类展示  catalog:目录展示
+        :type DisplayType: str
         """
         self._ProjectId = None
         self._FolderId = None
         self._WorkflowId = None
         self._TaskId = None
+        self._DisplayType = None
 
     @property
     def ProjectId(self):
@@ -21383,12 +21422,21 @@ class DescribeDsParentFolderTreeRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def DisplayType(self):
+        return self._DisplayType
+
+    @DisplayType.setter
+    def DisplayType(self, DisplayType):
+        self._DisplayType = DisplayType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._FolderId = params.get("FolderId")
         self._WorkflowId = params.get("WorkflowId")
         self._TaskId = params.get("TaskId")
+        self._DisplayType = params.get("DisplayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

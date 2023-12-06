@@ -229,10 +229,13 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param _AccountVpcSet: 本次新增关联账户vpc信息
         :type AccountVpcSet: list of AccountVpcInfo
+        :param _Sync: 是否为同步操作
+        :type Sync: bool
         """
         self._ZoneId = None
         self._VpcSet = None
         self._AccountVpcSet = None
+        self._Sync = None
 
     @property
     def ZoneId(self):
@@ -258,6 +261,14 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
     def AccountVpcSet(self, AccountVpcSet):
         self._AccountVpcSet = AccountVpcSet
 
+    @property
+    def Sync(self):
+        return self._Sync
+
+    @Sync.setter
+    def Sync(self, Sync):
+        self._Sync = Sync
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -273,6 +284,7 @@ class AddSpecifyPrivateZoneVpcRequest(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self._AccountVpcSet.append(obj)
+        self._Sync = params.get("Sync")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -296,12 +308,16 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param _AccountVpcSet: 本次新增的关联账号vpc
         :type AccountVpcSet: list of AccountVpcInfo
+        :param _UniqId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ZoneId = None
         self._VpcSet = None
         self._AccountVpcSet = None
+        self._UniqId = None
         self._RequestId = None
 
     @property
@@ -329,6 +345,14 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
         self._AccountVpcSet = AccountVpcSet
 
     @property
+    def UniqId(self):
+        return self._UniqId
+
+    @UniqId.setter
+    def UniqId(self, UniqId):
+        self._UniqId = UniqId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -351,6 +375,7 @@ class AddSpecifyPrivateZoneVpcResponse(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self._AccountVpcSet.append(obj)
+        self._UniqId = params.get("UniqId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1201,10 +1226,13 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param _AccountVpcSet: 本次删除的关联账户VPC
         :type AccountVpcSet: list of AccountVpcInfo
+        :param _Sync: 是否为同步操作
+        :type Sync: bool
         """
         self._ZoneId = None
         self._VpcSet = None
         self._AccountVpcSet = None
+        self._Sync = None
 
     @property
     def ZoneId(self):
@@ -1230,6 +1258,14 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
     def AccountVpcSet(self, AccountVpcSet):
         self._AccountVpcSet = AccountVpcSet
 
+    @property
+    def Sync(self):
+        return self._Sync
+
+    @Sync.setter
+    def Sync(self, Sync):
+        self._Sync = Sync
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -1245,6 +1281,7 @@ class DeleteSpecifyPrivateZoneVpcRequest(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self._AccountVpcSet.append(obj)
+        self._Sync = params.get("Sync")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1268,12 +1305,16 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
         :type VpcSet: list of VpcInfo
         :param _AccountVpcSet: 本次删除的关联账户的VPC
         :type AccountVpcSet: list of AccountVpcInfo
+        :param _UniqId: 唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ZoneId = None
         self._VpcSet = None
         self._AccountVpcSet = None
+        self._UniqId = None
         self._RequestId = None
 
     @property
@@ -1301,6 +1342,14 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
         self._AccountVpcSet = AccountVpcSet
 
     @property
+    def UniqId(self):
+        return self._UniqId
+
+    @UniqId.setter
+    def UniqId(self, UniqId):
+        self._UniqId = UniqId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1323,6 +1372,7 @@ class DeleteSpecifyPrivateZoneVpcResponse(AbstractModel):
                 obj = AccountVpcInfo()
                 obj._deserialize(item)
                 self._AccountVpcSet.append(obj)
+        self._UniqId = params.get("UniqId")
         self._RequestId = params.get("RequestId")
 
 

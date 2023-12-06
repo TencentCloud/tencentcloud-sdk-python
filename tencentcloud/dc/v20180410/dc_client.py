@@ -99,7 +99,7 @@ class DcClient(AbstractClient):
 
 
     def CreateDirectConnectTunnel(self, request):
-        """用于创建专用通道的接口
+        """创建专用通道。
 
         :param request: Request instance for CreateDirectConnectTunnel.
         :type request: :class:`tencentcloud.dc.v20180410.models.CreateDirectConnectTunnelRequest`

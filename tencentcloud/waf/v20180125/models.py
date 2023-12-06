@@ -16516,39 +16516,49 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: id
+        :param _InstanceId: 实例唯一ID
         :type InstanceId: str
-        :param _InstanceName: Name
+        :param _InstanceName: 实例名称
         :type InstanceName: str
-        :param _ResourceIds: 资源id
+        :param _ResourceIds: 实例对应资源ID，计费使用
         :type ResourceIds: str
-        :param _Region: 地域
+        :param _Region: 实例所属地域
         :type Region: str
         :param _PayMode: 付费模式
         :type PayMode: int
-        :param _RenewFlag: 自动续费
+        :param _RenewFlag: 自动续费标识。
+0：关闭
+1：开启
         :type RenewFlag: int
-        :param _Mode: 弹性计费
+        :param _Mode: 弹性计费开关。
+0：关闭
+1：开启
         :type Mode: int
-        :param _Level: 套餐版本
+        :param _Level: 实例套餐版本。
+101：小微版
+102：超轻版
+2：高级版
+3：企业版
+4：旗舰版
+6：独享版
         :type Level: int
-        :param _ValidTime: 过期时间
+        :param _ValidTime: 实例过期时间
         :type ValidTime: str
-        :param _BeginTime: 开始时间
+        :param _BeginTime: 实例开始时间
         :type BeginTime: str
-        :param _DomainCount: 已用
+        :param _DomainCount: 已配置域名个数
         :type DomainCount: int
-        :param _SubDomainLimit: 上限
+        :param _SubDomainLimit: 域名数量上限
         :type SubDomainLimit: int
-        :param _MainDomainCount: 已用
+        :param _MainDomainCount: 已配置主域名个数
         :type MainDomainCount: int
-        :param _MainDomainLimit: 上限
+        :param _MainDomainLimit: 主域名数量上限
         :type MainDomainLimit: int
-        :param _MaxQPS: 峰值
+        :param _MaxQPS: 实例30天内QPS峰值
         :type MaxQPS: int
-        :param _QPS: qps套餐
+        :param _QPS: qps扩展包信息
         :type QPS: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
-        :param _DomainPkg: 域名套餐
+        :param _DomainPkg: 域名扩展包信息
         :type DomainPkg: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
         :param _AppId: 用户appid
         :type AppId: int
@@ -16583,7 +16593,7 @@ class InstanceInfo(AbstractModel):
         :param _Status: 实例状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _SandboxQps: 实例沙箱值
+        :param _SandboxQps: 实例沙箱qps值
 注意：此字段可能返回 null，表示取不到有效值。
         :type SandboxQps: int
         :param _IsAPISecurityTrial: 是否api 安全试用
@@ -16598,6 +16608,15 @@ class InstanceInfo(AbstractModel):
         :param _ApiPkg: API安全资源包
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiPkg: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
+        :param _MiniPkg: 小程序安全加速包
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniPkg: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
+        :param _MiniQpsStandard: 小程序qps规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniQpsStandard: int
+        :param _MiniMaxQPS: 小程序qps峰值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MiniMaxQPS: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -16633,6 +16652,9 @@ class InstanceInfo(AbstractModel):
         self._MajorEventsPkg = None
         self._HybridPkg = None
         self._ApiPkg = None
+        self._MiniPkg = None
+        self._MiniQpsStandard = None
+        self._MiniMaxQPS = None
 
     @property
     def InstanceId(self):
@@ -16906,6 +16928,30 @@ class InstanceInfo(AbstractModel):
     def ApiPkg(self, ApiPkg):
         self._ApiPkg = ApiPkg
 
+    @property
+    def MiniPkg(self):
+        return self._MiniPkg
+
+    @MiniPkg.setter
+    def MiniPkg(self, MiniPkg):
+        self._MiniPkg = MiniPkg
+
+    @property
+    def MiniQpsStandard(self):
+        return self._MiniQpsStandard
+
+    @MiniQpsStandard.setter
+    def MiniQpsStandard(self, MiniQpsStandard):
+        self._MiniQpsStandard = MiniQpsStandard
+
+    @property
+    def MiniMaxQPS(self):
+        return self._MiniMaxQPS
+
+    @MiniMaxQPS.setter
+    def MiniMaxQPS(self, MiniMaxQPS):
+        self._MiniMaxQPS = MiniMaxQPS
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -16958,6 +17004,11 @@ class InstanceInfo(AbstractModel):
         if params.get("ApiPkg") is not None:
             self._ApiPkg = ApiPkg()
             self._ApiPkg._deserialize(params.get("ApiPkg"))
+        if params.get("MiniPkg") is not None:
+            self._MiniPkg = MiniPkg()
+            self._MiniPkg._deserialize(params.get("MiniPkg"))
+        self._MiniQpsStandard = params.get("MiniQpsStandard")
+        self._MiniMaxQPS = params.get("MiniMaxQPS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17858,6 +17909,131 @@ class MajorEventsPkg(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
         self._HWState = params.get("HWState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MiniPkg(AbstractModel):
+    """API安全资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: int
+        :param _BeginTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Count: 购买数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _RenewFlag: 续费标志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItem: str
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Count = None
+        self._RenewFlag = None
+        self._BillingItem = None
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def BillingItem(self):
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Count = params.get("Count")
+        self._RenewFlag = params.get("RenewFlag")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
