@@ -279,6 +279,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGatewayAssets(self, request):
+        """获取网关列表
+
+        :param request: Request instance for DescribeGatewayAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeGatewayAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeGatewayAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatewayAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatewayAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeListenerList(self, request):
         """查询clb监听器列表
 

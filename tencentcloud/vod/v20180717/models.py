@@ -53197,6 +53197,7 @@ class StatDataItem(AbstractModel):
 <li>直播剪辑数据，单位是秒。</li>
 <li>轮播数据，单位是秒。</li>
 <li>子应用数量数据，单位是个。</li>
+<li>日志服务用量数据，单位是条。</li>
         :type Value: int
         """
         self._Time = None

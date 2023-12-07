@@ -5347,6 +5347,163 @@ class DescribeDomainAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGatewayAssetsRequest(AbstractModel):
+    """DescribeGatewayAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤参数
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayAssetsResponse(AbstractModel):
+    """DescribeGatewayAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 列表
+        :type Data: list of GateWayAsset
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RegionList: 地域列表
+        :type RegionList: list of FilterDataObject
+        :param _AssetTypeList: 资产类型列表
+        :type AssetTypeList: list of FilterDataObject
+        :param _VpcList: vpc列表
+        :type VpcList: list of FilterDataObject
+        :param _AppIdList: appid列表
+        :type AppIdList: list of FilterDataObject
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RegionList = None
+        self._AssetTypeList = None
+        self._VpcList = None
+        self._AppIdList = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RegionList(self):
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def AssetTypeList(self):
+        return self._AssetTypeList
+
+    @AssetTypeList.setter
+    def AssetTypeList(self, AssetTypeList):
+        self._AssetTypeList = AssetTypeList
+
+    @property
+    def VpcList(self):
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def AppIdList(self):
+        return self._AppIdList
+
+    @AppIdList.setter
+    def AppIdList(self, AppIdList):
+        self._AppIdList = AppIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = GateWayAsset()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        if params.get("AssetTypeList") is not None:
+            self._AssetTypeList = []
+            for item in params.get("AssetTypeList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._AssetTypeList.append(obj)
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
+        if params.get("AppIdList") is not None:
+            self._AppIdList = []
+            for item in params.get("AppIdList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._AppIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeListenerListRequest(AbstractModel):
     """DescribeListenerList请求参数结构体
 
@@ -8753,6 +8910,387 @@ class FilterDataObject(AbstractModel):
     def _deserialize(self, params):
         self._Value = params.get("Value")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GateWayAsset(AbstractModel):
+    """网关资产
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: str
+        :param _Uin: uin
+        :type Uin: str
+        :param _AssetId: 资产ID
+        :type AssetId: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _PrivateIp: 私有ip
+        :type PrivateIp: str
+        :param _PublicIp: 公网ip
+        :type PublicIp: str
+        :param _Region: 区域
+        :type Region: str
+        :param _VpcId: 私有网络id
+        :type VpcId: str
+        :param _VpcName: 私有网络名
+        :type VpcName: str
+        :param _Tag: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of Tag
+        :param _OutboundPeakBandwidth: 出向峰值带宽
+        :type OutboundPeakBandwidth: str
+        :param _InboundPeakBandwidth: 入向峰值带宽
+        :type InboundPeakBandwidth: str
+        :param _OutboundCumulativeFlow: 出站累计流量
+        :type OutboundCumulativeFlow: str
+        :param _InboundCumulativeFlow: 入站累计流量
+        :type InboundCumulativeFlow: str
+        :param _NetworkAttack: 网络攻击
+        :type NetworkAttack: int
+        :param _ExposedPort: 暴露端口
+        :type ExposedPort: int
+        :param _ExposedVUL: 暴露漏洞
+        :type ExposedVUL: int
+        :param _ConfigureRisk: 配置风险
+        :type ConfigureRisk: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ScanTask: 任务数
+        :type ScanTask: int
+        :param _LastScanTime: 最后扫描时间
+        :type LastScanTime: str
+        :param _Nick: 昵称
+        :type Nick: str
+        :param _AddressIPV6: ipv6地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressIPV6: str
+        :param _IsCore: 是否核心
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCore: int
+        :param _RiskExposure: 风险服务暴露
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskExposure: int
+        :param _IsNewAsset: 是否新资产 1新
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsNewAsset: int
+        :param _Status: 网关状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _EngineRegion: TSE的网关真实地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineRegion: str
+        """
+        self._AppId = None
+        self._Uin = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetType = None
+        self._PrivateIp = None
+        self._PublicIp = None
+        self._Region = None
+        self._VpcId = None
+        self._VpcName = None
+        self._Tag = None
+        self._OutboundPeakBandwidth = None
+        self._InboundPeakBandwidth = None
+        self._OutboundCumulativeFlow = None
+        self._InboundCumulativeFlow = None
+        self._NetworkAttack = None
+        self._ExposedPort = None
+        self._ExposedVUL = None
+        self._ConfigureRisk = None
+        self._CreateTime = None
+        self._ScanTask = None
+        self._LastScanTime = None
+        self._Nick = None
+        self._AddressIPV6 = None
+        self._IsCore = None
+        self._RiskExposure = None
+        self._IsNewAsset = None
+        self._Status = None
+        self._EngineRegion = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AssetId(self):
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def PrivateIp(self):
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def PublicIp(self):
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def OutboundPeakBandwidth(self):
+        return self._OutboundPeakBandwidth
+
+    @OutboundPeakBandwidth.setter
+    def OutboundPeakBandwidth(self, OutboundPeakBandwidth):
+        self._OutboundPeakBandwidth = OutboundPeakBandwidth
+
+    @property
+    def InboundPeakBandwidth(self):
+        return self._InboundPeakBandwidth
+
+    @InboundPeakBandwidth.setter
+    def InboundPeakBandwidth(self, InboundPeakBandwidth):
+        self._InboundPeakBandwidth = InboundPeakBandwidth
+
+    @property
+    def OutboundCumulativeFlow(self):
+        return self._OutboundCumulativeFlow
+
+    @OutboundCumulativeFlow.setter
+    def OutboundCumulativeFlow(self, OutboundCumulativeFlow):
+        self._OutboundCumulativeFlow = OutboundCumulativeFlow
+
+    @property
+    def InboundCumulativeFlow(self):
+        return self._InboundCumulativeFlow
+
+    @InboundCumulativeFlow.setter
+    def InboundCumulativeFlow(self, InboundCumulativeFlow):
+        self._InboundCumulativeFlow = InboundCumulativeFlow
+
+    @property
+    def NetworkAttack(self):
+        return self._NetworkAttack
+
+    @NetworkAttack.setter
+    def NetworkAttack(self, NetworkAttack):
+        self._NetworkAttack = NetworkAttack
+
+    @property
+    def ExposedPort(self):
+        return self._ExposedPort
+
+    @ExposedPort.setter
+    def ExposedPort(self, ExposedPort):
+        self._ExposedPort = ExposedPort
+
+    @property
+    def ExposedVUL(self):
+        return self._ExposedVUL
+
+    @ExposedVUL.setter
+    def ExposedVUL(self, ExposedVUL):
+        self._ExposedVUL = ExposedVUL
+
+    @property
+    def ConfigureRisk(self):
+        return self._ConfigureRisk
+
+    @ConfigureRisk.setter
+    def ConfigureRisk(self, ConfigureRisk):
+        self._ConfigureRisk = ConfigureRisk
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScanTask(self):
+        return self._ScanTask
+
+    @ScanTask.setter
+    def ScanTask(self, ScanTask):
+        self._ScanTask = ScanTask
+
+    @property
+    def LastScanTime(self):
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def Nick(self):
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def AddressIPV6(self):
+        return self._AddressIPV6
+
+    @AddressIPV6.setter
+    def AddressIPV6(self, AddressIPV6):
+        self._AddressIPV6 = AddressIPV6
+
+    @property
+    def IsCore(self):
+        return self._IsCore
+
+    @IsCore.setter
+    def IsCore(self, IsCore):
+        self._IsCore = IsCore
+
+    @property
+    def RiskExposure(self):
+        return self._RiskExposure
+
+    @RiskExposure.setter
+    def RiskExposure(self, RiskExposure):
+        self._RiskExposure = RiskExposure
+
+    @property
+    def IsNewAsset(self):
+        return self._IsNewAsset
+
+    @IsNewAsset.setter
+    def IsNewAsset(self, IsNewAsset):
+        self._IsNewAsset = IsNewAsset
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EngineRegion(self):
+        return self._EngineRegion
+
+    @EngineRegion.setter
+    def EngineRegion(self, EngineRegion):
+        self._EngineRegion = EngineRegion
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        self._PrivateIp = params.get("PrivateIp")
+        self._PublicIp = params.get("PublicIp")
+        self._Region = params.get("Region")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._OutboundPeakBandwidth = params.get("OutboundPeakBandwidth")
+        self._InboundPeakBandwidth = params.get("InboundPeakBandwidth")
+        self._OutboundCumulativeFlow = params.get("OutboundCumulativeFlow")
+        self._InboundCumulativeFlow = params.get("InboundCumulativeFlow")
+        self._NetworkAttack = params.get("NetworkAttack")
+        self._ExposedPort = params.get("ExposedPort")
+        self._ExposedVUL = params.get("ExposedVUL")
+        self._ConfigureRisk = params.get("ConfigureRisk")
+        self._CreateTime = params.get("CreateTime")
+        self._ScanTask = params.get("ScanTask")
+        self._LastScanTime = params.get("LastScanTime")
+        self._Nick = params.get("Nick")
+        self._AddressIPV6 = params.get("AddressIPV6")
+        self._IsCore = params.get("IsCore")
+        self._RiskExposure = params.get("RiskExposure")
+        self._IsNewAsset = params.get("IsNewAsset")
+        self._Status = params.get("Status")
+        self._EngineRegion = params.get("EngineRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

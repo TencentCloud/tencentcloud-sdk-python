@@ -34452,13 +34452,16 @@ class ResourceDeleteOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: 资源类型，例如CBS
+        :param _ResourceType: 资源类型，例如CBS、CLB、CVM
         :type ResourceType: str
-        :param _DeleteMode: 集群删除时资源的删除模式：terminate（销毁），retain （保留）
+        :param _DeleteMode: 集群删除时CBS资源的删除模式：terminate（销毁），retain （保留）。其他资源默认为销毁。
         :type DeleteMode: str
+        :param _SkipDeletionProtection: 是否跳过开启删除保护的资源，默认false，设置为true时不清理开启了删除保护的资源，clb有终端节点的情况也属于开了删除保护。
+        :type SkipDeletionProtection: bool
         """
         self._ResourceType = None
         self._DeleteMode = None
+        self._SkipDeletionProtection = None
 
     @property
     def ResourceType(self):
@@ -34476,10 +34479,19 @@ class ResourceDeleteOption(AbstractModel):
     def DeleteMode(self, DeleteMode):
         self._DeleteMode = DeleteMode
 
+    @property
+    def SkipDeletionProtection(self):
+        return self._SkipDeletionProtection
+
+    @SkipDeletionProtection.setter
+    def SkipDeletionProtection(self, SkipDeletionProtection):
+        self._SkipDeletionProtection = SkipDeletionProtection
+
 
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
         self._DeleteMode = params.get("DeleteMode")
+        self._SkipDeletionProtection = params.get("SkipDeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

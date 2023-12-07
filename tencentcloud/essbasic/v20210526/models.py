@@ -13808,7 +13808,7 @@ class FormField(AbstractModel):
                     "columnStart":1,
                     "columnEnd":1,
                     "content":"123",
-                    "style": "{\"color\": \"#b50000\", \"fontSize\": 12,\"bold\": true,\"align\": \"CENTER\"}"
+                    "style": {"color": "#b50000", "fontSize": 12,"bold": true,"align": "CENTER"}
                 },
                 {
                     "rowStart":2,
@@ -13816,7 +13816,7 @@ class FormField(AbstractModel):
                     "columnStart":1,
                     "columnEnd":2,
                     "content":"456",
-                    "style": "{\"color\": \"#b50000\", \"fontSize\": 12,\"bold\": true,\"align\": \"LEFT\"}"
+                    "style": {"color": "#b50000", "fontSize": 12,"bold": true,"align": "LEFT"}
                 },
                 {
                     "rowStart":3,
@@ -13824,7 +13824,7 @@ class FormField(AbstractModel):
                     "columnStart":3,
                     "columnEnd":3,
                     "content":"789",
-                    "style": "{\"color\": \"#b500bf\", \"fontSize\": 12,\"bold\": false,\"align\": \"RIGHT\"}"
+                    "style": {"color": "#b500bf", "fontSize": 12,"bold": false,"align": "RIGHT"}
                 }
             ]
         }
@@ -15397,6 +15397,16 @@ false-否
 true-是 
 false-否
         :type IsPromoter: bool
+        :param _ApproverVerifyTypes: 签署人查看合同校验方式, 支持的类型如下:
+<ul><li> 1 :实名认证查看</li>
+<li> 2 :手机号校验查看</li></ul>
+        :type ApproverVerifyTypes: list of int
+        :param _ApproverSignTypes: 签署人进行合同签署时的认证方式，支持的类型如下:
+<ul><li> 1 :人脸认证</li>
+<li> 2 :签署密码</li>
+<li> 3 :运营商三要素认证</li>
+<li> 4 :UKey认证</li></ul>
+        :type ApproverSignTypes: list of int
         """
         self._RecipientId = None
         self._RecipientType = None
@@ -15407,6 +15417,8 @@ false-否
         self._SignType = None
         self._RoutingOrder = None
         self._IsPromoter = None
+        self._ApproverVerifyTypes = None
+        self._ApproverSignTypes = None
 
     @property
     def RecipientId(self):
@@ -15480,6 +15492,22 @@ false-否
     def IsPromoter(self, IsPromoter):
         self._IsPromoter = IsPromoter
 
+    @property
+    def ApproverVerifyTypes(self):
+        return self._ApproverVerifyTypes
+
+    @ApproverVerifyTypes.setter
+    def ApproverVerifyTypes(self, ApproverVerifyTypes):
+        self._ApproverVerifyTypes = ApproverVerifyTypes
+
+    @property
+    def ApproverSignTypes(self):
+        return self._ApproverSignTypes
+
+    @ApproverSignTypes.setter
+    def ApproverSignTypes(self, ApproverSignTypes):
+        self._ApproverSignTypes = ApproverSignTypes
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
@@ -15491,6 +15519,8 @@ false-否
         self._SignType = params.get("SignType")
         self._RoutingOrder = params.get("RoutingOrder")
         self._IsPromoter = params.get("IsPromoter")
+        self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
+        self._ApproverSignTypes = params.get("ApproverSignTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

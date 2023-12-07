@@ -405,6 +405,14 @@ class ApmInstanceDetail(AbstractModel):
         :param _CustomShowTags: 用户自定义展示标签列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomShowTags: list of str
+        :param _PayMode: 实例计费模式
+1为预付费
+0为按量付费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: int
+        :param _PayModeEffective: 实例计费模式是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeEffective: bool
         """
         self._AmountOfUsedStorage = None
         self._Name = None
@@ -433,6 +441,8 @@ class ApmInstanceDetail(AbstractModel):
         self._LogSet = None
         self._MetricDuration = None
         self._CustomShowTags = None
+        self._PayMode = None
+        self._PayModeEffective = None
 
     @property
     def AmountOfUsedStorage(self):
@@ -650,6 +660,22 @@ class ApmInstanceDetail(AbstractModel):
     def CustomShowTags(self, CustomShowTags):
         self._CustomShowTags = CustomShowTags
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeEffective(self):
+        return self._PayModeEffective
+
+    @PayModeEffective.setter
+    def PayModeEffective(self, PayModeEffective):
+        self._PayModeEffective = PayModeEffective
+
 
     def _deserialize(self, params):
         self._AmountOfUsedStorage = params.get("AmountOfUsedStorage")
@@ -684,6 +710,8 @@ class ApmInstanceDetail(AbstractModel):
         self._LogSet = params.get("LogSet")
         self._MetricDuration = params.get("MetricDuration")
         self._CustomShowTags = params.get("CustomShowTags")
+        self._PayMode = params.get("PayMode")
+        self._PayModeEffective = params.get("PayModeEffective")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -811,12 +839,15 @@ class CreateApmInstanceRequest(AbstractModel):
         :type Tags: list of ApmTag
         :param _SpanDailyCounters: 实例上报额度值
         :type SpanDailyCounters: int
+        :param _PayMode: 实例的计费模式
+        :type PayMode: int
         """
         self._Name = None
         self._Description = None
         self._TraceDuration = None
         self._Tags = None
         self._SpanDailyCounters = None
+        self._PayMode = None
 
     @property
     def Name(self):
@@ -858,6 +889,14 @@ class CreateApmInstanceRequest(AbstractModel):
     def SpanDailyCounters(self, SpanDailyCounters):
         self._SpanDailyCounters = SpanDailyCounters
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -870,6 +909,7 @@ class CreateApmInstanceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._SpanDailyCounters = params.get("SpanDailyCounters")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2220,6 +2260,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type LogSource: str
         :param _CustomShowTags: 用户自定义展示标签列表
         :type CustomShowTags: list of str
+        :param _PayMode: 修改计费模式
+1为预付费
+0为按量付费
+        :type PayMode: int
         """
         self._InstanceId = None
         self._Name = None
@@ -2238,6 +2282,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogSet = None
         self._LogSource = None
         self._CustomShowTags = None
+        self._PayMode = None
 
     @property
     def InstanceId(self):
@@ -2375,6 +2420,14 @@ class ModifyApmInstanceRequest(AbstractModel):
     def CustomShowTags(self, CustomShowTags):
         self._CustomShowTags = CustomShowTags
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2399,6 +2452,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._LogSet = params.get("LogSet")
         self._LogSource = params.get("LogSource")
         self._CustomShowTags = params.get("CustomShowTags")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -15204,7 +15204,7 @@ class RuleInput(AbstractModel):
         :type Url: str
         :param _Domain: 转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
         :type Domain: str
-        :param _SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~3600，单位：秒。
+        :param _SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。
         :type SessionExpireTime: int
         :param _HealthCheck: 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`

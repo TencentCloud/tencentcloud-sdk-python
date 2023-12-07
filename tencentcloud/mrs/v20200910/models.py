@@ -8123,6 +8123,162 @@ class ImageInfo(AbstractModel):
         
 
 
+class ImageMaskFlags(AbstractModel):
+    """图片脱敏选项
+    不填默认敏感信息都脱敏
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HospitalFlag: 是否对医院信息进行脱敏
+        :type HospitalFlag: bool
+        :param _DoctorFlag: 是否对医生信息进行脱敏
+        :type DoctorFlag: bool
+        :param _PatientFlag: 是否对患者信息进行脱敏
+        :type PatientFlag: bool
+        :param _BarFlag: 是否对二维码信息进行脱敏
+        :type BarFlag: bool
+        """
+        self._HospitalFlag = None
+        self._DoctorFlag = None
+        self._PatientFlag = None
+        self._BarFlag = None
+
+    @property
+    def HospitalFlag(self):
+        return self._HospitalFlag
+
+    @HospitalFlag.setter
+    def HospitalFlag(self, HospitalFlag):
+        self._HospitalFlag = HospitalFlag
+
+    @property
+    def DoctorFlag(self):
+        return self._DoctorFlag
+
+    @DoctorFlag.setter
+    def DoctorFlag(self, DoctorFlag):
+        self._DoctorFlag = DoctorFlag
+
+    @property
+    def PatientFlag(self):
+        return self._PatientFlag
+
+    @PatientFlag.setter
+    def PatientFlag(self, PatientFlag):
+        self._PatientFlag = PatientFlag
+
+    @property
+    def BarFlag(self):
+        return self._BarFlag
+
+    @BarFlag.setter
+    def BarFlag(self, BarFlag):
+        self._BarFlag = BarFlag
+
+
+    def _deserialize(self, params):
+        self._HospitalFlag = params.get("HospitalFlag")
+        self._DoctorFlag = params.get("DoctorFlag")
+        self._PatientFlag = params.get("PatientFlag")
+        self._BarFlag = params.get("BarFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMaskRequest(AbstractModel):
+    """ImageMask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 图片信息,目前只支持传图片base64
+        :type Image: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
+        :param _MaskFlag: 图片脱敏选项, 不传默认都脱敏
+        :type MaskFlag: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
+        """
+        self._Image = None
+        self._MaskFlag = None
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def MaskFlag(self):
+        return self._MaskFlag
+
+    @MaskFlag.setter
+    def MaskFlag(self, MaskFlag):
+        self._MaskFlag = MaskFlag
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = ImageInfo()
+            self._Image._deserialize(params.get("Image"))
+        if params.get("MaskFlag") is not None:
+            self._MaskFlag = ImageMaskFlags()
+            self._MaskFlag._deserialize(params.get("MaskFlag"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMaskResponse(AbstractModel):
+    """ImageMask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaskedImage: 脱敏后图片的Base64信息
+        :type MaskedImage: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MaskedImage = None
+        self._RequestId = None
+
+    @property
+    def MaskedImage(self):
+        return self._MaskedImage
+
+    @MaskedImage.setter
+    def MaskedImage(self, MaskedImage):
+        self._MaskedImage = MaskedImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MaskedImage = params.get("MaskedImage")
+        self._RequestId = params.get("RequestId")
+
+
 class ImageToClassRequest(AbstractModel):
     """ImageToClass请求参数结构体
 

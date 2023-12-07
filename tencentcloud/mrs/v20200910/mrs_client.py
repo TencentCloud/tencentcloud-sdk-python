@@ -26,6 +26,29 @@ class MrsClient(AbstractClient):
     _service = 'mrs'
 
 
+    def ImageMask(self, request):
+        """医疗报告图片脱敏接口
+
+        :param request: Request instance for ImageMask.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageMaskRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageMaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageMask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageMaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageToClass(self, request):
         """图片分类
 

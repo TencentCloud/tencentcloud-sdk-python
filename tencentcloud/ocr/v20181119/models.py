@@ -21493,6 +21493,10 @@ class TextVehicleBack(AbstractModel):
         :param _SubPageCode: 副页编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubPageCode: str
+        :param _FuelType: 燃料种类
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FuelType: str
         """
         self._PlateNo = None
         self._FileNo = None
@@ -21505,6 +21509,7 @@ class TextVehicleBack(AbstractModel):
         self._Record = None
         self._TotalQuasiMass = None
         self._SubPageCode = None
+        self._FuelType = None
 
     @property
     def PlateNo(self):
@@ -21594,6 +21599,14 @@ class TextVehicleBack(AbstractModel):
     def SubPageCode(self, SubPageCode):
         self._SubPageCode = SubPageCode
 
+    @property
+    def FuelType(self):
+        return self._FuelType
+
+    @FuelType.setter
+    def FuelType(self, FuelType):
+        self._FuelType = FuelType
+
 
     def _deserialize(self, params):
         self._PlateNo = params.get("PlateNo")
@@ -21607,6 +21620,7 @@ class TextVehicleBack(AbstractModel):
         self._Record = params.get("Record")
         self._TotalQuasiMass = params.get("TotalQuasiMass")
         self._SubPageCode = params.get("SubPageCode")
+        self._FuelType = params.get("FuelType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

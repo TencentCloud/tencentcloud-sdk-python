@@ -9404,7 +9404,7 @@ class SubAccountUser(AbstractModel):
         :type UserType: int
         :param _LastLoginIp: 最近登录IP
         :type LastLoginIp: str
-        :param _LastLoginTime: 最近登录时间
+        :param _LastLoginTime: 最近登录时间，回参为空，即为未登录过控制台
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLoginTime: str
         """
