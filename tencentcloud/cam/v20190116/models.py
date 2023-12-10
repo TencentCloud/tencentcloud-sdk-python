@@ -7894,12 +7894,15 @@ class LoginActionFlag(AbstractModel):
         :type Wechat: int
         :param _Custom: 自定义
         :type Custom: int
+        :param _Mail: 邮箱
+        :type Mail: int
         """
         self._Phone = None
         self._Token = None
         self._Stoken = None
         self._Wechat = None
         self._Custom = None
+        self._Mail = None
 
     @property
     def Phone(self):
@@ -7941,6 +7944,14 @@ class LoginActionFlag(AbstractModel):
     def Custom(self, Custom):
         self._Custom = Custom
 
+    @property
+    def Mail(self):
+        return self._Mail
+
+    @Mail.setter
+    def Mail(self, Mail):
+        self._Mail = Mail
+
 
     def _deserialize(self, params):
         self._Phone = params.get("Phone")
@@ -7948,6 +7959,7 @@ class LoginActionFlag(AbstractModel):
         self._Stoken = params.get("Stoken")
         self._Wechat = params.get("Wechat")
         self._Custom = params.get("Custom")
+        self._Mail = params.get("Mail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

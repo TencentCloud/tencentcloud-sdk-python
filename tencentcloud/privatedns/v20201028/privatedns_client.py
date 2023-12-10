@@ -555,6 +555,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryAsyncBindVpcStatus(self, request):
+        """查询异步绑定vpc操作状态
+
+        :param request: Request instance for QueryAsyncBindVpcStatus.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.QueryAsyncBindVpcStatusRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.QueryAsyncBindVpcStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryAsyncBindVpcStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryAsyncBindVpcStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubscribePrivateZoneService(self, request):
         """开通私有域解析
 

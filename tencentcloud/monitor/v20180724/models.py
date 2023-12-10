@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AlarmConditionFilter(AbstractModel):
+    """策略过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Expression: 表达式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expression: str
+        :param _Dimensions: 过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimensions: str
+        """
+        self._Type = None
+        self._Expression = None
+        self._Dimensions = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Expression(self):
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+    @property
+    def Dimensions(self):
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Expression = params.get("Expression")
+        self._Dimensions = params.get("Dimensions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmEvent(AbstractModel):
     """告警事件
 
@@ -65,6 +125,53 @@ class AlarmEvent(AbstractModel):
         self._EventName = params.get("EventName")
         self._Description = params.get("Description")
         self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmGroupByItem(AbstractModel):
+    """聚合条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Item Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1008,6 +1115,12 @@ class AlarmPolicy(AbstractModel):
         :param _TagInstances: 标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInstances: list of TagInstance
+        :param _Filter: 过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmConditionFilter`
+        :param _GroupBy: 聚合条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupBy: list of AlarmGroupByItem
         :param _FilterDimensionsParam: 策略关联的过滤维度信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterDimensionsParam: str
@@ -1059,6 +1172,8 @@ class AlarmPolicy(AbstractModel):
         self._RuleType = None
         self._OriginId = None
         self._TagInstances = None
+        self._Filter = None
+        self._GroupBy = None
         self._FilterDimensionsParam = None
         self._IsOneClick = None
         self._OneClickStatus = None
@@ -1300,6 +1415,22 @@ class AlarmPolicy(AbstractModel):
         self._TagInstances = TagInstances
 
     @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def GroupBy(self):
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
     def FilterDimensionsParam(self):
         return self._FilterDimensionsParam
 
@@ -1407,6 +1538,15 @@ class AlarmPolicy(AbstractModel):
                 obj = TagInstance()
                 obj._deserialize(item)
                 self._TagInstances.append(obj)
+        if params.get("Filter") is not None:
+            self._Filter = AlarmConditionFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        if params.get("GroupBy") is not None:
+            self._GroupBy = []
+            for item in params.get("GroupBy"):
+                obj = AlarmGroupByItem()
+                obj._deserialize(item)
+                self._GroupBy.append(obj)
         self._FilterDimensionsParam = params.get("FilterDimensionsParam")
         self._IsOneClick = params.get("IsOneClick")
         self._OneClickStatus = params.get("OneClickStatus")

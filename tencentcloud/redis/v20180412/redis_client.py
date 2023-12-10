@@ -969,6 +969,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSupportFeature(self, request):
+        """本接口（DescribeInstanceSupportFeature）用于查询实例支持的功能特性。
+
+        :param request: Request instance for DescribeInstanceSupportFeature.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSupportFeatureRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSupportFeatureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSupportFeature", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSupportFeatureResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceZoneInfo(self, request):
         """本接口（DescribeInstanceZoneInfo）用于查询 Redis 节点详细信息。
 
@@ -1705,6 +1728,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceAvailabilityZones(self, request):
+        """本接口（ModifyInstanceAvailabilityZones）用于变更实例可用区
+
+        :param request: Request instance for ModifyInstanceAvailabilityZones.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAvailabilityZonesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAvailabilityZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceAvailabilityZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceAvailabilityZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceParams(self, request):
         """本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
 
@@ -1972,6 +2018,29 @@ class RedisClient(AbstractClient):
             body = self.call("StartupInstance", params, headers=headers)
             response = json.loads(body)
             model = models.StartupInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchAccessNewInstance(self, request):
+        """本接口（SwitchAccessNewInstance）针对处于时间窗口中待切换操作的实例，用户可主动发起该操作。
+
+        :param request: Request instance for SwitchAccessNewInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.SwitchAccessNewInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.SwitchAccessNewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchAccessNewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchAccessNewInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

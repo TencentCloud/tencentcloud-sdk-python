@@ -8945,7 +8945,7 @@ class DescribeOriginProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: 查询的站点集合，不填默认查询所有站点。
+        :param _ZoneIds: 查询的站点ID集合。该参数必填。
         :type ZoneIds: list of str
         :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>

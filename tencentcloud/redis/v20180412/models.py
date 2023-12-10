@@ -5460,6 +5460,91 @@ class DescribeInstanceShardsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSupportFeatureRequest(AbstractModel):
+    """DescribeInstanceSupportFeature请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+示例值：crs-asdasdas
+        :type InstanceId: str
+        :param _FeatureName: 功能特性名称
+- read-local-node-only 就近接入功能
+- multi-account 多账号功能
+        :type FeatureName: str
+        """
+        self._InstanceId = None
+        self._FeatureName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FeatureName(self):
+        return self._FeatureName
+
+    @FeatureName.setter
+    def FeatureName(self, FeatureName):
+        self._FeatureName = FeatureName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FeatureName = params.get("FeatureName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSupportFeatureResponse(AbstractModel):
+    """DescribeInstanceSupportFeature返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Support: 是否支持
+        :type Support: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Support = None
+        self._RequestId = None
+
+    @property
+    def Support(self):
+        return self._Support
+
+    @Support.setter
+    def Support(self, Support):
+        self._Support = Support
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Support = params.get("Support")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceZoneInfoRequest(AbstractModel):
     """DescribeInstanceZoneInfo请求参数结构体
 
@@ -11902,6 +11987,108 @@ class ModifyInstanceAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceAvailabilityZonesRequest(AbstractModel):
+    """ModifyInstanceAvailabilityZones请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****，请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _SwitchOption: 切换时间。
+- 1：维护时间窗切换。
+- 2：立即切换。
+        :type SwitchOption: int
+        :param _NodeSet: 实例的节点信息，包含节点 ID、节点类型、节点可用区 ID等。具体信息，请参见[RedisNodeInfo ](https://cloud.tencent.com/document/product/239/20022)。
+单可用区实例无需传NodeId，多可用区实例NodeId必传
+        :type NodeSet: list of RedisNodeInfo
+        """
+        self._InstanceId = None
+        self._SwitchOption = None
+        self._NodeSet = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SwitchOption(self):
+        return self._SwitchOption
+
+    @SwitchOption.setter
+    def SwitchOption(self, SwitchOption):
+        self._SwitchOption = SwitchOption
+
+    @property
+    def NodeSet(self):
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SwitchOption = params.get("SwitchOption")
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = RedisNodeInfo()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceAvailabilityZonesResponse(AbstractModel):
+    """ModifyInstanceAvailabilityZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。	
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamsRequest(AbstractModel):
     """ModifyInstanceParams请求参数结构体
 
@@ -15029,6 +15216,65 @@ class StartupInstanceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class SwitchAccessNewInstanceRequest(AbstractModel):
+    """SwitchAccessNewInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+示例值：crs-asdasdas
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchAccessNewInstanceResponse(AbstractModel):
+    """SwitchAccessNewInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

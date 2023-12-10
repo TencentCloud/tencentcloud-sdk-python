@@ -18873,6 +18873,12 @@ class PulsarProInstance(AbstractModel):
         :type SubnetId: str
         :param _MaxBandWidth: 峰值带宽。单位：mbps
         :type MaxBandWidth: int
+        :param _Tags: 集群的标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _CreateTime: 集群创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -18890,6 +18896,8 @@ class PulsarProInstance(AbstractModel):
         self._VpcId = None
         self._SubnetId = None
         self._MaxBandWidth = None
+        self._Tags = None
+        self._CreateTime = None
 
     @property
     def InstanceId(self):
@@ -19019,6 +19027,22 @@ class PulsarProInstance(AbstractModel):
     def MaxBandWidth(self, MaxBandWidth):
         self._MaxBandWidth = MaxBandWidth
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19037,6 +19061,13 @@ class PulsarProInstance(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._MaxBandWidth = params.get("MaxBandWidth")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

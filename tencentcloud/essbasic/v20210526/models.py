@@ -7675,6 +7675,184 @@ class ChannelModifyRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelOrganizationInfo(AbstractModel):
+    """渠道企业信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationId: 电子签企业Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationId: str
+        :param _OrganizationOpenId: 电子签企业OpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationOpenId: str
+        :param _OrganizationName: 企业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        :param _UnifiedSocialCreditCode: 企业信用代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnifiedSocialCreditCode: str
+        :param _LegalName: 法人姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalName: str
+        :param _LegalOpenId: 法人OpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LegalOpenId: str
+        :param _AdminName: 超管姓名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminName: str
+        :param _AdminOpenId: 超管OpenId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminOpenId: str
+        :param _AdminMobile: 超管手机号，脱敏后返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdminMobile: str
+        :param _AuthorizationStatus: 企业认证状态字段。值如下：
+<ul>
+  <li>**"UNVERIFIED"**： 未认证的企业</li>
+  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
+  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
+  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
+  <li>**"VERIFYING"**： 认证中的企业</li>
+  <li>**"VERIFIED"**： 已认证的企业</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationStatus: str
+        :param _AuthorizationType: 企业认证方式字段。值如下：
+<ul>
+  <li>**"AuthorizationInit"**： 暂未选择授权方式</li>
+  <li>**"AuthorizationFile"**： 授权书</li>
+  <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>
+  <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
+</ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationType: str
+        """
+        self._OrganizationId = None
+        self._OrganizationOpenId = None
+        self._OrganizationName = None
+        self._UnifiedSocialCreditCode = None
+        self._LegalName = None
+        self._LegalOpenId = None
+        self._AdminName = None
+        self._AdminOpenId = None
+        self._AdminMobile = None
+        self._AuthorizationStatus = None
+        self._AuthorizationType = None
+
+    @property
+    def OrganizationId(self):
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def UnifiedSocialCreditCode(self):
+        return self._UnifiedSocialCreditCode
+
+    @UnifiedSocialCreditCode.setter
+    def UnifiedSocialCreditCode(self, UnifiedSocialCreditCode):
+        self._UnifiedSocialCreditCode = UnifiedSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def LegalOpenId(self):
+        return self._LegalOpenId
+
+    @LegalOpenId.setter
+    def LegalOpenId(self, LegalOpenId):
+        self._LegalOpenId = LegalOpenId
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminOpenId(self):
+        return self._AdminOpenId
+
+    @AdminOpenId.setter
+    def AdminOpenId(self, AdminOpenId):
+        self._AdminOpenId = AdminOpenId
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def AuthorizationStatus(self):
+        return self._AuthorizationStatus
+
+    @AuthorizationStatus.setter
+    def AuthorizationStatus(self, AuthorizationStatus):
+        self._AuthorizationStatus = AuthorizationStatus
+
+    @property
+    def AuthorizationType(self):
+        return self._AuthorizationType
+
+    @AuthorizationType.setter
+    def AuthorizationType(self, AuthorizationType):
+        self._AuthorizationType = AuthorizationType
+
+
+    def _deserialize(self, params):
+        self._OrganizationId = params.get("OrganizationId")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._OrganizationName = params.get("OrganizationName")
+        self._UnifiedSocialCreditCode = params.get("UnifiedSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        self._LegalOpenId = params.get("LegalOpenId")
+        self._AdminName = params.get("AdminName")
+        self._AdminOpenId = params.get("AdminOpenId")
+        self._AdminMobile = params.get("AdminMobile")
+        self._AuthorizationStatus = params.get("AuthorizationStatus")
+        self._AuthorizationType = params.get("AuthorizationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChannelRole(AbstractModel):
     """角色信息
 
@@ -10705,6 +10883,182 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
     def _deserialize(self, params):
         self._ReportUrl = params.get("ReportUrl")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChannelOrganizationsRequest(AbstractModel):
+    """DescribeChannelOrganizations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+
+渠道应用标识: Agent.AppId
+第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
+第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
+        :type Limit: int
+        :param _OrganizationOpenId: 子客OrganizationOpenId，定向查询某个子客的企业数据。
+        :type OrganizationOpenId: str
+        :param _AuthorizationStatusList: 企业认证状态过滤字段。可值如下：
+<ul>
+  <li>**"UNVERIFIED"**： 未认证的企业</li>
+  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
+  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
+  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
+  <li>**"VERIFYING"**： 认证中的企业</li>
+  <li>**"VERIFIED"**： 已认证的企业</li>
+</ul>
+        :type AuthorizationStatusList: list of str
+        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
+        :type Offset: int
+        """
+        self._Agent = None
+        self._Limit = None
+        self._OrganizationOpenId = None
+        self._AuthorizationStatusList = None
+        self._Offset = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def AuthorizationStatusList(self):
+        return self._AuthorizationStatusList
+
+    @AuthorizationStatusList.setter
+    def AuthorizationStatusList(self, AuthorizationStatusList):
+        self._AuthorizationStatusList = AuthorizationStatusList
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Limit = params.get("Limit")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._AuthorizationStatusList = params.get("AuthorizationStatusList")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelOrganizationsResponse(AbstractModel):
+    """DescribeChannelOrganizations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelOrganizationInfos: 企业企业信息列表。
+        :type ChannelOrganizationInfos: list of ChannelOrganizationInfo
+        :param _Offset: 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        :type Offset: int
+        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
+        :type Limit: int
+        :param _Total: 符合条件的企业数量。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelOrganizationInfos = None
+        self._Offset = None
+        self._Limit = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ChannelOrganizationInfos(self):
+        return self._ChannelOrganizationInfos
+
+    @ChannelOrganizationInfos.setter
+    def ChannelOrganizationInfos(self, ChannelOrganizationInfos):
+        self._ChannelOrganizationInfos = ChannelOrganizationInfos
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ChannelOrganizationInfos") is not None:
+            self._ChannelOrganizationInfos = []
+            for item in params.get("ChannelOrganizationInfos"):
+                obj = ChannelOrganizationInfo()
+                obj._deserialize(item)
+                self._ChannelOrganizationInfos.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

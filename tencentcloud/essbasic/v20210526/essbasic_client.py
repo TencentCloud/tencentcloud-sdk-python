@@ -1739,6 +1739,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeChannelOrganizations(self, request):
+        """查询渠道子客企业信息
+
+        :param request: Request instance for DescribeChannelOrganizations.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeChannelOrganizationsRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeChannelOrganizationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannelOrganizations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelOrganizationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeChannelSealPolicyWorkflowUrl(self, request):
         """生成渠道子客用印申请审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转的方式查看）
 

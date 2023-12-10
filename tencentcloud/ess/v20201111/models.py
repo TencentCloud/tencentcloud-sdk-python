@@ -14428,7 +14428,7 @@ class FormField(AbstractModel):
                     "columnStart":1,
                     "columnEnd":1,
                     "content":"123",
-                    "style": "{"color": "#b50000", "fontSize": 12,"bold": true,"align": "CENTER"}"
+                    "style": {"color": "#b50000", "fontSize": 12,"bold": true,"align": "CENTER"}
                 },
                 {
                     "rowStart":2,
@@ -14436,7 +14436,7 @@ class FormField(AbstractModel):
                     "columnStart":1,
                     "columnEnd":2,
                     "content":"456",
-                    "style": {"color": "#b50000", "fontSize": 12,"bold": true,"align": "LEFT"}"
+                    "style": {"color": "#b50000", "fontSize": 12,"bold": true,"align": "LEFT"}
                 },
                 {
                     "rowStart":3,
