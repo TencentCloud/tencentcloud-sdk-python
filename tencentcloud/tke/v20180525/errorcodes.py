@@ -14,6 +14,9 @@
 # limitations under the License.
 
 
+# CAM签名/鉴权错误。
+AUTHFAILURE = 'AuthFailure'
+
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
@@ -101,6 +104,9 @@ FAILEDOPERATION_ENABLEVPCCNIFAILED = 'FailedOperation.EnableVPCCNIFailed'
 # 获取CLS采集配置失败。
 FAILEDOPERATION_GETCLSCONFIG = 'FailedOperation.GetClsConfig'
 
+# 获取CLS采集配置绑定的机器组失败。
+FAILEDOPERATION_GETCLSCONFIGMACHINEGROUPS = 'FailedOperation.GetClsConfigMachineGroups'
+
 # 获取CLS索引配置失败。
 FAILEDOPERATION_GETCLSINDEX = 'FailedOperation.GetClsIndex'
 
@@ -110,8 +116,14 @@ FAILEDOPERATION_GETCLSLOGSET = 'FailedOperation.GetClsLogSet'
 # 获取CLS机器组失败。
 FAILEDOPERATION_GETCLSMACHINEGROUP = 'FailedOperation.GetClsMachineGroup'
 
+# 获取CLS机器组绑定的采集配置失败。
+FAILEDOPERATION_GETCLSMACHINEGROUPCONFIGS = 'FailedOperation.GetClsMachineGroupConfigs'
+
 # 获取CLS日志主题失败。
 FAILEDOPERATION_GETCLSTOPIC = 'FailedOperation.GetClsTopic'
+
+# Kubernetes client建立失败。
+FAILEDOPERATION_K8SCLIENTBUILDERROR = 'FailedOperation.K8sClientBuildError'
 
 # 通过配置文件创建集群Client错误。
 FAILEDOPERATION_KUBECLIENTCONF = 'FailedOperation.KubeClientConf'
@@ -152,8 +164,14 @@ FAILEDOPERATION_MARKETGETAUTHFAILED = 'FailedOperation.MarketGetAuthFailed'
 # 操作应用Release失败。
 FAILEDOPERATION_MARKETRELEASEOPERATION = 'FailedOperation.MarketReleaseOperation'
 
+# 修改CLS采集配置失败。
+FAILEDOPERATION_MODIFYCLSCONFIG = 'FailedOperation.ModifyClsConfig'
+
 # 修改CLS索引失败。
 FAILEDOPERATION_MODIFYCLSINDEX = 'FailedOperation.ModifyClsIndex'
+
+# 修改CLS日志主题失败。
+FAILEDOPERATION_MODIFYCLSTOPIC = 'FailedOperation.ModifyClsTopic'
 
 # 网络扩展错误。
 FAILEDOPERATION_NETWORKSCALEERROR = 'FailedOperation.NetworkScaleError'

@@ -325,6 +325,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNICAssets(self, request):
+        """获取网卡列表
+
+        :param request: Request instance for DescribeNICAssets.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeNICAssetsRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeNICAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNICAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNICAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePublicIpAssets(self, request):
         """ip公网列表
 

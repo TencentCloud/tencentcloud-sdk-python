@@ -24535,7 +24535,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Name: str
         :param _Status: 状态
         :type Status: int
-        :param _Advance: 高级模式
+        :param _Advance: 高级模式（是否使用Session检测），0表示不启用，1表示启用
         :type Advance: str
         :param _Limit: CC检测阈值
         :type Limit: str
@@ -24543,9 +24543,9 @@ class UpsertCCRuleRequest(AbstractModel):
         :type Interval: str
         :param _Url: 检测Url
         :type Url: str
-        :param _MatchFunc: 匹配方法
+        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含
         :type MatchFunc: int
-        :param _ActionType: 动作
+        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截
         :type ActionType: str
         :param _Priority: 优先级
         :type Priority: int
@@ -24553,7 +24553,7 @@ class UpsertCCRuleRequest(AbstractModel):
         :type ValidTime: int
         :param _OptionsArr: 附加参数
         :type OptionsArr: str
-        :param _Edition: waf版本
+        :param _Edition: waf版本，sparta-waf或者clb-waf
         :type Edition: str
         :param _Type: 操作类型
         :type Type: int

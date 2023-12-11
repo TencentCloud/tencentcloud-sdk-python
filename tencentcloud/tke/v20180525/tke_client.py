@@ -233,6 +233,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSLogConfig(self, request):
+        """创建日志采集配置
+
+        :param request: Request instance for CreateCLSLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateCLSLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSLogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSLogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCluster(self, request):
         """创建集群
 
@@ -569,6 +592,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateEdgeLogConfig", params, headers=headers)
             response = json.loads(body)
             model = models.CreateEdgeLogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateEksLogConfig(self, request):
+        """为弹性集群创建日志采集配置
+
+        :param request: Request instance for CreateEksLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateEksLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEksLogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEksLogConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

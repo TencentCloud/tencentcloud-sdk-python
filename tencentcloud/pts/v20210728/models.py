@@ -95,7 +95,7 @@ class AbortJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID
+        :param _JobId: 待停止的压测任务的 ID（所有的压测任务 ID 可以从 DescribeJobs 接口获取）
         :type JobId: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
@@ -191,7 +191,7 @@ class AdjustJobSpeedRequest(AbstractModel):
         r"""
         :param _JobId: 任务ID
         :type JobId: str
-        :param _TargetRequestsPerSecond: 目标RPS
+        :param _TargetRequestsPerSecond: 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
         :type TargetRequestsPerSecond: int
         """
         self._JobId = None
@@ -1093,11 +1093,11 @@ class CreateAlertChannelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeId: Notice ID
+        :param _NoticeId: monitor 服务的告警通知模板的 NoticeId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 Id 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
         :type NoticeId: str
         :param _ProjectId: 项目 ID
         :type ProjectId: str
-        :param _AMPConsumerId: AMP Consumer ID
+        :param _AMPConsumerId: monitor 服务的告警通知模板的 AMPConsumerId，可从 monitor 服务的云 API 的 DescribeAlarmNotices 接口响应里的 AMPConsumerId 字段获取。（CreateAlertChannel 接口的入参里用于标识一个告警通知模板的 AMPConsumerId 与 NoticeId 二选一即可）
         :type AMPConsumerId: str
         """
         self._NoticeId = None
@@ -1353,7 +1353,7 @@ class CreateFileRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 文件 ID
+        :param _FileId: 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
         :type FileId: str
         :param _ProjectId: 项目 ID
         :type ProjectId: str
@@ -2489,7 +2489,7 @@ class DeleteAlertChannelRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目 ID
         :type ProjectId: str
-        :param _NoticeId: Notice ID
+        :param _NoticeId: 待删除的通知渠道的 Notice ID（所有通知渠道的 Notice ID 可以从 DescribeAlertChannels 接口获取）
         :type NoticeId: str
         """
         self._ProjectId = None
@@ -2629,7 +2629,7 @@ class DeleteFilesRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目 ID
         :type ProjectId: str
-        :param _FileIds: 文件 ID 数组
+        :param _FileIds: 待删除的文件的 ID（所有文件 ID 可从接口 DescribeFiles 获取）
         :type FileIds: list of str
         """
         self._ProjectId = None
@@ -2697,7 +2697,7 @@ class DeleteJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobIds: 任务ID数组
+        :param _JobIds: 待删除的任务的 ID（所有任务的 ID 可以从 DescribeJobs 获取）
         :type JobIds: list of str
         :param _ProjectId: 项目ID
         :type ProjectId: str
@@ -4064,9 +4064,9 @@ class DescribeLabelValuesRequest(AbstractModel):
         :type JobId: str
         :param _ScenarioId: 场景ID
         :type ScenarioId: str
-        :param _Metric: 指标名称
+        :param _Metric: 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
         :type Metric: str
-        :param _LabelName: 查询标签名称
+        :param _LabelName: 标签名。取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
         :type LabelName: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
@@ -4802,13 +4802,13 @@ class DescribeSampleBatchQueryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: job id
+        :param _JobId: 压测任务的 ID
         :type JobId: str
-        :param _ScenarioId: 场景id
+        :param _ScenarioId: 场景的 ID
         :type ScenarioId: str
         :param _Queries: 查询指标数组
         :type Queries: list of InternalMetricQuery
-        :param _ProjectId: 项目ID
+        :param _ProjectId: 项目的 ID
         :type ProjectId: str
         """
         self._JobId = None
@@ -5325,11 +5325,11 @@ class DescribeSampleMatrixQueryRequest(AbstractModel):
         :type ProjectId: str
         :param _ScenarioId: 场景ID
         :type ScenarioId: str
-        :param _Metric: 指标名字
+        :param _Metric: 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
         :type Metric: str
-        :param _Aggregation: 聚合函数
+        :param _Aggregation: 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
         :type Aggregation: str
-        :param _Filters: 指标过滤
+        :param _Filters: 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
         :type Filters: list of Filter
         :param _GroupBy: 分组
         :type GroupBy: list of str
@@ -5473,13 +5473,13 @@ class DescribeSampleQueryRequest(AbstractModel):
         :type JobId: str
         :param _ScenarioId: 场景Id
         :type ScenarioId: str
-        :param _Metric: 指标名
+        :param _Metric: 指标名。取值范围参见 DescribeMetricLabelWithValues 接口返回的所有指标名
         :type Metric: str
-        :param _Aggregation: 聚合条件
+        :param _Aggregation: 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
         :type Aggregation: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _Labels: 过滤条件
+        :param _Labels: 标签过滤条件。各指标支持的标签参见 DescribeMetricLabelWithValues 接口返回的所有指标及其支持的标签
         :type Labels: list of Label
         """
         self._JobId = None
@@ -6832,11 +6832,11 @@ class InternalMetricQuery(AbstractModel):
         r"""
         :param _Metric: 指标名
         :type Metric: str
-        :param _Aggregation: 聚合函数
+        :param _Aggregation: 聚合函数。取值范围：Rate,Count,Avg,P90,P95,P99,Gauge
         :type Aggregation: str
         :param _Labels: deprecated, 请使用Filters
         :type Labels: list of Label
-        :param _Filters: 指标过滤
+        :param _Filters: 用标签过滤规则来过滤指标，规则中包含标签名 LabelName、标签值 LabelValue、操作符 Operator（0代表相等，1代表不等）
         :type Filters: list of Filter
         :param _GroupBy: 指标分组
         :type GroupBy: list of str
@@ -7544,9 +7544,9 @@ class Label(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LabelName: label名字
+        :param _LabelName: 标签名
         :type LabelName: str
-        :param _LabelValue: label值
+        :param _LabelValue: 标签值
         :type LabelValue: str
         """
         self._LabelName = None
@@ -10542,7 +10542,7 @@ class UpdateFileScenarioRelationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 文件 ID
+        :param _FileId: 文件 ID。其值应为前序步骤上传该文件到 cos 桶后，文件在 cos 桶中的相应目录
         :type FileId: str
         :param _ProjectId: 项目 ID
         :type ProjectId: str
@@ -10835,7 +10835,7 @@ class UpdateScenarioRequest(AbstractModel):
         :type Name: str
         :param _Description: 场景描述
         :type Description: str
-        :param _Type: 压测引擎类型
+        :param _Type: 压测场景的模式类型。取值范围：pts-http 代表简单模式，pts-js 代表脚本模式，pts-jmeter 代表 JMeter 模式。
         :type Type: str
         :param _Load: 施压配置
         :type Load: :class:`tencentcloud.pts.v20210728.models.Load`

@@ -4351,6 +4351,100 @@ class CreateBackupStorageLocationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCLSLogConfigRequest(AbstractModel):
+    """CreateCLSLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogConfig: 日志采集配置的json表达
+        :type LogConfig: str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _LogsetId: CLS日志集ID
+        :type LogsetId: str
+        :param _ClusterType: 当前集群类型支持tke、eks
+        :type ClusterType: str
+        """
+        self._LogConfig = None
+        self._ClusterId = None
+        self._LogsetId = None
+        self._ClusterType = None
+
+    @property
+    def LogConfig(self):
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._LogConfig = params.get("LogConfig")
+        self._ClusterId = params.get("ClusterId")
+        self._LogsetId = params.get("LogsetId")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSLogConfigResponse(AbstractModel):
+    """CreateCLSLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateClusterEndpointRequest(AbstractModel):
     """CreateClusterEndpoint请求参数结构体
 
@@ -6755,6 +6849,101 @@ class CreateEdgeLogConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEksLogConfigRequest(AbstractModel):
+    """CreateEksLogConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _LogConfig: 日志采集配置的json表达
+        :type LogConfig: str
+        :param _LogsetId: 日志集ID
+        :type LogsetId: str
+        """
+        self._ClusterId = None
+        self._LogConfig = None
+        self._LogsetId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def LogConfig(self):
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._LogConfig = params.get("LogConfig")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEksLogConfigResponse(AbstractModel):
+    """CreateEksLogConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志采集topicid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopicId = None
+        self._RequestId = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
         self._RequestId = params.get("RequestId")
 
 

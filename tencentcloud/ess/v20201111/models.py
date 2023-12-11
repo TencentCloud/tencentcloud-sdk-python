@@ -2461,9 +2461,6 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowIds: 批量签署的合同流程ID数组。
-注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
-        :type FlowIds: list of str
         :param _FlowApproverInfo: 批量签署的流程签署人，其中姓名(ApproverName)、参与人类型(ApproverType)必传，手机号(ApproverMobile)和证件信息(ApproverIdCardType、ApproverIdCardNumber)可任选一种或全部传入。
 注:
 `1. ApproverType目前只支持个人类型的签署人。`
@@ -2476,6 +2473,12 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowIds: 批量签署的合同流程ID数组。
+注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
+        :type FlowIds: list of str
+        :param _FlowGroupId: 合同组编号
+注：`该参数和合同流程ID数组必须二选一`
+        :type FlowGroupId: str
         :param _JumpUrl: 签署完之后的H5页面的跳转链接，此链接及支持http://和https://，最大长度1000个字符。(建议https协议)
         :type JumpUrl: str
         :param _SignatureTypes: 指定批量签署合同的签名类型，可传递以下值：
@@ -2494,21 +2497,14 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
         :type ApproverSignTypes: list of int
         """
-        self._FlowIds = None
         self._FlowApproverInfo = None
         self._Agent = None
         self._Operator = None
+        self._FlowIds = None
+        self._FlowGroupId = None
         self._JumpUrl = None
         self._SignatureTypes = None
         self._ApproverSignTypes = None
-
-    @property
-    def FlowIds(self):
-        return self._FlowIds
-
-    @FlowIds.setter
-    def FlowIds(self, FlowIds):
-        self._FlowIds = FlowIds
 
     @property
     def FlowApproverInfo(self):
@@ -2533,6 +2529,22 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
     @Operator.setter
     def Operator(self, Operator):
         self._Operator = Operator
+
+    @property
+    def FlowIds(self):
+        return self._FlowIds
+
+    @FlowIds.setter
+    def FlowIds(self, FlowIds):
+        self._FlowIds = FlowIds
+
+    @property
+    def FlowGroupId(self):
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
 
     @property
     def JumpUrl(self):
@@ -2560,7 +2572,6 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._FlowIds = params.get("FlowIds")
         if params.get("FlowApproverInfo") is not None:
             self._FlowApproverInfo = FlowCreateApprover()
             self._FlowApproverInfo._deserialize(params.get("FlowApproverInfo"))
@@ -2570,6 +2581,8 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._FlowIds = params.get("FlowIds")
+        self._FlowGroupId = params.get("FlowGroupId")
         self._JumpUrl = params.get("JumpUrl")
         self._SignatureTypes = params.get("SignatureTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
@@ -14463,7 +14476,7 @@ class FormField(AbstractModel):
     | cells.N.columnStart | Integer | 单元格坐标：列起始index                           |
     | cells.N.columnEnd   | Integer | 单元格坐标：列结束index                           |
     | cells.N.content     | String  | 单元格内容，字数不超过100                         |
-    | cells.N.style         | String  | 单元格字体风格配置 ，风格配置的json字符串  如： {"font":"黑体","fontSize":12,"color":"FFFFFF","bold":true,"align":"CENTER"}      |
+    | cells.N.style         | String  | 单元格字体风格配置 ，风格配置的json字符串  如： {"font":"黑体","fontSize":12,"color":"#FFFFFF","bold":true,"align":"CENTER"}      |
 
     表格参数headers说明
     widthPercent Integer 表头单元格列占总表头的比例，例如1：30表示 此列占表头的30%，不填写时列宽度平均拆分；例如2：总2列，某一列填写40，剩余列可以为空，按照60计算。；例如3：总3列，某一列填写30，剩余2列可以为空，分别为(100-30)/2=35
@@ -14471,7 +14484,7 @@ class FormField(AbstractModel):
     content String 表头单元格内容，字数不超过100
 
 
-    style String 为字体风格设置 风格支持： font : 目前支持 黑体、宋体; fontSize： 6-72; color：000000-FFFFFF  字符串形如：  "FFFFFF"; bold ： 是否加粗， true ： 加粗 false： 不加粗; align: 对其方式， 支持 LEFT / RIGHT / CENTER
+    style String 为字体风格设置 风格支持： font : 目前支持 黑体、宋体; fontSize： 6-72; color：000000-FFFFFF  字符串形如：  "#FFFFFF" 或者 "0xFFFFFF"; bold ： 是否加粗， true ： 加粗 false： 不加粗; align: 对其方式， 支持 LEFT / RIGHT / CENTER
 
     """
 

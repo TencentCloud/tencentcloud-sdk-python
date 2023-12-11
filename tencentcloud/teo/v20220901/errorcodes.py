@@ -191,6 +191,9 @@ INVALIDPARAMETER_ERRINVALIDACTIONTYPE = 'InvalidParameter.ErrInvalidActionType'
 # 非法条件。
 INVALIDPARAMETER_ERRINVALIDCONDITION = 'InvalidParameter.ErrInvalidCondition'
 
+# 修改源站操作不能仅配置host匹配类型。
+INVALIDPARAMETER_ERRINVALIDCONDITIONCANNOTONLYCONTAINHOSTWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidConditionCannotOnlyContainHostWhenModifyOriginActionConfigured'
+
 # 修改源站操作仅支持配置一个host匹配类型。
 INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured'
 
@@ -482,6 +485,12 @@ INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = 'InvalidParameter.OCDirect
 # 源站是内网IP。
 INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
 
+# 四层代理禁止IP域名混填。
+INVALIDPARAMETER_ORIGINL4RECORDIPV4MIXDOMAIN = 'InvalidParameter.OriginL4RecordIPV4MixDomain'
+
+# 四层代理禁止使用多域名源站。
+INVALIDPARAMETER_ORIGINL4RECORDMULTIDOMAIN = 'InvalidParameter.OriginL4RecordMultiDomain'
+
 # 源站组名称已经存在。
 INVALIDPARAMETER_ORIGINNAMEEXISTS = 'InvalidParameter.OriginNameExists'
 
@@ -508,6 +517,12 @@ INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitEx
 
 # 实例名称重复。
 INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
+
+# 实例名称可输入1-50个字符，允许的字符为a-z、0-9、-，- 不能单独注册或连续使用，不能放在开头或结尾。
+INVALIDPARAMETER_PROXYNAMENOTMATCHED = 'InvalidParameter.ProxyNameNotMatched'
+
+# 无效的响应头header。
+INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = 'InvalidParameter.ResponseHeaderCacheControlNotAllowDelete'
 
 # 规则源站信息格式错误。
 INVALIDPARAMETER_RULEORIGINFORMATERROR = 'InvalidParameter.RuleOriginFormatError'
@@ -703,6 +718,9 @@ OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdv
 
 # 开启高防必须保证站点加速区域是国内。
 OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = 'OperationDenied.InvalidAdvancedDefenseZoneArea'
+
+# 四层实例资源售卖火爆，已售罄，正在加紧补货中，当前无法新增四层代理，请您耐心等待。
+OPERATIONDENIED_L4LACKOFRESOURCES = 'OperationDenied.L4LackOfResources'
 
 # 4层代理资源处于封禁中，禁止操作。
 OPERATIONDENIED_L4PROXYINBANNEDSTATUS = 'OperationDenied.L4ProxyInBannedStatus'

@@ -206,7 +206,7 @@ class EssbasicClient(AbstractClient):
 
         注：
         - 参与人点击链接后需短信验证码才能查看合同内容。
-        - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。
+        - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。若为子客企业，请确保员工已经加入企业。
         - 个人批量签署，签名区`仅支持手写签名`。
 
         :param request: Request instance for ChannelCreateBatchSignUrl.
@@ -1740,7 +1740,10 @@ class EssbasicClient(AbstractClient):
 
 
     def DescribeChannelOrganizations(self, request):
-        """查询渠道子客企业信息
+        """查询渠道子客企业信息时，可以支持单个子客和整个应用下所有子客的查询。返回的信息包括超管、法人的信息以及当前企业的认证状态等信息。
+
+        - 对于单个企业的查询，通过**指定子客的唯一标识**来查询该子客的企业信息
+        - 对于整个应用下所有企业的查询，**不需要指定子客的唯一标识**，直接查询整个应用下所有子客企业的企业信息
 
         :param request: Request instance for DescribeChannelOrganizations.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeChannelOrganizationsRequest`

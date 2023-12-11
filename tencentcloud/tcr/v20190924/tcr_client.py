@@ -1178,31 +1178,6 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeCustomAccounts(self, request):
-        """接口未使用
-
-        查询自定义账号
-
-        :param request: Request instance for DescribeCustomAccounts.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCustomAccounts", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCustomAccountsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeExternalEndpointStatus(self, request):
         """查询实例公网访问入口状态
 
