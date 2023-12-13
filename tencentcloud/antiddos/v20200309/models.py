@@ -8968,6 +8968,54 @@ class DescribeDefaultAlarmThresholdResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIpBlockListRequest(AbstractModel):
+    """DescribeIpBlockList请求参数结构体
+
+    """
+
+
+class DescribeIpBlockListResponse(AbstractModel):
+    """DescribeIpBlockList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: IP封堵列表
+        :type List: list of IpBlockData
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = IpBlockData()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeL7RulesBySSLCertIdRequest(AbstractModel):
     """DescribeL7RulesBySSLCertId请求参数结构体
 
@@ -13105,6 +13153,99 @@ class InstanceRelation(AbstractModel):
     def _deserialize(self, params):
         self._EipList = params.get("EipList")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IpBlockData(AbstractModel):
+    """IP封堵记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态（Blocked：被封堵；UnBlocking：解封中；UnBlockFailed：解封失败）
+        :type Status: str
+        :param _Ip: 资源IP
+        :type Ip: str
+        :param _BlockTime: 封堵时间
+        :type BlockTime: str
+        :param _UnBlockTime: 解封时间（预计解封时间）
+        :type UnBlockTime: str
+        :param _ActionType: 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
+        :type ActionType: str
+        :param _ProtectFlag: 高防标记，0：非高防，1：高防
+        :type ProtectFlag: int
+        """
+        self._Status = None
+        self._Ip = None
+        self._BlockTime = None
+        self._UnBlockTime = None
+        self._ActionType = None
+        self._ProtectFlag = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def BlockTime(self):
+        return self._BlockTime
+
+    @BlockTime.setter
+    def BlockTime(self, BlockTime):
+        self._BlockTime = BlockTime
+
+    @property
+    def UnBlockTime(self):
+        return self._UnBlockTime
+
+    @UnBlockTime.setter
+    def UnBlockTime(self, UnBlockTime):
+        self._UnBlockTime = UnBlockTime
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ProtectFlag(self):
+        return self._ProtectFlag
+
+    @ProtectFlag.setter
+    def ProtectFlag(self, ProtectFlag):
+        self._ProtectFlag = ProtectFlag
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Ip = params.get("Ip")
+        self._BlockTime = params.get("BlockTime")
+        self._UnBlockTime = params.get("UnBlockTime")
+        self._ActionType = params.get("ActionType")
+        self._ProtectFlag = params.get("ProtectFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -188,7 +188,7 @@ class AntiddosClient(AbstractClient):
 
 
     def CreateCcGeoIPBlockConfig(self, request):
-        """新建cc防护的地域封禁配置
+        """新建CC防护的地域封禁配置
 
         :param request: Request instance for CreateCcGeoIPBlockConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.CreateCcGeoIPBlockConfigRequest`
@@ -1284,6 +1284,29 @@ class AntiddosClient(AbstractClient):
             body = self.call("DescribeDefaultAlarmThreshold", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDefaultAlarmThresholdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIpBlockList(self, request):
+        """获取IP封堵列表
+
+        :param request: Request instance for DescribeIpBlockList.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeIpBlockListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpBlockList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpBlockListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

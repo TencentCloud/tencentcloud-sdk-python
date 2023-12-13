@@ -18536,12 +18536,19 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
 1：VPC接入点 
 2：公网接入点
         :type RouteType: int
+        :param _OperationType: 0：本地域访问，由于并没有配置跨地域容灾，所该类型的接入点，无法进行异地切换、异地访问切回；
+1：本地域访问，由于配置了跨地域容灾，随时可以进行异地切换，该状态用于主集群的接入点
+2：跨地域访问，已经完成了异地切换，该状态用于源集群的接入点，该状态下的接入点不可删除
+3：跨地域访问，随时可以进行异地访问切回，该状态用于目标集群的接入点，该状态下的接入点不可删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperationType: int
         """
         self._VpcId = None
         self._SubnetId = None
         self._Endpoint = None
         self._InstanceId = None
         self._RouteType = None
+        self._OperationType = None
 
     @property
     def VpcId(self):
@@ -18583,6 +18590,14 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
     def RouteType(self, RouteType):
         self._RouteType = RouteType
 
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -18590,6 +18605,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
         self._Endpoint = params.get("Endpoint")
         self._InstanceId = params.get("InstanceId")
         self._RouteType = params.get("RouteType")
+        self._OperationType = params.get("OperationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

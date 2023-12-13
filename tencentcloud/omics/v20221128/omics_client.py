@@ -211,7 +211,7 @@ class OmicsClient(AbstractClient):
 
 
     def GetRunMetadataFile(self, request):
-        """查询任务详情文件。
+        """获取任务详情文件。
 
         :param request: Request instance for GetRunMetadataFile.
         :type request: :class:`tencentcloud.omics.v20221128.models.GetRunMetadataFileRequest`

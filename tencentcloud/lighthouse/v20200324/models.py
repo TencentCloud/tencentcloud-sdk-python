@@ -10613,7 +10613,7 @@ class InstanceChargePrepaid(AbstractModel):
         r"""
         :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
         :type Period: int
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li><br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :type RenewFlag: str
         """
         self._Period = None
@@ -13602,9 +13602,15 @@ class ResetInstanceRequest(AbstractModel):
         :type InstanceId: str
         :param _BlueprintId: 镜像 ID。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
         :type BlueprintId: str
+        :param _Containers: 要创建的容器配置列表。
+        :type Containers: list of DockerContainerConfiguration
+        :param _LoginConfiguration: 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
+        :type LoginConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.LoginConfiguration`
         """
         self._InstanceId = None
         self._BlueprintId = None
+        self._Containers = None
+        self._LoginConfiguration = None
 
     @property
     def InstanceId(self):
@@ -13622,10 +13628,35 @@ class ResetInstanceRequest(AbstractModel):
     def BlueprintId(self, BlueprintId):
         self._BlueprintId = BlueprintId
 
+    @property
+    def Containers(self):
+        return self._Containers
+
+    @Containers.setter
+    def Containers(self, Containers):
+        self._Containers = Containers
+
+    @property
+    def LoginConfiguration(self):
+        return self._LoginConfiguration
+
+    @LoginConfiguration.setter
+    def LoginConfiguration(self, LoginConfiguration):
+        self._LoginConfiguration = LoginConfiguration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BlueprintId = params.get("BlueprintId")
+        if params.get("Containers") is not None:
+            self._Containers = []
+            for item in params.get("Containers"):
+                obj = DockerContainerConfiguration()
+                obj._deserialize(item)
+                self._Containers.append(obj)
+        if params.get("LoginConfiguration") is not None:
+            self._LoginConfiguration = LoginConfiguration()
+            self._LoginConfiguration._deserialize(params.get("LoginConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

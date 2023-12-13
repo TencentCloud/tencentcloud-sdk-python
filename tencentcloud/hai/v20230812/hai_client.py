@@ -210,6 +210,52 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartInstance(self, request):
+        """本接口 (StartInstance) 用于主动启动实例。
+
+        :param request: Request instance for StartInstance.
+        :type request: :class:`tencentcloud.hai.v20230812.models.StartInstanceRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.StartInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopInstance(self, request):
+        """本接口 (StopInstance) 用于主动关闭实例。
+
+        :param request: Request instance for StopInstance.
+        :type request: :class:`tencentcloud.hai.v20230812.models.StopInstanceRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.StopInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateInstances(self, request):
         """本接口 (TerminateInstances) 用于主动退还实例。
 

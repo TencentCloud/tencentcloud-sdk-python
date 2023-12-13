@@ -10411,9 +10411,12 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
         :type InstanceId: str
         :param _BackupId: 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
         :type BackupId: int
+        :param _BackupType: 备份类型 data: 数据备份 binlog:日志备份，默认为data
+        :type BackupType: str
         """
         self._InstanceId = None
         self._BackupId = None
+        self._BackupType = None
 
     @property
     def InstanceId(self):
@@ -10431,10 +10434,19 @@ class DescribeBackupDecryptionKeyRequest(AbstractModel):
     def BackupId(self, BackupId):
         self._BackupId = BackupId
 
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._BackupId = params.get("BackupId")
+        self._BackupType = params.get("BackupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

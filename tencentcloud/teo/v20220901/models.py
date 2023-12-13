@@ -10425,7 +10425,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type MetricName: str
         :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
-        :param _Limit: 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
+        :param _Limit: 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top10的数据。
         :type Limit: int
         :param _Filters: 过滤条件，详细的过滤条件Key值如下：
 <li>country<br>   按照【<strong>国家/地区</strong>】进行过滤，国家/地区遵循 <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> 规范。</li>
@@ -10630,7 +10630,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type MetricName: str
         :param _ZoneIds: 站点 ID 集合，此参数必填。
         :type ZoneIds: list of str
-        :param _Limit: 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
+        :param _Limit: 查询前多少个数据，最大值为1000，不填默认为10， 表示查询前top 10的数据。
         :type Limit: int
         :param _Filters: 过滤条件，详细的过滤条件如下：
 <li>domain<br>   按照【<strong>子域名</strong>】进行过滤，子域名形如： test.example.com。<br>   类型：String<br>   必选：否</li>
@@ -21657,6 +21657,7 @@ class Zone(AbstractModel):
 <li> full：NS 接入；</li>
 <li> partial：CNAME 接入；</li>
 <li> noDomainAccess：无域名接入；</li>
+<li> vodeo：开启 VODEO 后默认接入。</li>
         :type Type: str
         :param _Paused: 站点是否关闭。
         :type Paused: bool

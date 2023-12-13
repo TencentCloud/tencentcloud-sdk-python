@@ -1702,6 +1702,9 @@ class GetRunMetadataFileRequest(AbstractModel):
         r"""
         :param _RunUuid: 任务Uuid。
         :type RunUuid: str
+        :param _ProjectId: 项目ID。
+（不填使用指定地域下的默认项目）
+        :type ProjectId: str
         :param _Key: 需要获取的文件名。
 
 默认支持以下文件：
@@ -1713,13 +1716,22 @@ class GetRunMetadataFileRequest(AbstractModel):
 - execution_trace.txt
 - pipeline_dag.html
         :type Key: str
-        :param _ProjectId: 项目ID。
-（不填使用指定地域下的默认项目）
-        :type ProjectId: str
+        :param _Keys: 需要批量获取的文件名。
+
+默认支持以下文件：
+- nextflow.log
+
+提交时NFOption中report指定为true时，额外支持以下文件：
+- execution_report.html
+- execution_timeline.html
+- execution_trace.txt
+- pipeline_dag.html
+        :type Keys: list of str
         """
         self._RunUuid = None
-        self._Key = None
         self._ProjectId = None
+        self._Key = None
+        self._Keys = None
 
     @property
     def RunUuid(self):
@@ -1730,6 +1742,14 @@ class GetRunMetadataFileRequest(AbstractModel):
         self._RunUuid = RunUuid
 
     @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
     def Key(self):
         return self._Key
 
@@ -1738,18 +1758,19 @@ class GetRunMetadataFileRequest(AbstractModel):
         self._Key = Key
 
     @property
-    def ProjectId(self):
-        return self._ProjectId
+    def Keys(self):
+        return self._Keys
 
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
 
 
     def _deserialize(self, params):
         self._RunUuid = params.get("RunUuid")
-        self._Key = params.get("Key")
         self._ProjectId = params.get("ProjectId")
+        self._Key = params.get("Key")
+        self._Keys = params.get("Keys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1769,10 +1790,14 @@ class GetRunMetadataFileResponse(AbstractModel):
         r"""
         :param _CosSignedUrl: 文件预签名链接，一分钟内有效。
         :type CosSignedUrl: str
+        :param _CosSignedUrls: 批量文件预签名链接，一分钟内有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosSignedUrls: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosSignedUrl = None
+        self._CosSignedUrls = None
         self._RequestId = None
 
     @property
@@ -1782,6 +1807,14 @@ class GetRunMetadataFileResponse(AbstractModel):
     @CosSignedUrl.setter
     def CosSignedUrl(self, CosSignedUrl):
         self._CosSignedUrl = CosSignedUrl
+
+    @property
+    def CosSignedUrls(self):
+        return self._CosSignedUrls
+
+    @CosSignedUrls.setter
+    def CosSignedUrls(self, CosSignedUrls):
+        self._CosSignedUrls = CosSignedUrls
 
     @property
     def RequestId(self):
@@ -1794,6 +1827,7 @@ class GetRunMetadataFileResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CosSignedUrl = params.get("CosSignedUrl")
+        self._CosSignedUrls = params.get("CosSignedUrls")
         self._RequestId = params.get("RequestId")
 
 
