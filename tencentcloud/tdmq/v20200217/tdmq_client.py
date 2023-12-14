@@ -1707,6 +1707,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRocketMQConsumerConnectionDetail(self, request):
+        """获取在线消费端详情
+
+        :param request: Request instance for DescribeRocketMQConsumerConnectionDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQConsumerConnectionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQConsumerConnectionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQConsumerConnectionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRocketMQConsumerConnections(self, request):
         """获取指定消费组下当前客户端的连接情况
 

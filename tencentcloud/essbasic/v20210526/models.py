@@ -9128,6 +9128,139 @@ class ComponentLimit(AbstractModel):
         
 
 
+class CreateBatchOrganizationRegistrationTasksRequest(AbstractModel):
+    """CreateBatchOrganizationRegistrationTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _RegistrationOrganizations: 当前应用下子客的组织机构注册信息。
+一次最多支持10条认证流
+        :type RegistrationOrganizations: list of RegistrationOrganizationInfo
+        :param _Endpoint: 生成链接的类型：
+<ul><li>**PC**：(默认)web控制台链接, 需要在PC浏览器中打开</li>
+<li>**CHANNEL**：H5跳转到电子签小程序链接, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+<li>**SHORT_URL**：H5跳转到电子签小程序链接的短链形式, 一般用于发送短信中带的链接, 打开后进入腾讯电子签小程序</li>
+<li>**APP**：第三方APP或小程序跳转电子签小程序链接, 一般用于贵方小程序或者APP跳转过来,  打开后进入腾讯电子签小程序</li></ul>
+示例值：PC
+
+        :type Endpoint: str
+        """
+        self._Agent = None
+        self._RegistrationOrganizations = None
+        self._Endpoint = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RegistrationOrganizations(self):
+        return self._RegistrationOrganizations
+
+    @RegistrationOrganizations.setter
+    def RegistrationOrganizations(self, RegistrationOrganizations):
+        self._RegistrationOrganizations = RegistrationOrganizations
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("RegistrationOrganizations") is not None:
+            self._RegistrationOrganizations = []
+            for item in params.get("RegistrationOrganizations"):
+                obj = RegistrationOrganizationInfo()
+                obj._deserialize(item)
+                self._RegistrationOrganizations.append(obj)
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
+    """CreateBatchOrganizationRegistrationTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 生成注册链接的任务Id，
+根据这个id， 调用DescribeBatchOrganizationRegistrationUrls 获取生成的链接，进入认证流程
+若存在其中任意一条链接错误，则返回具体的错误描述, 不会返回TaskId
+        :type TaskId: str
+        :param _ErrorMessages: 批量生成企业认证链接的详细错误信息，
+顺序与输入参数保持一致。
+若企业认证均成功生成，则不返回错误信息；
+若存在任何错误，则返回具体的错误描述。
+        :type ErrorMessages: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._ErrorMessages = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ErrorMessages(self):
+        return self._ErrorMessages
+
+    @ErrorMessages.setter
+    def ErrorMessages(self, ErrorMessages):
+        self._ErrorMessages = ErrorMessages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._ErrorMessages = params.get("ErrorMessages")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateChannelFlowEvidenceReportRequest(AbstractModel):
     """CreateChannelFlowEvidenceReport请求参数结构体
 
@@ -10624,6 +10757,103 @@ class Department(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeBatchOrganizationRegistrationUrlsRequest(AbstractModel):
+    """DescribeBatchOrganizationRegistrationUrls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _TaskId: 通过接口CreateBatchOrganizationRegistrationTasks创建企业批量认证链接任得到的任务Id
+        :type TaskId: str
+        """
+        self._Agent = None
+        self._TaskId = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
+    """DescribeBatchOrganizationRegistrationUrls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationAuthUrls: 企业批量注册链接信息
+        :type OrganizationAuthUrls: list of OrganizationAuthUrl
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrganizationAuthUrls = None
+        self._RequestId = None
+
+    @property
+    def OrganizationAuthUrls(self):
+        return self._OrganizationAuthUrls
+
+    @OrganizationAuthUrls.setter
+    def OrganizationAuthUrls(self, OrganizationAuthUrls):
+        self._OrganizationAuthUrls = OrganizationAuthUrls
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OrganizationAuthUrls") is not None:
+            self._OrganizationAuthUrls = []
+            for item in params.get("OrganizationAuthUrls"):
+                obj = OrganizationAuthUrl()
+                obj._deserialize(item)
+                self._OrganizationAuthUrls.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeBillUsageDetailRequest(AbstractModel):
@@ -14989,6 +15219,56 @@ class OperateChannelTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OrganizationAuthUrl(AbstractModel):
+    """企业批量注册链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthUrl: 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
+<table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/SHORT_URL/APP</td> <td>一年</td>  </tr> </tbody> </table>
+注： 
+`1.链接仅单次有效，每次登录需要需要重新创建新的链接`
+`2.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+
+        :type AuthUrl: str
+        :param _ErrorMessage: 企业批量注册的错误信息，例如：企业三要素不通过
+        :type ErrorMessage: str
+        """
+        self._AuthUrl = None
+        self._ErrorMessage = None
+
+    @property
+    def AuthUrl(self):
+        return self._AuthUrl
+
+    @AuthUrl.setter
+    def AuthUrl(self, AuthUrl):
+        self._AuthUrl = AuthUrl
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._AuthUrl = params.get("AuthUrl")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrganizationInfo(AbstractModel):
     """机构信息
 
@@ -15989,6 +16269,151 @@ class RecipientComponentInfo(AbstractModel):
                 obj = FilledComponent()
                 obj._deserialize(item)
                 self._Components.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegistrationOrganizationInfo(AbstractModel):
+    """企业认证信息参数， 需要保证这些参数跟营业执照中的信息一致。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+        :type OrganizationName: str
+        :param _OrganizationOpenId: 机构在贵司业务系统中的唯一标识，用于与腾讯电子签企业账号进行映射，确保在同一应用内不会出现重复。
+该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
+        :type OrganizationOpenId: str
+        :param _OpenId: 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一应用内不会出现重复。
+该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
+        :type OpenId: str
+        :param _UniformSocialCreditCode: 组织机构企业统一社会信用代码。
+请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+        :type UniformSocialCreditCode: str
+        :param _LegalName: 组织机构法人的姓名。
+请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+        :type LegalName: str
+        :param _Address: 组织机构企业注册地址。
+请确认该企业注册地址与企业营业执照中注册的地址一致。
+        :type Address: str
+        :param _AdminName: 组织机构超管姓名。
+在注册流程中，必须是超管本人进行操作。
+如果法人做为超管管理组织机构,超管姓名就是法人姓名
+        :type AdminName: str
+        :param _AdminMobile: 组织机构超管姓名。
+在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
+        :type AdminMobile: str
+        :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:
+1：上传授权书+对公打款
+2：法人授权/认证  会根据当前操作人的身份判定,如果当前操作人是法人,则是法人认证, 如果当前操作人不是法人,则走法人授权
+
+注:
+`1. 当前仅支持一种认证方式`
+`2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
+        :type AuthorizationTypes: list of int non-negative
+        """
+        self._OrganizationName = None
+        self._OrganizationOpenId = None
+        self._OpenId = None
+        self._UniformSocialCreditCode = None
+        self._LegalName = None
+        self._Address = None
+        self._AdminName = None
+        self._AdminMobile = None
+        self._AuthorizationTypes = None
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def UniformSocialCreditCode(self):
+        return self._UniformSocialCreditCode
+
+    @UniformSocialCreditCode.setter
+    def UniformSocialCreditCode(self, UniformSocialCreditCode):
+        self._UniformSocialCreditCode = UniformSocialCreditCode
+
+    @property
+    def LegalName(self):
+        return self._LegalName
+
+    @LegalName.setter
+    def LegalName(self, LegalName):
+        self._LegalName = LegalName
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def AdminName(self):
+        return self._AdminName
+
+    @AdminName.setter
+    def AdminName(self, AdminName):
+        self._AdminName = AdminName
+
+    @property
+    def AdminMobile(self):
+        return self._AdminMobile
+
+    @AdminMobile.setter
+    def AdminMobile(self, AdminMobile):
+        self._AdminMobile = AdminMobile
+
+    @property
+    def AuthorizationTypes(self):
+        return self._AuthorizationTypes
+
+    @AuthorizationTypes.setter
+    def AuthorizationTypes(self, AuthorizationTypes):
+        self._AuthorizationTypes = AuthorizationTypes
+
+
+    def _deserialize(self, params):
+        self._OrganizationName = params.get("OrganizationName")
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._OpenId = params.get("OpenId")
+        self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
+        self._LegalName = params.get("LegalName")
+        self._Address = params.get("Address")
+        self._AdminName = params.get("AdminName")
+        self._AdminMobile = params.get("AdminMobile")
+        self._AuthorizationTypes = params.get("AuthorizationTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

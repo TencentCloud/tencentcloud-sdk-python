@@ -11322,6 +11322,165 @@ class DescribeRocketMQConsumeStatsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRocketMQConsumerConnectionDetailRequest(AbstractModel):
+    """DescribeRocketMQConsumerConnectionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NamespaceId: 命名空间名称
+        :type NamespaceId: str
+        :param _GroupId: 消费组名称
+        :type GroupId: str
+        :param _ClientId: 消费端实例ID
+        :type ClientId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 限制数目
+        :type Limit: int
+        :param _FilterType: 按主题类型过滤查询结果，可选择Normal, GlobalOrder, PartitionedOrder, Retry, Transaction, DeadLetter
+        :type FilterType: list of str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._GroupId = None
+        self._ClientId = None
+        self._Offset = None
+        self._Limit = None
+        self._FilterType = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FilterType(self):
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._GroupId = params.get("GroupId")
+        self._ClientId = params.get("ClientId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FilterType = params.get("FilterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQConsumerConnectionDetailResponse(AbstractModel):
+    """DescribeRocketMQConsumerConnectionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Details: 消费端主题信息列表
+        :type Details: list of RocketMQConsumerTopic
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Details = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = RocketMQConsumerTopic()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRocketMQConsumerConnectionsRequest(AbstractModel):
     """DescribeRocketMQConsumerConnections请求参数结构体
 
@@ -21888,6 +22047,100 @@ class RocketMQConsumerConnection(AbstractModel):
         self._Language = params.get("Language")
         self._Accumulative = params.get("Accumulative")
         self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQConsumerTopic(AbstractModel):
+    """消费者详情中的主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: 主题名称
+        :type Topic: str
+        :param _Type: 主题类型，Default表示普通，GlobalOrder表示全局顺序，PartitionedOrder表示局部顺序，Transaction表示事务，Retry表示重试，DeadLetter表示死信
+        :type Type: str
+        :param _PartitionNum: 分区数
+        :type PartitionNum: int
+        :param _Accumulative: 消息堆积数
+        :type Accumulative: int
+        :param _LastConsumptionTime: 最后消费时间，以毫秒为单位
+        :type LastConsumptionTime: int
+        :param _SubRule: 订阅规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubRule: str
+        """
+        self._Topic = None
+        self._Type = None
+        self._PartitionNum = None
+        self._Accumulative = None
+        self._LastConsumptionTime = None
+        self._SubRule = None
+
+    @property
+    def Topic(self):
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PartitionNum(self):
+        return self._PartitionNum
+
+    @PartitionNum.setter
+    def PartitionNum(self, PartitionNum):
+        self._PartitionNum = PartitionNum
+
+    @property
+    def Accumulative(self):
+        return self._Accumulative
+
+    @Accumulative.setter
+    def Accumulative(self, Accumulative):
+        self._Accumulative = Accumulative
+
+    @property
+    def LastConsumptionTime(self):
+        return self._LastConsumptionTime
+
+    @LastConsumptionTime.setter
+    def LastConsumptionTime(self, LastConsumptionTime):
+        self._LastConsumptionTime = LastConsumptionTime
+
+    @property
+    def SubRule(self):
+        return self._SubRule
+
+    @SubRule.setter
+    def SubRule(self, SubRule):
+        self._SubRule = SubRule
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Type = params.get("Type")
+        self._PartitionNum = params.get("PartitionNum")
+        self._Accumulative = params.get("Accumulative")
+        self._LastConsumptionTime = params.get("LastConsumptionTime")
+        self._SubRule = params.get("SubRule")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

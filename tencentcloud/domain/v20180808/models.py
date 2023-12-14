@@ -2888,6 +2888,8 @@ class DomainBatchDetailSet(AbstractModel):
         r"""
         :param _Id: 详情ID
         :type Id: int
+        :param _Action: 类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+        :type Action: str
         :param _Domain: 域名
         :type Domain: str
         :param _Status: 执行状态：
@@ -2902,13 +2904,18 @@ success  操作成功。
         :type CreatedOn: str
         :param _UpdatedOn: 更新时间
         :type UpdatedOn: str
+        :param _BigDealId: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealId: str
         """
         self._Id = None
+        self._Action = None
         self._Domain = None
         self._Status = None
         self._Reason = None
         self._CreatedOn = None
         self._UpdatedOn = None
+        self._BigDealId = None
 
     @property
     def Id(self):
@@ -2917,6 +2924,14 @@ success  操作成功。
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def Action(self):
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
 
     @property
     def Domain(self):
@@ -2958,14 +2973,24 @@ success  操作成功。
     def UpdatedOn(self, UpdatedOn):
         self._UpdatedOn = UpdatedOn
 
+    @property
+    def BigDealId(self):
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._Action = params.get("Action")
         self._Domain = params.get("Domain")
         self._Status = params.get("Status")
         self._Reason = params.get("Reason")
         self._CreatedOn = params.get("CreatedOn")
         self._UpdatedOn = params.get("UpdatedOn")
+        self._BigDealId = params.get("BigDealId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2993,11 +3018,20 @@ done 执行完成。
         :type Status: str
         :param _CreatedOn: 提交时间
         :type CreatedOn: str
+        :param _Success: 批量操作成功个数
+        :type Success: int
+        :param _Doing: 批量操作处理中个数
+        :type Doing: int
+        :param _Failed: 批量操作失败个数
+        :type Failed: int
         """
         self._LogId = None
         self._Number = None
         self._Status = None
         self._CreatedOn = None
+        self._Success = None
+        self._Doing = None
+        self._Failed = None
 
     @property
     def LogId(self):
@@ -3031,12 +3065,39 @@ done 执行完成。
     def CreatedOn(self, CreatedOn):
         self._CreatedOn = CreatedOn
 
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Doing(self):
+        return self._Doing
+
+    @Doing.setter
+    def Doing(self, Doing):
+        self._Doing = Doing
+
+    @property
+    def Failed(self):
+        return self._Failed
+
+    @Failed.setter
+    def Failed(self, Failed):
+        self._Failed = Failed
+
 
     def _deserialize(self, params):
         self._LogId = params.get("LogId")
         self._Number = params.get("Number")
         self._Status = params.get("Status")
         self._CreatedOn = params.get("CreatedOn")
+        self._Success = params.get("Success")
+        self._Doing = params.get("Doing")
+        self._Failed = params.get("Failed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
