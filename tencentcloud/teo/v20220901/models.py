@@ -16806,27 +16806,38 @@ class OriginInfo(AbstractModel):
         r"""
         :param _OriginType: 源站类型，取值有：
 <li>IP_DOMAIN：IPV4、IPV6 或域名类型源站；</li>
-<li>COS：COS 源；</li>
+<li>COS：腾讯云 COS 对象存储源站；</li>
+<li>AWS_S3：AWS S3 对象存储源站；</li>
 <li>ORIGIN_GROUP：源站组类型源站；</li>
-<li>AWS_S3：S3兼容对象存储源站；</li>
-<li>LB: 负载均衡类型源站；</li>
-<li>SPACE：EdgeOne Shield Space 存储。</li>  
+ <li>VODEO：云点播（混合云版）；</li>
+<li>SPACE：源站卸载，当前仅白名单开放；</li>
+<li>LB：负载均衡，当前仅白名单开放。</li>
         :type OriginType: str
-        :param _Origin: 源站地址，当 OriginType 参数指定为 ORIGIN_GROUP 时，该参数填写源站组 ID，其他情况下填写源站地址。
+        :param _Origin: 源站地址，根据 OriginType 的取值分为以下情况：
+<li>当 OriginType = IP_DOMAIN 时，该参数请填写 IPv4、IPv6 地址或域名；</li>
+<li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
+<li>当 OriginType = AWS_S3，该参数请填写 S3 桶的访问域名；</li>
+<li>当 OriginType = ORIGIN_GROUP 时，该参数请填写源站组 ID；</li>
+<li>当 OriginType = VODEO 时，如果 VodeoDistributionRange = ALL，则该参数填写 "all-buckets-in-vodeo-application"；如果 VodeoDistributionRange = Bucket，则该参数请填写对应存储桶域名；</li>
+<li>当 OriginType = LB 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；</li>
+<li>当 OriginType = SPACE 时，该参数请填写源站卸载空间 ID，该功能当前仅白名单开放。</li>
         :type Origin: str
-        :param _BackupOrigin: 备用源站组 ID，该参数在 OriginType 参数指定为 ORIGIN_GROUP 时生效，为空表示不使用备用源站。
+        :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 时生效，该字段为旧版能力，调用后控制台无法进行配置修改，如需使用请提交工单咨询。
         :type BackupOrigin: str
-        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，当源站类型 OriginType=COS 或 AWS_S3 时有效，取值有：
+        :param _PrivateAccess: 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWS_S3 时会生效，取值有：
 <li>on：使用私有鉴权；</li>
-<li>off：不使用私有鉴权。</li>默认值：off。
+<li>off：不使用私有鉴权。</li>
+不填写时，默认值为off。
         :type PrivateAccess: str
-        :param _PrivateParameters: 私有鉴权使用参数，当源站类型 PrivateAccess=on 时有效。
+        :param _PrivateParameters: 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
         :type PrivateParameters: list of PrivateParameter
-        :param _VodeoSubAppId: MO 子应用 ID
+        :param _VodeoSubAppId: VODEO 子应用 ID。该参数当 OriginType = VODEO 时必填。
         :type VodeoSubAppId: int
-        :param _VodeoDistributionRange: MO 分发范围，取值有： <li>All：全部</li> <li>Bucket：存储桶</li>
+        :param _VodeoDistributionRange: VODEO 分发范围，该参数当 OriginType = VODEO 时必填。取值有： 
+<li>All：当前应用下所有存储桶；</li> 
+<li>Bucket：指定的某一个存储桶。</li>	
         :type VodeoDistributionRange: str
-        :param _VodeoBucketId: MO 存储桶 ID，分发范围(DistributionRange)为存储桶(Bucket)时必填	
+        :param _VodeoBucketId: VODEO 存储桶 ID，该参数当 OriginType = VODEO 且 VodeoDistributionRange = Bucket 时必填。
         :type VodeoBucketId: str
         """
         self._OriginType = None
@@ -17465,16 +17476,16 @@ class PostMaxSize(AbstractModel):
 
 
 class PrivateParameter(AbstractModel):
-    """对象存储源站记录私有鉴权参数
+    """对象存储源站私有鉴权参数
 
     """
 
     def __init__(self):
         r"""
         :param _Name: 私有鉴权参数名称，取值有：
-<li>AccessKeyId：鉴权参数Access Key ID；</li>
-<li>SecretAccessKey：鉴权参数Secret Access Key；</li>
-<li>SignatureVersion：鉴权版本，v2或者v4；</li>
+<li>AccessKeyId：鉴权参数 Access Key ID；</li>
+<li>SecretAccessKey：鉴权参数 Secret Access Key；</li>
+<li>SignatureVersion：鉴权版本，v2 或者 v4；</li>
 <li>Region：存储桶地域。</li>
         :type Name: str
         :param _Value: 私有鉴权参数值。

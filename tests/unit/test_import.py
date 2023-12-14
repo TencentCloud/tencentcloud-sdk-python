@@ -674,6 +674,11 @@ def test_import_ims():
     from tencentcloud.ims.v20201229 import models
 
 
+def test_import_ioa():
+    from tencentcloud.ioa.v20220601 import ioa_client
+    from tencentcloud.ioa.v20220601 import models
+
+
 def test_import_iot():
     from tencentcloud.iot.v20180123 import iot_client
     from tencentcloud.iot.v20180123 import models

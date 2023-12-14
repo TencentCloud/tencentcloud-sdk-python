@@ -657,7 +657,7 @@ class CreateConnectionRequest(AbstractModel):
         :type Description: str
         :param _Enable: 使能开关
         :type Enable: bool
-        :param _Type: 类型
+        :param _Type: 连接器类型，目前支持以下类型:apigw/ckafka/dts/tdmq
         :type Type: str
         """
         self._ConnectionDescription = None

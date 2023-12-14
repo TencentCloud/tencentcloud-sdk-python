@@ -1787,6 +1787,8 @@ video 纯视频
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :type EnableAutoStart: int
+        :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        :type RecordBackground: str
         """
         self._Name = None
         self._StartTime = None
@@ -1814,6 +1816,7 @@ video 纯视频
         self._LiveType = None
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
+        self._RecordBackground = None
 
     @property
     def Name(self):
@@ -2023,6 +2026,14 @@ video 纯视频
     def EnableAutoStart(self, EnableAutoStart):
         self._EnableAutoStart = EnableAutoStart
 
+    @property
+    def RecordBackground(self):
+        return self._RecordBackground
+
+    @RecordBackground.setter
+    def RecordBackground(self, RecordBackground):
+        self._RecordBackground = RecordBackground
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2051,6 +2062,7 @@ video 纯视频
         self._LiveType = params.get("LiveType")
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
+        self._RecordBackground = params.get("RecordBackground")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4347,6 +4359,8 @@ video 纯视频
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :type EnableAutoStart: int
+        :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
+        :type RecordBackground: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4376,6 +4390,7 @@ video 纯视频
         self._LiveType = None
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
+        self._RecordBackground = None
         self._RequestId = None
 
     @property
@@ -4587,6 +4602,14 @@ video 纯视频
         self._EnableAutoStart = EnableAutoStart
 
     @property
+    def RecordBackground(self):
+        return self._RecordBackground
+
+    @RecordBackground.setter
+    def RecordBackground(self, RecordBackground):
+        self._RecordBackground = RecordBackground
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4622,6 +4645,7 @@ video 纯视频
         self._LiveType = params.get("LiveType")
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
+        self._RecordBackground = params.get("RecordBackground")
         self._RequestId = params.get("RequestId")
 
 
