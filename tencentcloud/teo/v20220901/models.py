@@ -7600,7 +7600,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>ddos_attackBandwidth：攻击带宽曲线；</li>
 <li>ddos_attackPackageRate：攻击包速率曲线。</li>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点集合，此参数必填。
         :type ZoneIds: list of str
         :param _PolicyIds: DDoS策略组ID列表，不填默认选择全部策略ID。
         :type PolicyIds: list of int
@@ -7761,19 +7761,19 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间。
+        :param _StartTime: 开始时间，时间范围为 30 天。
         :type StartTime: str
-        :param _EndTime: 结束时间。
+        :param _EndTime: 结束时间，时间范围为 30 天。
         :type EndTime: str
         :param _PolicyIds: ddos策略组集合，不填默认选择全部策略。
         :type PolicyIds: list of int
-        :param _ZoneIds: 站点集合，此参数必填，不填默认查询为空。
+        :param _ZoneIds: 站点集合，此参数必填。
         :type ZoneIds: list of str
         :param _Limit: 分页查询的限制数目，默认值为20，最大查询条目为1000。
         :type Limit: int
         :param _Offset: 分页的偏移量，默认值为0。
         :type Offset: int
-        :param _ShowDetail: 是否展示详细信息。
+        :param _ShowDetail: 展示攻击详情的参数，若填false，默认只返回攻击次数，不返回攻击详情；若填true，返回攻击详情。
         :type ShowDetail: bool
         :param _Area: 数据归属地区，取值有：
 <li>overseas：全球（除中国大陆地区）数据；</li>
@@ -7976,7 +7976,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>ddos_attackFlux_sip：按攻击源IP的攻击数量排行；</li>
 <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
         :type MetricName: str
-        :param _ZoneIds: 站点ID集合，不填默认选择全部站点。
+        :param _ZoneIds: 站点ID集合，此参数必填。
         :type ZoneIds: list of str
         :param _PolicyIds: DDoS策略组ID集合，不填默认选择全部策略ID。
         :type PolicyIds: list of int

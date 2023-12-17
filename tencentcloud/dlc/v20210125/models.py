@@ -1521,8 +1521,11 @@ class CancelSparkSessionBatchSQLRequest(AbstractModel):
         r"""
         :param _BatchId: 批任务唯一标识
         :type BatchId: str
+        :param _CustomKey: 用户自定义主键，若不为空，则使用该值进行查询
+        :type CustomKey: str
         """
         self._BatchId = None
+        self._CustomKey = None
 
     @property
     def BatchId(self):
@@ -1532,9 +1535,18 @@ class CancelSparkSessionBatchSQLRequest(AbstractModel):
     def BatchId(self, BatchId):
         self._BatchId = BatchId
 
+    @property
+    def CustomKey(self):
+        return self._CustomKey
+
+    @CustomKey.setter
+    def CustomKey(self, CustomKey):
+        self._CustomKey = CustomKey
+
 
     def _deserialize(self, params):
         self._BatchId = params.get("BatchId")
+        self._CustomKey = params.get("CustomKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4868,6 +4880,8 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         :type Arguments: list of KVPair
         :param _IsInherit: 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
         :type IsInherit: int
+        :param _CustomKey: 用户自定义主键，需唯一
+        :type CustomKey: str
         """
         self._DataEngineName = None
         self._ExecuteSQL = None
@@ -4880,6 +4894,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         self._SessionName = None
         self._Arguments = None
         self._IsInherit = None
+        self._CustomKey = None
 
     @property
     def DataEngineName(self):
@@ -4969,6 +4984,14 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
 
+    @property
+    def CustomKey(self):
+        return self._CustomKey
+
+    @CustomKey.setter
+    def CustomKey(self, CustomKey):
+        self._CustomKey = CustomKey
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -4987,6 +5010,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Arguments.append(obj)
         self._IsInherit = params.get("IsInherit")
+        self._CustomKey = params.get("CustomKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12842,8 +12866,11 @@ class DescribeSparkSessionBatchSQLRequest(AbstractModel):
         r"""
         :param _BatchId: SparkSQL唯一标识
         :type BatchId: str
+        :param _CustomKey: 用户自定义主键, 若不为空，则按照该值查询
+        :type CustomKey: str
         """
         self._BatchId = None
+        self._CustomKey = None
 
     @property
     def BatchId(self):
@@ -12853,9 +12880,18 @@ class DescribeSparkSessionBatchSQLRequest(AbstractModel):
     def BatchId(self, BatchId):
         self._BatchId = BatchId
 
+    @property
+    def CustomKey(self):
+        return self._CustomKey
+
+    @CustomKey.setter
+    def CustomKey(self, CustomKey):
+        self._CustomKey = CustomKey
+
 
     def _deserialize(self, params):
         self._BatchId = params.get("BatchId")
+        self._CustomKey = params.get("CustomKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12942,8 +12978,11 @@ class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
         r"""
         :param _BatchId: SparkSQL唯一标识
         :type BatchId: str
+        :param _CustomKey: 用户自定义主键，若不为空，则按照该值进行查询
+        :type CustomKey: str
         """
         self._BatchId = None
+        self._CustomKey = None
 
     @property
     def BatchId(self):
@@ -12953,9 +12992,18 @@ class DescribeSparkSessionBatchSqlLogRequest(AbstractModel):
     def BatchId(self, BatchId):
         self._BatchId = BatchId
 
+    @property
+    def CustomKey(self):
+        return self._CustomKey
+
+    @CustomKey.setter
+    def CustomKey(self, CustomKey):
+        self._CustomKey = CustomKey
+
 
     def _deserialize(self, params):
         self._BatchId = params.get("BatchId")
+        self._CustomKey = params.get("CustomKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24433,7 +24481,7 @@ class UpdateUserDataEngineConfigRequest(AbstractModel):
         r"""
         :param _DataEngineId: 引擎ID
         :type DataEngineId: str
-        :param _DataEngineConfigPairs: 引擎配置项
+        :param _DataEngineConfigPairs: 用户自定义引擎配置项集合。该参数需要传用户需要添加的全部配置项，例如，已有配置项k1:v1，添加k2:v2，需要传[k1:v1,k2:v2]。
         :type DataEngineConfigPairs: list of DataEngineConfigPair
         :param _SessionResourceTemplate: 作业引擎资源配置模版
         :type SessionResourceTemplate: :class:`tencentcloud.dlc.v20210125.models.SessionResourceTemplate`

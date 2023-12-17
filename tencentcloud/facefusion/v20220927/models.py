@@ -653,9 +653,9 @@ class MergeInfo(AbstractModel):
         :type Url: str
         :param _InputImageFaceRect: 上传的图片人脸位置信息（人脸框）
         :type InputImageFaceRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
-        :param _TemplateFaceID: 控制台上传的素材人脸ID，不填默认取最大人脸。此字段仅适用于控制台上传素材的有素材场景。
+        :param _TemplateFaceID: 素材人脸ID，不填默认取最大人脸。
         :type TemplateFaceID: str
-        :param _TemplateFaceRect: 模版图片人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于自定义模版素材场景。
+        :param _TemplateFaceRect: 模版中人脸位置信息(人脸框)，不填默认取最大人脸。此字段仅适用于图片融合自定义模版素材场景。
         :type TemplateFaceRect: :class:`tencentcloud.facefusion.v20220927.models.FaceRect`
         """
         self._Image = None

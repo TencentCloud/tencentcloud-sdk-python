@@ -3375,18 +3375,18 @@ timeRollback，时间点回档
 <li>NORMAL</li>
 <li>SERVERLESS</li>
         :type DbMode: str
-        :param _MinCpu: 当DbMode为SEVERLESS时必填
+        :param _MinCpu: 当DbMode为SERVERLESS时必填
 cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type MinCpu: float
-        :param _MaxCpu: 当DbMode为SEVERLESS时必填：
+        :param _MaxCpu: 当DbMode为SERVERLESS时必填：
 cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
         :type MaxCpu: float
-        :param _AutoPause: 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
+        :param _AutoPause: 当DbMode为SERVERLESS时，指定集群是否自动暂停，可选范围
 <li>yes</li>
 <li>no</li>
 默认值:yes
         :type AutoPause: str
-        :param _AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
+        :param _AutoPauseDelay: 当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
 默认值:600
         :type AutoPauseDelay: int
         :param _StoragePayMode: 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费

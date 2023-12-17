@@ -27,7 +27,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstance(self, request):
-        """根据实例ID查询某个实例的具体信息
+        """根据集群ID查询某个集群的具体信息
 
         :param request: Request instance for DescribeInstance.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceRequest`
@@ -50,7 +50,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeInstanceNodes(self, request):
-        """获取实例节点信息列表
+        """获取集群节点信息列表
 
         :param request: Request instance for DescribeInstanceNodes.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeInstanceNodesRequest`

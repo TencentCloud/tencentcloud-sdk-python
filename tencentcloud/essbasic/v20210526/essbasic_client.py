@@ -1656,6 +1656,36 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePartnerAutoSignAuthUrl(self, request):
+        """创建他方自动签授权链接，通过该链接可进入小程序进行合作方企业的自动签授权，若当前企业未开通企业自动签，通过该链接会先引导开通本企业自动签。
+        该接口效果同控制台： 企业设置-> 扩展服务 -> 企业自动签署 -> 合作企业方授权
+
+
+
+        注:
+        1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+        2. 已经在授权中或者授权成功的企业，无法重复授权
+
+        :param request: Request instance for CreatePartnerAutoSignAuthUrl.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.CreatePartnerAutoSignAuthUrlRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreatePartnerAutoSignAuthUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePartnerAutoSignAuthUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePartnerAutoSignAuthUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSealByImage(self, request):
         """1. 可以**通过图片**为子客企业代创建印章，图片最大5MB
 
@@ -1845,6 +1875,35 @@ class EssbasicClient(AbstractClient):
             body = self.call("DescribeChannelSealPolicyWorkflowUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeChannelSealPolicyWorkflowUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExtendedServiceAuthDetail(self, request):
+        """查询企业扩展服务的授权详情（列表），当前支持查询以下内容：
+
+        1. **企业自动签**
+        2. **批量签署**
+
+
+        注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+
+        :param request: Request instance for DescribeExtendedServiceAuthDetail.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthDetailRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExtendedServiceAuthDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExtendedServiceAuthDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

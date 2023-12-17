@@ -7788,6 +7788,12 @@ class ColumnMeta(AbstractModel):
         :param _ColumnFamiliesFieldSet: HBase列簇属性集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnFamiliesFieldSet: list of Pair
+        :param _DictionaryId: 对应码表字典ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictionaryId: str
+        :param _DictionaryName: 对应码表字典名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DictionaryName: str
         """
         self._NameEn = None
         self._NameCn = None
@@ -7797,6 +7803,8 @@ class ColumnMeta(AbstractModel):
         self._IsPartition = None
         self._Name = None
         self._ColumnFamiliesFieldSet = None
+        self._DictionaryId = None
+        self._DictionaryName = None
 
     @property
     def NameEn(self):
@@ -7862,6 +7870,22 @@ class ColumnMeta(AbstractModel):
     def ColumnFamiliesFieldSet(self, ColumnFamiliesFieldSet):
         self._ColumnFamiliesFieldSet = ColumnFamiliesFieldSet
 
+    @property
+    def DictionaryId(self):
+        return self._DictionaryId
+
+    @DictionaryId.setter
+    def DictionaryId(self, DictionaryId):
+        self._DictionaryId = DictionaryId
+
+    @property
+    def DictionaryName(self):
+        return self._DictionaryName
+
+    @DictionaryName.setter
+    def DictionaryName(self, DictionaryName):
+        self._DictionaryName = DictionaryName
+
 
     def _deserialize(self, params):
         self._NameEn = params.get("NameEn")
@@ -7877,6 +7901,8 @@ class ColumnMeta(AbstractModel):
                 obj = Pair()
                 obj._deserialize(item)
                 self._ColumnFamiliesFieldSet.append(obj)
+        self._DictionaryId = params.get("DictionaryId")
+        self._DictionaryName = params.get("DictionaryName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12125,6 +12151,8 @@ class CreateTaskVersionDsRequest(AbstractModel):
         :type AutoRun: bool
         :param _ProjectId: 项目ID
         :type ProjectId: str
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+        :type RequestFromSource: str
         :param _AlarmWays: 告警方式:email-邮件;sms-短信;wecom-企业微信
         :type AlarmWays: str
         :param _AlarmRecipientTypes: 告警对象:1-项目管理员，2-任务责任人
@@ -12134,6 +12162,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._NeedCheckParentSubmitted = None
         self._AutoRun = None
         self._ProjectId = None
+        self._RequestFromSource = None
         self._AlarmWays = None
         self._AlarmRecipientTypes = None
 
@@ -12170,6 +12199,14 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._ProjectId = ProjectId
 
     @property
+    def RequestFromSource(self):
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
     def AlarmWays(self):
         return self._AlarmWays
 
@@ -12193,6 +12230,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._NeedCheckParentSubmitted = params.get("NeedCheckParentSubmitted")
         self._AutoRun = params.get("AutoRun")
         self._ProjectId = params.get("ProjectId")
+        self._RequestFromSource = params.get("RequestFromSource")
         self._AlarmWays = params.get("AlarmWays")
         self._AlarmRecipientTypes = params.get("AlarmRecipientTypes")
         memeber_set = set(params.keys())
@@ -77233,8 +77271,11 @@ class UploadContentRequest(AbstractModel):
         r"""
         :param _ScriptRequestInfo: 脚本上传信息
         :type ScriptRequestInfo: :class:`tencentcloud.wedata.v20210820.models.ScriptRequestInfo`
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+        :type RequestFromSource: str
         """
         self._ScriptRequestInfo = None
+        self._RequestFromSource = None
 
     @property
     def ScriptRequestInfo(self):
@@ -77244,11 +77285,20 @@ class UploadContentRequest(AbstractModel):
     def ScriptRequestInfo(self, ScriptRequestInfo):
         self._ScriptRequestInfo = ScriptRequestInfo
 
+    @property
+    def RequestFromSource(self):
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
 
     def _deserialize(self, params):
         if params.get("ScriptRequestInfo") is not None:
             self._ScriptRequestInfo = ScriptRequestInfo()
             self._ScriptRequestInfo._deserialize(params.get("ScriptRequestInfo"))
+        self._RequestFromSource = params.get("RequestFromSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

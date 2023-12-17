@@ -5776,6 +5776,10 @@ class DescribeCertificatesRequest(AbstractModel):
         :type FilterExpiring: int
         :param _Hostable: 是否可托管，可选值：1 = 可托管，0 =  不可托管。
         :type Hostable: int
+        :param _Tags: 筛选指定标签的证书
+        :type Tags: list of Tags
+        :param _IsPendingIssue: //是否筛选等待签发的证书，传1是筛选，0和null不筛选
+        :type IsPendingIssue: int
         """
         self._Offset = None
         self._Limit = None
@@ -5791,6 +5795,8 @@ class DescribeCertificatesRequest(AbstractModel):
         self._IsSM = None
         self._FilterExpiring = None
         self._Hostable = None
+        self._Tags = None
+        self._IsPendingIssue = None
 
     @property
     def Offset(self):
@@ -5904,6 +5910,22 @@ class DescribeCertificatesRequest(AbstractModel):
     def Hostable(self, Hostable):
         self._Hostable = Hostable
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def IsPendingIssue(self):
+        return self._IsPendingIssue
+
+    @IsPendingIssue.setter
+    def IsPendingIssue(self, IsPendingIssue):
+        self._IsPendingIssue = IsPendingIssue
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -5920,6 +5942,13 @@ class DescribeCertificatesRequest(AbstractModel):
         self._IsSM = params.get("IsSM")
         self._FilterExpiring = params.get("FilterExpiring")
         self._Hostable = params.get("Hostable")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._IsPendingIssue = params.get("IsPendingIssue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

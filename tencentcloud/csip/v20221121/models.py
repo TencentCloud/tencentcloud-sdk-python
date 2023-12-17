@@ -5752,6 +5752,109 @@ class DescribeNICAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOrganizationUserInfoRequest(AbstractModel):
+    """DescribeOrganizationUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤内容
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _NotSupportCloud: 不支持多云
+        :type NotSupportCloud: bool
+        """
+        self._Filter = None
+        self._NotSupportCloud = None
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def NotSupportCloud(self):
+        return self._NotSupportCloud
+
+    @NotSupportCloud.setter
+    def NotSupportCloud(self, NotSupportCloud):
+        self._NotSupportCloud = NotSupportCloud
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._NotSupportCloud = params.get("NotSupportCloud")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOrganizationUserInfoResponse(AbstractModel):
+    """DescribeOrganizationUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 集团用户列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of OrganizationUserInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = OrganizationUserInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePublicIpAssetsRequest(AbstractModel):
     """DescribePublicIpAssets请求参数结构体
 
@@ -10345,6 +10448,315 @@ class NICAsset(AbstractModel):
         self._Nick = params.get("Nick")
         self._IsCore = params.get("IsCore")
         self._IsNewAsset = params.get("IsNewAsset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OrganizationUserInfo(AbstractModel):
+    """集团账号成员详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 成员账号Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _NickName: 成员账号名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NickName: str
+        :param _NodeName: 部门节点名称，账号所属部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeName: str
+        :param _AssetCount: 资产数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCount: int
+        :param _RiskCount: 风险数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param _AttackCount: 攻击数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackCount: int
+        :param _Role: Member/Admin/;成员或者管理员
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _MemberId: 成员账号id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberId: str
+        :param _AppId: 成员账号Appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _JoinType: 账号加入方式,create/invite
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JoinType: str
+        :param _CFWProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFWProtect: str
+        :param _WAFProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WAFProtect: str
+        :param _CWPProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CWPProtect: str
+        :param _Enable: 1启用，0未启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: int
+        :param _CSIPProtect: "Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSIPProtect: str
+        :param _QuotaConsumer: 1为配额消耗者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaConsumer: int
+        :param _CloudType: 账户类型，0为腾讯云账户，1为AWS账户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
+        :param _SyncFrequency: 0为缺省值，1为10分钟，2为1小时，3为24小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncFrequency: int
+        :param _IsExpired: 多云账户是否过期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsExpired: bool
+        :param _PermissionList: 多云账户 权限列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PermissionList: list of str
+        :param _AuthType: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: int
+        :param _TcMemberType: 0 腾讯云集团账户
+1 腾讯云接入账户
+2 非腾讯云
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcMemberType: int
+        """
+        self._Uin = None
+        self._NickName = None
+        self._NodeName = None
+        self._AssetCount = None
+        self._RiskCount = None
+        self._AttackCount = None
+        self._Role = None
+        self._MemberId = None
+        self._AppId = None
+        self._JoinType = None
+        self._CFWProtect = None
+        self._WAFProtect = None
+        self._CWPProtect = None
+        self._Enable = None
+        self._CSIPProtect = None
+        self._QuotaConsumer = None
+        self._CloudType = None
+        self._SyncFrequency = None
+        self._IsExpired = None
+        self._PermissionList = None
+        self._AuthType = None
+        self._TcMemberType = None
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def AssetCount(self):
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def RiskCount(self):
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def AttackCount(self):
+        return self._AttackCount
+
+    @AttackCount.setter
+    def AttackCount(self, AttackCount):
+        self._AttackCount = AttackCount
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def JoinType(self):
+        return self._JoinType
+
+    @JoinType.setter
+    def JoinType(self, JoinType):
+        self._JoinType = JoinType
+
+    @property
+    def CFWProtect(self):
+        return self._CFWProtect
+
+    @CFWProtect.setter
+    def CFWProtect(self, CFWProtect):
+        self._CFWProtect = CFWProtect
+
+    @property
+    def WAFProtect(self):
+        return self._WAFProtect
+
+    @WAFProtect.setter
+    def WAFProtect(self, WAFProtect):
+        self._WAFProtect = WAFProtect
+
+    @property
+    def CWPProtect(self):
+        return self._CWPProtect
+
+    @CWPProtect.setter
+    def CWPProtect(self, CWPProtect):
+        self._CWPProtect = CWPProtect
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CSIPProtect(self):
+        return self._CSIPProtect
+
+    @CSIPProtect.setter
+    def CSIPProtect(self, CSIPProtect):
+        self._CSIPProtect = CSIPProtect
+
+    @property
+    def QuotaConsumer(self):
+        return self._QuotaConsumer
+
+    @QuotaConsumer.setter
+    def QuotaConsumer(self, QuotaConsumer):
+        self._QuotaConsumer = QuotaConsumer
+
+    @property
+    def CloudType(self):
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def SyncFrequency(self):
+        return self._SyncFrequency
+
+    @SyncFrequency.setter
+    def SyncFrequency(self, SyncFrequency):
+        self._SyncFrequency = SyncFrequency
+
+    @property
+    def IsExpired(self):
+        return self._IsExpired
+
+    @IsExpired.setter
+    def IsExpired(self, IsExpired):
+        self._IsExpired = IsExpired
+
+    @property
+    def PermissionList(self):
+        return self._PermissionList
+
+    @PermissionList.setter
+    def PermissionList(self, PermissionList):
+        self._PermissionList = PermissionList
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def TcMemberType(self):
+        return self._TcMemberType
+
+    @TcMemberType.setter
+    def TcMemberType(self, TcMemberType):
+        self._TcMemberType = TcMemberType
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        self._NodeName = params.get("NodeName")
+        self._AssetCount = params.get("AssetCount")
+        self._RiskCount = params.get("RiskCount")
+        self._AttackCount = params.get("AttackCount")
+        self._Role = params.get("Role")
+        self._MemberId = params.get("MemberId")
+        self._AppId = params.get("AppId")
+        self._JoinType = params.get("JoinType")
+        self._CFWProtect = params.get("CFWProtect")
+        self._WAFProtect = params.get("WAFProtect")
+        self._CWPProtect = params.get("CWPProtect")
+        self._Enable = params.get("Enable")
+        self._CSIPProtect = params.get("CSIPProtect")
+        self._QuotaConsumer = params.get("QuotaConsumer")
+        self._CloudType = params.get("CloudType")
+        self._SyncFrequency = params.get("SyncFrequency")
+        self._IsExpired = params.get("IsExpired")
+        self._PermissionList = params.get("PermissionList")
+        self._AuthType = params.get("AuthType")
+        self._TcMemberType = params.get("TcMemberType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

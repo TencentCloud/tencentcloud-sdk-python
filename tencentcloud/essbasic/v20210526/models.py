@@ -434,6 +434,115 @@ class AuthFailMessage(AbstractModel):
         
 
 
+class AuthInfoDetail(AbstractModel):
+    """企业扩展服务授权列表详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 扩展服务类型，和入参一致	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Name: 扩展服务名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _HasAuthUserList: 授权员工列表	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAuthUserList: list of HasAuthUser
+        :param _HasAuthOrganizationList: 授权企业列表（企业自动签时，该字段有值）	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAuthOrganizationList: list of HasAuthOrganization
+        :param _AuthUserTotal: 授权员工列表总数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthUserTotal: int
+        :param _AuthOrganizationTotal: 授权企业列表总数	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthOrganizationTotal: int
+        """
+        self._Type = None
+        self._Name = None
+        self._HasAuthUserList = None
+        self._HasAuthOrganizationList = None
+        self._AuthUserTotal = None
+        self._AuthOrganizationTotal = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def HasAuthUserList(self):
+        return self._HasAuthUserList
+
+    @HasAuthUserList.setter
+    def HasAuthUserList(self, HasAuthUserList):
+        self._HasAuthUserList = HasAuthUserList
+
+    @property
+    def HasAuthOrganizationList(self):
+        return self._HasAuthOrganizationList
+
+    @HasAuthOrganizationList.setter
+    def HasAuthOrganizationList(self, HasAuthOrganizationList):
+        self._HasAuthOrganizationList = HasAuthOrganizationList
+
+    @property
+    def AuthUserTotal(self):
+        return self._AuthUserTotal
+
+    @AuthUserTotal.setter
+    def AuthUserTotal(self, AuthUserTotal):
+        self._AuthUserTotal = AuthUserTotal
+
+    @property
+    def AuthOrganizationTotal(self):
+        return self._AuthOrganizationTotal
+
+    @AuthOrganizationTotal.setter
+    def AuthOrganizationTotal(self, AuthOrganizationTotal):
+        self._AuthOrganizationTotal = AuthOrganizationTotal
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        if params.get("HasAuthUserList") is not None:
+            self._HasAuthUserList = []
+            for item in params.get("HasAuthUserList"):
+                obj = HasAuthUser()
+                obj._deserialize(item)
+                self._HasAuthUserList.append(obj)
+        if params.get("HasAuthOrganizationList") is not None:
+            self._HasAuthOrganizationList = []
+            for item in params.get("HasAuthOrganizationList"):
+                obj = HasAuthOrganization()
+                obj._deserialize(item)
+                self._HasAuthOrganizationList.append(obj)
+        self._AuthUserTotal = params.get("AuthUserTotal")
+        self._AuthOrganizationTotal = params.get("AuthOrganizationTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthorizedUser(AbstractModel):
     """授权用户
 
@@ -626,7 +735,6 @@ class BaseFlowInfo(AbstractModel):
         :type UserData: str
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 
-注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
         :type CcInfos: list of CcInfo
         :param _NeedCreateReview: 发起方企业的签署人进行发起操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
 
@@ -1890,6 +1998,12 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
         :type ApproverSignTypes: list of int
+        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+<ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+<li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+注：
+`不指定该值时，默认为签署方自行选择。`
+        :type SignTypeSelector: int
         """
         self._FlowApproverInfo = None
         self._Agent = None
@@ -1898,6 +2012,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._JumpUrl = None
         self._SignatureTypes = None
         self._ApproverSignTypes = None
+        self._SignTypeSelector = None
 
     @property
     def FlowApproverInfo(self):
@@ -1955,6 +2070,14 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
     def ApproverSignTypes(self, ApproverSignTypes):
         self._ApproverSignTypes = ApproverSignTypes
 
+    @property
+    def SignTypeSelector(self):
+        return self._SignTypeSelector
+
+    @SignTypeSelector.setter
+    def SignTypeSelector(self, SignTypeSelector):
+        self._SignTypeSelector = SignTypeSelector
+
 
     def _deserialize(self, params):
         if params.get("FlowApproverInfo") is not None:
@@ -1968,6 +2091,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
         self._JumpUrl = params.get("JumpUrl")
         self._SignatureTypes = params.get("SignatureTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
+        self._SignTypeSelector = params.get("SignTypeSelector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10144,6 +10268,138 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
+    """CreatePartnerAutoSignAuthUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _AuthorizedOrganizationId: 被授企业id，和AuthorizedOrganizationName二选一，不能同时为空
+注：`被授权企业必须和当前企业在同一应用号下`
+        :type AuthorizedOrganizationId: str
+        :param _AuthorizedOrganizationName: 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
+注：`被授权企业必须和当前企业在同一应用号下`
+        :type AuthorizedOrganizationName: str
+        """
+        self._Agent = None
+        self._AuthorizedOrganizationId = None
+        self._AuthorizedOrganizationName = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def AuthorizedOrganizationId(self):
+        return self._AuthorizedOrganizationId
+
+    @AuthorizedOrganizationId.setter
+    def AuthorizedOrganizationId(self, AuthorizedOrganizationId):
+        self._AuthorizedOrganizationId = AuthorizedOrganizationId
+
+    @property
+    def AuthorizedOrganizationName(self):
+        return self._AuthorizedOrganizationName
+
+    @AuthorizedOrganizationName.setter
+    def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
+        self._AuthorizedOrganizationName = AuthorizedOrganizationName
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
+        self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
+    """CreatePartnerAutoSignAuthUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+
+        :type MiniAppPath: str
+        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._MiniAppPath = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def MiniAppPath(self):
+        return self._MiniAppPath
+
+    @MiniAppPath.setter
+    def MiniAppPath(self, MiniAppPath):
+        self._MiniAppPath = MiniAppPath
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._MiniAppPath = params.get("MiniAppPath")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSealByImageRequest(AbstractModel):
     """CreateSealByImage请求参数结构体
 
@@ -10200,7 +10456,8 @@ class CreateSealByImageRequest(AbstractModel):
         :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: 
 <ul><li> **42_42**: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li>
 <li> **40_40**: 圆形企业印章直径40mm, 当SealStyle是圆形的时候才有效</li>
-<li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
+<li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li>
+<li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li></ul>
         :type SealSize: str
         :param _TaxIdentifyCode: 企业税号
 注: `1.印章类型SealType是INVOICE类型时，此参数才会生效`
@@ -11428,6 +11685,130 @@ class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._WorkflowUrl = params.get("WorkflowUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExtendedServiceAuthDetailRequest(AbstractModel):
+    """DescribeExtendedServiceAuthDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _ExtendServiceType: 要查询的扩展服务类型。
+如下所示：
+<ul><li> AUTO_SIGN：企业静默签署</li>
+<li>BATCH_SIGN：批量签署</li>
+</ul>
+
+        :type ExtendServiceType: str
+        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。 注：`1.默认值为20，单页做大值为200。`	
+        :type Limit: int
+        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。 注：`1.offset从0开始，即第一页为0。` `2.默认从第一页返回。`	
+        :type Offset: int
+        """
+        self._Agent = None
+        self._ExtendServiceType = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ExtendServiceType(self):
+        return self._ExtendServiceType
+
+    @ExtendServiceType.setter
+    def ExtendServiceType(self, ExtendServiceType):
+        self._ExtendServiceType = ExtendServiceType
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ExtendServiceType = params.get("ExtendServiceType")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
+    """DescribeExtendedServiceAuthDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthInfoDetail: 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthInfoDetail: :class:`tencentcloud.essbasic.v20210526.models.AuthInfoDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuthInfoDetail = None
+        self._RequestId = None
+
+    @property
+    def AuthInfoDetail(self):
+        return self._AuthInfoDetail
+
+    @AuthInfoDetail.setter
+    def AuthInfoDetail(self, AuthInfoDetail):
+        self._AuthInfoDetail = AuthInfoDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AuthInfoDetail") is not None:
+            self._AuthInfoDetail = AuthInfoDetail()
+            self._AuthInfoDetail._deserialize(params.get("AuthInfoDetail"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13138,6 +13519,12 @@ class FlowApproverInfo(AbstractModel):
 
 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
         :type ApproverRoleName: str
+        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+<ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
+<li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
+注：
+`不指定该值时，默认为签署方自行选择。`
+        :type SignTypeSelector: int
         """
         self._Name = None
         self._IdCardType = None
@@ -13163,6 +13550,7 @@ class FlowApproverInfo(AbstractModel):
         self._NotifyType = None
         self._AddSignComponentsLimits = None
         self._ApproverRoleName = None
+        self._SignTypeSelector = None
 
     @property
     def Name(self):
@@ -13360,6 +13748,14 @@ class FlowApproverInfo(AbstractModel):
     def ApproverRoleName(self, ApproverRoleName):
         self._ApproverRoleName = ApproverRoleName
 
+    @property
+    def SignTypeSelector(self):
+        return self._SignTypeSelector
+
+    @SignTypeSelector.setter
+    def SignTypeSelector(self, SignTypeSelector):
+        self._SignTypeSelector = SignTypeSelector
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13398,6 +13794,7 @@ class FlowApproverInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AddSignComponentsLimits.append(obj)
         self._ApproverRoleName = params.get("ApproverRoleName")
+        self._SignTypeSelector = params.get("SignTypeSelector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14670,6 +15067,128 @@ class GetDownloadFlowUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._DownLoadUrl = params.get("DownLoadUrl")
         self._RequestId = params.get("RequestId")
+
+
+class HasAuthOrganization(AbstractModel):
+    """授权企业列表（目前仅用于“企业自动签 -> 合作企业授权”）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationOpenId: 授权企业openid，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationOpenId: str
+        :param _OrganizationName: 授权企业名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrganizationName: str
+        :param _AuthorizedOrganizationOpenId: 被授权企业openid，
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizedOrganizationOpenId: str
+        :param _AuthorizedOrganizationName: 被授权企业名称	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizedOrganizationName: str
+        :param _AuthorizeTime: 授权时间，格式为时间戳，单位s	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizeTime: int
+        """
+        self._OrganizationOpenId = None
+        self._OrganizationName = None
+        self._AuthorizedOrganizationOpenId = None
+        self._AuthorizedOrganizationName = None
+        self._AuthorizeTime = None
+
+    @property
+    def OrganizationOpenId(self):
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def AuthorizedOrganizationOpenId(self):
+        return self._AuthorizedOrganizationOpenId
+
+    @AuthorizedOrganizationOpenId.setter
+    def AuthorizedOrganizationOpenId(self, AuthorizedOrganizationOpenId):
+        self._AuthorizedOrganizationOpenId = AuthorizedOrganizationOpenId
+
+    @property
+    def AuthorizedOrganizationName(self):
+        return self._AuthorizedOrganizationName
+
+    @AuthorizedOrganizationName.setter
+    def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
+        self._AuthorizedOrganizationName = AuthorizedOrganizationName
+
+    @property
+    def AuthorizeTime(self):
+        return self._AuthorizeTime
+
+    @AuthorizeTime.setter
+    def AuthorizeTime(self, AuthorizeTime):
+        self._AuthorizeTime = AuthorizeTime
+
+
+    def _deserialize(self, params):
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._OrganizationName = params.get("OrganizationName")
+        self._AuthorizedOrganizationOpenId = params.get("AuthorizedOrganizationOpenId")
+        self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
+        self._AuthorizeTime = params.get("AuthorizeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HasAuthUser(AbstractModel):
+    """被授权的用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpenId: 第三方应用平台自定义，对应第三方平台子客企业员工的唯一标识。
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        """
+        self._OpenId = None
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+
+    def _deserialize(self, params):
+        self._OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyExtendedServiceRequest(AbstractModel):

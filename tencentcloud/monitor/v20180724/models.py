@@ -4999,7 +4999,7 @@ class CreatePrometheusGlobalNotificationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例ID(可通过 DescribePrometheusInstances 接口获取)
         :type InstanceId: str
         :param _Notification: 告警通知渠道
         :type Notification: :class:`tencentcloud.monitor.v20180724.models.PrometheusNotificationItem`
@@ -6491,11 +6491,11 @@ class DeletePrometheusAlertPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: 实例ID(可通过 DescribePrometheusInstances 接口获取)
         :type InstanceId: str
-        :param _AlertIds: 告警策略id列表
+        :param _AlertIds: 告警策略ID列表(可通过 DescribePrometheusAlertPolicy 接口获取)
         :type AlertIds: list of str
-        :param _Names: 告警策略名称
+        :param _Names: 告警策略名称(可通过 DescribePrometheusAlertPolicy 接口获取)，名称完全相同的告警策略才会删除
         :type Names: list of str
         """
         self._InstanceId = None
@@ -15678,14 +15678,17 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
         :type Agents: list of PrometheusAgentOverview
         :param _Total: 被关联集群总量
         :type Total: int
-        :param _IsFirstBind: 是否为首次绑定，需要安装预聚合规则
+        :param _IsFirstBind: 是否为首次绑定，如果是首次绑定则需要安装预聚合规则
         :type IsFirstBind: bool
+        :param _ImageNeedUpdate: 实例组件是否需要更新镜像版本
+        :type ImageNeedUpdate: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Agents = None
         self._Total = None
         self._IsFirstBind = None
+        self._ImageNeedUpdate = None
         self._RequestId = None
 
     @property
@@ -15713,6 +15716,14 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
         self._IsFirstBind = IsFirstBind
 
     @property
+    def ImageNeedUpdate(self):
+        return self._ImageNeedUpdate
+
+    @ImageNeedUpdate.setter
+    def ImageNeedUpdate(self, ImageNeedUpdate):
+        self._ImageNeedUpdate = ImageNeedUpdate
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15730,6 +15741,7 @@ class DescribePrometheusClusterAgentsResponse(AbstractModel):
                 self._Agents.append(obj)
         self._Total = params.get("Total")
         self._IsFirstBind = params.get("IsFirstBind")
+        self._ImageNeedUpdate = params.get("ImageNeedUpdate")
         self._RequestId = params.get("RequestId")
 
 
@@ -15807,6 +15819,8 @@ class DescribePrometheusConfigResponse(AbstractModel):
         :type RawJobs: list of PrometheusConfigItem
         :param _Probes: Probes
         :type Probes: list of PrometheusConfigItem
+        :param _ImageNeedUpdate: 实例组件是否需要升级
+        :type ImageNeedUpdate: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15815,6 +15829,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
         self._PodMonitors = None
         self._RawJobs = None
         self._Probes = None
+        self._ImageNeedUpdate = None
         self._RequestId = None
 
     @property
@@ -15858,6 +15873,14 @@ class DescribePrometheusConfigResponse(AbstractModel):
         self._Probes = Probes
 
     @property
+    def ImageNeedUpdate(self):
+        return self._ImageNeedUpdate
+
+    @ImageNeedUpdate.setter
+    def ImageNeedUpdate(self, ImageNeedUpdate):
+        self._ImageNeedUpdate = ImageNeedUpdate
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15892,6 +15915,7 @@ class DescribePrometheusConfigResponse(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self._Probes.append(obj)
+        self._ImageNeedUpdate = params.get("ImageNeedUpdate")
         self._RequestId = params.get("RequestId")
 
 
@@ -17353,18 +17377,19 @@ class DescribePrometheusTargetsTMPRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例id
         :type InstanceId: str
-        :param _ClusterType: 集群类型
-        :type ClusterType: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: 集成容器服务填绑定的集群id；
+集成中心填 non-cluster
         :type ClusterId: str
+        :param _ClusterType: 集群类型(可不填)
+        :type ClusterType: str
         :param _Filters: 过滤条件，当前支持
 Name=state
 Value=up, down, unknown
         :type Filters: list of Filter
         """
         self._InstanceId = None
-        self._ClusterType = None
         self._ClusterId = None
+        self._ClusterType = None
         self._Filters = None
 
     @property
@@ -17376,20 +17401,20 @@ Value=up, down, unknown
         self._InstanceId = InstanceId
 
     @property
-    def ClusterType(self):
-        return self._ClusterType
-
-    @ClusterType.setter
-    def ClusterType(self, ClusterType):
-        self._ClusterType = ClusterType
-
-    @property
     def ClusterId(self):
         return self._ClusterId
 
     @ClusterId.setter
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
 
     @property
     def Filters(self):
@@ -17402,8 +17427,8 @@ Value=up, down, unknown
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._ClusterType = params.get("ClusterType")
         self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -22632,6 +22657,9 @@ class ModifyPrometheusConfigRequest(AbstractModel):
         :type PodMonitors: list of PrometheusConfigItem
         :param _RawJobs: prometheus原生Job配置
         :type RawJobs: list of PrometheusConfigItem
+        :param _UpdateImage: 0: 更新实例组件镜像版本；
+1: 不更新实例组件镜像版本
+        :type UpdateImage: int
         """
         self._InstanceId = None
         self._ClusterType = None
@@ -22639,6 +22667,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
         self._ServiceMonitors = None
         self._PodMonitors = None
         self._RawJobs = None
+        self._UpdateImage = None
 
     @property
     def InstanceId(self):
@@ -22688,6 +22717,14 @@ class ModifyPrometheusConfigRequest(AbstractModel):
     def RawJobs(self, RawJobs):
         self._RawJobs = RawJobs
 
+    @property
+    def UpdateImage(self):
+        return self._UpdateImage
+
+    @UpdateImage.setter
+    def UpdateImage(self, UpdateImage):
+        self._UpdateImage = UpdateImage
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -22711,6 +22748,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
                 obj = PrometheusConfigItem()
                 obj._deserialize(item)
                 self._RawJobs.append(obj)
+        self._UpdateImage = params.get("UpdateImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25612,6 +25650,74 @@ class PrometheusJobTargets(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Targets: 该Job的targets列表
+        :type Targets: list of PrometheusTarget
+        :param _JobName: job的名称
+        :type JobName: str
+        :param _Total: targets总数
+        :type Total: int
+        :param _Up: 健康的target总数
+        :type Up: int
+        """
+        self._Targets = None
+        self._JobName = None
+        self._Total = None
+        self._Up = None
+
+    @property
+    def Targets(self):
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Up(self):
+        return self._Up
+
+    @Up.setter
+    def Up(self, Up):
+        self._Up = Up
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = PrometheusTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._JobName = params.get("JobName")
+        self._Total = params.get("Total")
+        self._Up = params.get("Up")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class PrometheusNotificationItem(AbstractModel):
     """告警通知渠道配置
@@ -26395,6 +26501,12 @@ class PrometheusTag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class PrometheusTarget(AbstractModel):
+    """prometheus一个抓取目标的信息
+
+    """
 
 
 class PrometheusTemp(AbstractModel):
