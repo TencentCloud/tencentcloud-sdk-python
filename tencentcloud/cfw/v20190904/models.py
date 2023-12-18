@@ -3083,6 +3083,8 @@ class CreateNatRuleItem(AbstractModel):
         :type Uuid: int
         :param _Description: 描述
         :type Description: str
+        :param _ParamTemplateId: 端口协议组ID
+        :type ParamTemplateId: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -3096,6 +3098,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Enable = None
         self._Uuid = None
         self._Description = None
+        self._ParamTemplateId = None
 
     @property
     def SourceContent(self):
@@ -3193,6 +3196,14 @@ class CreateNatRuleItem(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -3207,6 +3218,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Enable = params.get("Enable")
         self._Uuid = params.get("Uuid")
         self._Description = params.get("Description")
+        self._ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3254,6 +3266,8 @@ class CreateRuleItem(AbstractModel):
         :type RuleSource: int
         :param _LogId: 告警Id
         :type LogId: str
+        :param _ParamTemplateId: 端都协议组ID
+        :type ParamTemplateId: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -3270,6 +3284,7 @@ class CreateRuleItem(AbstractModel):
         self._Scope = None
         self._RuleSource = None
         self._LogId = None
+        self._ParamTemplateId = None
 
     @property
     def SourceContent(self):
@@ -3391,6 +3406,14 @@ class CreateRuleItem(AbstractModel):
     def LogId(self, LogId):
         self._LogId = LogId
 
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -3408,6 +3431,7 @@ class CreateRuleItem(AbstractModel):
         self._Scope = params.get("Scope")
         self._RuleSource = params.get("RuleSource")
         self._LogId = params.get("LogId")
+        self._ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4781,6 +4805,12 @@ class DescAcItem(AbstractModel):
         :param _InternetBorderUuid: 互联网边界防火墙使用的内部规则id
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetBorderUuid: str
+        :param _ParamTemplateName: 协议端口组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTemplateName: str
+        :param _ParamTemplateId: 协议端口组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTemplateId: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -4809,6 +4839,8 @@ class DescAcItem(AbstractModel):
         self._BetaList = None
         self._Scope = None
         self._InternetBorderUuid = None
+        self._ParamTemplateName = None
+        self._ParamTemplateId = None
 
     @property
     def SourceContent(self):
@@ -5026,6 +5058,22 @@ class DescAcItem(AbstractModel):
     def InternetBorderUuid(self, InternetBorderUuid):
         self._InternetBorderUuid = InternetBorderUuid
 
+    @property
+    def ParamTemplateName(self):
+        return self._ParamTemplateName
+
+    @ParamTemplateName.setter
+    def ParamTemplateName(self, ParamTemplateName):
+        self._ParamTemplateName = ParamTemplateName
+
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -5060,6 +5108,8 @@ class DescAcItem(AbstractModel):
                 self._BetaList.append(obj)
         self._Scope = params.get("Scope")
         self._InternetBorderUuid = params.get("InternetBorderUuid")
+        self._ParamTemplateName = params.get("ParamTemplateName")
+        self._ParamTemplateId = params.get("ParamTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20107,6 +20157,12 @@ log：观察
         :param _BetaList: beta任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type BetaList: list of BetaInfoByACL
+        :param _ParamTemplateId: 端口协议组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTemplateId: str
+        :param _ParamTemplateName: 端口协议组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamTemplateName: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -20127,6 +20183,8 @@ log：观察
         self._FwGroupId = None
         self._FwGroupName = None
         self._BetaList = None
+        self._ParamTemplateId = None
+        self._ParamTemplateName = None
 
     @property
     def SourceContent(self):
@@ -20280,6 +20338,22 @@ log：观察
     def BetaList(self, BetaList):
         self._BetaList = BetaList
 
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def ParamTemplateName(self):
+        return self._ParamTemplateName
+
+    @ParamTemplateName.setter
+    def ParamTemplateName(self, ParamTemplateName):
+        self._ParamTemplateName = ParamTemplateName
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -20306,6 +20380,8 @@ log：观察
                 obj = BetaInfoByACL()
                 obj._deserialize(item)
                 self._BetaList.append(obj)
+        self._ParamTemplateId = params.get("ParamTemplateId")
+        self._ParamTemplateName = params.get("ParamTemplateName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

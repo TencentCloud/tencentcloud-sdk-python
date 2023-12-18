@@ -195,9 +195,13 @@ class AlarmHierarchicalNotice(AbstractModel):
         :param _Classification: 通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
 注意：此字段可能返回 null，表示取不到有效值。
         :type Classification: list of str
+        :param _PolicyId: 模板对应的策略id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyId: str
         """
         self._NoticeId = None
         self._Classification = None
+        self._PolicyId = None
 
     @property
     def NoticeId(self):
@@ -215,10 +219,19 @@ class AlarmHierarchicalNotice(AbstractModel):
     def Classification(self, Classification):
         self._Classification = Classification
 
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
 
     def _deserialize(self, params):
         self._NoticeId = params.get("NoticeId")
         self._Classification = params.get("Classification")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

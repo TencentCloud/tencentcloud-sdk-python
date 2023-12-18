@@ -2605,7 +2605,7 @@ class CreateBatchQuickSignUrlRequest(AbstractModel):
 <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
         :type ApproverSignTypes: list of int
-        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        :param _SignTypeSelector: 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：
@@ -13782,7 +13782,7 @@ class FlowCreateApprover(AbstractModel):
 注:
 `此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主`
         :type ApproverSignTypes: list of int non-negative
-        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        :param _SignTypeSelector: 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：

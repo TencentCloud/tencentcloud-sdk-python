@@ -13363,6 +13363,9 @@ class ModelInfo(AbstractModel):
         :param _ModelFormat: 模型格式
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelFormat: str
+        :param _IsPrivateModel: 是否为私有化大模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPrivateModel: bool
         """
         self._ModelVersionId = None
         self._ModelId = None
@@ -13373,6 +13376,7 @@ class ModelInfo(AbstractModel):
         self._AlgorithmFramework = None
         self._ModelType = None
         self._ModelFormat = None
+        self._IsPrivateModel = None
 
     @property
     def ModelVersionId(self):
@@ -13446,6 +13450,14 @@ class ModelInfo(AbstractModel):
     def ModelFormat(self, ModelFormat):
         self._ModelFormat = ModelFormat
 
+    @property
+    def IsPrivateModel(self):
+        return self._IsPrivateModel
+
+    @IsPrivateModel.setter
+    def IsPrivateModel(self, IsPrivateModel):
+        self._IsPrivateModel = IsPrivateModel
+
 
     def _deserialize(self, params):
         self._ModelVersionId = params.get("ModelVersionId")
@@ -13459,6 +13471,7 @@ class ModelInfo(AbstractModel):
         self._AlgorithmFramework = params.get("AlgorithmFramework")
         self._ModelType = params.get("ModelType")
         self._ModelFormat = params.get("ModelFormat")
+        self._IsPrivateModel = params.get("IsPrivateModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17350,13 +17363,14 @@ class SendChatMessageRequest(AbstractModel):
         :param _Question: 问题描述
         :type Question: str
         :param _ModelVersion: 会话模型版本。
-多行业客服大模型：填写demo_big_model_version_id。
-默认为demo_big_model_version_id，即多行业客服大模型。
+金融大模型：填写sn-finllm-13b-chat-v1。
+默认为sn-finllm-13b-chat-v1，即金融大模型。
         :type ModelVersion: str
-        :param _Mode: 使用模式(仅多场景客服大模型支持)。
+        :param _Mode: 使用模式。
 通用问答：填写General。
 搜索增强问答：填写WithSearchPlugin。
 默认为General，即通用问答。
+当前可体验模型仅支持General。
         :type Mode: str
         :param _SearchSource: 搜索来源。仅当Mode为WithSearchPlugin时生效。
 预置文稿库：填写Preset。自定义：填写Custom。

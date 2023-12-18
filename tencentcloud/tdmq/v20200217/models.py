@@ -13713,6 +13713,8 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
         :type FilterType: list of str
         :param _FilterName: 按主题名称搜索，支持模糊查询
         :type FilterName: str
+        :param _FilterGroup: 按订阅消费组名称过滤
+        :type FilterGroup: str
         """
         self._Offset = None
         self._Limit = None
@@ -13720,6 +13722,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
         self._NamespaceId = None
         self._FilterType = None
         self._FilterName = None
+        self._FilterGroup = None
 
     @property
     def Offset(self):
@@ -13769,6 +13772,14 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
     def FilterName(self, FilterName):
         self._FilterName = FilterName
 
+    @property
+    def FilterGroup(self):
+        return self._FilterGroup
+
+    @FilterGroup.setter
+    def FilterGroup(self, FilterGroup):
+        self._FilterGroup = FilterGroup
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -13777,6 +13788,7 @@ class DescribeRocketMQTopicsRequest(AbstractModel):
         self._NamespaceId = params.get("NamespaceId")
         self._FilterType = params.get("FilterType")
         self._FilterName = params.get("FilterName")
+        self._FilterGroup = params.get("FilterGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19336,6 +19348,10 @@ OFF/ON/CREATING/DELETING
         :param _PrometheusEndpointInfo: Prometheus信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrometheusEndpointInfo: :class:`tencentcloud.tdmq.v20200217.models.PrometheusEndpointInfo`
+        :param _WebConsoleDomainEndpoint: http://amqp-k3eb47gm.dashboard.rabbitmq.cq.public.tencenttdmq.com:15672/
+公网域名接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebConsoleDomainEndpoint: str
         """
         self._PublicAccessEndpoint = None
         self._WebConsoleEndpoint = None
@@ -19349,6 +19365,7 @@ OFF/ON/CREATING/DELETING
         self._VpcWebConsoleSwitchStatus = None
         self._PublicDataStreamStatus = None
         self._PrometheusEndpointInfo = None
+        self._WebConsoleDomainEndpoint = None
 
     @property
     def PublicAccessEndpoint(self):
@@ -19446,6 +19463,14 @@ OFF/ON/CREATING/DELETING
     def PrometheusEndpointInfo(self, PrometheusEndpointInfo):
         self._PrometheusEndpointInfo = PrometheusEndpointInfo
 
+    @property
+    def WebConsoleDomainEndpoint(self):
+        return self._WebConsoleDomainEndpoint
+
+    @WebConsoleDomainEndpoint.setter
+    def WebConsoleDomainEndpoint(self, WebConsoleDomainEndpoint):
+        self._WebConsoleDomainEndpoint = WebConsoleDomainEndpoint
+
 
     def _deserialize(self, params):
         self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
@@ -19462,6 +19487,7 @@ OFF/ON/CREATING/DELETING
         if params.get("PrometheusEndpointInfo") is not None:
             self._PrometheusEndpointInfo = PrometheusEndpointInfo()
             self._PrometheusEndpointInfo._deserialize(params.get("PrometheusEndpointInfo"))
+        self._WebConsoleDomainEndpoint = params.get("WebConsoleDomainEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

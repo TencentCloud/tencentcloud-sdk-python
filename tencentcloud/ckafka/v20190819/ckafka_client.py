@@ -349,7 +349,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateInstancePre(self, request):
-        """创建实例(预付费包年包月)
+        """创建实例(预付费包年包月),  仅支持创建专业版实例
 
         :param request: Request instance for CreateInstancePre.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreRequest`

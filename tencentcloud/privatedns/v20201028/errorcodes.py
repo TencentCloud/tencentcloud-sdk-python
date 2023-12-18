@@ -140,6 +140,9 @@ INVALIDPARAMETER_RECORDTXTCOUNTEXCEED = 'InvalidParameter.RecordTXTCountExceed'
 # 当前记录类型不支持权重。
 INVALIDPARAMETER_RECORDUNSUPPORTWEIGHT = 'InvalidParameter.RecordUnsupportWeight'
 
+# 唯一id不存在
+INVALIDPARAMETER_UNIQUEIDNOTEXIST = 'InvalidParameter.UniqueIdNotExist'
+
 # VPC已绑定其它解析域。
 INVALIDPARAMETER_VPCBINDED = 'InvalidParameter.VpcBinded'
 

@@ -556,6 +556,9 @@ Modify 集群变更中；
         :param _Components: 组件信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: str
+        :param _IfExistCatalog: 判断审计日志表是否有catalog字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IfExistCatalog: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -593,6 +596,7 @@ Modify 集群变更中；
         self._CanAttachCbs = None
         self._BuildVersion = None
         self._Components = None
+        self._IfExistCatalog = None
 
     @property
     def InstanceId(self):
@@ -882,6 +886,14 @@ Modify 集群变更中；
     def Components(self, Components):
         self._Components = Components
 
+    @property
+    def IfExistCatalog(self):
+        return self._IfExistCatalog
+
+    @IfExistCatalog.setter
+    def IfExistCatalog(self, IfExistCatalog):
+        self._IfExistCatalog = IfExistCatalog
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -929,6 +941,7 @@ Modify 集群变更中；
         self._CanAttachCbs = params.get("CanAttachCbs")
         self._BuildVersion = params.get("BuildVersion")
         self._Components = params.get("Components")
+        self._IfExistCatalog = params.get("IfExistCatalog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

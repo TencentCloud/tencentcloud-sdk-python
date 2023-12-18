@@ -1998,7 +1998,7 @@ class ChannelCreateBatchQuickSignUrlRequest(AbstractModel):
 <ul><li>默认情况下，认证校验方式为人脸和密码认证</li>
 <li>您可以传递多种值，表示可用多种认证校验方式。</li></ul>
         :type ApproverSignTypes: list of int
-        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        :param _SignTypeSelector: 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：
@@ -6898,6 +6898,14 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _Limit: 返回最大数量，最大为100
         :type Limit: int
@@ -6913,11 +6921,12 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
 注:  `没有输入返回所有记录，最大返回100条。`
         :type SealId: str
-        :param _SealTypes: 印章类型列表，目前支持传入以下类型：
-<ul><li>OFFICIAL-企业公章</li>
-<li>CONTRACT-合同专用章</li>
-<li>ORGANIZATION_SEAL-企业印章(图片上传创建)</li>
-<li>LEGAL_PERSON_SEAL-法定代表人章</li>
+        :param _SealTypes: 电子印章类型 , 可选类型如下: 
+<ul><li>**OFFICIAL**: (默认)公章</li>
+<li>**CONTRACT**: 合同专用章;</li>
+<li>**FINANCE**: 财务专用章;</li>
+<li>**PERSONNEL**: 人事专用章</li>
+<li>**INVOICE**: 发票专用章</li>
 </ul>
 
 注:  `为空时查询所有类型的印章。`
@@ -13519,7 +13528,7 @@ class FlowApproverInfo(AbstractModel):
 
 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
         :type ApproverRoleName: str
-        :param _SignTypeSelector: 生成H5签署链接时，你可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
+        :param _SignTypeSelector: 生成H5签署链接时，您可以指定签署方签署合同的认证校验方式的选择模式，可传递一下值：
 <ul><li>**0**：签署方自行选择，签署方可以从预先指定的认证方式中自由选择；</li>
 <li>**1**：自动按顺序首位推荐，签署方无需选择，系统会优先推荐使用第一种认证方式。</li></ul>
 注：
@@ -16826,7 +16835,7 @@ class RegistrationOrganizationInfo(AbstractModel):
         :type Address: str
         :param _AdminName: 组织机构超管姓名。
 在注册流程中，必须是超管本人进行操作。
-如果法人做为超管管理组织机构,超管姓名就是法人姓名
+如果法人作为超管管理组织机构,超管姓名就是法人姓名
         :type AdminName: str
         :param _AdminMobile: 组织机构超管姓名。
 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。

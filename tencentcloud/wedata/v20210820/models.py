@@ -1205,6 +1205,9 @@ class AlarmReceiverInfo(AbstractModel):
         :param _WecomGroup: 企业微信群，0：未设置，1：成功，2：失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type WecomGroup: int
+        :param _LarkGroup: 飞书群，0：未设置，1：成功，2：失败
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkGroup: int
         """
         self._AlarmId = None
         self._AlarmReceiver = None
@@ -1215,6 +1218,7 @@ class AlarmReceiverInfo(AbstractModel):
         self._Wecom = None
         self._Http = None
         self._WecomGroup = None
+        self._LarkGroup = None
 
     @property
     def AlarmId(self):
@@ -1288,6 +1292,14 @@ class AlarmReceiverInfo(AbstractModel):
     def WecomGroup(self, WecomGroup):
         self._WecomGroup = WecomGroup
 
+    @property
+    def LarkGroup(self):
+        return self._LarkGroup
+
+    @LarkGroup.setter
+    def LarkGroup(self, LarkGroup):
+        self._LarkGroup = LarkGroup
+
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
@@ -1299,6 +1311,7 @@ class AlarmReceiverInfo(AbstractModel):
         self._Wecom = params.get("Wecom")
         self._Http = params.get("Http")
         self._WecomGroup = params.get("WecomGroup")
+        self._LarkGroup = params.get("LarkGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5889,10 +5902,13 @@ class BatchSuspendIntegrationTasksRequest(AbstractModel):
         :type TaskType: int
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _Event: 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+        :type Event: str
         """
         self._TaskIds = None
         self._TaskType = None
         self._ProjectId = None
+        self._Event = None
 
     @property
     def TaskIds(self):
@@ -5918,11 +5934,20 @@ class BatchSuspendIntegrationTasksRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
+        self._Event = params.get("Event")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8053,6 +8078,8 @@ class CommitIntegrationTaskRequest(AbstractModel):
         :type VersionDesc: str
         :param _InstanceVersion: 提交版本号
         :type InstanceVersion: int
+        :param _EventDesc: 前端操作类型描述
+        :type EventDesc: str
         """
         self._TaskId = None
         self._ProjectId = None
@@ -8061,6 +8088,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
         self._ExtConfig = None
         self._VersionDesc = None
         self._InstanceVersion = None
+        self._EventDesc = None
 
     @property
     def TaskId(self):
@@ -8118,6 +8146,14 @@ class CommitIntegrationTaskRequest(AbstractModel):
     def InstanceVersion(self, InstanceVersion):
         self._InstanceVersion = InstanceVersion
 
+    @property
+    def EventDesc(self):
+        return self._EventDesc
+
+    @EventDesc.setter
+    def EventDesc(self, EventDesc):
+        self._EventDesc = EventDesc
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -8132,6 +8168,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
                 self._ExtConfig.append(obj)
         self._VersionDesc = params.get("VersionDesc")
         self._InstanceVersion = params.get("InstanceVersion")
+        self._EventDesc = params.get("EventDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34146,6 +34183,79 @@ class DescribeTableLineageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableMetaRequest(AbstractModel):
+    """DescribeTableMeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表唯一id
+        :type TableId: str
+        """
+        self._TableId = None
+
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableMetaResponse(AbstractModel):
+    """DescribeTableMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableMeta: 表的元数据信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableMeta: :class:`tencentcloud.wedata.v20210820.models.TableMeta`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableMeta = None
+        self._RequestId = None
+
+    @property
+    def TableMeta(self):
+        return self._TableMeta
+
+    @TableMeta.setter
+    def TableMeta(self, TableMeta):
+        self._TableMeta = TableMeta
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableMeta") is not None:
+            self._TableMeta = TableMeta()
+            self._TableMeta._deserialize(params.get("TableMeta"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTableMetasRequest(AbstractModel):
     """DescribeTableMetas请求参数结构体
 
@@ -57873,11 +57983,14 @@ class ResumeIntegrationTaskRequest(AbstractModel):
         :type Event: str
         :param _ExtConfig: 额外参数
         :type ExtConfig: list of RecordField
+        :param _EventDesc: 前端操作类型描述
+        :type EventDesc: str
         """
         self._TaskId = None
         self._ProjectId = None
         self._Event = None
         self._ExtConfig = None
+        self._EventDesc = None
 
     @property
     def TaskId(self):
@@ -57911,6 +58024,14 @@ class ResumeIntegrationTaskRequest(AbstractModel):
     def ExtConfig(self, ExtConfig):
         self._ExtConfig = ExtConfig
 
+    @property
+    def EventDesc(self):
+        return self._EventDesc
+
+    @EventDesc.setter
+    def EventDesc(self, EventDesc):
+        self._EventDesc = EventDesc
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -57922,6 +58043,7 @@ class ResumeIntegrationTaskRequest(AbstractModel):
                 obj = RecordField()
                 obj._deserialize(item)
                 self._ExtConfig.append(obj)
+        self._EventDesc = params.get("EventDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65341,11 +65463,14 @@ class StartIntegrationTaskRequest(AbstractModel):
         :type Event: str
         :param _ExtConfig: 额外参数
         :type ExtConfig: list of RecordField
+        :param _EventDesc: 操作类型描述
+        :type EventDesc: str
         """
         self._TaskId = None
         self._ProjectId = None
         self._Event = None
         self._ExtConfig = None
+        self._EventDesc = None
 
     @property
     def TaskId(self):
@@ -65379,6 +65504,14 @@ class StartIntegrationTaskRequest(AbstractModel):
     def ExtConfig(self, ExtConfig):
         self._ExtConfig = ExtConfig
 
+    @property
+    def EventDesc(self):
+        return self._EventDesc
+
+    @EventDesc.setter
+    def EventDesc(self, EventDesc):
+        self._EventDesc = EventDesc
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -65390,6 +65523,7 @@ class StartIntegrationTaskRequest(AbstractModel):
                 obj = RecordField()
                 obj._deserialize(item)
                 self._ExtConfig.append(obj)
+        self._EventDesc = params.get("EventDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66707,9 +66841,12 @@ class SuspendIntegrationTaskRequest(AbstractModel):
         :type TaskId: str
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _Event: 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
+        :type Event: str
         """
         self._TaskId = None
         self._ProjectId = None
+        self._Event = None
 
     @property
     def TaskId(self):
@@ -66727,10 +66864,19 @@ class SuspendIntegrationTaskRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ProjectId = params.get("ProjectId")
+        self._Event = params.get("Event")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68556,6 +68702,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _Description: 告警规则描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _LarkWebHooks: 飞书群Hook地址，多个hook地址使用,隔开
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LarkWebHooks: str
         """
         self._TaskId = None
         self._RegularName = None
@@ -68587,6 +68736,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LatestAlarmInstanceId = None
         self._LatestAlarmTime = None
         self._Description = None
+        self._LarkWebHooks = None
 
     @property
     def TaskId(self):
@@ -68828,6 +68978,14 @@ class TaskAlarmInfo(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def LarkWebHooks(self):
+        return self._LarkWebHooks
+
+    @LarkWebHooks.setter
+    def LarkWebHooks(self, LarkWebHooks):
+        self._LarkWebHooks = LarkWebHooks
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -68865,6 +69023,7 @@ class TaskAlarmInfo(AbstractModel):
         self._LatestAlarmInstanceId = params.get("LatestAlarmInstanceId")
         self._LatestAlarmTime = params.get("LatestAlarmTime")
         self._Description = params.get("Description")
+        self._LarkWebHooks = params.get("LarkWebHooks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

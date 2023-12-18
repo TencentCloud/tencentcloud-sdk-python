@@ -274,7 +274,7 @@ URL中禁止包含的字符：
  ;(){}$>`#"\'|
         :type PictureUrl: str
         :param _WatermarkName: 水印名称。
-最长16字节。
+最长30字节。
         :type WatermarkName: str
         :param _XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
         :type XPosition: int
@@ -25985,6 +25985,7 @@ class TranscodeDetailInfo(AbstractModel):
         :type Duration: int
         :param _ModuleCodec: 编码方式，带模块，
 示例：
+liveprocessor_ACC:  音频转码，
 liveprocessor_H264：直播转码-H264，
 liveprocessor_H265： 直播转码-H265，
 topspeed_H264：极速高清-H264，
@@ -26344,7 +26345,7 @@ URL中禁止包含的字符：
         :param _YPosition: 显示位置，Y轴偏移，单位是百分比，默认 0。
         :type YPosition: int
         :param _WatermarkName: 水印名称。
-最长16字节。
+最长30字节。
         :type WatermarkName: str
         :param _Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
         :type Width: int
