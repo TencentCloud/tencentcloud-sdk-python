@@ -923,6 +923,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeModelAccelerateVersions(self, request):
+        """模型加速之后的模型版本列表
+
+        :param request: Request instance for DescribeModelAccelerateVersions.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateVersionsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeModelAccelerateVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelAccelerateVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelAccelerateVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModelService(self, request):
         """查询单个服务
 

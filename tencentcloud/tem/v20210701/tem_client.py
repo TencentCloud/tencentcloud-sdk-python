@@ -119,7 +119,7 @@ class TemClient(AbstractClient):
 
 
     def CreateCosToken(self, request):
-        """生成Cos临时秘钥
+        """生成Cos临时密钥
 
         :param request: Request instance for CreateCosToken.
         :type request: :class:`tencentcloud.tem.v20210701.models.CreateCosTokenRequest`

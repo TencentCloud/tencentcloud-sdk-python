@@ -196,7 +196,7 @@ class AlarmInfo(AbstractModel):
         :type AlarmTargets: list of AlarmTargetInfo
         :param _MonitorTime: 监控任务运行时间点。
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 触发条件。
+        :param _Condition: 单触发条件。与MultiConditions参数互斥。
         :type Condition: str
         :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
         :type TriggerCount: int
@@ -233,8 +233,8 @@ class AlarmInfo(AbstractModel):
         :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmLevel: int
-        :param _MultiConditions: 多触发条件。
-
+        :param _MultiConditions: 多触发条件。与
+Condition互斥。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiConditions: list of MultiCondition
         """
@@ -1120,7 +1120,49 @@ class AnalysisDimensional(AbstractModel):
         :param _Content: 分析内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
-        :param _ConfigInfo: 配置
+        :param _ConfigInfo: 多维分析配置。
+
+当Analysis的Type字段为query（自定义）时，支持
+{
+"Key": "SyntaxRule",  // 语法规则
+"Value": "1"  //0：Lucene语法 ，1： CQL语法
+}
+
+
+
+当Analysis的Type字段为field（top5）时,  支持
+ {
+    "Key": "QueryIndex",
+    "Value": "-1" //  -1：自定义， 1：执行语句1， 2：执行语句2
+},{
+    "Key": "CustomQuery", //检索语句。 QueryIndex为-1时有效且必填
+    "Value": "* | select count(*) as count"
+},{
+    "Key": "SyntaxRule", // 查不到这个字段也是老语法（Lucene）
+    "Value": "0"//0:Lucene, 1:CQL
+}       
+
+当Analysis的Type字段为original（原始日志）时,  支持
+{
+    "Key": "Fields",
+    "Value": "__SOURCE__,__HOSTNAME__,__TIMESTAMP__,__PKG_LOGID__,__TAG__.pod_ip"
+}, {
+    "Key": "QueryIndex",
+    "Value": "-1" //  -1：自定义， 1：执行语句1， 2：执行语句2
+},{
+    "Key": "CustomQuery", //  //检索语句。 QueryIndex为-1时有效且必填
+    "Value": "* | select count(*) as count"
+},{
+    "Key": "Format", //显示形式。1：每条日志一行，2：每条日志每个字段一行
+    "Value": "2"
+},
+{
+    "Key": "Limit", //最大日志条数
+    "Value": "5"
+},{
+    "Key": "SyntaxRule", // 查不到这个字段也是老语法
+    "Value": "0"//0:Lucene, 1:CQL
+}
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigInfo: list of AlarmAnalysisConfig
         """
@@ -1418,13 +1460,15 @@ class CheckRechargeKafkaServerRequest(AbstractModel):
         r"""
         :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
         :type KafkaType: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :param _KafkaInstance: 腾讯云CKafka实例ID。
+KafkaType为0时，KafkaInstance必填
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址
+        :param _ServerAddr: 服务地址。
+KafkaType为1时，ServerAddr必填
         :type ServerAddr: str
         :param _IsEncryptionAddr: ServerAddr是否为加密连接
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :param _Protocol: 加密访问协议。IsEncryptionAddr参数为true时必填
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         self._KafkaType = None
@@ -4016,9 +4060,10 @@ class CreateCosRechargeRequest(AbstractModel):
         :type LogsetId: str
         :param _Name: 投递任务名称
         :type Name: str
-        :param _Bucket: COS存储桶
+        :param _Bucket: COS存储桶。
+存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
         :type Bucket: str
-        :param _BucketRegion: COS存储桶所在地域
+        :param _BucketRegion: COS存储桶所在地域。地域和访问域名：https://cloud.tencent.com/document/product/436/6224
         :type BucketRegion: str
         :param _Prefix: COS文件所在文件夹的前缀
         :type Prefix: str
@@ -4746,11 +4791,13 @@ class CreateKafkaRechargeRequest(AbstractModel):
         :type ServerAddr: str
         :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :param _Protocol: 加密访问协议。
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _ConsumerGroupName: 用户Kafka消费组名称
         :type ConsumerGroupName: str
-        :param _LogRechargeRule: 日志导入规则
+        :param _LogRechargeRule: 日志导入规则。
+必填字段。
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         self._TopicId = None
@@ -10058,18 +10105,18 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页单页限制数目，默认值为20，最大值100。
         :type Limit: int
-        :param _Name: 任务名称
+        :param _Name: 任务名称。
         :type Name: str
-        :param _TaskId: 任务id
+        :param _TaskId: 任务id。
         :type TaskId: str
-        :param _Filters: <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配，类型：String必选：否</li>
-<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配，类型：String必选：否</li>
-<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String必选：否</li>
-<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String必选：否</li>
-<li>bizType按照【主题类型】进行过滤,0日志主题1指标主题,。类型：String必选：否</li>
-<li>status按照【任务状态】进行过滤。类型：String必选：否</li>
-<li>taskName按照【任务名称】进行过滤，模糊匹配，。类型：String必选：否</li>
-<li>taskId按照【任务ID】进行过滤，模糊匹配，。类型：String必选：否</li>
+        :param _Filters: <li>srcTopicName按照【源日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
+<li>bizType按照【主题类型】进行过滤,0日志主题 1指标主题。类型：String。必选：否</li>
+<li>status按照【任务状态】进行过滤，1:运行 2:停止。类型：String。必选：否</li>
+<li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
+<li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
 
         :type Filters: list of Filter
         """
@@ -11407,8 +11454,9 @@ class GetAlarmLogRequest(AbstractModel):
         :type To: int
         :param _Query: 查询过滤条件，例如：
 - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
-- 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b") `
-- 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b")`
+- 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
+- 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
+- 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
         :type Query: str
         :param _Limit: 单次查询返回的执行详情条数，最大值为1000
         :type Limit: int
@@ -11515,13 +11563,18 @@ class GetAlarmLogResponse(AbstractModel):
         :type ListOver: bool
         :param _Analysis: 返回的结果是否为SQL分析结果
         :type Analysis: bool
-        :param _ColNames: 如果Analysis为True，则返回分析结果的列名，否则为空
+        :param _ColNames: 分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；
+否则为空。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColNames: list of str
-        :param _Results: 执行详情查询结果；当Analysis为True时，可能返回为null
+        :param _Results: 执行详情查询结果。
+
+当Query字段无SQL语句时，返回查询结果。
+当Query字段有SQL语句时，可能返回null。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of LogInfo
-        :param _AnalysisResults: 执行详情统计分析结果；当Analysis为False时，可能返回为null
+        :param _AnalysisResults: 执行详情统计分析结果。当Query字段有SQL语句时，返回sql统计结果，否则可能返回null。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
         :param _AnalysisRecords: 执行详情统计分析结果; UseNewAnalysis为true有效
@@ -11946,16 +11999,20 @@ class KafkaProtocolInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证
+        :param _Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
+入参必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param _Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512
+        :param _Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
+当Protocol为sasl_plaintext或sasl_ssl时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mechanism: str
-        :param _UserName: 用户名
+        :param _UserName: 用户名。
+当Protocol为sasl_plaintext或sasl_ssl时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _Password: 用户密码
+        :param _Password: 用户密码。
+当Protocol为sasl_plaintext或sasl_ssl时必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Password: str
         """
@@ -16593,17 +16650,21 @@ class PreviewKafkaRechargeRequest(AbstractModel):
         :type PreviewType: int
         :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
         :type KafkaType: int
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。最多支持100个。
         :type UserKafkaTopics: str
         :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
         :type Offset: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :param _KafkaInstance: 腾讯云CKafka实例ID。
+KafkaType为0时KafkaInstance必填
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址
+        :param _ServerAddr: 服务地址。
+KafkaType为1时ServerAddr必填
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接
+        :param _IsEncryptionAddr: ServerAddr是否为加密连接。。
+KafkaType为1时有效。
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :param _Protocol: 加密访问协议。
+KafkaType为1并且IsEncryptionAddr为true时Protocol必填
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         :param _ConsumerGroupName: 用户Kafka消费组
         :type ConsumerGroupName: str
@@ -17372,7 +17433,7 @@ class ScheduledSqlResouceInfo(AbstractModel):
         :type Region: str
         :param _BizType: 主题类型：0为日志主题，1为指标主题
         :type BizType: int
-        :param _MetricName: 指标名称
+        :param _MetricName: 指标名称。当BizType为1时，MetricName需要填写
         :type MetricName: str
         :param _MetricNames: 指标名称
 BizType为1时，优先使用MetricNames字段多指标只能填充到MetricNames字段，单指标建议填充到MetricName字段
@@ -17738,9 +17799,11 @@ class SearchCosRechargeInfoRequest(AbstractModel):
         :type LogsetId: str
         :param _Name: 投递任务名称
         :type Name: str
-        :param _Bucket: 存储桶
+        :param _Bucket: 存储桶。
+存储桶命名规范：https://cloud.tencent.com/document/product/436/13312
         :type Bucket: str
-        :param _BucketRegion: 存储桶所在地域
+        :param _BucketRegion: 存储桶所在地域。
+地域和访问域名：https://cloud.tencent.com/document/product/436/6224
         :type BucketRegion: str
         :param _Prefix: cos文件所在文件夹的前缀
         :type Prefix: str

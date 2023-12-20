@@ -559,6 +559,9 @@ Modify 集群变更中；
         :param _IfExistCatalog: 判断审计日志表是否有catalog字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type IfExistCatalog: int
+        :param _Characteristic: 页面特性，用于前端屏蔽一些页面入口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Characteristic: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -597,6 +600,7 @@ Modify 集群变更中；
         self._BuildVersion = None
         self._Components = None
         self._IfExistCatalog = None
+        self._Characteristic = None
 
     @property
     def InstanceId(self):
@@ -888,11 +892,23 @@ Modify 集群变更中；
 
     @property
     def IfExistCatalog(self):
+        warnings.warn("parameter `IfExistCatalog` is deprecated", DeprecationWarning) 
+
         return self._IfExistCatalog
 
     @IfExistCatalog.setter
     def IfExistCatalog(self, IfExistCatalog):
+        warnings.warn("parameter `IfExistCatalog` is deprecated", DeprecationWarning) 
+
         self._IfExistCatalog = IfExistCatalog
+
+    @property
+    def Characteristic(self):
+        return self._Characteristic
+
+    @Characteristic.setter
+    def Characteristic(self, Characteristic):
+        self._Characteristic = Characteristic
 
 
     def _deserialize(self, params):
@@ -942,6 +958,7 @@ Modify 集群变更中；
         self._BuildVersion = params.get("BuildVersion")
         self._Components = params.get("Components")
         self._IfExistCatalog = params.get("IfExistCatalog")
+        self._Characteristic = params.get("Characteristic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

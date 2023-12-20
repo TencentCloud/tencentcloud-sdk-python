@@ -8681,6 +8681,164 @@ class DescribeModelAccelerateTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeModelAccelerateVersionsRequest(AbstractModel):
+    """DescribeModelAccelerateVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件
+    Filter.Name: 枚举值: ModelJobName (任务名称)|TrainingModelVersionId (模型版本id)
+    Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
+每次请求的Filters的上限为10，Filter.Values的上限为100
+        :type Filters: list of Filter
+        :param _OrderField: 排序字段; 枚举值: CreateTime (创建时间) ；默认CreateTime
+        :type OrderField: str
+        :param _Order: 排序方向; 枚举值: ASC | DESC；默认DESC
+        :type Order: str
+        :param _Offset: 分页查询起始位置，如：Limit为100，第一页Offset为0，第二页Offset为100....即每页左边为闭区间; 默认0
+        :type Offset: int
+        :param _Limit: 分页查询每页大小，最大20000; 默认10
+        :type Limit: int
+        :param _TrainingModelId: 模型ID
+        :type TrainingModelId: str
+        """
+        self._Filters = None
+        self._OrderField = None
+        self._Order = None
+        self._Offset = None
+        self._Limit = None
+        self._TrainingModelId = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def TrainingModelId(self):
+        return self._TrainingModelId
+
+    @TrainingModelId.setter
+    def TrainingModelId(self, TrainingModelId):
+        self._TrainingModelId = TrainingModelId
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._TrainingModelId = params.get("TrainingModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelAccelerateVersionsResponse(AbstractModel):
+    """DescribeModelAccelerateVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 优化模型总数； 注意接口是分页拉取的，total是指优化模型节点总数，不是本次返回中ModelAccelerateVersions数组的大小
+注意：此字段可能返回 null，表示取不到有效值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _ModelAccelerateVersions: 优化模型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelAccelerateVersions: list of ModelAccelerateVersion
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ModelAccelerateVersions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ModelAccelerateVersions(self):
+        return self._ModelAccelerateVersions
+
+    @ModelAccelerateVersions.setter
+    def ModelAccelerateVersions(self, ModelAccelerateVersions):
+        self._ModelAccelerateVersions = ModelAccelerateVersions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ModelAccelerateVersions") is not None:
+            self._ModelAccelerateVersions = []
+            for item in params.get("ModelAccelerateVersions"):
+                obj = ModelAccelerateVersion()
+                obj._deserialize(item)
+                self._ModelAccelerateVersions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeModelServiceCallInfoRequest(AbstractModel):
     """DescribeModelServiceCallInfo请求参数结构体
 
@@ -13334,6 +13492,228 @@ class ModelAccelerateTask(AbstractModel):
         
 
 
+class ModelAccelerateVersion(AbstractModel):
+    """优化模型版本列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 模型id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _ModelVersionId: 优化模型版本id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelVersionId: str
+        :param _ModelJobId: 优化任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelJobId: str
+        :param _ModelJobName: 优化任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelJobName: str
+        :param _ModelVersion: 优化后模型版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelVersion: str
+        :param _SpeedUp: 加速比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpeedUp: str
+        :param _ModelSource: 模型来源/任务名称/任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelSource: :class:`tencentcloud.tione.v20211111.models.ModelSource`
+        :param _CosPathInfo: 模型cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModelFormat: 模型规范
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelFormat: str
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Progress: 进度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
+        :param _ErrorMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _GPUType: GPU类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUType: str
+        :param _ModelCosPath: 模型cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelCosPath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        self._ModelId = None
+        self._ModelVersionId = None
+        self._ModelJobId = None
+        self._ModelJobName = None
+        self._ModelVersion = None
+        self._SpeedUp = None
+        self._ModelSource = None
+        self._CosPathInfo = None
+        self._CreateTime = None
+        self._ModelFormat = None
+        self._Status = None
+        self._Progress = None
+        self._ErrorMsg = None
+        self._GPUType = None
+        self._ModelCosPath = None
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelVersionId(self):
+        return self._ModelVersionId
+
+    @ModelVersionId.setter
+    def ModelVersionId(self, ModelVersionId):
+        self._ModelVersionId = ModelVersionId
+
+    @property
+    def ModelJobId(self):
+        return self._ModelJobId
+
+    @ModelJobId.setter
+    def ModelJobId(self, ModelJobId):
+        self._ModelJobId = ModelJobId
+
+    @property
+    def ModelJobName(self):
+        return self._ModelJobName
+
+    @ModelJobName.setter
+    def ModelJobName(self, ModelJobName):
+        self._ModelJobName = ModelJobName
+
+    @property
+    def ModelVersion(self):
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def SpeedUp(self):
+        return self._SpeedUp
+
+    @SpeedUp.setter
+    def SpeedUp(self, SpeedUp):
+        self._SpeedUp = SpeedUp
+
+    @property
+    def ModelSource(self):
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
+    def CosPathInfo(self):
+        return self._CosPathInfo
+
+    @CosPathInfo.setter
+    def CosPathInfo(self, CosPathInfo):
+        self._CosPathInfo = CosPathInfo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModelFormat(self):
+        return self._ModelFormat
+
+    @ModelFormat.setter
+    def ModelFormat(self, ModelFormat):
+        self._ModelFormat = ModelFormat
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def GPUType(self):
+        return self._GPUType
+
+    @GPUType.setter
+    def GPUType(self, GPUType):
+        self._GPUType = GPUType
+
+    @property
+    def ModelCosPath(self):
+        return self._ModelCosPath
+
+    @ModelCosPath.setter
+    def ModelCosPath(self, ModelCosPath):
+        self._ModelCosPath = ModelCosPath
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelVersionId = params.get("ModelVersionId")
+        self._ModelJobId = params.get("ModelJobId")
+        self._ModelJobName = params.get("ModelJobName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._SpeedUp = params.get("SpeedUp")
+        if params.get("ModelSource") is not None:
+            self._ModelSource = ModelSource()
+            self._ModelSource._deserialize(params.get("ModelSource"))
+        if params.get("CosPathInfo") is not None:
+            self._CosPathInfo = CosPathInfo()
+            self._CosPathInfo._deserialize(params.get("CosPathInfo"))
+        self._CreateTime = params.get("CreateTime")
+        self._ModelFormat = params.get("ModelFormat")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._GPUType = params.get("GPUType")
+        if params.get("ModelCosPath") is not None:
+            self._ModelCosPath = CosPathInfo()
+            self._ModelCosPath._deserialize(params.get("ModelCosPath"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelInfo(AbstractModel):
     """模型描述信息
 
@@ -13521,6 +13901,172 @@ RANGE：浮动
     def _deserialize(self, params):
         self._ModelInputType = params.get("ModelInputType")
         self._ModelInputDimension = params.get("ModelInputDimension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelSource(AbstractModel):
+    """模型来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: 来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _JobName: 来源任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobName: str
+        :param _JobVersion: 来源任务版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobVersion: str
+        :param _JobId: 来源任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param _ModelName: 模型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelName: str
+        :param _AlgorithmFramework: 算法框架
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlgorithmFramework: str
+        :param _TrainingPreference: 训练偏好
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainingPreference: str
+        :param _ReasoningEnvironmentSource: 推理环境来源，SYSTEM/CUSTOM
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasoningEnvironmentSource: str
+        :param _ReasoningEnvironment: 推理环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasoningEnvironment: str
+        :param _ReasoningEnvironmentId: 推理环境id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasoningEnvironmentId: str
+        :param _ReasoningImageInfo: 自定义推理环境
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReasoningImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        self._Source = None
+        self._JobName = None
+        self._JobVersion = None
+        self._JobId = None
+        self._ModelName = None
+        self._AlgorithmFramework = None
+        self._TrainingPreference = None
+        self._ReasoningEnvironmentSource = None
+        self._ReasoningEnvironment = None
+        self._ReasoningEnvironmentId = None
+        self._ReasoningImageInfo = None
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def JobName(self):
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def JobVersion(self):
+        return self._JobVersion
+
+    @JobVersion.setter
+    def JobVersion(self, JobVersion):
+        self._JobVersion = JobVersion
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ModelName(self):
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def AlgorithmFramework(self):
+        return self._AlgorithmFramework
+
+    @AlgorithmFramework.setter
+    def AlgorithmFramework(self, AlgorithmFramework):
+        self._AlgorithmFramework = AlgorithmFramework
+
+    @property
+    def TrainingPreference(self):
+        return self._TrainingPreference
+
+    @TrainingPreference.setter
+    def TrainingPreference(self, TrainingPreference):
+        self._TrainingPreference = TrainingPreference
+
+    @property
+    def ReasoningEnvironmentSource(self):
+        return self._ReasoningEnvironmentSource
+
+    @ReasoningEnvironmentSource.setter
+    def ReasoningEnvironmentSource(self, ReasoningEnvironmentSource):
+        self._ReasoningEnvironmentSource = ReasoningEnvironmentSource
+
+    @property
+    def ReasoningEnvironment(self):
+        return self._ReasoningEnvironment
+
+    @ReasoningEnvironment.setter
+    def ReasoningEnvironment(self, ReasoningEnvironment):
+        self._ReasoningEnvironment = ReasoningEnvironment
+
+    @property
+    def ReasoningEnvironmentId(self):
+        return self._ReasoningEnvironmentId
+
+    @ReasoningEnvironmentId.setter
+    def ReasoningEnvironmentId(self, ReasoningEnvironmentId):
+        self._ReasoningEnvironmentId = ReasoningEnvironmentId
+
+    @property
+    def ReasoningImageInfo(self):
+        return self._ReasoningImageInfo
+
+    @ReasoningImageInfo.setter
+    def ReasoningImageInfo(self, ReasoningImageInfo):
+        self._ReasoningImageInfo = ReasoningImageInfo
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._JobName = params.get("JobName")
+        self._JobVersion = params.get("JobVersion")
+        self._JobId = params.get("JobId")
+        self._ModelName = params.get("ModelName")
+        self._AlgorithmFramework = params.get("AlgorithmFramework")
+        self._TrainingPreference = params.get("TrainingPreference")
+        self._ReasoningEnvironmentSource = params.get("ReasoningEnvironmentSource")
+        self._ReasoningEnvironment = params.get("ReasoningEnvironment")
+        self._ReasoningEnvironmentId = params.get("ReasoningEnvironmentId")
+        if params.get("ReasoningImageInfo") is not None:
+            self._ReasoningImageInfo = ImageInfo()
+            self._ReasoningImageInfo._deserialize(params.get("ReasoningImageInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

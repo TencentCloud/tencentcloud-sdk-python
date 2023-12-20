@@ -3778,6 +3778,168 @@ class DescribeJobConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobEventsRequest(AbstractModel):
+    """DescribeJobEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 作业的 ID
+        :type JobId: str
+        :param _StartTimestamp: 筛选条件：起始 Unix 时间戳（秒）
+        :type StartTimestamp: int
+        :param _EndTimestamp: 筛选条件：结束 Unix 时间戳（秒）
+        :type EndTimestamp: int
+        :param _Types: 事件类型。如果不传则返回所有类型的数据
+        :type Types: list of str
+        :param _RunningOrderIds: 运行实例 ID 数组
+        :type RunningOrderIds: list of int non-negative
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._JobId = None
+        self._StartTimestamp = None
+        self._EndTimestamp = None
+        self._Types = None
+        self._RunningOrderIds = None
+        self._WorkSpaceId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def StartTimestamp(self):
+        return self._StartTimestamp
+
+    @StartTimestamp.setter
+    def StartTimestamp(self, StartTimestamp):
+        self._StartTimestamp = StartTimestamp
+
+    @property
+    def EndTimestamp(self):
+        return self._EndTimestamp
+
+    @EndTimestamp.setter
+    def EndTimestamp(self, EndTimestamp):
+        self._EndTimestamp = EndTimestamp
+
+    @property
+    def Types(self):
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def RunningOrderIds(self):
+        return self._RunningOrderIds
+
+    @RunningOrderIds.setter
+    def RunningOrderIds(self, RunningOrderIds):
+        self._RunningOrderIds = RunningOrderIds
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._StartTimestamp = params.get("StartTimestamp")
+        self._EndTimestamp = params.get("EndTimestamp")
+        self._Types = params.get("Types")
+        self._RunningOrderIds = params.get("RunningOrderIds")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobEventsResponse(AbstractModel):
+    """DescribeJobEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: 该作业指定范围内的事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Events: list of JobEvent
+        :param _RunningOrderIds: 该作业指定范围内运行实例 ID 数组，仅当入参没有传入 RunningOrderIds 参数时才会返回。倒序输出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningOrderIds: list of int non-negative
+        :param _TotalCount: 事件的总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._RunningOrderIds = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def RunningOrderIds(self):
+        return self._RunningOrderIds
+
+    @RunningOrderIds.setter
+    def RunningOrderIds(self, RunningOrderIds):
+        self._RunningOrderIds = RunningOrderIds
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = JobEvent()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._RunningOrderIds = params.get("RunningOrderIds")
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobSavepointRequest(AbstractModel):
     """DescribeJobSavepoint请求参数结构体
 
@@ -6379,6 +6541,102 @@ class JobConfig(AbstractModel):
             self._JobGraph._deserialize(params.get("JobGraph"))
         self._EsServerlessIndex = params.get("EsServerlessIndex")
         self._EsServerlessSpace = params.get("EsServerlessSpace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobEvent(AbstractModel):
+    """描述作业发生的一个事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 内部定义的事件类型
+        :type Type: str
+        :param _Description: 事件类型的说明文字
+        :type Description: str
+        :param _Timestamp: 事件发生的 Unix 时间戳（秒）
+        :type Timestamp: int
+        :param _RunningOrderId: 事件发生时的运行 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningOrderId: int
+        :param _Message: 事件的一些可选说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _SolutionLink: 异常事件的排查手册链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SolutionLink: str
+        """
+        self._Type = None
+        self._Description = None
+        self._Timestamp = None
+        self._RunningOrderId = None
+        self._Message = None
+        self._SolutionLink = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RunningOrderId(self):
+        return self._RunningOrderId
+
+    @RunningOrderId.setter
+    def RunningOrderId(self, RunningOrderId):
+        self._RunningOrderId = RunningOrderId
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def SolutionLink(self):
+        return self._SolutionLink
+
+    @SolutionLink.setter
+    def SolutionLink(self, SolutionLink):
+        self._SolutionLink = SolutionLink
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._Timestamp = params.get("Timestamp")
+        self._RunningOrderId = params.get("RunningOrderId")
+        self._Message = params.get("Message")
+        self._SolutionLink = params.get("SolutionLink")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

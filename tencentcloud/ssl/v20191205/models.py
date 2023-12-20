@@ -10483,9 +10483,25 @@ class OperationLog(AbstractModel):
         :type Action: str
         :param _CreatedOn: 操作时间。
         :type CreatedOn: str
+        :param _Uin: 主账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _SubAccountUin: 子账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param _CertId: 证书ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param _Type: 操作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self._Action = None
         self._CreatedOn = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CertId = None
+        self._Type = None
 
     @property
     def Action(self):
@@ -10503,10 +10519,46 @@ class OperationLog(AbstractModel):
     def CreatedOn(self, CreatedOn):
         self._CreatedOn = CreatedOn
 
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._CreatedOn = params.get("CreatedOn")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CertId = params.get("CertId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

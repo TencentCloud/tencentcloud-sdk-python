@@ -3929,7 +3929,7 @@ class CreateFlowByFilesRequest(AbstractModel):
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :type AutoSignScene: str
         """
@@ -4393,7 +4393,7 @@ class CreateFlowGroupByFilesRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowGroupName: 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
         :type FlowGroupName: str
@@ -5016,7 +5016,7 @@ class CreateFlowRequest(AbstractModel):
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
         :type CcInfos: list of CcInfo
         :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :type AutoSignScene: str
         :param _RelatedFlowId: 暂未开放
@@ -6910,6 +6910,9 @@ class CreatePrepareFlowRequest(AbstractModel):
 
 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
         :type UserData: str
+        :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+
+        :type CcInfos: :class:`tencentcloud.ess.v20201111.models.CcInfo`
         :param _FlowId: 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
 注: `该参数必须是一个待发起审核的合同id，并且还未审核通过`
         :type FlowId: str
@@ -6935,6 +6938,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._NeedSignReview = None
         self._NeedCreateReview = None
         self._UserData = None
+        self._CcInfos = None
         self._FlowId = None
         self._Agent = None
         self._InitiatorComponents = None
@@ -7060,6 +7064,14 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._UserData = UserData
 
     @property
+    def CcInfos(self):
+        return self._CcInfos
+
+    @CcInfos.setter
+    def CcInfos(self, CcInfos):
+        self._CcInfos = CcInfos
+
+    @property
     def FlowId(self):
         return self._FlowId
 
@@ -7111,6 +7123,9 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._NeedSignReview = params.get("NeedSignReview")
         self._NeedCreateReview = params.get("NeedCreateReview")
         self._UserData = params.get("UserData")
+        if params.get("CcInfos") is not None:
+            self._CcInfos = CcInfo()
+            self._CcInfos._deserialize(params.get("CcInfos"))
         self._FlowId = params.get("FlowId")
         if params.get("Agent") is not None:
             self._Agent = Agent()
@@ -14941,7 +14956,7 @@ class GetTaskResultApiResponse(AbstractModel):
 <li> **ProcessFailed** : 转换失败</li>
 <li> **ProcessTimeout** : 转换文件超时</li></ul>
         :type TaskMessage: str
-        :param _ResourceId: 资源Id，也是FileId，用于文件发起时使用
+        :param _ResourceId: 资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)
         :type ResourceId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

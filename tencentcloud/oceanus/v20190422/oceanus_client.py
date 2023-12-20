@@ -440,6 +440,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJobEvents(self, request):
+        """获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型
+
+        :param request: Request instance for DescribeJobEvents.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobEventsRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobSavepoint(self, request):
         """查找Savepoint列表
 

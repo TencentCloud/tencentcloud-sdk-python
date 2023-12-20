@@ -3071,7 +3071,7 @@ MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverM
 <li> **1**：签署完成后通知</li></ul>
         :type CcNotifyType: int
         :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :type AutoSignScene: str
         :param _Operator: 操作者的信息，不用传
@@ -7631,7 +7631,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 <li> **ProcessFailed** : 转换失败</li>
 <li> **ProcessTimeout** : 转换文件超时</li></ul>
         :type TaskMessage: str
-        :param _ResourceId: 资源Id，也是FileId，用于文件发起时使用
+        :param _ResourceId: 资源Id（即FileId），用于[用PDF文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)
         :type ResourceId: str
         :param _PreviewUrl: 预览文件Url，有效期30分钟 
 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
@@ -9654,9 +9654,9 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
 <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>注:
-`1. 企业激活时,  此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识, 建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
-`2. 员工认证时,  此时的Agent.ProxyOrganizationOpenId将会是员工认证加入企业后的唯一标识, 建议开发者保存此员工的penId, 后续各项接口调用皆需要此参数。 `
-`3. 同渠道应用(Agent.AppId)下,企业唯一标识ProxyOrganizationOpenId需要保持唯一, 员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)`
+`1. 企业激活时， 此时的Agent.ProxyOrganizationOpenId将会是企业激活后企业的唯一标识，建议开发者保存企业ProxyOrganizationOpenId，后续各项接口调用皆需要此参数。 `
+`2. 员工认证时， 此时的Agent.ProxyOperator.OpenId将会是员工认证加入企业后的唯一标识，建议开发者保存此员工的OpenId，后续各项接口调用皆需要此参数。 `
+`3. 同渠道应用(Agent.AppId)下，企业唯一标识ProxyOrganizationOpenId需要保持唯一，员工唯一标识OpenId也要保持唯一 (而不是企业下唯一)。 `
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ProxyOrganizationName: 第三方平台子客企业名称，请确认该名称与企业营业执照中注册的名称一致。
 
@@ -14419,7 +14419,7 @@ class FlowInfo(AbstractModel):
 <li> **1** : 签署完成后通知对方来查看合同</li></ul>
         :type CcNotifyType: int
         :param _AutoSignScene: 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
-<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>
 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
         :type AutoSignScene: str
         """

@@ -44701,6 +44701,9 @@ class InstanceLogInfo(AbstractModel):
         :param _InstanceStatus: 实例状态 COMPLETED 完成 FAILED失败重试 EXPIRED失败 RUNNING运行中
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceStatus: str
+        :param _CodeFileName: 实例代码文件，为空表示对应代码文件不存在，可能是因为执行机未升级/对应类型任务无代码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeFileName: str
         """
         self._TaskId = None
         self._CurRunDate = None
@@ -44714,6 +44717,7 @@ class InstanceLogInfo(AbstractModel):
         self._TaskName = None
         self._CostTime = None
         self._InstanceStatus = None
+        self._CodeFileName = None
 
     @property
     def TaskId(self):
@@ -44811,6 +44815,14 @@ class InstanceLogInfo(AbstractModel):
     def InstanceStatus(self, InstanceStatus):
         self._InstanceStatus = InstanceStatus
 
+    @property
+    def CodeFileName(self):
+        return self._CodeFileName
+
+    @CodeFileName.setter
+    def CodeFileName(self, CodeFileName):
+        self._CodeFileName = CodeFileName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -44825,6 +44837,7 @@ class InstanceLogInfo(AbstractModel):
         self._TaskName = params.get("TaskName")
         self._CostTime = params.get("CostTime")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._CodeFileName = params.get("CodeFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
