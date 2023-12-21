@@ -4548,12 +4548,6 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
-<ul>
-<li>文件Id（通过UploadFiles获取文件资源Id）</li>
-<li>模板Id</li>
-</ul>
-        :type ResourceId: str
         :param _ResourceType: 资源类型，取值有：
 <ul><li> **1**：模板</li>
 <li> **2**：文件（默认值）</li></ul>
@@ -4570,6 +4564,12 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 </ul>
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
+<ul>
+<li>文件Id（通过UploadFiles获取文件资源Id）</li>
+<li>模板Id</li>
+</ul>
+        :type ResourceId: str
         :param _FlowOption: 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
         :type FlowOption: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowOption`
         :param _FlowApproverList: 合同签署人信息
@@ -4584,24 +4584,16 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         :param _Operator: 操作人（用户）信息，不用传
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
-        self._ResourceId = None
         self._ResourceType = None
         self._FlowInfo = None
         self._Agent = None
+        self._ResourceId = None
         self._FlowOption = None
         self._FlowApproverList = None
         self._FlowId = None
         self._NeedPreview = None
         self._Organization = None
         self._Operator = None
-
-    @property
-    def ResourceId(self):
-        return self._ResourceId
-
-    @ResourceId.setter
-    def ResourceId(self, ResourceId):
-        self._ResourceId = ResourceId
 
     @property
     def ResourceType(self):
@@ -4626,6 +4618,14 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
     @property
     def FlowOption(self):
@@ -4689,7 +4689,6 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ResourceId = params.get("ResourceId")
         self._ResourceType = params.get("ResourceType")
         if params.get("FlowInfo") is not None:
             self._FlowInfo = BaseFlowInfo()
@@ -4697,6 +4696,7 @@ class ChannelCreatePrepareFlowRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._ResourceId = params.get("ResourceId")
         if params.get("FlowOption") is not None:
             self._FlowOption = CreateFlowOption()
             self._FlowOption._deserialize(params.get("FlowOption"))
@@ -8407,6 +8407,8 @@ class CommonFlowApprover(AbstractModel):
 **3** :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）
 
 注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
+使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -> 企业设置 -> 扩展服务 -> 企业自动签。
+使用文件发起自动签时使用前请联系对接的客户经理沟通。
 
         :type ApproverType: int
         :param _OrganizationId: 电子签平台给企业生成的企业id

@@ -26405,6 +26405,208 @@ class EnhanceMediaByTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnhanceMediaQualityOutputConfig(AbstractModel):
+    """音画质重生结果文件输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :type MediaName: str
+        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+<li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :type ExpireTime: str
+        """
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def MediaName(self):
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaQualityRequest(AbstractModel):
+    """EnhanceMediaQuality请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :type FileId: str
+        :param _Definition: 音画质重生模板 ID，请联系腾讯云获取。
+        :type Definition: int
+        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :type SubAppId: int
+        :param _OutputConfig: 音画质重生后的媒体文件配置。
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityOutputConfig`
+        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :type SessionId: str
+        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :type SessionContext: str
+        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :type TasksPriority: int
+        """
+        self._FileId = None
+        self._Definition = None
+        self._SubAppId = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def OutputConfig(self):
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = EnhanceMediaQualityOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaQualityResponse(AbstractModel):
+    """EnhanceMediaQuality返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 音画质重生任务 ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class EventContent(AbstractModel):
     """事件通知内容，其中，TranscodeCompleteEvent、ConcatCompleteEvent、ClipCompleteEvent、CreateImageSpriteCompleteEvent、SnapshotByTimeOffsetCompleteEvent 为兼容 2017 版接口发起任务的事件通知。
 

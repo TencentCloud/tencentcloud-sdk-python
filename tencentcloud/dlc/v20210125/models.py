@@ -5786,10 +5786,10 @@ class CrontabResumeSuspendStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResumeTime: 定时拉起时间：如：周一8点
+        :param _ResumeTime: 定时拉起时间：如：周一&周三8点
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResumeTime: str
-        :param _SuspendTime: 定时挂起时间：如：周一20点
+        :param _SuspendTime: 定时挂起时间：如：周一&周三20点
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuspendTime: str
         :param _SuspendStrategy: 挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起

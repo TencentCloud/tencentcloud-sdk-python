@@ -463,12 +463,6 @@ class BindCluster(AbstractModel):
         
 
 
-class BundleSetOpt(AbstractModel):
-    """运营端命名空间bundle实体
-
-    """
-
-
 class ClearCmqQueueRequest(AbstractModel):
     """ClearCmqQueue请求参数结构体
 
@@ -8763,7 +8757,7 @@ class DescribeNamespaceBundlesOptRequest(AbstractModel):
         :type Offset: int
         :param _Bundle: 过滤的 bundle
         :type Bundle: str
-        :param _OwnerBroker: bundle 所属的 broker ip 地址，支持模糊查询
+        :param _OwnerBroker: bundle 所属的 broker IP 地址，支持模糊查询
         :type OwnerBroker: str
         """
         self._ClusterName = None
@@ -8868,13 +8862,10 @@ class DescribeNamespaceBundlesOptResponse(AbstractModel):
         r"""
         :param _TotalCount: 记录条数
         :type TotalCount: int
-        :param _BundleSet: bundle列表
-        :type BundleSet: list of BundleSetOpt
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
-        self._BundleSet = None
         self._RequestId = None
 
     @property
@@ -8884,14 +8875,6 @@ class DescribeNamespaceBundlesOptResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
-
-    @property
-    def BundleSet(self):
-        return self._BundleSet
-
-    @BundleSet.setter
-    def BundleSet(self, BundleSet):
-        self._BundleSet = BundleSet
 
     @property
     def RequestId(self):
@@ -8904,12 +8887,6 @@ class DescribeNamespaceBundlesOptResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
-        if params.get("BundleSet") is not None:
-            self._BundleSet = []
-            for item in params.get("BundleSet"):
-                obj = BundleSetOpt()
-                obj._deserialize(item)
-                self._BundleSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

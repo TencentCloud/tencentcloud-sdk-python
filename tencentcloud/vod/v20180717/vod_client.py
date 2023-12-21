@@ -2635,6 +2635,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnhanceMediaQuality(self, request):
+        """对点播中的音视频媒体发起音画质重生任务。
+
+        :param request: Request instance for EnhanceMediaQuality.
+        :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnhanceMediaQuality", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnhanceMediaQualityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecuteFunction(self, request):
         """本接口仅用于定制开发的特殊场景，除非云点播客服人员主动告知您需要使用本接口，其它情况请勿调用。
 

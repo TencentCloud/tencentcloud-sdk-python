@@ -7157,24 +7157,16 @@ class DescribeBillingSpecsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 枚举值：TRAIN、NOTEBOOK、INFERENCE
-        :type TaskType: str
         :param _ChargeType: 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
         :type ChargeType: str
+        :param _TaskType: 枚举值：TRAIN、NOTEBOOK、INFERENCE
+        :type TaskType: str
         :param _ResourceType: 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
         :type ResourceType: str
         """
-        self._TaskType = None
         self._ChargeType = None
+        self._TaskType = None
         self._ResourceType = None
-
-    @property
-    def TaskType(self):
-        return self._TaskType
-
-    @TaskType.setter
-    def TaskType(self, TaskType):
-        self._TaskType = TaskType
 
     @property
     def ChargeType(self):
@@ -7183,6 +7175,14 @@ class DescribeBillingSpecsRequest(AbstractModel):
     @ChargeType.setter
     def ChargeType(self, ChargeType):
         self._ChargeType = ChargeType
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
 
     @property
     def ResourceType(self):
@@ -7194,8 +7194,8 @@ class DescribeBillingSpecsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._TaskType = params.get("TaskType")
         self._ChargeType = params.get("ChargeType")
+        self._TaskType = params.get("TaskType")
         self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
