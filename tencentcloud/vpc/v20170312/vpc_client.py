@@ -1810,6 +1810,8 @@ class VpcClient(AbstractClient):
 
     def DeleteAddressTemplate(self, request):
         """本接口（DeleteAddressTemplate）用于删除IP地址模板。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for DeleteAddressTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateRequest`
@@ -1833,6 +1835,8 @@ class VpcClient(AbstractClient):
 
     def DeleteAddressTemplateGroup(self, request):
         """本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for DeleteAddressTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteAddressTemplateGroupRequest`
@@ -2405,6 +2409,8 @@ class VpcClient(AbstractClient):
 
     def DeleteServiceTemplate(self, request):
         """本接口（DeleteServiceTemplate）用于删除协议端口模板。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for DeleteServiceTemplate.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateRequest`
@@ -2428,6 +2434,8 @@ class VpcClient(AbstractClient):
 
     def DeleteServiceTemplateGroup(self, request):
         """本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for DeleteServiceTemplateGroup.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteServiceTemplateGroupRequest`
@@ -5700,6 +5708,8 @@ class VpcClient(AbstractClient):
 
     def ModifyAddressTemplateAttribute(self, request):
         """本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for ModifyAddressTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateAttributeRequest`
@@ -5723,6 +5733,8 @@ class VpcClient(AbstractClient):
 
     def ModifyAddressTemplateGroupAttribute(self, request):
         """本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for ModifyAddressTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyAddressTemplateGroupAttributeRequest`
@@ -6453,6 +6465,8 @@ class VpcClient(AbstractClient):
 
     def ModifyServiceTemplateAttribute(self, request):
         """本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for ModifyServiceTemplateAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateAttributeRequest`
@@ -6476,6 +6490,8 @@ class VpcClient(AbstractClient):
 
     def ModifyServiceTemplateGroupAttribute(self, request):
         """本接口（ModifyServiceTemplateGroupAttribute）用于修改协议端口模板集合。
+        >?本接口为异步接口，可调用 [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) 接口查询任务执行结果，待任务执行成功后再进行其他操作。
+        >
 
         :param request: Request instance for ModifyServiceTemplateGroupAttribute.
         :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyServiceTemplateGroupAttributeRequest`

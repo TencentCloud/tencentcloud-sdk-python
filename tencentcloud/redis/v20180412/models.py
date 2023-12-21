@@ -7098,7 +7098,9 @@ class DescribeSlowLogRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
         :type Offset: int
-        :param _Role: 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+        :param _Role: 节点所属角色。
+- master：主节点。
+- slave：从节点。
         :type Role: str
         """
         self._InstanceId = None
@@ -13248,10 +13250,15 @@ class ProductConf(AbstractModel):
 - 1：包年包月。
 - 0：按量计费。
         :type PayMode: str
-        :param _EnableRepicaReadOnly: 是否支持副本只读。
+        :param _EnableRepicaReadOnly: 该参数名因存在拼写不规范的问题，建议使用**EnableReplicaReadOnly**参数取代。其含义为是否支持副本只读。
 - true：支持副本只读。
 - false：不支持。
         :type EnableRepicaReadOnly: bool
+        :param _EnableReplicaReadOnly: 是否支持副本只读。
+- true：支持副本只读。
+- false：不支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableReplicaReadOnly: bool
         """
         self._Type = None
         self._TypeName = None
@@ -13266,6 +13273,7 @@ class ProductConf(AbstractModel):
         self._ShardNum = None
         self._PayMode = None
         self._EnableRepicaReadOnly = None
+        self._EnableReplicaReadOnly = None
 
     @property
     def Type(self):
@@ -13371,6 +13379,14 @@ class ProductConf(AbstractModel):
     def EnableRepicaReadOnly(self, EnableRepicaReadOnly):
         self._EnableRepicaReadOnly = EnableRepicaReadOnly
 
+    @property
+    def EnableReplicaReadOnly(self):
+        return self._EnableReplicaReadOnly
+
+    @EnableReplicaReadOnly.setter
+    def EnableReplicaReadOnly(self, EnableReplicaReadOnly):
+        self._EnableReplicaReadOnly = EnableReplicaReadOnly
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -13386,6 +13402,7 @@ class ProductConf(AbstractModel):
         self._ShardNum = params.get("ShardNum")
         self._PayMode = params.get("PayMode")
         self._EnableRepicaReadOnly = params.get("EnableRepicaReadOnly")
+        self._EnableReplicaReadOnly = params.get("EnableReplicaReadOnly")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -562,6 +562,9 @@ Modify 集群变更中；
         :param _Characteristic: 页面特性，用于前端屏蔽一些页面入口
 注意：此字段可能返回 null，表示取不到有效值。
         :type Characteristic: list of str
+        :param _RestartTimeout: 超时时间 单位s
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestartTimeout: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -601,6 +604,7 @@ Modify 集群变更中；
         self._Components = None
         self._IfExistCatalog = None
         self._Characteristic = None
+        self._RestartTimeout = None
 
     @property
     def InstanceId(self):
@@ -910,6 +914,14 @@ Modify 集群变更中；
     def Characteristic(self, Characteristic):
         self._Characteristic = Characteristic
 
+    @property
+    def RestartTimeout(self):
+        return self._RestartTimeout
+
+    @RestartTimeout.setter
+    def RestartTimeout(self, RestartTimeout):
+        self._RestartTimeout = RestartTimeout
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -959,6 +971,7 @@ Modify 集群变更中；
         self._Components = params.get("Components")
         self._IfExistCatalog = params.get("IfExistCatalog")
         self._Characteristic = params.get("Characteristic")
+        self._RestartTimeout = params.get("RestartTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1851,6 +1851,9 @@ class DatasourceInfo(AbstractModel):
         :param _DataOriginDatasourceId: 第三方数据源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataOriginDatasourceId: str
+        :param _ClusterId: 集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
         """
         self._Id = None
         self._DbName = None
@@ -1886,6 +1889,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOrigin = None
         self._DataOriginProjectId = None
         self._DataOriginDatasourceId = None
+        self._ClusterId = None
 
     @property
     def Id(self):
@@ -2159,6 +2163,14 @@ class DatasourceInfo(AbstractModel):
     def DataOriginDatasourceId(self, DataOriginDatasourceId):
         self._DataOriginDatasourceId = DataOriginDatasourceId
 
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2202,6 +2214,7 @@ class DatasourceInfo(AbstractModel):
         self._DataOrigin = params.get("DataOrigin")
         self._DataOriginProjectId = params.get("DataOriginProjectId")
         self._DataOriginDatasourceId = params.get("DataOriginDatasourceId")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

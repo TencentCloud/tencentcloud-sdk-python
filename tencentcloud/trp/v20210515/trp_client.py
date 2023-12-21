@@ -718,6 +718,29 @@ class TrpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlanQRCodeScanRecords(self, request):
+        """查询安心计划二维码扫码记录
+
+        :param request: Request instance for DescribePlanQRCodeScanRecords.
+        :type request: :class:`tencentcloud.trp.v20210515.models.DescribePlanQRCodeScanRecordsRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.DescribePlanQRCodeScanRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlanQRCodeScanRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlanQRCodeScanRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlanQRCodes(self, request):
         """查询安心计划二维码列表
 

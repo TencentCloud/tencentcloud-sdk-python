@@ -2452,6 +2452,9 @@ class BackupInfo(AbstractModel):
         :param _EncryptionFlag: 备份文件是否加密， on-加密， off-未加密
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptionFlag: str
+        :param _ExecutedGTIDSet: 备份GTID点位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutedGTIDSet: str
         """
         self._Name = None
         self._Size = None
@@ -2473,6 +2476,7 @@ class BackupInfo(AbstractModel):
         self._CosStorageType = None
         self._InstanceId = None
         self._EncryptionFlag = None
+        self._ExecutedGTIDSet = None
 
     @property
     def Name(self):
@@ -2634,6 +2638,14 @@ class BackupInfo(AbstractModel):
     def EncryptionFlag(self, EncryptionFlag):
         self._EncryptionFlag = EncryptionFlag
 
+    @property
+    def ExecutedGTIDSet(self):
+        return self._ExecutedGTIDSet
+
+    @ExecutedGTIDSet.setter
+    def ExecutedGTIDSet(self, ExecutedGTIDSet):
+        self._ExecutedGTIDSet = ExecutedGTIDSet
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2661,6 +2673,7 @@ class BackupInfo(AbstractModel):
         self._CosStorageType = params.get("CosStorageType")
         self._InstanceId = params.get("InstanceId")
         self._EncryptionFlag = params.get("EncryptionFlag")
+        self._ExecutedGTIDSet = params.get("ExecutedGTIDSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7147,7 +7160,7 @@ class CreateDatabaseRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _DBName: 数据库名称。
+        :param _DBName: 数据库名称，长度不超过64。
         :type DBName: str
         :param _CharacterSetName: 字符集，可选值：utf8，gbk，latin1，utf8mb4。
         :type CharacterSetName: str
@@ -8258,7 +8271,7 @@ class DeleteDatabaseRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceId: str
-        :param _DBName: 数据库名称。
+        :param _DBName: 数据库名称，长度不超过64。
         :type DBName: str
         """
         self._InstanceId = None
@@ -11222,12 +11235,15 @@ class DescribeBinlogsRequest(AbstractModel):
         :type MinStartTime: str
         :param _MaxStartTime: binlog最晚开始时间，时间格式：2016-03-17 02:10:37
         :type MaxStartTime: str
+        :param _ContainsMinStartTime: 返回binlog列表是否包含MinStartTime起始节点，默认为否
+        :type ContainsMinStartTime: bool
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
         self._MinStartTime = None
         self._MaxStartTime = None
+        self._ContainsMinStartTime = None
 
     @property
     def InstanceId(self):
@@ -11269,6 +11285,14 @@ class DescribeBinlogsRequest(AbstractModel):
     def MaxStartTime(self, MaxStartTime):
         self._MaxStartTime = MaxStartTime
 
+    @property
+    def ContainsMinStartTime(self):
+        return self._ContainsMinStartTime
+
+    @ContainsMinStartTime.setter
+    def ContainsMinStartTime(self, ContainsMinStartTime):
+        self._ContainsMinStartTime = ContainsMinStartTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11276,6 +11300,7 @@ class DescribeBinlogsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._MinStartTime = params.get("MinStartTime")
         self._MaxStartTime = params.get("MaxStartTime")
+        self._ContainsMinStartTime = params.get("ContainsMinStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

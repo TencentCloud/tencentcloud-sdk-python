@@ -1465,11 +1465,14 @@ High：高度疑似攻击
 说明：未检测到攻击痕迹时，返回空数组
 此出参仅作为结果判断的参考，实际应用仍建议使用AttackRiskLevel的结果。
         :type AttackRiskDetailList: list of AttackRiskDetail
+        :param _ExtraInfo: 额外信息
+        :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AttackRiskLevel = None
         self._AttackRiskDetailList = None
+        self._ExtraInfo = None
         self._RequestId = None
 
     @property
@@ -1489,6 +1492,14 @@ High：高度疑似攻击
         self._AttackRiskDetailList = AttackRiskDetailList
 
     @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1505,6 +1516,9 @@ High：高度疑似攻击
                 obj = AttackRiskDetail()
                 obj._deserialize(item)
                 self._AttackRiskDetailList.append(obj)
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2865,6 +2879,45 @@ class Encryption(AbstractModel):
         self._Iv = params.get("Iv")
         self._Algorithm = params.get("Algorithm")
         self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraInfo(AbstractModel):
+    """额外的详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetrievalLivenessExtraInfo: 命中模板的详细信息，仅返回命中的相似度最高的模板信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
+        """
+        self._RetrievalLivenessExtraInfo = None
+
+    @property
+    def RetrievalLivenessExtraInfo(self):
+        return self._RetrievalLivenessExtraInfo
+
+    @RetrievalLivenessExtraInfo.setter
+    def RetrievalLivenessExtraInfo(self, RetrievalLivenessExtraInfo):
+        self._RetrievalLivenessExtraInfo = RetrievalLivenessExtraInfo
+
+
+    def _deserialize(self, params):
+        if params.get("RetrievalLivenessExtraInfo") is not None:
+            self._RetrievalLivenessExtraInfo = []
+            for item in params.get("RetrievalLivenessExtraInfo"):
+                obj = RetrievalLivenessExtraInfo()
+                obj._deserialize(item)
+                self._RetrievalLivenessExtraInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7383,6 +7436,66 @@ class PhoneVerificationResponse(AbstractModel):
         self._Description = params.get("Description")
         self._Isp = params.get("Isp")
         self._RequestId = params.get("RequestId")
+
+
+class RetrievalLivenessExtraInfo(AbstractModel):
+    """模版检索详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitGroup: 命中的模版类型，其中Common-公共库；Auto-自动聚类库；Owner-自建模版库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitGroup: str
+        :param _SimilarityScore: 命中的相似度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimilarityScore: float
+        :param _HitTemplate: 命中的模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitTemplate: str
+        """
+        self._HitGroup = None
+        self._SimilarityScore = None
+        self._HitTemplate = None
+
+    @property
+    def HitGroup(self):
+        return self._HitGroup
+
+    @HitGroup.setter
+    def HitGroup(self, HitGroup):
+        self._HitGroup = HitGroup
+
+    @property
+    def SimilarityScore(self):
+        return self._SimilarityScore
+
+    @SimilarityScore.setter
+    def SimilarityScore(self, SimilarityScore):
+        self._SimilarityScore = SimilarityScore
+
+    @property
+    def HitTemplate(self):
+        return self._HitTemplate
+
+    @HitTemplate.setter
+    def HitTemplate(self, HitTemplate):
+        self._HitTemplate = HitTemplate
+
+
+    def _deserialize(self, params):
+        self._HitGroup = params.get("HitGroup")
+        self._SimilarityScore = params.get("SimilarityScore")
+        self._HitTemplate = params.get("HitTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RuleIdConfig(AbstractModel):

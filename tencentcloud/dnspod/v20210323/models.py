@@ -7766,6 +7766,8 @@ class DomainInfo(AbstractModel):
         :type TagList: list of TagItem
         :param _SearchEnginePush: 是否启用搜索引擎推送
         :type SearchEnginePush: str
+        :param _SlaveDNS: 是否开启辅助 DNS
+        :type SlaveDNS: str
         """
         self._DomainId = None
         self._Status = None
@@ -7799,6 +7801,7 @@ class DomainInfo(AbstractModel):
         self._IsSubDomain = None
         self._TagList = None
         self._SearchEnginePush = None
+        self._SlaveDNS = None
 
     @property
     def DomainId(self):
@@ -8056,6 +8059,14 @@ class DomainInfo(AbstractModel):
     def SearchEnginePush(self, SearchEnginePush):
         self._SearchEnginePush = SearchEnginePush
 
+    @property
+    def SlaveDNS(self):
+        return self._SlaveDNS
+
+    @SlaveDNS.setter
+    def SlaveDNS(self, SlaveDNS):
+        self._SlaveDNS = SlaveDNS
+
 
     def _deserialize(self, params):
         self._DomainId = params.get("DomainId")
@@ -8095,6 +8106,7 @@ class DomainInfo(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._SearchEnginePush = params.get("SearchEnginePush")
+        self._SlaveDNS = params.get("SlaveDNS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

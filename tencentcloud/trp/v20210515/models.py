@@ -486,10 +486,14 @@ class CodeBatch(AbstractModel):
 
     @property
     def Ext(self):
+        warnings.warn("parameter `Ext` is deprecated", DeprecationWarning) 
+
         return self._Ext
 
     @Ext.setter
     def Ext(self, Ext):
+        warnings.warn("parameter `Ext` is deprecated", DeprecationWarning) 
+
         self._Ext = Ext
 
     @property
@@ -4876,6 +4880,141 @@ class DescribeMerchantsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePlanQRCodeScanRecordsRequest(AbstractModel):
+    """DescribePlanQRCodeScanRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _PageNo: 页码
+        :type PageNo: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNo = None
+        self._PageSize = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
+    """DescribePlanQRCodeScanRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ret: 返回码
+        :type Ret: int
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 数据
+        :type Data: list of PlanQRCodeRecord
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ret = None
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Ret(self):
+        return self._Ret
+
+    @Ret.setter
+    def Ret(self, Ret):
+        self._Ret = Ret
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ret = params.get("Ret")
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = PlanQRCodeRecord()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePlanQRCodesRequest(AbstractModel):
     """DescribePlanQRCodes请求参数结构体
 
@@ -6310,6 +6449,38 @@ class Ext(AbstractModel):
     """预留字段
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Value: 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Value = None
+
+    @property
+    def Value(self):
+        warnings.warn("parameter `Value` is deprecated", DeprecationWarning) 
+
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        warnings.warn("parameter `Value` is deprecated", DeprecationWarning) 
+
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InputEncryptData(AbstractModel):
@@ -8107,6 +8278,118 @@ class PlanQRCode(AbstractModel):
     def _deserialize(self, params):
         self._Url = params.get("Url")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlanQRCodeRecord(AbstractModel):
+    """安心计划二维码扫码记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 二维码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _OpenId: OpenID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param _ScanTime: 扫码时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanTime: str
+        :param _Ip: IP 地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _Country: 国家
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Country: str
+        :param _Province: 省份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Province: str
+        :param _City: 城市
+注意：此字段可能返回 null，表示取不到有效值。
+        :type City: str
+        """
+        self._Url = None
+        self._OpenId = None
+        self._ScanTime = None
+        self._Ip = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def ScanTime(self):
+        return self._ScanTime
+
+    @ScanTime.setter
+    def ScanTime(self, ScanTime):
+        self._ScanTime = ScanTime
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._OpenId = params.get("OpenId")
+        self._ScanTime = params.get("ScanTime")
+        self._Ip = params.get("Ip")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

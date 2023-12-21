@@ -734,6 +734,8 @@ class CreateVideoModerationTaskRequest(AbstractModel):
         :type CallbackUrl: str
         :param _Priority: 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
         :type Priority: int
+        :param _User: 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户
+        :type User: :class:`tencentcloud.vm.v20210922.models.User`
         """
         self._BizType = None
         self._Type = None
@@ -741,6 +743,7 @@ class CreateVideoModerationTaskRequest(AbstractModel):
         self._Seed = None
         self._CallbackUrl = None
         self._Priority = None
+        self._User = None
 
     @property
     def BizType(self):
@@ -790,6 +793,14 @@ class CreateVideoModerationTaskRequest(AbstractModel):
     def Priority(self, Priority):
         self._Priority = Priority
 
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
 
     def _deserialize(self, params):
         self._BizType = params.get("BizType")
@@ -803,6 +814,9 @@ class CreateVideoModerationTaskRequest(AbstractModel):
         self._Seed = params.get("Seed")
         self._CallbackUrl = params.get("CallbackUrl")
         self._Priority = params.get("Priority")
+        if params.get("User") is not None:
+            self._User = User()
+            self._User._deserialize(params.get("User"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2880,6 +2894,196 @@ class TaskResult(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class User(AbstractModel):
+    """用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
+        :type UserId: str
+        :param _AccountType: 该字段表示业务用户ID对应的账号类型，取值：1-微信uin，2-QQ号，3-微信群uin，4-qq群号，5-微信openid，6-QQopenid，7-其它string。
+该字段与账号ID参数（UserId）配合使用可确定唯一账号。
+        :type AccountType: str
+        :param _Nickname: 用户昵称
+        :type Nickname: str
+        :param _Gender: 性别 默认0 未知 1 男性 2 女性
+        :type Gender: int
+        :param _Age: 年龄 默认0 未知
+        :type Age: int
+        :param _Level: 用户等级，默认0 未知 1 低 2 中 3 高
+        :type Level: int
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _Desc: 用户简介，长度不超过5000字
+        :type Desc: str
+        :param _HeadUrl: 用户头像图片链接
+        :type HeadUrl: str
+        :param _RoomId: 群聊场景房间ID
+        :type RoomId: str
+        :param _GroupId: 群聊场景群ID
+        :type GroupId: str
+        :param _GroupSize: 群聊场景群用户数
+        :type GroupSize: int
+        :param _ReceiverId: 消息接收者ID
+        :type ReceiverId: str
+        :param _SendTime: 消息生成时间，毫秒
+        :type SendTime: str
+        """
+        self._UserId = None
+        self._AccountType = None
+        self._Nickname = None
+        self._Gender = None
+        self._Age = None
+        self._Level = None
+        self._Phone = None
+        self._Desc = None
+        self._HeadUrl = None
+        self._RoomId = None
+        self._GroupId = None
+        self._GroupSize = None
+        self._ReceiverId = None
+        self._SendTime = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def AccountType(self):
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Nickname(self):
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def Gender(self):
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Phone(self):
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def HeadUrl(self):
+        return self._HeadUrl
+
+    @HeadUrl.setter
+    def HeadUrl(self, HeadUrl):
+        self._HeadUrl = HeadUrl
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupSize(self):
+        return self._GroupSize
+
+    @GroupSize.setter
+    def GroupSize(self, GroupSize):
+        self._GroupSize = GroupSize
+
+    @property
+    def ReceiverId(self):
+        return self._ReceiverId
+
+    @ReceiverId.setter
+    def ReceiverId(self, ReceiverId):
+        self._ReceiverId = ReceiverId
+
+    @property
+    def SendTime(self):
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._AccountType = params.get("AccountType")
+        self._Nickname = params.get("Nickname")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Level = params.get("Level")
+        self._Phone = params.get("Phone")
+        self._Desc = params.get("Desc")
+        self._HeadUrl = params.get("HeadUrl")
+        self._RoomId = params.get("RoomId")
+        self._GroupId = params.get("GroupId")
+        self._GroupSize = params.get("GroupSize")
+        self._ReceiverId = params.get("ReceiverId")
+        self._SendTime = params.get("SendTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
