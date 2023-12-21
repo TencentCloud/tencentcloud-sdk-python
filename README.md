@@ -99,7 +99,7 @@ try:
     httpProfile = HttpProfile()
     # 如果需要指定proxy访问接口，可以按照如下方式初始化hp
     # httpProfile = HttpProfile(proxy="http://用户名:密码@代理IP:代理端口")
-    httpProfile.protocol = "https"  # 在外网互通的网络环境下支持http协议(默认是https协议),建议使用https协议
+    httpProfile.scheme = "https"  # 在外网互通的网络环境下支持http协议(默认是https协议),建议使用https协议
     httpProfile.keepAlive = True  # 状态保持，默认是False
     httpProfile.reqMethod = "GET"  # get请求(默认为post请求)
     httpProfile.reqTimeout = 30    # 请求超时时间，单位为秒(默认60秒)
