@@ -1915,8 +1915,6 @@ class Component(AbstractModel):
 <li> <b>SIGN_LEGAL_PERSON_SEAL</b> : 企业法定代表人控件。</li></ul>
 注：` 表单域的控件不能作为印章和签名控件`
         :type ComponentType: str
-        :param _FileIndex: <font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
-        :type FileIndex: int
         :param _ComponentHeight: **在绝对定位方式和关键字定位方式下**，指定控件的高度， 控件高度是指控件在PDF文件中的高度，单位为pt（点）。
 
         :type ComponentHeight: float
@@ -1933,6 +1931,13 @@ class Component(AbstractModel):
         :type ComponentPosX: float
         :param _ComponentPosY: **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
         :type ComponentPosY: float
+        :param _FileIndex: <font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
+        :type FileIndex: int
+        :param _GenerateMode: 控件生成的方式：
+<ul><li> <b>NORMAL</b> : 绝对定位控件</li>
+<li> <b>FIELD</b> : 表单域</li>
+<li> <b>KEYWORD</b> : 关键字（设置关键字时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找）</li></ul>
+        :type GenerateMode: str
         :param _ComponentId: 控件唯一ID。
 
 **在绝对定位方式方式下**，ComponentId为控件的ID，长度不能超过30，只能由中文、字母、数字和下划线组成，可以在后续的操作中使用该名称来引用控件。
@@ -2020,15 +2025,6 @@ class Component(AbstractModel):
 <table> <thead> <tr> <th>特殊控件</th> <th>填写约束</th> </tr> </thead> <tbody> <tr> <td>企业全称控件</td> <td>企业名称中文字符中文括号</td> </tr> <tr> <td>统一社会信用代码控件</td> <td>企业注册的统一社会信用代码</td> </tr> <tr> <td>法人名称控件</td> <td>最大50个字符，2到25个汉字或者1到50个字母</td> </tr> <tr> <td>签署意见控件</td> <td>签署意见最大长度为50字符</td> </tr> <tr> <td>签署人手机号控件</td> <td>国内手机号 13,14,15,16,17,18,19号段长度11位</td> </tr> <tr> <td>签署人身份证控件</td> <td>合法的身份证号码检查</td> </tr> <tr> <td>控件名称</td> <td>控件名称最大长度为20字符，不支持表情</td> </tr> <tr> <td>单行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>多行文本控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>勾选框控件</td> <td>选择填字符串true，不选填字符串false</td> </tr> <tr> <td>选择器控件</td> <td>同单行文本控件约束，填写选择值中的字符串</td> </tr> <tr> <td>数字控件</td> <td>请输入有效的数字(可带小数点)</td> </tr> <tr> <td>日期控件</td> <td>格式：yyyy年mm月dd日</td> </tr> <tr> <td>附件控件</td> <td>JPG或PNG图片，上传数量限制，1到6个，最大6个附件，填写上传的资源ID</td> </tr> <tr> <td>图片控件</td> <td>JPG或PNG图片，填写上传的图片资源ID</td> </tr> <tr> <td>邮箱控件</td> <td>有效的邮箱地址, w3c标准</td> </tr> <tr> <td>地址控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>省市区控件</td> <td>只允许输入中文，英文，数字，中英文标点符号，不支持表情</td> </tr> <tr> <td>性别控件</td> <td>选择值中的字符串</td> </tr> <tr> <td>学历控件</td> <td>选择值中的字符串</td> </tr> </tbody> </table>
 注：   `部分特殊控件需要在控制台配置模板形式创建`
         :type ComponentValue: str
-        :param _GenerateMode: 控件生成的方式：
-<ul><li> <b>NORMAL</b> : 绝对定位控件</li>
-<li> <b>FIELD</b> : 表单域</li>
-<li> <b>KEYWORD</b> : 关键字（设置关键字时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找）</li></ul>
-        :type GenerateMode: str
-        :param _ComponentDateFontSize: <font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
-        :type ComponentDateFontSize: int
-        :param _ChannelComponentId: <font color="red">【暂未使用】</font>第三方应用集成平台模板控件 ID 标识
-        :type ChannelComponentId: str
         :param _OffsetX: **如果控件是关键字定位方式**，可以对关键字定位出来的区域进行横坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏左或偏右，可以通过调整横坐标方向的参数来使控件位置更加准确。
 注意： `向左调整设置为负数， 向右调整设置成正数`
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2037,10 +2033,6 @@ class Component(AbstractModel):
 注意： `向上调整设置为负数， 向下调整设置成正数`
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetY: float
-        :param _ChannelComponentSource: <font color="red">【暂未使用】</font>第三方应用集成中子客企业控件来源。
-<ul><li> <b>0</b> :平台指定；</li>
-<li> <b>1</b> :用户自定义</li></ul>
-        :type ChannelComponentSource: int
         :param _KeywordOrder: **如果控件是关键字定位方式**，指定关键字排序规则时，可以选择Positive或Reverse两种排序方式。
 <ul><li> <b>Positive</b> :表示正序，即根据关键字在PDF文件内的顺序进行排列</li>
 <li> <b>Reverse</b> :表示倒序，即根据关键字在PDF文件内的反序进行排列</li></ul>
@@ -2071,14 +2063,23 @@ class Component(AbstractModel):
 <li> <b>true</b> : 可以移动和删除控件</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForbidMoveAndDelete: bool
+        :param _ComponentDateFontSize: <font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
+        :type ComponentDateFontSize: int
+        :param _ChannelComponentId: <font color="red">【暂未使用】</font>第三方应用集成平台模板控件 ID 标识
+        :type ChannelComponentId: str
+        :param _ChannelComponentSource: <font color="red">【暂未使用】</font>第三方应用集成中子客企业控件来源。
+<ul><li> <b>0</b> :平台指定；</li>
+<li> <b>1</b> :用户自定义</li></ul>
+        :type ChannelComponentSource: int
         """
         self._ComponentType = None
-        self._FileIndex = None
         self._ComponentHeight = None
         self._ComponentWidth = None
         self._ComponentPage = None
         self._ComponentPosX = None
         self._ComponentPosY = None
+        self._FileIndex = None
+        self._GenerateMode = None
         self._ComponentId = None
         self._ComponentName = None
         self._ComponentRequired = None
@@ -2086,18 +2087,17 @@ class Component(AbstractModel):
         self._ComponentExtra = None
         self._IsFormType = None
         self._ComponentValue = None
-        self._GenerateMode = None
-        self._ComponentDateFontSize = None
-        self._ChannelComponentId = None
         self._OffsetX = None
         self._OffsetY = None
-        self._ChannelComponentSource = None
         self._KeywordOrder = None
         self._KeywordPage = None
         self._RelativeLocation = None
         self._KeywordIndexes = None
         self._LockComponentValue = None
         self._ForbidMoveAndDelete = None
+        self._ComponentDateFontSize = None
+        self._ChannelComponentId = None
+        self._ChannelComponentSource = None
 
     @property
     def ComponentType(self):
@@ -2106,14 +2106,6 @@ class Component(AbstractModel):
     @ComponentType.setter
     def ComponentType(self, ComponentType):
         self._ComponentType = ComponentType
-
-    @property
-    def FileIndex(self):
-        return self._FileIndex
-
-    @FileIndex.setter
-    def FileIndex(self, FileIndex):
-        self._FileIndex = FileIndex
 
     @property
     def ComponentHeight(self):
@@ -2154,6 +2146,22 @@ class Component(AbstractModel):
     @ComponentPosY.setter
     def ComponentPosY(self, ComponentPosY):
         self._ComponentPosY = ComponentPosY
+
+    @property
+    def FileIndex(self):
+        return self._FileIndex
+
+    @FileIndex.setter
+    def FileIndex(self, FileIndex):
+        self._FileIndex = FileIndex
+
+    @property
+    def GenerateMode(self):
+        return self._GenerateMode
+
+    @GenerateMode.setter
+    def GenerateMode(self, GenerateMode):
+        self._GenerateMode = GenerateMode
 
     @property
     def ComponentId(self):
@@ -2212,30 +2220,6 @@ class Component(AbstractModel):
         self._ComponentValue = ComponentValue
 
     @property
-    def GenerateMode(self):
-        return self._GenerateMode
-
-    @GenerateMode.setter
-    def GenerateMode(self, GenerateMode):
-        self._GenerateMode = GenerateMode
-
-    @property
-    def ComponentDateFontSize(self):
-        return self._ComponentDateFontSize
-
-    @ComponentDateFontSize.setter
-    def ComponentDateFontSize(self, ComponentDateFontSize):
-        self._ComponentDateFontSize = ComponentDateFontSize
-
-    @property
-    def ChannelComponentId(self):
-        return self._ChannelComponentId
-
-    @ChannelComponentId.setter
-    def ChannelComponentId(self, ChannelComponentId):
-        self._ChannelComponentId = ChannelComponentId
-
-    @property
     def OffsetX(self):
         return self._OffsetX
 
@@ -2250,14 +2234,6 @@ class Component(AbstractModel):
     @OffsetY.setter
     def OffsetY(self, OffsetY):
         self._OffsetY = OffsetY
-
-    @property
-    def ChannelComponentSource(self):
-        return self._ChannelComponentSource
-
-    @ChannelComponentSource.setter
-    def ChannelComponentSource(self, ChannelComponentSource):
-        self._ChannelComponentSource = ChannelComponentSource
 
     @property
     def KeywordOrder(self):
@@ -2307,15 +2283,40 @@ class Component(AbstractModel):
     def ForbidMoveAndDelete(self, ForbidMoveAndDelete):
         self._ForbidMoveAndDelete = ForbidMoveAndDelete
 
+    @property
+    def ComponentDateFontSize(self):
+        return self._ComponentDateFontSize
+
+    @ComponentDateFontSize.setter
+    def ComponentDateFontSize(self, ComponentDateFontSize):
+        self._ComponentDateFontSize = ComponentDateFontSize
+
+    @property
+    def ChannelComponentId(self):
+        return self._ChannelComponentId
+
+    @ChannelComponentId.setter
+    def ChannelComponentId(self, ChannelComponentId):
+        self._ChannelComponentId = ChannelComponentId
+
+    @property
+    def ChannelComponentSource(self):
+        return self._ChannelComponentSource
+
+    @ChannelComponentSource.setter
+    def ChannelComponentSource(self, ChannelComponentSource):
+        self._ChannelComponentSource = ChannelComponentSource
+
 
     def _deserialize(self, params):
         self._ComponentType = params.get("ComponentType")
-        self._FileIndex = params.get("FileIndex")
         self._ComponentHeight = params.get("ComponentHeight")
         self._ComponentWidth = params.get("ComponentWidth")
         self._ComponentPage = params.get("ComponentPage")
         self._ComponentPosX = params.get("ComponentPosX")
         self._ComponentPosY = params.get("ComponentPosY")
+        self._FileIndex = params.get("FileIndex")
+        self._GenerateMode = params.get("GenerateMode")
         self._ComponentId = params.get("ComponentId")
         self._ComponentName = params.get("ComponentName")
         self._ComponentRequired = params.get("ComponentRequired")
@@ -2323,18 +2324,17 @@ class Component(AbstractModel):
         self._ComponentExtra = params.get("ComponentExtra")
         self._IsFormType = params.get("IsFormType")
         self._ComponentValue = params.get("ComponentValue")
-        self._GenerateMode = params.get("GenerateMode")
-        self._ComponentDateFontSize = params.get("ComponentDateFontSize")
-        self._ChannelComponentId = params.get("ChannelComponentId")
         self._OffsetX = params.get("OffsetX")
         self._OffsetY = params.get("OffsetY")
-        self._ChannelComponentSource = params.get("ChannelComponentSource")
         self._KeywordOrder = params.get("KeywordOrder")
         self._KeywordPage = params.get("KeywordPage")
         self._RelativeLocation = params.get("RelativeLocation")
         self._KeywordIndexes = params.get("KeywordIndexes")
         self._LockComponentValue = params.get("LockComponentValue")
         self._ForbidMoveAndDelete = params.get("ForbidMoveAndDelete")
+        self._ComponentDateFontSize = params.get("ComponentDateFontSize")
+        self._ChannelComponentId = params.get("ChannelComponentId")
+        self._ChannelComponentSource = params.get("ChannelComponentSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3156,6 +3156,8 @@ class CreateDocumentRequest(AbstractModel):
 <ul>
 <li>支持自动签传递印章，可通过指定自动签控件id，指定印章id来完成</li>
 </ul>
+注：只有在控制台编辑模板时，<font color="red">归属给发起方</font>的填写控件（如下图）才能在创建文档的时候进行内容填充。
+![image](https://qcloudimg.tencent-cloud.cn/raw/a54a76a58c454593d06d8e9883ecc9b3.png)
         :type FormFields: list of FormField
         :param _NeedPreview: 是否为预览模式，取值如下：
 <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
@@ -3378,8 +3380,8 @@ class CreateEmbedWebUrlRequest(AbstractModel):
 <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
-<li>PREVIEW_FLOW：生成预览合同的嵌入页面</li>
-<li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面</li></ul>
+<li>PREVIEW_FLOW：生成预览合同的嵌入页面（支持移动端）</li>
+<li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面（仅支持PC端）</li></ul>
         :type EmbedType: str
         :param _BusinessId: WEB嵌入的业务资源ID
 <ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>

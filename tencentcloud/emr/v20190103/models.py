@@ -400,6 +400,12 @@ class AutoScaleRecord(AbstractModel):
         :param _CompensateCount: 补偿次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompensateCount: int
+        :param _RetryCount: 重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryCount: int
+        :param _RetryInfo: 重试信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryInfo: str
         """
         self._StrategyName = None
         self._ScaleAction = None
@@ -412,6 +418,8 @@ class AutoScaleRecord(AbstractModel):
         self._SpecInfo = None
         self._CompensateFlag = None
         self._CompensateCount = None
+        self._RetryCount = None
+        self._RetryInfo = None
 
     @property
     def StrategyName(self):
@@ -501,6 +509,22 @@ class AutoScaleRecord(AbstractModel):
     def CompensateCount(self, CompensateCount):
         self._CompensateCount = CompensateCount
 
+    @property
+    def RetryCount(self):
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def RetryInfo(self):
+        return self._RetryInfo
+
+    @RetryInfo.setter
+    def RetryInfo(self, RetryInfo):
+        self._RetryInfo = RetryInfo
+
 
     def _deserialize(self, params):
         self._StrategyName = params.get("StrategyName")
@@ -514,6 +538,8 @@ class AutoScaleRecord(AbstractModel):
         self._SpecInfo = params.get("SpecInfo")
         self._CompensateFlag = params.get("CompensateFlag")
         self._CompensateCount = params.get("CompensateCount")
+        self._RetryCount = params.get("RetryCount")
+        self._RetryInfo = params.get("RetryInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1137,6 +1163,12 @@ class ClusterInstancesInfo(AbstractModel):
         :param _IsCvmReplace: 是否开通异常节点自动补偿
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCvmReplace: bool
+        :param _ClusterTitle: 标题
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterTitle: str
+        :param _ConfigDetail: 集群产品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigDetail: :class:`tencentcloud.emr.v20190103.models.EmrProductConfigDetail`
         """
         self._Id = None
         self._ClusterId = None
@@ -1180,6 +1212,8 @@ class ClusterInstancesInfo(AbstractModel):
         self._TopologyInfoList = None
         self._IsMultiZoneCluster = None
         self._IsCvmReplace = None
+        self._ClusterTitle = None
+        self._ConfigDetail = None
 
     @property
     def Id(self):
@@ -1199,10 +1233,14 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Ftitle(self):
+        warnings.warn("parameter `Ftitle` is deprecated", DeprecationWarning) 
+
         return self._Ftitle
 
     @Ftitle.setter
     def Ftitle(self, Ftitle):
+        warnings.warn("parameter `Ftitle` is deprecated", DeprecationWarning) 
+
         self._Ftitle = Ftitle
 
     @property
@@ -1295,10 +1333,14 @@ class ClusterInstancesInfo(AbstractModel):
 
     @property
     def Config(self):
+        warnings.warn("parameter `Config` is deprecated", DeprecationWarning) 
+
         return self._Config
 
     @Config.setter
     def Config(self, Config):
+        warnings.warn("parameter `Config` is deprecated", DeprecationWarning) 
+
         self._Config = Config
 
     @property
@@ -1517,6 +1559,22 @@ class ClusterInstancesInfo(AbstractModel):
     def IsCvmReplace(self, IsCvmReplace):
         self._IsCvmReplace = IsCvmReplace
 
+    @property
+    def ClusterTitle(self):
+        return self._ClusterTitle
+
+    @ClusterTitle.setter
+    def ClusterTitle(self, ClusterTitle):
+        self._ClusterTitle = ClusterTitle
+
+    @property
+    def ConfigDetail(self):
+        return self._ConfigDetail
+
+    @ConfigDetail.setter
+    def ConfigDetail(self, ConfigDetail):
+        self._ConfigDetail = ConfigDetail
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1578,6 +1636,10 @@ class ClusterInstancesInfo(AbstractModel):
                 self._TopologyInfoList.append(obj)
         self._IsMultiZoneCluster = params.get("IsMultiZoneCluster")
         self._IsCvmReplace = params.get("IsCvmReplace")
+        self._ClusterTitle = params.get("ClusterTitle")
+        if params.get("ConfigDetail") is not None:
+            self._ConfigDetail = EmrProductConfigDetail()
+            self._ConfigDetail._deserialize(params.get("ConfigDetail"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3234,6 +3296,8 @@ class DescribeClusterNodesRequest(AbstractModel):
 <li>renew：表示获取所有待续费的节点信息，包括cdb信息，自动续费节点不会返回。</li>
 注意：现在只支持以上取值，输入其他值会导致错误。
         :type NodeFlag: str
+        :param _ExportDb: 导出全部节点信息csv时是否携带cdb信息
+        :type ExportDb: bool
         :param _Offset: 页编号，默认值为0，表示第一页。
         :type Offset: int
         :param _Limit: 每页返回数量，默认值为100，最大值为100。
@@ -3249,6 +3313,7 @@ class DescribeClusterNodesRequest(AbstractModel):
         """
         self._InstanceId = None
         self._NodeFlag = None
+        self._ExportDb = None
         self._Offset = None
         self._Limit = None
         self._HardwareResourceType = None
@@ -3271,6 +3336,14 @@ class DescribeClusterNodesRequest(AbstractModel):
     @NodeFlag.setter
     def NodeFlag(self, NodeFlag):
         self._NodeFlag = NodeFlag
+
+    @property
+    def ExportDb(self):
+        return self._ExportDb
+
+    @ExportDb.setter
+    def ExportDb(self, ExportDb):
+        self._ExportDb = ExportDb
 
     @property
     def Offset(self):
@@ -3324,6 +3397,7 @@ class DescribeClusterNodesRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._NodeFlag = params.get("NodeFlag")
+        self._ExportDb = params.get("ExportDb")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._HardwareResourceType = params.get("HardwareResourceType")
@@ -5703,6 +5777,282 @@ class EmrPrice(AbstractModel):
             self._PriceSpec = PriceResource()
             self._PriceSpec._deserialize(params.get("PriceSpec"))
         self._SupportSpotPaid = params.get("SupportSpotPaid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmrProductConfigDetail(AbstractModel):
+    """EMR产品配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SoftInfo: 软件信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoftInfo: list of str
+        :param _MasterNodeSize: Master节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterNodeSize: int
+        :param _CoreNodeSize: Core节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoreNodeSize: int
+        :param _TaskNodeSize: Task节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskNodeSize: int
+        :param _ComNodeSize: Common节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComNodeSize: int
+        :param _MasterResource: Master节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterResource: :class:`tencentcloud.emr.v20190103.models.ResourceDetail`
+        :param _CoreResource: Core节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoreResource: :class:`tencentcloud.emr.v20190103.models.ResourceDetail`
+        :param _TaskResource: Task节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskResource: :class:`tencentcloud.emr.v20190103.models.ResourceDetail`
+        :param _ComResource: Common节点资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComResource: :class:`tencentcloud.emr.v20190103.models.ResourceDetail`
+        :param _OnCos: 是否使用COS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnCos: bool
+        :param _ChargeType: 收费类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: int
+        :param _RouterNodeSize: Router节点个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouterNodeSize: int
+        :param _SupportHA: 是否支持HA
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportHA: bool
+        :param _SecurityOn: 是否支持安全模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityOn: bool
+        :param _SecurityGroup: 安全组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroup: str
+        :param _CbsEncrypt: 是否开启Cbs加密
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CbsEncrypt: int
+        :param _ApplicationRole: 自定义应用角色。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationRole: str
+        :param _SecurityGroups: 安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroups: list of str
+        :param _PublicKeyId: SSH密钥Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicKeyId: str
+        """
+        self._SoftInfo = None
+        self._MasterNodeSize = None
+        self._CoreNodeSize = None
+        self._TaskNodeSize = None
+        self._ComNodeSize = None
+        self._MasterResource = None
+        self._CoreResource = None
+        self._TaskResource = None
+        self._ComResource = None
+        self._OnCos = None
+        self._ChargeType = None
+        self._RouterNodeSize = None
+        self._SupportHA = None
+        self._SecurityOn = None
+        self._SecurityGroup = None
+        self._CbsEncrypt = None
+        self._ApplicationRole = None
+        self._SecurityGroups = None
+        self._PublicKeyId = None
+
+    @property
+    def SoftInfo(self):
+        return self._SoftInfo
+
+    @SoftInfo.setter
+    def SoftInfo(self, SoftInfo):
+        self._SoftInfo = SoftInfo
+
+    @property
+    def MasterNodeSize(self):
+        return self._MasterNodeSize
+
+    @MasterNodeSize.setter
+    def MasterNodeSize(self, MasterNodeSize):
+        self._MasterNodeSize = MasterNodeSize
+
+    @property
+    def CoreNodeSize(self):
+        return self._CoreNodeSize
+
+    @CoreNodeSize.setter
+    def CoreNodeSize(self, CoreNodeSize):
+        self._CoreNodeSize = CoreNodeSize
+
+    @property
+    def TaskNodeSize(self):
+        return self._TaskNodeSize
+
+    @TaskNodeSize.setter
+    def TaskNodeSize(self, TaskNodeSize):
+        self._TaskNodeSize = TaskNodeSize
+
+    @property
+    def ComNodeSize(self):
+        return self._ComNodeSize
+
+    @ComNodeSize.setter
+    def ComNodeSize(self, ComNodeSize):
+        self._ComNodeSize = ComNodeSize
+
+    @property
+    def MasterResource(self):
+        return self._MasterResource
+
+    @MasterResource.setter
+    def MasterResource(self, MasterResource):
+        self._MasterResource = MasterResource
+
+    @property
+    def CoreResource(self):
+        return self._CoreResource
+
+    @CoreResource.setter
+    def CoreResource(self, CoreResource):
+        self._CoreResource = CoreResource
+
+    @property
+    def TaskResource(self):
+        return self._TaskResource
+
+    @TaskResource.setter
+    def TaskResource(self, TaskResource):
+        self._TaskResource = TaskResource
+
+    @property
+    def ComResource(self):
+        return self._ComResource
+
+    @ComResource.setter
+    def ComResource(self, ComResource):
+        self._ComResource = ComResource
+
+    @property
+    def OnCos(self):
+        return self._OnCos
+
+    @OnCos.setter
+    def OnCos(self, OnCos):
+        self._OnCos = OnCos
+
+    @property
+    def ChargeType(self):
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def RouterNodeSize(self):
+        return self._RouterNodeSize
+
+    @RouterNodeSize.setter
+    def RouterNodeSize(self, RouterNodeSize):
+        self._RouterNodeSize = RouterNodeSize
+
+    @property
+    def SupportHA(self):
+        return self._SupportHA
+
+    @SupportHA.setter
+    def SupportHA(self, SupportHA):
+        self._SupportHA = SupportHA
+
+    @property
+    def SecurityOn(self):
+        return self._SecurityOn
+
+    @SecurityOn.setter
+    def SecurityOn(self, SecurityOn):
+        self._SecurityOn = SecurityOn
+
+    @property
+    def SecurityGroup(self):
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def CbsEncrypt(self):
+        return self._CbsEncrypt
+
+    @CbsEncrypt.setter
+    def CbsEncrypt(self, CbsEncrypt):
+        self._CbsEncrypt = CbsEncrypt
+
+    @property
+    def ApplicationRole(self):
+        return self._ApplicationRole
+
+    @ApplicationRole.setter
+    def ApplicationRole(self, ApplicationRole):
+        self._ApplicationRole = ApplicationRole
+
+    @property
+    def SecurityGroups(self):
+        return self._SecurityGroups
+
+    @SecurityGroups.setter
+    def SecurityGroups(self, SecurityGroups):
+        self._SecurityGroups = SecurityGroups
+
+    @property
+    def PublicKeyId(self):
+        return self._PublicKeyId
+
+    @PublicKeyId.setter
+    def PublicKeyId(self, PublicKeyId):
+        self._PublicKeyId = PublicKeyId
+
+
+    def _deserialize(self, params):
+        self._SoftInfo = params.get("SoftInfo")
+        self._MasterNodeSize = params.get("MasterNodeSize")
+        self._CoreNodeSize = params.get("CoreNodeSize")
+        self._TaskNodeSize = params.get("TaskNodeSize")
+        self._ComNodeSize = params.get("ComNodeSize")
+        if params.get("MasterResource") is not None:
+            self._MasterResource = ResourceDetail()
+            self._MasterResource._deserialize(params.get("MasterResource"))
+        if params.get("CoreResource") is not None:
+            self._CoreResource = ResourceDetail()
+            self._CoreResource._deserialize(params.get("CoreResource"))
+        if params.get("TaskResource") is not None:
+            self._TaskResource = ResourceDetail()
+            self._TaskResource._deserialize(params.get("TaskResource"))
+        if params.get("ComResource") is not None:
+            self._ComResource = ResourceDetail()
+            self._ComResource._deserialize(params.get("ComResource"))
+        self._OnCos = params.get("OnCos")
+        self._ChargeType = params.get("ChargeType")
+        self._RouterNodeSize = params.get("RouterNodeSize")
+        self._SupportHA = params.get("SupportHA")
+        self._SecurityOn = params.get("SecurityOn")
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._CbsEncrypt = params.get("CbsEncrypt")
+        self._ApplicationRole = params.get("ApplicationRole")
+        self._SecurityGroups = params.get("SecurityGroups")
+        self._PublicKeyId = params.get("PublicKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12327,6 +12677,144 @@ class Resource(AbstractModel):
         
 
 
+class ResourceDetail(AbstractModel):
+    """资源详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Spec: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param _SpecName: 规格名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        :param _StorageType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: int
+        :param _DiskType: 硬盘类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskType: str
+        :param _RootSize: 系统盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootSize: int
+        :param _MemSize: 内存大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemSize: int
+        :param _Cpu: CPU个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _DiskSize: 硬盘大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiskSize: int
+        :param _InstanceType: 规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        """
+        self._Spec = None
+        self._SpecName = None
+        self._StorageType = None
+        self._DiskType = None
+        self._RootSize = None
+        self._MemSize = None
+        self._Cpu = None
+        self._DiskSize = None
+        self._InstanceType = None
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def RootSize(self):
+        return self._RootSize
+
+    @RootSize.setter
+    def RootSize(self, RootSize):
+        self._RootSize = RootSize
+
+    @property
+    def MemSize(self):
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+
+    def _deserialize(self, params):
+        self._Spec = params.get("Spec")
+        self._SpecName = params.get("SpecName")
+        self._StorageType = params.get("StorageType")
+        self._DiskType = params.get("DiskType")
+        self._RootSize = params.get("RootSize")
+        self._MemSize = params.get("MemSize")
+        self._Cpu = params.get("Cpu")
+        self._DiskSize = params.get("DiskSize")
+        self._InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunJobFlowRequest(AbstractModel):
     """RunJobFlow请求参数结构体
 
@@ -13477,11 +13965,14 @@ class ScriptBootstrapActionConfig(AbstractModel):
         :type Args: list of str
         :param _CosFileName: 脚本文件名
         :type CosFileName: str
+        :param _Remark: 备注
+        :type Remark: str
         """
         self._CosFileURI = None
         self._ExecutionMoment = None
         self._Args = None
         self._CosFileName = None
+        self._Remark = None
 
     @property
     def CosFileURI(self):
@@ -13515,12 +14006,21 @@ class ScriptBootstrapActionConfig(AbstractModel):
     def CosFileName(self, CosFileName):
         self._CosFileName = CosFileName
 
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._CosFileURI = params.get("CosFileURI")
         self._ExecutionMoment = params.get("ExecutionMoment")
         self._Args = params.get("Args")
         self._CosFileName = params.get("CosFileName")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13539,8 +14039,10 @@ class SearchItem(AbstractModel):
     def __init__(self):
         r"""
         :param _SearchType: 支持搜索的类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type SearchType: str
         :param _SearchValue: 支持搜索的值
+注意：此字段可能返回 null，表示取不到有效值。
         :type SearchValue: str
         """
         self._SearchType = None

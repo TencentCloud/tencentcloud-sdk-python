@@ -27,7 +27,9 @@ class RkpClient(AbstractClient):
 
 
     def GetOpenId(self, request):
-        """根据DevicceToken查询OpenID。
+        """产品侧确认风险探针已停售，无收入，并且已经停服。目前服务使用自建redis，不符合规范需要整改下线。
+
+        根据DevicceToken查询OpenID。
 
         :param request: Request instance for GetOpenId.
         :type request: :class:`tencentcloud.rkp.v20191209.models.GetOpenIdRequest`
@@ -50,7 +52,9 @@ class RkpClient(AbstractClient):
 
 
     def GetToken(self, request):
-        """获取token接口。
+        """产品侧确认风险探针已停售，无收入，并且已经停服。目前服务使用自建redis，不符合规范需要整改下线。
+
+        获取token接口。
 
         :param request: Request instance for GetToken.
         :type request: :class:`tencentcloud.rkp.v20191209.models.GetTokenRequest`
@@ -73,7 +77,9 @@ class RkpClient(AbstractClient):
 
 
     def QueryDevAndRisk(self, request):
-        """腾讯天御设备风险查询接口，输入由客户应用自主采集的设备信息， 通过腾讯大数据风控能力，可以准确根据输入设备信息，还原设备库中的设备ID，并且识别设备的风险，解决客户业务过程中的设备风险，降低企业损失。
+        """产品侧确认风险探针已停售，无收入，并且已经停服。目前服务使用自建redis，不符合规范需要整改下线。
+
+        腾讯天御设备风险查询接口，输入由客户应用自主采集的设备信息， 通过腾讯大数据风控能力，可以准确根据输入设备信息，还原设备库中的设备ID，并且识别设备的风险，解决客户业务过程中的设备风险，降低企业损失。
 
         :param request: Request instance for QueryDevAndRisk.
         :type request: :class:`tencentcloud.rkp.v20191209.models.QueryDevAndRiskRequest`

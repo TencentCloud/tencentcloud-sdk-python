@@ -322,7 +322,8 @@ class VodClient(AbstractClient):
 
 
     def CreateEnhanceMediaTemplate(self, request):
-        """创建音画质重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        创建音画质重生模板。
 
         :param request: Request instance for CreateEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateEnhanceMediaTemplateRequest`
@@ -506,7 +507,8 @@ class VodClient(AbstractClient):
 
 
     def CreateRebuildMediaTemplate(self, request):
-        """创建视频重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        创建视频重生模板。
 
         :param request: Request instance for CreateRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateRebuildMediaTemplateRequest`
@@ -931,7 +933,8 @@ class VodClient(AbstractClient):
 
 
     def DeleteEnhanceMediaTemplate(self, request):
-        """删除音画质重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        删除音画质重生模板。
 
         :param request: Request instance for DeleteEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteEnhanceMediaTemplateRequest`
@@ -1140,7 +1143,8 @@ class VodClient(AbstractClient):
 
 
     def DeleteRebuildMediaTemplate(self, request):
-        """删除视频重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        删除视频重生模板。
 
         :param request: Request instance for DeleteRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteRebuildMediaTemplateRequest`
@@ -1749,7 +1753,8 @@ class VodClient(AbstractClient):
 
 
     def DescribeEnhanceMediaTemplates(self, request):
-        """获取音画质重生模板列表。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        获取音画质重生模板列表。
 
         :param request: Request instance for DescribeEnhanceMediaTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeEnhanceMediaTemplatesRequest`
@@ -2170,7 +2175,8 @@ class VodClient(AbstractClient):
 
 
     def DescribeRebuildMediaTemplates(self, request):
-        """获取视频重生模板列表。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        获取视频重生模板列表。
 
         :param request: Request instance for DescribeRebuildMediaTemplates.
         :type request: :class:`tencentcloud.vod.v20180717.models.DescribeRebuildMediaTemplatesRequest`
@@ -2613,7 +2619,8 @@ class VodClient(AbstractClient):
 
 
     def EnhanceMediaByTemplate(self, request):
-        """使用模板发起音画质重生。
+        """该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+        使用模板发起音画质重生。
 
         :param request: Request instance for EnhanceMediaByTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaByTemplateRequest`
@@ -3008,7 +3015,8 @@ class VodClient(AbstractClient):
 
 
     def ModifyEnhanceMediaTemplate(self, request):
-        """修改音画质重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        修改音画质重生模板。
 
         :param request: Request instance for ModifyEnhanceMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyEnhanceMediaTemplateRequest`
@@ -3232,7 +3240,8 @@ class VodClient(AbstractClient):
 
 
     def ModifyRebuildMediaTemplate(self, request):
-        """修改视频重生模板。
+        """该 API 已经<font color=red>不再维护</font>，新版 [音画质重生](https://cloud.tencent.com/document/product/266/102571) 接口使用预置模板，详情请参见 [音画质重生模板](https://cloud.tencent.com/document/product/266/102586#50604b3f-0286-4a10-a3f7-18218116aff7)。
+        修改视频重生模板。
 
         :param request: Request instance for ModifyRebuildMediaTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifyRebuildMediaTemplateRequest`
@@ -3753,7 +3762,8 @@ class VodClient(AbstractClient):
 
 
     def RebuildMedia(self, request):
-        """发起音画质重生
+        """该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+        发起音画质重生
 
         :param request: Request instance for RebuildMedia.
         :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaRequest`
@@ -3776,7 +3786,8 @@ class VodClient(AbstractClient):
 
 
     def RebuildMediaByTemplate(self, request):
-        """使用模板发起视频重生。
+        """该 API 已经<font color=red>不再维护</font>，请使用新版接口 [音画质重生](https://cloud.tencent.com/document/api/266/102571)。
+        使用模板发起视频重生。
 
         :param request: Request instance for RebuildMediaByTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.RebuildMediaByTemplateRequest`

@@ -565,6 +565,12 @@ Modify 集群变更中；
         :param _RestartTimeout: 超时时间 单位s
 注意：此字段可能返回 null，表示取不到有效值。
         :type RestartTimeout: str
+        :param _GraceShutdownWaitSeconds: 内核优雅重启超时时间，如果为-1说明未设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraceShutdownWaitSeconds: str
+        :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseSensitive: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -605,6 +611,8 @@ Modify 集群变更中；
         self._IfExistCatalog = None
         self._Characteristic = None
         self._RestartTimeout = None
+        self._GraceShutdownWaitSeconds = None
+        self._CaseSensitive = None
 
     @property
     def InstanceId(self):
@@ -922,6 +930,22 @@ Modify 集群变更中；
     def RestartTimeout(self, RestartTimeout):
         self._RestartTimeout = RestartTimeout
 
+    @property
+    def GraceShutdownWaitSeconds(self):
+        return self._GraceShutdownWaitSeconds
+
+    @GraceShutdownWaitSeconds.setter
+    def GraceShutdownWaitSeconds(self, GraceShutdownWaitSeconds):
+        self._GraceShutdownWaitSeconds = GraceShutdownWaitSeconds
+
+    @property
+    def CaseSensitive(self):
+        return self._CaseSensitive
+
+    @CaseSensitive.setter
+    def CaseSensitive(self, CaseSensitive):
+        self._CaseSensitive = CaseSensitive
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -972,6 +996,8 @@ Modify 集群变更中；
         self._IfExistCatalog = params.get("IfExistCatalog")
         self._Characteristic = params.get("Characteristic")
         self._RestartTimeout = params.get("RestartTimeout")
+        self._GraceShutdownWaitSeconds = params.get("GraceShutdownWaitSeconds")
+        self._CaseSensitive = params.get("CaseSensitive")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
