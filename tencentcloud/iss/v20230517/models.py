@@ -515,7 +515,7 @@ class AddAITaskRequest(AbstractModel):
         :type Templates: list of AITemplates
         :param _Desc: AI 任务描述。仅支持中文、英文、数字、_、-，长度不超过128个字符
         :type Desc: str
-        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
         :type CallbackUrl: str
         :param _IsStartTheTask: 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
         :type IsStartTheTask: bool
@@ -4942,7 +4942,7 @@ class DescribeDeviceData(AbstractModel):
         :param _DeviceId: 设备ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
-        :param _Code: 设备编码（即我们为设备生成的20位国标编码）
+        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
@@ -9066,7 +9066,7 @@ class ListDeviceInfo(AbstractModel):
         r"""
         :param _DeviceId: 设备 ID
         :type DeviceId: str
-        :param _Code: 设备国标编码
+        :param _Code: 设备编码
         :type Code: str
         :param _Status: 设备状态。0:未注册，1:在线，2:离线，3:禁用
         :type Status: int
@@ -9245,7 +9245,9 @@ class ListDevicesRequest(AbstractModel):
         :type OrganizationId: str
         :param _IsContainSubLevel: 是否获取当前层级及子层级的设备列表，默认false
         :type IsContainSubLevel: bool
-        :param _AccessProtocol: 设备接入协议。1:RTMP，2:GB，3:GW
+        :param _IsContainUser: 是否包含当前用户已关联的设备，默认false
+        :type IsContainUser: bool
+        :param _AccessProtocol: 设备接入协议。1:RTMP，2:GB，3:GW，4:IVCP(私有协议)
         :type AccessProtocol: int
         :param _Type: 设备类型。1:IPC，2:NVR
         :type Type: int
@@ -9253,7 +9255,7 @@ class ListDevicesRequest(AbstractModel):
         :type Status: int
         :param _ClusterId: 服务节点ID
         :type ClusterId: str
-        :param _Keyword: 模糊搜索设备关键字
+        :param _Keyword: 模糊搜索设备的关键字
         :type Keyword: str
         :param _CurrentUin: 当前用户Uin
         :type CurrentUin: int
@@ -9264,6 +9266,7 @@ class ListDevicesRequest(AbstractModel):
         """
         self._OrganizationId = None
         self._IsContainSubLevel = None
+        self._IsContainUser = None
         self._AccessProtocol = None
         self._Type = None
         self._Status = None
@@ -9288,6 +9291,14 @@ class ListDevicesRequest(AbstractModel):
     @IsContainSubLevel.setter
     def IsContainSubLevel(self, IsContainSubLevel):
         self._IsContainSubLevel = IsContainSubLevel
+
+    @property
+    def IsContainUser(self):
+        return self._IsContainUser
+
+    @IsContainUser.setter
+    def IsContainUser(self, IsContainUser):
+        self._IsContainUser = IsContainUser
 
     @property
     def AccessProtocol(self):
@@ -9357,6 +9368,7 @@ class ListDevicesRequest(AbstractModel):
     def _deserialize(self, params):
         self._OrganizationId = params.get("OrganizationId")
         self._IsContainSubLevel = params.get("IsContainSubLevel")
+        self._IsContainUser = params.get("IsContainUser")
         self._AccessProtocol = params.get("AccessProtocol")
         self._Type = params.get("Type")
         self._Status = params.get("Status")
@@ -13295,7 +13307,7 @@ class UpdateAITaskRequest(AbstractModel):
         :type Desc: str
         :param _ChannelList: 通道 ID 列表。不能添加存在于其他 AI 任务的通道，限制1000个通道。
         :type ChannelList: list of str
-        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/xxx或者https://domain/xxx
+        :param _CallbackUrl: AI 结果回调地址。类似 "http://ip:port/***或者https://domain/***
         :type CallbackUrl: str
         :param _IsStartTheTask: 是否立即开启 AI 任务。"true"代表立即开启 AI 任务，"false"代表暂不开启 AI 任务，默认为 false。
         :type IsStartTheTask: bool
@@ -14490,11 +14502,11 @@ class UpdateRecordBackupPlanModify(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanName: 录像计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段）
+        :param _PlanName: 录像上云计划名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，计划名称全局唯一，不能为空，不能重复，不修改名称时，不需要该字段）
         :type PlanName: str
         :param _TemplateId: 录制模板ID（从查询录像上云模板列表接口ListRecordBackupTemplates中获取，不修改模板ID时，不需要该字段）
         :type TemplateId: str
-        :param _Describe: 录像计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段）
+        :param _Describe: 录像上云计划描述（仅支持中文、英文、数字、_、-，长度不超过128个字符， 不修改描述时，不需要该字段）
         :type Describe: str
         :param _LifeCycle: 生命周期（录像文件生命周期设置，管理文件冷、热存储的时间，不修改生命周期时，不需要该字段）
         :type LifeCycle: :class:`tencentcloud.iss.v20230517.models.LifeCycleData`

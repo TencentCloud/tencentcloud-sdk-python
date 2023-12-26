@@ -234,7 +234,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBasicDBInstances(self, request):
-        """本接口（CreateBasicDBInstances）用于创建SQL server基础版实例。
+        """本接口（CreateBasicDBInstances）用于创建基础版实例 (云盘)。
 
         :param request: Request instance for CreateBasicDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBasicDBInstancesRequest`
@@ -257,7 +257,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateBusinessDBInstances(self, request):
-        """本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+        """本接口（CreateBusinessDBInstances）用于创建商业智能服务实例 (云盘)。
 
         :param request: Request instance for CreateBusinessDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateBusinessDBInstancesRequest`
@@ -303,7 +303,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudDBInstances(self, request):
-        """本接口（CreateCloudDBInstances）用于创建高可用实例(虚拟机版本)。
+        """本接口（CreateCloudDBInstances）用于创建高可用实例 (云盘)。
 
         :param request: Request instance for CreateCloudDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudDBInstancesRequest`
@@ -326,7 +326,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateCloudReadOnlyDBInstances(self, request):
-        """本接口（CreateCloudReadOnlyDBInstances）用于添加只读副本实例(虚拟机版本)。
+        """本接口（CreateCloudReadOnlyDBInstances）用于创建只读实例 (云盘)。
 
         :param request: Request instance for CreateCloudReadOnlyDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateCloudReadOnlyDBInstancesRequest`
@@ -372,7 +372,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateDBInstances(self, request):
-        """本接口（CreateDBInstances）用于创建实例。
+        """本接口（CreateDBInstances）用于创建高可用实例 (本地盘)
 
         :param request: Request instance for CreateDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateDBInstancesRequest`
@@ -464,7 +464,7 @@ class SqlserverClient(AbstractClient):
 
 
     def CreateReadOnlyDBInstances(self, request):
-        """本接口（CreateReadOnlyDBInstances）用于添加只读副本实例。
+        """本接口（CreateReadOnlyDBInstances）用于创建只读实例 (本地盘)。
 
         :param request: Request instance for CreateReadOnlyDBInstances.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateReadOnlyDBInstancesRequest`

@@ -31518,10 +31518,16 @@ class ModifyCcnAttributeRequest(AbstractModel):
         :type CcnName: str
         :param _CcnDescription: CCN描述信息，最大长度不能超过100个字节，限制：CcnName和CcnDescription必须至少选择一个参数输入，否则报错。
         :type CcnDescription: str
+        :param _RouteECMPFlag: 是否开启等价路由功能。`False` 不开启，`True` 开启。
+        :type RouteECMPFlag: bool
+        :param _RouteOverlapFlag: 是否开启路由重叠功能。`False` 不开启，`True` 开启。
+        :type RouteOverlapFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
         self._CcnDescription = None
+        self._RouteECMPFlag = None
+        self._RouteOverlapFlag = None
 
     @property
     def CcnId(self):
@@ -31547,11 +31553,29 @@ class ModifyCcnAttributeRequest(AbstractModel):
     def CcnDescription(self, CcnDescription):
         self._CcnDescription = CcnDescription
 
+    @property
+    def RouteECMPFlag(self):
+        return self._RouteECMPFlag
+
+    @RouteECMPFlag.setter
+    def RouteECMPFlag(self, RouteECMPFlag):
+        self._RouteECMPFlag = RouteECMPFlag
+
+    @property
+    def RouteOverlapFlag(self):
+        return self._RouteOverlapFlag
+
+    @RouteOverlapFlag.setter
+    def RouteOverlapFlag(self, RouteOverlapFlag):
+        self._RouteOverlapFlag = RouteOverlapFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
         self._CcnName = params.get("CcnName")
         self._CcnDescription = params.get("CcnDescription")
+        self._RouteECMPFlag = params.get("RouteECMPFlag")
+        self._RouteOverlapFlag = params.get("RouteOverlapFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -347,6 +347,7 @@ class VodClient(AbstractClient):
 
     def CreateHeadTailTemplate(self, request):
         """创建片头片尾模板。
+        - 最大支持模版数量为 100 个。
 
         :param request: Request instance for CreateHeadTailTemplate.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateHeadTailTemplateRequest`
@@ -1828,7 +1829,7 @@ class VodClient(AbstractClient):
 
     def DescribeFileAttributes(self, request):
         """用于异步获取文件属性。
-        - 当前仅支持获取源文件的 Md5。
+        - 当前仅支持获取源文件的 Md5、Sha1。
         - 对输入文件为 HLS 或 DASH 的情况，仅获取索引文件的属性。
 
         :param request: Request instance for DescribeFileAttributes.

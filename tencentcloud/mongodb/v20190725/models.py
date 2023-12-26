@@ -18,6 +18,56 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddNodeList(AbstractModel):
+    """修改实例节点详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 需要删除的节点角色。
+- SECONDARY：Mongod 节点。
+- READONLY：只读节点。
+- MONGOS：Mongos 节点。
+        :type Role: str
+        :param _Zone: 节点所对应的可用区。
+- 单可用区，所有节点在同一可用区。
+- 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置新增节点对应的可用区，且新增后必须满足任意2个可用区节点数大于第3个可用区原则。
+        :type Zone: str
+        """
+        self._Role = None
+        self._Zone = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssignProjectRequest(AbstractModel):
     """AssignProject请求参数结构体
 
@@ -6022,6 +6072,10 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :param _InMaintenance: 实例配置变更的切换时间。<ul><li>0：调整完成时，立即执行变配任务。默认为0。</li><li>1：在维护时间窗内，执行变配任务。
 <b>说明</b>：调整节点数和分片数不支持在<b>维护时间窗内</b>变更。</li></ul>
         :type InMaintenance: int
+        :param _AddNodeList: 新增节点属性列表。
+        :type AddNodeList: list of AddNodeList
+        :param _RemoveNodeList: 删除节点属性列表。
+        :type RemoveNodeList: list of RemoveNodeList
         """
         self._InstanceId = None
         self._Memory = None
@@ -6030,6 +6084,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._NodeNum = None
         self._ReplicateSetNum = None
         self._InMaintenance = None
+        self._AddNodeList = None
+        self._RemoveNodeList = None
 
     @property
     def InstanceId(self):
@@ -6087,6 +6143,22 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
     def InMaintenance(self, InMaintenance):
         self._InMaintenance = InMaintenance
 
+    @property
+    def AddNodeList(self):
+        return self._AddNodeList
+
+    @AddNodeList.setter
+    def AddNodeList(self, AddNodeList):
+        self._AddNodeList = AddNodeList
+
+    @property
+    def RemoveNodeList(self):
+        return self._RemoveNodeList
+
+    @RemoveNodeList.setter
+    def RemoveNodeList(self, RemoveNodeList):
+        self._RemoveNodeList = RemoveNodeList
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6096,6 +6168,18 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._NodeNum = params.get("NodeNum")
         self._ReplicateSetNum = params.get("ReplicateSetNum")
         self._InMaintenance = params.get("InMaintenance")
+        if params.get("AddNodeList") is not None:
+            self._AddNodeList = []
+            for item in params.get("AddNodeList"):
+                obj = AddNodeList()
+                obj._deserialize(item)
+                self._AddNodeList.append(obj)
+        if params.get("RemoveNodeList") is not None:
+            self._RemoveNodeList = []
+            for item in params.get("RemoveNodeList"):
+                obj = RemoveNodeList()
+                obj._deserialize(item)
+                self._RemoveNodeList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6521,6 +6605,71 @@ class Operation(AbstractModel):
         self._ReplicaSetName = params.get("ReplicaSetName")
         self._NodeName = params.get("NodeName")
         self._OpId = params.get("OpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveNodeList(AbstractModel):
+    """修改实例节点详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 需要删除的节点角色。
+- SECONDARY：Mongod 节点。
+- READONLY：只读节点。
+- MONGOS：Mongos 节点。
+        :type Role: str
+        :param _NodeName: 要删除的节点 ID。分片集群须指定一组分片要删除的节点名称即可，其余分片对改组对齐。
+
+- 获取方式：登录 [MongoDB控制台](https://console.cloud.tencent.com/)，在**节点管理**页签，可获取**节点 ID**。
+- 特别说明：分片集群同一节点上的分片，仅需指定0分片节点 ID 即可。例如：cmgo-6hfk****_0-node-primary。
+        :type NodeName: str
+        :param _Zone: 节点所对应的可用区。
+- 单可用区，所有节点在同一可用区。
+- 多可用区：当前标准规格是三可用区分布，主从节点不在同一可用区，需注意配置所删除节点对应的可用区，且删除后必须满足任意2个可用区节点数大于第3个可用区原则。
+        :type Zone: str
+        """
+        self._Role = None
+        self._NodeName = None
+        self._Zone = None
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._NodeName = params.get("NodeName")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

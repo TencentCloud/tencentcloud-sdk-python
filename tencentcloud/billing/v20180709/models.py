@@ -283,6 +283,9 @@ class BillDetail(AbstractModel):
         :param _BillMonth: 账单归属月
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillMonth: str
+        :param _Id: 账单记录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -314,6 +317,7 @@ class BillDetail(AbstractModel):
         self._FormulaUrl = None
         self._BillDay = None
         self._BillMonth = None
+        self._Id = None
 
     @property
     def BusinessCodeName(self):
@@ -555,6 +559,14 @@ class BillDetail(AbstractModel):
     def BillMonth(self, BillMonth):
         self._BillMonth = BillMonth
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -599,6 +611,7 @@ class BillDetail(AbstractModel):
         self._FormulaUrl = params.get("FormulaUrl")
         self._BillDay = params.get("BillDay")
         self._BillMonth = params.get("BillMonth")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8848,6 +8861,8 @@ cdn业务：
 10227 视频直播带宽(国内)
 100763 视频直播流量(海外)
 100762 视频直播宽带(海外)
+
+仅支持以上产品
         :type ProductCode: str
         :param _Domain: 查询域名 例如 www.qq.com
 非CDN业务查询时传入空字符串，返回的值为空
@@ -8855,12 +8870,15 @@ cdn业务：
         :param _InstanceID: 1、如果为空，则返回EIP或CLB所有实例的明细；
 2、如果传入实例名，则返回该实例明细
         :type InstanceID: str
+        :param _PayerUin: 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        :type PayerUin: str
         """
         self._StartDate = None
         self._EndDate = None
         self._ProductCode = None
         self._Domain = None
         self._InstanceID = None
+        self._PayerUin = None
 
     @property
     def StartDate(self):
@@ -8902,6 +8920,14 @@ cdn业务：
     def InstanceID(self, InstanceID):
         self._InstanceID = InstanceID
 
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
 
     def _deserialize(self, params):
         self._StartDate = params.get("StartDate")
@@ -8909,6 +8935,7 @@ cdn业务：
         self._ProductCode = params.get("ProductCode")
         self._Domain = params.get("Domain")
         self._InstanceID = params.get("InstanceID")
+        self._PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

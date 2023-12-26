@@ -4664,6 +4664,145 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFlowGroupSignReviewRequest(AbstractModel):
+    """CreateFlowGroupSignReview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowGroupId: 合同(流程)组的合同组Id，为32位字符串，通过接口[通过多文件创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles) 或[通过多模板创建合同组签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByTemplates)创建合同组签署流程时返回。
+        :type FlowGroupId: str
+        :param _ReviewType: 提交的审核结果，审核结果有下面三种情况
+<ul><li><b>PASS</b>: 审核通过，合同流程可以继续执行签署等操作</li>
+<li><b>REJECT</b>: 审核拒绝，合同流程不会变动</li>
+<li><b>SIGN_REJECT</b>:拒签，合同流程直接结束，合同状态变为**合同拒签**</li></ul>
+        :type ReviewType: str
+        :param _ApproverInfo: 需要进行签署审核的签署人的个人信息或企业信息，签署方的匹配方式按照以下规则:
+
+个人：二选一（选择其中任意信息组合即可）
+<ul><li>姓名+证件类型+证件号</li>
+<li>姓名+手机号</li></ul>
+
+企业：二选一  （选择其中任意信息组合即可）
+<ul><li>企业名+姓名+证件类型+证件号</li>
+<li>企业名+姓名+手机号</li></ul>
+        :type ApproverInfo: :class:`tencentcloud.ess.v20201111.models.NeedReviewApproverInfo`
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ReviewMessage: 审核不通过的原因，该字段的字符串长度不超过200个字符。
+
+注：`当审核类型（ReviewType）为审核拒绝（REJECT）或拒签（SIGN_REJECT）时，审核结果原因字段必须填写`
+
+        :type ReviewMessage: str
+        """
+        self._Operator = None
+        self._FlowGroupId = None
+        self._ReviewType = None
+        self._ApproverInfo = None
+        self._Agent = None
+        self._ReviewMessage = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowGroupId(self):
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def ReviewType(self):
+        return self._ReviewType
+
+    @ReviewType.setter
+    def ReviewType(self, ReviewType):
+        self._ReviewType = ReviewType
+
+    @property
+    def ApproverInfo(self):
+        return self._ApproverInfo
+
+    @ApproverInfo.setter
+    def ApproverInfo(self, ApproverInfo):
+        self._ApproverInfo = ApproverInfo
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ReviewMessage(self):
+        return self._ReviewMessage
+
+    @ReviewMessage.setter
+    def ReviewMessage(self, ReviewMessage):
+        self._ReviewMessage = ReviewMessage
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowGroupId = params.get("FlowGroupId")
+        self._ReviewType = params.get("ReviewType")
+        if params.get("ApproverInfo") is not None:
+            self._ApproverInfo = NeedReviewApproverInfo()
+            self._ApproverInfo._deserialize(params.get("ApproverInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ReviewMessage = params.get("ReviewMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFlowGroupSignReviewResponse(AbstractModel):
+    """CreateFlowGroupSignReview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFlowOption(AbstractModel):
     """创建合同个性化参数
 
@@ -5262,23 +5401,18 @@ class CreateFlowSignReviewRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+<ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+<li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
         :type FlowId: str
-        :param _ReviewType: 企业审核结果
-<ul><li>PASS: 通过</li> 
-<li>REJECT: 拒绝</li></ul>
+        :param _ReviewType: 企业内部审核结果
+<ul><li>PASS: 审核通过</li>
+<li>REJECT: 审核拒绝</li>
+<li>SIGN_REJECT:拒签(流程结束)</li></ul>
         :type ReviewType: str
-        :param _ReviewMessage: 审核结果原因，
-字符串长度不超过200
-当ReviewType 是拒绝（REJECT） 时此字段必填。
-
-        :type ReviewMessage: str
         :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _RecipientId: 审核签署节点人标识，
-用来标识审核的签署方。
-如果签署审核节点是个人， 此参数必填。
+        :param _RecipientId: 审核节点的签署人标志，用于指定当前审核的签署方
+<ul><li>**如果签署审核节点是个人， 此参数必填**。</li></ul>
         :type RecipientId: str
         :param _OperateType: 操作类型：（接口通过该字段区分不同的操作类型）
 
@@ -5287,14 +5421,21 @@ class CreateFlowSignReviewRequest(AbstractModel):
 
 如果审核节点是个人，则操作类型只能为SignReview。
         :type OperateType: str
+        :param _ReviewMessage: 审核结果原因
+<ul><li>字符串长度不超过200</li>
+<li>当ReviewType 是拒绝（REJECT） 时此字段必填。</li>
+<li>当ReviewType 是拒绝（SIGN_REJECT） 时此字段必填。</li></ul>
+
+
+        :type ReviewMessage: str
         """
         self._Operator = None
         self._FlowId = None
         self._ReviewType = None
-        self._ReviewMessage = None
         self._Agent = None
         self._RecipientId = None
         self._OperateType = None
+        self._ReviewMessage = None
 
     @property
     def Operator(self):
@@ -5321,14 +5462,6 @@ class CreateFlowSignReviewRequest(AbstractModel):
         self._ReviewType = ReviewType
 
     @property
-    def ReviewMessage(self):
-        return self._ReviewMessage
-
-    @ReviewMessage.setter
-    def ReviewMessage(self, ReviewMessage):
-        self._ReviewMessage = ReviewMessage
-
-    @property
     def Agent(self):
         return self._Agent
 
@@ -5352,6 +5485,14 @@ class CreateFlowSignReviewRequest(AbstractModel):
     def OperateType(self, OperateType):
         self._OperateType = OperateType
 
+    @property
+    def ReviewMessage(self):
+        return self._ReviewMessage
+
+    @ReviewMessage.setter
+    def ReviewMessage(self, ReviewMessage):
+        self._ReviewMessage = ReviewMessage
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -5359,12 +5500,12 @@ class CreateFlowSignReviewRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._FlowId = params.get("FlowId")
         self._ReviewType = params.get("ReviewType")
-        self._ReviewMessage = params.get("ReviewMessage")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._RecipientId = params.get("RecipientId")
         self._OperateType = params.get("OperateType")
+        self._ReviewMessage = params.get("ReviewMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14566,7 +14707,8 @@ class FormField(AbstractModel):
     }
     ```
 
-    当控件的 ComponentType='ATTACHMENT'时，FormField.ComponentValue填入附件图片的资源ID列表，以逗号分隔，单个附件控件最多支持6个资源ID；
+    当控件的 ComponentType='ATTACHMENT'时，FormField.ComponentValue支持填入附件图片或者文件的资源ID列表，以逗号分隔，单个附件控件最多支持6个资源ID；
+    支持的文件类型包括doc、docx、xls、xlsx、html、jpg、jpeg、png、bmp、txt、pdf
 
     ```
     FormField输入示例：
@@ -15940,6 +16082,114 @@ class ModifyIntegrationRoleResponse(AbstractModel):
     def _deserialize(self, params):
         self._RoleId = params.get("RoleId")
         self._RequestId = params.get("RequestId")
+
+
+class NeedReviewApproverInfo(AbstractModel):
+    """需要进行签署审核的签署人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverType: 签署方经办人的类型，支持以下类型
+<ul><li> ORGANIZATION 企业（含企业自动签）</li>
+<li>PERSON 个人（含个人自动签）</li></ul>
+        :type ApproverType: str
+        :param _ApproverName: 签署方经办人的姓名。 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+        :type ApproverName: str
+        :param _ApproverMobile: 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。 请确认手机号所有方为此合同签署方。
+        :type ApproverMobile: str
+        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型
+<ul><li>ID_CARD 居民身份证  (默认值)</li>
+<li>HONGKONG_AND_MACAO 港澳居民来往内地通行证</li>
+<li>HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)</li>
+<li>OTHER_CARD_TYPE 其他证件</li></ul>
+
+注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+        :type ApproverIdCardType: str
+        :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
+<ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :type ApproverIdCardNumber: str
+        :param _OrganizationName: 组织机构名称。
+请确认该名称与企业营业执照中注册的名称一致。
+如果名称中包含英文括号()，请使用中文括号（）代替。
+如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
+
+        :type OrganizationName: str
+        """
+        self._ApproverType = None
+        self._ApproverName = None
+        self._ApproverMobile = None
+        self._ApproverIdCardType = None
+        self._ApproverIdCardNumber = None
+        self._OrganizationName = None
+
+    @property
+    def ApproverType(self):
+        return self._ApproverType
+
+    @ApproverType.setter
+    def ApproverType(self, ApproverType):
+        self._ApproverType = ApproverType
+
+    @property
+    def ApproverName(self):
+        return self._ApproverName
+
+    @ApproverName.setter
+    def ApproverName(self, ApproverName):
+        self._ApproverName = ApproverName
+
+    @property
+    def ApproverMobile(self):
+        return self._ApproverMobile
+
+    @ApproverMobile.setter
+    def ApproverMobile(self, ApproverMobile):
+        self._ApproverMobile = ApproverMobile
+
+    @property
+    def ApproverIdCardType(self):
+        return self._ApproverIdCardType
+
+    @ApproverIdCardType.setter
+    def ApproverIdCardType(self, ApproverIdCardType):
+        self._ApproverIdCardType = ApproverIdCardType
+
+    @property
+    def ApproverIdCardNumber(self):
+        return self._ApproverIdCardNumber
+
+    @ApproverIdCardNumber.setter
+    def ApproverIdCardNumber(self, ApproverIdCardNumber):
+        self._ApproverIdCardNumber = ApproverIdCardNumber
+
+    @property
+    def OrganizationName(self):
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+
+    def _deserialize(self, params):
+        self._ApproverType = params.get("ApproverType")
+        self._ApproverName = params.get("ApproverName")
+        self._ApproverMobile = params.get("ApproverMobile")
+        self._ApproverIdCardType = params.get("ApproverIdCardType")
+        self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._OrganizationName = params.get("OrganizationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OccupiedSeal(AbstractModel):
