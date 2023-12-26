@@ -141,6 +141,29 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKTVMusicAccompanySegmentUrlVip(self, request):
+        """获取歌曲伴奏高潮的开始、结束时间，可用于抢唱
+
+        :param request: Request instance for DescribeKTVMusicAccompanySegmentUrlVip.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlVipRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeKTVMusicAccompanySegmentUrlVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKTVMusicAccompanySegmentUrlVip", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKTVMusicAccompanySegmentUrlVipResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKTVMusicsByTag(self, request):
         """通过标签过滤歌曲列表。
 
@@ -325,6 +348,29 @@ class YinsudaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVipUserInfo(self, request):
+        """获取会员信息：获取用户是否开通会员
+
+        :param request: Request instance for DescribeVipUserInfo.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.DescribeVipUserInfoRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.DescribeVipUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVipUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVipUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyKTVRobot(self, request):
         """销毁机器人，机器人退出 RTC 房间。
 
@@ -362,6 +408,29 @@ class YinsudaClient(AbstractClient):
             body = self.call("RechargeLiveVip", params, headers=headers)
             response = json.loads(body)
             model = models.RechargeLiveVipResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RechargeVip(self, request):
+        """充值会员
+
+        :param request: Request instance for RechargeVip.
+        :type request: :class:`tencentcloud.yinsuda.v20220527.models.RechargeVipRequest`
+        :rtype: :class:`tencentcloud.yinsuda.v20220527.models.RechargeVipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RechargeVip", params, headers=headers)
+            response = json.loads(body)
+            model = models.RechargeVipResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

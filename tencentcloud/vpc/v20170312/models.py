@@ -1976,9 +1976,12 @@ class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
         :type VpcId: str
         :param _Ipv6SubnetCidrBlocks: 分配 `IPv6` 子网段列表。
         :type Ipv6SubnetCidrBlocks: list of Ipv6SubnetCidrBlock
+        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :type ClientToken: str
         """
         self._VpcId = None
         self._Ipv6SubnetCidrBlocks = None
+        self._ClientToken = None
 
     @property
     def VpcId(self):
@@ -1996,6 +1999,14 @@ class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
     def Ipv6SubnetCidrBlocks(self, Ipv6SubnetCidrBlocks):
         self._Ipv6SubnetCidrBlocks = Ipv6SubnetCidrBlocks
 
+    @property
+    def ClientToken(self):
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -2005,6 +2016,7 @@ class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
                 obj = Ipv6SubnetCidrBlock()
                 obj._deserialize(item)
                 self._Ipv6SubnetCidrBlocks.append(obj)
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

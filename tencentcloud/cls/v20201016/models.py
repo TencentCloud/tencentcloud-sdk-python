@@ -17440,7 +17440,7 @@ BizType为1时，优先使用MetricNames字段多指标只能填充到MetricName
         :type MetricNames: list of str
         :param _MetricLabels: 指标维度，不接受时间类型。
         :type MetricLabels: list of str
-        :param _CustomTime: 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间，精度毫秒）为指标时间戳。
+        :param _CustomTime: 指标时间戳，默认值为SQL查询时间范围的左侧时间点，您也可以指定其他字段（类型为uinx时间、TimeStamp，精度毫秒）为指标时间戳。
         :type CustomTime: str
         :param _CustomMetricLabels: 除了MetricLabels，您还可以使用该参数，为指标补充静态的维度。
 维度名以字母或下划线开头，后面可以跟字母、数字或下划线，长度小于等于1024 字节

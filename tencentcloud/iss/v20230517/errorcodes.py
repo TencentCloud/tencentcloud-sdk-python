@@ -320,6 +320,9 @@ INVALIDPARAMETERVALUE_OUTOFTIMERANGE = 'InvalidParameterValue.OutOfTimeRange'
 # 通道数量一次最多添加5000路
 INVALIDPARAMETERVALUE_PLANCHANNELSEXCEEDSRANGE = 'InvalidParameterValue.PlanChannelsExceedsRange'
 
+# 计划名称不能重复
+INVALIDPARAMETERVALUE_PLANNAMEREPEAT = 'InvalidParameterValue.PlanNameRepeat'
+
 # 一个取回任务最多添加32个设备通道
 INVALIDPARAMETERVALUE_RETRIEVETASKCHANNELSEXCEEDSRANGE = 'InvalidParameterValue.RetrieveTaskChannelsExceedsRange'
 

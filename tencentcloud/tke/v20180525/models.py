@@ -663,6 +663,51 @@ class Addon(AbstractModel):
         
 
 
+class AnnotationValue(AbstractModel):
+    """注释
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 注释键
+        :type Name: str
+        :param _Value: 注释值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppChart(AbstractModel):
     """app所支持的chart
 
@@ -4771,7 +4816,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type AutoScalingGroupPara: str
         :param _LaunchConfigurePara: LaunchConfigurePara 运行参数，参考 https://cloud.tencent.com/document/product/377/20447
         :type LaunchConfigurePara: str
-        :param _InstanceAdvancedSettings: InstanceAdvancedSettings 示例参数
+        :param _InstanceAdvancedSettings: InstanceAdvancedSettings
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param _EnableAutoscale: 是否启用自动伸缩
         :type EnableAutoscale: bool
@@ -4781,6 +4826,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type Labels: list of Label
         :param _Taints: Taints互斥
         :type Taints: list of Taint
+        :param _Annotations: 节点Annotation 列表
+        :type Annotations: list of AnnotationValue
         :param _ContainerRuntime: 节点池纬度运行时类型及版本
         :type ContainerRuntime: str
         :param _RuntimeVersion: 运行时版本
@@ -4802,6 +4849,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self._Name = None
         self._Labels = None
         self._Taints = None
+        self._Annotations = None
         self._ContainerRuntime = None
         self._RuntimeVersion = None
         self._NodePoolOs = None
@@ -4874,6 +4922,14 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self._Taints = Taints
 
     @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+    @property
     def ContainerRuntime(self):
         return self._ContainerRuntime
 
@@ -4943,6 +4999,12 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self._Taints.append(obj)
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = AnnotationValue()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
         self._ContainerRuntime = params.get("ContainerRuntime")
         self._RuntimeVersion = params.get("RuntimeVersion")
         self._NodePoolOs = params.get("NodePoolOs")
@@ -27988,6 +28050,8 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         :type Labels: list of Label
         :param _Taints: 污点
         :type Taints: list of Taint
+        :param _Annotations: 节点 Annotation 列表
+        :type Annotations: list of AnnotationValue
         :param _EnableAutoscale: 是否开启伸缩
         :type EnableAutoscale: bool
         :param _OsName: 操作系统名称
@@ -28020,6 +28084,7 @@ class ModifyClusterNodePoolRequest(AbstractModel):
         self._MinNodesNum = None
         self._Labels = None
         self._Taints = None
+        self._Annotations = None
         self._EnableAutoscale = None
         self._OsName = None
         self._OsCustomizeType = None
@@ -28088,6 +28153,14 @@ class ModifyClusterNodePoolRequest(AbstractModel):
     @Taints.setter
     def Taints(self, Taints):
         self._Taints = Taints
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
 
     @property
     def EnableAutoscale(self):
@@ -28204,6 +28277,12 @@ class ModifyClusterNodePoolRequest(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self._Taints.append(obj)
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = AnnotationValue()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
         self._EnableAutoscale = params.get("EnableAutoscale")
         self._OsName = params.get("OsName")
         self._OsCustomizeType = params.get("OsCustomizeType")
@@ -29441,6 +29520,8 @@ class NodePool(AbstractModel):
         :type Labels: list of Label
         :param _Taints: Taints 污点标记
         :type Taints: list of Taint
+        :param _Annotations: 节点 Annotation 列表
+        :type Annotations: list of AnnotationValue
         :param _NodeCountSummary: NodeCountSummary 节点列表
         :type NodeCountSummary: :class:`tencentcloud.tke.v20180525.models.NodeCountSummary`
         :param _AutoscalingGroupStatus: 状态信息
@@ -29503,6 +29584,7 @@ class NodePool(AbstractModel):
         self._AutoscalingGroupId = None
         self._Labels = None
         self._Taints = None
+        self._Annotations = None
         self._NodeCountSummary = None
         self._AutoscalingGroupStatus = None
         self._MaxNodesNum = None
@@ -29585,6 +29667,14 @@ class NodePool(AbstractModel):
     @Taints.setter
     def Taints(self, Taints):
         self._Taints = Taints
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
 
     @property
     def NodeCountSummary(self):
@@ -29750,6 +29840,12 @@ class NodePool(AbstractModel):
                 obj = Taint()
                 obj._deserialize(item)
                 self._Taints.append(obj)
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = AnnotationValue()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
         if params.get("NodeCountSummary") is not None:
             self._NodeCountSummary = NodeCountSummary()
             self._NodeCountSummary._deserialize(params.get("NodeCountSummary"))

@@ -16617,6 +16617,9 @@ class InstanceInfo(AbstractModel):
         :param _MiniMaxQPS: 小程序qps峰值
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniMaxQPS: int
+        :param _LastQpsExceedTime: 最近一次超量时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastQpsExceedTime: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -16655,6 +16658,7 @@ class InstanceInfo(AbstractModel):
         self._MiniPkg = None
         self._MiniQpsStandard = None
         self._MiniMaxQPS = None
+        self._LastQpsExceedTime = None
 
     @property
     def InstanceId(self):
@@ -16952,6 +16956,14 @@ class InstanceInfo(AbstractModel):
     def MiniMaxQPS(self, MiniMaxQPS):
         self._MiniMaxQPS = MiniMaxQPS
 
+    @property
+    def LastQpsExceedTime(self):
+        return self._LastQpsExceedTime
+
+    @LastQpsExceedTime.setter
+    def LastQpsExceedTime(self, LastQpsExceedTime):
+        self._LastQpsExceedTime = LastQpsExceedTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17009,6 +17021,7 @@ class InstanceInfo(AbstractModel):
             self._MiniPkg._deserialize(params.get("MiniPkg"))
         self._MiniQpsStandard = params.get("MiniQpsStandard")
         self._MiniMaxQPS = params.get("MiniMaxQPS")
+        self._LastQpsExceedTime = params.get("LastQpsExceedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

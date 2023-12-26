@@ -847,6 +847,165 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKTVMusicAccompanySegmentUrlVipRequest(AbstractModel):
+    """DescribeKTVMusicAccompanySegmentUrlVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 应用名称
+        :type AppName: str
+        :param _UserId: 用户标识
+        :type UserId: str
+        :param _MusicId: 歌曲 Id 
+        :type MusicId: str
+        """
+        self._AppName = None
+        self._UserId = None
+        self._MusicId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def MusicId(self):
+        return self._MusicId
+
+    @MusicId.setter
+    def MusicId(self, MusicId):
+        self._MusicId = MusicId
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._MusicId = params.get("MusicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
+    """DescribeKTVMusicAccompanySegmentUrlVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 0:成功获取 1:歌曲下架 2:无权限 3: 非包月会员 4:没有对应的链接
+        :type Status: int
+        :param _Url: 伴奏链接
+
+        :type Url: str
+        :param _ExtName: 伴奏类型，如mkv，mp3等
+
+        :type ExtName: str
+        :param _SegmentBegin: 高潮开始时间
+
+        :type SegmentBegin: int
+        :param _SegmentEnd: 高潮结束时间
+
+        :type SegmentEnd: int
+        :param _FileSize: 链接文件大小 (单位:字节)
+
+        :type FileSize: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Url = None
+        self._ExtName = None
+        self._SegmentBegin = None
+        self._SegmentEnd = None
+        self._FileSize = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ExtName(self):
+        return self._ExtName
+
+    @ExtName.setter
+    def ExtName(self, ExtName):
+        self._ExtName = ExtName
+
+    @property
+    def SegmentBegin(self):
+        return self._SegmentBegin
+
+    @SegmentBegin.setter
+    def SegmentBegin(self, SegmentBegin):
+        self._SegmentBegin = SegmentBegin
+
+    @property
+    def SegmentEnd(self):
+        return self._SegmentEnd
+
+    @SegmentEnd.setter
+    def SegmentEnd(self, SegmentEnd):
+        self._SegmentEnd = SegmentEnd
+
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Url = params.get("Url")
+        self._ExtName = params.get("ExtName")
+        self._SegmentBegin = params.get("SegmentBegin")
+        self._SegmentEnd = params.get("SegmentEnd")
+        self._FileSize = params.get("FileSize")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKTVMusicsByTagRequest(AbstractModel):
     """DescribeKTVMusicsByTag请求参数结构体
 
@@ -1917,6 +2076,136 @@ class DescribeUserInfoResponse(AbstractModel):
         if params.get("UserInfo") is not None:
             self._UserInfo = UserInfo()
             self._UserInfo._deserialize(params.get("UserInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVipUserInfoRequest(AbstractModel):
+    """DescribeVipUserInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 应用名称。
+        :type AppName: str
+        :param _UserId: 用户标识。
+        :type UserId: str
+        """
+        self._AppName = None
+        self._UserId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVipUserInfoResponse(AbstractModel):
+    """DescribeVipUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsVip: 是否是会员。（0:不是会员 1:是会员）
+        :type IsVip: int
+        :param _AnchorId: 主播id
+        :type AnchorId: str
+        :param _RoomId: 房间id
+        :type RoomId: str
+        :param _EndTime: 会员过期时间
+        :type EndTime: str
+        :param _Status: 会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsVip = None
+        self._AnchorId = None
+        self._RoomId = None
+        self._EndTime = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def IsVip(self):
+        return self._IsVip
+
+    @IsVip.setter
+    def IsVip(self, IsVip):
+        self._IsVip = IsVip
+
+    @property
+    def AnchorId(self):
+        return self._AnchorId
+
+    @AnchorId.setter
+    def AnchorId(self, AnchorId):
+        self._AnchorId = AnchorId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsVip = params.get("IsVip")
+        self._AnchorId = params.get("AnchorId")
+        self._RoomId = params.get("RoomId")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -3326,6 +3615,148 @@ class RechargeLiveVipResponse(AbstractModel):
         if params.get("LiveVipUserInfo") is not None:
             self._LiveVipUserInfo = LiveVipUserInfo()
             self._LiveVipUserInfo._deserialize(params.get("LiveVipUserInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class RechargeVipRequest(AbstractModel):
+    """RechargeVip请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppName: 应用名称。
+        :type AppName: str
+        :param _UserId: 用户标识。
+        :type UserId: str
+        :param _RoomId: 房间Id。
+        :type RoomId: str
+        :param _VipDays: 充值会员天数。(取值有：31、93、186、372)
+        :type VipDays: int
+        :param _AnchorId: 主播id。
+        :type AnchorId: str
+        """
+        self._AppName = None
+        self._UserId = None
+        self._RoomId = None
+        self._VipDays = None
+        self._AnchorId = None
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def VipDays(self):
+        return self._VipDays
+
+    @VipDays.setter
+    def VipDays(self, VipDays):
+        self._VipDays = VipDays
+
+    @property
+    def AnchorId(self):
+        return self._AnchorId
+
+    @AnchorId.setter
+    def AnchorId(self, AnchorId):
+        self._AnchorId = AnchorId
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._UserId = params.get("UserId")
+        self._RoomId = params.get("RoomId")
+        self._VipDays = params.get("VipDays")
+        self._AnchorId = params.get("AnchorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RechargeVipResponse(AbstractModel):
+    """RechargeVip返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartnerNo: 厂商订单号。
+        :type PartnerNo: str
+        :param _OrderNo: TME订单号。
+        :type OrderNo: str
+        :param _CreateTime: 订单创建时间。
+        :type CreateTime: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PartnerNo = None
+        self._OrderNo = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def PartnerNo(self):
+        return self._PartnerNo
+
+    @PartnerNo.setter
+    def PartnerNo(self, PartnerNo):
+        self._PartnerNo = PartnerNo
+
+    @property
+    def OrderNo(self):
+        return self._OrderNo
+
+    @OrderNo.setter
+    def OrderNo(self, OrderNo):
+        self._OrderNo = OrderNo
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PartnerNo = params.get("PartnerNo")
+        self._OrderNo = params.get("OrderNo")
+        self._CreateTime = params.get("CreateTime")
         self._RequestId = params.get("RequestId")
 
 

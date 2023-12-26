@@ -11874,7 +11874,7 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 音视频内容分析模板名称，长度限制：64 个字符。
         :type Name: str
@@ -12460,7 +12460,7 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param _Fps: 帧率，取值范围：[1, 30]，单位：Hz。
         :type Fps: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Width: 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 <li>当 Width、Height 均为 0，则分辨率同源；</li>
@@ -12735,7 +12735,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>ON：是；</li>
 <li>OFF：否。</li>
         :type ReviewWallSwitch: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 内容审核模板名称，长度限制：64 个字符。
         :type Name: str
@@ -13554,7 +13554,7 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
         :param _ColumnCount: 雪碧图中小图的列数。
 注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
         :type ColumnCount: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 雪碧图模板名称，长度限制：64 个字符。
         :type Name: str
@@ -13887,7 +13887,7 @@ class CreatePersonSampleRequest(AbstractModel):
 2. Review：用于内容不适宜，等价于 Review.Face。
 3. All：包含以上全部，等价于 1+2。
         :type Usages: list of str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Description: 素材描述，长度限制：1024 个字符。
         :type Description: str
@@ -14037,7 +14037,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         r"""
         :param _Name: 任务流名字（支持中文，不超过20个字）。
         :type Name: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Comment: 模板描述信息，长度限制：256 个字符。
         :type Comment: str
@@ -14188,7 +14188,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 音画质检测模板名称。
         :type Name: str
@@ -14436,7 +14436,7 @@ class CreateRebuildMediaTemplateRequest(AbstractModel):
         r"""
         :param _Container: 输出文件封装格式，可选值：mp4、flv、hls。
         :type Container: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 音画质重生模板名称。
         :type Name: str
@@ -14635,7 +14635,7 @@ class CreateReviewTemplateRequest(AbstractModel):
 <li>Ad：广告；</li>
 <li>Moan：娇喘。</li>
         :type Labels: list of str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: str
         :param _Name: 审核模板名称，长度限制：64 个字符。
         :type Name: str
@@ -14744,7 +14744,7 @@ class CreateRoundPlayRequest(AbstractModel):
         :param _RoundPlaylist: 轮播列表。
 <li>数组长度限制：100。</li>
         :type RoundPlaylist: list of RoundPlayListItemInfo
-        :param _SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 轮播播单名称，长度限制：64 个字符。
         :type Name: str
@@ -14898,7 +14898,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
 <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 采样截图模板名称，长度限制：64 个字符。
         :type Name: str
@@ -15090,7 +15090,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 指定时间点截图模板名称，长度限制：64 个字符。
         :type Name: str
@@ -15416,7 +15416,7 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param _Name: 播放器配置名称，长度限制：64 个字符。只允许出现 [0-9a-zA-Z] 及 _- 字符（如 test_ABC-123），同一个用户该名称唯一。
         :type Name: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _AudioVideoType: 播放的音视频类型，可选值：
 <li>AdaptiveDynamicStream：自适应码流输出；</li>
@@ -15636,7 +15636,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
         :type Container: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 转码模板名称，长度限制：64 个字符。
         :type Name: str
@@ -15918,7 +15918,7 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>text：文字水印；</li>
 <li>svg：SVG 水印。</li>
         :type Type: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Name: 水印模板名称，长度限制：64 个字符。
         :type Name: str
@@ -16135,7 +16135,7 @@ class CreateWordSamplesRequest(AbstractModel):
         :type Usages: list of str
         :param _Words: 关键词，数组长度限制：100。
         :type Words: list of AiSampleWordInfo
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Usages = None
@@ -16486,7 +16486,7 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 自适应转码模板唯一标识。
         :type Definition: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -16766,7 +16766,7 @@ class DeleteEnhanceMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 音画质重生模板号。
         :type Definition: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -17203,7 +17203,7 @@ class DeletePersonSampleRequest(AbstractModel):
         r"""
         :param _PersonId: 素材 ID。
         :type PersonId: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._PersonId = None
@@ -17273,7 +17273,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
         r"""
         :param _Name: 任务流名字。
         :type Name: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Name = None
@@ -17413,7 +17413,7 @@ class DeleteRebuildMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 视频重生模板号。
         :type Definition: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -17483,7 +17483,7 @@ class DeleteReviewTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 审核模板唯一标识。
         :type Definition: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -17553,7 +17553,7 @@ class DeleteRoundPlayRequest(AbstractModel):
         r"""
         :param _RoundPlayId: 轮播播单唯一标识。
         :type RoundPlayId: str
-        :param _SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._RoundPlayId = None
@@ -17763,7 +17763,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param _Name: 播放器配置名称。
         :type Name: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Name = None
@@ -17903,7 +17903,7 @@ class DeleteVodDomainRequest(AbstractModel):
         r"""
         :param _Domain: 要删除的点播加速域名。
         :type Domain: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -18043,7 +18043,7 @@ class DeleteWordSamplesRequest(AbstractModel):
         r"""
         :param _Keywords: 关键词，数组长度限制：100 个词。
         :type Keywords: list of str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Keywords = None
@@ -19275,7 +19275,7 @@ class DescribeClientUploadAccelerationUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param _SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Type: 客户端上传加速类型，取值有：
 <li> AccelerationWithHTTP：HTTP 传输方式的上传加速。</li>
@@ -19385,7 +19385,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Definitions: 内容审核模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
@@ -19514,7 +19514,7 @@ class DescribeDailyMediaPlayStatRequest(AbstractModel):
         :type StartDate: str
         :param _EndDate: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。该参数仅日期部分有效。
         :type EndDate: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._FileId = None
@@ -19628,7 +19628,7 @@ class DescribeDailyMostPlayedStatRequest(AbstractModel):
 <li>PlayTimes：播放次数，按播放次数统计播放 Top100 的数据。</li>
 默认值为Traffic。
         :type Metric: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Date = None
@@ -19737,7 +19737,7 @@ class DescribeDailyPlayStatFileListRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type EndTime: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -19919,7 +19919,7 @@ class DescribeDrmKeyProviderInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -19992,7 +19992,7 @@ class DescribeEnhanceMediaTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Definitions: 音画质重生模板列表。长度限制：100。
         :type Definitions: list of int
@@ -20235,7 +20235,7 @@ class DescribeEventsStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -20891,7 +20891,7 @@ class DescribeImageReviewUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
         :type EndTime: str
-        :param _SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -21267,7 +21267,7 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
         :param _LicenseType: License 类型，默认为 DRM 。目前支持的 License 类型包括：
 <li> DRM: DRM 加密播放 License</li>
         :type LicenseType: str
-        :param _SubAppId: 点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -21750,7 +21750,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Type: 拉取的素材类型，可选值：
 <li>UserDefine：用户自定义素材库；</li>
@@ -21962,7 +21962,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Names: 任务流模板名字过滤条件，数组长度限制：100。
         :type Names: list of str
@@ -22099,7 +22099,7 @@ class DescribeQualityInspectTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Definitions: 音画质检测模板列表。长度限制：100。
         :type Definitions: list of int
@@ -22238,7 +22238,7 @@ class DescribeRebuildMediaTemplatesRequest(AbstractModel):
         r"""
         :param _Definitions: 视频重生模板列表。
         :type Definitions: list of int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Type: 模板类型过滤条件，可选值：
 <li>Preset：系统预置模板；</li>
@@ -22633,7 +22633,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _RoundPlayIds: 轮播播单标识过滤条件，数组长度限制：100。
         :type RoundPlayIds: list of str
@@ -23030,7 +23030,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -23537,7 +23537,7 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Names: 播放器配置名字过滤条件，数组长度限制：100。
         :type Names: list of str
@@ -24490,7 +24490,7 @@ class DescribeVodDomainsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页拉取的起始偏移量。默认值：0。
         :type Offset: int
-        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         """
         self._Domains = None
@@ -24748,7 +24748,7 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _Usages: <b>关键词应用场景过滤条件，可选值：</b>
 1. Recognition.Ocr：通过光学字符识别技术，进行内容识别；
@@ -26236,7 +26236,7 @@ class EnhanceMediaByTemplateRequest(AbstractModel):
         :type FileId: str
         :param _Definition: 音画质重生模板 ID。
         :type Definition: int
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _StartTimeOffset: 起始偏移时间，单位：秒，不填表示从视频开始截取。
         :type StartTimeOffset: float
@@ -27047,7 +27047,7 @@ class ExecuteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param _FunctionArg: 接口参数，具体参数格式调用时与后端协调。
         :type FunctionArg: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str
@@ -27175,7 +27175,7 @@ class ExtractCopyRightWatermarkRequest(AbstractModel):
         r"""
         :param _Url: 需要提取水印的媒体 URL。
         :type Url: str
-        :param _SubAppId: <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
         :param _SessionContext: 标识来源上下文，用于透传用户请求信息，在 ExtractCopyRightWatermarkComplete 回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。
         :type SessionContext: str

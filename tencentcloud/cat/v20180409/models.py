@@ -357,7 +357,7 @@ AnalyzeTaskType_MediaStream：音视频体验
         :type SortField: str
         :param _Ascending: true表示升序
         :type Ascending: bool
-        :param _SelectedFields: 选中字段
+        :param _SelectedFields: 选中字段，如ProbeTime、TransferTime、TransferSize等。
         :type SelectedFields: list of str
         :param _Offset: 起始取数位置
         :type Offset: int
@@ -395,6 +395,8 @@ AnalyzeTaskType_MediaStream：音视频体验
         :type City: list of str
         :param _ScrollID: es scroll查询id
         :type ScrollID: str
+        :param _QueryFlag: 详情数据下载
+        :type QueryFlag: str
         """
         self._BeginTime = None
         self._EndTime = None
@@ -410,6 +412,7 @@ AnalyzeTaskType_MediaStream：音视频体验
         self._ErrorTypes = None
         self._City = None
         self._ScrollID = None
+        self._QueryFlag = None
 
     @property
     def BeginTime(self):
@@ -523,6 +526,14 @@ AnalyzeTaskType_MediaStream：音视频体验
     def ScrollID(self, ScrollID):
         self._ScrollID = ScrollID
 
+    @property
+    def QueryFlag(self):
+        return self._QueryFlag
+
+    @QueryFlag.setter
+    def QueryFlag(self, QueryFlag):
+        self._QueryFlag = QueryFlag
+
 
     def _deserialize(self, params):
         self._BeginTime = params.get("BeginTime")
@@ -539,6 +550,7 @@ AnalyzeTaskType_MediaStream：音视频体验
         self._ErrorTypes = params.get("ErrorTypes")
         self._City = params.get("City")
         self._ScrollID = params.get("ScrollID")
+        self._QueryFlag = params.get("QueryFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
