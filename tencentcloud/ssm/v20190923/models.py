@@ -485,9 +485,9 @@ class CreateSecretRequest(AbstractModel):
         :type KmsKeyId: str
         :param _SecretType: 凭据类型，默认为自定义凭据。
         :type SecretType: int
-        :param _SecretBinary: 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
+        :param _SecretBinary: 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
         :type SecretBinary: str
-        :param _SecretString: 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
+        :param _SecretString: 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，最大支持32KB字节。
         :type SecretString: str
         :param _AdditionalConfig: JSON 格式字符串，用于指定特定凭据类型的额外配置。
         :type AdditionalConfig: str

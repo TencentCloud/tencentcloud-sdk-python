@@ -146,7 +146,7 @@ class AppearIndexPair(AbstractModel):
         r"""
         :param _AppearIndex: 出现信息，取值范围为[1，3]
         :type AppearIndex: int
-        :param _Index: AppearInfo中AppearIndex对应元素的第Index元素，从0开始技术
+        :param _Index: AppearInfo中AppearIndex对应元素的第Index元素，从0开始计数
         :type Index: int
         """
         self._AppearIndex = None

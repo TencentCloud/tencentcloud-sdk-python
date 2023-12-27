@@ -6512,7 +6512,7 @@ class ContinueRunFailedTaskBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 成功或失败
+        :param _Result: true：操作成功、false：操作失败
         :type Result: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

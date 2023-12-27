@@ -2925,13 +2925,17 @@ class CreateBatchSignUrlResponse(AbstractModel):
         r"""
         :param _SignUrl: 批量签署链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
 
-注: `非小程序和APP集成使用`
+注: 
+1. 非小程序和APP集成使用
+2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :type SignUrl: str
         :param _ExpiredTime: 链接过期时间以 Unix 时间戳格式表示，默认生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :type ExpiredTime: int
         :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
 
-注: `小程序和APP集成使用`
+注: 
+1. 小程序和APP集成使用
+2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :type MiniAppPath: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7990,6 +7994,9 @@ class CreateSchemeUrlResponse(AbstractModel):
 <ul><li>如果EndPoint是**APP**，得到的链接类似于`pages/guide?from=default&where=mini&id=yDwJSUUirqauh***7jNSxwdirTSGuH&to=CONTRACT_DETAIL&name=&phone=&shortKey=yDw***k1xFc5`, 用法可以参加接口描述中的"跳转到小程序的实现"</li>
 <li>如果EndPoint是**HTTP**，得到的链接类似于 `https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?where=mini&from=SFY&id=yDwfEUUw**4rV6Avz&to=MVP_CONTRACT_COVER&name=%E9%83%**5%86%9B`，点击后会跳转到腾讯电子签小程序进行签署</li>
 <li>如果EndPoint是**HTTP_SHORT_URL**，得到的链接类似于 `https://essurl.cn/2n**42Nd`，点击后会跳转到腾讯电子签小程序进行签署</li></ul>
+
+
+注： <font color="red">生成的链路后面不能再增加参数</font>
         :type SchemeUrl: str
         :param _SchemeQrcodeUrl: 二维码，在生成动态签署人跳转封面页链接时返回
         :type SchemeQrcodeUrl: str
@@ -13539,27 +13546,24 @@ class FlowApproverUrlInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignUrl: 签署短链接。</br>
+        :param _SignUrl: 签署短链接。
 注意:
-- 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
-- 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
-注意：此字段可能返回 null，表示取不到有效值。
+1. 该链接有效期为<b>30分钟</b>，同时需要注意保密，不要外泄给无关用户。
+2. 该链接不支持小程序嵌入，仅支持<b>移动端浏览器</b>打开。
+3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :type SignUrl: str
         :param _ApproverType: 签署人类型。
 - **1**: 个人
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverType: int
         :param _ApproverName: 签署人姓名。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverName: str
         :param _ApproverMobile: 签署人手机号。
-注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverMobile: str
-        :param _LongUrl: 签署长链接。</br>
+        :param _LongUrl: 签署长链接。
 注意:
-- 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
-- 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
-注意：此字段可能返回 null，表示取不到有效值。
+1. 该链接有效期为**30分钟**，同时需要注意保密，不要外泄给无关用户。
+2. 该链接不支持小程序嵌入，仅支持**移动端浏览器**打开。
+3. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :type LongUrl: str
         """
         self._SignUrl = None

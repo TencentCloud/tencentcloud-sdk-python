@@ -2846,6 +2846,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFieldBasicInfo(self, request):
+        """元数据模型-字段基础信息查询接口
+
+        :param request: Request instance for DescribeFieldBasicInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeFieldBasicInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeFieldBasicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFieldBasicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFieldBasicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFolderList(self, request):
         """<p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
         拉取文件夹目录
@@ -4809,6 +4832,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableBasicInfo(self, request):
+        """元数据模型-表基础信息查询接口
+
+        :param request: Request instance for DescribeTableBasicInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableBasicInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableBasicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableBasicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableBasicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTableInfoList(self, request):
         """获取数据表信息
 
@@ -4846,6 +4892,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTableLineage", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTableLineageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTableLineageInfo(self, request):
+        """列出表血缘信息
+
+        :param request: Request instance for DescribeTableLineageInfo.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageInfoRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableLineageInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableLineageInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableLineageInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

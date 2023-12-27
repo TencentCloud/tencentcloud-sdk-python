@@ -2431,13 +2431,22 @@ class RetryRunsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 关联项目ID。
+        :param _ProjectId: 项目ID。（不填使用指定地域下的默认项目）
         :type ProjectId: str
-        :param _RunUuids: 任务UUID。
+        :param _RunGroupId: 需要重试的任务批次ID。
+        :type RunGroupId: str
+        :param _RunUuids: 需要重试的任务UUID。
         :type RunUuids: list of str
+        :param _WDLOption: WDL运行选项，不填使用被重试的任务批次运行选项。
+        :type WDLOption: :class:`tencentcloud.omics.v20221128.models.RunOption`
+        :param _NFOption: Nextflow运行选项，不填使用被重试的任务批次运行选项。
+        :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         self._ProjectId = None
+        self._RunGroupId = None
         self._RunUuids = None
+        self._WDLOption = None
+        self._NFOption = None
 
     @property
     def ProjectId(self):
@@ -2448,6 +2457,14 @@ class RetryRunsRequest(AbstractModel):
         self._ProjectId = ProjectId
 
     @property
+    def RunGroupId(self):
+        return self._RunGroupId
+
+    @RunGroupId.setter
+    def RunGroupId(self, RunGroupId):
+        self._RunGroupId = RunGroupId
+
+    @property
     def RunUuids(self):
         return self._RunUuids
 
@@ -2455,10 +2472,33 @@ class RetryRunsRequest(AbstractModel):
     def RunUuids(self, RunUuids):
         self._RunUuids = RunUuids
 
+    @property
+    def WDLOption(self):
+        return self._WDLOption
+
+    @WDLOption.setter
+    def WDLOption(self, WDLOption):
+        self._WDLOption = WDLOption
+
+    @property
+    def NFOption(self):
+        return self._NFOption
+
+    @NFOption.setter
+    def NFOption(self, NFOption):
+        self._NFOption = NFOption
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
+        self._RunGroupId = params.get("RunGroupId")
         self._RunUuids = params.get("RunUuids")
+        if params.get("WDLOption") is not None:
+            self._WDLOption = RunOption()
+            self._WDLOption._deserialize(params.get("WDLOption"))
+        if params.get("NFOption") is not None:
+            self._NFOption = NFOption()
+            self._NFOption._deserialize(params.get("NFOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2476,10 +2516,22 @@ class RetryRunsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RunGroupId: 新的任务批次ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunGroupId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RunGroupId = None
         self._RequestId = None
+
+    @property
+    def RunGroupId(self):
+        return self._RunGroupId
+
+    @RunGroupId.setter
+    def RunGroupId(self, RunGroupId):
+        self._RunGroupId = RunGroupId
 
     @property
     def RequestId(self):
@@ -2491,6 +2543,7 @@ class RetryRunsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RunGroupId = params.get("RunGroupId")
         self._RequestId = params.get("RequestId")
 
 
