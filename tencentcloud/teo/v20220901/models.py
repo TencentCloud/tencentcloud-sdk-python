@@ -4739,7 +4739,7 @@ class CreatePrefetchTaskRequest(AbstractModel):
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
         :param _Targets: 要预热的资源列表，每个元素格式类似如下:
-http://www.example.com/example.txt。
+http://www.example.com/example.txt。参数值当前必填。
 注意：提交任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。
         :type Targets: list of str
         :param _EncodeUrl: 是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
@@ -9279,9 +9279,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :param _ZoneId: 站点ID。
 必填参数。
         :type ZoneId: str
-        :param _StartTime: 查询起始时间。
+        :param _StartTime: 查询起始时间，时间与 job-id 必填一个。
         :type StartTime: str
-        :param _EndTime: 查询结束时间。
+        :param _EndTime: 查询结束时间，时间与 job-id 必填一个。
         :type EndTime: str
         :param _Offset: 分页查询偏移量，默认为 0。
         :type Offset: int
@@ -9432,9 +9432,9 @@ class DescribePurgeTasksRequest(AbstractModel):
         :param _ZoneId: 站点ID。
 必填参数。
         :type ZoneId: str
-        :param _StartTime: 查询起始时间。
+        :param _StartTime: 查询起始时间，时间与job-id必填一个。
         :type StartTime: str
-        :param _EndTime: 查询结束时间。
+        :param _EndTime: 查询结束时间，时间与job-id必填一个。
         :type EndTime: str
         :param _Offset: 分页查询偏移量，默认为0。
         :type Offset: int

@@ -431,17 +431,61 @@ class CreatePPTCheckTaskRequest(AbstractModel):
         :type SdkAppId: int
         :param _Url: 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，例如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
         :type Url: str
-        :param _AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能。默认不开启。
+        :param _AutoHandleUnsupportedElement: 是否对不支持元素开启自动处理的功能，默认不开启。
+true -- 开启
+false -- 不开启
 
-在开启自动处理的情况下，会自动进行如下处理：
-1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-3. 已损坏音视频：移除PPT上对损坏音视频的引用
+当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
         :type AutoHandleUnsupportedElement: bool
+        :param _AutoHandleUnsupportedElementTypes: 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+
+指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+
+目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+0: 不支持的墨迹类型
+-- 自动处理方式：移除墨迹
+
+1: 自动翻页
+-- 自动处理方式：移除自动翻页设置，并修改为单击切换
+
+2: 已损坏音视频
+-- 自动处理方式：移除对损坏音视频的引用
+
+3: 不可访问资源
+-- 自动处理方式：移除对不可访问的资源的引用
+
+4: 只读文件
+-- 自动处理方式：移除只读设置
+
+5: 不支持的元素编辑锁定状态
+-- 自动处理方式：移除锁定状态
+
+6: 可能有兼容问题的字体
+-- 自动处理方式： 不支持处理
+
+7: 设置了柔化边缘的GIF图片
+-- 自动处理方式：移除柔化边缘设置
+
+8: 存在不兼容的空格下划线
+-- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+
+9: 存在设置了分段动画的数学公式和文本混合内容
+-- 自动处理方式： 不支持处理
+
+10: 存在设置了分段动画的渐变色文本
+-- 自动处理方式： 不支持处理
+
+11: 存在不兼容的分散对齐方式
+-- 自动处理方式： 不支持处理
+
+12: 存在不兼容的多倍行距设置
+-- 自动处理方式： 不支持处理
+        :type AutoHandleUnsupportedElementTypes: list of int
         """
         self._SdkAppId = None
         self._Url = None
         self._AutoHandleUnsupportedElement = None
+        self._AutoHandleUnsupportedElementTypes = None
 
     @property
     def SdkAppId(self):
@@ -467,11 +511,20 @@ class CreatePPTCheckTaskRequest(AbstractModel):
     def AutoHandleUnsupportedElement(self, AutoHandleUnsupportedElement):
         self._AutoHandleUnsupportedElement = AutoHandleUnsupportedElement
 
+    @property
+    def AutoHandleUnsupportedElementTypes(self):
+        return self._AutoHandleUnsupportedElementTypes
+
+    @AutoHandleUnsupportedElementTypes.setter
+    def AutoHandleUnsupportedElementTypes(self, AutoHandleUnsupportedElementTypes):
+        self._AutoHandleUnsupportedElementTypes = AutoHandleUnsupportedElementTypes
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Url = params.get("Url")
         self._AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
+        self._AutoHandleUnsupportedElementTypes = params.get("AutoHandleUnsupportedElementTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -700,13 +753,57 @@ tar.gz： 生成`.tar.gz`压缩包
 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
         :type MinScaleResolution: str
         :param _AutoHandleUnsupportedElement: 此参数仅对动态转码生效。
-是否对不支持元素开启自动处理的功能。默认不开启。
 
-在开启自动处理的情况下，会自动进行如下处理：
-1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
-3. 已损坏音视频：移除PPT上对损坏音视频的引用
+是否对不支持元素开启自动处理的功能，默认不开启。
+true -- 开启
+false -- 不开启
+
+当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
         :type AutoHandleUnsupportedElement: bool
+        :param _AutoHandleUnsupportedElementTypes: 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
+
+指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
+
+目前支持检测的不兼容元素类型及对应的自动处理方式如下：
+0: 不支持的墨迹类型
+-- 自动处理方式：移除墨迹
+
+1: 自动翻页
+-- 自动处理方式：移除自动翻页设置，并修改为单击切换
+
+2: 已损坏音视频
+-- 自动处理方式：移除对损坏音视频的引用
+
+3: 不可访问资源
+-- 自动处理方式：移除对不可访问的资源的引用
+
+4: 只读文件
+-- 自动处理方式：移除只读设置
+
+5: 不支持的元素编辑锁定状态
+-- 自动处理方式：移除锁定状态
+
+6: 可能有兼容问题的字体
+-- 自动处理方式： 不支持处理
+
+7: 设置了柔化边缘的GIF图片
+-- 自动处理方式：移除柔化边缘设置
+
+8: 存在不兼容的空格下划线
+-- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
+
+9: 存在设置了分段动画的数学公式和文本混合内容
+-- 自动处理方式： 不支持处理
+
+10: 存在设置了分段动画的渐变色文本
+-- 自动处理方式： 不支持处理
+
+11: 存在不兼容的分散对齐方式
+-- 自动处理方式： 不支持处理
+
+12: 存在不兼容的多倍行距设置
+-- 自动处理方式： 不支持处理
+        :type AutoHandleUnsupportedElementTypes: list of int
         :param _ExcelParam: Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
         :type ExcelParam: :class:`tencentcloud.tiw.v20190919.models.ExcelParam`
         """
@@ -720,6 +817,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self._Priority = None
         self._MinScaleResolution = None
         self._AutoHandleUnsupportedElement = None
+        self._AutoHandleUnsupportedElementTypes = None
         self._ExcelParam = None
 
     @property
@@ -803,6 +901,14 @@ tar.gz： 生成`.tar.gz`压缩包
         self._AutoHandleUnsupportedElement = AutoHandleUnsupportedElement
 
     @property
+    def AutoHandleUnsupportedElementTypes(self):
+        return self._AutoHandleUnsupportedElementTypes
+
+    @AutoHandleUnsupportedElementTypes.setter
+    def AutoHandleUnsupportedElementTypes(self, AutoHandleUnsupportedElementTypes):
+        self._AutoHandleUnsupportedElementTypes = AutoHandleUnsupportedElementTypes
+
+    @property
     def ExcelParam(self):
         return self._ExcelParam
 
@@ -822,6 +928,7 @@ tar.gz： 生成`.tar.gz`压缩包
         self._Priority = params.get("Priority")
         self._MinScaleResolution = params.get("MinScaleResolution")
         self._AutoHandleUnsupportedElement = params.get("AutoHandleUnsupportedElement")
+        self._AutoHandleUnsupportedElementTypes = params.get("AutoHandleUnsupportedElementTypes")
         if params.get("ExcelParam") is not None:
             self._ExcelParam = ExcelParam()
             self._ExcelParam._deserialize(params.get("ExcelParam"))

@@ -3761,7 +3761,7 @@ class GetFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: 需要获取详情的函数名称
+        :param _FunctionName: 需要获取详情的函数名称，ResourceId和FunctionName只能传一个
         :type FunctionName: str
         :param _Qualifier: 函数的版本号
 默认值: $LATEST
@@ -9999,6 +9999,8 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type DnsCache: str
         :param _IntranetConfig: 内网访问配置
         :type IntranetConfig: :class:`tencentcloud.scf.v20180416.models.IntranetConfigIn`
+        :param _IgnoreSysLog: 忽略系统日志上报
+        :type IgnoreSysLog: bool
         """
         self._FunctionName = None
         self._Description = None
@@ -10023,6 +10025,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         self._InstanceConcurrencyConfig = None
         self._DnsCache = None
         self._IntranetConfig = None
+        self._IgnoreSysLog = None
 
     @property
     def FunctionName(self):
@@ -10208,6 +10211,14 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
     def IntranetConfig(self, IntranetConfig):
         self._IntranetConfig = IntranetConfig
 
+    @property
+    def IgnoreSysLog(self):
+        return self._IgnoreSysLog
+
+    @IgnoreSysLog.setter
+    def IgnoreSysLog(self, IgnoreSysLog):
+        self._IgnoreSysLog = IgnoreSysLog
+
 
     def _deserialize(self, params):
         self._FunctionName = params.get("FunctionName")
@@ -10254,6 +10265,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         if params.get("IntranetConfig") is not None:
             self._IntranetConfig = IntranetConfigIn()
             self._IntranetConfig._deserialize(params.get("IntranetConfig"))
+        self._IgnoreSysLog = params.get("IgnoreSysLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

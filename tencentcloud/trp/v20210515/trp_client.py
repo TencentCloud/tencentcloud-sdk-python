@@ -466,7 +466,7 @@ class TrpClient(AbstractClient):
     def DescribeCodeBatchs(self, request):
         """查询批次列表
 
-        旧版接口已经弃用，新业务请使用用新版的接口 DescribeCodeBatches
+        旧版接口已经弃用，新业务请使用新版的接口 DescribeCodeBatches
 
         :param request: Request instance for DescribeCodeBatchs.
         :type request: :class:`tencentcloud.trp.v20210515.models.DescribeCodeBatchsRequest`

@@ -716,6 +716,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetMetaTable(self, request):
+        """查询元数据表
+
+        :param request: Request instance for GetMetaTable.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.GetMetaTableRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.GetMetaTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetMetaTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetMetaTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFolder(self, request):
         """自定义树状结构页面拖拽文件夹
 

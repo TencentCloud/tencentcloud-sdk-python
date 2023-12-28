@@ -212,6 +212,7 @@ class DnspodClient(AbstractClient):
 
     def CreateRecord(self, request):
         """添加记录
+        备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for CreateRecord.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateRecordRequest`
@@ -626,6 +627,7 @@ class DnspodClient(AbstractClient):
 
     def DescribeDomainFilterList(self, request):
         """获取域名筛选列表
+        备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for DescribeDomainFilterList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeDomainFilterListRequest`
@@ -948,6 +950,7 @@ class DnspodClient(AbstractClient):
 
     def DescribeRecordList(self, request):
         """获取某个域名下的解析记录列表
+        备注：新添加的解析记录存在短暂的索引延迟，如果查询不到新增记录，请在 30 秒后重试
 
         :param request: Request instance for DescribeRecordList.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordListRequest`

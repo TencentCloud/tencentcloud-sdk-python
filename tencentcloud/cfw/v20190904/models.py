@@ -16611,13 +16611,13 @@ class RuleInfoData(AbstractModel):
         :type Protocol: str
         :param _Strategy: 策略, 0：观察，1：阻断，2：放行
         :type Strategy: str
-        :param _SourceType: 访问源类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+        :param _SourceType: 访问源类型，1是IP，3是域名，4是IP地址模板，5是域名地址模板
         :type SourceType: int
         :param _Direction: 方向，0：出站，1：入站
         :type Direction: int
         :param _Detail: 描述
         :type Detail: str
-        :param _TargetType: 访问目的类型，1是IP，3是域名，4是IP地址模版，5是域名地址模版
+        :param _TargetType: 访问目的类型，1是IP，3是域名，4是IP地址模板，5是域名地址模板
         :type TargetType: int
         :param _Port: 端口
         :type Port: str
@@ -18815,22 +18815,22 @@ class TLogInfo(AbstractModel):
 
 
 class TemplateListInfo(AbstractModel):
-    """地址模版列表数据
+    """地址模板列表数据
 
     """
 
     def __init__(self):
         r"""
-        :param _Uuid: 模版ID
+        :param _Uuid: 模板ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
-        :param _Name: 模版名称
+        :param _Name: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Detail: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: str
-        :param _IpString: IP模版
+        :param _IpString: IP模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpString: str
         :param _InsertTime: 插入时间
@@ -18839,7 +18839,7 @@ class TemplateListInfo(AbstractModel):
         :param _UpdateTime: 修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Type: 模版类型
+        :param _Type: 模板类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
         :param _RulesNum: 关联规则条数

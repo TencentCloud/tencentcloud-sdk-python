@@ -6122,6 +6122,174 @@ class GatewayRefItem(AbstractModel):
         
 
 
+class GetMetaTableRequest(AbstractModel):
+    """GetMetaTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Catalog: Catalog名
+        :type Catalog: str
+        :param _Database: Database名
+        :type Database: str
+        :param _Table: Table名
+        :type Table: str
+        :param _WorkSpaceId: 空间唯一标识
+        :type WorkSpaceId: str
+        """
+        self._Catalog = None
+        self._Database = None
+        self._Table = None
+        self._WorkSpaceId = None
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def WorkSpaceId(self):
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._Catalog = params.get("Catalog")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetMetaTableResponse(AbstractModel):
+    """GetMetaTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialId: 元数据表唯一标识
+        :type SerialId: str
+        :param _Catalog: Catalog名
+        :type Catalog: str
+        :param _Database: Database名
+        :type Database: str
+        :param _Table: Table名
+        :type Table: str
+        :param _DDL: 建表语句,使用 Base64 编码。
+例如
+Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=
+        :type DDL: str
+        :param _CreateTime: 场景时间
+        :type CreateTime: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SerialId = None
+        self._Catalog = None
+        self._Database = None
+        self._Table = None
+        self._DDL = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def SerialId(self):
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def DDL(self):
+        return self._DDL
+
+    @DDL.setter
+    def DDL(self, DDL):
+        self._DDL = DDL
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SerialId = params.get("SerialId")
+        self._Catalog = params.get("Catalog")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._DDL = params.get("DDL")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class JobConfig(AbstractModel):
     """作业配置详情
 

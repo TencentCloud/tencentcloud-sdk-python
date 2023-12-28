@@ -1125,7 +1125,7 @@ class CreateCodeBatchRequest(AbstractModel):
         :type BatchId: str
         :param _Remark: 备注
         :type Remark: str
-        :param _MpTpl: 模版ID，或者活动ID
+        :param _MpTpl: 模板ID，或者活动ID
         :type MpTpl: str
         :param _CloneId: 克隆批次ID，同时会复制溯源信息
         :type CloneId: str
@@ -5264,12 +5264,15 @@ class DescribeProductsRequest(AbstractModel):
         :type MerchantId: str
         :param _CorpId: 企业ID
         :type CorpId: int
+        :param _CertState: 认证状态
+        :type CertState: int
         """
         self._Name = None
         self._PageSize = None
         self._PageNumber = None
         self._MerchantId = None
         self._CorpId = None
+        self._CertState = None
 
     @property
     def Name(self):
@@ -5311,6 +5314,14 @@ class DescribeProductsRequest(AbstractModel):
     def CorpId(self, CorpId):
         self._CorpId = CorpId
 
+    @property
+    def CertState(self):
+        return self._CertState
+
+    @CertState.setter
+    def CertState(self, CertState):
+        self._CertState = CertState
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -5318,6 +5329,7 @@ class DescribeProductsRequest(AbstractModel):
         self._PageNumber = params.get("PageNumber")
         self._MerchantId = params.get("MerchantId")
         self._CorpId = params.get("CorpId")
+        self._CertState = params.get("CertState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8435,6 +8447,9 @@ class Product(AbstractModel):
         :type Ext: :class:`tencentcloud.trp.v20210515.models.Ext`
         :param _MerchantName: 商户名称
         :type MerchantName: str
+        :param _CertState: 认证状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertState: int
         """
         self._MerchantId = None
         self._Name = None
@@ -8448,6 +8463,7 @@ class Product(AbstractModel):
         self._UpdateTime = None
         self._Ext = None
         self._MerchantName = None
+        self._CertState = None
 
     @property
     def MerchantId(self):
@@ -8545,6 +8561,14 @@ class Product(AbstractModel):
     def MerchantName(self, MerchantName):
         self._MerchantName = MerchantName
 
+    @property
+    def CertState(self):
+        return self._CertState
+
+    @CertState.setter
+    def CertState(self, CertState):
+        self._CertState = CertState
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -8561,6 +8585,7 @@ class Product(AbstractModel):
             self._Ext = Ext()
             self._Ext._deserialize(params.get("Ext"))
         self._MerchantName = params.get("MerchantName")
+        self._CertState = params.get("CertState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8617,6 +8642,9 @@ class Quota(AbstractModel):
         :param _Version: 开通版本 lite:轻量版, basic:基础版, standard:标准版
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
+        :param _ProductCertify: 是否开启企业认证
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCertify: int
         """
         self._StartTime = None
         self._EndTime = None
@@ -8631,6 +8659,7 @@ class Quota(AbstractModel):
         self._RiskQuota = None
         self._TrackType = None
         self._Version = None
+        self._ProductCertify = None
 
     @property
     def StartTime(self):
@@ -8736,6 +8765,14 @@ class Quota(AbstractModel):
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def ProductCertify(self):
+        return self._ProductCertify
+
+    @ProductCertify.setter
+    def ProductCertify(self, ProductCertify):
+        self._ProductCertify = ProductCertify
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -8751,6 +8788,7 @@ class Quota(AbstractModel):
         self._RiskQuota = params.get("RiskQuota")
         self._TrackType = params.get("TrackType")
         self._Version = params.get("Version")
+        self._ProductCertify = params.get("ProductCertify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

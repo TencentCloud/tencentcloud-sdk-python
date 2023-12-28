@@ -1790,8 +1790,8 @@ class EssbasicClient(AbstractClient):
         |  WEIXINAPP  | 短链跳转腾讯电子签小程序签署场景  |  点击链接打开电子签小程序（与腾讯电子签官方短信提醒用户签署形式一样）<br> 示例: https://essurl.cn/x9nvWU8fTg|
         |  LONGURL2WEIXINAPP  | 长链跳转腾讯电子签小程序签署场景  |  点击链接打开电子签小程序, 是WEIXINAPP生成短链代表的那个长链|
         |  CHANNEL  | 带有H5引导页的跳转腾讯电子签小程序签署场景 |  点击链接打开一个H5引导页面, 页面中有个"前往小程序"的按钮, 点击后会跳转到腾讯电子签小程序签署场景;  签署完成会回到H5引导页面, 然后跳转到指定创建链接指定的JumpUrl<br>示例: https://res.ess.tencent.cn/cdn/h5-activity-beta/jump-mp.html?use=channel-guide&type=warning&token=uIFKIU8fTd |
-        |APP| 贵方App跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方App的场景<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> <br> 示例: pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3 |
-        |APP| 贵方小程序跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方小程序的场景<br>跳转到腾讯电子签小程序的实现可以参考微信官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html" target="_blank">全屏方式</a>和<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html " target="_blank">半屏方式</a><br>此时返回的SignUrl就是官方文档中的path<br> 示例:pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3  |
+        |APP| <font color="red">贵方APP</font>跳转腾讯电子签小程序签署场景|  贵方App直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方App的场景<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> <br> 示例: pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3 |
+        |APP| <font color="red">贵方小程序</font>跳转腾讯电子签小程序签署场景|  贵方小程序直接跳转到小程序后, 在腾讯电子签小程序签署完成后返回贵方小程序的场景<br>跳转到腾讯电子签小程序的实现可以参考微信官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html" target="_blank">全屏方式</a>和<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html " target="_blank">半屏方式</a><br>此时返回的SignUrl就是官方文档中的path<br> 示例:pages/guide?from=default&where=mini& to=CONTRACT_DETAIL& id=yDwiBUUc*duRvquCSX8wd& shortKey=yDwivUA**W1yRsTre3  |
 
         :param request: Request instance for CreateSignUrls.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateSignUrlsRequest`
@@ -1976,14 +1976,20 @@ class EssbasicClient(AbstractClient):
 
     def DescribeExtendedServiceAuthInfo(self, request):
         """查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
-        1. 企业自动签
-        2. 企业与港澳台居民签署合同
-        3. 使用手机号验证签署方身份
-        4. 骑缝章
-        5. 拓宽签署方年龄限制
-        6. 下载企业合同/文件
 
-        注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
+        1. **企业自动签**
+        2. **企业与港澳台居民签署合同**
+        3. **使用手机号验证签署方身份**
+        4. **骑缝章**
+        5. **拓宽签署方年龄限制**
+        6. **下载企业合同/文件**
+        7. **隐藏合同经办人姓名**
+
+        对应能力开通页面在子客控制台-企业中心-拓展服务，如下图所示:
+
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/931a1e02955ab36e5cc69a489af10352.jpg)
+
+        注: <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
 
         :param request: Request instance for DescribeExtendedServiceAuthInfo.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeExtendedServiceAuthInfoRequest`
@@ -2173,28 +2179,21 @@ class EssbasicClient(AbstractClient):
 
 
     def ModifyExtendedService(self, request):
-        """修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人。
+        """管理企业扩展服务 ，企业经办人需要是企业超管或者法人。
 
         跳转小程序的几种方式：主要是设置不同的EndPoint
         1. 通过链接Url直接跳转到小程序，不需要返回
         设置EndPoint为WEIXINAPP，得到链接打开即可。
 
         2. 客户App直接跳转到小程序-->腾讯电子签小程序操作完成-->返回App
-        跳转到小程序的实现，参考官方文档
-        https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
-        其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+        跳转到小程序的实现，参考官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html">打开 App</a>
         设置EndPoint为APP，得到path。
 
-        4. 客户小程序直接跳到电子签小程序-->腾讯电子签小程序操作完成--->回到客户小程序
-        跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
-        全屏方式：
-        （https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html）
-        半屏方式：
-        （https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html）
-        其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+        3. 客户小程序直接跳到电子签小程序-->腾讯电子签小程序操作完成--->回到客户小程序
+        跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
         设置EndPoint为APP，得到path。
 
-        其中小程序的原始Id如下，或者查看小程序信息自助获取。
+        4.其中小程序的原始Id如下，或者查看小程序信息自助获取。
 
         | 小程序 | AppID | 原始ID |
         | ------------ | ------------ | ------------ |

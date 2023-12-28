@@ -6319,13 +6319,15 @@ class ContainerGroupOther(AbstractModel):
         :type InstanceNum: int
         :param _CurrentNum: 已启动实例总数
         :type CurrentNum: int
+        :param _LbDns: 负载均衡DNS地址
+        :type LbDns: str
         :param _LbIp: 负载均衡ip
         :type LbIp: str
         :param _ClusterIp: Service ip
         :type ClusterIp: str
-        :param _Status: 服务状态，请参考后面的的状态定义
+        :param _Status: 服务状态，请参考后面的状态定义
         :type Status: str
-        :param _Message: 服务状态，请参考后面的的状态定义
+        :param _Message: 服务状态，请参考后面的状态定义
         :type Message: str
         :param _Envs: 环境变量
         :type Envs: list of Env
@@ -6344,6 +6346,7 @@ class ContainerGroupOther(AbstractModel):
         """
         self._InstanceNum = None
         self._CurrentNum = None
+        self._LbDns = None
         self._LbIp = None
         self._ClusterIp = None
         self._Status = None
@@ -6369,6 +6372,14 @@ class ContainerGroupOther(AbstractModel):
     @CurrentNum.setter
     def CurrentNum(self, CurrentNum):
         self._CurrentNum = CurrentNum
+
+    @property
+    def LbDns(self):
+        return self._LbDns
+
+    @LbDns.setter
+    def LbDns(self, LbDns):
+        self._LbDns = LbDns
 
     @property
     def LbIp(self):
@@ -6446,6 +6457,7 @@ class ContainerGroupOther(AbstractModel):
     def _deserialize(self, params):
         self._InstanceNum = params.get("InstanceNum")
         self._CurrentNum = params.get("CurrentNum")
+        self._LbDns = params.get("LbDns")
         self._LbIp = params.get("LbIp")
         self._ClusterIp = params.get("ClusterIp")
         self._Status = params.get("Status")
@@ -6543,7 +6555,7 @@ class ContinueRunFailedTaskBatchResponse(AbstractModel):
 
 
 class CosCredentials(AbstractModel):
-    """cos临时帐号信息
+    """cos临时账号信息
 
     """
 

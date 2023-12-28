@@ -260,6 +260,9 @@ RESOURCENOTFOUND_RESOURCECONFIG = 'ResourceNotFound.ResourceConfig'
 # 资源不存在。
 RESOURCENOTFOUND_RESOURCENOTEXIST = 'ResourceNotFound.ResourceNotExist'
 
+# 数据库或表不存在。
+RESOURCENOTFOUND_TABLENOTEXIST = 'ResourceNotFound.TableNotExist'
+
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 

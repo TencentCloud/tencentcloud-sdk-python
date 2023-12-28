@@ -28839,8 +28839,7 @@ class DescribeBaselineItemInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <li>ItemId - int64 - 是否必填：否 - 项Id</i>
-<li>PolicyId - int64 - 是否必填：否 - 项Id</i>
+        :param _Filters: <li>ItemId - int64 - 是否必填：否 - 项Id</li>
 <li>Level - int - 是否必填：否 - 风险等级</li>
 <li>ItemName - string - 是否必填：否 - 检测项名字</li>
 <li>RuleId - int - 是否必填：否 - 规则Id</li>
@@ -84384,6 +84383,33 @@ class SyncBaselineDetectSummaryRequest(AbstractModel):
     """SyncBaselineDetectSummary请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: 用于计算检测中和进度的任务ID集合，一般不用传入
+        :type TaskIds: list of int non-negative
+        """
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncBaselineDetectSummaryResponse(AbstractModel):

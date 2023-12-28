@@ -33,7 +33,7 @@ class CreateProbeTasksRequest(AbstractModel):
         :type Nodes: list of str
         :param _Interval: 拨测间隔
         :type Interval: int
-        :param _Parameters: 拨测参数，如{}，详细可参考云拨测官方文档。
+        :param _Parameters: 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
         :type Parameters: str
         :param _TaskCategory: 任务分类
 <li>1 = PC</li>

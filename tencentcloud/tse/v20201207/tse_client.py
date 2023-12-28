@@ -118,6 +118,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudNativeAPIGatewayPublicNetwork(self, request):
+        """创建公网网络配置
+
+        :param request: Request instance for CreateCloudNativeAPIGatewayPublicNetwork.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayPublicNetworkRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateCloudNativeAPIGatewayPublicNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudNativeAPIGatewayPublicNetwork", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudNativeAPIGatewayPublicNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudNativeAPIGatewayRoute(self, request):
         """创建云原生网关路由
 
@@ -339,6 +362,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteCloudNativeAPIGatewayCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudNativeAPIGatewayCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudNativeAPIGatewayPublicNetwork(self, request):
+        """删除公网网络配置
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayPublicNetwork.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayPublicNetworkRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayPublicNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayPublicNetwork", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayPublicNetworkResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1222,6 +1268,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConsoleNetwork(self, request):
+        """修改网关实例Konga网络配置
+
+        :param request: Request instance for ModifyConsoleNetwork.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConsoleNetworkRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyConsoleNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsoleNetwork", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsoleNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyNativeGatewayServerGroup(self, request):
         """修改云原生API网关实例分组基础信息
 
@@ -1236,6 +1305,52 @@ class TseClient(AbstractClient):
             body = self.call("ModifyNativeGatewayServerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNativeGatewayServerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNetworkAccessStrategy(self, request):
+        """修改云原生API网关实例Kong访问策略，支持白名单或者黑名单。
+
+        :param request: Request instance for ModifyNetworkAccessStrategy.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkAccessStrategyRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkAccessStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNetworkAccessStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNetworkAccessStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNetworkBasicInfo(self, request):
+        """修改云原生API网关实例网络基本信息，比如带宽以及描述，只支持修改客户端公网/内网的信息。
+
+        :param request: Request instance for ModifyNetworkBasicInfo.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkBasicInfoRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkBasicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNetworkBasicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNetworkBasicInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

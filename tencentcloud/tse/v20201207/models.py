@@ -2366,6 +2366,90 @@ class CreateCloudNativeAPIGatewayCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudNativeAPIGatewayPublicNetworkRequest(AbstractModel):
+    """CreateCloudNativeAPIGatewayPublicNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 分组id。
+        :type GroupId: str
+        :param _InternetConfig: 公网负载均衡配置。
+        :type InternetConfig: :class:`tencentcloud.tse.v20201207.models.InternetConfig`
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._InternetConfig = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def InternetConfig(self):
+        return self._InternetConfig
+
+    @InternetConfig.setter
+    def InternetConfig(self, InternetConfig):
+        self._InternetConfig = InternetConfig
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        if params.get("InternetConfig") is not None:
+            self._InternetConfig = InternetConfig()
+            self._InternetConfig._deserialize(params.get("InternetConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayPublicNetworkResponse(AbstractModel):
+    """CreateCloudNativeAPIGatewayPublicNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudNativeAPIGatewayRequest(AbstractModel):
     """CreateCloudNativeAPIGateway请求参数结构体
 
@@ -4013,6 +4097,102 @@ class DeleteCloudNativeAPIGatewayCertificateRequest(AbstractModel):
 
 class DeleteCloudNativeAPIGatewayCertificateResponse(AbstractModel):
     """DeleteCloudNativeAPIGatewayCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayPublicNetworkRequest(AbstractModel):
+    """DeleteCloudNativeAPIGatewayPublicNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 分组id，kong类型时必填
+        :type GroupId: str
+        :param _InternetAddressVersion: 公网类型
+- IPV4 （默认值）
+- IPV6
+        :type InternetAddressVersion: str
+        :param _Vip: 公网ip，存在多个公网时必填
+        :type Vip: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._InternetAddressVersion = None
+        self._Vip = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def InternetAddressVersion(self):
+        return self._InternetAddressVersion
+
+    @InternetAddressVersion.setter
+    def InternetAddressVersion(self, InternetAddressVersion):
+        self._InternetAddressVersion = InternetAddressVersion
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._InternetAddressVersion = params.get("InternetAddressVersion")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayPublicNetworkResponse(AbstractModel):
+    """DeleteCloudNativeAPIGatewayPublicNetwork返回参数结构体
 
     """
 
@@ -11547,6 +11727,106 @@ class ModifyCloudNativeAPIGatewayServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyConsoleNetworkRequest(AbstractModel):
+    """ModifyConsoleNetwork请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _NetworkType: 网络类型：
+- Open 公网
+- Internal 内网（暂不支持）
+        :type NetworkType: str
+        :param _Operate: 开启Konga网络，不填时默认为Open
+- Open，开启
+- Close，关闭
+        :type Operate: str
+        :param _AccessControl: 访问控制策略
+        :type AccessControl: :class:`tencentcloud.tse.v20201207.models.NetworkAccessControl`
+        """
+        self._GatewayId = None
+        self._NetworkType = None
+        self._Operate = None
+        self._AccessControl = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def AccessControl(self):
+        return self._AccessControl
+
+    @AccessControl.setter
+    def AccessControl(self, AccessControl):
+        self._AccessControl = AccessControl
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._NetworkType = params.get("NetworkType")
+        self._Operate = params.get("Operate")
+        if params.get("AccessControl") is not None:
+            self._AccessControl = NetworkAccessControl()
+            self._AccessControl._deserialize(params.get("AccessControl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsoleNetworkResponse(AbstractModel):
+    """ModifyConsoleNetwork返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNativeGatewayServerGroupRequest(AbstractModel):
     """ModifyNativeGatewayServerGroup请求参数结构体
 
@@ -11618,6 +11898,237 @@ class ModifyNativeGatewayServerGroupRequest(AbstractModel):
 
 class ModifyNativeGatewayServerGroupResponse(AbstractModel):
     """ModifyNativeGatewayServerGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNetworkAccessStrategyRequest(AbstractModel):
+    """ModifyNetworkAccessStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 分组id
+        :type GroupId: str
+        :param _NetworkType: 网络类型： 
+- Open 公网
+- Internal 内网	（暂不支持）
+        :type NetworkType: str
+        :param _Vip: ip地址
+        :type Vip: str
+        :param _AccessControl: 访问控制策略
+        :type AccessControl: :class:`tencentcloud.tse.v20201207.models.NetworkAccessControl`
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._NetworkType = None
+        self._Vip = None
+        self._AccessControl = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def AccessControl(self):
+        return self._AccessControl
+
+    @AccessControl.setter
+    def AccessControl(self, AccessControl):
+        self._AccessControl = AccessControl
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._NetworkType = params.get("NetworkType")
+        self._Vip = params.get("Vip")
+        if params.get("AccessControl") is not None:
+            self._AccessControl = NetworkAccessControl()
+            self._AccessControl._deserialize(params.get("AccessControl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkAccessStrategyResponse(AbstractModel):
+    """ModifyNetworkAccessStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNetworkBasicInfoRequest(AbstractModel):
+    """ModifyNetworkBasicInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 云原生API网关实例ID。
+        :type GatewayId: str
+        :param _GroupId: 分组id
+        :type GroupId: str
+        :param _NetworkType: 网络类型：
+- Open 公网ipv4
+- Open-IPv6 公网ipv6
+- Internal 内网
+        :type NetworkType: str
+        :param _Vip: ip地址
+        :type Vip: str
+        :param _InternetMaxBandwidthOut: 公网出流量带宽[1,2048]Mbps
+        :type InternetMaxBandwidthOut: int
+        :param _Description: 负载均衡描述
+        :type Description: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._NetworkType = None
+        self._Vip = None
+        self._InternetMaxBandwidthOut = None
+        self._Description = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NetworkType(self):
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._NetworkType = params.get("NetworkType")
+        self._Vip = params.get("Vip")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkBasicInfoResponse(AbstractModel):
+    """ModifyNetworkBasicInfo返回参数结构体
 
     """
 

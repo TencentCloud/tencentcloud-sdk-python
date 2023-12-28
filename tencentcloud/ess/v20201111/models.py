@@ -10028,13 +10028,17 @@ class DescribeExtendedServiceAuthInfosRequest(AbstractModel):
         :param _ExtendServiceType: 要查询的扩展服务类型。
 默认为空，即查询当前支持的所有扩展服务信息。
 若需查询单个扩展服务的开通情况，请传递相应的值，如下所示：
-<ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
-<li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
-<li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
-<li>PAGING_SEAL：骑缝章</li>
+<ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
 <li>BATCH_SIGN：批量签署</li>
-<li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
-
+<li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+<li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+<li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+<li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+<li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+<li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+<li>PAGING_SEAL：骑缝章</li>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
         :type ExtendServiceType: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -12551,17 +12555,25 @@ class ExtendAuthInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 扩展服务的类型，可能是以下值：
-<ul><li>OPEN_SERVER_SIGN：企业静默签署</li>
+<ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+<li>BATCH_SIGN：批量签署</li>
 <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
-<li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
+<li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+<li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+<li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+<li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+<li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 <li>PAGING_SEAL：骑缝章</li>
-<li>BATCH_SIGN：批量签署</li></ul>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
         :type Type: str
         :param _Name: 扩展服务的名称
         :type Name: str
         :param _Status: 扩展服务的开通状态：
-ENABLE：开通
-DISABLE：未开通
+<ul>
+<li>ENABLE : 已开通</li>
+<li>DISABLE : 未开通</li>
+</ul>
         :type Status: str
         :param _OperatorUserId: 操作扩展服务的操作人UserId，员工在腾讯电子签平台的唯一身份标识，为32位字符串。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15794,6 +15806,152 @@ class ModifyApplicationCallbackInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyExtendedServiceRequest(AbstractModel):
+    """ModifyExtendedService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ServiceType: 要管理的拓展服务类型。
+<ul><li>OPEN_SERVER_SIGN：企业自动签署</li>
+<li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
+<li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li>
+<li>MOBILE_CHECK_APPROVER：个人签署方仅校验手机号</li>
+<li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
+<li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
+<li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
+<li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+<li>PAGING_SEAL：骑缝章</li>
+<li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+        :type ServiceType: str
+        :param _Operate: 操作类型
+<ul>
+<li>OPEN : 开通</li>
+<li>CLOSE : 关闭</li>
+</ul>
+        :type Operate: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Endpoint: 链接跳转类型，支持以下类型
+<ul>
+<li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+<li>APP : 第三方APP或小程序跳转电子签小程序</li>
+</ul>
+        :type Endpoint: str
+        """
+        self._Operator = None
+        self._ServiceType = None
+        self._Operate = None
+        self._Agent = None
+        self._Endpoint = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ServiceType = params.get("ServiceType")
+        self._Operate = params.get("Operate")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExtendedServiceResponse(AbstractModel):
+    """ModifyExtendedService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperateUrl: 操作跳转链接，有效期24小时
+若操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通/关闭服务。
+
+当操作类型是 OPEN 且 扩展服务类型是  OPEN_SERVER_SIGN 或者 OVERSEA_SIGN 时返回操作链接，
+返回的链接当前操作人（超管或法人）点击链接完成服务开通操作。
+        :type OperateUrl: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OperateUrl = None
+        self._RequestId = None
+
+    @property
+    def OperateUrl(self):
+        return self._OperateUrl
+
+    @OperateUrl.setter
+    def OperateUrl(self, OperateUrl):
+        self._OperateUrl = OperateUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OperateUrl = params.get("OperateUrl")
         self._RequestId = params.get("RequestId")
 
 

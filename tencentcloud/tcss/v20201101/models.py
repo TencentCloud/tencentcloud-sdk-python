@@ -5380,7 +5380,15 @@ class ClusterInfoItem(AbstractModel):
         :type CheckStatus: str
         :param _TaskCreateTime: 任务创建时间,检查时间
         :type TaskCreateTime: str
-        :param _AccessedStatus: 接入状态
+        :param _AccessedStatus: 接入状态:
+未接入: AccessedNone
+已防护: AccessedDefended
+未防护: AccessedInstalled
+部分防护: AccessedPartialDefence
+接入异常: AccessedException
+卸载异常: AccessedUninstallException
+接入中: AccessedInstalling
+卸载中: AccessedUninstalling
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessedStatus: str
         :param _AccessedSubStatus: 接入失败原因
@@ -5395,6 +5403,9 @@ class ClusterInfoItem(AbstractModel):
         :param _UnInstallAgentNodeCount: 未安装agent节点数
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnInstallAgentNodeCount: int
+        :param _ChargeCoresCnt: 计费核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeCoresCnt: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5421,6 +5432,7 @@ class ClusterInfoItem(AbstractModel):
         self._NodeCount = None
         self._OffLineNodeCount = None
         self._UnInstallAgentNodeCount = None
+        self._ChargeCoresCnt = None
 
     @property
     def ClusterId(self):
@@ -5622,6 +5634,14 @@ class ClusterInfoItem(AbstractModel):
     def UnInstallAgentNodeCount(self, UnInstallAgentNodeCount):
         self._UnInstallAgentNodeCount = UnInstallAgentNodeCount
 
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5649,6 +5669,7 @@ class ClusterInfoItem(AbstractModel):
         self._NodeCount = params.get("NodeCount")
         self._OffLineNodeCount = params.get("OffLineNodeCount")
         self._UnInstallAgentNodeCount = params.get("UnInstallAgentNodeCount")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27847,7 +27868,8 @@ class DescribeExportJobManageListRequest(AbstractModel):
         r"""
         :param _Filters: 过滤条件。
 <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
-<li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+</li>
+<li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像 RegistryImage: 仓库镜像
 </li>
         :type Filters: list of RunTimeFilters
         :param _Offset: 偏移量，默认为0。
@@ -44087,6 +44109,12 @@ class HostInfo(AbstractModel):
         :type ClusterName: str
         :param _ClusterAccessedStatus: 集群接入状态
         :type ClusterAccessedStatus: str
+        :param _ChargeCoresCnt: 计费核数
+        :type ChargeCoresCnt: int
+        :param _DefendStatus: 防护状态:
+已防护: Defended
+未防护: UnDefended
+        :type DefendStatus: str
         """
         self._HostID = None
         self._HostIP = None
@@ -44108,6 +44136,8 @@ class HostInfo(AbstractModel):
         self._ClusterID = None
         self._ClusterName = None
         self._ClusterAccessedStatus = None
+        self._ChargeCoresCnt = None
+        self._DefendStatus = None
 
     @property
     def HostID(self):
@@ -44269,6 +44299,22 @@ class HostInfo(AbstractModel):
     def ClusterAccessedStatus(self, ClusterAccessedStatus):
         self._ClusterAccessedStatus = ClusterAccessedStatus
 
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
+    @property
+    def DefendStatus(self):
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -44298,6 +44344,8 @@ class HostInfo(AbstractModel):
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
         self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        self._DefendStatus = params.get("DefendStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
