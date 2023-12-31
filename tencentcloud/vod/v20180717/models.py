@@ -39301,9 +39301,9 @@ class ModifySubAppIdInfoRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _Name: 子应用名称，长度限制：40个字符。
+        :param _Name: 应用名称，长度限制：40个字符。
         :type Name: str
-        :param _Description: 子应用简介，长度限制： 300个字符。
+        :param _Description: 应用简介，长度限制： 300个字符。
         :type Description: str
         """
         self._SubAppId = None
@@ -39383,7 +39383,7 @@ class ModifySubAppIdStatusRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
         :type SubAppId: int
-        :param _Status: 子应用状态，取值范围：
+        :param _Status: 应用状态，取值范围：
 <li>On：启用。</li>
 <li>Off：停用。</li>
 <li>Destroyed：销毁。</li>
@@ -44439,7 +44439,8 @@ class PullEventsRequest(AbstractModel):
         r"""
         :param _ExtInfo: 保留字段，特殊用途时使用。
         :type ExtInfo: str
-        :param _SubAppId: 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+
         :type SubAppId: int
         """
         self._ExtInfo = None

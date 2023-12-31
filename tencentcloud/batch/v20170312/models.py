@@ -5491,7 +5491,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type Zone: str
         :param _InstanceType: 实例机型。
         :type InstanceType: str
-        :param _InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br><li>`SPOTPAID`：表示竞价实例付费。
+        :param _InstanceChargeType: 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
         :type InstanceChargeType: str
         :param _NetworkCard: 网卡类型，例如：25代表25G网卡
         :type NetworkCard: int
@@ -5508,7 +5508,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type TypeName: str
         :param _LocalDiskTypeList: 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
         :type LocalDiskTypeList: list of LocalDiskType
-        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br><li>SOLD_OUT：表示实例已售罄。
+        :param _Status: 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
         :type Status: str
         :param _Price: 实例的售卖价格。
         :type Price: :class:`tencentcloud.batch.v20170312.models.ItemPrice`
@@ -5533,7 +5533,7 @@ class InstanceTypeQuotaItem(AbstractModel):
         :type GpuCount: float
         :param _Frequency: 实例的CPU主频信息
         :type Frequency: str
-        :param _StatusCategory: 描述库存情况。取值范围： <br><li> UnderStock：表示对应库存即将售罄<br><li> NormalStock：表示对应库存供应有保障<br><li> EnoughStock：表示对应库存非常充足<br><li> WithoutStock：表示对应库存已经售罄
+        :param _StatusCategory: 描述库存情况。取值范围： <br><li> UnderStock：表示对应库存即将售罄<br></li> NormalStock：表示对应库存供应有保障<br><li> EnoughStock：表示对应库存非常充足<br></li> WithoutStock：表示对应库存已经售罄
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusCategory: str
         """

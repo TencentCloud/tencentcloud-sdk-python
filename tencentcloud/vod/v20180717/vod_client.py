@@ -3359,7 +3359,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySubAppIdInfo(self, request):
-        """该接口用于修改子应用信息，但不允许修改主应用信息。
+        """该接口用于修改应用信息，但不允许修改默认应用信息。
 
         :param request: Request instance for ModifySubAppIdInfo.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdInfoRequest`
@@ -3382,7 +3382,7 @@ class VodClient(AbstractClient):
 
 
     def ModifySubAppIdStatus(self, request):
-        """该接口用于启用、停用子应用。被停用的子应用将封停对应域名，并限制控制台访问。
+        """该接口用于启用、停用应用。被停用的应用将封停对应域名，并限制控制台访问。
 
         :param request: Request instance for ModifySubAppIdStatus.
         :type request: :class:`tencentcloud.vod.v20180717.models.ModifySubAppIdStatusRequest`

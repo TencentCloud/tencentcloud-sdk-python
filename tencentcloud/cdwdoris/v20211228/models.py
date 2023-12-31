@@ -404,7 +404,10 @@ class CreateInstanceNewRequest(AbstractModel):
         :type DorisUserPwd: str
         :param _Tags: 标签列表
         :type Tags: list of Tag
-        :param _HaType: 高可用类型：0：非高可用，1：读高可用，2：读写高可用。
+        :param _HaType: 高可用类型：
+0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），
+1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count>=3，且为奇数），
+2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count>=5，且为奇数）。
         :type HaType: int
         :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
         :type CaseSensitive: int

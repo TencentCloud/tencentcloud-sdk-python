@@ -497,7 +497,7 @@ class CdbClient(AbstractClient):
         2. 单次创建实例最大支持 100 个，实例时长最大支持 36 个月；
         3. 支持创建 MySQL 5.5 、 MySQL 5.6 、 MySQL 5.7 、 MySQL 8.0 版本；
         4. 支持创建主实例、只读实例、灾备实例；
-        5. 当入参指定 Port，ParamTemplateType 或 Password 时，该实例会进行初始化操作（不支持基础版实例）；
+        5. 当入参指定 Port 和 ParamTemplateType 参数模板，相关参数才会自动初始化（不支持基础版实例）；
         6. 当入参指定 ParamTemplateId 或 AlarmPolicyList 时，需将SDK提升至最新版本方可支持；
 
         :param request: Request instance for CreateDBInstance.

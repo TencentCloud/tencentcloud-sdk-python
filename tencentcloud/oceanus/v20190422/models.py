@@ -4355,12 +4355,15 @@ class DescribeJobsRequest(AbstractModel):
         :type Limit: int
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param _ExtraResult: 查询额外的作业信息,例如 JobEventInfo	
+        :type ExtraResult: list of str
         """
         self._JobIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._WorkSpaceId = None
+        self._ExtraResult = None
 
     @property
     def JobIds(self):
@@ -4402,6 +4405,14 @@ class DescribeJobsRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def ExtraResult(self):
+        return self._ExtraResult
+
+    @ExtraResult.setter
+    def ExtraResult(self, ExtraResult):
+        self._ExtraResult = ExtraResult
+
 
     def _deserialize(self, params):
         self._JobIds = params.get("JobIds")
@@ -4414,6 +4425,7 @@ class DescribeJobsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._ExtraResult = params.get("ExtraResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6815,6 +6827,40 @@ class JobEvent(AbstractModel):
         
 
 
+class JobEventInfo(AbstractModel):
+    """事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorEventTotal: 异常事件总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorEventTotal: int
+        """
+        self._ErrorEventTotal = None
+
+    @property
+    def ErrorEventTotal(self):
+        return self._ErrorEventTotal
+
+    @ErrorEventTotal.setter
+    def ErrorEventTotal(self, ErrorEventTotal):
+        self._ErrorEventTotal = ErrorEventTotal
+
+
+    def _deserialize(self, params):
+        self._ErrorEventTotal = params.get("ErrorEventTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JobGraph(AbstractModel):
     """作业运行图
 
@@ -7152,6 +7198,9 @@ class JobV1(AbstractModel):
         :param _Tags: 作业标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _EventInfo: 作业异常事件信息	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventInfo: :class:`tencentcloud.oceanus.v20190422.models.JobEventInfo`
         """
         self._JobId = None
         self._Region = None
@@ -7185,6 +7234,7 @@ class JobV1(AbstractModel):
         self._WorkSpaceId = None
         self._WorkSpaceName = None
         self._Tags = None
+        self._EventInfo = None
 
     @property
     def JobId(self):
@@ -7442,6 +7492,14 @@ class JobV1(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def EventInfo(self):
+        return self._EventInfo
+
+    @EventInfo.setter
+    def EventInfo(self, EventInfo):
+        self._EventInfo = EventInfo
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7481,6 +7539,9 @@ class JobV1(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("EventInfo") is not None:
+            self._EventInfo = JobEventInfo()
+            self._EventInfo._deserialize(params.get("EventInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

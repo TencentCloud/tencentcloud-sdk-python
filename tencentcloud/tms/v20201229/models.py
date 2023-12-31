@@ -25,7 +25,7 @@ class DetailResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Label: 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告；以及其他令人反感、不安全或不适宜的内容类型。
         :type Label: str
         :param _Suggestion: 该字段用于返回对应当前标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 注意：此字段可能返回 null，表示取不到有效值。
@@ -36,13 +36,13 @@ class DetailResults(AbstractModel):
         :param _Score: 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Score: int
-        :param _LibType: 该字段**仅当Label为Custom自定义关键词时有效**，用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
+        :param _LibType: 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibType: int
-        :param _LibId: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
+        :param _LibId: 该字段用于返回自定义库的ID，以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibId: str
-        :param _LibName: 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
+        :param _LibName: 该字段用于返回自定义库的名称,以方便自定义库管理和配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibName: str
         :param _SubLabel: 该字段用于返回当前标签（Label）下的二级标签。
@@ -353,6 +353,564 @@ class HitInfo(AbstractModel):
                 obj = Positions()
                 obj._deserialize(item)
                 self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelGrade(AbstractModel):
+    """内容审核多级标签结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: 内容审核结果客户定制标签码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param _Grade1: 内容审核结果客户定制一级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grade1: str
+        :param _Grade2: 内容审核结果客户定制二级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grade2: str
+        :param _Grade3: 内容审核结果客户定制三级标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grade3: str
+        """
+        self._Code = None
+        self._Grade1 = None
+        self._Grade2 = None
+        self._Grade3 = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Grade1(self):
+        return self._Grade1
+
+    @Grade1.setter
+    def Grade1(self, Grade1):
+        self._Grade1 = Grade1
+
+    @property
+    def Grade2(self):
+        return self._Grade2
+
+    @Grade2.setter
+    def Grade2(self, Grade2):
+        self._Grade2 = Grade2
+
+    @property
+    def Grade3(self):
+        return self._Grade3
+
+    @Grade3.setter
+    def Grade3(self, Grade3):
+        self._Grade3 = Grade3
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Grade1 = params.get("Grade1")
+        self._Grade2 = params.get("Grade2")
+        self._Grade3 = params.get("Grade3")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LibCheckResult(AbstractModel):
+    """库检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibId: 库ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibId: str
+        :param _LibName: 库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibName: str
+        :param _LibType: 库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibType: int
+        :param _Keyword: 命中的关键词
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Keyword: str
+        :param _Positions: 命中的关键词在送审文本的位置，可能存在多个位置，每个位置显示开始位置和结束位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Positions: list of Positions
+        """
+        self._LibId = None
+        self._LibName = None
+        self._LibType = None
+        self._Keyword = None
+        self._Positions = None
+
+    @property
+    def LibId(self):
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def LibName(self):
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def LibType(self):
+        return self._LibType
+
+    @LibType.setter
+    def LibType(self, LibType):
+        self._LibType = LibType
+
+    @property
+    def Keyword(self):
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Positions(self):
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._LibId = params.get("LibId")
+        self._LibName = params.get("LibName")
+        self._LibType = params.get("LibType")
+        self._Keyword = params.get("Keyword")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Positions()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelResult(AbstractModel):
+    """模型检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 模型检测出的违规内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Positions: 模型检测出的违规内容的位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Positions: list of Positions
+        """
+        self._Content = None
+        self._Positions = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Positions(self):
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Positions()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerateTextRequest(AbstractModel):
+    """ModerateText请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+        :type Content: str
+        :param _BizType: 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。
+备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
+        :type BizType: str
+        :param _DataId: 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。
+取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，长度不超过64个字符
+        :type DataId: str
+        :param _User: 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+        :type User: :class:`tencentcloud.tms.v20201229.models.User`
+        :param _Device: 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+        :type Device: :class:`tencentcloud.tms.v20201229.models.Device`
+        """
+        self._Content = None
+        self._BizType = None
+        self._DataId = None
+        self._User = None
+        self._Device = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Device(self):
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._BizType = params.get("BizType")
+        self._DataId = params.get("DataId")
+        if params.get("User") is not None:
+            self._User = User()
+            self._User._deserialize(params.get("User"))
+        if params.get("Device") is not None:
+            self._Device = Device()
+            self._Device._deserialize(params.get("Device"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerateTextResponse(AbstractModel):
+    """ModerateText返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataId: 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+        :type DataId: str
+        :param _BizType: 该字段用于返回请求参数中的BizType参数
+        :type BizType: str
+        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。
+返回值：Block：建议屏蔽，Review ：建议人工复审，Pass：建议通过
+        :type Suggestion: str
+        :param _Label: 命中标签，可参阅对应数据结构（LabelGrade）的详细描述
+        :type Label: :class:`tencentcloud.tms.v20201229.models.LabelGrade`
+        :param _TcLabelCodes: 命中标签对应腾讯侧定义的标签
+        :type TcLabelCodes: list of str
+        :param _Keywords: 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+        :type Keywords: list of str
+        :param _ModerationDetails: 该字段用于返回文本审核的详细结果，返回值信息可参阅对应数据结构（ModerationDetail）的详细描述
+        :type ModerationDetails: list of ModerationDetail
+        :param _Score: 该字段用于返回审核结果置信度，使用百分制。分数越高表示结果可信度越高。
+        :type Score: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataId = None
+        self._BizType = None
+        self._Suggestion = None
+        self._Label = None
+        self._TcLabelCodes = None
+        self._Keywords = None
+        self._ModerationDetails = None
+        self._Score = None
+        self._RequestId = None
+
+    @property
+    def DataId(self):
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def TcLabelCodes(self):
+        return self._TcLabelCodes
+
+    @TcLabelCodes.setter
+    def TcLabelCodes(self, TcLabelCodes):
+        self._TcLabelCodes = TcLabelCodes
+
+    @property
+    def Keywords(self):
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def ModerationDetails(self):
+        return self._ModerationDetails
+
+    @ModerationDetails.setter
+    def ModerationDetails(self, ModerationDetails):
+        self._ModerationDetails = ModerationDetails
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataId = params.get("DataId")
+        self._BizType = params.get("BizType")
+        self._Suggestion = params.get("Suggestion")
+        if params.get("Label") is not None:
+            self._Label = LabelGrade()
+            self._Label._deserialize(params.get("Label"))
+        self._TcLabelCodes = params.get("TcLabelCodes")
+        self._Keywords = params.get("Keywords")
+        if params.get("ModerationDetails") is not None:
+            self._ModerationDetails = []
+            for item in params.get("ModerationDetails"):
+                obj = ModerationDetail()
+                obj._deserialize(item)
+                self._ModerationDetails.append(obj)
+        self._Score = params.get("Score")
+        self._RequestId = params.get("RequestId")
+
+
+class ModerationDetail(AbstractModel):
+    """文本审核明细结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Suggestion: 审核建议，Block表示建议拦截，Review表示建议人工复审，Pass表示建议放行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param _Label: 命中标签，含标签码和一二三级标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: :class:`tencentcloud.tms.v20201229.models.LabelGrade`
+        :param _Score: 标签得分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: int
+        :param _TcLabelCodes: label对应腾讯侧命中标签码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcLabelCodes: list of str
+        :param _LibResults: 库检测命中详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LibResults: list of LibCheckResult
+        :param _ModelResults: 模型检测详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelResults: list of ModelResult
+        :param _SentimentResult: 情绪正负向检测结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SentimentResult: :class:`tencentcloud.tms.v20201229.models.SentimentDetail`
+        """
+        self._Suggestion = None
+        self._Label = None
+        self._Score = None
+        self._TcLabelCodes = None
+        self._LibResults = None
+        self._ModelResults = None
+        self._SentimentResult = None
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def TcLabelCodes(self):
+        return self._TcLabelCodes
+
+    @TcLabelCodes.setter
+    def TcLabelCodes(self, TcLabelCodes):
+        self._TcLabelCodes = TcLabelCodes
+
+    @property
+    def LibResults(self):
+        return self._LibResults
+
+    @LibResults.setter
+    def LibResults(self, LibResults):
+        self._LibResults = LibResults
+
+    @property
+    def ModelResults(self):
+        return self._ModelResults
+
+    @ModelResults.setter
+    def ModelResults(self, ModelResults):
+        self._ModelResults = ModelResults
+
+    @property
+    def SentimentResult(self):
+        return self._SentimentResult
+
+    @SentimentResult.setter
+    def SentimentResult(self, SentimentResult):
+        self._SentimentResult = SentimentResult
+
+
+    def _deserialize(self, params):
+        self._Suggestion = params.get("Suggestion")
+        if params.get("Label") is not None:
+            self._Label = LabelGrade()
+            self._Label._deserialize(params.get("Label"))
+        self._Score = params.get("Score")
+        self._TcLabelCodes = params.get("TcLabelCodes")
+        if params.get("LibResults") is not None:
+            self._LibResults = []
+            for item in params.get("LibResults"):
+                obj = LibCheckResult()
+                obj._deserialize(item)
+                self._LibResults.append(obj)
+        if params.get("ModelResults") is not None:
+            self._ModelResults = []
+            for item in params.get("ModelResults"):
+                obj = ModelResult()
+                obj._deserialize(item)
+                self._ModelResults.append(obj)
+        if params.get("SentimentResult") is not None:
+            self._SentimentResult = SentimentDetail()
+            self._SentimentResult._deserialize(params.get("SentimentResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
