@@ -29,6 +29,8 @@ except ImportError:
 
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.common_client import CommonClient
+from tencentcloud.common.profile.http_profile import HttpProfile
+from tencentcloud.common.profile.client_profile import ClientProfile
 
 class Credential(object):
     def __init__(self, secret_id, secret_key, token=None):
@@ -159,8 +161,9 @@ class STSAssumeRoleCredential(object):
     _region = "ap-guangzhou"
     _version = '2018-08-13'
     _service = "sts"
+    _endpoint = "sts.tencentcloudapi.com"
 
-    def __init__(self, secret_id, secret_key, role_arn, role_session_name, duration_seconds=7200):
+    def __init__(self, secret_id, secret_key, role_arn, role_session_name, duration_seconds=7200, endpoint=None):
         """
         :param secret_id: 接口调用凭证id
         :type secret_id: str
@@ -187,6 +190,8 @@ class STSAssumeRoleCredential(object):
 
         self._last_role_arn = None
         self._tmp_credential = None
+        if endpoint:
+            self._endpoint = endpoint
 
     @property
     def secretId(self):
@@ -232,8 +237,13 @@ class STSAssumeRoleCredential(object):
 
     def get_sts_tmp_role_arn(self):
         cred = Credential(self._long_secret_id, self._long_secret_key)
+        http_profile = HttpProfile()
+        http_profile.endpoint = self._endpoint
+        client_profile = ClientProfile()
+        client_profile.httpProfile = http_profile
 
-        common_client = CommonClient(credential=cred, region=self._region, version=self._version, service=self._service)
+        common_client = CommonClient(credential=cred, region=self._region, version=self._version,
+                                     service=self._service, profile=client_profile)
         params = {
             "RoleArn": self._role_arn,
             "RoleSessionName": self._role_session_name,
@@ -247,7 +257,7 @@ class STSAssumeRoleCredential(object):
         self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.9
 
 
-class EnvironmentVariableCredential():
+class EnvironmentVariableCredential(object):
 
     def get_credential(self):
         """Tencent Cloud EnvironmentVariableCredential.
@@ -270,7 +280,7 @@ class EnvironmentVariableCredential():
         return Credential(self.secret_id, self.secret_key)
 
 
-class ProfileCredential():
+class ProfileCredential(object):
 
     def get_credential(self):
         """Tencent Cloud ProfileCredential.
