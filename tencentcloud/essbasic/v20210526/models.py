@@ -1837,9 +1837,9 @@ class ChannelCreateBatchCancelFlowUrlRequest(AbstractModel):
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
 <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>
-第三方平台子客企业和员工必须已经经过实名认证
+第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowIds: 要撤销的合同流程ID列表，最多100个，超过100不处理
         :type FlowIds: list of str
@@ -2154,7 +2154,15 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _Name: 签署方经办人的姓名。
 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
@@ -2994,9 +3002,9 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
@@ -9565,9 +9573,10 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>
+第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ChangeType: 企业信息变更类型，可选类型如下：
 <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
@@ -10812,7 +10821,7 @@ class CreateSignUrlsRequest(AbstractModel):
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
 <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>
 第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
@@ -11989,9 +11998,9 @@ class DescribeExtendedServiceAuthInfoRequest(AbstractModel):
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
 <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>
-第三方平台子客企业和员工必须已经经过实名认证
+第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         self._Agent = None
@@ -15384,10 +15393,11 @@ class ModifyExtendedServiceRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
 </ul>
+第三方平台子客企业和员工必须已经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _ServiceType:   扩展服务类型
 <ul>
@@ -15787,7 +15797,7 @@ class OperateChannelTemplateRequest(AbstractModel):
 
 此接口下面信息必填。
 <ul>
-<li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+<li>渠道应用标识: Agent.AppId</li>
 </ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _OperateType: 操作类型，可取值如下:

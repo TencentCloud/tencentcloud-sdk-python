@@ -15176,7 +15176,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 白名单模式； 0MD5白名单，1自定义
+        :param _Mode: 白名单模式； 0 MD5白名单，1自定义
         :type Mode: int
         :param _QuuidList: quuid 列表
         :type QuuidList: list of str
@@ -21987,16 +21987,16 @@ class DescribeAssetMachineListRequest(AbstractModel):
 <li>IP   内网IP或公网IP</li>
 <li>OsType - String - 是否必填：否 - windows或linux</li>
 <li>CpuLoad - Int - 是否必填：否 - 
-0: 未知  1: 低负载
-2: 中负载  3: 高负载</li>
+	0: 未知  1: 低负载
+	2: 中负载  3: 高负载</li>
 <li>DiskLoad - Int - 是否必填：否 - 
-0: 0%或未知  1: 0%～20%
-2: 20%～50%  3: 50%～80%
-4: 80%～100%</li>
+	0: 0%或未知  1: 0%～20%
+	2: 20%～50%  3: 50%～80%
+	4: 80%～100%</li>
 <li>MemLoad - Int - 是否必填：否 - 
-0: 0%或未知  1: 0%～20%
-2: 20%～50%  3: 50%～80%
-4: 80%～100%</li>
+	0: 0%或未知  1: 0%～20%
+	2: 20%～50%  3: 50%～80%
+	4: 80%～100%</li>
 <li>Quuid：主机Quuid</li>
 <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
         :type Filters: list of Filter
@@ -23805,8 +23805,8 @@ class DescribeAssetUserListRequest(AbstractModel):
         :type Offset: int
         :param _Order: 排序方式，asc升序 或 desc降序
         :type Order: str
-        :param _By: 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
-PasswordLockDays
+        :param _By: 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime|PasswordLockDays]
+
         :type By: str
         """
         self._Quuid = None
@@ -58569,7 +58569,9 @@ class ExportJavaMemShellsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件：Keywords: ip或者主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
+        :param _Filters: 过滤条件：InstanceID、IP、
+
+MachineName主机名模糊查询, Type，Status精确匹配，CreateBeginTime，CreateEndTime时间段
         :type Filters: list of Filter
         :param _Where: 导出字段
         :type Where: list of str
@@ -58619,7 +58621,7 @@ class ExportJavaMemShellsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
+        :param _TaskId: 任务ID,需要到接口“异步导出任务”https://cloud.tencent.com/document/product/296/52508 获取DownloadUrl下载地址
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

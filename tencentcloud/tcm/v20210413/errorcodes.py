@@ -38,6 +38,9 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 # 超过配额限制。
 LIMITEXCEEDED = 'LimitExceeded'
 
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 

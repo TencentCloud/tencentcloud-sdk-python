@@ -188,7 +188,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterHosts(self, request):
-        """专用集群宿主机信息
+        """查询专用集群宿主机信息
 
         :param request: Request instance for DescribeDedicatedClusterHosts.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterHostsRequest`
@@ -257,7 +257,7 @@ class CdcClient(AbstractClient):
 
 
     def DescribeDedicatedClusterOverview(self, request):
-        """专用集群概览信息
+        """查询专用集群概览信息
 
         :param request: Request instance for DescribeDedicatedClusterOverview.
         :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterOverviewRequest`

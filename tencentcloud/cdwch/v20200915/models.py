@@ -2593,10 +2593,13 @@ class DescribeSpecRequest(AbstractModel):
         :type PayMode: str
         :param _IsElastic: 是否弹性ck
         :type IsElastic: bool
+        :param _CaseType: 是否是购买页面需要的spec
+        :type CaseType: int
         """
         self._Zone = None
         self._PayMode = None
         self._IsElastic = None
+        self._CaseType = None
 
     @property
     def Zone(self):
@@ -2622,11 +2625,20 @@ class DescribeSpecRequest(AbstractModel):
     def IsElastic(self, IsElastic):
         self._IsElastic = IsElastic
 
+    @property
+    def CaseType(self):
+        return self._CaseType
+
+    @CaseType.setter
+    def CaseType(self, CaseType):
+        self._CaseType = CaseType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._PayMode = params.get("PayMode")
         self._IsElastic = params.get("IsElastic")
+        self._CaseType = params.get("CaseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

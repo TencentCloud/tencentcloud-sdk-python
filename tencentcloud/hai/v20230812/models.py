@@ -42,12 +42,29 @@ class ApplicationInfo(AbstractModel):
         :param _MinSystemDiskSize: 系统盘大小下限
 注意：此字段可能返回 null，表示取不到有效值。
         :type MinSystemDiskSize: int
+        :param _ApplicationType: 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param _ApplicationState: 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
+示例值：ONLINE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationState: str
+        :param _CreateTime: 应用创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ApplicationSize: 应用大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationSize: int
         """
         self._ApplicationId = None
         self._ApplicationName = None
         self._Description = None
         self._ConfigEnvironment = None
         self._MinSystemDiskSize = None
+        self._ApplicationType = None
+        self._ApplicationState = None
+        self._CreateTime = None
+        self._ApplicationSize = None
 
     @property
     def ApplicationId(self):
@@ -89,6 +106,38 @@ class ApplicationInfo(AbstractModel):
     def MinSystemDiskSize(self, MinSystemDiskSize):
         self._MinSystemDiskSize = MinSystemDiskSize
 
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def ApplicationState(self):
+        return self._ApplicationState
+
+    @ApplicationState.setter
+    def ApplicationState(self, ApplicationState):
+        self._ApplicationState = ApplicationState
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ApplicationSize(self):
+        return self._ApplicationSize
+
+    @ApplicationSize.setter
+    def ApplicationSize(self, ApplicationSize):
+        self._ApplicationSize = ApplicationSize
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -96,6 +145,10 @@ class ApplicationInfo(AbstractModel):
         self._Description = params.get("Description")
         self._ConfigEnvironment = params.get("ConfigEnvironment")
         self._MinSystemDiskSize = params.get("MinSystemDiskSize")
+        self._ApplicationType = params.get("ApplicationType")
+        self._ApplicationState = params.get("ApplicationState")
+        self._CreateTime = params.get("CreateTime")
+        self._ApplicationSize = params.get("ApplicationSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -116,9 +169,10 @@ class DescribeApplicationsRequest(AbstractModel):
         :param _ApplicationIds: 应用id列表
         :type ApplicationIds: list of str
         :param _Filters: 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-application-id，精确匹配
-scene-id，精确匹配
-application-name，模糊匹配
+application-id: 精确匹配;
+scene-id: 精确匹配;
+application-name: 模糊匹配;
+application-type: 精确匹配;
         :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0
         :type Offset: int
@@ -127,11 +181,17 @@ MC：1000
 用户：100
 
         :type Limit: int
+        :param _OrderField: 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
+        :type OrderField: str
+        :param _Order: 输出应用列表的排列顺序。取值范围："ASC"：升序排列。 "DESC"：降序排列。默认按降序排列。
+        :type Order: str
         """
         self._ApplicationIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._OrderField = None
+        self._Order = None
 
     @property
     def ApplicationIds(self):
@@ -165,6 +225,22 @@ MC：1000
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
 
     def _deserialize(self, params):
         self._ApplicationIds = params.get("ApplicationIds")
@@ -176,6 +252,8 @@ MC：1000
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

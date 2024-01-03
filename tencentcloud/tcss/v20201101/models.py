@@ -5680,6 +5680,565 @@ class ClusterInfoItem(AbstractModel):
         
 
 
+class ClusterNodeInfo(AbstractModel):
+    """集群的节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _PrivateIpAddresses: 内网ip地址
+        :type PrivateIpAddresses: str
+        :param _InstanceRole: 节点的角色，Master、Work等
+        :type InstanceRole: str
+        :param _InstanceState: 实例的状态（running 运行中，initializing 初始化中，failed 异常）
+        :type InstanceState: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _AgentStatus: agent安装状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentStatus: str
+        :param _PublicIP: 公网ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIP: str
+        :param _HostID: 节点ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostID: str
+        :param _MachineType: 主机类型(普通节点情况)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineType: str
+        :param _NodeType: 节点类型(
+NORMAL: 普通节点
+SUPER:超级节点
+)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        :param _UUID: uuid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UUID: str
+        :param _ChargeCoresCnt: 计费核数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeCoresCnt: int
+        :param _DefendStatus: 防护状态:
+已防护: Defended
+未防护: UnDefended
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefendStatus: str
+        """
+        self._InstanceId = None
+        self._PrivateIpAddresses = None
+        self._InstanceRole = None
+        self._InstanceState = None
+        self._NodeName = None
+        self._AgentStatus = None
+        self._PublicIP = None
+        self._HostID = None
+        self._MachineType = None
+        self._NodeType = None
+        self._UUID = None
+        self._ChargeCoresCnt = None
+        self._DefendStatus = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PrivateIpAddresses(self):
+        return self._PrivateIpAddresses
+
+    @PrivateIpAddresses.setter
+    def PrivateIpAddresses(self, PrivateIpAddresses):
+        self._PrivateIpAddresses = PrivateIpAddresses
+
+    @property
+    def InstanceRole(self):
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+    @property
+    def InstanceState(self):
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def MachineType(self):
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def UUID(self):
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
+    @property
+    def DefendStatus(self):
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PrivateIpAddresses = params.get("PrivateIpAddresses")
+        self._InstanceRole = params.get("InstanceRole")
+        self._InstanceState = params.get("InstanceState")
+        self._NodeName = params.get("NodeName")
+        self._AgentStatus = params.get("AgentStatus")
+        self._PublicIP = params.get("PublicIP")
+        self._HostID = params.get("HostID")
+        self._MachineType = params.get("MachineType")
+        self._NodeType = params.get("NodeType")
+        self._UUID = params.get("UUID")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        self._DefendStatus = params.get("DefendStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterPodInfo(AbstractModel):
+    """集群的pod详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: Pod名称.
+        :type PodName: str
+        :param _Status: Pod状态
+        :type Status: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeLanIP: 节点内网Ip
+        :type NodeLanIP: str
+        :param _WorkloadName: 所属的工作负载名字
+        :type WorkloadName: str
+        :param _WorkloadKind: 所属工作负载类型
+        :type WorkloadKind: str
+        :param _ClusterName: 所属集群名字
+        :type ClusterName: str
+        :param _ClusterId: 所属集群ID
+        :type ClusterId: str
+        :param _Namespace: 所属命名空间
+        :type Namespace: str
+        :param _Region: 所属地域
+        :type Region: str
+        :param _Age: 运行时间
+        :type Age: str
+        :param _StartTime: 创建时间
+        :type StartTime: str
+        :param _Restarts: 重启次数
+        :type Restarts: int
+        :param _ServiceName: 关联的service名字
+        :type ServiceName: str
+        :param _ServiceCount: 关联的service数量
+        :type ServiceCount: int
+        :param _ContainerName: 关联的容器名字
+        :type ContainerName: str
+        :param _ContainerCount: 关联的容器数量
+        :type ContainerCount: int
+        :param _CPU: CPU占用率
+        :type CPU: int
+        :param _Memory: 内存占用量
+        :type Memory: int
+        :param _Labels: Pod标签
+        :type Labels: str
+        :param _ClusterStatus: 集群状态
+        :type ClusterStatus: str
+        :param _WorkloadLabels: 工作负载标签
+        :type WorkloadLabels: str
+        :param _ContainerId: 容器Id
+        :type ContainerId: str
+        :param _HostName: 主机名称
+        :type HostName: str
+        :param _HostId: 主机Id
+        :type HostId: str
+        :param _ClusterType: 集群类型
+        :type ClusterType: str
+        :param _NodeName: abc
+        :type NodeName: str
+        :param _NodeType: NORMAL：普通节点 SUPER：超级节点
+        :type NodeType: str
+        :param _ChargeCoresCnt: 计费核数
+        :type ChargeCoresCnt: int
+        """
+        self._PodName = None
+        self._Status = None
+        self._PodIP = None
+        self._NodeLanIP = None
+        self._WorkloadName = None
+        self._WorkloadKind = None
+        self._ClusterName = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._Region = None
+        self._Age = None
+        self._StartTime = None
+        self._Restarts = None
+        self._ServiceName = None
+        self._ServiceCount = None
+        self._ContainerName = None
+        self._ContainerCount = None
+        self._CPU = None
+        self._Memory = None
+        self._Labels = None
+        self._ClusterStatus = None
+        self._WorkloadLabels = None
+        self._ContainerId = None
+        self._HostName = None
+        self._HostId = None
+        self._ClusterType = None
+        self._NodeName = None
+        self._NodeType = None
+        self._ChargeCoresCnt = None
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeLanIP(self):
+        return self._NodeLanIP
+
+    @NodeLanIP.setter
+    def NodeLanIP(self, NodeLanIP):
+        self._NodeLanIP = NodeLanIP
+
+    @property
+    def WorkloadName(self):
+        return self._WorkloadName
+
+    @WorkloadName.setter
+    def WorkloadName(self, WorkloadName):
+        self._WorkloadName = WorkloadName
+
+    @property
+    def WorkloadKind(self):
+        return self._WorkloadKind
+
+    @WorkloadKind.setter
+    def WorkloadKind(self, WorkloadKind):
+        self._WorkloadKind = WorkloadKind
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Restarts(self):
+        return self._Restarts
+
+    @Restarts.setter
+    def Restarts(self, Restarts):
+        self._Restarts = Restarts
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceCount(self):
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ContainerCount(self):
+        return self._ContainerCount
+
+    @ContainerCount.setter
+    def ContainerCount(self, ContainerCount):
+        self._ContainerCount = ContainerCount
+
+    @property
+    def CPU(self):
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def WorkloadLabels(self):
+        return self._WorkloadLabels
+
+    @WorkloadLabels.setter
+    def WorkloadLabels(self, WorkloadLabels):
+        self._WorkloadLabels = WorkloadLabels
+
+    @property
+    def ContainerId(self):
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def HostName(self):
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def HostId(self):
+        return self._HostId
+
+    @HostId.setter
+    def HostId(self, HostId):
+        self._HostId = HostId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        self._Status = params.get("Status")
+        self._PodIP = params.get("PodIP")
+        self._NodeLanIP = params.get("NodeLanIP")
+        self._WorkloadName = params.get("WorkloadName")
+        self._WorkloadKind = params.get("WorkloadKind")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._Region = params.get("Region")
+        self._Age = params.get("Age")
+        self._StartTime = params.get("StartTime")
+        self._Restarts = params.get("Restarts")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceCount = params.get("ServiceCount")
+        self._ContainerName = params.get("ContainerName")
+        self._ContainerCount = params.get("ContainerCount")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._Labels = params.get("Labels")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._WorkloadLabels = params.get("WorkloadLabels")
+        self._ContainerId = params.get("ContainerId")
+        self._HostName = params.get("HostName")
+        self._HostId = params.get("HostId")
+        self._ClusterType = params.get("ClusterType")
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterRiskItem(AbstractModel):
     """风险项是检查完之后，有问题的检测项，并且加了一些检查结果信息。
 
@@ -24088,6 +24647,150 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAssetSuperNodeListRequest(AbstractModel):
+    """DescribeAssetSuperNodeList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>NodeID- String - 是否必填：否 - ID </li>
+<li>NodeName- String - 是否必填：否 - 超级节点名称 </li>
+<li>SubnetName- String - 是否必填：否 - VPC子网 </li>
+<li>AgentStatus- String - 是否必填：否 - 安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中; </li>
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssetSuperNodeListResponse(AbstractModel):
+    """DescribeAssetSuperNodeList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 超级节点列表
+        :type List: list of SuperNodeListItem
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = SuperNodeListItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAssetSyncLastTimeRequest(AbstractModel):
     """DescribeAssetSyncLastTime请求参数结构体
 
@@ -24892,6 +25595,176 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._ServiceCount = params.get("ServiceCount")
         self._IngressCount = params.get("IngressCount")
         self._MasterIps = params.get("MasterIps")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterNodesRequest(AbstractModel):
+    """DescribeClusterNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id,不输入表示查询所有
+        :type ClusterId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param _Filters: Name 可取值：
+DefendStatus（防护状态）:
+	Defended 已防护
+	UnDefended 未防护
+AgentStatus (容器agent状态):
+ 	OFFLINE 离线
+ 	ONLINE 在线
+ 	UNINSTALL 未安装
+InstanceState (节点状态):
+  	Running 运行中
+  	Ready 准备
+  	Notready 未准备好
+  	Initializing 初始化
+  	Failed 失败
+  	Error 错误
+InstanceRole (节点角色)
+    WORKER 工作节点
+    MASTER_ETCD 主节点
+    SUPER 超级节点
+        :type Filters: list of ComplianceFilters
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self._ClusterId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterNodesResponse(AbstractModel):
+    """DescribeClusterNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _ClusterNodeList: 节点列表
+        :type ClusterNodeList: list of ClusterNodeInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClusterNodeList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterNodeList(self):
+        return self._ClusterNodeList
+
+    @ClusterNodeList.setter
+    def ClusterNodeList(self, ClusterNodeList):
+        self._ClusterNodeList = ClusterNodeList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClusterNodeList") is not None:
+            self._ClusterNodeList = []
+            for item in params.get("ClusterNodeList"):
+                obj = ClusterNodeInfo()
+                obj._deserialize(item)
+                self._ClusterNodeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -36193,6 +37066,153 @@ class DescribeSecLogVasInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSuperNodePodListRequest(AbstractModel):
+    """DescribeSuperNodePodList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>NodeUniqueID- String - 是否必填：否 - 节点唯一id </li>
+<li>PodName- String - 是否必填：否 - Pod示例名称 </li>
+<li>PodIP- String - 是否必填：否 - POD IP </li>
+<li>Namespace- String - 是否必填：否 - 命名空间 </li>
+<li>Deployment- String - 是否必填：否 - 所属工作负载 </li>
+<li>Status- String - 是否必填：否 - 状态 </li>
+
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式 asc,desc
+        :type Order: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSuperNodePodListResponse(AbstractModel):
+    """DescribeSuperNodePodList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 列表
+        :type List: list of SuperNodePodListItem
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = SuperNodePodListItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSupportDefenceVulRequest(AbstractModel):
     """DescribeSupportDefenceVul请求参数结构体
 
@@ -37118,6 +38138,182 @@ class DescribeUserClusterResponse(AbstractModel):
                 obj = ClusterInfoItem()
                 obj._deserialize(item)
                 self._ClusterInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserPodListRequest(AbstractModel):
+    """DescribeUserPodList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id,不填表示获取用户所有pod
+        :type ClusterId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 每次查询的最大记录数量
+        :type Limit: int
+        :param _Filters: Name 可取值：ClusterId集群id,Namespace命名空间等
+        :type Filters: list of ComplianceFilters
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式 asc,desc
+        :type Order: str
+        :param _ServiceName: Service名称
+        :type ServiceName: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        """
+        self._ClusterId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._By = None
+        self._Order = None
+        self._ServiceName = None
+        self._Namespace = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ComplianceFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        self._ServiceName = params.get("ServiceName")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserPodListResponse(AbstractModel):
+    """DescribeUserPodList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodList: Pod列表详细信息
+        :type PodList: list of ClusterPodInfo
+        :param _TotalCount: Pod列表总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PodList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PodList(self):
+        return self._PodList
+
+    @PodList.setter
+    def PodList(self, PodList):
+        self._PodList = PodList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PodList") is not None:
+            self._PodList = []
+            for item in params.get("PodList"):
+                obj = ClusterPodInfo()
+                obj._deserialize(item)
+                self._PodList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -57619,6 +58815,482 @@ class StopVulScanTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SuperNodeListItem(AbstractModel):
+    """超级节点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeID: 超级节点ID
+        :type NodeID: str
+        :param _NodeName: 超级节点名称
+        :type NodeName: str
+        :param _ClusterName: 所属集群名
+        :type ClusterName: str
+        :param _ClusterID: 所属集群ID
+        :type ClusterID: str
+        :param _Status: 节点状态:Running,Ready,Notready,Initializing,Failed,Error
+        :type Status: str
+        :param _SubNetID: 子网ID
+        :type SubNetID: str
+        :param _SubNetName: 子网名称
+        :type SubNetName: str
+        :param _SubNetCidr: 子网网段
+        :type SubNetCidr: str
+        :param _ZoneID: 可用区ID
+        :type ZoneID: str
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _RelatePodCount: 关联pod数
+        :type RelatePodCount: int
+        :param _RelateContainerCount: 关联容器数
+        :type RelateContainerCount: int
+        :param _AgentStatus: agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;
+        :type AgentStatus: str
+        :param _NodeUniqueID: 节点唯一id
+        :type NodeUniqueID: str
+        :param _ClusterAccessedStatus: 集群接入状态
+        :type ClusterAccessedStatus: str
+        :param _ChargeCoresCnt: 计费核数
+        :type ChargeCoresCnt: int
+        :param _DefendStatus: 防护状态:
+已防护: Defended
+未防护: UnDefended
+        :type DefendStatus: str
+        """
+        self._NodeID = None
+        self._NodeName = None
+        self._ClusterName = None
+        self._ClusterID = None
+        self._Status = None
+        self._SubNetID = None
+        self._SubNetName = None
+        self._SubNetCidr = None
+        self._ZoneID = None
+        self._Zone = None
+        self._CreateTime = None
+        self._RelatePodCount = None
+        self._RelateContainerCount = None
+        self._AgentStatus = None
+        self._NodeUniqueID = None
+        self._ClusterAccessedStatus = None
+        self._ChargeCoresCnt = None
+        self._DefendStatus = None
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SubNetID(self):
+        return self._SubNetID
+
+    @SubNetID.setter
+    def SubNetID(self, SubNetID):
+        self._SubNetID = SubNetID
+
+    @property
+    def SubNetName(self):
+        return self._SubNetName
+
+    @SubNetName.setter
+    def SubNetName(self, SubNetName):
+        self._SubNetName = SubNetName
+
+    @property
+    def SubNetCidr(self):
+        return self._SubNetCidr
+
+    @SubNetCidr.setter
+    def SubNetCidr(self, SubNetCidr):
+        self._SubNetCidr = SubNetCidr
+
+    @property
+    def ZoneID(self):
+        return self._ZoneID
+
+    @ZoneID.setter
+    def ZoneID(self, ZoneID):
+        self._ZoneID = ZoneID
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RelatePodCount(self):
+        return self._RelatePodCount
+
+    @RelatePodCount.setter
+    def RelatePodCount(self, RelatePodCount):
+        self._RelatePodCount = RelatePodCount
+
+    @property
+    def RelateContainerCount(self):
+        return self._RelateContainerCount
+
+    @RelateContainerCount.setter
+    def RelateContainerCount(self, RelateContainerCount):
+        self._RelateContainerCount = RelateContainerCount
+
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def ClusterAccessedStatus(self):
+        return self._ClusterAccessedStatus
+
+    @ClusterAccessedStatus.setter
+    def ClusterAccessedStatus(self, ClusterAccessedStatus):
+        self._ClusterAccessedStatus = ClusterAccessedStatus
+
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
+    @property
+    def DefendStatus(self):
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+
+    def _deserialize(self, params):
+        self._NodeID = params.get("NodeID")
+        self._NodeName = params.get("NodeName")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterID = params.get("ClusterID")
+        self._Status = params.get("Status")
+        self._SubNetID = params.get("SubNetID")
+        self._SubNetName = params.get("SubNetName")
+        self._SubNetCidr = params.get("SubNetCidr")
+        self._ZoneID = params.get("ZoneID")
+        self._Zone = params.get("Zone")
+        self._CreateTime = params.get("CreateTime")
+        self._RelatePodCount = params.get("RelatePodCount")
+        self._RelateContainerCount = params.get("RelateContainerCount")
+        self._AgentStatus = params.get("AgentStatus")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        self._DefendStatus = params.get("DefendStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SuperNodePodListItem(AbstractModel):
+    """超级节点Pod列表Item信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: pod名称
+        :type PodName: str
+        :param _PodIP: podIP
+        :type PodIP: str
+        :param _NodeUniqueID: 节点唯一id
+        :type NodeUniqueID: str
+        :param _Status: 运行状态
+        :type Status: str
+        :param _CpuRequest: cpu需求核数
+        :type CpuRequest: int
+        :param _CpuLimit: cpu限制核数
+        :type CpuLimit: int
+        :param _MemRequest: 内存需求大小
+        :type MemRequest: int
+        :param _MemLimit: 内存限制大小
+        :type MemLimit: int
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _DeploymentName: 工作负载名称
+        :type DeploymentName: str
+        :param _DeploymentID: 工作负载id
+        :type DeploymentID: str
+        :param _StartTime: 启动时间
+        :type StartTime: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _RelateContainerCount: 关联容器个数
+        :type RelateContainerCount: int
+        :param _RunningTime: 运行时间
+        :type RunningTime: str
+        :param _PodUid: PodUid
+        :type PodUid: str
+        :param _ChargeCoresCnt: 计费核数
+        :type ChargeCoresCnt: int
+        :param _DefendStatus: 防护状态
+        :type DefendStatus: str
+        """
+        self._PodName = None
+        self._PodIP = None
+        self._NodeUniqueID = None
+        self._Status = None
+        self._CpuRequest = None
+        self._CpuLimit = None
+        self._MemRequest = None
+        self._MemLimit = None
+        self._Namespace = None
+        self._DeploymentName = None
+        self._DeploymentID = None
+        self._StartTime = None
+        self._CreateTime = None
+        self._RelateContainerCount = None
+        self._RunningTime = None
+        self._PodUid = None
+        self._ChargeCoresCnt = None
+        self._DefendStatus = None
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CpuRequest(self):
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def CpuLimit(self):
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def MemRequest(self):
+        return self._MemRequest
+
+    @MemRequest.setter
+    def MemRequest(self, MemRequest):
+        self._MemRequest = MemRequest
+
+    @property
+    def MemLimit(self):
+        return self._MemLimit
+
+    @MemLimit.setter
+    def MemLimit(self, MemLimit):
+        self._MemLimit = MemLimit
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def DeploymentName(self):
+        return self._DeploymentName
+
+    @DeploymentName.setter
+    def DeploymentName(self, DeploymentName):
+        self._DeploymentName = DeploymentName
+
+    @property
+    def DeploymentID(self):
+        return self._DeploymentID
+
+    @DeploymentID.setter
+    def DeploymentID(self, DeploymentID):
+        self._DeploymentID = DeploymentID
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RelateContainerCount(self):
+        return self._RelateContainerCount
+
+    @RelateContainerCount.setter
+    def RelateContainerCount(self, RelateContainerCount):
+        self._RelateContainerCount = RelateContainerCount
+
+    @property
+    def RunningTime(self):
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def PodUid(self):
+        return self._PodUid
+
+    @PodUid.setter
+    def PodUid(self, PodUid):
+        self._PodUid = PodUid
+
+    @property
+    def ChargeCoresCnt(self):
+        return self._ChargeCoresCnt
+
+    @ChargeCoresCnt.setter
+    def ChargeCoresCnt(self, ChargeCoresCnt):
+        self._ChargeCoresCnt = ChargeCoresCnt
+
+    @property
+    def DefendStatus(self):
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._Status = params.get("Status")
+        self._CpuRequest = params.get("CpuRequest")
+        self._CpuLimit = params.get("CpuLimit")
+        self._MemRequest = params.get("MemRequest")
+        self._MemLimit = params.get("MemLimit")
+        self._Namespace = params.get("Namespace")
+        self._DeploymentName = params.get("DeploymentName")
+        self._DeploymentID = params.get("DeploymentID")
+        self._StartTime = params.get("StartTime")
+        self._CreateTime = params.get("CreateTime")
+        self._RelateContainerCount = params.get("RelateContainerCount")
+        self._RunningTime = params.get("RunningTime")
+        self._PodUid = params.get("PodUid")
+        self._ChargeCoresCnt = params.get("ChargeCoresCnt")
+        self._DefendStatus = params.get("DefendStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SupportDefenceVul(AbstractModel):

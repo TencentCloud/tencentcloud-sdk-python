@@ -1613,7 +1613,7 @@ class DedicatedClusterType(AbstractModel):
         :type Weight: int
         :param _PowerDrawKva: 功率要求(KW)
         :type PowerDrawKva: float
-        :param _ComputeFormatDesc: 显示计算资源规格详情，存储等资源不显示；对应规格
+        :param _ComputeFormatDesc: 显示计算资源规格详情，存储等资源不显示
         :type ComputeFormatDesc: str
         """
         self._DedicatedClusterTypeId = None
@@ -2475,6 +2475,15 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         :param _VpnConnectionBandwidthData: vpn网关通道监控数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpnConnectionBandwidthData: list of VpngwBandwidthData
+        :param _HostDetailInfo: 宿主机资源概览信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostDetailInfo: list of HostDetailInfo
+        :param _HostStandbyCount: 热备宿主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostStandbyCount: int
+        :param _HostNormalCount: 普通宿主机数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostNormalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2484,6 +2493,9 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         self._VpngwBandwidthData = None
         self._LocalNetInfo = None
         self._VpnConnectionBandwidthData = None
+        self._HostDetailInfo = None
+        self._HostStandbyCount = None
+        self._HostNormalCount = None
         self._RequestId = None
 
     @property
@@ -2535,6 +2547,30 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         self._VpnConnectionBandwidthData = VpnConnectionBandwidthData
 
     @property
+    def HostDetailInfo(self):
+        return self._HostDetailInfo
+
+    @HostDetailInfo.setter
+    def HostDetailInfo(self, HostDetailInfo):
+        self._HostDetailInfo = HostDetailInfo
+
+    @property
+    def HostStandbyCount(self):
+        return self._HostStandbyCount
+
+    @HostStandbyCount.setter
+    def HostStandbyCount(self, HostStandbyCount):
+        self._HostStandbyCount = HostStandbyCount
+
+    @property
+    def HostNormalCount(self):
+        return self._HostNormalCount
+
+    @HostNormalCount.setter
+    def HostNormalCount(self, HostNormalCount):
+        self._HostNormalCount = HostNormalCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2559,6 +2595,14 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
                 obj = VpngwBandwidthData()
                 obj._deserialize(item)
                 self._VpnConnectionBandwidthData.append(obj)
+        if params.get("HostDetailInfo") is not None:
+            self._HostDetailInfo = []
+            for item in params.get("HostDetailInfo"):
+                obj = HostDetailInfo()
+                obj._deserialize(item)
+                self._HostDetailInfo.append(obj)
+        self._HostStandbyCount = params.get("HostStandbyCount")
+        self._HostNormalCount = params.get("HostNormalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3214,6 +3258,92 @@ class DetailData(AbstractModel):
     def _deserialize(self, params):
         self._Timestamps = params.get("Timestamps")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostDetailInfo(AbstractModel):
+    """宿主机资源的概览详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostTypeFamily: 类型族
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostTypeFamily: str
+        :param _CpuTotal: 总CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTotal: float
+        :param _CpuAvailable: 可用CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuAvailable: float
+        :param _MemTotal: 总内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemTotal: float
+        :param _MemAvailable: 可用内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemAvailable: float
+        """
+        self._HostTypeFamily = None
+        self._CpuTotal = None
+        self._CpuAvailable = None
+        self._MemTotal = None
+        self._MemAvailable = None
+
+    @property
+    def HostTypeFamily(self):
+        return self._HostTypeFamily
+
+    @HostTypeFamily.setter
+    def HostTypeFamily(self, HostTypeFamily):
+        self._HostTypeFamily = HostTypeFamily
+
+    @property
+    def CpuTotal(self):
+        return self._CpuTotal
+
+    @CpuTotal.setter
+    def CpuTotal(self, CpuTotal):
+        self._CpuTotal = CpuTotal
+
+    @property
+    def CpuAvailable(self):
+        return self._CpuAvailable
+
+    @CpuAvailable.setter
+    def CpuAvailable(self, CpuAvailable):
+        self._CpuAvailable = CpuAvailable
+
+    @property
+    def MemTotal(self):
+        return self._MemTotal
+
+    @MemTotal.setter
+    def MemTotal(self, MemTotal):
+        self._MemTotal = MemTotal
+
+    @property
+    def MemAvailable(self):
+        return self._MemAvailable
+
+    @MemAvailable.setter
+    def MemAvailable(self, MemAvailable):
+        self._MemAvailable = MemAvailable
+
+
+    def _deserialize(self, params):
+        self._HostTypeFamily = params.get("HostTypeFamily")
+        self._CpuTotal = params.get("CpuTotal")
+        self._CpuAvailable = params.get("CpuAvailable")
+        self._MemTotal = params.get("MemTotal")
+        self._MemAvailable = params.get("MemAvailable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

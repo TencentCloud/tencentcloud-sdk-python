@@ -3111,6 +3111,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAssetSuperNodeList(self, request):
+        """查询超级节点列表
+
+        :param request: Request instance for DescribeAssetSuperNodeList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSuperNodeListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeAssetSuperNodeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetSuperNodeList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAssetSuperNodeListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAssetSyncLastTime(self, request):
         """查询资产同步最近时间
 
@@ -3217,6 +3240,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeClusterDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterNodes(self, request):
+        """查询集群节点信息
+
+        :param request: Request instance for DescribeClusterNodes.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterNodesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeClusterNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterNodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5388,6 +5434,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSuperNodePodList(self, request):
+        """查询超级节点pod列表
+
+        :param request: Request instance for DescribeSuperNodePodList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeSuperNodePodListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeSuperNodePodListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSuperNodePodList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSuperNodePodListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSupportDefenceVul(self, request):
         """查询支持防御的漏洞列表
 
@@ -5540,6 +5609,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeUserCluster", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserPodList(self, request):
+        """获取用户的pod列表
+
+        :param request: Request instance for DescribeUserPodList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeUserPodListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeUserPodListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserPodList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserPodListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
