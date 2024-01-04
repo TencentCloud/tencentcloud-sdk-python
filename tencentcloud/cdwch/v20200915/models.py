@@ -2138,6 +2138,154 @@ class DescribeInstanceKeyValConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceNodesRequest(AbstractModel):
+    """DescribeInstanceNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群实例ID
+        :type InstanceId: str
+        :param _NodeRole: 集群角色类型，默认为 "data"数据节点
+        :type NodeRole: str
+        :param _Offset: 分页参数，第一页为0，第二页为10
+        :type Offset: int
+        :param _Limit: 分页参数，分页步长，默认为10
+        :type Limit: int
+        :param _DisplayPolicy: 展现策略，All时显示所有
+        :type DisplayPolicy: str
+        :param _ForceAll: 当true的时候返回所有节点，即Limit无限大
+        :type ForceAll: bool
+        """
+        self._InstanceId = None
+        self._NodeRole = None
+        self._Offset = None
+        self._Limit = None
+        self._DisplayPolicy = None
+        self._ForceAll = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeRole(self):
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DisplayPolicy(self):
+        return self._DisplayPolicy
+
+    @DisplayPolicy.setter
+    def DisplayPolicy(self, DisplayPolicy):
+        self._DisplayPolicy = DisplayPolicy
+
+    @property
+    def ForceAll(self):
+        return self._ForceAll
+
+    @ForceAll.setter
+    def ForceAll(self, ForceAll):
+        self._ForceAll = ForceAll
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeRole = params.get("NodeRole")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DisplayPolicy = params.get("DisplayPolicy")
+        self._ForceAll = params.get("ForceAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceNodesResponse(AbstractModel):
+    """DescribeInstanceNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _InstanceNodesList: 实例节点总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceNodesList: list of InstanceNode
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceNodesList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceNodesList(self):
+        return self._InstanceNodesList
+
+    @InstanceNodesList.setter
+    def InstanceNodesList(self, InstanceNodesList):
+        self._InstanceNodesList = InstanceNodesList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceNodesList") is not None:
+            self._InstanceNodesList = []
+            for item in params.get("InstanceNodesList"):
+                obj = InstanceNode()
+                obj._deserialize(item)
+                self._InstanceNodesList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRequest(AbstractModel):
     """DescribeInstance请求参数结构体
 
@@ -2892,6 +3040,63 @@ class DiskSpec(AbstractModel):
         self._MinDiskSize = params.get("MinDiskSize")
         self._MaxDiskSize = params.get("MaxDiskSize")
         self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GroupInfo(AbstractModel):
+    """集群分组信息描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 分组名称
+        :type GroupName: str
+        :param _ShardName: 分片变量名称
+        :type ShardName: str
+        :param _ReplicaName: 副本变量名称
+        :type ReplicaName: str
+        """
+        self._GroupName = None
+        self._ShardName = None
+        self._ReplicaName = None
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ShardName(self):
+        return self._ShardName
+
+    @ShardName.setter
+    def ShardName(self, ShardName):
+        self._ShardName = ShardName
+
+    @property
+    def ReplicaName(self):
+        return self._ReplicaName
+
+    @ReplicaName.setter
+    def ReplicaName(self, ReplicaName):
+        self._ReplicaName = ReplicaName
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._ShardName = params.get("ShardName")
+        self._ReplicaName = params.get("ReplicaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3728,6 +3933,154 @@ Modify 集群变更中；
         self._EsIndexUsername = params.get("EsIndexUsername")
         self._EsIndexPassword = params.get("EsIndexPassword")
         self._HasEsIndex = params.get("HasEsIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceNode(AbstractModel):
+    """实例节点描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: IP地址
+        :type Ip: str
+        :param _Spec: 机型，如 S1
+        :type Spec: str
+        :param _Core: cpu核数
+        :type Core: int
+        :param _Memory: 内存大小
+        :type Memory: int
+        :param _DiskType: 磁盘类型
+        :type DiskType: str
+        :param _DiskSize: 磁盘大小
+        :type DiskSize: int
+        :param _Cluster: 所属clickhouse cluster名称
+        :type Cluster: str
+        :param _NodeGroups: 节点所属的分组信息
+        :type NodeGroups: list of GroupInfo
+        :param _Rip: VPC IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rip: str
+        :param _IsCHProxy: ture的时候表示该节点上部署了chproxy进程
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCHProxy: bool
+        """
+        self._Ip = None
+        self._Spec = None
+        self._Core = None
+        self._Memory = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._Cluster = None
+        self._NodeGroups = None
+        self._Rip = None
+        self._IsCHProxy = None
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Core(self):
+        return self._Core
+
+    @Core.setter
+    def Core(self, Core):
+        self._Core = Core
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def Cluster(self):
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def NodeGroups(self):
+        return self._NodeGroups
+
+    @NodeGroups.setter
+    def NodeGroups(self, NodeGroups):
+        self._NodeGroups = NodeGroups
+
+    @property
+    def Rip(self):
+        return self._Rip
+
+    @Rip.setter
+    def Rip(self, Rip):
+        self._Rip = Rip
+
+    @property
+    def IsCHProxy(self):
+        return self._IsCHProxy
+
+    @IsCHProxy.setter
+    def IsCHProxy(self, IsCHProxy):
+        self._IsCHProxy = IsCHProxy
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Spec = params.get("Spec")
+        self._Core = params.get("Core")
+        self._Memory = params.get("Memory")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._Cluster = params.get("Cluster")
+        if params.get("NodeGroups") is not None:
+            self._NodeGroups = []
+            for item in params.get("NodeGroups"):
+                obj = GroupInfo()
+                obj._deserialize(item)
+                self._NodeGroups.append(obj)
+        self._Rip = params.get("Rip")
+        self._IsCHProxy = params.get("IsCHProxy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

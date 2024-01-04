@@ -8123,6 +8123,162 @@ class ImageInfo(AbstractModel):
         
 
 
+class ImageMaskAsyncGetResultRequest(AbstractModel):
+    """ImageMaskAsyncGetResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskID: 异步任务ID
+        :type TaskID: str
+        """
+        self._TaskID = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+
+    def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMaskAsyncGetResultResponse(AbstractModel):
+    """ImageMaskAsyncGetResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaskedImage: 脱敏后图片的base64编码
+        :type MaskedImage: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MaskedImage = None
+        self._RequestId = None
+
+    @property
+    def MaskedImage(self):
+        return self._MaskedImage
+
+    @MaskedImage.setter
+    def MaskedImage(self, MaskedImage):
+        self._MaskedImage = MaskedImage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MaskedImage = params.get("MaskedImage")
+        self._RequestId = params.get("RequestId")
+
+
+class ImageMaskAsyncRequest(AbstractModel):
+    """ImageMaskAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 图片信息,目前只支持传图片base64
+        :type Image: :class:`tencentcloud.mrs.v20200910.models.ImageInfo`
+        :param _MaskFlag: 图片脱敏选项, 不传默认都脱敏
+        :type MaskFlag: :class:`tencentcloud.mrs.v20200910.models.ImageMaskFlags`
+        """
+        self._Image = None
+        self._MaskFlag = None
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def MaskFlag(self):
+        return self._MaskFlag
+
+    @MaskFlag.setter
+    def MaskFlag(self, MaskFlag):
+        self._MaskFlag = MaskFlag
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = ImageInfo()
+            self._Image._deserialize(params.get("Image"))
+        if params.get("MaskFlag") is not None:
+            self._MaskFlag = ImageMaskFlags()
+            self._MaskFlag._deserialize(params.get("MaskFlag"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageMaskAsyncResponse(AbstractModel):
+    """ImageMaskAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskID: 加密任务ID
+        :type TaskID: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskID = None
+        self._RequestId = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
+        self._RequestId = params.get("RequestId")
+
+
 class ImageMaskFlags(AbstractModel):
     """图片脱敏选项
     不填默认敏感信息都脱敏

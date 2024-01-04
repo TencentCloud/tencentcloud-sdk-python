@@ -6212,17 +6212,17 @@ class GetMetaTableResponse(AbstractModel):
         r"""
         :param _SerialId: 元数据表唯一标识
         :type SerialId: str
-        :param _Catalog: Catalog名
+        :param _Catalog: 目录名
         :type Catalog: str
-        :param _Database: Database名
+        :param _Database: 库名
         :type Database: str
-        :param _Table: Table名
+        :param _Table: 表名
         :type Table: str
         :param _DDL: 建表语句,使用 Base64 编码。
 例如
 Q1JFQVRFIFRBQkxFIGRhdGFnZW5fc291cmNlX3RhYmxlICggCiAgICBpZCBJTlQsIAogICAgbmFtZSBTVFJJTkcgCikgV0lUSCAoCidjb25uZWN0b3InPSdkYXRhZ2VuJywKJ3Jvd3MtcGVyLXNlY29uZCcgPSAnMScKKTs=
         :type DDL: str
-        :param _CreateTime: 场景时间
+        :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

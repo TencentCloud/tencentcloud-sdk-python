@@ -49,6 +49,52 @@ class MrsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImageMaskAsync(self, request):
+        """图片脱敏-异步接口
+
+        :param request: Request instance for ImageMaskAsync.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageMaskAsyncRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageMaskAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageMaskAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageMaskAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImageMaskAsyncGetResult(self, request):
+        """图片脱敏-异步获取结果接口
+
+        :param request: Request instance for ImageMaskAsyncGetResult.
+        :type request: :class:`tencentcloud.mrs.v20200910.models.ImageMaskAsyncGetResultRequest`
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ImageMaskAsyncGetResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImageMaskAsyncGetResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImageMaskAsyncGetResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImageToClass(self, request):
         """图片分类
 

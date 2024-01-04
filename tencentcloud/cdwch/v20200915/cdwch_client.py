@@ -325,6 +325,29 @@ class CdwchClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceNodes(self, request):
+        """获取实例节点信息列表
+
+        :param request: Request instance for DescribeInstanceNodes.
+        :type request: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceNodesRequest`
+        :rtype: :class:`tencentcloud.cdwch.v20200915.models.DescribeInstanceNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceShards(self, request):
         """获取实例shard信息列表
 
