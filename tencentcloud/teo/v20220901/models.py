@@ -13146,7 +13146,7 @@ class IPGroup(AbstractModel):
         :type GroupId: int
         :param _Name: 组名称。
         :type Name: str
-        :param _Content: IP 组内容，可以填入 IP 及 IP 掩码。
+        :param _Content: IP 组内容，仅支持 IP 及 IP 掩码。
         :type Content: list of str
         """
         self._GroupId = None

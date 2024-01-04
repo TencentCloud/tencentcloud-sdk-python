@@ -1608,7 +1608,7 @@ class CancelMultiFlowSignQRCodeRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _QrCodeId: 二维码ID，为32位字符串。
+        :param _QrCodeId: 需要取消的签署码ID，为32位字符串。由[创建一码多签签署码](https://qian.tencent.com/developers/companyApis/startFlows/CreateMultiFlowSignQRCode/)返回
         :type QrCodeId: str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -6442,9 +6442,9 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QrCode: 签署二维码的基本信息，用于创建二维码，用户可扫描该二维码进行签署操作。
+        :param _QrCode: 一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。
         :type QrCode: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
-        :param _SignUrls: 流程签署二维码的签署信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。
+        :param _SignUrls: 一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。
         :type SignUrls: :class:`tencentcloud.ess.v20201111.models.SignUrl`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

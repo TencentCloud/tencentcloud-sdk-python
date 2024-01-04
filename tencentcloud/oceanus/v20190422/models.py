@@ -6141,11 +6141,11 @@ class GetMetaTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Catalog: Catalog名
+        :param _Catalog: 目录名
         :type Catalog: str
-        :param _Database: Database名
+        :param _Database: 库名
         :type Database: str
-        :param _Table: Table名
+        :param _Table: 表名
         :type Table: str
         :param _WorkSpaceId: 空间唯一标识
         :type WorkSpaceId: str

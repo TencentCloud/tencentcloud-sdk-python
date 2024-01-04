@@ -12391,6 +12391,9 @@ class BruteAttackInfo(AbstractModel):
         :param _RiskLevel: 威胁等级：0低危，1中危，2高危
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevel: int
+        :param _DataFrom: 事件来源：0--阻断规则，1--威胁情报
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFrom: int
         """
         self._Id = None
         self._Uuid = None
@@ -12416,6 +12419,7 @@ class BruteAttackInfo(AbstractModel):
         self._MachineExtraInfo = None
         self._Location = None
         self._RiskLevel = None
+        self._DataFrom = None
 
     @property
     def Id(self):
@@ -12609,6 +12613,14 @@ class BruteAttackInfo(AbstractModel):
     def RiskLevel(self, RiskLevel):
         self._RiskLevel = RiskLevel
 
+    @property
+    def DataFrom(self):
+        return self._DataFrom
+
+    @DataFrom.setter
+    def DataFrom(self, DataFrom):
+        self._DataFrom = DataFrom
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12637,6 +12649,7 @@ class BruteAttackInfo(AbstractModel):
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Location = params.get("Location")
         self._RiskLevel = params.get("RiskLevel")
+        self._DataFrom = params.get("DataFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26917,7 +26930,10 @@ class DescribeBanStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 阻断开关状态 0:关闭 1:开启
+        :param _Status: 阻断开关状态:
+ 0 -- 关闭 
+ 1 -- 高级阻断
+ 2 -- 基础阻断(只阻断情报库黑ip)
         :type Status: int
         :param _ShowTips: 是否弹窗提示信息 false: 关闭，true: 开启
         :type ShowTips: bool
@@ -39659,7 +39675,7 @@ class DescribeMalWareListRequest(AbstractModel):
 <li>VirusName - String - 是否必填：否 - 描述筛选</li>
 <li>CreateBeginTime - String - 是否必填：否 - 创建时间筛选-开始时间</li>
 <li>CreateEndTime - String - 是否必填：否 - 创建时间筛选-结束时间</li>
-<li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任,6已隔离,10隔离中,11恢复隔离中</li>
+<li>Status - String - 是否必填：否 - 状态筛选 4待处理,5信任,6已隔离,10隔离中,11恢复隔离中,14 已处理</li>
         :type Filters: list of Filter
         :param _By: 检测排序 CreateTime
         :type By: str

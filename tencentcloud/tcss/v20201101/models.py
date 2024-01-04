@@ -33146,6 +33146,9 @@ class DescribePurchaseStateInfoResponse(AbstractModel):
 State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubState: str
+        :param _InquireKey: 计费key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InquireKey: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -33160,6 +33163,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._GivenAuthorizedCnt = None
         self._BeginTime = None
         self._SubState = None
+        self._InquireKey = None
         self._RequestId = None
 
     @property
@@ -33251,6 +33255,14 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._SubState = SubState
 
     @property
+    def InquireKey(self):
+        return self._InquireKey
+
+    @InquireKey.setter
+    def InquireKey(self, InquireKey):
+        self._InquireKey = InquireKey
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -33271,6 +33283,7 @@ State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
         self._GivenAuthorizedCnt = params.get("GivenAuthorizedCnt")
         self._BeginTime = params.get("BeginTime")
         self._SubState = params.get("SubState")
+        self._InquireKey = params.get("InquireKey")
         self._RequestId = params.get("RequestId")
 
 

@@ -2642,6 +2642,7 @@ Modify 集群变更中；
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuildVersion: str
         :param _Components: 组件信息
+注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Components: str
         :param _IfExistCatalog: 判断审计日志表是否有catalog字段

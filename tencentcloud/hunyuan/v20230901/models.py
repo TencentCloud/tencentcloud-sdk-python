@@ -472,6 +472,111 @@ class Delta(AbstractModel):
         
 
 
+class EmbeddingData(AbstractModel):
+    """embedding 信息，当前不支持批量，所以数组元素数目为1。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Embedding: embedding 信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Embedding: list of float
+        :param _Index: 下标。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Index: int
+        :param _Object: embedding
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Object: str
+        """
+        self._Embedding = None
+        self._Index = None
+        self._Object = None
+
+    @property
+    def Embedding(self):
+        return self._Embedding
+
+    @Embedding.setter
+    def Embedding(self, Embedding):
+        self._Embedding = Embedding
+
+    @property
+    def Index(self):
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Object(self):
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+
+    def _deserialize(self, params):
+        self._Embedding = params.get("Embedding")
+        self._Index = params.get("Index")
+        self._Object = params.get("Object")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmbeddingUsage(AbstractModel):
+    """token 使用计数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: 输入Token数。
+        :type PromptTokens: int
+        :param _TotalTokens: 总Token数。
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def TotalTokens(self):
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ErrorMsg(AbstractModel):
     """运行时异常信息。
 
@@ -518,6 +623,95 @@ class ErrorMsg(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetEmbeddingRequest(AbstractModel):
+    """GetEmbedding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: 输入文本。总长度不超过1024 个token, 超过则会截断最后面的内容。
+        :type Input: str
+        """
+        self._Input = None
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        self._Input = params.get("Input")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetEmbeddingResponse(AbstractModel):
+    """GetEmbedding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回的 embedding 信息。
+        :type Data: list of EmbeddingData
+        :param _Usage: token 使用计数，按照总token数量收费。
+        :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EmbeddingData()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = EmbeddingUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetTokenCountRequest(AbstractModel):

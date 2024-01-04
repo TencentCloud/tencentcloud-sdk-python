@@ -8141,7 +8141,7 @@ class DeleteAuditRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleTemplateIds: 审计规则模版ID。
+        :param _RuleTemplateIds: 审计规则模板ID。
         :type RuleTemplateIds: list of str
         """
         self._RuleTemplateIds = None
@@ -20582,7 +20582,7 @@ class ModifyAuditServiceRequest(AbstractModel):
         :type AuditAll: bool
         :param _AuditRuleFilters: 审计规则。
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: 规则模版ID。
+        :param _RuleTemplateIds: 规则模板ID。
         :type RuleTemplateIds: list of str
         """
         self._InstanceId = None

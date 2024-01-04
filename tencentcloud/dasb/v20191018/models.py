@@ -1164,6 +1164,9 @@ class Command(AbstractModel):
         :param _DeviceDepartmentName: 设备部门name
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceDepartmentName: str
+        :param _Size: 会话大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
         """
         self._Cmd = None
         self._Time = None
@@ -1181,6 +1184,7 @@ class Command(AbstractModel):
         self._UserDepartmentName = None
         self._DeviceDepartmentId = None
         self._DeviceDepartmentName = None
+        self._Size = None
 
     @property
     def Cmd(self):
@@ -1314,6 +1318,14 @@ class Command(AbstractModel):
     def DeviceDepartmentName(self, DeviceDepartmentName):
         self._DeviceDepartmentName = DeviceDepartmentName
 
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
 
     def _deserialize(self, params):
         self._Cmd = params.get("Cmd")
@@ -1332,6 +1344,7 @@ class Command(AbstractModel):
         self._UserDepartmentName = params.get("UserDepartmentName")
         self._DeviceDepartmentId = params.get("DeviceDepartmentId")
         self._DeviceDepartmentName = params.get("DeviceDepartmentName")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8357,6 +8370,9 @@ class SearchCommandResult(AbstractModel):
         :param _DeviceDepartmentName: 设备部门名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceDepartmentName: str
+        :param _Size: 会话大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
         """
         self._Time = None
         self._UserName = None
@@ -8378,6 +8394,7 @@ class SearchCommandResult(AbstractModel):
         self._UserDepartmentName = None
         self._DeviceDepartmentId = None
         self._DeviceDepartmentName = None
+        self._Size = None
 
     @property
     def Time(self):
@@ -8543,6 +8560,14 @@ class SearchCommandResult(AbstractModel):
     def DeviceDepartmentName(self, DeviceDepartmentName):
         self._DeviceDepartmentName = DeviceDepartmentName
 
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -8565,6 +8590,7 @@ class SearchCommandResult(AbstractModel):
         self._UserDepartmentName = params.get("UserDepartmentName")
         self._DeviceDepartmentId = params.get("DeviceDepartmentId")
         self._DeviceDepartmentName = params.get("DeviceDepartmentName")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

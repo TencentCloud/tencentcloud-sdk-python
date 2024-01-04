@@ -2783,8 +2783,6 @@ class RunApplicationRequest(AbstractModel):
         r"""
         :param _ApplicationId: 应用ID。
         :type ApplicationId: str
-        :param _ProjectId: 项目ID。
-        :type ProjectId: str
         :param _Name: 任务批次名称。
         :type Name: str
         :param _EnvironmentId: 投递环境ID。
@@ -2793,8 +2791,8 @@ class RunApplicationRequest(AbstractModel):
         :type InputBase64: str
         :param _CacheClearDelay: 任务缓存清理时间（小时）。不填表示不清理。
         :type CacheClearDelay: int
-        :param _Option: 运行选项。
-        :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
+        :param _ProjectId: 项目ID。（不填使用指定地域下的默认项目）
+        :type ProjectId: str
         :param _Description: 任务批次描述。
         :type Description: str
         :param _TableId: 批量投递表格ID，不填表示单例投递。
@@ -2803,18 +2801,23 @@ class RunApplicationRequest(AbstractModel):
         :type TableRowUuids: list of str
         :param _ApplicationVersionId: 应用版本ID。不填表示使用当前最新版本。
         :type ApplicationVersionId: str
+        :param _Option: WDL运行选项。
+        :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
+        :param _NFOption: Nextflow运行选项。
+        :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
         """
         self._ApplicationId = None
-        self._ProjectId = None
         self._Name = None
         self._EnvironmentId = None
         self._InputBase64 = None
         self._CacheClearDelay = None
-        self._Option = None
+        self._ProjectId = None
         self._Description = None
         self._TableId = None
         self._TableRowUuids = None
         self._ApplicationVersionId = None
+        self._Option = None
+        self._NFOption = None
 
     @property
     def ApplicationId(self):
@@ -2823,14 +2826,6 @@ class RunApplicationRequest(AbstractModel):
     @ApplicationId.setter
     def ApplicationId(self, ApplicationId):
         self._ApplicationId = ApplicationId
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
 
     @property
     def Name(self):
@@ -2865,12 +2860,12 @@ class RunApplicationRequest(AbstractModel):
         self._CacheClearDelay = CacheClearDelay
 
     @property
-    def Option(self):
-        return self._Option
+    def ProjectId(self):
+        return self._ProjectId
 
-    @Option.setter
-    def Option(self, Option):
-        self._Option = Option
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def Description(self):
@@ -2904,21 +2899,40 @@ class RunApplicationRequest(AbstractModel):
     def ApplicationVersionId(self, ApplicationVersionId):
         self._ApplicationVersionId = ApplicationVersionId
 
+    @property
+    def Option(self):
+        return self._Option
+
+    @Option.setter
+    def Option(self, Option):
+        self._Option = Option
+
+    @property
+    def NFOption(self):
+        return self._NFOption
+
+    @NFOption.setter
+    def NFOption(self, NFOption):
+        self._NFOption = NFOption
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
-        self._ProjectId = params.get("ProjectId")
         self._Name = params.get("Name")
         self._EnvironmentId = params.get("EnvironmentId")
         self._InputBase64 = params.get("InputBase64")
         self._CacheClearDelay = params.get("CacheClearDelay")
-        if params.get("Option") is not None:
-            self._Option = RunOption()
-            self._Option._deserialize(params.get("Option"))
+        self._ProjectId = params.get("ProjectId")
         self._Description = params.get("Description")
         self._TableId = params.get("TableId")
         self._TableRowUuids = params.get("TableRowUuids")
         self._ApplicationVersionId = params.get("ApplicationVersionId")
+        if params.get("Option") is not None:
+            self._Option = RunOption()
+            self._Option._deserialize(params.get("Option"))
+        if params.get("NFOption") is not None:
+            self._NFOption = NFOption()
+            self._NFOption._deserialize(params.get("NFOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

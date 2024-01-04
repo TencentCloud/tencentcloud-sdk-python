@@ -77,9 +77,9 @@ class EssClient(AbstractClient):
 
 
     def CancelMultiFlowSignQRCode(self, request):
-        """此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
-        该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/companyApis/startFlows/CreateMultiFlowSignQRCode)生成的。
-        如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
+        """此接口（CancelMultiFlowSignQRCode）用于废除一码多签签署码。
+        该接口所需的二维码ID，源自[创建一码多签签署码](https://qian.tencent.com/developers/companyApis/startFlows/CreateMultiFlowSignQRCode)生成的。
+        如果该签署码尚处于有效期内，可通过本接口将其设置为失效状态。
 
         :param request: Request instance for CancelMultiFlowSignQRCode.
         :type request: :class:`tencentcloud.ess.v20201111.models.CancelMultiFlowSignQRCodeRequest`
@@ -811,7 +811,7 @@ class EssClient(AbstractClient):
 
 
     def CreateMultiFlowSignQRCode(self, request):
-        """此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
+        """此接口（CreateMultiFlowSignQRCode）用于创建一码多签签署码。
 
         **适用场景**:
         签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
@@ -821,11 +821,11 @@ class EssClient(AbstractClient):
             - 模板中配置的签署顺序是无序
             - B端企业的签署方式是静默签署
             - B端企业是非首位签署
-        2. 通过一码多扫二维码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
+        2. 通过一码多签签署码发起的合同，合同涉及到的回调消息可参考文档[合同发起及签署相关回调
         ]( https://qian.tencent.com/developers/company/callback_types_contracts_sign)
-        3. 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+        3. 用户通过一码多签签署码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 
-        二维码的样式如下图:
+        签署码的样式如下图:
         ![image](https://qcloudimg.tencent-cloud.cn/raw/27317cf5aacb094fb1dc6f94179a5148.png )
 
         :param request: Request instance for CreateMultiFlowSignQRCode.

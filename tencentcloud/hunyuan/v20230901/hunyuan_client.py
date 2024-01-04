@@ -70,6 +70,29 @@ class HunyuanClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetEmbedding(self, request):
+        """腾讯混元-Embedding接口，可以将文本转化为高质量的向量数据。
+
+        :param request: Request instance for GetEmbedding.
+        :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetEmbeddingRequest`
+        :rtype: :class:`tencentcloud.hunyuan.v20230901.models.GetEmbeddingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetEmbedding", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetEmbeddingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTokenCount(self, request):
         """该接口用于计算文本对应Token数、字符数。
 

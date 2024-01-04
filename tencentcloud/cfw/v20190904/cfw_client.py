@@ -2077,31 +2077,6 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyPublicIPSwitchStatus(self, request):
-        """已上新接口，支持串行
-
-        单个修改互联网边界防火墙开关
-
-        :param request: Request instance for ModifyPublicIPSwitchStatus.
-        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusRequest`
-        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyPublicIPSwitchStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyPublicIPSwitchStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyPublicIPSwitchStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyResourceGroup(self, request):
         """ModifyResourceGroup-资产中心资产组信息修改
 

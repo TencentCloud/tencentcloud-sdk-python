@@ -19951,7 +19951,11 @@ RideHailingTransportLicense -- 网约车运输证
 WayBill -- 快递运单
 AccountOpeningPermit -- 银行开户许可证
 InvoiceEng -- 海外发票模版
+Coin --钱币识别模板
+OnboardingDocuments -- 入职材料识别
         :type ConfigId: str
+        :param _EnableSealRecognize: 是否打开印章识别
+        :type EnableSealRecognize: bool
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -19960,6 +19964,7 @@ InvoiceEng -- 海外发票模版
         self._ItemNames = None
         self._ReturnFullText = None
         self._ConfigId = None
+        self._EnableSealRecognize = None
 
     @property
     def ImageUrl(self):
@@ -20017,6 +20022,14 @@ InvoiceEng -- 海外发票模版
     def ConfigId(self, ConfigId):
         self._ConfigId = ConfigId
 
+    @property
+    def EnableSealRecognize(self):
+        return self._EnableSealRecognize
+
+    @EnableSealRecognize.setter
+    def EnableSealRecognize(self, EnableSealRecognize):
+        self._EnableSealRecognize = EnableSealRecognize
+
 
     def _deserialize(self, params):
         self._ImageUrl = params.get("ImageUrl")
@@ -20026,6 +20039,7 @@ InvoiceEng -- 海外发票模版
         self._ItemNames = params.get("ItemNames")
         self._ReturnFullText = params.get("ReturnFullText")
         self._ConfigId = params.get("ConfigId")
+        self._EnableSealRecognize = params.get("EnableSealRecognize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2697,6 +2697,9 @@ class BusinessLogConfig(AbstractModel):
         :param _ConfigAssociatedGroups: 配置项关联部署组
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigAssociatedGroups: list of BusinesLogConfigAssociatedGroup
+        :param _ConfigAssociatedGroupList: 配置项关联部署组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigAssociatedGroupList: list of BusinessLogConfigAssociatedGroup
         """
         self._ConfigId = None
         self._ConfigName = None
@@ -2708,6 +2711,7 @@ class BusinessLogConfig(AbstractModel):
         self._ConfigUpdateTime = None
         self._ConfigSchema = None
         self._ConfigAssociatedGroups = None
+        self._ConfigAssociatedGroupList = None
 
     @property
     def ConfigId(self):
@@ -2783,11 +2787,23 @@ class BusinessLogConfig(AbstractModel):
 
     @property
     def ConfigAssociatedGroups(self):
+        warnings.warn("parameter `ConfigAssociatedGroups` is deprecated", DeprecationWarning) 
+
         return self._ConfigAssociatedGroups
 
     @ConfigAssociatedGroups.setter
     def ConfigAssociatedGroups(self, ConfigAssociatedGroups):
+        warnings.warn("parameter `ConfigAssociatedGroups` is deprecated", DeprecationWarning) 
+
         self._ConfigAssociatedGroups = ConfigAssociatedGroups
+
+    @property
+    def ConfigAssociatedGroupList(self):
+        return self._ConfigAssociatedGroupList
+
+    @ConfigAssociatedGroupList.setter
+    def ConfigAssociatedGroupList(self, ConfigAssociatedGroupList):
+        self._ConfigAssociatedGroupList = ConfigAssociatedGroupList
 
 
     def _deserialize(self, params):
@@ -2808,6 +2824,176 @@ class BusinessLogConfig(AbstractModel):
                 obj = BusinesLogConfigAssociatedGroup()
                 obj._deserialize(item)
                 self._ConfigAssociatedGroups.append(obj)
+        if params.get("ConfigAssociatedGroupList") is not None:
+            self._ConfigAssociatedGroupList = []
+            for item in params.get("ConfigAssociatedGroupList"):
+                obj = BusinessLogConfigAssociatedGroup()
+                obj._deserialize(item)
+                self._ConfigAssociatedGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BusinessLogConfigAssociatedGroup(AbstractModel):
+    """业务日志配置关联部署组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 部署组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _ApplicationId: 部署组所属应用ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param _ApplicationName: 部署组所属应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
+        :param _ApplicationType: 部署组所属应用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationType: str
+        :param _NamespaceId: 部署组所属命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceId: str
+        :param _NamespaceName: 部署组所属命名空间名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceName: str
+        :param _ClusterId: 部署组所属集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterName: 部署组所属集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _ClusterType: 部署组所属集群类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _AssociatedTime: 部署组关联日志配置时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedTime: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._ApplicationId = None
+        self._ApplicationName = None
+        self._ApplicationType = None
+        self._NamespaceId = None
+        self._NamespaceName = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._ClusterType = None
+        self._AssociatedTime = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def ApplicationType(self):
+        return self._ApplicationType
+
+    @ApplicationType.setter
+    def ApplicationType(self, ApplicationType):
+        self._ApplicationType = ApplicationType
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def NamespaceName(self):
+        return self._NamespaceName
+
+    @NamespaceName.setter
+    def NamespaceName(self, NamespaceName):
+        self._NamespaceName = NamespaceName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def AssociatedTime(self):
+        return self._AssociatedTime
+
+    @AssociatedTime.setter
+    def AssociatedTime(self, AssociatedTime):
+        self._AssociatedTime = AssociatedTime
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationName = params.get("ApplicationName")
+        self._ApplicationType = params.get("ApplicationType")
+        self._NamespaceId = params.get("NamespaceId")
+        self._NamespaceName = params.get("NamespaceName")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterType = params.get("ClusterType")
+        self._AssociatedTime = params.get("AssociatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
