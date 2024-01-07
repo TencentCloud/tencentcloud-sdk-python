@@ -9582,9 +9582,16 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
 <ul><li>**1**：企业超管变更, 可以将超管换成同企业的其他员工</li>
 <li>**2**：企业基础信息变更, 可以改企业名称 , 所在地址 , 法人名字等信息</li></ul>
         :type ChangeType: int
+        :param _Endpoint: 变更链接类型：
+<ul>
+<li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
+<li>**APP** : 创建变更小程序链接，可从第三方APP跳转到微信腾讯电子签小程序进行更换。</li>
+</ul>
+        :type Endpoint: str
         """
         self._Agent = None
         self._ChangeType = None
+        self._Endpoint = None
 
     @property
     def Agent(self):
@@ -9602,12 +9609,21 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
     def ChangeType(self, ChangeType):
         self._ChangeType = ChangeType
 
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
         self._ChangeType = params.get("ChangeType")
+        self._Endpoint = params.get("Endpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

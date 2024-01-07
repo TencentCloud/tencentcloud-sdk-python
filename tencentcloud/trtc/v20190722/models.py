@@ -8241,7 +8241,7 @@ class StartStreamIngestRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
         :type SdkAppId: int
         :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
         :type RoomId: str
@@ -8254,7 +8254,7 @@ class StartStreamIngestRequest(AbstractModel):
         :type UserId: str
         :param _UserSig: 拉流转推机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
         :type UserSig: str
-        :param _SourceUrl: 源流URL。示例值：https://a.b/test.mp4
+        :param _SourceUrl: 【本字段已废弃，请使用 StreamUrl 字段】源流URL，支持一个地址。
         :type SourceUrl: list of str
         :param _PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
         :type PrivateMapKey: str
@@ -8262,6 +8262,8 @@ class StartStreamIngestRequest(AbstractModel):
         :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
         :param _AudioEncodeParams: 音频编码参数。可选，如果不填，保持原始流的参数。
         :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        :param _StreamUrl: 源流URL。历史原因本字段【必填】。
+        :type StreamUrl: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -8272,6 +8274,7 @@ class StartStreamIngestRequest(AbstractModel):
         self._PrivateMapKey = None
         self._VideoEncodeParams = None
         self._AudioEncodeParams = None
+        self._StreamUrl = None
 
     @property
     def SdkAppId(self):
@@ -8345,6 +8348,14 @@ class StartStreamIngestRequest(AbstractModel):
     def AudioEncodeParams(self, AudioEncodeParams):
         self._AudioEncodeParams = AudioEncodeParams
 
+    @property
+    def StreamUrl(self):
+        return self._StreamUrl
+
+    @StreamUrl.setter
+    def StreamUrl(self, StreamUrl):
+        self._StreamUrl = StreamUrl
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -8360,6 +8371,7 @@ class StartStreamIngestRequest(AbstractModel):
         if params.get("AudioEncodeParams") is not None:
             self._AudioEncodeParams = AudioEncodeParams()
             self._AudioEncodeParams._deserialize(params.get("AudioEncodeParams"))
+        self._StreamUrl = params.get("StreamUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

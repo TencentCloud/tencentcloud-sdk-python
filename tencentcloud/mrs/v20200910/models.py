@@ -16077,7 +16077,7 @@ class PatientInfo(AbstractModel):
         :param _AgeNorm: 标准化年龄
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgeNorm: str
-        :param _Nation: 民族
+        :param _Nation: 民族。该字段已不再使用，请从Ethnicity取值
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nation: str
         :param _MarriedCode: 婚姻代码
@@ -16254,10 +16254,14 @@ class PatientInfo(AbstractModel):
 
     @property
     def Nation(self):
+        warnings.warn("parameter `Nation` is deprecated", DeprecationWarning) 
+
         return self._Nation
 
     @Nation.setter
     def Nation(self, Nation):
+        warnings.warn("parameter `Nation` is deprecated", DeprecationWarning) 
+
         self._Nation = Nation
 
     @property

@@ -4876,9 +4876,9 @@ class CreatePurgeTaskRequest(AbstractModel):
 <li>purge_all：站点下全部缓存刷新；</li>
 <li>purge_cache_tag：cache-tag 刷新。</li>缓存清除类型详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
         :type Type: str
-        :param _Method: 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存 类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>注意：使用目录刷新时，默认值： invalidate。
+        :param _Method: 节点缓存清除方法，针对目录刷新、Hostname刷新以及刷新全部缓存类型有效，取值有：<li> invalidate：仅刷新目录下产生了更新的资源；</li><li> delete：无论目录下资源是否更新都刷新节点资源。</li>默认值： invalidate。
         :type Method: str
-        :param _Targets: 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>EO 默认针对内容含有非 ASCII 字符集的字符进行转义，编码规则遵循 RFC3986；</li><li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
+        :param _Targets: 要清除缓存的资源列表。每个元素格式依据清除缓存类型而定，可参考接口示例。<li>单次提交的任务数受计费套餐配额限制，请查看 [EO计费套餐](https://cloud.tencent.com/document/product/1552/77380)。</li>
         :type Targets: list of str
         :param _EncodeUrl: 若有编码转换，仅清除编码转换后匹配的资源。
 若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
@@ -19621,34 +19621,34 @@ class SecurityConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WafConfig: 托管规则。如果为null，默认使用历史配置。
+        :param _WafConfig: 托管规则。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WafConfig: :class:`tencentcloud.teo.v20220901.models.WafConfig`
-        :param _RateLimitConfig: 速率限制。如果为null，默认使用历史配置。
+        :param _RateLimitConfig: 速率限制。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitConfig: :class:`tencentcloud.teo.v20220901.models.RateLimitConfig`
-        :param _AclConfig: 自定义规则。如果为null，默认使用历史配置。
+        :param _AclConfig: 自定义规则。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AclConfig: :class:`tencentcloud.teo.v20220901.models.AclConfig`
-        :param _BotConfig: Bot配置。如果为null，默认使用历史配置。
+        :param _BotConfig: Bot配置。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BotConfig: :class:`tencentcloud.teo.v20220901.models.BotConfig`
-        :param _SwitchConfig: 七层防护总开关。如果为null，默认使用历史配置。
+        :param _SwitchConfig: 七层防护总开关。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchConfig: :class:`tencentcloud.teo.v20220901.models.SwitchConfig`
-        :param _IpTableConfig: 基础访问管控。如果为null，默认使用历史配置。
+        :param _IpTableConfig: 基础访问管控。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpTableConfig: :class:`tencentcloud.teo.v20220901.models.IpTableConfig`
-        :param _ExceptConfig: 例外规则配置。如果为null，默认使用历史配置。
+        :param _ExceptConfig: 例外规则配置。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExceptConfig: :class:`tencentcloud.teo.v20220901.models.ExceptConfig`
-        :param _DropPageConfig: 自定义拦截页面配置。如果为null，默认使用历史配置。
+        :param _DropPageConfig: 自定义拦截页面配置。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DropPageConfig: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
         :param _TemplateConfig: 模板配置。此处仅出参数使用。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
-        :param _SlowPostConfig: 慢速攻击配置。如果为null，默认使用历史配置。
+        :param _SlowPostConfig: 慢速攻击配置。如果入参为空或不填，默认使用历史配置。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
         """
