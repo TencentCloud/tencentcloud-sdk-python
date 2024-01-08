@@ -2807,12 +2807,15 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit 页面大小
         :type Limit: int
+        :param _CreationToken: 用户自定义名称
+        :type CreationToken: str
         """
         self._FileSystemId = None
         self._VpcId = None
         self._SubnetId = None
         self._Offset = None
         self._Limit = None
+        self._CreationToken = None
 
     @property
     def FileSystemId(self):
@@ -2854,6 +2857,14 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def CreationToken(self):
+        return self._CreationToken
+
+    @CreationToken.setter
+    def CreationToken(self, CreationToken):
+        self._CreationToken = CreationToken
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
@@ -2861,6 +2872,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         self._SubnetId = params.get("SubnetId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._CreationToken = params.get("CreationToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

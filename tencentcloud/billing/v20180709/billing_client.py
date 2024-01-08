@@ -605,6 +605,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDosageDetailList(self, request):
+        """获取已接入标准用量明细模板产品的用量明细数据，目前已接入并支持查询的产品包括：云联络中心、实时音视频、实时音视频、智能媒资托管、CODING DevOps、全球IP应用加速
+
+        :param request: Request instance for DescribeDosageDetailList.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailListRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeDosageDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDosageDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDosageDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSavingPlanCoverage(self, request):
         """查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
 

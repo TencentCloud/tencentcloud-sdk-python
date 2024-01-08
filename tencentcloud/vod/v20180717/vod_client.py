@@ -248,6 +248,52 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSLogset(self, request):
+        """由 VOD 创建新的日志集。
+
+        :param request: Request instance for CreateCLSLogset.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateCLSLogsetRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateCLSLogsetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSLogset", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSLogsetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCLSTopic(self, request):
+        """创建 VOD 下新的 CLS 日志主题
+
+        :param request: Request instance for CreateCLSTopic.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateCLSTopicRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateCLSTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSTopicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateClass(self, request):
         """* 用于对媒体进行分类管理；
         * 该接口不影响既有媒体的分类，如需修改媒体分类，请调用[修改媒体文件属性](/document/product/266/31762)接口。
@@ -876,6 +922,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteAnimatedGraphicsTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAnimatedGraphicsTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCLSTopic(self, request):
+        """删除点播开通的日志主题。
+
+        :param request: Request instance for DeleteCLSTopic.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteCLSTopicRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteCLSTopicResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCLSTopic", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCLSTopicResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1537,6 +1606,75 @@ class VodClient(AbstractClient):
             body = self.call("DescribeCDNUsageData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCDNUsageDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSLogsets(self, request):
+        """查询 VOD 创建的 CLS 日志集。
+
+        :param request: Request instance for DescribeCLSLogsets.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCLSLogsetsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCLSLogsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSLogsets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSLogsetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSPushTargets(self, request):
+        """查询点播域名下日志投递的目标主题。
+
+        :param request: Request instance for DescribeCLSPushTargets.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCLSPushTargetsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCLSPushTargetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSPushTargets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSPushTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSTopics(self, request):
+        """查询 VOD 创建的 CLS 日志主题列表。
+
+        :param request: Request instance for DescribeCLSTopics.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeCLSTopicsRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeCLSTopicsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSTopics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSTopicsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4011,6 +4149,29 @@ class VodClient(AbstractClient):
             body = self.call("SearchMedia", params, headers=headers)
             response = json.loads(body)
             model = models.SearchMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetCLSPushTarget(self, request):
+        """为点播域名设置投递 CLS 的目标。
+
+        :param request: Request instance for SetCLSPushTarget.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetCLSPushTargetRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetCLSPushTargetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetCLSPushTarget", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetCLSPushTargetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

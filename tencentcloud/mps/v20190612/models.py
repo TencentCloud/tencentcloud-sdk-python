@@ -3226,6 +3226,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param _Output: 语音全文识别任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
+        :param _Progress: 任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -3233,6 +3236,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         self._Message = None
         self._Input = None
         self._Output = None
+        self._Progress = None
 
     @property
     def Status(self):
@@ -3282,6 +3286,14 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -3294,6 +3306,7 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = AiRecognitionTaskAsrFullTextResultOutput()
             self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5092,6 +5105,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
         :param _Output: 翻译任务输出信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        :param _Progress: 任务进度。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Progress: int
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -5099,6 +5115,7 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
         self._Message = None
         self._Input = None
         self._Output = None
+        self._Progress = None
 
     @property
     def Status(self):
@@ -5148,6 +5165,14 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -5160,6 +5185,7 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = AiRecognitionTaskTransTextResultOutput()
             self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8584,6 +8610,8 @@ class AudioTemplateInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _Codec: 音频流的编码格式。
+当不需要对音频进行转码时，可选值为：
+<li>copy。</li>
 当外层参数 Container 为 mp3 时，可选值为：
 <li>libmp3lame。</li>
 当外层参数 Container 为 ogg 或 flac 时，可选值为：
@@ -8594,7 +8622,8 @@ class AudioTemplateInfo(AbstractModel):
 <li>ac3。</li>
 当外层参数 Container 为 mp4 或 flv 时，可选值为：
 <li>libfdk_aac：更适合 mp4；</li>
-<li>libmp3lame：更适合 flv。</li>
+<li>libmp3lame：更适合 flv；</li>
+<li>mp2。</li>
 当外层参数 Container 为 hls 时，可选值为：
 <li>libfdk_aac；</li>
 <li>libmp3lame。</li>
@@ -8677,6 +8706,8 @@ class AudioTemplateInfoForUpdate(AbstractModel):
     def __init__(self):
         r"""
         :param _Codec: 音频流的编码格式。
+当不需要对音频进行转码时，可选值为：
+<li>copy。</li>
 当外层参数 Container 为 mp3 时，可选值为：
 <li>libmp3lame。</li>
 当外层参数 Container 为 ogg 或 flac 时，可选值为：
@@ -9434,10 +9465,15 @@ class ComposeAudioStream(AbstractModel):
 <li>1：单声道 。</li>
 <li>2：双声道（默认）。</li>
         :type AudioChannel: int
+        :param _Bitrate: 参考码率，单位 kbps，范围：26~10000。
+如果设置，编码时会尽量按该码率进行编码。
+如果不设置，服务将根据音频参数自动采用合适的码率。
+        :type Bitrate: int
         """
         self._Codec = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -9463,11 +9499,20 @@ class ComposeAudioStream(AbstractModel):
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10838,9 +10883,14 @@ class ComposeVideoStream(AbstractModel):
         :param _Fps: 视频帧率，取值范围：[0, 60]，单位：Hz。  
 默认值：0，表示和第一个视频帧率一致。
         :type Fps: int
+        :param _Bitrate: 参考码率，单位 kbps，范围：50~35000。
+如果设置，编码时会尽量按该码率进行编码。
+如果不设置，服务将通过画面复杂度自动采用合适的码率。
+        :type Bitrate: int
         """
         self._Codec = None
         self._Fps = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -10858,10 +10908,19 @@ class ComposeVideoStream(AbstractModel):
     def Fps(self, Fps):
         self._Fps = Fps
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._Fps = params.get("Fps")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

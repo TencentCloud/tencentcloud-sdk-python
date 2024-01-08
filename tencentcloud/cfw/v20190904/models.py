@@ -7649,6 +7649,8 @@ class DescribeIdsWhiteRuleResponse(AbstractModel):
         r"""
         :param _Total: 总条数
         :type Total: int
+        :param _Data: 规则详情
+        :type Data: list of IdsWhiteInfo
         :param _ReturnCode: 返回状态码 0 成功 非0不成功
         :type ReturnCode: int
         :param _ReturnMsg: 返回信息  success 成功 其他 不成功
@@ -7657,6 +7659,7 @@ class DescribeIdsWhiteRuleResponse(AbstractModel):
         :type RequestId: str
         """
         self._Total = None
+        self._Data = None
         self._ReturnCode = None
         self._ReturnMsg = None
         self._RequestId = None
@@ -7668,6 +7671,14 @@ class DescribeIdsWhiteRuleResponse(AbstractModel):
     @Total.setter
     def Total(self, Total):
         self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def ReturnCode(self):
@@ -7696,6 +7707,12 @@ class DescribeIdsWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = IdsWhiteInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
@@ -11511,6 +11528,105 @@ class IPDefendStatus(AbstractModel):
     def _deserialize(self, params):
         self._IP = params.get("IP")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IdsWhiteInfo(AbstractModel):
+    """入侵防御规则白名单详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 白名单唯一ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _SrcIp: 源IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcIp: str
+        :param _DstIp: 目的IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstIp: str
+        :param _WhiteRuleType: 规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhiteRuleType: str
+        :param _FwType: 白名单生效防火墙范围： 1 边界防火墙 2 nat防火墙 4 vpc防火墙 7 = 1+2+4 所有防火墙
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: int
+        :param _RuleId: 入侵防御规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: str
+        """
+        self._Id = None
+        self._SrcIp = None
+        self._DstIp = None
+        self._WhiteRuleType = None
+        self._FwType = None
+        self._RuleId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SrcIp(self):
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def DstIp(self):
+        return self._DstIp
+
+    @DstIp.setter
+    def DstIp(self, DstIp):
+        self._DstIp = DstIp
+
+    @property
+    def WhiteRuleType(self):
+        return self._WhiteRuleType
+
+    @WhiteRuleType.setter
+    def WhiteRuleType(self, WhiteRuleType):
+        self._WhiteRuleType = WhiteRuleType
+
+    @property
+    def FwType(self):
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SrcIp = params.get("SrcIp")
+        self._DstIp = params.get("DstIp")
+        self._WhiteRuleType = params.get("WhiteRuleType")
+        self._FwType = params.get("FwType")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

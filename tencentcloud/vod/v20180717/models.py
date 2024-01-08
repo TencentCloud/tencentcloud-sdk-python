@@ -8881,6 +8881,79 @@ class ApplyUploadResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AreaCLSTargetInfo(AbstractModel):
+    """日志推送目标。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 日志集所属地区：
+ap-guangzhou：广州； 
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        :param _TopicId: 投递的目标主题 ID。
+        :type TopicId: str
+        :param _LogsetId: 投递的目标集 ID。
+        :type LogsetId: str
+        :param _Switch: 日志投递状态。
+ ON：启用；
+ OFF：停用。
+        :type Switch: str
+        """
+        self._CLSRegion = None
+        self._TopicId = None
+        self._LogsetId = None
+        self._Switch = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ArtifactRepairInfo(AbstractModel):
     """去伪影（毛刺）控制信息
 
@@ -9863,6 +9936,111 @@ class BlurConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLSLogsetInfo(AbstractModel):
+    """CLS 日志集信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: 日志集 ID。
+        :type LogsetId: str
+        :param _LogsetName: 日志集名。
+        :type LogsetName: str
+        """
+        self._LogsetId = None
+        self._LogsetName = None
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetName(self):
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetName = params.get("LogsetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLSTopicInfo(AbstractModel):
+    """CLS日志主题信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicId: str
+        :param _TopicName: 日志主题名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicName: str
+        :param _LogsetId: 日志集 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogsetId: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+        self._LogsetId = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._LogsetId = params.get("LogsetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12627,6 +12805,174 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCLSLogsetRequest(AbstractModel):
+    """CreateCLSLogset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 日志集所属地区：
+ap-guangzhou：广州；
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        """
+        self._CLSRegion = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSLogsetResponse(AbstractModel):
+    """CreateCLSLogset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: 日志集 ID。
+        :type LogsetId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogsetId = None
+        self._RequestId = None
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCLSTopicRequest(AbstractModel):
+    """CreateCLSTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 日志集所属地区：
+ap-guangzhou：广州；
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        :param _TopicName: 日志主题名。
+        :type TopicName: str
+        :param _LogsetId: 日志集 ID。
+        :type LogsetId: str
+        """
+        self._CLSRegion = None
+        self._TopicName = None
+        self._LogsetId = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._TopicName = params.get("TopicName")
+        self._LogsetId = params.get("LogsetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSTopicResponse(AbstractModel):
+    """CreateCLSTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: 日志主题 ID。
+        :type TopicId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopicId = None
+        self._RequestId = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
         self._RequestId = params.get("RequestId")
 
 
@@ -16617,6 +16963,78 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCLSTopicRequest(AbstractModel):
+    """DeleteCLSTopic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 日志集所属地区：
+ap-guangzhou：广州；
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        :param _TopicId: 日志主题 ID。
+        :type TopicId: str
+        """
+        self._CLSRegion = None
+        self._TopicId = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCLSTopicResponse(AbstractModel):
+    """DeleteCLSTopic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteClassRequest(AbstractModel):
     """DeleteClass请求参数结构体
 
@@ -19093,6 +19511,319 @@ class DescribeCDNUsageDataResponse(AbstractModel):
                 obj = StatDataItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSLogsetsRequest(AbstractModel):
+    """DescribeCLSLogsets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: CLS 日志集所属的地域，取值有：
+ap-guangzhou：广州；
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        """
+        self._CLSRegion = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSLogsetsResponse(AbstractModel):
+    """DescribeCLSLogsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Logsets: 查询到的日志集列表。
+        :type Logsets: list of CLSLogsetInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Logsets = None
+        self._RequestId = None
+
+    @property
+    def Logsets(self):
+        return self._Logsets
+
+    @Logsets.setter
+    def Logsets(self, Logsets):
+        self._Logsets = Logsets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Logsets") is not None:
+            self._Logsets = []
+            for item in params.get("Logsets"):
+                obj = CLSLogsetInfo()
+                obj._deserialize(item)
+                self._Logsets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSPushTargetsRequest(AbstractModel):
+    """DescribeCLSPushTargets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 点播域名。
+        :type Domains: list of str
+        :param _SubAppId: 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        """
+        self._Domains = None
+        self._SubAppId = None
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Domains = params.get("Domains")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSPushTargetsResponse(AbstractModel):
+    """DescribeCLSPushTargets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 域名推送总数量。
+        :type TotalCount: int
+        :param _DomainCLSTargets: 域名推送 CLS 目标列表。
+        :type DomainCLSTargets: list of DomainCLSTargetInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DomainCLSTargets = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DomainCLSTargets(self):
+        return self._DomainCLSTargets
+
+    @DomainCLSTargets.setter
+    def DomainCLSTargets(self, DomainCLSTargets):
+        self._DomainCLSTargets = DomainCLSTargets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DomainCLSTargets") is not None:
+            self._DomainCLSTargets = []
+            for item in params.get("DomainCLSTargets"):
+                obj = DomainCLSTargetInfo()
+                obj._deserialize(item)
+                self._DomainCLSTargets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSTopicsRequest(AbstractModel):
+    """DescribeCLSTopics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLSRegion: 日志集所属地区：
+ap-guangzhou：广州；
+ap-singapore：新加坡。
+        :type CLSRegion: str
+        :param _LogsetId: 日志主题所属日志集 ID。
+        :type LogsetId: str
+        :param _TopicIds: 日志主题 ID 列表。如果不填，表示查询所有的日志主题。
+        :type TopicIds: list of str
+        :param _Offset: 分页偏移量，默认值：0。
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认值：20，最大值：100。
+        :type Limit: int
+        """
+        self._CLSRegion = None
+        self._LogsetId = None
+        self._TopicIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CLSRegion(self):
+        return self._CLSRegion
+
+    @CLSRegion.setter
+    def CLSRegion(self, CLSRegion):
+        self._CLSRegion = CLSRegion
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicIds(self):
+        return self._TopicIds
+
+    @TopicIds.setter
+    def TopicIds(self, TopicIds):
+        self._TopicIds = TopicIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CLSRegion = params.get("CLSRegion")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicIds = params.get("TopicIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSTopicsResponse(AbstractModel):
+    """DescribeCLSTopics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 日志主题总数量。
+        :type TotalCount: int
+        :param _Topics: 日志主题列表。
+        :type Topics: list of CLSTopicInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Topics = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = CLSTopicInfo()
+                obj._deserialize(item)
+                self._Topics.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24893,6 +25624,67 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._WordSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DomainCLSTargetInfo(AbstractModel):
+    """域名推送 CLS 目标。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _ChineseMainlandCLSTargetInfo: 中国大陆地区的日志推送目标。
+        :type ChineseMainlandCLSTargetInfo: :class:`tencentcloud.vod.v20180717.models.AreaCLSTargetInfo`
+        :param _OutsideChineseMainlandCLSTargetInfo: 中国大陆以外地区的日志推送目标。
+        :type OutsideChineseMainlandCLSTargetInfo: :class:`tencentcloud.vod.v20180717.models.AreaCLSTargetInfo`
+        """
+        self._Domain = None
+        self._ChineseMainlandCLSTargetInfo = None
+        self._OutsideChineseMainlandCLSTargetInfo = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ChineseMainlandCLSTargetInfo(self):
+        return self._ChineseMainlandCLSTargetInfo
+
+    @ChineseMainlandCLSTargetInfo.setter
+    def ChineseMainlandCLSTargetInfo(self, ChineseMainlandCLSTargetInfo):
+        self._ChineseMainlandCLSTargetInfo = ChineseMainlandCLSTargetInfo
+
+    @property
+    def OutsideChineseMainlandCLSTargetInfo(self):
+        return self._OutsideChineseMainlandCLSTargetInfo
+
+    @OutsideChineseMainlandCLSTargetInfo.setter
+    def OutsideChineseMainlandCLSTargetInfo(self, OutsideChineseMainlandCLSTargetInfo):
+        self._OutsideChineseMainlandCLSTargetInfo = OutsideChineseMainlandCLSTargetInfo
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("ChineseMainlandCLSTargetInfo") is not None:
+            self._ChineseMainlandCLSTargetInfo = AreaCLSTargetInfo()
+            self._ChineseMainlandCLSTargetInfo._deserialize(params.get("ChineseMainlandCLSTargetInfo"))
+        if params.get("OutsideChineseMainlandCLSTargetInfo") is not None:
+            self._OutsideChineseMainlandCLSTargetInfo = AreaCLSTargetInfo()
+            self._OutsideChineseMainlandCLSTargetInfo._deserialize(params.get("OutsideChineseMainlandCLSTargetInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DomainDetailInfo(AbstractModel):
@@ -51842,6 +52634,104 @@ class SegmentConfigureInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetCLSPushTargetRequest(AbstractModel):
+    """SetCLSPushTarget请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。
+        :type Domain: str
+        :param _SubAppId: 点播应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+        :type SubAppId: int
+        :param _ChineseMainlandCLSTargetInfo: 要设置的中国大陆地区的日志推送目标。
+        :type ChineseMainlandCLSTargetInfo: :class:`tencentcloud.vod.v20180717.models.AreaCLSTargetInfo`
+        :param _OutsideChineseMainlandCLSTargetInfo: 要设置的中国大陆以外地区的日志推送目标。
+        :type OutsideChineseMainlandCLSTargetInfo: :class:`tencentcloud.vod.v20180717.models.AreaCLSTargetInfo`
+        """
+        self._Domain = None
+        self._SubAppId = None
+        self._ChineseMainlandCLSTargetInfo = None
+        self._OutsideChineseMainlandCLSTargetInfo = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ChineseMainlandCLSTargetInfo(self):
+        return self._ChineseMainlandCLSTargetInfo
+
+    @ChineseMainlandCLSTargetInfo.setter
+    def ChineseMainlandCLSTargetInfo(self, ChineseMainlandCLSTargetInfo):
+        self._ChineseMainlandCLSTargetInfo = ChineseMainlandCLSTargetInfo
+
+    @property
+    def OutsideChineseMainlandCLSTargetInfo(self):
+        return self._OutsideChineseMainlandCLSTargetInfo
+
+    @OutsideChineseMainlandCLSTargetInfo.setter
+    def OutsideChineseMainlandCLSTargetInfo(self, OutsideChineseMainlandCLSTargetInfo):
+        self._OutsideChineseMainlandCLSTargetInfo = OutsideChineseMainlandCLSTargetInfo
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("ChineseMainlandCLSTargetInfo") is not None:
+            self._ChineseMainlandCLSTargetInfo = AreaCLSTargetInfo()
+            self._ChineseMainlandCLSTargetInfo._deserialize(params.get("ChineseMainlandCLSTargetInfo"))
+        if params.get("OutsideChineseMainlandCLSTargetInfo") is not None:
+            self._OutsideChineseMainlandCLSTargetInfo = AreaCLSTargetInfo()
+            self._OutsideChineseMainlandCLSTargetInfo._deserialize(params.get("OutsideChineseMainlandCLSTargetInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetCLSPushTargetResponse(AbstractModel):
+    """SetCLSPushTarget返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class SetDrmKeyProviderInfoRequest(AbstractModel):

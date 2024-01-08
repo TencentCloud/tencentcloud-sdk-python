@@ -8832,6 +8832,293 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDosageDetail(AbstractModel):
+    """计量标准接入类产品支持API接口获取用量明细返回数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Date: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param _Uin: 账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _DosageType: 用量统计类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageType: str
+        :param _ProductCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _SubProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductCode: str
+        :param _BillingItemCode: 组件类型编码
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItemCode: str
+        :param _SubBillingItemCode: 组件编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubBillingItemCode: str
+        :param _ProductCodeName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _SubProductCodeName: 子产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubProductCodeName: str
+        :param _BillingItemCodeName: 组件类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingItemCodeName: str
+        :param _SubBillingItemCodeName: 组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubBillingItemCodeName: str
+        :param _DosageUnit: 用量单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageUnit: str
+        :param _DosageBeginTime: 用量起始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageBeginTime: str
+        :param _DosageEndTime: 用量截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageEndTime: str
+        :param _DosageValue: 标准用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DosageValue: float
+        :param _DeductValue: 抵扣用量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductValue: float
+        :param _RemainValue: 抵扣余量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemainValue: float
+        :param _SdkAppId: sdkAppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SdkAppId: str
+        :param _AttrStr: 其他信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttrStr: list of JsonObject
+        :param _SheetName: 用量模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SheetName: list of str
+        """
+        self._Date = None
+        self._Uin = None
+        self._DosageType = None
+        self._ProductCode = None
+        self._SubProductCode = None
+        self._BillingItemCode = None
+        self._SubBillingItemCode = None
+        self._ProductCodeName = None
+        self._SubProductCodeName = None
+        self._BillingItemCodeName = None
+        self._SubBillingItemCodeName = None
+        self._DosageUnit = None
+        self._DosageBeginTime = None
+        self._DosageEndTime = None
+        self._DosageValue = None
+        self._DeductValue = None
+        self._RemainValue = None
+        self._SdkAppId = None
+        self._AttrStr = None
+        self._SheetName = None
+
+    @property
+    def Date(self):
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def DosageType(self):
+        return self._DosageType
+
+    @DosageType.setter
+    def DosageType(self, DosageType):
+        self._DosageType = DosageType
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def SubProductCode(self):
+        return self._SubProductCode
+
+    @SubProductCode.setter
+    def SubProductCode(self, SubProductCode):
+        self._SubProductCode = SubProductCode
+
+    @property
+    def BillingItemCode(self):
+        return self._BillingItemCode
+
+    @BillingItemCode.setter
+    def BillingItemCode(self, BillingItemCode):
+        self._BillingItemCode = BillingItemCode
+
+    @property
+    def SubBillingItemCode(self):
+        return self._SubBillingItemCode
+
+    @SubBillingItemCode.setter
+    def SubBillingItemCode(self, SubBillingItemCode):
+        self._SubBillingItemCode = SubBillingItemCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def SubProductCodeName(self):
+        return self._SubProductCodeName
+
+    @SubProductCodeName.setter
+    def SubProductCodeName(self, SubProductCodeName):
+        self._SubProductCodeName = SubProductCodeName
+
+    @property
+    def BillingItemCodeName(self):
+        return self._BillingItemCodeName
+
+    @BillingItemCodeName.setter
+    def BillingItemCodeName(self, BillingItemCodeName):
+        self._BillingItemCodeName = BillingItemCodeName
+
+    @property
+    def SubBillingItemCodeName(self):
+        return self._SubBillingItemCodeName
+
+    @SubBillingItemCodeName.setter
+    def SubBillingItemCodeName(self, SubBillingItemCodeName):
+        self._SubBillingItemCodeName = SubBillingItemCodeName
+
+    @property
+    def DosageUnit(self):
+        return self._DosageUnit
+
+    @DosageUnit.setter
+    def DosageUnit(self, DosageUnit):
+        self._DosageUnit = DosageUnit
+
+    @property
+    def DosageBeginTime(self):
+        return self._DosageBeginTime
+
+    @DosageBeginTime.setter
+    def DosageBeginTime(self, DosageBeginTime):
+        self._DosageBeginTime = DosageBeginTime
+
+    @property
+    def DosageEndTime(self):
+        return self._DosageEndTime
+
+    @DosageEndTime.setter
+    def DosageEndTime(self, DosageEndTime):
+        self._DosageEndTime = DosageEndTime
+
+    @property
+    def DosageValue(self):
+        return self._DosageValue
+
+    @DosageValue.setter
+    def DosageValue(self, DosageValue):
+        self._DosageValue = DosageValue
+
+    @property
+    def DeductValue(self):
+        return self._DeductValue
+
+    @DeductValue.setter
+    def DeductValue(self, DeductValue):
+        self._DeductValue = DeductValue
+
+    @property
+    def RemainValue(self):
+        return self._RemainValue
+
+    @RemainValue.setter
+    def RemainValue(self, RemainValue):
+        self._RemainValue = RemainValue
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AttrStr(self):
+        return self._AttrStr
+
+    @AttrStr.setter
+    def AttrStr(self, AttrStr):
+        self._AttrStr = AttrStr
+
+    @property
+    def SheetName(self):
+        return self._SheetName
+
+    @SheetName.setter
+    def SheetName(self, SheetName):
+        self._SheetName = SheetName
+
+
+    def _deserialize(self, params):
+        self._Date = params.get("Date")
+        self._Uin = params.get("Uin")
+        self._DosageType = params.get("DosageType")
+        self._ProductCode = params.get("ProductCode")
+        self._SubProductCode = params.get("SubProductCode")
+        self._BillingItemCode = params.get("BillingItemCode")
+        self._SubBillingItemCode = params.get("SubBillingItemCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._SubProductCodeName = params.get("SubProductCodeName")
+        self._BillingItemCodeName = params.get("BillingItemCodeName")
+        self._SubBillingItemCodeName = params.get("SubBillingItemCodeName")
+        self._DosageUnit = params.get("DosageUnit")
+        self._DosageBeginTime = params.get("DosageBeginTime")
+        self._DosageEndTime = params.get("DosageEndTime")
+        self._DosageValue = params.get("DosageValue")
+        self._DeductValue = params.get("DeductValue")
+        self._RemainValue = params.get("RemainValue")
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AttrStr") is not None:
+            self._AttrStr = []
+            for item in params.get("AttrStr"):
+                obj = JsonObject()
+                obj._deserialize(item)
+                self._AttrStr.append(obj)
+        self._SheetName = params.get("SheetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeDosageDetailByDateRequest(AbstractModel):
     """DescribeDosageDetailByDate请求参数结构体
 
@@ -9025,6 +9312,153 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
                 self._DetailSets.append(obj)
         self._RetCode = params.get("RetCode")
         self._RetMsg = params.get("RetMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDosageDetailListRequest(AbstractModel):
+    """DescribeDosageDetailList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 用量起始时间，如：2023-02-01
+        :type StartTime: str
+        :param _EndTime: 用量截止时间，如：2023-02-28
+        :type EndTime: str
+        :param _ProductCode: 产品编码，已支持查询的产品如下：
+p_ccc（云联络中心）
+p_rav（实时音视频）
+p_pstn（号码保护）
+p_smh（智能媒资托管）
+p_coding_devops（CODING DevOps）
+p_dsa（全球IP应用加速）
+        :type ProductCode: str
+        :param _Offset: 数据偏移量（从0开始）
+        :type Offset: int
+        :param _Limit: 单次数据量（最大3000）
+        :type Limit: int
+        :param _DosageType: 用量统计类型：用量明细的数据统计汇总周期类型，包括minute-按5分钟汇总、hour-按小时汇总、day-按天汇总、month-按月汇总、comm-其他，默认查询所有类型明细，目前各产品已支持的统计类型如下：
+p_ccc（云联络中心）：comm、day
+p_rav（实时音视频）：minute、day
+p_pstn（号码保护）：comm
+p_smh（智能媒资托管）：day
+p_coding_devops（CODING DevOps）：comm、day
+p_dsa（全球IP应用加速）：minute
+        :type DosageType: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ProductCode = None
+        self._Offset = None
+        self._Limit = None
+        self._DosageType = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DosageType(self):
+        return self._DosageType
+
+    @DosageType.setter
+    def DosageType(self, DosageType):
+        self._DosageType = DosageType
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ProductCode = params.get("ProductCode")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DosageType = params.get("DosageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDosageDetailListResponse(AbstractModel):
+    """DescribeDosageDetailList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Record: 用量明细集合
+        :type Record: list of DescribeDosageDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Record = None
+        self._RequestId = None
+
+    @property
+    def Record(self):
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Record") is not None:
+            self._Record = []
+            for item in params.get("Record"):
+                obj = DescribeDosageDetail()
+                obj._deserialize(item)
+                self._Record.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10536,6 +10970,51 @@ class ExcludedProducts(AbstractModel):
     def _deserialize(self, params):
         self._GoodsName = params.get("GoodsName")
         self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JsonObject(AbstractModel):
+    """Json对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key值
+        :type Key: str
+        :param _Value: value值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

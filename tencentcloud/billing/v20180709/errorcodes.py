@@ -53,6 +53,9 @@ FAILEDOPERATION_PAYSUCCDELIVERFAILED = 'FailedOperation.PaySuccDeliverFailed'
 # 获取数据条数失败。
 FAILEDOPERATION_QUERYCOUNTFAILED = 'FailedOperation.QueryCountFailed'
 
+# 查询数据失败
+FAILEDOPERATION_QUERYDBFAILED = 'FailedOperation.QueryDBFailed'
+
 # 汇总数据正在构建中，请稍后再试。
 FAILEDOPERATION_SUMMARYDATANOTREADY = 'FailedOperation.SummaryDataNotReady'
 
@@ -70,6 +73,9 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 参数校验出错
+INVALIDPARAMETER_PARAMCHECKFAILED = 'InvalidParameter.ParamCheckFailed'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

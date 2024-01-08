@@ -3019,12 +3019,14 @@ POSTPAID_BY_HOUR：按小时后付费
         :param _SubnetId: 子网Id
         :type SubnetId: str
         :param _VolumeSourceType: 存储的类型。取值包含： 
-    FREE:    预付费的免费存储
-    CLOUD_PREMIUM： 高性能云硬盘
-    CLOUD_SSD： SSD云硬盘
-    CFS:     CFS存储，包含NFS和turbo
+FREE：预付费的免费存储
+CLOUD_PREMIUM：高性能云硬盘
+CLOUD_SSD：SSD云硬盘
+CFS：CFS存储
+CFS_TURBO：CFS Turbo存储
+GooseFSx：GooseFSx存储
         :type VolumeSourceType: str
-        :param _VolumeSizeInGB: 存储卷大小，单位GB
+        :param _VolumeSizeInGB: 云硬盘存储卷大小，单位GB
         :type VolumeSizeInGB: int
         :param _VolumeSourceCFS: CFS存储的配置
         :type VolumeSourceCFS: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
@@ -3040,14 +3042,16 @@ POSTPAID_BY_HOUR：按小时后付费
         :type AutomaticStopTime: int
         :param _Tags: 标签配置
         :type Tags: list of Tag
-        :param _DataConfigs: 数据配置
+        :param _DataConfigs: 数据配置，只支持WEDATA_HDFS存储类型
         :type DataConfigs: list of DataConfig
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _ImageType: 镜像类型
+        :param _ImageType: 镜像类型，包括SYSTEM、TCR、CCR
         :type ImageType: str
         :param _SSHConfig: SSH配置信息
         :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _VolumeSourceGooseFS: GooseFS存储配置
+        :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         """
         self._Name = None
         self._ChargeType = None
@@ -3072,6 +3076,7 @@ POSTPAID_BY_HOUR：按小时后付费
         self._ImageInfo = None
         self._ImageType = None
         self._SSHConfig = None
+        self._VolumeSourceGooseFS = None
 
     @property
     def Name(self):
@@ -3257,6 +3262,14 @@ POSTPAID_BY_HOUR：按小时后付费
     def SSHConfig(self, SSHConfig):
         self._SSHConfig = SSHConfig
 
+    @property
+    def VolumeSourceGooseFS(self):
+        return self._VolumeSourceGooseFS
+
+    @VolumeSourceGooseFS.setter
+    def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
+        self._VolumeSourceGooseFS = VolumeSourceGooseFS
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3302,6 +3315,9 @@ POSTPAID_BY_HOUR：按小时后付费
         if params.get("SSHConfig") is not None:
             self._SSHConfig = SSHConfig()
             self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("VolumeSourceGooseFS") is not None:
+            self._VolumeSourceGooseFS = GooseFS()
+            self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3880,7 +3896,7 @@ POSTPAID_BY_HOUR 按量计费
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
         :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
         :type TrainingMode: str
-        :param _DataConfigs: 数据配置，依赖DataSource字段
+        :param _DataConfigs: 数据配置，依赖DataSource字段，数量不超过10个
         :type DataConfigs: list of DataConfig
         :param _VpcId: VPC Id
         :type VpcId: str
@@ -3890,13 +3906,13 @@ POSTPAID_BY_HOUR 按量计费
         :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         :param _LogConfig: CLS日志配置
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _TuningParameters: 调优参数
+        :param _TuningParameters: 调优参数，不超过2048个字符
         :type TuningParameters: str
         :param _LogEnable: 是否上报日志
         :type LogEnable: bool
-        :param _Remark: 备注，最多500个字
+        :param _Remark: 备注，不超过1024个字符
         :type Remark: str
-        :param _DataSource: 数据来源，eg：DATASET、COS、CFS、HDFS
+        :param _DataSource: 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
         :type DataSource: str
         :param _CallbackUrl: 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
         :type CallbackUrl: str
@@ -4571,7 +4587,7 @@ class DataConfig(AbstractModel):
         r"""
         :param _MappingPath: 映射路径
         :type MappingPath: str
-        :param _DataSourceType: DATASET、COS、CFS、HDFS、WEDATA_HDFS
+        :param _DataSourceType: DATASET、COS、CFS、CFSTurbo、GooseFSx、HDFS、WEDATA_HDFS
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSourceType: str
         :param _DataSetSource: 来自数据集的数据
@@ -9965,6 +9981,7 @@ class DescribeNotebooksRequest(AbstractModel):
 Name（名称）：notebook1
 Id（notebook ID）：nb-123456789
 Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+Creator（创建者 uin）：100014761913
 ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
 DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
@@ -10784,7 +10801,9 @@ class DescribeTrainingTasksRequest(AbstractModel):
 取值范围：
 Name（名称）：task1
 Id（task ID）：train-23091792777383936
-Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+Status（状态）：SUBMITTING/PENDING/STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+ResourceGroupId（资源组 Id）：trsg-kvvfrwl7
+Creator（创建者 uin）：100014761913
 ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
 CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
         :type Filters: list of Filter
@@ -10796,7 +10815,7 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
         :type Limit: int
         :param _Order: 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
         :type Order: str
-        :param _OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :param _OrderField: 排序的依据字段， 取值范围 "CreateTime" 、"UpdateTime"、"StartTime"，默认为UpdateTime
         :type OrderField: str
         """
         self._Filters = None
@@ -11688,8 +11707,16 @@ class GooseFS(AbstractModel):
         :param _Id: goosefs实例id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
+        :param _Type: GooseFS类型，包括GooseFS和GooseFSx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Path: GooseFSx实例需要挂载的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
         """
         self._Id = None
+        self._Type = None
+        self._Path = None
 
     @property
     def Id(self):
@@ -11699,9 +11726,27 @@ class GooseFS(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Path = params.get("Path")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11893,7 +11938,9 @@ class HorizontalPodAutoscaler(AbstractModel):
         :param _MaxReplicas: 最大实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxReplicas: int
-        :param _HpaMetrics: 扩缩容指标
+        :param _HpaMetrics: 支持：
+"gpu-util": GPU利用率。范围{10, 100}      "cpu-util": CPU利用率。范围{10, 100}	      "memory-util": 内存利用率。范围{10, 100}      "service-qps": 单个实例QPS值。范围{1, 5000}
+"concurrency-util":单个实例请求数量值。范围{1,100000}
 注意：此字段可能返回 null，表示取不到有效值。
         :type HpaMetrics: list of Option
         """
@@ -14574,9 +14621,9 @@ class ModifyNotebookRequest(AbstractModel):
         r"""
         :param _Id: notebook id
         :type Id: str
-        :param _Name: 名称
+        :param _Name: 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type Name: str
-        :param _ChargeType: 计算资源付费模式 ，可选值为：
+        :param _ChargeType: （不允许修改）计算资源付费模式 ，可选值为：
 PREPAID：预付费，即包年包月
 POSTPAID_BY_HOUR：按小时后付费
         :type ChargeType: str
@@ -14592,19 +14639,19 @@ POSTPAID_BY_HOUR：按小时后付费
         :type RootAccess: bool
         :param _ResourceGroupId: 资源组ID(for预付费)
         :type ResourceGroupId: str
-        :param _VpcId: Vpc-Id
+        :param _VpcId: （不允许修改）Vpc-Id
         :type VpcId: str
-        :param _SubnetId: 子网Id
+        :param _SubnetId: （不允许修改）子网Id
         :type SubnetId: str
         :param _VolumeSizeInGB: 存储卷大小，单位GB
         :type VolumeSizeInGB: int
-        :param _VolumeSourceType: 存储的类型。取值包含： 
+        :param _VolumeSourceType: （不允许修改）存储的类型。取值包含： 
     FREE:    预付费的免费存储
     CLOUD_PREMIUM： 高性能云硬盘
     CLOUD_SSD： SSD云硬盘
     CFS:     CFS存储，包含NFS和turbo
         :type VolumeSourceType: str
-        :param _VolumeSourceCFS: CFS存储的配置
+        :param _VolumeSourceCFS: （不允许修改）CFS存储的配置
         :type VolumeSourceCFS: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         :param _LogConfig: 日志配置
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
@@ -14618,11 +14665,11 @@ POSTPAID_BY_HOUR：按小时后付费
         :type AutomaticStopTime: int
         :param _Tags: 标签配置
         :type Tags: list of Tag
-        :param _DataConfigs: 数据配置
+        :param _DataConfigs: 数据配置，只支持WEDATA_HDFS
         :type DataConfigs: list of DataConfig
         :param _ImageInfo: 镜像信息
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _ImageType: 镜像类型
+        :param _ImageType: 镜像类型，包括SYSTEM、TCR、CCR
         :type ImageType: str
         :param _SSHConfig: SSH配置
         :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
@@ -15200,6 +15247,12 @@ class NotebookDetail(AbstractModel):
         :param _ImageType: 镜像类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageType: str
+        :param _SSHConfig: SSH配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _VolumeSourceGooseFS: GooseFS存储配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         """
         self._Id = None
         self._Name = None
@@ -15238,6 +15291,8 @@ class NotebookDetail(AbstractModel):
         self._DataSource = None
         self._ImageInfo = None
         self._ImageType = None
+        self._SSHConfig = None
+        self._VolumeSourceGooseFS = None
 
     @property
     def Id(self):
@@ -15535,6 +15590,22 @@ class NotebookDetail(AbstractModel):
     def ImageType(self, ImageType):
         self._ImageType = ImageType
 
+    @property
+    def SSHConfig(self):
+        return self._SSHConfig
+
+    @SSHConfig.setter
+    def SSHConfig(self, SSHConfig):
+        self._SSHConfig = SSHConfig
+
+    @property
+    def VolumeSourceGooseFS(self):
+        return self._VolumeSourceGooseFS
+
+    @VolumeSourceGooseFS.setter
+    def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
+        self._VolumeSourceGooseFS = VolumeSourceGooseFS
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -15592,6 +15663,12 @@ class NotebookDetail(AbstractModel):
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
         self._ImageType = params.get("ImageType")
+        if params.get("SSHConfig") is not None:
+            self._SSHConfig = SSHConfig()
+            self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("VolumeSourceGooseFS") is not None:
+            self._VolumeSourceGooseFS = GooseFS()
+            self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15615,7 +15692,7 @@ class NotebookImageRecord(AbstractModel):
         :param _ImageUrl: 镜像地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
-        :param _Status: 状态
+        :param _Status: 状态。eg：creating导出中/success已完成/stopped已停止/fail异常
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _CreateTime: 创建时间
@@ -15795,6 +15872,9 @@ class NotebookSetItem(AbstractModel):
         :param _SSHConfig: SSH配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
+        :param _VolumeSourceGooseFS: GooseFS存储配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         """
         self._Id = None
         self._Name = None
@@ -15822,6 +15902,7 @@ class NotebookSetItem(AbstractModel):
         self._Message = None
         self._UserTypes = None
         self._SSHConfig = None
+        self._VolumeSourceGooseFS = None
 
     @property
     def Id(self):
@@ -16031,6 +16112,14 @@ class NotebookSetItem(AbstractModel):
     def SSHConfig(self, SSHConfig):
         self._SSHConfig = SSHConfig
 
+    @property
+    def VolumeSourceGooseFS(self):
+        return self._VolumeSourceGooseFS
+
+    @VolumeSourceGooseFS.setter
+    def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
+        self._VolumeSourceGooseFS = VolumeSourceGooseFS
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16070,6 +16159,9 @@ class NotebookSetItem(AbstractModel):
         if params.get("SSHConfig") is not None:
             self._SSHConfig = SSHConfig()
             self._SSHConfig._deserialize(params.get("SSHConfig"))
+        if params.get("VolumeSourceGooseFS") is not None:
+            self._VolumeSourceGooseFS = GooseFS()
+            self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16407,7 +16499,7 @@ class PodInfo(AbstractModel):
         :param _IP: pod的IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param _Status: pod状态
+        :param _Status: pod状态。eg：SUBMITTING提交中、PENDING排队中、RUNNING运行中、SUCCEEDED已完成、FAILED异常、TERMINATING停止中、TERMINATED已停止
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
         :param _StartTime: pod启动时间
@@ -16699,10 +16791,10 @@ class ResourceConf(AbstractModel):
         :param _Memory: memory 内存资源, 单位为1M (for预付费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: int
-        :param _Gpu: gpu Gpu卡资源，单位为1单位的GpuType，例如GpuType=T4时，1 Gpu = 1/100 T4卡，GpuType=vcuda时，1 Gpu = 1/100 vcuda-core (for预付费)
+        :param _Gpu: gpu Gpu卡资源，单位为1/100卡，例如GpuType=T4时，1 Gpu = 1/100 T4卡 (for预付费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: int
-        :param _GpuType: GpuType 卡类型 vcuda, T4,P4,V100等 (for预付费)
+        :param _GpuType: GpuType 卡类型，参考资源组上对应的卡类型。eg: H800,A800,A100,T4,P4,V100等 (for预付费)
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuType: str
         :param _InstanceType: 计算规格 (for后付费)，可选值如下：
@@ -16797,13 +16889,13 @@ class ResourceConfigInfo(AbstractModel):
         r"""
         :param _Role: 角色，eg：PS、WORKER、DRIVER、EXECUTOR
         :type Role: str
-        :param _Cpu: cpu核数，1000=1核
+        :param _Cpu: cpu核数，使用资源组时需配置。单位：1/1000，即1000=1核
         :type Cpu: int
-        :param _Memory: 内存，单位为MB
+        :param _Memory: 内存，使用资源组时需配置。单位为MB
         :type Memory: int
-        :param _GpuType: gpu卡类型
+        :param _GpuType: gpu卡类型，使用资源组时需配置
         :type GpuType: str
-        :param _Gpu: gpu数
+        :param _Gpu: gpu卡数，使用资源组时需配置。单位：1/100，即100=1卡
         :type Gpu: int
         :param _InstanceType: 算力规格ID
 计算规格 (for后付费)，可选值如下：
@@ -19487,9 +19579,15 @@ class ServiceLimit(AbstractModel):
         :type EnableInstanceRpsLimit: bool
         :param _InstanceRpsLimit: 每个服务实例的 request per second 限速, 0 为不限流
         :type InstanceRpsLimit: int
+        :param _EnableInstanceReqLimit: 是否开启单实例最大并发数限制，true or false。true 则 InstanceReqLimit 必填， false 则 InstanceReqLimit 不生效
+        :type EnableInstanceReqLimit: bool
+        :param _InstanceReqLimit: 每个服务实例的最大并发
+        :type InstanceReqLimit: int
         """
         self._EnableInstanceRpsLimit = None
         self._InstanceRpsLimit = None
+        self._EnableInstanceReqLimit = None
+        self._InstanceReqLimit = None
 
     @property
     def EnableInstanceRpsLimit(self):
@@ -19507,10 +19605,28 @@ class ServiceLimit(AbstractModel):
     def InstanceRpsLimit(self, InstanceRpsLimit):
         self._InstanceRpsLimit = InstanceRpsLimit
 
+    @property
+    def EnableInstanceReqLimit(self):
+        return self._EnableInstanceReqLimit
+
+    @EnableInstanceReqLimit.setter
+    def EnableInstanceReqLimit(self, EnableInstanceReqLimit):
+        self._EnableInstanceReqLimit = EnableInstanceReqLimit
+
+    @property
+    def InstanceReqLimit(self):
+        return self._InstanceReqLimit
+
+    @InstanceReqLimit.setter
+    def InstanceReqLimit(self, InstanceReqLimit):
+        self._InstanceReqLimit = InstanceReqLimit
+
 
     def _deserialize(self, params):
         self._EnableInstanceRpsLimit = params.get("EnableInstanceRpsLimit")
         self._InstanceRpsLimit = params.get("InstanceRpsLimit")
+        self._EnableInstanceReqLimit = params.get("EnableInstanceReqLimit")
+        self._InstanceReqLimit = params.get("InstanceReqLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20937,6 +21053,47 @@ class TrainingDataPoint(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Timestamp: 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _Value: 训练上报的值。可以为训练指标（双精度浮点数，也可以为Epoch/Step（两者皆保证是整数）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self._Timestamp = None
+        self._Value = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class TrainingMetric(AbstractModel):
     """训练指标
@@ -22122,7 +22279,8 @@ class TrainingTaskSetItem(AbstractModel):
         :param _TrainingMode: 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingMode: str
-        :param _Status: 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+        :param _Status: 任务状态，eg：SUBMITTING提交中、PENDING排队中、
+STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
         :type Status: str
         :param _RuntimeInSeconds: 运行时长
 注意：此字段可能返回 null，表示取不到有效值。
