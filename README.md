@@ -234,7 +234,7 @@ from tencentcloud.common import credential
 cred = credential.STSAssumeRoleCredential("SecretId", "SecretKey", "RoleArn", "RoleSessionName")
 ```
 
-有关角色扮演的详细使用方式可以参考示例：[使用角色](./examples/cvm/v20170312/describe_instances_sts.py)
+有关角色扮演的详细使用方式可以参考示例：[使用角色](https://github.com/TencentCloud/tencentcloud-sdk-python/tree/master/examples/cvm/v20170312/describe_instances_sts.py)
 
 4. 实例角色
 
@@ -296,7 +296,7 @@ regionBreakerProfile = RegionBreakerProfile(
     backup_endpoint="ap-beijing.tencentcloudapi.com",  # 备用地域，格式${region}.tencentcloudapi.com，必须是存在的域名，默认值为ap-guangzhou.tencentcloudapi.com
     max_fail_num=3,  # 最大失败数，默认值5
     max_fail_percent=0.5,  # 最大失败率，默认值0.75。当失败数达到最大失败数，且失败率达到最大的失败率时，或者连续失败数达到5次，关闭状态切换到开启状态
-    window_interval=60,  # 计数窗口，单位s，默认300。处于关闭状态时，时间超过🧮窗口则重新计数
+    window_interval=60,  # 计数窗口，单位s，默认300。处于关闭状态时，时间超过窗口则重新计数
     timeout=30,  # 全开时间，单位s，默认60。处于全开状态达到超过该时间，切换为半开状态
     max_requests=3  # 最大成功请求数，默认5。处于半开状态时，请求主域名达到该数量则切换为关闭状态
 )
