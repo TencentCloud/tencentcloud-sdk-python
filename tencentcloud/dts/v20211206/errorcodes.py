@@ -140,6 +140,9 @@ OPERATIONDENIED_JOBOPERATIONDENIEDERROR = 'OperationDenied.JobOperationDeniedErr
 # 用户余额不足。
 OPERATIONDENIED_NOTENOUGHMONEYERROR = 'OperationDenied.NotEnoughMoneyError'
 
+# 该操作不能执行。
+OPERATIONDENIED_OPERATIONDENIED = 'OperationDenied.OperationDenied'
+
 # 操作被拒绝。
 OPERATIONDENIED_OPERATIONDENIEDERROR = 'OperationDenied.OperationDeniedError'
 

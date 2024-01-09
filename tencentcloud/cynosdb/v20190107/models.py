@@ -6235,6 +6235,9 @@ pause
         :param _InstanceIndexMode: 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIndexMode: str
+        :param _InstanceAbility: 当前实例支持的能力
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         """
         self._Uin = None
         self._AppId = None
@@ -6289,6 +6292,7 @@ pause
         self._InstanceNetInfo = None
         self._ResourcePackages = None
         self._InstanceIndexMode = None
+        self._InstanceAbility = None
 
     @property
     def Uin(self):
@@ -6714,6 +6718,14 @@ pause
     def InstanceIndexMode(self, InstanceIndexMode):
         self._InstanceIndexMode = InstanceIndexMode
 
+    @property
+    def InstanceAbility(self):
+        return self._InstanceAbility
+
+    @InstanceAbility.setter
+    def InstanceAbility(self, InstanceAbility):
+        self._InstanceAbility = InstanceAbility
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -6789,6 +6801,9 @@ pause
                 obj._deserialize(item)
                 self._ResourcePackages.append(obj)
         self._InstanceIndexMode = params.get("InstanceIndexMode")
+        if params.get("InstanceAbility") is not None:
+            self._InstanceAbility = InstanceAbility()
+            self._InstanceAbility._deserialize(params.get("InstanceAbility"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14858,6 +14873,53 @@ class InquirePriceRenewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstanceAbility(AbstractModel):
+    """实例允许的操作列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsSupportForceRestart: 实例是否支持强制重启，可选值：yes：支持，no：不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportForceRestart: str
+        :param _NonsupportForceRestartReason: 不支持强制重启的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NonsupportForceRestartReason: str
+        """
+        self._IsSupportForceRestart = None
+        self._NonsupportForceRestartReason = None
+
+    @property
+    def IsSupportForceRestart(self):
+        return self._IsSupportForceRestart
+
+    @IsSupportForceRestart.setter
+    def IsSupportForceRestart(self, IsSupportForceRestart):
+        self._IsSupportForceRestart = IsSupportForceRestart
+
+    @property
+    def NonsupportForceRestartReason(self):
+        return self._NonsupportForceRestartReason
+
+    @NonsupportForceRestartReason.setter
+    def NonsupportForceRestartReason(self, NonsupportForceRestartReason):
+        self._NonsupportForceRestartReason = NonsupportForceRestartReason
+
+
+    def _deserialize(self, params):
+        self._IsSupportForceRestart = params.get("IsSupportForceRestart")
+        self._NonsupportForceRestartReason = params.get("NonsupportForceRestartReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceAuditLogFilter(AbstractModel):
     """审计日志搜索条件
 
@@ -15515,9 +15577,15 @@ class IsolateClusterRequest(AbstractModel):
         :type ClusterId: str
         :param _DbType: 该参数已废用
         :type DbType: str
+        :param _IsolateReasonTypes: 实例退还原因类型
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: 实例退还原因补充
+        :type IsolateReason: str
         """
         self._ClusterId = None
         self._DbType = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
 
     @property
     def ClusterId(self):
@@ -15535,10 +15603,28 @@ class IsolateClusterRequest(AbstractModel):
     def DbType(self, DbType):
         self._DbType = DbType
 
+    @property
+    def IsolateReasonTypes(self):
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._DbType = params.get("DbType")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15613,10 +15699,16 @@ class IsolateInstanceRequest(AbstractModel):
         :type InstanceIdList: list of str
         :param _DbType: 该参数已废弃
         :type DbType: str
+        :param _IsolateReasonTypes: 实例退还原因类型
+        :type IsolateReasonTypes: list of int
+        :param _IsolateReason: 实例退还原因补充
+        :type IsolateReason: str
         """
         self._ClusterId = None
         self._InstanceIdList = None
         self._DbType = None
+        self._IsolateReasonTypes = None
+        self._IsolateReason = None
 
     @property
     def ClusterId(self):
@@ -15642,11 +15734,29 @@ class IsolateInstanceRequest(AbstractModel):
     def DbType(self, DbType):
         self._DbType = DbType
 
+    @property
+    def IsolateReasonTypes(self):
+        return self._IsolateReasonTypes
+
+    @IsolateReasonTypes.setter
+    def IsolateReasonTypes(self, IsolateReasonTypes):
+        self._IsolateReasonTypes = IsolateReasonTypes
+
+    @property
+    def IsolateReason(self):
+        return self._IsolateReason
+
+    @IsolateReason.setter
+    def IsolateReason(self, IsolateReason):
+        self._IsolateReason = IsolateReason
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceIdList = params.get("InstanceIdList")
         self._DbType = params.get("DbType")
+        self._IsolateReasonTypes = params.get("IsolateReasonTypes")
+        self._IsolateReason = params.get("IsolateReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23756,6 +23866,66 @@ class SetRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SlaveZoneStockInfo(AbstractModel):
+    """备可用区库存信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SlaveZone: 备可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZone: str
+        :param _StockCount: 备可用区的库存数量	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StockCount: int
+        :param _HasStock: 备可用区是否有库存	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStock: bool
+        """
+        self._SlaveZone = None
+        self._StockCount = None
+        self._HasStock = None
+
+    @property
+    def SlaveZone(self):
+        return self._SlaveZone
+
+    @SlaveZone.setter
+    def SlaveZone(self, SlaveZone):
+        self._SlaveZone = SlaveZone
+
+    @property
+    def StockCount(self):
+        return self._StockCount
+
+    @StockCount.setter
+    def StockCount(self, StockCount):
+        self._StockCount = StockCount
+
+    @property
+    def HasStock(self):
+        return self._HasStock
+
+    @HasStock.setter
+    def HasStock(self, HasStock):
+        self._HasStock = HasStock
+
+
+    def _deserialize(self, params):
+        self._SlaveZone = params.get("SlaveZone")
+        self._StockCount = params.get("StockCount")
+        self._HasStock = params.get("HasStock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SlowQueriesItem(AbstractModel):
     """实例慢查询信息
 
@@ -25302,10 +25472,14 @@ class ZoneStockInfo(AbstractModel):
         :type HasStock: bool
         :param _StockCount: 库存数量
         :type StockCount: int
+        :param _SlaveZoneStockInfos: 备可用区库存信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveZoneStockInfos: list of SlaveZoneStockInfo
         """
         self._Zone = None
         self._HasStock = None
         self._StockCount = None
+        self._SlaveZoneStockInfos = None
 
     @property
     def Zone(self):
@@ -25331,11 +25505,25 @@ class ZoneStockInfo(AbstractModel):
     def StockCount(self, StockCount):
         self._StockCount = StockCount
 
+    @property
+    def SlaveZoneStockInfos(self):
+        return self._SlaveZoneStockInfos
+
+    @SlaveZoneStockInfos.setter
+    def SlaveZoneStockInfos(self, SlaveZoneStockInfos):
+        self._SlaveZoneStockInfos = SlaveZoneStockInfos
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._HasStock = params.get("HasStock")
         self._StockCount = params.get("StockCount")
+        if params.get("SlaveZoneStockInfos") is not None:
+            self._SlaveZoneStockInfos = []
+            for item in params.get("SlaveZoneStockInfos"):
+                obj = SlaveZoneStockInfo()
+                obj._deserialize(item)
+                self._SlaveZoneStockInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

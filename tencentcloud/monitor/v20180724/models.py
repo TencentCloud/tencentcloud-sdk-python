@@ -3891,6 +3891,8 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         :type GrafanaInitPassword: str
         :param _TagSpecification: 标签
         :type TagSpecification: list of PrometheusTag
+        :param _AutoVoucher: 是否自动选择代金券，默认为 false
+        :type AutoVoucher: bool
         """
         self._InstanceName = None
         self._VpcId = None
@@ -3898,6 +3900,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         self._EnableInternet = None
         self._GrafanaInitPassword = None
         self._TagSpecification = None
+        self._AutoVoucher = None
 
     @property
     def InstanceName(self):
@@ -3947,6 +3950,14 @@ class CreateGrafanaInstanceRequest(AbstractModel):
     def TagSpecification(self, TagSpecification):
         self._TagSpecification = TagSpecification
 
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -3960,6 +3971,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
                 obj = PrometheusTag()
                 obj._deserialize(item)
                 self._TagSpecification.append(obj)
+        self._AutoVoucher = params.get("AutoVoucher")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

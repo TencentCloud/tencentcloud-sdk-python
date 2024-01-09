@@ -53,29 +53,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateOfflineLogConfig(self, request):
-        """创建离线日志监听，对应用户的离线日志将上报
-
-        :param request: Request instance for CreateOfflineLogConfig.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateOfflineLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOfflineLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOfflineLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateProject(self, request):
         """创建 RUM 应用（归属于某个团队）
 
@@ -973,52 +950,6 @@ class RumClient(AbstractClient):
             body = self.call("DescribeOfflineLogConfigs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOfflineLogConfigsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogRecords(self, request):
-        """获取所有离线日志记录(最多100条)
-
-        :param request: Request instance for DescribeOfflineLogRecords.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogRecordsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogRecords", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogRecordsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogs(self, request):
-        """获取对应离线日志
-
-        :param request: Request instance for DescribeOfflineLogs.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

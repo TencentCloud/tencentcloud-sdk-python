@@ -6984,12 +6984,17 @@ class CreatePrepareFlowRequest(AbstractModel):
         :param _ResourceId: 资源id，与ResourceType相对应，取值范围：
 <ul>
 <li>文件Id（通过UploadFiles获取文件资源Id）</li>
-<li>模板Id</li>
+<li>模板Id（通过控制台创建模板后获取模板Id）</li>
 </ul>
+注意：需要同时设置 ResourceType 参数指定资源类型
         :type ResourceId: str
         :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 
         :type FlowName: str
+        :param _ResourceType: 资源类型，取值有：
+<ul><li> **1**：模板</li>
+<li> **2**：文件（默认值）</li></ul>
+        :type ResourceType: int
         :param _Unordered: 合同流程的签署顺序类型：
 <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
 <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
@@ -7012,10 +7017,6 @@ class CreatePrepareFlowRequest(AbstractModel):
 <ul><li> **OPEN**：开启（默认值）</li>
 <li> **CLOSE**：关闭</li></ul>
         :type IntelligentStatus: str
-        :param _ResourceType: 资源类型，取值有：
-<ul><li> **1**：模板</li>
-<li> **2**：文件（默认值）</li></ul>
-        :type ResourceType: int
         :param _Components: 该字段已废弃，请使用InitiatorComponents
         :type Components: :class:`tencentcloud.ess.v20201111.models.Component`
         :param _FlowOption: 发起合同个性化参数
@@ -7056,13 +7057,13 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._Operator = None
         self._ResourceId = None
         self._FlowName = None
+        self._ResourceType = None
         self._Unordered = None
         self._Deadline = None
         self._UserFlowTypeId = None
         self._FlowType = None
         self._Approvers = None
         self._IntelligentStatus = None
-        self._ResourceType = None
         self._Components = None
         self._FlowOption = None
         self._NeedSignReview = None
@@ -7096,6 +7097,14 @@ class CreatePrepareFlowRequest(AbstractModel):
     @FlowName.setter
     def FlowName(self, FlowName):
         self._FlowName = FlowName
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
     @property
     def Unordered(self):
@@ -7144,14 +7153,6 @@ class CreatePrepareFlowRequest(AbstractModel):
     @IntelligentStatus.setter
     def IntelligentStatus(self, IntelligentStatus):
         self._IntelligentStatus = IntelligentStatus
-
-    @property
-    def ResourceType(self):
-        return self._ResourceType
-
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
 
     @property
     def Components(self):
@@ -7232,6 +7233,7 @@ class CreatePrepareFlowRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._ResourceId = params.get("ResourceId")
         self._FlowName = params.get("FlowName")
+        self._ResourceType = params.get("ResourceType")
         self._Unordered = params.get("Unordered")
         self._Deadline = params.get("Deadline")
         self._UserFlowTypeId = params.get("UserFlowTypeId")
@@ -7243,7 +7245,6 @@ class CreatePrepareFlowRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Approvers.append(obj)
         self._IntelligentStatus = params.get("IntelligentStatus")
-        self._ResourceType = params.get("ResourceType")
         if params.get("Components") is not None:
             self._Components = Component()
             self._Components._deserialize(params.get("Components"))
@@ -11444,7 +11445,7 @@ class DescribeIntegrationRolesRequest(AbstractModel):
 分页参数, 需要limit, offset 配合使用
 例如:
 您希望得到第三页的数据, 且每页限制最多10条
-你可以使用 LIMIT 10 OFFSET 20
+您可以使用 LIMIT 10 OFFSET 20
 
         :type Offset: int
         """
@@ -11531,7 +11532,7 @@ class DescribeIntegrationRolesResponse(AbstractModel):
 分页参数, 需要limit, offset 配合使用
 例如:
 您希望得到第三页的数据, 且每页限制最多10条
-你可以使用 LIMIT 10 OFFSET 20
+您可以使用 LIMIT 10 OFFSET 20
         :type Offset: int
         :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
         :type Limit: int

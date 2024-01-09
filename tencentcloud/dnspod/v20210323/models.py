@@ -10217,6 +10217,8 @@ class ModifyRecordRequest(AbstractModel):
         :type Weight: int
         :param _Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
         :type Status: str
+        :param _Remark: 记录的备注信息。传空删除备注。
+        :type Remark: str
         """
         self._Domain = None
         self._RecordType = None
@@ -10230,6 +10232,7 @@ class ModifyRecordRequest(AbstractModel):
         self._TTL = None
         self._Weight = None
         self._Status = None
+        self._Remark = None
 
     @property
     def Domain(self):
@@ -10327,6 +10330,14 @@ class ModifyRecordRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10341,6 +10352,7 @@ class ModifyRecordRequest(AbstractModel):
         self._TTL = params.get("TTL")
         self._Weight = params.get("Weight")
         self._Status = params.get("Status")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
