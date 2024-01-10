@@ -9551,7 +9551,7 @@ class CreateChannelOrganizationInfoChangeUrlRequest(AbstractModel):
         :param _Endpoint: 变更链接类型：
 <ul>
 <li>**WEIXINAPP** : 创建变更短链。需要在移动端打开，会跳转到微信腾讯电子签小程序进行更换。（默认）</li>
-<li>**APP** : 创建变更小程序链接，可从第三方App跳转到微信腾讯电子签小程序进行更换。</li>
+<li>**APP** : 创建变更小程序链接，可从第三方App或者小程序跳转到微信腾讯电子签小程序进行更换。</li>
 </ul>
         :type Endpoint: str
         """

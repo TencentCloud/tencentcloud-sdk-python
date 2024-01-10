@@ -1229,7 +1229,7 @@ class DescribeEventsRequest(AbstractModel):
         :type NextToken: int
         :param _MaxResults: 返回日志的最大条数（最大 50 条）
         :type MaxResults: int
-        :param _LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
+        :param _LookupAttributes: 检索条件（目前支持 RequestId：请求 ID、EventName：事件名称、ActionType：操作类型（Write：写；Read：读）、PrincipalId：子账号、ResourceType：资源类型、ResourceId：资源Id、ResourceName：资源名称、AccessKeyId：密钥 ID、SensitiveAction：是否敏感操作、ApiErrorCode：API 错误码、CamErrorCode：CAM 错误码、Tags：标签（AttributeValue格式：[{"key":"*","value":"*"}]）备注:检索的各个条件间是与的关系,EventName传多个值内部是或的关系）
         :type LookupAttributes: list of LookupAttribute
         :param _IsReturnLocation: 是否返回 IP 归属地（1 返回，0 不返回）
         :type IsReturnLocation: int
@@ -2458,8 +2458,10 @@ class Resource(AbstractModel):
     def __init__(self):
         r"""
         :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
         :param _ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         """
         self._ResourceType = None
@@ -2650,11 +2652,19 @@ class Storage(AbstractModel):
         :type StorageName: str
         :param _StoragePrefix: 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
         :type StoragePrefix: str
+        :param _StorageAccountId: 被指定存储用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageAccountId: str
+        :param _StorageAppId: 被指定存储用户appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageAppId: str
         """
         self._StorageType = None
         self._StorageRegion = None
         self._StorageName = None
         self._StoragePrefix = None
+        self._StorageAccountId = None
+        self._StorageAppId = None
 
     @property
     def StorageType(self):
@@ -2688,12 +2698,30 @@ class Storage(AbstractModel):
     def StoragePrefix(self, StoragePrefix):
         self._StoragePrefix = StoragePrefix
 
+    @property
+    def StorageAccountId(self):
+        return self._StorageAccountId
+
+    @StorageAccountId.setter
+    def StorageAccountId(self, StorageAccountId):
+        self._StorageAccountId = StorageAccountId
+
+    @property
+    def StorageAppId(self):
+        return self._StorageAppId
+
+    @StorageAppId.setter
+    def StorageAppId(self, StorageAppId):
+        self._StorageAppId = StorageAppId
+
 
     def _deserialize(self, params):
         self._StorageType = params.get("StorageType")
         self._StorageRegion = params.get("StorageRegion")
         self._StorageName = params.get("StorageName")
         self._StoragePrefix = params.get("StoragePrefix")
+        self._StorageAccountId = params.get("StorageAccountId")
+        self._StorageAppId = params.get("StorageAppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
