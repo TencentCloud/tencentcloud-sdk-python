@@ -26,22 +26,20 @@ class TdidClient(AbstractClient):
     _service = 'tdid'
 
 
-    def CheckChain(self, request):
-        """该接口不再使用
+    def CheckNewPurchase(self, request):
+        """检查用户套餐购买状态
 
-        检查区块链信息
-
-        :param request: Request instance for CheckChain.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CheckChainRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CheckChainResponse`
+        :param request: Request instance for CheckNewPurchase.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.CheckNewPurchaseRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CheckNewPurchaseResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CheckChain", params, headers=headers)
+            body = self.call("CheckNewPurchase", params, headers=headers)
             response = json.loads(body)
-            model = models.CheckChainResponse()
+            model = models.CheckNewPurchaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -51,22 +49,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCredential(self, request):
-        """该接口不再使用
+    def CreateTDidByHost(self, request):
+        """自动生成公私钥对托管在DID平台，并注册DID标识
 
-        创建凭证
-
-        :param request: Request instance for CreateCredential.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateCredentialRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateCredentialResponse`
+        :param request: Request instance for CreateTDidByHost.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByHostRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByHostResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateCredential", params, headers=headers)
+            body = self.call("CreateTDidByHost", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateCredentialResponse()
+            model = models.CreateTDidByHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -76,22 +72,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateSelectiveCredential(self, request):
-        """该接口不再使用
+    def CreateTDidByPubKey(self, request):
+        """使用导入的公钥文件注册DID标识
 
-        创建选择性批露凭证
-
-        :param request: Request instance for CreateSelectiveCredential.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateSelectiveCredentialRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateSelectiveCredentialResponse`
+        :param request: Request instance for CreateTDidByPubKey.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPubKeyRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPubKeyResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateSelectiveCredential", params, headers=headers)
+            body = self.call("CreateTDidByPubKey", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateSelectiveCredentialResponse()
+            model = models.CreateTDidByPubKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -101,22 +95,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTDid(self, request):
-        """该接口不再使用
+    def DeactivateTDid(self, request):
+        """更新DID标识的禁用状态
 
-        创建机构DID
-
-        :param request: Request instance for CreateTDid.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidResponse`
+        :param request: Request instance for DeactivateTDid.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.DeactivateTDidRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.DeactivateTDidResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateTDid", params, headers=headers)
+            body = self.call("DeactivateTDid", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateTDidResponse()
+            model = models.DeactivateTDidResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -126,22 +118,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTDidByPrivateKey(self, request):
-        """该接口不再使用
+    def GetCredentialState(self, request):
+        """获取凭证链上状态信息
 
-        新建DID根据私钥生成Tdid
-
-        :param request: Request instance for CreateTDidByPrivateKey.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPrivateKeyRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPrivateKeyResponse`
+        :param request: Request instance for GetCredentialState.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStateRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStateResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateTDidByPrivateKey", params, headers=headers)
+            body = self.call("GetCredentialState", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateTDidByPrivateKeyResponse()
+            model = models.GetCredentialStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -151,22 +141,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTDidByPublicKey(self, request):
-        """该接口不再使用
+    def GetTDidDocument(self, request):
+        """获取DID标识的文档
 
-         新建DID根据公钥生成Tdid
-
-        :param request: Request instance for CreateTDidByPublicKey.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.CreateTDidByPublicKeyResponse`
+        :param request: Request instance for GetTDidDocument.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.GetTDidDocumentRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetTDidDocumentResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("CreateTDidByPublicKey", params, headers=headers)
+            body = self.call("GetTDidDocument", params, headers=headers)
             response = json.loads(body)
-            model = models.CreateTDidByPublicKeyResponse()
+            model = models.GetTDidDocumentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -176,22 +164,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetAuthorityIssuer(self, request):
-        """该接口不再使用
+    def IssueCredential(self, request):
+        """颁发可验证凭证
 
-        获取权威机构信息
-
-        :param request: Request instance for GetAuthorityIssuer.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetAuthorityIssuerResponse`
+        :param request: Request instance for IssueCredential.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.IssueCredentialRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.IssueCredentialResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("GetAuthorityIssuer", params, headers=headers)
+            body = self.call("IssueCredential", params, headers=headers)
             response = json.loads(body)
-            model = models.GetAuthorityIssuerResponse()
+            model = models.IssueCredentialResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -201,22 +187,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetCptInfo(self, request):
-        """该接口不再使用
+    def UpdateCredentialState(self, request):
+        """更新凭证的链上状态
 
-        凭证模版详情
-
-        :param request: Request instance for GetCptInfo.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetCptInfoRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetCptInfoResponse`
+        :param request: Request instance for UpdateCredentialState.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.UpdateCredentialStateRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.UpdateCredentialStateResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("GetCptInfo", params, headers=headers)
+            body = self.call("UpdateCredentialState", params, headers=headers)
             response = json.loads(body)
-            model = models.GetCptInfoResponse()
+            model = models.UpdateCredentialStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -226,122 +210,20 @@ class TdidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetCredentialStatus(self, request):
-        """该接口不再使用
+    def VerifyCredentials(self, request):
+        """验证已签名的可验证凭证
 
-        获取凭证链上状态信息
-
-        :param request: Request instance for GetCredentialStatus.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStatusRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetCredentialStatusResponse`
+        :param request: Request instance for VerifyCredentials.
+        :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialsRequest`
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialsResponse`
 
         """
         try:
             params = request._serialize()
             headers = request.headers
-            body = self.call("GetCredentialStatus", params, headers=headers)
+            body = self.call("VerifyCredentials", params, headers=headers)
             response = json.loads(body)
-            model = models.GetCredentialStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetDidDocument(self, request):
-        """该接口不再使用
-
-        查看DID文档
-
-        :param request: Request instance for GetDidDocument.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.GetDidDocumentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetDidDocument", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetDidDocumentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def RegisterCpt(self, request):
-        """该接口不再使用
-
-        凭证模版新建
-
-        :param request: Request instance for RegisterCpt.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.RegisterCptRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.RegisterCptResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RegisterCpt", params, headers=headers)
-            response = json.loads(body)
-            model = models.RegisterCptResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def SetCredentialStatus(self, request):
-        """该接口不再使用
-
-        设置凭证链上状态
-
-        :param request: Request instance for SetCredentialStatus.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.SetCredentialStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SetCredentialStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.SetCredentialStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def VerifyCredential(self, request):
-        """该接口不再使用
-
-        验证凭证
-
-        :param request: Request instance for VerifyCredential.
-        :type request: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialRequest`
-        :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyCredentialResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("VerifyCredential", params, headers=headers)
-            response = json.loads(body)
-            model = models.VerifyCredentialResponse()
+            model = models.VerifyCredentialsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
