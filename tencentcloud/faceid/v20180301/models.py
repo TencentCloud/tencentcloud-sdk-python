@@ -3448,10 +3448,16 @@ class GetEidResultRequest(AbstractModel):
         :type InfoType: str
         :param _BestFramesCount: 从活体视频中截取一定张数的最佳帧。默认为0，最大为3，超出3的最多只给3张。（InfoType需要包含3）
         :type BestFramesCount: int
+        :param _IsCutIdCardImage: 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+        :type IsCutIdCardImage: bool
+        :param _IsNeedIdCardAvatar: 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+        :type IsNeedIdCardAvatar: bool
         """
         self._EidToken = None
         self._InfoType = None
         self._BestFramesCount = None
+        self._IsCutIdCardImage = None
+        self._IsNeedIdCardAvatar = None
 
     @property
     def EidToken(self):
@@ -3477,11 +3483,29 @@ class GetEidResultRequest(AbstractModel):
     def BestFramesCount(self, BestFramesCount):
         self._BestFramesCount = BestFramesCount
 
+    @property
+    def IsCutIdCardImage(self):
+        return self._IsCutIdCardImage
+
+    @IsCutIdCardImage.setter
+    def IsCutIdCardImage(self, IsCutIdCardImage):
+        self._IsCutIdCardImage = IsCutIdCardImage
+
+    @property
+    def IsNeedIdCardAvatar(self):
+        return self._IsNeedIdCardAvatar
+
+    @IsNeedIdCardAvatar.setter
+    def IsNeedIdCardAvatar(self, IsNeedIdCardAvatar):
+        self._IsNeedIdCardAvatar = IsNeedIdCardAvatar
+
 
     def _deserialize(self, params):
         self._EidToken = params.get("EidToken")
         self._InfoType = params.get("InfoType")
         self._BestFramesCount = params.get("BestFramesCount")
+        self._IsCutIdCardImage = params.get("IsCutIdCardImage")
+        self._IsNeedIdCardAvatar = params.get("IsNeedIdCardAvatar")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

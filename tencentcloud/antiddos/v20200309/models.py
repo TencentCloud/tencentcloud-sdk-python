@@ -1071,6 +1071,9 @@ class BGPInstance(AbstractModel):
         :param _BasicPlusFlag: 是否是基础防护加强版 0: 不是 1: 是
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasicPlusFlag: int
+        :param _PlanCntFlag: 是否是商业模式优化-普惠版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlanCntFlag: int
         """
         self._InstanceDetail = None
         self._SpecificationLimit = None
@@ -1094,6 +1097,7 @@ class BGPInstance(AbstractModel):
         self._GiftServiceBandWidth = None
         self._ModifyTime = None
         self._BasicPlusFlag = None
+        self._PlanCntFlag = None
 
     @property
     def InstanceDetail(self):
@@ -1271,6 +1275,14 @@ class BGPInstance(AbstractModel):
     def BasicPlusFlag(self, BasicPlusFlag):
         self._BasicPlusFlag = BasicPlusFlag
 
+    @property
+    def PlanCntFlag(self):
+        return self._PlanCntFlag
+
+    @PlanCntFlag.setter
+    def PlanCntFlag(self, PlanCntFlag):
+        self._PlanCntFlag = PlanCntFlag
+
 
     def _deserialize(self, params):
         if params.get("InstanceDetail") is not None:
@@ -1315,6 +1327,7 @@ class BGPInstance(AbstractModel):
         self._GiftServiceBandWidth = params.get("GiftServiceBandWidth")
         self._ModifyTime = params.get("ModifyTime")
         self._BasicPlusFlag = params.get("BasicPlusFlag")
+        self._PlanCntFlag = params.get("PlanCntFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9423,6 +9436,9 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         :type FilterAssetIpList: list of str
         :param _FilterBasicPlusFlag: 是否包含基础防护增强版 0: 不包含 1: 包含
         :type FilterBasicPlusFlag: int
+        :param _FilterPlanCntFlag: 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
+
+        :type FilterPlanCntFlag: int
         """
         self._Offset = None
         self._Limit = None
@@ -9443,6 +9459,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._ExcludeAdvancedInfo = None
         self._FilterAssetIpList = None
         self._FilterBasicPlusFlag = None
+        self._FilterPlanCntFlag = None
 
     @property
     def Offset(self):
@@ -9596,6 +9613,14 @@ class DescribeListBGPInstancesRequest(AbstractModel):
     def FilterBasicPlusFlag(self, FilterBasicPlusFlag):
         self._FilterBasicPlusFlag = FilterBasicPlusFlag
 
+    @property
+    def FilterPlanCntFlag(self):
+        return self._FilterPlanCntFlag
+
+    @FilterPlanCntFlag.setter
+    def FilterPlanCntFlag(self, FilterPlanCntFlag):
+        self._FilterPlanCntFlag = FilterPlanCntFlag
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -9619,6 +9644,7 @@ class DescribeListBGPInstancesRequest(AbstractModel):
         self._ExcludeAdvancedInfo = params.get("ExcludeAdvancedInfo")
         self._FilterAssetIpList = params.get("FilterAssetIpList")
         self._FilterBasicPlusFlag = params.get("FilterBasicPlusFlag")
+        self._FilterPlanCntFlag = params.get("FilterPlanCntFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12487,7 +12513,7 @@ class EipAddressRelation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EipAddressRegion: 高防弹性公网IP绑定的实例地区，例如hk代表香港
+        :param _EipAddressRegion: 高防弹性公网IP绑定的实例地区，例如hk代表中国香港
 注意：此字段可能返回 null，表示取不到有效值。
         :type EipAddressRegion: str
         :param _EipBoundRscIns: 绑定的资源实例ID。可能是一个CVM。

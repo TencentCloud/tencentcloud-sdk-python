@@ -15030,6 +15030,267 @@ class ExchangeQuota(AbstractModel):
         
 
 
+class ExportRocketMQMessageDetailRequest(AbstractModel):
+    """ExportRocketMQMessageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _EnvironmentId: 应用命名空间
+        :type EnvironmentId: str
+        :param _TopicName: Topic名称
+如果是死信消息 isDlqMsg=true
+        :type TopicName: str
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _IncludeMsgBody: 是否包含消息体
+        :type IncludeMsgBody: bool
+        :param _DeadLetterMsg: 是否死信消息
+        :type DeadLetterMsg: bool
+        """
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._MsgId = None
+        self._IncludeMsgBody = None
+        self._DeadLetterMsg = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def IncludeMsgBody(self):
+        return self._IncludeMsgBody
+
+    @IncludeMsgBody.setter
+    def IncludeMsgBody(self, IncludeMsgBody):
+        self._IncludeMsgBody = IncludeMsgBody
+
+    @property
+    def DeadLetterMsg(self):
+        return self._DeadLetterMsg
+
+    @DeadLetterMsg.setter
+    def DeadLetterMsg(self, DeadLetterMsg):
+        self._DeadLetterMsg = DeadLetterMsg
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._MsgId = params.get("MsgId")
+        self._IncludeMsgBody = params.get("IncludeMsgBody")
+        self._DeadLetterMsg = params.get("DeadLetterMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportRocketMQMessageDetailResponse(AbstractModel):
+    """ExportRocketMQMessageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _BornTimestamp: 消息生成时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BornTimestamp: int
+        :param _StoreTimestamp: 消息存储时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoreTimestamp: int
+        :param _BornHost: 消息生产客户端地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BornHost: str
+        :param _MsgTag: 消息Tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgTag: str
+        :param _MsgKey: 消息Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgKey: str
+        :param _Properties: 消息属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: str
+        :param _ReConsumeTimes: 消息重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReConsumeTimes: int
+        :param _MsgBody: Base64编码格式字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgBody: str
+        :param _MsgBodyCRC: 消息内容的CRC32 Code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgBodyCRC: int
+        :param _MsgBodySize: 消息体大小（单位K）
+当大于2048时不返回消息
+        :type MsgBodySize: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MsgId = None
+        self._BornTimestamp = None
+        self._StoreTimestamp = None
+        self._BornHost = None
+        self._MsgTag = None
+        self._MsgKey = None
+        self._Properties = None
+        self._ReConsumeTimes = None
+        self._MsgBody = None
+        self._MsgBodyCRC = None
+        self._MsgBodySize = None
+        self._RequestId = None
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def BornTimestamp(self):
+        return self._BornTimestamp
+
+    @BornTimestamp.setter
+    def BornTimestamp(self, BornTimestamp):
+        self._BornTimestamp = BornTimestamp
+
+    @property
+    def StoreTimestamp(self):
+        return self._StoreTimestamp
+
+    @StoreTimestamp.setter
+    def StoreTimestamp(self, StoreTimestamp):
+        self._StoreTimestamp = StoreTimestamp
+
+    @property
+    def BornHost(self):
+        return self._BornHost
+
+    @BornHost.setter
+    def BornHost(self, BornHost):
+        self._BornHost = BornHost
+
+    @property
+    def MsgTag(self):
+        return self._MsgTag
+
+    @MsgTag.setter
+    def MsgTag(self, MsgTag):
+        self._MsgTag = MsgTag
+
+    @property
+    def MsgKey(self):
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def ReConsumeTimes(self):
+        return self._ReConsumeTimes
+
+    @ReConsumeTimes.setter
+    def ReConsumeTimes(self, ReConsumeTimes):
+        self._ReConsumeTimes = ReConsumeTimes
+
+    @property
+    def MsgBody(self):
+        return self._MsgBody
+
+    @MsgBody.setter
+    def MsgBody(self, MsgBody):
+        self._MsgBody = MsgBody
+
+    @property
+    def MsgBodyCRC(self):
+        return self._MsgBodyCRC
+
+    @MsgBodyCRC.setter
+    def MsgBodyCRC(self, MsgBodyCRC):
+        self._MsgBodyCRC = MsgBodyCRC
+
+    @property
+    def MsgBodySize(self):
+        return self._MsgBodySize
+
+    @MsgBodySize.setter
+    def MsgBodySize(self, MsgBodySize):
+        self._MsgBodySize = MsgBodySize
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MsgId = params.get("MsgId")
+        self._BornTimestamp = params.get("BornTimestamp")
+        self._StoreTimestamp = params.get("StoreTimestamp")
+        self._BornHost = params.get("BornHost")
+        self._MsgTag = params.get("MsgTag")
+        self._MsgKey = params.get("MsgKey")
+        self._Properties = params.get("Properties")
+        self._ReConsumeTimes = params.get("ReConsumeTimes")
+        self._MsgBody = params.get("MsgBody")
+        self._MsgBodyCRC = params.get("MsgBodyCRC")
+        self._MsgBodySize = params.get("MsgBodySize")
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """过滤参数
 

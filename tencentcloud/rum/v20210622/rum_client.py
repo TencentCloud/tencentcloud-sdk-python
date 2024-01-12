@@ -218,52 +218,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DeleteOfflineLogConfig(self, request):
-        """删除 rum 离线日志监听 - 对应用户的离线日志将不会上报
-
-        :param request: Request instance for DeleteOfflineLogConfig.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteOfflineLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteOfflineLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteOfflineLogRecord(self, request):
-        """删除对应的离线日志记录
-
-        :param request: Request instance for DeleteOfflineLogRecord.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteOfflineLogRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteOfflineLogRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteOfflineLogRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteProject(self, request):
         """删除给定的 rum 的项目
 
@@ -927,29 +881,6 @@ class RumClient(AbstractClient):
             body = self.call("DescribeLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineLogConfigs(self, request):
-        """获取设置的离线日志监听配置 - 返回设置的用户唯一标识
-
-        :param request: Request instance for DescribeOfflineLogConfigs.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeOfflineLogConfigsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineLogConfigs", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineLogConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

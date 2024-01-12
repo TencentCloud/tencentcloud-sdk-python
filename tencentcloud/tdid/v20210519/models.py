@@ -144,23 +144,97 @@ class ChainTransaction(AbstractModel):
         
 
 
-class CheckNewPurchaseRequest(AbstractModel):
-    """CheckNewPurchase请求参数结构体
-
-    """
-
-
-class CheckNewPurchaseResponse(AbstractModel):
-    """CheckNewPurchase返回参数结构体
+class CreateDisclosedCredentialRequest(AbstractModel):
+    """CreateDisclosedCredential请求参数结构体
 
     """
 
     def __init__(self):
         r"""
+        :param _PolicyId: 披露策略id，PolicyJson和PolicyId任选其一
+        :type PolicyId: int
+        :param _CredentialData: 凭证文本内容，FunctionArg和CredentialText任选其一
+        :type CredentialData: str
+        :param _PolicyJson: 披露策略文本
+        :type PolicyJson: str
+        :param _DAPId: DID应用ID
+        :type DAPId: int
+        """
+        self._PolicyId = None
+        self._CredentialData = None
+        self._PolicyJson = None
+        self._DAPId = None
+
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def CredentialData(self):
+        return self._CredentialData
+
+    @CredentialData.setter
+    def CredentialData(self, CredentialData):
+        self._CredentialData = CredentialData
+
+    @property
+    def PolicyJson(self):
+        return self._PolicyJson
+
+    @PolicyJson.setter
+    def PolicyJson(self, PolicyJson):
+        self._PolicyJson = PolicyJson
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._CredentialData = params.get("CredentialData")
+        self._PolicyJson = params.get("PolicyJson")
+        self._DAPId = params.get("DAPId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDisclosedCredentialResponse(AbstractModel):
+    """CreateDisclosedCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialData: 凭证字符串
+        :type CredentialData: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._CredentialData = None
         self._RequestId = None
+
+    @property
+    def CredentialData(self):
+        return self._CredentialData
+
+    @CredentialData.setter
+    def CredentialData(self, CredentialData):
+        self._CredentialData = CredentialData
 
     @property
     def RequestId(self):
@@ -172,6 +246,154 @@ class CheckNewPurchaseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._CredentialData = params.get("CredentialData")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePresentationRequest(AbstractModel):
+    """CreatePresentation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DAPId: DID应用id
+        :type DAPId: int
+        :param _Credentials: 凭证列表
+        :type Credentials: list of str
+        :param _Did: VP持有人的DID标识
+        :type Did: str
+        :param _VerifyCode: VP随机验证码
+        :type VerifyCode: str
+        :param _PolicyJson: 选择性披露策略
+        :type PolicyJson: str
+        :param _Unsigned: 是否签名，ture时signatureValue为待签名内容由调用端自行签名，false时signatureValue为平台自动已签名的内容。默认false
+        :type Unsigned: bool
+        :param _CredentialList: 可验证凭证证明列表
+        :type CredentialList: list of CredentialProof
+        """
+        self._DAPId = None
+        self._Credentials = None
+        self._Did = None
+        self._VerifyCode = None
+        self._PolicyJson = None
+        self._Unsigned = None
+        self._CredentialList = None
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+    @property
+    def Credentials(self):
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def PolicyJson(self):
+        return self._PolicyJson
+
+    @PolicyJson.setter
+    def PolicyJson(self, PolicyJson):
+        self._PolicyJson = PolicyJson
+
+    @property
+    def Unsigned(self):
+        return self._Unsigned
+
+    @Unsigned.setter
+    def Unsigned(self, Unsigned):
+        self._Unsigned = Unsigned
+
+    @property
+    def CredentialList(self):
+        return self._CredentialList
+
+    @CredentialList.setter
+    def CredentialList(self, CredentialList):
+        self._CredentialList = CredentialList
+
+
+    def _deserialize(self, params):
+        self._DAPId = params.get("DAPId")
+        self._Credentials = params.get("Credentials")
+        self._Did = params.get("Did")
+        self._VerifyCode = params.get("VerifyCode")
+        self._PolicyJson = params.get("PolicyJson")
+        self._Unsigned = params.get("Unsigned")
+        if params.get("CredentialList") is not None:
+            self._CredentialList = []
+            for item in params.get("CredentialList"):
+                obj = CredentialProof()
+                obj._deserialize(item)
+                self._CredentialList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePresentationResponse(AbstractModel):
+    """CreatePresentation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PresentationData: 可验证表达内容
+        :type PresentationData: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PresentationData = None
+        self._RequestId = None
+
+    @property
+    def PresentationData(self):
+        return self._PresentationData
+
+    @PresentationData.setter
+    def PresentationData(self, PresentationData):
+        self._PresentationData = PresentationData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PresentationData = params.get("PresentationData")
         self._RequestId = params.get("RequestId")
 
 
@@ -389,6 +611,39 @@ class CreateTDidByPubKeyResponse(AbstractModel):
             self._Transaction = ChainTransaction()
             self._Transaction._deserialize(params.get("Transaction"))
         self._RequestId = params.get("RequestId")
+
+
+class CredentialProof(AbstractModel):
+    """可验证凭证证明信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Credential: 可验证凭证内容
+        :type Credential: str
+        """
+        self._Credential = None
+
+    @property
+    def Credential(self):
+        return self._Credential
+
+    @Credential.setter
+    def Credential(self, Credential):
+        self._Credential = Credential
+
+
+    def _deserialize(self, params):
+        self._Credential = params.get("Credential")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CredentialState(AbstractModel):
@@ -640,6 +895,139 @@ class DeactivateTDidResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DidAttribute(AbstractModel):
+    """did自定义属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键名
+        :type Key: str
+        :param _Val: 键值
+        :type Val: str
+        """
+        self._Key = None
+        self._Val = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Val(self):
+        return self._Val
+
+    @Val.setter
+    def Val(self, Val):
+        self._Val = Val
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Val = params.get("Val")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAppSummaryRequest(AbstractModel):
+    """GetAppSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DAPId: DID应用Id
+        :type DAPId: int
+        """
+        self._DAPId = None
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+
+    def _deserialize(self, params):
+        self._DAPId = params.get("DAPId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAppSummaryResponse(AbstractModel):
+    """GetAppSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppCounter: 用户参与应用的统计指标 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        :param _UserCounter: 用户创建资源的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppCounter = None
+        self._UserCounter = None
+        self._RequestId = None
+
+    @property
+    def AppCounter(self):
+        return self._AppCounter
+
+    @AppCounter.setter
+    def AppCounter(self, AppCounter):
+        self._AppCounter = AppCounter
+
+    @property
+    def UserCounter(self):
+        return self._UserCounter
+
+    @UserCounter.setter
+    def UserCounter(self, UserCounter):
+        self._UserCounter = UserCounter
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AppCounter") is not None:
+            self._AppCounter = ResourceCounterData()
+            self._AppCounter._deserialize(params.get("AppCounter"))
+        if params.get("UserCounter") is not None:
+            self._UserCounter = ResourceCounterData()
+            self._UserCounter._deserialize(params.get("UserCounter"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetCredentialStateRequest(AbstractModel):
     """GetCredentialState请求参数结构体
 
@@ -725,6 +1113,189 @@ class GetCredentialStateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetOverSummaryRequest(AbstractModel):
+    """GetOverSummary请求参数结构体
+
+    """
+
+
+class GetOverSummaryResponse(AbstractModel):
+    """GetOverSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppCounter: 用户参与应用的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        :param _UserCounter: 用户部署应用的统计指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
+        :param _AppCnt: 用户参与的应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppCnt: int
+        :param _DeployCnt: 用户部署的应用总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployCnt: int
+        :param _ChainCnt: 部署网络子链总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChainCnt: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppCounter = None
+        self._UserCounter = None
+        self._AppCnt = None
+        self._DeployCnt = None
+        self._ChainCnt = None
+        self._RequestId = None
+
+    @property
+    def AppCounter(self):
+        return self._AppCounter
+
+    @AppCounter.setter
+    def AppCounter(self, AppCounter):
+        self._AppCounter = AppCounter
+
+    @property
+    def UserCounter(self):
+        return self._UserCounter
+
+    @UserCounter.setter
+    def UserCounter(self, UserCounter):
+        self._UserCounter = UserCounter
+
+    @property
+    def AppCnt(self):
+        return self._AppCnt
+
+    @AppCnt.setter
+    def AppCnt(self, AppCnt):
+        self._AppCnt = AppCnt
+
+    @property
+    def DeployCnt(self):
+        return self._DeployCnt
+
+    @DeployCnt.setter
+    def DeployCnt(self, DeployCnt):
+        self._DeployCnt = DeployCnt
+
+    @property
+    def ChainCnt(self):
+        return self._ChainCnt
+
+    @ChainCnt.setter
+    def ChainCnt(self, ChainCnt):
+        self._ChainCnt = ChainCnt
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AppCounter") is not None:
+            self._AppCounter = ResourceCounterData()
+            self._AppCounter._deserialize(params.get("AppCounter"))
+        if params.get("UserCounter") is not None:
+            self._UserCounter = ResourceCounterData()
+            self._UserCounter._deserialize(params.get("UserCounter"))
+        self._AppCnt = params.get("AppCnt")
+        self._DeployCnt = params.get("DeployCnt")
+        self._ChainCnt = params.get("ChainCnt")
+        self._RequestId = params.get("RequestId")
+
+
+class GetTDidByObjectIdRequest(AbstractModel):
+    """GetTDidByObjectId请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectId: 业务层为DID设置的唯一标识
+        :type ObjectId: str
+        :param _DAPId: DID应用Id
+        :type DAPId: int
+        """
+        self._ObjectId = None
+        self._DAPId = None
+
+    @property
+    def ObjectId(self):
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+
+    def _deserialize(self, params):
+        self._ObjectId = params.get("ObjectId")
+        self._DAPId = params.get("DAPId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTDidByObjectIdResponse(AbstractModel):
+    """GetTDidByObjectId返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Did: DID标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Did: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Did = None
+        self._RequestId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Did = params.get("Did")
+        self._RequestId = params.get("RequestId")
+
+
 class GetTDidDocumentRequest(AbstractModel):
     """GetTDidDocument请求参数结构体
 
@@ -804,6 +1375,88 @@ class GetTDidDocumentResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Document = params.get("Document")
+        self._RequestId = params.get("RequestId")
+
+
+class GetTDidPubKeyRequest(AbstractModel):
+    """GetTDidPubKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Did: DID标识
+        :type Did: str
+        :param _DAPId: DID应用Id
+        :type DAPId: int
+        """
+        self._Did = None
+        self._DAPId = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+
+    def _deserialize(self, params):
+        self._Did = params.get("Did")
+        self._DAPId = params.get("DAPId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTDidPubKeyResponse(AbstractModel):
+    """GetTDidPubKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthPublicKeyList: DID公钥数组
+        :type AuthPublicKeyList: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuthPublicKeyList = None
+        self._RequestId = None
+
+    @property
+    def AuthPublicKeyList(self):
+        return self._AuthPublicKeyList
+
+    @AuthPublicKeyList.setter
+    def AuthPublicKeyList(self, AuthPublicKeyList):
+        self._AuthPublicKeyList = AuthPublicKeyList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AuthPublicKeyList = params.get("AuthPublicKeyList")
         self._RequestId = params.get("RequestId")
 
 
@@ -900,6 +1553,429 @@ class IssueCredentialResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CredentialData = params.get("CredentialData")
+        self._RequestId = params.get("RequestId")
+
+
+class QueryAuthorityInfoRequest(AbstractModel):
+    """QueryAuthorityInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Did: DID标识
+        :type Did: str
+        :param _DAPId: DID应用id
+        :type DAPId: int
+        :param _Name: 权威机构名称
+        :type Name: str
+        """
+        self._Did = None
+        self._DAPId = None
+        self._Name = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Did = params.get("Did")
+        self._DAPId = params.get("DAPId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryAuthorityInfoResponse(AbstractModel):
+    """QueryAuthorityInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _Did: 权威机构did
+        :type Did: str
+        :param _Status: 状态：1为已认证，2为未认证
+        :type Status: int
+        :param _Description: 机构备注信息
+        :type Description: str
+        :param _RecognizeTime: 认证时间
+        :type RecognizeTime: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Did = None
+        self._Status = None
+        self._Description = None
+        self._RecognizeTime = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RecognizeTime(self):
+        return self._RecognizeTime
+
+    @RecognizeTime.setter
+    def RecognizeTime(self, RecognizeTime):
+        self._RecognizeTime = RecognizeTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Did = params.get("Did")
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
+        self._RecognizeTime = params.get("RecognizeTime")
+        self._RequestId = params.get("RequestId")
+
+
+class QueryCPTRequest(AbstractModel):
+    """QueryCPT请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DAPId: DID应用id
+        :type DAPId: int
+        :param _CPTId: 凭证模板id
+        :type CPTId: int
+        """
+        self._DAPId = None
+        self._CPTId = None
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+    @property
+    def CPTId(self):
+        return self._CPTId
+
+    @CPTId.setter
+    def CPTId(self, CPTId):
+        self._CPTId = CPTId
+
+
+    def _deserialize(self, params):
+        self._DAPId = params.get("DAPId")
+        self._CPTId = params.get("CPTId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryCPTResponse(AbstractModel):
+    """QueryCPT返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CPTJson: 凭证模板内容
+        :type CPTJson: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CPTJson = None
+        self._RequestId = None
+
+    @property
+    def CPTJson(self):
+        return self._CPTJson
+
+    @CPTJson.setter
+    def CPTJson(self, CPTJson):
+        self._CPTJson = CPTJson
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CPTJson = params.get("CPTJson")
+        self._RequestId = params.get("RequestId")
+
+
+class ResourceCounterData(AbstractModel):
+    """资源计数统计数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DidCnt: DID总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DidCnt: int
+        :param _VCCnt: VC总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VCCnt: int
+        :param _CPTCnt: CPT总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CPTCnt: int
+        :param _VerifyCnt:  VC验证总数 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VerifyCnt: int
+        :param _AuthCnt: 权威机构数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthCnt: int
+        """
+        self._DidCnt = None
+        self._VCCnt = None
+        self._CPTCnt = None
+        self._VerifyCnt = None
+        self._AuthCnt = None
+
+    @property
+    def DidCnt(self):
+        return self._DidCnt
+
+    @DidCnt.setter
+    def DidCnt(self, DidCnt):
+        self._DidCnt = DidCnt
+
+    @property
+    def VCCnt(self):
+        return self._VCCnt
+
+    @VCCnt.setter
+    def VCCnt(self, VCCnt):
+        self._VCCnt = VCCnt
+
+    @property
+    def CPTCnt(self):
+        return self._CPTCnt
+
+    @CPTCnt.setter
+    def CPTCnt(self, CPTCnt):
+        self._CPTCnt = CPTCnt
+
+    @property
+    def VerifyCnt(self):
+        return self._VerifyCnt
+
+    @VerifyCnt.setter
+    def VerifyCnt(self, VerifyCnt):
+        self._VerifyCnt = VerifyCnt
+
+    @property
+    def AuthCnt(self):
+        return self._AuthCnt
+
+    @AuthCnt.setter
+    def AuthCnt(self, AuthCnt):
+        self._AuthCnt = AuthCnt
+
+
+    def _deserialize(self, params):
+        self._DidCnt = params.get("DidCnt")
+        self._VCCnt = params.get("VCCnt")
+        self._CPTCnt = params.get("CPTCnt")
+        self._VerifyCnt = params.get("VerifyCnt")
+        self._AuthCnt = params.get("AuthCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetTDidAttributeRequest(AbstractModel):
+    """SetTDidAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Did: DID标识符
+        :type Did: str
+        :param _Attributes: 属性名值对数组
+        :type Attributes: list of DidAttribute
+        :param _DAPId: DID应用Id
+        :type DAPId: int
+        :param _OperateCredential: 操作鉴权凭证
+        :type OperateCredential: str
+        """
+        self._Did = None
+        self._Attributes = None
+        self._DAPId = None
+        self._OperateCredential = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def Attributes(self):
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+    @property
+    def OperateCredential(self):
+        return self._OperateCredential
+
+    @OperateCredential.setter
+    def OperateCredential(self, OperateCredential):
+        self._OperateCredential = OperateCredential
+
+
+    def _deserialize(self, params):
+        self._Did = params.get("Did")
+        if params.get("Attributes") is not None:
+            self._Attributes = []
+            for item in params.get("Attributes"):
+                obj = DidAttribute()
+                obj._deserialize(item)
+                self._Attributes.append(obj)
+        self._DAPId = params.get("DAPId")
+        self._OperateCredential = params.get("OperateCredential")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetTDidAttributeResponse(AbstractModel):
+    """SetTDidAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Transaction: 上链交易信息
+        :type Transaction: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Transaction = None
+        self._RequestId = None
+
+    @property
+    def Transaction(self):
+        return self._Transaction
+
+    @Transaction.setter
+    def Transaction(self, Transaction):
+        self._Transaction = Transaction
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Transaction") is not None:
+            self._Transaction = ChainTransaction()
+            self._Transaction._deserialize(params.get("Transaction"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1055,6 +2131,136 @@ class VerifyCredentialsResponse(AbstractModel):
         :param _VerifyCode: 验证返回码
         :type VerifyCode: int
         :param _VerifyMessage: 验证结果信息
+        :type VerifyMessage: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._VerifyCode = None
+        self._VerifyMessage = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+    @property
+    def VerifyMessage(self):
+        return self._VerifyMessage
+
+    @VerifyMessage.setter
+    def VerifyMessage(self, VerifyMessage):
+        self._VerifyMessage = VerifyMessage
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._VerifyCode = params.get("VerifyCode")
+        self._VerifyMessage = params.get("VerifyMessage")
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyPresentationRequest(AbstractModel):
+    """VerifyPresentation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Did: VP持有人的did标识
+        :type Did: str
+        :param _PresentationData: 可验证表达内容
+        :type PresentationData: str
+        :param _DAPId: DID应用id
+        :type DAPId: int
+        :param _VerifyCode: 随机验证码
+        :type VerifyCode: str
+        """
+        self._Did = None
+        self._PresentationData = None
+        self._DAPId = None
+        self._VerifyCode = None
+
+    @property
+    def Did(self):
+        return self._Did
+
+    @Did.setter
+    def Did(self, Did):
+        self._Did = Did
+
+    @property
+    def PresentationData(self):
+        return self._PresentationData
+
+    @PresentationData.setter
+    def PresentationData(self, PresentationData):
+        self._PresentationData = PresentationData
+
+    @property
+    def DAPId(self):
+        return self._DAPId
+
+    @DAPId.setter
+    def DAPId(self, DAPId):
+        self._DAPId = DAPId
+
+    @property
+    def VerifyCode(self):
+        return self._VerifyCode
+
+    @VerifyCode.setter
+    def VerifyCode(self, VerifyCode):
+        self._VerifyCode = VerifyCode
+
+
+    def _deserialize(self, params):
+        self._Did = params.get("Did")
+        self._PresentationData = params.get("PresentationData")
+        self._DAPId = params.get("DAPId")
+        self._VerifyCode = params.get("VerifyCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyPresentationResponse(AbstractModel):
+    """VerifyPresentation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否验证成功
+        :type Result: bool
+        :param _VerifyCode: 验证返回码
+        :type VerifyCode: int
+        :param _VerifyMessage: 验证消息
         :type VerifyMessage: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

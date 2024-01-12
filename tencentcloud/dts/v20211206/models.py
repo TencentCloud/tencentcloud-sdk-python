@@ -9290,9 +9290,12 @@ class MigrateOption(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDstReadOnly: bool
         :param _ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
-["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) ]
+["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒)]
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
+        :param _MigrateWay: pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MigrateWay: str
         """
         self._DatabaseTable = None
         self._MigrateType = None
@@ -9301,6 +9304,7 @@ class MigrateOption(AbstractModel):
         self._IsOverrideRoot = None
         self._IsDstReadOnly = None
         self._ExtraAttr = None
+        self._MigrateWay = None
 
     @property
     def DatabaseTable(self):
@@ -9358,6 +9362,14 @@ class MigrateOption(AbstractModel):
     def ExtraAttr(self, ExtraAttr):
         self._ExtraAttr = ExtraAttr
 
+    @property
+    def MigrateWay(self):
+        return self._MigrateWay
+
+    @MigrateWay.setter
+    def MigrateWay(self, MigrateWay):
+        self._MigrateWay = MigrateWay
+
 
     def _deserialize(self, params):
         if params.get("DatabaseTable") is not None:
@@ -9376,6 +9388,7 @@ class MigrateOption(AbstractModel):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._MigrateWay = params.get("MigrateWay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

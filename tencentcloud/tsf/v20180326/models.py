@@ -38417,7 +38417,7 @@ class ServiceStatisticsResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 请求模版路径:type为接口时返回，服务时不返回
+        :param _Path: 请求模板路径:type为接口时返回，服务时不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Method: 请求方法:type为接口时返回，服务时不返回

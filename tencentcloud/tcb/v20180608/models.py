@@ -1812,14 +1812,19 @@ class CloudBaseRunNfsVolumeSource(AbstractModel):
     def __init__(self):
         r"""
         :param _Server: NFS挂载Server
+注意：此字段可能返回 null，表示取不到有效值。
         :type Server: str
         :param _Path: Server路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _ReadOnly: 是否只读
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: bool
         :param _SecretName: secret名称
+注意：此字段可能返回 null，表示取不到有效值。
         :type SecretName: str
         :param _EnableEmptyDirVolume: 临时目录
+注意：此字段可能返回 null，表示取不到有效值。
         :type EnableEmptyDirVolume: bool
         """
         self._Server = None
@@ -2473,12 +2478,16 @@ class CloudBaseRunVolumeMount(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 资源名
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _MountPath: 挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
         :type MountPath: str
         :param _ReadOnly: 是否只读
+注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: bool
         :param _NfsVolumes: Nfs挂载信息
+注意：此字段可能返回 null，表示取不到有效值。
         :type NfsVolumes: list of CloudBaseRunNfsVolumeSource
         """
         self._Name = None

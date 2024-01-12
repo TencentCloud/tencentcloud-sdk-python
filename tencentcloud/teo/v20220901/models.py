@@ -6235,9 +6235,9 @@ class DeleteOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: 站点 ID
         :type ZoneId: str
-        :param _GroupId: 源站组ID，此参数必填。
+        :param _GroupId: 源站组 ID，此参数必填。
         :type GroupId: str
         """
         self._ZoneId = None

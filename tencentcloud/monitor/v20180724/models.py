@@ -4725,6 +4725,159 @@ class CreatePrometheusAgentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrometheusAlertGroupRequest(AbstractModel):
+    """CreatePrometheusAlertGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus实例ID
+        :type InstanceId: str
+        :param _GroupName: 告警分组名称，不能与其他告警分组重名
+        :type GroupName: str
+        :param _GroupState: 告警分组状态：
+2 -- 启用
+3 -- 禁用
+不为空时会覆盖 `Rules`字段下所有告警规则状态
+
+        :type GroupState: int
+        :param _AMPReceivers: 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: 自定义告警通知模板
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: 告警通知周期（收敛时间），为空默认1h
+        :type RepeatInterval: str
+        :param _Rules: 要创建的告警规则列表
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        """
+        self._InstanceId = None
+        self._GroupName = None
+        self._GroupState = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupState(self):
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+    @property
+    def AMPReceivers(self):
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupName = params.get("GroupName")
+        self._GroupState = params.get("GroupState")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusAlertGroupResponse(AbstractModel):
+    """CreatePrometheusAlertGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 创建的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        :type GroupId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePrometheusAlertPolicyRequest(AbstractModel):
     """CreatePrometheusAlertPolicy请求参数结构体
 
@@ -6486,6 +6639,76 @@ class DeletePolicyGroupRequest(AbstractModel):
 
 class DeletePolicyGroupResponse(AbstractModel):
     """DeletePolicyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrometheusAlertGroupsRequest(AbstractModel):
+    """DeletePrometheusAlertGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus实例id
+        :type InstanceId: str
+        :param _GroupIds: 需要删除的告警分组ID，形如alert-xxxxx
+        :type GroupIds: list of str
+        """
+        self._InstanceId = None
+        self._GroupIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrometheusAlertGroupsResponse(AbstractModel):
+    """DeletePrometheusAlertGroups返回参数结构体
 
     """
 
@@ -15505,6 +15728,145 @@ class DescribePrometheusAgentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePrometheusAlertGroupsRequest(AbstractModel):
+    """DescribePrometheusAlertGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0
+        :type Offset: int
+        :param _GroupId: 告警分组ID，形如alert-xxxx。
+查询给定ID的告警分组
+        :type GroupId: str
+        :param _GroupName: 告警分组名称。
+查询名称中包含给定字符串的告警分组
+        :type GroupName: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusAlertGroupsResponse(AbstractModel):
+    """DescribePrometheusAlertGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertGroupSet: 告警分组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlertGroupSet: list of PrometheusAlertGroupSet
+        :param _TotalCount: 告警分组总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AlertGroupSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AlertGroupSet(self):
+        return self._AlertGroupSet
+
+    @AlertGroupSet.setter
+    def AlertGroupSet(self, AlertGroupSet):
+        self._AlertGroupSet = AlertGroupSet
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AlertGroupSet") is not None:
+            self._AlertGroupSet = []
+            for item in params.get("AlertGroupSet"):
+                obj = PrometheusAlertGroupSet()
+                obj._deserialize(item)
+                self._AlertGroupSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrometheusAlertPolicyRequest(AbstractModel):
     """DescribePrometheusAlertPolicy请求参数结构体
 
@@ -24226,6 +24588,405 @@ abnormal = 异常
         
 
 
+class PrometheusAlertAllowTimeRange(AbstractModel):
+    """Prometheus自定义告警通知时间段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: 从0点开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Start: str
+        :param _End: 从0点开始的秒数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type End: str
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertCustomReceiver(AbstractModel):
+    """Prometheus告警自定义通知模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 自定义通知类型
+alertmanager -- vpc内自建alertmanager
+webhook -- vpc内webhook地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Url: alertmanager/webhook地址。（prometheus实例同vpc内ip）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _AllowedTimeRanges: 允许发送告警的时间范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowedTimeRanges: list of PrometheusAlertAllowTimeRange
+        :param _ClusterId: alertmanager所在的内网集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterType: alertmanager所在的内网集群类型(tke/eks/tdcc)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        """
+        self._Type = None
+        self._Url = None
+        self._AllowedTimeRanges = None
+        self._ClusterId = None
+        self._ClusterType = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AllowedTimeRanges(self):
+        return self._AllowedTimeRanges
+
+    @AllowedTimeRanges.setter
+    def AllowedTimeRanges(self, AllowedTimeRanges):
+        self._AllowedTimeRanges = AllowedTimeRanges
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Url = params.get("Url")
+        if params.get("AllowedTimeRanges") is not None:
+            self._AllowedTimeRanges = []
+            for item in params.get("AllowedTimeRanges"):
+                obj = PrometheusAlertAllowTimeRange()
+                obj._deserialize(item)
+                self._AllowedTimeRanges.append(obj)
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertGroupRuleSet(AbstractModel):
+    """告警分组内告警规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 告警规则名称，同一告警分组下不允许重名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _Labels: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of PrometheusRuleKV
+        :param _Annotations: 注释列表
+
+告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Annotations: list of PrometheusRuleKV
+        :param _Duration: 规则报警持续时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: str
+        :param _Expr: 规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expr: str
+        :param _State: 告警规则状态:
+2-启用
+3-禁用
+为空默认启用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        """
+        self._RuleName = None
+        self._Labels = None
+        self._Annotations = None
+        self._Duration = None
+        self._Expr = None
+        self._State = None
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Labels(self):
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Annotations(self):
+        return self._Annotations
+
+    @Annotations.setter
+    def Annotations(self, Annotations):
+        self._Annotations = Annotations
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Expr(self):
+        return self._Expr
+
+    @Expr.setter
+    def Expr(self, Expr):
+        self._Expr = Expr
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Annotations") is not None:
+            self._Annotations = []
+            for item in params.get("Annotations"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._Annotations.append(obj)
+        self._Duration = params.get("Duration")
+        self._Expr = params.get("Expr")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusAlertGroupSet(AbstractModel):
+    """Prometheus告警规则分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 告警分组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _AMPReceivers: 云监控告警模板ID ，返回告警模板转换后的notice ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: 自定义告警模板
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: 告警通知间隔
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatInterval: str
+        :param _TemplateId: 若告警分组通过模板创建，则返回模板ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateId: str
+        :param _Rules: 分组内告警规则详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        :param _CreatedAt: 分组创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _UpdatedAt: 分组更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._TemplateId = None
+        self._Rules = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def AMPReceivers(self):
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        self._TemplateId = params.get("TemplateId")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusAlertManagerConfig(AbstractModel):
     """告警渠道使用自建alertmanager的配置
 
@@ -30002,6 +30763,254 @@ class UpdatePrometheusAgentStatusRequest(AbstractModel):
 
 class UpdatePrometheusAgentStatusResponse(AbstractModel):
     """UpdatePrometheusAgentStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAlertGroupRequest(AbstractModel):
+    """UpdatePrometheusAlertGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: prometheus实例ID
+        :type InstanceId: str
+        :param _GroupId: 告警分组ID，形如alert-xxxx
+        :type GroupId: str
+        :param _GroupName: 告警分组名称，不能与其他告警分组重名
+        :type GroupName: str
+        :param _GroupState: 告警分组状态：
+2 -- 启用
+3 -- 禁用
+不为空时会覆盖 `Rules`字段下所有告警规则状态
+        :type GroupState: int
+        :param _AMPReceivers: 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+        :type AMPReceivers: list of str
+        :param _CustomReceiver: 自定义告警通知模板
+        :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
+        :param _RepeatInterval: 告警通知周期（收敛时间），为空默认1h
+        :type RepeatInterval: str
+        :param _Rules: 要创建的告警规则列表
+        :type Rules: list of PrometheusAlertGroupRuleSet
+        """
+        self._InstanceId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupState = None
+        self._AMPReceivers = None
+        self._CustomReceiver = None
+        self._RepeatInterval = None
+        self._Rules = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupState(self):
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+    @property
+    def AMPReceivers(self):
+        return self._AMPReceivers
+
+    @AMPReceivers.setter
+    def AMPReceivers(self, AMPReceivers):
+        self._AMPReceivers = AMPReceivers
+
+    @property
+    def CustomReceiver(self):
+        return self._CustomReceiver
+
+    @CustomReceiver.setter
+    def CustomReceiver(self, CustomReceiver):
+        self._CustomReceiver = CustomReceiver
+
+    @property
+    def RepeatInterval(self):
+        return self._RepeatInterval
+
+    @RepeatInterval.setter
+    def RepeatInterval(self, RepeatInterval):
+        self._RepeatInterval = RepeatInterval
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupState = params.get("GroupState")
+        self._AMPReceivers = params.get("AMPReceivers")
+        if params.get("CustomReceiver") is not None:
+            self._CustomReceiver = PrometheusAlertCustomReceiver()
+            self._CustomReceiver._deserialize(params.get("CustomReceiver"))
+        self._RepeatInterval = params.get("RepeatInterval")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = PrometheusAlertGroupRuleSet()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAlertGroupResponse(AbstractModel):
+    """UpdatePrometheusAlertGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 更新的告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        :type GroupId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePrometheusAlertGroupStateRequest(AbstractModel):
+    """UpdatePrometheusAlertGroupState请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param _GroupIds: 告警分组ID列表，形如alert-xxxx
+        :type GroupIds: list of str
+        :param _GroupState: 告警分组状态
+2 -- 启用
+3 -- 禁用
+        :type GroupState: int
+        """
+        self._InstanceId = None
+        self._GroupIds = None
+        self._GroupState = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def GroupState(self):
+        return self._GroupState
+
+    @GroupState.setter
+    def GroupState(self, GroupState):
+        self._GroupState = GroupState
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupIds = params.get("GroupIds")
+        self._GroupState = params.get("GroupState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrometheusAlertGroupStateResponse(AbstractModel):
+    """UpdatePrometheusAlertGroupState返回参数结构体
 
     """
 

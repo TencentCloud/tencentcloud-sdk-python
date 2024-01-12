@@ -2190,6 +2190,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportRocketMQMessageDetail(self, request):
+        """导出RocketMQ消息详情
+
+        :param request: Request instance for ExportRocketMQMessageDetail.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ExportRocketMQMessageDetailRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ExportRocketMQMessageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportRocketMQMessageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportRocketMQMessageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ImportRocketMQConsumerGroups(self, request):
         """输入迁移任务id和要导入的Group，导入后台
 

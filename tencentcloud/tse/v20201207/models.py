@@ -8248,7 +8248,7 @@ class DescribeZookeeperServerInterfacesResponse(AbstractModel):
 
 
 class EngineAdmin(AbstractModel):
-    """引擎的初始管理账号
+    """引擎的初始管理账号，当前仅支持Apollo引擎
 
     """
 
