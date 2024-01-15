@@ -31120,6 +31120,9 @@ class LaneInfo(AbstractModel):
         :param _NamespaceIdList: 泳道已经关联部署组的命名空间列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceIdList: list of str
+        :param _LaneGroupId: 泳道部署组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneGroupId: str
         """
         self._LaneId = None
         self._LaneName = None
@@ -31129,6 +31132,7 @@ class LaneInfo(AbstractModel):
         self._LaneGroupList = None
         self._Entrance = None
         self._NamespaceIdList = None
+        self._LaneGroupId = None
 
     @property
     def LaneId(self):
@@ -31194,6 +31198,14 @@ class LaneInfo(AbstractModel):
     def NamespaceIdList(self, NamespaceIdList):
         self._NamespaceIdList = NamespaceIdList
 
+    @property
+    def LaneGroupId(self):
+        return self._LaneGroupId
+
+    @LaneGroupId.setter
+    def LaneGroupId(self, LaneGroupId):
+        self._LaneGroupId = LaneGroupId
+
 
     def _deserialize(self, params):
         self._LaneId = params.get("LaneId")
@@ -31209,6 +31221,7 @@ class LaneInfo(AbstractModel):
                 self._LaneGroupList.append(obj)
         self._Entrance = params.get("Entrance")
         self._NamespaceIdList = params.get("NamespaceIdList")
+        self._LaneGroupId = params.get("LaneGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

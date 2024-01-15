@@ -491,7 +491,7 @@ class CreateAuditTrackRequest(AbstractModel):
         :type EventNames: list of str
         :param _Storage: 数据投递存储（目前支持 cos、cls）
         :type Storage: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
-        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+        :param _TrackForAllMembers: 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能) 
         :type TrackForAllMembers: int
         """
         self._Name = None

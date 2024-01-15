@@ -656,6 +656,9 @@ LIMITEXCEEDED_NAMESPACE = 'LimitExceeded.Namespace'
 # Offset超出限制。
 LIMITEXCEEDED_OFFSET = 'LimitExceeded.Offset'
 
+# 特权容器属性开启失败
+LIMITEXCEEDED_PRIVILEGECONTAINER = 'LimitExceeded.PrivilegeContainer'
+
 # 定时预置数量超过最大限制。
 LIMITEXCEEDED_PROVISIONTRIGGERACTION = 'LimitExceeded.ProvisionTriggerAction'
 
