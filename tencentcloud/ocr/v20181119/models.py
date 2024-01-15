@@ -15203,6 +15203,195 @@ class RecognizeContainerOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RecognizeForeignPermanentResidentIdCardRequest(AbstractModel):
+    """RecognizeForeignPermanentResidentIdCard请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: 图片的 Url 地址。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/docume
+        :type ImageUrl: str
+        :param _ImageBase64: 图片的 Base64 值。
+支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+支持的图片像素：需介于20-10000px之间。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _EnablePdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :type EnablePdf: bool
+        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+示例值：1
+        :type PdfPageNumber: int
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._EnablePdf = None
+        self._PdfPageNumber = None
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def EnablePdf(self):
+        return self._EnablePdf
+
+    @EnablePdf.setter
+    def EnablePdf(self, EnablePdf):
+        self._EnablePdf = EnablePdf
+
+    @property
+    def PdfPageNumber(self):
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._EnablePdf = params.get("EnablePdf")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
+    """RecognizeForeignPermanentResidentIdCard返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CnName: 中文姓名。
+        :type CnName: str
+        :param _EnName: 英文名。
+        :type EnName: str
+        :param _Sex: 性别。
+        :type Sex: str
+        :param _DateOfBirth: 出生日期。规范格式为 XXXX年XX月XX日。
+        :type DateOfBirth: str
+        :param _Nationality: 国籍。
+        :type Nationality: str
+        :param _PeriodOfValidity: 有效期限。
+        :type PeriodOfValidity: str
+        :param _No: 证件号码。
+        :type No: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CnName = None
+        self._EnName = None
+        self._Sex = None
+        self._DateOfBirth = None
+        self._Nationality = None
+        self._PeriodOfValidity = None
+        self._No = None
+        self._RequestId = None
+
+    @property
+    def CnName(self):
+        return self._CnName
+
+    @CnName.setter
+    def CnName(self, CnName):
+        self._CnName = CnName
+
+    @property
+    def EnName(self):
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def DateOfBirth(self):
+        return self._DateOfBirth
+
+    @DateOfBirth.setter
+    def DateOfBirth(self, DateOfBirth):
+        self._DateOfBirth = DateOfBirth
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def PeriodOfValidity(self):
+        return self._PeriodOfValidity
+
+    @PeriodOfValidity.setter
+    def PeriodOfValidity(self, PeriodOfValidity):
+        self._PeriodOfValidity = PeriodOfValidity
+
+    @property
+    def No(self):
+        return self._No
+
+    @No.setter
+    def No(self, No):
+        self._No = No
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CnName = params.get("CnName")
+        self._EnName = params.get("EnName")
+        self._Sex = params.get("Sex")
+        self._DateOfBirth = params.get("DateOfBirth")
+        self._Nationality = params.get("Nationality")
+        self._PeriodOfValidity = params.get("PeriodOfValidity")
+        self._No = params.get("No")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeGeneralInvoiceRequest(AbstractModel):
     """RecognizeGeneralInvoice请求参数结构体
 

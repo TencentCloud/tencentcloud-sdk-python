@@ -5690,6 +5690,10 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         :type KeyType: str
         :param _Limit: 查询数目，默认为20，最大值为100。
         :type Limit: int
+        :param _AsyncRequestId: 异步任务ID。当为空时，选择最近任务的ID。
+        :type AsyncRequestId: int
+        :param _ShardIds: 分片节点序号列表。当列表为空时，选择所有分片节点。
+        :type ShardIds: list of int
         """
         self._InstanceId = None
         self._Date = None
@@ -5697,6 +5701,8 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         self._SortBy = None
         self._KeyType = None
         self._Limit = None
+        self._AsyncRequestId = None
+        self._ShardIds = None
 
     @property
     def InstanceId(self):
@@ -5746,6 +5752,22 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def ShardIds(self):
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5754,6 +5776,8 @@ class DescribeRedisTopBigKeysRequest(AbstractModel):
         self._SortBy = params.get("SortBy")
         self._KeyType = params.get("KeyType")
         self._Limit = params.get("Limit")
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._ShardIds = params.get("ShardIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8764,10 +8788,14 @@ class InstanceConfs(AbstractModel):
         :param _KeyDelimiters: redis大key分析的自定义分割符，仅redis使用
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyDelimiters: list of str
+        :param _ShardNum: 分片节点数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShardNum: str
         """
         self._DailyInspection = None
         self._OverviewDisplay = None
         self._KeyDelimiters = None
+        self._ShardNum = None
 
     @property
     def DailyInspection(self):
@@ -8793,11 +8821,20 @@ class InstanceConfs(AbstractModel):
     def KeyDelimiters(self, KeyDelimiters):
         self._KeyDelimiters = KeyDelimiters
 
+    @property
+    def ShardNum(self):
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
 
     def _deserialize(self, params):
         self._DailyInspection = params.get("DailyInspection")
         self._OverviewDisplay = params.get("OverviewDisplay")
         self._KeyDelimiters = params.get("KeyDelimiters")
+        self._ShardNum = params.get("ShardNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3539,31 +3539,6 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeKafkaTopicInfo(self, request):
-        """没用到
-
-        获取kafka的topic信息
-
-        :param request: Request instance for DescribeKafkaTopicInfo.
-        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeKafkaTopicInfoRequest`
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeKafkaTopicInfoResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeKafkaTopicInfo", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeKafkaTopicInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeMonitorsByPage(self, request):
         """分页查询质量监控组
 
