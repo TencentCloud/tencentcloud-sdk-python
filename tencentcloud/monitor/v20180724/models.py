@@ -6009,10 +6009,22 @@ class DataPoint(AbstractModel):
         :type Timestamps: list of float
         :param _Values: 监控值数组，该数组和Timestamps一一对应
         :type Values: list of float
+        :param _MaxValues: 监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxValues: list of float
+        :param _MinValues: 监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinValues: list of float
+        :param _AvgValues: 监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvgValues: list of float
         """
         self._Dimensions = None
         self._Timestamps = None
         self._Values = None
+        self._MaxValues = None
+        self._MinValues = None
+        self._AvgValues = None
 
     @property
     def Dimensions(self):
@@ -6038,6 +6050,30 @@ class DataPoint(AbstractModel):
     def Values(self, Values):
         self._Values = Values
 
+    @property
+    def MaxValues(self):
+        return self._MaxValues
+
+    @MaxValues.setter
+    def MaxValues(self, MaxValues):
+        self._MaxValues = MaxValues
+
+    @property
+    def MinValues(self):
+        return self._MinValues
+
+    @MinValues.setter
+    def MinValues(self, MinValues):
+        self._MinValues = MinValues
+
+    @property
+    def AvgValues(self):
+        return self._AvgValues
+
+    @AvgValues.setter
+    def AvgValues(self, AvgValues):
+        self._AvgValues = AvgValues
+
 
     def _deserialize(self, params):
         if params.get("Dimensions") is not None:
@@ -6048,6 +6084,9 @@ class DataPoint(AbstractModel):
                 self._Dimensions.append(obj)
         self._Timestamps = params.get("Timestamps")
         self._Values = params.get("Values")
+        self._MaxValues = params.get("MaxValues")
+        self._MinValues = params.get("MinValues")
+        self._AvgValues = params.get("AvgValues")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19406,6 +19445,8 @@ class GetMonitorDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
         :type EndTime: str
+        :param _SpecifyStatistics: 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+        :type SpecifyStatistics: int
         """
         self._Namespace = None
         self._MetricName = None
@@ -19413,6 +19454,7 @@ class GetMonitorDataRequest(AbstractModel):
         self._Period = None
         self._StartTime = None
         self._EndTime = None
+        self._SpecifyStatistics = None
 
     @property
     def Namespace(self):
@@ -19462,6 +19504,14 @@ class GetMonitorDataRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def SpecifyStatistics(self):
+        return self._SpecifyStatistics
+
+    @SpecifyStatistics.setter
+    def SpecifyStatistics(self, SpecifyStatistics):
+        self._SpecifyStatistics = SpecifyStatistics
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
@@ -19475,6 +19525,7 @@ class GetMonitorDataRequest(AbstractModel):
         self._Period = params.get("Period")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._SpecifyStatistics = params.get("SpecifyStatistics")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

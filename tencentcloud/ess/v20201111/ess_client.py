@@ -733,27 +733,27 @@ class EssClient(AbstractClient):
     def CreateIntegrationEmployees(self, request):
         """此接口（CreateIntegrationEmployees）用于创建企业员工。
         支持以下场景
-        <table style="border-collapse: collapse; width: 100%;" border="1">
+        <table>
         <tbody>
         <tr>
-        <td style="width: 25%;">生成端</td>
-        <td style="width: 25%;">入参</td>
-        <td style="width: 25%;">提醒方式</td>
+        <td>生成端</td>
+        <td >入参</td>
+        <td>提醒方式</td>
         </tr>
         <tr>
-        <td style="width: 25%;">普通saas员工</td>
-        <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
-        <td style="width: 25%;">短信</td>
+        <td>普通saas员工</td>
+        <td>不需要传递 InvitationNotifyType</td>
+        <td>短信</td>
         </tr>
         <tr>
-        <td style="width: 25%;">企微员工</td>
-        <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
-        <td style="width: 25%;">企微内部实名消息</td>
+        <td>企微员工</td>
+        <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+        <td>企微内部实名消息</td>
         </tr>
         <tr>
-        <td style="width: 25%;">H5端 saas员工</td>
-        <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
-        <td style="width: 25%;">生成H5链接</td>
+        <td>H5端 saas员工</td>
+        <td>传递 InvitationNotifyType = H5，不支持企微</td>
+        <td>生成H5链接</td>
         </tr>
         </tbody>
         </table>
@@ -2060,27 +2060,27 @@ class EssClient(AbstractClient):
     def UpdateIntegrationEmployees(self, request):
         """此接口（UpdateIntegrationEmployees）用于修改未实名企业员工信息(姓名，手机号，邮件、部门)。
         修改手机号的时候,支持以下场景进行提醒通知
-        <table style="border-collapse: collapse; width: 100%;" border="1">
+        <table>
         <tbody>
         <tr>
-        <td style="width: 25%;">生成端</td>
-        <td style="width: 25%;">入参</td>
-        <td style="width: 25%;">提醒方式</td>
+        <td>生成端</td>
+        <td>入参</td>
+        <td>提醒方式</td>
         </tr>
         <tr>
-        <td style="width: 25%;">普通saas员工</td>
-        <td style="width: 25%;">不需要传递 InvitationNotifyType</td>
-        <td style="width: 25%;">短信</td>
+        <td>普通saas员工</td>
+        <td>不需要传递 InvitationNotifyType</td>
+        <td>短信</td>
         </tr>
         <tr>
-        <td style="width: 25%;">企微员工</td>
-        <td style="width: 25%;">不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
-        <td style="width: 25%;">企微内部实名消息</td>
+        <td>企微员工</td>
+        <td>不需要传递 InvitationNotifyType，将Employees 中的WeworkOpenId字段设置为企微员工明文的openid，但需确保该企微员工在应用的可见范围内</td>
+        <td>企微内部实名消息</td>
         </tr>
         <tr>
-        <td style="width: 25%;">H5端 saas员工</td>
-        <td style="width: 25%;">传递 InvitationNotifyType = H5，不支持企微</td>
-        <td style="width: 25%;">生成H5链接</td>
+        <td>H5端 saas员工</td>
+        <td>传递 InvitationNotifyType = H5，不支持企微</td>
+        <td>生成H5链接</td>
         </tr>
         </tbody>
         </table>

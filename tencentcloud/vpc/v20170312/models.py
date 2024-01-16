@@ -22563,6 +22563,8 @@ class DescribeUsedIpAddressRequest(AbstractModel):
         :type SubnetId: str
         :param _IpAddresses: 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
         :type IpAddresses: list of str
+        :param _Filters: 过滤条件，不支持同时指定IpAddresses和Filters参数。 支持的过滤条件如下： <li>ip-addresses：IP地址。</li> <li>resource-id：资源ID。</li>
+        :type Filters: list of Filter
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100。
@@ -22571,6 +22573,7 @@ class DescribeUsedIpAddressRequest(AbstractModel):
         self._VpcId = None
         self._SubnetId = None
         self._IpAddresses = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
 
@@ -22599,6 +22602,14 @@ class DescribeUsedIpAddressRequest(AbstractModel):
         self._IpAddresses = IpAddresses
 
     @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def Offset(self):
         return self._Offset
 
@@ -22619,6 +22630,12 @@ class DescribeUsedIpAddressRequest(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._IpAddresses = params.get("IpAddresses")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())

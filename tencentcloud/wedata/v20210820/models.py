@@ -2945,6 +2945,9 @@ WAITINT_TO_RUN:等待运行 / RUNNING: 正在运行 / COMPLETED: 执行成功 / 
         :param _AppId: 租户id
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
+        :param _CriticalDependency: 关键路径依赖
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CriticalDependency: str
         """
         self._Id = None
         self._BaselineInstanceId = None
@@ -2973,6 +2976,7 @@ WAITINT_TO_RUN:等待运行 / RUNNING: 正在运行 / COMPLETED: 执行成功 / 
         self._UserUin = None
         self._OwnerUin = None
         self._AppId = None
+        self._CriticalDependency = None
 
     @property
     def Id(self):
@@ -3190,6 +3194,14 @@ WAITINT_TO_RUN:等待运行 / RUNNING: 正在运行 / COMPLETED: 执行成功 / 
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def CriticalDependency(self):
+        return self._CriticalDependency
+
+    @CriticalDependency.setter
+    def CriticalDependency(self, CriticalDependency):
+        self._CriticalDependency = CriticalDependency
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -3219,6 +3231,7 @@ WAITINT_TO_RUN:等待运行 / RUNNING: 正在运行 / COMPLETED: 执行成功 / 
         self._UserUin = params.get("UserUin")
         self._OwnerUin = params.get("OwnerUin")
         self._AppId = params.get("AppId")
+        self._CriticalDependency = params.get("CriticalDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7735,9 +7748,6 @@ class ColumnLineageInfo(AbstractModel):
         :param _Id: 血缘id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _PrefixPath: 由中心节点出发的路径信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrefixPath: str
         :param _DatasourceId: 数据源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
@@ -7783,6 +7793,9 @@ class ColumnLineageInfo(AbstractModel):
         :param _Description: 描述信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _PrefixPath: 由中心节点出发的路径信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrefixPath: str
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -7803,7 +7816,6 @@ class ColumnLineageInfo(AbstractModel):
         :type ExtParams: list of LineageParamRecord
         """
         self._Id = None
-        self._PrefixPath = None
         self._DatasourceId = None
         self._TableId = None
         self._ColumnName = None
@@ -7819,6 +7831,7 @@ class ColumnLineageInfo(AbstractModel):
         self._DownStreamCount = None
         self._UpStreamCount = None
         self._Description = None
+        self._PrefixPath = None
         self._CreateTime = None
         self._ModifyTime = None
         self._Tasks = None
@@ -7833,14 +7846,6 @@ class ColumnLineageInfo(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
-
-    @property
-    def PrefixPath(self):
-        return self._PrefixPath
-
-    @PrefixPath.setter
-    def PrefixPath(self, PrefixPath):
-        self._PrefixPath = PrefixPath
 
     @property
     def DatasourceId(self):
@@ -7963,6 +7968,14 @@ class ColumnLineageInfo(AbstractModel):
         self._Description = Description
 
     @property
+    def PrefixPath(self):
+        return self._PrefixPath
+
+    @PrefixPath.setter
+    def PrefixPath(self, PrefixPath):
+        self._PrefixPath = PrefixPath
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -8013,7 +8026,6 @@ class ColumnLineageInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
-        self._PrefixPath = params.get("PrefixPath")
         self._DatasourceId = params.get("DatasourceId")
         self._TableId = params.get("TableId")
         self._ColumnName = params.get("ColumnName")
@@ -8029,6 +8041,7 @@ class ColumnLineageInfo(AbstractModel):
         self._DownStreamCount = params.get("DownStreamCount")
         self._UpStreamCount = params.get("UpStreamCount")
         self._Description = params.get("Description")
+        self._PrefixPath = params.get("PrefixPath")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Tasks = params.get("Tasks")
@@ -9834,6 +9847,8 @@ class CreateDataSourceRequest(AbstractModel):
         :type COSBucket: str
         :param _COSRegion: cos region
         :type COSRegion: str
+        :param _ConnectResult: 连接测试结果
+        :type ConnectResult: str
         """
         self._Name = None
         self._Category = None
@@ -9852,6 +9867,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._Collect = None
         self._COSBucket = None
         self._COSRegion = None
+        self._ConnectResult = None
 
     @property
     def Name(self):
@@ -9989,6 +10005,14 @@ class CreateDataSourceRequest(AbstractModel):
     def COSRegion(self, COSRegion):
         self._COSRegion = COSRegion
 
+    @property
+    def ConnectResult(self):
+        return self._ConnectResult
+
+    @ConnectResult.setter
+    def ConnectResult(self, ConnectResult):
+        self._ConnectResult = ConnectResult
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10008,6 +10032,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._Collect = params.get("Collect")
         self._COSBucket = params.get("COSBucket")
         self._COSRegion = params.get("COSRegion")
+        self._ConnectResult = params.get("ConnectResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17629,9 +17654,12 @@ class DescribeBaselineAllTaskDagRequest(AbstractModel):
         :type BaselineId: str
         :param _ProjectId: 1
         :type ProjectId: str
+        :param _BaselineTaskId: 1
+        :type BaselineTaskId: str
         """
         self._BaselineId = None
         self._ProjectId = None
+        self._BaselineTaskId = None
 
     @property
     def BaselineId(self):
@@ -17649,10 +17677,19 @@ class DescribeBaselineAllTaskDagRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def BaselineTaskId(self):
+        return self._BaselineTaskId
+
+    @BaselineTaskId.setter
+    def BaselineTaskId(self, BaselineTaskId):
+        self._BaselineTaskId = BaselineTaskId
+
 
     def _deserialize(self, params):
         self._BaselineId = params.get("BaselineId")
         self._ProjectId = params.get("ProjectId")
+        self._BaselineTaskId = params.get("BaselineTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17802,11 +17839,14 @@ class DescribeBaselineInstanceDagRequest(AbstractModel):
         :type UpstreamInstanceIds: str
         :param _Level: 向上展开层级
         :type Level: int
+        :param _PromiseTaskId: 保障任务id
+        :type PromiseTaskId: str
         """
         self._BaselineInstanceId = None
         self._ProjectId = None
         self._UpstreamInstanceIds = None
         self._Level = None
+        self._PromiseTaskId = None
 
     @property
     def BaselineInstanceId(self):
@@ -17840,12 +17880,21 @@ class DescribeBaselineInstanceDagRequest(AbstractModel):
     def Level(self, Level):
         self._Level = Level
 
+    @property
+    def PromiseTaskId(self):
+        return self._PromiseTaskId
+
+    @PromiseTaskId.setter
+    def PromiseTaskId(self, PromiseTaskId):
+        self._PromiseTaskId = PromiseTaskId
+
 
     def _deserialize(self, params):
         self._BaselineInstanceId = params.get("BaselineInstanceId")
         self._ProjectId = params.get("ProjectId")
         self._UpstreamInstanceIds = params.get("UpstreamInstanceIds")
         self._Level = params.get("Level")
+        self._PromiseTaskId = params.get("PromiseTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17907,9 +17956,12 @@ class DescribeBaselineInstanceGanttRequest(AbstractModel):
         :type BaselineInstanceId: int
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _PromiseTaskId: 保障任务id
+        :type PromiseTaskId: str
         """
         self._BaselineInstanceId = None
         self._ProjectId = None
+        self._PromiseTaskId = None
 
     @property
     def BaselineInstanceId(self):
@@ -17927,10 +17979,19 @@ class DescribeBaselineInstanceGanttRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def PromiseTaskId(self):
+        return self._PromiseTaskId
+
+    @PromiseTaskId.setter
+    def PromiseTaskId(self, PromiseTaskId):
+        self._PromiseTaskId = PromiseTaskId
+
 
     def _deserialize(self, params):
         self._BaselineInstanceId = params.get("BaselineInstanceId")
         self._ProjectId = params.get("ProjectId")
+        self._PromiseTaskId = params.get("PromiseTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32912,6 +32973,8 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         :type EndTime: str
         :param _InCharge: 责任人
         :type InCharge: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
         """
         self._ProjectId = None
         self._TaskTypeId = None
@@ -32920,6 +32983,7 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._InCharge = None
+        self._WorkflowId = None
 
     @property
     def ProjectId(self):
@@ -32977,6 +33041,14 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
     def InCharge(self, InCharge):
         self._InCharge = InCharge
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -32986,6 +33058,7 @@ class DescribeSchedulerInstanceStatusRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._InCharge = params.get("InCharge")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33060,6 +33133,12 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         :type TaskType: int
         :param _InCharge: 1
         :type InCharge: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _SortItem: 排序字段
+        :type SortItem: str
+        :param _SortType: 升序降序
+        :type SortType: str
         """
         self._ProjectId = None
         self._CycleUnit = None
@@ -33068,6 +33147,9 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         self._EndTime = None
         self._TaskType = None
         self._InCharge = None
+        self._WorkflowId = None
+        self._SortItem = None
+        self._SortType = None
 
     @property
     def ProjectId(self):
@@ -33125,6 +33207,30 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
     def InCharge(self, InCharge):
         self._InCharge = InCharge
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def SortItem(self):
+        return self._SortItem
+
+    @SortItem.setter
+    def SortItem(self, SortItem):
+        self._SortItem = SortItem
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33134,6 +33240,9 @@ class DescribeSchedulerRunTimeInstanceCntByStatusRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._TaskType = params.get("TaskType")
         self._InCharge = params.get("InCharge")
+        self._WorkflowId = params.get("WorkflowId")
+        self._SortItem = params.get("SortItem")
+        self._SortType = params.get("SortType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33202,11 +33311,14 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
         :type ProjectId: str
         :param _InCharge: 1
         :type InCharge: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
         """
         self._TaskType = None
         self._TypeName = None
         self._ProjectId = None
         self._InCharge = None
+        self._WorkflowId = None
 
     @property
     def TaskType(self):
@@ -33240,12 +33352,21 @@ class DescribeSchedulerTaskCntByStatusRequest(AbstractModel):
     def InCharge(self, InCharge):
         self._InCharge = InCharge
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
         self._TypeName = params.get("TypeName")
         self._ProjectId = params.get("ProjectId")
         self._InCharge = params.get("InCharge")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33788,6 +33909,8 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         :type AggregationUnit: str
         :param _AverageWindowSize: 1
         :type AverageWindowSize: int
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
         """
         self._ProjectId = None
         self._TaskTypeId = None
@@ -33802,6 +33925,7 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._StateList = None
         self._AggregationUnit = None
         self._AverageWindowSize = None
+        self._WorkflowId = None
 
     @property
     def ProjectId(self):
@@ -33907,6 +34031,14 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
     def AverageWindowSize(self, AverageWindowSize):
         self._AverageWindowSize = AverageWindowSize
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -33922,6 +34054,7 @@ class DescribeStatisticInstanceStatusTrendOpsRequest(AbstractModel):
         self._StateList = params.get("StateList")
         self._AggregationUnit = params.get("AggregationUnit")
         self._AverageWindowSize = params.get("AverageWindowSize")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35729,9 +35862,12 @@ class DescribeTaskByCycleRequest(AbstractModel):
         :type ProjectId: str
         :param _InCharge: 1
         :type InCharge: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
         """
         self._ProjectId = None
         self._InCharge = None
+        self._WorkflowId = None
 
     @property
     def ProjectId(self):
@@ -35749,10 +35885,19 @@ class DescribeTaskByCycleRequest(AbstractModel):
     def InCharge(self, InCharge):
         self._InCharge = InCharge
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
         self._InCharge = params.get("InCharge")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35832,6 +35977,8 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         :type Status: str
         :param _InCharge: 无
         :type InCharge: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
         """
         self._ProjectId = None
         self._Type = None
@@ -35843,6 +35990,7 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._CycleUnit = None
         self._Status = None
         self._InCharge = None
+        self._WorkflowId = None
 
     @property
     def ProjectId(self):
@@ -35924,6 +36072,14 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
     def InCharge(self, InCharge):
         self._InCharge = InCharge
 
+    @property
+    def WorkflowId(self):
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -35936,6 +36092,7 @@ class DescribeTaskByStatusReportRequest(AbstractModel):
         self._CycleUnit = params.get("CycleUnit")
         self._Status = params.get("Status")
         self._InCharge = params.get("InCharge")
+        self._WorkflowId = params.get("WorkflowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63449,6 +63606,9 @@ class RuntimeInstanceCntTop(AbstractModel):
         :param _CurRunTime: 实例运行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurRunTime: str
+        :param _WaitScheduleTime: 等待调度耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitScheduleTime: int
         """
         self._TaskId = None
         self._TaskName = None
@@ -63457,6 +63617,7 @@ class RuntimeInstanceCntTop(AbstractModel):
         self._State = None
         self._RunTime = None
         self._CurRunTime = None
+        self._WaitScheduleTime = None
 
     @property
     def TaskId(self):
@@ -63514,6 +63675,14 @@ class RuntimeInstanceCntTop(AbstractModel):
     def CurRunTime(self, CurRunTime):
         self._CurRunTime = CurRunTime
 
+    @property
+    def WaitScheduleTime(self):
+        return self._WaitScheduleTime
+
+    @WaitScheduleTime.setter
+    def WaitScheduleTime(self, WaitScheduleTime):
+        self._WaitScheduleTime = WaitScheduleTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -63523,6 +63692,7 @@ class RuntimeInstanceCntTop(AbstractModel):
         self._State = params.get("State")
         self._RunTime = params.get("RunTime")
         self._CurRunTime = params.get("CurRunTime")
+        self._WaitScheduleTime = params.get("WaitScheduleTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68633,9 +68803,6 @@ class TableLineageInfo(AbstractModel):
         :param _MetastoreType: 元数据类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetastoreType: str
-        :param _PrefixPath: 由中心节点到该节点的路径
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PrefixPath: str
         :param _ProjectId: 空间id
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
@@ -68678,6 +68845,9 @@ class TableLineageInfo(AbstractModel):
         :param _Description: 血缘描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _PrefixPath: 由中心节点到该节点的路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrefixPath: str
         :param _CreateTime: 血缘创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -68687,9 +68857,11 @@ class TableLineageInfo(AbstractModel):
         :param _Tasks: 修改血缘的任务id列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of str
+        :param _ChannelType: 模块/应用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelType: str
         """
         self._MetastoreType = None
-        self._PrefixPath = None
         self._ProjectId = None
         self._DatasourceId = None
         self._TableId = None
@@ -68704,9 +68876,11 @@ class TableLineageInfo(AbstractModel):
         self._DownStreamCount = None
         self._UpStreamCount = None
         self._Description = None
+        self._PrefixPath = None
         self._CreateTime = None
         self._ModifyTime = None
         self._Tasks = None
+        self._ChannelType = None
 
     @property
     def MetastoreType(self):
@@ -68715,14 +68889,6 @@ class TableLineageInfo(AbstractModel):
     @MetastoreType.setter
     def MetastoreType(self, MetastoreType):
         self._MetastoreType = MetastoreType
-
-    @property
-    def PrefixPath(self):
-        return self._PrefixPath
-
-    @PrefixPath.setter
-    def PrefixPath(self, PrefixPath):
-        self._PrefixPath = PrefixPath
 
     @property
     def ProjectId(self):
@@ -68837,6 +69003,14 @@ class TableLineageInfo(AbstractModel):
         self._Description = Description
 
     @property
+    def PrefixPath(self):
+        return self._PrefixPath
+
+    @PrefixPath.setter
+    def PrefixPath(self, PrefixPath):
+        self._PrefixPath = PrefixPath
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -68860,10 +69034,17 @@ class TableLineageInfo(AbstractModel):
     def Tasks(self, Tasks):
         self._Tasks = Tasks
 
+    @property
+    def ChannelType(self):
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
 
     def _deserialize(self, params):
         self._MetastoreType = params.get("MetastoreType")
-        self._PrefixPath = params.get("PrefixPath")
         self._ProjectId = params.get("ProjectId")
         self._DatasourceId = params.get("DatasourceId")
         self._TableId = params.get("TableId")
@@ -68888,9 +69069,11 @@ class TableLineageInfo(AbstractModel):
         self._DownStreamCount = params.get("DownStreamCount")
         self._UpStreamCount = params.get("UpStreamCount")
         self._Description = params.get("Description")
+        self._PrefixPath = params.get("PrefixPath")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Tasks = params.get("Tasks")
+        self._ChannelType = params.get("ChannelType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

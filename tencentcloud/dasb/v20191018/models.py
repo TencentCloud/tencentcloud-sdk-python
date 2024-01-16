@@ -3192,6 +3192,8 @@ class DeployResourceRequest(AbstractModel):
         :type VpcCidrBlock: str
         :param _SubnetName: 需要开通服务的子网名称
         :type SubnetName: str
+        :param _CdcClusterId: 需要开通实例所属的CDC集群ID
+        :type CdcClusterId: str
         """
         self._ResourceId = None
         self._ApCode = None
@@ -3202,6 +3204,7 @@ class DeployResourceRequest(AbstractModel):
         self._VpcName = None
         self._VpcCidrBlock = None
         self._SubnetName = None
+        self._CdcClusterId = None
 
     @property
     def ResourceId(self):
@@ -3275,6 +3278,14 @@ class DeployResourceRequest(AbstractModel):
     def SubnetName(self, SubnetName):
         self._SubnetName = SubnetName
 
+    @property
+    def CdcClusterId(self):
+        return self._CdcClusterId
+
+    @CdcClusterId.setter
+    def CdcClusterId(self, CdcClusterId):
+        self._CdcClusterId = CdcClusterId
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -3286,6 +3297,7 @@ class DeployResourceRequest(AbstractModel):
         self._VpcName = params.get("VpcName")
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._SubnetName = params.get("SubnetName")
+        self._CdcClusterId = params.get("CdcClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

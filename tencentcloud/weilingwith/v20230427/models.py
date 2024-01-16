@@ -3203,11 +3203,14 @@ class ControlDeviceRequest(AbstractModel):
         :type ControlData: str
         :param _ApplicationToken: 应用token
         :type ApplicationToken: str
+        :param _IsSynchronized: 是否同步返回设备下控ack结果
+        :type IsSynchronized: bool
         """
         self._WorkspaceId = None
         self._WIDSet = None
         self._ControlData = None
         self._ApplicationToken = None
+        self._IsSynchronized = None
 
     @property
     def WorkspaceId(self):
@@ -3241,12 +3244,21 @@ class ControlDeviceRequest(AbstractModel):
     def ApplicationToken(self, ApplicationToken):
         self._ApplicationToken = ApplicationToken
 
+    @property
+    def IsSynchronized(self):
+        return self._IsSynchronized
+
+    @IsSynchronized.setter
+    def IsSynchronized(self, IsSynchronized):
+        self._IsSynchronized = IsSynchronized
+
 
     def _deserialize(self, params):
         self._WorkspaceId = params.get("WorkspaceId")
         self._WIDSet = params.get("WIDSet")
         self._ControlData = params.get("ControlData")
         self._ApplicationToken = params.get("ApplicationToken")
+        self._IsSynchronized = params.get("IsSynchronized")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

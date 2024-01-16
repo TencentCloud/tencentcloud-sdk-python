@@ -1797,7 +1797,7 @@ class DescribeLogTagValueResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Results: 索引检索维度值
+        :param _Results: 事件查询维度值结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4477,16 +4477,16 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 日志总数
+        :param _Total: 事件总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Limit: 每页日志条数
+        :param _Limit: 每页事件条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
         :param _Page: 页码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Page: int
-        :param _Results: 日志检索结果
+        :param _Results: 事件查询结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of SearchLogResult
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

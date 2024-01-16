@@ -303,7 +303,7 @@ class EbClient(AbstractClient):
 
 
     def DescribeLogTagValue(self, request):
-        """查询日志索引维度值
+        """前置条件：需开启事件存储；事件查询维度值
 
         :param request: Request instance for DescribeLogTagValue.
         :type request: :class:`tencentcloud.eb.v20210416.models.DescribeLogTagValueRequest`
@@ -625,7 +625,7 @@ class EbClient(AbstractClient):
 
 
     def SearchLog(self, request):
-        """日志检索
+        """前置条件：开启事件存储；查询历史推送事件
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.eb.v20210416.models.SearchLogRequest`
