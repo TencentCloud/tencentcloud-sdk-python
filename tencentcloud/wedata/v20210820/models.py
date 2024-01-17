@@ -6189,10 +6189,14 @@ class BooleanResponse(AbstractModel):
         :param _BaselineId: 基线Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type BaselineId: int
+        :param _Code: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
         """
         self._Success = None
         self._Message = None
         self._BaselineId = None
+        self._Code = None
 
     @property
     def Success(self):
@@ -6218,11 +6222,20 @@ class BooleanResponse(AbstractModel):
     def BaselineId(self, BaselineId):
         self._BaselineId = BaselineId
 
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
 
     def _deserialize(self, params):
         self._Success = params.get("Success")
         self._Message = params.get("Message")
         self._BaselineId = params.get("BaselineId")
+        self._Code = params.get("Code")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14382,10 +14395,25 @@ class DeleteCustomFunctionRequest(AbstractModel):
         :type FunctionId: str
         :param _ProjectId: 项目ID，必须填
         :type ProjectId: str
+        :param _FunctionName: 函数名称
+        :type FunctionName: str
+        :param _FunctionType: 函数类型，HIVE，SPARK，DLC，CDW_POSTGRESQL
+        :type FunctionType: str
+        :param _DatabaseName: 数据库名
+        :type DatabaseName: str
+        :param _SchemaName: 模式名
+        :type SchemaName: str
+        :param _CommandFormat: 函数命令格式
+        :type CommandFormat: str
         """
         self._ClusterIdentifier = None
         self._FunctionId = None
         self._ProjectId = None
+        self._FunctionName = None
+        self._FunctionType = None
+        self._DatabaseName = None
+        self._SchemaName = None
+        self._CommandFormat = None
 
     @property
     def ClusterIdentifier(self):
@@ -14411,11 +14439,56 @@ class DeleteCustomFunctionRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionType(self):
+        return self._FunctionType
+
+    @FunctionType.setter
+    def FunctionType(self, FunctionType):
+        self._FunctionType = FunctionType
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def SchemaName(self):
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def CommandFormat(self):
+        return self._CommandFormat
+
+    @CommandFormat.setter
+    def CommandFormat(self, CommandFormat):
+        self._CommandFormat = CommandFormat
+
 
     def _deserialize(self, params):
         self._ClusterIdentifier = params.get("ClusterIdentifier")
         self._FunctionId = params.get("FunctionId")
         self._ProjectId = params.get("ProjectId")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionType = params.get("FunctionType")
+        self._DatabaseName = params.get("DatabaseName")
+        self._SchemaName = params.get("SchemaName")
+        self._CommandFormat = params.get("CommandFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46733,6 +46806,9 @@ class InstanceReportReadNode(AbstractModel):
         :type ByteSpeed: float
         :param _TotalErrorRecords: 脏数据条数
         :type TotalErrorRecords: int
+        :param _WaitWriterTime: 等待数据发送到下游的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitWriterTime: float
         """
         self._NodeName = None
         self._DataSource = None
@@ -46741,6 +46817,7 @@ class InstanceReportReadNode(AbstractModel):
         self._RecordSpeed = None
         self._ByteSpeed = None
         self._TotalErrorRecords = None
+        self._WaitWriterTime = None
 
     @property
     def NodeName(self):
@@ -46798,6 +46875,14 @@ class InstanceReportReadNode(AbstractModel):
     def TotalErrorRecords(self, TotalErrorRecords):
         self._TotalErrorRecords = TotalErrorRecords
 
+    @property
+    def WaitWriterTime(self):
+        return self._WaitWriterTime
+
+    @WaitWriterTime.setter
+    def WaitWriterTime(self, WaitWriterTime):
+        self._WaitWriterTime = WaitWriterTime
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -46807,6 +46892,7 @@ class InstanceReportReadNode(AbstractModel):
         self._RecordSpeed = params.get("RecordSpeed")
         self._ByteSpeed = params.get("ByteSpeed")
         self._TotalErrorRecords = params.get("TotalErrorRecords")
+        self._WaitWriterTime = params.get("WaitWriterTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46991,6 +47077,9 @@ class InstanceReportWriteNode(AbstractModel):
         :type ByteSpeed: float
         :param _TotalErrorRecords: 脏数据条数
         :type TotalErrorRecords: int
+        :param _WaitReaderTime: 等待上游数据发送过来的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitReaderTime: float
         """
         self._NodeName = None
         self._DataSource = None
@@ -46999,6 +47088,7 @@ class InstanceReportWriteNode(AbstractModel):
         self._RecordSpeed = None
         self._ByteSpeed = None
         self._TotalErrorRecords = None
+        self._WaitReaderTime = None
 
     @property
     def NodeName(self):
@@ -47056,6 +47146,14 @@ class InstanceReportWriteNode(AbstractModel):
     def TotalErrorRecords(self, TotalErrorRecords):
         self._TotalErrorRecords = TotalErrorRecords
 
+    @property
+    def WaitReaderTime(self):
+        return self._WaitReaderTime
+
+    @WaitReaderTime.setter
+    def WaitReaderTime(self, WaitReaderTime):
+        self._WaitReaderTime = WaitReaderTime
+
 
     def _deserialize(self, params):
         self._NodeName = params.get("NodeName")
@@ -47065,6 +47163,7 @@ class InstanceReportWriteNode(AbstractModel):
         self._RecordSpeed = params.get("RecordSpeed")
         self._ByteSpeed = params.get("ByteSpeed")
         self._TotalErrorRecords = params.get("TotalErrorRecords")
+        self._WaitReaderTime = params.get("WaitReaderTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48230,6 +48329,12 @@ class IntegrationTaskInfo(AbstractModel):
         :param _InstanceVersion: 版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: int
+        :param _ArrangeSpaceTaskId: 离线任务导入到编排空间的任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArrangeSpaceTaskId: str
+        :param _OfflineTaskStatus: 离线任务状态区分1.未提交2.已提交3.已导出
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTaskStatus: int
         """
         self._TaskName = None
         self._Description = None
@@ -48278,6 +48383,8 @@ class IntegrationTaskInfo(AbstractModel):
         self._SwitchResource = None
         self._ReadPhase = None
         self._InstanceVersion = None
+        self._ArrangeSpaceTaskId = None
+        self._OfflineTaskStatus = None
 
     @property
     def TaskName(self):
@@ -48655,6 +48762,22 @@ class IntegrationTaskInfo(AbstractModel):
     def InstanceVersion(self, InstanceVersion):
         self._InstanceVersion = InstanceVersion
 
+    @property
+    def ArrangeSpaceTaskId(self):
+        return self._ArrangeSpaceTaskId
+
+    @ArrangeSpaceTaskId.setter
+    def ArrangeSpaceTaskId(self, ArrangeSpaceTaskId):
+        self._ArrangeSpaceTaskId = ArrangeSpaceTaskId
+
+    @property
+    def OfflineTaskStatus(self):
+        return self._OfflineTaskStatus
+
+    @OfflineTaskStatus.setter
+    def OfflineTaskStatus(self, OfflineTaskStatus):
+        self._OfflineTaskStatus = OfflineTaskStatus
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -48731,6 +48854,8 @@ class IntegrationTaskInfo(AbstractModel):
         self._SwitchResource = params.get("SwitchResource")
         self._ReadPhase = params.get("ReadPhase")
         self._InstanceVersion = params.get("InstanceVersion")
+        self._ArrangeSpaceTaskId = params.get("ArrangeSpaceTaskId")
+        self._OfflineTaskStatus = params.get("OfflineTaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59134,6 +59259,30 @@ class Rule(AbstractModel):
         :param _SourceEngineTypes: 源端对应的引擎类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceEngineTypes: list of int non-negative
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableOwnerName: 表负责人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableOwnerName: str
+        :param _ExecStrategy: 执行策略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecStrategy: :class:`tencentcloud.wedata.v20210820.models.RuleGroupExecStrategy`
+        :param _Subscription: 订阅信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Subscription: :class:`tencentcloud.wedata.v20210820.models.RuleGroupSubscribe`
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _DatasourceId: 数据源 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _DatabaseId: 数据库 id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _MonitorStatus: 监控是否开启.0false,1true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorStatus: int
         """
         self._RuleId = None
         self._RuleGroupId = None
@@ -59170,6 +59319,14 @@ class Rule(AbstractModel):
         self._TargetObjectDataTypeName = None
         self._TargetObjectValue = None
         self._SourceEngineTypes = None
+        self._TableName = None
+        self._TableOwnerName = None
+        self._ExecStrategy = None
+        self._Subscription = None
+        self._CreateTime = None
+        self._DatasourceId = None
+        self._DatabaseId = None
+        self._MonitorStatus = None
 
     @property
     def RuleId(self):
@@ -59451,6 +59608,70 @@ class Rule(AbstractModel):
     def SourceEngineTypes(self, SourceEngineTypes):
         self._SourceEngineTypes = SourceEngineTypes
 
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableOwnerName(self):
+        return self._TableOwnerName
+
+    @TableOwnerName.setter
+    def TableOwnerName(self, TableOwnerName):
+        self._TableOwnerName = TableOwnerName
+
+    @property
+    def ExecStrategy(self):
+        return self._ExecStrategy
+
+    @ExecStrategy.setter
+    def ExecStrategy(self, ExecStrategy):
+        self._ExecStrategy = ExecStrategy
+
+    @property
+    def Subscription(self):
+        return self._Subscription
+
+    @Subscription.setter
+    def Subscription(self, Subscription):
+        self._Subscription = Subscription
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DatasourceId(self):
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseId(self):
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def MonitorStatus(self):
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -59492,6 +59713,18 @@ class Rule(AbstractModel):
         self._TargetObjectDataTypeName = params.get("TargetObjectDataTypeName")
         self._TargetObjectValue = params.get("TargetObjectValue")
         self._SourceEngineTypes = params.get("SourceEngineTypes")
+        self._TableName = params.get("TableName")
+        self._TableOwnerName = params.get("TableOwnerName")
+        if params.get("ExecStrategy") is not None:
+            self._ExecStrategy = RuleGroupExecStrategy()
+            self._ExecStrategy._deserialize(params.get("ExecStrategy"))
+        if params.get("Subscription") is not None:
+            self._Subscription = RuleGroupSubscribe()
+            self._Subscription._deserialize(params.get("Subscription"))
+        self._CreateTime = params.get("CreateTime")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseId = params.get("DatabaseId")
+        self._MonitorStatus = params.get("MonitorStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61255,6 +61488,12 @@ class RuleGroupExecStrategy(AbstractModel):
         :param _ExecPlan: 执行计划
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecPlan: str
+        :param _RuleId: 规则id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
         """
         self._RuleGroupId = None
         self._MonitorType = None
@@ -61270,6 +61509,8 @@ class RuleGroupExecStrategy(AbstractModel):
         self._TaskAction = None
         self._ExecEngineType = None
         self._ExecPlan = None
+        self._RuleId = None
+        self._RuleName = None
 
     @property
     def RuleGroupId(self):
@@ -61383,6 +61624,22 @@ class RuleGroupExecStrategy(AbstractModel):
     def ExecPlan(self, ExecPlan):
         self._ExecPlan = ExecPlan
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -61404,6 +61661,8 @@ class RuleGroupExecStrategy(AbstractModel):
         self._TaskAction = params.get("TaskAction")
         self._ExecEngineType = params.get("ExecEngineType")
         self._ExecPlan = params.get("ExecPlan")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61839,11 +62098,19 @@ class RuleGroupSubscribe(AbstractModel):
         :param _WebHooks: 群机器人配置的webhook信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebHooks: list of SubscribeWebHook
+        :param _RuleId: 规则Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
         """
         self._RuleGroupId = None
         self._Receivers = None
         self._SubscribeType = None
         self._WebHooks = None
+        self._RuleId = None
+        self._RuleName = None
 
     @property
     def RuleGroupId(self):
@@ -61877,6 +62144,22 @@ class RuleGroupSubscribe(AbstractModel):
     def WebHooks(self, WebHooks):
         self._WebHooks = WebHooks
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -61893,6 +62176,8 @@ class RuleGroupSubscribe(AbstractModel):
                 obj = SubscribeWebHook()
                 obj._deserialize(item)
                 self._WebHooks.append(obj)
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62371,6 +62656,12 @@ class RuleTemplate(AbstractModel):
         :param _SubQualityDim: 模版子维度，0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubQualityDim: int
+        :param _ResolvedSqlExpression: sql表达式解析对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolvedSqlExpression: :class:`tencentcloud.wedata.v20210820.models.SqlExpression`
+        :param _DatasourceTypes: 支持的数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceTypes: list of int
         """
         self._RuleTemplateId = None
         self._Name = None
@@ -62390,6 +62681,8 @@ class RuleTemplate(AbstractModel):
         self._MultiSourceFlag = None
         self._SqlExpression = None
         self._SubQualityDim = None
+        self._ResolvedSqlExpression = None
+        self._DatasourceTypes = None
 
     @property
     def RuleTemplateId(self):
@@ -62535,6 +62828,22 @@ class RuleTemplate(AbstractModel):
     def SubQualityDim(self, SubQualityDim):
         self._SubQualityDim = SubQualityDim
 
+    @property
+    def ResolvedSqlExpression(self):
+        return self._ResolvedSqlExpression
+
+    @ResolvedSqlExpression.setter
+    def ResolvedSqlExpression(self, ResolvedSqlExpression):
+        self._ResolvedSqlExpression = ResolvedSqlExpression
+
+    @property
+    def DatasourceTypes(self):
+        return self._DatasourceTypes
+
+    @DatasourceTypes.setter
+    def DatasourceTypes(self, DatasourceTypes):
+        self._DatasourceTypes = DatasourceTypes
+
 
     def _deserialize(self, params):
         self._RuleTemplateId = params.get("RuleTemplateId")
@@ -62555,6 +62864,10 @@ class RuleTemplate(AbstractModel):
         self._MultiSourceFlag = params.get("MultiSourceFlag")
         self._SqlExpression = params.get("SqlExpression")
         self._SubQualityDim = params.get("SubQualityDim")
+        if params.get("ResolvedSqlExpression") is not None:
+            self._ResolvedSqlExpression = SqlExpression()
+            self._ResolvedSqlExpression._deserialize(params.get("ResolvedSqlExpression"))
+        self._DatasourceTypes = params.get("DatasourceTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66047,6 +66360,105 @@ class SpeedValue(AbstractModel):
     def _deserialize(self, params):
         self._Time = params.get("Time")
         self._Speed = params.get("Speed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlExpression(AbstractModel):
+    """数据质量自定义规则时的sql表达式解析对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableExpressions: sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableExpressions: list of SqlExpressionTable
+        :param _ParamExpressions: sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParamExpressions: list of str
+        """
+        self._TableExpressions = None
+        self._ParamExpressions = None
+
+    @property
+    def TableExpressions(self):
+        return self._TableExpressions
+
+    @TableExpressions.setter
+    def TableExpressions(self, TableExpressions):
+        self._TableExpressions = TableExpressions
+
+    @property
+    def ParamExpressions(self):
+        return self._ParamExpressions
+
+    @ParamExpressions.setter
+    def ParamExpressions(self, ParamExpressions):
+        self._ParamExpressions = ParamExpressions
+
+
+    def _deserialize(self, params):
+        if params.get("TableExpressions") is not None:
+            self._TableExpressions = []
+            for item in params.get("TableExpressions"):
+                obj = SqlExpressionTable()
+                obj._deserialize(item)
+                self._TableExpressions.append(obj)
+        self._ParamExpressions = params.get("ParamExpressions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlExpressionTable(AbstractModel):
+    """数据质量自定义规则时的sql表达式解析表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableExpression: sql表达式表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableExpression: str
+        :param _ColumnExpression: sql表达式字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnExpression: list of str
+        """
+        self._TableExpression = None
+        self._ColumnExpression = None
+
+    @property
+    def TableExpression(self):
+        return self._TableExpression
+
+    @TableExpression.setter
+    def TableExpression(self, TableExpression):
+        self._TableExpression = TableExpression
+
+    @property
+    def ColumnExpression(self):
+        return self._ColumnExpression
+
+    @ColumnExpression.setter
+    def ColumnExpression(self, ColumnExpression):
+        self._ColumnExpression = ColumnExpression
+
+
+    def _deserialize(self, params):
+        self._TableExpression = params.get("TableExpression")
+        self._ColumnExpression = params.get("ColumnExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4137,6 +4137,142 @@ class DescribeImpalaQueriesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInsightListRequest(AbstractModel):
+    """DescribeInsightList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群ID
+        :type InstanceId: str
+        :param _StartTime: 获取的洞察结果开始时间，此时间针对对App或者Hive查询的开始时间的过滤
+        :type StartTime: int
+        :param _EndTime: 获取的洞察结果结束时间，此时间针对对App或者Hive查询的开始时间的过滤
+        :type EndTime: int
+        :param _PageSize: 分页查询时的分页大小，最小1，最大100
+        :type PageSize: int
+        :param _Page: 分页查询时的页号，从1开始
+        :type Page: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageSize = None
+        self._Page = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInsightListResponse(AbstractModel):
+    """DescribeInsightList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数，分页查询时使用
+        :type TotalCount: int
+        :param _ResultList: 洞察结果数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultList: list of InsightResult
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ResultList(self):
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = InsightResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRenewNodesRequest(AbstractModel):
     """DescribeInstanceRenewNodes请求参数结构体
 
@@ -8169,6 +8305,211 @@ class InquiryPriceUpdateInstanceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._PriceDetail.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class InsightResult(AbstractModel):
+    """洞察结果项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 当Type为HIVE时，是Hive查询ID，当Type为MAPREDUCE，SPARK，TEZ时则是YarnAppID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Type: 洞察应用的类型，HIVE,SPARK,MAPREDUCE,TEZ
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _RuleID: 洞察规则ID
+HIVE-ScanManyMeta:元数据扫描过多
+HIVE-ScanManyPartition:大表扫描
+HIVE-SlowCompile:编译耗时过长
+HIVE-UnSuitableConfig:不合理参数
+MAPREDUCE-MapperDataSkew:Map数据倾斜
+MAPREDUCE-MapperMemWaste:MapMemory资源浪费
+MAPREDUCE-MapperSlowTask:Map慢Task
+MAPREDUCE-MapperTaskGC:MapperTaskGC
+MAPREDUCE-MemExceeded:峰值内存超限
+MAPREDUCE-ReducerDataSkew:Reduce数据倾斜
+MAPREDUCE-ReducerMemWaste:ReduceMemory资源浪费
+MAPREDUCE-ReducerSlowTask:Reduce慢Task
+MAPREDUCE-ReducerTaskGC:ReducerTaskGC
+MAPREDUCE-SchedulingDelay:调度延迟
+SPARK-CpuWaste:CPU资源浪费
+SPARK-DataSkew:数据倾斜
+SPARK-ExecutorGC:ExecutorGC
+SPARK-MemExceeded:峰值内存超限
+SPARK-MemWaste:Memory资源浪费
+SPARK-ScheduleOverhead:ScheduleOverhead
+SPARK-ScheduleSkew:调度倾斜
+SPARK-SlowTask:慢Task
+TEZ-DataSkew:数据倾斜
+TEZ-MapperDataSkew:Map数据倾斜
+TEZ-ReducerDataSkew:Reduce数据倾斜
+TEZ-TezMemWaste:Memory资源浪费
+TEZ-TezSlowTask:慢Task
+TEZ-TezTaskGC:TasksGC
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: str
+        :param _RuleName: 洞察规则名字，可参考RuleID的说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _RuleExplain: 洞察规则解释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExplain: str
+        :param _Detail: 详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: str
+        :param _Suggestion: 建议信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Suggestion: str
+        :param _Value: 洞察异常衡量值，同类型的洞察项越大越严重，不同类型的洞察项无对比意义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: int
+        :param _ScheduleTaskExecID: 调度任务执行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTaskExecID: str
+        :param _ScheduleFlowName: 调度流，DAG
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleFlowName: str
+        :param _ScheduleTaskName: 调度flow中的某个task节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTaskName: str
+        :param _JobConf: Yarn任务的部分核心配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobConf: str
+        """
+        self._ID = None
+        self._Type = None
+        self._RuleID = None
+        self._RuleName = None
+        self._RuleExplain = None
+        self._Detail = None
+        self._Suggestion = None
+        self._Value = None
+        self._ScheduleTaskExecID = None
+        self._ScheduleFlowName = None
+        self._ScheduleTaskName = None
+        self._JobConf = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleID(self):
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleExplain(self):
+        return self._RuleExplain
+
+    @RuleExplain.setter
+    def RuleExplain(self, RuleExplain):
+        self._RuleExplain = RuleExplain
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ScheduleTaskExecID(self):
+        return self._ScheduleTaskExecID
+
+    @ScheduleTaskExecID.setter
+    def ScheduleTaskExecID(self, ScheduleTaskExecID):
+        self._ScheduleTaskExecID = ScheduleTaskExecID
+
+    @property
+    def ScheduleFlowName(self):
+        return self._ScheduleFlowName
+
+    @ScheduleFlowName.setter
+    def ScheduleFlowName(self, ScheduleFlowName):
+        self._ScheduleFlowName = ScheduleFlowName
+
+    @property
+    def ScheduleTaskName(self):
+        return self._ScheduleTaskName
+
+    @ScheduleTaskName.setter
+    def ScheduleTaskName(self, ScheduleTaskName):
+        self._ScheduleTaskName = ScheduleTaskName
+
+    @property
+    def JobConf(self):
+        return self._JobConf
+
+    @JobConf.setter
+    def JobConf(self, JobConf):
+        self._JobConf = JobConf
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Type = params.get("Type")
+        self._RuleID = params.get("RuleID")
+        self._RuleName = params.get("RuleName")
+        self._RuleExplain = params.get("RuleExplain")
+        self._Detail = params.get("Detail")
+        self._Suggestion = params.get("Suggestion")
+        self._Value = params.get("Value")
+        self._ScheduleTaskExecID = params.get("ScheduleTaskExecID")
+        self._ScheduleFlowName = params.get("ScheduleFlowName")
+        self._ScheduleTaskName = params.get("ScheduleTaskName")
+        self._JobConf = params.get("JobConf")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceChargePrepaid(AbstractModel):

@@ -8758,6 +8758,7 @@ class Component(AbstractModel):
 
 
 注：`控件ID可以在一个PDF中不可重复`
+<a href="https://qcloudimg.tencent-cloud.cn/raw/93178569d07b4d7dbbe0967ae679e35c.png" target="_blank">点击查看ComponentId在模板页面的位置</a>
 
         :type ComponentId: str
         :param _ComponentType: **如果是Component填写控件类型，则可选的字段为**：
@@ -8796,6 +8797,7 @@ class Component(AbstractModel):
 
 注：`控件名可以在一个PDF中可以重复`
 
+<a href="https://qcloudimg.tencent-cloud.cn/raw/93178569d07b4d7dbbe0967ae679e35c.png" target="_blank">点击查看ComponentName在模板页面的位置</a>
         :type ComponentName: str
         :param _ComponentRequired: 如果是<b>填写控件</b>，ComponentRequired表示在填写页面此控件是否必填
 <ul><li>false（默认）：可以不填写</li>
@@ -14622,6 +14624,7 @@ class FlowInfo(AbstractModel):
 发起方：腾讯公司(张三) 
 签署方：李四
 
+![image](https://qcloudimg.tencent-cloud.cn/raw/628f0928cac15d2e3bfa6088f53f5998.png)
 
         :type CustomShowMap: str
         :param _CcInfos: 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。

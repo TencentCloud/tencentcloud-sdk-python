@@ -257,6 +257,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInsightList(self, request):
+        """获取洞察结果信息
+
+        :param request: Request instance for DescribeInsightList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeInsightListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeInsightListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInsightList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInsightListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceRenewNodes(self, request):
         """查询待续费节点信息
 

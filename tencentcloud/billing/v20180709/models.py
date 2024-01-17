@@ -9737,6 +9737,112 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSavingPlanResourceInfoRequest(AbstractModel):
+    """DescribeSavingPlanResourceInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _CreateStartDate: 购买开始时间，格式yyyy-MM-dd
+        :type CreateStartDate: str
+        :param _CreateEndDate: 购买结束时间，格式yyyy-MM-dd
+        :type CreateEndDate: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._CreateStartDate = None
+        self._CreateEndDate = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CreateStartDate(self):
+        return self._CreateStartDate
+
+    @CreateStartDate.setter
+    def CreateStartDate(self, CreateStartDate):
+        self._CreateStartDate = CreateStartDate
+
+    @property
+    def CreateEndDate(self):
+        return self._CreateEndDate
+
+    @CreateEndDate.setter
+    def CreateEndDate(self, CreateEndDate):
+        self._CreateEndDate = CreateEndDate
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._CreateStartDate = params.get("CreateStartDate")
+        self._CreateEndDate = params.get("CreateEndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSavingPlanResourceInfoResponse(AbstractModel):
+    """DescribeSavingPlanResourceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSavingPlanUsageRequest(AbstractModel):
     """DescribeSavingPlanUsage请求参数结构体
 

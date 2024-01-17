@@ -3154,6 +3154,8 @@ class DeleteCloudStorageEventRequest(AbstractModel):
         :type EndTime: int
         :param _UserId: 用户ID
         :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
@@ -3161,6 +3163,7 @@ class DeleteCloudStorageEventRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -3210,6 +3213,14 @@ class DeleteCloudStorageEventRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -3218,6 +3229,7 @@ class DeleteCloudStorageEventRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5141,6 +5153,8 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
 1: 已过期
 2:生效
         :type Status: int
+        :param _ChannelId: 通道id
+        :type ChannelId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5148,6 +5162,7 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._ExpireTime = None
         self._PackageId = None
         self._Status = None
+        self._ChannelId = None
         self._RequestId = None
 
     @property
@@ -5183,6 +5198,14 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._Status = Status
 
     @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5196,6 +5219,7 @@ class DescribeCloudStorageOrderResponse(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._PackageId = params.get("PackageId")
         self._Status = params.get("Status")
+        self._ChannelId = params.get("ChannelId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12937,10 +12961,13 @@ class ResetCloudStorageEventRequest(AbstractModel):
         :type DeviceName: str
         :param _UserId: 用户ID
         :type UserId: str
+        :param _ChannelId: 通道ID
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._UserId = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -12966,11 +12993,20 @@ class ResetCloudStorageEventRequest(AbstractModel):
     def UserId(self, UserId):
         self._UserId = UserId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._UserId = params.get("UserId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

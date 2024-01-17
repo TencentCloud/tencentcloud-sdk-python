@@ -230,6 +230,9 @@ INVALIDPARAMETER_DATADISKNOTBELONGSPECIFIEDINSTANCE = 'InvalidParameter.DataDisk
 # 只能包含一个系统盘快照。
 INVALIDPARAMETER_DUPLICATESYSTEMSNAPSHOTS = 'InvalidParameter.DuplicateSystemSnapshots'
 
+# 边缘可用区指定三网外网IP参数需要先指定主ip外网IP参数。
+INVALIDPARAMETER_EDGEZONEMISSINTERNETACCESSIBLE = 'InvalidParameter.EdgeZoneMissInternetAccessible'
+
 # 该主机当前状态不支持该操作。
 INVALIDPARAMETER_HOSTIDSTATUSNOTSUPPORT = 'InvalidParameter.HostIdStatusNotSupport'
 
@@ -269,6 +272,9 @@ INVALIDPARAMETER_LACKCORECOUNTORTHREADPERCORE = 'InvalidParameter.LackCoreCountO
 # 本地数据盘不支持创建实例镜像。
 INVALIDPARAMETER_LOCALDATADISKNOTSUPPORT = 'InvalidParameter.LocalDataDiskNotSupport'
 
+# 仅是边缘可用区支持这个参数。
+INVALIDPARAMETER_ONLYSUPPORTFOREDGEZONE = 'InvalidParameter.OnlySupportForEdgeZone'
+
 # 不支持同时指定密钥登录和保持镜像登录方式。
 INVALIDPARAMETER_PARAMETERCONFLICT = 'InvalidParameter.ParameterConflict'
 
@@ -277,6 +283,9 @@ INVALIDPARAMETER_PASSWORDNOTSUPPORTED = 'InvalidParameter.PasswordNotSupported'
 
 # 指定的快照不存在。
 INVALIDPARAMETER_SNAPSHOTNOTFOUND = 'InvalidParameter.SnapshotNotFound'
+
+# 这个参数需要开启白名单才可以使用。
+INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = 'InvalidParameter.SpecialParameterForSpecialAccount'
 
 # 多选一必选参数缺失。
 INVALIDPARAMETER_SPECIFYONEPARAMETER = 'InvalidParameter.SpecifyOneParameter'
@@ -307,6 +316,12 @@ INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.Bandw
 
 # 请确认指定的带宽包是否存在。
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
+
+# 带宽包所属的运营商和运营商参数不匹配。
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEISPNOTMATCH = 'InvalidParameterValue.BandwidthPackageIspNotMatch'
+
+# 带宽包所属的可用区和指定的可用区不匹配。
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEZONENOTMATCH = 'InvalidParameterValue.BandwidthPackageZoneNotMatch'
 
 # 实例为基础网络实例，目标实例规格仅支持私有网络，不支持调整。
 INVALIDPARAMETERVALUE_BASICNETWORKINSTANCEFAMILY = 'InvalidParameterValue.BasicNetworkInstanceFamily'
@@ -346,6 +361,9 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 
 # 重复标签。
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
+
+# 实例的申请的外网IP个数超过了这种规格实例的外网ip配额。
+INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = 'InvalidParameterValue.ExternalIpQuotaLimited'
 
 # 非GPU实例不允许转为GPU实例。
 INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
@@ -460,6 +478,12 @@ INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUser
 
 # 无效的模糊查询字符串。
 INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
+
+# 边缘可用区不支持这个运营商。
+INVALIDPARAMETERVALUE_ISPNOTSUPPORTFOREDGEZONE = 'InvalidParameterValue.IspNotSupportForEdgeZone'
+
+# 重复指定了运营商参数值。
+INVALIDPARAMETERVALUE_ISPVALUEREPEATED = 'InvalidParameterValue.IspValueRepeated'
 
 # 请确认密钥是否存在。
 INVALIDPARAMETERVALUE_KEYPAIRNOTFOUND = 'InvalidParameterValue.KeyPairNotFound'

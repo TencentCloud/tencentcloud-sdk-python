@@ -674,6 +674,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSavingPlanResourceInfo(self, request):
+        """查询节省计划详情
+
+        :param request: Request instance for DescribeSavingPlanResourceInfo.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanResourceInfoRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeSavingPlanResourceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSavingPlanResourceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSavingPlanResourceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSavingPlanUsage(self, request):
         """查用当前用户明细节省计划查询时段内的使用情况
 
