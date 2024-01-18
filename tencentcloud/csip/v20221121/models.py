@@ -10102,6 +10102,76 @@ class IpAssetListVO(AbstractModel):
         
 
 
+class ModifyOrganizationAccountStatusRequest(AbstractModel):
+    """ModifyOrganizationAccountStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 修改集团账号状态，1 开启， 2关闭
+        :type Status: int
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOrganizationAccountStatusResponse(AbstractModel):
+    """ModifyOrganizationAccountStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 返回值为0，则修改成功
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRiskCenterRiskStatusRequest(AbstractModel):
     """ModifyRiskCenterRiskStatus请求参数结构体
 

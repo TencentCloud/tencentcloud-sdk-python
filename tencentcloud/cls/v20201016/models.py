@@ -5478,6 +5478,8 @@ class CreateShipperRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: 投递数据范围的结束时间点，不能填写未来时间。如果用户不填写，默认为持续投递，即无限。
         :type EndTime: int
+        :param _StorageType: cos桶存储类型
+        :type StorageType: str
         """
         self._TopicId = None
         self._Bucket = None
@@ -5492,6 +5494,7 @@ class CreateShipperRequest(AbstractModel):
         self._FilenameMode = None
         self._StartTime = None
         self._EndTime = None
+        self._StorageType = None
 
     @property
     def TopicId(self):
@@ -5597,6 +5600,14 @@ class CreateShipperRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -5621,6 +5632,7 @@ class CreateShipperRequest(AbstractModel):
         self._FilenameMode = params.get("FilenameMode")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15703,6 +15715,8 @@ class ModifyShipperRequest(AbstractModel):
         :type Content: :class:`tencentcloud.cls.v20201016.models.ContentInfo`
         :param _FilenameMode: 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
         :type FilenameMode: int
+        :param _StorageType: cos桶类型
+        :type StorageType: str
         """
         self._ShipperId = None
         self._Bucket = None
@@ -15716,6 +15730,7 @@ class ModifyShipperRequest(AbstractModel):
         self._Compress = None
         self._Content = None
         self._FilenameMode = None
+        self._StorageType = None
 
     @property
     def ShipperId(self):
@@ -15813,6 +15828,14 @@ class ModifyShipperRequest(AbstractModel):
     def FilenameMode(self, FilenameMode):
         self._FilenameMode = FilenameMode
 
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._ShipperId = params.get("ShipperId")
@@ -15836,6 +15859,7 @@ class ModifyShipperRequest(AbstractModel):
             self._Content = ContentInfo()
             self._Content._deserialize(params.get("Content"))
         self._FilenameMode = params.get("FilenameMode")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18572,6 +18596,9 @@ class ShipperInfo(AbstractModel):
 4：任务运行结束
 注意：此字段可能返回 null，表示取不到有效值。
         :type HistoryStatus: int
+        :param _StorageType: cos桶类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
         """
         self._ShipperId = None
         self._TopicId = None
@@ -18592,6 +18619,7 @@ class ShipperInfo(AbstractModel):
         self._Progress = None
         self._RemainTime = None
         self._HistoryStatus = None
+        self._StorageType = None
 
     @property
     def ShipperId(self):
@@ -18745,6 +18773,14 @@ class ShipperInfo(AbstractModel):
     def HistoryStatus(self, HistoryStatus):
         self._HistoryStatus = HistoryStatus
 
+    @property
+    def StorageType(self):
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._ShipperId = params.get("ShipperId")
@@ -18775,6 +18811,7 @@ class ShipperInfo(AbstractModel):
         self._Progress = params.get("Progress")
         self._RemainTime = params.get("RemainTime")
         self._HistoryStatus = params.get("HistoryStatus")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

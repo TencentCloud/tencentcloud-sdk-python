@@ -3102,7 +3102,8 @@ class PrivateZone(AbstractModel):
         :type Remark: str
         :param _VpcSet: 绑定的Vpc列表
         :type VpcSet: list of VpcInfo
-        :param _Status: 私有域状态：正常解析：ENABLED, 暂停解析：SUSPEND, 锁定：FROZEN
+        :param _Status: 私有域绑定VPC状态，未关联vpc：SUSPEND，已关联VPC：ENABLED
+，关联VPC失败：FAILED
         :type Status: str
         :param _DnsForwardStatus: 域名递归解析状态：开通：ENABLED, 关闭，DISABLED
         :type DnsForwardStatus: str
@@ -3128,6 +3129,9 @@ class PrivateZone(AbstractModel):
         :param _EndPointName: 终端节点名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndPointName: str
+        :param _DeletedVpcSet: 已删除的vpc
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletedVpcSet: list of VpcInfo
         """
         self._ZoneId = None
         self._OwnerUin = None
@@ -3147,6 +3151,7 @@ class PrivateZone(AbstractModel):
         self._ForwardRuleType = None
         self._ForwardAddress = None
         self._EndPointName = None
+        self._DeletedVpcSet = None
 
     @property
     def ZoneId(self):
@@ -3292,6 +3297,14 @@ class PrivateZone(AbstractModel):
     def EndPointName(self, EndPointName):
         self._EndPointName = EndPointName
 
+    @property
+    def DeletedVpcSet(self):
+        return self._DeletedVpcSet
+
+    @DeletedVpcSet.setter
+    def DeletedVpcSet(self, DeletedVpcSet):
+        self._DeletedVpcSet = DeletedVpcSet
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3327,6 +3340,12 @@ class PrivateZone(AbstractModel):
         self._ForwardRuleType = params.get("ForwardRuleType")
         self._ForwardAddress = params.get("ForwardAddress")
         self._EndPointName = params.get("EndPointName")
+        if params.get("DeletedVpcSet") is not None:
+            self._DeletedVpcSet = []
+            for item in params.get("DeletedVpcSet"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._DeletedVpcSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

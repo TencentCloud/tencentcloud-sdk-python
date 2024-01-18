@@ -35,11 +35,15 @@ class Ability(AbstractModel):
         :param _NonsupportRoReason: 不支持RO实例的原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type NonsupportRoReason: str
+        :param _IsSupportManualSnapshot: 是否支持手动发起快照备份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportManualSnapshot: str
         """
         self._IsSupportSlaveZone = None
         self._NonsupportSlaveZoneReason = None
         self._IsSupportRo = None
         self._NonsupportRoReason = None
+        self._IsSupportManualSnapshot = None
 
     @property
     def IsSupportSlaveZone(self):
@@ -73,12 +77,21 @@ class Ability(AbstractModel):
     def NonsupportRoReason(self, NonsupportRoReason):
         self._NonsupportRoReason = NonsupportRoReason
 
+    @property
+    def IsSupportManualSnapshot(self):
+        return self._IsSupportManualSnapshot
+
+    @IsSupportManualSnapshot.setter
+    def IsSupportManualSnapshot(self, IsSupportManualSnapshot):
+        self._IsSupportManualSnapshot = IsSupportManualSnapshot
+
 
     def _deserialize(self, params):
         self._IsSupportSlaveZone = params.get("IsSupportSlaveZone")
         self._NonsupportSlaveZoneReason = params.get("NonsupportSlaveZoneReason")
         self._IsSupportRo = params.get("IsSupportRo")
         self._NonsupportRoReason = params.get("NonsupportRoReason")
+        self._IsSupportManualSnapshot = params.get("IsSupportManualSnapshot")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -406,7 +419,7 @@ class AddInstancesRequest(AbstractModel):
         :type Memory: int
         :param _ReadOnlyCount: 新增只读实例数，取值范围为(0,15]
         :type ReadOnlyCount: int
-        :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
+        :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
         :type InstanceGrpId: str
         :param _VpcId: 所属VPC网络ID。
         :type VpcId: str
@@ -483,10 +496,14 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def InstanceGrpId(self):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         return self._InstanceGrpId
 
     @InstanceGrpId.setter
     def InstanceGrpId(self, InstanceGrpId):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         self._InstanceGrpId = InstanceGrpId
 
     @property
@@ -2258,20 +2275,48 @@ class CloseWanRequest(AbstractModel):
         r"""
         :param _InstanceGrpId: 实例组id
         :type InstanceGrpId: str
+        :param _InstanceGroupId: 实例组id
+        :type InstanceGroupId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
         """
         self._InstanceGrpId = None
+        self._InstanceGroupId = None
+        self._InstanceId = None
 
     @property
     def InstanceGrpId(self):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         return self._InstanceGrpId
 
     @InstanceGrpId.setter
     def InstanceGrpId(self, InstanceGrpId):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         self._InstanceGrpId = InstanceGrpId
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
         self._InstanceGrpId = params.get("InstanceGrpId")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7245,6 +7290,294 @@ pause
         
 
 
+class CynosdbInstanceGroup(AbstractModel):
+    """实例组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 用户appId
+        :type AppId: int
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _DeletedTime: 删除时间
+        :type DeletedTime: str
+        :param _InstanceGroupId: 实例组ID
+        :type InstanceGroupId: str
+        :param _Status: 状态
+        :type Status: str
+        :param _Type: 实例组类型。ha-ha组；ro-只读组
+        :type Type: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param _Vip: 内网IP
+        :type Vip: str
+        :param _Vport: 内网端口
+        :type Vport: int
+        :param _WanDomain: 外网域名
+        :type WanDomain: str
+        :param _WanIP: 外网ip
+        :type WanIP: str
+        :param _WanPort: 外网端口
+        :type WanPort: int
+        :param _WanStatus: 外网状态
+        :type WanStatus: str
+        :param _InstanceSet: 实例组包含实例信息
+        :type InstanceSet: list of CynosdbInstance
+        :param _UniqVpcId: VPC的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        :param _OldAddrInfo: 正在回收IP信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldAddrInfo: :class:`tencentcloud.cynosdb.v20190107.models.OldAddrInfo`
+        :param _ProcessingTasks: 正在进行的任务
+        :type ProcessingTasks: list of str
+        :param _Tasks: 任务列表
+        :type Tasks: list of ObjectTask
+        :param _NetServiceId: biz_net_service表id
+        :type NetServiceId: int
+        """
+        self._AppId = None
+        self._ClusterId = None
+        self._CreatedTime = None
+        self._DeletedTime = None
+        self._InstanceGroupId = None
+        self._Status = None
+        self._Type = None
+        self._UpdatedTime = None
+        self._Vip = None
+        self._Vport = None
+        self._WanDomain = None
+        self._WanIP = None
+        self._WanPort = None
+        self._WanStatus = None
+        self._InstanceSet = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._OldAddrInfo = None
+        self._ProcessingTasks = None
+        self._Tasks = None
+        self._NetServiceId = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def DeletedTime(self):
+        return self._DeletedTime
+
+    @DeletedTime.setter
+    def DeletedTime(self, DeletedTime):
+        self._DeletedTime = DeletedTime
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UpdatedTime(self):
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def WanDomain(self):
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def WanIP(self):
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def WanPort(self):
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+    @property
+    def WanStatus(self):
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def InstanceSet(self):
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def OldAddrInfo(self):
+        return self._OldAddrInfo
+
+    @OldAddrInfo.setter
+    def OldAddrInfo(self, OldAddrInfo):
+        self._OldAddrInfo = OldAddrInfo
+
+    @property
+    def ProcessingTasks(self):
+        return self._ProcessingTasks
+
+    @ProcessingTasks.setter
+    def ProcessingTasks(self, ProcessingTasks):
+        self._ProcessingTasks = ProcessingTasks
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def NetServiceId(self):
+        return self._NetServiceId
+
+    @NetServiceId.setter
+    def NetServiceId(self, NetServiceId):
+        self._NetServiceId = NetServiceId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._CreatedTime = params.get("CreatedTime")
+        self._DeletedTime = params.get("DeletedTime")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._WanDomain = params.get("WanDomain")
+        self._WanIP = params.get("WanIP")
+        self._WanPort = params.get("WanPort")
+        self._WanStatus = params.get("WanStatus")
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = CynosdbInstance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        if params.get("OldAddrInfo") is not None:
+            self._OldAddrInfo = OldAddrInfo()
+            self._OldAddrInfo._deserialize(params.get("OldAddrInfo"))
+        self._ProcessingTasks = params.get("ProcessingTasks")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._NetServiceId = params.get("NetServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CynosdbInstanceGrp(AbstractModel):
     """实例组信息
 
@@ -10371,11 +10704,14 @@ class DescribeClusterInstanceGrpsResponse(AbstractModel):
         :type TotalCount: int
         :param _InstanceGrpInfoList: 实例组列表
         :type InstanceGrpInfoList: list of CynosdbInstanceGrp
+        :param _InstanceGroupInfoList: 实例组列表
+        :type InstanceGroupInfoList: list of CynosdbInstanceGroup
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._InstanceGrpInfoList = None
+        self._InstanceGroupInfoList = None
         self._RequestId = None
 
     @property
@@ -10388,11 +10724,23 @@ class DescribeClusterInstanceGrpsResponse(AbstractModel):
 
     @property
     def InstanceGrpInfoList(self):
+        warnings.warn("parameter `InstanceGrpInfoList` is deprecated", DeprecationWarning) 
+
         return self._InstanceGrpInfoList
 
     @InstanceGrpInfoList.setter
     def InstanceGrpInfoList(self, InstanceGrpInfoList):
+        warnings.warn("parameter `InstanceGrpInfoList` is deprecated", DeprecationWarning) 
+
         self._InstanceGrpInfoList = InstanceGrpInfoList
+
+    @property
+    def InstanceGroupInfoList(self):
+        return self._InstanceGroupInfoList
+
+    @InstanceGroupInfoList.setter
+    def InstanceGroupInfoList(self, InstanceGroupInfoList):
+        self._InstanceGroupInfoList = InstanceGroupInfoList
 
     @property
     def RequestId(self):
@@ -10411,6 +10759,12 @@ class DescribeClusterInstanceGrpsResponse(AbstractModel):
                 obj = CynosdbInstanceGrp()
                 obj._deserialize(item)
                 self._InstanceGrpInfoList.append(obj)
+        if params.get("InstanceGroupInfoList") is not None:
+            self._InstanceGroupInfoList = []
+            for item in params.get("InstanceGroupInfoList"):
+                obj = CynosdbInstanceGroup()
+                obj._deserialize(item)
+                self._InstanceGroupInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10573,9 +10927,12 @@ class DescribeClusterParamsRequest(AbstractModel):
         :type ClusterId: str
         :param _ParamName: 参数名字
         :type ParamName: str
+        :param _IsGlobal: 是否为全局参数
+        :type IsGlobal: str
         """
         self._ClusterId = None
         self._ParamName = None
+        self._IsGlobal = None
 
     @property
     def ClusterId(self):
@@ -10593,10 +10950,19 @@ class DescribeClusterParamsRequest(AbstractModel):
     def ParamName(self, ParamName):
         self._ParamName = ParamName
 
+    @property
+    def IsGlobal(self):
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ParamName = params.get("ParamName")
+        self._IsGlobal = params.get("IsGlobal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10973,22 +11339,38 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例组ID。可以通过接口DescribeClusterInstanceGrps获取。
+        :param _InstanceId: 实例ID
         :type InstanceId: str
+        :param _InstanceGroupId: 实例组ID
+        :type InstanceGroupId: str
         """
         self._InstanceId = None
+        self._InstanceGroupId = None
 
     @property
     def InstanceId(self):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         return self._InstanceId
 
     @InstanceId.setter
     def InstanceId(self, InstanceId):
+        warnings.warn("parameter `InstanceId` is deprecated", DeprecationWarning) 
+
         self._InstanceId = InstanceId
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
 
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._InstanceGroupId = params.get("InstanceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11381,10 +11763,13 @@ class DescribeInstanceParamsRequest(AbstractModel):
         :type InstanceIds: list of str
         :param _ParamKeyword: 参数名搜索条件，支持模糊匹配
         :type ParamKeyword: str
+        :param _IsGlobal: 是否为全局参数
+        :type IsGlobal: str
         """
         self._ClusterId = None
         self._InstanceIds = None
         self._ParamKeyword = None
+        self._IsGlobal = None
 
     @property
     def ClusterId(self):
@@ -11410,11 +11795,20 @@ class DescribeInstanceParamsRequest(AbstractModel):
     def ParamKeyword(self, ParamKeyword):
         self._ParamKeyword = ParamKeyword
 
+    @property
+    def IsGlobal(self):
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceIds = params.get("InstanceIds")
         self._ParamKeyword = params.get("ParamKeyword")
+        self._IsGlobal = params.get("IsGlobal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11757,7 +12151,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :param _Limit: 返回数量，默认为 20，取值范围为(0,100]
         :type Limit: int
         :param _Offset: 记录偏移量，默认值为0
         :type Offset: int
@@ -11771,7 +12165,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type OrderByType: str
         :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
         :type Filters: list of QueryFilter
-        :param _DbType: 引擎类型：目前支持“MYSQL”， “POSTGRESQL”
+        :param _DbType: 引擎类型：目前支持“MYSQL”
         :type DbType: str
         :param _Status: 实例状态, 可选值:
 creating 创建中
@@ -15994,6 +16388,33 @@ class ModifiableInfo(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _IsModifiable: 参数是否可被修改, 1:可以 0:不可以
+        :type IsModifiable: int
+        """
+        self._IsModifiable = None
+
+    @property
+    def IsModifiable(self):
+        return self._IsModifiable
+
+    @IsModifiable.setter
+    def IsModifiable(self, IsModifiable):
+        self._IsModifiable = IsModifiable
+
+
+    def _deserialize(self, params):
+        self._IsModifiable = params.get("IsModifiable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyAccountDescriptionRequest(AbstractModel):
     """ModifyAccountDescription请求参数结构体
@@ -18616,6 +19037,8 @@ class ModifyVipVportRequest(AbstractModel):
         :type ClusterId: str
         :param _InstanceGrpId: 实例组id
         :type InstanceGrpId: str
+        :param _InstanceGroupId: 实例组id
+        :type InstanceGroupId: str
         :param _Vip: 需要修改的目的ip
         :type Vip: str
         :param _Vport: 需要修改的目的端口
@@ -18628,6 +19051,7 @@ class ModifyVipVportRequest(AbstractModel):
         """
         self._ClusterId = None
         self._InstanceGrpId = None
+        self._InstanceGroupId = None
         self._Vip = None
         self._Vport = None
         self._DbType = None
@@ -18643,11 +19067,23 @@ class ModifyVipVportRequest(AbstractModel):
 
     @property
     def InstanceGrpId(self):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         return self._InstanceGrpId
 
     @InstanceGrpId.setter
     def InstanceGrpId(self, InstanceGrpId):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         self._InstanceGrpId = InstanceGrpId
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
 
     @property
     def Vip(self):
@@ -18685,6 +19121,7 @@ class ModifyVipVportRequest(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceGrpId = params.get("InstanceGrpId")
+        self._InstanceGroupId = params.get("InstanceGroupId")
         self._Vip = params.get("Vip")
         self._Vport = params.get("Vport")
         self._DbType = params.get("DbType")
@@ -19759,20 +20196,48 @@ class OpenWanRequest(AbstractModel):
         r"""
         :param _InstanceGrpId: 实例组id
         :type InstanceGrpId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceGroupId: 实例组id
+        :type InstanceGroupId: str
         """
         self._InstanceGrpId = None
+        self._InstanceId = None
+        self._InstanceGroupId = None
 
     @property
     def InstanceGrpId(self):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         return self._InstanceGrpId
 
     @InstanceGrpId.setter
     def InstanceGrpId(self, InstanceGrpId):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
         self._InstanceGrpId = InstanceGrpId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
 
 
     def _deserialize(self, params):
         self._InstanceGrpId = params.get("InstanceGrpId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceGroupId = params.get("InstanceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20994,7 +21459,7 @@ class PolicyRule(AbstractModel):
         r"""
         :param _Action: 策略，ACCEPT或者DROP
         :type Action: str
-        :param _CidrIp: 来源IP或IP段，例如192.168.0.0/16
+        :param _CidrIp: 来源Ip或Ip段，例如192.168.0.0/16
         :type CidrIp: str
         :param _PortRange: 端口
         :type PortRange: str

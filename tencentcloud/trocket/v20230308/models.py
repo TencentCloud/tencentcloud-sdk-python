@@ -457,6 +457,237 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMQTTInstanceRequest(AbstractModel):
+    """CreateMQTTInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例类型，
+EXPERIMENT 体验版
+BASIC 基础版
+PRO  专业版
+PLATINUM 铂金版
+        :type InstanceType: str
+        :param _Name: 实例名称
+        :type Name: str
+        :param _SkuCode: 商品规格，可用规格如下：
+experiment_500,
+basic_1k,
+basic_2k,
+basic_4k,
+basic_6k,
+pro_4k,
+pro_6k,
+pro_1w,
+pro_2w,
+pro_3w,
+pro_4w,
+pro_5w,
+platinum_6k,
+platinum_1w,
+platinum_2w,
+platinum_4w,
+platinum_10w,
+platinum_15w,
+platinum_20w,
+platinum_40w,
+platinum_60w,
+platinum_100w
+        :type SkuCode: str
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _TagList: 标签列表
+        :type TagList: list of Tag
+        :param _VpcList: 实例绑定的VPC信息
+        :type VpcList: list of VpcInfo
+        :param _EnablePublic: 是否开启公网
+        :type EnablePublic: bool
+        :param _Bandwidth: 公网带宽（单位：兆）
+        :type Bandwidth: int
+        :param _IpRules: 公网访问白名单
+        :type IpRules: list of IpRule
+        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费）
+        :type RenewFlag: int
+        :param _TimeSpan: 购买时长（单位：月）
+        :type TimeSpan: int
+        """
+        self._InstanceType = None
+        self._Name = None
+        self._SkuCode = None
+        self._Remark = None
+        self._TagList = None
+        self._VpcList = None
+        self._EnablePublic = None
+        self._Bandwidth = None
+        self._IpRules = None
+        self._RenewFlag = None
+        self._TimeSpan = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SkuCode(self):
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def VpcList(self):
+        return self._VpcList
+
+    @VpcList.setter
+    def VpcList(self, VpcList):
+        self._VpcList = VpcList
+
+    @property
+    def EnablePublic(self):
+        return self._EnablePublic
+
+    @EnablePublic.setter
+    def EnablePublic(self, EnablePublic):
+        self._EnablePublic = EnablePublic
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def IpRules(self):
+        return self._IpRules
+
+    @IpRules.setter
+    def IpRules(self, IpRules):
+        self._IpRules = IpRules
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._Name = params.get("Name")
+        self._SkuCode = params.get("SkuCode")
+        self._Remark = params.get("Remark")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        if params.get("VpcList") is not None:
+            self._VpcList = []
+            for item in params.get("VpcList"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcList.append(obj)
+        self._EnablePublic = params.get("EnablePublic")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("IpRules") is not None:
+            self._IpRules = []
+            for item in params.get("IpRules"):
+                obj = IpRule()
+                obj._deserialize(item)
+                self._IpRules.append(obj)
+        self._RenewFlag = params.get("RenewFlag")
+        self._TimeSpan = params.get("TimeSpan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMQTTInstanceResponse(AbstractModel):
+    """CreateMQTTInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRoleRequest(AbstractModel):
     """CreateRole请求参数结构体
 
@@ -1783,6 +2014,185 @@ PLATINUM 铂金版
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMQTTInstanceListRequest(AbstractModel):
+    """DescribeMQTTInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
+        :param _Offset: 查询起始位置
+        :type Offset: int
+        :param _Limit: 查询结果限制数量
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMQTTInstanceListResponse(AbstractModel):
+    """DescribeMQTTInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Data: 实例列表
+        :type Data: list of MQTTInstanceItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = MQTTInstanceItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMQTTProductSKUListRequest(AbstractModel):
+    """DescribeMQTTProductSKUList请求参数结构体
+
+    """
+
+
+class DescribeMQTTProductSKUListResponse(AbstractModel):
+    """DescribeMQTTProductSKUList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _MQTTProductSkuList: mqtt商品配置信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MQTTProductSkuList: list of MQTTProductSkuItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._MQTTProductSkuList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def MQTTProductSkuList(self):
+        return self._MQTTProductSkuList
+
+    @MQTTProductSkuList.setter
+    def MQTTProductSkuList(self, MQTTProductSkuList):
+        self._MQTTProductSkuList = MQTTProductSkuList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("MQTTProductSkuList") is not None:
+            self._MQTTProductSkuList = []
+            for item in params.get("MQTTProductSkuList"):
+                obj = MQTTProductSkuItem()
+                obj._deserialize(item)
+                self._MQTTProductSkuList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRoleListRequest(AbstractModel):
     """DescribeRoleList请求参数结构体
 
@@ -2959,6 +3369,353 @@ class IpRule(AbstractModel):
         self._Ip = params.get("Ip")
         self._Allow = params.get("Allow")
         self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTInstanceItem(AbstractModel):
+    """MQTT 实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _Version: 实例版本
+        :type Version: str
+        :param _InstanceType: 实例类型，
+EXPERIMENT，体验版
+BASIC，基础版
+PRO，专业版
+PLATINUM，铂金版
+        :type InstanceType: str
+        :param _InstanceStatus: 实例状态，
+RUNNING, 运行中
+MAINTAINING，维护中
+ABNORMAL，异常
+OVERDUE，欠费
+DESTROYED，已删除
+CREATING，创建中
+MODIFYING，变配中
+CREATE_FAILURE，创建失败
+MODIFY_FAILURE，变配失败
+DELETING，删除中
+        :type InstanceStatus: str
+        :param _TopicNumLimit: 实例主题数上限
+        :type TopicNumLimit: int
+        :param _Remark: 备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _TopicNum: 主题数量
+        :type TopicNum: int
+        :param _SkuCode: 商品规格
+        :type SkuCode: str
+        :param _TpsLimit: 弹性TPS限流值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpsLimit: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _SubscriptionNumLimit: 订阅关系上限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionNumLimit: int
+        :param _ClientNumLimit: 客户端连接数上线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientNumLimit: int
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Version = None
+        self._InstanceType = None
+        self._InstanceStatus = None
+        self._TopicNumLimit = None
+        self._Remark = None
+        self._TopicNum = None
+        self._SkuCode = None
+        self._TpsLimit = None
+        self._CreateTime = None
+        self._SubscriptionNumLimit = None
+        self._ClientNumLimit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def TopicNumLimit(self):
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def TopicNum(self):
+        return self._TopicNum
+
+    @TopicNum.setter
+    def TopicNum(self, TopicNum):
+        self._TopicNum = TopicNum
+
+    @property
+    def SkuCode(self):
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def TpsLimit(self):
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SubscriptionNumLimit(self):
+        return self._SubscriptionNumLimit
+
+    @SubscriptionNumLimit.setter
+    def SubscriptionNumLimit(self, SubscriptionNumLimit):
+        self._SubscriptionNumLimit = SubscriptionNumLimit
+
+    @property
+    def ClientNumLimit(self):
+        return self._ClientNumLimit
+
+    @ClientNumLimit.setter
+    def ClientNumLimit(self, ClientNumLimit):
+        self._ClientNumLimit = ClientNumLimit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Version = params.get("Version")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._Remark = params.get("Remark")
+        self._TopicNum = params.get("TopicNum")
+        self._SkuCode = params.get("SkuCode")
+        self._TpsLimit = params.get("TpsLimit")
+        self._CreateTime = params.get("CreateTime")
+        self._SubscriptionNumLimit = params.get("SubscriptionNumLimit")
+        self._ClientNumLimit = params.get("ClientNumLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MQTTProductSkuItem(AbstractModel):
+    """MQTT ProductSkuItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _SkuCode: cide
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkuCode: str
+        :param _OnSale: sale
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OnSale: bool
+        :param _TopicNumLimit: topic num限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumLimit: int
+        :param _TpsLimit: tps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TpsLimit: int
+        :param _ClientNumLimit: 客户端连接数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientNumLimit: int
+        :param _SubscriptionNumLimit: 订阅数限制
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscriptionNumLimit: int
+        :param _ProxySpecCore: 代理核
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxySpecCore: int
+        :param _ProxySpecMemory: 代理内存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxySpecMemory: int
+        :param _ProxySpecCount: 代理总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxySpecCount: int
+        """
+        self._InstanceType = None
+        self._SkuCode = None
+        self._OnSale = None
+        self._TopicNumLimit = None
+        self._TpsLimit = None
+        self._ClientNumLimit = None
+        self._SubscriptionNumLimit = None
+        self._ProxySpecCore = None
+        self._ProxySpecMemory = None
+        self._ProxySpecCount = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def SkuCode(self):
+        return self._SkuCode
+
+    @SkuCode.setter
+    def SkuCode(self, SkuCode):
+        self._SkuCode = SkuCode
+
+    @property
+    def OnSale(self):
+        return self._OnSale
+
+    @OnSale.setter
+    def OnSale(self, OnSale):
+        self._OnSale = OnSale
+
+    @property
+    def TopicNumLimit(self):
+        return self._TopicNumLimit
+
+    @TopicNumLimit.setter
+    def TopicNumLimit(self, TopicNumLimit):
+        self._TopicNumLimit = TopicNumLimit
+
+    @property
+    def TpsLimit(self):
+        return self._TpsLimit
+
+    @TpsLimit.setter
+    def TpsLimit(self, TpsLimit):
+        self._TpsLimit = TpsLimit
+
+    @property
+    def ClientNumLimit(self):
+        return self._ClientNumLimit
+
+    @ClientNumLimit.setter
+    def ClientNumLimit(self, ClientNumLimit):
+        self._ClientNumLimit = ClientNumLimit
+
+    @property
+    def SubscriptionNumLimit(self):
+        return self._SubscriptionNumLimit
+
+    @SubscriptionNumLimit.setter
+    def SubscriptionNumLimit(self, SubscriptionNumLimit):
+        self._SubscriptionNumLimit = SubscriptionNumLimit
+
+    @property
+    def ProxySpecCore(self):
+        return self._ProxySpecCore
+
+    @ProxySpecCore.setter
+    def ProxySpecCore(self, ProxySpecCore):
+        self._ProxySpecCore = ProxySpecCore
+
+    @property
+    def ProxySpecMemory(self):
+        return self._ProxySpecMemory
+
+    @ProxySpecMemory.setter
+    def ProxySpecMemory(self, ProxySpecMemory):
+        self._ProxySpecMemory = ProxySpecMemory
+
+    @property
+    def ProxySpecCount(self):
+        return self._ProxySpecCount
+
+    @ProxySpecCount.setter
+    def ProxySpecCount(self, ProxySpecCount):
+        self._ProxySpecCount = ProxySpecCount
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._SkuCode = params.get("SkuCode")
+        self._OnSale = params.get("OnSale")
+        self._TopicNumLimit = params.get("TopicNumLimit")
+        self._TpsLimit = params.get("TpsLimit")
+        self._ClientNumLimit = params.get("ClientNumLimit")
+        self._SubscriptionNumLimit = params.get("SubscriptionNumLimit")
+        self._ProxySpecCore = params.get("ProxySpecCore")
+        self._ProxySpecMemory = params.get("ProxySpecMemory")
+        self._ProxySpecCount = params.get("ProxySpecCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

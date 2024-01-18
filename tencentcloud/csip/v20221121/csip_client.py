@@ -762,6 +762,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyOrganizationAccountStatus(self, request):
+        """修改集团账号状态
+
+        :param request: Request instance for ModifyOrganizationAccountStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyOrganizationAccountStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOrganizationAccountStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOrganizationAccountStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRiskCenterRiskStatus(self, request):
         """修改风险中心风险状态
 

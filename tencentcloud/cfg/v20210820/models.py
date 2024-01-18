@@ -2728,9 +2728,6 @@ class TaskGroupInstance(AbstractModel):
         :type TaskGroupInstanceObjectId: str
         :param _TaskGroupInstanceStatus: 实例动作执行状态
         :type TaskGroupInstanceStatus: int
-        :param _TaskGroupInstanceExecuteLog: 实例动作执行日志
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TaskGroupInstanceExecuteLog: str
         :param _TaskGroupInstanceCreateTime: 实例创建时间
         :type TaskGroupInstanceCreateTime: str
         :param _TaskGroupInstanceUpdateTime: 实例更新时间
@@ -2743,6 +2740,9 @@ class TaskGroupInstance(AbstractModel):
         :param _TaskGroupInstanceEndTime: 执行结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceEndTime: str
+        :param _TaskGroupInstanceExecuteLog: 实例动作执行日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskGroupInstanceExecuteLog: str
         :param _TaskGroupInstanceIsRedo: 实例是否可重试
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceIsRedo: bool
@@ -2753,12 +2753,12 @@ class TaskGroupInstance(AbstractModel):
         self._TaskGroupInstanceId = None
         self._TaskGroupInstanceObjectId = None
         self._TaskGroupInstanceStatus = None
-        self._TaskGroupInstanceExecuteLog = None
         self._TaskGroupInstanceCreateTime = None
         self._TaskGroupInstanceUpdateTime = None
         self._TaskGroupInstanceStatusType = None
         self._TaskGroupInstanceStartTime = None
         self._TaskGroupInstanceEndTime = None
+        self._TaskGroupInstanceExecuteLog = None
         self._TaskGroupInstanceIsRedo = None
         self._TaskGroupInstanceExecuteTime = None
 
@@ -2785,14 +2785,6 @@ class TaskGroupInstance(AbstractModel):
     @TaskGroupInstanceStatus.setter
     def TaskGroupInstanceStatus(self, TaskGroupInstanceStatus):
         self._TaskGroupInstanceStatus = TaskGroupInstanceStatus
-
-    @property
-    def TaskGroupInstanceExecuteLog(self):
-        return self._TaskGroupInstanceExecuteLog
-
-    @TaskGroupInstanceExecuteLog.setter
-    def TaskGroupInstanceExecuteLog(self, TaskGroupInstanceExecuteLog):
-        self._TaskGroupInstanceExecuteLog = TaskGroupInstanceExecuteLog
 
     @property
     def TaskGroupInstanceCreateTime(self):
@@ -2835,6 +2827,18 @@ class TaskGroupInstance(AbstractModel):
         self._TaskGroupInstanceEndTime = TaskGroupInstanceEndTime
 
     @property
+    def TaskGroupInstanceExecuteLog(self):
+        warnings.warn("parameter `TaskGroupInstanceExecuteLog` is deprecated", DeprecationWarning) 
+
+        return self._TaskGroupInstanceExecuteLog
+
+    @TaskGroupInstanceExecuteLog.setter
+    def TaskGroupInstanceExecuteLog(self, TaskGroupInstanceExecuteLog):
+        warnings.warn("parameter `TaskGroupInstanceExecuteLog` is deprecated", DeprecationWarning) 
+
+        self._TaskGroupInstanceExecuteLog = TaskGroupInstanceExecuteLog
+
+    @property
     def TaskGroupInstanceIsRedo(self):
         return self._TaskGroupInstanceIsRedo
 
@@ -2855,12 +2859,12 @@ class TaskGroupInstance(AbstractModel):
         self._TaskGroupInstanceId = params.get("TaskGroupInstanceId")
         self._TaskGroupInstanceObjectId = params.get("TaskGroupInstanceObjectId")
         self._TaskGroupInstanceStatus = params.get("TaskGroupInstanceStatus")
-        self._TaskGroupInstanceExecuteLog = params.get("TaskGroupInstanceExecuteLog")
         self._TaskGroupInstanceCreateTime = params.get("TaskGroupInstanceCreateTime")
         self._TaskGroupInstanceUpdateTime = params.get("TaskGroupInstanceUpdateTime")
         self._TaskGroupInstanceStatusType = params.get("TaskGroupInstanceStatusType")
         self._TaskGroupInstanceStartTime = params.get("TaskGroupInstanceStartTime")
         self._TaskGroupInstanceEndTime = params.get("TaskGroupInstanceEndTime")
+        self._TaskGroupInstanceExecuteLog = params.get("TaskGroupInstanceExecuteLog")
         self._TaskGroupInstanceIsRedo = params.get("TaskGroupInstanceIsRedo")
         self._TaskGroupInstanceExecuteTime = params.get("TaskGroupInstanceExecuteTime")
         memeber_set = set(params.keys())

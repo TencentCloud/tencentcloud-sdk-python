@@ -1004,6 +1004,358 @@ class BGPIPInstanceUsages(AbstractModel):
         
 
 
+class BGPIPL7RuleEntry(AbstractModel):
+    """L7规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: 转发协议，取值[http, https]
+        :type Protocol: str
+        :param _Domain: 转发域名
+        :type Domain: str
+        :param _LbType: 负载均衡方式，取值[1(加权轮询)]
+        :type LbType: int
+        :param _KeepEnable: 会话保持开关，取值[0(会话保持关闭)，1(会话保持开启)]
+        :type KeepEnable: int
+        :param _KeepTime: 会话保持时间，单位秒
+        :type KeepTime: int
+        :param _SourceType: 回源方式，取值[1(域名回源)，2(IP回源)]
+        :type SourceType: int
+        :param _SourceList: 回源列表
+        :type SourceList: list of L4RuleSource
+        :param _Region: 区域码
+        :type Region: int
+        :param _Id: 资源Id
+        :type Id: str
+        :param _Ip: 资源Ip
+        :type Ip: str
+        :param _RuleId: 规则ID，当添加新规则时可以不用填写此字段；当修改或者删除规则时需要填写此字段；
+        :type RuleId: str
+        :param _RuleName: 规则描述
+        :type RuleName: str
+        :param _CertType: 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
+        :type CertType: int
+        :param _SSLId: 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
+        :type SSLId: str
+        :param _Cert: 当证书来源为自有证书时，此字段必须填写证书内容；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type Cert: str
+        :param _PrivateKey: 当证书来源为自有证书时，此字段必须填写证书密钥；(因已不再支持自有证书，此字段已弃用，请不用填写此字段)
+        :type PrivateKey: str
+        :param _Status: 规则状态，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type Status: int
+        :param _CCStatus: cc防护状态，取值[0(关闭), 1(开启)]
+        :type CCStatus: int
+        :param _CCEnable: HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
+        :type CCEnable: int
+        :param _CCThreshold: HTTPS协议的CC防护阈值（已废弃）
+        :type CCThreshold: int
+        :param _CCLevel: HTTPS协议的CC防护等级
+        :type CCLevel: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _HttpsToHttpEnable: 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
+        :type HttpsToHttpEnable: int
+        :param _VirtualPort: 接入端口值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualPort: int
+        :param _RewriteHttps: http强制跳转https，1表示打开，0表示关闭
+        :type RewriteHttps: int
+        :param _ErrCode: 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
+        :type ErrCode: int
+        :param _Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        """
+        self._Protocol = None
+        self._Domain = None
+        self._LbType = None
+        self._KeepEnable = None
+        self._KeepTime = None
+        self._SourceType = None
+        self._SourceList = None
+        self._Region = None
+        self._Id = None
+        self._Ip = None
+        self._RuleId = None
+        self._RuleName = None
+        self._CertType = None
+        self._SSLId = None
+        self._Cert = None
+        self._PrivateKey = None
+        self._Status = None
+        self._CCStatus = None
+        self._CCEnable = None
+        self._CCThreshold = None
+        self._CCLevel = None
+        self._ModifyTime = None
+        self._HttpsToHttpEnable = None
+        self._VirtualPort = None
+        self._RewriteHttps = None
+        self._ErrCode = None
+        self._Version = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def LbType(self):
+        return self._LbType
+
+    @LbType.setter
+    def LbType(self, LbType):
+        self._LbType = LbType
+
+    @property
+    def KeepEnable(self):
+        return self._KeepEnable
+
+    @KeepEnable.setter
+    def KeepEnable(self, KeepEnable):
+        self._KeepEnable = KeepEnable
+
+    @property
+    def KeepTime(self):
+        return self._KeepTime
+
+    @KeepTime.setter
+    def KeepTime(self, KeepTime):
+        self._KeepTime = KeepTime
+
+    @property
+    def SourceType(self):
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceList(self):
+        return self._SourceList
+
+    @SourceList.setter
+    def SourceList(self, SourceList):
+        self._SourceList = SourceList
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def CertType(self):
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def SSLId(self):
+        return self._SSLId
+
+    @SSLId.setter
+    def SSLId(self, SSLId):
+        self._SSLId = SSLId
+
+    @property
+    def Cert(self):
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CCStatus(self):
+        return self._CCStatus
+
+    @CCStatus.setter
+    def CCStatus(self, CCStatus):
+        self._CCStatus = CCStatus
+
+    @property
+    def CCEnable(self):
+        return self._CCEnable
+
+    @CCEnable.setter
+    def CCEnable(self, CCEnable):
+        self._CCEnable = CCEnable
+
+    @property
+    def CCThreshold(self):
+        return self._CCThreshold
+
+    @CCThreshold.setter
+    def CCThreshold(self, CCThreshold):
+        self._CCThreshold = CCThreshold
+
+    @property
+    def CCLevel(self):
+        return self._CCLevel
+
+    @CCLevel.setter
+    def CCLevel(self, CCLevel):
+        self._CCLevel = CCLevel
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def HttpsToHttpEnable(self):
+        return self._HttpsToHttpEnable
+
+    @HttpsToHttpEnable.setter
+    def HttpsToHttpEnable(self, HttpsToHttpEnable):
+        self._HttpsToHttpEnable = HttpsToHttpEnable
+
+    @property
+    def VirtualPort(self):
+        return self._VirtualPort
+
+    @VirtualPort.setter
+    def VirtualPort(self, VirtualPort):
+        self._VirtualPort = VirtualPort
+
+    @property
+    def RewriteHttps(self):
+        return self._RewriteHttps
+
+    @RewriteHttps.setter
+    def RewriteHttps(self, RewriteHttps):
+        self._RewriteHttps = RewriteHttps
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._Domain = params.get("Domain")
+        self._LbType = params.get("LbType")
+        self._KeepEnable = params.get("KeepEnable")
+        self._KeepTime = params.get("KeepTime")
+        self._SourceType = params.get("SourceType")
+        if params.get("SourceList") is not None:
+            self._SourceList = []
+            for item in params.get("SourceList"):
+                obj = L4RuleSource()
+                obj._deserialize(item)
+                self._SourceList.append(obj)
+        self._Region = params.get("Region")
+        self._Id = params.get("Id")
+        self._Ip = params.get("Ip")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._CertType = params.get("CertType")
+        self._SSLId = params.get("SSLId")
+        self._Cert = params.get("Cert")
+        self._PrivateKey = params.get("PrivateKey")
+        self._Status = params.get("Status")
+        self._CCStatus = params.get("CCStatus")
+        self._CCEnable = params.get("CCEnable")
+        self._CCThreshold = params.get("CCThreshold")
+        self._CCLevel = params.get("CCLevel")
+        self._ModifyTime = params.get("ModifyTime")
+        self._HttpsToHttpEnable = params.get("HttpsToHttpEnable")
+        self._VirtualPort = params.get("VirtualPort")
+        self._RewriteHttps = params.get("RewriteHttps")
+        self._ErrCode = params.get("ErrCode")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BGPInstance(AbstractModel):
     """高防包资产实例信息
 
@@ -6244,6 +6596,206 @@ class DeleteWaterPrintKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBGPIPL7RulesRequest(AbstractModel):
+    """DescribeBGPIPL7Rules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP）
+        :type Business: str
+        :param _StatusList: 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+        :type StatusList: list of int non-negative
+        :param _Domain: 域名搜索，选填，当需要搜索域名请填写
+        :type Domain: str
+        :param _Ip: IP搜索，选填，当需要搜索IP请填写
+        :type Ip: str
+        :param _Limit: 一页条数，默认值100，最大值100，超过100最大返回100条
+        :type Limit: int
+        :param _Offset: 规则偏移量，取值为(页码-1)*一页条数
+        :type Offset: int
+        :param _ProtocolList: 转发协议搜索，选填，取值[http, https, http/https]
+        :type ProtocolList: list of str
+        :param _Cname: 高防IP实例的Cname
+        :type Cname: str
+        :param _Export: 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+        :type Export: bool
+        """
+        self._Business = None
+        self._StatusList = None
+        self._Domain = None
+        self._Ip = None
+        self._Limit = None
+        self._Offset = None
+        self._ProtocolList = None
+        self._Cname = None
+        self._Export = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def StatusList(self):
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ProtocolList(self):
+        return self._ProtocolList
+
+    @ProtocolList.setter
+    def ProtocolList(self, ProtocolList):
+        self._ProtocolList = ProtocolList
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Export(self):
+        return self._Export
+
+    @Export.setter
+    def Export(self, Export):
+        self._Export = Export
+
+
+    def _deserialize(self, params):
+        self._Business = params.get("Business")
+        self._StatusList = params.get("StatusList")
+        self._Domain = params.get("Domain")
+        self._Ip = params.get("Ip")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ProtocolList = params.get("ProtocolList")
+        self._Cname = params.get("Cname")
+        self._Export = params.get("Export")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBGPIPL7RulesResponse(AbstractModel):
+    """DescribeBGPIPL7Rules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 转发规则列表
+        :type Rules: list of BGPIPL7RuleEntry
+        :param _Healths: 健康检查配置列表
+        :type Healths: list of L7RuleHealth
+        :param _Total: 总规则数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rules = None
+        self._Healths = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def Healths(self):
+        return self._Healths
+
+    @Healths.setter
+    def Healths(self, Healths):
+        self._Healths = Healths
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = BGPIPL7RuleEntry()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        if params.get("Healths") is not None:
+            self._Healths = []
+            for item in params.get("Healths"):
+                obj = L7RuleHealth()
+                obj._deserialize(item)
+                self._Healths.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 

@@ -1581,9 +1581,12 @@ class CopyJobsRequest(AbstractModel):
         :type JobItems: list of CopyJobItem
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param _TargetWorkspaceId: 目标工作空间 SerialId
+        :type TargetWorkspaceId: str
         """
         self._JobItems = None
         self._WorkSpaceId = None
+        self._TargetWorkspaceId = None
 
     @property
     def JobItems(self):
@@ -1601,6 +1604,14 @@ class CopyJobsRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def TargetWorkspaceId(self):
+        return self._TargetWorkspaceId
+
+    @TargetWorkspaceId.setter
+    def TargetWorkspaceId(self, TargetWorkspaceId):
+        self._TargetWorkspaceId = TargetWorkspaceId
+
 
     def _deserialize(self, params):
         if params.get("JobItems") is not None:
@@ -1610,6 +1621,7 @@ class CopyJobsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._JobItems.append(obj)
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._TargetWorkspaceId = params.get("TargetWorkspaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6396,6 +6408,12 @@ class JobConfig(AbstractModel):
         :param _EsServerlessSpace: es空间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsServerlessSpace: str
+        :param _IndexName: es索引中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexName: str
+        :param _WorkspaceName: es空间中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceName: str
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -6427,6 +6445,8 @@ class JobConfig(AbstractModel):
         self._JobGraph = None
         self._EsServerlessIndex = None
         self._EsServerlessSpace = None
+        self._IndexName = None
+        self._WorkspaceName = None
 
     @property
     def JobId(self):
@@ -6668,6 +6688,22 @@ class JobConfig(AbstractModel):
     def EsServerlessSpace(self, EsServerlessSpace):
         self._EsServerlessSpace = EsServerlessSpace
 
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def WorkspaceName(self):
+        return self._WorkspaceName
+
+    @WorkspaceName.setter
+    def WorkspaceName(self, WorkspaceName):
+        self._WorkspaceName = WorkspaceName
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6721,6 +6757,8 @@ class JobConfig(AbstractModel):
             self._JobGraph._deserialize(params.get("JobGraph"))
         self._EsServerlessIndex = params.get("EsServerlessIndex")
         self._EsServerlessSpace = params.get("EsServerlessSpace")
+        self._IndexName = params.get("IndexName")
+        self._WorkspaceName = params.get("WorkspaceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

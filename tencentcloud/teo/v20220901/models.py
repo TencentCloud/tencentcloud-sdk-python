@@ -8176,6 +8176,8 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
         :param _Filters: 过滤条件，Filters.Values的上限为5。详细的过滤条件如下：
 <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是 </li>
         :type Filters: list of Filter
@@ -8184,9 +8186,18 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
         :param _Limit: 分页查询限制数目。默认值：20，最大值：100。
         :type Limit: int
         """
+        self._ZoneId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def Filters(self):
@@ -8214,6 +8225,7 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):

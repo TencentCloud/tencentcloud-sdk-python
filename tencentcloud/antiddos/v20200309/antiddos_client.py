@@ -877,6 +877,29 @@ class AntiddosClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBGPIPL7Rules(self, request):
+        """高防IP获取7层规则
+
+        :param request: Request instance for DescribeBGPIPL7Rules.
+        :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBGPIPL7RulesRequest`
+        :rtype: :class:`tencentcloud.antiddos.v20200309.models.DescribeBGPIPL7RulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBGPIPL7Rules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBGPIPL7RulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBasicDeviceStatus(self, request):
         """获取基础防护攻击状态
 

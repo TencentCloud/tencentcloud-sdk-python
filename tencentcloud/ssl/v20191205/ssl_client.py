@@ -969,31 +969,6 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def HostCertificate(self, request):
-        """证书托管接口已重构， 旧接口预下线， 近30天无请求
-
-        云资源托管
-
-        :param request: Request instance for HostCertificate.
-        :type request: :class:`tencentcloud.ssl.v20191205.models.HostCertificateRequest`
-        :rtype: :class:`tencentcloud.ssl.v20191205.models.HostCertificateResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("HostCertificate", params, headers=headers)
-            response = json.loads(body)
-            model = models.HostCertificateResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyCertificateAlias(self, request):
         """用户传入证书id和备注来修改证书备注。
 

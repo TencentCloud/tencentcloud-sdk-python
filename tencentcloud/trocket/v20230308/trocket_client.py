@@ -72,6 +72,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMQTTInstance(self, request):
+        """购买新的MQTT实例
+
+        :param request: Request instance for CreateMQTTInstance.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTInstanceRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateMQTTInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMQTTInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMQTTInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRole(self, request):
         """添加角色
 
@@ -302,6 +325,58 @@ class TrocketClient(AbstractClient):
             body = self.call("DescribeInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMQTTInstanceList(self, request):
+        """获取实例列表，Filters参数使用说明如下：
+        1. InstanceName, 名称模糊查询
+        2. InstanceId，实例ID查询
+        3. InstanceType, 实例类型查询，支持多选
+        3. InstanceStatus，实例状态查询，支持多选
+
+        当使用TagFilters查询时，Filters参数失效。
+
+        :param request: Request instance for DescribeMQTTInstanceList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInstanceListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMQTTInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMQTTInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMQTTProductSKUList(self, request):
+        """非对外接口，获取产品售卖规格
+
+        :param request: Request instance for DescribeMQTTProductSKUList.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTProductSKUListRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.DescribeMQTTProductSKUListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMQTTProductSKUList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMQTTProductSKUListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
