@@ -1591,23 +1591,27 @@ class CreateInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: 实例 ID。
         :type InstanceId: str
-        :param _AccountName: 子账号名称
+        :param _AccountName: 自定义访问数据库的名称。
+- 仅由字母、数字、下划线、中划线组成。
+- 长度不能大于32位。
         :type AccountName: str
-        :param _AccountPassword: 1.长度8-30位,推荐使用12位以上的密码
-2.不能以"/"开头
-3.至少包含两项
-    a.小写字母a-z
-    b.大写字母A-Z
-    c.数字0-9
-    d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :param _AccountPassword: 设置自定义账号的密码。密码复杂度要求如下：
+- 字符个数为[8,32]。
+- 至少包含小写字母、大写字母、数字和字符 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/ 中的两种。
+- 不能以"/"开头。
+
         :type AccountPassword: str
-        :param _ReadonlyPolicy: 路由策略：填写master或者replication，表示主节点或者从节点
+        :param _ReadonlyPolicy: 指定账号的读请求路由分发至主节点或副本节点。未开启副本只读，不支持选择副本节点。
+- master：主节点
+- replication：副本节点
         :type ReadonlyPolicy: list of str
-        :param _Privilege: 读写策略：填写r、rw，表示只读、读写
+        :param _Privilege: 账户读写权限，支持选择只读与读写权限。
+- r：只读
+- rw: 读写权限
         :type Privilege: str
-        :param _Remark: 子账号描述信息
+        :param _Remark: 子账号描述信息，长度[0,64] 字节，支持中文。
         :type Remark: str
         """
         self._InstanceId = None

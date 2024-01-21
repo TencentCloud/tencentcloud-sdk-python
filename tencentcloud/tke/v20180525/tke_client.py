@@ -50,7 +50,7 @@ class TkeClient(AbstractClient):
 
 
     def AddClusterCIDR(self, request):
-        """给GR集群增加可用的ClusterCIDR
+        """给GR集群增加可用的ClusterCIDR（开白才能使用此功能，如需要请联系我们）
 
         :param request: Request instance for AddClusterCIDR.
         :type request: :class:`tencentcloud.tke.v20180525.models.AddClusterCIDRRequest`

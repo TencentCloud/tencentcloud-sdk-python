@@ -10259,6 +10259,215 @@ class ModifyRiskCenterRiskStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRiskCenterScanTaskRequest(AbstractModel):
+    """ModifyRiskCenterScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _ScanAssetType: 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+        :type ScanAssetType: int
+        :param _ScanItem: 扫描项目；port/poc/weakpass/webcontent/configrisk
+        :type ScanItem: list of str
+        :param _ScanPlanType: 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+        :type ScanPlanType: int
+        :param _TaskId: 要修改的任务id
+        :type TaskId: str
+        :param _Assets: 扫描资产信息列表
+        :type Assets: list of TaskAssetObject
+        :param _ScanPlanContent: 扫描计划详情
+        :type ScanPlanContent: str
+        :param _SelfDefiningAssets: ip/域名/url数组
+        :type SelfDefiningAssets: list of str
+        :param _TaskAdvanceCFG: 高级配置
+        :type TaskAdvanceCFG: :class:`tencentcloud.csip.v20221121.models.TaskAdvanceCFG`
+        :param _TaskMode: 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+        :type TaskMode: int
+        """
+        self._TaskName = None
+        self._ScanAssetType = None
+        self._ScanItem = None
+        self._ScanPlanType = None
+        self._TaskId = None
+        self._Assets = None
+        self._ScanPlanContent = None
+        self._SelfDefiningAssets = None
+        self._TaskAdvanceCFG = None
+        self._TaskMode = None
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ScanAssetType(self):
+        return self._ScanAssetType
+
+    @ScanAssetType.setter
+    def ScanAssetType(self, ScanAssetType):
+        self._ScanAssetType = ScanAssetType
+
+    @property
+    def ScanItem(self):
+        return self._ScanItem
+
+    @ScanItem.setter
+    def ScanItem(self, ScanItem):
+        self._ScanItem = ScanItem
+
+    @property
+    def ScanPlanType(self):
+        return self._ScanPlanType
+
+    @ScanPlanType.setter
+    def ScanPlanType(self, ScanPlanType):
+        self._ScanPlanType = ScanPlanType
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Assets(self):
+        return self._Assets
+
+    @Assets.setter
+    def Assets(self, Assets):
+        self._Assets = Assets
+
+    @property
+    def ScanPlanContent(self):
+        return self._ScanPlanContent
+
+    @ScanPlanContent.setter
+    def ScanPlanContent(self, ScanPlanContent):
+        self._ScanPlanContent = ScanPlanContent
+
+    @property
+    def SelfDefiningAssets(self):
+        return self._SelfDefiningAssets
+
+    @SelfDefiningAssets.setter
+    def SelfDefiningAssets(self, SelfDefiningAssets):
+        self._SelfDefiningAssets = SelfDefiningAssets
+
+    @property
+    def TaskAdvanceCFG(self):
+        return self._TaskAdvanceCFG
+
+    @TaskAdvanceCFG.setter
+    def TaskAdvanceCFG(self, TaskAdvanceCFG):
+        self._TaskAdvanceCFG = TaskAdvanceCFG
+
+    @property
+    def TaskMode(self):
+        return self._TaskMode
+
+    @TaskMode.setter
+    def TaskMode(self, TaskMode):
+        self._TaskMode = TaskMode
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        self._ScanAssetType = params.get("ScanAssetType")
+        self._ScanItem = params.get("ScanItem")
+        self._ScanPlanType = params.get("ScanPlanType")
+        self._TaskId = params.get("TaskId")
+        if params.get("Assets") is not None:
+            self._Assets = []
+            for item in params.get("Assets"):
+                obj = TaskAssetObject()
+                obj._deserialize(item)
+                self._Assets.append(obj)
+        self._ScanPlanContent = params.get("ScanPlanContent")
+        self._SelfDefiningAssets = params.get("SelfDefiningAssets")
+        if params.get("TaskAdvanceCFG") is not None:
+            self._TaskAdvanceCFG = TaskAdvanceCFG()
+            self._TaskAdvanceCFG._deserialize(params.get("TaskAdvanceCFG"))
+        self._TaskMode = params.get("TaskMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRiskCenterScanTaskResponse(AbstractModel):
+    """ModifyRiskCenterScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _Status: 0，修改成功，其他失败；-1为存在资产未认证
+        :type Status: int
+        :param _UnAuthAsset: 未认证资产列表
+        :type UnAuthAsset: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._UnAuthAsset = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UnAuthAsset(self):
+        return self._UnAuthAsset
+
+    @UnAuthAsset.setter
+    def UnAuthAsset(self, UnAuthAsset):
+        self._UnAuthAsset = UnAuthAsset
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._UnAuthAsset = params.get("UnAuthAsset")
+        self._RequestId = params.get("RequestId")
+
+
 class NICAsset(AbstractModel):
     """网卡资产
 

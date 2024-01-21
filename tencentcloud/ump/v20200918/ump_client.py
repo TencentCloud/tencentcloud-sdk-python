@@ -74,7 +74,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateCapture(self, request):
-        """场内抓拍上报接口
+        """优mall产品下线
+
+        场内抓拍上报接口
 
         :param request: Request instance for CreateCapture.
         :type request: :class:`tencentcloud.ump.v20200918.models.CreateCaptureRequest`

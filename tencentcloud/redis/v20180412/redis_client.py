@@ -280,7 +280,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstanceAccount(self, request):
-        """创建实例子账号
+        """该接口（CreateInstanceAccount）用于自定义访问实例的账号。
 
         :param request: Request instance for CreateInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstanceAccountRequest`

@@ -808,6 +808,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRiskCenterScanTask(self, request):
+        """修改风险中心扫描任务
+
+        :param request: Request instance for ModifyRiskCenterScanTask.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterScanTaskRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyRiskCenterScanTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRiskCenterScanTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRiskCenterScanTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopRiskCenterTask(self, request):
         """停止扫风险中心扫描任务
 

@@ -29,11 +29,17 @@ OPERATIONDENIED = 'OperationDenied'
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
+# 客户端不存在。
+RESOURCENOTFOUND_CLIENT = 'ResourceNotFound.Client'
+
 # 消费组不存在，请检查后重试。
 RESOURCENOTFOUND_GROUP = 'ResourceNotFound.Group'
 
 # 实例不存在。
 RESOURCENOTFOUND_INSTANCE = 'ResourceNotFound.Instance'
+
+# 消息不存在。
+RESOURCENOTFOUND_MESSAGE = 'ResourceNotFound.Message'
 
 # 角色不存在，请检查后重试。
 RESOURCENOTFOUND_ROLE = 'ResourceNotFound.Role'
