@@ -74,31 +74,6 @@ class FacefusionClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def FaceFusionLite(self, request):
-        """接口不再使用
-
-        人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
-
-        :param request: Request instance for FaceFusionLite.
-        :type request: :class:`tencentcloud.facefusion.v20181201.models.FaceFusionLiteRequest`
-        :rtype: :class:`tencentcloud.facefusion.v20181201.models.FaceFusionLiteResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("FaceFusionLite", params, headers=headers)
-            response = json.loads(body)
-            model = models.FaceFusionLiteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def FuseFace(self, request):
         """本接口用于单脸、多脸融合，用户上传人脸图片，获取与模板融合后的人脸图片。查看 <a href="https://cloud.tencent.com/document/product/670/38247" target="_blank">选脸融合接入指引</a>。
 

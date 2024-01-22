@@ -1119,6 +1119,27 @@ class CloudBaseProjectVersion(AbstractModel):
         :param _BuildPercent: ci部署进度（%）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuildPercent: int
+        :param _Uin: Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _BuildFinishTime: BuildFinishTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildFinishTime: str
+        :param _DeployFinishTime: DeployFinishTime
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployFinishTime: str
+        :param _BuildId: BuildId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildId: str
+        :param _SourceUrl: SourceUrl
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceUrl: str
+        :param _FailReasonShort: FailReasonShort
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReasonShort: str
+        :param _FirstInitRepo: FirstInitRepo
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstInitRepo: str
         """
         self._Name = None
         self._Sam = None
@@ -1142,6 +1163,13 @@ class CloudBaseProjectVersion(AbstractModel):
         self._RepoUrl = None
         self._AutoDeployOnCodeChange = None
         self._BuildPercent = None
+        self._Uin = None
+        self._BuildFinishTime = None
+        self._DeployFinishTime = None
+        self._BuildId = None
+        self._SourceUrl = None
+        self._FailReasonShort = None
+        self._FirstInitRepo = None
 
     @property
     def Name(self):
@@ -1319,6 +1347,62 @@ class CloudBaseProjectVersion(AbstractModel):
     def BuildPercent(self, BuildPercent):
         self._BuildPercent = BuildPercent
 
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def BuildFinishTime(self):
+        return self._BuildFinishTime
+
+    @BuildFinishTime.setter
+    def BuildFinishTime(self, BuildFinishTime):
+        self._BuildFinishTime = BuildFinishTime
+
+    @property
+    def DeployFinishTime(self):
+        return self._DeployFinishTime
+
+    @DeployFinishTime.setter
+    def DeployFinishTime(self, DeployFinishTime):
+        self._DeployFinishTime = DeployFinishTime
+
+    @property
+    def BuildId(self):
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def SourceUrl(self):
+        return self._SourceUrl
+
+    @SourceUrl.setter
+    def SourceUrl(self, SourceUrl):
+        self._SourceUrl = SourceUrl
+
+    @property
+    def FailReasonShort(self):
+        return self._FailReasonShort
+
+    @FailReasonShort.setter
+    def FailReasonShort(self, FailReasonShort):
+        self._FailReasonShort = FailReasonShort
+
+    @property
+    def FirstInitRepo(self):
+        return self._FirstInitRepo
+
+    @FirstInitRepo.setter
+    def FirstInitRepo(self, FirstInitRepo):
+        self._FirstInitRepo = FirstInitRepo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1350,6 +1434,13 @@ class CloudBaseProjectVersion(AbstractModel):
         self._RepoUrl = params.get("RepoUrl")
         self._AutoDeployOnCodeChange = params.get("AutoDeployOnCodeChange")
         self._BuildPercent = params.get("BuildPercent")
+        self._Uin = params.get("Uin")
+        self._BuildFinishTime = params.get("BuildFinishTime")
+        self._DeployFinishTime = params.get("DeployFinishTime")
+        self._BuildId = params.get("BuildId")
+        self._SourceUrl = params.get("SourceUrl")
+        self._FailReasonShort = params.get("FailReasonShort")
+        self._FirstInitRepo = params.get("FirstInitRepo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7275,7 +7366,7 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
         r"""
         :param _UploadUrl: 上传url
         :type UploadUrl: str
-        :param _UploadHeaders: 上传heder
+        :param _UploadHeaders: 上传header
         :type UploadHeaders: list of KVPair
         :param _PackageName: 包名
         :type PackageName: str
@@ -7564,9 +7655,9 @@ class DescribeCloudBaseProjectVersionListRequest(AbstractModel):
         :type PageSize: int
         :param _PageNum: 第几页,从0开始
         :type PageNum: int
-        :param _StartTime: 起始时间 2021-03-27 12:00:00
+        :param _StartTime: 起始时间
         :type StartTime: str
-        :param _EndTime: 终止时间 2021-03-27 12:00:00
+        :param _EndTime: 终止时间
         :type EndTime: str
         """
         self._EnvId = None
@@ -10182,8 +10273,8 @@ class DescribeCurveDataRequest(AbstractModel):
 <li> FunctionDuration: 云函数运行时间, 单位毫秒 </li>
 <li> DbRead: 数据库读请求数 </li>
 <li> DbWrite: 数据库写请求数 </li>
-<li> DbCostTime10ms: 数据库耗时在10ms~50ms请求数 </li>
-<li> DbCostTime50ms: 数据库耗时在50ms~100ms请求数 </li>
+<li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li>
+<li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li>
 <li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
 <li> TkeCpuRatio: 容器CPU占用率 </li>
 <li> TkeMemRatio: 容器内存占用率 </li>
@@ -10281,7 +10372,7 @@ class DescribeCurveDataResponse(AbstractModel):
         :type MetricName: str
         :param _Period: 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
         :type Period: int
-        :param _Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+        :param _Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到。
         :type Values: list of int
         :param _Time: 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
         :type Time: list of int
@@ -12032,14 +12123,14 @@ StorageWrite: 存储写请求次数
 StorageCdnOriginFlux: CDN回源流量, 单位字节 
 CDNFlux: CDN回源流量, 单位字节 
 FunctionInvocation: 云函数调用次数 
-FunctionGBs: 云函数资源使用量, 单位Mb*Ms 
+FunctionGBs: 云函数资源使用量, 单位MB*ms 
 FunctionFlux: 云函数流量, 单位千字节(KB) 
 FunctionError: 云函数调用错误次数 
 FunctionDuration: 云函数运行时间, 单位毫秒 
 DbRead: 数据库读请求数 
 DbWrite: 数据库写请求数 
-DbCostTime10ms: 数据库耗时在10ms~50ms请求数 
-DbCostTime50ms: 数据库耗时在50ms~100ms请求数 
+DbCostTime10ms: 数据库耗时在10ms-50ms请求数 
+DbCostTime50ms: 数据库耗时在50ms-100ms请求数 
 DbCostTime100ms: 数据库耗时在100ms以上请求数 
 TkeCpuRatio: 容器CPU占用率 
 TkeMemRatio: 容器内存占用率 
@@ -12137,7 +12228,7 @@ class DescribeGraphDataResponse(AbstractModel):
         :type MetricName: str
         :param _Period: 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
         :type Period: int
-        :param _Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+        :param _Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到。
         :type Values: list of float
         :param _Time: 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
         :type Time: list of int
@@ -17766,6 +17857,7 @@ class RollUpdateCloudBaseRunServerVersionRequest(AbstractModel):
         :param _MaxNum: 最大副本数
         :type MaxNum: str
         :param _PolicyType: 策略类型
+cpu/mem
         :type PolicyType: str
         :param _PolicyThreshold: 策略阈值
         :type PolicyThreshold: str

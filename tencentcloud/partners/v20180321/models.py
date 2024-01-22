@@ -663,6 +663,9 @@ class AgentDealNewElem(AbstractModel):
         :param _RefundMap: 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefundMap: list of RefundMap
+        :param _SubGoodsName: 子产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubGoodsName: str
         """
         self._DealId = None
         self._DealName = None
@@ -694,6 +697,7 @@ class AgentDealNewElem(AbstractModel):
         self._UpdateTime = None
         self._ResourceIds = None
         self._RefundMap = None
+        self._SubGoodsName = None
 
     @property
     def DealId(self):
@@ -935,6 +939,14 @@ class AgentDealNewElem(AbstractModel):
     def RefundMap(self, RefundMap):
         self._RefundMap = RefundMap
 
+    @property
+    def SubGoodsName(self):
+        return self._SubGoodsName
+
+    @SubGoodsName.setter
+    def SubGoodsName(self, SubGoodsName):
+        self._SubGoodsName = SubGoodsName
+
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
@@ -979,6 +991,7 @@ class AgentDealNewElem(AbstractModel):
                 obj = RefundMap()
                 obj._deserialize(item)
                 self._RefundMap.append(obj)
+        self._SubGoodsName = params.get("SubGoodsName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -27,7 +27,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateCameraAlerts(self, request):
-        """上报相机移动、遮挡等告警信息
+        """优mall产品启动下线流程
+
+        上报相机移动、遮挡等告警信息
 
 
         :param request: Request instance for CreateCameraAlerts.
@@ -51,7 +53,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateCameraState(self, request):
-        """上报当前场内所有相机的当前状态
+        """优mall产品启动下线流程
+
+        上报当前场内所有相机的当前状态
 
         :param request: Request instance for CreateCameraState.
         :type request: :class:`tencentcloud.ump.v20200918.models.CreateCameraStateRequest`
@@ -99,7 +103,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateMultiBizAlert(self, request):
-        """集团广场的多经点位告警
+        """优mall产品启动下线流程
+
+        集团广场的多经点位告警
 
         :param request: Request instance for CreateMultiBizAlert.
         :type request: :class:`tencentcloud.ump.v20200918.models.CreateMultiBizAlertRequest`
@@ -122,7 +128,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateProgramState(self, request):
-        """上报所有进程监控信息
+        """优mall产品启动下线流程
+
+        上报所有进程监控信息
 
         :param request: Request instance for CreateProgramState.
         :type request: :class:`tencentcloud.ump.v20200918.models.CreateProgramStateRequest`
@@ -145,7 +153,9 @@ class UmpClient(AbstractClient):
 
 
     def CreateServerState(self, request):
-        """上报所有服务器硬件监控信息
+        """优mall产品启动下线流程
+
+        上报所有服务器硬件监控信息
 
         :param request: Request instance for CreateServerState.
         :type request: :class:`tencentcloud.ump.v20200918.models.CreateServerStateRequest`
@@ -168,7 +178,9 @@ class UmpClient(AbstractClient):
 
 
     def DeleteMultiBizAlert(self, request):
-        """集团广场的多经点位消警
+        """优mall产品启动下线流程
+
+        集团广场的多经点位消警
 
         :param request: Request instance for DeleteMultiBizAlert.
         :type request: :class:`tencentcloud.ump.v20200918.models.DeleteMultiBizAlertRequest`
@@ -191,7 +203,9 @@ class UmpClient(AbstractClient):
 
 
     def DeleteTask(self, request):
-        """删除集团广场对应的任务
+        """优mall产品启动下线流程
+
+        删除集团广场对应的任务
 
         :param request: Request instance for DeleteTask.
         :type request: :class:`tencentcloud.ump.v20200918.models.DeleteTaskRequest`
@@ -214,7 +228,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeCameras(self, request):
-        """获取集团广场对应的摄像头列表
+        """优mall产品启动下线流程
+
+        获取集团广场对应的摄像头列表
 
         :param request: Request instance for DescribeCameras.
         :type request: :class:`tencentcloud.ump.v20200918.models.DescribeCamerasRequest`
@@ -237,7 +253,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeConfig(self, request):
-        """获取摄像头配置信息
+        """优mall产品启动下线流程
+
+        获取摄像头配置信息
         mac不为空返回指定相机配置
         mac为空返回对应GroupCode和MallId全量配置
 
@@ -262,7 +280,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeImage(self, request):
-        """实时获取底图接口
+        """优mall产品启动下线流程
+
+        实时获取底图接口
 
         :param request: Request instance for DescribeImage.
         :type request: :class:`tencentcloud.ump.v20200918.models.DescribeImageRequest`
@@ -285,7 +305,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeMultiBizBaseImage(self, request):
-        """获取多经点位底图
+        """优mall产品启动下线流程
+
+        获取多经点位底图
 
         :param request: Request instance for DescribeMultiBizBaseImage.
         :type request: :class:`tencentcloud.ump.v20200918.models.DescribeMultiBizBaseImageRequest`
@@ -308,7 +330,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeTasks(self, request):
-        """查询集团广场对应的任务列表
+        """优mall产品启动下线流程
+
+        查询集团广场对应的任务列表
 
         :param request: Request instance for DescribeTasks.
         :type request: :class:`tencentcloud.ump.v20200918.models.DescribeTasksRequest`
@@ -331,7 +355,9 @@ class UmpClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """获取集团广场的点位列表
+        """优mall产品启动下线流程
+
+        获取集团广场的点位列表
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.ump.v20200918.models.DescribeZonesRequest`
@@ -354,7 +380,9 @@ class UmpClient(AbstractClient):
 
 
     def ModifyMultiBizConfig(self, request):
-        """集团广场的多经点位配置更新
+        """优mall产品启动下线流程
+
+        集团广场的多经点位配置更新
 
         :param request: Request instance for ModifyMultiBizConfig.
         :type request: :class:`tencentcloud.ump.v20200918.models.ModifyMultiBizConfigRequest`
@@ -377,7 +405,9 @@ class UmpClient(AbstractClient):
 
 
     def ReportServiceRegister(self, request):
-        """上报服务注册自身的服务地址作为回调地址, 用于信息回传。
+        """优mall产品启动下线流程
+
+        上报服务注册自身的服务地址作为回调地址, 用于信息回传。
 
         :param request: Request instance for ReportServiceRegister.
         :type request: :class:`tencentcloud.ump.v20200918.models.ReportServiceRegisterRequest`
@@ -400,7 +430,9 @@ class UmpClient(AbstractClient):
 
 
     def SearchImage(self, request):
-        """以图搜图
+        """优mall产品启动下线流程
+
+        以图搜图
 
         :param request: Request instance for SearchImage.
         :type request: :class:`tencentcloud.ump.v20200918.models.SearchImageRequest`

@@ -1219,6 +1219,11 @@ def test_import_tke():
     from tencentcloud.tke.v20180525 import models
 
 
+def test_import_tke():
+    from tencentcloud.tke.v20220501 import tke_client
+    from tencentcloud.tke.v20220501 import models
+
+
 def test_import_tkgdq():
     from tencentcloud.tkgdq.v20190411 import tkgdq_client
     from tencentcloud.tkgdq.v20190411 import models

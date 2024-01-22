@@ -5099,6 +5099,105 @@ class DescribeCloudStorageEventsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageMultiThumbnailRequest(AbstractModel):
+    """DescribeCloudStorageMultiThumbnail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _MultiThumbnail: 多个缩略图文件名根据 | 分割
+        :type MultiThumbnail: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._MultiThumbnail = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def MultiThumbnail(self):
+        return self._MultiThumbnail
+
+    @MultiThumbnail.setter
+    def MultiThumbnail(self, MultiThumbnail):
+        self._MultiThumbnail = MultiThumbnail
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._MultiThumbnail = params.get("MultiThumbnail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageMultiThumbnailResponse(AbstractModel):
+    """DescribeCloudStorageMultiThumbnail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThumbnailURLInfoList: 缩略图访问地址
+        :type ThumbnailURLInfoList: list of ThumbnailURLInfoList
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ThumbnailURLInfoList = None
+        self._RequestId = None
+
+    @property
+    def ThumbnailURLInfoList(self):
+        return self._ThumbnailURLInfoList
+
+    @ThumbnailURLInfoList.setter
+    def ThumbnailURLInfoList(self, ThumbnailURLInfoList):
+        self._ThumbnailURLInfoList = ThumbnailURLInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ThumbnailURLInfoList") is not None:
+            self._ThumbnailURLInfoList = []
+            for item in params.get("ThumbnailURLInfoList"):
+                obj = ThumbnailURLInfoList()
+                obj._deserialize(item)
+                self._ThumbnailURLInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudStorageOrderRequest(AbstractModel):
     """DescribeCloudStorageOrder请求参数结构体
 

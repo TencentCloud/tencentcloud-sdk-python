@@ -1338,7 +1338,7 @@ class TseClient(AbstractClient):
 
 
     def ModifyNetworkBasicInfo(self, request):
-        """修改云原生API网关实例网络基本信息，比如带宽以及描述，只支持修改客户端公网/内网的信息。
+        """修改云原生API网关实例网络基本信息，例如带宽以及描述，只支持修改客户端公网/内网的信息。
 
         :param request: Request instance for ModifyNetworkBasicInfo.
         :type request: :class:`tencentcloud.tse.v20201207.models.ModifyNetworkBasicInfoRequest`
@@ -1430,7 +1430,7 @@ class TseClient(AbstractClient):
 
 
     def UpdateCloudNativeAPIGatewaySpec(self, request):
-        """修改云原生API网关实例的节点规格信息，比如节点扩缩容或者升降配
+        """修改云原生API网关实例的节点规格信息，例如节点扩缩容或者升降配
 
         :param request: Request instance for UpdateCloudNativeAPIGatewaySpec.
         :type request: :class:`tencentcloud.tse.v20201207.models.UpdateCloudNativeAPIGatewaySpecRequest`

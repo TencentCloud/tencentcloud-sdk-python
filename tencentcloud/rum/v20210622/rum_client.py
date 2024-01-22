@@ -26,33 +26,6 @@ class RumClient(AbstractClient):
     _service = 'rum'
 
 
-    def CreateLogExport(self, request):
-        """接口请求域名： rum.tencentcloudapi.com 。
-
-        本接口用于创建日志下载任务
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for CreateLogExport.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateLogExportRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateLogExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateLogExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateLogExportResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateProject(self, request):
         """创建 RUM 应用（归属于某个团队）
 
@@ -182,33 +155,6 @@ class RumClient(AbstractClient):
             body = self.call("DeleteInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteLogExport(self, request):
-        """接口请求域名： rum.tencentcloudapi.com 。
-
-        本接口用于删除日志下载任务
-
-        默认接口请求频率限制：20次/秒。
-
-        :param request: Request instance for DeleteLogExport.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DeleteLogExportResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteLogExport", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteLogExportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -831,56 +777,6 @@ class RumClient(AbstractClient):
             body = self.call("DescribeError", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeErrorResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeLogExports(self, request):
-        """接口请求域名： rum.tencentcloudapi.com 。
-
-        本接口用于获取日志下载任务列表
-
-        默认接口请求频率限制：20次/秒
-
-        :param request: Request instance for DescribeLogExports.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLogExportsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLogExports", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLogExportsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeLogList(self, request):
-        """(已下线，请用DescribeRumLogList)
-
-        :param request: Request instance for DescribeLogList.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLogListRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLogListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeLogList", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeLogListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
