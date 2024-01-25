@@ -2357,6 +2357,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDomainPostAction(self, request):
+        """修改域名投递状态
+
+        :param request: Request instance for ModifyDomainPostAction.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyDomainPostActionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDomainPostAction", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDomainPostActionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDomainWhiteRule(self, request):
         """更改某一条规则
 

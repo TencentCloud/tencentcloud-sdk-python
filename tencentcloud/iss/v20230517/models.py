@@ -8343,9 +8343,11 @@ class DescribeVideoDownloadUrlRequest(AbstractModel):
         r"""
         :param _ChannelId: 通道 ID
         :type ChannelId: str
-        :param _BeginTime: 下载的开始时间，UTC 秒数，开始和结束时间段最长为30分钟，且不能跨天
+        :param _BeginTime: 下载的开始时间，UTC 秒数，开始和结束时间段最长为60分钟，且不能跨天。
+注意：实际下载的文件时长可能会大于该时段时长，通过指定IsRespActualTime参数可以获取实际下载的开始时间和结束时间。 原因是下载是TS切片对齐的，其目的也是为了保证用户下载数据的完整性，完全包含其指定的时间段。
         :type BeginTime: str
-        :param _EndTime: 下载的结束时间，UTC 秒数，开始和结束时间段最长为30分钟，且不能跨天
+        :param _EndTime: 下载的结束时间，UTC 秒数，开始和结束时间段最长为60分钟，且不能跨天。
+注意：实际下载的文件时长可能会大于该时段时长，通过指定IsRespActualTime参数可以获取实际下载的开始时间和结束时间。 原因是下载是TS切片对齐的，其目的也是为了保证用户下载数据的完整性，完全包含其指定的时间段。
         :type EndTime: str
         :param _FileType: 文件格式，"mp4"：mp4格式，"ts"：ts文件格式
         :type FileType: str

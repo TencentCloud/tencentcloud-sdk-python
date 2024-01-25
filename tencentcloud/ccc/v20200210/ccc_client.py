@@ -119,7 +119,7 @@ class CccClient(AbstractClient):
 
 
     def CreateCCCSkillGroup(self, request):
-        """创建技能组
+        """新建技能组
 
         :param request: Request instance for CreateCCCSkillGroup.
         :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCCCSkillGroupRequest`

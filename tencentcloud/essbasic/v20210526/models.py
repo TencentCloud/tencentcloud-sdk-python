@@ -3331,6 +3331,8 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         r"""
         :param _FlowId: 合同流程ID，为32位字符串。
 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+
+[点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowId: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
@@ -5062,6 +5064,9 @@ class ChannelCreateReleaseFlowRequest(AbstractModel):
 第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _NeedRelievedFlowId: 待解除的签署流程编号(即原签署流程的编号)。
+
+
+[点击产看流程编号在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
         :type NeedRelievedFlowId: str
         :param _ReliveInfo: 解除协议内容, 包括解除理由等信息。
         :type ReliveInfo: :class:`tencentcloud.essbasic.v20210526.models.RelieveInfo`
@@ -5941,7 +5946,15 @@ class ChannelCreateUserRolesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _RoleIds: 绑定角色的角色id列表，最多 100 个
         :type RoleIds: list of str
@@ -9929,8 +9942,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _ConsoleUrl: 跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表
-<table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> 
-<th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
+<table> <thead> <tr> <th>子客企业状态</th> <th>子客企业员工状态</th> <th>Endpoint</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>企业未激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr>  <tr> <td>企业未激活</td> <td>员工未认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/PC_SHORT_URL</td> <td>5分钟</td>  </tr> <tr> <td>企业已激活</td> <td>员工未认证</td> <td>PC/CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>PC</td> <td>5分钟</td>  </tr>  <tr> <td>企业已激活</td> <td>员工已认证</td> <td>CHANNEL/APP/H5/SHORT_H5</td> <td>30天</td>  </tr> </tbody> </table>
 
 注： 
 1. <font color="red">链接仅单次有效</font>，每次登录需要需要重新创建新的链接
@@ -10383,6 +10395,8 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         r"""
         :param _FlowIds: 生成的合同流程ID数组，合同流程ID为32位字符串。
 建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
+
+[点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
         :type FlowIds: list of str
         :param _CustomerData: 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
         :type CustomerData: list of str
@@ -12449,6 +12463,8 @@ class DescribeTemplatesRequest(AbstractModel):
         :param _TemplateId: 合同模板ID，为32位字符串。
 
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
+
+[点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
         :type TemplateId: str
         :param _ContentType: 查询模板的内容
 
@@ -12461,6 +12477,9 @@ class DescribeTemplatesRequest(AbstractModel):
 1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
 2. `请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。`
 4. `若传递此参数，分页参数(Limit,Offset)无效`
+
+
+[点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 
         :type TemplateIds: list of str
         :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。
@@ -14598,6 +14617,9 @@ class FlowInfo(AbstractModel):
 如果使用模板发起接口，此参数为必填。
 
 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在**企业模板**中得到合同模板ID。
+
+[点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
+
         :type TemplateId: str
         :param _FlowApprovers: 多个签署人信息，最大支持50个签署方
         :type FlowApprovers: list of FlowApproverInfo
@@ -15587,8 +15609,8 @@ class ModifyFlowDeadlineRequest(AbstractModel):
         :type Deadline: int
         :param _RecipientId: 签署方角色编号，为32位字符串
 <ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
-<li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
-<li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+<li>通过[用PDF文件创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)发起合同，或通过[用模板创建签署流程](https://test.qian.tencent.cn/developers/partnerApis/startFlows/CreateFlowsByTemplates)时，返回参数[FlowApprovers](https://test.qian.tencent.cn/developers/partnerApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+<li>也可通过[获取合同信息](https://test.qian.tencent.cn/developers/partnerApis/flows/DescribeFlowDetailInfo)接口查询签署人的RecipientId编号</li></ul>
         :type RecipientId: str
         """
         self._Agent = None
@@ -19510,9 +19532,23 @@ class WebThemeConfig(AbstractModel):
 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
 <br/>
         :type WebEmbedThemeColor: str
+        :param _AuthenticateBackground: 企业认证页背景图（base64图片）
+
+        :type AuthenticateBackground: str
+        :param _HideAuthenticateNavigationBar: 隐藏企业认证页面导航栏，取值如下：
+<ul><li> **true**：隐藏企业认证页面导航栏</li>
+<li> **false**：显示企业认证页面导航栏（默认）</li></ul>
+        :type HideAuthenticateNavigationBar: bool
+        :param _HideAuthenticateTopLogo: 隐藏企业认证顶部logo，取值如下：
+<ul><li> **true**：隐藏企业认证顶部logo</li>
+<li> **false**：显示企业认证顶部logo（默认）</li></ul>
+        :type HideAuthenticateTopLogo: bool
         """
         self._DisplaySignBrandLogo = None
         self._WebEmbedThemeColor = None
+        self._AuthenticateBackground = None
+        self._HideAuthenticateNavigationBar = None
+        self._HideAuthenticateTopLogo = None
 
     @property
     def DisplaySignBrandLogo(self):
@@ -19530,10 +19566,37 @@ class WebThemeConfig(AbstractModel):
     def WebEmbedThemeColor(self, WebEmbedThemeColor):
         self._WebEmbedThemeColor = WebEmbedThemeColor
 
+    @property
+    def AuthenticateBackground(self):
+        return self._AuthenticateBackground
+
+    @AuthenticateBackground.setter
+    def AuthenticateBackground(self, AuthenticateBackground):
+        self._AuthenticateBackground = AuthenticateBackground
+
+    @property
+    def HideAuthenticateNavigationBar(self):
+        return self._HideAuthenticateNavigationBar
+
+    @HideAuthenticateNavigationBar.setter
+    def HideAuthenticateNavigationBar(self, HideAuthenticateNavigationBar):
+        self._HideAuthenticateNavigationBar = HideAuthenticateNavigationBar
+
+    @property
+    def HideAuthenticateTopLogo(self):
+        return self._HideAuthenticateTopLogo
+
+    @HideAuthenticateTopLogo.setter
+    def HideAuthenticateTopLogo(self, HideAuthenticateTopLogo):
+        self._HideAuthenticateTopLogo = HideAuthenticateTopLogo
+
 
     def _deserialize(self, params):
         self._DisplaySignBrandLogo = params.get("DisplaySignBrandLogo")
         self._WebEmbedThemeColor = params.get("WebEmbedThemeColor")
+        self._AuthenticateBackground = params.get("AuthenticateBackground")
+        self._HideAuthenticateNavigationBar = params.get("HideAuthenticateNavigationBar")
+        self._HideAuthenticateTopLogo = params.get("HideAuthenticateTopLogo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

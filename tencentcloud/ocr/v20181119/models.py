@@ -5213,6 +5213,92 @@ class ElectronicTrainTicketFull(AbstractModel):
         
 
 
+class Encryption(AbstractModel):
+    """敏感数据加密
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CiphertextBlob: 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅数据加密 文档。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CiphertextBlob: str
+        :param _Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Iv: str
+        :param _Algorithm: 加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Algorithm: str
+        :param _TagList: SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of str
+        :param _EncryptList: 在使用加密服务时，指定要被加密的字段。本接口默认为EncryptedBody
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptList: list of str
+        """
+        self._CiphertextBlob = None
+        self._Iv = None
+        self._Algorithm = None
+        self._TagList = None
+        self._EncryptList = None
+
+    @property
+    def CiphertextBlob(self):
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def Iv(self):
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def EncryptList(self):
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+
+    def _deserialize(self, params):
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._Iv = params.get("Iv")
+        self._Algorithm = params.get("Algorithm")
+        self._TagList = params.get("TagList")
+        self._EncryptList = params.get("EncryptList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnglishOCRRequest(AbstractModel):
     """EnglishOCR请求参数结构体
 
@@ -9963,9 +10049,13 @@ class MLIDPassportOCRRequest(AbstractModel):
         :type ImageBase64: str
         :param _RetImage: 是否返回图片，默认false
         :type RetImage: bool
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
         """
         self._ImageBase64 = None
         self._RetImage = None
+        self._ImageUrl = None
 
     @property
     def ImageBase64(self):
@@ -9983,10 +10073,19 @@ class MLIDPassportOCRRequest(AbstractModel):
     def RetImage(self, RetImage):
         self._RetImage = RetImage
 
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._RetImage = params.get("RetImage")
+        self._ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13369,6 +13468,18 @@ class PassportRecognizeInfos(AbstractModel):
         :type DateOfIssuance: str
         :param _DateOfExpiration: 截止日期（护照信息页识别结果）
         :type DateOfExpiration: str
+        :param _Signature: 持证人签名（护照信息页识别结果）
+
+仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :type Signature: str
+        :param _IssuePlace: 签发地点（护照信息页识别结果）
+
+仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :type IssuePlace: str
+        :param _IssuingAuthority: 签发机关（护照信息页识别结果）
+
+仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :type IssuingAuthority: str
         """
         self._Type = None
         self._IssuingCountry = None
@@ -13381,6 +13492,9 @@ class PassportRecognizeInfos(AbstractModel):
         self._Sex = None
         self._DateOfIssuance = None
         self._DateOfExpiration = None
+        self._Signature = None
+        self._IssuePlace = None
+        self._IssuingAuthority = None
 
     @property
     def Type(self):
@@ -13470,6 +13584,30 @@ class PassportRecognizeInfos(AbstractModel):
     def DateOfExpiration(self, DateOfExpiration):
         self._DateOfExpiration = DateOfExpiration
 
+    @property
+    def Signature(self):
+        return self._Signature
+
+    @Signature.setter
+    def Signature(self, Signature):
+        self._Signature = Signature
+
+    @property
+    def IssuePlace(self):
+        return self._IssuePlace
+
+    @IssuePlace.setter
+    def IssuePlace(self, IssuePlace):
+        self._IssuePlace = IssuePlace
+
+    @property
+    def IssuingAuthority(self):
+        return self._IssuingAuthority
+
+    @IssuingAuthority.setter
+    def IssuingAuthority(self, IssuingAuthority):
+        self._IssuingAuthority = IssuingAuthority
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -13483,6 +13621,9 @@ class PassportRecognizeInfos(AbstractModel):
         self._Sex = params.get("Sex")
         self._DateOfIssuance = params.get("DateOfIssuance")
         self._DateOfExpiration = params.get("DateOfExpiration")
+        self._Signature = params.get("Signature")
+        self._IssuePlace = params.get("IssuePlace")
+        self._IssuingAuthority = params.get("IssuingAuthority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15200,6 +15341,338 @@ class RecognizeContainerOCRResponse(AbstractModel):
         self._Warn = params.get("Warn")
         self._TareKG = params.get("TareKG")
         self._TareLB = params.get("TareLB")
+        self._RequestId = params.get("RequestId")
+
+
+class RecognizeEncryptedIDCardOCRRequest(AbstractModel):
+    """RecognizeEncryptedIDCardOCR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptedBody: 请求体被加密后的密文，本接口只支持加密传输
+        :type EncryptedBody: str
+        :param _Encryption: 敏感数据加密信息。对传入信息有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :type Encryption: :class:`tencentcloud.ocr.v20181119.models.Encryption`
+        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :type ImageBase64: str
+        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :type ImageUrl: str
+        :param _CardSide: FRONT：身份证有照片的一面（人像面），
+BACK：身份证有国徽的一面（国徽面），
+该参数如果不填，将为您自动判断身份证正反面。
+        :type CardSide: str
+        :param _Config: 以下可选字段均为bool 类型，默认false：
+CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）
+CropPortrait，人像照片裁剪（自动抠取身份证头像区域）
+CopyWarn，复印件告警
+BorderCheckWarn，边框和框内遮挡告警
+ReshootWarn，翻拍告警
+DetectPsWarn，疑似存在PS痕迹告警
+TempIdWarn，临时身份证告警
+InvalidDateWarn，身份证有效日期不合法告警
+Quality，图片质量分数（评价图片的模糊程度）
+MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
+ReflectWarn，是否开启反光检测
+
+SDK 设置方式参考：
+Config = Json.stringify({"CropIdCard":true,"CropPortrait":true})
+API 3.0 Explorer 设置方式参考：
+Config = {"CropIdCard":true,"CropPortrait":true}
+        :type Config: str
+        :param _EnableRecognitionRectify: 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+        :type EnableRecognitionRectify: bool
+        :param _EnableReflectDetail: 默认值为false。
+
+此开关需要在反光检测开关开启下才会生效（即此开关生效的前提是config入参里的"ReflectWarn":true），若EnableReflectDetail设置为true，则会返回反光点覆盖区域详情。反光点覆盖区域详情分为四部分：人像照片位置、国徽位置、识别字段位置、其他位置。一个反光点允许覆盖多个区域，且一张图片可能存在多个反光点。
+        :type EnableReflectDetail: bool
+        """
+        self._EncryptedBody = None
+        self._Encryption = None
+        self._ImageBase64 = None
+        self._ImageUrl = None
+        self._CardSide = None
+        self._Config = None
+        self._EnableRecognitionRectify = None
+        self._EnableReflectDetail = None
+
+    @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def CardSide(self):
+        return self._CardSide
+
+    @CardSide.setter
+    def CardSide(self, CardSide):
+        self._CardSide = CardSide
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def EnableRecognitionRectify(self):
+        return self._EnableRecognitionRectify
+
+    @EnableRecognitionRectify.setter
+    def EnableRecognitionRectify(self, EnableRecognitionRectify):
+        self._EnableRecognitionRectify = EnableRecognitionRectify
+
+    @property
+    def EnableReflectDetail(self):
+        return self._EnableReflectDetail
+
+    @EnableReflectDetail.setter
+    def EnableReflectDetail(self, EnableReflectDetail):
+        self._EnableReflectDetail = EnableReflectDetail
+
+
+    def _deserialize(self, params):
+        self._EncryptedBody = params.get("EncryptedBody")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._ImageBase64 = params.get("ImageBase64")
+        self._ImageUrl = params.get("ImageUrl")
+        self._CardSide = params.get("CardSide")
+        self._Config = params.get("Config")
+        self._EnableRecognitionRectify = params.get("EnableRecognitionRectify")
+        self._EnableReflectDetail = params.get("EnableReflectDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeEncryptedIDCardOCRResponse(AbstractModel):
+    """RecognizeEncryptedIDCardOCR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 姓名（人像面）
+        :type Name: str
+        :param _Sex: 性别（人像面）
+        :type Sex: str
+        :param _Nation: 民族（人像面）
+        :type Nation: str
+        :param _Birth: 出生日期（人像面）
+        :type Birth: str
+        :param _Address: 地址（人像面）
+        :type Address: str
+        :param _IdNum: 身份证号（人像面）
+        :type IdNum: str
+        :param _Authority: 发证机关（国徽面）
+        :type Authority: str
+        :param _ValidDate: 证件有效期（国徽面）
+        :type ValidDate: str
+        :param _AdvancedInfo: 扩展信息，不请求则不返回，具体输入参考示例3和示例4。
+IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；
+Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；
+
+Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;
+BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
+
+WarnInfos，告警信息，Code 告警码列表和释义：
+-9100	身份证有效日期不合法告警，
+-9101	身份证边框不完整告警，
+-9102	身份证复印件告警，
+-9103	身份证翻拍告警，
+-9105	身份证框内遮挡告警，
+-9104	临时身份证告警，
+-9106	身份证疑似存在PS痕迹告警，
+-9107       身份证反光告警。
+        :type AdvancedInfo: str
+        :param _ReflectDetailInfos: 反光点覆盖区域详情结果，具体内容请点击左侧链接
+        :type ReflectDetailInfos: list of ReflectDetailInfo
+        :param _EncryptedBody: 加密后的数据
+        :type EncryptedBody: str
+        :param _Encryption: 敏感数据加密信息
+        :type Encryption: :class:`tencentcloud.ocr.v20181119.models.Encryption`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Sex = None
+        self._Nation = None
+        self._Birth = None
+        self._Address = None
+        self._IdNum = None
+        self._Authority = None
+        self._ValidDate = None
+        self._AdvancedInfo = None
+        self._ReflectDetailInfos = None
+        self._EncryptedBody = None
+        self._Encryption = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def Nation(self):
+        return self._Nation
+
+    @Nation.setter
+    def Nation(self, Nation):
+        self._Nation = Nation
+
+    @property
+    def Birth(self):
+        return self._Birth
+
+    @Birth.setter
+    def Birth(self, Birth):
+        self._Birth = Birth
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def IdNum(self):
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+    @property
+    def Authority(self):
+        return self._Authority
+
+    @Authority.setter
+    def Authority(self, Authority):
+        self._Authority = Authority
+
+    @property
+    def ValidDate(self):
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def AdvancedInfo(self):
+        return self._AdvancedInfo
+
+    @AdvancedInfo.setter
+    def AdvancedInfo(self, AdvancedInfo):
+        self._AdvancedInfo = AdvancedInfo
+
+    @property
+    def ReflectDetailInfos(self):
+        return self._ReflectDetailInfos
+
+    @ReflectDetailInfos.setter
+    def ReflectDetailInfos(self, ReflectDetailInfos):
+        self._ReflectDetailInfos = ReflectDetailInfos
+
+    @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Sex = params.get("Sex")
+        self._Nation = params.get("Nation")
+        self._Birth = params.get("Birth")
+        self._Address = params.get("Address")
+        self._IdNum = params.get("IdNum")
+        self._Authority = params.get("Authority")
+        self._ValidDate = params.get("ValidDate")
+        self._AdvancedInfo = params.get("AdvancedInfo")
+        if params.get("ReflectDetailInfos") is not None:
+            self._ReflectDetailInfos = []
+            for item in params.get("ReflectDetailInfos"):
+                obj = ReflectDetailInfo()
+                obj._deserialize(item)
+                self._ReflectDetailInfos.append(obj)
+        self._EncryptedBody = params.get("EncryptedBody")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
         self._RequestId = params.get("RequestId")
 
 

@@ -2247,8 +2247,9 @@ class MpsClient(AbstractClient):
         5. 对视频截图雪碧图；
         6. 对视频转自适应码流；
         7. 智能内容审核（鉴黄、敏感信息检测）；
-        8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾）；
+        8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾、游戏打点）；
         9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
+        10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
 
         :param request: Request instance for ProcessMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessMediaRequest`

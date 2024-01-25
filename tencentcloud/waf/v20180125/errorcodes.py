@@ -26,6 +26,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# CKafka内部错误。
+FAILEDOPERATION_CKAFKAINTERNALERROR = 'FailedOperation.CKafkaInternalError'
+
 # 调用CLS日志服务API失败
 FAILEDOPERATION_CLSDBOPERATIONFAILED = 'FailedOperation.CLSDBOperationFailed'
 

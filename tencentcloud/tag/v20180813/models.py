@@ -663,10 +663,16 @@ class DescribeProjectsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页偏移量。
         :type Offset: int
+        :param _ProjectId: 按项目ID筛选，大于0
+        :type ProjectId: int
+        :param _ProjectName: 按项目名称筛选
+        :type ProjectName: str
         """
         self._AllList = None
         self._Limit = None
         self._Offset = None
+        self._ProjectId = None
+        self._ProjectName = None
 
     @property
     def AllList(self):
@@ -692,11 +698,29 @@ class DescribeProjectsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
 
     def _deserialize(self, params):
         self._AllList = params.get("AllList")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

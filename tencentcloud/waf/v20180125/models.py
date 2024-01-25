@@ -20028,6 +20028,88 @@ class ModifyDomainIpv6StatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDomainPostActionRequest(AbstractModel):
+    """ModifyDomainPostAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: www.tx.com
+        :type Domain: str
+        :param _PostCLSAction: 0-关闭投递，1-开启投递
+        :type PostCLSAction: int
+        :param _PostCKafkaAction: 0-关闭投递，1-开启投递
+        :type PostCKafkaAction: int
+        """
+        self._Domain = None
+        self._PostCLSAction = None
+        self._PostCKafkaAction = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def PostCLSAction(self):
+        return self._PostCLSAction
+
+    @PostCLSAction.setter
+    def PostCLSAction(self, PostCLSAction):
+        self._PostCLSAction = PostCLSAction
+
+    @property
+    def PostCKafkaAction(self):
+        return self._PostCKafkaAction
+
+    @PostCKafkaAction.setter
+    def PostCKafkaAction(self, PostCKafkaAction):
+        self._PostCKafkaAction = PostCKafkaAction
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._PostCLSAction = params.get("PostCLSAction")
+        self._PostCKafkaAction = params.get("PostCKafkaAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainPostActionResponse(AbstractModel):
+    """ModifyDomainPostAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDomainWhiteRuleRequest(AbstractModel):
     """ModifyDomainWhiteRule请求参数结构体
 

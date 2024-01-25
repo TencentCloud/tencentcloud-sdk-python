@@ -8640,8 +8640,8 @@ class AudioTemplateInfo(AbstractModel):
         :param _AudioChannel: 音频通道方式，可选值：
 <li>1：单通道</li>
 <li>2：双通道</li>
-<li>6：立体声</li>
-当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
+<li>6：5.1声道</li>
+当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
 默认值：2。
         :type AudioChannel: int
         """
@@ -13675,6 +13675,8 @@ class CreateScheduleRequest(AbstractModel):
         :type OutputDir: str
         :param _TaskNotifyConfig: 任务的事件通知配置，不填代表不获取事件通知。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+        :type ResourceId: str
         """
         self._ScheduleName = None
         self._Trigger = None
@@ -13682,6 +13684,7 @@ class CreateScheduleRequest(AbstractModel):
         self._OutputStorage = None
         self._OutputDir = None
         self._TaskNotifyConfig = None
+        self._ResourceId = None
 
     @property
     def ScheduleName(self):
@@ -13731,6 +13734,14 @@ class CreateScheduleRequest(AbstractModel):
     def TaskNotifyConfig(self, TaskNotifyConfig):
         self._TaskNotifyConfig = TaskNotifyConfig
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleName = params.get("ScheduleName")
@@ -13750,6 +13761,7 @@ class CreateScheduleRequest(AbstractModel):
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26960,6 +26972,10 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+
+<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+        :type NotifyType: str
         :param _CmqModel: CMQ 的模型，有 Queue 和 Topic 两种，目前仅支持 Queue。
         :type CmqModel: str
         :param _CmqRegion: CMQ 的园区，如 sh，bj 等。
@@ -26968,19 +26984,23 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param _TopicName: 当模型为 Topic 时有效，表示接收事件通知的 CMQ 的主题名。
         :type TopicName: str
-        :param _NotifyType: 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
-
-<font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
-        :type NotifyType: str
         :param _NotifyUrl: HTTP回调地址，NotifyType为URL时必填。
         :type NotifyUrl: str
         """
+        self._NotifyType = None
         self._CmqModel = None
         self._CmqRegion = None
         self._QueueName = None
         self._TopicName = None
-        self._NotifyType = None
         self._NotifyUrl = None
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
 
     @property
     def CmqModel(self):
@@ -27015,14 +27035,6 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self._TopicName = TopicName
 
     @property
-    def NotifyType(self):
-        return self._NotifyType
-
-    @NotifyType.setter
-    def NotifyType(self, NotifyType):
-        self._NotifyType = NotifyType
-
-    @property
     def NotifyUrl(self):
         return self._NotifyUrl
 
@@ -27032,11 +27044,11 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._NotifyType = params.get("NotifyType")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
-        self._NotifyType = params.get("NotifyType")
         self._NotifyUrl = params.get("NotifyUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -31982,6 +31994,8 @@ class ModifyScheduleRequest(AbstractModel):
         :type OutputDir: str
         :param _TaskNotifyConfig: 任务的事件通知配置。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。
+        :type ResourceId: str
         """
         self._ScheduleId = None
         self._ScheduleName = None
@@ -31990,6 +32004,7 @@ class ModifyScheduleRequest(AbstractModel):
         self._OutputStorage = None
         self._OutputDir = None
         self._TaskNotifyConfig = None
+        self._ResourceId = None
 
     @property
     def ScheduleId(self):
@@ -32047,6 +32062,14 @@ class ModifyScheduleRequest(AbstractModel):
     def TaskNotifyConfig(self, TaskNotifyConfig):
         self._TaskNotifyConfig = TaskNotifyConfig
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
@@ -32067,6 +32090,7 @@ class ModifyScheduleRequest(AbstractModel):
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35252,7 +35276,8 @@ class ProcessMediaRequest(AbstractModel):
         :param _ScheduleId: 编排ID。
 注意1：对于OutputStorage、OutputDir参数：
 <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有指定输出，将覆盖原有编排的默认输出。</li>
+<li>即输出设置的优先级：编排子任务节点 > 任务接口指定 > 对应编排内的配置 </li>
 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
 
 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
@@ -38083,6 +38108,9 @@ Disabled：已禁用。
         :param _UpdateTime: 最后编辑时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _ResourceId: 资源ID，对于没有关联资源ID的，用账号主资源ID填充。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
         """
         self._ScheduleId = None
         self._ScheduleName = None
@@ -38095,6 +38123,7 @@ Disabled：已禁用。
         self._TaskNotifyConfig = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._ResourceId = None
 
     @property
     def ScheduleId(self):
@@ -38184,6 +38213,14 @@ Disabled：已禁用。
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
@@ -38208,6 +38245,7 @@ Disabled：已禁用。
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

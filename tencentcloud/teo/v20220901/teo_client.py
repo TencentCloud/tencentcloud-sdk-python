@@ -235,6 +235,52 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateL4Proxy(self, request):
+        """用于创建四层代理实例。
+
+        :param request: Request instance for CreateL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateL4ProxyRules(self, request):
+        """用于创建四层代理实例规则，支持单条或者批量创建。
+
+        :param request: Request instance for CreateL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """创建源站组，以源站组的方式管理业务源站。此处配置的源站组可于**添加加速域名**和**四层代理**等功能中引用。
 
@@ -506,6 +552,52 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteApplicationProxyRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteApplicationProxyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteL4Proxy(self, request):
+        """用于删除四层代理实例。
+
+        :param request: Request instance for DeleteL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteL4ProxyRules(self, request):
+        """用于删除四层代理转发规则，支持单条或者批量操作。
+
+        :param request: Request instance for DeleteL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL4ProxyRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1012,6 +1104,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeIdentifications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIdentificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL4Proxy(self, request):
+        """用于查询四层代理实例列表。
+
+        :param request: Request instance for DescribeL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL4ProxyRules(self, request):
+        """查询四层代理实例下的规则列表。
+
+        :param request: Request instance for DescribeL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL4ProxyRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1635,6 +1773,98 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyHostsCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHostsCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4Proxy(self, request):
+        """用于修改四层代理实例的配置。
+
+        :param request: Request instance for ModifyL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyRules(self, request):
+        """用于修改四层代理转发规则，支持单条或者批量修改。
+
+        :param request: Request instance for ModifyL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyRulesStatus(self, request):
+        """用于启用/停用四层代理转发规则状态，支持单条或者批量操作。
+
+        :param request: Request instance for ModifyL4ProxyRulesStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyRulesStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyRulesStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyStatus(self, request):
+        """用于启用/停用四层代理实例。
+
+        :param request: Request instance for ModifyL4ProxyStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
