@@ -324,6 +324,7 @@ class AbstractClient(object):
 
     def _check_status(self, resp_inter):
         if resp_inter.status_code != 200:
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp_inter))
             raise TencentCloudSDKException("ServerNetworkError", resp_inter.content)
 
     def _format_sign_string(self, params):
@@ -354,6 +355,7 @@ class AbstractClient(object):
             code = data["Response"]["Error"]["Code"]
             message = data["Response"]["Error"]["Message"]
             reqid = data["Response"]["RequestId"]
+            logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
             raise TencentCloudSDKException(code, message, reqid)
         if "DeprecatedWarning" in data["Response"]:
             import warnings
