@@ -34,7 +34,7 @@ except ImportError:
 import tencentcloud
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.exception import TencentCloudSDKException as SDKError
-from tencentcloud.common.http.request import ApiRequest
+from tencentcloud.common.http.request import ApiRequest, ResponsePrettyFormatter
 from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
@@ -363,6 +363,7 @@ class AbstractClient(object):
 
     @staticmethod
     def _process_response_sse(resp):
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp, format_body=False))
         e = {}
 
         for line in resp.iter_lines():
@@ -371,6 +372,7 @@ class AbstractClient(object):
                 e = {}
                 continue
 
+            logger.debug("GetResponse: %s", line)
             line = line.decode('utf-8')
 
             # comment
@@ -409,6 +411,7 @@ class AbstractClient(object):
         resp = self._call(action, params, options, headers)
         self._check_status(resp)
         self._check_error(resp)
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
         return resp.content
 
     def _call_with_region_breaker(self, action, params, options=None, headers=None):
@@ -488,6 +491,7 @@ class AbstractClient(object):
         resp = self._call(action, params, options, headers)
         self._check_status(resp)
         self._check_error(resp)
+        logger.debug("GetResponse: %s", ResponsePrettyFormatter(resp))
         return json.loads(resp.content)
 
     def call_sse(self, action, params, headers=None, options=None):
