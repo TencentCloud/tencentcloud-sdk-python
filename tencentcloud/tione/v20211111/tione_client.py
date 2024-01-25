@@ -73,7 +73,7 @@ class TioneClient(AbstractClient):
 
 
     def CreateBatchTask(self, request):
-        """创建跑批任务
+        """创建批量预测任务
 
         :param request: Request instance for CreateBatchTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.CreateBatchTaskRequest`
@@ -257,7 +257,7 @@ class TioneClient(AbstractClient):
 
 
     def DeleteBatchTask(self, request):
-        """删除跑批任务
+        """删除批量预测任务
 
         :param request: Request instance for DeleteBatchTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.DeleteBatchTaskRequest`
@@ -510,7 +510,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBatchTask(self, request):
-        """查询跑批任务
+        """查询批量预测任务
 
         :param request: Request instance for DescribeBatchTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskRequest`
@@ -533,7 +533,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBatchTaskInstances(self, request):
-        """查询跑批实例列表
+        """查询批量预测任务实例列表
 
         :param request: Request instance for DescribeBatchTaskInstances.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTaskInstancesRequest`
@@ -556,7 +556,7 @@ class TioneClient(AbstractClient):
 
 
     def DescribeBatchTasks(self, request):
-        """批量预测任务列表信息
+        """查询批量预测任务列表信息
 
         :param request: Request instance for DescribeBatchTasks.
         :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBatchTasksRequest`
@@ -1614,7 +1614,7 @@ class TioneClient(AbstractClient):
 
 
     def StopBatchTask(self, request):
-        """停止跑批任务
+        """停止批量预测任务
 
         :param request: Request instance for StopBatchTask.
         :type request: :class:`tencentcloud.tione.v20211111.models.StopBatchTaskRequest`

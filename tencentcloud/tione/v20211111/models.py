@@ -339,15 +339,15 @@ class BatchModelAccTask(AbstractModel):
 
 
 class BatchTaskDetail(AbstractModel):
-    """跑批任务详情
+    """批量预测任务详情
 
     """
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
-        :param _BatchTaskName: 跑批任务名称
+        :param _BatchTaskName: 批量预测任务名称
         :type BatchTaskName: str
         :param _Uin: 主账号uin
         :type Uin: str
@@ -411,7 +411,12 @@ class BatchTaskDetail(AbstractModel):
         :param _EndTime: 任务结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :param _ChargeStatus: 计费状态，取值范围:
+BILLING: 计费中
+NOT_BILLING: 未计费
+WHITELIST_USING: 白名单使用中
+WHITELIST_STOP: 白名单到期
+ARREARS_STOP: 欠费停止
         :type ChargeStatus: str
         :param _LatestInstanceId: 最近一次实例ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -893,9 +898,9 @@ class BatchTaskSetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
-        :param _BatchTaskName: 跑批任务名称
+        :param _BatchTaskName: 批量预测任务名称
         :type BatchTaskName: str
         :param _ModelInfo: 模型信息
 注意：此字段可能返回 null，表示取不到有效值。
@@ -904,7 +909,12 @@ class BatchTaskSetItem(AbstractModel):
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         :param _ChargeType: 计费模式
         :type ChargeType: str
-        :param _ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :param _ChargeStatus: 计费状态，取值范围:
+BILLING: 计费中
+NOT_BILLING: 未计费
+WHITELIST_USING: 白名单使用中
+WHITELIST_STOP: 白名单到期
+ARREARS_STOP: 欠费停止
         :type ChargeStatus: str
         :param _ResourceGroupId: 包年包月资源组ID
 注意：此字段可能返回 null，表示取不到有效值。
@@ -914,20 +924,21 @@ class BatchTaskSetItem(AbstractModel):
         :param _Tags: 标签配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _Status: 任务状态
+        :param _Status: 任务状态, 取值范围:
+INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
         :type Status: str
         :param _RuntimeInSeconds: 运行时长
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeInSeconds: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: 任务创建时间
         :type CreateTime: str
-        :param _StartTime: 开始时间
+        :param _StartTime: 任务开始运行时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: 任务结束时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: 任务更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Outputs: 输出
@@ -937,7 +948,7 @@ class BatchTaskSetItem(AbstractModel):
         :type ResourceGroupName: str
         :param _FailureReason: 失败原因
         :type FailureReason: str
-        :param _BillingInfo: 计费金额信息，eg：2.00元/小时 (for 按量计费)
+        :param _BillingInfo: 按量计费信息
         :type BillingInfo: str
         """
         self._BatchTaskId = None
@@ -1891,13 +1902,13 @@ class CreateBatchTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskName: 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :param _BatchTaskName: 批量预测任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type BatchTaskName: str
         :param _ChargeType: 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
         :type ChargeType: str
         :param _ResourceConfigInfo: 资源配置
         :type ResourceConfigInfo: :class:`tencentcloud.tione.v20211111.models.ResourceConfigInfo`
-        :param _Outputs: 结果输出
+        :param _Outputs: 结果输出存储信息
         :type Outputs: list of DataConfig
         :param _LogEnable: 是否上报日志
         :type LogEnable: bool
@@ -1992,18 +2003,26 @@ class CreateBatchTaskRequest(AbstractModel):
 
     @property
     def JobType(self):
+        warnings.warn("parameter `JobType` is deprecated", DeprecationWarning) 
+
         return self._JobType
 
     @JobType.setter
     def JobType(self, JobType):
+        warnings.warn("parameter `JobType` is deprecated", DeprecationWarning) 
+
         self._JobType = JobType
 
     @property
     def CronInfo(self):
+        warnings.warn("parameter `CronInfo` is deprecated", DeprecationWarning) 
+
         return self._CronInfo
 
     @CronInfo.setter
     def CronInfo(self, CronInfo):
+        warnings.warn("parameter `CronInfo` is deprecated", DeprecationWarning) 
+
         self._CronInfo = CronInfo
 
     @property
@@ -2167,7 +2186,7 @@ class CreateBatchTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5548,7 +5567,7 @@ class DeleteBatchTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
         """
         self._BatchTaskId = None
@@ -6343,7 +6362,7 @@ class DescribeBatchTaskInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务id
+        :param _BatchTaskId: 批量预测任务id
         :type BatchTaskId: str
         """
         self._BatchTaskId = None
@@ -6376,7 +6395,7 @@ class DescribeBatchTaskInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchInstances: 实例集
+        :param _BatchInstances: 批量预测实例结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchInstances: list of BatchTaskInstance
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6419,7 +6438,7 @@ class DescribeBatchTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
         """
         self._BatchTaskId = None
@@ -6452,7 +6471,7 @@ class DescribeBatchTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskDetail: 跑批任务详情
+        :param _BatchTaskDetail: 批量预测任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTaskDetail: :class:`tencentcloud.tione.v20211111.models.BatchTaskDetail`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6492,24 +6511,24 @@ class DescribeBatchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+        :param _Filters: 过滤器
 
-取值范围：
-Name（名称）：task1
-Id（task ID）：train-23091792777383936
-Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
-CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+Name支持的取值范围：
+BatchTaskId, BatchTaskName, Status, ModelVersionId
+
+其中Status 的有效取值范围:
+INIT, STARTING, RUNNING, FAILED, STOPPING, STOPPED, SUCCEED
         :type Filters: list of Filter
-        :param _TagFilters: 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        :param _TagFilters: 标签过滤器
         :type TagFilters: list of TagFilter
         :param _Offset: 偏移量，默认为0
         :type Offset: int
-        :param _Limit: 返回数量，默认为10，最大为50
+        :param _Limit: 限制数目，默认为20
         :type Limit: int
         :param _Order: 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
         :type Order: str
-        :param _OrderField: 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+        :param _OrderField: 排序字段。当前仅支持 "CreateTime"。
+不传此字段则按照DB默认排序结果返回
         :type OrderField: str
         """
         self._Filters = None
@@ -6602,9 +6621,9 @@ class DescribeBatchTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数量
+        :param _TotalCount: 批量预测任务总数
         :type TotalCount: int
-        :param _BatchTaskSet: 任务集
+        :param _BatchTaskSet: 批量预测任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchTaskSet: list of BatchTaskSetItem
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20163,7 +20182,7 @@ class StopBatchTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTaskId: 跑批任务ID
+        :param _BatchTaskId: 批量预测任务ID
         :type BatchTaskId: str
         """
         self._BatchTaskId = None

@@ -693,6 +693,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAuditInstanceList(self, request):
+        """获取审计实例列表
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAuditLogFiles(self, request):
         """本接口(DescribeAuditLogFiles)用于查询云数据库实例的审计日志文件。
 

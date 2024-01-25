@@ -364,7 +364,7 @@ class TrtcClient(AbstractClient):
 
 
     def DescribeStreamIngest(self, request):
-        """您可以查询转推任务的状态。
+        """您可以查询输入在线媒体流任务的状态。
 
         :param request: Request instance for DescribeStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestRequest`
@@ -1216,7 +1216,7 @@ class TrtcClient(AbstractClient):
 
 
     def StopStreamIngest(self, request):
-        """停止一个拉流转推任务。
+        """停止一个输入在线媒体流任务。
 
         :param request: Request instance for StopStreamIngest.
         :type request: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestRequest`

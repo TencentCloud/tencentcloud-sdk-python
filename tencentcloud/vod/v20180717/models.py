@@ -22375,6 +22375,8 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
 <li> VideoClassification:  视频智能分类</li>
 <li> VideoCover: 视频智能封面</li>
 <li> VideoSegment: 视频智能拆条</li>
+<li> VideoProduce: 视频制作</li>
+<li> MediaCast: 媒体转推</li>
 <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
         :type Type: str
         """
@@ -27505,6 +27507,9 @@ class EventContent(AbstractModel):
         :param _QualityEnhanceCompleteEvent: 音画质重生完成事件，当事件类型为 QualityEnhanceComplete 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEnhanceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
+        :param _MediaCastStatusChangedEvent: 媒体转推状态变化事件，当事件类型为 MediaCastStatusChanged 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaCastStatusChangedEvent: :class:`tencentcloud.vod.v20180717.models.MediaCastEvent`
         """
         self._EventHandle = None
         self._EventType = None
@@ -27532,6 +27537,7 @@ class EventContent(AbstractModel):
         self._DescribeFileAttributesCompleteEvent = None
         self._QualityInspectCompleteEvent = None
         self._QualityEnhanceCompleteEvent = None
+        self._MediaCastStatusChangedEvent = None
 
     @property
     def EventHandle(self):
@@ -27741,6 +27747,14 @@ class EventContent(AbstractModel):
     def QualityEnhanceCompleteEvent(self, QualityEnhanceCompleteEvent):
         self._QualityEnhanceCompleteEvent = QualityEnhanceCompleteEvent
 
+    @property
+    def MediaCastStatusChangedEvent(self):
+        return self._MediaCastStatusChangedEvent
+
+    @MediaCastStatusChangedEvent.setter
+    def MediaCastStatusChangedEvent(self, MediaCastStatusChangedEvent):
+        self._MediaCastStatusChangedEvent = MediaCastStatusChangedEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -27817,6 +27831,9 @@ class EventContent(AbstractModel):
         if params.get("QualityEnhanceCompleteEvent") is not None:
             self._QualityEnhanceCompleteEvent = QualityEnhanceTask()
             self._QualityEnhanceCompleteEvent._deserialize(params.get("QualityEnhanceCompleteEvent"))
+        if params.get("MediaCastStatusChangedEvent") is not None:
+            self._MediaCastStatusChangedEvent = MediaCastEvent()
+            self._MediaCastStatusChangedEvent._deserialize(params.get("MediaCastStatusChangedEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32613,6 +32630,56 @@ class MediaBasicInfo(AbstractModel):
         self._Category = params.get("Category")
         self._Status = params.get("Status")
         self._StorageClass = params.get("StorageClass")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaCastEvent(AbstractModel):
+    """媒体转推事件通知消息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CastId: 媒体转推 ID。
+        :type CastId: str
+        :param _Status: 转推状态，取值有：
+<li>Working ：运行中；</li>
+<li>Scheduled ：等待定时时间到达后启动；</li>
+<li>Stopped ：已经停止转推；</li>
+<li>Idle ：空闲。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._CastId = None
+        self._Status = None
+
+    @property
+    def CastId(self):
+        return self._CastId
+
+    @CastId.setter
+    def CastId(self, CastId):
+        self._CastId = CastId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CastId = params.get("CastId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

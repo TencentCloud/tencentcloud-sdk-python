@@ -831,6 +831,115 @@ class AssociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditInstanceFilters(AbstractModel):
+    """查询审计实例的过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤条件值。支持InstanceId-实例ID，InstanceName-实例名称，ProjectId-项目ID，TagKey-标签键，Tag-标签（以竖线分割，例：Tagkey|Tagvalue）。
+        :type Name: str
+        :param _ExactMatch: true表示精确查找，false表示模糊匹配。
+        :type ExactMatch: bool
+        :param _Values: 筛选值
+        :type Values: list of str
+        """
+        self._Name = None
+        self._ExactMatch = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExactMatch(self):
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ExactMatch = params.get("ExactMatch")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceInfo(AbstractModel):
+    """审计实例详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _TagList: 标签信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
+        """
+        self._ProjectId = None
+        self._TagList = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditLog(AbstractModel):
     """审计日志详细信息
 
@@ -9022,6 +9131,147 @@ class DescribeAccountsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAuditInstanceListRequest(AbstractModel):
+    """DescribeAuditInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditSwitch: 实例审计开启的状态。1-已开启审计；0-未开启审计。
+        :type AuditSwitch: int
+        :param _Filters: 查询实例列表的过滤条件。
+        :type Filters: list of AuditInstanceFilters
+        :param _AuditMode: 实例的审计规则模式。1-规则审计；0-全审计。
+        :type AuditMode: int
+        :param _Limit: 单次请求返回的数量。默认值为30，最大值为 20000。
+        :type Limit: int
+        :param _Offset: 偏移量，默认值为 0。
+        :type Offset: int
+        """
+        self._AuditSwitch = None
+        self._Filters = None
+        self._AuditMode = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def AuditSwitch(self):
+        return self._AuditSwitch
+
+    @AuditSwitch.setter
+    def AuditSwitch(self, AuditSwitch):
+        self._AuditSwitch = AuditSwitch
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def AuditMode(self):
+        return self._AuditMode
+
+    @AuditMode.setter
+    def AuditMode(self, AuditMode):
+        self._AuditMode = AuditMode
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._AuditSwitch = params.get("AuditSwitch")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AuditInstanceFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._AuditMode = params.get("AuditMode")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditInstanceListResponse(AbstractModel):
+    """DescribeAuditInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合查询条件的实例总数。
+        :type TotalCount: int
+        :param _Items: 审计实例详细信息列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of InstanceAuditStatus
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstanceAuditStatus()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAuditLogFilesRequest(AbstractModel):
     """DescribeAuditLogFiles请求参数结构体
 
@@ -15471,6 +15721,196 @@ class InstanceAuditRule(AbstractModel):
                 obj = RuleTemplateInfo()
                 obj._deserialize(item)
                 self._RuleTemplates.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceAuditStatus(AbstractModel):
+    """实例审计详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _AuditStatus: 审计状态。ON-表示审计已开启，OFF-表示审计关闭。
+        :type AuditStatus: str
+        :param _LogExpireDay: 日志保留时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogExpireDay: int
+        :param _HighLogExpireDay: 高频存储时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighLogExpireDay: int
+        :param _LowLogExpireDay: 低频存储时长。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowLogExpireDay: int
+        :param _BillingAmount: 日志存储量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingAmount: float
+        :param _HighRealStorage: 高频存储量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighRealStorage: float
+        :param _LowRealStorage: 低频存储量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LowRealStorage: float
+        :param _AuditAll: 是否为全审计。true-表示全审计。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditAll: bool
+        :param _CreateAt: 审计开通时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateAt: str
+        :param _InstanceInfo: 实例相关信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceInfo: :class:`tencentcloud.cynosdb.v20190107.models.AuditInstanceInfo`
+        :param _RealStorage: 总存储量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealStorage: float
+        :param _RuleTemplateIds: 实例所应用的规则模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleTemplateIds: list of str
+        """
+        self._InstanceId = None
+        self._AuditStatus = None
+        self._LogExpireDay = None
+        self._HighLogExpireDay = None
+        self._LowLogExpireDay = None
+        self._BillingAmount = None
+        self._HighRealStorage = None
+        self._LowRealStorage = None
+        self._AuditAll = None
+        self._CreateAt = None
+        self._InstanceInfo = None
+        self._RealStorage = None
+        self._RuleTemplateIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HighLogExpireDay(self):
+        return self._HighLogExpireDay
+
+    @HighLogExpireDay.setter
+    def HighLogExpireDay(self, HighLogExpireDay):
+        self._HighLogExpireDay = HighLogExpireDay
+
+    @property
+    def LowLogExpireDay(self):
+        return self._LowLogExpireDay
+
+    @LowLogExpireDay.setter
+    def LowLogExpireDay(self, LowLogExpireDay):
+        self._LowLogExpireDay = LowLogExpireDay
+
+    @property
+    def BillingAmount(self):
+        return self._BillingAmount
+
+    @BillingAmount.setter
+    def BillingAmount(self, BillingAmount):
+        self._BillingAmount = BillingAmount
+
+    @property
+    def HighRealStorage(self):
+        return self._HighRealStorage
+
+    @HighRealStorage.setter
+    def HighRealStorage(self, HighRealStorage):
+        self._HighRealStorage = HighRealStorage
+
+    @property
+    def LowRealStorage(self):
+        return self._LowRealStorage
+
+    @LowRealStorage.setter
+    def LowRealStorage(self, LowRealStorage):
+        self._LowRealStorage = LowRealStorage
+
+    @property
+    def AuditAll(self):
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
+    @property
+    def CreateAt(self):
+        return self._CreateAt
+
+    @CreateAt.setter
+    def CreateAt(self, CreateAt):
+        self._CreateAt = CreateAt
+
+    @property
+    def InstanceInfo(self):
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+    @property
+    def RealStorage(self):
+        return self._RealStorage
+
+    @RealStorage.setter
+    def RealStorage(self, RealStorage):
+        self._RealStorage = RealStorage
+
+    @property
+    def RuleTemplateIds(self):
+        return self._RuleTemplateIds
+
+    @RuleTemplateIds.setter
+    def RuleTemplateIds(self, RuleTemplateIds):
+        self._RuleTemplateIds = RuleTemplateIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HighLogExpireDay = params.get("HighLogExpireDay")
+        self._LowLogExpireDay = params.get("LowLogExpireDay")
+        self._BillingAmount = params.get("BillingAmount")
+        self._HighRealStorage = params.get("HighRealStorage")
+        self._LowRealStorage = params.get("LowRealStorage")
+        self._AuditAll = params.get("AuditAll")
+        self._CreateAt = params.get("CreateAt")
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = AuditInstanceInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        self._RealStorage = params.get("RealStorage")
+        self._RuleTemplateIds = params.get("RuleTemplateIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

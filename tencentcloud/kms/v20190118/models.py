@@ -236,7 +236,7 @@ class AsymmetricSm2DecryptRequest(AbstractModel):
         r"""
         :param _KeyId: CMK的唯一标识
         :type KeyId: str
-        :param _Ciphertext: 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
+        :param _Ciphertext: 使用PublicKey加密的密文，Base64编码，原始密文格式需要为C1C3C2_ASN1。原始密文长度不能超过256字节。
         :type Ciphertext: str
         """
         self._KeyId = None

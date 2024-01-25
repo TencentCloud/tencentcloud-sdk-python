@@ -12438,8 +12438,11 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
+        :param _ClsRegion: CLS服务所在地域
+        :type ClsRegion: str
         """
         self._InstanceId = None
+        self._ClsRegion = None
 
     @property
     def InstanceId(self):
@@ -12449,9 +12452,18 @@ class DescribeDBInstanceLogToCLSRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ClsRegion(self):
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19373,10 +19385,14 @@ class LogToCLSConfig(AbstractModel):
         :param _LogTopicId: 日志主题ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogTopicId: str
+        :param _ClsRegion: CLS服务所在地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClsRegion: str
         """
         self._Status = None
         self._LogSetId = None
         self._LogTopicId = None
+        self._ClsRegion = None
 
     @property
     def Status(self):
@@ -19402,11 +19418,20 @@ class LogToCLSConfig(AbstractModel):
     def LogTopicId(self, LogTopicId):
         self._LogTopicId = LogTopicId
 
+    @property
+    def ClsRegion(self):
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._LogSetId = params.get("LogSetId")
         self._LogTopicId = params.get("LogTopicId")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21530,7 +21555,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _LogType: 日志类型：error/slowLog
+        :param _LogType: 日志类型：error/slowlog
         :type LogType: str
         :param _Status: 投递状态：ON/OFF
         :type Status: str
@@ -21546,6 +21571,8 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         :type Period: int
         :param _CreateIndex: 创建日志主题时，是否创建索引
         :type CreateIndex: bool
+        :param _ClsRegion: CLS所在地域
+        :type ClsRegion: str
         """
         self._InstanceId = None
         self._LogType = None
@@ -21556,6 +21583,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._LogTopic = None
         self._Period = None
         self._CreateIndex = None
+        self._ClsRegion = None
 
     @property
     def InstanceId(self):
@@ -21629,6 +21657,14 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
     def CreateIndex(self, CreateIndex):
         self._CreateIndex = CreateIndex
 
+    @property
+    def ClsRegion(self):
+        return self._ClsRegion
+
+    @ClsRegion.setter
+    def ClsRegion(self, ClsRegion):
+        self._ClsRegion = ClsRegion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -21640,6 +21676,7 @@ class ModifyDBInstanceLogToCLSRequest(AbstractModel):
         self._LogTopic = params.get("LogTopic")
         self._Period = params.get("Period")
         self._CreateIndex = params.get("CreateIndex")
+        self._ClsRegion = params.get("ClsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -542,13 +542,19 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         :type Type: int
         :param _ClientToken: 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
         :type ClientToken: str
-        :param _IsDelay: 是否延迟下发，1则延迟下发，否则立即下发
+        :param _IsDelay: （IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发
         :type IsDelay: int
+        :param _From: 来源 默认空 覆盖导入是 batch_import_cover
+        :type From: str
+        :param _IsUseId: 是否使用id 默认不需要
+        :type IsUseId: int
         """
         self._Data = None
         self._Type = None
         self._ClientToken = None
         self._IsDelay = None
+        self._From = None
+        self._IsUseId = None
 
     @property
     def Data(self):
@@ -582,6 +588,22 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
     def IsDelay(self, IsDelay):
         self._IsDelay = IsDelay
 
+    @property
+    def From(self):
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def IsUseId(self):
+        return self._IsUseId
+
+    @IsUseId.setter
+    def IsUseId(self, IsUseId):
+        self._IsUseId = IsUseId
+
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
@@ -593,6 +615,8 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
         self._IsDelay = params.get("IsDelay")
+        self._From = params.get("From")
+        self._IsUseId = params.get("IsUseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1095,15 +1119,24 @@ class BlockIgnoreRule(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleType: 1 封禁 2外部IP 3域名 4情报 5assets 6udf  7入侵防御规则id （2-7属于白名单类型）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        :param _Ioc: 规则ip或白名单内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ioc: str
+        :param _IocName: 资产实例名称、自定义策略名称等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IocName: str
+        :param _IocInfo: 白名单信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IocInfo: str
         :param _Domain: 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
         :param _IP: IP
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param _Ioc: 规则ip
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Ioc: str
         :param _Level: 危险等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
@@ -1113,6 +1146,9 @@ class BlockIgnoreRule(AbstractModel):
         :param _Direction: 方向：1入站，0出站
 注意：此字段可能返回 null，表示取不到有效值。
         :type Direction: int
+        :param _DirectionList: 所有方向聚合成字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectionList: str
         :param _Protocol: 协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
@@ -1146,13 +1182,23 @@ class BlockIgnoreRule(AbstractModel):
         :param _Comment: 备注
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
+        :param _LastHitTime: 上次命中时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastHitTime: str
+        :param _CustomRule: 自定义规则细节
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: :class:`tencentcloud.cfw.v20190904.models.CustomWhiteRule`
         """
+        self._RuleType = None
+        self._Ioc = None
+        self._IocName = None
+        self._IocInfo = None
         self._Domain = None
         self._IP = None
-        self._Ioc = None
         self._Level = None
         self._EventName = None
         self._Direction = None
+        self._DirectionList = None
         self._Protocol = None
         self._Address = None
         self._Action = None
@@ -1164,6 +1210,40 @@ class BlockIgnoreRule(AbstractModel):
         self._MatchTimes = None
         self._Country = None
         self._Comment = None
+        self._LastHitTime = None
+        self._CustomRule = None
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Ioc(self):
+        return self._Ioc
+
+    @Ioc.setter
+    def Ioc(self, Ioc):
+        self._Ioc = Ioc
+
+    @property
+    def IocName(self):
+        return self._IocName
+
+    @IocName.setter
+    def IocName(self, IocName):
+        self._IocName = IocName
+
+    @property
+    def IocInfo(self):
+        return self._IocInfo
+
+    @IocInfo.setter
+    def IocInfo(self, IocInfo):
+        self._IocInfo = IocInfo
 
     @property
     def Domain(self):
@@ -1180,14 +1260,6 @@ class BlockIgnoreRule(AbstractModel):
     @IP.setter
     def IP(self, IP):
         self._IP = IP
-
-    @property
-    def Ioc(self):
-        return self._Ioc
-
-    @Ioc.setter
-    def Ioc(self, Ioc):
-        self._Ioc = Ioc
 
     @property
     def Level(self):
@@ -1212,6 +1284,14 @@ class BlockIgnoreRule(AbstractModel):
     @Direction.setter
     def Direction(self, Direction):
         self._Direction = Direction
+
+    @property
+    def DirectionList(self):
+        return self._DirectionList
+
+    @DirectionList.setter
+    def DirectionList(self, DirectionList):
+        self._DirectionList = DirectionList
 
     @property
     def Protocol(self):
@@ -1301,14 +1381,34 @@ class BlockIgnoreRule(AbstractModel):
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def LastHitTime(self):
+        return self._LastHitTime
+
+    @LastHitTime.setter
+    def LastHitTime(self, LastHitTime):
+        self._LastHitTime = LastHitTime
+
+    @property
+    def CustomRule(self):
+        return self._CustomRule
+
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
+
 
     def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._Ioc = params.get("Ioc")
+        self._IocName = params.get("IocName")
+        self._IocInfo = params.get("IocInfo")
         self._Domain = params.get("Domain")
         self._IP = params.get("IP")
-        self._Ioc = params.get("Ioc")
         self._Level = params.get("Level")
         self._EventName = params.get("EventName")
         self._Direction = params.get("Direction")
+        self._DirectionList = params.get("DirectionList")
         self._Protocol = params.get("Protocol")
         self._Address = params.get("Address")
         self._Action = params.get("Action")
@@ -1320,6 +1420,10 @@ class BlockIgnoreRule(AbstractModel):
         self._MatchTimes = params.get("MatchTimes")
         self._Country = params.get("Country")
         self._Comment = params.get("Comment")
+        self._LastHitTime = params.get("LastHitTime")
+        if params.get("CustomRule") is not None:
+            self._CustomRule = CustomWhiteRule()
+            self._CustomRule._deserialize(params.get("CustomRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3085,6 +3189,8 @@ class CreateNatRuleItem(AbstractModel):
         :type Description: str
         :param _ParamTemplateId: 端口协议组ID
         :type ParamTemplateId: str
+        :param _InternalUuid: 内部id
+        :type InternalUuid: int
         """
         self._SourceContent = None
         self._SourceType = None
@@ -3099,6 +3205,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Uuid = None
         self._Description = None
         self._ParamTemplateId = None
+        self._InternalUuid = None
 
     @property
     def SourceContent(self):
@@ -3204,6 +3311,14 @@ class CreateNatRuleItem(AbstractModel):
     def ParamTemplateId(self, ParamTemplateId):
         self._ParamTemplateId = ParamTemplateId
 
+    @property
+    def InternalUuid(self):
+        return self._InternalUuid
+
+    @InternalUuid.setter
+    def InternalUuid(self, InternalUuid):
+        self._InternalUuid = InternalUuid
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -3219,6 +3334,7 @@ class CreateNatRuleItem(AbstractModel):
         self._Uuid = params.get("Uuid")
         self._Description = params.get("Description")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._InternalUuid = params.get("InternalUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3718,6 +3834,79 @@ class CreateVpcFwGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._FwGroupId = params.get("FwGroupId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomWhiteRule(AbstractModel):
+    """自定义白名单规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcIP: 访问源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcIP: str
+        :param _DstIP: 访问目的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstIP: str
+        :param _IdsRuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdsRuleName: str
+        :param _IdsRuleId: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdsRuleId: str
+        """
+        self._SrcIP = None
+        self._DstIP = None
+        self._IdsRuleName = None
+        self._IdsRuleId = None
+
+    @property
+    def SrcIP(self):
+        return self._SrcIP
+
+    @SrcIP.setter
+    def SrcIP(self, SrcIP):
+        self._SrcIP = SrcIP
+
+    @property
+    def DstIP(self):
+        return self._DstIP
+
+    @DstIP.setter
+    def DstIP(self, DstIP):
+        self._DstIP = DstIP
+
+    @property
+    def IdsRuleName(self):
+        return self._IdsRuleName
+
+    @IdsRuleName.setter
+    def IdsRuleName(self, IdsRuleName):
+        self._IdsRuleName = IdsRuleName
+
+    @property
+    def IdsRuleId(self):
+        return self._IdsRuleId
+
+    @IdsRuleId.setter
+    def IdsRuleId(self, IdsRuleId):
+        self._IdsRuleId = IdsRuleId
+
+
+    def _deserialize(self, params):
+        self._SrcIP = params.get("SrcIP")
+        self._DstIP = params.get("DstIP")
+        self._IdsRuleName = params.get("IdsRuleName")
+        self._IdsRuleId = params.get("IdsRuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DatabaseWhiteListRuleData(AbstractModel):
@@ -4811,6 +5000,12 @@ class DescAcItem(AbstractModel):
         :param _ParamTemplateId: 协议端口组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTemplateId: str
+        :param _SourceName: 访问源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceName: str
+        :param _TargetName: 访问目的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetName: str
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -4841,6 +5036,8 @@ class DescAcItem(AbstractModel):
         self._InternetBorderUuid = None
         self._ParamTemplateName = None
         self._ParamTemplateId = None
+        self._SourceName = None
+        self._TargetName = None
 
     @property
     def SourceContent(self):
@@ -5074,6 +5271,22 @@ class DescAcItem(AbstractModel):
     def ParamTemplateId(self, ParamTemplateId):
         self._ParamTemplateId = ParamTemplateId
 
+    @property
+    def SourceName(self):
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def TargetName(self):
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -5110,6 +5323,8 @@ class DescAcItem(AbstractModel):
         self._InternetBorderUuid = params.get("InternetBorderUuid")
         self._ParamTemplateName = params.get("ParamTemplateName")
         self._ParamTemplateId = params.get("ParamTemplateId")
+        self._SourceName = params.get("SourceName")
+        self._TargetName = params.get("TargetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6166,22 +6381,26 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
         :type Offset: int
         :param _Direction: 方向：1互联网入站，0互联网出站，3内网，空 全部方向
         :type Direction: str
-        :param _RuleType: 规则类型：1封禁，2放通
-        :type RuleType: int
         :param _Order: 排序类型：desc降序，asc正序
         :type Order: str
         :param _By: 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
         :type By: str
         :param _SearchValue: 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
         :type SearchValue: str
+        :param _RuleType: 规则类型：1封禁，2放通
+        :type RuleType: int
+        :param _ShowType: blocklist 封禁列表
+whitelist 白名单列表
+        :type ShowType: str
         """
         self._Limit = None
         self._Offset = None
         self._Direction = None
-        self._RuleType = None
         self._Order = None
         self._By = None
         self._SearchValue = None
+        self._RuleType = None
+        self._ShowType = None
 
     @property
     def Limit(self):
@@ -6208,14 +6427,6 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
         self._Direction = Direction
 
     @property
-    def RuleType(self):
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
     def Order(self):
         return self._Order
 
@@ -6239,15 +6450,32 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
     def SearchValue(self, SearchValue):
         self._SearchValue = SearchValue
 
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def ShowType(self):
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Direction = params.get("Direction")
-        self._RuleType = params.get("RuleType")
         self._Order = params.get("Order")
         self._By = params.get("By")
         self._SearchValue = params.get("SearchValue")
+        self._RuleType = params.get("RuleType")
+        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6275,6 +6503,8 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         :type ReturnMsg: str
         :param _SourceList: 安全事件来源下拉框
         :type SourceList: list of str
+        :param _RuleTypeDataList: 对应规则类型的数量，示例：[0,122,30,55,12,232,0]，封禁0个，IP地址122个，域名30个，威胁情报55个，资产实例12个，自定义策略232个，入侵防御规则0个
+        :type RuleTypeDataList: list of int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -6283,6 +6513,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         self._ReturnCode = None
         self._ReturnMsg = None
         self._SourceList = None
+        self._RuleTypeDataList = None
         self._RequestId = None
 
     @property
@@ -6326,6 +6557,14 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         self._SourceList = SourceList
 
     @property
+    def RuleTypeDataList(self):
+        return self._RuleTypeDataList
+
+    @RuleTypeDataList.setter
+    def RuleTypeDataList(self, RuleTypeDataList):
+        self._RuleTypeDataList = RuleTypeDataList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6345,6 +6584,7 @@ class DescribeBlockIgnoreListResponse(AbstractModel):
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
         self._SourceList = params.get("SourceList")
+        self._RuleTypeDataList = params.get("RuleTypeDataList")
         self._RequestId = params.get("RequestId")
 
 
@@ -17414,6 +17654,8 @@ class SecurityGroupListData(AbstractModel):
         :param _ParameterName: 模板名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterName: str
+        :param _ProtocolPortName: 端口协议类型参数模板名称
+        :type ProtocolPortName: str
         """
         self._OrderIndex = None
         self._SourceId = None
@@ -17443,6 +17685,7 @@ class SecurityGroupListData(AbstractModel):
         self._AssetGroupNameIn = None
         self._AssetGroupNameOut = None
         self._ParameterName = None
+        self._ProtocolPortName = None
 
     @property
     def OrderIndex(self):
@@ -17668,6 +17911,14 @@ class SecurityGroupListData(AbstractModel):
     def ParameterName(self, ParameterName):
         self._ParameterName = ParameterName
 
+    @property
+    def ProtocolPortName(self):
+        return self._ProtocolPortName
+
+    @ProtocolPortName.setter
+    def ProtocolPortName(self, ProtocolPortName):
+        self._ProtocolPortName = ProtocolPortName
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
@@ -17703,6 +17954,7 @@ class SecurityGroupListData(AbstractModel):
         self._AssetGroupNameIn = params.get("AssetGroupNameIn")
         self._AssetGroupNameOut = params.get("AssetGroupNameOut")
         self._ParameterName = params.get("ParameterName")
+        self._ProtocolPortName = params.get("ProtocolPortName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17809,6 +18061,8 @@ drop：拒绝
         :param _Enable: （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
 规则状态，true表示启用，false表示禁用
         :type Enable: str
+        :param _Uid: 规则对应的唯一内部id
+        :type Uid: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -17822,6 +18076,7 @@ drop：拒绝
         self._ServiceTemplateId = None
         self._Id = None
         self._Enable = None
+        self._Uid = None
 
     @property
     def SourceContent(self):
@@ -17919,6 +18174,14 @@ drop：拒绝
     def Enable(self, Enable):
         self._Enable = Enable
 
+    @property
+    def Uid(self):
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -17933,6 +18196,7 @@ drop：拒绝
         self._ServiceTemplateId = params.get("ServiceTemplateId")
         self._Id = params.get("Id")
         self._Enable = params.get("Enable")
+        self._Uid = params.get("Uid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20184,6 +20448,12 @@ log：观察
         :param _ParamTemplateName: 端口协议组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTemplateName: str
+        :param _TargetName: 访问目的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetName: str
+        :param _SourceName: 访问源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceName: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -20206,6 +20476,8 @@ log：观察
         self._BetaList = None
         self._ParamTemplateId = None
         self._ParamTemplateName = None
+        self._TargetName = None
+        self._SourceName = None
 
     @property
     def SourceContent(self):
@@ -20375,6 +20647,22 @@ log：观察
     def ParamTemplateName(self, ParamTemplateName):
         self._ParamTemplateName = ParamTemplateName
 
+    @property
+    def TargetName(self):
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+    @property
+    def SourceName(self):
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -20403,6 +20691,8 @@ log：观察
                 self._BetaList.append(obj)
         self._ParamTemplateId = params.get("ParamTemplateId")
         self._ParamTemplateName = params.get("ParamTemplateName")
+        self._TargetName = params.get("TargetName")
+        self._SourceName = params.get("SourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -148,6 +148,9 @@ class Acl(AbstractModel):
         :param _ACTemplateSet: 关联的数据库高危命令列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ACTemplateSet: list of ACTemplate
+        :param _WhiteCmds: 关联的白命令命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhiteCmds: list of str
         """
         self._Id = None
         self._Name = None
@@ -178,6 +181,7 @@ class Acl(AbstractModel):
         self._Department = None
         self._AllowAccessCredential = None
         self._ACTemplateSet = None
+        self._WhiteCmds = None
 
     @property
     def Id(self):
@@ -411,6 +415,14 @@ class Acl(AbstractModel):
     def ACTemplateSet(self, ACTemplateSet):
         self._ACTemplateSet = ACTemplateSet
 
+    @property
+    def WhiteCmds(self):
+        return self._WhiteCmds
+
+    @WhiteCmds.setter
+    def WhiteCmds(self, WhiteCmds):
+        self._WhiteCmds = WhiteCmds
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -474,6 +486,7 @@ class Acl(AbstractModel):
                 obj = ACTemplate()
                 obj._deserialize(item)
                 self._ACTemplateSet.append(obj)
+        self._WhiteCmds = params.get("WhiteCmds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10202,6 +10215,9 @@ class User(AbstractModel):
         :param _Status: 状态 与Filter中一致
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
+        :param _AclVersion: 权限版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclVersion: int
         """
         self._UserName = None
         self._RealName = None
@@ -10218,6 +10234,7 @@ class User(AbstractModel):
         self._ActiveStatus = None
         self._LockStatus = None
         self._Status = None
+        self._AclVersion = None
 
     @property
     def UserName(self):
@@ -10339,6 +10356,14 @@ class User(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def AclVersion(self):
+        return self._AclVersion
+
+    @AclVersion.setter
+    def AclVersion(self, AclVersion):
+        self._AclVersion = AclVersion
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -10363,6 +10388,7 @@ class User(AbstractModel):
         self._ActiveStatus = params.get("ActiveStatus")
         self._LockStatus = params.get("LockStatus")
         self._Status = params.get("Status")
+        self._AclVersion = params.get("AclVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

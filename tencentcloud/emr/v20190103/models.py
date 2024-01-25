@@ -6887,6 +6887,12 @@ class ImpalaQuery(AbstractModel):
         :param _NumRowsFetchedFromCache: 从缓存中获取的数据行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRowsFetchedFromCache: int
+        :param _SessionId: 会话ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _PerNodePeakMemoryBytesSum: 单节点内存峰值和(Bytes)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PerNodePeakMemoryBytesSum: int
         """
         self._Statement = None
         self._Id = None
@@ -6910,6 +6916,8 @@ class ImpalaQuery(AbstractModel):
         self._TotalScanBytesSent = None
         self._EstimatedPerHostMemBytes = None
         self._NumRowsFetchedFromCache = None
+        self._SessionId = None
+        self._PerNodePeakMemoryBytesSum = None
 
     @property
     def Statement(self):
@@ -7087,6 +7095,22 @@ class ImpalaQuery(AbstractModel):
     def NumRowsFetchedFromCache(self, NumRowsFetchedFromCache):
         self._NumRowsFetchedFromCache = NumRowsFetchedFromCache
 
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def PerNodePeakMemoryBytesSum(self):
+        return self._PerNodePeakMemoryBytesSum
+
+    @PerNodePeakMemoryBytesSum.setter
+    def PerNodePeakMemoryBytesSum(self, PerNodePeakMemoryBytesSum):
+        self._PerNodePeakMemoryBytesSum = PerNodePeakMemoryBytesSum
+
 
     def _deserialize(self, params):
         self._Statement = params.get("Statement")
@@ -7111,6 +7135,8 @@ class ImpalaQuery(AbstractModel):
         self._TotalScanBytesSent = params.get("TotalScanBytesSent")
         self._EstimatedPerHostMemBytes = params.get("EstimatedPerHostMemBytes")
         self._NumRowsFetchedFromCache = params.get("NumRowsFetchedFromCache")
+        self._SessionId = params.get("SessionId")
+        self._PerNodePeakMemoryBytesSum = params.get("PerNodePeakMemoryBytesSum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

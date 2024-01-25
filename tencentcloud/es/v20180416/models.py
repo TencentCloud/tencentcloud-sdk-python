@@ -10146,6 +10146,8 @@ CLOSE 关闭
         :type KibanaPrivateDomain: str
         :param _CerebroPrivateDomain: cerebro内网自定义域名
         :type CerebroPrivateDomain: str
+        :param _Protocol: 变更为https集群，默认是http
+        :type Protocol: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10181,6 +10183,7 @@ CLOSE 关闭
         self._KibanaAlteringPublicAccess = None
         self._KibanaPrivateDomain = None
         self._CerebroPrivateDomain = None
+        self._Protocol = None
 
     @property
     def InstanceId(self):
@@ -10454,6 +10457,14 @@ CLOSE 关闭
     def CerebroPrivateDomain(self, CerebroPrivateDomain):
         self._CerebroPrivateDomain = CerebroPrivateDomain
 
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10512,6 +10523,7 @@ CLOSE 关闭
         self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
         self._KibanaPrivateDomain = params.get("KibanaPrivateDomain")
         self._CerebroPrivateDomain = params.get("CerebroPrivateDomain")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

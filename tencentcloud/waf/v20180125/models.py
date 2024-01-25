@@ -886,20 +886,23 @@ class AddAttackWhiteRuleRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _SignatureId: 规则Id
-        :type SignatureId: str
         :param _Status: 规则状态
         :type Status: int
         :param _Rules: 匹配规则项列表
         :type Rules: list of UserWhiteRuleItem
         :param _RuleId: 规则序号
         :type RuleId: int
+        :param _SignatureId: 规则Id
+        :type SignatureId: str
+        :param _SignatureIds: 加白的规则ID列表
+        :type SignatureIds: list of str
         """
         self._Domain = None
-        self._SignatureId = None
         self._Status = None
         self._Rules = None
         self._RuleId = None
+        self._SignatureId = None
+        self._SignatureIds = None
 
     @property
     def Domain(self):
@@ -908,14 +911,6 @@ class AddAttackWhiteRuleRequest(AbstractModel):
     @Domain.setter
     def Domain(self, Domain):
         self._Domain = Domain
-
-    @property
-    def SignatureId(self):
-        return self._SignatureId
-
-    @SignatureId.setter
-    def SignatureId(self, SignatureId):
-        self._SignatureId = SignatureId
 
     @property
     def Status(self):
@@ -941,10 +936,25 @@ class AddAttackWhiteRuleRequest(AbstractModel):
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def SignatureId(self):
+        return self._SignatureId
+
+    @SignatureId.setter
+    def SignatureId(self, SignatureId):
+        self._SignatureId = SignatureId
+
+    @property
+    def SignatureIds(self):
+        return self._SignatureIds
+
+    @SignatureIds.setter
+    def SignatureIds(self, SignatureIds):
+        self._SignatureIds = SignatureIds
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
-        self._SignatureId = params.get("SignatureId")
         self._Status = params.get("Status")
         if params.get("Rules") is not None:
             self._Rules = []
@@ -953,6 +963,8 @@ class AddAttackWhiteRuleRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RuleId = params.get("RuleId")
+        self._SignatureId = params.get("SignatureId")
+        self._SignatureIds = params.get("SignatureIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1519,7 +1531,7 @@ https：使用https协议回源
         :type IsGray: int
         :param _GrayAreas: 待废弃，可不填。灰度的地区
         :type GrayAreas: list of str
-        :param _HttpsRewrite: 是否开启HTTP强制跳转到HTTPS。
+        :param _HttpsRewrite: 必填项，是否开启HTTP强制跳转到HTTPS。
 0：不强制跳转
 1：开启强制跳转
         :type HttpsRewrite: int
@@ -1527,7 +1539,7 @@ https：使用https协议回源
         :type UpstreamDomain: str
         :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
         :type SrcList: list of str
-        :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。
+        :param _IsHttp2: 必填项，是否开启HTTP2，需要开启HTTPS协议支持。
 0：关闭
 1：开启
         :type IsHttp2: int
@@ -1543,23 +1555,23 @@ sparta-waf：SAAS型WAF
 clb-waf：负载均衡型WAF
 cdn-waf：CDN上的Web防护能力
         :type Edition: str
-        :param _IsKeepAlive: 是否开启长连接。
+        :param _IsKeepAlive: 必填项，是否开启长连接。
 0： 短连接
 1： 长连接
         :type IsKeepAlive: str
-        :param _InstanceID: 域名所属实例id
+        :param _InstanceID: 必填项，域名所属实例id
         :type InstanceID: str
         :param _Anycast: 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
         :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
         :type Weights: list of int
-        :param _ActiveCheck: 是否开启主动健康检测。
+        :param _ActiveCheck: 必填项，是否开启主动健康检测。
 0：不开启
 1：开启
         :type ActiveCheck: int
         :param _TLSVersion: TLS版本信息
         :type TLSVersion: int
-        :param _CipherTemplate: 加密套件模板。
+        :param _CipherTemplate: 必填项，加密套件模板。
 0：不支持选择，使用默认模板  
 1：通用型模板 
 2：安全型模板
@@ -1583,6 +1595,10 @@ cdn-waf：CDN上的Web防护能力
 0：关闭
 1：开启
         :type XFFReset: int
+        :param _Note: 域名备注信息
+        :type Note: str
+        :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        :type UpstreamHost: str
         """
         self._Domain = None
         self._CertType = None
@@ -1618,6 +1634,8 @@ cdn-waf：CDN上的Web防护能力
         self._SniType = None
         self._SniHost = None
         self._XFFReset = None
+        self._Note = None
+        self._UpstreamHost = None
 
     @property
     def Domain(self):
@@ -1891,6 +1909,22 @@ cdn-waf：CDN上的Web防护能力
     def XFFReset(self, XFFReset):
         self._XFFReset = XFFReset
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1932,6 +1966,8 @@ cdn-waf：CDN上的Web防护能力
         self._SniType = params.get("SniType")
         self._SniHost = params.get("SniHost")
         self._XFFReset = params.get("XFFReset")
+        self._Note = params.get("Note")
+        self._UpstreamHost = params.get("UpstreamHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3542,7 +3578,7 @@ class CdcRegion(AbstractModel):
 
 
 class ClbDomainsInfo(AbstractModel):
-    """clb域名详情
+    """负载均衡型WAF域名详情
 
     """
 
@@ -3550,21 +3586,21 @@ class ClbDomainsInfo(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名id
+        :param _DomainId: 域名唯一ID
         :type DomainId: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: 域名所属实例ID
         :type InstanceId: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: 域名所属实例名
         :type InstanceName: str
-        :param _Edition: waf类型
+        :param _Edition: 域名所属实例类型
         :type Edition: str
-        :param _IsCdn: 是否是cdn
+        :param _IsCdn: waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _LoadBalancerSet: 负载均衡算法
+        :param _LoadBalancerSet: 负载均衡类型为clb时，对应的负载均衡器信息
         :type LoadBalancerSet: list of LoadBalancerPackageNew
-        :param _FlowMode: 镜像模式
+        :param _FlowMode: 负载均衡型WAF的流量模式，1：清洗模式，0：镜像模式
         :type FlowMode: int
-        :param _State: 绑定clb状态
+        :param _State: 域名绑定负载均衡器状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
         :param _AlbType: 负载均衡类型，clb或者apisix
@@ -3573,12 +3609,15 @@ class ClbDomainsInfo(AbstractModel):
         :param _IpHeaders: IsCdn=3时，表示自定义header
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
-        :param _CdcClusters: cdc类型会增加集群信息
+        :param _CdcClusters: cdc-clb-waf类型WAF的CDC集群信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: str
         :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
+        :param _Note: 域名备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Note: str
         """
         self._Domain = None
         self._DomainId = None
@@ -3593,6 +3632,7 @@ class ClbDomainsInfo(AbstractModel):
         self._IpHeaders = None
         self._CdcClusters = None
         self._CloudType = None
+        self._Note = None
 
     @property
     def Domain(self):
@@ -3698,6 +3738,14 @@ class ClbDomainsInfo(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -3718,6 +3766,7 @@ class ClbDomainsInfo(AbstractModel):
         self._IpHeaders = params.get("IpHeaders")
         self._CdcClusters = params.get("CdcClusters")
         self._CloudType = params.get("CloudType")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5261,7 +5310,7 @@ class DeleteHostResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Success: 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
+        :param _Success: 域名删除结果。Code表示状态码，Message表示详细信息。
         :type Success: :class:`tencentcloud.waf.v20180125.models.ResponseCode`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5310,12 +5359,15 @@ class DeleteIpAccessControlRequest(AbstractModel):
         :type DeleteAll: bool
         :param _SourceType: 是否为多域名黑白名单
         :type SourceType: str
+        :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单
+        :type ActionType: int
         """
         self._Domain = None
         self._Items = None
         self._IsId = None
         self._DeleteAll = None
         self._SourceType = None
+        self._ActionType = None
 
     @property
     def Domain(self):
@@ -5357,6 +5409,14 @@ class DeleteIpAccessControlRequest(AbstractModel):
     def SourceType(self, SourceType):
         self._SourceType = SourceType
 
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -5364,6 +5424,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
         self._IsId = params.get("IsId")
         self._DeleteAll = params.get("DeleteAll")
         self._SourceType = params.get("SourceType")
+        self._ActionType = params.get("ActionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5531,7 +5592,7 @@ class DeleteSpartaProtectionRequest(AbstractModel):
         :type Domains: list of str
         :param _Edition: 实例类型
         :type Edition: str
-        :param _InstanceID: 实例id
+        :param _InstanceID: 必填项。域名所属实例ID
         :type InstanceID: str
         """
         self._Domains = None
@@ -8024,13 +8085,13 @@ class DescribeCertificateVerifyResultRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _CertType: 证书类型
+        :param _CertType: 证书类型。 0：仅配置HTTP监听端口，没有证书 1：证书来源为自有证书 2：证书来源为托管证书
         :type CertType: int
-        :param _Certificate: 证书公钥
+        :param _Certificate: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Certificate: str
-        :param _CertID: 证书ID
+        :param _CertID: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type CertID: str
-        :param _PrivateKey: 私钥信息
+        :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
         :type PrivateKey: str
         """
         self._Domain = None
@@ -8103,13 +8164,19 @@ class DescribeCertificateVerifyResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 状态码
+        :param _Status: 状态码。
+0：证书正常
+310：证书异常
+311：证书过期
+312：证书即将过期
         :type Status: int
         :param _Detail: 错误详情
         :type Detail: list of str
         :param _NotAfter: 过期时间
         :type NotAfter: str
-        :param _Changed: 证书是否改变:1有改变，0没有改变
+        :param _Changed: 证书是否改变。
+0：未变化
+1：有变化
 注意：此字段可能返回 null，表示取不到有效值。
         :type Changed: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12790,6 +12857,10 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         :type DenyTimeThreshold: int
         :param _DefenseStatus: 自动封禁状态
         :type DefenseStatus: int
+        :param _Source: 数据来源Source字段 custom-自定义(默认)、batch-domain-批量域名
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
         :param _HWState: 重保护网域名状态
         :type HWState: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -12799,6 +12870,7 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._TimeThreshold = None
         self._DenyTimeThreshold = None
         self._DefenseStatus = None
+        self._Source = None
         self._HWState = None
         self._RequestId = None
 
@@ -12835,6 +12907,14 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._DefenseStatus = DefenseStatus
 
     @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
     def HWState(self):
         return self._HWState
 
@@ -12856,6 +12936,7 @@ class DescribeWafAutoDenyRulesResponse(AbstractModel):
         self._TimeThreshold = params.get("TimeThreshold")
         self._DenyTimeThreshold = params.get("DenyTimeThreshold")
         self._DefenseStatus = params.get("DefenseStatus")
+        self._Source = params.get("Source")
         self._HWState = params.get("HWState")
         self._RequestId = params.get("RequestId")
 
@@ -13139,64 +13220,153 @@ class DomainInfo(AbstractModel):
         :type InstanceId: str
         :param _Cname: cname地址
         :type Cname: str
-        :param _Edition: 实例类型,sparta-waf表示saaswaf实例域名,clb-waf表示clbwaf实例域名,cdc-clb-waf表示CDC环境下clbwaf实例域名,cdn-waf表示cdnwaf实例域名
+        :param _Edition: 域名所属实例类型。
+sparta-waf：SaaS型WAF实例
+clb-waf：负载均衡型WAF实例
+cdc-clb-waf：CDC环境下负载均衡型WAF实例
         :type Edition: str
-        :param _Region: 地域
+        :param _Region: 地域。
+"多伦多": "ca"
+"广州": "gz"
+"成都": "cd"
+"福州": "fzec"
+"深圳": "szx"
+"印度": "in"
+"济南": "jnec"
+"重庆": "cq"
+"天津": "tsn"
+"欧洲东北": "ru"
+"南京": "nj"
+"美国硅谷": "usw"
+"泰国": "th"
+"广州Open": "gzopen"
+"深圳金融": "szjr"
+"法兰克福": "de"
+"日本": "jp"
+"弗吉尼亚": "use"
+"北京": "bj"
+"香港": "hk"
+"杭州": "hzec"
+"北京金融": "bjjr"
+"上海金融": "shjr"
+"台北": "tpe"
+"首尔": "kr"
+"上海": "sh"
+"新加坡": "sg"
+"清远": "qy"
         :type Region: str
         :param _InstanceName: 实例名
         :type InstanceName: str
-        :param _ClsStatus: 日志包
+        :param _ClsStatus: 访问日志开关状态。
+0：关闭
+1：开启
         :type ClsStatus: int
-        :param _FlowMode: clbwaf使用模式,0镜像模式 1清洗模式
+        :param _FlowMode: 负载均衡型WAF使用模式。
+0：镜像模式 
+1：清洗模式
         :type FlowMode: int
-        :param _Status: waf开关,0关闭 1开启
+        :param _Status: waf开关状态。
+0：关闭 
+1：开启
         :type Status: int
-        :param _Mode: 规则引擎防护模式,0观察模式 1拦截模式
+        :param _Mode: 规则引擎防护模式。
+0：观察模式 
+1：拦截模式
         :type Mode: int
-        :param _Engine: 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
+        :param _Engine: 规则引擎和AI引擎防护模式联合状态。
+1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
+10：规则引擎观察&&AI引擎关闭模式 
+11：规则引擎观察&&AI引擎观察模式 
+12：规则引擎观察&&AI引擎拦截模式 
+20：规则引擎拦截&&AI引擎关闭模式 
+21：规则引擎拦截&&AI引擎观察模式 
+22：规则引擎拦截&&AI引擎拦截模式
         :type Engine: int
-        :param _CCList: CC列表
+        :param _CCList: 沙箱集群回源出口IP列表
         :type CCList: list of str
-        :param _RsList: 回源ip
+        :param _RsList: 生产集群回源出口IP列表
         :type RsList: list of str
         :param _Ports: 服务端口配置
         :type Ports: list of PortInfo
-        :param _LoadBalancerSet: 负载均衡器
+        :param _LoadBalancerSet: 负载均衡器相关配置
         :type LoadBalancerSet: list of LoadBalancerPackageNew
         :param _AppId: 用户id
         :type AppId: int
-        :param _State: clbwaf域名监听器状态,0操作成功 4正在绑定LB 6正在解绑LB 7解绑LB失败 8绑定LB失败 10内部错误
+        :param _State: 负载均衡型WAF域名LB监听器状态。
+0：操作成功 
+4：正在绑定LB 
+6：正在解绑LB 
+7：解绑LB失败 
+8：绑定LB失败 
+10：内部错误
         :type State: int
         :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _Ipv6Status: Ipv6开关状态,0关闭 1开启
+        :param _Ipv6Status: Ipv6开关状态。
+0：关闭 
+1：开启
         :type Ipv6Status: int
-        :param _BotStatus: BOT开关状态,0关闭 1开启
+        :param _BotStatus: BOT开关状态。
+0：关闭 
+1：关闭
+2：开启
+3：开启
         :type BotStatus: int
-        :param _Level: 版本信息
+        :param _Level: 实例版本信息。
+101：小微敏捷版 
+102：小微超轻版
+2：高级版
+3：企业版
+4：旗舰版
+6：独享版
         :type Level: int
-        :param _PostCLSStatus: 是否开启投递CLS功能,0关闭 1开启
+        :param _PostCLSStatus: 投递CLS状态。
+0：关闭 
+1：开启
         :type PostCLSStatus: int
-        :param _PostCKafkaStatus: 是否开启投递CKafka功能,0关闭 1开启
+        :param _PostCKafkaStatus: 投递CKafka状态。
+0：关闭 
+1：开启
         :type PostCKafkaStatus: int
-        :param _CdcClusters: cdc实例域名接入的集群信息,非cdc实例忽略
+        :param _CdcClusters: cdc实例域名接入的集群信息,非cdc实例忽略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: str
-        :param _ApiStatus: api安全开关状态,0关闭 1开启
+        :param _ApiStatus: api安全开关状态。
+0：关闭 
+1：开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiStatus: int
-        :param _AlbType: 应用型负载均衡类型,clb或者apisix，默认clb
+        :param _AlbType: 应用型负载均衡类型，默认clb。
+clb：七层负载均衡器类型
+apisix：apisix网关型
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbType: str
-        :param _SgState: 安全组状态,0不展示 1非腾讯云源站 2安全组绑定失败 3安全组发生变更
+        :param _SgState: 安全组状态。
+0：不展示
+1：非腾讯云源站
+2：安全组绑定失败
+3：安全组发生变更
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgState: int
         :param _SgDetail: 安全组状态的详细解释
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgDetail: str
-        :param _CloudType: 域名类型:hybrid表示混合云域名，public表示公有云域名
+        :param _CloudType: 域名云环境。hybrid：混合云域名
+public：公有云域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
+        :param _Note: 域名备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Note: str
+        :param _SrcList: SAASWAF源站IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcList: list of str
+        :param _UpstreamDomainList: SAASWAF源站域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamDomainList: list of str
+        :param _SgID: 安全组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SgID: str
         """
         self._Domain = None
         self._DomainId = None
@@ -13228,6 +13398,10 @@ class DomainInfo(AbstractModel):
         self._SgState = None
         self._SgDetail = None
         self._CloudType = None
+        self._Note = None
+        self._SrcList = None
+        self._UpstreamDomainList = None
+        self._SgID = None
 
     @property
     def Domain(self):
@@ -13469,6 +13643,38 @@ class DomainInfo(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def SrcList(self):
+        return self._SrcList
+
+    @SrcList.setter
+    def SrcList(self, SrcList):
+        self._SrcList = SrcList
+
+    @property
+    def UpstreamDomainList(self):
+        return self._UpstreamDomainList
+
+    @UpstreamDomainList.setter
+    def UpstreamDomainList(self, UpstreamDomainList):
+        self._UpstreamDomainList = UpstreamDomainList
+
+    @property
+    def SgID(self):
+        return self._SgID
+
+    @SgID.setter
+    def SgID(self, SgID):
+        self._SgID = SgID
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -13511,6 +13717,10 @@ class DomainInfo(AbstractModel):
         self._SgState = params.get("SgState")
         self._SgDetail = params.get("SgDetail")
         self._CloudType = params.get("CloudType")
+        self._Note = params.get("Note")
+        self._SrcList = params.get("SrcList")
+        self._UpstreamDomainList = params.get("UpstreamDomainList")
+        self._SgID = params.get("SgID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13666,7 +13876,7 @@ class DomainURI(AbstractModel):
 
 
 class DomainsPartInfo(AbstractModel):
-    """saas域名详情
+    """SaaS型WAF域名详情
 
     """
 
@@ -13674,91 +13884,145 @@ class DomainsPartInfo(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名id
+        :param _DomainId: 域名唯一ID
         :type DomainId: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: 域名所属实例唯一ID
         :type InstanceId: str
-        :param _Edition: 类型
+        :param _Edition: 域名所属实例类型
         :type Edition: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: 域名所属实例名
         :type InstanceName: str
         :param _Cert: 证书
         :type Cert: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _Engine: AI防御模式
+        :param _Engine: 规则引擎和AI引擎防护模式联合状态。
+1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
+10：规则引擎观察&&AI引擎关闭模式 
+11：规则引擎观察&&AI引擎观察模式 
+12：规则引擎观察&&AI引擎拦截模式 
+20：规则引擎拦截&&AI引擎关闭模式 
+21：规则引擎拦截&&AI引擎观察模式 
+22：规则引擎拦截&&AI引擎拦截模式
         :type Engine: int
-        :param _HttpsRewrite: 是否开启httpRewrite
+        :param _HttpsRewrite: 是否开启HTTP强制跳转到HTTPS。
+0：不强制跳转
+1：开启强制跳转
         :type HttpsRewrite: int
-        :param _HttpsUpstreamPort: https回源端口
+        :param _HttpsUpstreamPort: HTTPS回源端口
         :type HttpsUpstreamPort: str
-        :param _IsCdn: 是否是cdn
+        :param _IsCdn: waf前是否部署有七层代理服务。
+0：没有部署代理服务
+1：有部署代理服务，waf将使用XFF获取客户端IP
+2：有部署代理服务，waf将使用remote_addr获取客户端IP
+3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _IsGray: 是否开启gray
+        :param _IsGray: 是否开启灰度，已废弃。
         :type IsGray: int
-        :param _IsHttp2: 是否是http2
+        :param _IsHttp2: 是否开启HTTP2，需要开启HTTPS协议支持。
+0：关闭
+1：开启
         :type IsHttp2: int
-        :param _IsWebsocket: 是否开启websocket
+        :param _IsWebsocket: 是否开启WebSocket支持。
+0：关闭
+1：开启
         :type IsWebsocket: int
-        :param _LoadBalance: 负载均衡
+        :param _LoadBalance: 回源负载均衡策略。
+0：轮询
+1：IP hash
+2：加权轮询
         :type LoadBalance: int
-        :param _Mode: 防御模式
+        :param _Mode: 防护模式。
+0：观察模式
+1：拦截模式
         :type Mode: int
-        :param _PrivateKey: 私钥
+        :param _PrivateKey: 自有证书的私钥
         :type PrivateKey: str
-        :param _SSLId: ssl id
+        :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type SSLId: str
-        :param _UpstreamDomain: 回源域名
+        :param _UpstreamDomain: 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
         :type UpstreamDomain: str
-        :param _UpstreamType: 回源类型
+        :param _UpstreamType: 回源类型。
+0：通过IP回源
+1：通过域名回源
         :type UpstreamType: int
-        :param _SrcList: 回源ip
+        :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
         :type SrcList: list of str
-        :param _Ports: 服务端口配置
+        :param _Ports: 域名端口配置
         :type Ports: list of PortInfo
-        :param _CertType: 证书类型
+        :param _CertType: 证书类型。
+0：仅配置HTTP监听端口，没有证书
+1：证书来源为自有证书
+2：证书来源为托管证书
         :type CertType: int
-        :param _UpstreamScheme: 回源方式
+        :param _UpstreamScheme: 服务配置有HTTPS端口时，HTTPS的回源协议。
+http：使用http协议回源，和HttpsUpstreamPort配合使用
+https：使用https协议回源
         :type UpstreamScheme: str
-        :param _Cls: 日志包
+        :param _Cls: 日志包是否开启。
+0：关闭
+1：开启
         :type Cls: int
-        :param _Cname: 一级cname
+        :param _Cname: 接入Cname，SaaS型域名使用此Cname进行接入
         :type Cname: str
-        :param _IsKeepAlive: 是否长连接
+        :param _IsKeepAlive: 是否开启长连接。
+0： 短连接
+1： 长连接
         :type IsKeepAlive: int
-        :param _ActiveCheck: 是否开启主动健康检测，1表示开启，0表示不开启
+        :param _ActiveCheck: 是否开启主动健康检测。
+0：不开启
+1：开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActiveCheck: int
         :param _TLSVersion: TLS版本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TLSVersion: int
-        :param _Ciphers: 加密套件信息
+        :param _Ciphers: 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ciphers: list of int
-        :param _CipherTemplate: 模板
+        :param _CipherTemplate: 加密套件模板。
+0：不支持选择，使用默认模板  
+1：通用型模板 
+2：安全型模板
+3：自定义模板
 注意：此字段可能返回 null，表示取不到有效值。
         :type CipherTemplate: int
-        :param _ProxyReadTimeout: 300s
+        :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyReadTimeout: int
-        :param _ProxySendTimeout: 300s
+        :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxySendTimeout: int
-        :param _SniType: 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+        :param _SniType: WAF回源时的SNI类型。
+0：关闭SNI，不配置client_hello中的server_name
+1：开启SNI，client_hello中的server_name为防护域名
+2：开启SNI，SNI为域名回源时的源站域名
+3：开启SNI，SNI为自定义域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniType: int
-        :param _SniHost: SniType=3时，需要填此参数，表示自定义的host；
+        :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
 注意：此字段可能返回 null，表示取不到有效值。
         :type SniHost: str
-        :param _Weights: 无
+        :param _Weights: 回源IP权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weights: list of str
         :param _IpHeaders: IsCdn=3时，表示自定义header
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
-        :param _XFFReset: 0:关闭xff重置；1:开启xff重置
+        :param _XFFReset: 是否开启XFF重置。
+0：关闭
+1：开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type XFFReset: int
+        :param _Note: 域名备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Note: str
+        :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamHost: str
+        :param _Level: 防护规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: str
         """
         self._Domain = None
         self._DomainId = None
@@ -13798,6 +14062,9 @@ class DomainsPartInfo(AbstractModel):
         self._Weights = None
         self._IpHeaders = None
         self._XFFReset = None
+        self._Note = None
+        self._UpstreamHost = None
+        self._Level = None
 
     @property
     def Domain(self):
@@ -14103,6 +14370,30 @@ class DomainsPartInfo(AbstractModel):
     def XFFReset(self, XFFReset):
         self._XFFReset = XFFReset
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -14148,6 +14439,9 @@ class DomainsPartInfo(AbstractModel):
         self._Weights = params.get("Weights")
         self._IpHeaders = params.get("IpHeaders")
         self._XFFReset = params.get("XFFReset")
+        self._Note = params.get("Note")
+        self._UpstreamHost = params.get("UpstreamHost")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16056,7 +16350,7 @@ class HostDel(AbstractModel):
 
 
 class HostRecord(AbstractModel):
-    """clb-waf防护域名
+    """负载均衡型WAF域名信息
 
     """
 
@@ -16064,48 +16358,79 @@ class HostRecord(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名ID
+        :param _DomainId: 域名唯一ID
         :type DomainId: str
         :param _MainDomain: 主域名，入参时为空
         :type MainDomain: str
-        :param _Mode: 规则引擎防护模式，0 观察模式，1拦截模式
+        :param _Mode: 规则引擎防护模式。
+0：观察模式
+1：拦截模式
         :type Mode: int
-        :param _Status: waf和LD的绑定，0：没有绑定，1：绑定
+        :param _Status: waf和负载均衡器的绑定关系。
+0：未绑定
+1：已绑定
         :type Status: int
-        :param _State: 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
+        :param _State: clbwaf域名监听器状态。
+0：操作成功
+4：正在绑定LB
+6：正在解绑LB 
+7：解绑LB失败 
+8：绑定LB失败 
+10：内部错误
         :type State: int
-        :param _Engine: 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
+        :param _Engine: 规则引擎和AI引擎防护模式联合状态。
+1:初始状态,规则引擎拦截&&AI引擎未操作开关状态
+10：规则引擎观察&&AI引擎关闭模式 
+11：规则引擎观察&&AI引擎观察模式 
+12：规则引擎观察&&AI引擎拦截模式 
+20：规则引擎拦截&&AI引擎关闭模式 
+21：规则引擎拦截&&AI引擎观察模式 
+22：规则引擎拦截&&AI引擎拦截模式
         :type Engine: int
-        :param _IsCdn: 是否开启代理，0：不开启，1：开启
+        :param _IsCdn: waf前是否部署有七层代理服务。 0：没有部署代理服务 1：有部署代理服务，waf将使用XFF获取客户端IP 2：有部署代理服务，waf将使用remote_addr获取客户端IP 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _LoadBalancerSet: 绑定的LB列表
+        :param _LoadBalancerSet: 绑定的负载均衡器信息列表
         :type LoadBalancerSet: list of LoadBalancer
-        :param _Region: 域名绑定的LB的地域，以,分割多个地域
+        :param _Region: 域名绑定的LB的地域，以逗号分割多个地域
         :type Region: str
-        :param _Edition: 产品分类，取值为：sparta-waf、clb-waf、cdn-waf
+        :param _Edition: 域名所属实例类型。负载均衡型WAF为"clb-waf"
         :type Edition: str
-        :param _FlowMode: WAF的流量模式，1：清洗模式，0：镜像模式
+        :param _FlowMode: 负载均衡型WAF域名的流量模式。
+1：清洗模式
+0：镜像模式
         :type FlowMode: int
-        :param _ClsStatus: 是否开启访问日志，1：开启，0：关闭
+        :param _ClsStatus: 是否开启访问日志。
+1：开启
+0：关闭
         :type ClsStatus: int
         :param _Level: 防护等级，可选值100,200,300
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
-        :param _CdcClusters: 域名需要下发到的cdc集群列表
+        :param _CdcClusters: 域名需要下发到的cdc集群列表。仅CDC场景下填充
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcClusters: list of str
-        :param _AlbType: 应用型负载均衡类型: clb或者apisix，默认clb
+        :param _AlbType: 应用型负载均衡类型，默认clb。 
+clb：七层负载均衡器类型 
+apisix：apisix网关型
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbType: str
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpHeaders: list of str
-        :param _EngineType: 规则引擎类型， 1: menshen,   2:tiga
+        :param _EngineType: 规则引擎类型。
+1: menshen
+2: tiga
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: int
-        :param _CloudType: 云类型:public:公有云；private:私有云;hybrid:混合云
+        :param _CloudType: 云类型。
+public:公有云
+private:私有云
+hybrid:混合云
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudType: str
+        :param _Note: 域名备注信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Note: str
         """
         self._Domain = None
         self._DomainId = None
@@ -16126,6 +16451,7 @@ class HostRecord(AbstractModel):
         self._IpHeaders = None
         self._EngineType = None
         self._CloudType = None
+        self._Note = None
 
     @property
     def Domain(self):
@@ -16279,6 +16605,14 @@ class HostRecord(AbstractModel):
     def CloudType(self, CloudType):
         self._CloudType = CloudType
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -16305,6 +16639,7 @@ class HostRecord(AbstractModel):
         self._IpHeaders = params.get("IpHeaders")
         self._EngineType = params.get("EngineType")
         self._CloudType = params.get("CloudType")
+        self._Note = params.get("Note")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17582,6 +17917,34 @@ class LoadBalancerPackageNew(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
         :param _Region: 地区
+"多伦多": "ca",
+    "广州": "gz",
+    "成都": "cd",
+    "福州": "fzec",
+    "深圳": "szx",
+    "印度": "in",
+    "济南": "jnec",
+    "重庆": "cq",
+    "天津": "tsn",
+    "欧洲东北": "ru",
+    "南京": "nj",
+    "美国硅谷": "usw",
+    "泰国": "th",
+    "广州Open": "gzopen",
+    "深圳金融": "szjr",
+    "法兰克福": "de",
+    "日本": "jp",
+    "弗吉尼亚": "use",
+    "北京": "bj",
+    "香港": "hk",
+    "杭州": "hzec",
+    "北京金融": "bjjr",
+    "上海金融": "shjr",
+    "台北": "tpe",
+    "首尔": "kr",
+    "上海": "sh",
+    "新加坡": "sg",
+    "清远": "qy"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
         :param _Vip: 接入IP
@@ -18727,18 +19090,21 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
         :type RuleId: int
         :param _Domain: 域名
         :type Domain: str
-        :param _SignatureId: 规则Id
-        :type SignatureId: str
         :param _Status: 规则状态
         :type Status: int
         :param _Rules: 匹配规则项列表
         :type Rules: list of UserWhiteRuleItem
+        :param _SignatureId: 规则Id
+        :type SignatureId: str
+        :param _SignatureIds: 编辑的加白的规则ID列表
+        :type SignatureIds: list of str
         """
         self._RuleId = None
         self._Domain = None
-        self._SignatureId = None
         self._Status = None
         self._Rules = None
+        self._SignatureId = None
+        self._SignatureIds = None
 
     @property
     def RuleId(self):
@@ -18757,14 +19123,6 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
         self._Domain = Domain
 
     @property
-    def SignatureId(self):
-        return self._SignatureId
-
-    @SignatureId.setter
-    def SignatureId(self, SignatureId):
-        self._SignatureId = SignatureId
-
-    @property
     def Status(self):
         return self._Status
 
@@ -18780,11 +19138,26 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
     def Rules(self, Rules):
         self._Rules = Rules
 
+    @property
+    def SignatureId(self):
+        return self._SignatureId
+
+    @SignatureId.setter
+    def SignatureId(self, SignatureId):
+        self._SignatureId = SignatureId
+
+    @property
+    def SignatureIds(self):
+        return self._SignatureIds
+
+    @SignatureIds.setter
+    def SignatureIds(self, SignatureIds):
+        self._SignatureIds = SignatureIds
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
         self._Domain = params.get("Domain")
-        self._SignatureId = params.get("SignatureId")
         self._Status = params.get("Status")
         if params.get("Rules") is not None:
             self._Rules = []
@@ -18792,6 +19165,8 @@ class ModifyAttackWhiteRuleRequest(AbstractModel):
                 obj = UserWhiteRuleItem()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._SignatureId = params.get("SignatureId")
+        self._SignatureIds = params.get("SignatureIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18846,33 +19221,28 @@ class ModifyBotStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
-        :type Domain: str
         :param _Category: 类别
         :type Category: str
         :param _Status: 状态
         :type Status: str
+        :param _Domain: 域名
+        :type Domain: str
         :param _InstanceID: 实例id
         :type InstanceID: str
         :param _IsVersionFour: 是否是bot4.0版本
         :type IsVersionFour: bool
         :param _BotVersion: 传入Bot版本号，场景化版本为"4.1.0"
         :type BotVersion: str
+        :param _DomainList: 批量开启BOT开关的域名列表
+        :type DomainList: list of str
         """
-        self._Domain = None
         self._Category = None
         self._Status = None
+        self._Domain = None
         self._InstanceID = None
         self._IsVersionFour = None
         self._BotVersion = None
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
+        self._DomainList = None
 
     @property
     def Category(self):
@@ -18889,6 +19259,14 @@ class ModifyBotStatusRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
 
     @property
     def InstanceID(self):
@@ -18914,14 +19292,23 @@ class ModifyBotStatusRequest(AbstractModel):
     def BotVersion(self, BotVersion):
         self._BotVersion = BotVersion
 
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
 
     def _deserialize(self, params):
-        self._Domain = params.get("Domain")
         self._Category = params.get("Category")
         self._Status = params.get("Status")
+        self._Domain = params.get("Domain")
         self._InstanceID = params.get("InstanceID")
         self._IsVersionFour = params.get("IsVersionFour")
         self._BotVersion = params.get("BotVersion")
+        self._DomainList = params.get("DomainList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18942,10 +19329,21 @@ class ModifyBotStatusResponse(AbstractModel):
         :param _Data: 正常情况为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
+        :param _UnSupportedList: 未购买BOT的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnSupportedList: list of str
+        :param _FailDomainList: 已购买但操作失败的域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailDomainList: list of str
+        :param _Count: 成功数目
+        :type Count: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._UnSupportedList = None
+        self._FailDomainList = None
+        self._Count = None
         self._RequestId = None
 
     @property
@@ -18955,6 +19353,30 @@ class ModifyBotStatusResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def UnSupportedList(self):
+        return self._UnSupportedList
+
+    @UnSupportedList.setter
+    def UnSupportedList(self, UnSupportedList):
+        self._UnSupportedList = UnSupportedList
+
+    @property
+    def FailDomainList(self):
+        return self._FailDomainList
+
+    @FailDomainList.setter
+    def FailDomainList(self, FailDomainList):
+        self._FailDomainList = FailDomainList
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
 
     @property
     def RequestId(self):
@@ -18967,6 +19389,9 @@ class ModifyBotStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._UnSupportedList = params.get("UnSupportedList")
+        self._FailDomainList = params.get("FailDomainList")
+        self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
 
 
@@ -19910,7 +20335,9 @@ class ModifyHostFlowModeRequest(AbstractModel):
         :type Domain: str
         :param _DomainId: 域名ID
         :type DomainId: str
-        :param _FlowMode: WAF流量模式，1：清洗模式，0：镜像模式（默认）
+        :param _FlowMode: WAF流量模式。
+0：镜像模式（默认）
+1：清洗模式
         :type FlowMode: int
         :param _InstanceID: 实例ID
         :type InstanceID: str
@@ -20151,7 +20578,7 @@ class ModifyHostRequest(AbstractModel):
         r"""
         :param _Host: 编辑的域名配置信息
         :type Host: :class:`tencentcloud.waf.v20180125.models.HostRecord`
-        :param _InstanceID: 实例id
+        :param _InstanceID: 实例唯一ID
         :type InstanceID: str
         """
         self._Host = None
@@ -20758,17 +21185,23 @@ class ModifyObjectRequest(AbstractModel):
         r"""
         :param _ObjectId: 修改对象标识
         :type ObjectId: str
-        :param _OpType: 改动作类型:Status修改开关，InstanceId绑定实例
+        :param _OpType: 改动作类型:Status修改开关，InstanceId绑定实例, Proxy设置代理状态
         :type OpType: str
         :param _Status: 新的Waf开关状态，如果和已有状态相同认为修改成功
         :type Status: int
         :param _InstanceId: 新的实例ID，如果和已绑定的实例相同认为修改成功
         :type InstanceId: str
+        :param _Proxy: 是否开启代理，0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出(OpType为Status或Proxy时，该值有效)
+        :type Proxy: int
+        :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header(OpType为Status或Proxy时，该值有效)
+        :type IpHeaders: list of str
         """
         self._ObjectId = None
         self._OpType = None
         self._Status = None
         self._InstanceId = None
+        self._Proxy = None
+        self._IpHeaders = None
 
     @property
     def ObjectId(self):
@@ -20802,12 +21235,30 @@ class ModifyObjectRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Proxy(self):
+        return self._Proxy
+
+    @Proxy.setter
+    def Proxy(self, Proxy):
+        self._Proxy = Proxy
+
+    @property
+    def IpHeaders(self):
+        return self._IpHeaders
+
+    @IpHeaders.setter
+    def IpHeaders(self, IpHeaders):
+        self._IpHeaders = IpHeaders
+
 
     def _deserialize(self, params):
         self._ObjectId = params.get("ObjectId")
         self._OpType = params.get("OpType")
         self._Status = params.get("Status")
         self._InstanceId = params.get("InstanceId")
+        self._Proxy = params.get("Proxy")
+        self._IpHeaders = params.get("IpHeaders")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21030,70 +21481,108 @@ class ModifySpartaProtectionRequest(AbstractModel):
         r"""
         :param _Domain: 域名
         :type Domain: str
-        :param _DomainId: 域名ID
+        :param _DomainId: 必填项。域名唯一ID
         :type DomainId: str
-        :param _CertType: 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+        :param _CertType: 必填项。证书类型。
+0：仅配置HTTP监听端口，没有证书
+1：证书来源为自有证书
+2：证书来源为托管证书
         :type CertType: int
-        :param _Cert: CertType=1时，需要填次参数，表示证书内容
+        :param _Cert: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Cert: str
-        :param _PrivateKey: CertType=1时，需要填次参数，表示证书的私钥
+        :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
         :type PrivateKey: str
-        :param _SSLId: CertType=2时，需要填次参数，表示证书的ID
+        :param _SSLId: CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type SSLId: str
-        :param _IsCdn: 表示是否开启了CDN代理
+        :param _IsCdn: 必填项。waf前是否部署有七层代理服务。
+0：没有部署代理服务
+1：有部署代理服务，waf将使用XFF获取客户端IP
+2：有部署代理服务，waf将使用remote_addr获取客户端IP
+3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
         :type IsCdn: int
-        :param _UpstreamScheme: HTTPS回源协议
+        :param _UpstreamScheme: 服务配置有HTTPS端口时，HTTPS的回源协议。
+http：使用http协议回源，和HttpsUpstreamPort配合使用
+https：使用https协议回源
         :type UpstreamScheme: str
         :param _HttpsUpstreamPort: HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
         :type HttpsUpstreamPort: str
-        :param _HttpsRewrite: 表示是否强制跳转到HTTPS，1表示开启，0表示不开启
+        :param _HttpsRewrite: 必填项。是否开启HTTP强制跳转到HTTPS。
+0：不强制跳转
+1：开启强制跳转
         :type HttpsRewrite: int
-        :param _UpstreamType: 回源类型，0表示通过IP回源,1 表示通过域名回源
+        :param _UpstreamType: 必填项。回源类型。
+0：通过IP回源
+1：通过域名回源
         :type UpstreamType: int
-        :param _UpstreamDomain: UpstreamType=1时，填次字段表示回源域名
+        :param _UpstreamDomain: 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
         :type UpstreamDomain: str
-        :param _SrcList: UpstreamType=0时，填次字段表示回源ip
+        :param _SrcList: IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
         :type SrcList: list of str
-        :param _IsHttp2: 是否开启HTTP2，1表示开启，0表示不开启http2。开启HTTP2需要HTTPS支持
+        :param _IsHttp2: 必填项。是否开启HTTP2，需要开启HTTPS协议支持。
+0：关闭
+1：开启
         :type IsHttp2: int
-        :param _IsWebsocket: 是否开启WebSocket， 1：开启WebSocket，0：不开启WebSocket
+        :param _IsWebsocket: 必填项。是否开启WebSocket支持。
+0：关闭
+1：开启
         :type IsWebsocket: int
-        :param _LoadBalance: 负载均衡策略，0表示轮徇，1表示IP hash
+        :param _LoadBalance: 必填项。回源负载均衡策略。
+0：轮询
+1：IP hash
+2：加权轮询
         :type LoadBalance: int
-        :param _IsGray: 是否灰度
+        :param _IsGray: 待废弃，可不填。是否开启灰度，0表示不开启灰度。
         :type IsGray: int
-        :param _Edition: WAF版本
+        :param _Edition: 域名所属实例类型
         :type Edition: str
-        :param _Ports: 端口信息
+        :param _Ports: 必填项。端口信息，可通过DescribeDomains接口获取具体参数信息。
         :type Ports: list of SpartaProtectionPort
-        :param _IsKeepAlive: 长短连接标志，仅IP回源时有效
+        :param _IsKeepAlive: 必填项。是否开启长连接。
+0： 短连接
+1： 长连接
         :type IsKeepAlive: str
-        :param _InstanceID: 实例id
+        :param _InstanceID: 必填项。域名所属实例id
         :type InstanceID: str
-        :param _Anycast: 是否为Anycast ip类型：1 Anycast 0 普通ip
+        :param _Anycast: 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
-        :param _Weights: src的权重
+        :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
         :type Weights: list of int
-        :param _ActiveCheck: 是否开启源站的主动健康检测，1表示开启，0表示不开启
+        :param _ActiveCheck: 必填项，是否开启主动健康检测。
+0：不开启
+1：开启
         :type ActiveCheck: int
         :param _TLSVersion: TLS版本信息
         :type TLSVersion: int
         :param _Ciphers: 加密套件信息
         :type Ciphers: list of int
-        :param _CipherTemplate: 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
+        :param _CipherTemplate: 必填项。加密套件模板。
+0：不支持选择，使用默认模板  
+1：通用型模板 
+2：安全型模板
+3：自定义模板
         :type CipherTemplate: int
-        :param _ProxyReadTimeout: 300s
+        :param _ProxyReadTimeout: WAF与源站的读超时时间，默认300s。
         :type ProxyReadTimeout: int
-        :param _ProxySendTimeout: 300s
+        :param _ProxySendTimeout: WAF与源站的写超时时间，默认300s。
         :type ProxySendTimeout: int
-        :param _SniType: 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+        :param _SniType: WAF回源时的SNI类型。
+0：关闭SNI，不配置client_hello中的server_name
+1：开启SNI，client_hello中的server_name为防护域名
+2：开启SNI，SNI为域名回源时的源站域名
+3：开启SNI，SNI为自定义域名
         :type SniType: int
-        :param _SniHost: SniType=3时，需要填此参数，表示自定义的host；
+        :param _SniHost: SniType为3时，需要填此参数，表示自定义的SNI；
         :type SniHost: str
         :param _IpHeaders: IsCdn=3时，需要填此参数，表示自定义header
         :type IpHeaders: list of str
-        :param _XFFReset: 0:关闭xff重置；1:开启xff重置，只有在IsCdn=0时可以开启
+        :param _XFFReset: 必填项。是否开启XFF重置。
+0：关闭
+1：开启
         :type XFFReset: int
+        :param _Note: 域名备注信息
+        :type Note: str
+        :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
+        :type UpstreamHost: str
         """
         self._Domain = None
         self._DomainId = None
@@ -21128,6 +21617,8 @@ class ModifySpartaProtectionRequest(AbstractModel):
         self._SniHost = None
         self._IpHeaders = None
         self._XFFReset = None
+        self._Note = None
+        self._UpstreamHost = None
 
     @property
     def Domain(self):
@@ -21393,6 +21884,22 @@ class ModifySpartaProtectionRequest(AbstractModel):
     def XFFReset(self, XFFReset):
         self._XFFReset = XFFReset
 
+    @property
+    def Note(self):
+        return self._Note
+
+    @Note.setter
+    def Note(self, Note):
+        self._Note = Note
+
+    @property
+    def UpstreamHost(self):
+        return self._UpstreamHost
+
+    @UpstreamHost.setter
+    def UpstreamHost(self, UpstreamHost):
+        self._UpstreamHost = UpstreamHost
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -21433,6 +21940,8 @@ class ModifySpartaProtectionRequest(AbstractModel):
         self._SniHost = params.get("SniHost")
         self._IpHeaders = params.get("IpHeaders")
         self._XFFReset = params.get("XFFReset")
+        self._Note = params.get("Note")
+        self._UpstreamHost = params.get("UpstreamHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22007,6 +22516,15 @@ class PeakPointsItem(AbstractModel):
         :param _WxAccess: 小程序 qps
 注意：此字段可能返回 null，表示取不到有效值。
         :type WxAccess: int
+        :param _WxCount: 小程序请求数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WxCount: int
+        :param _WxUp: 小程序上行带宽峰值，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WxUp: int
+        :param _WxDown: 小程序下行带宽峰值，单位B
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WxDown: int
         """
         self._Time = None
         self._Access = None
@@ -22027,6 +22545,9 @@ class PeakPointsItem(AbstractModel):
         self._Leak = None
         self._ACL = None
         self._WxAccess = None
+        self._WxCount = None
+        self._WxUp = None
+        self._WxDown = None
 
     @property
     def Time(self):
@@ -22180,6 +22701,30 @@ class PeakPointsItem(AbstractModel):
     def WxAccess(self, WxAccess):
         self._WxAccess = WxAccess
 
+    @property
+    def WxCount(self):
+        return self._WxCount
+
+    @WxCount.setter
+    def WxCount(self, WxCount):
+        self._WxCount = WxCount
+
+    @property
+    def WxUp(self):
+        return self._WxUp
+
+    @WxUp.setter
+    def WxUp(self, WxUp):
+        self._WxUp = WxUp
+
+    @property
+    def WxDown(self):
+        return self._WxDown
+
+    @WxDown.setter
+    def WxDown(self, WxDown):
+        self._WxDown = WxDown
+
 
     def _deserialize(self, params):
         self._Time = params.get("Time")
@@ -22201,6 +22746,9 @@ class PeakPointsItem(AbstractModel):
         self._Leak = params.get("Leak")
         self._ACL = params.get("ACL")
         self._WxAccess = params.get("WxAccess")
+        self._WxCount = params.get("WxCount")
+        self._WxUp = params.get("WxUp")
+        self._WxDown = params.get("WxDown")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

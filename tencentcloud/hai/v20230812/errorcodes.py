@@ -17,6 +17,9 @@
 # 欠费账户不能创建实例
 FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = 'FailedOperation.ArrearsAccountCannotRunInstances'
 
+# 并发操作实例失败
+FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = 'FailedOperation.OperateInstanceRepeatedly'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

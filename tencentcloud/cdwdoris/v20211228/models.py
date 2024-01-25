@@ -4155,6 +4155,15 @@ class SlowQueryRecord(AbstractModel):
         :param _IsQuery: 是否是查询，0：否，1：查询语句
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsQuery: int
+        :param _ResultBytesMB: ResultBytes的MB格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultBytesMB: float
+        :param _MemoryUsageMB: MemoryUsage的MB表示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemoryUsageMB: float
+        :param _DurationSec: DurationMs的秒表示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationSec: float
         """
         self._OsUser = None
         self._InitialQueryId = None
@@ -4168,6 +4177,9 @@ class SlowQueryRecord(AbstractModel):
         self._InitialAddress = None
         self._DbName = None
         self._IsQuery = None
+        self._ResultBytesMB = None
+        self._MemoryUsageMB = None
+        self._DurationSec = None
 
     @property
     def OsUser(self):
@@ -4265,6 +4277,30 @@ class SlowQueryRecord(AbstractModel):
     def IsQuery(self, IsQuery):
         self._IsQuery = IsQuery
 
+    @property
+    def ResultBytesMB(self):
+        return self._ResultBytesMB
+
+    @ResultBytesMB.setter
+    def ResultBytesMB(self, ResultBytesMB):
+        self._ResultBytesMB = ResultBytesMB
+
+    @property
+    def MemoryUsageMB(self):
+        return self._MemoryUsageMB
+
+    @MemoryUsageMB.setter
+    def MemoryUsageMB(self, MemoryUsageMB):
+        self._MemoryUsageMB = MemoryUsageMB
+
+    @property
+    def DurationSec(self):
+        return self._DurationSec
+
+    @DurationSec.setter
+    def DurationSec(self, DurationSec):
+        self._DurationSec = DurationSec
+
 
     def _deserialize(self, params):
         self._OsUser = params.get("OsUser")
@@ -4279,6 +4315,9 @@ class SlowQueryRecord(AbstractModel):
         self._InitialAddress = params.get("InitialAddress")
         self._DbName = params.get("DbName")
         self._IsQuery = params.get("IsQuery")
+        self._ResultBytesMB = params.get("ResultBytesMB")
+        self._MemoryUsageMB = params.get("MemoryUsageMB")
+        self._DurationSec = params.get("DurationSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

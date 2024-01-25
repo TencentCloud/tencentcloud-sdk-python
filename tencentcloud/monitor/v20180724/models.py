@@ -16869,12 +16869,16 @@ running 初始化完成，运行中
         :param _EksClusterId: 实例eks集群ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type EksClusterId: str
+        :param _SecurityGroupId: eks集群内pod的安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._Steps = None
         self._EksClusterId = None
+        self._SecurityGroupId = None
         self._RequestId = None
 
     @property
@@ -16902,6 +16906,14 @@ running 初始化完成，运行中
         self._EksClusterId = EksClusterId
 
     @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16919,6 +16931,7 @@ running 初始化完成，运行中
                 obj._deserialize(item)
                 self._Steps.append(obj)
         self._EksClusterId = params.get("EksClusterId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -24530,6 +24543,9 @@ abnormal = 异常
         :param _Name: agent名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
+        :param _EnableExternal: 是否已开启公网访问，true 开启，false 未开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableExternal: bool
         """
         self._ClusterType = None
         self._ClusterId = None
@@ -24540,6 +24556,7 @@ abnormal = 异常
         self._VpcId = None
         self._FailedReason = None
         self._Name = None
+        self._EnableExternal = None
 
     @property
     def ClusterType(self):
@@ -24613,6 +24630,14 @@ abnormal = 异常
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def EnableExternal(self):
+        return self._EnableExternal
+
+    @EnableExternal.setter
+    def EnableExternal(self, EnableExternal):
+        self._EnableExternal = EnableExternal
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
@@ -24629,6 +24654,7 @@ abnormal = 异常
         self._VpcId = params.get("VpcId")
         self._FailedReason = params.get("FailedReason")
         self._Name = params.get("Name")
+        self._EnableExternal = params.get("EnableExternal")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

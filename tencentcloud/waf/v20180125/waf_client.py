@@ -466,8 +466,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteHost(self, request):
-        """删除CLB-WAF防护域名
-        支持批量操作
+        """删除负载均衡型域名，支持批量操作。
 
         :param request: Request instance for DeleteHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteHostRequest`
@@ -536,7 +535,7 @@ class WafClient(AbstractClient):
 
 
     def DeleteSpartaProtection(self, request):
-        """Saas型WAF删除防护域名
+        """SaaS型WAF删除防护域名
 
         :param request: Request instance for DeleteSpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSpartaProtectionRequest`
@@ -1598,7 +1597,7 @@ class WafClient(AbstractClient):
 
 
     def DescribeTlsVersion(self, request):
-        """查询用户TLS版本
+        """查询SaaS型WAF支持的TLS版本
 
         :param request: Request instance for DescribeTlsVersion.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeTlsVersionRequest`
@@ -2428,7 +2427,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHost(self, request):
-        """clb-waf编辑防护域名配置
+        """编辑负载均衡型WAF防护域名配置
 
         :param request: Request instance for ModifyHost.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostRequest`
@@ -2451,7 +2450,7 @@ class WafClient(AbstractClient):
 
 
     def ModifyHostFlowMode(self, request):
-        """clb-waf 设置防护域名的流量模式
+        """设置负载均衡型WAF防护域名的流量模式，切换镜像模式和清洗模式
 
         :param request: Request instance for ModifyHostFlowMode.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifyHostFlowModeRequest`
@@ -2682,7 +2681,7 @@ class WafClient(AbstractClient):
 
 
     def ModifySpartaProtection(self, request):
-        """修改域名配置
+        """编辑SaaS型WAF域名配置
 
         :param request: Request instance for ModifySpartaProtection.
         :type request: :class:`tencentcloud.waf.v20180125.models.ModifySpartaProtectionRequest`

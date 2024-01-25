@@ -319,6 +319,10 @@ class ApproverInfo(AbstractModel):
         :type AddSignComponentsLimits: list of ComponentLimit
         :param _SignInstructionContent: 签署须知：支持传入富文本，最长字数：500个中文字符
         :type SignInstructionContent: str
+        :param _Deadline: 签署人的签署截止时间，格式为Unix标准时间戳（秒）
+
+注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
+        :type Deadline: int
         """
         self._ApproverType = None
         self._ApproverName = None
@@ -341,6 +345,7 @@ class ApproverInfo(AbstractModel):
         self._ApproverNeedSignReview = None
         self._AddSignComponentsLimits = None
         self._SignInstructionContent = None
+        self._Deadline = None
 
     @property
     def ApproverType(self):
@@ -510,6 +515,14 @@ class ApproverInfo(AbstractModel):
     def SignInstructionContent(self, SignInstructionContent):
         self._SignInstructionContent = SignInstructionContent
 
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -545,6 +558,7 @@ class ApproverInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AddSignComponentsLimits.append(obj)
         self._SignInstructionContent = params.get("SignInstructionContent")
+        self._Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14016,6 +14030,11 @@ class FlowCreateApprover(AbstractModel):
 注：
 `不指定该值时，默认为签署方自行选择。`
         :type SignTypeSelector: int
+        :param _Deadline: Deadline
+签署人的签署截止时间，格式为Unix标准时间戳（秒）
+
+注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
+        :type Deadline: int
         """
         self._ApproverType = None
         self._OrganizationName = None
@@ -14043,6 +14062,7 @@ class FlowCreateApprover(AbstractModel):
         self._ApproverVerifyTypes = None
         self._ApproverSignTypes = None
         self._SignTypeSelector = None
+        self._Deadline = None
 
     @property
     def ApproverType(self):
@@ -14256,6 +14276,14 @@ class FlowCreateApprover(AbstractModel):
     def SignTypeSelector(self, SignTypeSelector):
         self._SignTypeSelector = SignTypeSelector
 
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
 
     def _deserialize(self, params):
         self._ApproverType = params.get("ApproverType")
@@ -14298,6 +14326,7 @@ class FlowCreateApprover(AbstractModel):
         self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
         self._SignTypeSelector = params.get("SignTypeSelector")
+        self._Deadline = params.get("Deadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16029,6 +16058,122 @@ class ModifyExtendedServiceResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OperateUrl = params.get("OperateUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFlowDeadlineRequest(AbstractModel):
+    """ModifyFlowDeadline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FlowId: 合同流程ID，为32位字符串。
+<ul><li>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</li>
+<li>可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。</li></ul>
+        :type FlowId: str
+        :param _Deadline: 签署流程或签署人新的签署截止时间，格式为Unix标准时间戳（秒）
+        :type Deadline: int
+        :param _Agent: 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _RecipientId: 签署方角色编号，为32位字符串
+<ul><li>若指定了此参数，则只调整签署流程中此签署人的签署截止时间，否则调整合同整体的签署截止时间（合同截止时间+发起时未设置签署人截止时间的参与人的签署截止时间）</li>
+<li>通过[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)发起合同，或通过[模板发起合同-创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)时，返回参数[Approvers](https://qian.tencent.com/developers/companyApis/dataTypes/#approveritem)会返回此信息，建议开发者妥善保存</li>
+<li>也可通过[查询合同流程的详情信息](https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo)接口查询签署人的RecipientId编号</li></ul>
+        :type RecipientId: str
+        """
+        self._Operator = None
+        self._FlowId = None
+        self._Deadline = None
+        self._Agent = None
+        self._RecipientId = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Deadline(self):
+        return self._Deadline
+
+    @Deadline.setter
+    def Deadline(self, Deadline):
+        self._Deadline = Deadline
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FlowId = params.get("FlowId")
+        self._Deadline = params.get("Deadline")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFlowDeadlineResponse(AbstractModel):
+    """ModifyFlowDeadline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

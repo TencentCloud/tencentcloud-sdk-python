@@ -1467,7 +1467,7 @@ class BizLicenseOCRRequest(AbstractModel):
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
         :type ImageUrl: str
-        :param _EnableCopyWarn: 是否返回黑白复印件告警码，默认为false
+        :param _EnableCopyWarn: 是否返回告警码，默认为false
         :type EnableCopyWarn: bool
         """
         self._ImageBase64 = None
@@ -1546,7 +1546,7 @@ class BizLicenseOCRResponse(AbstractModel):
         :type RecognizeWarnCode: list of int
         :param _RecognizeWarnMsg: 告警码说明：
 WARN_COPY_CARD 黑白复印件告警
-WARN_RESHOOT_SCREENED_CARD 翻拍件告警
+WARN_RESHOOT_CARD翻拍件告警
         :type RecognizeWarnMsg: list of str
         :param _IsDuplication: 是否为副本。1为是，-1为不是。
         :type IsDuplication: int
