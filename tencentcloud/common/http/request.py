@@ -89,8 +89,7 @@ class ApiRequest(object):
         url = self._handle_host(req_inter.host)
         if self.keep_alive:
             req_inter.header["Connection"] = "Keep-Alive"
-        if self.debug:
-            logger.debug("SendRequest %s" % req_inter)
+        logger.debug("SendRequest: %s" % req_inter)
         if req_inter.method == 'GET':
             req_inter_url = '%s?%s' % (url, req_inter.data)
             return self.conn.request(req_inter.method, req_inter_url,
@@ -106,7 +105,6 @@ class ApiRequest(object):
         try:
             http_resp = self._request(req_inter)
             self.request_size = self.conn.request_length
-            logger.debug("GetResponse %s" % http_resp)
             return http_resp
         except Exception as e:
             raise TencentCloudSDKException("ClientNetworkError", str(e))
@@ -126,3 +124,30 @@ class RequestInternal(object):
         headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
         return ("Host: %s\nMethod: %s\nUri: %s\nHeader: %s\nData: %s\n"
                 % (self.host, self.method, self.uri, headers, self.data))
+
+
+class ResponsePrettyFormatter(object):
+    def __init__(self, resp, format_body=True, delimiter="\n"):
+        self._resp = resp
+        self._format_body = format_body
+        self._delimiter = delimiter
+
+    def __str__(self):
+        lines = ['%s %d %s' % (self.str_ver(self._resp.raw.version), self._resp.status_code, self._resp.reason)]
+        for k, v in self._resp.headers.items():
+            lines.append('%s: %s' % (k, v))
+        if self._format_body:
+            lines.append('')
+            lines.append(self._resp.text)
+        return self._delimiter.join(lines)
+
+    @staticmethod
+    def str_ver(ver):
+        if ver == 10:
+            return "HTTP/1.0"
+        elif ver == 11:
+            return "HTTP/1.1"
+        elif ver == 20:
+            return "HTTP/2.0"
+        else:
+            return str(ver)
