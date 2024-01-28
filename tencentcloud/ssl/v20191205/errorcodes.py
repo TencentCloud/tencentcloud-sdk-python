@@ -26,6 +26,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 请检查是否有权限。
 FAILEDOPERATION_AUTHERROR = 'FailedOperation.AuthError'
 
+# 有未解绑的云资源，不能被删除。
+FAILEDOPERATION_BOUNDRESOURCES = 'FailedOperation.BoundResources'
+
 # CAM鉴权出现错误。
 FAILEDOPERATION_CAMAUTHORIZEDFAIL = 'FailedOperation.CAMAuthorizedFail'
 
@@ -113,6 +116,9 @@ FAILEDOPERATION_CONFIRMLETTERTOOLARGE = 'FailedOperation.ConfirmLetterTooLarge'
 # 证书确认函文件过小（需大于1KB）。
 FAILEDOPERATION_CONFIRMLETTERTOOSMALL = 'FailedOperation.ConfirmLetterTooSmall'
 
+# 免费证书申请时间未超过1小时，不能被删除。
+FAILEDOPERATION_DELETEFAILEDTIMENOTUP = 'FailedOperation.DeleteFailedTimeNotUp'
+
 # 证书已关联云资源，无法删除。
 FAILEDOPERATION_DELETERESOURCEFAILED = 'FailedOperation.DeleteResourceFailed'
 
@@ -178,6 +184,9 @@ FAILEDOPERATION_PACKAGEEXPIRED = 'FailedOperation.PackageExpired'
 
 # 权益包不存在。
 FAILEDOPERATION_PACKAGENOTFOUND = 'FailedOperation.PackageNotFound'
+
+# 续费证书未颁发，无法执行删除操作。
+FAILEDOPERATION_RENEWNOTISSUED = 'FailedOperation.RenewNotIssued'
 
 # 证书吊销失败。
 FAILEDOPERATION_REVOKEFAILED = 'FailedOperation.RevokeFailed'

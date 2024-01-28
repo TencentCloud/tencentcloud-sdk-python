@@ -1024,6 +1024,11 @@ def test_import_sts():
     from tencentcloud.sts.v20180813 import models
 
 
+def test_import_svp():
+    from tencentcloud.svp.v20240125 import svp_client
+    from tencentcloud.svp.v20240125 import models
+
+
 def test_import_taf():
     from tencentcloud.taf.v20200210 import taf_client
     from tencentcloud.taf.v20200210 import models

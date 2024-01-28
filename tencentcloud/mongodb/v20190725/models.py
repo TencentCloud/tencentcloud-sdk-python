@@ -4685,6 +4685,9 @@ class InstanceDetail(AbstractModel):
         :type InstanceStatusDesc: str
         :param _RealInstanceId: 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
         :type RealInstanceId: str
+        :param _ZoneList: 实例当前可用区信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneList: list of str
         :param _MongosNodeNum: mongos节点个数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongosNodeNum: int
@@ -4748,6 +4751,7 @@ class InstanceDetail(AbstractModel):
         self._InstanceType = None
         self._InstanceStatusDesc = None
         self._RealInstanceId = None
+        self._ZoneList = None
         self._MongosNodeNum = None
         self._MongosMemory = None
         self._MongosCpuNum = None
@@ -5062,6 +5066,14 @@ class InstanceDetail(AbstractModel):
         self._RealInstanceId = RealInstanceId
 
     @property
+    def ZoneList(self):
+        return self._ZoneList
+
+    @ZoneList.setter
+    def ZoneList(self, ZoneList):
+        self._ZoneList = ZoneList
+
+    @property
     def MongosNodeNum(self):
         return self._MongosNodeNum
 
@@ -5192,6 +5204,7 @@ class InstanceDetail(AbstractModel):
         self._InstanceType = params.get("InstanceType")
         self._InstanceStatusDesc = params.get("InstanceStatusDesc")
         self._RealInstanceId = params.get("RealInstanceId")
+        self._ZoneList = params.get("ZoneList")
         self._MongosNodeNum = params.get("MongosNodeNum")
         self._MongosMemory = params.get("MongosMemory")
         self._MongosCpuNum = params.get("MongosCpuNum")

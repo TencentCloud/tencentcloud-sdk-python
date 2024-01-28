@@ -837,6 +837,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillingData(self, request):
+        """通过本接口查询计费数据。
+
+        :param request: Request instance for DescribeBillingData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConfigGroupVersionDetail(self, request):
         """在版本管理模式下，用于获取版本的详细信息，包括版本 ID、描述、状态、创建时间、所属配置组信息以及版本配置文件的内容。版本管理功能内测中，当前仅白名单开放。
 

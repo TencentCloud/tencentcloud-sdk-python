@@ -9055,8 +9055,10 @@ class InstanceClusterShard(AbstractModel):
         :type Storage: int
         :param _StorageSlope: 容量倾斜率。
         :type StorageSlope: float
-        :param _Runid: 实例运行时节点 ID。
+        :param _Runid: 该字段因拼写不规范问题，建议使用RunId取代。含义：实例运行时节点 ID。
         :type Runid: str
+        :param _RunId: 实例运行时节点 ID。
+        :type RunId: str
         :param _Connected: 服务状态。
 - 0：down。
 - 1：on。
@@ -9070,6 +9072,7 @@ class InstanceClusterShard(AbstractModel):
         self._Storage = None
         self._StorageSlope = None
         self._Runid = None
+        self._RunId = None
         self._Connected = None
 
     @property
@@ -9137,6 +9140,14 @@ class InstanceClusterShard(AbstractModel):
         self._Runid = Runid
 
     @property
+    def RunId(self):
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
     def Connected(self):
         return self._Connected
 
@@ -9154,6 +9165,7 @@ class InstanceClusterShard(AbstractModel):
         self._Storage = params.get("Storage")
         self._StorageSlope = params.get("StorageSlope")
         self._Runid = params.get("Runid")
+        self._RunId = params.get("RunId")
         self._Connected = params.get("Connected")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9964,9 +9976,12 @@ class InstanceSet(AbstractModel):
         :param _PasswordFree: 免密实例标识（内部参数，用户可忽略）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type PasswordFree: int
-        :param _Vip6: 内部参数，用户可忽略。
+        :param _Vip6: 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
+        :param _IPv6: 内部参数，用户可忽略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6: str
         :param _ReadOnly: 实例只读标识（内部参数，用户可忽略）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadOnly: int
@@ -10051,6 +10066,7 @@ class InstanceSet(AbstractModel):
         self._NetLimit = None
         self._PasswordFree = None
         self._Vip6 = None
+        self._IPv6 = None
         self._ReadOnly = None
         self._RemainBandwidthDuration = None
         self._DiskSize = None
@@ -10395,6 +10411,14 @@ class InstanceSet(AbstractModel):
         self._Vip6 = Vip6
 
     @property
+    def IPv6(self):
+        return self._IPv6
+
+    @IPv6.setter
+    def IPv6(self, IPv6):
+        self._IPv6 = IPv6
+
+    @property
     def ReadOnly(self):
         return self._ReadOnly
 
@@ -10559,6 +10583,7 @@ class InstanceSet(AbstractModel):
         self._NetLimit = params.get("NetLimit")
         self._PasswordFree = params.get("PasswordFree")
         self._Vip6 = params.get("Vip6")
+        self._IPv6 = params.get("IPv6")
         self._ReadOnly = params.get("ReadOnly")
         self._RemainBandwidthDuration = params.get("RemainBandwidthDuration")
         self._DiskSize = params.get("DiskSize")
@@ -10879,9 +10904,12 @@ class Instances(AbstractModel):
         :type Role: str
         :param _Vip: 实例 VIP 地址。
         :type Vip: str
-        :param _Vip6: 内部参数，用户可忽略。
+        :param _Vip6: 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip6: str
+        :param _IPv6: 内部参数，用户可忽略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPv6: str
         :param _VpcID: VPC 网络ID，如：75101。
         :type VpcID: int
         :param _VPort: 实例端口。
@@ -10920,6 +10948,7 @@ class Instances(AbstractModel):
         self._Role = None
         self._Vip = None
         self._Vip6 = None
+        self._IPv6 = None
         self._VpcID = None
         self._VPort = None
         self._Status = None
@@ -11033,6 +11062,14 @@ class Instances(AbstractModel):
         self._Vip6 = Vip6
 
     @property
+    def IPv6(self):
+        return self._IPv6
+
+    @IPv6.setter
+    def IPv6(self, IPv6):
+        self._IPv6 = IPv6
+
+    @property
     def VpcID(self):
         return self._VpcID
 
@@ -11103,6 +11140,7 @@ class Instances(AbstractModel):
         self._Role = params.get("Role")
         self._Vip = params.get("Vip")
         self._Vip6 = params.get("Vip6")
+        self._IPv6 = params.get("IPv6")
         self._VpcID = params.get("VpcID")
         self._VPort = params.get("VPort")
         self._Status = params.get("Status")

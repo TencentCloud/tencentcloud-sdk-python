@@ -15065,7 +15065,7 @@ class ModifyApiRequest(AbstractModel):
         :type AuthRequired: bool
         :param _ServiceTimeout: API 的后端服务超时时间，单位是秒。
         :type ServiceTimeout: int
-        :param _Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
+        :param _Protocol: API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。修改api时推荐必填
         :type Protocol: str
         :param _EnableCORS: 是否需要开启跨域，Ture 表示需要，False 表示不需要。
         :type EnableCORS: bool

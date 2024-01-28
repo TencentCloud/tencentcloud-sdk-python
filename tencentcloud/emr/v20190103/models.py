@@ -5511,6 +5511,9 @@ class EmrListInstance(AbstractModel):
         :param _IsSupportOutsideCluster: 当前集群的应用场景是否支持体外客户端
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportOutsideCluster: bool
+        :param _IsDedicatedCluster: 是否专有集群场景集群
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDedicatedCluster: bool
         """
         self._ClusterId = None
         self._StatusDesc = None
@@ -5542,6 +5545,7 @@ class EmrListInstance(AbstractModel):
         self._IsHandsCluster = None
         self._OutSideSoftInfo = None
         self._IsSupportOutsideCluster = None
+        self._IsDedicatedCluster = None
 
     @property
     def ClusterId(self):
@@ -5783,6 +5787,14 @@ class EmrListInstance(AbstractModel):
     def IsSupportOutsideCluster(self, IsSupportOutsideCluster):
         self._IsSupportOutsideCluster = IsSupportOutsideCluster
 
+    @property
+    def IsDedicatedCluster(self):
+        return self._IsDedicatedCluster
+
+    @IsDedicatedCluster.setter
+    def IsDedicatedCluster(self, IsDedicatedCluster):
+        self._IsDedicatedCluster = IsDedicatedCluster
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -5825,6 +5837,7 @@ class EmrListInstance(AbstractModel):
                 obj._deserialize(item)
                 self._OutSideSoftInfo.append(obj)
         self._IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
+        self._IsDedicatedCluster = params.get("IsDedicatedCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

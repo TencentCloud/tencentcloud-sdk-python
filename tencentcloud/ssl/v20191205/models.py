@@ -3112,8 +3112,11 @@ class DeleteCertificateRequest(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
+        :param _IsCheckResource: 删除时是否检查证书关联了云资源。默认不检查。如选择检查(需要授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)删除将变成异步,接口会返回异步任务ID。需使用DescribeDeleteCertificatesTaskResult接口查询删除是否成功。
+        :type IsCheckResource: bool
         """
         self._CertificateId = None
+        self._IsCheckResource = None
 
     @property
     def CertificateId(self):
@@ -3123,9 +3126,18 @@ class DeleteCertificateRequest(AbstractModel):
     def CertificateId(self, CertificateId):
         self._CertificateId = CertificateId
 
+    @property
+    def IsCheckResource(self):
+        return self._IsCheckResource
+
+    @IsCheckResource.setter
+    def IsCheckResource(self, IsCheckResource):
+        self._IsCheckResource = IsCheckResource
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
+        self._IsCheckResource = params.get("IsCheckResource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3145,10 +3157,14 @@ class DeleteCertificateResponse(AbstractModel):
         r"""
         :param _DeleteResult: 删除结果（true：删除成功，false：删除失败）
         :type DeleteResult: bool
+        :param _TaskId: 异步删除的任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeleteResult = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -3158,6 +3174,14 @@ class DeleteCertificateResponse(AbstractModel):
     @DeleteResult.setter
     def DeleteResult(self, DeleteResult):
         self._DeleteResult = DeleteResult
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -3170,6 +3194,7 @@ class DeleteCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DeleteResult = params.get("DeleteResult")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

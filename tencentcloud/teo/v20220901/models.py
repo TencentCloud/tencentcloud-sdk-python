@@ -1935,6 +1935,96 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class BillingData(AbstractModel):
+    """计费数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 时间。
+        :type Time: str
+        :param _Value: 数值。
+        :type Value: int
+        """
+        self._Time = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillingDataFilter(AbstractModel):
+    """计费数据过滤条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 参数名称。
+        :type Type: str
+        :param _Value: 参数值。
+        :type Value: str
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindSecurityTemplateToEntityRequest(AbstractModel):
     """BindSecurityTemplateToEntity请求参数结构体
 
@@ -7728,6 +7818,169 @@ class DescribeAvailablePlansResponse(AbstractModel):
                 obj = PlanInfo()
                 obj._deserialize(item)
                 self._PlanInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillingDataRequest(AbstractModel):
+    """DescribeBillingData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间。
+        :type EndTime: str
+        :param _ZoneIds: 站点 ID 集合，此参数必填。
+        :type ZoneIds: list of str
+        :param _MetricName: 指标列表，取值有：
+<li>acc_flux: 内容加速流量，单位为 Byte；</li>
+<li>smt_flux: 智能加速流量，单位为 Byte；</li>
+<li>l4_flux: 四层加速流量，单位为 Byte；</li>
+<li>sec_flux: 独立防护流量，单位为 Byte；</li>
+<li>zxctg_flux: 中国大陆网络优化流量，单位为 Byte；</li>
+<li>acc_bandwidth: 内容加速带宽，单位为 bps；</li>
+<li>smt_bandwidth: 智能加速带宽，单位为 bps；</li>
+<li>l4_bandwidth: 四层加速带宽，单位为 bps；</li>
+<li>sec_bandwidth: 独立防护带宽，单位为 bps；</li>
+<li>zxctg_bandwidth: 中国大陆网络优化带宽，单位为 bps；</li>
+<li>sec_request_clean: HTTP/HTTPS 请求，单位为次；</li>
+<li>smt_request_clean: 智能加速请求，单位为次；</li>
+<li>quic_request: QUIC 请求，单位为次；</li>
+<li>bot_request_clean: Bot 请求，单位为次；</li>
+<li>cls_count: 实时日志推送条数，单位为条；</li>
+<li>ddos_bandwidth: 弹性 DDoS 防护带宽，单位为 bps。</li>
+        :type MetricName: str
+        :param _Interval: 查询时间粒度，取值有：
+<li>5min：5 分钟粒度；</li>
+<li>hour：1 小时粒度；</li>
+<li>day：1 天粒度。</li>
+        :type Interval: str
+        :param _Filters: 过滤条件，详细的过滤条件取值如下：
+<li>host<br>   按照【<strong>域名</strong>】进行过滤。示例值：test.example.com。<br>   类型：String<br>   必选：否</li>
+<li>proxy-id<br>   按照【<strong>四层代理实例 ID</strong>】进行过滤。示例值：sid-2rugn89bkla9。<br>   类型：String<br>   必选：否</li>
+<li>region-id<br>   按照【<strong>计费大区</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项如下：<br>   CH：中国大陆境内<br>   AF：非洲<br>   AS1：亚太一区<br>   AS2：亚太二区<br>   AS3：亚太三区<br>   EU：欧洲<br>   MidEast：中东<br>   NA：北美<br>   SA：南美</li>
+        :type Filters: list of BillingDataFilter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ZoneIds = None
+        self._MetricName = None
+        self._Interval = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ZoneIds = params.get("ZoneIds")
+        self._MetricName = params.get("MetricName")
+        self._Interval = params.get("Interval")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = BillingDataFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingDataResponse(AbstractModel):
+    """DescribeBillingData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 数据点列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BillingData
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BillingData()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -18561,11 +18561,9 @@ class DescribeStatisticDataRequest(AbstractModel):
         :type Module: str
         :param _Namespace: 命名空间，目前支持QCE/TKE2(Conditions必填),QCE/KEEWIDB,QCE/CAMP
         :type Namespace: str
-        :param _MetricNames: 指标名列表，相关指标信息可参考对应 云产品指标文档
-https://cloud.tencent.com/document/product/248/62458
+        :param _MetricNames: 指标名列表，相关指标信息可参考对应 [云产品指标文档](https://cloud.tencent.com/document/product/248/62458)
         :type MetricNames: list of str
-        :param _Conditions: 维度条件，操作符支持=、in
-配置文档参考：https://cloud.tencent.com/document/product/248/53821
+        :param _Conditions: 维度条件，操作符支持=、in，详情请参考对应 [指标维度信息](https://cloud.tencent.com/document/product/248/53821)
         :type Conditions: list of MidQueryCondition
         :param _Period: 统计粒度。默认取值为300，单位为s；可选的值为60、300、3600、86400
 受存储时长限制，统计粒度与统计的时间范围有关：
