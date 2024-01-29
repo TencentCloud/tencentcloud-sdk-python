@@ -7254,11 +7254,14 @@ class DescribeDevicePackagesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页拉取偏移
         :type Offset: int
+        :param _ChannelId: 通道id
+        :type ChannelId: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._Limit = None
         self._Offset = None
+        self._ChannelId = None
 
     @property
     def ProductId(self):
@@ -7292,12 +7295,21 @@ class DescribeDevicePackagesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12550,6 +12562,8 @@ class PackageInfo(AbstractModel):
         :param _OrderId: 订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
+        :param _ChannelId: 通道id
+        :type ChannelId: int
         """
         self._Status = None
         self._CSType = None
@@ -12559,6 +12573,7 @@ class PackageInfo(AbstractModel):
         self._UpdatedAt = None
         self._PackageId = None
         self._OrderId = None
+        self._ChannelId = None
 
     @property
     def Status(self):
@@ -12624,6 +12639,14 @@ class PackageInfo(AbstractModel):
     def OrderId(self, OrderId):
         self._OrderId = OrderId
 
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -12634,6 +12657,7 @@ class PackageInfo(AbstractModel):
         self._UpdatedAt = params.get("UpdatedAt")
         self._PackageId = params.get("PackageId")
         self._OrderId = params.get("OrderId")
+        self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

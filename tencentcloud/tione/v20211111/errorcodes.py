@@ -428,6 +428,9 @@ OPERATIONDENIED_BILLINGEXCEPTION = 'OperationDenied.BillingException'
 # 按量计费资源售罄。
 OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = 'OperationDenied.BillingStatusResourceInsufficient'
 
+# vpc 和 子网 禁止修改
+OPERATIONDENIED_FORBIDMODIFYVPCANDSUBNET = 'OperationDenied.ForbidModifyVpcAndSubnet'
+
 # IP不合法。
 OPERATIONDENIED_IPILLEGAL = 'OperationDenied.IpIllegal'
 

@@ -4882,7 +4882,8 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
         :param _GroupByType: group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
  5:1d
         :type GroupByType: int
-        :param _IsNewData: 无需关注，是否查询zhiyan
+        :param _IsNewData: 1: 查询智研
+0: 走旧逻辑，已下线，勿使用
         :type IsNewData: int
         """
         self._StartTime = None

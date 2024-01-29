@@ -167,7 +167,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxy(self, request):
-        """创建应用代理
+        """本接口为旧版，如需调用请尽快迁移至新版 [创建四层代理实例](https://cloud.tencent.com/document/product/1552/103417) 。
 
         :param request: Request instance for CreateApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRequest`
@@ -190,7 +190,8 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRule(self, request):
-        """创建应用代理规则
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [创建四层代理转发规则
+        ](https://cloud.tencent.com/document/product/1552/103416) 。
 
         :param request: Request instance for CreateApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRuleRequest`
@@ -516,7 +517,8 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxy(self, request):
-        """删除应用代理
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理实例
+        ](https://cloud.tencent.com/document/product/1552/103415) 。
 
         :param request: Request instance for DeleteApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRequest`
@@ -539,7 +541,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxyRule(self, request):
-        """删除应用代理规则
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [删除四层代理转发规则](https://cloud.tencent.com/document/product/1552/103414) 。
 
         :param request: Request instance for DeleteApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRuleRequest`
@@ -792,7 +794,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxies(self, request):
-        """查询应用代理列表。
+        """本接口为旧版，如需调用请尽快迁移至新版，新版接口中将四层代理实例列表的查询和四层转发规则的查询拆分成两个接口，详情请参考 [查询四层代理实例列表](https://cloud.tencent.com/document/product/1552/103413) 和 [查询四层代理转发规则列表](https://cloud.tencent.com/document/product/1552/103412)。
 
         :param request: Request instance for DescribeApplicationProxies.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeApplicationProxiesRequest`
@@ -1160,7 +1162,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeL4ProxyRules(self, request):
-        """查询四层代理实例下的规则列表。
+        """查询四层代理实例下的转发规则列表。
 
         :param request: Request instance for DescribeL4ProxyRules.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesRequest`
@@ -1689,7 +1691,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxy(self, request):
-        """修改应用代理
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例
+        ](https://cloud.tencent.com/document/product/1552/103411) 。
 
         :param request: Request instance for ModifyApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRequest`
@@ -1712,7 +1715,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRule(self, request):
-        """修改应用代理规则
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则
+        ](https://cloud.tencent.com/document/product/1552/103410) 。
 
         :param request: Request instance for ModifyApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleRequest`
@@ -1735,7 +1739,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRuleStatus(self, request):
-        """修改应用代理规则的状态
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理转发规则状态
+        ](https://cloud.tencent.com/document/product/1552/103409) 。
 
         :param request: Request instance for ModifyApplicationProxyRuleStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleStatusRequest`
@@ -1758,7 +1763,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyStatus(self, request):
-        """修改应用代理的状态
+        """本接口为旧版，如需调用请尽快迁移至新版，详情请参考 [修改四层代理实例状态](https://cloud.tencent.com/document/product/1552/103408) 。
 
         :param request: Request instance for ModifyApplicationProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyStatusRequest`

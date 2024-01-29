@@ -7663,16 +7663,35 @@ class DescribeApplicationProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: 站点ID。该参数必填。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
+        :type Filters: list of Filter
         :param _Offset: 分页查询偏移量。默认为0。
         :type Offset: int
         :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
-        :type Filters: list of Filter
         """
+        self._ZoneId = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
-        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Offset(self):
@@ -7690,24 +7709,17 @@ class DescribeApplicationProxiesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
+        self._ZoneId = params.get("ZoneId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

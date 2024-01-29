@@ -3489,7 +3489,7 @@ class NetDetails(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Current: 流量值（bit）
+        :param _Current: 流量值（byte）
         :type Current: float
         :param _Time: 时间点，单位：s
         :type Time: str

@@ -2357,7 +2357,7 @@ class CreateInstanceRequest(AbstractModel):
 <li>0：表示不自动续费。</li>
 <li>1：表示自动续费。</li>
         :type AutoRenew: int
-        :param _ClientToken: 客户端Token。
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
         :type ClientToken: str
         :param _NeedMasterWan: 是否开启集群Master节点公网。取值范围：
 <li>NEED_MASTER_WAN：表示开启集群Master节点公网。</li>
@@ -13801,7 +13801,7 @@ class ScaleOutInstanceRequest(AbstractModel):
 <li>0：表示按量计费。</li>
 <li>1：表示包年包月。</li>
         :type PayMode: int
-        :param _ClientToken: 客户端Token。
+        :param _ClientToken: 唯一随机标识，时效5分钟，需要调用者指定 防止客户端重新创建资源，例如 a9a90aa6-751a-41b6-aad6-fae36063280
         :type ClientToken: str
         :param _PreExecutedFileSettings: 引导操作脚本设置。
         :type PreExecutedFileSettings: list of PreExecuteFileSettings

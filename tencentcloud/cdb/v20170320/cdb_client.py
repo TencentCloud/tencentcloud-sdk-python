@@ -1842,6 +1842,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceAlarmEvents(self, request):
+        """查询实例发生的事件信息
+
+        :param request: Request instance for DescribeInstanceAlarmEvents.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceAlarmEventsRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeInstanceAlarmEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAlarmEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceAlarmEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceParamRecords(self, request):
         """该接口（DescribeInstanceParamRecords）用于查询实例参数修改历史。
 
