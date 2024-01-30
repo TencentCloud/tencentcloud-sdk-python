@@ -1910,6 +1910,9 @@ class Device(AbstractModel):
         :param _LicenseIds: 已经绑定licenseId列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseIds: list of str
+        :param _MonthlyRemainTime: 每月license的限定时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonthlyRemainTime: int
         """
         self._DeviceId = None
         self._DeviceName = None
@@ -1918,6 +1921,7 @@ class Device(AbstractModel):
         self._ExpireTime = None
         self._Duration = None
         self._LicenseIds = None
+        self._MonthlyRemainTime = None
 
     @property
     def DeviceId(self):
@@ -1975,6 +1979,14 @@ class Device(AbstractModel):
     def LicenseIds(self, LicenseIds):
         self._LicenseIds = LicenseIds
 
+    @property
+    def MonthlyRemainTime(self):
+        return self._MonthlyRemainTime
+
+    @MonthlyRemainTime.setter
+    def MonthlyRemainTime(self, MonthlyRemainTime):
+        self._MonthlyRemainTime = MonthlyRemainTime
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -1984,6 +1996,7 @@ class Device(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._Duration = params.get("Duration")
         self._LicenseIds = params.get("LicenseIds")
+        self._MonthlyRemainTime = params.get("MonthlyRemainTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2325,6 +2338,8 @@ class GetLicenseStatResponse(AbstractModel):
         :type UnBound: int
         :param _Expire: 过期授权
         :type Expire: int
+        :param _MonthlyExpire: 当月用量超时授权个数
+        :type MonthlyExpire: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2332,6 +2347,7 @@ class GetLicenseStatResponse(AbstractModel):
         self._Bound = None
         self._UnBound = None
         self._Expire = None
+        self._MonthlyExpire = None
         self._RequestId = None
 
     @property
@@ -2367,6 +2383,14 @@ class GetLicenseStatResponse(AbstractModel):
         self._Expire = Expire
 
     @property
+    def MonthlyExpire(self):
+        return self._MonthlyExpire
+
+    @MonthlyExpire.setter
+    def MonthlyExpire(self, MonthlyExpire):
+        self._MonthlyExpire = MonthlyExpire
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2380,6 +2404,7 @@ class GetLicenseStatResponse(AbstractModel):
         self._Bound = params.get("Bound")
         self._UnBound = params.get("UnBound")
         self._Expire = params.get("Expire")
+        self._MonthlyExpire = params.get("MonthlyExpire")
         self._RequestId = params.get("RequestId")
 
 
@@ -2398,11 +2423,14 @@ class GetLicensesRequest(AbstractModel):
         :type ProjectId: str
         :param _DeviceId: DeviceId
         :type DeviceId: str
+        :param _Status: license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+        :type Status: int
         """
         self._PageNum = None
         self._PageSize = None
         self._ProjectId = None
         self._DeviceId = None
+        self._Status = None
 
     @property
     def PageNum(self):
@@ -2436,12 +2464,21 @@ class GetLicensesRequest(AbstractModel):
     def DeviceId(self, DeviceId):
         self._DeviceId = DeviceId
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
         self._ProjectId = params.get("ProjectId")
         self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

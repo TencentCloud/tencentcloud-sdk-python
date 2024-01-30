@@ -555,29 +555,6 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDataPerformanceProject(self, request):
-        """获取PerformanceProject信息
-
-        :param request: Request instance for DescribeDataPerformanceProject.
-        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeDataPerformanceProjectResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDataPerformanceProject", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDataPerformanceProjectResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDataPvUrlInfo(self, request):
         """获取PvUrlInfo信息
 

@@ -2836,7 +2836,9 @@ class CwpClient(AbstractClient):
 
 
     def DescribeAttackLogInfo(self, request):
-        """网络攻击日志详情
+        """DescribeAttackEventInfo 接口替代
+
+        网络攻击日志详情
 
         :param request: Request instance for DescribeAttackLogInfo.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeAttackLogInfoRequest`

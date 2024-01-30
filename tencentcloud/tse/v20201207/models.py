@@ -184,7 +184,7 @@ class AutoScalerPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型，Pods或Percent
+        :param _Type: 类型，Pods
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Value: 数量
@@ -244,13 +244,13 @@ class AutoScalerRules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StabilizationWindowSeconds: 稳定窗口时间
+        :param _StabilizationWindowSeconds: 稳定窗口时间，扩容时默认0，缩容时默认300
 注意：此字段可能返回 null，表示取不到有效值。
         :type StabilizationWindowSeconds: int
         :param _SelectPolicy: 选择策略依据
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelectPolicy: str
-        :param _Policies: 扩容策略
+        :param _Policies: 扩缩容策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type Policies: list of AutoScalerPolicy
         """
@@ -1756,10 +1756,14 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfig(AbstractModel):
 
     @property
     def Enabled(self):
+        warnings.warn("parameter `Enabled` is deprecated", DeprecationWarning) 
+
         return self._Enabled
 
     @Enabled.setter
     def Enabled(self, Enabled):
+        warnings.warn("parameter `Enabled` is deprecated", DeprecationWarning) 
+
         self._Enabled = Enabled
 
     @property
@@ -1853,12 +1857,14 @@ class CloudNativeAPIGatewayStrategyAutoScalerConfigMetric(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: 指标类型
-注意：此字段可能返回 null，表示取不到有效值。
+- Resource
         :type Type: str
         :param _ResourceName: 指标资源名称
+- cpu
+- memory
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
-        :param _TargetType: 指标目标类型
+        :param _TargetType: 指标目标类型，目前只支持百分比Utilization
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         :param _TargetValue: 指标目标值
@@ -1949,10 +1955,14 @@ class CloudNativeAPIGatewayStrategyCronScalerConfig(AbstractModel):
 
     @property
     def Enabled(self):
+        warnings.warn("parameter `Enabled` is deprecated", DeprecationWarning) 
+
         return self._Enabled
 
     @Enabled.setter
     def Enabled(self, Enabled):
+        warnings.warn("parameter `Enabled` is deprecated", DeprecationWarning) 
+
         self._Enabled = Enabled
 
     @property
@@ -2034,10 +2044,10 @@ class CloudNativeAPIGatewayStrategyCronScalerConfigParam(AbstractModel):
         :param _StartAt: 定时伸缩开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
-        :param _TargetReplicas: 定时伸缩目标节点数
+        :param _TargetReplicas: 定时伸缩目标节点数，不超过指标伸缩中定义的最大节点数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetReplicas: int
-        :param _Crontab: 定时伸缩cron表达式
+        :param _Crontab: 定时伸缩cron表达式，无需输入
 注意：此字段可能返回 null，表示取不到有效值。
         :type Crontab: str
         """
@@ -2432,10 +2442,22 @@ class CreateCloudNativeAPIGatewayPublicNetworkResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Result: 返回结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.CreatePublicNetworkResult`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Result = None
         self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
 
     @property
     def RequestId(self):
@@ -2447,6 +2469,9 @@ class CreateCloudNativeAPIGatewayPublicNetworkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreatePublicNetworkResult()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3896,6 +3921,66 @@ class CreateNativeGatewayServerGroupResponse(AbstractModel):
             self._Result = CreateCloudNativeAPIGatewayServerGroupResult()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class CreatePublicNetworkResult(AbstractModel):
+    """创建kong客户端公网结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _GroupId: 分组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _NetworkId: 客户端公网网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkId: str
+        """
+        self._GatewayId = None
+        self._GroupId = None
+        self._NetworkId = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def NetworkId(self):
+        return self._NetworkId
+
+    @NetworkId.setter
+    def NetworkId(self, NetworkId):
+        self._NetworkId = NetworkId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GroupId = params.get("GroupId")
+        self._NetworkId = params.get("NetworkId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateWafDomainsRequest(AbstractModel):

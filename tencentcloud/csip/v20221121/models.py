@@ -11106,6 +11106,75 @@ class OrganizationUserInfo(AbstractModel):
         
 
 
+class PortRiskAdvanceCFGParamItem(AbstractModel):
+    """端口风险高级配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PortSets: 端口集合,以逗号分隔
+        :type PortSets: str
+        :param _CheckType: 检测项类型，0-系统定义，1-用户自定义
+        :type CheckType: int
+        :param _Detail: 检测项描述
+        :type Detail: str
+        :param _Enable: 是否启用，1-启用，0-禁用
+        :type Enable: int
+        """
+        self._PortSets = None
+        self._CheckType = None
+        self._Detail = None
+        self._Enable = None
+
+    @property
+    def PortSets(self):
+        return self._PortSets
+
+    @PortSets.setter
+    def PortSets(self, PortSets):
+        self._PortSets = PortSets
+
+    @property
+    def CheckType(self):
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._PortSets = params.get("PortSets")
+        self._CheckType = params.get("CheckType")
+        self._Detail = params.get("Detail")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PortViewPortRisk(AbstractModel):
     """端口视角的端口风险对象
 
@@ -13043,6 +13112,8 @@ class TaskAdvanceCFG(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PortRisk: 端口风险高级配置
+        :type PortRisk: list of PortRiskAdvanceCFGParamItem
         :param _VulRisk: 漏洞风险高级配置
         :type VulRisk: list of TaskCenterVulRiskInputParam
         :param _WeakPwdRisk: 弱口令风险高级配置
@@ -13050,9 +13121,18 @@ class TaskAdvanceCFG(AbstractModel):
         :param _CFGRisk: 配置风险高级配置
         :type CFGRisk: list of TaskCenterCFGRiskInputParam
         """
+        self._PortRisk = None
         self._VulRisk = None
         self._WeakPwdRisk = None
         self._CFGRisk = None
+
+    @property
+    def PortRisk(self):
+        return self._PortRisk
+
+    @PortRisk.setter
+    def PortRisk(self, PortRisk):
+        self._PortRisk = PortRisk
 
     @property
     def VulRisk(self):
@@ -13080,6 +13160,12 @@ class TaskAdvanceCFG(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("PortRisk") is not None:
+            self._PortRisk = []
+            for item in params.get("PortRisk"):
+                obj = PortRiskAdvanceCFGParamItem()
+                obj._deserialize(item)
+                self._PortRisk.append(obj)
         if params.get("VulRisk") is not None:
             self._VulRisk = []
             for item in params.get("VulRisk"):

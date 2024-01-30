@@ -187,6 +187,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlarmShield(self, request):
+        """该接口用于创建告警屏蔽规则。
+
+        :param request: Request instance for CreateAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConfig(self, request):
         """创建采集规则配置
 
@@ -555,6 +578,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAlarmShield(self, request):
+        """该接口用于删除告警屏蔽规则。
+
+        :param request: Request instance for DeleteAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteConfig(self, request):
         """删除采集规则配置
 
@@ -891,6 +937,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeAlarmNotices", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlarmNoticesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAlarmShields(self, request):
+        """获取告警屏蔽配置规则
+
+        :param request: Request instance for DescribeAlarmShields.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmShields", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmShieldsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1558,6 +1627,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyAlarmNotice", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAlarmNoticeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAlarmShield(self, request):
+        """该接口用于修改告警屏蔽规则。
+
+        :param request: Request instance for ModifyAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmShieldResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

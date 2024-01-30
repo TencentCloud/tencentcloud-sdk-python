@@ -6212,7 +6212,7 @@ class InstanceChargePrepaid(AbstractModel):
         r"""
         :param _Period: 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
         :type Period: int
-        :param _RenewFlag: 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :param _RenewFlag: 自动续费标识。取值范围：<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
         :type RenewFlag: str
         """
         self._Period = None
@@ -6645,11 +6645,9 @@ class LaunchConfiguration(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param _ImageId: 镜像ID。
         :type ImageId: str
-        :param _LaunchConfigurationStatus: 启动配置当前状态。取值范围：<br><li>NORMAL：正常<br><li>IMAGE_ABNORMAL：启动配置镜像异常<br><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常<br><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常<br>
+        :param _LaunchConfigurationStatus: 启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
         :type LaunchConfigurationStatus: str
-        :param _InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。
-<br><li>POSTPAID_BY_HOUR：按小时后付费
-<br><li>SPOTPAID：竞价付费
+        :param _InstanceChargeType: 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -6675,15 +6673,15 @@ class LaunchConfiguration(AbstractModel):
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: 云盘类型选择策略。取值范围：
-<br><li>ORIGINAL：使用设置的云盘类型
-<br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
+        :param _DiskTypePolicy: 云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li>
         :type DiskTypePolicy: str
         :param _HpcClusterId: 高性能计算集群ID。<br>
 注意：此字段默认为空。
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6公网带宽相关信息设置。
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        :param _DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :type DisasterRecoverGroupIds: list of str
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -6715,6 +6713,7 @@ class LaunchConfiguration(AbstractModel):
         self._DiskTypePolicy = None
         self._HpcClusterId = None
         self._IPv6InternetAccessible = None
+        self._DisasterRecoverGroupIds = None
 
     @property
     def ProjectId(self):
@@ -6956,6 +6955,14 @@ class LaunchConfiguration(AbstractModel):
     def IPv6InternetAccessible(self, IPv6InternetAccessible):
         self._IPv6InternetAccessible = IPv6InternetAccessible
 
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -7026,6 +7033,7 @@ class LaunchConfiguration(AbstractModel):
         if params.get("IPv6InternetAccessible") is not None:
             self._IPv6InternetAccessible = IPv6InternetAccessible()
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

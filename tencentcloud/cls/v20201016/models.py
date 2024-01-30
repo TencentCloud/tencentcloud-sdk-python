@@ -601,6 +601,174 @@ class AlarmNotice(AbstractModel):
         
 
 
+class AlarmShieldInfo(AbstractModel):
+    """告警屏蔽任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmNoticeId: 通知渠道组Id
+        :type AlarmNoticeId: str
+        :param _TaskId: 屏蔽规则id
+        :type TaskId: str
+        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :type StartTime: int
+        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :type EndTime: int
+        :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :type Type: int
+        :param _Rule: 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rule: str
+        :param _Reason: 屏蔽原因。
+        :type Reason: str
+        :param _Source: 规则创建来源。
+1. 控制台，2.api，3.告警通知
+        :type Source: int
+        :param _Operator: 操作者。
+        :type Operator: str
+        :param _Status: 规则状态。
+0：暂未生效，1：生效中，2：已失效
+        :type Status: int
+        :param _CreateTime: 规则创建时间。
+        :type CreateTime: int
+        :param _UpdateTime: 规则更新时间。
+        :type UpdateTime: int
+        """
+        self._AlarmNoticeId = None
+        self._TaskId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Rule = None
+        self._Reason = None
+        self._Source = None
+        self._Operator = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def AlarmNoticeId(self):
+        return self._AlarmNoticeId
+
+    @AlarmNoticeId.setter
+    def AlarmNoticeId(self, AlarmNoticeId):
+        self._AlarmNoticeId = AlarmNoticeId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._AlarmNoticeId = params.get("AlarmNoticeId")
+        self._TaskId = params.get("TaskId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Rule = params.get("Rule")
+        self._Reason = params.get("Reason")
+        self._Source = params.get("Source")
+        self._Operator = params.get("Operator")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmTarget(AbstractModel):
     """告警对象
 
@@ -3478,6 +3646,136 @@ class CreateAlarmResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AlarmId = params.get("AlarmId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAlarmShieldRequest(AbstractModel):
+    """CreateAlarmShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmNoticeId: 通知渠道组id。
+        :type AlarmNoticeId: str
+        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :type StartTime: int
+        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :type EndTime: int
+        :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :type Type: int
+        :param _Reason: 屏蔽原因。
+        :type Reason: str
+        :param _Rule: 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+        :type Rule: str
+        """
+        self._AlarmNoticeId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Reason = None
+        self._Rule = None
+
+    @property
+    def AlarmNoticeId(self):
+        return self._AlarmNoticeId
+
+    @AlarmNoticeId.setter
+    def AlarmNoticeId(self, AlarmNoticeId):
+        self._AlarmNoticeId = AlarmNoticeId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._AlarmNoticeId = params.get("AlarmNoticeId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Reason = params.get("Reason")
+        self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlarmShieldResponse(AbstractModel):
+    """CreateAlarmShield返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 屏蔽规则ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6517,6 +6815,76 @@ class DeleteAlarmResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAlarmShieldRequest(AbstractModel):
+    """DeleteAlarmShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 屏蔽规则id。
+        :type TaskId: str
+        :param _AlarmNoticeId: 通知渠道组id。
+        :type AlarmNoticeId: str
+        """
+        self._TaskId = None
+        self._AlarmNoticeId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def AlarmNoticeId(self):
+        return self._AlarmNoticeId
+
+    @AlarmNoticeId.setter
+    def AlarmNoticeId(self, AlarmNoticeId):
+        self._AlarmNoticeId = AlarmNoticeId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._AlarmNoticeId = params.get("AlarmNoticeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAlarmShieldResponse(AbstractModel):
+    """DeleteAlarmShield返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteConfigExtraRequest(AbstractModel):
     """DeleteConfigExtra请求参数结构体
 
@@ -7517,6 +7885,136 @@ class DescribeAlarmNoticesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AlarmNotices.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAlarmShieldsRequest(AbstractModel):
+    """DescribeAlarmShields请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmNoticeId: 通知渠道组id。
+        :type AlarmNoticeId: str
+        :param _Filters: - taskId:按照【规则id】进行过滤。类型：String  必选：否
+- status:按照【规则状态】进行过滤。类型：String。 支持 0:暂未生效，1:生效中，2:已失效。 必选：否
+每次请求的Filters的上限为10，Filter.Values的上限为100。
+        :type Filters: list of Filter
+        :param _Offset: 分页的偏移量，默认值为0。
+        :type Offset: int
+        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :type Limit: int
+        """
+        self._AlarmNoticeId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AlarmNoticeId(self):
+        return self._AlarmNoticeId
+
+    @AlarmNoticeId.setter
+    def AlarmNoticeId(self, AlarmNoticeId):
+        self._AlarmNoticeId = AlarmNoticeId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._AlarmNoticeId = params.get("AlarmNoticeId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmShieldsResponse(AbstractModel):
+    """DescribeAlarmShields返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的规则总数目
+        :type TotalCount: int
+        :param _AlarmShields: 告警屏蔽规则详情
+        :type AlarmShields: list of AlarmShieldInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AlarmShields = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AlarmShields(self):
+        return self._AlarmShields
+
+    @AlarmShields.setter
+    def AlarmShields(self, AlarmShields):
+        self._AlarmShields = AlarmShields
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AlarmShields") is not None:
+            self._AlarmShields = []
+            for item in params.get("AlarmShields"):
+                obj = AlarmShieldInfo()
+                obj._deserialize(item)
+                self._AlarmShields.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14054,6 +14552,148 @@ Classifications元素的Value长度不能超过200个字符。
 
 class ModifyAlarmResponse(AbstractModel):
     """ModifyAlarm返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAlarmShieldRequest(AbstractModel):
+    """ModifyAlarmShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 屏蔽规则ID。
+        :type TaskId: str
+        :param _AlarmNoticeId: 通知渠道组id。
+        :type AlarmNoticeId: str
+        :param _StartTime: 屏蔽开始时间（秒级时间戳）。
+        :type StartTime: int
+        :param _EndTime: 屏蔽结束时间（秒级时间戳）。
+        :type EndTime: int
+        :param _Type: 屏蔽类型。1：屏蔽所有通知，2：按照Rule参数屏蔽匹配规则的通知。
+        :type Type: int
+        :param _Rule: 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
+        :type Rule: str
+        :param _Reason: 屏蔽原因。
+        :type Reason: str
+        :param _Status: 规则状态。只有规则状态为生效中（status:1）时，才能将其修改为已失效（status:2）。
+        :type Status: int
+        """
+        self._TaskId = None
+        self._AlarmNoticeId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Rule = None
+        self._Reason = None
+        self._Status = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def AlarmNoticeId(self):
+        return self._AlarmNoticeId
+
+    @AlarmNoticeId.setter
+    def AlarmNoticeId(self, AlarmNoticeId):
+        self._AlarmNoticeId = AlarmNoticeId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._AlarmNoticeId = params.get("AlarmNoticeId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Rule = params.get("Rule")
+        self._Reason = params.get("Reason")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmShieldResponse(AbstractModel):
+    """ModifyAlarmShield返回参数结构体
 
     """
 

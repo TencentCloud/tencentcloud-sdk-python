@@ -5575,6 +5575,10 @@ class DescribeDeviceListRequest(AbstractModel):
         :type Field: :class:`tencentcloud.weilingwith.v20230427.models.CustomField`
         :param _GroupIdSet: 分组id列表，非必填
         :type GroupIdSet: list of int
+        :param _IsActive: 是否激活，默认全部，"1"激活，"0"未激活
+        :type IsActive: str
+        :param _IsCamera: 是否为摄像头，默认全部，"true"摄像头，"false"非摄像头
+        :type IsCamera: str
         """
         self._WorkspaceId = None
         self._PageNumber = None
@@ -5588,6 +5592,8 @@ class DescribeDeviceListRequest(AbstractModel):
         self._WIDSet = None
         self._Field = None
         self._GroupIdSet = None
+        self._IsActive = None
+        self._IsCamera = None
 
     @property
     def WorkspaceId(self):
@@ -5685,6 +5691,22 @@ class DescribeDeviceListRequest(AbstractModel):
     def GroupIdSet(self, GroupIdSet):
         self._GroupIdSet = GroupIdSet
 
+    @property
+    def IsActive(self):
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def IsCamera(self):
+        return self._IsCamera
+
+    @IsCamera.setter
+    def IsCamera(self, IsCamera):
+        self._IsCamera = IsCamera
+
 
     def _deserialize(self, params):
         self._WorkspaceId = params.get("WorkspaceId")
@@ -5701,6 +5723,8 @@ class DescribeDeviceListRequest(AbstractModel):
             self._Field = CustomField()
             self._Field._deserialize(params.get("Field"))
         self._GroupIdSet = params.get("GroupIdSet")
+        self._IsActive = params.get("IsActive")
+        self._IsCamera = params.get("IsCamera")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10120,7 +10144,7 @@ class DeviceDataInfo(AbstractModel):
         :param _ProductName: 产品名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductName: str
-        :param _ProductAbility: 产品能力:信令数据、音视频。第0位表示信令数据、第1表示音视频 ，默认为1（信令数据）
+        :param _ProductAbility: 产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductAbility: int
         :param _SpaceInfoSet: 设备位置信息
@@ -10162,6 +10186,12 @@ class DeviceDataInfo(AbstractModel):
         :param _GroupInfo: 分组信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupInfo: str
+        :param _DeviceStatus: 通信在/离线状态（online=normal+fault，offline）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceStatus: str
+        :param _Status: 设备业务状态（normal、fault、offline）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._WID = None
         self._DeviceName = None
@@ -10183,6 +10213,8 @@ class DeviceDataInfo(AbstractModel):
         self._Location = None
         self._FieldList = None
         self._GroupInfo = None
+        self._DeviceStatus = None
+        self._Status = None
 
     @property
     def WID(self):
@@ -10344,6 +10376,22 @@ class DeviceDataInfo(AbstractModel):
     def GroupInfo(self, GroupInfo):
         self._GroupInfo = GroupInfo
 
+    @property
+    def DeviceStatus(self):
+        return self._DeviceStatus
+
+    @DeviceStatus.setter
+    def DeviceStatus(self, DeviceStatus):
+        self._DeviceStatus = DeviceStatus
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._WID = params.get("WID")
@@ -10378,6 +10426,8 @@ class DeviceDataInfo(AbstractModel):
                 obj._deserialize(item)
                 self._FieldList.append(obj)
         self._GroupInfo = params.get("GroupInfo")
+        self._DeviceStatus = params.get("DeviceStatus")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13495,7 +13545,7 @@ class ProductInfo(AbstractModel):
         :param _ProductType: 产品型号
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: str
-        :param _ProductAbility: 产品能力:信令数据、音视频，用二进制表示，第0位表示信令数据、第1表示音视频 ，默认为1（信令数据）
+        :param _ProductAbility: 产品能力:信令数据、音视频。二进制数值中第0位表示信令数据、第1位表示音视频 。1（信令数据），3（具有信令数据以及音视频能力）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductAbility: int
         :param _Manufacturer: 生产厂商

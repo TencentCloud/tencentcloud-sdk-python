@@ -81,6 +81,8 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         :type DeviceNames: list of str
         :param _TimeoutInterval: 固件升级任务，默认超时时间。 最小取值60秒，最大为3600秒
         :type TimeoutInterval: int
+        :param _Type: 固件升级任务类型，默认静态升级值为空或1，动态升级值为7。
+        :type Type: int
         """
         self._ProductId = None
         self._FirmwareVersion = None
@@ -91,6 +93,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self._FileSize = None
         self._DeviceNames = None
         self._TimeoutInterval = None
+        self._Type = None
 
     @property
     def ProductId(self):
@@ -164,6 +167,14 @@ class BatchUpdateFirmwareRequest(AbstractModel):
     def TimeoutInterval(self, TimeoutInterval):
         self._TimeoutInterval = TimeoutInterval
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -175,6 +186,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self._FileSize = params.get("FileSize")
         self._DeviceNames = params.get("DeviceNames")
         self._TimeoutInterval = params.get("TimeoutInterval")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6189,11 +6201,14 @@ class EditFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param _FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param _FirmwareUserDefined: 固件用户自定义配置信息
+        :type FirmwareUserDefined: str
         """
         self._ProductId = None
         self._FirmwareVersion = None
         self._FirmwareName = None
         self._FirmwareDescription = None
+        self._FirmwareUserDefined = None
 
     @property
     def ProductId(self):
@@ -6227,12 +6242,21 @@ class EditFirmwareRequest(AbstractModel):
     def FirmwareDescription(self, FirmwareDescription):
         self._FirmwareDescription = FirmwareDescription
 
+    @property
+    def FirmwareUserDefined(self):
+        return self._FirmwareUserDefined
+
+    @FirmwareUserDefined.setter
+    def FirmwareUserDefined(self, FirmwareUserDefined):
+        self._FirmwareUserDefined = FirmwareUserDefined
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._FirmwareVersion = params.get("FirmwareVersion")
         self._FirmwareName = params.get("FirmwareName")
         self._FirmwareDescription = params.get("FirmwareDescription")
+        self._FirmwareUserDefined = params.get("FirmwareUserDefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9875,6 +9899,88 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateOtaTaskStatusRequest(AbstractModel):
+    """UpdateOtaTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _TaskId: 固件升级任务ID
+        :type TaskId: int
+        :param _Status: 固件任务取消状态
+        :type Status: int
+        """
+        self._ProductId = None
+        self._TaskId = None
+        self._Status = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateOtaTaskStatusResponse(AbstractModel):
+    """UpdateOtaTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdatePrivateCARequest(AbstractModel):
     """UpdatePrivateCA请求参数结构体
 
@@ -10272,6 +10378,8 @@ class UploadFirmwareRequest(AbstractModel):
         :type FirmwareName: str
         :param _FirmwareDescription: 固件描述
         :type FirmwareDescription: str
+        :param _FirmwareUserDefined: 固件用户自定义配置信息
+        :type FirmwareUserDefined: str
         """
         self._ProductId = None
         self._FirmwareVersion = None
@@ -10279,6 +10387,7 @@ class UploadFirmwareRequest(AbstractModel):
         self._FileSize = None
         self._FirmwareName = None
         self._FirmwareDescription = None
+        self._FirmwareUserDefined = None
 
     @property
     def ProductId(self):
@@ -10328,6 +10437,14 @@ class UploadFirmwareRequest(AbstractModel):
     def FirmwareDescription(self, FirmwareDescription):
         self._FirmwareDescription = FirmwareDescription
 
+    @property
+    def FirmwareUserDefined(self):
+        return self._FirmwareUserDefined
+
+    @FirmwareUserDefined.setter
+    def FirmwareUserDefined(self, FirmwareUserDefined):
+        self._FirmwareUserDefined = FirmwareUserDefined
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -10336,6 +10453,7 @@ class UploadFirmwareRequest(AbstractModel):
         self._FileSize = params.get("FileSize")
         self._FirmwareName = params.get("FirmwareName")
         self._FirmwareDescription = params.get("FirmwareDescription")
+        self._FirmwareUserDefined = params.get("FirmwareUserDefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

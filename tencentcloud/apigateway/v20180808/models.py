@@ -12988,11 +12988,15 @@ class Environment(AbstractModel):
         :type Status: int
         :param _VersionName: 运行版本。
         :type VersionName: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
         """
         self._EnvironmentName = None
         self._Url = None
         self._Status = None
         self._VersionName = None
+        self._CreateTime = None
 
     @property
     def EnvironmentName(self):
@@ -13026,12 +13030,21 @@ class Environment(AbstractModel):
     def VersionName(self, VersionName):
         self._VersionName = VersionName
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._EnvironmentName = params.get("EnvironmentName")
         self._Url = params.get("Url")
         self._Status = params.get("Status")
         self._VersionName = params.get("VersionName")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

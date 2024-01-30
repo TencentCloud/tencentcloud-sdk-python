@@ -1567,6 +1567,29 @@ class IotcloudClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateOtaTaskStatus(self, request):
+        """本接口（UpdateOtaTask）当固件升级大任务处于没有在全部成功的状态时，可修改为取消状态，取消部分或全部设备的升级;或其它允许的可修改的状态
+
+        :param request: Request instance for UpdateOtaTaskStatus.
+        :type request: :class:`tencentcloud.iotcloud.v20210408.models.UpdateOtaTaskStatusRequest`
+        :rtype: :class:`tencentcloud.iotcloud.v20210408.models.UpdateOtaTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateOtaTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateOtaTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdatePrivateCA(self, request):
         """更新私有CA证书
 

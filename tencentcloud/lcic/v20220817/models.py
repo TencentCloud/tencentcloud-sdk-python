@@ -4258,8 +4258,11 @@ class DescribeRoomRequest(AbstractModel):
         r"""
         :param _RoomId: 房间Id。
         :type RoomId: int
+        :param _RTMPStreamingURL: 请求RTMP推流链接，0：否，1：是，默认为0。
+        :type RTMPStreamingURL: int
         """
         self._RoomId = None
+        self._RTMPStreamingURL = None
 
     @property
     def RoomId(self):
@@ -4269,9 +4272,18 @@ class DescribeRoomRequest(AbstractModel):
     def RoomId(self, RoomId):
         self._RoomId = RoomId
 
+    @property
+    def RTMPStreamingURL(self):
+        return self._RTMPStreamingURL
+
+    @RTMPStreamingURL.setter
+    def RTMPStreamingURL(self, RTMPStreamingURL):
+        self._RTMPStreamingURL = RTMPStreamingURL
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
+        self._RTMPStreamingURL = params.get("RTMPStreamingURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4361,6 +4373,8 @@ video 纯视频
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :type RecordBackground: str
+        :param _RTMPStreamingURL: RTMP推流链接
+        :type RTMPStreamingURL: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4391,6 +4405,7 @@ video 纯视频
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
         self._RecordBackground = None
+        self._RTMPStreamingURL = None
         self._RequestId = None
 
     @property
@@ -4610,6 +4625,14 @@ video 纯视频
         self._RecordBackground = RecordBackground
 
     @property
+    def RTMPStreamingURL(self):
+        return self._RTMPStreamingURL
+
+    @RTMPStreamingURL.setter
+    def RTMPStreamingURL(self, RTMPStreamingURL):
+        self._RTMPStreamingURL = RTMPStreamingURL
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4646,6 +4669,7 @@ video 纯视频
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordBackground = params.get("RecordBackground")
+        self._RTMPStreamingURL = params.get("RTMPStreamingURL")
         self._RequestId = params.get("RequestId")
 
 

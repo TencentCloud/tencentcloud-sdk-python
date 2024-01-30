@@ -106,6 +106,9 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 额外参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -118,10 +121,19 @@ class ApplyEmbedIntervalResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -157,6 +169,9 @@ class ApplyEmbedIntervalResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = ApplyEmbedTokenInfo()
@@ -694,6 +709,9 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 成功无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
@@ -706,10 +724,19 @@ class CreateDatasourceCloudResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -745,6 +772,9 @@ class CreateDatasourceCloudResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         if params.get("Data") is not None:
             self._Data = IdDTO()
             self._Data._deserialize(params.get("Data"))
@@ -1009,6 +1039,9 @@ class CreateDatasourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 数据源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.IdDTO`
@@ -1021,10 +1054,19 @@ class CreateDatasourceResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -1060,6 +1102,9 @@ class CreateDatasourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         if params.get("Data") is not None:
             self._Data = IdDTO()
             self._Data._deserialize(params.get("Data"))
@@ -1192,6 +1237,9 @@ class CreateEmbedTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -1204,10 +1252,19 @@ class CreateEmbedTokenResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -1243,6 +1300,9 @@ class CreateEmbedTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = EmbedTokenInfo()
@@ -1351,6 +1411,9 @@ class CreateProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 额外数据
         :type Extra: str
         :param _Data: 数据
@@ -1360,10 +1423,19 @@ class CreateProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -1399,6 +1471,9 @@ class CreateProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = Data()
@@ -1493,6 +1568,9 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -1505,10 +1583,19 @@ class CreateUserRoleProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -1544,6 +1631,9 @@ class CreateUserRoleProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = DataId()
@@ -1626,6 +1716,9 @@ class CreateUserRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -1638,10 +1731,19 @@ class CreateUserRoleResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -1677,6 +1779,9 @@ class CreateUserRoleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = DataId()
@@ -2342,6 +2447,9 @@ class DeleteDatasourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -2352,10 +2460,19 @@ class DeleteDatasourceResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -2391,6 +2508,9 @@ class DeleteDatasourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Data = params.get("Data")
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
@@ -2461,6 +2581,9 @@ class DeleteProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: ”“
         :type Extra: str
         :param _Data: ""
@@ -2472,10 +2595,19 @@ class DeleteProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -2511,6 +2643,9 @@ class DeleteProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._Msg = params.get("Msg")
@@ -2569,6 +2704,9 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -2581,10 +2719,19 @@ class DeleteUserRoleProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -2620,6 +2767,9 @@ class DeleteUserRoleProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._Msg = params.get("Msg")
@@ -2666,6 +2816,9 @@ class DeleteUserRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -2678,10 +2831,19 @@ class DeleteUserRoleResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -2717,6 +2879,9 @@ class DeleteUserRoleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._Msg = params.get("Msg")
@@ -2835,6 +3000,9 @@ class DescribeDatasourceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 列表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.DatasourceInfoData`
@@ -2845,10 +3013,19 @@ class DescribeDatasourceListResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -2884,6 +3061,9 @@ class DescribeDatasourceListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         if params.get("Data") is not None:
             self._Data = DatasourceInfoData()
             self._Data._deserialize(params.get("Data"))
@@ -2944,6 +3124,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: ""
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -2956,10 +3139,19 @@ class DescribeProjectInfoResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Msg = None
         self._Data = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -2995,6 +3187,9 @@ class DescribeProjectInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
         if params.get("Data") is not None:
@@ -3091,6 +3286,9 @@ class DescribeProjectListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -3103,10 +3301,19 @@ class DescribeProjectListResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Msg = None
         self._Data = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -3142,6 +3349,9 @@ class DescribeProjectListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
         if params.get("Data") is not None:
@@ -3226,6 +3436,9 @@ class DescribeUserProjectListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.CorpUserListData`
@@ -3238,10 +3451,19 @@ class DescribeUserProjectListResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -3277,6 +3499,9 @@ class DescribeUserProjectListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         if params.get("Data") is not None:
             self._Data = CorpUserListData()
             self._Data._deserialize(params.get("Data"))
@@ -3304,6 +3529,8 @@ class DescribeUserRoleListRequest(AbstractModel):
         :type Keyword: str
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _IsOnlyBindAppUser: 是否只获取绑定企微应用的
+        :type IsOnlyBindAppUser: bool
         """
         self._PageNo = None
         self._PageSize = None
@@ -3311,6 +3538,7 @@ class DescribeUserRoleListRequest(AbstractModel):
         self._UserType = None
         self._Keyword = None
         self._ProjectId = None
+        self._IsOnlyBindAppUser = None
 
     @property
     def PageNo(self):
@@ -3360,6 +3588,14 @@ class DescribeUserRoleListRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def IsOnlyBindAppUser(self):
+        return self._IsOnlyBindAppUser
+
+    @IsOnlyBindAppUser.setter
+    def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
+        self._IsOnlyBindAppUser = IsOnlyBindAppUser
+
 
     def _deserialize(self, params):
         self._PageNo = params.get("PageNo")
@@ -3368,6 +3604,7 @@ class DescribeUserRoleListRequest(AbstractModel):
         self._UserType = params.get("UserType")
         self._Keyword = params.get("Keyword")
         self._ProjectId = params.get("ProjectId")
+        self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3385,6 +3622,9 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -3397,10 +3637,19 @@ class DescribeUserRoleListResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -3436,6 +3685,9 @@ class DescribeUserRoleListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = UserRoleListData()
@@ -3457,10 +3709,13 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
         :type PageSize: int
         :param _ProjectId: 项目ID
         :type ProjectId: int
+        :param _IsOnlyBindAppUser: 是否只获取绑定企微应用的
+        :type IsOnlyBindAppUser: bool
         """
         self._PageNo = None
         self._PageSize = None
         self._ProjectId = None
+        self._IsOnlyBindAppUser = None
 
     @property
     def PageNo(self):
@@ -3486,11 +3741,20 @@ class DescribeUserRoleProjectListRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def IsOnlyBindAppUser(self):
+        return self._IsOnlyBindAppUser
+
+    @IsOnlyBindAppUser.setter
+    def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
+        self._IsOnlyBindAppUser = IsOnlyBindAppUser
+
 
     def _deserialize(self, params):
         self._PageNo = params.get("PageNo")
         self._PageSize = params.get("PageSize")
         self._ProjectId = params.get("ProjectId")
+        self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3508,6 +3772,9 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -3520,10 +3787,19 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -3559,6 +3835,9 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         if params.get("Data") is not None:
             self._Data = UserRoleListData()
@@ -3760,6 +4039,108 @@ class EmbedTokenInfo(AbstractModel):
         self._UserCorpId = params.get("UserCorpId")
         self._UserId = params.get("UserId")
         self._TicketNum = params.get("TicketNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrorInfo(AbstractModel):
+    """自定义错误信息对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorTip: 错误说明字段
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorTip: str
+        :param _ErrorMessage: 原始异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _ErrorLevel: 错误等级字段
+ERROR
+WARN
+INFO
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorLevel: str
+        :param _DocLink: 指引文档链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocLink: str
+        :param _FAQ: 快速指引说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FAQ: str
+        :param _ReservedField: 预留字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReservedField: str
+        """
+        self._ErrorTip = None
+        self._ErrorMessage = None
+        self._ErrorLevel = None
+        self._DocLink = None
+        self._FAQ = None
+        self._ReservedField = None
+
+    @property
+    def ErrorTip(self):
+        return self._ErrorTip
+
+    @ErrorTip.setter
+    def ErrorTip(self, ErrorTip):
+        self._ErrorTip = ErrorTip
+
+    @property
+    def ErrorMessage(self):
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ErrorLevel(self):
+        return self._ErrorLevel
+
+    @ErrorLevel.setter
+    def ErrorLevel(self, ErrorLevel):
+        self._ErrorLevel = ErrorLevel
+
+    @property
+    def DocLink(self):
+        return self._DocLink
+
+    @DocLink.setter
+    def DocLink(self, DocLink):
+        self._DocLink = DocLink
+
+    @property
+    def FAQ(self):
+        return self._FAQ
+
+    @FAQ.setter
+    def FAQ(self, FAQ):
+        self._FAQ = FAQ
+
+    @property
+    def ReservedField(self):
+        return self._ReservedField
+
+    @ReservedField.setter
+    def ReservedField(self, ReservedField):
+        self._ReservedField = ReservedField
+
+
+    def _deserialize(self, params):
+        self._ErrorTip = params.get("ErrorTip")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ErrorLevel = params.get("ErrorLevel")
+        self._DocLink = params.get("DocLink")
+        self._FAQ = params.get("FAQ")
+        self._ReservedField = params.get("ReservedField")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4136,6 +4517,9 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 成功无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -4148,10 +4532,19 @@ class ModifyDatasourceCloudResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -4187,6 +4580,9 @@ class ModifyDatasourceCloudResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Data = params.get("Data")
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
@@ -4461,6 +4857,9 @@ class ModifyDatasourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Data: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
@@ -4473,10 +4872,19 @@ class ModifyDatasourceResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Data = None
         self._Extra = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Data(self):
@@ -4512,6 +4920,9 @@ class ModifyDatasourceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Data = params.get("Data")
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
@@ -4654,6 +5065,9 @@ class ModifyProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 额外信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -4666,10 +5080,19 @@ class ModifyProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Data = None
         self._Msg = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -4705,6 +5128,9 @@ class ModifyProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._Msg = params.get("Msg")
@@ -4728,12 +5154,15 @@ class ModifyUserRoleProjectRequest(AbstractModel):
         :type Email: str
         :param _UserName: 用户名
         :type UserName: str
+        :param _AppUserId: 企业微信应用用户id
+        :type AppUserId: str
         """
         self._ProjectId = None
         self._UserId = None
         self._RoleIdList = None
         self._Email = None
         self._UserName = None
+        self._AppUserId = None
 
     @property
     def ProjectId(self):
@@ -4775,6 +5204,14 @@ class ModifyUserRoleProjectRequest(AbstractModel):
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def AppUserId(self):
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -4782,6 +5219,7 @@ class ModifyUserRoleProjectRequest(AbstractModel):
         self._RoleIdList = params.get("RoleIdList")
         self._Email = params.get("Email")
         self._UserName = params.get("UserName")
+        self._AppUserId = params.get("AppUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4799,6 +5237,9 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -4811,10 +5252,19 @@ class ModifyUserRoleProjectResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Msg = None
         self._Data = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -4850,6 +5300,9 @@ class ModifyUserRoleProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
         self._Data = params.get("Data")
@@ -4875,6 +5328,8 @@ class ModifyUserRoleRequest(AbstractModel):
         :type PhoneNumber: str
         :param _AreaCode: 手机区号
         :type AreaCode: str
+        :param _AppUserId: 企业微信应用用户id
+        :type AppUserId: str
         """
         self._UserId = None
         self._RoleIdList = None
@@ -4882,6 +5337,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._UserName = None
         self._PhoneNumber = None
         self._AreaCode = None
+        self._AppUserId = None
 
     @property
     def UserId(self):
@@ -4931,6 +5387,14 @@ class ModifyUserRoleRequest(AbstractModel):
     def AreaCode(self, AreaCode):
         self._AreaCode = AreaCode
 
+    @property
+    def AppUserId(self):
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -4939,6 +5403,7 @@ class ModifyUserRoleRequest(AbstractModel):
         self._UserName = params.get("UserName")
         self._PhoneNumber = params.get("PhoneNumber")
         self._AreaCode = params.get("AreaCode")
+        self._AppUserId = params.get("AppUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4956,6 +5421,9 @@ class ModifyUserRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
         :param _Extra: 扩展
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
@@ -4968,10 +5436,19 @@ class ModifyUserRoleResponse(AbstractModel):
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ErrorInfo = None
         self._Extra = None
         self._Msg = None
         self._Data = None
         self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
 
     @property
     def Extra(self):
@@ -5007,6 +5484,9 @@ class ModifyUserRoleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
         self._Extra = params.get("Extra")
         self._Msg = params.get("Msg")
         self._Data = params.get("Data")
@@ -5676,6 +6156,21 @@ class UserIdAndUserName(AbstractModel):
         :param _Mobile: 手机号
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mobile: str
+        :param _AppId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: str
+        :param _AppUserId: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserId: str
+        :param _AppUserAliasName: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserAliasName: str
+        :param _AppUserName: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserName: str
+        :param _InValidateAppRange: 1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InValidateAppRange: bool
         """
         self._UserId = None
         self._UserName = None
@@ -5692,6 +6187,11 @@ class UserIdAndUserName(AbstractModel):
         self._UpdatedAt = None
         self._GlobalUserName = None
         self._Mobile = None
+        self._AppId = None
+        self._AppUserId = None
+        self._AppUserAliasName = None
+        self._AppUserName = None
+        self._InValidateAppRange = None
 
     @property
     def UserId(self):
@@ -5813,6 +6313,46 @@ class UserIdAndUserName(AbstractModel):
     def Mobile(self, Mobile):
         self._Mobile = Mobile
 
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppUserId(self):
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserAliasName(self):
+        return self._AppUserAliasName
+
+    @AppUserAliasName.setter
+    def AppUserAliasName(self, AppUserAliasName):
+        self._AppUserAliasName = AppUserAliasName
+
+    @property
+    def AppUserName(self):
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
+    @property
+    def InValidateAppRange(self):
+        return self._InValidateAppRange
+
+    @InValidateAppRange.setter
+    def InValidateAppRange(self, InValidateAppRange):
+        self._InValidateAppRange = InValidateAppRange
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -5830,6 +6370,11 @@ class UserIdAndUserName(AbstractModel):
         self._UpdatedAt = params.get("UpdatedAt")
         self._GlobalUserName = params.get("GlobalUserName")
         self._Mobile = params.get("Mobile")
+        self._AppId = params.get("AppId")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserAliasName = params.get("AppUserAliasName")
+        self._AppUserName = params.get("AppUserName")
+        self._InValidateAppRange = params.get("InValidateAppRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6142,6 +6687,18 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         :param _CorpAdmin: 是否为企业管理员
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpAdmin: bool
+        :param _AppUserId: 企微用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserId: str
+        :param _AppUserAliasName: 昵称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserAliasName: str
+        :param _AppUserName: 应用用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppUserName: str
+        :param _InValidateAppRange: 是否在可见范围内
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InValidateAppRange: bool
         """
         self._Id = None
         self._RoleList = None
@@ -6160,6 +6717,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AreaCode = None
         self._RootAccount = None
         self._CorpAdmin = None
+        self._AppUserId = None
+        self._AppUserAliasName = None
+        self._AppUserName = None
+        self._InValidateAppRange = None
 
     @property
     def Id(self):
@@ -6297,6 +6858,38 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
     def CorpAdmin(self, CorpAdmin):
         self._CorpAdmin = CorpAdmin
 
+    @property
+    def AppUserId(self):
+        return self._AppUserId
+
+    @AppUserId.setter
+    def AppUserId(self, AppUserId):
+        self._AppUserId = AppUserId
+
+    @property
+    def AppUserAliasName(self):
+        return self._AppUserAliasName
+
+    @AppUserAliasName.setter
+    def AppUserAliasName(self, AppUserAliasName):
+        self._AppUserAliasName = AppUserAliasName
+
+    @property
+    def AppUserName(self):
+        return self._AppUserName
+
+    @AppUserName.setter
+    def AppUserName(self, AppUserName):
+        self._AppUserName = AppUserName
+
+    @property
+    def InValidateAppRange(self):
+        return self._InValidateAppRange
+
+    @InValidateAppRange.setter
+    def InValidateAppRange(self, InValidateAppRange):
+        self._InValidateAppRange = InValidateAppRange
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6321,6 +6914,10 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AreaCode = params.get("AreaCode")
         self._RootAccount = params.get("RootAccount")
         self._CorpAdmin = params.get("CorpAdmin")
+        self._AppUserId = params.get("AppUserId")
+        self._AppUserAliasName = params.get("AppUserAliasName")
+        self._AppUserName = params.get("AppUserName")
+        self._InValidateAppRange = params.get("InValidateAppRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
