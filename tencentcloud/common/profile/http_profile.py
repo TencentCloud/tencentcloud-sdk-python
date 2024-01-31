@@ -41,3 +41,4 @@ class HttpProfile(object):
         self.rootDomain = "tencentcloudapi.com" if rootDomain is None else rootDomain
         self.certification = certification
         self.apigw_endpoint = None
+        self.pre_conn_pool_size = 0

@@ -77,7 +77,8 @@ class AbstractClient(object):
                                   req_timeout=self.profile.httpProfile.reqTimeout,
                                   proxy=self.profile.httpProfile.proxy,
                                   is_http=is_http,
-                                  certification=self.profile.httpProfile.certification)
+                                  certification=self.profile.httpProfile.certification,
+                                  pre_conn_pool_size=self.profile.httpProfile.pre_conn_pool_size)
         if self.profile.httpProfile.keepAlive:
             self.request.set_keep_alive()
         self.circuit_breaker = None
