@@ -4285,10 +4285,15 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ReportType: 指定申请的报告类型，可选类型如下：
+<ul><li> **0** :合同签署报告（默认）</li>
+<li> **1** :公证处核验报告</li></ul>
+        :type ReportType: int
         """
         self._Operator = None
         self._FlowId = None
         self._Agent = None
+        self._ReportType = None
 
     @property
     def Operator(self):
@@ -4314,6 +4319,14 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -4323,6 +4336,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._ReportType = params.get("ReportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10696,10 +10710,15 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ReportType: 指定申请的报告类型，可选类型如下：
+<ul><li> **0** :合同签署报告（默认）</li>
+<li> **1** :公证处核验报告</li></ul>
+        :type ReportType: int
         """
         self._Operator = None
         self._ReportId = None
         self._Agent = None
+        self._ReportType = None
 
     @property
     def Operator(self):
@@ -10725,6 +10744,14 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10734,6 +10761,7 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._ReportType = params.get("ReportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

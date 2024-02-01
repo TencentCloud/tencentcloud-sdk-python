@@ -9462,10 +9462,15 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
         :type FlowId: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ReportType: 指定申请的报告类型，可选类型如下：
+<ul><li> **0** :合同签署报告（默认）</li>
+<li> **1** :公证处核验报告</li></ul>
+        :type ReportType: int
         """
         self._Agent = None
         self._FlowId = None
         self._Operator = None
+        self._ReportType = None
 
     @property
     def Agent(self):
@@ -9495,6 +9500,14 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -9504,6 +9517,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._ReportType = params.get("ReportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10903,6 +10917,8 @@ class CreateSignUrlsRequest(AbstractModel):
 <li> **APP** :第三方App或小程序跳转电子签小程序的path, App或者小程序跳转适合此类型</li>
 <li> **LONGURL2WEIXINAPP** :跳转电子签小程序的链接, H5跳转适合此类型，此时返回长链</li></ul>
 
+**注：**动态签署人场景，如果签署链接类型设置为`APP`，则仅支持跳转到封面页。
+
 详细使用场景可以参数接口说明中的 **主要使用场景可以更加EndPoint分类如下**
         :type Endpoint: str
         :param _GenerateType: 签署链接生成类型，可以选择的类型如下
@@ -11537,10 +11553,15 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
         :type ReportId: str
         :param _Operator: 暂未开放
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        :param _ReportType: 指定申请的报告类型，可选类型如下：
+<ul><li> **0** :合同签署报告（默认）</li>
+<li> **1** :公证处核验报告</li></ul>
+        :type ReportType: int
         """
         self._Agent = None
         self._ReportId = None
         self._Operator = None
+        self._ReportType = None
 
     @property
     def Agent(self):
@@ -11570,6 +11591,14 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
         self._Operator = Operator
 
+    @property
+    def ReportType(self):
+        return self._ReportType
+
+    @ReportType.setter
+    def ReportType(self, ReportType):
+        self._ReportType = ReportType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -11579,6 +11608,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
+        self._ReportType = params.get("ReportType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
