@@ -1669,6 +1669,9 @@ class FakeURLData(AbstractModel):
         :param _AuditStatus: 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuditStatus: int
+        :param _OfflineTime: 下线时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfflineTime: str
         """
         self._FakeURLId = None
         self._BrandName = None
@@ -1693,6 +1696,7 @@ class FakeURLData(AbstractModel):
         self._Snapshot = None
         self._AccountStatus = None
         self._AuditStatus = None
+        self._OfflineTime = None
 
     @property
     def FakeURLId(self):
@@ -1878,6 +1882,14 @@ class FakeURLData(AbstractModel):
     def AuditStatus(self, AuditStatus):
         self._AuditStatus = AuditStatus
 
+    @property
+    def OfflineTime(self):
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
 
     def _deserialize(self, params):
         self._FakeURLId = params.get("FakeURLId")
@@ -1903,6 +1915,7 @@ class FakeURLData(AbstractModel):
         self._Snapshot = params.get("Snapshot")
         self._AccountStatus = params.get("AccountStatus")
         self._AuditStatus = params.get("AuditStatus")
+        self._OfflineTime = params.get("OfflineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

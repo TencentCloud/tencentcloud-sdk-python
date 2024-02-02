@@ -891,6 +891,71 @@ class AssetInfoDetail(AbstractModel):
         
 
 
+class AssetInstanceTypeMap(AbstractModel):
+    """资产类型和实例类型的映射
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Value: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _InstanceTypeList: 资产类型和实例类型映射关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeList: list of FilterDataObject
+        """
+        self._Text = None
+        self._Value = None
+        self._InstanceTypeList = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def InstanceTypeList(self):
+        return self._InstanceTypeList
+
+    @InstanceTypeList.setter
+    def InstanceTypeList(self, InstanceTypeList):
+        self._InstanceTypeList = InstanceTypeList
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Value = params.get("Value")
+        if params.get("InstanceTypeList") is not None:
+            self._InstanceTypeList = []
+            for item in params.get("InstanceTypeList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._InstanceTypeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetTag(AbstractModel):
     """安全中心资产标签
 
@@ -2588,6 +2653,42 @@ class CVMAssetVO(AbstractModel):
         :param _IsNewAsset: 1新资产；0 非新资产
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNewAsset: int
+        :param _CVMAgentStatus: 0 未安装  1安装 2:安装中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMAgentStatus: int
+        :param _CVMStatus: 1:开启 0:未开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVMStatus: int
+        :param _DefenseModel: 1:客户端已安装 0：未安装 2: Agentless
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefenseModel: int
+        :param _TatStatus: 1:已安装 0:未安装
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TatStatus: int
+        :param _CpuTrend: cpu趋势图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTrend: list of Element
+        :param _MemoryTrend: 内存趋势图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemoryTrend: list of Element
+        :param _AgentStatus: 1:agent在线 0:agent离线 2:主机离线
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentStatus: int
+        :param _CloseDefenseCount: 本月防护关闭次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloseDefenseCount: int
+        :param _InstanceState: 运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: str
+        :param _SecurityGroupIds: 安全组数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param _AgentMemRss: 物理内存占用KB
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentMemRss: int
+        :param _AgentCpuPer: CPU使用率百分比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentCpuPer: float
         """
         self._AssetId = None
         self._AssetName = None
@@ -2640,6 +2741,18 @@ class CVMAssetVO(AbstractModel):
         self._RiskExposure = None
         self._BASAgentStatus = None
         self._IsNewAsset = None
+        self._CVMAgentStatus = None
+        self._CVMStatus = None
+        self._DefenseModel = None
+        self._TatStatus = None
+        self._CpuTrend = None
+        self._MemoryTrend = None
+        self._AgentStatus = None
+        self._CloseDefenseCount = None
+        self._InstanceState = None
+        self._SecurityGroupIds = None
+        self._AgentMemRss = None
+        self._AgentCpuPer = None
 
     @property
     def AssetId(self):
@@ -3049,6 +3162,102 @@ class CVMAssetVO(AbstractModel):
     def IsNewAsset(self, IsNewAsset):
         self._IsNewAsset = IsNewAsset
 
+    @property
+    def CVMAgentStatus(self):
+        return self._CVMAgentStatus
+
+    @CVMAgentStatus.setter
+    def CVMAgentStatus(self, CVMAgentStatus):
+        self._CVMAgentStatus = CVMAgentStatus
+
+    @property
+    def CVMStatus(self):
+        return self._CVMStatus
+
+    @CVMStatus.setter
+    def CVMStatus(self, CVMStatus):
+        self._CVMStatus = CVMStatus
+
+    @property
+    def DefenseModel(self):
+        return self._DefenseModel
+
+    @DefenseModel.setter
+    def DefenseModel(self, DefenseModel):
+        self._DefenseModel = DefenseModel
+
+    @property
+    def TatStatus(self):
+        return self._TatStatus
+
+    @TatStatus.setter
+    def TatStatus(self, TatStatus):
+        self._TatStatus = TatStatus
+
+    @property
+    def CpuTrend(self):
+        return self._CpuTrend
+
+    @CpuTrend.setter
+    def CpuTrend(self, CpuTrend):
+        self._CpuTrend = CpuTrend
+
+    @property
+    def MemoryTrend(self):
+        return self._MemoryTrend
+
+    @MemoryTrend.setter
+    def MemoryTrend(self, MemoryTrend):
+        self._MemoryTrend = MemoryTrend
+
+    @property
+    def AgentStatus(self):
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def CloseDefenseCount(self):
+        return self._CloseDefenseCount
+
+    @CloseDefenseCount.setter
+    def CloseDefenseCount(self, CloseDefenseCount):
+        self._CloseDefenseCount = CloseDefenseCount
+
+    @property
+    def InstanceState(self):
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def AgentMemRss(self):
+        return self._AgentMemRss
+
+    @AgentMemRss.setter
+    def AgentMemRss(self, AgentMemRss):
+        self._AgentMemRss = AgentMemRss
+
+    @property
+    def AgentCpuPer(self):
+        return self._AgentCpuPer
+
+    @AgentCpuPer.setter
+    def AgentCpuPer(self, AgentCpuPer):
+        self._AgentCpuPer = AgentCpuPer
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -3107,6 +3316,28 @@ class CVMAssetVO(AbstractModel):
         self._RiskExposure = params.get("RiskExposure")
         self._BASAgentStatus = params.get("BASAgentStatus")
         self._IsNewAsset = params.get("IsNewAsset")
+        self._CVMAgentStatus = params.get("CVMAgentStatus")
+        self._CVMStatus = params.get("CVMStatus")
+        self._DefenseModel = params.get("DefenseModel")
+        self._TatStatus = params.get("TatStatus")
+        if params.get("CpuTrend") is not None:
+            self._CpuTrend = []
+            for item in params.get("CpuTrend"):
+                obj = Element()
+                obj._deserialize(item)
+                self._CpuTrend.append(obj)
+        if params.get("MemoryTrend") is not None:
+            self._MemoryTrend = []
+            for item in params.get("MemoryTrend"):
+                obj = Element()
+                obj._deserialize(item)
+                self._MemoryTrend.append(obj)
+        self._AgentStatus = params.get("AgentStatus")
+        self._CloseDefenseCount = params.get("CloseDefenseCount")
+        self._InstanceState = params.get("InstanceState")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._AgentMemRss = params.get("AgentMemRss")
+        self._AgentCpuPer = params.get("AgentCpuPer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4516,10 +4747,21 @@ class DescribeCVMAssetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _Filter: -
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def Filter(self):
@@ -4531,6 +4773,7 @@ class DescribeCVMAssetsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
@@ -4584,6 +4827,9 @@ class DescribeCVMAssetsResponse(AbstractModel):
         :param _OsList: os列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type OsList: list of FilterDataObject
+        :param _AssetMapInstanceTypeList: 资产类型和实例类型的对应关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetMapInstanceTypeList: list of AssetInstanceTypeMap
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4598,6 +4844,7 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._AppIdList = None
         self._ZoneList = None
         self._OsList = None
+        self._AssetMapInstanceTypeList = None
         self._RequestId = None
 
     @property
@@ -4689,6 +4936,14 @@ class DescribeCVMAssetsResponse(AbstractModel):
         self._OsList = OsList
 
     @property
+    def AssetMapInstanceTypeList(self):
+        return self._AssetMapInstanceTypeList
+
+    @AssetMapInstanceTypeList.setter
+    def AssetMapInstanceTypeList(self, AssetMapInstanceTypeList):
+        self._AssetMapInstanceTypeList = AssetMapInstanceTypeList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4759,6 +5014,12 @@ class DescribeCVMAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._OsList.append(obj)
+        if params.get("AssetMapInstanceTypeList") is not None:
+            self._AssetMapInstanceTypeList = []
+            for item in params.get("AssetMapInstanceTypeList"):
+                obj = AssetInstanceTypeMap()
+                obj._deserialize(item)
+                self._AssetMapInstanceTypeList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8263,13 +8524,24 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
         :param _TaskId: 任务ID
         :type TaskId: str
         :param _Filter: 过滤条件
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
+        self._MemberId = None
         self._TaskId = None
         self._Filter = None
+
+    @property
+    def MemberId(self):
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
 
     @property
     def TaskId(self):
@@ -8289,6 +8561,7 @@ class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
         self._TaskId = params.get("TaskId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
@@ -8324,6 +8597,9 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
         :param _CheckFromLists: 识别来源过滤列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckFromLists: list of FilterDataObject
+        :param _VulTagList: 漏洞标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VulTagList: list of FilterDataObject
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8332,6 +8608,7 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
         self._RiskLevelLists = None
         self._VULTypeLists = None
         self._CheckFromLists = None
+        self._VulTagList = None
         self._RequestId = None
 
     @property
@@ -8375,6 +8652,14 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
         self._CheckFromLists = CheckFromLists
 
     @property
+    def VulTagList(self):
+        return self._VulTagList
+
+    @VulTagList.setter
+    def VulTagList(self, VulTagList):
+        self._VulTagList = VulTagList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -8409,6 +8694,12 @@ class DescribeVULRiskAdvanceCFGListResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._CheckFromLists.append(obj)
+        if params.get("VulTagList") is not None:
+            self._VulTagList = []
+            for item in params.get("VulTagList"):
+                obj = FilterDataObject()
+                obj._deserialize(item)
+                self._VulTagList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9075,6 +9366,53 @@ class DomainAssetVO(AbstractModel):
         self._VerifyTXTRecord = params.get("VerifyTXTRecord")
         self._VerifyStatus = params.get("VerifyStatus")
         self._BotAccessCount = params.get("BotAccessCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Element(AbstractModel):
+    """统计条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 统计类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 统计对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11510,17 +11848,17 @@ class RiskCenterStatusKey(AbstractModel):
         r"""
         :param _Id: 风险ID
         :type Id: str
-        :param _AppId: APP ID
-        :type AppId: str
         :param _PublicIPDomain: 公网IP/域名
         :type PublicIPDomain: str
         :param _InstanceId: 实例ID
         :type InstanceId: str
+        :param _AppId: APP ID
+        :type AppId: str
         """
         self._Id = None
-        self._AppId = None
         self._PublicIPDomain = None
         self._InstanceId = None
+        self._AppId = None
 
     @property
     def Id(self):
@@ -11529,14 +11867,6 @@ class RiskCenterStatusKey(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
-
-    @property
-    def AppId(self):
-        return self._AppId
-
-    @AppId.setter
-    def AppId(self, AppId):
-        self._AppId = AppId
 
     @property
     def PublicIPDomain(self):
@@ -11554,12 +11884,20 @@ class RiskCenterStatusKey(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
-        self._AppId = params.get("AppId")
         self._PublicIPDomain = params.get("PublicIPDomain")
         self._InstanceId = params.get("InstanceId")
+        self._AppId = params.get("AppId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12681,6 +13019,80 @@ class ServerRiskSuggestion(AbstractModel):
         
 
 
+class ServiceSupport(AbstractModel):
+    """产品支持情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: 产品名称:
+"cfw_waf_virtual", "cwp_detect", "cwp_defense", "cwp_fix"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _SupportHandledCount: 已处理的资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportHandledCount: int
+        :param _SupportTotalCount: 支持的资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportTotalCount: int
+        :param _IsSupport: 是否支持该产品1支持；0不支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupport: bool
+        """
+        self._ServiceName = None
+        self._SupportHandledCount = None
+        self._SupportTotalCount = None
+        self._IsSupport = None
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def SupportHandledCount(self):
+        return self._SupportHandledCount
+
+    @SupportHandledCount.setter
+    def SupportHandledCount(self, SupportHandledCount):
+        self._SupportHandledCount = SupportHandledCount
+
+    @property
+    def SupportTotalCount(self):
+        return self._SupportTotalCount
+
+    @SupportTotalCount.setter
+    def SupportTotalCount(self, SupportTotalCount):
+        self._SupportTotalCount = SupportTotalCount
+
+    @property
+    def IsSupport(self):
+        return self._IsSupport
+
+    @IsSupport.setter
+    def IsSupport(self, IsSupport):
+        self._IsSupport = IsSupport
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._SupportHandledCount = params.get("SupportHandledCount")
+        self._SupportTotalCount = params.get("SupportTotalCount")
+        self._IsSupport = params.get("IsSupport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopRiskCenterTaskRequest(AbstractModel):
     """StopRiskCenterTask请求参数结构体
 
@@ -13789,6 +14201,24 @@ class VULRiskAdvanceCFGList(AbstractModel):
         :param _ImpactComponent: 影响组件
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImpactComponent: str
+        :param _Payload: 漏洞Payload
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Payload: str
+        :param _References: 技术参考
+注意：此字段可能返回 null，表示取不到有效值。
+        :type References: str
+        :param _CVSS: cvss评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CVSS: str
+        :param _AttackHeat: 攻击热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackHeat: str
+        :param _ServiceSupport: 安全产品支持情况
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSupport: list of ServiceSupport
+        :param _RecentScanTime: 最新检测时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecentScanTime: str
         """
         self._RiskId = None
         self._VULName = None
@@ -13804,6 +14234,12 @@ class VULRiskAdvanceCFGList(AbstractModel):
         self._EMGCVulType = None
         self._VULDescribe = None
         self._ImpactComponent = None
+        self._Payload = None
+        self._References = None
+        self._CVSS = None
+        self._AttackHeat = None
+        self._ServiceSupport = None
+        self._RecentScanTime = None
 
     @property
     def RiskId(self):
@@ -13917,6 +14353,54 @@ class VULRiskAdvanceCFGList(AbstractModel):
     def ImpactComponent(self, ImpactComponent):
         self._ImpactComponent = ImpactComponent
 
+    @property
+    def Payload(self):
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def CVSS(self):
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def AttackHeat(self):
+        return self._AttackHeat
+
+    @AttackHeat.setter
+    def AttackHeat(self, AttackHeat):
+        self._AttackHeat = AttackHeat
+
+    @property
+    def ServiceSupport(self):
+        return self._ServiceSupport
+
+    @ServiceSupport.setter
+    def ServiceSupport(self, ServiceSupport):
+        self._ServiceSupport = ServiceSupport
+
+    @property
+    def RecentScanTime(self):
+        return self._RecentScanTime
+
+    @RecentScanTime.setter
+    def RecentScanTime(self, RecentScanTime):
+        self._RecentScanTime = RecentScanTime
+
 
     def _deserialize(self, params):
         self._RiskId = params.get("RiskId")
@@ -13933,6 +14417,17 @@ class VULRiskAdvanceCFGList(AbstractModel):
         self._EMGCVulType = params.get("EMGCVulType")
         self._VULDescribe = params.get("VULDescribe")
         self._ImpactComponent = params.get("ImpactComponent")
+        self._Payload = params.get("Payload")
+        self._References = params.get("References")
+        self._CVSS = params.get("CVSS")
+        self._AttackHeat = params.get("AttackHeat")
+        if params.get("ServiceSupport") is not None:
+            self._ServiceSupport = []
+            for item in params.get("ServiceSupport"):
+                obj = ServiceSupport()
+                obj._deserialize(item)
+                self._ServiceSupport.append(obj)
+        self._RecentScanTime = params.get("RecentScanTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3301,6 +3301,7 @@ class DescribeClusterNodesRequest(AbstractModel):
         :param _Offset: 页编号，默认值为0，表示第一页。
         :type Offset: int
         :param _Limit: 每页返回数量，默认值为100，最大值为100。
+如果offset和limit都不填，或者都填0，则返回全部数据
         :type Limit: int
         :param _HardwareResourceType: 资源类型:支持all/host/pod，默认为all
         :type HardwareResourceType: str
@@ -3651,7 +3652,7 @@ class DescribeEmrApplicationStaticsRequest(AbstractModel):
         :type IsAsc: int
         :param _Offset: 页号
         :type Offset: int
-        :param _Limit: 页容量
+        :param _Limit: 页容量，范围为[10,100]
         :type Limit: int
         """
         self._InstanceId = None
@@ -4385,7 +4386,8 @@ class DescribeInstancesListRequest(AbstractModel):
         :type DisplayStrategy: str
         :param _Offset: 页编号，默认值为0，表示第一页。
         :type Offset: int
-        :param _Limit: 每页返回数量，默认值为10，最大值为100。
+        :param _Limit: 每页返回数量，默认值为100，最大值为100。
+如果limit和offset都为0，则查询全部记录；
         :type Limit: int
         :param _OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
         :type OrderField: str
@@ -4542,7 +4544,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type InstanceIds: list of str
         :param _Offset: 页编号，默认值为0，表示第一页。
         :type Offset: int
-        :param _Limit: 每页返回数量，默认值为10，最大值为100。
+        :param _Limit: 每页返回数量，默认值为100，最大值为100。
         :type Limit: int
         :param _ProjectId: 建议必填-1，表示拉取所有项目下的集群。
 不填默认值为0，表示拉取默认项目下的集群。
@@ -4920,7 +4922,8 @@ class DescribeUsersForUserManagerRequest(AbstractModel):
         :type InstanceId: str
         :param _PageNo: 页码
         :type PageNo: int
-        :param _PageSize: 分页的大小
+        :param _PageSize: 分页的大小。
+默认查询全部；PageNo和PageSize不合理的设置，都是查询全部
         :type PageSize: int
         :param _UserManagerFilter: 查询用户列表过滤器
         :type UserManagerFilter: :class:`tencentcloud.emr.v20190103.models.UserManagerFilter`

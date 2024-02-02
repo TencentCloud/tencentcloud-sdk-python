@@ -29009,6 +29009,16 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         :type NotScannedImageCnt: int
         :param _NotScannedLocalImageCnt: 本地未开启扫描镜像数
         :type NotScannedLocalImageCnt: int
+        :param _TrialAuthorizedCnt: 试用镜像授权数
+        :type TrialAuthorizedCnt: int
+        :param _UsedTrialAuthorizedCnt: 已使用试用镜像授权数
+        :type UsedTrialAuthorizedCnt: int
+        :param _PurchasedAuthorizedCnt: 已购镜像授权数
+        :type PurchasedAuthorizedCnt: int
+        :param _UsedPurchasedAuthorizedCnt: 已使用已购镜像授权数
+        :type UsedPurchasedAuthorizedCnt: int
+        :param _CanApplyFreeImageAuthorize: 是否可免费领取镜像授权数
+        :type CanApplyFreeImageAuthorize: bool
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -29017,6 +29027,11 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._ScannedImageCnt = None
         self._NotScannedImageCnt = None
         self._NotScannedLocalImageCnt = None
+        self._TrialAuthorizedCnt = None
+        self._UsedTrialAuthorizedCnt = None
+        self._PurchasedAuthorizedCnt = None
+        self._UsedPurchasedAuthorizedCnt = None
+        self._CanApplyFreeImageAuthorize = None
         self._RequestId = None
 
     @property
@@ -29060,6 +29075,46 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._NotScannedLocalImageCnt = NotScannedLocalImageCnt
 
     @property
+    def TrialAuthorizedCnt(self):
+        return self._TrialAuthorizedCnt
+
+    @TrialAuthorizedCnt.setter
+    def TrialAuthorizedCnt(self, TrialAuthorizedCnt):
+        self._TrialAuthorizedCnt = TrialAuthorizedCnt
+
+    @property
+    def UsedTrialAuthorizedCnt(self):
+        return self._UsedTrialAuthorizedCnt
+
+    @UsedTrialAuthorizedCnt.setter
+    def UsedTrialAuthorizedCnt(self, UsedTrialAuthorizedCnt):
+        self._UsedTrialAuthorizedCnt = UsedTrialAuthorizedCnt
+
+    @property
+    def PurchasedAuthorizedCnt(self):
+        return self._PurchasedAuthorizedCnt
+
+    @PurchasedAuthorizedCnt.setter
+    def PurchasedAuthorizedCnt(self, PurchasedAuthorizedCnt):
+        self._PurchasedAuthorizedCnt = PurchasedAuthorizedCnt
+
+    @property
+    def UsedPurchasedAuthorizedCnt(self):
+        return self._UsedPurchasedAuthorizedCnt
+
+    @UsedPurchasedAuthorizedCnt.setter
+    def UsedPurchasedAuthorizedCnt(self, UsedPurchasedAuthorizedCnt):
+        self._UsedPurchasedAuthorizedCnt = UsedPurchasedAuthorizedCnt
+
+    @property
+    def CanApplyFreeImageAuthorize(self):
+        return self._CanApplyFreeImageAuthorize
+
+    @CanApplyFreeImageAuthorize.setter
+    def CanApplyFreeImageAuthorize(self, CanApplyFreeImageAuthorize):
+        self._CanApplyFreeImageAuthorize = CanApplyFreeImageAuthorize
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -29074,6 +29129,11 @@ class DescribeImageAuthorizedInfoResponse(AbstractModel):
         self._ScannedImageCnt = params.get("ScannedImageCnt")
         self._NotScannedImageCnt = params.get("NotScannedImageCnt")
         self._NotScannedLocalImageCnt = params.get("NotScannedLocalImageCnt")
+        self._TrialAuthorizedCnt = params.get("TrialAuthorizedCnt")
+        self._UsedTrialAuthorizedCnt = params.get("UsedTrialAuthorizedCnt")
+        self._PurchasedAuthorizedCnt = params.get("PurchasedAuthorizedCnt")
+        self._UsedPurchasedAuthorizedCnt = params.get("UsedPurchasedAuthorizedCnt")
+        self._CanApplyFreeImageAuthorize = params.get("CanApplyFreeImageAuthorize")
         self._RequestId = params.get("RequestId")
 
 

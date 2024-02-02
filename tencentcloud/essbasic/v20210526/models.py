@@ -17347,12 +17347,15 @@ class RegistrationOrganizationInfo(AbstractModel):
 在注册流程中，这个手机号必须跟操作人在电子签注册的个人手机号一致。
         :type AdminMobile: str
         :param _AuthorizationTypes: 可选的此企业允许的授权方式, 可以设置的方式有:
-1：上传授权书+对公打款
-2：法人授权/认证  会根据当前操作人的身份判定,如果当前操作人是法人,则是法人认证, 如果当前操作人不是法人,则走法人授权
+1：上传授权书
+2：法人授权超管
+5：授权书+对公打款
+
 
 注:
 `1. 当前仅支持一种认证方式`
 `2. 如果当前的企业类型是政府/事业单位, 则只支持上传授权书+对公打款`
+`3. 如果当前操作人是法人,则是法人认证`
         :type AuthorizationTypes: list of int non-negative
         :param _AdminIdCardType: 经办人的证件类型，支持以下类型
 <ul><li>ID_CARD : 居民身份证  (默认值)</li>
@@ -17362,6 +17365,8 @@ class RegistrationOrganizationInfo(AbstractModel):
         :type AdminIdCardType: str
         :param _AdminIdCardNumber: 经办人的证件号
         :type AdminIdCardNumber: str
+        :param _BusinessLicense: 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+        :type BusinessLicense: str
         """
         self._OrganizationName = None
         self._OrganizationOpenId = None
@@ -17374,6 +17379,7 @@ class RegistrationOrganizationInfo(AbstractModel):
         self._AuthorizationTypes = None
         self._AdminIdCardType = None
         self._AdminIdCardNumber = None
+        self._BusinessLicense = None
 
     @property
     def OrganizationName(self):
@@ -17463,6 +17469,14 @@ class RegistrationOrganizationInfo(AbstractModel):
     def AdminIdCardNumber(self, AdminIdCardNumber):
         self._AdminIdCardNumber = AdminIdCardNumber
 
+    @property
+    def BusinessLicense(self):
+        return self._BusinessLicense
+
+    @BusinessLicense.setter
+    def BusinessLicense(self, BusinessLicense):
+        self._BusinessLicense = BusinessLicense
+
 
     def _deserialize(self, params):
         self._OrganizationName = params.get("OrganizationName")
@@ -17476,6 +17490,7 @@ class RegistrationOrganizationInfo(AbstractModel):
         self._AuthorizationTypes = params.get("AuthorizationTypes")
         self._AdminIdCardType = params.get("AdminIdCardType")
         self._AdminIdCardNumber = params.get("AdminIdCardNumber")
+        self._BusinessLicense = params.get("BusinessLicense")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

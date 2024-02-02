@@ -514,6 +514,29 @@ class AsrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VoicePrintCompare(self, request):
+        """通过比对两段音频内说话人的声纹，得到一个打分，可通过打分判断两段音频声纹相似度,  打分区间[0 - 100]。 音频要求：16k采样率， 16bit位深，pcm或者wav格式， 单声道，总时长不超过30秒的音频，base64编码数据大小不超过2M，音频内容只有一个说话人声音，并且尽可能清晰，这样结果更加准确。
+
+        :param request: Request instance for VoicePrintCompare.
+        :type request: :class:`tencentcloud.asr.v20190614.models.VoicePrintCompareRequest`
+        :rtype: :class:`tencentcloud.asr.v20190614.models.VoicePrintCompareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VoicePrintCompare", params, headers=headers)
+            response = json.loads(body)
+            model = models.VoicePrintCompareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VoicePrintCount(self, request):
         """统计并返回注册的说话人id总数
 

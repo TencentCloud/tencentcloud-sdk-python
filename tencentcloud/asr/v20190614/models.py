@@ -3379,6 +3379,161 @@ class VoicePrintBaseData(AbstractModel):
         
 
 
+class VoicePrintCompareData(AbstractModel):
+    """音频声纹比对结果，包含比对分数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Score: 匹配度 取值范围(0.0 - 100.0)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: str
+        :param _Decision: 验证结果 0: 未通过 1: 通过
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Decision: int
+        """
+        self._Score = None
+        self._Decision = None
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Decision(self):
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+
+    def _deserialize(self, params):
+        self._Score = params.get("Score")
+        self._Decision = params.get("Decision")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintCompareRequest(AbstractModel):
+    """VoicePrintCompare请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceFormat: 音频格式 0: pcm, 1: wav；pcm和wav音频无损压缩，识别准确度更高
+        :type VoiceFormat: int
+        :param _SampleRate: 音频采样率，目前仅支持16k，请填写16000
+        :type SampleRate: int
+        :param _SrcAudioData: 对比源音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+        :type SrcAudioData: str
+        :param _DestAudioData: 对比目标音频数据, 音频要求：base64 编码,16k采样率， 16bit位深，pcm或者wav格式， 单声道，音频时长不超过30秒的音频，base64编码数据大小不超过2M
+        :type DestAudioData: str
+        """
+        self._VoiceFormat = None
+        self._SampleRate = None
+        self._SrcAudioData = None
+        self._DestAudioData = None
+
+    @property
+    def VoiceFormat(self):
+        return self._VoiceFormat
+
+    @VoiceFormat.setter
+    def VoiceFormat(self, VoiceFormat):
+        self._VoiceFormat = VoiceFormat
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def SrcAudioData(self):
+        return self._SrcAudioData
+
+    @SrcAudioData.setter
+    def SrcAudioData(self, SrcAudioData):
+        self._SrcAudioData = SrcAudioData
+
+    @property
+    def DestAudioData(self):
+        return self._DestAudioData
+
+    @DestAudioData.setter
+    def DestAudioData(self, DestAudioData):
+        self._DestAudioData = DestAudioData
+
+
+    def _deserialize(self, params):
+        self._VoiceFormat = params.get("VoiceFormat")
+        self._SampleRate = params.get("SampleRate")
+        self._SrcAudioData = params.get("SrcAudioData")
+        self._DestAudioData = params.get("DestAudioData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintCompareResponse(AbstractModel):
+    """VoicePrintCompare返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 音频声纹比对结果，包含相似度打分
+        :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintCompareData`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VoicePrintCompareData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class VoicePrintCountData(AbstractModel):
     """统计返回[说话人注册数量](https://cloud.tencent.com/document/product/1093/96061#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0)
 

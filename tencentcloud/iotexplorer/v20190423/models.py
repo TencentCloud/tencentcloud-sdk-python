@@ -8963,7 +8963,7 @@ class InstanceDetail(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _InstanceType: 实例类型（0 公共实例 1 标准企业实例 2专享企业实例）
+        :param _InstanceType: 实例类型（0 公共实例 1 标准企业实例 2新企业实例3新公共实例）
         :type InstanceType: int
         :param _Region: 地域字母缩写
         :type Region: str
@@ -8971,7 +8971,7 @@ class InstanceDetail(AbstractModel):
         :type ZoneId: str
         :param _TotalDeviceNum: 支持设备总数
         :type TotalDeviceNum: int
-        :param _UsedDeviceNum: 以注册设备数
+        :param _UsedDeviceNum: 已注册设备数
         :type UsedDeviceNum: int
         :param _ProjectNum: 项目数
         :type ProjectNum: int
@@ -8989,6 +8989,12 @@ class InstanceDetail(AbstractModel):
         :param _ActivateDevice: 激活设备数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivateDevice: int
+        :param _Description: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Status: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
         """
         self._InstanceId = None
         self._InstanceType = None
@@ -9003,6 +9009,8 @@ class InstanceDetail(AbstractModel):
         self._ExpireTime = None
         self._TotalDevice = None
         self._ActivateDevice = None
+        self._Description = None
+        self._Status = None
 
     @property
     def InstanceId(self):
@@ -9108,6 +9116,22 @@ class InstanceDetail(AbstractModel):
     def ActivateDevice(self, ActivateDevice):
         self._ActivateDevice = ActivateDevice
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9123,6 +9147,8 @@ class InstanceDetail(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._TotalDevice = params.get("TotalDevice")
         self._ActivateDevice = params.get("ActivateDevice")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11471,6 +11497,9 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         :param _BindStrategy: 绑定策略（1：强踢；2：非强踢；0：表示无意义）
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindStrategy: int
+        :param _DeviceCount: 设备数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceCount: int
         """
         self._ProductId = None
         self._ProductName = None
@@ -11490,6 +11519,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._CreateUserId = None
         self._CreatorNickName = None
         self._BindStrategy = None
+        self._DeviceCount = None
 
     @property
     def ProductId(self):
@@ -11635,6 +11665,14 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     def BindStrategy(self, BindStrategy):
         self._BindStrategy = BindStrategy
 
+    @property
+    def DeviceCount(self):
+        return self._DeviceCount
+
+    @DeviceCount.setter
+    def DeviceCount(self, DeviceCount):
+        self._DeviceCount = DeviceCount
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -11655,6 +11693,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._CreateUserId = params.get("CreateUserId")
         self._CreatorNickName = params.get("CreatorNickName")
         self._BindStrategy = params.get("BindStrategy")
+        self._DeviceCount = params.get("DeviceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13535,6 +13574,8 @@ class UploadFirmwareRequest(AbstractModel):
         :type FirmwareDescription: str
         :param _FwType: 固件升级模块；可选值 mcu|moudule
         :type FwType: str
+        :param _FirmwareUserDefined: 固件用户自定义配置信息
+        :type FirmwareUserDefined: str
         """
         self._ProductID = None
         self._FirmwareVersion = None
@@ -13543,6 +13584,7 @@ class UploadFirmwareRequest(AbstractModel):
         self._FirmwareName = None
         self._FirmwareDescription = None
         self._FwType = None
+        self._FirmwareUserDefined = None
 
     @property
     def ProductID(self):
@@ -13600,6 +13642,14 @@ class UploadFirmwareRequest(AbstractModel):
     def FwType(self, FwType):
         self._FwType = FwType
 
+    @property
+    def FirmwareUserDefined(self):
+        return self._FirmwareUserDefined
+
+    @FirmwareUserDefined.setter
+    def FirmwareUserDefined(self, FirmwareUserDefined):
+        self._FirmwareUserDefined = FirmwareUserDefined
+
 
     def _deserialize(self, params):
         self._ProductID = params.get("ProductID")
@@ -13609,6 +13659,7 @@ class UploadFirmwareRequest(AbstractModel):
         self._FirmwareName = params.get("FirmwareName")
         self._FirmwareDescription = params.get("FirmwareDescription")
         self._FwType = params.get("FwType")
+        self._FirmwareUserDefined = params.get("FirmwareUserDefined")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

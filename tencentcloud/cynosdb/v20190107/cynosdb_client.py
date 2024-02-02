@@ -947,7 +947,7 @@ class CynosdbClient(AbstractClient):
 
 
     def DescribeClusterDatabases(self, request):
-        """获取database列表
+        """获取集群数据库列表
 
         :param request: Request instance for DescribeClusterDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterDatabasesRequest`
@@ -2787,7 +2787,7 @@ class CynosdbClient(AbstractClient):
 
 
     def SearchClusterDatabases(self, request):
-        """本接口(SearchClusterDatabases)搜索集群database列表
+        """本接口(SearchClusterDatabases)搜索集群数据库列表
 
         :param request: Request instance for SearchClusterDatabases.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.SearchClusterDatabasesRequest`

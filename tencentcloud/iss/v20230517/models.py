@@ -648,7 +648,7 @@ class AddDeviceData(AbstractModel):
         :param _DeviceId: 设备iD
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: str
-        :param _Code: 设备编码（即我们为设备生成的20位国标编码）
+        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
         :param _Name: 设备名称
@@ -2410,9 +2410,9 @@ class AddUserDeviceRequest(AbstractModel):
         r"""
         :param _Name: 设备名称，仅支持中文、英文、数字、_、-，长度不超过32个字符；（设备名称无需全局唯一，可以重复）
         :type Name: str
-        :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW）
+        :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW,4:IVCP）
         :type AccessProtocol: int
-        :param _Type: 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）
+        :param _Type: 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
         :type Type: int
         :param _OrganizationId: 设备所属组织ID，从查询组织接口DescribeOrganization中获取
         :type OrganizationId: str
@@ -2434,6 +2434,8 @@ class AddUserDeviceRequest(AbstractModel):
         :type Port: int
         :param _Username: 设备用户名（仅网关接入需要）
         :type Username: str
+        :param _SNCode: 设备 SN，仅IVCP 协议设备需要
+        :type SNCode: str
         """
         self._Name = None
         self._AccessProtocol = None
@@ -2448,6 +2450,7 @@ class AddUserDeviceRequest(AbstractModel):
         self._Ip = None
         self._Port = None
         self._Username = None
+        self._SNCode = None
 
     @property
     def Name(self):
@@ -2553,6 +2556,14 @@ class AddUserDeviceRequest(AbstractModel):
     def Username(self, Username):
         self._Username = Username
 
+    @property
+    def SNCode(self):
+        return self._SNCode
+
+    @SNCode.setter
+    def SNCode(self, SNCode):
+        self._SNCode = SNCode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2568,6 +2579,7 @@ class AddUserDeviceRequest(AbstractModel):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
         self._Username = params.get("Username")
+        self._SNCode = params.get("SNCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

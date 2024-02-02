@@ -131,6 +131,9 @@ INVALIDPARAMETER_ERRORPARSEQUEST = 'InvalidParameter.ErrorParsequest'
 # 文件编码错误。
 INVALIDPARAMETER_FILEENCODE = 'InvalidParameter.FileEncode'
 
+# 参数错误。
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
 # 非法的词表状态。
 INVALIDPARAMETER_INVALIDVOCABSTATE = 'InvalidParameter.InvalidVocabState'
 

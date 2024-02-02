@@ -26,6 +26,29 @@ class TseClient(AbstractClient):
     _service = 'tse'
 
 
+    def BindAutoScalerResourceStrategyToGroups(self, request):
+        """弹性伸缩策略批量绑定网关分组
+
+        :param request: Request instance for BindAutoScalerResourceStrategyToGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.BindAutoScalerResourceStrategyToGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.BindAutoScalerResourceStrategyToGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindAutoScalerResourceStrategyToGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindAutoScalerResourceStrategyToGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWafProtection(self, request):
         """关闭 WAF 防护
 
@@ -40,6 +63,29 @@ class TseClient(AbstractClient):
             body = self.call("CloseWafProtection", params, headers=headers)
             response = json.loads(body)
             model = models.CloseWafProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAutoScalerResourceStrategy(self, request):
+        """创建弹性伸缩策略
+
+        :param request: Request instance for CreateAutoScalerResourceStrategy.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateAutoScalerResourceStrategyRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateAutoScalerResourceStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAutoScalerResourceStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAutoScalerResourceStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -302,6 +348,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAutoScalerResourceStrategy(self, request):
+        """删除弹性伸缩策略
+
+        :param request: Request instance for DeleteAutoScalerResourceStrategy.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteAutoScalerResourceStrategyRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteAutoScalerResourceStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAutoScalerResourceStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAutoScalerResourceStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudNativeAPIGateway(self, request):
         """删除云原生API网关实例
 
@@ -546,6 +615,52 @@ class TseClient(AbstractClient):
             body = self.call("DeleteWafDomains", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWafDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAutoScalerResourceStrategies(self, request):
+        """查看弹性伸缩策略列表
+
+        :param request: Request instance for DescribeAutoScalerResourceStrategies.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategiesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScalerResourceStrategies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScalerResourceStrategiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAutoScalerResourceStrategyBindingGroups(self, request):
+        """查看弹性伸缩策略绑定的网关分组
+
+        :param request: Request instance for DescribeAutoScalerResourceStrategyBindingGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategyBindingGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeAutoScalerResourceStrategyBindingGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScalerResourceStrategyBindingGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScalerResourceStrategyBindingGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -946,6 +1061,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePublicNetwork(self, request):
+        """查询云原生API网关实例公网详情
+
+        :param request: Request instance for DescribePublicNetwork.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribePublicNetworkRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribePublicNetworkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicNetwork", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublicNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSREInstanceAccessAddress(self, request):
         """查询引擎实例访问地址
 
@@ -1098,6 +1236,29 @@ class TseClient(AbstractClient):
             body = self.call("DescribeZookeeperServerInterfaces", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeZookeeperServerInterfacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAutoScalerResourceStrategy(self, request):
+        """更新弹性伸缩策略
+
+        :param request: Request instance for ModifyAutoScalerResourceStrategy.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyAutoScalerResourceStrategyRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyAutoScalerResourceStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoScalerResourceStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoScalerResourceStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1397,6 +1558,29 @@ class TseClient(AbstractClient):
             body = self.call("OpenWafProtection", params, headers=headers)
             response = json.loads(body)
             model = models.OpenWafProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindAutoScalerResourceStrategyFromGroups(self, request):
+        """弹性伸缩策略批量解绑网关分组
+
+        :param request: Request instance for UnbindAutoScalerResourceStrategyFromGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.UnbindAutoScalerResourceStrategyFromGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.UnbindAutoScalerResourceStrategyFromGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindAutoScalerResourceStrategyFromGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindAutoScalerResourceStrategyFromGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

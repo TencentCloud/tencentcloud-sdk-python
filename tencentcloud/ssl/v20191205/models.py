@@ -198,6 +198,8 @@ class ApplyCertificateRequest(AbstractModel):
         :type PackageId: str
         :param _DeleteDnsAutoRecord: 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
         :type DeleteDnsAutoRecord: bool
+        :param _DnsNames: 域名数组（多域名证书可以上传）。	
+        :type DnsNames: list of str
         """
         self._DvAuthMethod = None
         self._DomainName = None
@@ -213,6 +215,7 @@ class ApplyCertificateRequest(AbstractModel):
         self._OldCertificateId = None
         self._PackageId = None
         self._DeleteDnsAutoRecord = None
+        self._DnsNames = None
 
     @property
     def DvAuthMethod(self):
@@ -326,6 +329,14 @@ class ApplyCertificateRequest(AbstractModel):
     def DeleteDnsAutoRecord(self, DeleteDnsAutoRecord):
         self._DeleteDnsAutoRecord = DeleteDnsAutoRecord
 
+    @property
+    def DnsNames(self):
+        return self._DnsNames
+
+    @DnsNames.setter
+    def DnsNames(self, DnsNames):
+        self._DnsNames = DnsNames
+
 
     def _deserialize(self, params):
         self._DvAuthMethod = params.get("DvAuthMethod")
@@ -342,6 +353,7 @@ class ApplyCertificateRequest(AbstractModel):
         self._OldCertificateId = params.get("OldCertificateId")
         self._PackageId = params.get("PackageId")
         self._DeleteDnsAutoRecord = params.get("DeleteDnsAutoRecord")
+        self._DnsNames = params.get("DnsNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

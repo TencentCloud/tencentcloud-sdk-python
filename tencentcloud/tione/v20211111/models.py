@@ -5526,6 +5526,53 @@ class DatasetInfo(AbstractModel):
         
 
 
+class DefaultInnerCallInfo(AbstractModel):
+    """默认内网调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcIds: 可以进行调用的VPC-ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcIds: list of str
+        :param _InnerHttpAddr: 默认内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpAddr: str
+        """
+        self._VpcIds = None
+        self._InnerHttpAddr = None
+
+    @property
+    def VpcIds(self):
+        return self._VpcIds
+
+    @VpcIds.setter
+    def VpcIds(self, VpcIds):
+        self._VpcIds = VpcIds
+
+    @property
+    def InnerHttpAddr(self):
+        return self._InnerHttpAddr
+
+    @InnerHttpAddr.setter
+    def InnerHttpAddr(self, InnerHttpAddr):
+        self._InnerHttpAddr = InnerHttpAddr
+
+
+    def _deserialize(self, params):
+        self._VpcIds = params.get("VpcIds")
+        self._InnerHttpAddr = params.get("InnerHttpAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DefaultNginxGatewayCallInfo(AbstractModel):
     """默认Nginx网关结构
 
@@ -6688,7 +6735,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10....即每页左边为闭区间; 默认0
         :type Offset: int
-        :param _Limit: 分页查询每页大小，最大30; 默认20
+        :param _Limit: 分页查询每页大小，默认20
         :type Limit: int
         :param _Order: 排序方向; 枚举值: ASC | DESC；默认DESC
         :type Order: str
@@ -6848,7 +6895,9 @@ class DescribeBillingResourceGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 资源组类型; 枚举值 TRAIN:训练 INFERENCE:推理
+        :param _Type: 资源组类型;
+枚举值:
+空: 通用, TRAIN: 训练, INFERENCE: 推理
         :type Type: str
         :param _Filters: Filter.Name: 枚举值: ResourceGroupId (资源组id列表)
                     ResourceGroupName (资源组名称列表)
@@ -6859,8 +6908,7 @@ Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1�
         :type TagFilters: list of TagFilter
         :param _Offset: 偏移量，默认为0；分页查询起始位置，如：Limit为100，第一页Offset为0，第二页OffSet为100....即每页左边为闭区间
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为30;
-注意：小于0则默认为20；大于30则默认为30
+        :param _Limit: 分页查询每页大小，默认20
         :type Limit: int
         :param _SearchWord: 支持模糊查找资源组id和资源组名
         :type SearchWord: str
@@ -12510,11 +12558,15 @@ class IngressPrivateLinkInfo(AbstractModel):
         :param _InnerHttpsAddr: 内网https调用地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerHttpsAddr: list of str
+        :param _State: 私有连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
         """
         self._VpcId = None
         self._SubnetId = None
         self._InnerHttpAddr = None
         self._InnerHttpsAddr = None
+        self._State = None
 
     @property
     def VpcId(self):
@@ -12548,12 +12600,21 @@ class IngressPrivateLinkInfo(AbstractModel):
     def InnerHttpsAddr(self, InnerHttpsAddr):
         self._InnerHttpsAddr = InnerHttpsAddr
 
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._InnerHttpAddr = params.get("InnerHttpAddr")
         self._InnerHttpsAddr = params.get("InnerHttpsAddr")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12768,9 +12829,17 @@ class IntranetCallInfo(AbstractModel):
         :param _ServiceEIPInfo: 共享弹性网卡信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceEIPInfo: list of ServiceEIPInfo
+        :param _PrivateLinkInfos: 私有连接信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateLinkInfos: list of PrivateLinkInfo
+        :param _DefaultInnerCallInfos: 默认内网调用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultInnerCallInfos: list of DefaultInnerCallInfo
         """
         self._IngressPrivateLinkInfo = None
         self._ServiceEIPInfo = None
+        self._PrivateLinkInfos = None
+        self._DefaultInnerCallInfos = None
 
     @property
     def IngressPrivateLinkInfo(self):
@@ -12788,6 +12857,22 @@ class IntranetCallInfo(AbstractModel):
     def ServiceEIPInfo(self, ServiceEIPInfo):
         self._ServiceEIPInfo = ServiceEIPInfo
 
+    @property
+    def PrivateLinkInfos(self):
+        return self._PrivateLinkInfos
+
+    @PrivateLinkInfos.setter
+    def PrivateLinkInfos(self, PrivateLinkInfos):
+        self._PrivateLinkInfos = PrivateLinkInfos
+
+    @property
+    def DefaultInnerCallInfos(self):
+        return self._DefaultInnerCallInfos
+
+    @DefaultInnerCallInfos.setter
+    def DefaultInnerCallInfos(self, DefaultInnerCallInfos):
+        self._DefaultInnerCallInfos = DefaultInnerCallInfos
+
 
     def _deserialize(self, params):
         if params.get("IngressPrivateLinkInfo") is not None:
@@ -12799,6 +12884,18 @@ class IntranetCallInfo(AbstractModel):
                 obj = ServiceEIPInfo()
                 obj._deserialize(item)
                 self._ServiceEIPInfo.append(obj)
+        if params.get("PrivateLinkInfos") is not None:
+            self._PrivateLinkInfos = []
+            for item in params.get("PrivateLinkInfos"):
+                obj = PrivateLinkInfo()
+                obj._deserialize(item)
+                self._PrivateLinkInfos.append(obj)
+        if params.get("DefaultInnerCallInfos") is not None:
+            self._DefaultInnerCallInfos = []
+            for item in params.get("DefaultInnerCallInfos"):
+                obj = DefaultInnerCallInfo()
+                obj._deserialize(item)
+                self._DefaultInnerCallInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16700,6 +16797,92 @@ class PreTrainModel(AbstractModel):
         
 
 
+class PrivateLinkInfo(AbstractModel):
+    """私有连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 私有连接所在的VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 私有连接所在的子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _InnerHttpAddr: HTTP内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpAddr: list of str
+        :param _InnerHttpsAddr: HTTPS内网调用地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InnerHttpsAddr: list of str
+        :param _State: 私有连接状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._InnerHttpAddr = None
+        self._InnerHttpsAddr = None
+        self._State = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def InnerHttpAddr(self):
+        return self._InnerHttpAddr
+
+    @InnerHttpAddr.setter
+    def InnerHttpAddr(self, InnerHttpAddr):
+        self._InnerHttpAddr = InnerHttpAddr
+
+    @property
+    def InnerHttpsAddr(self):
+        return self._InnerHttpsAddr
+
+    @InnerHttpsAddr.setter
+    def InnerHttpsAddr(self, InnerHttpsAddr):
+        self._InnerHttpsAddr = InnerHttpsAddr
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._InnerHttpAddr = params.get("InnerHttpAddr")
+        self._InnerHttpsAddr = params.get("InnerHttpsAddr")
+        self._State = params.get("State")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PushTrainingMetricsRequest(AbstractModel):
     """PushTrainingMetrics请求参数结构体
 
@@ -18209,10 +18392,10 @@ class Service(AbstractModel):
         :param _BusinessStatus: 服务的业务状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessStatus: str
-        :param _ServiceLimit: 已废弃
+        :param _ServiceLimit: 已废弃,以ServiceInfo中的对应为准
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param _ScheduledAction: 已废弃
+        :param _ScheduledAction: 已废弃,以ServiceInfo中的对应为准
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         :param _CreateFailedReason: 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
@@ -18246,6 +18429,9 @@ DEFAULT: 其他来源
         :param _LatestVersion: 服务组下服务的最高版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersion: str
+        :param _ResourceGroupSWType: 资源组类别 托管 NORMAL，纳管 SW
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceGroupSWType: str
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -18276,6 +18462,7 @@ DEFAULT: 其他来源
         self._CreateSource = None
         self._Version = None
         self._LatestVersion = None
+        self._ResourceGroupSWType = None
 
     @property
     def ServiceGroupId(self):
@@ -18439,18 +18626,26 @@ DEFAULT: 其他来源
 
     @property
     def ServiceLimit(self):
+        warnings.warn("parameter `ServiceLimit` is deprecated", DeprecationWarning) 
+
         return self._ServiceLimit
 
     @ServiceLimit.setter
     def ServiceLimit(self, ServiceLimit):
+        warnings.warn("parameter `ServiceLimit` is deprecated", DeprecationWarning) 
+
         self._ServiceLimit = ServiceLimit
 
     @property
     def ScheduledAction(self):
+        warnings.warn("parameter `ScheduledAction` is deprecated", DeprecationWarning) 
+
         return self._ScheduledAction
 
     @ScheduledAction.setter
     def ScheduledAction(self, ScheduledAction):
+        warnings.warn("parameter `ScheduledAction` is deprecated", DeprecationWarning) 
+
         self._ScheduledAction = ScheduledAction
 
     @property
@@ -18509,6 +18704,14 @@ DEFAULT: 其他来源
     def LatestVersion(self, LatestVersion):
         self._LatestVersion = LatestVersion
 
+    @property
+    def ResourceGroupSWType(self):
+        return self._ResourceGroupSWType
+
+    @ResourceGroupSWType.setter
+    def ResourceGroupSWType(self, ResourceGroupSWType):
+        self._ResourceGroupSWType = ResourceGroupSWType
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18551,6 +18754,7 @@ DEFAULT: 其他来源
         self._CreateSource = params.get("CreateSource")
         self._Version = params.get("Version")
         self._LatestVersion = params.get("LatestVersion")
+        self._ResourceGroupSWType = params.get("ResourceGroupSWType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18589,6 +18793,9 @@ class ServiceCallInfo(AbstractModel):
         :param _AppSecret: 调用secret
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppSecret: str
+        :param _AuthorizationEnable: 鉴权是否开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationEnable: bool
         """
         self._ServiceGroupId = None
         self._InnerHttpAddr = None
@@ -18597,6 +18804,7 @@ class ServiceCallInfo(AbstractModel):
         self._OuterHttpsAddr = None
         self._AppKey = None
         self._AppSecret = None
+        self._AuthorizationEnable = None
 
     @property
     def ServiceGroupId(self):
@@ -18654,6 +18862,14 @@ class ServiceCallInfo(AbstractModel):
     def AppSecret(self, AppSecret):
         self._AppSecret = AppSecret
 
+    @property
+    def AuthorizationEnable(self):
+        return self._AuthorizationEnable
+
+    @AuthorizationEnable.setter
+    def AuthorizationEnable(self, AuthorizationEnable):
+        self._AuthorizationEnable = AuthorizationEnable
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -18663,6 +18879,7 @@ class ServiceCallInfo(AbstractModel):
         self._OuterHttpsAddr = params.get("OuterHttpsAddr")
         self._AppKey = params.get("AppKey")
         self._AppSecret = params.get("AppSecret")
+        self._AuthorizationEnable = params.get("AuthorizationEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18859,6 +19076,12 @@ UPDATING 更新中
      UPDATE_FAILED 更新失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeightUpdateStatus: str
+        :param _ReplicasCount: 服务组下运行的pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicasCount: int
+        :param _AvailableReplicasCount: 服务组下期望的pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableReplicasCount: int
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -18876,6 +19099,8 @@ UPDATING 更新中
         self._BillingInfo = None
         self._CreateSource = None
         self._WeightUpdateStatus = None
+        self._ReplicasCount = None
+        self._AvailableReplicasCount = None
 
     @property
     def ServiceGroupId(self):
@@ -19005,6 +19230,22 @@ UPDATING 更新中
     def WeightUpdateStatus(self, WeightUpdateStatus):
         self._WeightUpdateStatus = WeightUpdateStatus
 
+    @property
+    def ReplicasCount(self):
+        return self._ReplicasCount
+
+    @ReplicasCount.setter
+    def ReplicasCount(self, ReplicasCount):
+        self._ReplicasCount = ReplicasCount
+
+    @property
+    def AvailableReplicasCount(self):
+        return self._AvailableReplicasCount
+
+    @AvailableReplicasCount.setter
+    def AvailableReplicasCount(self, AvailableReplicasCount):
+        self._AvailableReplicasCount = AvailableReplicasCount
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -19033,6 +19274,8 @@ UPDATING 更新中
         self._BillingInfo = params.get("BillingInfo")
         self._CreateSource = params.get("CreateSource")
         self._WeightUpdateStatus = params.get("WeightUpdateStatus")
+        self._ReplicasCount = params.get("ReplicasCount")
+        self._AvailableReplicasCount = params.get("AvailableReplicasCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19179,9 +19422,6 @@ HYBRID_PAID:
         :param _Weight: 权重
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param _PodList: 实例列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PodList: list of str
         :param _ResourceTotal: 资源总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTotal: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
@@ -19210,6 +19450,9 @@ HYBRID_PAID:
         :param _ScheduledAction: 定时停止的配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledAction: str
+        :param _PodList: 实例列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodList: list of str
         :param _Pods: Pod列表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pods: :class:`tencentcloud.tione.v20211111.models.Pod`
@@ -19247,7 +19490,6 @@ HYBRID_PAID:
         self._HorizontalPodAutoscaler = None
         self._Status = None
         self._Weight = None
-        self._PodList = None
         self._ResourceTotal = None
         self._OldReplicas = None
         self._HybridBillingPrepaidReplicas = None
@@ -19257,6 +19499,7 @@ HYBRID_PAID:
         self._CronScaleJobs = None
         self._ScaleStrategy = None
         self._ScheduledAction = None
+        self._PodList = None
         self._Pods = None
         self._PodInfos = None
         self._ServiceLimit = None
@@ -19363,14 +19606,6 @@ HYBRID_PAID:
         self._Weight = Weight
 
     @property
-    def PodList(self):
-        return self._PodList
-
-    @PodList.setter
-    def PodList(self, PodList):
-        self._PodList = PodList
-
-    @property
     def ResourceTotal(self):
         return self._ResourceTotal
 
@@ -19443,11 +19678,27 @@ HYBRID_PAID:
         self._ScheduledAction = ScheduledAction
 
     @property
+    def PodList(self):
+        warnings.warn("parameter `PodList` is deprecated", DeprecationWarning) 
+
+        return self._PodList
+
+    @PodList.setter
+    def PodList(self, PodList):
+        warnings.warn("parameter `PodList` is deprecated", DeprecationWarning) 
+
+        self._PodList = PodList
+
+    @property
     def Pods(self):
+        warnings.warn("parameter `Pods` is deprecated", DeprecationWarning) 
+
         return self._Pods
 
     @Pods.setter
     def Pods(self, Pods):
+        warnings.warn("parameter `Pods` is deprecated", DeprecationWarning) 
+
         self._Pods = Pods
 
     @property
@@ -19537,7 +19788,6 @@ HYBRID_PAID:
             self._Status = WorkloadStatus()
             self._Status._deserialize(params.get("Status"))
         self._Weight = params.get("Weight")
-        self._PodList = params.get("PodList")
         if params.get("ResourceTotal") is not None:
             self._ResourceTotal = ResourceInfo()
             self._ResourceTotal._deserialize(params.get("ResourceTotal"))
@@ -19554,6 +19804,7 @@ HYBRID_PAID:
                 self._CronScaleJobs.append(obj)
         self._ScaleStrategy = params.get("ScaleStrategy")
         self._ScheduledAction = params.get("ScheduledAction")
+        self._PodList = params.get("PodList")
         if params.get("Pods") is not None:
             self._Pods = Pod()
             self._Pods._deserialize(params.get("Pods"))

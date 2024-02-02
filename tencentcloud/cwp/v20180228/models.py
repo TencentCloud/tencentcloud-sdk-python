@@ -40872,11 +40872,25 @@ class DescribeNetAttackSettingResponse(AbstractModel):
         :type NetAttackEnable: int
         :param _NetAttackAlarmStatus: 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
         :type NetAttackAlarmStatus: int
+        :param _Scope: 1 全部旗舰版主机，0 InstanceIds列表主机
+        :type Scope: int
+        :param _InstanceIds: 自选主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        :param _ExcludeInstanceIds: 自选排除主机
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeInstanceIds: list of str
+        :param _AutoInclude: 新增资产自动包含 0 不包含 1包含
+        :type AutoInclude: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NetAttackEnable = None
         self._NetAttackAlarmStatus = None
+        self._Scope = None
+        self._InstanceIds = None
+        self._ExcludeInstanceIds = None
+        self._AutoInclude = None
         self._RequestId = None
 
     @property
@@ -40896,6 +40910,38 @@ class DescribeNetAttackSettingResponse(AbstractModel):
         self._NetAttackAlarmStatus = NetAttackAlarmStatus
 
     @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ExcludeInstanceIds(self):
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
+
+    @property
+    def AutoInclude(self):
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -40907,6 +40953,10 @@ class DescribeNetAttackSettingResponse(AbstractModel):
     def _deserialize(self, params):
         self._NetAttackEnable = params.get("NetAttackEnable")
         self._NetAttackAlarmStatus = params.get("NetAttackAlarmStatus")
+        self._Scope = params.get("Scope")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
+        self._AutoInclude = params.get("AutoInclude")
         self._RequestId = params.get("RequestId")
 
 
@@ -50028,6 +50078,14 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
         :type Quuids: list of str
         :param _FlagshipCount: 当前旗舰版主机数量
         :type FlagshipCount: int
+        :param _InstanceIds: 影响主机id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceIds: list of str
+        :param _AutoInclude: 新增旗舰版主机自动加入;1是，0否 
+        :type AutoInclude: int
+        :param _ExcludeInstanceIds: 排除的主机id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeInstanceIds: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -50035,6 +50093,9 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
         self._Scope = None
         self._Quuids = None
         self._FlagshipCount = None
+        self._InstanceIds = None
+        self._AutoInclude = None
+        self._ExcludeInstanceIds = None
         self._RequestId = None
 
     @property
@@ -50070,6 +50131,30 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
         self._FlagshipCount = FlagshipCount
 
     @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def AutoInclude(self):
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
+    def ExcludeInstanceIds(self):
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -50083,6 +50168,9 @@ class DescribeVulDefenceSettingResponse(AbstractModel):
         self._Scope = params.get("Scope")
         self._Quuids = params.get("Quuids")
         self._FlagshipCount = params.get("FlagshipCount")
+        self._InstanceIds = params.get("InstanceIds")
+        self._AutoInclude = params.get("AutoInclude")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -71636,9 +71724,21 @@ class ModifyNetAttackSettingRequest(AbstractModel):
         :type NetAttackEnable: int
         :param _NetAttackAlarmStatus: 0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略
         :type NetAttackAlarmStatus: int
+        :param _Scope: 1 全部旗舰版主机，0 Quuids列表主机
+        :type Scope: int
+        :param _InstanceIds: 自选主机
+        :type InstanceIds: list of str
+        :param _ExcludeInstanceIds: 自选排除的主机
+        :type ExcludeInstanceIds: list of str
+        :param _AutoInclude: 新增资产自动包含 0 不包含 1包含
+        :type AutoInclude: int
         """
         self._NetAttackEnable = None
         self._NetAttackAlarmStatus = None
+        self._Scope = None
+        self._InstanceIds = None
+        self._ExcludeInstanceIds = None
+        self._AutoInclude = None
 
     @property
     def NetAttackEnable(self):
@@ -71656,10 +71756,46 @@ class ModifyNetAttackSettingRequest(AbstractModel):
     def NetAttackAlarmStatus(self, NetAttackAlarmStatus):
         self._NetAttackAlarmStatus = NetAttackAlarmStatus
 
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ExcludeInstanceIds(self):
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
+
+    @property
+    def AutoInclude(self):
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
 
     def _deserialize(self, params):
         self._NetAttackEnable = params.get("NetAttackEnable")
         self._NetAttackAlarmStatus = params.get("NetAttackAlarmStatus")
+        self._Scope = params.get("Scope")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
+        self._AutoInclude = params.get("AutoInclude")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72527,12 +72663,21 @@ class ModifyVulDefenceSettingRequest(AbstractModel):
         :type Enable: int
         :param _Scope: 1 全部旗舰版主机，0 Quuids列表主机
         :type Scope: int
-        :param _Quuids: 作用弄范围内旗舰版主机列表
+        :param _Quuids: 作用范围内旗舰版主机列表
         :type Quuids: list of str
+        :param _ExcludeInstanceIds: 排除作用范围内旗舰版主机列表
+        :type ExcludeInstanceIds: list of str
+        :param _AutoInclude: 新增资产自动包含 0 不包含 1包含
+        :type AutoInclude: int
+        :param _InstanceIds: 作用范围内旗舰版主机列表
+        :type InstanceIds: list of str
         """
         self._Enable = None
         self._Scope = None
         self._Quuids = None
+        self._ExcludeInstanceIds = None
+        self._AutoInclude = None
+        self._InstanceIds = None
 
     @property
     def Enable(self):
@@ -72558,11 +72703,38 @@ class ModifyVulDefenceSettingRequest(AbstractModel):
     def Quuids(self, Quuids):
         self._Quuids = Quuids
 
+    @property
+    def ExcludeInstanceIds(self):
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
+
+    @property
+    def AutoInclude(self):
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
 
     def _deserialize(self, params):
         self._Enable = params.get("Enable")
         self._Scope = params.get("Scope")
         self._Quuids = params.get("Quuids")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
+        self._AutoInclude = params.get("AutoInclude")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
