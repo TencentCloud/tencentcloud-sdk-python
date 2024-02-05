@@ -348,7 +348,7 @@ class CvmClient(AbstractClient):
         """本接口（DeleteImages）用于删除一个或多个镜像。
 
         * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
-        * 每个地域最多只支持创建50个自定义镜像，删除镜像可以释放账户的配额。
+        * 每个地域最多只支持创建500个自定义镜像，删除镜像可以释放账户的配额。
         * 当镜像正在被其它账户分享时，不允许删除。
 
         :param request: Request instance for DeleteImages.
@@ -1676,7 +1676,7 @@ class CvmClient(AbstractClient):
         """本接口（ModifyImageSharePermission）用于修改镜像共享信息。
 
         * 共享镜像后，被共享账户可以通过该镜像创建实例。
-        * 每个自定义镜像最多可共享给50个账户。
+        * 每个自定义镜像最多可共享给500个账户。
         * 共享镜像无法更改名称，描述，仅可用于创建实例。
         * 只支持共享到对方账户相同地域。
 
@@ -2357,7 +2357,7 @@ class CvmClient(AbstractClient):
 
         * 该接口每次调用只支持同步一个镜像。
         * 该接口支持多个同步地域。
-        * 单个账号在每个地域最多支持存在50个自定义镜像。
+        * 单个账号在每个地域最多支持存在500个自定义镜像。
 
         :param request: Request instance for SyncImages.
         :type request: :class:`tencentcloud.cvm.v20170312.models.SyncImagesRequest`

@@ -4101,9 +4101,8 @@ class InquirePriceCreateDBInstancesRequest(AbstractModel):
 - 创建分片集群时，指分片数量，请通过接口[DescribeSpecInfo](https://cloud.tencent.com/document/product/240/38567)查询，其返回的数据结构SpecItems中的参数MinReplicateSetNum与MaxReplicateSetNum分别对应其最小值与最大值。
 - 若为单节点实例，该参数固定设置为0。
         :type ReplicateSetNum: int
-        :param _Period: 选择包年包月计费模式时，您需要设定购买实例的时长。即<b>InstanceChargeType</b>设定为<b>PREPAID</b>时，该参数必须配置。
-- 单位：月。
-- 可选值包括[1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+        :param _Period: - 选择包年包月计费模式，即 <b>InstanceChargeType </b>设定为<b>PREPAID</b>时，需设定购买实例的时长。该参数取值可选：[1,2,3,4,5,6,7,8,9,10,11,12,24,36]；单位：月。
+-选择按量计费，即 <b>InstanceChargeType</b> 设定为 **POSTPAID_BY_HOUR** 时，该参数仅可配置为 1。
         :type Period: int
         :param _InstanceChargeType: 实例付费方式。
 - PREPAID：包年包月计费。

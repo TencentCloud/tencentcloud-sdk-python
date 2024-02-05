@@ -12251,6 +12251,51 @@ class GroupTriggerConditionInfo(AbstractModel):
         
 
 
+class HighLightItem(AbstractModel):
+    """日志内容高亮描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 高亮的日志Key
+        :type Key: str
+        :param _Values: 高亮的语法
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HistogramInfo(AbstractModel):
     """直方图详细信息
 
@@ -12924,6 +12969,9 @@ class LogContextInfo(AbstractModel):
         :param _IndexStatus: 日志创建索引异常原因(仅在日志创建索引异常时有值)
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
+        :param _HighLights: 日志内容的高亮描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighLights: list of HighLightItem
         """
         self._Source = None
         self._Filename = None
@@ -12934,6 +12982,7 @@ class LogContextInfo(AbstractModel):
         self._HostName = None
         self._RawLog = None
         self._IndexStatus = None
+        self._HighLights = None
 
     @property
     def Source(self):
@@ -13007,6 +13056,14 @@ class LogContextInfo(AbstractModel):
     def IndexStatus(self, IndexStatus):
         self._IndexStatus = IndexStatus
 
+    @property
+    def HighLights(self):
+        return self._HighLights
+
+    @HighLights.setter
+    def HighLights(self, HighLights):
+        self._HighLights = HighLights
+
 
     def _deserialize(self, params):
         self._Source = params.get("Source")
@@ -13018,6 +13075,12 @@ class LogContextInfo(AbstractModel):
         self._HostName = params.get("HostName")
         self._RawLog = params.get("RawLog")
         self._IndexStatus = params.get("IndexStatus")
+        if params.get("HighLights") is not None:
+            self._HighLights = []
+            for item in params.get("HighLights"):
+                obj = HighLightItem()
+                obj._deserialize(item)
+                self._HighLights.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19796,7 +19859,7 @@ class TopicIdAndRegion(AbstractModel):
 
 
 class TopicInfo(AbstractModel):
-    """日志主题信息
+    """主题基本信息
 
     """
 
@@ -19804,22 +19867,22 @@ class TopicInfo(AbstractModel):
         r"""
         :param _LogsetId: 日志集ID
         :type LogsetId: str
-        :param _TopicId: 日志主题ID
+        :param _TopicId: 主题ID
         :type TopicId: str
-        :param _TopicName: 日志主题名称
+        :param _TopicName: 主题名称
         :type TopicName: str
         :param _PartitionCount: 主题分区个数
         :type PartitionCount: int
-        :param _Index: 是否开启索引
+        :param _Index: 主题是否开启索引（主题类型需为日志主题）
         :type Index: bool
-        :param _AssumerName: 云产品标识，日志主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+        :param _AssumerName: 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssumerName: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
-        :param _Status: 日主主题是否开启采集
+        :param _Status: 主题是否开启采集
         :type Status: bool
-        :param _Tags: 日志主题绑定的标签信息
+        :param _Tags: 主题绑定的标签信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
         :param _AutoSplit: 该主题是否开启自动分裂
@@ -19828,7 +19891,7 @@ class TopicInfo(AbstractModel):
         :param _MaxSplitPartitions: 若开启自动分裂的话，该主题能够允许的最大分区数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSplitPartitions: int
-        :param _StorageType: 日主题的存储类型
+        :param _StorageType: 主题的存储类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: str
         :param _Period: 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
@@ -19837,11 +19900,11 @@ class TopicInfo(AbstractModel):
         :param _SubAssumerName: 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAssumerName: str
-        :param _Describes: 日志主题描述
+        :param _Describes: 主题描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Describes: str
-        :param _HotPeriod: 开启日志沉降，热存储的生命周期， hotPeriod < Period。
-热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
+        :param _HotPeriod: 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
+标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HotPeriod: int
         :param _BizType: 主题类型。

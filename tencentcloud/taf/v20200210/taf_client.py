@@ -26,6 +26,29 @@ class TafClient(AbstractClient):
     _service = 'taf'
 
 
+    def ManagePortraitRisk(self, request):
+        """虚假流量识别
+
+        :param request: Request instance for ManagePortraitRisk.
+        :type request: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskRequest`
+        :rtype: :class:`tencentcloud.taf.v20200210.models.ManagePortraitRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ManagePortraitRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ManagePortraitRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeCustomizedAudience(self, request):
         """流量反欺诈-流量验准定制版
 

@@ -7885,7 +7885,7 @@ class DescribeCdnDomainLogsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _DomainLogs: 日志包下载链接。
-下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。
+下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。链接有效期1天。
         :type DomainLogs: list of DomainLog
         :param _TotalCount: 查询到的总条数
         :type TotalCount: int
