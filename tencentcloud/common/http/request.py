@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import os
-import socket
 import logging
+
 import requests
 import certifi
+
+from tencentcloud.common.http.pre_conn import PreConnAdapter
 
 try:
     from urllib.parse import urlparse
@@ -25,7 +27,7 @@ def _get_proxy_from_env(host, varname="HTTPS_PROXY"):
 
 
 class ProxyConnection(object):
-    def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False):
+    def __init__(self, host, timeout=60, proxy=None, certification=None, is_http=False, pre_conn_pool_size=0):
         self.request_host = host
         self.certification = certification
         if certification is None:
@@ -39,23 +41,29 @@ class ProxyConnection(object):
         if proxy:
             self.proxy = {"http": proxy, "https": proxy}
         self.request_length = 0
+        self._session = requests.Session()
+        if pre_conn_pool_size > 0:
+            adapter = PreConnAdapter(conn_pool_size=pre_conn_pool_size)
+            self._session.mount("https://", adapter)
+            self._session.mount("http://", adapter)
 
     def request(self, method, url, body=None, headers=None):
         headers.setdefault("Host", self.request_host)
-        return requests.request(method=method,
-                                url=url,
-                                data=body,
-                                headers=headers,
-                                proxies=self.proxy,
-                                verify=self.certification,
-                                timeout=self.timeout,
-                                stream=True)
+        return self._session.request(method=method,
+                                     url=url,
+                                     data=body,
+                                     headers=headers,
+                                     proxies=self.proxy,
+                                     verify=self.certification,
+                                     timeout=self.timeout,
+                                     stream=True)
 
 
 class ApiRequest(object):
-    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None):
+    def __init__(self, host, req_timeout=60, debug=False, proxy=None, is_http=False, certification=None,
+                 pre_conn_pool_size=0):
         self.conn = ProxyConnection(host, timeout=req_timeout, proxy=proxy, certification=certification,
-                                    is_http=is_http)
+                                    is_http=is_http, pre_conn_pool_size=pre_conn_pool_size)
         self.is_http = is_http
         self.host = host
         self.req_timeout = req_timeout
