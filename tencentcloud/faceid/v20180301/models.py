@@ -2147,7 +2147,7 @@ class DetectInfoText(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrCode: 本次流程最终验证结果。0为成功
+        :param _ErrCode: 本次流程最终验证结果。0为成功（仅包含活体人脸核身结果，不包含意愿核身结果）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrCode: int
         :param _ErrMsg: 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）

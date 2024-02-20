@@ -11179,6 +11179,112 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyServiceAccountPasswordRequest(AbstractModel):
+    """ModifyServiceAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例Id
+        :type RegistryId: str
+        :param _Name: 服务级账号名
+        :type Name: str
+        :param _Random: 是否随机生成密码
+        :type Random: bool
+        :param _Password: 服务级账号密码，长度在8到20之间且需包含至少一个大写字符，一个小写字符和一个数字
+        :type Password: str
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Random = None
+        self._Password = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Random(self):
+        return self._Random
+
+    @Random.setter
+    def Random(self, Random):
+        self._Random = Random
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._Random = params.get("Random")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceAccountPasswordResponse(AbstractModel):
+    """ModifyServiceAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Password: 自定义用户密码，仅展示一次，请注意留存	
+        :type Password: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Password = None
+        self._RequestId = None
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Password = params.get("Password")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyServiceAccountRequest(AbstractModel):
     """ModifyServiceAccount请求参数结构体
 

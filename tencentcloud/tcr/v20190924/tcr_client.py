@@ -2397,6 +2397,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyServiceAccountPassword(self, request):
+        """更新服务级账号密码
+
+        :param request: Request instance for ModifyServiceAccountPassword.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyTagRetentionRule(self, request):
         """更新版本保留规则
 
