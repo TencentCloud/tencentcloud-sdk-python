@@ -23555,6 +23555,9 @@ class TaskResultInfo(AbstractModel):
         :type DisplayFormat: str
         :param _TotalTime: 任务耗时，单位： ms
         :type TotalTime: int
+        :param _QueryResultTime: 获取结果消耗的时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryResultTime: float
         """
         self._TaskId = None
         self._DatasourceConnectionName = None
@@ -23575,6 +23578,7 @@ class TaskResultInfo(AbstractModel):
         self._ProgressDetail = None
         self._DisplayFormat = None
         self._TotalTime = None
+        self._QueryResultTime = None
 
     @property
     def TaskId(self):
@@ -23728,6 +23732,14 @@ class TaskResultInfo(AbstractModel):
     def TotalTime(self, TotalTime):
         self._TotalTime = TotalTime
 
+    @property
+    def QueryResultTime(self):
+        return self._QueryResultTime
+
+    @QueryResultTime.setter
+    def QueryResultTime(self, QueryResultTime):
+        self._QueryResultTime = QueryResultTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -23754,6 +23766,7 @@ class TaskResultInfo(AbstractModel):
         self._ProgressDetail = params.get("ProgressDetail")
         self._DisplayFormat = params.get("DisplayFormat")
         self._TotalTime = params.get("TotalTime")
+        self._QueryResultTime = params.get("QueryResultTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

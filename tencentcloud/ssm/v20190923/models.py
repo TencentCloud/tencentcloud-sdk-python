@@ -2678,6 +2678,7 @@ class SecretMetadata(AbstractModel):
 1 -- 云产品凭据；
 2 -- SSH密钥对凭据；
 3 -- 云API密钥对凭据；
+4 -- Redis类型凭据；
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretType: int
         :param _ProductName: 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效

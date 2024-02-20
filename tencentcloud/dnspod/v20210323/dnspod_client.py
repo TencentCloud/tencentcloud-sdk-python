@@ -1134,7 +1134,7 @@ class DnspodClient(AbstractClient):
 
 
     def DescribeUserDetail(self, request):
-        """获取帐户信息
+        """获取账户信息
 
         :param request: Request instance for DescribeUserDetail.
         :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeUserDetailRequest`

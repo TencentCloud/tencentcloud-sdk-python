@@ -2141,6 +2141,594 @@ class BinlogItem(AbstractModel):
         
 
 
+class BizTaskInfo(AbstractModel):
+    """任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 任务id
+        :type ID: int
+        :param _AppId: 用户appid
+        :type AppId: int
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _DelayTime: 延迟执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayTime: str
+        :param _ErrMsg: 任务失败信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param _FlowId: 异步任务流id
+        :type FlowId: int
+        :param _Input: 任务输入信息
+        :type Input: str
+        :param _InstanceGrpId: 实例组id
+        :type InstanceGrpId: str
+        :param _InstanceGroupId: 实例组id
+        :type InstanceGroupId: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ObjectId: 任务操作对象id
+        :type ObjectId: str
+        :param _ObjectType: 任务操作对象类型
+        :type ObjectType: str
+        :param _Operator: 操作者uin
+        :type Operator: str
+        :param _Output: 任务输出信息
+        :type Output: str
+        :param _Status: 任务状态
+        :type Status: str
+        :param _TaskType: 任务类型
+        :type TaskType: str
+        :param _TriggerTaskId: 触发本任务的父任务ID
+        :type TriggerTaskId: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _StartTime: 任务开始时间
+        :type StartTime: str
+        :param _EndTime: 任务结束时间
+        :type EndTime: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _Process: 任务进度
+        :type Process: int
+        :param _ModifyParamsData: 修改参数任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyParamsData: list of ModifyParamsData
+        :param _CreateClustersData: 创建集群任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateClustersData: :class:`tencentcloud.cynosdb.v20190107.models.CreateClustersData`
+        :param _RollbackData: 集群回档任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RollbackData: :class:`tencentcloud.cynosdb.v20190107.models.RollbackData`
+        :param _ModifyInstanceData: 实例变配任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyInstanceData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyInstanceData`
+        :param _ManualBackupData: 手动备份任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManualBackupData: :class:`tencentcloud.cynosdb.v20190107.models.ManualBackupData`
+        :param _ModifyDbVersionData: 修改内核版本任务信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyDbVersionData: :class:`tencentcloud.cynosdb.v20190107.models.ModifyDbVersionData`
+        :param _ClusterSlaveData: 集群可用区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterSlaveData: :class:`tencentcloud.cynosdb.v20190107.models.ClusterSlaveData`
+        :param _SwitchClusterLogBin: 转换集群日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SwitchClusterLogBin: :class:`tencentcloud.cynosdb.v20190107.models.SwitchClusterLogBin`
+        :param _ModifyInstanceParamsData: 修改实例参数数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyInstanceParamsData: :class:`tencentcloud.cynosdb.v20190107.models.BizTaskModifyParamsData`
+        :param _TaskMaintainInfo: 维护时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskMaintainInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskMaintainInfo`
+        """
+        self._ID = None
+        self._AppId = None
+        self._ClusterId = None
+        self._CreateTime = None
+        self._DelayTime = None
+        self._ErrMsg = None
+        self._FlowId = None
+        self._Input = None
+        self._InstanceGrpId = None
+        self._InstanceGroupId = None
+        self._InstanceId = None
+        self._ObjectId = None
+        self._ObjectType = None
+        self._Operator = None
+        self._Output = None
+        self._Status = None
+        self._TaskType = None
+        self._TriggerTaskId = None
+        self._UpdateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClusterName = None
+        self._InstanceName = None
+        self._Process = None
+        self._ModifyParamsData = None
+        self._CreateClustersData = None
+        self._RollbackData = None
+        self._ModifyInstanceData = None
+        self._ManualBackupData = None
+        self._ModifyDbVersionData = None
+        self._ClusterSlaveData = None
+        self._SwitchClusterLogBin = None
+        self._ModifyInstanceParamsData = None
+        self._TaskMaintainInfo = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DelayTime(self):
+        return self._DelayTime
+
+    @DelayTime.setter
+    def DelayTime(self, DelayTime):
+        self._DelayTime = DelayTime
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def InstanceGrpId(self):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
+        return self._InstanceGrpId
+
+    @InstanceGrpId.setter
+    def InstanceGrpId(self, InstanceGrpId):
+        warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
+
+        self._InstanceGrpId = InstanceGrpId
+
+    @property
+    def InstanceGroupId(self):
+        return self._InstanceGroupId
+
+    @InstanceGroupId.setter
+    def InstanceGroupId(self, InstanceGroupId):
+        self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ObjectId(self):
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def ObjectType(self):
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TriggerTaskId(self):
+        return self._TriggerTaskId
+
+    @TriggerTaskId.setter
+    def TriggerTaskId(self, TriggerTaskId):
+        self._TriggerTaskId = TriggerTaskId
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Process(self):
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def ModifyParamsData(self):
+        return self._ModifyParamsData
+
+    @ModifyParamsData.setter
+    def ModifyParamsData(self, ModifyParamsData):
+        self._ModifyParamsData = ModifyParamsData
+
+    @property
+    def CreateClustersData(self):
+        return self._CreateClustersData
+
+    @CreateClustersData.setter
+    def CreateClustersData(self, CreateClustersData):
+        self._CreateClustersData = CreateClustersData
+
+    @property
+    def RollbackData(self):
+        return self._RollbackData
+
+    @RollbackData.setter
+    def RollbackData(self, RollbackData):
+        self._RollbackData = RollbackData
+
+    @property
+    def ModifyInstanceData(self):
+        return self._ModifyInstanceData
+
+    @ModifyInstanceData.setter
+    def ModifyInstanceData(self, ModifyInstanceData):
+        self._ModifyInstanceData = ModifyInstanceData
+
+    @property
+    def ManualBackupData(self):
+        return self._ManualBackupData
+
+    @ManualBackupData.setter
+    def ManualBackupData(self, ManualBackupData):
+        self._ManualBackupData = ManualBackupData
+
+    @property
+    def ModifyDbVersionData(self):
+        return self._ModifyDbVersionData
+
+    @ModifyDbVersionData.setter
+    def ModifyDbVersionData(self, ModifyDbVersionData):
+        self._ModifyDbVersionData = ModifyDbVersionData
+
+    @property
+    def ClusterSlaveData(self):
+        return self._ClusterSlaveData
+
+    @ClusterSlaveData.setter
+    def ClusterSlaveData(self, ClusterSlaveData):
+        self._ClusterSlaveData = ClusterSlaveData
+
+    @property
+    def SwitchClusterLogBin(self):
+        return self._SwitchClusterLogBin
+
+    @SwitchClusterLogBin.setter
+    def SwitchClusterLogBin(self, SwitchClusterLogBin):
+        self._SwitchClusterLogBin = SwitchClusterLogBin
+
+    @property
+    def ModifyInstanceParamsData(self):
+        return self._ModifyInstanceParamsData
+
+    @ModifyInstanceParamsData.setter
+    def ModifyInstanceParamsData(self, ModifyInstanceParamsData):
+        self._ModifyInstanceParamsData = ModifyInstanceParamsData
+
+    @property
+    def TaskMaintainInfo(self):
+        return self._TaskMaintainInfo
+
+    @TaskMaintainInfo.setter
+    def TaskMaintainInfo(self, TaskMaintainInfo):
+        self._TaskMaintainInfo = TaskMaintainInfo
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._CreateTime = params.get("CreateTime")
+        self._DelayTime = params.get("DelayTime")
+        self._ErrMsg = params.get("ErrMsg")
+        self._FlowId = params.get("FlowId")
+        self._Input = params.get("Input")
+        self._InstanceGrpId = params.get("InstanceGrpId")
+        self._InstanceGroupId = params.get("InstanceGroupId")
+        self._InstanceId = params.get("InstanceId")
+        self._ObjectId = params.get("ObjectId")
+        self._ObjectType = params.get("ObjectType")
+        self._Operator = params.get("Operator")
+        self._Output = params.get("Output")
+        self._Status = params.get("Status")
+        self._TaskType = params.get("TaskType")
+        self._TriggerTaskId = params.get("TriggerTaskId")
+        self._UpdateTime = params.get("UpdateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClusterName = params.get("ClusterName")
+        self._InstanceName = params.get("InstanceName")
+        self._Process = params.get("Process")
+        if params.get("ModifyParamsData") is not None:
+            self._ModifyParamsData = []
+            for item in params.get("ModifyParamsData"):
+                obj = ModifyParamsData()
+                obj._deserialize(item)
+                self._ModifyParamsData.append(obj)
+        if params.get("CreateClustersData") is not None:
+            self._CreateClustersData = CreateClustersData()
+            self._CreateClustersData._deserialize(params.get("CreateClustersData"))
+        if params.get("RollbackData") is not None:
+            self._RollbackData = RollbackData()
+            self._RollbackData._deserialize(params.get("RollbackData"))
+        if params.get("ModifyInstanceData") is not None:
+            self._ModifyInstanceData = ModifyInstanceData()
+            self._ModifyInstanceData._deserialize(params.get("ModifyInstanceData"))
+        if params.get("ManualBackupData") is not None:
+            self._ManualBackupData = ManualBackupData()
+            self._ManualBackupData._deserialize(params.get("ManualBackupData"))
+        if params.get("ModifyDbVersionData") is not None:
+            self._ModifyDbVersionData = ModifyDbVersionData()
+            self._ModifyDbVersionData._deserialize(params.get("ModifyDbVersionData"))
+        if params.get("ClusterSlaveData") is not None:
+            self._ClusterSlaveData = ClusterSlaveData()
+            self._ClusterSlaveData._deserialize(params.get("ClusterSlaveData"))
+        if params.get("SwitchClusterLogBin") is not None:
+            self._SwitchClusterLogBin = SwitchClusterLogBin()
+            self._SwitchClusterLogBin._deserialize(params.get("SwitchClusterLogBin"))
+        if params.get("ModifyInstanceParamsData") is not None:
+            self._ModifyInstanceParamsData = BizTaskModifyParamsData()
+            self._ModifyInstanceParamsData._deserialize(params.get("ModifyInstanceParamsData"))
+        if params.get("TaskMaintainInfo") is not None:
+            self._TaskMaintainInfo = TaskMaintainInfo()
+            self._TaskMaintainInfo._deserialize(params.get("TaskMaintainInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BizTaskModifyInstanceParam(AbstractModel):
+    """实例参数修改任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _ModifyInstanceParamList: 实例参数修改任务详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyInstanceParamList: list of ModifyParamItem
+        """
+        self._InstanceId = None
+        self._ModifyInstanceParamList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ModifyInstanceParamList(self):
+        return self._ModifyInstanceParamList
+
+    @ModifyInstanceParamList.setter
+    def ModifyInstanceParamList(self, ModifyInstanceParamList):
+        self._ModifyInstanceParamList = ModifyInstanceParamList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ModifyInstanceParamList") is not None:
+            self._ModifyInstanceParamList = []
+            for item in params.get("ModifyInstanceParamList"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self._ModifyInstanceParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BizTaskModifyParamsData(AbstractModel):
+    """修改参数任务数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterParamList: 集群参数修改数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterParamList: list of ModifyParamItem
+        :param _ModifyInstanceParams: 实例参数修改数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyInstanceParams: list of BizTaskModifyInstanceParam
+        """
+        self._ClusterId = None
+        self._ClusterParamList = None
+        self._ModifyInstanceParams = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterParamList(self):
+        return self._ClusterParamList
+
+    @ClusterParamList.setter
+    def ClusterParamList(self, ClusterParamList):
+        self._ClusterParamList = ClusterParamList
+
+    @property
+    def ModifyInstanceParams(self):
+        return self._ModifyInstanceParams
+
+    @ModifyInstanceParams.setter
+    def ModifyInstanceParams(self, ModifyInstanceParams):
+        self._ModifyInstanceParams = ModifyInstanceParams
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ClusterParamList") is not None:
+            self._ClusterParamList = []
+            for item in params.get("ClusterParamList"):
+                obj = ModifyParamItem()
+                obj._deserialize(item)
+                self._ClusterParamList.append(obj)
+        if params.get("ModifyInstanceParams") is not None:
+            self._ModifyInstanceParams = []
+            for item in params.get("ModifyInstanceParams"):
+                obj = BizTaskModifyInstanceParam()
+                obj._deserialize(item)
+                self._ModifyInstanceParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloseAuditServiceRequest(AbstractModel):
     """CloseAuditService请求参数结构体
 
@@ -2761,6 +3349,79 @@ class ClusterParamModifyLog(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._ClusterId = params.get("ClusterId")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterSlaveData(AbstractModel):
+    """集群从可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldMasterZone: 旧主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldMasterZone: str
+        :param _OldSlaveZone: 旧从可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldSlaveZone: list of str
+        :param _NewMasterZone: 新主可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewMasterZone: str
+        :param _NewSlaveZone: 新从可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewSlaveZone: list of str
+        """
+        self._OldMasterZone = None
+        self._OldSlaveZone = None
+        self._NewMasterZone = None
+        self._NewSlaveZone = None
+
+    @property
+    def OldMasterZone(self):
+        return self._OldMasterZone
+
+    @OldMasterZone.setter
+    def OldMasterZone(self, OldMasterZone):
+        self._OldMasterZone = OldMasterZone
+
+    @property
+    def OldSlaveZone(self):
+        return self._OldSlaveZone
+
+    @OldSlaveZone.setter
+    def OldSlaveZone(self, OldSlaveZone):
+        self._OldSlaveZone = OldSlaveZone
+
+    @property
+    def NewMasterZone(self):
+        return self._NewMasterZone
+
+    @NewMasterZone.setter
+    def NewMasterZone(self, NewMasterZone):
+        self._NewMasterZone = NewMasterZone
+
+    @property
+    def NewSlaveZone(self):
+        return self._NewSlaveZone
+
+    @NewSlaveZone.setter
+    def NewSlaveZone(self, NewSlaveZone):
+        self._NewSlaveZone = NewSlaveZone
+
+
+    def _deserialize(self, params):
+        self._OldMasterZone = params.get("OldMasterZone")
+        self._OldSlaveZone = params.get("OldSlaveZone")
+        self._NewMasterZone = params.get("NewMasterZone")
+        self._NewSlaveZone = params.get("NewSlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3448,6 +4109,63 @@ class CreateClusterDatabaseResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CreateClustersData(AbstractModel):
+    """创建集群任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: 实例CPU
+        :type Cpu: int
+        :param _Memory: 实例内存
+        :type Memory: int
+        :param _StorageLimit: 集群存储上限
+        :type StorageLimit: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._StorageLimit = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def StorageLimit(self):
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._StorageLimit = params.get("StorageLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateClustersRequest(AbstractModel):
@@ -14427,6 +15145,146 @@ class DescribeSupportProxyVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTasksRequest(AbstractModel):
+    """DescribeTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeBegin: 任务开始时间起始值
+        :type StartTimeBegin: str
+        :param _StartTimeEnd: 任务开始时间结束值
+        :type StartTimeEnd: str
+        :param _Filters: 过滤条件
+        :type Filters: list of QueryFilter
+        :param _Limit: 查询列表长度
+        :type Limit: int
+        :param _Offset: 查询列表偏移量
+        :type Offset: int
+        """
+        self._StartTimeBegin = None
+        self._StartTimeEnd = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def StartTimeBegin(self):
+        return self._StartTimeBegin
+
+    @StartTimeBegin.setter
+    def StartTimeBegin(self, StartTimeBegin):
+        self._StartTimeBegin = StartTimeBegin
+
+    @property
+    def StartTimeEnd(self):
+        return self._StartTimeEnd
+
+    @StartTimeEnd.setter
+    def StartTimeEnd(self, StartTimeEnd):
+        self._StartTimeEnd = StartTimeEnd
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._StartTimeBegin = params.get("StartTimeBegin")
+        self._StartTimeEnd = params.get("StartTimeEnd")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTasksResponse(AbstractModel):
+    """DescribeTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 任务列表总条数
+        :type TotalCount: int
+        :param _TaskList: 任务列表
+        :type TaskList: list of BizTaskInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskList(self):
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = BizTaskInfo()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones请求参数结构体
 
@@ -16823,6 +17681,63 @@ class LogicBackupConfigInfo(AbstractModel):
         
 
 
+class ManualBackupData(AbstractModel):
+    """手动备份任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupType: 备份类型。snapshot-快照备份
+        :type BackupType: str
+        :param _BackupMethod: 备份方式。auto-自动备份，manual-手动
+        :type BackupMethod: str
+        :param _SnapshotTime: 备份时间
+        :type SnapshotTime: str
+        """
+        self._BackupType = None
+        self._BackupMethod = None
+        self._SnapshotTime = None
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def BackupMethod(self):
+        return self._BackupMethod
+
+    @BackupMethod.setter
+    def BackupMethod(self, BackupMethod):
+        self._BackupMethod = BackupMethod
+
+    @property
+    def SnapshotTime(self):
+        return self._SnapshotTime
+
+    @SnapshotTime.setter
+    def SnapshotTime(self, SnapshotTime):
+        self._SnapshotTime = SnapshotTime
+
+
+    def _deserialize(self, params):
+        self._BackupType = params.get("BackupType")
+        self._BackupMethod = params.get("BackupMethod")
+        self._SnapshotTime = params.get("SnapshotTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifiableInfo(AbstractModel):
     """参数是否可修改的详细信息
 
@@ -18519,6 +19434,168 @@ class ModifyDBInstanceSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDbVersionData(AbstractModel):
+    """修改数据库内核版本任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldVersion: 修改前版本
+        :type OldVersion: str
+        :param _NewVersion: 修改后版本
+        :type NewVersion: str
+        :param _UpgradeType: 升级方式
+        :type UpgradeType: str
+        """
+        self._OldVersion = None
+        self._NewVersion = None
+        self._UpgradeType = None
+
+    @property
+    def OldVersion(self):
+        return self._OldVersion
+
+    @OldVersion.setter
+    def OldVersion(self, OldVersion):
+        self._OldVersion = OldVersion
+
+    @property
+    def NewVersion(self):
+        return self._NewVersion
+
+    @NewVersion.setter
+    def NewVersion(self, NewVersion):
+        self._NewVersion = NewVersion
+
+    @property
+    def UpgradeType(self):
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+
+    def _deserialize(self, params):
+        self._OldVersion = params.get("OldVersion")
+        self._NewVersion = params.get("NewVersion")
+        self._UpgradeType = params.get("UpgradeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceData(AbstractModel):
+    """实例变配任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: 变配后CPU
+        :type Cpu: int
+        :param _Memory: 变配后内存
+        :type Memory: int
+        :param _StorageLimit: 变配后存储上限
+        :type StorageLimit: int
+        :param _OldCpu: 变配前CPU
+        :type OldCpu: int
+        :param _OldMemory: 变配前内存
+        :type OldMemory: int
+        :param _OldStorageLimit: 变配前存储上限
+        :type OldStorageLimit: int
+        :param _UpgradeType: 升级方式。升级完成后切换或维护时间内切换
+        :type UpgradeType: str
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._StorageLimit = None
+        self._OldCpu = None
+        self._OldMemory = None
+        self._OldStorageLimit = None
+        self._UpgradeType = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def StorageLimit(self):
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def OldCpu(self):
+        return self._OldCpu
+
+    @OldCpu.setter
+    def OldCpu(self, OldCpu):
+        self._OldCpu = OldCpu
+
+    @property
+    def OldMemory(self):
+        return self._OldMemory
+
+    @OldMemory.setter
+    def OldMemory(self, OldMemory):
+        self._OldMemory = OldMemory
+
+    @property
+    def OldStorageLimit(self):
+        return self._OldStorageLimit
+
+    @OldStorageLimit.setter
+    def OldStorageLimit(self, OldStorageLimit):
+        self._OldStorageLimit = OldStorageLimit
+
+    @property
+    def UpgradeType(self):
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._StorageLimit = params.get("StorageLimit")
+        self._OldCpu = params.get("OldCpu")
+        self._OldMemory = params.get("OldMemory")
+        self._OldStorageLimit = params.get("OldStorageLimit")
+        self._UpgradeType = params.get("UpgradeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyInstanceNameRequest(AbstractModel):
     """ModifyInstanceName请求参数结构体
 
@@ -18966,6 +20043,63 @@ class ModifyParamTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifyParamsData(AbstractModel):
+    """修改参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名
+        :type Name: str
+        :param _OldValue: 修改前参数值
+        :type OldValue: str
+        :param _CurValue: 修改后参数值
+        :type CurValue: str
+        """
+        self._Name = None
+        self._OldValue = None
+        self._CurValue = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OldValue(self):
+        return self._OldValue
+
+    @OldValue.setter
+    def OldValue(self, OldValue):
+        self._OldValue = OldValue
+
+    @property
+    def CurValue(self):
+        return self._CurValue
+
+    @CurValue.setter
+    def CurValue(self, CurValue):
+        self._CurValue = CurValue
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._OldValue = params.get("OldValue")
+        self._CurValue = params.get("CurValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyProxyDescRequest(AbstractModel):
@@ -23687,6 +24821,199 @@ class RollBackClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RollbackData(AbstractModel):
+    """回档任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: 实例CPU
+        :type Cpu: int
+        :param _Memory: 实例内存
+        :type Memory: int
+        :param _StorageLimit: 集群存储上限
+        :type StorageLimit: int
+        :param _OriginalClusterId: 原集群id
+        :type OriginalClusterId: str
+        :param _OriginalClusterName: 原集群名
+        :type OriginalClusterName: str
+        :param _RollbackStrategy: 回档方式
+        :type RollbackStrategy: str
+        :param _SnapshotTime: 快照时间
+        :type SnapshotTime: str
+        :param _MinCpu: 回档到serverlessls集群时最小CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinCpu: int
+        :param _MaxCpu: 回档到serverlessls集群时最大CPU
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxCpu: int
+        :param _SnapShotId: 快照ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapShotId: int
+        :param _RollbackDatabases: 回档数据库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RollbackDatabases: list of RollbackDatabase
+        :param _RollbackTables: 回档数据表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RollbackTables: list of RollbackTable
+        :param _BackupFileName: 备份文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupFileName: str
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._StorageLimit = None
+        self._OriginalClusterId = None
+        self._OriginalClusterName = None
+        self._RollbackStrategy = None
+        self._SnapshotTime = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._SnapShotId = None
+        self._RollbackDatabases = None
+        self._RollbackTables = None
+        self._BackupFileName = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def StorageLimit(self):
+        return self._StorageLimit
+
+    @StorageLimit.setter
+    def StorageLimit(self, StorageLimit):
+        self._StorageLimit = StorageLimit
+
+    @property
+    def OriginalClusterId(self):
+        return self._OriginalClusterId
+
+    @OriginalClusterId.setter
+    def OriginalClusterId(self, OriginalClusterId):
+        self._OriginalClusterId = OriginalClusterId
+
+    @property
+    def OriginalClusterName(self):
+        return self._OriginalClusterName
+
+    @OriginalClusterName.setter
+    def OriginalClusterName(self, OriginalClusterName):
+        self._OriginalClusterName = OriginalClusterName
+
+    @property
+    def RollbackStrategy(self):
+        return self._RollbackStrategy
+
+    @RollbackStrategy.setter
+    def RollbackStrategy(self, RollbackStrategy):
+        self._RollbackStrategy = RollbackStrategy
+
+    @property
+    def SnapshotTime(self):
+        return self._SnapshotTime
+
+    @SnapshotTime.setter
+    def SnapshotTime(self, SnapshotTime):
+        self._SnapshotTime = SnapshotTime
+
+    @property
+    def MinCpu(self):
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def SnapShotId(self):
+        return self._SnapShotId
+
+    @SnapShotId.setter
+    def SnapShotId(self, SnapShotId):
+        self._SnapShotId = SnapShotId
+
+    @property
+    def RollbackDatabases(self):
+        return self._RollbackDatabases
+
+    @RollbackDatabases.setter
+    def RollbackDatabases(self, RollbackDatabases):
+        self._RollbackDatabases = RollbackDatabases
+
+    @property
+    def RollbackTables(self):
+        return self._RollbackTables
+
+    @RollbackTables.setter
+    def RollbackTables(self, RollbackTables):
+        self._RollbackTables = RollbackTables
+
+    @property
+    def BackupFileName(self):
+        return self._BackupFileName
+
+    @BackupFileName.setter
+    def BackupFileName(self, BackupFileName):
+        self._BackupFileName = BackupFileName
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._StorageLimit = params.get("StorageLimit")
+        self._OriginalClusterId = params.get("OriginalClusterId")
+        self._OriginalClusterName = params.get("OriginalClusterName")
+        self._RollbackStrategy = params.get("RollbackStrategy")
+        self._SnapshotTime = params.get("SnapshotTime")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._SnapShotId = params.get("SnapShotId")
+        if params.get("RollbackDatabases") is not None:
+            self._RollbackDatabases = []
+            for item in params.get("RollbackDatabases"):
+                obj = RollbackDatabase()
+                obj._deserialize(item)
+                self._RollbackDatabases.append(obj)
+        if params.get("RollbackTables") is not None:
+            self._RollbackTables = []
+            for item in params.get("RollbackTables"):
+                obj = RollbackTable()
+                obj._deserialize(item)
+                self._RollbackTables.append(obj)
+        self._BackupFileName = params.get("BackupFileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RollbackDatabase(AbstractModel):
     """回滚数据库信息
 
@@ -24984,6 +26311,40 @@ class SlowQueriesItem(AbstractModel):
         
 
 
+class SwitchClusterLogBin(AbstractModel):
+    """转换集群log bin开关
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SwitchClusterVpcRequest(AbstractModel):
     """SwitchClusterVpc请求参数结构体
 
@@ -25409,6 +26770,66 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskMaintainInfo(AbstractModel):
+    """TaskMaintainInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaintainStartTime: 执行开始时间(距离0点的秒数)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainStartTime: int
+        :param _MaintainDuration: 持续的时间(单位：秒)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainDuration: int
+        :param _MaintainWeekDays: 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaintainWeekDays: list of str
+        """
+        self._MaintainStartTime = None
+        self._MaintainDuration = None
+        self._MaintainWeekDays = None
+
+    @property
+    def MaintainStartTime(self):
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainDuration(self):
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainWeekDays(self):
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+
+    def _deserialize(self, params):
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

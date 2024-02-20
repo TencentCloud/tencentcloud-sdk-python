@@ -2506,7 +2506,7 @@ class DescribeQueuesResponse(AbstractModel):
         r"""
         :param _QueueSet: 队列概览信息列表。
         :type QueueSet: list of QueueOverview
-        :param _TotalCount: 符合条件的节点数量。
+        :param _TotalCount: 符合条件的队列数量。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

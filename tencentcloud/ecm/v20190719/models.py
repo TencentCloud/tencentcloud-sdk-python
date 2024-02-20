@@ -17587,6 +17587,10 @@ class NetworkStorageRange(AbstractModel):
         :type PerDataDisk: int
         :param _MaxModuleNum: 总模块数量
         :type MaxModuleNum: int
+        :param _CBSSupported: 是否支持cbs
+        :type CBSSupported: bool
+        :param _DiskNumLimit: 磁盘数量限制
+        :type DiskNumLimit: int
         """
         self._MaxBandwidth = None
         self._MaxSystemDiskSize = None
@@ -17603,6 +17607,8 @@ class NetworkStorageRange(AbstractModel):
         self._PerBandwidth = None
         self._PerDataDisk = None
         self._MaxModuleNum = None
+        self._CBSSupported = None
+        self._DiskNumLimit = None
 
     @property
     def MaxBandwidth(self):
@@ -17724,6 +17730,22 @@ class NetworkStorageRange(AbstractModel):
     def MaxModuleNum(self, MaxModuleNum):
         self._MaxModuleNum = MaxModuleNum
 
+    @property
+    def CBSSupported(self):
+        return self._CBSSupported
+
+    @CBSSupported.setter
+    def CBSSupported(self, CBSSupported):
+        self._CBSSupported = CBSSupported
+
+    @property
+    def DiskNumLimit(self):
+        return self._DiskNumLimit
+
+    @DiskNumLimit.setter
+    def DiskNumLimit(self, DiskNumLimit):
+        self._DiskNumLimit = DiskNumLimit
+
 
     def _deserialize(self, params):
         self._MaxBandwidth = params.get("MaxBandwidth")
@@ -17741,6 +17763,8 @@ class NetworkStorageRange(AbstractModel):
         self._PerBandwidth = params.get("PerBandwidth")
         self._PerDataDisk = params.get("PerDataDisk")
         self._MaxModuleNum = params.get("MaxModuleNum")
+        self._CBSSupported = params.get("CBSSupported")
+        self._DiskNumLimit = params.get("DiskNumLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18583,6 +18607,9 @@ class Position(AbstractModel):
         :type City: :class:`tencentcloud.ecm.v20190719.models.City`
         :param _RegionInfo: 实例所在的Region的信息。
         :type RegionInfo: :class:`tencentcloud.ecm.v20190719.models.RegionInfo`
+        :param _Ipv6Supported: 实例是否支持ipv6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6Supported: bool
         """
         self._ZoneInfo = None
         self._Country = None
@@ -18590,6 +18617,7 @@ class Position(AbstractModel):
         self._Province = None
         self._City = None
         self._RegionInfo = None
+        self._Ipv6Supported = None
 
     @property
     def ZoneInfo(self):
@@ -18639,6 +18667,14 @@ class Position(AbstractModel):
     def RegionInfo(self, RegionInfo):
         self._RegionInfo = RegionInfo
 
+    @property
+    def Ipv6Supported(self):
+        return self._Ipv6Supported
+
+    @Ipv6Supported.setter
+    def Ipv6Supported(self, Ipv6Supported):
+        self._Ipv6Supported = Ipv6Supported
+
 
     def _deserialize(self, params):
         if params.get("ZoneInfo") is not None:
@@ -18659,6 +18695,7 @@ class Position(AbstractModel):
         if params.get("RegionInfo") is not None:
             self._RegionInfo = RegionInfo()
             self._RegionInfo._deserialize(params.get("RegionInfo"))
+        self._Ipv6Supported = params.get("Ipv6Supported")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23505,12 +23542,16 @@ FALSE：表示不用作公网网关
         :type PrivateIpAddresses: list of str
         :param _Ipv6AddressCount: 为弹性网卡指定随机生成的 IPv6 地址数量。
         :type Ipv6AddressCount: int
+        :param _Ipv6SubnetIds: runInstances接口创建三网ipv6地址使用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ipv6SubnetIds: list of str
         """
         self._VpcId = None
         self._SubnetId = None
         self._AsVpcGateway = None
         self._PrivateIpAddresses = None
         self._Ipv6AddressCount = None
+        self._Ipv6SubnetIds = None
 
     @property
     def VpcId(self):
@@ -23552,6 +23593,14 @@ FALSE：表示不用作公网网关
     def Ipv6AddressCount(self, Ipv6AddressCount):
         self._Ipv6AddressCount = Ipv6AddressCount
 
+    @property
+    def Ipv6SubnetIds(self):
+        return self._Ipv6SubnetIds
+
+    @Ipv6SubnetIds.setter
+    def Ipv6SubnetIds(self, Ipv6SubnetIds):
+        self._Ipv6SubnetIds = Ipv6SubnetIds
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -23559,6 +23608,7 @@ FALSE：表示不用作公网网关
         self._AsVpcGateway = params.get("AsVpcGateway")
         self._PrivateIpAddresses = params.get("PrivateIpAddresses")
         self._Ipv6AddressCount = params.get("Ipv6AddressCount")
+        self._Ipv6SubnetIds = params.get("Ipv6SubnetIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

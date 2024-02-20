@@ -13498,6 +13498,8 @@ class ScaleOutClusterRequest(AbstractModel):
         :type Zone: str
         :param _SubnetId: 子网，默认是集群创建时的子网
         :type SubnetId: str
+        :param _ScaleOutServiceConfGroupsInfo: 扩容指定配置组
+        :type ScaleOutServiceConfGroupsInfo: list of ScaleOutServiceConfGroupsInfo
         """
         self._InstanceChargeType = None
         self._InstanceId = None
@@ -13518,6 +13520,7 @@ class ScaleOutClusterRequest(AbstractModel):
         self._ResourceSpec = None
         self._Zone = None
         self._SubnetId = None
+        self._ScaleOutServiceConfGroupsInfo = None
 
     @property
     def InstanceChargeType(self):
@@ -13671,6 +13674,14 @@ class ScaleOutClusterRequest(AbstractModel):
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def ScaleOutServiceConfGroupsInfo(self):
+        return self._ScaleOutServiceConfGroupsInfo
+
+    @ScaleOutServiceConfGroupsInfo.setter
+    def ScaleOutServiceConfGroupsInfo(self, ScaleOutServiceConfGroupsInfo):
+        self._ScaleOutServiceConfGroupsInfo = ScaleOutServiceConfGroupsInfo
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -13710,6 +13721,12 @@ class ScaleOutClusterRequest(AbstractModel):
             self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         self._Zone = params.get("Zone")
         self._SubnetId = params.get("SubnetId")
+        if params.get("ScaleOutServiceConfGroupsInfo") is not None:
+            self._ScaleOutServiceConfGroupsInfo = []
+            for item in params.get("ScaleOutServiceConfGroupsInfo"):
+                obj = ScaleOutServiceConfGroupsInfo()
+                obj._deserialize(item)
+                self._ScaleOutServiceConfGroupsInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14269,6 +14286,52 @@ class ScaleOutNodeConfig(AbstractModel):
     def _deserialize(self, params):
         self._NodeFlag = params.get("NodeFlag")
         self._NodeCount = params.get("NodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutServiceConfGroupsInfo(AbstractModel):
+    """扩容指定配置组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceComponentName: 组件版本名称 如 HDFS-2.8.5
+        :type ServiceComponentName: str
+        :param _ConfGroupName: 配置组名 如hdfs-core-defaultGroup    ConfGroupName参数传入 代表配置组维度 
+                                                             ConfGroupName参数不传 默认 代表集群维度
+        :type ConfGroupName: str
+        """
+        self._ServiceComponentName = None
+        self._ConfGroupName = None
+
+    @property
+    def ServiceComponentName(self):
+        return self._ServiceComponentName
+
+    @ServiceComponentName.setter
+    def ServiceComponentName(self, ServiceComponentName):
+        self._ServiceComponentName = ServiceComponentName
+
+    @property
+    def ConfGroupName(self):
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+
+    def _deserialize(self, params):
+        self._ServiceComponentName = params.get("ServiceComponentName")
+        self._ConfGroupName = params.get("ConfGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

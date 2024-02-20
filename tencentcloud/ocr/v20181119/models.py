@@ -15777,6 +15777,10 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         :type PeriodOfValidity: str
         :param _No: 证件号码。
         :type No: str
+        :param _PreviousNumber: 曾持证件号码。
+        :type PreviousNumber: str
+        :param _IssuedAuthority: 签发机关。
+        :type IssuedAuthority: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15787,6 +15791,8 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         self._Nationality = None
         self._PeriodOfValidity = None
         self._No = None
+        self._PreviousNumber = None
+        self._IssuedAuthority = None
         self._RequestId = None
 
     @property
@@ -15846,6 +15852,22 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         self._No = No
 
     @property
+    def PreviousNumber(self):
+        return self._PreviousNumber
+
+    @PreviousNumber.setter
+    def PreviousNumber(self, PreviousNumber):
+        self._PreviousNumber = PreviousNumber
+
+    @property
+    def IssuedAuthority(self):
+        return self._IssuedAuthority
+
+    @IssuedAuthority.setter
+    def IssuedAuthority(self, IssuedAuthority):
+        self._IssuedAuthority = IssuedAuthority
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -15862,6 +15884,8 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         self._Nationality = params.get("Nationality")
         self._PeriodOfValidity = params.get("PeriodOfValidity")
         self._No = params.get("No")
+        self._PreviousNumber = params.get("PreviousNumber")
+        self._IssuedAuthority = params.get("IssuedAuthority")
         self._RequestId = params.get("RequestId")
 
 
@@ -25717,6 +25741,8 @@ class VatInvoice(AbstractModel):
 102：通用机打电子发票
 61：电子发票（航空运输电子客票行程单）
 83：电子发票（铁路电子发票）
+0915：全电纸质（二手车统一销售发票）
+0903：全电纸质（机动车统一发票）
         :type Type: str
         :param _ElectronicType: 具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
         :type ElectronicType: str

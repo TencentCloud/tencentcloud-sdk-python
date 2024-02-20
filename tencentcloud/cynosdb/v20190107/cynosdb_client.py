@@ -1636,6 +1636,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTasks(self, request):
+        """查询任务列表
+
+        :param request: Request instance for DescribeTasks.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeTasksRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeZones(self, request):
         """本接口(DescribeZones)用于查询可售卖地域可用区信息。
 
