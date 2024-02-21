@@ -1566,6 +1566,64 @@ class DeletePhoneEmailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteReservedPreDomainInfoRequest(AbstractModel):
+    """DeleteReservedPreDomainInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIdList: 资源ID列表
+        :type ResourceIdList: list of str
+        """
+        self._ResourceIdList = None
+
+    @property
+    def ResourceIdList(self):
+        return self._ResourceIdList
+
+    @ResourceIdList.setter
+    def ResourceIdList(self, ResourceIdList):
+        self._ResourceIdList = ResourceIdList
+
+
+    def _deserialize(self, params):
+        self._ResourceIdList = params.get("ResourceIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReservedPreDomainInfoResponse(AbstractModel):
+    """DeleteReservedPreDomainInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTemplateRequest(AbstractModel):
     """DeleteTemplate请求参数结构体
 
@@ -2436,6 +2494,240 @@ class DescribePhoneEmailListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._PhoneEmailList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePreDomainListRequest(AbstractModel):
+    """DescribePreDomainList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 页码
+        :type Page: int
+        :param _Size: 条数
+        :type Size: int
+        """
+        self._Page = None
+        self._Size = None
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePreDomainListResponse(AbstractModel):
+    """DescribePreDomainList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedDomainList: 预释放预约列表数据
+        :type ReservedDomainList: list of ReservedDomainInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReservedDomainList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ReservedDomainList(self):
+        return self._ReservedDomainList
+
+    @ReservedDomainList.setter
+    def ReservedDomainList(self, ReservedDomainList):
+        self._ReservedDomainList = ReservedDomainList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReservedDomainList") is not None:
+            self._ReservedDomainList = []
+            for item in params.get("ReservedDomainList"):
+                obj = ReservedDomainInfo()
+                obj._deserialize(item)
+                self._ReservedDomainList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReservedPreDomainInfoRequest(AbstractModel):
+    """DescribeReservedPreDomainInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainList: 域名,每次最多支持500条域名查询
+        :type DomainList: list of str
+        :param _ReservedStatus: 状态，用于筛选，可不填写(1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成)
+        :type ReservedStatus: int
+        :param _ReservedTimeSort: 根据预约时间排序，仅支持："desc","asc"。
+        :type ReservedTimeSort: str
+        :param _Limit: 条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        """
+        self._DomainList = None
+        self._ReservedStatus = None
+        self._ReservedTimeSort = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
+    @property
+    def ReservedStatus(self):
+        return self._ReservedStatus
+
+    @ReservedStatus.setter
+    def ReservedStatus(self, ReservedStatus):
+        self._ReservedStatus = ReservedStatus
+
+    @property
+    def ReservedTimeSort(self):
+        return self._ReservedTimeSort
+
+    @ReservedTimeSort.setter
+    def ReservedTimeSort(self, ReservedTimeSort):
+        self._ReservedTimeSort = ReservedTimeSort
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DomainList = params.get("DomainList")
+        self._ReservedStatus = params.get("ReservedStatus")
+        self._ReservedTimeSort = params.get("ReservedTimeSort")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReservedPreDomainInfoResponse(AbstractModel):
+    """DescribeReservedPreDomainInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedPreDomainInfoList: 预释放预约列表
+        :type ReservedPreDomainInfoList: list of ReservedPreDomainInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReservedPreDomainInfoList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ReservedPreDomainInfoList(self):
+        return self._ReservedPreDomainInfoList
+
+    @ReservedPreDomainInfoList.setter
+    def ReservedPreDomainInfoList(self, ReservedPreDomainInfoList):
+        self._ReservedPreDomainInfoList = ReservedPreDomainInfoList
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReservedPreDomainInfoList") is not None:
+            self._ReservedPreDomainInfoList = []
+            for item in params.get("ReservedPreDomainInfoList"):
+                obj = ReservedPreDomainInfo()
+                obj._deserialize(item)
+                self._ReservedPreDomainInfoList.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -3547,6 +3839,53 @@ false：关闭锁定
         
 
 
+class FailReservedDomainInfo(AbstractModel):
+    """失败预约预释放域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _FailReason: 预约失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        """
+        self._Domain = None
+        self._FailReason = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._FailReason = params.get("FailReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyCustomDnsHostRequest(AbstractModel):
     """ModifyCustomDnsHost请求参数结构体
 
@@ -4227,6 +4566,308 @@ class RenewDomainBatchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
+
+
+class ReservedDomainInfo(AbstractModel):
+    """查询预释放预约列表域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _RegTime: 注册时间
+        :type RegTime: str
+        :param _ExpireTime: 到期时间
+        :type ExpireTime: str
+        :param _RenewEndTime: 续费时间结束
+        :type RenewEndTime: str
+        :param _RestoreEndTime: 赎回结束时间
+        :type RestoreEndTime: str
+        :param _ReservedEndTime: 域名预约结束时间
+        :type ReservedEndTime: str
+        """
+        self._Domain = None
+        self._RegTime = None
+        self._ExpireTime = None
+        self._RenewEndTime = None
+        self._RestoreEndTime = None
+        self._ReservedEndTime = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RegTime(self):
+        return self._RegTime
+
+    @RegTime.setter
+    def RegTime(self, RegTime):
+        self._RegTime = RegTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RenewEndTime(self):
+        return self._RenewEndTime
+
+    @RenewEndTime.setter
+    def RenewEndTime(self, RenewEndTime):
+        self._RenewEndTime = RenewEndTime
+
+    @property
+    def RestoreEndTime(self):
+        return self._RestoreEndTime
+
+    @RestoreEndTime.setter
+    def RestoreEndTime(self, RestoreEndTime):
+        self._RestoreEndTime = RestoreEndTime
+
+    @property
+    def ReservedEndTime(self):
+        return self._ReservedEndTime
+
+    @ReservedEndTime.setter
+    def ReservedEndTime(self, ReservedEndTime):
+        self._ReservedEndTime = ReservedEndTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RegTime = params.get("RegTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RenewEndTime = params.get("RenewEndTime")
+        self._RestoreEndTime = params.get("RestoreEndTime")
+        self._ReservedEndTime = params.get("ReservedEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedPreDomainInfo(AbstractModel):
+    """预约预释放域名详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _ReservedStatus: 1. 预定成功 2. 预定失败（预定失败Reason字段将会被赋值）3. 域名交割中 4. 域名交割完成
+        :type ReservedStatus: int
+        :param _FailReason: 域名预定失败原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _ChangeOwnerTime: 预计变更所有权时间（仅用于参考，实际时间会存在误差）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeOwnerTime: str
+        :param _RegTime: 注册时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegTime: str
+        :param _ExpireTime: 到期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _ResourceId: 资源ID，用于删除资源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        """
+        self._Domain = None
+        self._ReservedStatus = None
+        self._FailReason = None
+        self._ChangeOwnerTime = None
+        self._RegTime = None
+        self._ExpireTime = None
+        self._ResourceId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ReservedStatus(self):
+        return self._ReservedStatus
+
+    @ReservedStatus.setter
+    def ReservedStatus(self, ReservedStatus):
+        self._ReservedStatus = ReservedStatus
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def ChangeOwnerTime(self):
+        return self._ChangeOwnerTime
+
+    @ChangeOwnerTime.setter
+    def ChangeOwnerTime(self, ChangeOwnerTime):
+        self._ChangeOwnerTime = ChangeOwnerTime
+
+    @property
+    def RegTime(self):
+        return self._RegTime
+
+    @RegTime.setter
+    def RegTime(self, RegTime):
+        self._RegTime = RegTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._ReservedStatus = params.get("ReservedStatus")
+        self._FailReason = params.get("FailReason")
+        self._ChangeOwnerTime = params.get("ChangeOwnerTime")
+        self._RegTime = params.get("RegTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedPreDomainsRequest(AbstractModel):
+    """ReservedPreDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainList: 预约预释放域名列表
+        :type DomainList: list of str
+        :param _TemplateId: 模版ID
+        :type TemplateId: str
+        """
+        self._DomainList = None
+        self._TemplateId = None
+
+    @property
+    def DomainList(self):
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._DomainList = params.get("DomainList")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReservedPreDomainsResponse(AbstractModel):
+    """ReservedPreDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SucDomainList: 预定成功域名列表
+        :type SucDomainList: list of str
+        :param _FailDomainList: 预定失败域名列表
+        :type FailDomainList: list of FailReservedDomainInfo
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SucDomainList = None
+        self._FailDomainList = None
+        self._RequestId = None
+
+    @property
+    def SucDomainList(self):
+        return self._SucDomainList
+
+    @SucDomainList.setter
+    def SucDomainList(self, SucDomainList):
+        self._SucDomainList = SucDomainList
+
+    @property
+    def FailDomainList(self):
+        return self._FailDomainList
+
+    @FailDomainList.setter
+    def FailDomainList(self, FailDomainList):
+        self._FailDomainList = FailDomainList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SucDomainList = params.get("SucDomainList")
+        if params.get("FailDomainList") is not None:
+            self._FailDomainList = []
+            for item in params.get("FailDomainList"):
+                obj = FailReservedDomainInfo()
+                obj._deserialize(item)
+                self._FailDomainList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

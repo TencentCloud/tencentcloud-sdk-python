@@ -256,6 +256,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteReservedPreDomainInfo(self, request):
+        """用于清除多余的预定域名信息
+
+        :param request: Request instance for DeleteReservedPreDomainInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DeleteReservedPreDomainInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DeleteReservedPreDomainInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReservedPreDomainInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReservedPreDomainInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTemplate(self, request):
         """本接口 ( DeleteTemplate ) 用于删除信息模板。
 
@@ -463,6 +486,52 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePreDomainList(self, request):
+        """用户服务商提前获取预释放域名数据，查询数据根据结束时间进行倒序。
+
+        :param request: Request instance for DescribePreDomainList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribePreDomainListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribePreDomainListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePreDomainList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePreDomainListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReservedPreDomainInfo(self, request):
+        """合作商用于查询预约预释放状态信息内容
+
+        :param request: Request instance for DescribeReservedPreDomainInfo.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeReservedPreDomainInfoRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeReservedPreDomainInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReservedPreDomainInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReservedPreDomainInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTemplate(self, request):
         """本接口 (DescribeTemplate) 用于获取模板信息。
 
@@ -615,6 +684,29 @@ class DomainClient(AbstractClient):
             body = self.call("RenewDomainBatch", params, headers=headers)
             response = json.loads(body)
             model = models.RenewDomainBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReservedPreDomains(self, request):
+        """用于合作商对预释放域名进行预留。
+
+        :param request: Request instance for ReservedPreDomains.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ReservedPreDomainsRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ReservedPreDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReservedPreDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReservedPreDomainsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

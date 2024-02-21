@@ -7254,6 +7254,8 @@ class DescribeDevicePackagesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: 分页拉取偏移
         :type Offset: int
+        :param _CSUserId: 用户id
+        :type CSUserId: str
         :param _ChannelId: 通道id
         :type ChannelId: int
         """
@@ -7261,6 +7263,7 @@ class DescribeDevicePackagesRequest(AbstractModel):
         self._DeviceName = None
         self._Limit = None
         self._Offset = None
+        self._CSUserId = None
         self._ChannelId = None
 
     @property
@@ -7296,6 +7299,14 @@ class DescribeDevicePackagesRequest(AbstractModel):
         self._Offset = Offset
 
     @property
+    def CSUserId(self):
+        return self._CSUserId
+
+    @CSUserId.setter
+    def CSUserId(self, CSUserId):
+        self._CSUserId = CSUserId
+
+    @property
     def ChannelId(self):
         return self._ChannelId
 
@@ -7309,6 +7320,7 @@ class DescribeDevicePackagesRequest(AbstractModel):
         self._DeviceName = params.get("DeviceName")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._CSUserId = params.get("CSUserId")
         self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12564,6 +12576,9 @@ class PackageInfo(AbstractModel):
         :type OrderId: str
         :param _ChannelId: 通道id
         :type ChannelId: int
+        :param _CSUserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSUserId: str
         """
         self._Status = None
         self._CSType = None
@@ -12574,6 +12589,7 @@ class PackageInfo(AbstractModel):
         self._PackageId = None
         self._OrderId = None
         self._ChannelId = None
+        self._CSUserId = None
 
     @property
     def Status(self):
@@ -12647,6 +12663,14 @@ class PackageInfo(AbstractModel):
     def ChannelId(self, ChannelId):
         self._ChannelId = ChannelId
 
+    @property
+    def CSUserId(self):
+        return self._CSUserId
+
+    @CSUserId.setter
+    def CSUserId(self, CSUserId):
+        self._CSUserId = CSUserId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -12658,6 +12682,7 @@ class PackageInfo(AbstractModel):
         self._PackageId = params.get("PackageId")
         self._OrderId = params.get("OrderId")
         self._ChannelId = params.get("ChannelId")
+        self._CSUserId = params.get("CSUserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

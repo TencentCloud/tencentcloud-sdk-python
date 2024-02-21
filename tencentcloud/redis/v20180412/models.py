@@ -7199,13 +7199,16 @@ class DescribeSlowLogResponse(AbstractModel):
         r"""
         :param _TotalCount: 慢查询总数。
         :type TotalCount: int
-        :param _InstanceSlowlogDetail: 慢查询详情。
+        :param _InstanceSlowlogDetail: 该参数存在命名不规范问题，建议用参数InstanceSlowLogDetail取代。慢查询详情。
         :type InstanceSlowlogDetail: list of InstanceSlowlogDetail
+        :param _InstanceSlowLogDetail: 慢查询详情。
+        :type InstanceSlowLogDetail: list of InstanceSlowlogDetail
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._InstanceSlowlogDetail = None
+        self._InstanceSlowLogDetail = None
         self._RequestId = None
 
     @property
@@ -7225,6 +7228,14 @@ class DescribeSlowLogResponse(AbstractModel):
         self._InstanceSlowlogDetail = InstanceSlowlogDetail
 
     @property
+    def InstanceSlowLogDetail(self):
+        return self._InstanceSlowLogDetail
+
+    @InstanceSlowLogDetail.setter
+    def InstanceSlowLogDetail(self, InstanceSlowLogDetail):
+        self._InstanceSlowLogDetail = InstanceSlowLogDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7241,6 +7252,12 @@ class DescribeSlowLogResponse(AbstractModel):
                 obj = InstanceSlowlogDetail()
                 obj._deserialize(item)
                 self._InstanceSlowlogDetail.append(obj)
+        if params.get("InstanceSlowLogDetail") is not None:
+            self._InstanceSlowLogDetail = []
+            for item in params.get("InstanceSlowLogDetail"):
+                obj = InstanceSlowlogDetail()
+                obj._deserialize(item)
+                self._InstanceSlowLogDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
