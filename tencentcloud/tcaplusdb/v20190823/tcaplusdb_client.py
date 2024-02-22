@@ -744,7 +744,7 @@ class TcaplusdbClient(AbstractClient):
 
 
     def EnableRestProxy(self, request):
-        """当restful api为关闭状态时，可以通过此接口开启restful apu
+        """当restful api为关闭状态时，可以通过此接口开启restful api。
 
         :param request: Request instance for EnableRestProxy.
         :type request: :class:`tencentcloud.tcaplusdb.v20190823.models.EnableRestProxyRequest`

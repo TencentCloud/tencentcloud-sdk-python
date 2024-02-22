@@ -524,10 +524,14 @@ class CreateCustomizationRequest(AbstractModel):
 
     @property
     def TagInfos(self):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         return self._TagInfos
 
     @TagInfos.setter
     def TagInfos(self, TagInfos):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         self._TagInfos = TagInfos
 
 
@@ -1674,10 +1678,14 @@ class GetCustomizationListRequest(AbstractModel):
 
     @property
     def TagInfos(self):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         return self._TagInfos
 
     @TagInfos.setter
     def TagInfos(self, TagInfos):
+        warnings.warn("parameter `TagInfos` is deprecated", DeprecationWarning) 
+
         self._TagInfos = TagInfos
 
     @property

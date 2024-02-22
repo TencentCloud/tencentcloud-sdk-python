@@ -13645,10 +13645,13 @@ class DescribeTaskResultRequest(AbstractModel):
         :type NextToken: str
         :param _MaxResults: 返回结果的最大行数，范围0~1000，默认为1000.
         :type MaxResults: int
+        :param _IsTransformDataType: 是否转化数据类型
+        :type IsTransformDataType: bool
         """
         self._TaskId = None
         self._NextToken = None
         self._MaxResults = None
+        self._IsTransformDataType = None
 
     @property
     def TaskId(self):
@@ -13674,11 +13677,20 @@ class DescribeTaskResultRequest(AbstractModel):
     def MaxResults(self, MaxResults):
         self._MaxResults = MaxResults
 
+    @property
+    def IsTransformDataType(self):
+        return self._IsTransformDataType
+
+    @IsTransformDataType.setter
+    def IsTransformDataType(self, IsTransformDataType):
+        self._IsTransformDataType = IsTransformDataType
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._NextToken = params.get("NextToken")
         self._MaxResults = params.get("MaxResults")
+        self._IsTransformDataType = params.get("IsTransformDataType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

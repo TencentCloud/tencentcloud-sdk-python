@@ -1703,6 +1703,66 @@ class ApproveType(AbstractModel):
         
 
 
+class AttributeItemDTO(AbstractModel):
+    """aiops基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Description = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttributeItemDsVO(AbstractModel):
     """AttributeItemVO参数
 
@@ -45267,6 +45327,211 @@ class InstanceInfo(AbstractModel):
         
 
 
+class InstanceLifeCycleOpsDto(AbstractModel):
+    """实例生命周期详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _CurRunDate: 数据时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurRunDate: str
+        :param _LifeRound: 实例生命次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeRound: int
+        :param _RunType: 运行类型 重跑/补录/周期/非周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunType: str
+        :param _Tries: 重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tries: int
+        :param _InstanceLifeDetailDtoList: 实例生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceLifeDetailDtoList: list of InstanceLifeDetailDto
+        :param _RunnerState: Runner运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunnerState: str
+        :param _ErrorDesc: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorDesc: str
+        :param _ErrorCodeLevel: 错误告警级别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeLevel: str
+        :param _InstanceLogListOpsDto: 实例日志简略信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceLogListOpsDto: :class:`tencentcloud.wedata.v20210820.models.InstanceLogInfo`
+        """
+        self._TaskId = None
+        self._CurRunDate = None
+        self._LifeRound = None
+        self._RunType = None
+        self._Tries = None
+        self._InstanceLifeDetailDtoList = None
+        self._RunnerState = None
+        self._ErrorDesc = None
+        self._ErrorCodeLevel = None
+        self._InstanceLogListOpsDto = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def CurRunDate(self):
+        return self._CurRunDate
+
+    @CurRunDate.setter
+    def CurRunDate(self, CurRunDate):
+        self._CurRunDate = CurRunDate
+
+    @property
+    def LifeRound(self):
+        return self._LifeRound
+
+    @LifeRound.setter
+    def LifeRound(self, LifeRound):
+        self._LifeRound = LifeRound
+
+    @property
+    def RunType(self):
+        return self._RunType
+
+    @RunType.setter
+    def RunType(self, RunType):
+        self._RunType = RunType
+
+    @property
+    def Tries(self):
+        return self._Tries
+
+    @Tries.setter
+    def Tries(self, Tries):
+        self._Tries = Tries
+
+    @property
+    def InstanceLifeDetailDtoList(self):
+        return self._InstanceLifeDetailDtoList
+
+    @InstanceLifeDetailDtoList.setter
+    def InstanceLifeDetailDtoList(self, InstanceLifeDetailDtoList):
+        self._InstanceLifeDetailDtoList = InstanceLifeDetailDtoList
+
+    @property
+    def RunnerState(self):
+        return self._RunnerState
+
+    @RunnerState.setter
+    def RunnerState(self, RunnerState):
+        self._RunnerState = RunnerState
+
+    @property
+    def ErrorDesc(self):
+        return self._ErrorDesc
+
+    @ErrorDesc.setter
+    def ErrorDesc(self, ErrorDesc):
+        self._ErrorDesc = ErrorDesc
+
+    @property
+    def ErrorCodeLevel(self):
+        return self._ErrorCodeLevel
+
+    @ErrorCodeLevel.setter
+    def ErrorCodeLevel(self, ErrorCodeLevel):
+        self._ErrorCodeLevel = ErrorCodeLevel
+
+    @property
+    def InstanceLogListOpsDto(self):
+        return self._InstanceLogListOpsDto
+
+    @InstanceLogListOpsDto.setter
+    def InstanceLogListOpsDto(self, InstanceLogListOpsDto):
+        self._InstanceLogListOpsDto = InstanceLogListOpsDto
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._CurRunDate = params.get("CurRunDate")
+        self._LifeRound = params.get("LifeRound")
+        self._RunType = params.get("RunType")
+        self._Tries = params.get("Tries")
+        if params.get("InstanceLifeDetailDtoList") is not None:
+            self._InstanceLifeDetailDtoList = []
+            for item in params.get("InstanceLifeDetailDtoList"):
+                obj = InstanceLifeDetailDto()
+                obj._deserialize(item)
+                self._InstanceLifeDetailDtoList.append(obj)
+        self._RunnerState = params.get("RunnerState")
+        self._ErrorDesc = params.get("ErrorDesc")
+        self._ErrorCodeLevel = params.get("ErrorCodeLevel")
+        if params.get("InstanceLogListOpsDto") is not None:
+            self._InstanceLogListOpsDto = InstanceLogInfo()
+            self._InstanceLogListOpsDto._deserialize(params.get("InstanceLogListOpsDto"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceLifeDetailDto(AbstractModel):
+    """实例生命周期detail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _State: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _StartTime: 该状态开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        """
+        self._State = None
+        self._StartTime = None
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._State = params.get("State")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceList(AbstractModel):
     """离线运维实例列表
 
@@ -45621,6 +45886,9 @@ class InstanceLogInfo(AbstractModel):
         :param _CodeFileName: 实例代码文件，为空表示对应代码文件不存在，可能是因为执行机未升级/对应类型任务无代码。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileName: str
+        :param _ExtensionInfo: 扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtensionInfo: list of AttributeItemDTO
         """
         self._TaskId = None
         self._CurRunDate = None
@@ -45635,6 +45903,7 @@ class InstanceLogInfo(AbstractModel):
         self._CostTime = None
         self._InstanceStatus = None
         self._CodeFileName = None
+        self._ExtensionInfo = None
 
     @property
     def TaskId(self):
@@ -45740,6 +46009,14 @@ class InstanceLogInfo(AbstractModel):
     def CodeFileName(self, CodeFileName):
         self._CodeFileName = CodeFileName
 
+    @property
+    def ExtensionInfo(self):
+        return self._ExtensionInfo
+
+    @ExtensionInfo.setter
+    def ExtensionInfo(self, ExtensionInfo):
+        self._ExtensionInfo = ExtensionInfo
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -45755,6 +46032,12 @@ class InstanceLogInfo(AbstractModel):
         self._CostTime = params.get("CostTime")
         self._InstanceStatus = params.get("InstanceStatus")
         self._CodeFileName = params.get("CodeFileName")
+        if params.get("ExtensionInfo") is not None:
+            self._ExtensionInfo = []
+            for item in params.get("ExtensionInfo"):
+                obj = AttributeItemDTO()
+                obj._deserialize(item)
+                self._ExtensionInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46244,6 +46527,24 @@ class InstanceOpsDto(AbstractModel):
         :param _ExecutorGroupName: 资源组名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
+        :param _RelatedInstanceList: 关联实例信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedInstanceList: list of InstanceOpsDto
+        :param _RelatedInstanceSize: 关联实例信息数量，不和RelatedInstanceList强关联。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedInstanceSize: int
+        :param _OwnerId: ownerId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerId: str
+        :param _UserId: 用户id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _InstanceLifeCycleOpsDto: 实例生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceLifeCycleOpsDto: :class:`tencentcloud.wedata.v20210820.models.InstanceLifeCycleOpsDto`
+        :param _RetryAttempts: 自动重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryAttempts: int
         """
         self._TaskId = None
         self._TaskName = None
@@ -46299,6 +46600,12 @@ class InstanceOpsDto(AbstractModel):
         self._InstanceKey = None
         self._ExecutorGroupId = None
         self._ExecutorGroupName = None
+        self._RelatedInstanceList = None
+        self._RelatedInstanceSize = None
+        self._OwnerId = None
+        self._UserId = None
+        self._InstanceLifeCycleOpsDto = None
+        self._RetryAttempts = None
 
     @property
     def TaskId(self):
@@ -46732,6 +47039,54 @@ class InstanceOpsDto(AbstractModel):
     def ExecutorGroupName(self, ExecutorGroupName):
         self._ExecutorGroupName = ExecutorGroupName
 
+    @property
+    def RelatedInstanceList(self):
+        return self._RelatedInstanceList
+
+    @RelatedInstanceList.setter
+    def RelatedInstanceList(self, RelatedInstanceList):
+        self._RelatedInstanceList = RelatedInstanceList
+
+    @property
+    def RelatedInstanceSize(self):
+        return self._RelatedInstanceSize
+
+    @RelatedInstanceSize.setter
+    def RelatedInstanceSize(self, RelatedInstanceSize):
+        self._RelatedInstanceSize = RelatedInstanceSize
+
+    @property
+    def OwnerId(self):
+        return self._OwnerId
+
+    @OwnerId.setter
+    def OwnerId(self, OwnerId):
+        self._OwnerId = OwnerId
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def InstanceLifeCycleOpsDto(self):
+        return self._InstanceLifeCycleOpsDto
+
+    @InstanceLifeCycleOpsDto.setter
+    def InstanceLifeCycleOpsDto(self, InstanceLifeCycleOpsDto):
+        self._InstanceLifeCycleOpsDto = InstanceLifeCycleOpsDto
+
+    @property
+    def RetryAttempts(self):
+        return self._RetryAttempts
+
+    @RetryAttempts.setter
+    def RetryAttempts(self, RetryAttempts):
+        self._RetryAttempts = RetryAttempts
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -46790,6 +47145,19 @@ class InstanceOpsDto(AbstractModel):
         self._InstanceKey = params.get("InstanceKey")
         self._ExecutorGroupId = params.get("ExecutorGroupId")
         self._ExecutorGroupName = params.get("ExecutorGroupName")
+        if params.get("RelatedInstanceList") is not None:
+            self._RelatedInstanceList = []
+            for item in params.get("RelatedInstanceList"):
+                obj = InstanceOpsDto()
+                obj._deserialize(item)
+                self._RelatedInstanceList.append(obj)
+        self._RelatedInstanceSize = params.get("RelatedInstanceSize")
+        self._OwnerId = params.get("OwnerId")
+        self._UserId = params.get("UserId")
+        if params.get("InstanceLifeCycleOpsDto") is not None:
+            self._InstanceLifeCycleOpsDto = InstanceLifeCycleOpsDto()
+            self._InstanceLifeCycleOpsDto._deserialize(params.get("InstanceLifeCycleOpsDto"))
+        self._RetryAttempts = params.get("RetryAttempts")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

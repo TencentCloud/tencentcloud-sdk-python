@@ -4711,7 +4711,7 @@ class EnableRestProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 对应于appid
+        :param _ClusterId: 集群 ID。
         :type ClusterId: str
         """
         self._ClusterId = None

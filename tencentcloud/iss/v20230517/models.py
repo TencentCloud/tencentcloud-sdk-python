@@ -2731,7 +2731,7 @@ class BatchOperateDeviceRequest(AbstractModel):
         r"""
         :param _DeviceIds: 设备 ID 数组（从获取设备列表接口ListDevices中获取）
         :type DeviceIds: list of str
-        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除）
+        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
         :type Cmd: str
         """
         self._DeviceIds = None
@@ -11304,17 +11304,26 @@ class ListTasksRequest(AbstractModel):
         r"""
         :param _PageNumber: 页码，默认为1
         :type PageNumber: int
-        :param _PageSize: 每页数量，默认为10
+        :param _PageSize: 每页数量，默认为20
         :type PageSize: int
-        :param _Operation: 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+        :param _Operation: 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，
+BatchUpgradeDevice，
+BatchResetDevice,
+BatchRebootDevice
         :type Operation: str
-        :param _Status: 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+        :param _Status: 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-未执行，2-执行中，3-完成，4-取消
         :type Status: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
         """
         self._PageNumber = None
         self._PageSize = None
         self._Operation = None
         self._Status = None
+        self._BeginTime = None
+        self._EndTime = None
 
     @property
     def PageNumber(self):
@@ -11348,12 +11357,30 @@ class ListTasksRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         self._Operation = params.get("Operation")
         self._Status = params.get("Status")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12921,6 +12948,18 @@ class SubTaskData(AbstractModel):
         :type UpdatedAt: str
         :param _Runtime: 任务运行时间，单位ms
         :type Runtime: int
+        :param _DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _ChannelId: 通道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
+        :param _ChannelName: 通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
         """
         self._SubTaskId = None
         self._Status = None
@@ -12933,6 +12972,10 @@ class SubTaskData(AbstractModel):
         self._CreatedAt = None
         self._UpdatedAt = None
         self._Runtime = None
+        self._DeviceId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._ChannelName = None
 
     @property
     def SubTaskId(self):
@@ -13022,6 +13065,38 @@ class SubTaskData(AbstractModel):
     def Runtime(self, Runtime):
         self._Runtime = Runtime
 
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
 
     def _deserialize(self, params):
         self._SubTaskId = params.get("SubTaskId")
@@ -13035,6 +13110,10 @@ class SubTaskData(AbstractModel):
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         self._Runtime = params.get("Runtime")
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13085,6 +13164,18 @@ class TaskData(AbstractModel):
         :type UpdatedAt: str
         :param _Runtime: 任务运行时间，单位ms
         :type Runtime: int
+        :param _DeviceId: 设备ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceId: str
+        :param _DeviceName: 设备名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceName: str
+        :param _ChannelId: 通道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
+        :param _ChannelName:  通道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
         """
         self._TaskId = None
         self._Status = None
@@ -13102,6 +13193,10 @@ class TaskData(AbstractModel):
         self._CreatedAt = None
         self._UpdatedAt = None
         self._Runtime = None
+        self._DeviceId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._ChannelName = None
 
     @property
     def TaskId(self):
@@ -13231,6 +13326,38 @@ class TaskData(AbstractModel):
     def Runtime(self, Runtime):
         self._Runtime = Runtime
 
+    @property
+    def DeviceId(self):
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -13249,6 +13376,10 @@ class TaskData(AbstractModel):
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         self._Runtime = params.get("Runtime")
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

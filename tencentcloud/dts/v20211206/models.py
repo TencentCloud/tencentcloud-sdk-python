@@ -18,6 +18,92 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AdvancedObjectsItem(AbstractModel):
+    """数据库不一致的详情，mongodb业务用到
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ObjectType: 对象类型,可能得值有：account,index,shardkey,schema
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectType: str
+        :param _SrcChunk: 源端分块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcChunk: str
+        :param _DstChunk: 目标端分块
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstChunk: str
+        :param _SrcItem: 源端值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcItem: str
+        :param _DstItem: 目标端值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstItem: str
+        """
+        self._ObjectType = None
+        self._SrcChunk = None
+        self._DstChunk = None
+        self._SrcItem = None
+        self._DstItem = None
+
+    @property
+    def ObjectType(self):
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def SrcChunk(self):
+        return self._SrcChunk
+
+    @SrcChunk.setter
+    def SrcChunk(self, SrcChunk):
+        self._SrcChunk = SrcChunk
+
+    @property
+    def DstChunk(self):
+        return self._DstChunk
+
+    @DstChunk.setter
+    def DstChunk(self, DstChunk):
+        self._DstChunk = DstChunk
+
+    @property
+    def SrcItem(self):
+        return self._SrcItem
+
+    @SrcItem.setter
+    def SrcItem(self, SrcItem):
+        self._SrcItem = SrcItem
+
+    @property
+    def DstItem(self):
+        return self._DstItem
+
+    @DstItem.setter
+    def DstItem(self, DstItem):
+        self._DstItem = DstItem
+
+
+    def _deserialize(self, params):
+        self._ObjectType = params.get("ObjectType")
+        self._SrcChunk = params.get("SrcChunk")
+        self._DstChunk = params.get("DstChunk")
+        self._SrcItem = params.get("SrcItem")
+        self._DstItem = params.get("DstItem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckStep(AbstractModel):
     """检查步骤
 
@@ -498,9 +584,21 @@ class CompareDetailInfo(AbstractModel):
         :param _Skipped: 跳过校验的表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Skipped: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
+        :param _DifferenceAdvancedObjects: 数据库不一致的详情，mongodb业务用到
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DifferenceAdvancedObjects: :class:`tencentcloud.dts.v20211206.models.DifferenceAdvancedObjectsDetail`
+        :param _DifferenceData: 数据不一致的详情，mongodb业务用到
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DifferenceData: :class:`tencentcloud.dts.v20211206.models.DifferenceDataDetail`
+        :param _DifferenceRow: 数据行不一致的详情，mongodb业务用到
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DifferenceRow: :class:`tencentcloud.dts.v20211206.models.DifferenceRowDetail`
         """
         self._Difference = None
         self._Skipped = None
+        self._DifferenceAdvancedObjects = None
+        self._DifferenceData = None
+        self._DifferenceRow = None
 
     @property
     def Difference(self):
@@ -518,6 +616,30 @@ class CompareDetailInfo(AbstractModel):
     def Skipped(self, Skipped):
         self._Skipped = Skipped
 
+    @property
+    def DifferenceAdvancedObjects(self):
+        return self._DifferenceAdvancedObjects
+
+    @DifferenceAdvancedObjects.setter
+    def DifferenceAdvancedObjects(self, DifferenceAdvancedObjects):
+        self._DifferenceAdvancedObjects = DifferenceAdvancedObjects
+
+    @property
+    def DifferenceData(self):
+        return self._DifferenceData
+
+    @DifferenceData.setter
+    def DifferenceData(self, DifferenceData):
+        self._DifferenceData = DifferenceData
+
+    @property
+    def DifferenceRow(self):
+        return self._DifferenceRow
+
+    @DifferenceRow.setter
+    def DifferenceRow(self, DifferenceRow):
+        self._DifferenceRow = DifferenceRow
+
 
     def _deserialize(self, params):
         if params.get("Difference") is not None:
@@ -526,6 +648,15 @@ class CompareDetailInfo(AbstractModel):
         if params.get("Skipped") is not None:
             self._Skipped = SkippedDetail()
             self._Skipped._deserialize(params.get("Skipped"))
+        if params.get("DifferenceAdvancedObjects") is not None:
+            self._DifferenceAdvancedObjects = DifferenceAdvancedObjectsDetail()
+            self._DifferenceAdvancedObjects._deserialize(params.get("DifferenceAdvancedObjects"))
+        if params.get("DifferenceData") is not None:
+            self._DifferenceData = DifferenceDataDetail()
+            self._DifferenceData._deserialize(params.get("DifferenceData"))
+        if params.get("DifferenceRow") is not None:
+            self._DifferenceRow = DifferenceRowDetail()
+            self._DifferenceRow._deserialize(params.get("DifferenceRow"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7192,6 +7323,222 @@ class DetailCheckItem(AbstractModel):
         
 
 
+class DifferenceAdvancedObjectsDetail(AbstractModel):
+    """数据库不一致的详情，mongodb业务用到
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 不一致详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AdvancedObjectsItem
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AdvancedObjectsItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DifferenceData(AbstractModel):
+    """数据不一致详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Db: str
+        :param _Table: 集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        :param _SrcChunk: 源端ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcChunk: str
+        :param _DstChunk: 目标端ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstChunk: str
+        :param _SrcItem: 源端值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcItem: str
+        :param _DstItem: 目标端值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstItem: str
+        :param _UpdatedAt: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
+        self._Db = None
+        self._Table = None
+        self._SrcChunk = None
+        self._DstChunk = None
+        self._SrcItem = None
+        self._DstItem = None
+        self._UpdatedAt = None
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def SrcChunk(self):
+        return self._SrcChunk
+
+    @SrcChunk.setter
+    def SrcChunk(self, SrcChunk):
+        self._SrcChunk = SrcChunk
+
+    @property
+    def DstChunk(self):
+        return self._DstChunk
+
+    @DstChunk.setter
+    def DstChunk(self, DstChunk):
+        self._DstChunk = DstChunk
+
+    @property
+    def SrcItem(self):
+        return self._SrcItem
+
+    @SrcItem.setter
+    def SrcItem(self, SrcItem):
+        self._SrcItem = SrcItem
+
+    @property
+    def DstItem(self):
+        return self._DstItem
+
+    @DstItem.setter
+    def DstItem(self, DstItem):
+        self._DstItem = DstItem
+
+    @property
+    def UpdatedAt(self):
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._Table = params.get("Table")
+        self._SrcChunk = params.get("SrcChunk")
+        self._DstChunk = params.get("DstChunk")
+        self._SrcItem = params.get("SrcItem")
+        self._DstItem = params.get("DstItem")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DifferenceDataDetail(AbstractModel):
+    """mongodb数据不一致性详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: mongo数据不一致详细列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DifferenceData
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DifferenceData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DifferenceDetail(AbstractModel):
     """数据不一致的表详情
 
@@ -7385,6 +7732,58 @@ class DifferenceItem(AbstractModel):
         self._UpperBoundary = params.get("UpperBoundary")
         self._CostTime = params.get("CostTime")
         self._FinishedAt = params.get("FinishedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DifferenceRowDetail(AbstractModel):
+    """mongodb行数校验不一致性详情结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 不一致总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: 不一致列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of RowsCountDifference
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RowsCountDifference()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12357,6 +12756,79 @@ class RoleItem(AbstractModel):
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._NewRoleName = params.get("NewRoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RowsCountDifference(AbstractModel):
+    """mongodb行校验不一致详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Db: str
+        :param _Table: 集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Table: str
+        :param _SrcCount: 源端行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcCount: int
+        :param _DstCount: 目标端行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstCount: int
+        """
+        self._Db = None
+        self._Table = None
+        self._SrcCount = None
+        self._DstCount = None
+
+    @property
+    def Db(self):
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def SrcCount(self):
+        return self._SrcCount
+
+    @SrcCount.setter
+    def SrcCount(self, SrcCount):
+        self._SrcCount = SrcCount
+
+    @property
+    def DstCount(self):
+        return self._DstCount
+
+    @DstCount.setter
+    def DstCount(self, DstCount):
+        self._DstCount = DstCount
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        self._Table = params.get("Table")
+        self._SrcCount = params.get("SrcCount")
+        self._DstCount = params.get("DstCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
