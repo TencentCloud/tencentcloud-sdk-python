@@ -11628,6 +11628,93 @@ class DescribeClusterDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterInstanceGroupsRequest(AbstractModel):
+    """DescribeClusterInstanceGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterInstanceGroupsResponse(AbstractModel):
+    """DescribeClusterInstanceGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 实例组个数
+        :type TotalCount: int
+        :param _InstanceGroupInfoList: 实例组列表
+        :type InstanceGroupInfoList: list of CynosdbInstanceGroup
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InstanceGroupInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceGroupInfoList(self):
+        return self._InstanceGroupInfoList
+
+    @InstanceGroupInfoList.setter
+    def InstanceGroupInfoList(self, InstanceGroupInfoList):
+        self._InstanceGroupInfoList = InstanceGroupInfoList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceGroupInfoList") is not None:
+            self._InstanceGroupInfoList = []
+            for item in params.get("InstanceGroupInfoList"):
+                obj = CynosdbInstanceGroup()
+                obj._deserialize(item)
+                self._InstanceGroupInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterInstanceGrpsRequest(AbstractModel):
     """DescribeClusterInstanceGrps请求参数结构体
 

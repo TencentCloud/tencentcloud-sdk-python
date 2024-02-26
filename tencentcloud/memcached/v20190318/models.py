@@ -548,8 +548,10 @@ class TagInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _TagKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagKey: str
         :param _TagValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
         :type TagValue: str
         """
         self._TagKey = None

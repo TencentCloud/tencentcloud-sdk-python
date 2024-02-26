@@ -1155,6 +1155,9 @@ class AlarmPolicy(AbstractModel):
         :param _IsSupportAlarmTag: 是否支持告警标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportAlarmTag: int
+        :param _TagOperation: 多标签交/并集关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagOperation: str
         """
         self._PolicyId = None
         self._PolicyName = None
@@ -1194,6 +1197,7 @@ class AlarmPolicy(AbstractModel):
         self._IsBindAll = None
         self._Tags = None
         self._IsSupportAlarmTag = None
+        self._TagOperation = None
 
     @property
     def PolicyId(self):
@@ -1499,6 +1503,14 @@ class AlarmPolicy(AbstractModel):
     def IsSupportAlarmTag(self, IsSupportAlarmTag):
         self._IsSupportAlarmTag = IsSupportAlarmTag
 
+    @property
+    def TagOperation(self):
+        return self._TagOperation
+
+    @TagOperation.setter
+    def TagOperation(self, TagOperation):
+        self._TagOperation = TagOperation
+
 
     def _deserialize(self, params):
         self._PolicyId = params.get("PolicyId")
@@ -1572,6 +1584,7 @@ class AlarmPolicy(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._IsSupportAlarmTag = params.get("IsSupportAlarmTag")
+        self._TagOperation = params.get("TagOperation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2345,6 +2358,8 @@ class BindingPolicyTagRequest(AbstractModel):
         :type EbEventFlag: int
         :param _EbSubject: 事件配置的告警
         :type EbSubject: str
+        :param _TagOperation: 标识标签取交/并集关系
+        :type TagOperation: str
         """
         self._Module = None
         self._PolicyId = None
@@ -2355,6 +2370,7 @@ class BindingPolicyTagRequest(AbstractModel):
         self._BatchTag = None
         self._EbEventFlag = None
         self._EbSubject = None
+        self._TagOperation = None
 
     @property
     def Module(self):
@@ -2428,6 +2444,14 @@ class BindingPolicyTagRequest(AbstractModel):
     def EbSubject(self, EbSubject):
         self._EbSubject = EbSubject
 
+    @property
+    def TagOperation(self):
+        return self._TagOperation
+
+    @TagOperation.setter
+    def TagOperation(self, TagOperation):
+        self._TagOperation = TagOperation
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -2446,6 +2470,7 @@ class BindingPolicyTagRequest(AbstractModel):
                 self._BatchTag.append(obj)
         self._EbEventFlag = params.get("EbEventFlag")
         self._EbSubject = params.get("EbSubject")
+        self._TagOperation = params.get("TagOperation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

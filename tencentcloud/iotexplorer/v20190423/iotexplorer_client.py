@@ -785,6 +785,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceFirmWare(self, request):
+        """获取设备固件信息
+
+        :param request: Request instance for DescribeDeviceFirmWare.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceFirmWareRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDeviceFirmWareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceFirmWare", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceFirmWareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceLocationSolve(self, request):
         """获取实时位置解析
 

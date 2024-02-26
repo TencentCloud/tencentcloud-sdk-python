@@ -3623,11 +3623,19 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :type AutoRenewFlag: bool
         :param _PackageRegion: 区域标识，0：国内，1：国外
         :type PackageRegion: int
+        :param _AutoVoucher: 是否自动选择代金券，默认false。
+有多张券时的选择策略：按照可支付订单全部金额的券，先到期的券，可抵扣金额最大的券，余额最小的券，现金券 这个优先级进行扣券，且最多只抵扣一张券。
+        :type AutoVoucher: bool
+        :param _VoucherIds: 指定代金券ID。自动选择代金券时此参数无效。目前只允许传入一张代金券。
+注：若指定的代金券不符合订单抵扣条件，则正常支付，不扣券
+        :type VoucherIds: list of str
         """
         self._PackageType = None
         self._DeviceList = None
         self._AutoRenewFlag = None
         self._PackageRegion = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
 
     @property
     def PackageType(self):
@@ -3661,12 +3669,30 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
     def PackageRegion(self, PackageRegion):
         self._PackageRegion = PackageRegion
 
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
 
     def _deserialize(self, params):
         self._PackageType = params.get("PackageType")
         self._DeviceList = params.get("DeviceList")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._PackageRegion = params.get("PackageRegion")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

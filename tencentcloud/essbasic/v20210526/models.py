@@ -1160,7 +1160,6 @@ class ChannelBillUsageDetail(AbstractModel):
 <li>**OrgEssAuth**: 签署企业实名</li>
 <li>**FlowNotify**: 短信通知</li>
 <li>**AuthService**: 企业工商信息查询</li>
-<li>**NoAuthSign**: 形式签</li>
 </ul>
         :type QuotaType: str
         :param _UseCount: 合同使用量
@@ -2003,9 +2002,8 @@ class ChannelCreateBatchSignUrlRequest(AbstractModel):
 <li>**SMS** : 短信通知（发送短信通知到Mobile参数所传的手机号）</li>
 </ul>
         :type NotifyType: str
-        :param _FlowIds: 本次需要批量签署的合同流程ID列表。
-可以不传,  如不传则是发给对方的所有待签署合同流程。
-
+        :param _FlowIds: 批量签署的合同流程ID数组。
+注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
         :type FlowIds: list of str
         :param _OrganizationName: 目标签署人的企业名称，签署人如果是企业员工身份，需要传此参数。
 
@@ -10121,7 +10119,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
         :type FlowInfos: list of FlowInfo
         :param _NeedPreview: 是否为预览模式，取值如下：
 <ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
-<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul>
+<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul>
 
 注:
 

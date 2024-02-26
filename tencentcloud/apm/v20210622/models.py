@@ -833,11 +833,11 @@ class CreateApmInstanceRequest(AbstractModel):
         :type Name: str
         :param _Description: 实例描述信息
         :type Description: str
-        :param _TraceDuration: Trace数据保存时长
+        :param _TraceDuration: Trace数据保存时长，单位为天默认存储为3天
         :type TraceDuration: int
         :param _Tags: 标签列表
         :type Tags: list of ApmTag
-        :param _SpanDailyCounters: 实例上报额度值
+        :param _SpanDailyCounters: 实例上报额度值，默认赋值为0表示不限制上报额度
         :type SpanDailyCounters: int
         :param _PayMode: 实例的计费模式
         :type PayMode: int

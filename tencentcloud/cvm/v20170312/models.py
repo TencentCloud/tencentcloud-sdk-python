@@ -1324,10 +1324,16 @@ class CreateHpcClusterRequest(AbstractModel):
         :type Name: str
         :param _Remark: 高性能计算集群备注。
         :type Remark: str
+        :param _HpcClusterType: 高性能计算集群类型。
+        :type HpcClusterType: str
+        :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。
+        :type HpcClusterBusinessId: str
         """
         self._Zone = None
         self._Name = None
         self._Remark = None
+        self._HpcClusterType = None
+        self._HpcClusterBusinessId = None
 
     @property
     def Zone(self):
@@ -1353,11 +1359,29 @@ class CreateHpcClusterRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def HpcClusterType(self):
+        return self._HpcClusterType
+
+    @HpcClusterType.setter
+    def HpcClusterType(self, HpcClusterType):
+        self._HpcClusterType = HpcClusterType
+
+    @property
+    def HpcClusterBusinessId(self):
+        return self._HpcClusterBusinessId
+
+    @HpcClusterBusinessId.setter
+    def HpcClusterBusinessId(self, HpcClusterBusinessId):
+        self._HpcClusterBusinessId = HpcClusterBusinessId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        self._HpcClusterType = params.get("HpcClusterType")
+        self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2926,6 +2950,64 @@ class DeleteImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInstancesActionTimerRequest(AbstractModel):
+    """DeleteInstancesActionTimer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionTimerIds: 定时任务ID列表，可以通过DescribeInstancesActionTimer接口查询。只能删除未执行的定时任务。
+        :type ActionTimerIds: list of str
+        """
+        self._ActionTimerIds = None
+
+    @property
+    def ActionTimerIds(self):
+        return self._ActionTimerIds
+
+    @ActionTimerIds.setter
+    def ActionTimerIds(self, ActionTimerIds):
+        self._ActionTimerIds = ActionTimerIds
+
+
+    def _deserialize(self, params):
+        self._ActionTimerIds = params.get("ActionTimerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstancesActionTimerResponse(AbstractModel):
+    """DeleteInstancesActionTimer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteKeyPairsRequest(AbstractModel):
     """DeleteKeyPairs请求参数结构体
 
@@ -3775,12 +3857,18 @@ class DescribeHpcClustersRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 本次请求量, 默认值20。
         :type Limit: int
+        :param _HpcClusterType: 高性能计算集群类型。
+        :type HpcClusterType: str
+        :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。	
+        :type HpcClusterBusinessId: str
         """
         self._HpcClusterIds = None
         self._Name = None
         self._Zone = None
         self._Offset = None
         self._Limit = None
+        self._HpcClusterType = None
+        self._HpcClusterBusinessId = None
 
     @property
     def HpcClusterIds(self):
@@ -3822,6 +3910,22 @@ class DescribeHpcClustersRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def HpcClusterType(self):
+        return self._HpcClusterType
+
+    @HpcClusterType.setter
+    def HpcClusterType(self, HpcClusterType):
+        self._HpcClusterType = HpcClusterType
+
+    @property
+    def HpcClusterBusinessId(self):
+        return self._HpcClusterBusinessId
+
+    @HpcClusterBusinessId.setter
+    def HpcClusterBusinessId(self, HpcClusterBusinessId):
+        self._HpcClusterBusinessId = HpcClusterBusinessId
+
 
     def _deserialize(self, params):
         self._HpcClusterIds = params.get("HpcClusterIds")
@@ -3829,6 +3933,8 @@ class DescribeHpcClustersRequest(AbstractModel):
         self._Zone = params.get("Zone")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._HpcClusterType = params.get("HpcClusterType")
+        self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4504,6 +4610,141 @@ class DescribeInstanceVncUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceVncUrl = params.get("InstanceVncUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancesActionTimerRequest(AbstractModel):
+    """DescribeInstancesActionTimer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionTimerIds: 定时任务ID列表。
+        :type ActionTimerIds: list of str
+        :param _InstanceIds: 按照一个或者多个实例ID查询。
+        :type InstanceIds: list of str
+        :param _TimerAction: 定时任务执行时间，格式如：2018-05-01 19:00:00，必须大于当前时间5分钟。
+        :type TimerAction: str
+        :param _EndActionTime: 执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
+        :type EndActionTime: str
+        :param _StartActionTime: 执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
+        :type StartActionTime: str
+        :param _StatusList: 定时任务状态列表。<br><li>UNDO：未执行<br><li>DOING：正在执行<br><li>DONE：执行完成。
+        :type StatusList: list of str
+        """
+        self._ActionTimerIds = None
+        self._InstanceIds = None
+        self._TimerAction = None
+        self._EndActionTime = None
+        self._StartActionTime = None
+        self._StatusList = None
+
+    @property
+    def ActionTimerIds(self):
+        return self._ActionTimerIds
+
+    @ActionTimerIds.setter
+    def ActionTimerIds(self, ActionTimerIds):
+        self._ActionTimerIds = ActionTimerIds
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def TimerAction(self):
+        return self._TimerAction
+
+    @TimerAction.setter
+    def TimerAction(self, TimerAction):
+        self._TimerAction = TimerAction
+
+    @property
+    def EndActionTime(self):
+        return self._EndActionTime
+
+    @EndActionTime.setter
+    def EndActionTime(self, EndActionTime):
+        self._EndActionTime = EndActionTime
+
+    @property
+    def StartActionTime(self):
+        return self._StartActionTime
+
+    @StartActionTime.setter
+    def StartActionTime(self, StartActionTime):
+        self._StartActionTime = StartActionTime
+
+    @property
+    def StatusList(self):
+        return self._StatusList
+
+    @StatusList.setter
+    def StatusList(self, StatusList):
+        self._StatusList = StatusList
+
+
+    def _deserialize(self, params):
+        self._ActionTimerIds = params.get("ActionTimerIds")
+        self._InstanceIds = params.get("InstanceIds")
+        self._TimerAction = params.get("TimerAction")
+        self._EndActionTime = params.get("EndActionTime")
+        self._StartActionTime = params.get("StartActionTime")
+        self._StatusList = params.get("StatusList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesActionTimerResponse(AbstractModel):
+    """DescribeInstancesActionTimer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionTimers: 定时任务信息列表。
+        :type ActionTimers: list of ActionTimer
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActionTimers = None
+        self._RequestId = None
+
+    @property
+    def ActionTimers(self):
+        return self._ActionTimers
+
+    @ActionTimers.setter
+    def ActionTimers(self, ActionTimers):
+        self._ActionTimers = ActionTimers
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ActionTimers") is not None:
+            self._ActionTimers = []
+            for item in params.get("ActionTimers"):
+                obj = ActionTimer()
+                obj._deserialize(item)
+                self._ActionTimers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7434,6 +7675,12 @@ class HpcClusterInfo(AbstractModel):
         :param _InstanceIds: 集群内实例ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceIds: list of str
+        :param _HpcClusterType: 高性能计算集群类型。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpcClusterType: str
+        :param _HpcClusterBusinessId: 高性能计算集群对应的业务场景标识，当前只支持CDC。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HpcClusterBusinessId: str
         """
         self._HpcClusterId = None
         self._Name = None
@@ -7443,6 +7690,8 @@ class HpcClusterInfo(AbstractModel):
         self._CurrentNum = None
         self._CreateTime = None
         self._InstanceIds = None
+        self._HpcClusterType = None
+        self._HpcClusterBusinessId = None
 
     @property
     def HpcClusterId(self):
@@ -7508,6 +7757,22 @@ class HpcClusterInfo(AbstractModel):
     def InstanceIds(self, InstanceIds):
         self._InstanceIds = InstanceIds
 
+    @property
+    def HpcClusterType(self):
+        return self._HpcClusterType
+
+    @HpcClusterType.setter
+    def HpcClusterType(self, HpcClusterType):
+        self._HpcClusterType = HpcClusterType
+
+    @property
+    def HpcClusterBusinessId(self):
+        return self._HpcClusterBusinessId
+
+    @HpcClusterBusinessId.setter
+    def HpcClusterBusinessId(self, HpcClusterBusinessId):
+        self._HpcClusterBusinessId = HpcClusterBusinessId
+
 
     def _deserialize(self, params):
         self._HpcClusterId = params.get("HpcClusterId")
@@ -7518,6 +7783,8 @@ class HpcClusterInfo(AbstractModel):
         self._CurrentNum = params.get("CurrentNum")
         self._CreateTime = params.get("CreateTime")
         self._InstanceIds = params.get("InstanceIds")
+        self._HpcClusterType = params.get("HpcClusterType")
+        self._HpcClusterBusinessId = params.get("HpcClusterBusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8049,6 +8316,90 @@ class ImportImageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ImportInstancesActionTimerRequest(AbstractModel):
+    """ImportInstancesActionTimer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 实例id列表，可以通过DescribeInstances接口查询到。
+        :type InstanceIds: list of str
+        :param _ActionTimer: 定时器任务信息，目前仅支持定时销毁。
+        :type ActionTimer: :class:`tencentcloud.cvm.v20170312.models.ActionTimer`
+        """
+        self._InstanceIds = None
+        self._ActionTimer = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ActionTimer(self):
+        return self._ActionTimer
+
+    @ActionTimer.setter
+    def ActionTimer(self, ActionTimer):
+        self._ActionTimer = ActionTimer
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("ActionTimer") is not None:
+            self._ActionTimer = ActionTimer()
+            self._ActionTimer._deserialize(params.get("ActionTimer"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportInstancesActionTimerResponse(AbstractModel):
+    """ImportInstancesActionTimer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionTimerIds: 定时器id列表
+        :type ActionTimerIds: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActionTimerIds = None
+        self._RequestId = None
+
+    @property
+    def ActionTimerIds(self):
+        return self._ActionTimerIds
+
+    @ActionTimerIds.setter
+    def ActionTimerIds(self, ActionTimerIds):
+        self._ActionTimerIds = ActionTimerIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActionTimerIds = params.get("ActionTimerIds")
         self._RequestId = params.get("RequestId")
 
 
