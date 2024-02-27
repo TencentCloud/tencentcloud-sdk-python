@@ -143,7 +143,7 @@ class ChangeAgePicRequest(AbstractModel):
 非腾讯云存储的Url速度和稳定性可能受一定影响。 
 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
         :type Url: str
-        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
         :type RspImgType: str
         """
         self._AgeInfos = None

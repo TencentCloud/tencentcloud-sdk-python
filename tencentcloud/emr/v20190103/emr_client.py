@@ -26,6 +26,29 @@ class EmrClient(AbstractClient):
     _service = 'emr'
 
 
+    def AddMetricScaleStrategy(self, request):
+        """添加扩缩容规则，按负载和时间
+
+        :param request: Request instance for AddMetricScaleStrategy.
+        :type request: :class:`tencentcloud.emr.v20190103.models.AddMetricScaleStrategyRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AddMetricScaleStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddMetricScaleStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddMetricScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddUsersForUserManager(self, request):
         """该接口支持安装了OpenLdap组件的集群。
         新增用户列表（用户管理）。
@@ -96,6 +119,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAutoScaleStrategy(self, request):
+        """删除自动扩缩容规则，后台销毁根据该规则扩缩容出来的节点
+
+        :param request: Request instance for DeleteAutoScaleStrategy.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DeleteAutoScaleStrategyRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DeleteAutoScaleStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAutoScaleStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAutoScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteUserManagerUserList(self, request):
         """删除用户列表（用户管理）
 
@@ -119,6 +165,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAutoScaleGroupGlobalConf(self, request):
+        """获取自动扩缩容全局配置
+
+        :param request: Request instance for DescribeAutoScaleGroupGlobalConf.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleGroupGlobalConfRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleGroupGlobalConfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScaleGroupGlobalConf", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScaleGroupGlobalConfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAutoScaleRecords(self, request):
         """获取集群的自动扩缩容的详细记录
 
@@ -133,6 +202,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeAutoScaleRecords", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAutoScaleRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAutoScaleStrategies(self, request):
+        """获取自动扩缩容规则
+
+        :param request: Request instance for DescribeAutoScaleStrategies.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleStrategiesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleStrategiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScaleStrategies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScaleStrategiesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -548,6 +640,29 @@ class EmrClient(AbstractClient):
             body = self.call("InquiryPriceUpdateInstance", params, headers=headers)
             response = json.loads(body)
             model = models.InquiryPriceUpdateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAutoScaleStrategy(self, request):
+        """修改自动扩缩容规则
+
+        :param request: Request instance for ModifyAutoScaleStrategy.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyAutoScaleStrategyRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyAutoScaleStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoScaleStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoScaleStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

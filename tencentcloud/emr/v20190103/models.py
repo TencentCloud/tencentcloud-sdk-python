@@ -18,6 +18,90 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddMetricScaleStrategyRequest(AbstractModel):
+    """AddMetricScaleStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _StrategyType: 1表示按负载规则扩容，2表示按时间规则扩容。
+        :type StrategyType: int
+        :param _TimeAutoScaleStrategy: 按时间扩缩容的规则。
+        :type TimeAutoScaleStrategy: :class:`tencentcloud.emr.v20190103.models.TimeAutoScaleStrategy`
+        """
+        self._InstanceId = None
+        self._StrategyType = None
+        self._TimeAutoScaleStrategy = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TimeAutoScaleStrategy(self):
+        return self._TimeAutoScaleStrategy
+
+    @TimeAutoScaleStrategy.setter
+    def TimeAutoScaleStrategy(self, TimeAutoScaleStrategy):
+        self._TimeAutoScaleStrategy = TimeAutoScaleStrategy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TimeAutoScaleStrategy") is not None:
+            self._TimeAutoScaleStrategy = TimeAutoScaleStrategy()
+            self._TimeAutoScaleStrategy._deserialize(params.get("TimeAutoScaleStrategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddMetricScaleStrategyResponse(AbstractModel):
+    """AddMetricScaleStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddUsersForUserManagerRequest(AbstractModel):
     """AddUsersForUserManager请求参数结构体
 
@@ -540,6 +624,114 @@ class AutoScaleRecord(AbstractModel):
         self._CompensateCount = params.get("CompensateCount")
         self._RetryCount = params.get("RetryCount")
         self._RetryInfo = params.get("RetryInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoScaleResourceConf(AbstractModel):
+    """弹性扩缩容规格配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _ClusterId: 集群实例ID。
+        :type ClusterId: int
+        :param _ScaleLowerBound: 自动扩缩容保留最小实例数。
+        :type ScaleLowerBound: int
+        :param _ScaleUpperBound: 自动扩缩容最大实例数。
+        :type ScaleUpperBound: int
+        :param _StrategyType: 扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
+        :type StrategyType: int
+        :param _NextTimeCanScale: 下次能可扩容时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextTimeCanScale: int
+        :param _GraceDownFlag: 优雅缩容开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraceDownFlag: bool
+        """
+        self._Id = None
+        self._ClusterId = None
+        self._ScaleLowerBound = None
+        self._ScaleUpperBound = None
+        self._StrategyType = None
+        self._NextTimeCanScale = None
+        self._GraceDownFlag = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ScaleLowerBound(self):
+        return self._ScaleLowerBound
+
+    @ScaleLowerBound.setter
+    def ScaleLowerBound(self, ScaleLowerBound):
+        self._ScaleLowerBound = ScaleLowerBound
+
+    @property
+    def ScaleUpperBound(self):
+        return self._ScaleUpperBound
+
+    @ScaleUpperBound.setter
+    def ScaleUpperBound(self, ScaleUpperBound):
+        self._ScaleUpperBound = ScaleUpperBound
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def NextTimeCanScale(self):
+        return self._NextTimeCanScale
+
+    @NextTimeCanScale.setter
+    def NextTimeCanScale(self, NextTimeCanScale):
+        self._NextTimeCanScale = NextTimeCanScale
+
+    @property
+    def GraceDownFlag(self):
+        return self._GraceDownFlag
+
+    @GraceDownFlag.setter
+    def GraceDownFlag(self, GraceDownFlag):
+        self._GraceDownFlag = GraceDownFlag
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
+        self._ScaleLowerBound = params.get("ScaleLowerBound")
+        self._ScaleUpperBound = params.get("ScaleUpperBound")
+        self._StrategyType = params.get("StrategyType")
+        self._NextTimeCanScale = params.get("NextTimeCanScale")
+        self._GraceDownFlag = params.get("GraceDownFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2991,6 +3183,147 @@ class CustomServiceDefine(AbstractModel):
         
 
 
+class DayRepeatStrategy(AbstractModel):
+    """弹性扩缩容按天重复任务描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecuteAtTimeOfDay: 重复任务执行的具体时刻，例如"01:02:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteAtTimeOfDay: str
+        :param _Step: 每隔Step天执行一次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: int
+        """
+        self._ExecuteAtTimeOfDay = None
+        self._Step = None
+
+    @property
+    def ExecuteAtTimeOfDay(self):
+        return self._ExecuteAtTimeOfDay
+
+    @ExecuteAtTimeOfDay.setter
+    def ExecuteAtTimeOfDay(self, ExecuteAtTimeOfDay):
+        self._ExecuteAtTimeOfDay = ExecuteAtTimeOfDay
+
+    @property
+    def Step(self):
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+
+    def _deserialize(self, params):
+        self._ExecuteAtTimeOfDay = params.get("ExecuteAtTimeOfDay")
+        self._Step = params.get("Step")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoScaleStrategyRequest(AbstractModel):
+    """DeleteAutoScaleStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _StrategyType: 自动扩缩容规则类型，1表示按照负载指标扩缩容，2表示按照时间规则扩缩容。
+        :type StrategyType: int
+        :param _StrategyId: 规则ID。
+        :type StrategyId: int
+        :param _GroupId: 伸缩组Id
+        :type GroupId: int
+        """
+        self._InstanceId = None
+        self._StrategyType = None
+        self._StrategyId = None
+        self._GroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyId = params.get("StrategyId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAutoScaleStrategyResponse(AbstractModel):
+    """DeleteAutoScaleStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteUserManagerUserListRequest(AbstractModel):
     """DeleteUserManagerUserList请求参数结构体
 
@@ -3147,6 +3480,95 @@ class DependService(AbstractModel):
         
 
 
+class DescribeAutoScaleGroupGlobalConfRequest(AbstractModel):
+    """DescribeAutoScaleGroupGlobalConf请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScaleGroupGlobalConfResponse(AbstractModel):
+    """DescribeAutoScaleGroupGlobalConf返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupGlobalConfs: 集群所有伸缩组全局信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupGlobalConfs: list of GroupGlobalConfs
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupGlobalConfs = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def GroupGlobalConfs(self):
+        return self._GroupGlobalConfs
+
+    @GroupGlobalConfs.setter
+    def GroupGlobalConfs(self, GroupGlobalConfs):
+        self._GroupGlobalConfs = GroupGlobalConfs
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupGlobalConfs") is not None:
+            self._GroupGlobalConfs = []
+            for item in params.get("GroupGlobalConfs"):
+                obj = GroupGlobalConfs()
+                obj._deserialize(item)
+                self._GroupGlobalConfs.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAutoScaleRecordsRequest(AbstractModel):
     """DescribeAutoScaleRecords请求参数结构体
 
@@ -3272,6 +3694,94 @@ class DescribeAutoScaleRecordsResponse(AbstractModel):
                 obj = AutoScaleRecord()
                 obj._deserialize(item)
                 self._RecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAutoScaleStrategiesRequest(AbstractModel):
+    """DescribeAutoScaleStrategies请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _GroupId: 伸缩组id
+        :type GroupId: int
+        """
+        self._InstanceId = None
+        self._GroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScaleStrategiesResponse(AbstractModel):
+    """DescribeAutoScaleStrategies返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeBasedAutoScaleStrategies: 按时间伸缩规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeBasedAutoScaleStrategies: list of TimeAutoScaleStrategy
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TimeBasedAutoScaleStrategies = None
+        self._RequestId = None
+
+    @property
+    def TimeBasedAutoScaleStrategies(self):
+        return self._TimeBasedAutoScaleStrategies
+
+    @TimeBasedAutoScaleStrategies.setter
+    def TimeBasedAutoScaleStrategies(self, TimeBasedAutoScaleStrategies):
+        self._TimeBasedAutoScaleStrategies = TimeBasedAutoScaleStrategies
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TimeBasedAutoScaleStrategies") is not None:
+            self._TimeBasedAutoScaleStrategies = []
+            for item in params.get("TimeBasedAutoScaleStrategies"):
+                obj = TimeAutoScaleStrategy()
+                obj._deserialize(item)
+                self._TimeBasedAutoScaleStrategies.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6658,6 +7168,81 @@ class Filters(AbstractModel):
         
 
 
+class GroupGlobalConfs(AbstractModel):
+    """集群所有伸缩组全局参数信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupGlobalConf: 伸缩组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupGlobalConf: :class:`tencentcloud.emr.v20190103.models.AutoScaleResourceConf`
+        :param _CurrentNodes: 当前伸缩组扩容出来的节点数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentNodes: int
+        :param _CurrentPostPaidNodes: 当前伸缩组扩容出来的后付费节点数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentPostPaidNodes: int
+        :param _CurrentSpotPaidNodes: 当前伸缩组扩容出来的竞价实例节点数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentSpotPaidNodes: int
+        """
+        self._GroupGlobalConf = None
+        self._CurrentNodes = None
+        self._CurrentPostPaidNodes = None
+        self._CurrentSpotPaidNodes = None
+
+    @property
+    def GroupGlobalConf(self):
+        return self._GroupGlobalConf
+
+    @GroupGlobalConf.setter
+    def GroupGlobalConf(self, GroupGlobalConf):
+        self._GroupGlobalConf = GroupGlobalConf
+
+    @property
+    def CurrentNodes(self):
+        return self._CurrentNodes
+
+    @CurrentNodes.setter
+    def CurrentNodes(self, CurrentNodes):
+        self._CurrentNodes = CurrentNodes
+
+    @property
+    def CurrentPostPaidNodes(self):
+        return self._CurrentPostPaidNodes
+
+    @CurrentPostPaidNodes.setter
+    def CurrentPostPaidNodes(self, CurrentPostPaidNodes):
+        self._CurrentPostPaidNodes = CurrentPostPaidNodes
+
+    @property
+    def CurrentSpotPaidNodes(self):
+        return self._CurrentSpotPaidNodes
+
+    @CurrentSpotPaidNodes.setter
+    def CurrentSpotPaidNodes(self, CurrentSpotPaidNodes):
+        self._CurrentSpotPaidNodes = CurrentSpotPaidNodes
+
+
+    def _deserialize(self, params):
+        if params.get("GroupGlobalConf") is not None:
+            self._GroupGlobalConf = AutoScaleResourceConf()
+            self._GroupGlobalConf._deserialize(params.get("GroupGlobalConf"))
+        self._CurrentNodes = params.get("CurrentNodes")
+        self._CurrentPostPaidNodes = params.get("CurrentPostPaidNodes")
+        self._CurrentSpotPaidNodes = params.get("CurrentSpotPaidNodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HiveQuery(AbstractModel):
     """Hive查询详情
 
@@ -9037,6 +9622,105 @@ class MetaDbInfo(AbstractModel):
         
 
 
+class ModifyAutoScaleStrategyRequest(AbstractModel):
+    """ModifyAutoScaleStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _StrategyType: 自动扩缩容规则类型，1表示按负载指标扩缩容，2表示按时间扩缩容。
+        :type StrategyType: int
+        :param _TimeAutoScaleStrategies: 按时间扩缩容的规则。
+        :type TimeAutoScaleStrategies: list of TimeAutoScaleStrategy
+        :param _GroupId: 伸缩组Id
+        :type GroupId: int
+        """
+        self._InstanceId = None
+        self._StrategyType = None
+        self._TimeAutoScaleStrategies = None
+        self._GroupId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TimeAutoScaleStrategies(self):
+        return self._TimeAutoScaleStrategies
+
+    @TimeAutoScaleStrategies.setter
+    def TimeAutoScaleStrategies(self, TimeAutoScaleStrategies):
+        self._TimeAutoScaleStrategies = TimeAutoScaleStrategies
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TimeAutoScaleStrategies") is not None:
+            self._TimeAutoScaleStrategies = []
+            for item in params.get("TimeAutoScaleStrategies"):
+                obj = TimeAutoScaleStrategy()
+                obj._deserialize(item)
+                self._TimeAutoScaleStrategies.append(obj)
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoScaleStrategyResponse(AbstractModel):
+    """ModifyAutoScaleStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourcePoolsRequest(AbstractModel):
     """ModifyResourcePools请求参数结构体
 
@@ -9680,6 +10364,53 @@ class ModifyUserManagerPwdResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MonthRepeatStrategy(AbstractModel):
+    """定时伸缩每月重复任务策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecuteAtTimeOfDay: 重复任务执行的具体时刻，例如"01:02:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteAtTimeOfDay: str
+        :param _DaysOfMonthRange: 每月中的天数时间段描述，长度只能为2，例如[2,10]表示每月2-10号。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DaysOfMonthRange: list of int non-negative
+        """
+        self._ExecuteAtTimeOfDay = None
+        self._DaysOfMonthRange = None
+
+    @property
+    def ExecuteAtTimeOfDay(self):
+        return self._ExecuteAtTimeOfDay
+
+    @ExecuteAtTimeOfDay.setter
+    def ExecuteAtTimeOfDay(self, ExecuteAtTimeOfDay):
+        self._ExecuteAtTimeOfDay = ExecuteAtTimeOfDay
+
+    @property
+    def DaysOfMonthRange(self):
+        return self._DaysOfMonthRange
+
+    @DaysOfMonthRange.setter
+    def DaysOfMonthRange(self, DaysOfMonthRange):
+        self._DaysOfMonthRange = DaysOfMonthRange
+
+
+    def _deserialize(self, params):
+        self._ExecuteAtTimeOfDay = params.get("ExecuteAtTimeOfDay")
+        self._DaysOfMonthRange = params.get("DaysOfMonthRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MultiDisk(AbstractModel):
@@ -10852,6 +11583,40 @@ class NodeResourceSpec(AbstractModel):
                 obj = DiskSpecInfo()
                 obj._deserialize(item)
                 self._LocalDataDisk.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NotRepeatStrategy(AbstractModel):
+    """弹性扩缩容执行一次规则上下文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecuteAt: 该次任务执行的具体完整时间，格式为"2020-07-13 00:00:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteAt: str
+        """
+        self._ExecuteAt = None
+
+    @property
+    def ExecuteAt(self):
+        return self._ExecuteAt
+
+    @ExecuteAt.setter
+    def ExecuteAt(self, ExecuteAt):
+        self._ExecuteAt = ExecuteAt
+
+
+    def _deserialize(self, params):
+        self._ExecuteAt = params.get("ExecuteAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12853,6 +13618,112 @@ class RenewInstancesInfo(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._Spec = params.get("Spec")
         self._StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RepeatStrategy(AbstractModel):
+    """定时伸缩任务策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RepeatType: 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。
+        :type RepeatType: str
+        :param _DayRepeat: 按天重复规则，当RepeatType为"DAY"时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayRepeat: :class:`tencentcloud.emr.v20190103.models.DayRepeatStrategy`
+        :param _WeekRepeat: 按周重复规则，当RepeatType为"DOW"时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeekRepeat: :class:`tencentcloud.emr.v20190103.models.WeekRepeatStrategy`
+        :param _MonthRepeat: 按月重复规则，当RepeatType为"DOM"时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonthRepeat: :class:`tencentcloud.emr.v20190103.models.MonthRepeatStrategy`
+        :param _NotRepeat: 一次执行规则，当RepeatType为"NONE"时有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotRepeat: :class:`tencentcloud.emr.v20190103.models.NotRepeatStrategy`
+        :param _Expire: 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expire: str
+        """
+        self._RepeatType = None
+        self._DayRepeat = None
+        self._WeekRepeat = None
+        self._MonthRepeat = None
+        self._NotRepeat = None
+        self._Expire = None
+
+    @property
+    def RepeatType(self):
+        return self._RepeatType
+
+    @RepeatType.setter
+    def RepeatType(self, RepeatType):
+        self._RepeatType = RepeatType
+
+    @property
+    def DayRepeat(self):
+        return self._DayRepeat
+
+    @DayRepeat.setter
+    def DayRepeat(self, DayRepeat):
+        self._DayRepeat = DayRepeat
+
+    @property
+    def WeekRepeat(self):
+        return self._WeekRepeat
+
+    @WeekRepeat.setter
+    def WeekRepeat(self, WeekRepeat):
+        self._WeekRepeat = WeekRepeat
+
+    @property
+    def MonthRepeat(self):
+        return self._MonthRepeat
+
+    @MonthRepeat.setter
+    def MonthRepeat(self, MonthRepeat):
+        self._MonthRepeat = MonthRepeat
+
+    @property
+    def NotRepeat(self):
+        return self._NotRepeat
+
+    @NotRepeat.setter
+    def NotRepeat(self, NotRepeat):
+        self._NotRepeat = NotRepeat
+
+    @property
+    def Expire(self):
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+
+    def _deserialize(self, params):
+        self._RepeatType = params.get("RepeatType")
+        if params.get("DayRepeat") is not None:
+            self._DayRepeat = DayRepeatStrategy()
+            self._DayRepeat._deserialize(params.get("DayRepeat"))
+        if params.get("WeekRepeat") is not None:
+            self._WeekRepeat = WeekRepeatStrategy()
+            self._WeekRepeat._deserialize(params.get("WeekRepeat"))
+        if params.get("MonthRepeat") is not None:
+            self._MonthRepeat = MonthRepeatStrategy()
+            self._MonthRepeat._deserialize(params.get("MonthRepeat"))
+        if params.get("NotRepeat") is not None:
+            self._NotRepeat = NotRepeatStrategy()
+            self._NotRepeat._deserialize(params.get("NotRepeat"))
+        self._Expire = params.get("Expire")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15332,6 +16203,298 @@ class TerminateTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TimeAutoScaleStrategy(AbstractModel):
+    """时间扩缩容规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyName: 策略名字，集群内唯一。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyName: str
+        :param _IntervalTime: 策略触发后的冷却时间，该段时间内，将不能触发弹性扩缩容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntervalTime: int
+        :param _ScaleAction: 扩缩容动作，1表示扩容，2表示缩容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleAction: int
+        :param _ScaleNum: 扩缩容数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleNum: int
+        :param _StrategyStatus: 规则状态，1表示有效，2表示无效，3表示暂停。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyStatus: int
+        :param _Priority: 规则优先级，越小越高。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _RetryValidTime: 当多条规则同时触发，其中某些未真正执行时，在该时间范围内，将会重试。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryValidTime: int
+        :param _RepeatStrategy: 时间扩缩容重复策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RepeatStrategy: :class:`tencentcloud.emr.v20190103.models.RepeatStrategy`
+        :param _StrategyId: 策略唯一ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyId: int
+        :param _GraceDownFlag: 优雅缩容开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraceDownFlag: bool
+        :param _GraceDownTime: 优雅缩容等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraceDownTime: int
+        :param _Tags: 绑定标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _ConfigGroupAssigned: 预设配置组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigGroupAssigned: str
+        :param _MeasureMethod: 扩容资源计算方法，"DEFAULT","INSTANCE", "CPU", "MEMORYGB"。
+"DEFAULT"表示默认方式，与"INSTANCE"意义相同。
+"INSTANCE"表示按照节点计算，默认方式。
+"CPU"表示按照机器的核数计算。
+"MEMORYGB"表示按照机器内存数计算。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MeasureMethod: str
+        :param _TerminatePolicy: 销毁策略, "DEFAULT",默认销毁策略，由缩容规则触发缩容，"TIMING"表示定时销毁
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TerminatePolicy: str
+        :param _MaxUse: 最长使用时间， 秒数，最短1小时，最长24小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxUse: int
+        :param _SoftDeployInfo: 节点部署服务列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SoftDeployInfo: list of int
+        :param _ServiceNodeInfo: 启动进程列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceNodeInfo: list of int
+        :param _CompensateFlag: 补偿扩容，0表示不开启，1表示开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompensateFlag: int
+        :param _GroupId: 伸缩组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: int
+        """
+        self._StrategyName = None
+        self._IntervalTime = None
+        self._ScaleAction = None
+        self._ScaleNum = None
+        self._StrategyStatus = None
+        self._Priority = None
+        self._RetryValidTime = None
+        self._RepeatStrategy = None
+        self._StrategyId = None
+        self._GraceDownFlag = None
+        self._GraceDownTime = None
+        self._Tags = None
+        self._ConfigGroupAssigned = None
+        self._MeasureMethod = None
+        self._TerminatePolicy = None
+        self._MaxUse = None
+        self._SoftDeployInfo = None
+        self._ServiceNodeInfo = None
+        self._CompensateFlag = None
+        self._GroupId = None
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def IntervalTime(self):
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def ScaleAction(self):
+        return self._ScaleAction
+
+    @ScaleAction.setter
+    def ScaleAction(self, ScaleAction):
+        self._ScaleAction = ScaleAction
+
+    @property
+    def ScaleNum(self):
+        return self._ScaleNum
+
+    @ScaleNum.setter
+    def ScaleNum(self, ScaleNum):
+        self._ScaleNum = ScaleNum
+
+    @property
+    def StrategyStatus(self):
+        return self._StrategyStatus
+
+    @StrategyStatus.setter
+    def StrategyStatus(self, StrategyStatus):
+        self._StrategyStatus = StrategyStatus
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def RetryValidTime(self):
+        return self._RetryValidTime
+
+    @RetryValidTime.setter
+    def RetryValidTime(self, RetryValidTime):
+        self._RetryValidTime = RetryValidTime
+
+    @property
+    def RepeatStrategy(self):
+        return self._RepeatStrategy
+
+    @RepeatStrategy.setter
+    def RepeatStrategy(self, RepeatStrategy):
+        self._RepeatStrategy = RepeatStrategy
+
+    @property
+    def StrategyId(self):
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def GraceDownFlag(self):
+        return self._GraceDownFlag
+
+    @GraceDownFlag.setter
+    def GraceDownFlag(self, GraceDownFlag):
+        self._GraceDownFlag = GraceDownFlag
+
+    @property
+    def GraceDownTime(self):
+        return self._GraceDownTime
+
+    @GraceDownTime.setter
+    def GraceDownTime(self, GraceDownTime):
+        self._GraceDownTime = GraceDownTime
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ConfigGroupAssigned(self):
+        return self._ConfigGroupAssigned
+
+    @ConfigGroupAssigned.setter
+    def ConfigGroupAssigned(self, ConfigGroupAssigned):
+        self._ConfigGroupAssigned = ConfigGroupAssigned
+
+    @property
+    def MeasureMethod(self):
+        return self._MeasureMethod
+
+    @MeasureMethod.setter
+    def MeasureMethod(self, MeasureMethod):
+        self._MeasureMethod = MeasureMethod
+
+    @property
+    def TerminatePolicy(self):
+        return self._TerminatePolicy
+
+    @TerminatePolicy.setter
+    def TerminatePolicy(self, TerminatePolicy):
+        self._TerminatePolicy = TerminatePolicy
+
+    @property
+    def MaxUse(self):
+        return self._MaxUse
+
+    @MaxUse.setter
+    def MaxUse(self, MaxUse):
+        self._MaxUse = MaxUse
+
+    @property
+    def SoftDeployInfo(self):
+        return self._SoftDeployInfo
+
+    @SoftDeployInfo.setter
+    def SoftDeployInfo(self, SoftDeployInfo):
+        self._SoftDeployInfo = SoftDeployInfo
+
+    @property
+    def ServiceNodeInfo(self):
+        return self._ServiceNodeInfo
+
+    @ServiceNodeInfo.setter
+    def ServiceNodeInfo(self, ServiceNodeInfo):
+        self._ServiceNodeInfo = ServiceNodeInfo
+
+    @property
+    def CompensateFlag(self):
+        return self._CompensateFlag
+
+    @CompensateFlag.setter
+    def CompensateFlag(self, CompensateFlag):
+        self._CompensateFlag = CompensateFlag
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._StrategyName = params.get("StrategyName")
+        self._IntervalTime = params.get("IntervalTime")
+        self._ScaleAction = params.get("ScaleAction")
+        self._ScaleNum = params.get("ScaleNum")
+        self._StrategyStatus = params.get("StrategyStatus")
+        self._Priority = params.get("Priority")
+        self._RetryValidTime = params.get("RetryValidTime")
+        if params.get("RepeatStrategy") is not None:
+            self._RepeatStrategy = RepeatStrategy()
+            self._RepeatStrategy._deserialize(params.get("RepeatStrategy"))
+        self._StrategyId = params.get("StrategyId")
+        self._GraceDownFlag = params.get("GraceDownFlag")
+        self._GraceDownTime = params.get("GraceDownTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ConfigGroupAssigned = params.get("ConfigGroupAssigned")
+        self._MeasureMethod = params.get("MeasureMethod")
+        self._TerminatePolicy = params.get("TerminatePolicy")
+        self._MaxUse = params.get("MaxUse")
+        self._SoftDeployInfo = params.get("SoftDeployInfo")
+        self._ServiceNodeInfo = params.get("ServiceNodeInfo")
+        self._CompensateFlag = params.get("CompensateFlag")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TopologyInfo(AbstractModel):
     """集群节点拓扑信息
 
@@ -15809,6 +16972,53 @@ class VirtualPrivateCloud(AbstractModel):
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeekRepeatStrategy(AbstractModel):
+    """定时扩容每周重复任务策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecuteAtTimeOfDay: 重复任务执行的具体时刻，例如"01:02:00"
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteAtTimeOfDay: str
+        :param _DaysOfWeek: 每周几的数字描述，例如，[1,3,4]表示每周周一、周三、周四。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DaysOfWeek: list of int non-negative
+        """
+        self._ExecuteAtTimeOfDay = None
+        self._DaysOfWeek = None
+
+    @property
+    def ExecuteAtTimeOfDay(self):
+        return self._ExecuteAtTimeOfDay
+
+    @ExecuteAtTimeOfDay.setter
+    def ExecuteAtTimeOfDay(self, ExecuteAtTimeOfDay):
+        self._ExecuteAtTimeOfDay = ExecuteAtTimeOfDay
+
+    @property
+    def DaysOfWeek(self):
+        return self._DaysOfWeek
+
+    @DaysOfWeek.setter
+    def DaysOfWeek(self, DaysOfWeek):
+        self._DaysOfWeek = DaysOfWeek
+
+
+    def _deserialize(self, params):
+        self._ExecuteAtTimeOfDay = params.get("ExecuteAtTimeOfDay")
+        self._DaysOfWeek = params.get("DaysOfWeek")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

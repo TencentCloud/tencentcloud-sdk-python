@@ -160,6 +160,938 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class AnalyseActionTypeDetail(AbstractModel):
+    """成本分析交易类型复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: 交易类型code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        """
+        self._ActionType = None
+        self._ActionTypeName = None
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseAmountDetail(AbstractModel):
+    """成本分析金额返回数据模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 费用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Display: 是否展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Display: int
+        """
+        self._Key = None
+        self._Display = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Display(self):
+        return self._Display
+
+    @Display.setter
+    def Display(self, Display):
+        self._Display = Display
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Display = params.get("Display")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseBusinessDetail(AbstractModel):
+    """成本分析产品返回复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: 产品码code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseConditionDetail(AbstractModel):
+    """成本分析过滤框复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: 产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: list of AnalyseBusinessDetail
+        :param _Project: 项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Project: list of AnalyseProjectDetail
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of AnalyseRegionDetail
+        :param _PayMode: 计费模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: list of AnalysePayModeDetail
+        :param _ActionType: 交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: list of AnalyseActionTypeDetail
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: list of AnalyseZoneDetail
+        :param _OwnerUin: 资源所有者Uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: list of AnalyseOwnerUinDetail
+        :param _Amount: 费用类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Amount: list of AnalyseAmountDetail
+        """
+        self._Business = None
+        self._Project = None
+        self._Region = None
+        self._PayMode = None
+        self._ActionType = None
+        self._Zone = None
+        self._OwnerUin = None
+        self._Amount = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Project(self):
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = AnalyseBusinessDetail()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = AnalyseProjectDetail()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = AnalyseRegionDetail()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = AnalysePayModeDetail()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = AnalyseActionTypeDetail()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        if params.get("Zone") is not None:
+            self._Zone = []
+            for item in params.get("Zone"):
+                obj = AnalyseZoneDetail()
+                obj._deserialize(item)
+                self._Zone.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = AnalyseOwnerUinDetail()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("Amount") is not None:
+            self._Amount = []
+            for item in params.get("Amount"):
+                obj = AnalyseAmountDetail()
+                obj._deserialize(item)
+                self._Amount.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseConditions(AbstractModel):
+    """成本分析查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodes: 产品名称代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodes: str
+        :param _ProductCodes: 子产品名称代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodes: str
+        :param _ComponentCode: 组件类型代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCode: str
+        :param _ZoneIds: 可用区ID：资源所属可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneIds: str
+        :param _RegionIds: 地域ID:资源所属地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionIds: str
+        :param _ProjectIds: 项目ID:资源所属项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectIds: str
+        :param _PayModes: 计费模式 prePay(表示包年包月)/postPay(表示按量计费)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModes: str
+        :param _ActionTypes: 交易类型，查询交易类型（请使用交易类型code入参）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypes: str
+        :param _Tags: 分账标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: str
+        :param _FeeType: 费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：
+cashPayAmount:现金 
+incentivePayAmount:赠送金 
+voucherPayAmount:优惠券 
+tax:税金 
+costBeforeTax:税前价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeType: str
+        :param _PayerUins: 查询成本分析数据的用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUins: str
+        :param _OwnerUins: 使用资源的用户UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUins: str
+        :param _ConsumptionTypes: 消耗类型，查询消耗类型（请使用消耗类型code入参）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumptionTypes: str
+        """
+        self._BusinessCodes = None
+        self._ProductCodes = None
+        self._ComponentCode = None
+        self._ZoneIds = None
+        self._RegionIds = None
+        self._ProjectIds = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._Tags = None
+        self._FeeType = None
+        self._PayerUins = None
+        self._OwnerUins = None
+        self._ConsumptionTypes = None
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ComponentCode(self):
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def FeeType(self):
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PayerUins(self):
+        return self._PayerUins
+
+    @PayerUins.setter
+    def PayerUins(self, PayerUins):
+        self._PayerUins = PayerUins
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def ConsumptionTypes(self):
+        return self._ConsumptionTypes
+
+    @ConsumptionTypes.setter
+    def ConsumptionTypes(self, ConsumptionTypes):
+        self._ConsumptionTypes = ConsumptionTypes
+
+
+    def _deserialize(self, params):
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ZoneIds = params.get("ZoneIds")
+        self._RegionIds = params.get("RegionIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._Tags = params.get("Tags")
+        self._FeeType = params.get("FeeType")
+        self._PayerUins = params.get("PayerUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._ConsumptionTypes = params.get("ConsumptionTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseDetail(AbstractModel):
+    """成本分析数据复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 时间
+        :type Name: str
+        :param _Total: 金额
+        :type Total: str
+        :param _TimeDetail: 日期明细金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeDetail: list of AnalyseTimeDetail
+        """
+        self._Name = None
+        self._Total = None
+        self._TimeDetail = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TimeDetail(self):
+        return self._TimeDetail
+
+    @TimeDetail.setter
+    def TimeDetail(self, TimeDetail):
+        self._TimeDetail = TimeDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        if params.get("TimeDetail") is not None:
+            self._TimeDetail = []
+            for item in params.get("TimeDetail"):
+                obj = AnalyseTimeDetail()
+                obj._deserialize(item)
+                self._TimeDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseHeaderDetail(AbstractModel):
+    """成本分析表头数据复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadDetail: 表头日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadDetail: list of AnalyseHeaderTimeDetail
+        :param _Name: 时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Total: 总计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: str
+        """
+        self._HeadDetail = None
+        self._Name = None
+        self._Total = None
+
+    @property
+    def HeadDetail(self):
+        return self._HeadDetail
+
+    @HeadDetail.setter
+    def HeadDetail(self, HeadDetail):
+        self._HeadDetail = HeadDetail
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("HeadDetail") is not None:
+            self._HeadDetail = []
+            for item in params.get("HeadDetail"):
+                obj = AnalyseHeaderTimeDetail()
+                obj._deserialize(item)
+                self._HeadDetail.append(obj)
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseHeaderTimeDetail(AbstractModel):
+    """成本分析header表头数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseOwnerUinDetail(AbstractModel):
+    """成本分析使用者uin复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUin: 使用者uin
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        """
+        self._OwnerUin = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalysePayModeDetail(AbstractModel):
+    """成本分析支付方式复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 计费模式code
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PayModeName: 计费模式Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeName: str
+        """
+        self._PayMode = None
+        self._PayModeName = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseProjectDetail(AbstractModel):
+    """成本分析项目返回复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseRegionDetail(AbstractModel):
+    """成本分析地域返回复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: 地域id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: str
+        :param _RegionName: 地域名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseTimeDetail(AbstractModel):
+    """成本分返回值复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param _Money: 金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Money: str
+        """
+        self._Time = None
+        self._Money = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Money(self):
+        return self._Money
+
+    @Money.setter
+    def Money(self, Money):
+        self._Money = Money
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Money = params.get("Money")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseZoneDetail(AbstractModel):
+    """成本分析可用区复杂类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 可用区id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param _ZoneName: 可用区Name
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        """
+        self._ZoneId = None
+        self._ZoneName = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicableProducts(AbstractModel):
     """适用商品信息
 
@@ -7811,6 +8743,275 @@ class DescribeCostDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCostExplorerSummaryRequest(AbstractModel):
+    """DescribeCostExplorerSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: 周期开始时间，格式为yyyy-mm-dd hh:ii:ss
+        :type BeginTime: str
+        :param _EndTime: 周期结束时间，格式为yyyy-mm-dd hh:ii:ss
+        :type EndTime: str
+        :param _BillType: 账单类型：1-费用账单、2-消耗账单
+        :type BillType: str
+        :param _PeriodType: 统计周期：日-day，月-month；
+        :type PeriodType: str
+        :param _Dimensions: 分类维度（数据汇总维度），查询分类维度（请使用分类维度code入参）入参枚举值：
+default=仅总计
+feeType=费用类型
+billType=账单类型
+business=产品
+product=子产品
+region=地域
+zone=可用区
+actionType=交易类型
+payMode =计费模式
+tags=标签
+project =项目
+payerUin=支付者账号
+ownerUin=使用者账号
+        :type Dimensions: str
+        :param _FeeType: 费用类型：cost-总费用，totalCost-原价费用
+        :type FeeType: str
+        :param _PageSize: 数量，每页最大值为100
+        :type PageSize: int
+        :param _PageNo: 起始页，当PageNo=1表示第一页， PageNo=2表示第二页，依次类推。
+        :type PageNo: int
+        :param _TagKeyStr: 分账标签值
+        :type TagKeyStr: str
+        :param _NeedConditionValue: 是否需要筛选框， 1-表示需要， 0-表示不需要，若不传默认不需要。
+        :type NeedConditionValue: str
+        :param _Conditions: 筛选参数
+        :type Conditions: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._BillType = None
+        self._PeriodType = None
+        self._Dimensions = None
+        self._FeeType = None
+        self._PageSize = None
+        self._PageNo = None
+        self._TagKeyStr = None
+        self._NeedConditionValue = None
+        self._Conditions = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BillType(self):
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def Dimensions(self):
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def FeeType(self):
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def TagKeyStr(self):
+        return self._TagKeyStr
+
+    @TagKeyStr.setter
+    def TagKeyStr(self, TagKeyStr):
+        self._TagKeyStr = TagKeyStr
+
+    @property
+    def NeedConditionValue(self):
+        return self._NeedConditionValue
+
+    @NeedConditionValue.setter
+    def NeedConditionValue(self, NeedConditionValue):
+        self._NeedConditionValue = NeedConditionValue
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._BillType = params.get("BillType")
+        self._PeriodType = params.get("PeriodType")
+        self._Dimensions = params.get("Dimensions")
+        self._FeeType = params.get("FeeType")
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        self._TagKeyStr = params.get("TagKeyStr")
+        self._NeedConditionValue = params.get("NeedConditionValue")
+        if params.get("Conditions") is not None:
+            self._Conditions = AnalyseConditions()
+            self._Conditions._deserialize(params.get("Conditions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostExplorerSummaryResponse(AbstractModel):
+    """DescribeCostExplorerSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 数据条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Header: 表头信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Header: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
+        :param _Detail: 数据明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AnalyseDetail
+        :param _TotalDetail: 数据总计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalDetail: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
+        :param _ConditionValue: 筛选框
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Header = None
+        self._Detail = None
+        self._TotalDetail = None
+        self._ConditionValue = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Header(self):
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def TotalDetail(self):
+        return self._TotalDetail
+
+    @TotalDetail.setter
+    def TotalDetail(self, TotalDetail):
+        self._TotalDetail = TotalDetail
+
+    @property
+    def ConditionValue(self):
+        return self._ConditionValue
+
+    @ConditionValue.setter
+    def ConditionValue(self, ConditionValue):
+        self._ConditionValue = ConditionValue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Header") is not None:
+            self._Header = AnalyseHeaderDetail()
+            self._Header._deserialize(params.get("Header"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AnalyseDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        if params.get("TotalDetail") is not None:
+            self._TotalDetail = AnalyseDetail()
+            self._TotalDetail._deserialize(params.get("TotalDetail"))
+        if params.get("ConditionValue") is not None:
+            self._ConditionValue = AnalyseConditionDetail()
+            self._ConditionValue._deserialize(params.get("ConditionValue"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCostSummaryByProductRequest(AbstractModel):
     """DescribeCostSummaryByProduct请求参数结构体
 
@@ -8579,7 +9780,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 11：代付拒绝
 12：支付中
         :type Status: int
-        :param _OrderId: 订单号
+        :param _OrderId: 子订单号
         :type OrderId: str
         :param _BigDealId: 大订单号
         :type BigDealId: str

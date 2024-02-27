@@ -4781,7 +4781,7 @@ class ReservedPreDomainsRequest(AbstractModel):
         r"""
         :param _DomainList: 预约预释放域名列表
         :type DomainList: list of str
-        :param _TemplateId: 模版ID
+        :param _TemplateId: 模板ID
         :type TemplateId: str
         """
         self._DomainList = None

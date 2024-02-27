@@ -13365,9 +13365,12 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         :type InstanceId: str
         :param _ForReadonlyInstance: 该值默认为False，表示当传入只读实例ID时，查询操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True。
         :type ForReadonlyInstance: bool
+        :param _OpResourceId: 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+        :type OpResourceId: str
         """
         self._InstanceId = None
         self._ForReadonlyInstance = None
+        self._OpResourceId = None
 
     @property
     def InstanceId(self):
@@ -13385,10 +13388,19 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
     def ForReadonlyInstance(self, ForReadonlyInstance):
         self._ForReadonlyInstance = ForReadonlyInstance
 
+    @property
+    def OpResourceId(self):
+        return self._OpResourceId
+
+    @OpResourceId.setter
+    def OpResourceId(self, OpResourceId):
+        self._OpResourceId = OpResourceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ForReadonlyInstance = params.get("ForReadonlyInstance")
+        self._OpResourceId = params.get("OpResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

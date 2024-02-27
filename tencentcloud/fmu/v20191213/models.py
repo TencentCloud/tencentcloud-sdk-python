@@ -1157,7 +1157,7 @@ class StyleImageProRequest(AbstractModel):
         :type Url: str
         :param _FilterDegree: 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :type FilterDegree: int
-        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认为base64。
         :type RspImgType: str
         """
         self._FilterType = None
@@ -1295,7 +1295,7 @@ class StyleImageRequest(AbstractModel):
         :type Url: str
         :param _FilterDegree: 滤镜效果，取值[0,100]，0表示无效果，100表示满滤镜效果。默认值为80。
         :type FilterDegree: int
-        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。
+        :param _RspImgType: 返回图像方式（base64 或 url ) ，二选一。url有效期为1天。默认值为base64。
         :type RspImgType: str
         """
         self._FilterType = None
