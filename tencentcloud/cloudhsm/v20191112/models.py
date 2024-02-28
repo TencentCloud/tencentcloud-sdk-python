@@ -1155,7 +1155,7 @@ class DescribeVsmsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 最大数量
         :type Limit: int
-        :param _SearchWord: 查询关键字
+        :param _SearchWord: 资源ID或者资源名字模糊查询的关键字
         :type SearchWord: str
         :param _TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter

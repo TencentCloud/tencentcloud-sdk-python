@@ -273,6 +273,8 @@ class ClusterOption(AbstractModel):
         :param _Type: 计算集群类型，取值范围：
 - KUBERNETES
         :type Type: str
+        :param _ServiceCidr: 计算集群Service CIDR，不能与VPC网段重合。
+        :type ServiceCidr: str
         :param _ResourceQuota: 资源配额。
         :type ResourceQuota: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
         :param _LimitRange: 限制范围。
@@ -280,6 +282,7 @@ class ClusterOption(AbstractModel):
         """
         self._Zone = None
         self._Type = None
+        self._ServiceCidr = None
         self._ResourceQuota = None
         self._LimitRange = None
 
@@ -298,6 +301,14 @@ class ClusterOption(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def ServiceCidr(self):
+        return self._ServiceCidr
+
+    @ServiceCidr.setter
+    def ServiceCidr(self, ServiceCidr):
+        self._ServiceCidr = ServiceCidr
 
     @property
     def ResourceQuota(self):
@@ -319,6 +330,7 @@ class ClusterOption(AbstractModel):
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._Type = params.get("Type")
+        self._ServiceCidr = params.get("ServiceCidr")
         if params.get("ResourceQuota") is not None:
             self._ResourceQuota = ResourceQuota()
             self._ResourceQuota._deserialize(params.get("ResourceQuota"))
@@ -1243,6 +1255,10 @@ class Environment(AbstractModel):
         :type Status: str
         :param _Available: 环境是否可用。环境需要可用才能投递计算任务。
         :type Available: bool
+        :param _IsDefault: 环境是否为默认环境。
+        :type IsDefault: bool
+        :param _IsManaged: 环境是否为托管环境。
+        :type IsManaged: bool
         :param _Message: 环境信息。
         :type Message: str
         :param _ResourceIds: 云资源ID。
@@ -1261,6 +1277,8 @@ class Environment(AbstractModel):
         self._Type = None
         self._Status = None
         self._Available = None
+        self._IsDefault = None
+        self._IsManaged = None
         self._Message = None
         self._ResourceIds = None
         self._LastWorkflowUuid = None
@@ -1323,6 +1341,22 @@ class Environment(AbstractModel):
         self._Available = Available
 
     @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def IsManaged(self):
+        return self._IsManaged
+
+    @IsManaged.setter
+    def IsManaged(self, IsManaged):
+        self._IsManaged = IsManaged
+
+    @property
     def Message(self):
         return self._Message
 
@@ -1363,6 +1397,8 @@ class Environment(AbstractModel):
         self._Type = params.get("Type")
         self._Status = params.get("Status")
         self._Available = params.get("Available")
+        self._IsDefault = params.get("IsDefault")
+        self._IsManaged = params.get("IsManaged")
         self._Message = params.get("Message")
         if params.get("ResourceIds") is not None:
             self._ResourceIds = ResourceIds()
@@ -2181,11 +2217,18 @@ class NFOption(AbstractModel):
         :param _Resume: Resume。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resume: bool
+        :param _NFVersion: Nextflow引擎版本，取值范围：
+- 22.10.4
+- 22.10.8 
+- 23.10.1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NFVersion: str
         """
         self._Config = None
         self._Profile = None
         self._Report = None
         self._Resume = None
+        self._NFVersion = None
 
     @property
     def Config(self):
@@ -2219,12 +2262,21 @@ class NFOption(AbstractModel):
     def Resume(self, Resume):
         self._Resume = Resume
 
+    @property
+    def NFVersion(self):
+        return self._NFVersion
+
+    @NFVersion.setter
+    def NFVersion(self, NFVersion):
+        self._NFVersion = NFVersion
+
 
     def _deserialize(self, params):
         self._Config = params.get("Config")
         self._Profile = params.get("Profile")
         self._Report = params.get("Report")
         self._Resume = params.get("Resume")
+        self._NFVersion = params.get("NFVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2789,8 +2841,6 @@ class RunApplicationRequest(AbstractModel):
         :type EnvironmentId: str
         :param _InputBase64: 任务输入JSON。需要进行base64编码。
         :type InputBase64: str
-        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填表示不清理。
-        :type CacheClearDelay: int
         :param _ProjectId: 项目ID。（不填使用指定地域下的默认项目）
         :type ProjectId: str
         :param _Description: 任务批次描述。
@@ -2799,25 +2849,30 @@ class RunApplicationRequest(AbstractModel):
         :type TableId: str
         :param _TableRowUuids: 批量投递表格行UUID。不填表示表格全部行。
         :type TableRowUuids: list of str
+        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填或0表示不清理。
+        :type CacheClearDelay: int
         :param _ApplicationVersionId: 应用版本ID。不填表示使用当前最新版本。
         :type ApplicationVersionId: str
         :param _Option: WDL运行选项。
         :type Option: :class:`tencentcloud.omics.v20221128.models.RunOption`
         :param _NFOption: Nextflow运行选项。
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
+        :param _WorkDir: 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+        :type WorkDir: str
         """
         self._ApplicationId = None
         self._Name = None
         self._EnvironmentId = None
         self._InputBase64 = None
-        self._CacheClearDelay = None
         self._ProjectId = None
         self._Description = None
         self._TableId = None
         self._TableRowUuids = None
+        self._CacheClearDelay = None
         self._ApplicationVersionId = None
         self._Option = None
         self._NFOption = None
+        self._WorkDir = None
 
     @property
     def ApplicationId(self):
@@ -2852,14 +2907,6 @@ class RunApplicationRequest(AbstractModel):
         self._InputBase64 = InputBase64
 
     @property
-    def CacheClearDelay(self):
-        return self._CacheClearDelay
-
-    @CacheClearDelay.setter
-    def CacheClearDelay(self, CacheClearDelay):
-        self._CacheClearDelay = CacheClearDelay
-
-    @property
     def ProjectId(self):
         return self._ProjectId
 
@@ -2892,6 +2939,14 @@ class RunApplicationRequest(AbstractModel):
         self._TableRowUuids = TableRowUuids
 
     @property
+    def CacheClearDelay(self):
+        return self._CacheClearDelay
+
+    @CacheClearDelay.setter
+    def CacheClearDelay(self, CacheClearDelay):
+        self._CacheClearDelay = CacheClearDelay
+
+    @property
     def ApplicationVersionId(self):
         return self._ApplicationVersionId
 
@@ -2915,17 +2970,25 @@ class RunApplicationRequest(AbstractModel):
     def NFOption(self, NFOption):
         self._NFOption = NFOption
 
+    @property
+    def WorkDir(self):
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._Name = params.get("Name")
         self._EnvironmentId = params.get("EnvironmentId")
         self._InputBase64 = params.get("InputBase64")
-        self._CacheClearDelay = params.get("CacheClearDelay")
         self._ProjectId = params.get("ProjectId")
         self._Description = params.get("Description")
         self._TableId = params.get("TableId")
         self._TableRowUuids = params.get("TableRowUuids")
+        self._CacheClearDelay = params.get("CacheClearDelay")
         self._ApplicationVersionId = params.get("ApplicationVersionId")
         if params.get("Option") is not None:
             self._Option = RunOption()
@@ -2933,6 +2996,7 @@ class RunApplicationRequest(AbstractModel):
         if params.get("NFOption") is not None:
             self._NFOption = NFOption()
             self._NFOption._deserialize(params.get("NFOption"))
+        self._WorkDir = params.get("WorkDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3775,8 +3839,10 @@ class RunWorkflowRequest(AbstractModel):
         :param _InputCosUri: 任务输入COS地址。
 （InputBase64和InputCosUri必选其一）
         :type InputCosUri: str
-        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填表示不清理。
+        :param _CacheClearDelay: 任务缓存清理时间（小时）。不填或0表示不清理。
         :type CacheClearDelay: int
+        :param _WorkDir: 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
+        :type WorkDir: str
         """
         self._Name = None
         self._EnvironmentId = None
@@ -3788,6 +3854,7 @@ class RunWorkflowRequest(AbstractModel):
         self._InputBase64 = None
         self._InputCosUri = None
         self._CacheClearDelay = None
+        self._WorkDir = None
 
     @property
     def Name(self):
@@ -3869,6 +3936,14 @@ class RunWorkflowRequest(AbstractModel):
     def CacheClearDelay(self, CacheClearDelay):
         self._CacheClearDelay = CacheClearDelay
 
+    @property
+    def WorkDir(self):
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3885,6 +3960,7 @@ class RunWorkflowRequest(AbstractModel):
         self._InputBase64 = params.get("InputBase64")
         self._InputCosUri = params.get("InputCosUri")
         self._CacheClearDelay = params.get("CacheClearDelay")
+        self._WorkDir = params.get("WorkDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

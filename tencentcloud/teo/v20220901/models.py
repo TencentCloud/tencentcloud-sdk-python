@@ -15257,6 +15257,8 @@ class L4ProxyRule(AbstractModel):
 <li>fail：部署失败/停用失败。</li>
 注意：L4ProxyRule 在 CreateL4ProxyRules、ModifyL4ProxyRules 作为入参使用时，该参数请勿填写。
         :type Status: str
+        :param _BuId: BuID。
+        :type BuId: str
         """
         self._RuleId = None
         self._Protocol = None
@@ -15269,6 +15271,7 @@ class L4ProxyRule(AbstractModel):
         self._SessionPersistTime = None
         self._RuleTag = None
         self._Status = None
+        self._BuId = None
 
     @property
     def RuleId(self):
@@ -15358,6 +15361,14 @@ class L4ProxyRule(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def BuId(self):
+        return self._BuId
+
+    @BuId.setter
+    def BuId(self, BuId):
+        self._BuId = BuId
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -15371,6 +15382,7 @@ class L4ProxyRule(AbstractModel):
         self._SessionPersistTime = params.get("SessionPersistTime")
         self._RuleTag = params.get("RuleTag")
         self._Status = params.get("Status")
+        self._BuId = params.get("BuId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

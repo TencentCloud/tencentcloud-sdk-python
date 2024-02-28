@@ -107,12 +107,18 @@ class DescribeGetAuthInfoResponse(AbstractModel):
         :type IsAuthenticated: str
         :param _Type: 认证类型，个人0，企业1
         :type Type: str
+        :param _Level: 大客户标识：
+1004、1003、1002、1001
+
+其余为普通的用户
+        :type Level: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsTenPayMasked = None
         self._IsAuthenticated = None
         self._Type = None
+        self._Level = None
         self._RequestId = None
 
     @property
@@ -140,6 +146,14 @@ class DescribeGetAuthInfoResponse(AbstractModel):
         self._Type = Type
 
     @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -152,6 +166,7 @@ class DescribeGetAuthInfoResponse(AbstractModel):
         self._IsTenPayMasked = params.get("IsTenPayMasked")
         self._IsAuthenticated = params.get("IsAuthenticated")
         self._Type = params.get("Type")
+        self._Level = params.get("Level")
         self._RequestId = params.get("RequestId")
 
 

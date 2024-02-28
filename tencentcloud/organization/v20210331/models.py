@@ -725,6 +725,90 @@ class CancelOrganizationMemberAuthAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckAccountDeleteRequest(AbstractModel):
+    """CheckAccountDelete请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: 成员uin。
+        :type MemberUin: int
+        """
+        self._MemberUin = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAccountDeleteResponse(AbstractModel):
+    """CheckAccountDelete返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowDelete: 成员是否允许删除。 true-是、false-否
+        :type AllowDelete: bool
+        :param _NotAllowReason: 不允许删除原因。
+        :type NotAllowReason: :class:`tencentcloud.organization.v20210331.models.NotAllowReason`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AllowDelete = None
+        self._NotAllowReason = None
+        self._RequestId = None
+
+    @property
+    def AllowDelete(self):
+        return self._AllowDelete
+
+    @AllowDelete.setter
+    def AllowDelete(self, AllowDelete):
+        self._AllowDelete = AllowDelete
+
+    @property
+    def NotAllowReason(self):
+        return self._NotAllowReason
+
+    @NotAllowReason.setter
+    def NotAllowReason(self, NotAllowReason):
+        self._NotAllowReason = NotAllowReason
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AllowDelete = params.get("AllowDelete")
+        if params.get("NotAllowReason") is not None:
+            self._NotAllowReason = NotAllowReason()
+            self._NotAllowReason._deserialize(params.get("NotAllowReason"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrganizationIdentityRequest(AbstractModel):
     """CreateOrganizationIdentity请求参数结构体
 
@@ -4598,6 +4682,144 @@ class MoveOrganizationNodeMembersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NotAllowReason(AbstractModel):
+    """不允许删除的原因。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsCreateMember: 是否创建的成员。true-是、false-否；成员不是创建的成员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsCreateMember: bool
+        :param _DeletionPermission: 成员删除许可。true-开启、false-关闭；成员删除许可关闭时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionPermission: bool
+        :param _IsAssignManager: 是否可信服务委派管理员。true-是、false-否；成员是可信服务委派管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAssignManager: bool
+        :param _IsAuthManager: 是否主体管理员。true-是、false-否；成员是主体管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAuthManager: bool
+        :param _IsShareManager: 是否共享资源管理员。true-是、false-否；成员是共享资源管理员不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsShareManager: bool
+        :param _OperateProcess: 成员是否设置了操作审批。true-是、false-否；成员设置了操作审批时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateProcess: bool
+        :param _BillingPermission: 是否允许解除成员财务权限。true-是、false-否；成员不能解除财务权限时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingPermission: bool
+        :param _ExistResources: 存在的资源列表。账号存在资源时不允许删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExistResources: list of str
+        :param _DetectFailedResources: 检测失败的资源列表。账号有资源检测失败时不允许删除。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectFailedResources: list of str
+        """
+        self._IsCreateMember = None
+        self._DeletionPermission = None
+        self._IsAssignManager = None
+        self._IsAuthManager = None
+        self._IsShareManager = None
+        self._OperateProcess = None
+        self._BillingPermission = None
+        self._ExistResources = None
+        self._DetectFailedResources = None
+
+    @property
+    def IsCreateMember(self):
+        return self._IsCreateMember
+
+    @IsCreateMember.setter
+    def IsCreateMember(self, IsCreateMember):
+        self._IsCreateMember = IsCreateMember
+
+    @property
+    def DeletionPermission(self):
+        return self._DeletionPermission
+
+    @DeletionPermission.setter
+    def DeletionPermission(self, DeletionPermission):
+        self._DeletionPermission = DeletionPermission
+
+    @property
+    def IsAssignManager(self):
+        return self._IsAssignManager
+
+    @IsAssignManager.setter
+    def IsAssignManager(self, IsAssignManager):
+        self._IsAssignManager = IsAssignManager
+
+    @property
+    def IsAuthManager(self):
+        return self._IsAuthManager
+
+    @IsAuthManager.setter
+    def IsAuthManager(self, IsAuthManager):
+        self._IsAuthManager = IsAuthManager
+
+    @property
+    def IsShareManager(self):
+        return self._IsShareManager
+
+    @IsShareManager.setter
+    def IsShareManager(self, IsShareManager):
+        self._IsShareManager = IsShareManager
+
+    @property
+    def OperateProcess(self):
+        return self._OperateProcess
+
+    @OperateProcess.setter
+    def OperateProcess(self, OperateProcess):
+        self._OperateProcess = OperateProcess
+
+    @property
+    def BillingPermission(self):
+        return self._BillingPermission
+
+    @BillingPermission.setter
+    def BillingPermission(self, BillingPermission):
+        self._BillingPermission = BillingPermission
+
+    @property
+    def ExistResources(self):
+        return self._ExistResources
+
+    @ExistResources.setter
+    def ExistResources(self, ExistResources):
+        self._ExistResources = ExistResources
+
+    @property
+    def DetectFailedResources(self):
+        return self._DetectFailedResources
+
+    @DetectFailedResources.setter
+    def DetectFailedResources(self, DetectFailedResources):
+        self._DetectFailedResources = DetectFailedResources
+
+
+    def _deserialize(self, params):
+        self._IsCreateMember = params.get("IsCreateMember")
+        self._DeletionPermission = params.get("DeletionPermission")
+        self._IsAssignManager = params.get("IsAssignManager")
+        self._IsAuthManager = params.get("IsAuthManager")
+        self._IsShareManager = params.get("IsShareManager")
+        self._OperateProcess = params.get("OperateProcess")
+        self._BillingPermission = params.get("BillingPermission")
+        self._ExistResources = params.get("ExistResources")
+        self._DetectFailedResources = params.get("DetectFailedResources")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OrgFinancialByMonth(AbstractModel):

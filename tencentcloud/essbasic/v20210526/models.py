@@ -8712,8 +8712,8 @@ class Component(AbstractModel):
 <li> <b>SELECTOR</b> : 选项值</li>
 <li> <b>DYNAMIC_TABLE</b>  - 传入json格式的表格内容，详见说明：[数据表格](https://qian.tencent.com/developers/company/dynamic_table)</li>
 <li> <b>DATE</b> : 默认是格式化为xxxx年xx月xx日</li>
-<li> <b>SIGN_SEAL</b> : 印章ID，于控制台查询获取</li>
-<li> <b>SIGN_PAGING_SEAL</b> : 可以指定印章ID，于控制台查询获取</li></ul>
+<li> <b>SIGN_SEAL</b> : 印章ID，于控制台查询获取，[点击查看在控制上的位置](https://qcloudimg.tencent-cloud.cn/raw/cd403a5b949fce197fd9e88bb6db1517.png)</li>
+<li> <b>SIGN_PAGING_SEAL</b> : 可以指定印章ID，于控制台查询获取，[点击查看在控制上的位置](https://qcloudimg.tencent-cloud.cn/raw/cd403a5b949fce197fd9e88bb6db1517.png)</li></ul>
 
 
 <b>控件值约束说明</b>：
@@ -9604,8 +9604,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         :param _ProxyOperatorIdCardNumber: 子客经办人身份证
 注意：`如果已同步，这里非空会更新同步的经办人身份证号，暂时只支持居民身份证类型`。
         :type ProxyOperatorIdCardNumber: str
-        :param _AutoJumpUrl: 认证完成跳转链接
-注意：`只在H5生效，域名需要联系我们开白`。
+        :param _AutoJumpUrl: 认证完成跳转链接。
+注意：`目前仅支持 H5 和 PC， 如果使用的是 H5，域名需要联系我们开白`。
         :type AutoJumpUrl: str
         """
         self._Agent = None
@@ -13455,6 +13455,19 @@ class FlowApproverInfo(AbstractModel):
 注：
 `不指定该值时，默认为签署方自行选择。`
         :type SignTypeSelector: int
+        :param _Components: 签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+<ul><li>单行文本控件</li>
+<li>多行文本控件</li>
+<li>勾选框控件</li>
+<li>数字控件</li>
+<li>图片控件</li>
+<li>数据表格等填写控件</li></ul>
+
+具体使用说明可参考[为签署方指定填写控件](https%3A%2F%2Fqian.tencent.cn%2Fdevelopers%2Fpartner%2FcreateFlowByFiles%23%E4%B8%BA%E7%AD%BE%E7%BD%B2%E6%96%B9%E6%8C%87%E5%AE%9A%E5%A1%AB%E5%86%99%E6%8E%A7%E4%BB%B6)
+
+
+注：`此参数仅在通过文件发起合同或者合同组时生效`
+        :type Components: list of Component
         """
         self._Name = None
         self._IdCardType = None
@@ -13481,6 +13494,7 @@ class FlowApproverInfo(AbstractModel):
         self._AddSignComponentsLimits = None
         self._ApproverRoleName = None
         self._SignTypeSelector = None
+        self._Components = None
 
     @property
     def Name(self):
@@ -13686,6 +13700,14 @@ class FlowApproverInfo(AbstractModel):
     def SignTypeSelector(self, SignTypeSelector):
         self._SignTypeSelector = SignTypeSelector
 
+    @property
+    def Components(self):
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13725,6 +13747,12 @@ class FlowApproverInfo(AbstractModel):
                 self._AddSignComponentsLimits.append(obj)
         self._ApproverRoleName = params.get("ApproverRoleName")
         self._SignTypeSelector = params.get("SignTypeSelector")
+        if params.get("Components") is not None:
+            self._Components = []
+            for item in params.get("Components"):
+                obj = Component()
+                obj._deserialize(item)
+                self._Components.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

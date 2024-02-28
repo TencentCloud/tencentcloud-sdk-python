@@ -2508,9 +2508,12 @@ class DescribePreDomainListRequest(AbstractModel):
         :type Page: int
         :param _Size: 条数
         :type Size: int
+        :param _EndTime: 用于结束时间筛选
+        :type EndTime: str
         """
         self._Page = None
         self._Size = None
+        self._EndTime = None
 
     @property
     def Page(self):
@@ -2528,10 +2531,19 @@ class DescribePreDomainListRequest(AbstractModel):
     def Size(self, Size):
         self._Size = Size
 
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._Page = params.get("Page")
         self._Size = params.get("Size")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -16179,6 +16179,88 @@ class SetLoadBalancerSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetLoadBalancerStartStatusRequest(AbstractModel):
+    """SetLoadBalancerStartStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationType: 操作类型。Start：启动实例，Stop：停止实例。
+        :type OperationType: str
+        :param _LoadBalancerId: 负载均衡实例ID。
+        :type LoadBalancerId: str
+        :param _ListenerIds: 监听器ID。如果该字段为空，则表示操作负载均衡实例，如果不为空，则表示操作监听器。
+        :type ListenerIds: list of str
+        """
+        self._OperationType = None
+        self._LoadBalancerId = None
+        self._ListenerIds = None
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def ListenerIds(self):
+        return self._ListenerIds
+
+    @ListenerIds.setter
+    def ListenerIds(self, ListenerIds):
+        self._ListenerIds = ListenerIds
+
+
+    def _deserialize(self, params):
+        self._OperationType = params.get("OperationType")
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._ListenerIds = params.get("ListenerIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetLoadBalancerStartStatusResponse(AbstractModel):
+    """SetLoadBalancerStartStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SetSecurityGroupForLoadbalancersRequest(AbstractModel):
     """SetSecurityGroupForLoadbalancers请求参数结构体
 

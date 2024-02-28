@@ -7619,6 +7619,9 @@ class ColumnBasicInfo(AbstractModel):
         :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Scale: 精度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scale: int
         """
         self._TableId = None
         self._DatasourceId = None
@@ -7639,6 +7642,7 @@ class ColumnBasicInfo(AbstractModel):
         self._ProjectDisplayName = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Scale = None
 
     @property
     def TableId(self):
@@ -7792,6 +7796,14 @@ class ColumnBasicInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Scale(self):
+        return self._Scale
+
+    @Scale.setter
+    def Scale(self, Scale):
+        self._Scale = Scale
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -7813,6 +7825,7 @@ class ColumnBasicInfo(AbstractModel):
         self._ProjectDisplayName = params.get("ProjectDisplayName")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Scale = params.get("Scale")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7836,9 +7849,6 @@ class ColumnLineageInfo(AbstractModel):
         :param _DatasourceId: 数据源ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _TableId: 表ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TableId: str
         :param _ColumnName: 字段名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnName: str
@@ -7899,10 +7909,12 @@ class ColumnLineageInfo(AbstractModel):
         :param _ExtParams: 额外参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtParams: list of LineageParamRecord
+        :param _TableId: 表ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
         """
         self._Id = None
         self._DatasourceId = None
-        self._TableId = None
         self._ColumnName = None
         self._ColumnNameCn = None
         self._ColumnType = None
@@ -7923,6 +7935,7 @@ class ColumnLineageInfo(AbstractModel):
         self._ParentSet = None
         self._ChildSet = None
         self._ExtParams = None
+        self._TableId = None
 
     @property
     def Id(self):
@@ -7939,14 +7952,6 @@ class ColumnLineageInfo(AbstractModel):
     @DatasourceId.setter
     def DatasourceId(self, DatasourceId):
         self._DatasourceId = DatasourceId
-
-    @property
-    def TableId(self):
-        return self._TableId
-
-    @TableId.setter
-    def TableId(self, TableId):
-        self._TableId = TableId
 
     @property
     def ColumnName(self):
@@ -8108,11 +8113,18 @@ class ColumnLineageInfo(AbstractModel):
     def ExtParams(self, ExtParams):
         self._ExtParams = ExtParams
 
+    @property
+    def TableId(self):
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._DatasourceId = params.get("DatasourceId")
-        self._TableId = params.get("TableId")
         self._ColumnName = params.get("ColumnName")
         self._ColumnNameCn = params.get("ColumnNameCn")
         self._ColumnType = params.get("ColumnType")
@@ -8138,6 +8150,7 @@ class ColumnLineageInfo(AbstractModel):
                 obj = LineageParamRecord()
                 obj._deserialize(item)
                 self._ExtParams.append(obj)
+        self._TableId = params.get("TableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8185,6 +8198,12 @@ class ColumnMeta(AbstractModel):
         :param _DictionaryName: 对应码表字典名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type DictionaryName: str
+        :param _LevelName: 安全等级：名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelName: str
+        :param _LevelRank: 安全等级：值范围1-10
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelRank: int
         """
         self._NameEn = None
         self._NameCn = None
@@ -8196,6 +8215,8 @@ class ColumnMeta(AbstractModel):
         self._ColumnFamiliesFieldSet = None
         self._DictionaryId = None
         self._DictionaryName = None
+        self._LevelName = None
+        self._LevelRank = None
 
     @property
     def NameEn(self):
@@ -8277,6 +8298,22 @@ class ColumnMeta(AbstractModel):
     def DictionaryName(self, DictionaryName):
         self._DictionaryName = DictionaryName
 
+    @property
+    def LevelName(self):
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelRank(self):
+        return self._LevelRank
+
+    @LevelRank.setter
+    def LevelRank(self, LevelRank):
+        self._LevelRank = LevelRank
+
 
     def _deserialize(self, params):
         self._NameEn = params.get("NameEn")
@@ -8294,6 +8331,8 @@ class ColumnMeta(AbstractModel):
                 self._ColumnFamiliesFieldSet.append(obj)
         self._DictionaryId = params.get("DictionaryId")
         self._DictionaryName = params.get("DictionaryName")
+        self._LevelName = params.get("LevelName")
+        self._LevelRank = params.get("LevelRank")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9131,9 +9170,13 @@ class CompareRule(AbstractModel):
         :param _CycleStep: 周期性模板默认周期，单位秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
+        :param _ComputeExpression: o 表示 或，a 表示 且，数字表示items下标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComputeExpression: str
         """
         self._Items = None
         self._CycleStep = None
+        self._ComputeExpression = None
 
     @property
     def Items(self):
@@ -9151,6 +9194,14 @@ class CompareRule(AbstractModel):
     def CycleStep(self, CycleStep):
         self._CycleStep = CycleStep
 
+    @property
+    def ComputeExpression(self):
+        return self._ComputeExpression
+
+    @ComputeExpression.setter
+    def ComputeExpression(self, ComputeExpression):
+        self._ComputeExpression = ComputeExpression
+
 
     def _deserialize(self, params):
         if params.get("Items") is not None:
@@ -9160,6 +9211,7 @@ class CompareRule(AbstractModel):
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._CycleStep = params.get("CycleStep")
+        self._ComputeExpression = params.get("ComputeExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9180,7 +9232,16 @@ class CompareRuleItem(AbstractModel):
         :param _CompareType: 比较类型 1.固定值  2.波动值  3.数值范围比较  4.枚举范围比较  5.不用比较
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompareType: int
-        :param _Operator: 比较操作类型 <  <=  ==  =>  >
+        :param _Operator: 比较操作类型
+<  <=  ==  =>  > !=
+IRLCRO:在区间内(左闭右开)
+IRLORC:在区间内(左开右闭)
+IRLCRC:在区间内(左闭右闭)
+IRLORO:在区间内(左开右开)
+NRLCRO:不在区间内(左闭右开)
+NRLORC:不在区间内(左开右闭)
+NRLCRC:不在在区间内(左闭右闭)
+NRLORO:不在在区间内(左开右开)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _ValueComputeType: 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
@@ -19509,6 +19570,8 @@ class DescribeColumnsMetaRequest(AbstractModel):
         :type OrderFieldSet: list of OrderField
         :param _IsPartitionQuery: 是否查询分区字段，默认false
         :type IsPartitionQuery: bool
+        :param _ComplianceId: 合规组ID
+        :type ComplianceId: int
         """
         self._TableId = None
         self._PageNumber = None
@@ -19516,6 +19579,7 @@ class DescribeColumnsMetaRequest(AbstractModel):
         self._FilterSet = None
         self._OrderFieldSet = None
         self._IsPartitionQuery = None
+        self._ComplianceId = None
 
     @property
     def TableId(self):
@@ -19565,6 +19629,14 @@ class DescribeColumnsMetaRequest(AbstractModel):
     def IsPartitionQuery(self, IsPartitionQuery):
         self._IsPartitionQuery = IsPartitionQuery
 
+    @property
+    def ComplianceId(self):
+        return self._ComplianceId
+
+    @ComplianceId.setter
+    def ComplianceId(self, ComplianceId):
+        self._ComplianceId = ComplianceId
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -19583,6 +19655,7 @@ class DescribeColumnsMetaRequest(AbstractModel):
                 obj._deserialize(item)
                 self._OrderFieldSet.append(obj)
         self._IsPartitionQuery = params.get("IsPartitionQuery")
+        self._ComplianceId = params.get("ComplianceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25014,12 +25087,18 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         :type BrokerIp: str
         :param _OriginFileName: 文件Name
         :type OriginFileName: str
+        :param _StartCount: 起始行
+        :type StartCount: int
+        :param _LineCount: 每次查询行数
+        :type LineCount: int
         """
         self._ProjectId = None
         self._TaskId = None
         self._CurRunDate = None
         self._BrokerIp = None
         self._OriginFileName = None
+        self._StartCount = None
+        self._LineCount = None
 
     @property
     def ProjectId(self):
@@ -25061,6 +25140,22 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
     def OriginFileName(self, OriginFileName):
         self._OriginFileName = OriginFileName
 
+    @property
+    def StartCount(self):
+        return self._StartCount
+
+    @StartCount.setter
+    def StartCount(self, StartCount):
+        self._StartCount = StartCount
+
+    @property
+    def LineCount(self):
+        return self._LineCount
+
+    @LineCount.setter
+    def LineCount(self, LineCount):
+        self._LineCount = LineCount
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -25068,6 +25163,8 @@ class DescribeInstanceLogDetailRequest(AbstractModel):
         self._CurRunDate = params.get("CurRunDate")
         self._BrokerIp = params.get("BrokerIp")
         self._OriginFileName = params.get("OriginFileName")
+        self._StartCount = params.get("StartCount")
+        self._LineCount = params.get("LineCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46070,12 +46167,16 @@ class InstanceLogInfoOpsDto(AbstractModel):
         :param _ThirdTaskLogUrlDesc: 第三方任务日志链接描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdTaskLogUrlDesc: str
+        :param _LineCount: 日志行数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineCount: int
         """
         self._LogInfo = None
         self._YarnLogInfo = None
         self._DataLogInfo = None
         self._ThirdTaskRunLogInfo = None
         self._ThirdTaskLogUrlDesc = None
+        self._LineCount = None
 
     @property
     def LogInfo(self):
@@ -46117,6 +46218,14 @@ class InstanceLogInfoOpsDto(AbstractModel):
     def ThirdTaskLogUrlDesc(self, ThirdTaskLogUrlDesc):
         self._ThirdTaskLogUrlDesc = ThirdTaskLogUrlDesc
 
+    @property
+    def LineCount(self):
+        return self._LineCount
+
+    @LineCount.setter
+    def LineCount(self, LineCount):
+        self._LineCount = LineCount
+
 
     def _deserialize(self, params):
         self._LogInfo = params.get("LogInfo")
@@ -46124,6 +46233,7 @@ class InstanceLogInfoOpsDto(AbstractModel):
         self._DataLogInfo = params.get("DataLogInfo")
         self._ThirdTaskRunLogInfo = params.get("ThirdTaskRunLogInfo")
         self._ThirdTaskLogUrlDesc = params.get("ThirdTaskLogUrlDesc")
+        self._LineCount = params.get("LineCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61486,6 +61596,12 @@ class RuleGroup(AbstractModel):
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _StrategyConfig: 是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyConfig: bool
+        :param _SubscribeConfig: 是否已配置执行策略
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubscribeConfig: bool
         """
         self._RuleGroupId = None
         self._DatasourceId = None
@@ -61506,6 +61622,8 @@ class RuleGroup(AbstractModel):
         self._TableOwnerUserId = None
         self._InstanceId = None
         self._CreateTime = None
+        self._StrategyConfig = None
+        self._SubscribeConfig = None
 
     @property
     def RuleGroupId(self):
@@ -61659,6 +61777,22 @@ class RuleGroup(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def StrategyConfig(self):
+        return self._StrategyConfig
+
+    @StrategyConfig.setter
+    def StrategyConfig(self, StrategyConfig):
+        self._StrategyConfig = StrategyConfig
+
+    @property
+    def SubscribeConfig(self):
+        return self._SubscribeConfig
+
+    @SubscribeConfig.setter
+    def SubscribeConfig(self, SubscribeConfig):
+        self._SubscribeConfig = SubscribeConfig
+
 
     def _deserialize(self, params):
         self._RuleGroupId = params.get("RuleGroupId")
@@ -61684,6 +61818,8 @@ class RuleGroup(AbstractModel):
         self._TableOwnerUserId = params.get("TableOwnerUserId")
         self._InstanceId = params.get("InstanceId")
         self._CreateTime = params.get("CreateTime")
+        self._StrategyConfig = params.get("StrategyConfig")
+        self._SubscribeConfig = params.get("SubscribeConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68910,6 +69046,9 @@ class TableBasicInfo(AbstractModel):
         :param _UpdateTime: 更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
+        :param _Location: 存储位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
         """
         self._TableId = None
         self._DatasourceId = None
@@ -68939,6 +69078,7 @@ class TableBasicInfo(AbstractModel):
         self._PartitionExpireDays = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Location = None
 
     @property
     def TableId(self):
@@ -69164,6 +69304,14 @@ class TableBasicInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -69194,6 +69342,7 @@ class TableBasicInfo(AbstractModel):
         self._PartitionExpireDays = params.get("PartitionExpireDays")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69799,6 +69948,15 @@ class TableLineageInfo(AbstractModel):
         :param _ChannelType: 模块/应用类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelType: str
+        :param _DisplayType: 展示类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayType: str
+        :param _EngineType: 表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineType: str
+        :param _TableType: 表类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableType: str
         """
         self._MetastoreType = None
         self._ProjectId = None
@@ -69820,6 +69978,9 @@ class TableLineageInfo(AbstractModel):
         self._ModifyTime = None
         self._Tasks = None
         self._ChannelType = None
+        self._DisplayType = None
+        self._EngineType = None
+        self._TableType = None
 
     @property
     def MetastoreType(self):
@@ -69981,6 +70142,30 @@ class TableLineageInfo(AbstractModel):
     def ChannelType(self, ChannelType):
         self._ChannelType = ChannelType
 
+    @property
+    def DisplayType(self):
+        return self._DisplayType
+
+    @DisplayType.setter
+    def DisplayType(self, DisplayType):
+        self._DisplayType = DisplayType
+
+    @property
+    def EngineType(self):
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def TableType(self):
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
 
     def _deserialize(self, params):
         self._MetastoreType = params.get("MetastoreType")
@@ -70013,6 +70198,9 @@ class TableLineageInfo(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._Tasks = params.get("Tasks")
         self._ChannelType = params.get("ChannelType")
+        self._DisplayType = params.get("DisplayType")
+        self._EngineType = params.get("EngineType")
+        self._TableType = params.get("TableType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70171,6 +70359,16 @@ class TableMeta(AbstractModel):
         :param _Columns: 表字段信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of SearchColumnDocVO
+        :param _MetaCrawlType: 表采集类型
+TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUAL_VIEW(虚拟视图), MATERIALIZED_VIEW(物化视图), LATERAL_VIEW, INDEX_TABLE(索引表), END_SELECT(查询结构), INSTANCE(中间临时表类型(数据血缘)), CDW(CDW表类型)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaCrawlType: str
+        :param _IsView: 是否视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsView: bool
+        :param _Location: 存储位置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
         """
         self._TableId = None
         self._TableName = None
@@ -70219,6 +70417,9 @@ class TableMeta(AbstractModel):
         self._TableOwnerId = None
         self._DataSourceCategory = None
         self._Columns = None
+        self._MetaCrawlType = None
+        self._IsView = None
+        self._Location = None
 
     @property
     def TableId(self):
@@ -70596,6 +70797,30 @@ class TableMeta(AbstractModel):
     def Columns(self, Columns):
         self._Columns = Columns
 
+    @property
+    def MetaCrawlType(self):
+        return self._MetaCrawlType
+
+    @MetaCrawlType.setter
+    def MetaCrawlType(self, MetaCrawlType):
+        self._MetaCrawlType = MetaCrawlType
+
+    @property
+    def IsView(self):
+        return self._IsView
+
+    @IsView.setter
+    def IsView(self, IsView):
+        self._IsView = IsView
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -70654,6 +70879,9 @@ class TableMeta(AbstractModel):
                 obj = SearchColumnDocVO()
                 obj._deserialize(item)
                 self._Columns.append(obj)
+        self._MetaCrawlType = params.get("MetaCrawlType")
+        self._IsView = params.get("IsView")
+        self._Location = params.get("Location")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

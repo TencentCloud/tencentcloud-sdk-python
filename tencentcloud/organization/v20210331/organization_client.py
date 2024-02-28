@@ -187,6 +187,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckAccountDelete(self, request):
+        """成员账号删除检查
+
+        :param request: Request instance for CheckAccountDelete.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CheckAccountDeleteRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CheckAccountDeleteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckAccountDelete", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckAccountDeleteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrganization(self, request):
         """创建企业组织
 

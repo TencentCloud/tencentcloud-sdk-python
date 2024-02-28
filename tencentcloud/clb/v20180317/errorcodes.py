@@ -26,6 +26,9 @@ FAILEDOPERATION = 'FailedOperation'
 # LB状态异常。
 FAILEDOPERATION_INVALIDLBSTATUS = 'FailedOperation.InvalidLBStatus'
 
+# 没有监听器的实例不允许停止。
+FAILEDOPERATION_NOLISTENERINLB = 'FailedOperation.NoListenerInLB'
+
 # 正在操作指定的资源，请稍后重试。
 FAILEDOPERATION_RESOURCEINOPERATING = 'FailedOperation.ResourceInOperating'
 

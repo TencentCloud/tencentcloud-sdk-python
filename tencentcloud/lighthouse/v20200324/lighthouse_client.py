@@ -1866,6 +1866,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDisksBackupQuota(self, request):
+        """本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+
+        :param request: Request instance for ModifyDisksBackupQuota.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksBackupQuotaRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ModifyDisksBackupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDisksBackupQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDisksBackupQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDisksRenewFlag(self, request):
         """本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
 
@@ -2393,6 +2416,29 @@ class LighthouseClient(AbstractClient):
             body = self.call("ResetInstancesPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ResetInstancesPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResizeDisks(self, request):
+        """本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+
+        :param request: Request instance for ResizeDisks.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.ResizeDisksRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.ResizeDisksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeDisks", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeDisksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2264,6 +2264,8 @@ lye1y30d：低功耗事件30天年套餐。
         :type OrderId: str
         :param _ChannelId: 通道ID
         :type ChannelId: int
+        :param _StorageRegion: 云存存储区域，国内默认为ap-guangzhou。海外默认为东南亚ap-singapore，可选美东na-ashburn、欧洲eu-frankfurt。
+        :type StorageRegion: str
         """
         self._ProductId = None
         self._DeviceName = None
@@ -2272,6 +2274,7 @@ lye1y30d：低功耗事件30天年套餐。
         self._PackageQueue = None
         self._OrderId = None
         self._ChannelId = None
+        self._StorageRegion = None
 
     @property
     def ProductId(self):
@@ -2329,6 +2332,14 @@ lye1y30d：低功耗事件30天年套餐。
     def ChannelId(self, ChannelId):
         self._ChannelId = ChannelId
 
+    @property
+    def StorageRegion(self):
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -2338,6 +2349,7 @@ lye1y30d：低功耗事件30天年套餐。
         self._PackageQueue = params.get("PackageQueue")
         self._OrderId = params.get("OrderId")
         self._ChannelId = params.get("ChannelId")
+        self._StorageRegion = params.get("StorageRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

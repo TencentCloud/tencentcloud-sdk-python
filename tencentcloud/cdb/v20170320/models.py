@@ -20857,19 +20857,19 @@ class ModifyBackupConfigRequest(AbstractModel):
         :type BackupPeriodSaveCount: int
         :param _StartBackupPeriodSaveDate: 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
         :type StartBackupPeriodSaveDate: str
-        :param _EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+        :param _EnableBackupArchive: 是否开启数据备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
         :type EnableBackupArchive: str
         :param _BackupArchiveDays: 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
         :type BackupArchiveDays: int
         :param _BinlogArchiveDays: 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
         :type BinlogArchiveDays: int
-        :param _EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+        :param _EnableBinlogArchive: 是否开启日志备份归档策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
         :type EnableBinlogArchive: str
-        :param _EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+        :param _EnableBackupStandby: 是否开启数据备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
         :type EnableBackupStandby: str
         :param _BackupStandbyDays: 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
         :type BackupStandbyDays: int
-        :param _EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+        :param _EnableBinlogStandby: 是否开启日志备份标准存储策略，off-关闭，on-打开，如果不指定该入参， 则保持不变。
         :type EnableBinlogStandby: str
         :param _BinlogStandbyDays: 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
         :type BinlogStandbyDays: int

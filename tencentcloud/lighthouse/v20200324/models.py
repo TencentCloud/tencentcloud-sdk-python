@@ -11697,6 +11697,76 @@ class ModifyDisksAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDisksBackupQuotaRequest(AbstractModel):
+    """ModifyDisksBackupQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+        :type DiskIds: list of str
+        :param _DiskBackupQuota: 云硬盘备份点配额。取值范围: [0, 500]。调整后的配额必须不小于已存在的备份点数量。
+        :type DiskBackupQuota: int
+        """
+        self._DiskIds = None
+        self._DiskBackupQuota = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def DiskBackupQuota(self):
+        return self._DiskBackupQuota
+
+    @DiskBackupQuota.setter
+    def DiskBackupQuota(self, DiskBackupQuota):
+        self._DiskBackupQuota = DiskBackupQuota
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        self._DiskBackupQuota = params.get("DiskBackupQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDisksBackupQuotaResponse(AbstractModel):
+    """ModifyDisksBackupQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDisksRenewFlagRequest(AbstractModel):
     """ModifyDisksRenewFlag请求参数结构体
 
@@ -13759,6 +13829,76 @@ class ResetInstancesPasswordRequest(AbstractModel):
 
 class ResetInstancesPasswordResponse(AbstractModel):
     """ResetInstancesPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResizeDisksRequest(AbstractModel):
+    """ResizeDisks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: 云硬盘ID列表，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。列表最大长度为15。
+        :type DiskIds: list of str
+        :param _DiskSize: 扩容后的云硬盘大小。单位: GB。高性能云硬盘大小取值范围：[10, 4000] ,SSD云硬盘大小取值范围：[20, 4000]。扩容后的云硬盘大小必须大于当前云硬盘大小。
+        :type DiskSize: int
+        """
+        self._DiskIds = None
+        self._DiskSize = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeDisksResponse(AbstractModel):
+    """ResizeDisks返回参数结构体
 
     """
 

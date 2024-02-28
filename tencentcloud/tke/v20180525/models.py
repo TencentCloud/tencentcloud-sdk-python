@@ -5953,9 +5953,9 @@ class CreateECMInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群id
+        :param _ClusterID: 集群id，边缘集群需要先开启公网访问才能添加ecm节点
         :type ClusterID: str
-        :param _ModuleId: 模块id
+        :param _ModuleId: 边缘模块id
         :type ModuleId: str
         :param _ZoneInstanceCountISPSet: 需要创建实例的可用区及创建数目及运营商的列表
         :type ZoneInstanceCountISPSet: list of ECMZoneInstanceCountISP
@@ -6697,7 +6697,7 @@ class CreateEdgeCVMInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 集群id
+        :param _ClusterID: 集群id，边缘集群需要先开启公网访问才能添加cvm节点
         :type ClusterID: str
         :param _RunInstancePara: CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
         :type RunInstancePara: str
@@ -15374,7 +15374,7 @@ class DescribeEdgeClusterUpgradeInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ComponentVersion: 可升级的集群组件和
+        :param _ComponentVersion: 可升级的集群组件及其版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentVersion: str
         :param _EdgeVersionCurrent: 边缘集群当前版本
@@ -20488,7 +20488,7 @@ class DescribeTKEEdgeScriptRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _Interface: 网卡名
+        :param _Interface: 网卡名,指定边缘节点上kubelet向apiserver注册使用的网卡
         :type Interface: str
         :param _NodeName: 节点名字
         :type NodeName: str

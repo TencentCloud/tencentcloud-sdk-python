@@ -4940,7 +4940,7 @@ class DescAcItem(AbstractModel):
         :param _SourceType: 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceType: str
-        :param _TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location
+        :param _TargetType: 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location,dnsparse
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
         :param _Uuid: 规则对应的唯一id
@@ -19136,6 +19136,9 @@ class TemplateListInfo(AbstractModel):
         :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProtocolType: str
+        :param _IPNum: 模板包含地址数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IPNum: int
         """
         self._Uuid = None
         self._Name = None
@@ -19147,6 +19150,7 @@ class TemplateListInfo(AbstractModel):
         self._RulesNum = None
         self._TemplateId = None
         self._ProtocolType = None
+        self._IPNum = None
 
     @property
     def Uuid(self):
@@ -19228,6 +19232,14 @@ class TemplateListInfo(AbstractModel):
     def ProtocolType(self, ProtocolType):
         self._ProtocolType = ProtocolType
 
+    @property
+    def IPNum(self):
+        return self._IPNum
+
+    @IPNum.setter
+    def IPNum(self, IPNum):
+        self._IPNum = IPNum
+
 
     def _deserialize(self, params):
         self._Uuid = params.get("Uuid")
@@ -19240,6 +19252,7 @@ class TemplateListInfo(AbstractModel):
         self._RulesNum = params.get("RulesNum")
         self._TemplateId = params.get("TemplateId")
         self._ProtocolType = params.get("ProtocolType")
+        self._IPNum = params.get("IPNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20387,7 +20400,7 @@ net：IP/CIDR(192.168.0.2)
 net：IP/CIDR(192.168.0.2)
 domain：域名规则，例如*.qq.com
         :type DestContent: str
-        :param _DestType: 访问目的类型，类型可以为：net，domain
+        :param _DestType: 访问目的类型，类型可以为：net，domain，dnsparse
         :type DestType: str
         :param _Protocol: 协议，可选的值：
 TCP
