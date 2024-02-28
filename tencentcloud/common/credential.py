@@ -16,6 +16,7 @@
 import json
 import os
 import time
+
 try:
     # py3
     import configparser
@@ -31,6 +32,7 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 from tencentcloud.common.common_client import CommonClient
 from tencentcloud.common.profile.http_profile import HttpProfile
 from tencentcloud.common.profile.client_profile import ClientProfile
+
 
 class Credential(object):
     def __init__(self, secret_id, secret_key, token=None):
@@ -369,42 +371,21 @@ class DefaultCredentialProvider(object):
 
 
 class DefaultTkeOIDCRoleArnProvider(object):
-    default_session_name = 'tencentcloud-python-sdk-'
-
-    def __init__(self):
-        self.region = os.getenv('TKE_REGION')
-        if not self.region:
-            raise EnvironmentError("TKE_REGION not exist")
-
-        self.provider_id = os.getenv('TKE_PROVIDER_ID')
-        if not self.provider_id:
-            raise EnvironmentError("TKE_PROVIDER_ID not exist")
-
-        token_file = os.getenv('TKE_WEB_IDENTITY_TOKEN_FILE')
-        if not token_file:
-            raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
-
-        with open(token_file) as f:
-            self.web_identity_token = f.read()
-
-        self.role_arn = os.getenv('TKE_ROLE_ARN')
-        if not self.role_arn:
-            raise EnvironmentError("TKE_ROLE_ARN not exist")
-
-        self.role_session_name = self.default_session_name + str(time.time() * 1e6)  # time in microseconds
-
     def get_credential(self):
         return self.get_credentials()
 
     def get_credentials(self):
-        return OIDCRoleArnCredential(self.region, self.provider_id, self.web_identity_token, self.role_arn,
-                                     self.role_session_name)
+        cred = OIDCRoleArnCredential('', '', '', '', '', 7200)
+        cred._is_tke = True
+        cred._init_from_tke()
+        return cred
 
 
 class OIDCRoleArnCredential(object):
     _version = '2018-08-13'
     _service = "sts"
     _action = 'AssumeRoleWithWebIdentity'
+    _default_session_name = 'tencentcloud-python-sdk-'
 
     def __init__(self, region, provider_id, web_identity_token, role_arn, role_session_name, duration_seconds=7200):
         self._region = region
@@ -418,9 +399,7 @@ class OIDCRoleArnCredential(object):
         self._tmp_secret_id = None
         self._tmp_secret_key = None
         self._expired_time = 0
-
-        self._last_role_arn = None
-        self._tmp_credential = None
+        self._is_tke = False
 
     @property
     def secretId(self):
@@ -452,6 +431,8 @@ class OIDCRoleArnCredential(object):
             self.refresh()
 
     def refresh(self):
+        if self._is_tke:
+            self._init_from_tke()
         common_client = CommonClient(credential=None, region=self._region, version=self._version, service=self._service)
         params = {
             "ProviderId": self._provider_id,
@@ -467,4 +448,26 @@ class OIDCRoleArnCredential(object):
         self._token = rsp["Response"]["Credentials"]["Token"]
         self._tmp_secret_id = rsp["Response"]["Credentials"]["TmpSecretId"]
         self._tmp_secret_key = rsp["Response"]["Credentials"]["TmpSecretKey"]
-        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.9
+        self._expired_time = rsp["Response"]["ExpiredTime"] - self._duration_seconds * 0.1
+
+    def _init_from_tke(self):
+        self._region = os.getenv('TKE_REGION')
+        if not self._region:
+            raise EnvironmentError("TKE_REGION not exist")
+
+        self._provider_id = os.getenv('TKE_PROVIDER_ID')
+        if not self._provider_id:
+            raise EnvironmentError("TKE_PROVIDER_ID not exist")
+
+        token_file = os.getenv('TKE_WEB_IDENTITY_TOKEN_FILE')
+        if not token_file:
+            raise EnvironmentError("TKE_WEB_IDENTITY_TOKEN_FILE not exist")
+
+        with open(token_file) as f:
+            self.web_identity_token = f.read()
+
+        self._role_arn = os.getenv('TKE_ROLE_ARN')
+        if not self._role_arn:
+            raise EnvironmentError("TKE_ROLE_ARN not exist")
+
+        self._role_session_name = self._default_session_name + str(time.time() * 1e6)  # time in microsecond
