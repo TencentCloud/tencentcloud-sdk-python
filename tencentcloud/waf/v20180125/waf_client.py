@@ -210,6 +210,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDeals(self, request):
+        """计费资源购买、续费下单接口
+
+        :param request: Request instance for CreateDeals.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateDealsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateDealsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeals", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDealsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHost(self, request):
         """clb-waf中添加防护域名
 

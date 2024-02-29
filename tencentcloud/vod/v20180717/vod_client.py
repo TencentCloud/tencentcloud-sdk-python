@@ -1843,6 +1843,31 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDefaultDistributionConfig(self, request):
+        """该接口用于查询默认分发配置。
+        * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+        * 播放密钥，用于计算播放器签名。
+
+        :param request: Request instance for DescribeDefaultDistributionConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeDefaultDistributionConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeDefaultDistributionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDefaultDistributionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDefaultDistributionConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDrmDataKey(self, request):
         """本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中 [DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643) 的升级版本。
 
@@ -3121,6 +3146,31 @@ class VodClient(AbstractClient):
             body = self.call("ModifyContentReviewTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyContentReviewTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDefaultDistributionConfig(self, request):
+        """该接口用于修改默认分发配置。
+        * 分发域名和分发协议，即媒体文件分发 URL 中的域名和协议。媒体文件按默认分发配置进行分发。
+        * 播放密钥，用于计算播放器签名。
+
+        :param request: Request instance for ModifyDefaultDistributionConfig.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultDistributionConfigRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyDefaultDistributionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDefaultDistributionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDefaultDistributionConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

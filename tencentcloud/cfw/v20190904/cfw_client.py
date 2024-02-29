@@ -279,6 +279,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlockIgnoreRuleNew(self, request):
+        """批量添加入侵防御封禁列表、放通列表规则
+
+        :param request: Request instance for CreateBlockIgnoreRuleNew.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleNewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateBlockIgnoreRuleNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlockIgnoreRuleNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlockIgnoreRuleNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateChooseVpcs(self, request):
         """创建、选择vpc
 
@@ -523,6 +546,29 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteBlockIgnoreRuleList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBlockIgnoreRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBlockIgnoreRuleNew(self, request):
+        """批量删除入侵防御封禁列表、放通列表规则（新）
+
+        :param request: Request instance for DeleteBlockIgnoreRuleNew.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteBlockIgnoreRuleNewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteBlockIgnoreRuleNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlockIgnoreRuleNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlockIgnoreRuleNewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1791,6 +1837,29 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyBlockIgnoreRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBlockIgnoreRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBlockIgnoreRuleNew(self, request):
+        """编辑单条入侵防御封禁列表、放通列表规则（新）
+
+        :param request: Request instance for ModifyBlockIgnoreRuleNew.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreRuleNewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyBlockIgnoreRuleNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlockIgnoreRuleNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlockIgnoreRuleNewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

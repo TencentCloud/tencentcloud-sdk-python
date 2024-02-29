@@ -10767,9 +10767,9 @@ class DescribeBackupListRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Limit: 备份文件列表大小，取值范围(0,100]
+        :param _Limit: 返回数量，取值范围(0,100]
         :type Limit: int
-        :param _Offset: 备份文件列表偏移，取值范围[0,INF)
+        :param _Offset: 记录偏移量，取值范围[0,INF)
         :type Offset: int
         :param _DbType: 数据库类型，取值范围: 
 <li> MYSQL </li>
@@ -10778,7 +10778,7 @@ class DescribeBackupListRequest(AbstractModel):
         :type BackupIds: list of int
         :param _BackupType: 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
         :type BackupType: str
-        :param _BackupMethod: 备份方式，可选值：auto，自动备份；manual，手动备
+        :param _BackupMethod: 备份方式，可选值：auto，自动备份；manual，手动备份
         :type BackupMethod: str
         :param _SnapShotType: 快照类型，可选值：full，全量；increment，增量
         :type SnapShotType: str

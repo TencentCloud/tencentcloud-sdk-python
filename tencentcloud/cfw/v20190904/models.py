@@ -1052,6 +1052,154 @@ class AssociatedInstanceInfo(AbstractModel):
         
 
 
+class BanAndAllowRule(AbstractModel):
+    """封禁列表和放通列表结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ioc: 封禁和放通对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ioc: str
+        :param _DirectionList: 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectionList: str
+        :param _EndTime: 规则截止时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Comment: 规则评论
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CustomRule: 自定义白名单规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomRule: :class:`tencentcloud.cfw.v20190904.models.CustomWhiteRule`
+        """
+        self._Ioc = None
+        self._DirectionList = None
+        self._EndTime = None
+        self._Comment = None
+        self._CustomRule = None
+
+    @property
+    def Ioc(self):
+        return self._Ioc
+
+    @Ioc.setter
+    def Ioc(self, Ioc):
+        self._Ioc = Ioc
+
+    @property
+    def DirectionList(self):
+        return self._DirectionList
+
+    @DirectionList.setter
+    def DirectionList(self, DirectionList):
+        self._DirectionList = DirectionList
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CustomRule(self):
+        return self._CustomRule
+
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
+
+
+    def _deserialize(self, params):
+        self._Ioc = params.get("Ioc")
+        self._DirectionList = params.get("DirectionList")
+        self._EndTime = params.get("EndTime")
+        self._Comment = params.get("Comment")
+        if params.get("CustomRule") is not None:
+            self._CustomRule = CustomWhiteRule()
+            self._CustomRule._deserialize(params.get("CustomRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BanAndAllowRuleDel(AbstractModel):
+    """封禁列表和放通列表结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ioc: 封禁和放通对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ioc: str
+        :param _DirectionList: 0互联网出站 1互联网入站 5内网访问源 6内网访问目的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectionList: str
+        :param _RuleType: 规则类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: int
+        """
+        self._Ioc = None
+        self._DirectionList = None
+        self._RuleType = None
+
+    @property
+    def Ioc(self):
+        return self._Ioc
+
+    @Ioc.setter
+    def Ioc(self, Ioc):
+        self._Ioc = Ioc
+
+    @property
+    def DirectionList(self):
+        return self._DirectionList
+
+    @DirectionList.setter
+    def DirectionList(self, DirectionList):
+        self._DirectionList = DirectionList
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+
+    def _deserialize(self, params):
+        self._Ioc = params.get("Ioc")
+        self._DirectionList = params.get("DirectionList")
+        self._RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BetaInfoByACL(AbstractModel):
     """规则关联的beta任务
 
@@ -1928,7 +2076,7 @@ class CreateAlertCenterIsolateRequest(AbstractModel):
 2 互联网出站
 4 内网访问
         :type IsolateType: list of int
-        :param _OmMode: 运维模式 1 IP白名单 2 身份认证
+        :param _OmMode: 运维模式 1 IP白名单 2 身份认证  0 非运维模式
         :type OmMode: int
         """
         self._HandleAssetList = None
@@ -2483,6 +2631,93 @@ class CreateBlockIgnoreRuleListResponse(AbstractModel):
                 obj = IocListData()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBlockIgnoreRuleNewRequest(AbstractModel):
+    """CreateBlockIgnoreRuleNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: 非自定义类型规则列表
+        :type Rules: list of BanAndAllowRule
+        :param _RuleType: RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+        :type RuleType: int
+        :param _CoverDuplicate: 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+        :type CoverDuplicate: int
+        """
+        self._Rules = None
+        self._RuleType = None
+        self._CoverDuplicate = None
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def CoverDuplicate(self):
+        return self._CoverDuplicate
+
+    @CoverDuplicate.setter
+    def CoverDuplicate(self, CoverDuplicate):
+        self._CoverDuplicate = CoverDuplicate
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = BanAndAllowRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RuleType = params.get("RuleType")
+        self._CoverDuplicate = params.get("CoverDuplicate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlockIgnoreRuleNewResponse(AbstractModel):
+    """CreateBlockIgnoreRuleNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4434,6 +4669,106 @@ class DeleteBlockIgnoreRuleListRequest(AbstractModel):
 
 class DeleteBlockIgnoreRuleListResponse(AbstractModel):
     """DeleteBlockIgnoreRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
+    """DeleteBlockIgnoreRuleNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeleteAll: 是否删除全部
+        :type DeleteAll: int
+        :param _Rules: 规则列表
+        :type Rules: list of BanAndAllowRuleDel
+        :param _RuleType: 封禁：1，放通：100，
+主要用于全部删除时区分列表类型
+        :type RuleType: int
+        :param _ShowType: blocklist 封禁列表 whitelist 白名单列表
+        :type ShowType: str
+        """
+        self._DeleteAll = None
+        self._Rules = None
+        self._RuleType = None
+        self._ShowType = None
+
+    @property
+    def DeleteAll(self):
+        return self._DeleteAll
+
+    @DeleteAll.setter
+    def DeleteAll(self, DeleteAll):
+        self._DeleteAll = DeleteAll
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def ShowType(self):
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
+
+
+    def _deserialize(self, params):
+        self._DeleteAll = params.get("DeleteAll")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = BanAndAllowRuleDel()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RuleType = params.get("RuleType")
+        self._ShowType = params.get("ShowType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlockIgnoreRuleNewResponse(AbstractModel):
+    """DeleteBlockIgnoreRuleNew返回参数结构体
 
     """
 
@@ -13286,6 +13621,78 @@ class ModifyBlockIgnoreListResponse(AbstractModel):
     def _deserialize(self, params):
         self._ReturnMsg = params.get("ReturnMsg")
         self._ReturnCode = params.get("ReturnCode")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBlockIgnoreRuleNewRequest(AbstractModel):
+    """ModifyBlockIgnoreRuleNew请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rule: 规则
+        :type Rule: :class:`tencentcloud.cfw.v20190904.models.BanAndAllowRule`
+        :param _RuleType: RuleType: 1放通列表 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则
+        :type RuleType: int
+        """
+        self._Rule = None
+        self._RuleType = None
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self._Rule = BanAndAllowRule()
+            self._Rule._deserialize(params.get("Rule"))
+        self._RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlockIgnoreRuleNewResponse(AbstractModel):
+    """ModifyBlockIgnoreRuleNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -3700,11 +3700,17 @@ class BatchDeleteIntegrationTasksRequest(AbstractModel):
         :type ProjectId: str
         :param _DeleteKFFlag: 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
         :type DeleteKFFlag: int
+        :param _Name: 操作名称
+        :type Name: str
+        :param _TaskNames: 本次批量操作涉及任务，用于审计
+        :type TaskNames: list of str
         """
         self._TaskIds = None
         self._TaskType = None
         self._ProjectId = None
         self._DeleteKFFlag = None
+        self._Name = None
+        self._TaskNames = None
 
     @property
     def TaskIds(self):
@@ -3738,12 +3744,30 @@ class BatchDeleteIntegrationTasksRequest(AbstractModel):
     def DeleteKFFlag(self, DeleteKFFlag):
         self._DeleteKFFlag = DeleteKFFlag
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
         self._DeleteKFFlag = params.get("DeleteKFFlag")
+        self._Name = params.get("Name")
+        self._TaskNames = params.get("TaskNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5283,12 +5307,15 @@ class BatchResumeIntegrationTasksResponse(AbstractModel):
         :type FailedCount: int
         :param _TotalCount: 任务总数
         :type TotalCount: int
+        :param _TaskNames: 本次批量操作涉及任务，用于审计
+        :type TaskNames: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._TaskNames = None
         self._RequestId = None
 
     @property
@@ -5316,6 +5343,14 @@ class BatchResumeIntegrationTasksResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5328,6 +5363,7 @@ class BatchResumeIntegrationTasksResponse(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._TaskNames = params.get("TaskNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -5492,24 +5528,19 @@ class BatchStartIntegrationTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIds: 任务id
-        :type TaskIds: list of str
         :param _TaskType: 任务类型
         :type TaskType: int
         :param _ProjectId: 项目id
         :type ProjectId: str
+        :param _TaskIds: 任务id
+        :type TaskIds: list of str
+        :param _StartTaskInfoSet: 批量运行集成任务，目前仅实时集成用到了这个参数
+        :type StartTaskInfoSet: list of StartTaskInfo
         """
-        self._TaskIds = None
         self._TaskType = None
         self._ProjectId = None
-
-    @property
-    def TaskIds(self):
-        return self._TaskIds
-
-    @TaskIds.setter
-    def TaskIds(self, TaskIds):
-        self._TaskIds = TaskIds
+        self._TaskIds = None
+        self._StartTaskInfoSet = None
 
     @property
     def TaskType(self):
@@ -5527,11 +5558,33 @@ class BatchStartIntegrationTasksRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def StartTaskInfoSet(self):
+        return self._StartTaskInfoSet
+
+    @StartTaskInfoSet.setter
+    def StartTaskInfoSet(self, StartTaskInfoSet):
+        self._StartTaskInfoSet = StartTaskInfoSet
+
 
     def _deserialize(self, params):
-        self._TaskIds = params.get("TaskIds")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
+        self._TaskIds = params.get("TaskIds")
+        if params.get("StartTaskInfoSet") is not None:
+            self._StartTaskInfoSet = []
+            for item in params.get("StartTaskInfoSet"):
+                obj = StartTaskInfo()
+                obj._deserialize(item)
+                self._StartTaskInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5555,12 +5608,15 @@ class BatchStartIntegrationTasksResponse(AbstractModel):
         :type FailedCount: int
         :param _TotalCount: 任务总数
         :type TotalCount: int
+        :param _TaskNames: 本次批量操作成功任务id，用于审计
+        :type TaskNames: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._TaskNames = None
         self._RequestId = None
 
     @property
@@ -5588,6 +5644,14 @@ class BatchStartIntegrationTasksResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5600,6 +5664,7 @@ class BatchStartIntegrationTasksResponse(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._TaskNames = params.get("TaskNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -5673,12 +5738,15 @@ class BatchStopIntegrationTasksResponse(AbstractModel):
         :type FailedCount: int
         :param _TotalCount: 任务总数
         :type TotalCount: int
+        :param _TaskNames: 本次批量操作涉及成功任务，用于审计
+        :type TaskNames: list of str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._TaskNames = None
         self._RequestId = None
 
     @property
@@ -5706,6 +5774,14 @@ class BatchStopIntegrationTasksResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5718,6 +5794,7 @@ class BatchStopIntegrationTasksResponse(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._TaskNames = params.get("TaskNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -5989,11 +6066,14 @@ class BatchSuspendIntegrationTasksRequest(AbstractModel):
         :type ProjectId: str
         :param _Event: 事件类型(START, STOP, SUSPEND, SUSPEND_WITHOUT_SP,RESUME, COMMIT, TIMESTAMP)	
         :type Event: str
+        :param _TaskNames: 本次批量操作涉及任务，用于审计
+        :type TaskNames: list of str
         """
         self._TaskIds = None
         self._TaskType = None
         self._ProjectId = None
         self._Event = None
+        self._TaskNames = None
 
     @property
     def TaskIds(self):
@@ -6027,12 +6107,21 @@ class BatchSuspendIntegrationTasksRequest(AbstractModel):
     def Event(self, Event):
         self._Event = Event
 
+    @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
         self._Event = params.get("Event")
+        self._TaskNames = params.get("TaskNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6121,12 +6210,15 @@ class BatchUpdateIntegrationTasksRequest(AbstractModel):
         :type ProjectId: str
         :param _InchargeIds: 责任人Id（多个责任人用小写分号隔开）
         :type InchargeIds: str
+        :param _TaskNames: 本次批量操作涉及任务，用于审计
+        :type TaskNames: list of str
         """
         self._TaskIds = None
         self._Incharge = None
         self._TaskType = None
         self._ProjectId = None
         self._InchargeIds = None
+        self._TaskNames = None
 
     @property
     def TaskIds(self):
@@ -6168,6 +6260,14 @@ class BatchUpdateIntegrationTasksRequest(AbstractModel):
     def InchargeIds(self, InchargeIds):
         self._InchargeIds = InchargeIds
 
+    @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
 
     def _deserialize(self, params):
         self._TaskIds = params.get("TaskIds")
@@ -6175,6 +6275,7 @@ class BatchUpdateIntegrationTasksRequest(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
         self._InchargeIds = params.get("InchargeIds")
+        self._TaskNames = params.get("TaskNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67447,6 +67548,84 @@ class StartIntegrationTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
+
+
+class StartTaskInfo(AbstractModel):
+    """批量运行集成任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Event: 批量运行任务类型，比如START，TIMESTAMP，RESTORE，RESUME等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Event: str
+        :param _TaskIds: 任务Id列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskIds: list of str
+        :param _Config: 批量运行任务配置，目前仅用与实时集成基于时间位点启动。基于时间位点启动，需要设置一个name=timestamp, value=具体时间戳的RecordField的配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: list of RecordField
+        :param _Description: 操作类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Event = None
+        self._TaskIds = None
+        self._Config = None
+        self._Description = None
+
+    @property
+    def Event(self):
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Event = params.get("Event")
+        self._TaskIds = params.get("TaskIds")
+        if params.get("Config") is not None:
+            self._Config = []
+            for item in params.get("Config"):
+                obj = RecordField()
+                obj._deserialize(item)
+                self._Config.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class StopBaselineRequest(AbstractModel):

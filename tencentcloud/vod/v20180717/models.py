@@ -13269,6 +13269,33 @@ class CreateDomainVerifyRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Domain: 需要接入点播的加速域名。
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateDomainVerifyRecordResponse(AbstractModel):
     """CreateDomainVerifyRecord返回参数结构体
@@ -20554,6 +20581,116 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
                 obj = PlayStatFileInfo()
                 obj._deserialize(item)
                 self._PlayStatFileSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDefaultDistributionConfigRequest(AbstractModel):
+    """DescribeDefaultDistributionConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        """
+        self._SubAppId = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDefaultDistributionConfigResponse(AbstractModel):
+    """DescribeDefaultDistributionConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: 分发配置的域名(已废弃）。
+        :type DomainName: str
+        :param _Domain: 分发配置的域名。
+        :type Domain: str
+        :param _Scheme: 分发配置的协议，为 HTTP 或 HTTPS。
+        :type Scheme: str
+        :param _PlayKey: 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+        :type PlayKey: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DomainName = None
+        self._Domain = None
+        self._Scheme = None
+        self._PlayKey = None
+        self._RequestId = None
+
+    @property
+    def DomainName(self):
+        warnings.warn("parameter `DomainName` is deprecated", DeprecationWarning) 
+
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        warnings.warn("parameter `DomainName` is deprecated", DeprecationWarning) 
+
+        self._DomainName = DomainName
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def PlayKey(self):
+        return self._PlayKey
+
+    @PlayKey.setter
+    def PlayKey(self, PlayKey):
+        self._PlayKey = PlayKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._Domain = params.get("Domain")
+        self._Scheme = params.get("Scheme")
+        self._PlayKey = params.get("PlayKey")
         self._RequestId = params.get("RequestId")
 
 
@@ -37669,6 +37806,100 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
 
 class ModifyContentReviewTemplateResponse(AbstractModel):
     """ModifyContentReviewTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDefaultDistributionConfigRequest(AbstractModel):
+    """ModifyDefaultDistributionConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :type SubAppId: int
+        :param _Domain: 分发域名，取值为点播域名列表里的域名。不填或者填空，表示不修改域名。
+        :type Domain: str
+        :param _Scheme: 分发协议，取值为 HTTP 或者 HTTPS。
+        :type Scheme: str
+        :param _PlayKey: 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+        :type PlayKey: str
+        """
+        self._SubAppId = None
+        self._Domain = None
+        self._Scheme = None
+        self._PlayKey = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Scheme(self):
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+    @property
+    def PlayKey(self):
+        return self._PlayKey
+
+    @PlayKey.setter
+    def PlayKey(self, PlayKey):
+        self._PlayKey = PlayKey
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Domain = params.get("Domain")
+        self._Scheme = params.get("Scheme")
+        self._PlayKey = params.get("PlayKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDefaultDistributionConfigResponse(AbstractModel):
+    """ModifyDefaultDistributionConfig返回参数结构体
 
     """
 

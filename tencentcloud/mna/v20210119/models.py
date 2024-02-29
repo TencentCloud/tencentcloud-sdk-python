@@ -38,12 +38,15 @@ class ActivateHardware(AbstractModel):
         :type Description: str
         :param _DataKey: 设备密钥
         :type DataKey: str
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
         """
         self._Vendor = None
         self._SN = None
         self._DeviceName = None
         self._Description = None
         self._DataKey = None
+        self._AccessScope = None
 
     @property
     def Vendor(self):
@@ -85,6 +88,14 @@ class ActivateHardware(AbstractModel):
     def DataKey(self, DataKey):
         self._DataKey = DataKey
 
+    @property
+    def AccessScope(self):
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
 
     def _deserialize(self, params):
         self._Vendor = params.get("Vendor")
@@ -92,6 +103,7 @@ class ActivateHardware(AbstractModel):
         self._DeviceName = params.get("DeviceName")
         self._Description = params.get("Description")
         self._DataKey = params.get("DataKey")
+        self._AccessScope = params.get("AccessScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -198,11 +210,18 @@ class AddDeviceRequest(AbstractModel):
         :type DataKey: str
         :param _Encrypted: 是否设置预置密钥
         :type Encrypted: bool
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。
+具体含义：
+公有云网关：即该设备只能接入公有云网关（就近接入）
+自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入）
+公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
         """
         self._DeviceName = None
         self._Remark = None
         self._DataKey = None
         self._Encrypted = None
+        self._AccessScope = None
 
     @property
     def DeviceName(self):
@@ -236,12 +255,21 @@ class AddDeviceRequest(AbstractModel):
     def Encrypted(self, Encrypted):
         self._Encrypted = Encrypted
 
+    @property
+    def AccessScope(self):
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
 
     def _deserialize(self, params):
         self._DeviceName = params.get("DeviceName")
         self._Remark = params.get("Remark")
         self._DataKey = params.get("DataKey")
         self._Encrypted = params.get("Encrypted")
+        self._AccessScope = params.get("AccessScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1070,12 +1098,15 @@ class DeviceBaseInfo(AbstractModel):
         :type LastTime: str
         :param _Remark: 设备的备注
         :type Remark: str
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
         """
         self._DeviceId = None
         self._DeviceName = None
         self._CreateTime = None
         self._LastTime = None
         self._Remark = None
+        self._AccessScope = None
 
     @property
     def DeviceId(self):
@@ -1117,6 +1148,14 @@ class DeviceBaseInfo(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def AccessScope(self):
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -1124,6 +1163,7 @@ class DeviceBaseInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._LastTime = params.get("LastTime")
         self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1781,6 +1821,9 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :type PackageType: str
         :param _Status: 流量包状态，0：未生效，1：有效期内，2：已过期
         :type Status: int
+        :param _CreateTime: 购买时间，Unix时间戳格式，单位：秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
         :param _ActiveTime: 生效时间，Unix时间戳格式，单位：秒
         :type ActiveTime: int
         :param _ExpireTime: 过期时间，Unix时间戳格式，单位：秒
@@ -1793,17 +1836,21 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         :type CapacityRemain: int
         :param _RenewFlag: 自动续费标识。true代表自动续费，false代表不自动续费
         :type RenewFlag: bool
+        :param _ModifyStatus: 资源包变更状态，0：未发生变配；1：变配中；2：已变配或已续费
+        :type ModifyStatus: int
         """
         self._ResourceId = None
         self._AppId = None
         self._PackageType = None
         self._Status = None
+        self._CreateTime = None
         self._ActiveTime = None
         self._ExpireTime = None
         self._DeviceList = None
         self._CapacitySize = None
         self._CapacityRemain = None
         self._RenewFlag = None
+        self._ModifyStatus = None
 
     @property
     def ResourceId(self):
@@ -1836,6 +1883,14 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
     @property
     def ActiveTime(self):
@@ -1885,18 +1940,28 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def ModifyStatus(self):
+        return self._ModifyStatus
+
+    @ModifyStatus.setter
+    def ModifyStatus(self, ModifyStatus):
+        self._ModifyStatus = ModifyStatus
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
         self._AppId = params.get("AppId")
         self._PackageType = params.get("PackageType")
         self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         self._ActiveTime = params.get("ActiveTime")
         self._ExpireTime = params.get("ExpireTime")
         self._DeviceList = params.get("DeviceList")
         self._CapacitySize = params.get("CapacitySize")
         self._CapacityRemain = params.get("CapacityRemain")
         self._RenewFlag = params.get("RenewFlag")
+        self._ModifyStatus = params.get("ModifyStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2345,12 +2410,18 @@ class GetFlowStatisticRequest(AbstractModel):
         :type Type: int
         :param _TimeGranularity: 时间粒度（1：按小时统计，2：按天统计）
         :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
         """
         self._DeviceId = None
         self._BeginTime = None
         self._EndTime = None
         self._Type = None
         self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
 
     @property
     def DeviceId(self):
@@ -2392,6 +2463,22 @@ class GetFlowStatisticRequest(AbstractModel):
     def TimeGranularity(self, TimeGranularity):
         self._TimeGranularity = TimeGranularity
 
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -2399,6 +2486,8 @@ class GetFlowStatisticRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Type = params.get("Type")
         self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2627,12 +2716,18 @@ class GetMultiFlowStatisticRequest(AbstractModel):
         :type Type: int
         :param _TimeGranularity: 统计时间粒度（1：按小时统计，2：按天统计）
         :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
         """
         self._DeviceIds = None
         self._BeginTime = None
         self._EndTime = None
         self._Type = None
         self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
 
     @property
     def DeviceIds(self):
@@ -2674,6 +2769,22 @@ class GetMultiFlowStatisticRequest(AbstractModel):
     def TimeGranularity(self, TimeGranularity):
         self._TimeGranularity = TimeGranularity
 
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
 
     def _deserialize(self, params):
         self._DeviceIds = params.get("DeviceIds")
@@ -2681,6 +2792,8 @@ class GetMultiFlowStatisticRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Type = params.get("Type")
         self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2748,11 +2861,14 @@ class GetNetMonitorRequest(AbstractModel):
         :type EndTime: int
         :param _Metrics: 统计指标（上行速率："TxRate":bit/s，下行速率："RxRate":bit/s，丢包："Loss":%，时延："RTT":ms）
         :type Metrics: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
         """
         self._DeviceId = None
         self._BeginTime = None
         self._EndTime = None
         self._Metrics = None
+        self._GatewayType = None
 
     @property
     def DeviceId(self):
@@ -2786,12 +2902,21 @@ class GetNetMonitorRequest(AbstractModel):
     def Metrics(self, Metrics):
         self._Metrics = Metrics
 
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._Metrics = params.get("Metrics")
+        self._GatewayType = params.get("GatewayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2812,10 +2937,17 @@ class GetNetMonitorResponse(AbstractModel):
         :param _MonitorData: 监控数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorData: list of MonitorData
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM']
+MC=中国大陆
+AP=亚太
+EU=欧洲
+AM=美洲
+        :type AccessRegion: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MonitorData = None
+        self._AccessRegion = None
         self._RequestId = None
 
     @property
@@ -2825,6 +2957,14 @@ class GetNetMonitorResponse(AbstractModel):
     @MonitorData.setter
     def MonitorData(self, MonitorData):
         self._MonitorData = MonitorData
+
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
 
     @property
     def RequestId(self):
@@ -2842,6 +2982,7 @@ class GetNetMonitorResponse(AbstractModel):
                 obj = MonitorData()
                 obj._deserialize(item)
                 self._MonitorData.append(obj)
+        self._AccessRegion = params.get("AccessRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -2895,7 +3036,7 @@ class GetStatisticDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID
+        :param _DeviceId: 设备ID。若不指定设备，可传"-1"
         :type DeviceId: str
         :param _BeginTime: 统计开始时间，单位：s
         :type BeginTime: int
@@ -2905,11 +3046,17 @@ class GetStatisticDataRequest(AbstractModel):
 1:按小时统计
 2:按天统计
         :type TimeGranularity: int
+        :param _AccessRegion: 接入区域。取值范围：['MC','AP','EU','AM'] MC=中国大陆 AP=亚太 EU=欧洲 AM=美洲。不填默认中国大陆
+        :type AccessRegion: str
+        :param _GatewayType: 网关类型。0：公有云网关；1：自有网关。不传默认为0。
+        :type GatewayType: int
         """
         self._DeviceId = None
         self._BeginTime = None
         self._EndTime = None
         self._TimeGranularity = None
+        self._AccessRegion = None
+        self._GatewayType = None
 
     @property
     def DeviceId(self):
@@ -2943,12 +3090,30 @@ class GetStatisticDataRequest(AbstractModel):
     def TimeGranularity(self, TimeGranularity):
         self._TimeGranularity = TimeGranularity
 
+    @property
+    def AccessRegion(self):
+        return self._AccessRegion
+
+    @AccessRegion.setter
+    def AccessRegion(self, AccessRegion):
+        self._AccessRegion = AccessRegion
+
+    @property
+    def GatewayType(self):
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._TimeGranularity = params.get("TimeGranularity")
+        self._AccessRegion = params.get("AccessRegion")
+        self._GatewayType = params.get("GatewayType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

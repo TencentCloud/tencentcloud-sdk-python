@@ -18,6 +18,76 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AbortPredictiveDialingCampaignRequest(AbstractModel):
+    """AbortPredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbortPredictiveDialingCampaignResponse(AbstractModel):
+    """AbortPredictiveDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ActiveCarrierPrivilegeNumber(AbstractModel):
     """生效运营商白名单号码
 
@@ -1674,6 +1744,220 @@ class CreateExtensionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePredictiveDialingCampaignRequest(AbstractModel):
+    """CreatePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Callees: 被叫列表，支持 E.164 或不带国家码形式的号码
+        :type Callees: list of str
+        :param _Callers: 主叫列表，使用管理端展示的号码格式
+        :type Callers: list of str
+        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :type CallOrder: int
+        :param _SkillGroupId: 使用的座席技能组 ID
+        :type SkillGroupId: int
+        :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
+        :type Priority: int
+        :param _ExpectedAbandonRate: 预期呼损率，百分比，5 - 50
+        :type ExpectedAbandonRate: int
+        :param _RetryInterval: 呼叫重试间隔时间，单位秒，60 - 86400
+        :type RetryInterval: int
+        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :type StartTime: int
+        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :type EndTime: int
+        :param _IVRId: 指定的 IVR Id
+        :type IVRId: int
+        :param _RetryTimes: 呼叫重试次数，0 - 2
+        :type RetryTimes: int
+        """
+        self._SdkAppId = None
+        self._Name = None
+        self._Callees = None
+        self._Callers = None
+        self._CallOrder = None
+        self._SkillGroupId = None
+        self._Priority = None
+        self._ExpectedAbandonRate = None
+        self._RetryInterval = None
+        self._StartTime = None
+        self._EndTime = None
+        self._IVRId = None
+        self._RetryTimes = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Callees(self):
+        return self._Callees
+
+    @Callees.setter
+    def Callees(self, Callees):
+        self._Callees = Callees
+
+    @property
+    def Callers(self):
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def CallOrder(self):
+        return self._CallOrder
+
+    @CallOrder.setter
+    def CallOrder(self, CallOrder):
+        self._CallOrder = CallOrder
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ExpectedAbandonRate(self):
+        return self._ExpectedAbandonRate
+
+    @ExpectedAbandonRate.setter
+    def ExpectedAbandonRate(self, ExpectedAbandonRate):
+        self._ExpectedAbandonRate = ExpectedAbandonRate
+
+    @property
+    def RetryInterval(self):
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def IVRId(self):
+        return self._IVRId
+
+    @IVRId.setter
+    def IVRId(self, IVRId):
+        self._IVRId = IVRId
+
+    @property
+    def RetryTimes(self):
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Name = params.get("Name")
+        self._Callees = params.get("Callees")
+        self._Callers = params.get("Callers")
+        self._CallOrder = params.get("CallOrder")
+        self._SkillGroupId = params.get("SkillGroupId")
+        self._Priority = params.get("Priority")
+        self._ExpectedAbandonRate = params.get("ExpectedAbandonRate")
+        self._RetryInterval = params.get("RetryInterval")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._IVRId = params.get("IVRId")
+        self._RetryTimes = params.get("RetryTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePredictiveDialingCampaignResponse(AbstractModel):
+    """CreatePredictiveDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CampaignId: 生成的任务 ID
+        :type CampaignId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CampaignId = None
+        self._RequestId = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CampaignId = params.get("CampaignId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSDKLoginTokenRequest(AbstractModel):
     """CreateSDKLoginToken请求参数结构体
 
@@ -2050,6 +2334,76 @@ class DeleteExtensionRequest(AbstractModel):
 
 class DeleteExtensionResponse(AbstractModel):
     """DeleteExtension返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePredictiveDialingCampaignRequest(AbstractModel):
+    """DeletePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePredictiveDialingCampaignResponse(AbstractModel):
+    """DeletePredictiveDialingCampaign返回参数结构体
 
     """
 
@@ -3960,6 +4314,588 @@ class DescribePSTNActiveSessionListResponse(AbstractModel):
                 obj = PSTNSessionInfo()
                 obj._deserialize(item)
                 self._Sessions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePredictiveDialingCampaignRequest(AbstractModel):
+    """DescribePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePredictiveDialingCampaignResponse(AbstractModel):
+    """DescribePredictiveDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :type CallOrder: int
+        :param _SkillGroupId: 使用的座席技能组 ID
+        :type SkillGroupId: int
+        :param _IVRId: 指定的 IVR ID
+        :type IVRId: int
+        :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
+        :type Priority: int
+        :param _ExpectedAbandonRate: 预期呼损率，百分比，5 - 50
+        :type ExpectedAbandonRate: int
+        :param _RetryTimes: 呼叫重试次数，0 - 2
+        :type RetryTimes: int
+        :param _RetryInterval: 呼叫重试间隔时间，单位秒，60 - 86400
+        :type RetryInterval: int
+        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :type StartTime: int
+        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :type EndTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CampaignId = None
+        self._Name = None
+        self._CallOrder = None
+        self._SkillGroupId = None
+        self._IVRId = None
+        self._Priority = None
+        self._ExpectedAbandonRate = None
+        self._RetryTimes = None
+        self._RetryInterval = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CallOrder(self):
+        return self._CallOrder
+
+    @CallOrder.setter
+    def CallOrder(self, CallOrder):
+        self._CallOrder = CallOrder
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+    @property
+    def IVRId(self):
+        return self._IVRId
+
+    @IVRId.setter
+    def IVRId(self, IVRId):
+        self._IVRId = IVRId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ExpectedAbandonRate(self):
+        return self._ExpectedAbandonRate
+
+    @ExpectedAbandonRate.setter
+    def ExpectedAbandonRate(self, ExpectedAbandonRate):
+        self._ExpectedAbandonRate = ExpectedAbandonRate
+
+    @property
+    def RetryTimes(self):
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+    @property
+    def RetryInterval(self):
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CampaignId = params.get("CampaignId")
+        self._Name = params.get("Name")
+        self._CallOrder = params.get("CallOrder")
+        self._SkillGroupId = params.get("SkillGroupId")
+        self._IVRId = params.get("IVRId")
+        self._Priority = params.get("Priority")
+        self._ExpectedAbandonRate = params.get("ExpectedAbandonRate")
+        self._RetryTimes = params.get("RetryTimes")
+        self._RetryInterval = params.get("RetryInterval")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePredictiveDialingCampaignsElement(AbstractModel):
+    """查询预测式外呼任务列表元素
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CampaignId: 任务 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CampaignId: int
+        :param _Name: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Status: 任务状态 0 待开始 1 进行中 2 已暂停 3 已终止 4 已完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _StatusReason: 任务状态原因 0 正常 1 手动结束 2 超时结束
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusReason: int
+        :param _CalleeCount: 被叫号码个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalleeCount: int
+        :param _FinishedCalleeCount: 已完成的被叫个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedCalleeCount: int
+        :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _SkillGroupId: 使用的座席技能组 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillGroupId: int
+        """
+        self._CampaignId = None
+        self._Name = None
+        self._Status = None
+        self._StatusReason = None
+        self._CalleeCount = None
+        self._FinishedCalleeCount = None
+        self._Priority = None
+        self._SkillGroupId = None
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def CalleeCount(self):
+        return self._CalleeCount
+
+    @CalleeCount.setter
+    def CalleeCount(self, CalleeCount):
+        self._CalleeCount = CalleeCount
+
+    @property
+    def FinishedCalleeCount(self):
+        return self._FinishedCalleeCount
+
+    @FinishedCalleeCount.setter
+    def FinishedCalleeCount(self, FinishedCalleeCount):
+        self._FinishedCalleeCount = FinishedCalleeCount
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._CampaignId = params.get("CampaignId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
+        self._CalleeCount = params.get("CalleeCount")
+        self._FinishedCalleeCount = params.get("FinishedCalleeCount")
+        self._Priority = params.get("Priority")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePredictiveDialingCampaignsRequest(AbstractModel):
+    """DescribePredictiveDialingCampaigns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _PageSize: 分页尺寸，最大为 100
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param _Name: 查询任务列表名称关键字
+        :type Name: str
+        :param _SkillGroupId: 查询任务列表技能组 ID
+        :type SkillGroupId: int
+        """
+        self._SdkAppId = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._Name = None
+        self._SkillGroupId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._Name = params.get("Name")
+        self._SkillGroupId = params.get("SkillGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePredictiveDialingCampaignsResponse(AbstractModel):
+    """DescribePredictiveDialingCampaigns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据总量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _CampaignList: 数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CampaignList: list of DescribePredictiveDialingCampaignsElement
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CampaignList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CampaignList(self):
+        return self._CampaignList
+
+    @CampaignList.setter
+    def CampaignList(self, CampaignList):
+        self._CampaignList = CampaignList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CampaignList") is not None:
+            self._CampaignList = []
+            for item in params.get("CampaignList"):
+                obj = DescribePredictiveDialingCampaignsElement()
+                obj._deserialize(item)
+                self._CampaignList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePredictiveDialingSessionsRequest(AbstractModel):
+    """DescribePredictiveDialingSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 生成的任务 ID
+        :type CampaignId: int
+        :param _PageSize: 分页尺寸，最大为 1000
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+        self._PageSize = None
+        self._PageNumber = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePredictiveDialingSessionsResponse(AbstractModel):
+    """DescribePredictiveDialingSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据总量
+        :type TotalCount: int
+        :param _SessionList: 呼叫的 session id 列表，通过 https://cloud.tencent.com/document/product/679/47714 可以批量获取呼叫详细话单
+        :type SessionList: list of str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SessionList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SessionList(self):
+        return self._SessionList
+
+    @SessionList.setter
+    def SessionList(self, SessionList):
+        self._SessionList = SessionList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SessionList = params.get("SessionList")
         self._RequestId = params.get("RequestId")
 
 
@@ -6553,6 +7489,76 @@ class PackageBuyInfo(AbstractModel):
         
 
 
+class PausePredictiveDialingCampaignRequest(AbstractModel):
+    """PausePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PausePredictiveDialingCampaignResponse(AbstractModel):
+    """PausePredictiveDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class PhoneNumBuyInfo(AbstractModel):
     """号码购买信息
 
@@ -6725,6 +7731,76 @@ class ResetExtensionPasswordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Password = params.get("Password")
+        self._RequestId = params.get("RequestId")
+
+
+class ResumePredictiveDialingCampaignRequest(AbstractModel):
+    """ResumePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 任务 ID
+        :type CampaignId: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumePredictiveDialingCampaignResponse(AbstractModel):
+    """ResumePredictiveDialingCampaign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -8695,6 +9771,220 @@ class UnbindStaffSkillGroupListRequest(AbstractModel):
 
 class UnbindStaffSkillGroupListResponse(AbstractModel):
     """UnbindStaffSkillGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePredictiveDialingCampaignRequest(AbstractModel):
+    """UpdatePredictiveDialingCampaign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :type SdkAppId: int
+        :param _CampaignId: 生成的任务 ID
+        :type CampaignId: int
+        :param _Name: 任务名称
+        :type Name: str
+        :param _Callees: 被叫列表，支持 E.164 或不带国家码形式的号码
+        :type Callees: list of str
+        :param _Callers: 主叫列表，使用管理端展示的号码格式
+        :type Callers: list of str
+        :param _CallOrder: 被叫呼叫顺序 0 随机 1 顺序
+        :type CallOrder: int
+        :param _SkillGroupId: 使用的座席技能组 ID
+        :type SkillGroupId: int
+        :param _Priority: 相同应用内多个任务运行优先级，从高到底 1 - 5
+        :type Priority: int
+        :param _ExpectedAbandonRate: 预期呼损率，百分比，5 - 50	
+        :type ExpectedAbandonRate: int
+        :param _RetryInterval: 呼叫重试间隔时间，单位秒，60 - 86400
+        :type RetryInterval: int
+        :param _StartTime: 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+        :type StartTime: int
+        :param _EndTime: 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+        :type EndTime: int
+        :param _IVRId: 指定的 IVR ID
+        :type IVRId: int
+        :param _RetryTimes: 呼叫重试次数，0 - 2
+        :type RetryTimes: int
+        """
+        self._SdkAppId = None
+        self._CampaignId = None
+        self._Name = None
+        self._Callees = None
+        self._Callers = None
+        self._CallOrder = None
+        self._SkillGroupId = None
+        self._Priority = None
+        self._ExpectedAbandonRate = None
+        self._RetryInterval = None
+        self._StartTime = None
+        self._EndTime = None
+        self._IVRId = None
+        self._RetryTimes = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def CampaignId(self):
+        return self._CampaignId
+
+    @CampaignId.setter
+    def CampaignId(self, CampaignId):
+        self._CampaignId = CampaignId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Callees(self):
+        return self._Callees
+
+    @Callees.setter
+    def Callees(self, Callees):
+        self._Callees = Callees
+
+    @property
+    def Callers(self):
+        return self._Callers
+
+    @Callers.setter
+    def Callers(self, Callers):
+        self._Callers = Callers
+
+    @property
+    def CallOrder(self):
+        return self._CallOrder
+
+    @CallOrder.setter
+    def CallOrder(self, CallOrder):
+        self._CallOrder = CallOrder
+
+    @property
+    def SkillGroupId(self):
+        return self._SkillGroupId
+
+    @SkillGroupId.setter
+    def SkillGroupId(self, SkillGroupId):
+        self._SkillGroupId = SkillGroupId
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ExpectedAbandonRate(self):
+        return self._ExpectedAbandonRate
+
+    @ExpectedAbandonRate.setter
+    def ExpectedAbandonRate(self, ExpectedAbandonRate):
+        self._ExpectedAbandonRate = ExpectedAbandonRate
+
+    @property
+    def RetryInterval(self):
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def IVRId(self):
+        return self._IVRId
+
+    @IVRId.setter
+    def IVRId(self, IVRId):
+        self._IVRId = IVRId
+
+    @property
+    def RetryTimes(self):
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._CampaignId = params.get("CampaignId")
+        self._Name = params.get("Name")
+        self._Callees = params.get("Callees")
+        self._Callers = params.get("Callers")
+        self._CallOrder = params.get("CallOrder")
+        self._SkillGroupId = params.get("SkillGroupId")
+        self._Priority = params.get("Priority")
+        self._ExpectedAbandonRate = params.get("ExpectedAbandonRate")
+        self._RetryInterval = params.get("RetryInterval")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._IVRId = params.get("IVRId")
+        self._RetryTimes = params.get("RetryTimes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePredictiveDialingCampaignResponse(AbstractModel):
+    """UpdatePredictiveDialingCampaign返回参数结构体
 
     """
 

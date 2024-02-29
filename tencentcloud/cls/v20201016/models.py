@@ -5370,6 +5370,8 @@ class CreateMachineGroupRequest(AbstractModel):
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
+        :param _DelayCleanupTime: 机器组中机器离线清理时间
+        :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
         :param _OSType: 系统类型，默认0，0：Linux，1: Windows
@@ -5382,6 +5384,7 @@ class CreateMachineGroupRequest(AbstractModel):
         self._UpdateStartTime = None
         self._UpdateEndTime = None
         self._ServiceLogging = None
+        self._DelayCleanupTime = None
         self._MetaTags = None
         self._OSType = None
 
@@ -5442,6 +5445,14 @@ class CreateMachineGroupRequest(AbstractModel):
         self._ServiceLogging = ServiceLogging
 
     @property
+    def DelayCleanupTime(self):
+        return self._DelayCleanupTime
+
+    @DelayCleanupTime.setter
+    def DelayCleanupTime(self, DelayCleanupTime):
+        self._DelayCleanupTime = DelayCleanupTime
+
+    @property
     def MetaTags(self):
         return self._MetaTags
 
@@ -5473,6 +5484,7 @@ class CreateMachineGroupRequest(AbstractModel):
         self._UpdateStartTime = params.get("UpdateStartTime")
         self._UpdateEndTime = params.get("UpdateEndTime")
         self._ServiceLogging = params.get("ServiceLogging")
+        self._DelayCleanupTime = params.get("DelayCleanupTime")
         if params.get("MetaTags") is not None:
             self._MetaTags = []
             for item in params.get("MetaTags"):
@@ -11121,13 +11133,13 @@ class DescribeTopicsResponse(AbstractModel):
 
 
 class DynamicIndex(AbstractModel):
-    """动态索引配置，启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
+    """键值索引自动配置，启用后自动将日志内的字段添加到键值索引中，包括日志中后续新增的字段。
 
     """
 
     def __init__(self):
         r"""
-        :param _Status: 动态索引配置开关
+        :param _Status: 键值索引自动配置开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: bool
         """
@@ -13672,6 +13684,9 @@ class MachineGroupInfo(AbstractModel):
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLogging: bool
+        :param _DelayCleanupTime: 机器组中机器离线定期清理时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
         :param _OSType: 操作系统类型，0: Linux，1: windows
@@ -13686,6 +13701,7 @@ class MachineGroupInfo(AbstractModel):
         self._UpdateStartTime = None
         self._UpdateEndTime = None
         self._ServiceLogging = None
+        self._DelayCleanupTime = None
         self._MetaTags = None
         self._OSType = None
 
@@ -13762,6 +13778,14 @@ class MachineGroupInfo(AbstractModel):
         self._ServiceLogging = ServiceLogging
 
     @property
+    def DelayCleanupTime(self):
+        return self._DelayCleanupTime
+
+    @DelayCleanupTime.setter
+    def DelayCleanupTime(self, DelayCleanupTime):
+        self._DelayCleanupTime = DelayCleanupTime
+
+    @property
     def MetaTags(self):
         return self._MetaTags
 
@@ -13795,6 +13819,7 @@ class MachineGroupInfo(AbstractModel):
         self._UpdateStartTime = params.get("UpdateStartTime")
         self._UpdateEndTime = params.get("UpdateEndTime")
         self._ServiceLogging = params.get("ServiceLogging")
+        self._DelayCleanupTime = params.get("DelayCleanupTime")
         if params.get("MetaTags") is not None:
             self._MetaTags = []
             for item in params.get("MetaTags"):
@@ -16064,6 +16089,8 @@ class ModifyMachineGroupRequest(AbstractModel):
         :type UpdateEndTime: str
         :param _ServiceLogging: 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
         :type ServiceLogging: bool
+        :param _DelayCleanupTime: 机器组中机器定期离线清理时间
+        :type DelayCleanupTime: int
         :param _MetaTags: 机器组元数据信息列表
         :type MetaTags: list of MetaTagInfo
         """
@@ -16075,6 +16102,7 @@ class ModifyMachineGroupRequest(AbstractModel):
         self._UpdateStartTime = None
         self._UpdateEndTime = None
         self._ServiceLogging = None
+        self._DelayCleanupTime = None
         self._MetaTags = None
 
     @property
@@ -16142,6 +16170,14 @@ class ModifyMachineGroupRequest(AbstractModel):
         self._ServiceLogging = ServiceLogging
 
     @property
+    def DelayCleanupTime(self):
+        return self._DelayCleanupTime
+
+    @DelayCleanupTime.setter
+    def DelayCleanupTime(self, DelayCleanupTime):
+        self._DelayCleanupTime = DelayCleanupTime
+
+    @property
     def MetaTags(self):
         return self._MetaTags
 
@@ -16166,6 +16202,7 @@ class ModifyMachineGroupRequest(AbstractModel):
         self._UpdateStartTime = params.get("UpdateStartTime")
         self._UpdateEndTime = params.get("UpdateEndTime")
         self._ServiceLogging = params.get("ServiceLogging")
+        self._DelayCleanupTime = params.get("DelayCleanupTime")
         if params.get("MetaTags") is not None:
             self._MetaTags = []
             for item in params.get("MetaTags"):
@@ -17972,17 +18009,17 @@ class RuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FullText: 全文索引配置, 如果为空时代表未开启全文索引
+        :param _FullText: 全文索引配置, 为空时代表未开启全文索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullText: :class:`tencentcloud.cls.v20201016.models.FullTextInfo`
-        :param _KeyValue: 键值索引配置，如果为空时代表未开启键值索引
+        :param _KeyValue: 键值索引配置，为空时代表未开启键值索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyValue: :class:`tencentcloud.cls.v20201016.models.RuleKeyValueInfo`
-        :param _Tag: 元字段索引配置，如果为空时代表未开启元字段索引
+        :param _Tag: 元字段索引配置，为空时代表未开启元字段索引
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
-        :param _DynamicIndex: 动态索引配置，为空时代表未开启动态索引。
-启用后将自动把日志内的字段添加到键值索引字段列表中，包括日志中新增的字段。
+        :param _DynamicIndex: 键值索引自动配置，为空时代表未开启该功能。
+启用后自动将日志内的字段添加到键值索引中，包括日志中后续新增的字段。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DynamicIndex: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
         """

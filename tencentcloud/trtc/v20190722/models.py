@@ -5596,6 +5596,8 @@ class McuWaterMarkText(AbstractModel):
         :type BackGroundColor: str
         :param _DynamicPosType: 动态水印类型，默认为0。0:关闭；1:随机位置，每秒变动一次；2:边界扫描反弹，每帧变动一次。
         :type DynamicPosType: int
+        :param _ZOrder: 水印在输出时的层级，不填默认为0。
+        :type ZOrder: int
         """
         self._Text = None
         self._WaterMarkWidth = None
@@ -5606,6 +5608,7 @@ class McuWaterMarkText(AbstractModel):
         self._FontColor = None
         self._BackGroundColor = None
         self._DynamicPosType = None
+        self._ZOrder = None
 
     @property
     def Text(self):
@@ -5679,6 +5682,14 @@ class McuWaterMarkText(AbstractModel):
     def DynamicPosType(self, DynamicPosType):
         self._DynamicPosType = DynamicPosType
 
+    @property
+    def ZOrder(self):
+        return self._ZOrder
+
+    @ZOrder.setter
+    def ZOrder(self, ZOrder):
+        self._ZOrder = ZOrder
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -5690,6 +5701,7 @@ class McuWaterMarkText(AbstractModel):
         self._FontColor = params.get("FontColor")
         self._BackGroundColor = params.get("BackGroundColor")
         self._DynamicPosType = params.get("DynamicPosType")
+        self._ZOrder = params.get("ZOrder")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8080,7 +8092,7 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type PublishCdnParams: list of McuPublishCdnParam
         :param _SeiParams: 混流SEI参数
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param _FeedBackRoomParams: 回推房间信息，和转推CDN参数必须要有一个。注：回推房间需使用特殊的SDK版本，如您有需求，请联系腾讯云技术支持。
+        :param _FeedBackRoomParams: 回推房间信息，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
         """
         self._SdkAppId = None

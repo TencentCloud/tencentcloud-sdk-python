@@ -9927,11 +9927,14 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
         :type DBInstanceId: str
         :param _InstanceChargeType: 【废弃参数，不再生效】，实例计费类型。
         :type InstanceChargeType: str
+        :param _Cpu: 实例的Cpu大小，单位Core
+        :type Cpu: int
         """
         self._Storage = None
         self._Memory = None
         self._DBInstanceId = None
         self._InstanceChargeType = None
+        self._Cpu = None
 
     @property
     def Storage(self):
@@ -9965,12 +9968,21 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
 
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
 
     def _deserialize(self, params):
         self._Storage = params.get("Storage")
         self._Memory = params.get("Memory")
         self._DBInstanceId = params.get("DBInstanceId")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        self._Cpu = params.get("Cpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10446,12 +10458,15 @@ class ModifyBackupPlanRequest(AbstractModel):
         :type BaseBackupRetentionPeriod: int
         :param _BackupPeriod: 实例备份周期，按照星期维度，格式为小写星期英文单词
         :type BackupPeriod: list of str
+        :param _LogBackupRetentionPeriod: 实例日志备份保留时长，取值范围为7-1830，单位是天
+        :type LogBackupRetentionPeriod: int
         """
         self._DBInstanceId = None
         self._MinBackupStartTime = None
         self._MaxBackupStartTime = None
         self._BaseBackupRetentionPeriod = None
         self._BackupPeriod = None
+        self._LogBackupRetentionPeriod = None
 
     @property
     def DBInstanceId(self):
@@ -10493,6 +10508,14 @@ class ModifyBackupPlanRequest(AbstractModel):
     def BackupPeriod(self, BackupPeriod):
         self._BackupPeriod = BackupPeriod
 
+    @property
+    def LogBackupRetentionPeriod(self):
+        return self._LogBackupRetentionPeriod
+
+    @LogBackupRetentionPeriod.setter
+    def LogBackupRetentionPeriod(self, LogBackupRetentionPeriod):
+        self._LogBackupRetentionPeriod = LogBackupRetentionPeriod
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
@@ -10500,6 +10523,7 @@ class ModifyBackupPlanRequest(AbstractModel):
         self._MaxBackupStartTime = params.get("MaxBackupStartTime")
         self._BaseBackupRetentionPeriod = params.get("BaseBackupRetentionPeriod")
         self._BackupPeriod = params.get("BackupPeriod")
+        self._LogBackupRetentionPeriod = params.get("LogBackupRetentionPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11349,6 +11373,8 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type SwitchStartTime: str
         :param _SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
         :type SwitchEndTime: str
+        :param _Cpu: 修改后的实例CPU大小，单位Core。
+        :type Cpu: int
         """
         self._DBInstanceId = None
         self._Memory = None
@@ -11359,6 +11385,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._SwitchTag = None
         self._SwitchStartTime = None
         self._SwitchEndTime = None
+        self._Cpu = None
 
     @property
     def DBInstanceId(self):
@@ -11432,6 +11459,14 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
     def SwitchEndTime(self, SwitchEndTime):
         self._SwitchEndTime = SwitchEndTime
 
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
@@ -11443,6 +11478,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._SwitchTag = params.get("SwitchTag")
         self._SwitchStartTime = params.get("SwitchStartTime")
         self._SwitchEndTime = params.get("SwitchEndTime")
+        self._Cpu = params.get("Cpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
