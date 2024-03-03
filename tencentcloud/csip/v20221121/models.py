@@ -8517,6 +8517,81 @@ class DescribeTaskLogURLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopAttackInfoRequest(AbstractModel):
+    """DescribeTopAttackInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperatedMemberId: 被调用的集团账号的成员id
+        :type OperatedMemberId: list of str
+        """
+        self._OperatedMemberId = None
+
+    @property
+    def OperatedMemberId(self):
+        return self._OperatedMemberId
+
+    @OperatedMemberId.setter
+    def OperatedMemberId(self, OperatedMemberId):
+        self._OperatedMemberId = OperatedMemberId
+
+
+    def _deserialize(self, params):
+        self._OperatedMemberId = params.get("OperatedMemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopAttackInfoResponse(AbstractModel):
+    """DescribeTopAttackInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopAttackInfo: Top攻击类型/攻击者次数
+        :type TopAttackInfo: list of TagCount
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TopAttackInfo = None
+        self._RequestId = None
+
+    @property
+    def TopAttackInfo(self):
+        return self._TopAttackInfo
+
+    @TopAttackInfo.setter
+    def TopAttackInfo(self, TopAttackInfo):
+        self._TopAttackInfo = TopAttackInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TopAttackInfo") is not None:
+            self._TopAttackInfo = []
+            for item in params.get("TopAttackInfo"):
+                obj = TagCount()
+                obj._deserialize(item)
+                self._TopAttackInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVULRiskAdvanceCFGListRequest(AbstractModel):
     """DescribeVULRiskAdvanceCFGList请求参数结构体
 
@@ -13460,6 +13535,53 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagCount(AbstractModel):
+    """产品日志条数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 产品名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Count: 日志条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        """
+        self._Name = None
+        self._Count = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

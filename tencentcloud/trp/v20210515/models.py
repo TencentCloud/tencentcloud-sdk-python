@@ -3476,6 +3476,8 @@ class DescribeCodeBatchesRequest(AbstractModel):
         :type BatchType: str
         :param _CorpId: 企业ID
         :type CorpId: int
+        :param _Status: 批次状态
+        :type Status: int
         """
         self._MerchantId = None
         self._ProductId = None
@@ -3484,6 +3486,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
         self._PageNumber = None
         self._BatchType = None
         self._CorpId = None
+        self._Status = None
 
     @property
     def MerchantId(self):
@@ -3541,6 +3544,14 @@ class DescribeCodeBatchesRequest(AbstractModel):
     def CorpId(self, CorpId):
         self._CorpId = CorpId
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -3550,6 +3561,7 @@ class DescribeCodeBatchesRequest(AbstractModel):
         self._PageNumber = params.get("PageNumber")
         self._BatchType = params.get("BatchType")
         self._CorpId = params.get("CorpId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3635,6 +3647,8 @@ class DescribeCodeBatchsRequest(AbstractModel):
         :type BatchType: str
         :param _CorpId: 企业ID
         :type CorpId: int
+        :param _Status: 批次状态
+        :type Status: int
         """
         self._MerchantId = None
         self._ProductId = None
@@ -3643,6 +3657,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
         self._PageNumber = None
         self._BatchType = None
         self._CorpId = None
+        self._Status = None
 
     @property
     def MerchantId(self):
@@ -3700,6 +3715,14 @@ class DescribeCodeBatchsRequest(AbstractModel):
     def CorpId(self, CorpId):
         self._CorpId = CorpId
 
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._MerchantId = params.get("MerchantId")
@@ -3709,6 +3732,7 @@ class DescribeCodeBatchsRequest(AbstractModel):
         self._PageNumber = params.get("PageNumber")
         self._BatchType = params.get("BatchType")
         self._CorpId = params.get("CorpId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

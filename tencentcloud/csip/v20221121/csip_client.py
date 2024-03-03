@@ -716,6 +716,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopAttackInfo(self, request):
+        """查询TOP攻击信息
+
+        :param request: Request instance for DescribeTopAttackInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeTopAttackInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeTopAttackInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopAttackInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopAttackInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVULRiskAdvanceCFGList(self, request):
         """查询漏洞风险高级配置
 

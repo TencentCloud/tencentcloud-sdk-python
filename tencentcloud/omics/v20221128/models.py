@@ -467,6 +467,143 @@ class CreateEnvironmentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVolumeRequest(AbstractModel):
+    """CreateVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境ID。
+        :type EnvironmentId: str
+        :param _Name: 名称。
+        :type Name: str
+        :param _Type: 缓存卷类型，取值范围：
+* SHARED：多点挂载共享存储
+        :type Type: str
+        :param _Spec: 缓存卷规格，取值范围：
+
+- SD：通用标准型
+- HP：通用性能型
+- TB：turbo标准型
+- TP：turbo性能型
+        :type Spec: str
+        :param _Description: 描述。
+        :type Description: str
+        :param _Capacity: 缓存卷大小（GB），Turbo系列需要指定。
+        :type Capacity: int
+        """
+        self._EnvironmentId = None
+        self._Name = None
+        self._Type = None
+        self._Spec = None
+        self._Description = None
+        self._Capacity = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Capacity(self):
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Spec = params.get("Spec")
+        self._Description = params.get("Description")
+        self._Capacity = params.get("Capacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVolumeResponse(AbstractModel):
+    """CreateVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VolumeId = None
+        self._RequestId = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        self._RequestId = params.get("RequestId")
+
+
 class DatabaseOption(AbstractModel):
     """数据库配置。
 
@@ -567,6 +704,134 @@ class DeleteEnvironmentResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._WorkflowUuid = params.get("WorkflowUuid")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVolumeDataRequest(AbstractModel):
+    """DeleteVolumeData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+        :type VolumeId: str
+        :param _Path: 需要删除的路径
+        :type Path: str
+        """
+        self._VolumeId = None
+        self._Path = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVolumeDataResponse(AbstractModel):
+    """DeleteVolumeData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVolumeRequest(AbstractModel):
+    """DeleteVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+        :type VolumeId: str
+        """
+        self._VolumeId = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVolumeResponse(AbstractModel):
+    """DeleteVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -1223,6 +1488,138 @@ class DescribeTablesRowsResponse(AbstractModel):
                 obj = TableRow()
                 obj._deserialize(item)
                 self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVolumesRequest(AbstractModel):
+    """DescribeVolumes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境ID。
+        :type EnvironmentId: str
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤器，支持过滤字段：
+- Name：名称
+- IsDefault：是否为默认
+        :type Filters: list of Filter
+        """
+        self._EnvironmentId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVolumesResponse(AbstractModel):
+    """DescribeVolumes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Volumes: 缓存卷。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volumes: list of Volume
+        :param _TotalCount: 符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Volumes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Volumes(self):
+        return self._Volumes
+
+    @Volumes.setter
+    def Volumes(self, Volumes):
+        self._Volumes = Volumes
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Volumes") is not None:
+            self._Volumes = []
+            for item in params.get("Volumes"):
+                obj = Volume()
+                obj._deserialize(item)
+                self._Volumes.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -2196,6 +2593,88 @@ class LimitRange(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyVolumeRequest(AbstractModel):
+    """ModifyVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+        :type VolumeId: str
+        :param _Name: 名称。
+        :type Name: str
+        :param _Description: 描述。
+        :type Description: str
+        """
+        self._VolumeId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVolumeResponse(AbstractModel):
+    """ModifyVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class NFOption(AbstractModel):
@@ -4457,6 +4936,189 @@ class VPCOption(AbstractModel):
         self._SubnetZone = params.get("SubnetZone")
         self._VPCCIDRBlock = params.get("VPCCIDRBlock")
         self._SubnetCIDRBlock = params.get("SubnetCIDRBlock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Volume(AbstractModel):
+    """缓存卷。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeId: 缓存卷ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeId: str
+        :param _Name: 名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: 描述。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _EnvironmentId: 环境ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvironmentId: str
+        :param _Type: 缓存卷类型，取值范围：
+* SHARED：多点挂载共享存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Spec: 缓存卷规格，取值范围：
+
+- SD：通用标准型
+- HP：通用性能型
+- TB：turbo标准型
+- TP：turbo性能型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: str
+        :param _Capacity: 缓存卷大小（GB）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capacity: int
+        :param _Usage: 缓存卷使用量（Byte）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Usage: int
+        :param _BandwidthLimit: 缓存卷吞吐上限（MiB/s）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BandwidthLimit: float
+        :param _DefaultMountPath: 默认挂载路径。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultMountPath: str
+        :param _IsDefault: 是否为默认缓存卷。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDefault: bool
+        :param _Status: 状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._VolumeId = None
+        self._Name = None
+        self._Description = None
+        self._EnvironmentId = None
+        self._Type = None
+        self._Spec = None
+        self._Capacity = None
+        self._Usage = None
+        self._BandwidthLimit = None
+        self._DefaultMountPath = None
+        self._IsDefault = None
+        self._Status = None
+
+    @property
+    def VolumeId(self):
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Spec(self):
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Capacity(self):
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def Usage(self):
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def BandwidthLimit(self):
+        return self._BandwidthLimit
+
+    @BandwidthLimit.setter
+    def BandwidthLimit(self, BandwidthLimit):
+        self._BandwidthLimit = BandwidthLimit
+
+    @property
+    def DefaultMountPath(self):
+        return self._DefaultMountPath
+
+    @DefaultMountPath.setter
+    def DefaultMountPath(self, DefaultMountPath):
+        self._DefaultMountPath = DefaultMountPath
+
+    @property
+    def IsDefault(self):
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VolumeId = params.get("VolumeId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Type = params.get("Type")
+        self._Spec = params.get("Spec")
+        self._Capacity = params.get("Capacity")
+        self._Usage = params.get("Usage")
+        self._BandwidthLimit = params.get("BandwidthLimit")
+        self._DefaultMountPath = params.get("DefaultMountPath")
+        self._IsDefault = params.get("IsDefault")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

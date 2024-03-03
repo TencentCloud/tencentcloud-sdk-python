@@ -24570,6 +24570,12 @@ abnormal = 异常
         :param _EnableExternal: 是否已开启公网访问，true 开启，false 未开启
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableExternal: bool
+        :param _DesiredAgentNum: 采集agent期望pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DesiredAgentNum: int
+        :param _ReadyAgentNum: 采集agent已正常启动pod数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadyAgentNum: int
         """
         self._ClusterType = None
         self._ClusterId = None
@@ -24581,6 +24587,8 @@ abnormal = 异常
         self._FailedReason = None
         self._Name = None
         self._EnableExternal = None
+        self._DesiredAgentNum = None
+        self._ReadyAgentNum = None
 
     @property
     def ClusterType(self):
@@ -24662,6 +24670,22 @@ abnormal = 异常
     def EnableExternal(self, EnableExternal):
         self._EnableExternal = EnableExternal
 
+    @property
+    def DesiredAgentNum(self):
+        return self._DesiredAgentNum
+
+    @DesiredAgentNum.setter
+    def DesiredAgentNum(self, DesiredAgentNum):
+        self._DesiredAgentNum = DesiredAgentNum
+
+    @property
+    def ReadyAgentNum(self):
+        return self._ReadyAgentNum
+
+    @ReadyAgentNum.setter
+    def ReadyAgentNum(self, ReadyAgentNum):
+        self._ReadyAgentNum = ReadyAgentNum
+
 
     def _deserialize(self, params):
         self._ClusterType = params.get("ClusterType")
@@ -24679,6 +24703,8 @@ abnormal = 异常
         self._FailedReason = params.get("FailedReason")
         self._Name = params.get("Name")
         self._EnableExternal = params.get("EnableExternal")
+        self._DesiredAgentNum = params.get("DesiredAgentNum")
+        self._ReadyAgentNum = params.get("ReadyAgentNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

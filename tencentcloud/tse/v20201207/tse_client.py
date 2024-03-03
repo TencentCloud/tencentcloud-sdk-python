@@ -302,6 +302,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGovernanceInstances(self, request):
+        """创建治理中心服务实例
+
+        :param request: Request instance for CreateGovernanceInstances.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceInstancesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGovernanceInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNativeGatewayServerGroup(self, request):
         """创建云原生网关引擎分组
 
@@ -569,6 +592,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteEngine", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGovernanceInstances(self, request):
+        """删除治理中心服务实例
+
+        :param request: Request instance for DeleteGovernanceInstances.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -960,6 +1006,29 @@ class TseClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGateways", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceInstances(self, request):
+        """查询治理中心服务实例
+
+        :param request: Request instance for DescribeGovernanceInstances.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceInstancesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1443,6 +1512,29 @@ class TseClient(AbstractClient):
             body = self.call("ModifyConsoleNetwork", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConsoleNetworkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGovernanceInstances(self, request):
+        """修改治理中心服务实例
+
+        :param request: Request instance for ModifyGovernanceInstances.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceInstancesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernanceInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernanceInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

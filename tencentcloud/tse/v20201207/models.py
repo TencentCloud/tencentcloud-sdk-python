@@ -4128,6 +4128,93 @@ class CreateGatewayServiceResult(AbstractModel):
         
 
 
+class CreateGovernanceInstancesRequest(AbstractModel):
+    """CreateGovernanceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceInstances: 服务实例信息。
+        :type GovernanceInstances: list of GovernanceInstanceInput
+        """
+        self._InstanceId = None
+        self._GovernanceInstances = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceInstances(self):
+        return self._GovernanceInstances
+
+    @GovernanceInstances.setter
+    def GovernanceInstances(self, GovernanceInstances):
+        self._GovernanceInstances = GovernanceInstances
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceInstances") is not None:
+            self._GovernanceInstances = []
+            for item in params.get("GovernanceInstances"):
+                obj = GovernanceInstanceInput()
+                obj._deserialize(item)
+                self._GovernanceInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGovernanceInstancesResponse(AbstractModel):
+    """CreateGovernanceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNativeGatewayServerGroupRequest(AbstractModel):
     """CreateNativeGatewayServerGroup请求参数结构体
 
@@ -5203,6 +5290,93 @@ class DeleteEngineResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceInstancesRequest(AbstractModel):
+    """DeleteGovernanceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceInstances: 要删除的服务实例信息。
+        :type GovernanceInstances: list of GovernanceInstanceUpdate
+        """
+        self._InstanceId = None
+        self._GovernanceInstances = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceInstances(self):
+        return self._GovernanceInstances
+
+    @GovernanceInstances.setter
+    def GovernanceInstances(self, GovernanceInstances):
+        self._GovernanceInstances = GovernanceInstances
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceInstances") is not None:
+            self._GovernanceInstances = []
+            for item in params.get("GovernanceInstances"):
+                obj = GovernanceInstanceUpdate()
+                obj._deserialize(item)
+                self._GovernanceInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceInstancesResponse(AbstractModel):
+    """DeleteGovernanceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -7412,6 +7586,218 @@ class DescribeGatewayInstancePortResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeGovernanceInstancesRequest(AbstractModel):
+    """DescribeGovernanceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 实例所在的服务名。
+        :type Service: str
+        :param _Namespace: 实例所在命名空间名。
+        :type Namespace: str
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _Host: 根据实例ip过滤，多个ip使用英文逗号分隔。
+        :type Host: str
+        :param _InstanceVersion: 根据实例版本过滤。
+        :type InstanceVersion: str
+        :param _Protocol: 根据实例协议过滤。
+        :type Protocol: str
+        :param _HealthStatus: 根据实例健康状态过滤。false：表示不健康，true：表示健康。
+        :type HealthStatus: bool
+        :param _Isolate: 根据实例隔离状态过滤。false：表示非隔离，true：表示隔离中。
+        :type Isolate: bool
+        :param _Metadatas: 根据元数据信息过滤。目前只支持一组元数据键值，若传了多个键值对，只会以第一个过滤。
+        :type Metadatas: list of Metadata
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._Service = None
+        self._Namespace = None
+        self._InstanceId = None
+        self._Host = None
+        self._InstanceVersion = None
+        self._Protocol = None
+        self._HealthStatus = None
+        self._Isolate = None
+        self._Metadatas = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def Isolate(self):
+        return self._Isolate
+
+    @Isolate.setter
+    def Isolate(self, Isolate):
+        self._Isolate = Isolate
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._InstanceId = params.get("InstanceId")
+        self._Host = params.get("Host")
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._Protocol = params.get("Protocol")
+        self._HealthStatus = params.get("HealthStatus")
+        self._Isolate = params.get("Isolate")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceInstancesResponse(AbstractModel):
+    """DescribeGovernanceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 服务实例总数量。
+        :type TotalCount: int
+        :param _Content: 服务里实例列表。
+        :type Content: list of GovernanceInstance
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = GovernanceInstance()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeInstanceRegionInfo(AbstractModel):
@@ -9746,6 +10132,559 @@ class GatewayInstanceSchemeAndPorts(AbstractModel):
         
 
 
+class GovernanceInstance(AbstractModel):
+    """治理中心实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 实例id。
+        :type Id: str
+        :param _Service: 实例所在服务名。
+        :type Service: str
+        :param _Namespace: 实例所在命名空间名。
+        :type Namespace: str
+        :param _Host: 实例ip地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Port: 实例端口信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _Protocol: 通信协议。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _Version: 版本信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Weight: 负载均衡权重。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Weight: int
+        :param _EnableHealthCheck: 是否开启健康检查。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableHealthCheck: bool
+        :param _Healthy: 实例是否健康。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Healthy: bool
+        :param _Isolate: 实例是否隔离。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Isolate: bool
+        :param _CreateTime: 实例创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 实例修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Metadatas: 元数据数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadatas: list of Metadata
+        :param _Ttl: 上报心跳间隔。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ttl: int
+        """
+        self._Id = None
+        self._Service = None
+        self._Namespace = None
+        self._Host = None
+        self._Port = None
+        self._Protocol = None
+        self._Version = None
+        self._Weight = None
+        self._EnableHealthCheck = None
+        self._Healthy = None
+        self._Isolate = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Metadatas = None
+        self._Ttl = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def EnableHealthCheck(self):
+        return self._EnableHealthCheck
+
+    @EnableHealthCheck.setter
+    def EnableHealthCheck(self, EnableHealthCheck):
+        self._EnableHealthCheck = EnableHealthCheck
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def Isolate(self):
+        return self._Isolate
+
+    @Isolate.setter
+    def Isolate(self, Isolate):
+        self._Isolate = Isolate
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def Ttl(self):
+        return self._Ttl
+
+    @Ttl.setter
+    def Ttl(self, Ttl):
+        self._Ttl = Ttl
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Protocol = params.get("Protocol")
+        self._Version = params.get("Version")
+        self._Weight = params.get("Weight")
+        self._EnableHealthCheck = params.get("EnableHealthCheck")
+        self._Healthy = params.get("Healthy")
+        self._Isolate = params.get("Isolate")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._Ttl = params.get("Ttl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceInstanceInput(AbstractModel):
+    """实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 实例所在服务名。
+        :type Service: str
+        :param _Namespace: 实例服务所在命名空间。
+        :type Namespace: str
+        :param _Weight: 实例负载均衡权重信息。不填默认为100。
+        :type Weight: int
+        :param _Healthy: 实例默认健康信息。不填默认为健康。
+        :type Healthy: bool
+        :param _Isolate: 实例隔离信息。不填默认为非隔离。
+        :type Isolate: bool
+        :param _Host: 实例ip。
+        :type Host: str
+        :param _Port: 实例监听端口。
+        :type Port: int
+        :param _Protocol: 实例使用协议。不填默认为空。
+        :type Protocol: str
+        :param _InstanceVersion: 实例版本。不填默认为空。
+        :type InstanceVersion: str
+        :param _EnableHealthCheck: 是否启用健康检查。不填默认不启用。
+        :type EnableHealthCheck: bool
+        :param _Ttl: 上报心跳时间间隔。若 EnableHealthCheck 为不启用，则此参数不生效；若 EnableHealthCheck 启用，此参数不填，则默认 ttl 为 5s。
+        :type Ttl: int
+        """
+        self._Service = None
+        self._Namespace = None
+        self._Weight = None
+        self._Healthy = None
+        self._Isolate = None
+        self._Host = None
+        self._Port = None
+        self._Protocol = None
+        self._InstanceVersion = None
+        self._EnableHealthCheck = None
+        self._Ttl = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def Isolate(self):
+        return self._Isolate
+
+    @Isolate.setter
+    def Isolate(self, Isolate):
+        self._Isolate = Isolate
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def EnableHealthCheck(self):
+        return self._EnableHealthCheck
+
+    @EnableHealthCheck.setter
+    def EnableHealthCheck(self, EnableHealthCheck):
+        self._EnableHealthCheck = EnableHealthCheck
+
+    @property
+    def Ttl(self):
+        return self._Ttl
+
+    @Ttl.setter
+    def Ttl(self, Ttl):
+        self._Ttl = Ttl
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Weight = params.get("Weight")
+        self._Healthy = params.get("Healthy")
+        self._Isolate = params.get("Isolate")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Protocol = params.get("Protocol")
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._EnableHealthCheck = params.get("EnableHealthCheck")
+        self._Ttl = params.get("Ttl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceInstanceUpdate(AbstractModel):
+    """实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 实例所在服务名。
+        :type Service: str
+        :param _Namespace: 实例服务所在命名空间。
+        :type Namespace: str
+        :param _Id: 治理中心服务实例id。
+        :type Id: str
+        :param _Weight: 实例负载均衡权重信息。不填默认为100。
+        :type Weight: int
+        :param _Healthy: 实例默认健康信息。不填默认为健康。
+        :type Healthy: bool
+        :param _Isolate: 实例隔离信息。不填默认为非隔离。
+        :type Isolate: bool
+        :param _Host: 实例ip。
+        :type Host: str
+        :param _Port: 实例监听端口。
+        :type Port: int
+        :param _Protocol: 实例使用协议。不填默认为空。
+        :type Protocol: str
+        :param _InstanceVersion: 实例版本。不填默认为空。
+        :type InstanceVersion: str
+        :param _EnableHealthCheck: 是否启用健康检查。不填默认不启用。
+        :type EnableHealthCheck: bool
+        :param _Ttl: 上报心跳时间间隔。若 EnableHealthCheck 为不启用，则此参数不生效；若 EnableHealthCheck 启用，此参数不填，则默认 ttl 为 5s。
+        :type Ttl: int
+        :param _Metadatas: 元数据信息。
+        :type Metadatas: list of Metadata
+        """
+        self._Service = None
+        self._Namespace = None
+        self._Id = None
+        self._Weight = None
+        self._Healthy = None
+        self._Isolate = None
+        self._Host = None
+        self._Port = None
+        self._Protocol = None
+        self._InstanceVersion = None
+        self._EnableHealthCheck = None
+        self._Ttl = None
+        self._Metadatas = None
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Healthy(self):
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def Isolate(self):
+        return self._Isolate
+
+    @Isolate.setter
+    def Isolate(self, Isolate):
+        self._Isolate = Isolate
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def EnableHealthCheck(self):
+        return self._EnableHealthCheck
+
+    @EnableHealthCheck.setter
+    def EnableHealthCheck(self, EnableHealthCheck):
+        self._EnableHealthCheck = EnableHealthCheck
+
+    @property
+    def Ttl(self):
+        return self._Ttl
+
+    @Ttl.setter
+    def Ttl(self, Ttl):
+        self._Ttl = Ttl
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+
+    def _deserialize(self, params):
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Id = params.get("Id")
+        self._Weight = params.get("Weight")
+        self._Healthy = params.get("Healthy")
+        self._Isolate = params.get("Isolate")
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Protocol = params.get("Protocol")
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._EnableHealthCheck = params.get("EnableHealthCheck")
+        self._Ttl = params.get("Ttl")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstancePort(AbstractModel):
     """实例监听端口信息
 
@@ -11770,6 +12709,53 @@ class ListFilter(AbstractModel):
         
 
 
+class Metadata(AbstractModel):
+    """元数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 元数据键名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 元数据键值。不填则默认为空字符串。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAutoScalerResourceStrategyRequest(AbstractModel):
     """ModifyAutoScalerResourceStrategy请求参数结构体
 
@@ -12965,6 +13951,93 @@ class ModifyConsoleNetworkResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGovernanceInstancesRequest(AbstractModel):
+    """ModifyGovernanceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceInstances: 服务实例信息。
+        :type GovernanceInstances: list of GovernanceInstanceUpdate
+        """
+        self._InstanceId = None
+        self._GovernanceInstances = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceInstances(self):
+        return self._GovernanceInstances
+
+    @GovernanceInstances.setter
+    def GovernanceInstances(self, GovernanceInstances):
+        self._GovernanceInstances = GovernanceInstances
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceInstances") is not None:
+            self._GovernanceInstances = []
+            for item in params.get("GovernanceInstances"):
+                obj = GovernanceInstanceUpdate()
+                obj._deserialize(item)
+                self._GovernanceInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGovernanceInstancesResponse(AbstractModel):
+    """ModifyGovernanceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 修改是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 

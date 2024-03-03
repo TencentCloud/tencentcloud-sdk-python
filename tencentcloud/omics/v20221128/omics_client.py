@@ -49,6 +49,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVolume(self, request):
+        """创建缓存卷。
+
+        :param request: Request instance for CreateVolume.
+        :type request: :class:`tencentcloud.omics.v20221128.models.CreateVolumeRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.CreateVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVolumeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteEnvironment(self, request):
         """删除环境。
 
@@ -63,6 +86,52 @@ class OmicsClient(AbstractClient):
             body = self.call("DeleteEnvironment", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVolume(self, request):
+        """删除缓存卷。
+
+        :param request: Request instance for DeleteVolume.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVolumeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVolumeData(self, request):
+        """删除缓存卷数据。
+
+        :param request: Request instance for DeleteVolumeData.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeDataRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DeleteVolumeDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVolumeData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVolumeDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -187,6 +256,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVolumes(self, request):
+        """查询缓存卷列表。
+
+        :param request: Request instance for DescribeVolumes.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeVolumesRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeVolumesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVolumes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVolumesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRunCalls(self, request):
         """查询作业详情。
 
@@ -270,6 +362,29 @@ class OmicsClient(AbstractClient):
             body = self.call("ImportTableFile", params, headers=headers)
             response = json.loads(body)
             model = models.ImportTableFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVolume(self, request):
+        """修改缓存卷。
+
+        :param request: Request instance for ModifyVolume.
+        :type request: :class:`tencentcloud.omics.v20221128.models.ModifyVolumeRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.ModifyVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVolumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

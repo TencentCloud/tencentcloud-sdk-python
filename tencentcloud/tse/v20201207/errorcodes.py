@@ -59,6 +59,9 @@ INTERNALERROR_GETCREDENTIAL = 'InternalError.GetCredential'
 # 角色获取错误。
 INTERNALERROR_GETROLEERROR = 'InternalError.GetRoleError'
 
+# 访问治理中心引擎内部错误。
+INTERNALERROR_GOVERNANCEFAILURE = 'InternalError.GovernanceFailure'
+
 # 状态码错误。
 INTERNALERROR_HTTPSTATUSCODEERROR = 'InternalError.HttpStatusCodeError'
 

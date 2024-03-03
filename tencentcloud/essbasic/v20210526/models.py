@@ -8561,7 +8561,7 @@ class Component(AbstractModel):
     """此结构体 (Component) 用于描述控件属性。
 
     在通过文件发起合同时，对应的component有三种定位方式
-    1. 绝对定位方式
+    1. 绝对定位方式 （可以通过 [PDF坐标计算助手](https://qian.tencent.com/developers/tools/template-editor)计算控件的坐标）
     2. 表单域(FIELD)定位方式
     3. 关键字(KEYWORD)定位方式，使用关键字定位时，请确保PDF原始文件内是关键字以文字形式保存在PDF文件中，不支持对图片内文字进行关键字查找
     可以参考官网说明
@@ -14327,7 +14327,14 @@ class FlowInfo(AbstractModel):
 [点击产看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
 
         :type TemplateId: str
-        :param _FlowApprovers: 多个签署人信息，最大支持50个签署方
+        :param _FlowApprovers: 合同流程的参与方列表，最多可支持50个参与方
+
+注:  
+<font color="red" > <b> 在发起流程时，需要保证 FlowApprovers中的顺序与模板定义顺序一致，否则会发起失败。
+例如，如果模板中定义的第一个参与人是个人用户，第二个参与人是企业员工，则在 approver 中传参时，第一个也必须是个人用户，第二个参与人必须是企业员工。</b></font>
+
+[点击查看模板参与人顺序定义位置](https://qcloudimg.tencent-cloud.cn/raw/c50e0a204fc5c66aaa2ca70e451ef2d6.png)
+
         :type FlowApprovers: list of FlowApproverInfo
         :param _FormFields: 发起方角色的填写控件的填充内容。
 
