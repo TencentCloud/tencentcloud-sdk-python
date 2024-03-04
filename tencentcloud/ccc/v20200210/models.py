@@ -9794,6 +9794,112 @@ class UnbindStaffSkillGroupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateCCCSkillGroupRequest(AbstractModel):
+    """UpdateCCCSkillGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: 应用 ID（必填）
+        :type SdkAppId: int
+        :param _SkillGroupID: 技能组ID
+        :type SkillGroupID: int
+        :param _SkillGroupName: 修改后的技能组名字
+        :type SkillGroupName: str
+        :param _MaxConcurrency: 修改后的最大并发数,同振最大为2
+        :type MaxConcurrency: int
+        :param _RingAll: true同振，false顺振
+        :type RingAll: bool
+        """
+        self._SdkAppId = None
+        self._SkillGroupID = None
+        self._SkillGroupName = None
+        self._MaxConcurrency = None
+        self._RingAll = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SkillGroupID(self):
+        return self._SkillGroupID
+
+    @SkillGroupID.setter
+    def SkillGroupID(self, SkillGroupID):
+        self._SkillGroupID = SkillGroupID
+
+    @property
+    def SkillGroupName(self):
+        return self._SkillGroupName
+
+    @SkillGroupName.setter
+    def SkillGroupName(self, SkillGroupName):
+        self._SkillGroupName = SkillGroupName
+
+    @property
+    def MaxConcurrency(self):
+        return self._MaxConcurrency
+
+    @MaxConcurrency.setter
+    def MaxConcurrency(self, MaxConcurrency):
+        self._MaxConcurrency = MaxConcurrency
+
+    @property
+    def RingAll(self):
+        return self._RingAll
+
+    @RingAll.setter
+    def RingAll(self, RingAll):
+        self._RingAll = RingAll
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SkillGroupID = params.get("SkillGroupID")
+        self._SkillGroupName = params.get("SkillGroupName")
+        self._MaxConcurrency = params.get("MaxConcurrency")
+        self._RingAll = params.get("RingAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCCCSkillGroupResponse(AbstractModel):
+    """UpdateCCCSkillGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpdatePredictiveDialingCampaignRequest(AbstractModel):
     """UpdatePredictiveDialingCampaign请求参数结构体
 

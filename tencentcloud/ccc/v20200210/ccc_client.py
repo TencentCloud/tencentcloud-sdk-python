@@ -1155,6 +1155,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateCCCSkillGroup(self, request):
+        """更新技能组
+
+        :param request: Request instance for UpdateCCCSkillGroup.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.UpdateCCCSkillGroupRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.UpdateCCCSkillGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCCCSkillGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCCCSkillGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdatePredictiveDialingCampaign(self, request):
         """任务未启动前，更新预测式外呼任务。
 

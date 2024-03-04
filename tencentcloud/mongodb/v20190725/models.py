@@ -2912,6 +2912,8 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         :type DiscountPrice: float
         :param _Action: 订单行为，purchase：新购，renew：续费，upgrade：升配，downgrade：降配，refund：退货退款。
         :type Action: str
+        :param _InstanceId: 当前订单的资源Id。
+        :type InstanceId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2919,6 +2921,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self._OriginalPrice = None
         self._DiscountPrice = None
         self._Action = None
+        self._InstanceId = None
         self._RequestId = None
 
     @property
@@ -2954,6 +2957,14 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self._Action = Action
 
     @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2967,6 +2978,7 @@ class DescribeDBInstanceDealResponse(AbstractModel):
         self._OriginalPrice = params.get("OriginalPrice")
         self._DiscountPrice = params.get("DiscountPrice")
         self._Action = params.get("Action")
+        self._InstanceId = params.get("InstanceId")
         self._RequestId = params.get("RequestId")
 
 

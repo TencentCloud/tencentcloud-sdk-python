@@ -231,6 +231,111 @@ class AppConfig(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ApplicationId: 应用ID
+        :type ApplicationId: str
+        :param _AppName: 应用名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppName: str
+        :param _State: 应用状态 1正常 2停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _AppVersion: 1试用 2轻量版 3标准版 4旗舰版
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppVersion: int
+        :param _CreatedAt: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _Callback: 回调
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Callback: str
+        :param _CallbackKey: 回调Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CallbackKey: str
+        """
+        self._ApplicationId = None
+        self._AppName = None
+        self._State = None
+        self._AppVersion = None
+        self._CreatedAt = None
+        self._Callback = None
+        self._CallbackKey = None
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def AppVersion(self):
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def Callback(self):
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def CallbackKey(self):
+        return self._CallbackKey
+
+    @CallbackKey.setter
+    def CallbackKey(self, CallbackKey):
+        self._CallbackKey = CallbackKey
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._AppName = params.get("AppName")
+        self._State = params.get("State")
+        self._AppVersion = params.get("AppVersion")
+        self._CreatedAt = params.get("CreatedAt")
+        self._Callback = params.get("Callback")
+        self._CallbackKey = params.get("CallbackKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class AppCustomContent(AbstractModel):
     """应用自定义内容
@@ -1761,7 +1866,7 @@ video 纯视频
         :type RTCAudienceNumber: int
         :param _AudienceType: 观看类型。互动观看 （默认）
         :type AudienceType: int
-        :param _RecordLayout: 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+        :param _RecordLayout: 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
         :type RecordLayout: int
         :param _GroupId: 房间绑定的群组ID,非空时限制组成员进入
         :type GroupId: str
@@ -2888,12 +2993,15 @@ class DescribeAppDetailResponse(AbstractModel):
         :type AppConfig: :class:`tencentcloud.lcic.v20220817.models.AppConfig`
         :param _SceneConfig: 场景配置
         :type SceneConfig: list of SceneItem
+        :param _TransferConfig: 转存配置
+        :type TransferConfig: :class:`tencentcloud.lcic.v20220817.models.TransferItem`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SdkAppId = None
         self._AppConfig = None
         self._SceneConfig = None
+        self._TransferConfig = None
         self._RequestId = None
 
     @property
@@ -2921,6 +3029,14 @@ class DescribeAppDetailResponse(AbstractModel):
         self._SceneConfig = SceneConfig
 
     @property
+    def TransferConfig(self):
+        return self._TransferConfig
+
+    @TransferConfig.setter
+    def TransferConfig(self, TransferConfig):
+        self._TransferConfig = TransferConfig
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2940,6 +3056,9 @@ class DescribeAppDetailResponse(AbstractModel):
                 obj = SceneItem()
                 obj._deserialize(item)
                 self._SceneConfig.append(obj)
+        if params.get("TransferConfig") is not None:
+            self._TransferConfig = TransferItem()
+            self._TransferConfig._deserialize(params.get("TransferConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7490,10 +7609,16 @@ class ModifyAppRequest(AbstractModel):
         :type Callback: str
         :param _CallbackKey: 回调key。
         :type CallbackKey: str
+        :param _TransferId: 转存id
+        :type TransferId: str
+        :param _TransferUrl: 转存地址
+        :type TransferUrl: str
         """
         self._SdkAppId = None
         self._Callback = None
         self._CallbackKey = None
+        self._TransferId = None
+        self._TransferUrl = None
 
     @property
     def SdkAppId(self):
@@ -7519,11 +7644,29 @@ class ModifyAppRequest(AbstractModel):
     def CallbackKey(self, CallbackKey):
         self._CallbackKey = CallbackKey
 
+    @property
+    def TransferId(self):
+        return self._TransferId
+
+    @TransferId.setter
+    def TransferId(self, TransferId):
+        self._TransferId = TransferId
+
+    @property
+    def TransferUrl(self):
+        return self._TransferUrl
+
+    @TransferUrl.setter
+    def TransferUrl(self, TransferUrl):
+        self._TransferUrl = TransferUrl
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
         self._Callback = params.get("Callback")
         self._CallbackKey = params.get("CallbackKey")
+        self._TransferId = params.get("TransferId")
+        self._TransferUrl = params.get("TransferUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9065,6 +9208,85 @@ class SceneItem(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Scene: 场景名称
+        :type Scene: str
+        :param _LogoUrl: logo地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogoUrl: str
+        :param _HomeUrl: 主页地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HomeUrl: str
+        :param _JSUrl: 自定义的js
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JSUrl: str
+        :param _CSSUrl: 自定义的css
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSSUrl: str
+        """
+        self._Scene = None
+        self._LogoUrl = None
+        self._HomeUrl = None
+        self._JSUrl = None
+        self._CSSUrl = None
+
+    @property
+    def Scene(self):
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def LogoUrl(self):
+        return self._LogoUrl
+
+    @LogoUrl.setter
+    def LogoUrl(self, LogoUrl):
+        self._LogoUrl = LogoUrl
+
+    @property
+    def HomeUrl(self):
+        return self._HomeUrl
+
+    @HomeUrl.setter
+    def HomeUrl(self, HomeUrl):
+        self._HomeUrl = HomeUrl
+
+    @property
+    def JSUrl(self):
+        return self._JSUrl
+
+    @JSUrl.setter
+    def JSUrl(self, JSUrl):
+        self._JSUrl = JSUrl
+
+    @property
+    def CSSUrl(self):
+        return self._CSSUrl
+
+    @CSSUrl.setter
+    def CSSUrl(self, CSSUrl):
+        self._CSSUrl = CSSUrl
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._LogoUrl = params.get("LogoUrl")
+        self._HomeUrl = params.get("HomeUrl")
+        self._JSUrl = params.get("JSUrl")
+        self._CSSUrl = params.get("CSSUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SendRoomNormalMessageRequest(AbstractModel):
     """SendRoomNormalMessage请求参数结构体
@@ -9690,6 +9912,40 @@ class TextMsgContent(AbstractModel):
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferItem(AbstractModel):
+    """转存配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _State: 转存状态， 1正常 2停用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        """
+        self._State = None
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
