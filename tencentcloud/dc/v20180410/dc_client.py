@@ -445,7 +445,7 @@ class DcClient(AbstractClient):
 
 
     def ModifyDirectConnectTunnelExtra(self, request):
-        """本接口（ModifyDirectConnectTunnelExtra）用于修改专用通道扩展信息
+        """修改专用通道扩展信息。
 
         :param request: Request instance for ModifyDirectConnectTunnelExtra.
         :type request: :class:`tencentcloud.dc.v20180410.models.ModifyDirectConnectTunnelExtraRequest`

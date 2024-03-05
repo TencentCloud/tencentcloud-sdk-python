@@ -9123,6 +9123,100 @@ class DescribeModelDefinitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeP2PInfoRequest(AbstractModel):
+    """DescribeP2PInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeP2PInfoResponse(AbstractModel):
+    """DescribeP2PInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _P2PInfo: xp2pinfo信息
+        :type P2PInfo: str
+        :param _ReportTime: 上报时间
+        :type ReportTime: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._P2PInfo = None
+        self._ReportTime = None
+        self._RequestId = None
+
+    @property
+    def P2PInfo(self):
+        return self._P2PInfo
+
+    @P2PInfo.setter
+    def P2PInfo(self, P2PInfo):
+        self._P2PInfo = P2PInfo
+
+    @property
+    def ReportTime(self):
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._P2PInfo = params.get("P2PInfo")
+        self._ReportTime = params.get("ReportTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePackageConsumeTaskRequest(AbstractModel):
     """DescribePackageConsumeTask请求参数结构体
 

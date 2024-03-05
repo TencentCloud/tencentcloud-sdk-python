@@ -2322,7 +2322,6 @@ EXPERIMENT 体验版
 BASIC 基础版
 PRO  专业版
 PLATINUM 铂金版
-注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
         :param _InstanceId: 实例ID
         :type InstanceId: str
@@ -2370,6 +2369,23 @@ PLATINUM 铂金版
         :type SkuCode: str
         :param _PayMode: 计费模式
         :type PayMode: str
+        :param _ScaledTpsEnabled: 是否开启弹性TPS
+        :type ScaledTpsEnabled: bool
+        :param _RenewFlag: 是否自动续费
+        :type RenewFlag: int
+        :param _ExpiryTime: 到期时间
+        :type ExpiryTime: int
+        :param _RoleNumLimit: 角色数量限制
+        :type RoleNumLimit: int
+        :param _AclEnabled: 是否开启 ACL
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AclEnabled: bool
+        :param _TopicNumLowerLimit: topic个数免费额度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumLowerLimit: int
+        :param _TopicNumUpperLimit: 最大可设置的topic个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicNumUpperLimit: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2396,6 +2412,13 @@ PLATINUM 铂金版
         self._InstanceStatus = None
         self._SkuCode = None
         self._PayMode = None
+        self._ScaledTpsEnabled = None
+        self._RenewFlag = None
+        self._ExpiryTime = None
+        self._RoleNumLimit = None
+        self._AclEnabled = None
+        self._TopicNumLowerLimit = None
+        self._TopicNumUpperLimit = None
         self._RequestId = None
 
     @property
@@ -2583,6 +2606,62 @@ PLATINUM 铂金版
         self._PayMode = PayMode
 
     @property
+    def ScaledTpsEnabled(self):
+        return self._ScaledTpsEnabled
+
+    @ScaledTpsEnabled.setter
+    def ScaledTpsEnabled(self, ScaledTpsEnabled):
+        self._ScaledTpsEnabled = ScaledTpsEnabled
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ExpiryTime(self):
+        return self._ExpiryTime
+
+    @ExpiryTime.setter
+    def ExpiryTime(self, ExpiryTime):
+        self._ExpiryTime = ExpiryTime
+
+    @property
+    def RoleNumLimit(self):
+        return self._RoleNumLimit
+
+    @RoleNumLimit.setter
+    def RoleNumLimit(self, RoleNumLimit):
+        self._RoleNumLimit = RoleNumLimit
+
+    @property
+    def AclEnabled(self):
+        return self._AclEnabled
+
+    @AclEnabled.setter
+    def AclEnabled(self, AclEnabled):
+        self._AclEnabled = AclEnabled
+
+    @property
+    def TopicNumLowerLimit(self):
+        return self._TopicNumLowerLimit
+
+    @TopicNumLowerLimit.setter
+    def TopicNumLowerLimit(self, TopicNumLowerLimit):
+        self._TopicNumLowerLimit = TopicNumLowerLimit
+
+    @property
+    def TopicNumUpperLimit(self):
+        return self._TopicNumUpperLimit
+
+    @TopicNumUpperLimit.setter
+    def TopicNumUpperLimit(self, TopicNumUpperLimit):
+        self._TopicNumUpperLimit = TopicNumUpperLimit
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2625,6 +2704,13 @@ PLATINUM 铂金版
         self._InstanceStatus = params.get("InstanceStatus")
         self._SkuCode = params.get("SkuCode")
         self._PayMode = params.get("PayMode")
+        self._ScaledTpsEnabled = params.get("ScaledTpsEnabled")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ExpiryTime = params.get("ExpiryTime")
+        self._RoleNumLimit = params.get("RoleNumLimit")
+        self._AclEnabled = params.get("AclEnabled")
+        self._TopicNumLowerLimit = params.get("TopicNumLowerLimit")
+        self._TopicNumUpperLimit = params.get("TopicNumUpperLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -4733,9 +4819,10 @@ class Endpoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 接入点类型，
-VPC，
-PUBLIC 公网
+        :param _Type: 接入点类型，枚举值如下
+VPC: VPC;
+PUBLIC: 公网;
+INTERNAL: 支撑网;
         :type Type: str
         :param _Status: 状态，
 OPEN 开启，

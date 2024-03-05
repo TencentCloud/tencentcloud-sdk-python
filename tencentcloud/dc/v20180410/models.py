@@ -4313,41 +4313,44 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectTunnelId: 专用通道ID
+        :param _DirectConnectTunnelId: 专用通道ID。
         :type DirectConnectTunnelId: str
-        :param _Vlan: 专用通道的Vlan
+        :param _Vlan: 专用通道的Vlan。
         :type Vlan: int
-        :param _BgpPeer: 用户侧BGP，Asn，AuthKey
+        :param _BgpPeer: Bgp参数，包括Asn，AuthKey
         :type BgpPeer: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
-        :param _RouteFilterPrefixes: 用户侧过滤网段地址
+        :param _RouteFilterPrefixes: 用户侧过滤网段地址。
         :type RouteFilterPrefixes: :class:`tencentcloud.dc.v20180410.models.RouteFilterPrefix`
-        :param _TencentAddress: 腾讯侧互联IP
+        :param _TencentAddress: 腾讯侧互联IP。
         :type TencentAddress: str
-        :param _TencentBackupAddress: 腾讯侧备用互联IP
+        :param _TencentBackupAddress: 腾讯侧备用互联IP。
         :type TencentBackupAddress: str
-        :param _CustomerAddress: 用户侧互联IP
+        :param _CustomerAddress: 用户侧互联IP。
         :type CustomerAddress: str
-        :param _Bandwidth: 专用通道带宽值
+        :param _Bandwidth: 专用通道带宽值。
         :type Bandwidth: int
-        :param _EnableBGPCommunity: BGP community开关
+        :param _EnableBGPCommunity: BGP community开关。
         :type EnableBGPCommunity: bool
-        :param _BfdEnable: 是否开启BFD
+        :param _BfdEnable: 是否开启BFD。
         :type BfdEnable: int
-        :param _NqaEnable: 是否开启NQA
+        :param _NqaEnable: 是否开启NQA。
         :type NqaEnable: int
-        :param _BfdInfo: BFD配置信息
+        :param _BfdInfo: BFD配置信息。
         :type BfdInfo: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
-        :param _NqaInfo: NQA配置信息
+        :param _NqaInfo: NQA配置信息。
         :type NqaInfo: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
-        :param _IPv6Enable: 0：停用IPv6
-1: 启用IPv6
+        :param _IPv6Enable: IPV6使能。0：停用IPv6；1: 启用IPv6。
         :type IPv6Enable: int
-        :param _CustomerIDCRoutes: 去往用户侧的路由信息
+        :param _CustomerIDCRoutes: 去往用户侧的路由信息。
         :type CustomerIDCRoutes: list of RouteFilterPrefix
-        :param _JumboEnable: 是否开启巨帧
-1：开启
-0：不开启
+        :param _JumboEnable: 是否开启巨帧。1：开启；0：不开启。
         :type JumboEnable: int
+        :param _TencentIPv6Address: 腾讯侧互联IPv6。
+        :type TencentIPv6Address: str
+        :param _TencentBackupIPv6Address: 腾讯侧备用互联IPv6。
+        :type TencentBackupIPv6Address: str
+        :param _CustomerIPv6Address: 用户侧互联IPv6。
+        :type CustomerIPv6Address: str
         """
         self._DirectConnectTunnelId = None
         self._Vlan = None
@@ -4365,6 +4368,9 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
         self._IPv6Enable = None
         self._CustomerIDCRoutes = None
         self._JumboEnable = None
+        self._TencentIPv6Address = None
+        self._TencentBackupIPv6Address = None
+        self._CustomerIPv6Address = None
 
     @property
     def DirectConnectTunnelId(self):
@@ -4494,6 +4500,30 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
     def JumboEnable(self, JumboEnable):
         self._JumboEnable = JumboEnable
 
+    @property
+    def TencentIPv6Address(self):
+        return self._TencentIPv6Address
+
+    @TencentIPv6Address.setter
+    def TencentIPv6Address(self, TencentIPv6Address):
+        self._TencentIPv6Address = TencentIPv6Address
+
+    @property
+    def TencentBackupIPv6Address(self):
+        return self._TencentBackupIPv6Address
+
+    @TencentBackupIPv6Address.setter
+    def TencentBackupIPv6Address(self, TencentBackupIPv6Address):
+        self._TencentBackupIPv6Address = TencentBackupIPv6Address
+
+    @property
+    def CustomerIPv6Address(self):
+        return self._CustomerIPv6Address
+
+    @CustomerIPv6Address.setter
+    def CustomerIPv6Address(self, CustomerIPv6Address):
+        self._CustomerIPv6Address = CustomerIPv6Address
+
 
     def _deserialize(self, params):
         self._DirectConnectTunnelId = params.get("DirectConnectTunnelId")
@@ -4525,6 +4555,9 @@ class ModifyDirectConnectTunnelExtraRequest(AbstractModel):
                 obj._deserialize(item)
                 self._CustomerIDCRoutes.append(obj)
         self._JumboEnable = params.get("JumboEnable")
+        self._TencentIPv6Address = params.get("TencentIPv6Address")
+        self._TencentBackupIPv6Address = params.get("TencentBackupIPv6Address")
+        self._CustomerIPv6Address = params.get("CustomerIPv6Address")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

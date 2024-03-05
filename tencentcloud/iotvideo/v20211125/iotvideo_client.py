@@ -1544,6 +1544,29 @@ class IotvideoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeP2PInfo(self, request):
+        """拉取设备p2p信息
+
+        :param request: Request instance for DescribeP2PInfo.
+        :type request: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PInfoRequest`
+        :rtype: :class:`tencentcloud.iotvideo.v20211125.models.DescribeP2PInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeP2PInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeP2PInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePackageConsumeTask(self, request):
         """查询套餐消耗记录详情
 

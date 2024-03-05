@@ -50,7 +50,7 @@ class ApmClient(AbstractClient):
 
 
     def DescribeApmAgent(self, request):
-        """获取Apm Agent信息
+        """获取APM Agent信息
 
         :param request: Request instance for DescribeApmAgent.
         :type request: :class:`tencentcloud.apm.v20210622.models.DescribeApmAgentRequest`

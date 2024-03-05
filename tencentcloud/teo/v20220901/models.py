@@ -3000,6 +3000,63 @@ class CC(AbstractModel):
         
 
 
+class CLSTopic(AbstractModel):
+    """实时日志投递到腾讯云 CLS 的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogSetId: 腾讯云 CLS 日志集 ID。	
+        :type LogSetId: str
+        :param _TopicId: 腾讯云 CLS 日志主题 ID。
+        :type TopicId: str
+        :param _LogSetRegion: 腾讯云 CLS 日志集所在的地域。
+        :type LogSetRegion: str
+        """
+        self._LogSetId = None
+        self._TopicId = None
+        self._LogSetRegion = None
+
+    @property
+    def LogSetId(self):
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogSetRegion(self):
+        return self._LogSetRegion
+
+    @LogSetRegion.setter
+    def LogSetRegion(self, LogSetRegion):
+        self._LogSetRegion = LogSetRegion
+
+
+    def _deserialize(self, params):
+        self._LogSetId = params.get("LogSetId")
+        self._TopicId = params.get("TopicId")
+        self._LogSetRegion = params.get("LogSetRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Cache(AbstractModel):
     """缓存时间设置
 
@@ -4484,6 +4541,76 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCLSIndexRequest(AbstractModel):
+    """CreateCLSIndex请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _TaskId: 实时日志投递任务 ID。
+        :type TaskId: str
+        """
+        self._ZoneId = None
+        self._TaskId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSIndexResponse(AbstractModel):
+    """CreateCLSIndex返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConfigGroupVersionRequest(AbstractModel):
     """CreateConfigGroupVersion请求参数结构体
 
@@ -5356,6 +5483,249 @@ class CreatePurgeTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
+    """CreateRealtimeLogDeliveryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _TaskName: 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
+        :type TaskName: str
+        :param _TaskType: 实时日志投递任务类型，取值有：
+<li>cls: 推送到腾讯云 CLS；</li>
+<li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
+<li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+        :type TaskType: str
+        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+<li>七层域名：domain.example.com；</li>
+<li>四层代理实例：sid-2s69eb5wcms7。</li>
+        :type EntityList: list of str
+        :param _LogType: 数据投递类型，取值有：
+<li>domain：站点加速日志；</li>
+<li>application：四层代理日志；</li>
+<li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
+<li>web-attack：托管规则日志；</li>
+<li>web-rule：自定义规则日志；</li>
+<li>web-bot：Bot管理日志。</li>
+        :type LogType: str
+        :param _Area: 数据投递区域，取值有：
+<li>mainland：中国大陆境内；</li>
+<li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
+        :param _Fields: 投递的预设字段列表。
+        :type Fields: list of str
+        :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。
+        :type CustomFields: list of CustomField
+        :param _DeliveryConditions: 日志投递的过滤条件，不填表示投递全量日志。
+        :type DeliveryConditions: list of DeliveryCondition
+        :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
+        :type Sample: int
+        :param _CLS: CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
+        :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
+        :param _CustomEndpoint: 自定义 HTTP 服务的配置信息。当 TaskType 取值为 custom_endpoint 时，该参数必填。
+        :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
+        :param _S3: AWS S3 兼容存储桶的配置信息。当 TaskType 取值为 s3 时，该参数必填。
+        :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        """
+        self._ZoneId = None
+        self._TaskName = None
+        self._TaskType = None
+        self._EntityList = None
+        self._LogType = None
+        self._Area = None
+        self._Fields = None
+        self._CustomFields = None
+        self._DeliveryConditions = None
+        self._Sample = None
+        self._CLS = None
+        self._CustomEndpoint = None
+        self._S3 = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def EntityList(self):
+        return self._EntityList
+
+    @EntityList.setter
+    def EntityList(self, EntityList):
+        self._EntityList = EntityList
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def CustomFields(self):
+        return self._CustomFields
+
+    @CustomFields.setter
+    def CustomFields(self, CustomFields):
+        self._CustomFields = CustomFields
+
+    @property
+    def DeliveryConditions(self):
+        return self._DeliveryConditions
+
+    @DeliveryConditions.setter
+    def DeliveryConditions(self, DeliveryConditions):
+        self._DeliveryConditions = DeliveryConditions
+
+    @property
+    def Sample(self):
+        return self._Sample
+
+    @Sample.setter
+    def Sample(self, Sample):
+        self._Sample = Sample
+
+    @property
+    def CLS(self):
+        return self._CLS
+
+    @CLS.setter
+    def CLS(self, CLS):
+        self._CLS = CLS
+
+    @property
+    def CustomEndpoint(self):
+        return self._CustomEndpoint
+
+    @CustomEndpoint.setter
+    def CustomEndpoint(self, CustomEndpoint):
+        self._CustomEndpoint = CustomEndpoint
+
+    @property
+    def S3(self):
+        return self._S3
+
+    @S3.setter
+    def S3(self, S3):
+        self._S3 = S3
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TaskName = params.get("TaskName")
+        self._TaskType = params.get("TaskType")
+        self._EntityList = params.get("EntityList")
+        self._LogType = params.get("LogType")
+        self._Area = params.get("Area")
+        self._Fields = params.get("Fields")
+        if params.get("CustomFields") is not None:
+            self._CustomFields = []
+            for item in params.get("CustomFields"):
+                obj = CustomField()
+                obj._deserialize(item)
+                self._CustomFields.append(obj)
+        if params.get("DeliveryConditions") is not None:
+            self._DeliveryConditions = []
+            for item in params.get("DeliveryConditions"):
+                obj = DeliveryCondition()
+                obj._deserialize(item)
+                self._DeliveryConditions.append(obj)
+        self._Sample = params.get("Sample")
+        if params.get("CLS") is not None:
+            self._CLS = CLSTopic()
+            self._CLS._deserialize(params.get("CLS"))
+        if params.get("CustomEndpoint") is not None:
+            self._CustomEndpoint = CustomEndpoint()
+            self._CustomEndpoint._deserialize(params.get("CustomEndpoint"))
+        if params.get("S3") is not None:
+            self._S3 = S3()
+            self._S3._deserialize(params.get("S3"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRealtimeLogDeliveryTaskResponse(AbstractModel):
+    """CreateRealtimeLogDeliveryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 创建成功的任务ID。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRuleRequest(AbstractModel):
     """CreateRule请求参数结构体
 
@@ -5857,6 +6227,169 @@ Type = noDomainAccess 时，该值为空，不需要进行任何操作。
             self._OwnershipVerification = OwnershipVerification()
             self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
+
+
+class CustomEndpoint(AbstractModel):
+    """实时日志投递到自定义 HTTP(S) 接口的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 实时日志投递的自定义 HTTP 接口地址，暂仅支持 HTTP/HTTPS 协议。
+        :type Url: str
+        :param _AccessId: 填写自定义的 SecretId 用于生成加密签名，如果源站需要鉴权此参数必填。
+        :type AccessId: str
+        :param _AccessKey: 填写自定义的 SecretKey 用于生成加密签名，如果源站需要鉴权此参数必填。
+        :type AccessKey: str
+        :param _CompressType: 数据压缩类型，取值有: <li> gzip：使用 gzip 方式压缩。</li>不填表示不启用压缩。
+        :type CompressType: str
+        :param _Protocol: POST 请求投递日志时，使用的应用层协议类型，取值有： 
+<li>http：HTTP 协议；</li>
+<li>https：HTTPS 协议。</li>如果不填默认根据填写的 URL 地址解析出协议类型。	
+        :type Protocol: str
+        :param _Headers: 投递日志时携带的自定义请求头，注意 Content-Type、Accept-Encoding 不支持添加修改。
+        :type Headers: list of Header
+        """
+        self._Url = None
+        self._AccessId = None
+        self._AccessKey = None
+        self._CompressType = None
+        self._Protocol = None
+        self._Headers = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def AccessId(self):
+        return self._AccessId
+
+    @AccessId.setter
+    def AccessId(self, AccessId):
+        self._AccessId = AccessId
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def CompressType(self):
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Headers(self):
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._AccessId = params.get("AccessId")
+        self._AccessKey = params.get("AccessKey")
+        self._CompressType = params.get("CompressType")
+        self._Protocol = params.get("Protocol")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = Header()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomField(AbstractModel):
+    """实时日志投递任务中的自定义日志字段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 从 HTTP 请求和响应中的指定位置提取数据，取值有：
+<li>ReqHeader：从 HTTP 请求头中提取指定字段值；</li>
+<li>RspHeader：从 HTTP 响应头中提取指定字段值；</li>
+<li>Cookie: 从 Cookie 中提取指定字段值。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 需要提取值的参数名称，例如：Accept-Language。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Enabled: 是否投递该字段，不填表示不投递此字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._Value = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DDoS(AbstractModel):
@@ -6867,6 +7400,76 @@ class DeleteOriginGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRealtimeLogDeliveryTaskRequest(AbstractModel):
+    """DeleteRealtimeLogDeliveryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。	
+        :type ZoneId: str
+        :param _TaskId: 实时日志投递任务 ID。
+        :type TaskId: str
+        """
+        self._ZoneId = None
+        self._TaskId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRealtimeLogDeliveryTaskResponse(AbstractModel):
+    """DeleteRealtimeLogDeliveryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRulesRequest(AbstractModel):
     """DeleteRules请求参数结构体
 
@@ -7133,6 +7736,47 @@ class DeleteZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DeliveryCondition(AbstractModel):
+    """实时日志投递条件，用于定义投递日志范围。DeliveryCondition 数组内多个项的关系为“或”，内层 Conditions 数组内多个项的关系为“且”。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Conditions: 日志过滤条件，详细的过滤条件如下：
+<li>EdgeResponseStatusCode：按照 EdgeOne 节点响应返回给客户端的状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 0 的整数</li>
+<li>OriginResponseStatusCode：按照源站响应状态码进行过滤。<br>   支持运算符：equal、great、less、great_equal、less_equal<br>   取值范围：任意大于等于 -1 的整数</li>
+<li>SecurityAction：按照请求命中安全规则后的最终处置动作进行过滤。<br>   支持运算符：equal<br>   可选项如下：<br>   -：未知/未命中<br>   Monitor：观察<br>   JSChallenge：JavaScript 挑战<br>   Deny：拦截<br>   Allow：放行<br>   BlockIP：IP 封禁<br>   Redirect：重定向<br>   ReturnCustomPage：返回自定义页面<br>   ManagedChallenge：托管挑战<br>   Silence：静默<br>   LongDelay：长时间等待后响应<br>   ShortDelay：短时间等待后响应</li>
+        :type Conditions: list of QueryCondition
+        """
+        self._Conditions = None
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeployConfigGroupVersionRequest(AbstractModel):
@@ -10602,6 +11246,138 @@ class DescribePurgeTasksResponse(AbstractModel):
                 obj = Task()
                 obj._deserialize(item)
                 self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRealtimeLogDeliveryTasksRequest(AbstractModel):
+    """DescribeRealtimeLogDeliveryTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有实时日志投递任务信息。详细的过滤条件如下：
+<li>task-id：按照实时日志投递任务 ID进行过滤。不支持模糊查询。</li>
+<li>task-name：按照实时日志投递任务名称进行过滤。支持模糊查询，使用模糊查询时，仅支持填写一个实时日志投递任务名称。</li>
+<li>entity-list：按照实时日志投递任务对应的实体进行过滤。不支持模糊查询。示例值：domain.example.com 或者 sid-2s69eb5wcms7。</li>
+<li>task-type：按照实时日志投递任务类型进行过滤。不支持模糊查询。可选项如下：<br>   cls: 推送到腾讯云 CLS；<br>   custom_endpoint：推送到自定义 HTTP(S) 地址；<br>   s3：推送到 AWS S3 兼容存储桶地址。</li>
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRealtimeLogDeliveryTasksResponse(AbstractModel):
+    """DescribeRealtimeLogDeliveryTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合查询条件的实时日志投递任务个数。
+        :type TotalCount: int
+        :param _RealtimeLogDeliveryTasks: 符合查询条件的所有实时日志投递任务列表。
+        :type RealtimeLogDeliveryTasks: list of RealtimeLogDeliveryTask
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RealtimeLogDeliveryTasks = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RealtimeLogDeliveryTasks(self):
+        return self._RealtimeLogDeliveryTasks
+
+    @RealtimeLogDeliveryTasks.setter
+    def RealtimeLogDeliveryTasks(self, RealtimeLogDeliveryTasks):
+        self._RealtimeLogDeliveryTasks = RealtimeLogDeliveryTasks
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RealtimeLogDeliveryTasks") is not None:
+            self._RealtimeLogDeliveryTasks = []
+            for item in params.get("RealtimeLogDeliveryTasks"):
+                obj = RealtimeLogDeliveryTask()
+                obj._deserialize(item)
+                self._RealtimeLogDeliveryTasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17129,6 +17905,202 @@ class ModifyOriginGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
+    """ModifyRealtimeLogDeliveryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _TaskId: 实时日志投递任务 ID。
+        :type TaskId: str
+        :param _TaskName: 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+        :type TaskName: str
+        :param _DeliveryStatus: 实时日志投递任务的状态，取值有：
+<li>enabled: 启用；</li>
+<li>disabled: 停用。</li>不填保持原有配置。
+        :type DeliveryStatus: str
+        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
+<li>七层域名：domain.example.com；</li>
+<li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+        :type EntityList: list of str
+        :param _Fields: 投递的预设字段列表。不填保持原有配置。
+        :type Fields: list of str
+        :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie 中提取指定字段值。自定义字段名称不能重复，且最多不能超过 200 个字段。不填保持原有配置。
+        :type CustomFields: list of CustomField
+        :param _DeliveryConditions: 日志投递的过滤条件。不填表示投递全量日志。
+        :type DeliveryConditions: list of DeliveryCondition
+        :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+        :type Sample: int
+        :param _CustomEndpoint: 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+        :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
+        :param _S3: AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+        :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        """
+        self._ZoneId = None
+        self._TaskId = None
+        self._TaskName = None
+        self._DeliveryStatus = None
+        self._EntityList = None
+        self._Fields = None
+        self._CustomFields = None
+        self._DeliveryConditions = None
+        self._Sample = None
+        self._CustomEndpoint = None
+        self._S3 = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DeliveryStatus(self):
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def EntityList(self):
+        return self._EntityList
+
+    @EntityList.setter
+    def EntityList(self, EntityList):
+        self._EntityList = EntityList
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def CustomFields(self):
+        return self._CustomFields
+
+    @CustomFields.setter
+    def CustomFields(self, CustomFields):
+        self._CustomFields = CustomFields
+
+    @property
+    def DeliveryConditions(self):
+        return self._DeliveryConditions
+
+    @DeliveryConditions.setter
+    def DeliveryConditions(self, DeliveryConditions):
+        self._DeliveryConditions = DeliveryConditions
+
+    @property
+    def Sample(self):
+        return self._Sample
+
+    @Sample.setter
+    def Sample(self, Sample):
+        self._Sample = Sample
+
+    @property
+    def CustomEndpoint(self):
+        return self._CustomEndpoint
+
+    @CustomEndpoint.setter
+    def CustomEndpoint(self, CustomEndpoint):
+        self._CustomEndpoint = CustomEndpoint
+
+    @property
+    def S3(self):
+        return self._S3
+
+    @S3.setter
+    def S3(self, S3):
+        self._S3 = S3
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._EntityList = params.get("EntityList")
+        self._Fields = params.get("Fields")
+        if params.get("CustomFields") is not None:
+            self._CustomFields = []
+            for item in params.get("CustomFields"):
+                obj = CustomField()
+                obj._deserialize(item)
+                self._CustomFields.append(obj)
+        if params.get("DeliveryConditions") is not None:
+            self._DeliveryConditions = []
+            for item in params.get("DeliveryConditions"):
+                obj = DeliveryCondition()
+                obj._deserialize(item)
+                self._DeliveryConditions.append(obj)
+        self._Sample = params.get("Sample")
+        if params.get("CustomEndpoint") is not None:
+            self._CustomEndpoint = CustomEndpoint()
+            self._CustomEndpoint._deserialize(params.get("CustomEndpoint"))
+        if params.get("S3") is not None:
+            self._S3 = S3()
+            self._S3._deserialize(params.get("S3"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRealtimeLogDeliveryTaskResponse(AbstractModel):
+    """ModifyRealtimeLogDeliveryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule请求参数结构体
 
@@ -20124,6 +21096,238 @@ class RateLimitUserRule(AbstractModel):
         
 
 
+class RealtimeLogDeliveryTask(AbstractModel):
+    """实时日志投递任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 实时日志投递任务 ID。
+        :type TaskId: str
+        :param _TaskName: 实时日志投递任务的名称。
+        :type TaskName: str
+        :param _DeliveryStatus: 实时日志投递任务的状态，取值有： <li>enabled: 已启用；</li> <li>disabled: 已停用；</li><li>deleted: 异常删除状态，请检查目的地腾讯云 CLS 日志集/日志主题是否已被删除。</li>
+        :type DeliveryStatus: str
+        :param _TaskType: 实时日志投递任务类型，取值有： <li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 AWS S3 兼容存储桶地址。</li>
+        :type TaskType: str
+        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下： <li>七层域名：domain.example.com；</li> <li>四层代理实例：sid-2s69eb5wcms7。</li>	
+        :type EntityList: list of str
+        :param _LogType: 数据投递类型，取值有： <li>domain：站点加速日志；</li> <li>application：四层代理日志；</li> <li>web-rateLiming：速率限制和 CC 攻击防护日志；</li> <li>web-attack：托管规则日志；</li> <li>web-rule：自定义规则日志；</li> <li>web-bot：Bot管理日志。</li>
+        :type LogType: str
+        :param _Area: 数据投递区域，取值有： <li>mainland：中国大陆境内；</li> <li>overseas：全球（不含中国大陆）。</li>
+        :type Area: str
+        :param _Fields: 投递的预设字段列表。
+        :type Fields: list of str
+        :param _CustomFields: 投递的自定义字段列表。
+        :type CustomFields: list of CustomField
+        :param _DeliveryConditions: 日志投递的过滤条件。
+        :type DeliveryConditions: list of DeliveryCondition
+        :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：605 表示采样比例为 60.5%。
+        :type Sample: int
+        :param _CLS: CLS 的配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
+        :param _CustomEndpoint: 自定义 HTTP 服务的配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
+        :param _S3: AWS S3 兼容存储桶的配置信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间。
+        :type UpdateTime: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._DeliveryStatus = None
+        self._TaskType = None
+        self._EntityList = None
+        self._LogType = None
+        self._Area = None
+        self._Fields = None
+        self._CustomFields = None
+        self._DeliveryConditions = None
+        self._Sample = None
+        self._CLS = None
+        self._CustomEndpoint = None
+        self._S3 = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DeliveryStatus(self):
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def EntityList(self):
+        return self._EntityList
+
+    @EntityList.setter
+    def EntityList(self, EntityList):
+        self._EntityList = EntityList
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def CustomFields(self):
+        return self._CustomFields
+
+    @CustomFields.setter
+    def CustomFields(self, CustomFields):
+        self._CustomFields = CustomFields
+
+    @property
+    def DeliveryConditions(self):
+        return self._DeliveryConditions
+
+    @DeliveryConditions.setter
+    def DeliveryConditions(self, DeliveryConditions):
+        self._DeliveryConditions = DeliveryConditions
+
+    @property
+    def Sample(self):
+        return self._Sample
+
+    @Sample.setter
+    def Sample(self, Sample):
+        self._Sample = Sample
+
+    @property
+    def CLS(self):
+        return self._CLS
+
+    @CLS.setter
+    def CLS(self, CLS):
+        self._CLS = CLS
+
+    @property
+    def CustomEndpoint(self):
+        return self._CustomEndpoint
+
+    @CustomEndpoint.setter
+    def CustomEndpoint(self, CustomEndpoint):
+        self._CustomEndpoint = CustomEndpoint
+
+    @property
+    def S3(self):
+        return self._S3
+
+    @S3.setter
+    def S3(self, S3):
+        self._S3 = S3
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._TaskType = params.get("TaskType")
+        self._EntityList = params.get("EntityList")
+        self._LogType = params.get("LogType")
+        self._Area = params.get("Area")
+        self._Fields = params.get("Fields")
+        if params.get("CustomFields") is not None:
+            self._CustomFields = []
+            for item in params.get("CustomFields"):
+                obj = CustomField()
+                obj._deserialize(item)
+                self._CustomFields.append(obj)
+        if params.get("DeliveryConditions") is not None:
+            self._DeliveryConditions = []
+            for item in params.get("DeliveryConditions"):
+                obj = DeliveryCondition()
+                obj._deserialize(item)
+                self._DeliveryConditions.append(obj)
+        self._Sample = params.get("Sample")
+        if params.get("CLS") is not None:
+            self._CLS = CLSTopic()
+            self._CLS._deserialize(params.get("CLS"))
+        if params.get("CustomEndpoint") is not None:
+            self._CustomEndpoint = CustomEndpoint()
+            self._CustomEndpoint._deserialize(params.get("CustomEndpoint"))
+        if params.get("S3") is not None:
+            self._S3 = S3()
+            self._S3._deserialize(params.get("S3"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Resource(AbstractModel):
     """计费资源
 
@@ -21259,6 +22463,99 @@ class RulesSettingAction(AbstractModel):
                 obj = RulesProperties()
                 obj._deserialize(item)
                 self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class S3(AbstractModel):
+    """实时日志投递到 AWS S3 兼容存储桶的配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Endpoint: 不包含存储桶名称或路径的 URL，例如：`https://storage.googleapis.com`、`https://s3.ap-northeast-2.amazonaws.com`、`https://cos.ap-nanjing.myqcloud.com`。
+        :type Endpoint: str
+        :param _Region: 存储桶所在的地域，例如：`ap-northeast-2`。
+        :type Region: str
+        :param _Bucket: 存储桶名称和日志存储目录，例如：`your_bucket_name/EO-logs/`。如果存储桶中无此目录则会自动创建。
+        :type Bucket: str
+        :param _AccessId: 访问存储桶使用的 Access Key ID。
+        :type AccessId: str
+        :param _AccessKey: 访问存储桶使用的 secret key。
+        :type AccessKey: str
+        :param _CompressType: 数据压缩类型，取值有: <li> gzip：gzip压缩。</li>不填表示不启用压缩。
+        :type CompressType: str
+        """
+        self._Endpoint = None
+        self._Region = None
+        self._Bucket = None
+        self._AccessId = None
+        self._AccessKey = None
+        self._CompressType = None
+
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def AccessId(self):
+        return self._AccessId
+
+    @AccessId.setter
+    def AccessId(self, AccessId):
+        self._AccessId = AccessId
+
+    @property
+    def AccessKey(self):
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def CompressType(self):
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
+
+    def _deserialize(self, params):
+        self._Endpoint = params.get("Endpoint")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._AccessId = params.get("AccessId")
+        self._AccessKey = params.get("AccessKey")
+        self._CompressType = params.get("CompressType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

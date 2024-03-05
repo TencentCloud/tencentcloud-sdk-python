@@ -5686,88 +5686,6 @@ class DeleteProClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DeleteProClustersRequest(AbstractModel):
-    """DeleteProClusters请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterIds: 集群Id列表
-        :type ClusterIds: list of str
-        """
-        self._ClusterIds = None
-
-    @property
-    def ClusterIds(self):
-        return self._ClusterIds
-
-    @ClusterIds.setter
-    def ClusterIds(self, ClusterIds):
-        self._ClusterIds = ClusterIds
-
-
-    def _deserialize(self, params):
-        self._ClusterIds = params.get("ClusterIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteProClustersResponse(AbstractModel):
-    """DeleteProClusters返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DealNames: 退还实例订单号
-        :type DealNames: list of str
-        :param _ClusterIds: 集群ID
-        :type ClusterIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DealNames = None
-        self._ClusterIds = None
-        self._RequestId = None
-
-    @property
-    def DealNames(self):
-        return self._DealNames
-
-    @DealNames.setter
-    def DealNames(self, DealNames):
-        self._DealNames = DealNames
-
-    @property
-    def ClusterIds(self):
-        return self._ClusterIds
-
-    @ClusterIds.setter
-    def ClusterIds(self, ClusterIds):
-        self._ClusterIds = ClusterIds
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DealNames = params.get("DealNames")
-        self._ClusterIds = params.get("ClusterIds")
-        self._RequestId = params.get("RequestId")
-
-
 class DeleteRabbitMQUserRequest(AbstractModel):
     """DeleteRabbitMQUser请求参数结构体
 
@@ -8561,6 +8479,384 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMqMsgTraceRequest(AbstractModel):
+    """DescribeMqMsgTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: pulsar、rocketmq、rabbitmq、cmq
+        :type Protocol: str
+        :param _MsgId: 消息id
+        :type MsgId: str
+        :param _ClusterId: 集群id，cmq为空
+        :type ClusterId: str
+        :param _EnvironmentId: 命名空间，cmq为空
+        :type EnvironmentId: str
+        :param _TopicName: 主题，cmq为空，rocketmq查询死信时值为groupId
+        :type TopicName: str
+        :param _QueueName: cmq必填，其他协议填空
+        :type QueueName: str
+        :param _GroupName: 消费组、订阅
+        :type GroupName: str
+        :param _QueryDlqMsg: 查询死信时该值为true，只对Rocketmq有效
+        :type QueryDlqMsg: bool
+        """
+        self._Protocol = None
+        self._MsgId = None
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._QueueName = None
+        self._GroupName = None
+        self._QueryDlqMsg = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def QueueName(self):
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def QueryDlqMsg(self):
+        return self._QueryDlqMsg
+
+    @QueryDlqMsg.setter
+    def QueryDlqMsg(self, QueryDlqMsg):
+        self._QueryDlqMsg = QueryDlqMsg
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._MsgId = params.get("MsgId")
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._QueueName = params.get("QueueName")
+        self._GroupName = params.get("GroupName")
+        self._QueryDlqMsg = params.get("QueryDlqMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMqMsgTraceResponse(AbstractModel):
+    """DescribeMqMsgTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: [
+    {
+        "Stage": "produce",
+        "Data": {
+            "ProducerName": "生产者名",
+            "ProduceTime": "消息生产时间",
+            "ProducerAddr": "客户端地址",
+            "Duration": "耗时ms",
+            "Status": "状态（0：成功，1：失败）"
+        }
+    },
+    {
+        "Stage": "persist",
+        "Data": {
+            "PersistTime": "存储时间",
+            "Duration": "耗时ms",
+            "Status": "状态（0：成功，1：失败）"
+        }
+    },
+    {
+        "Stage": "consume",
+        "Data": {
+            "TotalCount": 2,
+            "RocketMqConsumeLogs": [
+                {
+                    "ConsumerGroup": "消费组",
+                    "ConsumeModel": "消费模式",
+                    "ConsumerAddr": "消费者地址",
+                    "ConsumeTime": "推送时间",
+                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+                },
+                {
+                    "ConsumerGroup": "消费组",
+                    "ConsumeModel": "消费模式",
+                    "ConsumerAddr": "消费者地址",
+                    "ConsumeTime": "推送时间",
+                    "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+                }
+            ]    
+        }
+    }
+]
+        :type Result: list of TraceResult
+        :param _ShowTopicName: 消息轨迹页展示的topic名称
+        :type ShowTopicName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ShowTopicName = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ShowTopicName(self):
+        return self._ShowTopicName
+
+    @ShowTopicName.setter
+    def ShowTopicName(self, ShowTopicName):
+        self._ShowTopicName = ShowTopicName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = TraceResult()
+                obj._deserialize(item)
+                self._Result.append(obj)
+        self._ShowTopicName = params.get("ShowTopicName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMsgRequest(AbstractModel):
+    """DescribeMsg请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: 环境（命名空间）名称。
+        :type EnvironmentId: str
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _TopicName: 主题名。
+        :type TopicName: str
+        :param _ClusterId: Pulsar 集群的ID
+        :type ClusterId: str
+        """
+        self._EnvironmentId = None
+        self._MsgId = None
+        self._TopicName = None
+        self._ClusterId = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._MsgId = params.get("MsgId")
+        self._TopicName = params.get("TopicName")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMsgResponse(AbstractModel):
+    """DescribeMsg返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Properties: 消息属性。
+        :type Properties: str
+        :param _Body: 消息体。
+        :type Body: str
+        :param _BatchId: 批次ID。
+        :type BatchId: str
+        :param _ProduceTime: 生产时间。
+        :type ProduceTime: str
+        :param _MsgId: 消息ID。
+        :type MsgId: str
+        :param _ProducerName: 生产者名称。
+        :type ProducerName: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Properties = None
+        self._Body = None
+        self._BatchId = None
+        self._ProduceTime = None
+        self._MsgId = None
+        self._ProducerName = None
+        self._RequestId = None
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def BatchId(self):
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ProducerName(self):
+        return self._ProducerName
+
+    @ProducerName.setter
+    def ProducerName(self, ProducerName):
+        self._ProducerName = ProducerName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Properties = params.get("Properties")
+        self._Body = params.get("Body")
+        self._BatchId = params.get("BatchId")
+        self._ProduceTime = params.get("ProduceTime")
+        self._MsgId = params.get("MsgId")
+        self._ProducerName = params.get("ProducerName")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMsgTraceRequest(AbstractModel):
     """DescribeMsgTrace请求参数结构体
 
@@ -10079,6 +10375,7 @@ class DescribeRabbitMQQueuesRequest(AbstractModel):
         :param _QueueType: 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
         :type QueueType: str
         :param _SortElement: 排序依据的字段：
+ConsumerNumber - 在线消费者数量；
 MessageHeapCount - 消息堆积数；
 MessageRateInOut - 生产消费速率之和；
 MessageRateIn - 生产速率；
@@ -19052,6 +19349,9 @@ class PulsarProClusterInfo(AbstractModel):
         :param _CanEditRoute: 是否可以修改路由
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditRoute: bool
+        :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingLabelVersion: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -19062,6 +19362,7 @@ class PulsarProClusterInfo(AbstractModel):
         self._NodeDistribution = None
         self._MaxStorage = None
         self._CanEditRoute = None
+        self._BillingLabelVersion = None
 
     @property
     def ClusterId(self):
@@ -19135,6 +19436,14 @@ class PulsarProClusterInfo(AbstractModel):
     def CanEditRoute(self, CanEditRoute):
         self._CanEditRoute = CanEditRoute
 
+    @property
+    def BillingLabelVersion(self):
+        return self._BillingLabelVersion
+
+    @BillingLabelVersion.setter
+    def BillingLabelVersion(self, BillingLabelVersion):
+        self._BillingLabelVersion = BillingLabelVersion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -19151,6 +19460,7 @@ class PulsarProClusterInfo(AbstractModel):
                 self._NodeDistribution.append(obj)
         self._MaxStorage = params.get("MaxStorage")
         self._CanEditRoute = params.get("CanEditRoute")
+        self._BillingLabelVersion = params.get("BillingLabelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19304,6 +19614,9 @@ class PulsarProInstance(AbstractModel):
         :param _CreateTime: 集群创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
+        :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingLabelVersion: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -19323,6 +19636,7 @@ class PulsarProInstance(AbstractModel):
         self._MaxBandWidth = None
         self._Tags = None
         self._CreateTime = None
+        self._BillingLabelVersion = None
 
     @property
     def InstanceId(self):
@@ -19468,6 +19782,14 @@ class PulsarProInstance(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def BillingLabelVersion(self):
+        return self._BillingLabelVersion
+
+    @BillingLabelVersion.setter
+    def BillingLabelVersion(self, BillingLabelVersion):
+        self._BillingLabelVersion = BillingLabelVersion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19493,6 +19815,7 @@ class PulsarProInstance(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._CreateTime = params.get("CreateTime")
+        self._BillingLabelVersion = params.get("BillingLabelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20393,6 +20716,12 @@ class RabbitMQQueueListInfo(AbstractModel):
         :param _MessageRateOut: 消息消费速率，每秒
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageRateOut: float
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
         """
         self._QueueName = None
         self._Remark = None
@@ -20401,6 +20730,8 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._MessageHeapCount = None
         self._MessageRateIn = None
         self._MessageRateOut = None
+        self._CreateTime = None
+        self._ModifyTime = None
 
     @property
     def QueueName(self):
@@ -20458,6 +20789,22 @@ class RabbitMQQueueListInfo(AbstractModel):
     def MessageRateOut(self, MessageRateOut):
         self._MessageRateOut = MessageRateOut
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
 
     def _deserialize(self, params):
         self._QueueName = params.get("QueueName")
@@ -20469,6 +20816,8 @@ class RabbitMQQueueListInfo(AbstractModel):
         self._MessageHeapCount = params.get("MessageHeapCount")
         self._MessageRateIn = params.get("MessageRateIn")
         self._MessageRateOut = params.get("MessageRateOut")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20641,6 +20990,12 @@ class RabbitMQVipInstance(AbstractModel):
         :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 为了和计费区分开，额外开启一个状态位，用于显示。
         :type ClusterStatus: int
+        :param _PublicAccessEndpoint: 公网接入点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAccessEndpoint: str
+        :param _Vpcs: VPC 接入点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vpcs: list of VpcEndpointInfo
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -20658,6 +21013,8 @@ class RabbitMQVipInstance(AbstractModel):
         self._SpecName = None
         self._ExceptionInformation = None
         self._ClusterStatus = None
+        self._PublicAccessEndpoint = None
+        self._Vpcs = None
 
     @property
     def InstanceId(self):
@@ -20787,6 +21144,22 @@ class RabbitMQVipInstance(AbstractModel):
     def ClusterStatus(self, ClusterStatus):
         self._ClusterStatus = ClusterStatus
 
+    @property
+    def PublicAccessEndpoint(self):
+        return self._PublicAccessEndpoint
+
+    @PublicAccessEndpoint.setter
+    def PublicAccessEndpoint(self, PublicAccessEndpoint):
+        self._PublicAccessEndpoint = PublicAccessEndpoint
+
+    @property
+    def Vpcs(self):
+        return self._Vpcs
+
+    @Vpcs.setter
+    def Vpcs(self, Vpcs):
+        self._Vpcs = Vpcs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -20805,6 +21178,13 @@ class RabbitMQVipInstance(AbstractModel):
         self._SpecName = params.get("SpecName")
         self._ExceptionInformation = params.get("ExceptionInformation")
         self._ClusterStatus = params.get("ClusterStatus")
+        self._PublicAccessEndpoint = params.get("PublicAccessEndpoint")
+        if params.get("Vpcs") is not None:
+            self._Vpcs = []
+            for item in params.get("Vpcs"):
+                obj = VpcEndpointInfo()
+                obj._deserialize(item)
+                self._Vpcs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

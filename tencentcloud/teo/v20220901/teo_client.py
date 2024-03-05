@@ -213,6 +213,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSIndex(self, request):
+        """针对指定实时日志投递任务（task-id），在对应的腾讯云 CLS 日志主题中创建投递日志字段对应的键值索引。如果您在腾讯云 CLS 已经创建索引，本接口将采用合并的方式追加索引。
+
+        :param request: Request instance for CreateCLSIndex.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSIndex", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConfigGroupVersion(self, request):
         """在版本管理模式下，用于创建指定配置组的新版本。版本管理功能内测中，当前仅白名单开放。
 
@@ -367,6 +390,30 @@ class TeoClient(AbstractClient):
             body = self.call("CreatePurgeTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePurgeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRealtimeLogDeliveryTask(self, request):
+        """通过本接口创建实时日志投递任务。本接口有如下限制：
+        同一个实体（七层域名或者四层代理实例）在同种数据投递类型（LogType）和数据投递区域（Area）的组合下，只能被添加到一个实时日志投递任务中。建议先通过 [DescribeRealtimeLogDeliveryTasks](https://tcloud4api.woa.com/document/product/1657/343539?!preview&!document=1)  接口根据实体查询实时日志投递任务列表，检查实体是否已经被添加到另一实时日志投递任务中。
+
+        :param request: Request instance for CreateRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -623,6 +670,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRealtimeLogDeliveryTask(self, request):
+        """通过本接口删除实时日志投递任务。
+
+        :param request: Request instance for DeleteRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1299,6 +1369,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRealtimeLogDeliveryTasks(self, request):
+        """通过本接口查询实时日志投递任务列表。
+
+        :param request: Request instance for DescribeRealtimeLogDeliveryTasks.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRealtimeLogDeliveryTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRealtimeLogDeliveryTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRules(self, request):
         """查询规则引擎规则。
 
@@ -1916,6 +2009,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRealtimeLogDeliveryTask(self, request):
+        """通过本接口修改实时日志投递任务配置。本接口有如下限制：<li>不支持修改实时日志投递任务目的地类型（TaskType）；</li><li>不支持修改数据投递类型（LogType）</li><li>不支持修改数据投递区域（Area）</li><li>当原实时日志投递任务的目的地为腾讯云 CLS 时，不支持修改目的地详细配置，如日志集、日志主题。</li>
+
+        :param request: Request instance for ModifyRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
