@@ -12191,6 +12191,9 @@ class KongUpstreamInfo(AbstractModel):
         :param _HealthStatus: upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatus: str
+        :param _ScfCamAuthEnable: 云函数是否开启CAM鉴权，不填时默认为开启(true)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScfCamAuthEnable: bool
         """
         self._Host = None
         self._Port = None
@@ -12212,6 +12215,7 @@ class KongUpstreamInfo(AbstractModel):
         self._SourceName = None
         self._RealSourceType = None
         self._HealthStatus = None
+        self._ScfCamAuthEnable = None
 
     @property
     def Host(self):
@@ -12373,6 +12377,14 @@ class KongUpstreamInfo(AbstractModel):
     def HealthStatus(self, HealthStatus):
         self._HealthStatus = HealthStatus
 
+    @property
+    def ScfCamAuthEnable(self):
+        return self._ScfCamAuthEnable
+
+    @ScfCamAuthEnable.setter
+    def ScfCamAuthEnable(self, ScfCamAuthEnable):
+        self._ScfCamAuthEnable = ScfCamAuthEnable
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
@@ -12400,6 +12412,7 @@ class KongUpstreamInfo(AbstractModel):
         self._SourceName = params.get("SourceName")
         self._RealSourceType = params.get("RealSourceType")
         self._HealthStatus = params.get("HealthStatus")
+        self._ScfCamAuthEnable = params.get("ScfCamAuthEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16770,6 +16783,9 @@ class UpstreamHealthCheckConfig(AbstractModel):
         :param _UnhealthyHttpStatuses: 异常HTTP状态码
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnhealthyHttpStatuses: list of int non-negative
+        :param _IgnoreZeroWeightNodes: 健康检查屏蔽权重为0的节点
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IgnoreZeroWeightNodes: bool
         """
         self._EnableActiveHealthCheck = None
         self._ActiveHealthCheck = None
@@ -16780,6 +16796,7 @@ class UpstreamHealthCheckConfig(AbstractModel):
         self._Timeouts = None
         self._HealthyHttpStatuses = None
         self._UnhealthyHttpStatuses = None
+        self._IgnoreZeroWeightNodes = None
 
     @property
     def EnableActiveHealthCheck(self):
@@ -16853,6 +16870,14 @@ class UpstreamHealthCheckConfig(AbstractModel):
     def UnhealthyHttpStatuses(self, UnhealthyHttpStatuses):
         self._UnhealthyHttpStatuses = UnhealthyHttpStatuses
 
+    @property
+    def IgnoreZeroWeightNodes(self):
+        return self._IgnoreZeroWeightNodes
+
+    @IgnoreZeroWeightNodes.setter
+    def IgnoreZeroWeightNodes(self, IgnoreZeroWeightNodes):
+        self._IgnoreZeroWeightNodes = IgnoreZeroWeightNodes
+
 
     def _deserialize(self, params):
         self._EnableActiveHealthCheck = params.get("EnableActiveHealthCheck")
@@ -16868,6 +16893,7 @@ class UpstreamHealthCheckConfig(AbstractModel):
         self._Timeouts = params.get("Timeouts")
         self._HealthyHttpStatuses = params.get("HealthyHttpStatuses")
         self._UnhealthyHttpStatuses = params.get("UnhealthyHttpStatuses")
+        self._IgnoreZeroWeightNodes = params.get("IgnoreZeroWeightNodes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

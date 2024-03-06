@@ -4803,6 +4803,13 @@ clb - 通过LB的方式进行访问。
         :type Password: str
         :param _ResourceName: 资源名称，1-60个字符。
         :type ResourceName: str
+        :param _InstanceType: 实例类型
+databse
+sid
+serviceName
+        :type InstanceType: str
+        :param _InstanceValue: 实例值
+        :type InstanceValue: str
         """
         self._DspaId = None
         self._MetaType = None
@@ -4816,6 +4823,8 @@ clb - 通过LB的方式进行访问。
         self._UserName = None
         self._Password = None
         self._ResourceName = None
+        self._InstanceType = None
+        self._InstanceValue = None
 
     @property
     def DspaId(self):
@@ -4913,6 +4922,22 @@ clb - 通过LB的方式进行访问。
     def ResourceName(self, ResourceName):
         self._ResourceName = ResourceName
 
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceValue(self):
+        return self._InstanceValue
+
+    @InstanceValue.setter
+    def InstanceValue(self, InstanceValue):
+        self._InstanceValue = InstanceValue
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
@@ -4927,6 +4952,8 @@ clb - 通过LB的方式进行访问。
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._ResourceName = params.get("ResourceName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceValue = params.get("InstanceValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12513,9 +12540,12 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
         :type DspaId: str
         :param _DataSourceId: 数据源ID
         :type DataSourceId: str
+        :param _DataSourceType: 数据源类型
+        :type DataSourceType: str
         """
         self._DspaId = None
         self._DataSourceId = None
+        self._DataSourceType = None
 
     @property
     def DspaId(self):
@@ -12533,10 +12563,19 @@ class DescribeDSPADataSourceDbInfoRequest(AbstractModel):
     def DataSourceId(self, DataSourceId):
         self._DataSourceId = DataSourceId
 
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._DataSourceId = params.get("DataSourceId")
+        self._DataSourceType = params.get("DataSourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13417,9 +13456,16 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
         :type DspaId: str
         :param _ComplianceId: 合规组id
         :type ComplianceId: int
+        :param _BuildType: 云上还是自建
+
+        :type BuildType: str
+        :param _DataSourceType: 数据源类型
+        :type DataSourceType: str
         """
         self._DspaId = None
         self._ComplianceId = None
+        self._BuildType = None
+        self._DataSourceType = None
 
     @property
     def DspaId(self):
@@ -13437,10 +13483,28 @@ class DescribeDSPAESDataAssetByComplianceIdRequest(AbstractModel):
     def ComplianceId(self, ComplianceId):
         self._ComplianceId = ComplianceId
 
+    @property
+    def BuildType(self):
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
+        self._BuildType = params.get("BuildType")
+        self._DataSourceType = params.get("DataSourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14126,10 +14190,13 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
         :type ComplianceId: int
         :param _DataSourceType: 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
         :type DataSourceType: str
+        :param _BuildType: 自建还是云上
+        :type BuildType: str
         """
         self._DspaId = None
         self._ComplianceId = None
         self._DataSourceType = None
+        self._BuildType = None
 
     @property
     def DspaId(self):
@@ -14155,11 +14222,20 @@ class DescribeDSPARDBDataAssetByComplianceIdRequest(AbstractModel):
     def DataSourceType(self, DataSourceType):
         self._DataSourceType = DataSourceType
 
+    @property
+    def BuildType(self):
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
         self._DataSourceType = params.get("DataSourceType")
+        self._BuildType = params.get("BuildType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16075,6 +16151,14 @@ class DspaCOSDataAssetDetail(AbstractModel):
         :param _CategoryFullPath: 分类路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryFullPath: str
+        :param _IdentifyType: 0-系统识别
+1-人工识别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentifyType: int
+        :param _CheckStatus: 0-系统识别
+1-人工识别
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckStatus: int
         """
         self._BucketName = None
         self._FileName = None
@@ -16094,6 +16178,8 @@ class DspaCOSDataAssetDetail(AbstractModel):
         self._FileResultId = None
         self._DataSourceName = None
         self._CategoryFullPath = None
+        self._IdentifyType = None
+        self._CheckStatus = None
 
     @property
     def BucketName(self):
@@ -16239,6 +16325,22 @@ class DspaCOSDataAssetDetail(AbstractModel):
     def CategoryFullPath(self, CategoryFullPath):
         self._CategoryFullPath = CategoryFullPath
 
+    @property
+    def IdentifyType(self):
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def CheckStatus(self):
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
 
     def _deserialize(self, params):
         self._BucketName = params.get("BucketName")
@@ -16259,6 +16361,8 @@ class DspaCOSDataAssetDetail(AbstractModel):
         self._FileResultId = params.get("FileResultId")
         self._DataSourceName = params.get("DataSourceName")
         self._CategoryFullPath = params.get("CategoryFullPath")
+        self._IdentifyType = params.get("IdentifyType")
+        self._CheckStatus = params.get("CheckStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18432,12 +18536,16 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
         :param _ResourceRegion: 资源所在地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRegion: str
+        :param _DataSourceType: 无
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
         """
         self._DataSourceId = None
         self._Condition = None
         self._ProxyAddress = None
         self._DataSourceName = None
         self._ResourceRegion = None
+        self._DataSourceType = None
 
     @property
     def DataSourceId(self):
@@ -18479,6 +18587,14 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
     def ResourceRegion(self, ResourceRegion):
         self._ResourceRegion = ResourceRegion
 
+    @property
+    def DataSourceType(self):
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
 
     def _deserialize(self, params):
         self._DataSourceId = params.get("DataSourceId")
@@ -18486,6 +18602,7 @@ class DspaDiscoveryTaskDataSource(AbstractModel):
         self._ProxyAddress = params.get("ProxyAddress")
         self._DataSourceName = params.get("DataSourceName")
         self._ResourceRegion = params.get("ResourceRegion")
+        self._DataSourceType = params.get("DataSourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19952,6 +20069,12 @@ class DspaUserResourceMeta(AbstractModel):
         :type ResourceAuthType: str
         :param _ResourceAuthAccount: 授权账号名
         :type ResourceAuthAccount: str
+        :param _InstanceType: x
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceValue: x
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceValue: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -19972,6 +20095,8 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceVersion = None
         self._ResourceAuthType = None
         self._ResourceAuthAccount = None
+        self._InstanceType = None
+        self._InstanceValue = None
 
     @property
     def ResourceId(self):
@@ -20125,6 +20250,22 @@ class DspaUserResourceMeta(AbstractModel):
     def ResourceAuthAccount(self, ResourceAuthAccount):
         self._ResourceAuthAccount = ResourceAuthAccount
 
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceValue(self):
+        return self._InstanceValue
+
+    @InstanceValue.setter
+    def InstanceValue(self, InstanceValue):
+        self._InstanceValue = InstanceValue
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -20146,6 +20287,8 @@ class DspaUserResourceMeta(AbstractModel):
         self._ResourceVersion = params.get("ResourceVersion")
         self._ResourceAuthType = params.get("ResourceAuthType")
         self._ResourceAuthAccount = params.get("ResourceAuthAccount")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceValue = params.get("InstanceValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23103,11 +23246,20 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
         :type FileResultId: int
         :param _IsSetNonSensitiveFile: 是否设置为非敏感文件
         :type IsSetNonSensitiveFile: bool
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _DataSourceId: 数据源id
+        :type DataSourceId: str
         """
         self._DspaId = None
         self._ComplianceId = None
         self._FileResultId = None
         self._IsSetNonSensitiveFile = None
+        self._FileName = None
+        self._BucketName = None
+        self._DataSourceId = None
 
     @property
     def DspaId(self):
@@ -23141,12 +23293,39 @@ class ModifyDSPACOSTaskResultRequest(AbstractModel):
     def IsSetNonSensitiveFile(self, IsSetNonSensitiveFile):
         self._IsSetNonSensitiveFile = IsSetNonSensitiveFile
 
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def BucketName(self):
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def DataSourceId(self):
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
 
     def _deserialize(self, params):
         self._DspaId = params.get("DspaId")
         self._ComplianceId = params.get("ComplianceId")
         self._FileResultId = params.get("FileResultId")
         self._IsSetNonSensitiveFile = params.get("IsSetNonSensitiveFile")
+        self._FileName = params.get("FileName")
+        self._BucketName = params.get("BucketName")
+        self._DataSourceId = params.get("DataSourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

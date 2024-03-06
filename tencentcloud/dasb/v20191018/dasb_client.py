@@ -992,6 +992,29 @@ class DasbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyOAuthSetting(self, request):
+        """设置OAuth认证参数
+
+        :param request: Request instance for ModifyOAuthSetting.
+        :type request: :class:`tencentcloud.dasb.v20191018.models.ModifyOAuthSettingRequest`
+        :rtype: :class:`tencentcloud.dasb.v20191018.models.ModifyOAuthSettingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOAuthSetting", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOAuthSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyResource(self, request):
         """资源变配
 

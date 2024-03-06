@@ -7128,6 +7128,145 @@ class ChannelDescribeRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChannelDescribeSignFaceVideoRequest(AbstractModel):
+    """ChannelDescribeSignFaceVideo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。
+建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :type FlowId: str
+        :param _SignId: 签署参与人在本流程中的编号ID(每个流程不同)，可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        :type SignId: str
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        """
+        self._FlowId = None
+        self._SignId = None
+        self._Agent = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def SignId(self):
+        return self._SignId
+
+    @SignId.setter
+    def SignId(self, SignId):
+        self._SignId = SignId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._SignId = params.get("SignId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelDescribeSignFaceVideoResponse(AbstractModel):
+    """ChannelDescribeSignFaceVideo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoData: 核身视频结果。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VideoData: :class:`tencentcloud.essbasic.v20210526.models.DetectInfoVideoData`
+        :param _IntentionQuestionResult: 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionQuestionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionQuestionResult`
+        :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntentionActionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionActionResult`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VideoData = None
+        self._IntentionQuestionResult = None
+        self._IntentionActionResult = None
+        self._RequestId = None
+
+    @property
+    def VideoData(self):
+        return self._VideoData
+
+    @VideoData.setter
+    def VideoData(self, VideoData):
+        self._VideoData = VideoData
+
+    @property
+    def IntentionQuestionResult(self):
+        return self._IntentionQuestionResult
+
+    @IntentionQuestionResult.setter
+    def IntentionQuestionResult(self, IntentionQuestionResult):
+        self._IntentionQuestionResult = IntentionQuestionResult
+
+    @property
+    def IntentionActionResult(self):
+        return self._IntentionActionResult
+
+    @IntentionActionResult.setter
+    def IntentionActionResult(self, IntentionActionResult):
+        self._IntentionActionResult = IntentionActionResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VideoData") is not None:
+            self._VideoData = DetectInfoVideoData()
+            self._VideoData._deserialize(params.get("VideoData"))
+        if params.get("IntentionQuestionResult") is not None:
+            self._IntentionQuestionResult = IntentionQuestionResult()
+            self._IntentionQuestionResult._deserialize(params.get("IntentionQuestionResult"))
+        if params.get("IntentionActionResult") is not None:
+            self._IntentionActionResult = IntentionActionResult()
+            self._IntentionActionResult._deserialize(params.get("IntentionActionResult"))
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelDescribeUserAutoSignStatusRequest(AbstractModel):
     """ChannelDescribeUserAutoSignStatus请求参数结构体
 
@@ -12606,6 +12745,42 @@ class DescribeUsageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectInfoVideoData(AbstractModel):
+    """视频认证结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LiveNessVideo: 活体视频的base64编码，mp4格式
+
+注:`需进行base64解码获取活体视频文件`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LiveNessVideo: str
+        """
+        self._LiveNessVideo = None
+
+    @property
+    def LiveNessVideo(self):
+        return self._LiveNessVideo
+
+    @LiveNessVideo.setter
+    def LiveNessVideo(self, LiveNessVideo):
+        self._LiveNessVideo = LiveNessVideo
+
+
+    def _deserialize(self, params):
+        self._LiveNessVideo = params.get("LiveNessVideo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DownloadFlowInfo(AbstractModel):
     """签署流程下载信息
 
@@ -13473,6 +13648,12 @@ class FlowApproverInfo(AbstractModel):
 
 注：`此参数仅在通过文件发起合同或者合同组时生效`
         :type Components: list of Component
+        :param _Intention: 视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+
+注:
+ `1.视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+`2.使用视频认证必须指定签署认证方式为人脸（即ApproverSignTypes）。`
+        :type Intention: :class:`tencentcloud.essbasic.v20210526.models.Intention`
         """
         self._Name = None
         self._IdCardType = None
@@ -13500,6 +13681,7 @@ class FlowApproverInfo(AbstractModel):
         self._ApproverRoleName = None
         self._SignTypeSelector = None
         self._Components = None
+        self._Intention = None
 
     @property
     def Name(self):
@@ -13713,6 +13895,14 @@ class FlowApproverInfo(AbstractModel):
     def Components(self, Components):
         self._Components = Components
 
+    @property
+    def Intention(self):
+        return self._Intention
+
+    @Intention.setter
+    def Intention(self, Intention):
+        self._Intention = Intention
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13758,6 +13948,9 @@ class FlowApproverInfo(AbstractModel):
                 obj = Component()
                 obj._deserialize(item)
                 self._Components.append(obj)
+        if params.get("Intention") is not None:
+            self._Intention = Intention()
+            self._Intention._deserialize(params.get("Intention"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15165,6 +15358,292 @@ class HasAuthUser(AbstractModel):
 
     def _deserialize(self, params):
         self._OpenId = params.get("OpenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Intention(AbstractModel):
+    """视频核身意图配置，可指定问答模式或者点头模式的语音文本。
+
+    注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntentionType: 视频认证类型，支持以下类型
+<ul><li>1 : 问答模式</li>
+<li>2 : 点头模式</li></ul>
+
+注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
+        :type IntentionType: int
+        :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+        :type IntentionQuestions: list of IntentionQuestion
+        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+        :type IntentionActions: list of IntentionAction
+        """
+        self._IntentionType = None
+        self._IntentionQuestions = None
+        self._IntentionActions = None
+
+    @property
+    def IntentionType(self):
+        return self._IntentionType
+
+    @IntentionType.setter
+    def IntentionType(self, IntentionType):
+        self._IntentionType = IntentionType
+
+    @property
+    def IntentionQuestions(self):
+        return self._IntentionQuestions
+
+    @IntentionQuestions.setter
+    def IntentionQuestions(self, IntentionQuestions):
+        self._IntentionQuestions = IntentionQuestions
+
+    @property
+    def IntentionActions(self):
+        return self._IntentionActions
+
+    @IntentionActions.setter
+    def IntentionActions(self, IntentionActions):
+        self._IntentionActions = IntentionActions
+
+
+    def _deserialize(self, params):
+        self._IntentionType = params.get("IntentionType")
+        if params.get("IntentionQuestions") is not None:
+            self._IntentionQuestions = []
+            for item in params.get("IntentionQuestions"):
+                obj = IntentionQuestion()
+                obj._deserialize(item)
+                self._IntentionQuestions.append(obj)
+        if params.get("IntentionActions") is not None:
+            self._IntentionActions = []
+            for item in params.get("IntentionActions"):
+                obj = IntentionAction()
+                obj._deserialize(item)
+                self._IntentionActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionAction(AbstractModel):
+    """意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+        :type Text: str
+        """
+        self._Text = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionActionResult(AbstractModel):
+    """意愿核身点头确认模式结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Details: 意愿核身结果详细数据，与每段点头确认过程一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of IntentionActionResultDetail
+        """
+        self._Details = None
+
+    @property
+    def Details(self):
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = IntentionActionResultDetail()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionActionResultDetail(AbstractModel):
+    """意愿核身点头确认模式结果详细数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Video: 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: str
+        """
+        self._Video = None
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+
+    def _deserialize(self, params):
+        self._Video = params.get("Video")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionQuestion(AbstractModel):
+    """意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
+        :type Question: str
+        :param _Answers:  当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。
+        :type Answers: list of str
+        """
+        self._Question = None
+        self._Answers = None
+
+    @property
+    def Question(self):
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answers(self):
+        return self._Answers
+
+    @Answers.setter
+    def Answers(self, Answers):
+        self._Answers = Answers
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._Answers = params.get("Answers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntentionQuestionResult(AbstractModel):
+    """意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Video: 视频base64（其中包含全程问题和回答音频，mp4格式）
+
+注：`需进行base64解码获取视频文件`
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Video: str
+        :param _ResultCode:  和答案匹配结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: list of str
+        :param _AsrResult: 回答问题语音识别结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsrResult: list of str
+        """
+        self._Video = None
+        self._ResultCode = None
+        self._AsrResult = None
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def ResultCode(self):
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def AsrResult(self):
+        return self._AsrResult
+
+    @AsrResult.setter
+    def AsrResult(self, AsrResult):
+        self._AsrResult = AsrResult
+
+
+    def _deserialize(self, params):
+        self._Video = params.get("Video")
+        self._ResultCode = params.get("ResultCode")
+        self._AsrResult = params.get("AsrResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

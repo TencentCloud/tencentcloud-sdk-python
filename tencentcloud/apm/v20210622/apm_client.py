@@ -189,7 +189,7 @@ class ApmClient(AbstractClient):
 
 
     def ModifyApmInstance(self, request):
-        """修改Apm实例接口
+        """修改APM实例接口
 
         :param request: Request instance for ModifyApmInstance.
         :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmInstanceRequest`

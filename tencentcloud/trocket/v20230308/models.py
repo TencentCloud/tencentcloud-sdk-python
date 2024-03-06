@@ -275,7 +275,24 @@ experiment_500,
 basic_1k,
 basic_2k,
 basic_4k,
-basic_6k
+basic_6k,
+pro_4k,
+pro_6k,
+pro_1w,
+pro_2w,
+pro_3w,
+pro_4w,
+pro_5w,
+platinum_6k,
+platinum_1w,
+platinum_2w,
+platinum_4w,
+platinum_10w,
+platinum_15w,
+platinum_20w,
+platinum_40w,
+platinum_60w,
+platinum_100w
         :type SkuCode: str
         :param _Remark: 备注信息
         :type Remark: str
@@ -285,12 +302,20 @@ basic_6k
         :type VpcList: list of VpcInfo
         :param _EnablePublic: 是否开启公网
         :type EnablePublic: bool
-        :param _Bandwidth: 公网带宽
+        :param _Bandwidth: 公网带宽（单位：兆）
         :type Bandwidth: int
         :param _IpRules: 公网访问白名单
         :type IpRules: list of IpRule
-        :param _MessageRetention: 消息保留时长，小时为单位
+        :param _MessageRetention: 消息保留时长（单位：小时）
         :type MessageRetention: int
+        :param _PayMode: 付费模式（0: 后付费；1: 预付费）
+        :type PayMode: int
+        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费）
+        :type RenewFlag: int
+        :param _TimeSpan: 购买时长（单位：月）
+        :type TimeSpan: int
+        :param _MaxTopicNum: 最大可创建主题数
+        :type MaxTopicNum: int
         """
         self._InstanceType = None
         self._Name = None
@@ -302,6 +327,10 @@ basic_6k
         self._Bandwidth = None
         self._IpRules = None
         self._MessageRetention = None
+        self._PayMode = None
+        self._RenewFlag = None
+        self._TimeSpan = None
+        self._MaxTopicNum = None
 
     @property
     def InstanceType(self):
@@ -383,6 +412,38 @@ basic_6k
     def MessageRetention(self, MessageRetention):
         self._MessageRetention = MessageRetention
 
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def RenewFlag(self):
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def MaxTopicNum(self):
+        return self._MaxTopicNum
+
+    @MaxTopicNum.setter
+    def MaxTopicNum(self, MaxTopicNum):
+        self._MaxTopicNum = MaxTopicNum
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
@@ -410,6 +471,10 @@ basic_6k
                 obj._deserialize(item)
                 self._IpRules.append(obj)
         self._MessageRetention = params.get("MessageRetention")
+        self._PayMode = params.get("PayMode")
+        self._RenewFlag = params.get("RenewFlag")
+        self._TimeSpan = params.get("TimeSpan")
+        self._MaxTopicNum = params.get("MaxTopicNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1139,12 +1204,15 @@ TRANSACTION:事务消息
         :type QueueNum: int
         :param _Remark: 备注
         :type Remark: str
+        :param _MsgTTL: 消息保留时长
+        :type MsgTTL: int
         """
         self._InstanceId = None
         self._Topic = None
         self._TopicType = None
         self._QueueNum = None
         self._Remark = None
+        self._MsgTTL = None
 
     @property
     def InstanceId(self):
@@ -1186,6 +1254,14 @@ TRANSACTION:事务消息
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1193,6 +1269,7 @@ TRANSACTION:事务消息
         self._TopicType = params.get("TopicType")
         self._QueueNum = params.get("QueueNum")
         self._Remark = params.get("Remark")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4417,17 +4494,17 @@ class DescribeTopicListRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
         :param _Offset: 查询起始位置
         :type Offset: int
         :param _Limit: 查询结果限制数量
         :type Limit: int
-        :param _Filters: 查询条件列表
-        :type Filters: list of Filter
         """
         self._InstanceId = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
-        self._Filters = None
 
     @property
     def InstanceId(self):
@@ -4436,6 +4513,14 @@ class DescribeTopicListRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Offset(self):
@@ -4453,25 +4538,17 @@ class DescribeTopicListRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4548,18 +4625,18 @@ class DescribeTopicRequest(AbstractModel):
         :type InstanceId: str
         :param _Topic: 主题
         :type Topic: str
+        :param _Filters: 查询条件列表
+        :type Filters: list of Filter
         :param _Offset: 查询起始位置
         :type Offset: int
         :param _Limit: 查询结果限制数量
         :type Limit: int
-        :param _Filters: 查询条件列表
-        :type Filters: list of Filter
         """
         self._InstanceId = None
         self._Topic = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
-        self._Filters = None
 
     @property
     def InstanceId(self):
@@ -4578,6 +4655,14 @@ class DescribeTopicRequest(AbstractModel):
         self._Topic = Topic
 
     @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
     def Offset(self):
         return self._Offset
 
@@ -4593,26 +4678,18 @@ class DescribeTopicRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4651,6 +4728,8 @@ TRANSACTION:事务消息
         :type SubscriptionCount: int
         :param _SubscriptionData: 订阅关系列表
         :type SubscriptionData: list of SubscriptionData
+        :param _MsgTTL: 消息保留时长
+        :type MsgTTL: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4662,6 +4741,7 @@ TRANSACTION:事务消息
         self._LastUpdateTime = None
         self._SubscriptionCount = None
         self._SubscriptionData = None
+        self._MsgTTL = None
         self._RequestId = None
 
     @property
@@ -4729,6 +4809,14 @@ TRANSACTION:事务消息
         self._SubscriptionData = SubscriptionData
 
     @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4751,6 +4839,7 @@ TRANSACTION:事务消息
                 obj = SubscriptionData()
                 obj._deserialize(item)
                 self._SubscriptionData.append(obj)
+        self._MsgTTL = params.get("MsgTTL")
         self._RequestId = params.get("RequestId")
 
 
@@ -6398,6 +6487,8 @@ class ModifyInstanceRequest(AbstractModel):
         :type MessageRetention: int
         :param _ScaledTpsEnabled: 是否开启弹性TPS
         :type ScaledTpsEnabled: bool
+        :param _MaxTopicNum: 最大可创建主题数
+        :type MaxTopicNum: int
         """
         self._InstanceId = None
         self._Name = None
@@ -6406,6 +6497,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._SkuCode = None
         self._MessageRetention = None
         self._ScaledTpsEnabled = None
+        self._MaxTopicNum = None
 
     @property
     def InstanceId(self):
@@ -6463,6 +6555,14 @@ class ModifyInstanceRequest(AbstractModel):
     def ScaledTpsEnabled(self, ScaledTpsEnabled):
         self._ScaledTpsEnabled = ScaledTpsEnabled
 
+    @property
+    def MaxTopicNum(self):
+        return self._MaxTopicNum
+
+    @MaxTopicNum.setter
+    def MaxTopicNum(self, MaxTopicNum):
+        self._MaxTopicNum = MaxTopicNum
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6472,6 +6572,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._SkuCode = params.get("SkuCode")
         self._MessageRetention = params.get("MessageRetention")
         self._ScaledTpsEnabled = params.get("ScaledTpsEnabled")
+        self._MaxTopicNum = params.get("MaxTopicNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7591,6 +7692,11 @@ class SubscriptionData(AbstractModel):
         :param _ConsumeMessageOrderly: 是否顺序消费
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumeMessageOrderly: bool
+        :param _MessageModel: 消费模式: 
+BROADCASTING 广播模式;
+CLUSTERING 集群模式;
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageModel: str
         """
         self._InstanceId = None
         self._Topic = None
@@ -7606,6 +7712,7 @@ class SubscriptionData(AbstractModel):
         self._LastUpdateTime = None
         self._MaxRetryTimes = None
         self._ConsumeMessageOrderly = None
+        self._MessageModel = None
 
     @property
     def InstanceId(self):
@@ -7719,6 +7826,14 @@ class SubscriptionData(AbstractModel):
     def ConsumeMessageOrderly(self, ConsumeMessageOrderly):
         self._ConsumeMessageOrderly = ConsumeMessageOrderly
 
+    @property
+    def MessageModel(self):
+        return self._MessageModel
+
+    @MessageModel.setter
+    def MessageModel(self, MessageModel):
+        self._MessageModel = MessageModel
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7735,6 +7850,7 @@ class SubscriptionData(AbstractModel):
         self._LastUpdateTime = params.get("LastUpdateTime")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._ConsumeMessageOrderly = params.get("ConsumeMessageOrderly")
+        self._MessageModel = params.get("MessageModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7855,12 +7971,32 @@ class TopicItem(AbstractModel):
         :param _Remark: 描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
+        :param _ClusterIdV4: 4.x的集群id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIdV4: str
+        :param _NamespaceV4: 4.x的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamespaceV4: str
+        :param _TopicV4: 4.x的主题名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TopicV4: str
+        :param _FullNamespaceV4: 4.x的完整命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullNamespaceV4: str
+        :param _MsgTTL: 消息保留时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsgTTL: int
         """
         self._InstanceId = None
         self._Topic = None
         self._TopicType = None
         self._QueueNum = None
         self._Remark = None
+        self._ClusterIdV4 = None
+        self._NamespaceV4 = None
+        self._TopicV4 = None
+        self._FullNamespaceV4 = None
+        self._MsgTTL = None
 
     @property
     def InstanceId(self):
@@ -7902,6 +8038,46 @@ class TopicItem(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def ClusterIdV4(self):
+        return self._ClusterIdV4
+
+    @ClusterIdV4.setter
+    def ClusterIdV4(self, ClusterIdV4):
+        self._ClusterIdV4 = ClusterIdV4
+
+    @property
+    def NamespaceV4(self):
+        return self._NamespaceV4
+
+    @NamespaceV4.setter
+    def NamespaceV4(self, NamespaceV4):
+        self._NamespaceV4 = NamespaceV4
+
+    @property
+    def TopicV4(self):
+        return self._TopicV4
+
+    @TopicV4.setter
+    def TopicV4(self, TopicV4):
+        self._TopicV4 = TopicV4
+
+    @property
+    def FullNamespaceV4(self):
+        return self._FullNamespaceV4
+
+    @FullNamespaceV4.setter
+    def FullNamespaceV4(self, FullNamespaceV4):
+        self._FullNamespaceV4 = FullNamespaceV4
+
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7909,6 +8085,11 @@ class TopicItem(AbstractModel):
         self._TopicType = params.get("TopicType")
         self._QueueNum = params.get("QueueNum")
         self._Remark = params.get("Remark")
+        self._ClusterIdV4 = params.get("ClusterIdV4")
+        self._NamespaceV4 = params.get("NamespaceV4")
+        self._TopicV4 = params.get("TopicV4")
+        self._FullNamespaceV4 = params.get("FullNamespaceV4")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

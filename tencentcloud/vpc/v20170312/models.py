@@ -2467,11 +2467,11 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: VPC实例ID。形如：vpc-xxx。
         :type VpcId: str
-        :param _NatGatewayId: NAT网关ID。
+        :param _NatGatewayId: NAT网关ID。形如：nat-xxx
         :type NatGatewayId: str
-        :param _DirectConnectGatewayId: 专线网关ID。
+        :param _DirectConnectGatewayId: 专线网关ID。形如：dcg-xxx
         :type DirectConnectGatewayId: str
         """
         self._VpcId = None
@@ -26331,11 +26331,11 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 专线网关ID。
+        :param _VpcId: VPC实例ID。形如：vpc-xxx。
         :type VpcId: str
-        :param _NatGatewayId: NAT网关ID。
+        :param _NatGatewayId: NAT网关ID。形如：nat-xxx
         :type NatGatewayId: str
-        :param _DirectConnectGatewayId: VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _DirectConnectGatewayId: 专线网关ID。形如：dcg-xxx
         :type DirectConnectGatewayId: str
         """
         self._VpcId = None
@@ -34192,7 +34192,7 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+        :param _VpcId: VPC实例ID。形如：vpc-f49l6u0z。
         :type VpcId: str
         :param _VpcName: 私有网络名称，可任意命名，但不得超过60个字符。
         :type VpcName: str

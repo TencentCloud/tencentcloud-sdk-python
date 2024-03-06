@@ -4433,7 +4433,7 @@ class CreateRocketMQTopicRequest(AbstractModel):
         :type Topic: str
         :param _Namespaces: 主题所在的命名空间，目前支持在单个命名空间下创建主题
         :type Namespaces: list of str
-        :param _Type: 主题类型，可选值为Normal, PartitionedOrder, Transaction, DelayScheduled。
+        :param _Type: 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder, Transaction, DelayScheduled。Transaction仅在专享版支持。
         :type Type: str
         :param _ClusterId: 集群ID
         :type ClusterId: str

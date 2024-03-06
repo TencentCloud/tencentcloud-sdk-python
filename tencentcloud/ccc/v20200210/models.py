@@ -8568,6 +8568,8 @@ class StaffInfo(AbstractModel):
         :param _StaffNumber: 坐席工号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaffNumber: str
+        :param _RoleId: 用户角色id
+        :type RoleId: int
         :param _SkillGroupList: 所属技能组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupList: list of SkillGroupItem
@@ -8580,6 +8582,7 @@ class StaffInfo(AbstractModel):
         self._Phone = None
         self._Nick = None
         self._StaffNumber = None
+        self._RoleId = None
         self._SkillGroupList = None
         self._LastModifyTimestamp = None
 
@@ -8624,6 +8627,14 @@ class StaffInfo(AbstractModel):
         self._StaffNumber = StaffNumber
 
     @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
     def SkillGroupList(self):
         return self._SkillGroupList
 
@@ -8646,6 +8657,7 @@ class StaffInfo(AbstractModel):
         self._Phone = params.get("Phone")
         self._Nick = params.get("Nick")
         self._StaffNumber = params.get("StaffNumber")
+        self._RoleId = params.get("RoleId")
         if params.get("SkillGroupList") is not None:
             self._SkillGroupList = []
             for item in params.get("SkillGroupList"):

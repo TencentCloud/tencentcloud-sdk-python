@@ -1067,7 +1067,10 @@ bigvBlock：视频卡顿时长；单位：ms
 aLoss：上/下行音频丢包率；
 bigvLoss：上/下行视频丢包率；
 bigvWidth：上/下行分辨率宽；
-bigvHeight：上/下行分辨率高
+bigvHeight：上/下行分辨率高；
+aCapEnergy：音频采集能量；
+aPlayEnergy：音频播放能量；
+rtt：SDK到云端的往返延时；单位: ms
         :type DataType: list of str
         :param _PageNumber: 当前页数，默认为0，
 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。

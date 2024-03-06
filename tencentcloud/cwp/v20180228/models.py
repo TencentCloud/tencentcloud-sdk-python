@@ -70286,7 +70286,7 @@ class ModifyLogKafkaAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KafkaEnvName: 实例名称 如 云镜测试环境
+        :param _KafkaEnvName: 实例名称 如 主机安全测试环境
         :type KafkaEnvName: str
         :param _KafkaId: 实例ID
         :type KafkaId: str
@@ -70635,7 +70635,7 @@ class ModifyLogKafkaStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KafkaEnvName: 实例名称 如 云镜测试环境
+        :param _KafkaEnvName: 实例名称 如 主机安全测试环境
         :type KafkaEnvName: str
         :param _KafkaId: 实例ID
         :type KafkaId: str

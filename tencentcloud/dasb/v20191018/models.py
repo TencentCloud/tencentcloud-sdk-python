@@ -6783,6 +6783,148 @@ class ModifyDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyOAuthSettingRequest(AbstractModel):
+    """ModifyOAuthSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 是否开启OAuth认证，false-不开启，true-开启。
+        :type Enable: bool
+        :param _AuthMethod: OAuth认证方式。
+        :type AuthMethod: str
+        :param _ClientId: OAuth认证客户端Id
+        :type ClientId: str
+        :param _ClientSecret: OAuth认证客户端密钥
+        :type ClientSecret: str
+        :param _CodeUrl: 获取OAuth认证授权码URL
+        :type CodeUrl: str
+        :param _TokenUrl: 获取OAuth令牌URL
+        :type TokenUrl: str
+        :param _UserInfoUrl: 获取OAuth用户信息URL
+        :type UserInfoUrl: str
+        :param _Scopes: 使用Okta认证时指定范围。为空时默认使用 openid、profile、email。
+        :type Scopes: list of str
+        """
+        self._Enable = None
+        self._AuthMethod = None
+        self._ClientId = None
+        self._ClientSecret = None
+        self._CodeUrl = None
+        self._TokenUrl = None
+        self._UserInfoUrl = None
+        self._Scopes = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def AuthMethod(self):
+        return self._AuthMethod
+
+    @AuthMethod.setter
+    def AuthMethod(self, AuthMethod):
+        self._AuthMethod = AuthMethod
+
+    @property
+    def ClientId(self):
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def CodeUrl(self):
+        return self._CodeUrl
+
+    @CodeUrl.setter
+    def CodeUrl(self, CodeUrl):
+        self._CodeUrl = CodeUrl
+
+    @property
+    def TokenUrl(self):
+        return self._TokenUrl
+
+    @TokenUrl.setter
+    def TokenUrl(self, TokenUrl):
+        self._TokenUrl = TokenUrl
+
+    @property
+    def UserInfoUrl(self):
+        return self._UserInfoUrl
+
+    @UserInfoUrl.setter
+    def UserInfoUrl(self, UserInfoUrl):
+        self._UserInfoUrl = UserInfoUrl
+
+    @property
+    def Scopes(self):
+        return self._Scopes
+
+    @Scopes.setter
+    def Scopes(self, Scopes):
+        self._Scopes = Scopes
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._AuthMethod = params.get("AuthMethod")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        self._CodeUrl = params.get("CodeUrl")
+        self._TokenUrl = params.get("TokenUrl")
+        self._UserInfoUrl = params.get("UserInfoUrl")
+        self._Scopes = params.get("Scopes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyOAuthSettingResponse(AbstractModel):
+    """ModifyOAuthSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyResourceRequest(AbstractModel):
     """ModifyResource请求参数结构体
 

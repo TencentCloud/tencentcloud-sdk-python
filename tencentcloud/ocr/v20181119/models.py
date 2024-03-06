@@ -10122,7 +10122,7 @@ class MLIDPassportOCRResponse(AbstractModel):
 -9102	证照复印件告警（包括黑白复印件、彩色复印件）
 -9106       证件遮挡告警
         :type Warn: list of int
-        :param _Image: 证件图片
+        :param _Image: 证件中的人像图片base64
         :type Image: str
         :param _AdvancedInfo: 扩展字段:
 {
