@@ -460,7 +460,7 @@ class BackupPlan(AbstractModel):
         r"""
         :param _BackupPeriod: 备份周期
         :type BackupPeriod: str
-        :param _BaseBackupRetentionPeriod: 基础备份保留时长
+        :param _BaseBackupRetentionPeriod: 数据备份保留时长
         :type BaseBackupRetentionPeriod: int
         :param _MinBackupStartTime: 开始备份的最早时间
         :type MinBackupStartTime: str
@@ -533,13 +533,13 @@ class BackupSummary(AbstractModel):
         :type LogBackupCount: int
         :param _LogBackupSize: 实例日志备份大小。
         :type LogBackupSize: int
-        :param _ManualBaseBackupCount: 手动创建的实例基础备份数量。
+        :param _ManualBaseBackupCount: 手动创建的实例数据备份数量。
         :type ManualBaseBackupCount: int
-        :param _ManualBaseBackupSize: 手动创建的实例基础备份大小。
+        :param _ManualBaseBackupSize: 手动创建的实例数据备份大小。
         :type ManualBaseBackupSize: int
-        :param _AutoBaseBackupCount: 自动创建的实例基础备份数量。
+        :param _AutoBaseBackupCount: 自动创建的实例数据备份数量。
         :type AutoBaseBackupCount: int
-        :param _AutoBaseBackupSize: 自动创建的实例基础备份大小。
+        :param _AutoBaseBackupSize: 自动创建的实例数据备份大小。
         :type AutoBaseBackupSize: int
         :param _TotalBackupCount: 总备份数量
         :type TotalBackupCount: int
@@ -650,7 +650,7 @@ class BackupSummary(AbstractModel):
 
 
 class BaseBackup(AbstractModel):
-    """数据库基础备份信息
+    """数据库数据备份信息
 
     """
 
@@ -1415,7 +1415,7 @@ class CreateBaseBackupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BaseBackupId: 基础备份集ID
+        :param _BaseBackupId: 数据备份集ID
         :type BaseBackupId: str
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4216,7 +4216,7 @@ class DeleteBaseBackupRequest(AbstractModel):
         r"""
         :param _DBInstanceId: 实例ID。
         :type DBInstanceId: str
-        :param _BaseBackupId: 基础备份ID。
+        :param _BaseBackupId: 数据备份ID。
         :type BaseBackupId: str
         """
         self._DBInstanceId = None
@@ -4850,7 +4850,7 @@ class DescribeAccountsResponse(AbstractModel):
         r"""
         :param _TotalCount: 本次调用接口共返回了多少条数据。
         :type TotalCount: int
-        :param _Details: 帐号列表详细信息。
+        :param _Details: 账号列表详细信息。
         :type Details: list of AccountInfo
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5670,9 +5670,9 @@ class DescribeBaseBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询到的基础备份数量。
+        :param _TotalCount: 查询到的数据备份数量。
         :type TotalCount: int
-        :param _BaseBackupSet: 基础备份详细信息列表。
+        :param _BaseBackupSet: 数据备份详细信息列表。
         :type BaseBackupSet: list of BaseBackup
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10568,7 +10568,7 @@ class ModifyBaseBackupExpireTimeRequest(AbstractModel):
         r"""
         :param _DBInstanceId: 实例ID。
         :type DBInstanceId: str
-        :param _BaseBackupId: 基础备份ID。
+        :param _BaseBackupId: 数据备份ID。
         :type BaseBackupId: str
         :param _NewExpireTime: 新过期时间。
         :type NewExpireTime: str
@@ -12527,13 +12527,13 @@ class ParamInfo(AbstractModel):
         :param _LastModifyTime: 参数最后一次修改时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifyTime: str
-        :param _StandbyRelated: 参数存在主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
+        :param _StandbyRelated: 参数主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
 注意：此字段可能返回 null，表示取不到有效值。
         :type StandbyRelated: int
-        :param _VersionRelationSet: 参数版本关联信息，存储具体内核版本下的具体参数信息
+        :param _VersionRelationSet: 参数版本关联信息，内容为相应内核版本下的参数详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VersionRelationSet: list of ParamVersionRelation
-        :param _SpecRelationSet: 参数规格关联信息，存储具体规格下具体的参数信息
+        :param _SpecRelationSet: 参数规格关联信息，内容为相应规格下的参数详细信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecRelationSet: list of ParamSpecRelation
         """
@@ -12761,7 +12761,7 @@ class ParamInfo(AbstractModel):
 
 
 class ParamSpecRelation(AbstractModel):
-    """描述各规格下的参数信息
+    """各规格下的参数信息
 
     """
 
@@ -12873,7 +12873,7 @@ class ParamSpecRelation(AbstractModel):
 
 
 class ParamVersionRelation(AbstractModel):
-    """描述各版本下的参数信息
+    """各版本下的参数信息
 
     """
 

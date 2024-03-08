@@ -12271,6 +12271,14 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         :type PulsarMsgId: str
         :param _QueryDlqMsg: 查询死信时该值为true，只对Rocketmq有效
         :type QueryDlqMsg: bool
+        :param _QueryDeadLetterMessage: 查询死信时该值为true，只对Rocketmq有效
+        :type QueryDeadLetterMessage: bool
+        :param _Offset: 分页Offset
+        :type Offset: int
+        :param _Limit: 分页Limit
+        :type Limit: int
+        :param _FilterTrackGroup: 根据消费组名称过滤消费详情
+        :type FilterTrackGroup: str
         """
         self._ClusterId = None
         self._EnvironmentId = None
@@ -12278,6 +12286,10 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         self._MsgId = None
         self._PulsarMsgId = None
         self._QueryDlqMsg = None
+        self._QueryDeadLetterMessage = None
+        self._Offset = None
+        self._Limit = None
+        self._FilterTrackGroup = None
 
     @property
     def ClusterId(self):
@@ -12321,11 +12333,47 @@ class DescribeRocketMQMsgRequest(AbstractModel):
 
     @property
     def QueryDlqMsg(self):
+        warnings.warn("parameter `QueryDlqMsg` is deprecated", DeprecationWarning) 
+
         return self._QueryDlqMsg
 
     @QueryDlqMsg.setter
     def QueryDlqMsg(self, QueryDlqMsg):
+        warnings.warn("parameter `QueryDlqMsg` is deprecated", DeprecationWarning) 
+
         self._QueryDlqMsg = QueryDlqMsg
+
+    @property
+    def QueryDeadLetterMessage(self):
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FilterTrackGroup(self):
+        return self._FilterTrackGroup
+
+    @FilterTrackGroup.setter
+    def FilterTrackGroup(self, FilterTrackGroup):
+        self._FilterTrackGroup = FilterTrackGroup
 
 
     def _deserialize(self, params):
@@ -12335,6 +12383,10 @@ class DescribeRocketMQMsgRequest(AbstractModel):
         self._MsgId = params.get("MsgId")
         self._PulsarMsgId = params.get("PulsarMsgId")
         self._QueryDlqMsg = params.get("QueryDlqMsg")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FilterTrackGroup = params.get("FilterTrackGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12362,12 +12414,14 @@ class DescribeRocketMQMsgResponse(AbstractModel):
         :type MsgId: str
         :param _ProducerAddr: 生产者地址
         :type ProducerAddr: str
-        :param _MessageTracks: 消费组消费情况
+        :param _MessageTracks: 消费组消费情况列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTracks: list of RocketMQMessageTrack
         :param _ShowTopicName: 详情页展示的topic名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowTopicName: str
+        :param _MessageTracksCount: 消费组消费情况列表总数
+        :type MessageTracksCount: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12378,6 +12432,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
         self._ProducerAddr = None
         self._MessageTracks = None
         self._ShowTopicName = None
+        self._MessageTracksCount = None
         self._RequestId = None
 
     @property
@@ -12437,6 +12492,14 @@ class DescribeRocketMQMsgResponse(AbstractModel):
         self._ShowTopicName = ShowTopicName
 
     @property
+    def MessageTracksCount(self):
+        return self._MessageTracksCount
+
+    @MessageTracksCount.setter
+    def MessageTracksCount(self, MessageTracksCount):
+        self._MessageTracksCount = MessageTracksCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -12458,6 +12521,7 @@ class DescribeRocketMQMsgResponse(AbstractModel):
                 obj._deserialize(item)
                 self._MessageTracks.append(obj)
         self._ShowTopicName = params.get("ShowTopicName")
+        self._MessageTracksCount = params.get("MessageTracksCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -12769,6 +12833,195 @@ class DescribeRocketMQNamespacesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Namespaces.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQPublicAccessMonitorDataRequest(AbstractModel):
+    """DescribeRocketMQPublicAccessMonitorData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 专享集群ID
+        :type InstanceId: str
+        :param _MetricName: 指标名称，仅支持单指标拉取。目前仅支持：ClientIntraffic; ClientOuttraffic
+        :type MetricName: str
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间，默认为当前时间
+        :type EndTime: str
+        :param _Period: 监控统计周期，如60。默认为取值为300，单位为s。
+        :type Period: int
+        """
+        self._InstanceId = None
+        self._MetricName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MetricName = params.get("MetricName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQPublicAccessMonitorDataResponse(AbstractModel):
+    """DescribeRocketMQPublicAccessMonitorData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param _Period: 监控统计周期，如60。默认为取值为300，单位为s。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: int
+        :param _StartTime: 起始时间，如2018-09-22T19:51:23+08:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _DataPoints: 数据点数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataPoints: list of RocketMQDataPoint
+        :param _Msg: 返回信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetricName = None
+        self._Period = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DataPoints = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DataPoints(self):
+        return self._DataPoints
+
+    @DataPoints.setter
+    def DataPoints(self, DataPoints):
+        self._DataPoints = DataPoints
+
+    @property
+    def Msg(self):
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._Period = params.get("Period")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("DataPoints") is not None:
+            self._DataPoints = []
+            for item in params.get("DataPoints"):
+                obj = RocketMQDataPoint()
+                obj._deserialize(item)
+                self._DataPoints.append(obj)
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -22795,6 +23048,53 @@ class RocketMQConsumerTopic(AbstractModel):
         
 
 
+class RocketMQDataPoint(AbstractModel):
+    """监控数据点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamps: 监控值数组，该数组和Timestamps一一对应
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamps: list of int
+        :param _Values: 监控数据点位置，比如一天按分钟划分有1440个点，每个点的序号是0 - 1439之间的一个数，当某个序号不在该数组中，说明掉点了
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of float
+        """
+        self._Timestamps = None
+        self._Values = None
+
+    @property
+    def Timestamps(self):
+        return self._Timestamps
+
+    @Timestamps.setter
+    def Timestamps(self, Timestamps):
+        self._Timestamps = Timestamps
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Timestamps = params.get("Timestamps")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQGroup(AbstractModel):
     """RocketMQ消费组信息
 
@@ -23354,7 +23654,13 @@ class RocketMQMessageTrack(AbstractModel):
         r"""
         :param _Group: 消费者组
         :type Group: str
-        :param _ConsumeStatus: 消费状态
+        :param _ConsumeStatus: 消费状态,
+CONSUMED: 已消费
+CONSUMED_BUT_FILTERED: 已过滤
+NOT_CONSUME: 未消费
+ENTER_RETRY: 进入重试队列
+ENTER_DLQ: 进入死信队列
+UNKNOWN: 查询不到消费状态
         :type ConsumeStatus: str
         :param _TrackType: 消息track类型
         :type TrackType: str

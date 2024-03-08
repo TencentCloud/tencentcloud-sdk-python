@@ -118,6 +118,213 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAllocateConditions(self, request):
+        """查询资源目录筛选条件
+
+        :param request: Request instance for DescribeAllocateConditions.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocateConditionsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocateConditionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocateConditions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocateConditionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationBillConditions(self, request):
+        """查询分账账单筛选条件
+
+        :param request: Request instance for DescribeAllocationBillConditions.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillConditionsRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillConditionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationBillConditions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationBillConditionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationBillDetail(self, request):
+        """查询分账账单明细
+
+        :param request: Request instance for DescribeAllocationBillDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationBillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationBillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationBillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationMonthOverview(self, request):
+        """查询分账账单月概览
+
+        :param request: Request instance for DescribeAllocationMonthOverview.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationMonthOverviewRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationMonthOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationMonthOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationMonthOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationOverview(self, request):
+        """查询分账账单日概览
+
+        :param request: Request instance for DescribeAllocationOverview.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationOverviewRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationSummaryByBusiness(self, request):
+        """查询分账账单按产品汇总
+
+        :param request: Request instance for DescribeAllocationSummaryByBusiness.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByBusinessRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByBusinessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByBusiness", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByBusinessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationSummaryByItem(self, request):
+        """查询分账账单按组件汇总
+
+        :param request: Request instance for DescribeAllocationSummaryByItem.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByItemRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByItemResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByItem", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByItemResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationSummaryByResource(self, request):
+        """查询分账账单按资源汇总
+
+        :param request: Request instance for DescribeAllocationSummaryByResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationSummaryByResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationSummaryByResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationSummaryByResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllocationTrendByMonth(self, request):
+        """查询分账账单费用趋势
+
+        :param request: Request instance for DescribeAllocationTrendByMonth.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTrendByMonthRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAllocationTrendByMonthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllocationTrendByMonth", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllocationTrendByMonthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillDetail(self, request):
         """获取账单明细数据。
         注意事项：
@@ -642,6 +849,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeDosageDetailList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDosageDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGatherResource(self, request):
+        """查询分账账单资源归集汇总
+
+        :param request: Request instance for DescribeGatherResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeGatherResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeGatherResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGatherResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGatherResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

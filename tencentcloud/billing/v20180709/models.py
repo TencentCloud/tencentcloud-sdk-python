@@ -160,6 +160,3667 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class AllocationAverageData(AbstractModel):
+    """分账账单趋势图平均值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginMonth: 起始月份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BeginMonth: str
+        :param _EndMonth: 结束月份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndMonth: str
+        :param _RealTotalCost: 合计费用(折后总额)平均值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        """
+        self._BeginMonth = None
+        self._EndMonth = None
+        self._RealTotalCost = None
+
+    @property
+    def BeginMonth(self):
+        return self._BeginMonth
+
+    @BeginMonth.setter
+    def BeginMonth(self, BeginMonth):
+        self._BeginMonth = BeginMonth
+
+    @property
+    def EndMonth(self):
+        return self._EndMonth
+
+    @EndMonth.setter
+    def EndMonth(self, EndMonth):
+        self._EndMonth = EndMonth
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+
+    def _deserialize(self, params):
+        self._BeginMonth = params.get("BeginMonth")
+        self._EndMonth = params.get("EndMonth")
+        self._RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationBillTrendDetail(AbstractModel):
+    """分账趋势图详情数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Month: str
+        :param _Name: 账单月份展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _RealTotalCost: 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        """
+        self._Month = None
+        self._Name = None
+        self._RealTotalCost = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._Name = params.get("Name")
+        self._RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationDetail(AbstractModel):
+    """分账账单明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDate: str
+        :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        :param _PayMode: 计费模式编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeName: str
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _RegionName: 地域名称：资源所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param _ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneName: 可用区：资源所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _InstanceType: 实例类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeName: str
+        :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemId: str
+        :param _SplitItemName: 分拆项名称：涉及分拆产品的分拆后的分拆项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemName: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型：明细交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        :param _OrderId: 订单 ID：包年包月计费模式下订购的订单号
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrderId: str
+        :param _BillId: 交易 ID：结算扣费单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
+        :param _PayTime: 扣费时间：结算扣费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTime: str
+        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeBeginTime: str
+        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeEndTime: str
+        :param _ComponentCode: 组件类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCode: str
+        :param _ComponentCodeName: 组件类型：用户购买的产品或服务对应的组件大类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCodeName: str
+        :param _SinglePrice: 组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SinglePrice: str
+        :param _ContractPrice: 组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContractPrice: str
+        :param _SinglePriceUnit: 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SinglePriceUnit: str
+        :param _UsedAmount: 组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedAmount: str
+        :param _UsedAmountUnit: 组件用量单位：组件用量对应的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedAmountUnit: str
+        :param _TimeSpan: 使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: str
+        :param _TimeUnit: 时长单位：资源使用时长的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveDetail: str
+        :param _SplitRatio: 分拆项用量/时长占比：分拆项用量（时长）占比，分拆项用量（时长）/ 拆分前合计用量（时长）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitRatio: str
+        :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
+        :param _RITimeSpan: 预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RITimeSpan: str
+        :param _RICost: 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RICost: str
+        :param _SPCost: 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPCost: str
+        :param _Discount: 折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: str
+        :param _BlendedDiscount: 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlendedDiscount: str
+        :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param _Tag: 分账标签：资源绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _RegionType: 国内国际编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionType: str
+        :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeName: str
+        :param _ItemCode: 组件名称编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCode: str
+        :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCodeName: str
+        :param _AssociatedOrder: 关联单据ID：和本笔交易关联单据ID，如退费订单对应的原新购订单等
+        :type AssociatedOrder: str
+        :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceInfo: list of str
+        :param _Formula: 计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Formula: str
+        :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormulaUrl: str
+        :param _RealTotalMeasure: 原始用量/时长：组件被资源包抵扣前的原始用量
+（目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalMeasure: str
+        :param _DeductedMeasure: 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
+（目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductedMeasure: str
+        :param _ComponentConfig: 配置描述：资源配置规格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentConfig: str
+        :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
+0 - 分摊
+1 - 归集
+-1 - 未分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllocationType: int
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._BillId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+        self._SinglePrice = None
+        self._ContractPrice = None
+        self._SinglePriceUnit = None
+        self._UsedAmount = None
+        self._UsedAmountUnit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ReserveDetail = None
+        self._SplitRatio = None
+        self._TotalCost = None
+        self._RITimeSpan = None
+        self._RICost = None
+        self._SPCost = None
+        self._Discount = None
+        self._BlendedDiscount = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._Tag = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._AssociatedOrder = None
+        self._PriceInfo = None
+        self._Formula = None
+        self._FormulaUrl = None
+        self._RealTotalMeasure = None
+        self._DeductedMeasure = None
+        self._ComponentConfig = None
+        self._AllocationType = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def SplitItemId(self):
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        self._SplitItemName = SplitItemName
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ComponentCode(self):
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+    @property
+    def SinglePrice(self):
+        return self._SinglePrice
+
+    @SinglePrice.setter
+    def SinglePrice(self, SinglePrice):
+        self._SinglePrice = SinglePrice
+
+    @property
+    def ContractPrice(self):
+        return self._ContractPrice
+
+    @ContractPrice.setter
+    def ContractPrice(self, ContractPrice):
+        self._ContractPrice = ContractPrice
+
+    @property
+    def SinglePriceUnit(self):
+        return self._SinglePriceUnit
+
+    @SinglePriceUnit.setter
+    def SinglePriceUnit(self, SinglePriceUnit):
+        self._SinglePriceUnit = SinglePriceUnit
+
+    @property
+    def UsedAmount(self):
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def UsedAmountUnit(self):
+        return self._UsedAmountUnit
+
+    @UsedAmountUnit.setter
+    def UsedAmountUnit(self, UsedAmountUnit):
+        self._UsedAmountUnit = UsedAmountUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ReserveDetail(self):
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
+    @property
+    def SplitRatio(self):
+        return self._SplitRatio
+
+    @SplitRatio.setter
+    def SplitRatio(self, SplitRatio):
+        self._SplitRatio = SplitRatio
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RITimeSpan(self):
+        return self._RITimeSpan
+
+    @RITimeSpan.setter
+    def RITimeSpan(self, RITimeSpan):
+        self._RITimeSpan = RITimeSpan
+
+    @property
+    def RICost(self):
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def SPCost(self):
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def BlendedDiscount(self):
+        return self._BlendedDiscount
+
+    @BlendedDiscount.setter
+    def BlendedDiscount(self, BlendedDiscount):
+        self._BlendedDiscount = BlendedDiscount
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ItemCode(self):
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def PriceInfo(self):
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+    @property
+    def RealTotalMeasure(self):
+        return self._RealTotalMeasure
+
+    @RealTotalMeasure.setter
+    def RealTotalMeasure(self, RealTotalMeasure):
+        self._RealTotalMeasure = RealTotalMeasure
+
+    @property
+    def DeductedMeasure(self):
+        return self._DeductedMeasure
+
+    @DeductedMeasure.setter
+    def DeductedMeasure(self, DeductedMeasure):
+        self._DeductedMeasure = DeductedMeasure
+
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._BillId = params.get("BillId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        self._SinglePrice = params.get("SinglePrice")
+        self._ContractPrice = params.get("ContractPrice")
+        self._SinglePriceUnit = params.get("SinglePriceUnit")
+        self._UsedAmount = params.get("UsedAmount")
+        self._UsedAmountUnit = params.get("UsedAmountUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ReserveDetail = params.get("ReserveDetail")
+        self._SplitRatio = params.get("SplitRatio")
+        self._TotalCost = params.get("TotalCost")
+        self._RITimeSpan = params.get("RITimeSpan")
+        self._RICost = params.get("RICost")
+        self._SPCost = params.get("SPCost")
+        self._Discount = params.get("Discount")
+        self._BlendedDiscount = params.get("BlendedDiscount")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._AssociatedOrder = params.get("AssociatedOrder")
+        self._PriceInfo = params.get("PriceInfo")
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        self._RealTotalMeasure = params.get("RealTotalMeasure")
+        self._DeductedMeasure = params.get("DeductedMeasure")
+        self._ComponentConfig = params.get("ComponentConfig")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationMonthOverviewDetail(AbstractModel):
+    """分账账单月概览金额明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatherCashPayAmount: 归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: 归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: 归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: 归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: 分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: 分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: 分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: 分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: 合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: 合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: 合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: 合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: 归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        :type GatherRealCost: str
+        :param _AllocateRealCost: 分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        :type AllocateRealCost: str
+        :param _RealTotalCost: 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        :type RealTotalCost: str
+        :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        :type Ratio: str
+        :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trend: str
+        :param _TrendType: 环比箭头
+upward -上升
+downward - 下降
+none - 平稳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrendType: str
+        """
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+
+    @property
+    def GatherCashPayAmount(self):
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+
+    def _deserialize(self, params):
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewDetail(AbstractModel):
+    """分账概览明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDate: str
+        :param _GatherCashPayAmount: 归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: 归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: 归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: 归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: 分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: 分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: 分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: 分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: 合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: 合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: 合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: 合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: 归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        :type GatherRealCost: str
+        :param _AllocateRealCost: 分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        :type AllocateRealCost: str
+        :param _RealTotalCost: 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        :type RealTotalCost: str
+        :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        :type Ratio: str
+        :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trend: str
+        :param _TrendType: 环比箭头
+upward -上升
+downward - 下降
+none - 平稳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrendType: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def GatherCashPayAmount(self):
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewNode(AbstractModel):
+    """分账账单月概览详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 分账单元ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _Symbol: 分账单元包含规则标志
+0 - 不存在规则
+1 - 同时存在归集规则和公摊规则
+2 - 仅存在归集规则
+3 - 仅存在公摊规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Symbol: int
+        :param _Children: 子单元月概览详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of AllocationOverviewNode
+        :param _Detail: 分账账单月概览金额明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: :class:`tencentcloud.billing.v20180709.models.AllocationMonthOverviewDetail`
+        """
+        self._Id = None
+        self._Name = None
+        self._TreeNodeUniqKey = None
+        self._Symbol = None
+        self._Children = None
+        self._Detail = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def Symbol(self):
+        return self._Symbol
+
+    @Symbol.setter
+    def Symbol(self, Symbol):
+        self._Symbol = Symbol
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._Symbol = params.get("Symbol")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = AllocationOverviewNode()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        if params.get("Detail") is not None:
+            self._Detail = AllocationMonthOverviewDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationOverviewTotal(AbstractModel):
+    """分账账单概览金额汇总
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RealTotalCost: 总费用：现金费用合计+分成金费用合计+赠送金费用合计+优惠券费用合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param _CashPayAmount: 现金： 现金费用合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: 赠送金：赠送金费用合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _VoucherPayAmount: 优惠券：优惠券费用合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _TransferPayAmount: 分成金：分成金费用合计
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        """
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._VoucherPayAmount = None
+        self._TransferPayAmount = None
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+
+    def _deserialize(self, params):
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationRule(AbstractModel):
+    """当前资源命中公摊规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 公摊规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 公摊规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationStat(AbstractModel):
+    """分账账单趋势图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Average: 费用平均信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Average: :class:`tencentcloud.billing.v20180709.models.AllocationAverageData`
+        """
+        self._Average = None
+
+    @property
+    def Average(self):
+        return self._Average
+
+    @Average.setter
+    def Average(self, Average):
+        self._Average = Average
+
+
+    def _deserialize(self, params):
+        if params.get("Average") is not None:
+            self._Average = AllocationAverageData()
+            self._Average._deserialize(params.get("Average"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByBusiness(AbstractModel):
+    """分账账单按产品汇总明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDate: str
+        :param _GatherCashPayAmount: 归集费用(现金)：基于归集规则直接归集到分账单元的现金
+        :type GatherCashPayAmount: str
+        :param _GatherVoucherPayAmount: 归集费用(优惠券)：基于归集规则直接归集到分账单元的资源优惠券
+        :type GatherVoucherPayAmount: str
+        :param _GatherIncentivePayAmount: 归集费用(赠送金)：基于归集规则直接归集到分账单元的资源赠送金
+        :type GatherIncentivePayAmount: str
+        :param _GatherTransferPayAmount: 归集费用(分成金)：基于归集规则直接归集到分账单元的资源分成金
+        :type GatherTransferPayAmount: str
+        :param _AllocateCashPayAmount: 分摊费用(现金)：基于分摊规则分摊到分账单元的资源现金
+        :type AllocateCashPayAmount: str
+        :param _AllocateVoucherPayAmount: 分摊费用(优惠券)：基于分摊规则分摊到分账单元的资源优惠券
+        :type AllocateVoucherPayAmount: str
+        :param _AllocateIncentivePayAmount: 分摊费用(赠送金)：基于分摊规则分摊到分账单元的资源赠送金
+        :type AllocateIncentivePayAmount: str
+        :param _AllocateTransferPayAmount: 分摊费用(分成金)：基于分摊规则分摊到分账单元的资源分成金
+        :type AllocateTransferPayAmount: str
+        :param _TotalCashPayAmount: 合计费用(现金)：分账单元总费用，归集费用(现金) + 分摊费用(现金)
+        :type TotalCashPayAmount: str
+        :param _TotalVoucherPayAmount: 合计费用(优惠券)：分账单元总费用，归集费用(优惠券) + 分摊费用(优惠券)
+        :type TotalVoucherPayAmount: str
+        :param _TotalIncentivePayAmount: 合计费用(赠送金)：分账单元总费用，归集费用(赠送金) + 分摊费用(赠送金)
+        :type TotalIncentivePayAmount: str
+        :param _TotalTransferPayAmount: 合计费用(分成金)：分账单元总费用，归集费用(分成金)+分摊费用(分成金)
+        :type TotalTransferPayAmount: str
+        :param _GatherRealCost: 归集费用(折后总额)：基于归集规则直接归集到分账单元的资源优惠后总价
+        :type GatherRealCost: str
+        :param _AllocateRealCost: 分摊费用(折后总额)：基于分摊规则分摊到分账单元的资源优惠后总价
+        :type AllocateRealCost: str
+        :param _RealTotalCost: 合计费用(折后总额)：分账单元总费用，归集费用(折后总额) + 分摊费用(折后总额)
+        :type RealTotalCost: str
+        :param _Ratio: 占比(折后总额)：本分账单元合计费用(折后总额)/合计费用(折后总额)*100%
+        :type Ratio: str
+        :param _Trend: 环比(折后总额)：[本月分账单元合计费用(折后总额) - 上月分账单元合计费用(折后总额)] / 上月分账单元合计费用(折后总额) * 100%
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Trend: str
+        :param _TrendType: 环比箭头
+upward -上升
+downward - 下降
+none - 平稳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrendType: str
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+        :type TotalCost: str
+        :param _RICost: 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+        :type RICost: str
+        :param _SPCost: 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+        :type SPCost: str
+        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+        :type TransferPayAmount: str
+        :param _AllocationRealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        :type AllocationRealTotalCost: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._GatherCashPayAmount = None
+        self._GatherVoucherPayAmount = None
+        self._GatherIncentivePayAmount = None
+        self._GatherTransferPayAmount = None
+        self._AllocateCashPayAmount = None
+        self._AllocateVoucherPayAmount = None
+        self._AllocateIncentivePayAmount = None
+        self._AllocateTransferPayAmount = None
+        self._TotalCashPayAmount = None
+        self._TotalVoucherPayAmount = None
+        self._TotalIncentivePayAmount = None
+        self._TotalTransferPayAmount = None
+        self._GatherRealCost = None
+        self._AllocateRealCost = None
+        self._RealTotalCost = None
+        self._Ratio = None
+        self._Trend = None
+        self._TrendType = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._TotalCost = None
+        self._RICost = None
+        self._SPCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._AllocationRealTotalCost = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def GatherCashPayAmount(self):
+        return self._GatherCashPayAmount
+
+    @GatherCashPayAmount.setter
+    def GatherCashPayAmount(self, GatherCashPayAmount):
+        self._GatherCashPayAmount = GatherCashPayAmount
+
+    @property
+    def GatherVoucherPayAmount(self):
+        return self._GatherVoucherPayAmount
+
+    @GatherVoucherPayAmount.setter
+    def GatherVoucherPayAmount(self, GatherVoucherPayAmount):
+        self._GatherVoucherPayAmount = GatherVoucherPayAmount
+
+    @property
+    def GatherIncentivePayAmount(self):
+        return self._GatherIncentivePayAmount
+
+    @GatherIncentivePayAmount.setter
+    def GatherIncentivePayAmount(self, GatherIncentivePayAmount):
+        self._GatherIncentivePayAmount = GatherIncentivePayAmount
+
+    @property
+    def GatherTransferPayAmount(self):
+        return self._GatherTransferPayAmount
+
+    @GatherTransferPayAmount.setter
+    def GatherTransferPayAmount(self, GatherTransferPayAmount):
+        self._GatherTransferPayAmount = GatherTransferPayAmount
+
+    @property
+    def AllocateCashPayAmount(self):
+        return self._AllocateCashPayAmount
+
+    @AllocateCashPayAmount.setter
+    def AllocateCashPayAmount(self, AllocateCashPayAmount):
+        self._AllocateCashPayAmount = AllocateCashPayAmount
+
+    @property
+    def AllocateVoucherPayAmount(self):
+        return self._AllocateVoucherPayAmount
+
+    @AllocateVoucherPayAmount.setter
+    def AllocateVoucherPayAmount(self, AllocateVoucherPayAmount):
+        self._AllocateVoucherPayAmount = AllocateVoucherPayAmount
+
+    @property
+    def AllocateIncentivePayAmount(self):
+        return self._AllocateIncentivePayAmount
+
+    @AllocateIncentivePayAmount.setter
+    def AllocateIncentivePayAmount(self, AllocateIncentivePayAmount):
+        self._AllocateIncentivePayAmount = AllocateIncentivePayAmount
+
+    @property
+    def AllocateTransferPayAmount(self):
+        return self._AllocateTransferPayAmount
+
+    @AllocateTransferPayAmount.setter
+    def AllocateTransferPayAmount(self, AllocateTransferPayAmount):
+        self._AllocateTransferPayAmount = AllocateTransferPayAmount
+
+    @property
+    def TotalCashPayAmount(self):
+        return self._TotalCashPayAmount
+
+    @TotalCashPayAmount.setter
+    def TotalCashPayAmount(self, TotalCashPayAmount):
+        self._TotalCashPayAmount = TotalCashPayAmount
+
+    @property
+    def TotalVoucherPayAmount(self):
+        return self._TotalVoucherPayAmount
+
+    @TotalVoucherPayAmount.setter
+    def TotalVoucherPayAmount(self, TotalVoucherPayAmount):
+        self._TotalVoucherPayAmount = TotalVoucherPayAmount
+
+    @property
+    def TotalIncentivePayAmount(self):
+        return self._TotalIncentivePayAmount
+
+    @TotalIncentivePayAmount.setter
+    def TotalIncentivePayAmount(self, TotalIncentivePayAmount):
+        self._TotalIncentivePayAmount = TotalIncentivePayAmount
+
+    @property
+    def TotalTransferPayAmount(self):
+        return self._TotalTransferPayAmount
+
+    @TotalTransferPayAmount.setter
+    def TotalTransferPayAmount(self, TotalTransferPayAmount):
+        self._TotalTransferPayAmount = TotalTransferPayAmount
+
+    @property
+    def GatherRealCost(self):
+        return self._GatherRealCost
+
+    @GatherRealCost.setter
+    def GatherRealCost(self, GatherRealCost):
+        self._GatherRealCost = GatherRealCost
+
+    @property
+    def AllocateRealCost(self):
+        return self._AllocateRealCost
+
+    @AllocateRealCost.setter
+    def AllocateRealCost(self, AllocateRealCost):
+        self._AllocateRealCost = AllocateRealCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Ratio(self):
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def TrendType(self):
+        return self._TrendType
+
+    @TrendType.setter
+    def TrendType(self, TrendType):
+        self._TrendType = TrendType
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RICost(self):
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def SPCost(self):
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def AllocationRealTotalCost(self):
+        return self._AllocationRealTotalCost
+
+    @AllocationRealTotalCost.setter
+    def AllocationRealTotalCost(self, AllocationRealTotalCost):
+        self._AllocationRealTotalCost = AllocationRealTotalCost
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._GatherCashPayAmount = params.get("GatherCashPayAmount")
+        self._GatherVoucherPayAmount = params.get("GatherVoucherPayAmount")
+        self._GatherIncentivePayAmount = params.get("GatherIncentivePayAmount")
+        self._GatherTransferPayAmount = params.get("GatherTransferPayAmount")
+        self._AllocateCashPayAmount = params.get("AllocateCashPayAmount")
+        self._AllocateVoucherPayAmount = params.get("AllocateVoucherPayAmount")
+        self._AllocateIncentivePayAmount = params.get("AllocateIncentivePayAmount")
+        self._AllocateTransferPayAmount = params.get("AllocateTransferPayAmount")
+        self._TotalCashPayAmount = params.get("TotalCashPayAmount")
+        self._TotalVoucherPayAmount = params.get("TotalVoucherPayAmount")
+        self._TotalIncentivePayAmount = params.get("TotalIncentivePayAmount")
+        self._TotalTransferPayAmount = params.get("TotalTransferPayAmount")
+        self._GatherRealCost = params.get("GatherRealCost")
+        self._AllocateRealCost = params.get("AllocateRealCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._Ratio = params.get("Ratio")
+        self._Trend = params.get("Trend")
+        self._TrendType = params.get("TrendType")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._TotalCost = params.get("TotalCost")
+        self._RICost = params.get("RICost")
+        self._SPCost = params.get("SPCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._AllocationRealTotalCost = params.get("AllocationRealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByItem(AbstractModel):
+    """分账账单按组件汇总明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDate: str
+        :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _PayMode: 计费模式编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeName: str
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型：明细交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _RegionName: 地域名称：资源所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param _ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneName: 可用区：资源所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        :param _InstanceType: 实例类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeName: str
+        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _Tag: 分账标签：资源绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
+0 - 分摊
+1 - 归集
+-1 - 未分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllocationType: int
+        :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
+        :param _RiTimeSpan: 预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiTimeSpan: str
+        :param _RiCost: 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiCost: str
+        :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param _ItemCode: 组件名称编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCode: str
+        :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCodeName: str
+        :param _ComponentCode: 组件类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCode: str
+        :param _ComponentCodeName: 组件类型：用户购买的产品或服务对应的组件大类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCodeName: str
+        :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemId: str
+        :param _SplitItemName: 分拆项名称：涉及分拆产品的分拆后的分拆项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemName: str
+        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeBeginTime: str
+        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeEndTime: str
+        :param _SPCost: 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPCost: str
+        :param _RegionType: 国内国际编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionType: str
+        :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeName: str
+        :param _SinglePrice: 组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SinglePrice: str
+        :param _ContractPrice: 组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContractPrice: str
+        :param _SinglePriceUnit: 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SinglePriceUnit: str
+        :param _UsedAmount: 组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedAmount: str
+        :param _UsedAmountUnit: 组件用量单位：组件用量对应的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedAmountUnit: str
+        :param _TimeSpan: 使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeSpan: str
+        :param _TimeUnit: 时长单位：资源使用时长的单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeUnit: str
+        :param _ReserveDetail: 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReserveDetail: str
+        :param _RealTotalMeasure: 原始用量/时长：组件被资源包抵扣前的原始用量
+（目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalMeasure: str
+        :param _DeductedMeasure: 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
+（目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeductedMeasure: str
+        :param _Discount: 折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: str
+        :param _BlendedDiscount: 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlendedDiscount: str
+        :param _PriceInfo: 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PriceInfo: list of str
+        :param _Formula: 计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Formula: str
+        :param _FormulaUrl: 计费规则：各产品详细的计费规则官网说明链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FormulaUrl: str
+        :param _ComponentConfig: 配置描述：资源配置规格信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentConfig: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Tag = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._AllocationType = None
+        self._TotalCost = None
+        self._RiTimeSpan = None
+        self._RiCost = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._SPCost = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._SinglePrice = None
+        self._ContractPrice = None
+        self._SinglePriceUnit = None
+        self._UsedAmount = None
+        self._UsedAmountUnit = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ReserveDetail = None
+        self._RealTotalMeasure = None
+        self._DeductedMeasure = None
+        self._Discount = None
+        self._BlendedDiscount = None
+        self._PriceInfo = None
+        self._Formula = None
+        self._FormulaUrl = None
+        self._ComponentConfig = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RiTimeSpan(self):
+        return self._RiTimeSpan
+
+    @RiTimeSpan.setter
+    def RiTimeSpan(self, RiTimeSpan):
+        self._RiTimeSpan = RiTimeSpan
+
+    @property
+    def RiCost(self):
+        return self._RiCost
+
+    @RiCost.setter
+    def RiCost(self, RiCost):
+        self._RiCost = RiCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def ItemCode(self):
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def ComponentCode(self):
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+    @property
+    def SplitItemId(self):
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        self._SplitItemName = SplitItemName
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def SPCost(self):
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def SinglePrice(self):
+        return self._SinglePrice
+
+    @SinglePrice.setter
+    def SinglePrice(self, SinglePrice):
+        self._SinglePrice = SinglePrice
+
+    @property
+    def ContractPrice(self):
+        return self._ContractPrice
+
+    @ContractPrice.setter
+    def ContractPrice(self, ContractPrice):
+        self._ContractPrice = ContractPrice
+
+    @property
+    def SinglePriceUnit(self):
+        return self._SinglePriceUnit
+
+    @SinglePriceUnit.setter
+    def SinglePriceUnit(self, SinglePriceUnit):
+        self._SinglePriceUnit = SinglePriceUnit
+
+    @property
+    def UsedAmount(self):
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def UsedAmountUnit(self):
+        return self._UsedAmountUnit
+
+    @UsedAmountUnit.setter
+    def UsedAmountUnit(self, UsedAmountUnit):
+        self._UsedAmountUnit = UsedAmountUnit
+
+    @property
+    def TimeSpan(self):
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ReserveDetail(self):
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
+    @property
+    def RealTotalMeasure(self):
+        return self._RealTotalMeasure
+
+    @RealTotalMeasure.setter
+    def RealTotalMeasure(self, RealTotalMeasure):
+        self._RealTotalMeasure = RealTotalMeasure
+
+    @property
+    def DeductedMeasure(self):
+        return self._DeductedMeasure
+
+    @DeductedMeasure.setter
+    def DeductedMeasure(self, DeductedMeasure):
+        self._DeductedMeasure = DeductedMeasure
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def BlendedDiscount(self):
+        return self._BlendedDiscount
+
+    @BlendedDiscount.setter
+    def BlendedDiscount(self, BlendedDiscount):
+        self._BlendedDiscount = BlendedDiscount
+
+    @property
+    def PriceInfo(self):
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._AllocationType = params.get("AllocationType")
+        self._TotalCost = params.get("TotalCost")
+        self._RiTimeSpan = params.get("RiTimeSpan")
+        self._RiCost = params.get("RiCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._SPCost = params.get("SPCost")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._SinglePrice = params.get("SinglePrice")
+        self._ContractPrice = params.get("ContractPrice")
+        self._SinglePriceUnit = params.get("SinglePriceUnit")
+        self._UsedAmount = params.get("UsedAmount")
+        self._UsedAmountUnit = params.get("UsedAmountUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ReserveDetail = params.get("ReserveDetail")
+        self._RealTotalMeasure = params.get("RealTotalMeasure")
+        self._DeductedMeasure = params.get("DeductedMeasure")
+        self._Discount = params.get("Discount")
+        self._BlendedDiscount = params.get("BlendedDiscount")
+        self._PriceInfo = params.get("PriceInfo")
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        self._ComponentConfig = params.get("ComponentConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationSummaryByResource(AbstractModel):
+    """分账账单按资源汇总明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _BillDate: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDate: str
+        :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _PayMode: 计费模式编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeName: str
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型：明细交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _RegionName: 地域名称：资源所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param _ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneName: 可用区：资源所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        :param _InstanceType: 实例类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeName: str
+        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _Tag: 分账标签：资源绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
+0 - 分摊 
+1 - 归集 
+-1 -  未分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllocationType: int
+        :param _TotalCost: 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCost: str
+        :param _RiTimeSpan: 预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiTimeSpan: str
+        :param _RiCost: 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiCost: str
+        :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemId: str
+        :param _SplitItemName: 分拆项名称：涉及分拆产品的分拆后的分拆项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemName: str
+        :param _FeeBeginTime: 开始使用时间：产品服务开始使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeBeginTime: str
+        :param _FeeEndTime: 结束使用时间：产品服务结束使用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeeEndTime: str
+        :param _SPCost: 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SPCost: str
+        :param _RegionType: 国内国际编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionType: str
+        :param _RegionTypeName: 国内国际：资源所属区域类型（国内、国际）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeName: str
+        :param _ComponentConfig: 配置描述：对应资源下各组件名称及用量（如组件为用量累加型计费则为合计用量）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentConfig: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._BillDate = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Tag = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._AllocationType = None
+        self._TotalCost = None
+        self._RiTimeSpan = None
+        self._RiCost = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._SPCost = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ComponentConfig = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def BillDate(self):
+        return self._BillDate
+
+    @BillDate.setter
+    def BillDate(self, BillDate):
+        self._BillDate = BillDate
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def RiTimeSpan(self):
+        return self._RiTimeSpan
+
+    @RiTimeSpan.setter
+    def RiTimeSpan(self, RiTimeSpan):
+        self._RiTimeSpan = RiTimeSpan
+
+    @property
+    def RiCost(self):
+        return self._RiCost
+
+    @RiCost.setter
+    def RiCost(self, RiCost):
+        self._RiCost = RiCost
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def SplitItemId(self):
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        self._SplitItemName = SplitItemName
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def SPCost(self):
+        return self._SPCost
+
+    @SPCost.setter
+    def SPCost(self, SPCost):
+        self._SPCost = SPCost
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._BillDate = params.get("BillDate")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._AllocationType = params.get("AllocationType")
+        self._TotalCost = params.get("TotalCost")
+        self._RiTimeSpan = params.get("RiTimeSpan")
+        self._RiCost = params.get("RiCost")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._SPCost = params.get("SPCost")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ComponentConfig = params.get("ComponentConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocationTreeNode(AbstractModel):
+    """当前归属单元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        """
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+
+    def _deserialize(self, params):
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalyseActionTypeDetail(AbstractModel):
     """成本分析交易类型复杂类型
 
@@ -1127,6 +4788,218 @@ class ApplicableProducts(AbstractModel):
     def _deserialize(self, params):
         self._GoodsName = params.get("GoodsName")
         self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillActionType(AbstractModel):
+    """交易类型筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型：明细交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        """
+        self._ActionType = None
+        self._ActionTypeName = None
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillBusiness(AbstractModel):
+    """产品筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: 产品编码
+
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+        :type BusinessCodeName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillBusinessLink(AbstractModel):
+    """产品级联筛选值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Children: 子产品
+        :type Children: list of BillProductLink
+        """
+        self._Children = None
+
+    @property
+    def Children(self):
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = BillProductLink()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillComponent(AbstractModel):
+    """组件类型筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentCode: 组件类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCode: str
+        :param _ComponentCodeName: 组件类型：用户购买的产品或服务对应的组件大类
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentCodeName: str
+        """
+        self._ComponentCode = None
+        self._ComponentCodeName = None
+
+    @property
+    def ComponentCode(self):
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ComponentCodeName(self):
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+
+    def _deserialize(self, params):
+        self._ComponentCode = params.get("ComponentCode")
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDays(AbstractModel):
+    """日期筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillDay: 日期：结算日期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDay: str
+        """
+        self._BillDay = None
+
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+
+    def _deserialize(self, params):
+        self._BillDay = params.get("BillDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2597,6 +6470,350 @@ class BillDistributionResourceSummary(AbstractModel):
         
 
 
+class BillInstanceType(AbstractModel):
+    """实例类型筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例类型编码
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        :type InstanceTypeName: str
+        """
+        self._InstanceType = None
+        self._InstanceTypeName = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillItem(AbstractModel):
+    """组件名称筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemCode: 组件名称编码
+        :type ItemCode: str
+        :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
+        :type ItemCodeName: str
+        """
+        self._ItemCode = None
+        self._ItemCodeName = None
+
+    @property
+    def ItemCode(self):
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+
+    def _deserialize(self, params):
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillOperateUin(AbstractModel):
+    """操作者 UIN筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        :type OperateUin: str
+        """
+        self._OperateUin = None
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+
+    def _deserialize(self, params):
+        self._OperateUin = params.get("OperateUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillOwnerUin(AbstractModel):
+    """使用者 UIN筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+        :type OwnerUin: str
+        """
+        self._OwnerUin = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillPayMode(AbstractModel):
+    """计费模式筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: 计费模式编码
+        :type PayMode: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+        :type PayModeName: str
+        """
+        self._PayMode = None
+        self._PayModeName = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillProduct(AbstractModel):
+    """子产品筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        """
+        self._ProductCode = None
+        self._ProductCodeName = None
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+
+    def _deserialize(self, params):
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillProductLink(AbstractModel):
+    """分账条件子产品筛选
+
+    """
+
+
+class BillProject(AbstractModel):
+    """项目筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: int
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        :type ProjectName: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillRegion(AbstractModel):
+    """地域筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: 地域ID
+        :type RegionId: int
+        :param _RegionName: 地域名称：资源所属地域
+        :type RegionName: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillResourceSummary(AbstractModel):
     """账单资源汇总数据对象
 
@@ -3098,6 +7315,51 @@ class BillResourceSummary(AbstractModel):
         
 
 
+class BillTag(AbstractModel):
+    """标签筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BillTagInfo(AbstractModel):
     """账单 Tag 信息
 
@@ -3286,6 +7548,53 @@ class BillTransactionInfo(AbstractModel):
         self._Freezing = params.get("Freezing")
         self._PayChannel = params.get("PayChannel")
         self._DeductMode = params.get("DeductMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillZoneId(AbstractModel):
+    """可用区筛选列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 可用区ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: int
+        :param _ZoneName: 可用区：资源所属可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        """
+        self._ZoneId = None
+        self._ZoneName = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6205,6 +10514,2571 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocateConditionsRequest(AbstractModel):
+    """DescribeAllocateConditions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocateConditionsResponse(AbstractModel):
+    """DescribeAllocateConditions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: 产品筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: list of BillBusinessLink
+        :param _Product: 子产品筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: list of BillProduct
+        :param _Item: 组件名称筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: list of BillItem
+        :param _Region: 地域筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of BillRegion
+        :param _InstanceType: 实例类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: list of BillInstanceType
+        :param _PayMode: 计费模式筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: list of BillPayMode
+        :param _Project: 项目筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Project: list of BillProject
+        :param _Tag: 标签筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _OwnerUin: 使用者 UIN 筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: list of BillOwnerUin
+        :param _OperateUin: 操作者 UIN 筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: list of BillOperateUin
+        :param _ActionType: 交易类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: list of BillActionType
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Business = None
+        self._Product = None
+        self._Item = None
+        self._Region = None
+        self._InstanceType = None
+        self._PayMode = None
+        self._Project = None
+        self._Tag = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._ActionType = None
+        self._RequestId = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Project(self):
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BillBusinessLink()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Product") is not None:
+            self._Product = []
+            for item in params.get("Product"):
+                obj = BillProduct()
+                obj._deserialize(item)
+                self._Product.append(obj)
+        if params.get("Item") is not None:
+            self._Item = []
+            for item in params.get("Item"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Item.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = BillRegion()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("InstanceType") is not None:
+            self._InstanceType = []
+            for item in params.get("InstanceType"):
+                obj = BillInstanceType()
+                obj._deserialize(item)
+                self._InstanceType.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = BillPayMode()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = BillProject()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = BillOwnerUin()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("OperateUin") is not None:
+            self._OperateUin = []
+            for item in params.get("OperateUin"):
+                obj = BillOperateUin()
+                obj._deserialize(item)
+                self._OperateUin.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = BillActionType()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationBillConditionsRequest(AbstractModel):
+    """DescribeAllocationBillConditions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :type TreeNodeUniqKeys: list of str
+        :param _BillDates: 日期
+        :type BillDates: list of str
+        :param _BusinessCodes: 产品编码
+        :type BusinessCodes: list of str
+        :param _OwnerUins: 使用者UIN
+        :type OwnerUins: list of str
+        :param _OperateUins: 操作者UIN
+        :type OperateUins: list of str
+        :param _PayModes: 计费模式编码
+        :type PayModes: list of str
+        :param _ActionTypes: 交易类型编码
+        :type ActionTypes: list of str
+        :param _ProductCodes: 子产品编码
+        :type ProductCodes: list of str
+        :param _RegionIds: 地域ID
+        :type RegionIds: list of str
+        :param _ZoneIds: 可用区ID
+        :type ZoneIds: list of str
+        :param _InstanceTypes: 实例类型编码
+        :type InstanceTypes: list of str
+        :param _Tag: 标签
+        :type Tag: list of str
+        :param _ComponentCodes: 组件类型编码
+        :type ComponentCodes: list of str
+        :param _ItemCodes: 组件名称编码
+        :type ItemCodes: list of str
+        :param _SearchKey: 模糊搜索条件
+        :type SearchKey: str
+        :param _ProjectIds: 项目id
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: 费用归集类型
+        :type AllocationType: list of int
+        """
+        self._Month = None
+        self._TreeNodeUniqKeys = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def BillDates(self):
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationBillConditionsResponse(AbstractModel):
+    """DescribeAllocationBillConditions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: 产品筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: list of BillBusiness
+        :param _Product: 子产品筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: list of BillProduct
+        :param _Item: 组件名称筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Item: list of BillItem
+        :param _Region: 地域筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: list of BillRegion
+        :param _InstanceType: 实例类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: list of BillInstanceType
+        :param _PayMode: 计费模式筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: list of BillPayMode
+        :param _Project: 项目筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Project: list of BillProject
+        :param _Tag: 标签筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _OwnerUin: 使用者 UIN 筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: list of BillOwnerUin
+        :param _OperateUin: 操作者 UIN 筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: list of BillOperateUin
+        :param _BillDay: 日期筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillDay: list of BillDays
+        :param _ActionType: 交易类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: list of BillActionType
+        :param _Component: 组件类型筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Component: list of BillComponent
+        :param _Zone: 可用区筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: list of BillZoneId
+        :param _AllocationTreeNode: 分账单元筛选列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllocationTreeNode: list of AllocationTreeNode
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Business = None
+        self._Product = None
+        self._Item = None
+        self._Region = None
+        self._InstanceType = None
+        self._PayMode = None
+        self._Project = None
+        self._Tag = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BillDay = None
+        self._ActionType = None
+        self._Component = None
+        self._Zone = None
+        self._AllocationTreeNode = None
+        self._RequestId = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Item(self):
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Project(self):
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Component(self):
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def AllocationTreeNode(self):
+        return self._AllocationTreeNode
+
+    @AllocationTreeNode.setter
+    def AllocationTreeNode(self, AllocationTreeNode):
+        self._AllocationTreeNode = AllocationTreeNode
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BillBusiness()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Product") is not None:
+            self._Product = []
+            for item in params.get("Product"):
+                obj = BillProduct()
+                obj._deserialize(item)
+                self._Product.append(obj)
+        if params.get("Item") is not None:
+            self._Item = []
+            for item in params.get("Item"):
+                obj = BillItem()
+                obj._deserialize(item)
+                self._Item.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = BillRegion()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("InstanceType") is not None:
+            self._InstanceType = []
+            for item in params.get("InstanceType"):
+                obj = BillInstanceType()
+                obj._deserialize(item)
+                self._InstanceType.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = BillPayMode()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = BillProject()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = BillOwnerUin()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("OperateUin") is not None:
+            self._OperateUin = []
+            for item in params.get("OperateUin"):
+                obj = BillOperateUin()
+                obj._deserialize(item)
+                self._OperateUin.append(obj)
+        if params.get("BillDay") is not None:
+            self._BillDay = []
+            for item in params.get("BillDay"):
+                obj = BillDays()
+                obj._deserialize(item)
+                self._BillDay.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = BillActionType()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        if params.get("Component") is not None:
+            self._Component = []
+            for item in params.get("Component"):
+                obj = BillComponent()
+                obj._deserialize(item)
+                self._Component.append(obj)
+        if params.get("Zone") is not None:
+            self._Zone = []
+            for item in params.get("Zone"):
+                obj = BillZoneId()
+                obj._deserialize(item)
+                self._Zone.append(obj)
+        if params.get("AllocationTreeNode") is not None:
+            self._AllocationTreeNode = []
+            for item in params.get("AllocationTreeNode"):
+                obj = AllocationTreeNode()
+                obj._deserialize(item)
+                self._AllocationTreeNode.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationBillDetailRequest(AbstractModel):
+    """DescribeAllocationBillDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: 排序字段，枚举值如下：
+RiTimeSpan - 预留实例抵扣时长
+ExtendPayAmount1 - 预留实例抵扣组件原价
+RealCost - 折后总价
+CashPayAmount - 现金金额
+VoucherPayAmount - 代金券金额
+IncentivePayAmount - 赠送金金额
+TransferPayAmount -分成金金额
+Cost - 组件原价
+        :type Sort: str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _BusinessCodes: 产品编码，用作筛选
+        :type BusinessCodes: list of str
+        :param _OwnerUins: 使用者UIN，用作筛选
+        :type OwnerUins: list of str
+        :param _OperateUins: 操作者UIN，用作筛选
+        :type OperateUins: list of str
+        :param _PayModes: 计费模式编码，用作筛选
+        :type PayModes: list of str
+        :param _ActionTypes: 交易类型编码，用作筛选
+        :type ActionTypes: list of str
+        :param _ProductCodes: 子产品编码，用作筛选
+        :type ProductCodes: list of str
+        :param _RegionIds: 地域ID，用作筛选
+        :type RegionIds: list of str
+        :param _ZoneIds: 可用区ID，用作筛选
+        :type ZoneIds: list of str
+        :param _InstanceTypes: 实例类型编码，用作筛选
+        :type InstanceTypes: list of str
+        :param _Tag: 标签，用作筛选
+        :type Tag: list of str
+        :param _ComponentCodes: 组件类型编码，用作筛选
+        :type ComponentCodes: list of str
+        :param _ItemCodes: 组件名称编码，用作筛选
+        :type ItemCodes: list of str
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :type SearchKey: str
+        :param _ProjectIds: 项目ID，用作筛选
+        :type ProjectIds: list of int non-negative
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationBillDetailResponse(AbstractModel):
+    """DescribeAllocationBillDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _Total: 分账账单概览金额汇总
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: 分账账单明细
+        :type Detail: list of AllocationDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationMonthOverviewRequest(AbstractModel):
+    """DescribeAllocationMonthOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        """
+        self._Month = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationMonthOverviewResponse(AbstractModel):
+    """DescribeAllocationMonthOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: 分账账单月概览详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AllocationOverviewNode
+        :param _Total: 分账账单概览金额汇总
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationOverviewNode()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationOverviewRequest(AbstractModel):
+    """DescribeAllocationOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        :param _PeriodType: 统计周期，枚举值如下
+month - 月
+day - 日
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: 排序字段，枚举值如下： 
+GatherCashPayAmount - 归集费用(现金)
+GatherVoucherPayAmount- 归集费用(优惠券)
+GatherIncentivePayAmount -  归集费用(赠送金)
+GatherTransferPayAmount - 归集费用(分成金)
+AllocateCashPayAmount - 分摊费用(现金)
+AllocateVoucherPayAmount - 分摊费用(优惠券)
+AllocateIncentivePayAmount - 分摊费用(赠送金)
+AllocateTransferPayAmount - 分摊费用(分成金)
+TotalCashPayAmount - 合计费用(现金)
+TotalVoucherPayAmount - 合计费用(优惠券)
+TotalIncentivePayAmount - 合计费用(赠送金)
+TotalTransferPayAmount - 合计费用(分成金)
+GatherRealCost - 归集费用(折后总额)
+AllocateRealCost - 分摊费用(折后总额)
+RealTotalCost - 合计费用(折后总额)
+Ratio  - 占比(折后总额)
+        :type Sort: str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _BillDates: 日期，用作筛选
+        :type BillDates: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationOverviewResponse(AbstractModel):
+    """DescribeAllocationOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _Total: 分账账单概览金额汇总
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: 分账概览明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AllocationOverviewDetail
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationOverviewDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationSummaryByBusinessRequest(AbstractModel):
+    """DescribeAllocationSummaryByBusiness请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+
+        :type Month: str
+        :param _PeriodType: 统计周期，枚举值如下
+month - 月
+day - 日
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+
+        :type TreeNodeUniqKeys: list of str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _Sort: 排序字段，枚举值如下：
+GatherCashPayAmount - 归集费用(现金)
+GatherVoucherPayAmount- 归集费用(优惠券)
+GatherIncentivePayAmount - 归集费用(赠送金)
+GatherTransferPayAmount - 归集费用(分成金)
+AllocateCashPayAmount - 分摊费用(现金)
+AllocateVoucherPayAmount - 分摊费用(优惠券)
+AllocateIncentivePayAmount - 分摊费用(赠送金)
+AllocateTransferPayAmount - 分摊费用(分成金)
+TotalCashPayAmount - 合计费用(现金)
+TotalVoucherPayAmount - 合计费用(优惠券)
+TotalIncentivePayAmount - 合计费用(赠送金)
+TotalTransferPayAmount - 合计费用(分成金)
+GatherRealCost - 归集费用(折后总额)
+AllocateRealCost - 分摊费用(折后总额)
+RealTotalCost - 合计费用(折后总额)
+BusinessCode - 产品代码
+Ratio - 占比(折后总额)
+Trend - 环比(折后总额)
+        :type Sort: str
+        :param _BillDates: 日期，用作筛选，PeriodType=day时可传
+
+        :type BillDates: list of str
+        :param _BusinessCodes: 产品编码，用作筛选
+        :type BusinessCodes: list of str
+        :param _SearchKey: 模糊搜索条件
+        :type SearchKey: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._SortType = None
+        self._Sort = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._SearchKey = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def BillDates(self):
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def SearchKey(self):
+        warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
+
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
+
+        self._SearchKey = SearchKey
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._SortType = params.get("SortType")
+        self._Sort = params.get("Sort")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
+    """DescribeAllocationSummaryByBusiness返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _Total: 分账账单概览金额汇总
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: 分账账单按产品汇总明细
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AllocationSummaryByBusiness
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByBusiness()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationSummaryByItemRequest(AbstractModel):
+    """DescribeAllocationSummaryByItem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+
+        :type Month: str
+        :param _PeriodType: 统计周期，枚举值如下
+month - 月
+day - 日
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: 排序字段，枚举值如下：
+RiTimeSpan - 预留实例抵扣时长
+ExtendPayAmount1 - 预留实例抵扣组件原价
+RealCost - 折后总价
+CashPayAmount - 现金金额
+VoucherPayAmount - 代金券金额
+IncentivePayAmount - 赠送金金额
+TransferPayAmount -分成金金额
+Cost - 组件原价
+        :type Sort: str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _BillDates: 日期，用作筛选
+
+        :type BillDates: list of str
+        :param _BusinessCodes: 产品编码，用作筛选
+
+        :type BusinessCodes: list of str
+        :param _OwnerUins: 使用者UIN，用作筛选
+
+        :type OwnerUins: list of str
+        :param _OperateUins: 操作者UIN，用作筛选
+
+        :type OperateUins: list of str
+        :param _PayModes: 计费模式编码，用作筛选
+
+        :type PayModes: list of str
+        :param _ActionTypes: 交易类型编码，用作筛选
+
+        :type ActionTypes: list of str
+        :param _ProductCodes: 子产品编码，用作筛选
+
+        :type ProductCodes: list of str
+        :param _RegionIds: 地域ID，用作筛选
+
+        :type RegionIds: list of str
+        :param _ZoneIds: 可用区ID，用作筛选
+
+        :type ZoneIds: list of str
+        :param _InstanceTypes: 实例类型编码，用作筛选
+
+        :type InstanceTypes: list of str
+        :param _Tag: 标签，用作筛选
+
+        :type Tag: list of str
+        :param _ComponentCodes: 组件类型编码，用作筛选
+        :type ComponentCodes: list of str
+        :param _ItemCodes: 组件名称编码，用作筛选
+        :type ItemCodes: list of str
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+
+        :type SearchKey: str
+        :param _ProjectIds: 项目ID，用作筛选
+
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: 费用归集类型，枚举值如下：
+0 - 分摊
+1 - 归集
+-1 - 未分配
+        :type AllocationType: list of int
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._ComponentCodes = None
+        self._ItemCodes = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ComponentCodes(self):
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def ItemCodes(self):
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByItemResponse(AbstractModel):
+    """DescribeAllocationSummaryByItem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _Total: 分账账单概览金额汇总
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: 分账账单按组件汇总明细
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AllocationSummaryByItem
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByItem()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationSummaryByResourceRequest(AbstractModel):
+    """DescribeAllocationSummaryByResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+
+        :type Month: str
+        :param _PeriodType: 统计周期，枚举值如下
+month - 月
+day - 日
+        :type PeriodType: str
+        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :type TreeNodeUniqKeys: list of str
+        :param _Sort: 排序字段，枚举值如下：
+RiTimeSpan - 预留实例抵扣时长
+ExtendPayAmount1 - 预留实例抵扣组件原价
+RealCost - 折后总价
+CashPayAmount - 现金金额
+VoucherPayAmount - 代金券金额
+IncentivePayAmount - 赠送金金额
+TransferPayAmount -分成金金额
+Cost - 组件原价
+        :type Sort: str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _BillDates: 日期，用作筛选
+        :type BillDates: list of str
+        :param _BusinessCodes: 产品编码，用作筛选
+        :type BusinessCodes: list of str
+        :param _OwnerUins: 使用者UIN，用作筛选
+        :type OwnerUins: list of str
+        :param _OperateUins: 操作者UIN，用作筛选
+        :type OperateUins: list of str
+        :param _PayModes: 计费模式编码，用作筛选
+        :type PayModes: list of str
+        :param _ActionTypes: 交易类型编码，用作筛选
+        :type ActionTypes: list of str
+        :param _ProductCodes: 子产品编码，用作筛选
+        :type ProductCodes: list of str
+        :param _RegionIds: 地域ID，用作筛选
+        :type RegionIds: list of str
+        :param _ZoneIds: 可用区ID，用作筛选
+        :type ZoneIds: list of str
+        :param _InstanceTypes: 实例类型编码，用作筛选
+        :type InstanceTypes: list of str
+        :param _Tag: 标签，用作筛选
+        :type Tag: list of str
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :type SearchKey: str
+        :param _ProjectIds: 项目ID，用作筛选
+        :type ProjectIds: list of int non-negative
+        :param _AllocationType: 费用归集类型，枚举值如下：
+0 - 分摊 
+1 - 归集 
+-1 -  未分配
+        :type AllocationType: list of int
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._PeriodType = None
+        self._TreeNodeUniqKeys = None
+        self._Sort = None
+        self._SortType = None
+        self._BillDates = None
+        self._BusinessCodes = None
+        self._OwnerUins = None
+        self._OperateUins = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ZoneIds = None
+        self._InstanceTypes = None
+        self._Tag = None
+        self._SearchKey = None
+        self._ProjectIds = None
+        self._AllocationType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def TreeNodeUniqKeys(self):
+        return self._TreeNodeUniqKeys
+
+    @TreeNodeUniqKeys.setter
+    def TreeNodeUniqKeys(self, TreeNodeUniqKeys):
+        self._TreeNodeUniqKeys = TreeNodeUniqKeys
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BillDates(self):
+        return self._BillDates
+
+    @BillDates.setter
+    def BillDates(self, BillDates):
+        self._BillDates = BillDates
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def OperateUins(self):
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._TreeNodeUniqKeys = params.get("TreeNodeUniqKeys")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BillDates = params.get("BillDates")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._OwnerUins = params.get("OwnerUins")
+        self._OperateUins = params.get("OperateUins")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ZoneIds = params.get("ZoneIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._Tag = params.get("Tag")
+        self._SearchKey = params.get("SearchKey")
+        self._ProjectIds = params.get("ProjectIds")
+        self._AllocationType = params.get("AllocationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationSummaryByResourceResponse(AbstractModel):
+    """DescribeAllocationSummaryByResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _Total: 分账账单概览金额汇总
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
+        :param _Detail: 分账账单按资源汇总明细
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: list of AllocationSummaryByResource
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Total = None
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Total") is not None:
+            self._Total = AllocationOverviewTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AllocationSummaryByResource()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllocationTrendByMonthRequest(AbstractModel):
+    """DescribeAllocationTrendByMonth请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :type TreeNodeUniqKey: str
+        :param _BusinessCode: 产品编码，用作筛选
+        :type BusinessCode: str
+        """
+        self._Month = None
+        self._TreeNodeUniqKey = None
+        self._BusinessCode = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._BusinessCode = params.get("BusinessCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllocationTrendByMonthResponse(AbstractModel):
+    """DescribeAllocationTrendByMonth返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Current: 当月费用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Current: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
+        :param _Previous: 之前月份费用信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Previous: list of AllocationBillTrendDetail
+        :param _Stat: 费用统计信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stat: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Current = None
+        self._Previous = None
+        self._Stat = None
+        self._RequestId = None
+
+    @property
+    def Current(self):
+        return self._Current
+
+    @Current.setter
+    def Current(self, Current):
+        self._Current = Current
+
+    @property
+    def Previous(self):
+        return self._Previous
+
+    @Previous.setter
+    def Previous(self, Previous):
+        self._Previous = Previous
+
+    @property
+    def Stat(self):
+        return self._Stat
+
+    @Stat.setter
+    def Stat(self, Stat):
+        self._Stat = Stat
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Current") is not None:
+            self._Current = AllocationBillTrendDetail()
+            self._Current._deserialize(params.get("Current"))
+        if params.get("Previous") is not None:
+            self._Previous = []
+            for item in params.get("Previous"):
+                obj = AllocationBillTrendDetail()
+                obj._deserialize(item)
+                self._Previous.append(obj)
+        if params.get("Stat") is not None:
+            self._Stat = AllocationStat()
+            self._Stat._deserialize(params.get("Stat"))
         self._RequestId = params.get("RequestId")
 
 
@@ -10663,6 +17537,333 @@ class DescribeDosageDetailListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGatherResourceRequest(AbstractModel):
+    """DescribeGatherResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 数量，最大值为1000
+        :type Limit: int
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :type Offset: int
+        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :type Month: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识，用作筛选
+        :type TreeNodeUniqKey: str
+        :param _GatherType: 资源目录类别，枚举值如下：
+all - 全部 
+none - 未归集
+        :type GatherType: str
+        :param _Sort: 排序字段，枚举值如下：
+realCost  - 折后总价
+cashPayAmount - 现金金额
+voucherPayAmount - 代金券金额
+incentivePayAmount  - 赠送金金额
+transferPayAmount -分成金金额
+        :type Sort: str
+        :param _SortType: 排序类型，枚举值如下：
+asc - 升序
+desc - 降序
+        :type SortType: str
+        :param _BusinessCodes: 产品编码，用作筛选
+        :type BusinessCodes: list of str
+        :param _ProductCodes: 子产品编码，用作筛选
+        :type ProductCodes: list of str
+        :param _ItemCodes: 组件名称编码，用作筛选
+        :type ItemCodes: list of str
+        :param _RegionIds: 地域ID，用作筛选
+        :type RegionIds: list of int non-negative
+        :param _InstanceTypes: 实例类型编码，用作筛选
+        :type InstanceTypes: list of str
+        :param _PayModes: 计费模式编码，用作筛选
+        :type PayModes: list of str
+        :param _OperateUins: 操作者UIN，用作筛选
+        :type OperateUins: list of str
+        :param _OwnerUins: 使用者UIN，用作筛选
+        :type OwnerUins: list of str
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :type SearchKey: str
+        :param _Tag: 标签，用作筛选
+        :type Tag: list of str
+        :param _ProjectIds: 项目ID，用作筛选
+        :type ProjectIds: list of str
+        :param _ActionTypes: 交易类型编码，用作筛选
+        :type ActionTypes: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Month = None
+        self._TreeNodeUniqKey = None
+        self._GatherType = None
+        self._Sort = None
+        self._SortType = None
+        self._BusinessCodes = None
+        self._ProductCodes = None
+        self._ItemCodes = None
+        self._RegionIds = None
+        self._InstanceTypes = None
+        self._PayModes = None
+        self._OperateUins = None
+        self._OwnerUins = None
+        self._SearchKey = None
+        self._Tag = None
+        self._ProjectIds = None
+        self._ActionTypes = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def GatherType(self):
+        return self._GatherType
+
+    @GatherType.setter
+    def GatherType(self, GatherType):
+        self._GatherType = GatherType
+
+    @property
+    def Sort(self):
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def SortType(self):
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ItemCodes(self):
+        return self._ItemCodes
+
+    @ItemCodes.setter
+    def ItemCodes(self, ItemCodes):
+        self._ItemCodes = ItemCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def InstanceTypes(self):
+        return self._InstanceTypes
+
+    @InstanceTypes.setter
+    def InstanceTypes(self, InstanceTypes):
+        self._InstanceTypes = InstanceTypes
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def OperateUins(self):
+        return self._OperateUins
+
+    @OperateUins.setter
+    def OperateUins(self, OperateUins):
+        self._OperateUins = OperateUins
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def SearchKey(self):
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Month = params.get("Month")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._GatherType = params.get("GatherType")
+        self._Sort = params.get("Sort")
+        self._SortType = params.get("SortType")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ItemCodes = params.get("ItemCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._InstanceTypes = params.get("InstanceTypes")
+        self._PayModes = params.get("PayModes")
+        self._OperateUins = params.get("OperateUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._SearchKey = params.get("SearchKey")
+        self._Tag = params.get("Tag")
+        self._ProjectIds = params.get("ProjectIds")
+        self._ActionTypes = params.get("ActionTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatherResourceResponse(AbstractModel):
+    """DescribeGatherResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: 总条数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordNum: int
+        :param _GatherResourceSummary: 资源归集汇总
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatherResourceSummary: list of GatherResourceSummary
+        :param _LastUpdateTime: 数据更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastUpdateTime: str
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._GatherResourceSummary = None
+        self._LastUpdateTime = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def GatherResourceSummary(self):
+        return self._GatherResourceSummary
+
+    @GatherResourceSummary.setter
+    def GatherResourceSummary(self, GatherResourceSummary):
+        self._GatherResourceSummary = GatherResourceSummary
+
+    @property
+    def LastUpdateTime(self):
+        return self._LastUpdateTime
+
+    @LastUpdateTime.setter
+    def LastUpdateTime(self, LastUpdateTime):
+        self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("GatherResourceSummary") is not None:
+            self._GatherResourceSummary = []
+            for item in params.get("GatherResourceSummary"):
+                obj = GatherResourceSummary()
+                obj._deserialize(item)
+                self._GatherResourceSummary.append(obj)
+        self._LastUpdateTime = params.get("LastUpdateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSavingPlanCoverageRequest(AbstractModel):
     """DescribeSavingPlanCoverage请求参数结构体
 
@@ -12277,6 +19478,543 @@ class ExcludedProducts(AbstractModel):
     def _deserialize(self, params):
         self._GoodsName = params.get("GoodsName")
         self._PayMode = params.get("PayMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatherResourceSummary(AbstractModel):
+    """资源归集汇总
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _InstanceType: 实例类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeName: str
+        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: str
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _TreeNodeUniqKey: 分账单元唯一标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKey: str
+        :param _TreeNodeUniqKeyName: 分账单元名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TreeNodeUniqKeyName: str
+        :param _RuleId: 资源命中公摊规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _RuleName: 资源命中公摊规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _BusinessCode: 产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCodeName: str
+        :param _ItemCode: 组件名称编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCode: str
+        :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCodeName: str
+        :param _RegionId: 地域ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionId: int
+        :param _RegionName: 地域名称：资源所属地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param _Tag: 分账标签：资源绑定的标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tag: list of BillTag
+        :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealTotalCost: str
+        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
+        :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
+0 - 分摊
+1 - 归集
+-1 - 未分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllocationType: int
+        :param _BelongTreeNodeUniqKey: 当前归属单元信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BelongTreeNodeUniqKey: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
+        :param _BelongRule: 当前资源命中公摊规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BelongRule: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
+        :param _OtherTreeNodeUniqKeys: 其它归属单元信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherTreeNodeUniqKeys: list of AllocationTreeNode
+        :param _OtherRules: 其他命中规则信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherRules: list of AllocationRule
+        :param _ProjectId: 项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _PayMode: 计费模式编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayMode: str
+        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayModeName: str
+        :param _ActionType: 交易类型编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActionTypeName: 交易类型：明细交易类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionTypeName: str
+        :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemId: str
+        :param _SplitItemName: 分拆项名称：涉及分拆产品的分拆后的分拆项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SplitItemName: str
+        """
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._TreeNodeUniqKey = None
+        self._TreeNodeUniqKeyName = None
+        self._RuleId = None
+        self._RuleName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ItemCode = None
+        self._ItemCodeName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._Tag = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._AllocationType = None
+        self._BelongTreeNodeUniqKey = None
+        self._BelongRule = None
+        self._OtherTreeNodeUniqKeys = None
+        self._OtherRules = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._ActionType = None
+        self._ActionTypeName = None
+        self._SplitItemId = None
+        self._SplitItemName = None
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def TreeNodeUniqKey(self):
+        return self._TreeNodeUniqKey
+
+    @TreeNodeUniqKey.setter
+    def TreeNodeUniqKey(self, TreeNodeUniqKey):
+        self._TreeNodeUniqKey = TreeNodeUniqKey
+
+    @property
+    def TreeNodeUniqKeyName(self):
+        return self._TreeNodeUniqKeyName
+
+    @TreeNodeUniqKeyName.setter
+    def TreeNodeUniqKeyName(self, TreeNodeUniqKeyName):
+        self._TreeNodeUniqKeyName = TreeNodeUniqKeyName
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ItemCode(self):
+        return self._ItemCode
+
+    @ItemCode.setter
+    def ItemCode(self, ItemCode):
+        self._ItemCode = ItemCode
+
+    @property
+    def ItemCodeName(self):
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Tag(self):
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def AllocationType(self):
+        return self._AllocationType
+
+    @AllocationType.setter
+    def AllocationType(self, AllocationType):
+        self._AllocationType = AllocationType
+
+    @property
+    def BelongTreeNodeUniqKey(self):
+        return self._BelongTreeNodeUniqKey
+
+    @BelongTreeNodeUniqKey.setter
+    def BelongTreeNodeUniqKey(self, BelongTreeNodeUniqKey):
+        self._BelongTreeNodeUniqKey = BelongTreeNodeUniqKey
+
+    @property
+    def BelongRule(self):
+        return self._BelongRule
+
+    @BelongRule.setter
+    def BelongRule(self, BelongRule):
+        self._BelongRule = BelongRule
+
+    @property
+    def OtherTreeNodeUniqKeys(self):
+        return self._OtherTreeNodeUniqKeys
+
+    @OtherTreeNodeUniqKeys.setter
+    def OtherTreeNodeUniqKeys(self, OtherTreeNodeUniqKeys):
+        self._OtherTreeNodeUniqKeys = OtherTreeNodeUniqKeys
+
+    @property
+    def OtherRules(self):
+        return self._OtherRules
+
+    @OtherRules.setter
+    def OtherRules(self, OtherRules):
+        self._OtherRules = OtherRules
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def SplitItemId(self):
+        return self._SplitItemId
+
+    @SplitItemId.setter
+    def SplitItemId(self, SplitItemId):
+        self._SplitItemId = SplitItemId
+
+    @property
+    def SplitItemName(self):
+        return self._SplitItemName
+
+    @SplitItemName.setter
+    def SplitItemName(self, SplitItemName):
+        self._SplitItemName = SplitItemName
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._TreeNodeUniqKey = params.get("TreeNodeUniqKey")
+        self._TreeNodeUniqKeyName = params.get("TreeNodeUniqKeyName")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ItemCode = params.get("ItemCode")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        if params.get("Tag") is not None:
+            self._Tag = []
+            for item in params.get("Tag"):
+                obj = BillTag()
+                obj._deserialize(item)
+                self._Tag.append(obj)
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._AllocationType = params.get("AllocationType")
+        if params.get("BelongTreeNodeUniqKey") is not None:
+            self._BelongTreeNodeUniqKey = AllocationTreeNode()
+            self._BelongTreeNodeUniqKey._deserialize(params.get("BelongTreeNodeUniqKey"))
+        if params.get("BelongRule") is not None:
+            self._BelongRule = AllocationRule()
+            self._BelongRule._deserialize(params.get("BelongRule"))
+        if params.get("OtherTreeNodeUniqKeys") is not None:
+            self._OtherTreeNodeUniqKeys = []
+            for item in params.get("OtherTreeNodeUniqKeys"):
+                obj = AllocationTreeNode()
+                obj._deserialize(item)
+                self._OtherTreeNodeUniqKeys.append(obj)
+        if params.get("OtherRules") is not None:
+            self._OtherRules = []
+            for item in params.get("OtherRules"):
+                obj = AllocationRule()
+                obj._deserialize(item)
+                self._OtherRules.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._SplitItemId = params.get("SplitItemId")
+        self._SplitItemName = params.get("SplitItemName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

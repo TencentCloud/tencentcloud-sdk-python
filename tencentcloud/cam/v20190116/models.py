@@ -448,7 +448,7 @@ class AttachEntityOfPolicy(AbstractModel):
         :param _Uin: 实体Uin
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: int
-        :param _RelatedType: 关联类型。1 用户关联 ； 2 用户组关联
+        :param _RelatedType: 关联类型。1 用户关联 ； 2 用户组关联 3 角色关联
         :type RelatedType: int
         :param _AttachmentTime: 策略关联时间
 注意：此字段可能返回 null，表示取不到有效值。
@@ -1651,7 +1651,7 @@ class CreatePolicyRequest(AbstractModel):
         r"""
         :param _PolicyName: 策略名称。长度为1~128个字符，可包含英文字母、数字和+=,.@-_。
         :type PolicyName: str
-        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档
         :type PolicyDocument: str
         :param _Description: 策略描述
         :type Description: str
@@ -4334,7 +4334,7 @@ class GetCustomMFATokenInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MFAToken: 自定义多因子验证Token
+        :param _MFAToken: 自定义多因子验证Token，针对用户自定义的安全校验方式而生成的，以供查询用户安全校验时使用。
         :type MFAToken: str
         """
         self._MFAToken = None
@@ -7000,13 +7000,13 @@ class ListGroupsForUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uid: 子用户 UID
+        :param _Uid: 子用户 UID，入参Uid和SubUin二选一
         :type Uid: int
         :param _Rp: 每页数量。默认为20。
         :type Rp: int
         :param _Page: 页码。默认为1。
         :type Page: int
-        :param _SubUin: 子账号UIN
+        :param _SubUin: 子账号UIN，入参Uid和SubUin二选一
         :type SubUin: int
         """
         self._Uid = None
@@ -8070,11 +8070,11 @@ class LoginActionMfaFlag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Phone: 手机
+        :param _Phone: 是否设置手机号为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Phone: int
-        :param _Stoken: 软token
+        :param _Stoken: 是否设置软token为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Stoken: int
-        :param _Wechat: 微信
+        :param _Wechat: 是否设置微信为登陆和敏感操作安全校验方式， 1: 设置，0: 不设置
         :type Wechat: int
         """
         self._Phone = None
@@ -10047,7 +10047,7 @@ class UpdatePolicyRequest(AbstractModel):
         :type PolicyName: str
         :param _Description: 策略描述
         :type Description: str
-        :param _PolicyDocument: 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+        :param _PolicyDocument: 策略文档
         :type PolicyDocument: str
         :param _Alias: 预设策略备注
         :type Alias: str

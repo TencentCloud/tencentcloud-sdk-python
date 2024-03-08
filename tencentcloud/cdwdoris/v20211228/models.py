@@ -2660,6 +2660,12 @@ Modify 集群变更中；
         :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaseSensitive: int
+        :param _IsWhiteSGs: 用户是否可以绑定安全组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsWhiteSGs: bool
+        :param _BindSGs: 已绑定的安全组信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BindSGs: list of str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -2702,6 +2708,8 @@ Modify 集群变更中；
         self._RestartTimeout = None
         self._GraceShutdownWaitSeconds = None
         self._CaseSensitive = None
+        self._IsWhiteSGs = None
+        self._BindSGs = None
 
     @property
     def InstanceId(self):
@@ -3035,6 +3043,22 @@ Modify 集群变更中；
     def CaseSensitive(self, CaseSensitive):
         self._CaseSensitive = CaseSensitive
 
+    @property
+    def IsWhiteSGs(self):
+        return self._IsWhiteSGs
+
+    @IsWhiteSGs.setter
+    def IsWhiteSGs(self, IsWhiteSGs):
+        self._IsWhiteSGs = IsWhiteSGs
+
+    @property
+    def BindSGs(self):
+        return self._BindSGs
+
+    @BindSGs.setter
+    def BindSGs(self, BindSGs):
+        self._BindSGs = BindSGs
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3087,6 +3111,8 @@ Modify 集群变更中；
         self._RestartTimeout = params.get("RestartTimeout")
         self._GraceShutdownWaitSeconds = params.get("GraceShutdownWaitSeconds")
         self._CaseSensitive = params.get("CaseSensitive")
+        self._IsWhiteSGs = params.get("IsWhiteSGs")
+        self._BindSGs = params.get("BindSGs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

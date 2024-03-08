@@ -2249,6 +2249,8 @@ class CreateJobRequest(AbstractModel):
         :type WorkSpaceId: str
         :param _Tags: 作业标签
         :type Tags: list of Tag
+        :param _Description: 作业描述
+        :type Description: str
         """
         self._Name = None
         self._JobType = None
@@ -2260,6 +2262,7 @@ class CreateJobRequest(AbstractModel):
         self._FlinkVersion = None
         self._WorkSpaceId = None
         self._Tags = None
+        self._Description = None
 
     @property
     def Name(self):
@@ -2341,6 +2344,14 @@ class CreateJobRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2358,6 +2369,7 @@ class CreateJobRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7239,6 +7251,9 @@ class JobV1(AbstractModel):
         :param _EventInfo: 作业异常事件信息	
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventInfo: :class:`tencentcloud.oceanus.v20190422.models.JobEventInfo`
+        :param _Description: 描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._JobId = None
         self._Region = None
@@ -7273,6 +7288,7 @@ class JobV1(AbstractModel):
         self._WorkSpaceName = None
         self._Tags = None
         self._EventInfo = None
+        self._Description = None
 
     @property
     def JobId(self):
@@ -7538,6 +7554,14 @@ class JobV1(AbstractModel):
     def EventInfo(self, EventInfo):
         self._EventInfo = EventInfo
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7580,6 +7604,7 @@ class JobV1(AbstractModel):
         if params.get("EventInfo") is not None:
             self._EventInfo = JobEventInfo()
             self._EventInfo._deserialize(params.get("EventInfo"))
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7870,12 +7895,15 @@ class ModifyJobRequest(AbstractModel):
         :type TargetFolderId: str
         :param _WorkSpaceId: 工作空间 SerialId
         :type WorkSpaceId: str
+        :param _Description: 作业描述
+        :type Description: str
         """
         self._JobId = None
         self._Name = None
         self._Remark = None
         self._TargetFolderId = None
         self._WorkSpaceId = None
+        self._Description = None
 
     @property
     def JobId(self):
@@ -7917,6 +7945,14 @@ class ModifyJobRequest(AbstractModel):
     def WorkSpaceId(self, WorkSpaceId):
         self._WorkSpaceId = WorkSpaceId
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -7924,6 +7960,7 @@ class ModifyJobRequest(AbstractModel):
         self._Remark = params.get("Remark")
         self._TargetFolderId = params.get("TargetFolderId")
         self._WorkSpaceId = params.get("WorkSpaceId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

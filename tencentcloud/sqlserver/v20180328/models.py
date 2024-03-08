@@ -9860,6 +9860,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type TDEConfig: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
         :param _SSLConfig: SSL加密
         :type SSLConfig: :class:`tencentcloud.sqlserver.v20180328.models.SSLConfig`
+        :param _DrReadableInfo: 备机只读信息
+        :type DrReadableInfo: :class:`tencentcloud.sqlserver.v20180328.models.DrReadableInfo`
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9873,6 +9875,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._EventSaveDays = None
         self._TDEConfig = None
         self._SSLConfig = None
+        self._DrReadableInfo = None
         self._RequestId = None
 
     @property
@@ -9956,6 +9959,14 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._SSLConfig = SSLConfig
 
     @property
+    def DrReadableInfo(self):
+        return self._DrReadableInfo
+
+    @DrReadableInfo.setter
+    def DrReadableInfo(self, DrReadableInfo):
+        self._DrReadableInfo = DrReadableInfo
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -9979,6 +9990,9 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         if params.get("SSLConfig") is not None:
             self._SSLConfig = SSLConfig()
             self._SSLConfig._deserialize(params.get("SSLConfig"))
+        if params.get("DrReadableInfo") is not None:
+            self._DrReadableInfo = DrReadableInfo()
+            self._DrReadableInfo._deserialize(params.get("DrReadableInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -15969,6 +15983,105 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DrReadableInfo(AbstractModel):
+    """备机只读信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SlaveStatus: 备机状态，enable-运行中，disable-不可用
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaveStatus: str
+        :param _ReadableStatus: 备机可读状态，enable-已开启，disable-已关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadableStatus: str
+        :param _Vip: 备机只读vip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Vip: str
+        :param _VPort: 备机只读端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VPort: int
+        :param _UniqVpcId: 备机所在私有网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 备机所在私有网络子网ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UniqSubnetId: str
+        """
+        self._SlaveStatus = None
+        self._ReadableStatus = None
+        self._Vip = None
+        self._VPort = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+
+    @property
+    def SlaveStatus(self):
+        return self._SlaveStatus
+
+    @SlaveStatus.setter
+    def SlaveStatus(self, SlaveStatus):
+        self._SlaveStatus = SlaveStatus
+
+    @property
+    def ReadableStatus(self):
+        return self._ReadableStatus
+
+    @ReadableStatus.setter
+    def ReadableStatus(self, ReadableStatus):
+        self._ReadableStatus = ReadableStatus
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def VPort(self):
+        return self._VPort
+
+    @VPort.setter
+    def VPort(self, VPort):
+        self._VPort = VPort
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+
+    def _deserialize(self, params):
+        self._SlaveStatus = params.get("SlaveStatus")
+        self._ReadableStatus = params.get("ReadableStatus")
+        self._Vip = params.get("Vip")
+        self._VPort = params.get("VPort")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EventConfig(AbstractModel):
     """设置实例扩展事件阈值
 
@@ -18543,8 +18656,11 @@ class ModifyCloseWanIpRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例资源ID
         :type InstanceId: str
+        :param _RoGroupId: RO只读组Id
+        :type RoGroupId: str
         """
         self._InstanceId = None
+        self._RoGroupId = None
 
     @property
     def InstanceId(self):
@@ -18554,9 +18670,18 @@ class ModifyCloseWanIpRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def RoGroupId(self):
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18896,12 +19021,16 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         :type OldIpRetainTime: int
         :param _Vip: 指定VIP地址
         :type Vip: str
+        :param _DRNetwork: 目标节点，0-修改主节点网络，1-修改备节点网络，默认取值0
+
+        :type DRNetwork: int
         """
         self._InstanceId = None
         self._NewVpcId = None
         self._NewSubnetId = None
         self._OldIpRetainTime = None
         self._Vip = None
+        self._DRNetwork = None
 
     @property
     def InstanceId(self):
@@ -18943,6 +19072,14 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
     def Vip(self, Vip):
         self._Vip = Vip
 
+    @property
+    def DRNetwork(self):
+        return self._DRNetwork
+
+    @DRNetwork.setter
+    def DRNetwork(self, DRNetwork):
+        self._DRNetwork = DRNetwork
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -18950,6 +19087,7 @@ class ModifyDBInstanceNetworkRequest(AbstractModel):
         self._NewSubnetId = params.get("NewSubnetId")
         self._OldIpRetainTime = params.get("OldIpRetainTime")
         self._Vip = params.get("Vip")
+        self._DRNetwork = params.get("DRNetwork")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20535,8 +20673,11 @@ class ModifyOpenWanIpRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例资源ID
         :type InstanceId: str
+        :param _RoGroupId: RO只读组Id
+        :type RoGroupId: str
         """
         self._InstanceId = None
+        self._RoGroupId = None
 
     @property
     def InstanceId(self):
@@ -20546,9 +20687,18 @@ class ModifyOpenWanIpRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def RoGroupId(self):
+        return self._RoGroupId
+
+    @RoGroupId.setter
+    def RoGroupId(self, RoGroupId):
+        self._RoGroupId = RoGroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._RoGroupId = params.get("RoGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21681,6 +21831,10 @@ class ReadOnlyGroup(AbstractModel):
         :type MasterInstanceId: str
         :param _ReadOnlyInstanceSet: 只读实例副本集合
         :type ReadOnlyInstanceSet: list of ReadOnlyInstance
+        :param _DnsPodDomain: RO组外网地址域名
+        :type DnsPodDomain: str
+        :param _TgwWanVPort: RO组外网地址端口
+        :type TgwWanVPort: int
         """
         self._ReadOnlyGroupId = None
         self._ReadOnlyGroupName = None
@@ -21696,6 +21850,8 @@ class ReadOnlyGroup(AbstractModel):
         self._Status = None
         self._MasterInstanceId = None
         self._ReadOnlyInstanceSet = None
+        self._DnsPodDomain = None
+        self._TgwWanVPort = None
 
     @property
     def ReadOnlyGroupId(self):
@@ -21809,6 +21965,22 @@ class ReadOnlyGroup(AbstractModel):
     def ReadOnlyInstanceSet(self, ReadOnlyInstanceSet):
         self._ReadOnlyInstanceSet = ReadOnlyInstanceSet
 
+    @property
+    def DnsPodDomain(self):
+        return self._DnsPodDomain
+
+    @DnsPodDomain.setter
+    def DnsPodDomain(self, DnsPodDomain):
+        self._DnsPodDomain = DnsPodDomain
+
+    @property
+    def TgwWanVPort(self):
+        return self._TgwWanVPort
+
+    @TgwWanVPort.setter
+    def TgwWanVPort(self, TgwWanVPort):
+        self._TgwWanVPort = TgwWanVPort
+
 
     def _deserialize(self, params):
         self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
@@ -21830,6 +22002,8 @@ class ReadOnlyGroup(AbstractModel):
                 obj = ReadOnlyInstance()
                 obj._deserialize(item)
                 self._ReadOnlyInstanceSet.append(obj)
+        self._DnsPodDomain = params.get("DnsPodDomain")
+        self._TgwWanVPort = params.get("TgwWanVPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22802,7 +22976,7 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 修改帐号密码的异步任务流程ID
+        :param _FlowId: 修改账号密码的异步任务流程ID
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str

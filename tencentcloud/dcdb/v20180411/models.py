@@ -12478,7 +12478,7 @@ class SlowLogData(AbstractModel):
         :type TsMax: str
         :param _TsMin: 首次执行时间
         :type TsMin: str
-        :param _User: 帐号
+        :param _User: 账号
         :type User: str
         :param _ExampleSql: 样例Sql
 注意：此字段可能返回 null，表示取不到有效值。

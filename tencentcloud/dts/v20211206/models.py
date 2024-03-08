@@ -1352,7 +1352,7 @@ class ConfigureSubscribeJobRequest(AbstractModel):
         :type SubscribeId: str
         :param _SubscribeMode: 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
         :type SubscribeMode: str
-        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
         :type AccessType: str
         :param _Endpoints: 数据库节点信息
         :type Endpoints: list of EndpointItem
@@ -6175,7 +6175,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
         :param _KafkaConfig: kafka配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
-        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云主机自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
         :param _Endpoints: 接入类型信息
@@ -11509,6 +11509,12 @@ class Options(AbstractModel):
         :param _AutoRetryTimeRangeMinutes: 自动重试的时间窗口设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRetryTimeRangeMinutes: int
+        :param _FilterBeginCommit: 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterBeginCommit: bool
+        :param _FilterCheckpoint: 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterCheckpoint: bool
         """
         self._InitType = None
         self._DealOfExistSameTable = None
@@ -11520,6 +11526,8 @@ class Options(AbstractModel):
         self._KafkaOption = None
         self._RateLimitOption = None
         self._AutoRetryTimeRangeMinutes = None
+        self._FilterBeginCommit = None
+        self._FilterCheckpoint = None
 
     @property
     def InitType(self):
@@ -11601,6 +11609,22 @@ class Options(AbstractModel):
     def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
+    @property
+    def FilterBeginCommit(self):
+        return self._FilterBeginCommit
+
+    @FilterBeginCommit.setter
+    def FilterBeginCommit(self, FilterBeginCommit):
+        self._FilterBeginCommit = FilterBeginCommit
+
+    @property
+    def FilterCheckpoint(self):
+        return self._FilterCheckpoint
+
+    @FilterCheckpoint.setter
+    def FilterCheckpoint(self, FilterCheckpoint):
+        self._FilterCheckpoint = FilterCheckpoint
+
 
     def _deserialize(self, params):
         self._InitType = params.get("InitType")
@@ -11624,6 +11648,8 @@ class Options(AbstractModel):
             self._RateLimitOption = RateLimitOption()
             self._RateLimitOption._deserialize(params.get("RateLimitOption"))
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._FilterBeginCommit = params.get("FilterBeginCommit")
+        self._FilterCheckpoint = params.get("FilterCheckpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14544,7 +14570,7 @@ class SubscribeKafkaConfig(AbstractModel):
 
 
 class SubscribeObject(AbstractModel):
-    """订阅的的数据库表信息，用于配置和查询订阅任务接口。
+    """订阅的数据库表信息，用于配置和查询订阅任务接口。
 
     """
 
@@ -15617,24 +15643,27 @@ class TagItem(AbstractModel):
 
 
 class TopicRule(AbstractModel):
-    """单topic和自定义topic的描述
+    """单topic和自定义topic的描述。投递到单topic时，该数组的最后一项会被视为默认分区策略，所有未匹配到的数据都会按该策略投递，默认策略只支持 投递至partition0、按表名、表名+主键三种。
 
     """
 
     def __init__(self):
         r"""
-        :param _TopicName: topic名
+        :param _TopicName: topic名。单topic时，所有的TopicName必须相同
         :type TopicName: str
-        :param _PartitionType: topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
+        :param _PartitionType: topic分区策略，自定义topic时支持：Random（随机投递），集中投递到单Topic时支持：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)、PartitionByCols(按列分区)
         :type PartitionType: str
-        :param _DbMatchMode: 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
+        :param _DbMatchMode: 库名匹配规则，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中最后一项必须为‘Default’
         :type DbMatchMode: str
-        :param _DbName: 库名，仅“自定义topic”时，DbMatchMode=Regular生效
+        :param _DbName: 库名，DbMatchMode=Regular时生效
         :type DbName: str
-        :param _TableMatchMode: 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
+        :param _TableMatchMode: 表名匹配规则，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中最后一项必须为‘Default’
         :type TableMatchMode: str
-        :param _TableName: 表名，仅“自定义topic”时，TableMatchMode=Regular生效
+        :param _TableName: 表名，仅TableMatchMode=Regular时生效
         :type TableName: str
+        :param _Columns: 按列分区时需要选择配置列名，可以选择多列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of str
         """
         self._TopicName = None
         self._PartitionType = None
@@ -15642,6 +15671,7 @@ class TopicRule(AbstractModel):
         self._DbName = None
         self._TableMatchMode = None
         self._TableName = None
+        self._Columns = None
 
     @property
     def TopicName(self):
@@ -15691,6 +15721,14 @@ class TopicRule(AbstractModel):
     def TableName(self, TableName):
         self._TableName = TableName
 
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -15699,6 +15737,7 @@ class TopicRule(AbstractModel):
         self._DbName = params.get("DbName")
         self._TableMatchMode = params.get("TableMatchMode")
         self._TableName = params.get("TableName")
+        self._Columns = params.get("Columns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -757,6 +757,8 @@ class CreateFileSystemRequest(AbstractModel):
         :type Tag: list of Tag
         :param _GooseFSxBuildElements: GooseFSx构建时要传递的参数
         :type GooseFSxBuildElements: :class:`tencentcloud.goosefs.v20220519.models.GooseFSxBuildElement`
+        :param _SecurityGroupId: 客户端集群所属的安全组
+        :type SecurityGroupId: str
         """
         self._Type = None
         self._Name = None
@@ -766,6 +768,7 @@ class CreateFileSystemRequest(AbstractModel):
         self._Zone = None
         self._Tag = None
         self._GooseFSxBuildElements = None
+        self._SecurityGroupId = None
 
     @property
     def Type(self):
@@ -831,6 +834,14 @@ class CreateFileSystemRequest(AbstractModel):
     def GooseFSxBuildElements(self, GooseFSxBuildElements):
         self._GooseFSxBuildElements = GooseFSxBuildElements
 
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -848,6 +859,7 @@ class CreateFileSystemRequest(AbstractModel):
         if params.get("GooseFSxBuildElements") is not None:
             self._GooseFSxBuildElements = GooseFSxBuildElement()
             self._GooseFSxBuildElements._deserialize(params.get("GooseFSxBuildElements"))
+        self._SecurityGroupId = params.get("SecurityGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

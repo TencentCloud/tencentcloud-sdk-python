@@ -3043,7 +3043,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ResetAccountPassword(self, request):
-        """本接口（ResetAccountPassword）用于重置实例的账户密码。
+        """本接口（ResetAccountPassword）用于重置实例的账号密码。
 
         :param request: Request instance for ResetAccountPassword.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ResetAccountPasswordRequest`

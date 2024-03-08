@@ -2888,7 +2888,7 @@ class CcGeoIPBlockConfig(AbstractModel):
     def __init__(self):
         r"""
         :param _RegionType: 区域类型，取值[
-oversea(海外)
+oversea(境外)
 china(国内)
 customized(自定义地区)
 ]
@@ -8519,7 +8519,7 @@ class DescribeCCTrendResponse(AbstractModel):
         r"""
         :param _Count: 值个数
         :type Count: int
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param _Ip: 资源的IP
         :type Ip: str
@@ -9208,7 +9208,7 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param _Ip: 资源实例的IP
         :type Ip: str
@@ -9315,7 +9315,7 @@ class DescribeDDoSTrendResponse(AbstractModel):
         r"""
         :param _Count: 值个数
         :type Count: int
-        :param _Business: 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+        :param _Business: DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
         :type Business: str
         :param _Ip: 资源的IP
         :type Ip: str
@@ -13597,7 +13597,7 @@ class InsL7Rules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 规则在中间状态态不可修改，只可在（0， 2， 8）状态可编辑。
+        :param _Status: 规则在中间状态不可修改，只可在（0， 2， 8）状态可编辑。
 规则状态，0: 正常运行中, 1: 配置规则中(配置生效中), 2: 配置规则失败（配置生效失败）, 3: 删除规则中(删除生效中), 5: 删除规则失败(删除失败), 6: 等待添加规则, 7: 等待删除规则, 8: 等待上传证书, 9: 规则对应的资源不存在，被隔离, 10:等待修改规则, 11:配置修改中
         :type Status: int
         :param _Domain: 域名

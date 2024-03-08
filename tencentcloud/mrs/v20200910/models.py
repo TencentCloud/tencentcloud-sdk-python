@@ -22872,8 +22872,13 @@ class TurnPDFToObjectAsyncRequest(AbstractModel):
         r"""
         :param _PdfInfo: 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
         :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
+        :param _TextBasedPdfFlag: PDF文件中的文字是否为文本内容.
+如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+如果该字段为false, 那么始终采用 OCR 方式
+        :type TextBasedPdfFlag: bool
         """
         self._PdfInfo = None
+        self._TextBasedPdfFlag = None
 
     @property
     def PdfInfo(self):
@@ -22883,11 +22888,20 @@ class TurnPDFToObjectAsyncRequest(AbstractModel):
     def PdfInfo(self, PdfInfo):
         self._PdfInfo = PdfInfo
 
+    @property
+    def TextBasedPdfFlag(self):
+        return self._TextBasedPdfFlag
+
+    @TextBasedPdfFlag.setter
+    def TextBasedPdfFlag(self, TextBasedPdfFlag):
+        self._TextBasedPdfFlag = TextBasedPdfFlag
+
 
     def _deserialize(self, params):
         if params.get("PdfInfo") is not None:
             self._PdfInfo = PdfInfo()
             self._PdfInfo._deserialize(params.get("PdfInfo"))
+        self._TextBasedPdfFlag = params.get("TextBasedPdfFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22949,8 +22963,13 @@ class TurnPDFToObjectRequest(AbstractModel):
         r"""
         :param _PdfInfo: 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
         :type PdfInfo: :class:`tencentcloud.mrs.v20200910.models.PdfInfo`
+        :param _TextBasedPdfFlag: PDF文件中的文字是否为文本内容.
+如果该字段为true,那么就会自动判断是电子版还是图片，自动选择直接读取文字还是 OCR 方式.
+如果该字段为false, 那么始终采用 OCR 方式
+        :type TextBasedPdfFlag: bool
         """
         self._PdfInfo = None
+        self._TextBasedPdfFlag = None
 
     @property
     def PdfInfo(self):
@@ -22960,11 +22979,20 @@ class TurnPDFToObjectRequest(AbstractModel):
     def PdfInfo(self, PdfInfo):
         self._PdfInfo = PdfInfo
 
+    @property
+    def TextBasedPdfFlag(self):
+        return self._TextBasedPdfFlag
+
+    @TextBasedPdfFlag.setter
+    def TextBasedPdfFlag(self, TextBasedPdfFlag):
+        self._TextBasedPdfFlag = TextBasedPdfFlag
+
 
     def _deserialize(self, params):
         if params.get("PdfInfo") is not None:
             self._PdfInfo = PdfInfo()
             self._PdfInfo._deserialize(params.get("PdfInfo"))
+        self._TextBasedPdfFlag = params.get("TextBasedPdfFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
