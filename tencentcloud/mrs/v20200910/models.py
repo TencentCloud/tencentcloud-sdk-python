@@ -8165,7 +8165,7 @@ class ImageMaskAsyncGetResultResponse(AbstractModel):
         r"""
         :param _MaskedImage: 脱敏后图片的base64编码
         :type MaskedImage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MaskedImage = None
@@ -8251,7 +8251,7 @@ class ImageMaskAsyncResponse(AbstractModel):
         r"""
         :param _TaskID: 加密任务ID
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskID = None
@@ -8407,7 +8407,7 @@ class ImageMaskResponse(AbstractModel):
         r"""
         :param _MaskedImage: 脱敏后图片的Base64信息
         :type MaskedImage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MaskedImage = None
@@ -8521,7 +8521,7 @@ class ImageToClassResponse(AbstractModel):
         :param _TextTypeList: 分类结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextTypeList = None
@@ -8676,7 +8676,7 @@ class ImageToObjectResponse(AbstractModel):
         :param _TextTypeList: 多级分类结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextTypeList: list of TextType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Template = None
@@ -20333,7 +20333,7 @@ class TextToClassResponse(AbstractModel):
         r"""
         :param _TextTypeList: 分类结果
         :type TextTypeList: list of TextType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextTypeList = None
@@ -20465,7 +20465,7 @@ class TextToObjectResponse(AbstractModel):
         r"""
         :param _Template: 报告结构化结果
         :type Template: :class:`tencentcloud.mrs.v20200910.models.Template`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Template = None
@@ -22796,7 +22796,7 @@ class TurnPDFToObjectAsyncGetResultResponse(AbstractModel):
         :type Block: :class:`tencentcloud.mrs.v20200910.models.Block`
         :param _IsBlock: 是否使用Block字段
         :type IsBlock: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Template = None
@@ -22926,7 +22926,7 @@ class TurnPDFToObjectAsyncResponse(AbstractModel):
 4、加密存储的 json 结果会24小时后定时自动删除，因此TaskID 仅 24 小时内有效，请在24小时内调用接口 TurnPDFToObjectAsyncGetResult 获取对应 json 结果。
 5、TaskID 与腾讯云的账号绑定，通过 TurnPDFToObjectAsync 传入PDF文件和通过 TurnPDFToObjectAsyncGetResult 获取 json 结果，必须是同一个腾讯云账号。即其它人就算获取到 TaskID 也无法获取到 json 结果。
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskID = None
@@ -23018,7 +23018,7 @@ class TurnPDFToObjectResponse(AbstractModel):
         :type Block: :class:`tencentcloud.mrs.v20200910.models.Block`
         :param _IsBlock: 是否使用Block字段
         :type IsBlock: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Template = None

@@ -444,7 +444,7 @@ class AttachInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -543,7 +543,7 @@ class AttachLoadBalancersResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -1277,7 +1277,7 @@ class CancelInstanceRefreshResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1387,7 +1387,7 @@ class ClearLaunchConfigurationAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1481,7 +1481,7 @@ class CompleteLifecycleActionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1601,7 +1601,7 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
         r"""
         :param _AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingGroupId = None
@@ -1999,7 +1999,7 @@ class CreateAutoScalingGroupResponse(AbstractModel):
         r"""
         :param _AutoScalingGroupId: 伸缩组ID
         :type AutoScalingGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingGroupId = None
@@ -2405,7 +2405,7 @@ class CreateLaunchConfigurationResponse(AbstractModel):
         r"""
         :param _LaunchConfigurationId: 当通过本接口来创建启动配置时会返回该参数，表示启动配置ID。
         :type LaunchConfigurationId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LaunchConfigurationId = None
@@ -2575,7 +2575,7 @@ class CreateLifecycleHookResponse(AbstractModel):
         r"""
         :param _LifecycleHookId: 生命周期挂钩ID
         :type LifecycleHookId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LifecycleHookId = None
@@ -2718,7 +2718,7 @@ class CreateNotificationConfigurationResponse(AbstractModel):
         r"""
         :param _AutoScalingNotificationId: 通知ID。
         :type AutoScalingNotificationId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingNotificationId = None
@@ -2923,7 +2923,7 @@ class CreateScalingPolicyResponse(AbstractModel):
         r"""
         :param _AutoScalingPolicyId: 告警触发策略ID。
         :type AutoScalingPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingPolicyId = None
@@ -3077,7 +3077,7 @@ class CreateScheduledActionResponse(AbstractModel):
         r"""
         :param _ScheduledActionId: 定时任务ID
         :type ScheduledActionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ScheduledActionId = None
@@ -3245,7 +3245,7 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3303,7 +3303,7 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3361,7 +3361,7 @@ class DeleteLifecycleHookResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3419,7 +3419,7 @@ class DeleteNotificationConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3477,7 +3477,7 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3535,7 +3535,7 @@ class DeleteScheduledActionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3574,7 +3574,7 @@ class DescribeAccountLimitsResponse(AbstractModel):
         :type MaxNumberOfAutoScalingGroups: int
         :param _NumberOfAutoScalingGroups: 用户账户伸缩组的当前数量
         :type NumberOfAutoScalingGroups: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MaxNumberOfLaunchConfigurations = None
@@ -3746,7 +3746,7 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
         :type TotalCount: int
         :param _ActivitySet: 符合条件的伸缩活动信息集合。
         :type ActivitySet: list of Activity
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3831,7 +3831,7 @@ class DescribeAutoScalingAdvicesResponse(AbstractModel):
         r"""
         :param _AutoScalingAdviceSet: 伸缩组配置建议集合。
         :type AutoScalingAdviceSet: list of AutoScalingAdvice
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingAdviceSet = None
@@ -3906,7 +3906,7 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
         r"""
         :param _ActivitySet: 符合条件的伸缩活动信息集合。说明：伸缩组伸缩活动不存在的则不返回，如传50个伸缩组ID，返回45条数据，说明其中有5个伸缩组伸缩活动不存在。
         :type ActivitySet: list of Activity
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivitySet = None
@@ -4032,7 +4032,7 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
         :type AutoScalingGroupSet: list of AutoScalingGroup
         :param _TotalCount: 符合条件的伸缩组数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingGroupSet = None
@@ -4163,7 +4163,7 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
         :type AutoScalingInstanceSet: list of Instance
         :param _TotalCount: 符合条件的实例数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoScalingInstanceSet = None
@@ -4299,7 +4299,7 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
         :type TotalCount: int
         :param _LaunchConfigurationSet: 启动配置详细信息列表。
         :type LaunchConfigurationSet: list of LaunchConfiguration
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4431,7 +4431,7 @@ class DescribeLifecycleHooksResponse(AbstractModel):
         :type LifecycleHookSet: list of LifecycleHook
         :param _TotalCount: 总体数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LifecycleHookSet = None
@@ -4562,7 +4562,7 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
         :type TotalCount: int
         :param _AutoScalingNotificationSet: 弹性伸缩事件通知详细信息列表。
         :type AutoScalingNotificationSet: list of AutoScalingNotification
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4695,7 +4695,7 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
         :type TotalCount: int
         :param _RefreshActivitySet: 符合条件的刷新活动信息集合。
         :type RefreshActivitySet: list of RefreshActivity
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4828,7 +4828,7 @@ class DescribeScalingPoliciesResponse(AbstractModel):
         :type ScalingPolicySet: list of ScalingPolicy
         :param _TotalCount: 符合条件的通知数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ScalingPolicySet = None
@@ -4959,7 +4959,7 @@ class DescribeScheduledActionsResponse(AbstractModel):
         :type TotalCount: int
         :param _ScheduledActionSet: 定时任务详细信息列表。
         :type ScheduledActionSet: list of ScheduledAction
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -5056,7 +5056,7 @@ class DetachInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -5155,7 +5155,7 @@ class DetachLoadBalancersResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -5328,7 +5328,7 @@ class DisableAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5386,7 +5386,7 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5554,7 +5554,7 @@ class ExecuteScalingPolicyResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -5637,7 +5637,7 @@ class ExitStandbyResponse(AbstractModel):
         :param _ActivityId: 伸缩活动ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -7900,7 +7900,7 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7994,7 +7994,7 @@ class ModifyDesiredCapacityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -8353,7 +8353,7 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -8515,7 +8515,7 @@ class ModifyLifecycleHookResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -8592,7 +8592,7 @@ class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -8705,7 +8705,7 @@ class ModifyLoadBalancersResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -8827,7 +8827,7 @@ class ModifyNotificationConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9008,7 +9008,7 @@ class ModifyScalingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9150,7 +9150,7 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9717,7 +9717,7 @@ class RemoveInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -9809,7 +9809,7 @@ class ResumeInstanceRefreshResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9907,7 +9907,7 @@ class RollbackInstanceRefreshResponse(AbstractModel):
         r"""
         :param _RefreshActivityId: 刷新活动 ID。
         :type RefreshActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RefreshActivityId = None
@@ -10136,7 +10136,7 @@ class ScaleInInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID。
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -10218,7 +10218,7 @@ class ScaleOutInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID。
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -10726,7 +10726,7 @@ class SetInstancesProtectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10924,7 +10924,7 @@ class StartAutoScalingInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -11020,7 +11020,7 @@ class StartInstanceRefreshResponse(AbstractModel):
         r"""
         :param _RefreshActivityId: 刷新活动 ID。
         :type RefreshActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RefreshActivityId = None
@@ -11117,7 +11117,7 @@ class StopAutoScalingInstancesResponse(AbstractModel):
         r"""
         :param _ActivityId: 伸缩活动ID
         :type ActivityId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivityId = None
@@ -11197,7 +11197,7 @@ class StopInstanceRefreshResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -11695,7 +11695,7 @@ class UpgradeLaunchConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -11853,7 +11853,7 @@ class UpgradeLifecycleHookResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

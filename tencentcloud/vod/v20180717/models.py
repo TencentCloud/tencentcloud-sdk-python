@@ -8801,7 +8801,7 @@ class ApplyUploadResponse(AbstractModel):
         :type CoverStoragePath: str
         :param _TempCertificate: 临时凭证，用于上传接口的权限验证。
         :type TempCertificate: :class:`tencentcloud.vod.v20180717.models.TempCertificate`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StorageBucket = None
@@ -9351,7 +9351,7 @@ class AttachMediaSubtitlesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10518,7 +10518,7 @@ class CommitUploadResponse(AbstractModel):
         :type MediaUrl: str
         :param _CoverUrl: 媒体封面地址。
         :type CoverUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FileId = None
@@ -10819,7 +10819,7 @@ class ComposeMediaResponse(AbstractModel):
         r"""
         :param _TaskId: 制作媒体文件的任务 ID，可以通过该 ID 查询制作任务（任务类型为 MakeMedia）的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -11360,7 +11360,7 @@ class ConfirmEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -12183,7 +12183,7 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 音视频内容分析模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -12401,7 +12401,7 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 音视频内容识别模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -12603,7 +12603,7 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 自适应转码模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -12782,7 +12782,7 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 转动图模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -12854,7 +12854,7 @@ class CreateCLSLogsetResponse(AbstractModel):
         r"""
         :param _LogsetId: 日志集 ID。
         :type LogsetId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LogsetId = None
@@ -12950,7 +12950,7 @@ class CreateCLSTopicResponse(AbstractModel):
         r"""
         :param _TopicId: 日志主题 ID。
         :type TopicId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TopicId = None
@@ -13044,7 +13044,7 @@ class CreateClassResponse(AbstractModel):
         r"""
         :param _ClassId: 分类 ID
         :type ClassId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClassId = None
@@ -13236,7 +13236,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 音视频内容审核模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -13308,7 +13308,7 @@ class CreateDomainVerifyRecordResponse(AbstractModel):
         :type DNSVerifyInfo: :class:`tencentcloud.vod.v20180717.models.DNSVerifyInfo`
         :param _FileVerifyInfo: 文件验证信息
         :type FileVerifyInfo: :class:`tencentcloud.vod.v20180717.models.FileVerifyInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DNSVerifyInfo = None
@@ -13514,7 +13514,7 @@ class CreateEnhanceMediaTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 音画质重生模板 ID。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -13649,7 +13649,7 @@ class CreateHeadTailTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 片头片尾模板号。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -13761,7 +13761,7 @@ class CreateImageProcessingTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 图片处理模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -14110,7 +14110,7 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 雪碧图模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -14230,7 +14230,7 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -14358,7 +14358,7 @@ class CreatePersonSampleResponse(AbstractModel):
         :type Person: :class:`tencentcloud.vod.v20180717.models.AiSamplePerson`
         :param _FailFaceInfoSet: 处理失败的五官定位信息。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Person = None
@@ -14538,7 +14538,7 @@ class CreateProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -14774,7 +14774,7 @@ class CreateQualityInspectTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 音画质检测模板 ID。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -14966,7 +14966,7 @@ class CreateRebuildMediaTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 视频重生模板 ID。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -15079,7 +15079,7 @@ class CreateReviewTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 审核模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -15220,7 +15220,7 @@ class CreateRoundPlayResponse(AbstractModel):
         :type RoundPlayId: str
         :param _Url: 轮播播放地址。
         :type Url: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RoundPlayId = None
@@ -15430,7 +15430,7 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 采样截图模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -15602,7 +15602,7 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 时间点截图模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -15682,7 +15682,7 @@ class CreateStorageRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -15754,7 +15754,7 @@ class CreateSubAppIdResponse(AbstractModel):
         r"""
         :param _SubAppId: 新创建的子应用 ID。
         :type SubAppId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SubAppId = None
@@ -15984,7 +15984,7 @@ class CreateSuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16167,7 +16167,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
         r"""
         :param _Definition: 转码模板唯一标识。
         :type Definition: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -16263,7 +16263,7 @@ class CreateVodDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16453,7 +16453,7 @@ class CreateWatermarkTemplateResponse(AbstractModel):
         :type Definition: int
         :param _ImageUrl: 水印图片地址，仅当 Type 为 image，该字段有效。
         :type ImageUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Definition = None
@@ -16568,7 +16568,7 @@ class CreateWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16764,7 +16764,7 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16834,7 +16834,7 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16904,7 +16904,7 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16974,7 +16974,7 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17046,7 +17046,7 @@ class DeleteCLSTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17116,7 +17116,7 @@ class DeleteClassResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17186,7 +17186,7 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17256,7 +17256,7 @@ class DeleteEnhanceMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17326,7 +17326,7 @@ class DeleteHeadTailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17396,7 +17396,7 @@ class DeleteImageProcessingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17466,7 +17466,7 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17536,7 +17536,7 @@ class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17623,7 +17623,7 @@ class DeleteMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17693,7 +17693,7 @@ class DeletePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17763,7 +17763,7 @@ class DeleteProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17833,7 +17833,7 @@ class DeleteQualityInspectTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17903,7 +17903,7 @@ class DeleteRebuildMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -17973,7 +17973,7 @@ class DeleteReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18043,7 +18043,7 @@ class DeleteRoundPlayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18113,7 +18113,7 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18183,7 +18183,7 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18253,7 +18253,7 @@ class DeleteSuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18323,7 +18323,7 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18393,7 +18393,7 @@ class DeleteVodDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18463,7 +18463,7 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18533,7 +18533,7 @@ class DeleteWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -18631,7 +18631,7 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AIAnalysisTemplateSet: 音视频内容分析模板详情列表。
         :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -18754,7 +18754,7 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AIRecognitionTemplateSet: 音视频内容识别模板详情列表。
         :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -18891,7 +18891,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AdaptiveDynamicStreamingTemplateSet: 转自适应码流模板详情列表。
         :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -18977,7 +18977,7 @@ class DescribeAllClassResponse(AbstractModel):
         :param _ClassInfoSet: 分类信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClassInfoSet: list of MediaClassInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClassInfoSet = None
@@ -19104,7 +19104,7 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AnimatedGraphicsTemplateSet: 转动图模板详情列表。
         :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -19347,7 +19347,7 @@ class DescribeCDNStatDetailsResponse(AbstractModel):
         :type DataInterval: int
         :param _Data: CDN 用量数据。
         :type Data: list of StatDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataInterval = None
@@ -19500,7 +19500,7 @@ class DescribeCDNUsageDataResponse(AbstractModel):
         :type DataInterval: int
         :param _Data: CDN 统计数据。
         :type Data: list of StatDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataInterval = None
@@ -19587,7 +19587,7 @@ class DescribeCLSLogsetsResponse(AbstractModel):
         r"""
         :param _Logsets: 查询到的日志集列表。
         :type Logsets: list of CLSLogsetInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Logsets = None
@@ -19676,7 +19676,7 @@ class DescribeCLSPushTargetsResponse(AbstractModel):
         :type TotalCount: int
         :param _DomainCLSTargets: 域名推送 CLS 目标列表。
         :type DomainCLSTargets: list of DomainCLSTargetInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -19813,7 +19813,7 @@ class DescribeCLSTopicsResponse(AbstractModel):
         :type TotalCount: int
         :param _Topics: 日志主题列表。
         :type Topics: list of CLSTopicInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -19965,7 +19965,7 @@ class DescribeCdnLogsResponse(AbstractModel):
         :param _DomesticCdnLogs: 国内CDN节点的日志下载列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomesticCdnLogs: list of CdnLogInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -20104,7 +20104,7 @@ class DescribeClientUploadAccelerationUsageDataResponse(AbstractModel):
         r"""
         :param _ClientUploadAccelerationUsageDataSet: 客户端上传加速统计数据。
         :type ClientUploadAccelerationUsageDataSet: list of StatDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClientUploadAccelerationUsageDataSet = None
@@ -20217,7 +20217,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ContentReviewTemplateSet: 内容审核模板详情列表。
         :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -20338,7 +20338,7 @@ class DescribeDailyMediaPlayStatResponse(AbstractModel):
         r"""
         :param _DailyPlayStatInfoSet: 播放统计数据。
         :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DailyPlayStatInfoSet = None
@@ -20452,7 +20452,7 @@ class DescribeDailyMostPlayedStatResponse(AbstractModel):
         r"""
         :param _DailyPlayStatInfoSet: 媒体文件播放统计信息。
         :type DailyPlayStatInfoSet: list of DailyPlayStatInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DailyPlayStatInfoSet = None
@@ -20551,7 +20551,7 @@ class DescribeDailyPlayStatFileListResponse(AbstractModel):
         r"""
         :param _PlayStatFileSet: 播放统计文件列表。
         :type PlayStatFileSet: list of PlayStatFileInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PlayStatFileSet = None
@@ -20632,7 +20632,7 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
         :type Scheme: str
         :param _PlayKey: 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
         :type PlayKey: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DomainName = None
@@ -20748,7 +20748,7 @@ class DescribeDrmDataKeyResponse(AbstractModel):
         r"""
         :param _KeyList: 密钥列表，包含加密的数据密钥。
         :type KeyList: list of SimpleAesEdkPair
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeyList = None
@@ -20824,7 +20824,7 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
         :param _SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SDMCInfo = None
@@ -20948,7 +20948,7 @@ class DescribeEnhanceMediaTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _RebuildMediaTemplateSet: 音画质重生模板详情列表。
         :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -21039,7 +21039,7 @@ class DescribeEventConfigResponse(AbstractModel):
         :type UploadMediaCompleteEventSwitch: str
         :param _DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，"OFF" 为忽略该事件通知，"ON" 为接收事件通知。
         :type DeleteMediaCompleteEventSwitch: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Mode = None
@@ -21139,7 +21139,7 @@ class DescribeEventsStateResponse(AbstractModel):
         r"""
         :param _CountOfEventsToPull: 待进行拉取的事件通知数，为近似值，约5秒延迟。
         :type CountOfEventsToPull: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CountOfEventsToPull = None
@@ -21269,7 +21269,7 @@ class DescribeFileAttributesResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID 。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -21569,7 +21569,7 @@ class DescribeHeadTailTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _HeadTailTemplateSet: 片头片尾模板详情列表。
         :type HeadTailTemplateSet: list of HeadTailTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -21706,7 +21706,7 @@ class DescribeImageProcessingTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ImageProcessingTemplateSet: 图片处理模板详情列表。
         :type ImageProcessingTemplateSet: list of ImageProcessingTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -21815,7 +21815,7 @@ class DescribeImageReviewUsageDataResponse(AbstractModel):
         r"""
         :param _ImageReviewUsageDataSet: 图片审核次数统计数据，展示查询时间范围内的图片审核次数的概览数据。
         :type ImageReviewUsageDataSet: list of ImageReviewUsageDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageReviewUsageDataSet = None
@@ -21942,7 +21942,7 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ImageSpriteTemplateSet: 雪碧图模板详情列表。
         :type ImageSpriteTemplateSet: list of ImageSpriteTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -22079,7 +22079,7 @@ class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _JustInTimeTranscodeTemplateSet: 模板详情列表。
         :type JustInTimeTranscodeTemplateSet: list of JustInTimeTranscodeTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -22201,7 +22201,7 @@ class DescribeLicenseUsageDataResponse(AbstractModel):
         r"""
         :param _LicenseUsageDataSet: License 查询次数统计数据，展示所查询 License 次数的明细数据。
         :type LicenseUsageDataSet: list of LicenseUsageDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LicenseUsageDataSet = None
@@ -22314,7 +22314,7 @@ class DescribeMediaInfosResponse(AbstractModel):
         :type MediaInfoSet: list of MediaInfo
         :param _NotExistFileIdSet: 不存在的文件 ID 列表。
         :type NotExistFileIdSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MediaInfoSet = None
@@ -22450,7 +22450,7 @@ class DescribeMediaPlayStatDetailsResponse(AbstractModel):
         r"""
         :param _PlayStatInfoSet: 播放统计数据。
         :type PlayStatInfoSet: list of PlayStatInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PlayStatInfoSet = None
@@ -22581,7 +22581,7 @@ class DescribeMediaProcessUsageDataResponse(AbstractModel):
         r"""
         :param _MediaProcessDataSet: 视频处理统计数据概览，展示所查询任务的概览以及详细数据。
         :type MediaProcessDataSet: list of TaskStatData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MediaProcessDataSet = None
@@ -22735,7 +22735,7 @@ class DescribePersonSamplesResponse(AbstractModel):
         :type TotalCount: int
         :param _PersonSet: 人物信息。
         :type PersonSet: list of AiSamplePerson
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -22793,7 +22793,7 @@ class DescribePrepaidProductsResponse(AbstractModel):
         r"""
         :param _ProductInstanceSet: 购买的预付费商品实例列表。
         :type ProductInstanceSet: list of ProductInstance
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProductInstanceSet = None
@@ -22920,7 +22920,7 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ProcedureTemplateSet: 任务流模板详情列表。
         :type ProcedureTemplateSet: list of ProcedureTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23057,7 +23057,7 @@ class DescribeQualityInspectTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _QualityInspectTemplateSet: 音画质检测模板详情列表。
         :type QualityInspectTemplateSet: list of QualityInspectTemplateItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23194,7 +23194,7 @@ class DescribeRebuildMediaTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _RebuildMediaTemplateSet: 视频重生模板详情列表。
         :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23307,7 +23307,7 @@ class DescribeReviewDetailsResponse(AbstractModel):
         :type TotalDuration: int
         :param _Data: 内容智能识别时长统计数据，每天一个数据。
         :type Data: list of StatDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23454,7 +23454,7 @@ class DescribeReviewTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ReviewTemplateSet: 审核模板详情列表。
         :type ReviewTemplateSet: list of ReviewTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23577,7 +23577,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
         :type TotalCount: int
         :param _RoundPlaySet: 轮播播单详情列表。
         :type RoundPlaySet: list of RoundPlayInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23714,7 +23714,7 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _SampleSnapshotTemplateSet: 采样截图模板详情列表。
         :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23851,7 +23851,7 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _SnapshotByTimeOffsetTemplateSet: 指定时间点截图模板详情列表。
         :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -23948,7 +23948,7 @@ class DescribeStorageDataResponse(AbstractModel):
         :type DeepArchiveStorage: int
         :param _StorageStat: 各计费区域的存储用量。
         :type StorageStat: list of StorageStatData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MediaCount = None
@@ -24165,7 +24165,7 @@ class DescribeStorageDetailsResponse(AbstractModel):
         r"""
         :param _Data: 存储统计数据，每5分钟或每天一条数据。
         :type Data: list of StatDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -24240,7 +24240,7 @@ class DescribeStorageRegionsResponse(AbstractModel):
         r"""
         :param _StorageRegionInfos: 存储地域信息列表。
         :type StorageRegionInfos: list of StorageRegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StorageRegionInfos = None
@@ -24358,7 +24358,7 @@ class DescribeSubAppIdsResponse(AbstractModel):
         :type SubAppIdInfoSet: list of SubAppIdInfo
         :param _TotalCount: 子应用总数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SubAppIdInfoSet = None
@@ -24495,7 +24495,7 @@ class DescribeSuperPlayerConfigsResponse(AbstractModel):
         :type TotalCount: int
         :param _PlayerConfigSet: 播放器配置数组。
         :type PlayerConfigSet: list of PlayerConfig
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -24682,7 +24682,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _QualityEnhanceTask: 音画质重生任务信息，仅当 TaskType 为 QualityEnhance，该字段有值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityEnhanceTask: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskType = None
@@ -25138,7 +25138,7 @@ class DescribeTasksResponse(AbstractModel):
         :type TaskSet: list of TaskSimpleInfo
         :param _ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
         :type ScrollToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskSet = None
@@ -25304,7 +25304,7 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         :param _TranscodeTemplateSet: 转码模板详情列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTemplateSet: list of TranscodeTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -25428,7 +25428,7 @@ class DescribeVodDomainsResponse(AbstractModel):
         :type TotalCount: int
         :param _DomainSet: 域名信息列表。
         :type DomainSet: list of DomainDetailInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -25569,7 +25569,7 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
         :param _WatermarkTemplateSet: 水印模板详情列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type WatermarkTemplateSet: list of WatermarkTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -25724,7 +25724,7 @@ class DescribeWordSamplesResponse(AbstractModel):
         :type TotalCount: int
         :param _WordSet: 关键词信息。
         :type WordSet: list of AiSampleWord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -26542,7 +26542,7 @@ class EditMediaResponse(AbstractModel):
         r"""
         :param _TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务（任务类型为 EditMedia）的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -27309,7 +27309,7 @@ class EnhanceMediaByTemplateResponse(AbstractModel):
         r"""
         :param _TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -27512,7 +27512,7 @@ class EnhanceMediaQualityResponse(AbstractModel):
         r"""
         :param _TaskId: 音画质重生任务 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -28085,7 +28085,7 @@ class ExecuteFunctionResponse(AbstractModel):
         r"""
         :param _Result: 处理结果打包后的字符串，具体与后台一同协调。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -28215,7 +28215,7 @@ class ExtractCopyRightWatermarkResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -28564,7 +28564,7 @@ class ExtractTraceWatermarkResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -29415,7 +29415,7 @@ class ForbidMediaDistributionResponse(AbstractModel):
         r"""
         :param _NotExistFileIdSet: 不存在的文件 ID 列表。
         :type NotExistFileIdSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotExistFileIdSet = None
@@ -31117,7 +31117,7 @@ class InspectMediaQualityResponse(AbstractModel):
         r"""
         :param _TaskId: 音画质检测任务 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -31605,7 +31605,7 @@ class LiveRealTimeClipResponse(AbstractModel):
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _SegmentSet: <span id="p_segmentset">剪辑后的视频片段信息。</span>
         :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -31899,7 +31899,7 @@ class ManageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -36972,7 +36972,7 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37190,7 +37190,7 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37358,7 +37358,7 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37537,7 +37537,7 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37619,7 +37619,7 @@ class ModifyClassResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37811,7 +37811,7 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37905,7 +37905,7 @@ class ModifyDefaultDistributionConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -37975,7 +37975,7 @@ class ModifyDefaultStorageRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38167,7 +38167,7 @@ class ModifyEnhanceMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38276,7 +38276,7 @@ class ModifyEventConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38411,7 +38411,7 @@ class ModifyHeadTailTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38626,7 +38626,7 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38736,7 +38736,7 @@ class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -38992,7 +38992,7 @@ class ModifyMediaInfoResponse(AbstractModel):
         :type CoverUrl: str
         :param _AddedSubtitleSet: 新增的字幕信息。
         :type AddedSubtitleSet: list of MediaSubtitleItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CoverUrl = None
@@ -39122,7 +39122,7 @@ class ModifyMediaStorageClassResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -39264,7 +39264,7 @@ class ModifyPersonSampleResponse(AbstractModel):
         :param _FailFaceInfoSet: 处理失败的五官信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Person = None
@@ -39537,7 +39537,7 @@ class ModifyQualityInspectTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -39727,7 +39727,7 @@ class ModifyRebuildMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -39842,7 +39842,7 @@ class ModifyReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -39994,7 +39994,7 @@ class ModifyRoundPlayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40194,7 +40194,7 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40366,7 +40366,7 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40448,7 +40448,7 @@ class ModifySubAppIdInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40522,7 +40522,7 @@ class ModifySubAppIdStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40727,7 +40727,7 @@ class ModifySuperPlayerConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -40917,7 +40917,7 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -41017,7 +41017,7 @@ class ModifyVodDomainAccelerateConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -41129,7 +41129,7 @@ class ModifyVodDomainConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -41311,7 +41311,7 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
         r"""
         :param _ImageUrl: 图片水印地址，仅当 ImageTemplate.ImageContent 非空，该字段有值。
         :type ImageUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageUrl = None
@@ -41425,7 +41425,7 @@ class ModifyWordSampleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -42160,7 +42160,7 @@ class ParseStreamingManifestResponse(AbstractModel):
         r"""
         :param _MediaSegmentSet: 分片文件列表。
         :type MediaSegmentSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MediaSegmentSet = None
@@ -44270,7 +44270,7 @@ class ProcessImageResponse(AbstractModel):
         r"""
         :param _ContentReviewResultSet: 图片内容智能识别任务结果。
         :type ContentReviewResultSet: list of ContentReviewResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ContentReviewResultSet = None
@@ -44431,7 +44431,7 @@ class ProcessMediaByProcedureResponse(AbstractModel):
         :type TaskId: str
         :param _ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
         :type ReviewAudioVideoTaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -44629,7 +44629,7 @@ class ProcessMediaByUrlResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -44828,7 +44828,7 @@ class ProcessMediaResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -45578,7 +45578,7 @@ class PullEventsResponse(AbstractModel):
         :param _EventSet: 事件列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventSet: list of EventContent
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EventSet = None
@@ -45801,7 +45801,7 @@ class PullUploadResponse(AbstractModel):
         r"""
         :param _TaskId: 拉取上传视频的任务 ID，可以通过该 ID 查询拉取上传任务的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -46068,7 +46068,7 @@ class PushUrlCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -47435,7 +47435,7 @@ class RebuildMediaByTemplateResponse(AbstractModel):
         r"""
         :param _TaskId: 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -47829,7 +47829,7 @@ class RebuildMediaResponse(AbstractModel):
         r"""
         :param _TaskId: 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -49698,7 +49698,7 @@ class RefreshUrlCacheResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -49934,7 +49934,7 @@ class RemoveWatermarkResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID 。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -50288,7 +50288,7 @@ class ResetProcedureTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -50478,7 +50478,7 @@ class RestoreMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -50734,7 +50734,7 @@ class ReviewAudioVideoResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -51324,7 +51324,7 @@ class ReviewImageResponse(AbstractModel):
         :param _MediaReviewResult: 图片审核任务结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaReviewResult: :class:`tencentcloud.vod.v20180717.models.ReviewImageResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReviewResultSet = None
@@ -52823,7 +52823,7 @@ class SearchMediaResponse(AbstractModel):
         :type TotalCount: int
         :param _MediaInfoSet: 媒体文件信息列表。
         :type MediaInfoSet: list of MediaInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -53016,7 +53016,7 @@ class SetCLSPushTargetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -53088,7 +53088,7 @@ class SetDrmKeyProviderInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -53184,7 +53184,7 @@ class SetVodDomainCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -53453,7 +53453,7 @@ class SimpleHlsClipResponse(AbstractModel):
         :type FileId: str
         :param _TaskId: 剪辑固化后的视频任务流 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -54167,7 +54167,7 @@ class SplitMediaResponse(AbstractModel):
         r"""
         :param _TaskId: 视频拆条的任务 ID，可以通过该 ID 查询拆条任务（任务类型为 SplitMedia）的状态。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -58052,7 +58052,7 @@ class VerifyDomainRecordResponse(AbstractModel):
         r"""
         :param _Result: 是否验证成功。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -59668,7 +59668,7 @@ class WeChatMiniProgramPublishResponse(AbstractModel):
         r"""
         :param _TaskId: 任务 ID。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None

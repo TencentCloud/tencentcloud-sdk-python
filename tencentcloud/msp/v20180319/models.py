@@ -58,7 +58,7 @@ class DeregisterMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -118,7 +118,7 @@ class DescribeMigrationTaskResponse(AbstractModel):
         r"""
         :param _TaskStatus: 迁移详情列表
         :type TaskStatus: list of TaskStatus
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskStatus = None
@@ -276,7 +276,7 @@ class ListMigrationProjectResponse(AbstractModel):
         :type Projects: list of Project
         :param _TotalCount: 项目总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Projects = None
@@ -387,7 +387,7 @@ class ListMigrationTaskResponse(AbstractModel):
         :type TotalCount: int
         :param _Tasks: 迁移任务列表
         :type Tasks: list of Task
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -482,7 +482,7 @@ class ModifyMigrationTaskBelongToProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -552,7 +552,7 @@ class ModifyMigrationTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -793,7 +793,7 @@ class RegisterMigrationTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 任务ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None

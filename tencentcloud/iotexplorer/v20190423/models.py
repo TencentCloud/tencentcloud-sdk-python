@@ -361,7 +361,7 @@ class BindDevicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -567,7 +567,7 @@ class BindProductsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -665,7 +665,7 @@ class CallDeviceActionAsyncResponse(AbstractModel):
         :type ClientToken: str
         :param _Status: 异步调用状态
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClientToken = None
@@ -786,7 +786,7 @@ class CallDeviceActionSyncResponse(AbstractModel):
         :type OutputParams: str
         :param _Status: 返回状态，取值设备端上报$thing/up/action	method为action_reply 的 status字段，如果不包含status字段，则取默认值，空字符串，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClientToken = None
@@ -941,7 +941,7 @@ Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
 pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1097,7 +1097,7 @@ class CreateBatchProductionResponse(AbstractModel):
         :type ProductId: str
         :param _BatchProductionId: 量产id
         :type BatchProductionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProjectId = None
@@ -1271,7 +1271,7 @@ class CreateDeviceResponse(AbstractModel):
         r"""
         :param _Data: 设备参数描述。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1358,7 +1358,7 @@ class CreateFenceBindResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1502,7 +1502,7 @@ class CreateLoRaFrequencyResponse(AbstractModel):
         r"""
         :param _Data: LoRa频点信息
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1660,7 +1660,7 @@ class CreateLoRaGatewayResponse(AbstractModel):
         r"""
         :param _Gateway: LoRa 网关信息
         :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Gateway = None
@@ -1766,7 +1766,7 @@ class CreatePositionFenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1887,7 +1887,7 @@ class CreatePositionSpaceResponse(AbstractModel):
         :param _SpaceId: 空间Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SpaceId = None
@@ -1981,7 +1981,7 @@ class CreateProjectResponse(AbstractModel):
         r"""
         :param _Project: 返回信息
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Project = None
@@ -2137,7 +2137,7 @@ class CreateStudioProductResponse(AbstractModel):
         r"""
         :param _Product: 产品描述
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Product = None
@@ -2231,7 +2231,7 @@ class CreateTopicPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2303,7 +2303,7 @@ class CreateTopicRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2391,7 +2391,7 @@ class DeleteDeviceResponse(AbstractModel):
         :param _ResultMessage: 删除的结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -2480,7 +2480,7 @@ class DeleteDevicesResponse(AbstractModel):
         :param _ResultMessage: 删除的结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -2575,7 +2575,7 @@ class DeleteFenceBindResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2633,7 +2633,7 @@ class DeleteLoRaFrequencyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2691,7 +2691,7 @@ class DeleteLoRaGatewayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2761,7 +2761,7 @@ class DeletePositionFenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2819,7 +2819,7 @@ class DeletePositionSpaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2877,7 +2877,7 @@ class DeleteProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2935,7 +2935,7 @@ class DeleteStudioProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3005,7 +3005,7 @@ class DeleteTopicPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3063,7 +3063,7 @@ class DeleteTopicRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3145,7 +3145,7 @@ class DescribeBatchProductionResponse(AbstractModel):
         :type GenerationMethod: int
         :param _UploadUrl: 上传URL。
         :type UploadUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchCnt = None
@@ -3303,7 +3303,7 @@ class DescribeBindedProductsResponse(AbstractModel):
         :type Products: list of BindProductInfo
         :param _Total: 绑定的子产品总数量
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -3413,7 +3413,7 @@ class DescribeDeviceBindGatewayResponse(AbstractModel):
         :param _GatewayProductOwnerUin: 设备对应产品所属的主账号 UIN
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayProductOwnerUin: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GatewayProductId = None
@@ -3605,7 +3605,7 @@ class DescribeDeviceDataHistoryResponse(AbstractModel):
         :param _Results: 历史数据结果数组，返回对应时间点及取值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DeviceDataHistoryItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FieldName = None
@@ -3734,7 +3734,7 @@ class DescribeDeviceDataResponse(AbstractModel):
         r"""
         :param _Data: 设备数据
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3816,7 +3816,7 @@ class DescribeDeviceFirmWareResponse(AbstractModel):
         r"""
         :param _Data: 固件信息
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3946,7 +3946,7 @@ class DescribeDeviceLocationSolveResponse(AbstractModel):
         :param _Accuracy: 误差精度预估，单位为米
 注意：此字段可能返回 null，表示取不到有效值。
         :type Accuracy: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Longitude = None
@@ -4084,7 +4084,7 @@ class DescribeDevicePositionListResponse(AbstractModel):
         :type Positions: list of ProductDevicesPositionItem
         :param _Total: 产品设备位置信息的数目
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Positions = None
@@ -4193,7 +4193,7 @@ class DescribeDeviceResponse(AbstractModel):
         r"""
         :param _Device: 设备信息
         :type Device: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Device = None
@@ -4291,7 +4291,7 @@ class DescribeFenceBindListResponse(AbstractModel):
         :type List: list of FenceBindProductItem
         :param _Total: 围栏绑定的设备总数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -4450,7 +4450,7 @@ class DescribeFenceEventListResponse(AbstractModel):
         :type List: list of FenceEventItem
         :param _Total: 围栏告警事件总数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -4587,7 +4587,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         :param _CreatorNickName: 创建账号ID昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorNickName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -4799,7 +4799,7 @@ class DescribeGatewayBindDevicesResponse(AbstractModel):
         :type Total: int
         :param _ProductName: 子设备所属的产品名。
         :type ProductName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Devices = None
@@ -4934,7 +4934,7 @@ class DescribeGatewaySubDeviceListResponse(AbstractModel):
         :param _DeviceList: 设备列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: list of FamilySubDevice
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -5069,7 +5069,7 @@ class DescribeGatewaySubProductsResponse(AbstractModel):
         :type Products: list of BindProductInfo
         :param _Total: 可绑定或解绑的产品总数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -5191,7 +5191,7 @@ class DescribeInstanceResponse(AbstractModel):
         :param _Data: 实例信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.InstanceDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -5264,7 +5264,7 @@ class DescribeLoRaFrequencyResponse(AbstractModel):
         :param _Data: 返回详情项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -5336,7 +5336,7 @@ class DescribeModelDefinitionResponse(AbstractModel):
         r"""
         :param _Model: 产品数据模板
         :type Model: :class:`tencentcloud.iotexplorer.v20190423.models.ProductModelDefinition`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Model = None
@@ -5436,7 +5436,7 @@ class DescribePositionFenceListResponse(AbstractModel):
         :param _Total: 围栏数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -5521,7 +5521,7 @@ class DescribeProjectResponse(AbstractModel):
         r"""
         :param _Project: 返回信息
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntryEx`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Project = None
@@ -5644,7 +5644,7 @@ class DescribeSpaceFenceEventListResponse(AbstractModel):
         :type List: list of FenceEventItem
         :param _Total: 围栏告警事件总数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -5729,7 +5729,7 @@ class DescribeStudioProductResponse(AbstractModel):
         r"""
         :param _Product: 产品详情
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Product = None
@@ -5817,7 +5817,7 @@ class DescribeTopicPolicyResponse(AbstractModel):
         :type TopicName: str
         :param _Privilege: Topic权限
         :type Privilege: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProductId = None
@@ -5908,7 +5908,7 @@ class DescribeTopicRuleResponse(AbstractModel):
         :param _Rule: 规则描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.iotexplorer.v20190423.models.TopicRule`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Rule = None
@@ -6680,7 +6680,7 @@ class DirectBindDeviceInFamilyResponse(AbstractModel):
         r"""
         :param _AppDeviceInfo: 返回设备信息
         :type AppDeviceInfo: :class:`tencentcloud.iotexplorer.v20190423.models.AppDeviceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppDeviceInfo = None
@@ -6750,7 +6750,7 @@ class DisableTopicRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6808,7 +6808,7 @@ class EnableTopicRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7543,7 +7543,7 @@ class GenSingleDeviceSignatureOfPublicResponse(AbstractModel):
         r"""
         :param _DeviceSignature: 设备签名
         :type DeviceSignature: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceSignatureInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeviceSignature = None
@@ -7642,7 +7642,7 @@ class GetBatchProductionsListResponse(AbstractModel):
         :type BatchProductions: list of BatchProductionInfo
         :param _TotalCnt: 返回数量。
         :type TotalCnt: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchProductions = None
@@ -7751,7 +7751,7 @@ class GetCOSURLResponse(AbstractModel):
         r"""
         :param _Url: 固件URL
         :type Url: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -7885,7 +7885,7 @@ class GetDeviceListResponse(AbstractModel):
         :param _Total: 产品下的设备总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Devices = None
@@ -8018,7 +8018,7 @@ class GetDeviceLocationHistoryResponse(AbstractModel):
         r"""
         :param _Positions: 历史位置列表
         :type Positions: list of PositionItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Positions = None
@@ -8119,7 +8119,7 @@ class GetDeviceSumStatisticsResponse(AbstractModel):
         :type ActivationBeforeWeekDayCount: int
         :param _ActiveBeforeWeekDayCount: 上一周活跃设备数
         :type ActiveBeforeWeekDayCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActivationCount = None
@@ -8272,7 +8272,7 @@ class GetFamilyDeviceUserListResponse(AbstractModel):
         :param _UserList: 设备的用户列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserList: list of DeviceUser
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserList = None
@@ -8387,7 +8387,7 @@ class GetGatewaySubDeviceListResponse(AbstractModel):
         :param _DeviceList: 设备列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceList: :class:`tencentcloud.iotexplorer.v20190423.models.FamilySubDevice`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -8496,7 +8496,7 @@ class GetLoRaGatewayListResponse(AbstractModel):
         :param _Gateways: 返回详情项
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gateways: list of LoRaGatewayItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -8609,7 +8609,7 @@ class GetPositionSpaceListResponse(AbstractModel):
         :param _Total: 位置空间数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -8770,7 +8770,7 @@ class GetProjectListResponse(AbstractModel):
         :param _Total: 列表项个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Projects = None
@@ -8893,7 +8893,7 @@ class GetStudioProductListResponse(AbstractModel):
         :type Products: list of ProductEntry
         :param _Total: 产品数量
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -8992,7 +8992,7 @@ class GetTopicRuleListResponse(AbstractModel):
         :type TotalCnt: int
         :param _Rules: 规则列表
         :type Rules: list of TopicRuleInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCnt = None
@@ -9377,7 +9377,7 @@ class ListEventHistoryResponse(AbstractModel):
         :param _EventHistory: 搜集结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventHistory: list of EventHistoryItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Context = None
@@ -9525,7 +9525,7 @@ class ListFirmwaresResponse(AbstractModel):
         :type TotalCount: int
         :param _Firmwares: 固件列表
         :type Firmwares: list of FirmwareInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -9610,7 +9610,7 @@ class ListTopicPolicyResponse(AbstractModel):
         r"""
         :param _Topics: Topic列表
         :type Topics: list of TopicItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Topics = None
@@ -10065,7 +10065,7 @@ class ModifyFenceBindResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10221,7 +10221,7 @@ class ModifyLoRaFrequencyResponse(AbstractModel):
         r"""
         :param _Data: 频点信息
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaFrequencyEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -10379,7 +10379,7 @@ class ModifyLoRaGatewayResponse(AbstractModel):
         r"""
         :param _Gateway: 返回网关数据
         :type Gateway: :class:`tencentcloud.iotexplorer.v20190423.models.LoRaGatewayItem`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Gateway = None
@@ -10461,7 +10461,7 @@ class ModifyModelDefinitionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10492,7 +10492,7 @@ class ModifyPositionFenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10610,7 +10610,7 @@ class ModifyPositionSpaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10694,7 +10694,7 @@ class ModifyProjectResponse(AbstractModel):
         r"""
         :param _Project: 项目详情
         :type Project: :class:`tencentcloud.iotexplorer.v20190423.models.ProjectEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Project = None
@@ -10788,7 +10788,7 @@ class ModifySpacePropertyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10908,7 +10908,7 @@ class ModifyStudioProductResponse(AbstractModel):
         r"""
         :param _Product: 产品描述
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Product = None
@@ -11014,7 +11014,7 @@ class ModifyTopicPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -11086,7 +11086,7 @@ class ModifyTopicRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -12209,7 +12209,7 @@ class PublishBroadcastMessageResponse(AbstractModel):
         r"""
         :param _TaskId: 广播消息任务Id
         :type TaskId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -12337,7 +12337,7 @@ class PublishMessageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -12425,7 +12425,7 @@ class PublishRRPCMessageResponse(AbstractModel):
         :param _PayloadBase64: 设备回复的消息内容，采用base64编码
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayloadBase64: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MessageId = None
@@ -12515,7 +12515,7 @@ class ReleaseStudioProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -12660,7 +12660,7 @@ class SearchPositionSpaceResponse(AbstractModel):
         :param _Total: 符合条件的位置空间个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
@@ -12807,7 +12807,7 @@ class SearchStudioProductResponse(AbstractModel):
         :type Products: list of ProductEntry
         :param _Total: 产品数量
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -12894,7 +12894,7 @@ class SearchTopicRuleResponse(AbstractModel):
         :type TotalCnt: int
         :param _Rules: 规则信息列表
         :type Rules: list of TopicRuleInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCnt = None
@@ -13328,7 +13328,7 @@ class UnbindDevicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -13400,7 +13400,7 @@ class UnbindProductsResponse(AbstractModel):
         r"""
         :param _GatewayDeviceNames: 绑定了待解绑的LoRa产品下的设备的网关设备列表
         :type GatewayDeviceNames: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GatewayDeviceNames = None
@@ -13491,7 +13491,7 @@ class UpdateDevicesEnableStateResponse(AbstractModel):
         :param _ResultMessage: 删除的结果信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultMessage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -13617,7 +13617,7 @@ class UpdateFirmwareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -13759,7 +13759,7 @@ class UploadFirmwareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

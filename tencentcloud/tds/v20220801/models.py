@@ -80,7 +80,7 @@ class DescribeFraudBaseResponse(AbstractModel):
         :type RiskInfos: list of RiskInfo
         :param _HistRiskInfos: 离线风险信息
         :type HistRiskInfos: list of RiskInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppVersion = None
@@ -282,7 +282,7 @@ class DescribeFraudPremiumResponse(AbstractModel):
         :type HistRiskInfos: list of RiskInfo
         :param _Openid: 设备匿名标识
         :type Openid: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppVersion = None
@@ -596,7 +596,7 @@ class DescribeFraudUltimateResponse(AbstractModel):
         :type SuggestionLevel: int
         :param _Unionid: 图灵盾统一ID
         :type Unionid: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppVersion = None
@@ -839,7 +839,7 @@ class DescribeTrustedIDResponse(AbstractModel):
         :type SystemVersion: str
         :param _SdkBuildNo: SDK版本号
         :type SdkBuildNo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Openid = None

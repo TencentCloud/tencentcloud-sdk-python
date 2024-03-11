@@ -930,7 +930,7 @@ class CreateApmInstanceResponse(AbstractModel):
         :param _InstanceId: 实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceId = None
@@ -1049,7 +1049,7 @@ class DescribeApmAgentResponse(AbstractModel):
         :param _ApmAgent: Agent信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApmAgent: :class:`tencentcloud.apm.v20210622.models.ApmAgentInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApmAgent = None
@@ -1175,7 +1175,7 @@ class DescribeApmInstancesResponse(AbstractModel):
         :param _Instances: apm实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Instances: list of ApmInstanceDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Instances = None
@@ -1384,7 +1384,7 @@ class DescribeGeneralMetricDataResponse(AbstractModel):
         :param _Records: 指标结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of Line
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Records = None
@@ -1552,7 +1552,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
         :type TotalCount: int
         :param _Spans: Span分页列表
         :type Spans: list of Span
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1802,7 +1802,7 @@ class DescribeMetricRecordsResponse(AbstractModel):
         :param _TotalCount: 查询指标结果集条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Records = None
@@ -1996,7 +1996,7 @@ class DescribeServiceOverviewResponse(AbstractModel):
         :param _Records: 指标结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Records: list of ApmMetricRecord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Records = None
@@ -2470,7 +2470,7 @@ class ModifyApmInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3041,7 +3041,7 @@ class TerminateApmInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

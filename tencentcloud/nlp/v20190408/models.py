@@ -69,7 +69,7 @@ positive：正面情感
 negative：负面情感
 neutral：中性、无情感
         :type Sentiment: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Positive = None
@@ -328,7 +328,7 @@ class ClassifyContentResponse(AbstractModel):
         :param _ThirdClassification: 三级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdClassification: :class:`tencentcloud.nlp.v20190408.models.Category`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FirstClassification = None
@@ -440,7 +440,7 @@ class ComposeCoupletResponse(AbstractModel):
         :type Content: list of str
         :param _RandomCause: 当对联随机生成时，展示随机生成原因。
         :type RandomCause: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TopScroll = None
@@ -556,7 +556,7 @@ class ComposePoetryResponse(AbstractModel):
         :type Title: str
         :param _Content: 诗的内容。
         :type Content: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Title = None
@@ -976,7 +976,7 @@ class EvaluateSentenceSimilarityResponse(AbstractModel):
         r"""
         :param _ScoreList: 每个句子对的相似度分值。
         :type ScoreList: list of float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ScoreList = None
@@ -1060,7 +1060,7 @@ class EvaluateWordSimilarityResponse(AbstractModel):
         r"""
         :param _Similarity: 词相似度分值。
         :type Similarity: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Similarity = None
@@ -1158,7 +1158,7 @@ class GenerateKeywordSentenceResponse(AbstractModel):
         r"""
         :param _KeywordSentenceList: 生成的句子列表。
         :type KeywordSentenceList: list of KeywordSentence
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeywordSentenceList = None
@@ -1273,7 +1273,7 @@ class ParseWordsResponse(AbstractModel):
         :param _Entities: 实体识别结果。（请参见附录[实体类型数据](https://cloud.tencent.com/document/product/271/90592)）
 
         :type Entities: list of Entity
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NormalText = None
@@ -1400,7 +1400,7 @@ class RetrieveSimilarWordsResponse(AbstractModel):
         r"""
         :param _WordList: 召回的相似词数组。
         :type WordList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WordList = None
@@ -1471,7 +1471,7 @@ class SentenceCorrectionResponse(AbstractModel):
         :param _CorrectionList: 纠错结果列表。
 （注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
         :type CorrectionList: list of CorrectionItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CorrectionList = None
@@ -1637,7 +1637,7 @@ class TextEmbellishResponse(AbstractModel):
         r"""
         :param _EmbellishList: 润色结果列表。
         :type EmbellishList: list of Embellish
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EmbellishList = None
@@ -1771,7 +1771,7 @@ class TextWritingResponse(AbstractModel):
         r"""
         :param _WritingList: 续写结果列表。
         :type WritingList: list of Writing
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WritingList = None

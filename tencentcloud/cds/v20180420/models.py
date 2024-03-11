@@ -357,7 +357,7 @@ class DescribeDasbImageIdsResponse(AbstractModel):
         :type BaseImageId: str
         :param _AiImageId: AI镜像ID
         :type AiImageId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BaseImageId = None
@@ -410,7 +410,7 @@ class DescribeDbauditInstanceTypeResponse(AbstractModel):
         r"""
         :param _DbauditTypesSet: 数据安全审计产品规格信息列表
         :type DbauditTypesSet: list of DbauditTypesInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DbauditTypesSet = None
@@ -511,7 +511,7 @@ class DescribeDbauditInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _CdsAuditInstanceSet: 数据安全审计实例信息列表
         :type CdsAuditInstanceSet: list of CdsAuditInstance
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -569,7 +569,7 @@ class DescribeDbauditUsedRegionsResponse(AbstractModel):
         r"""
         :param _RegionSet: 可售卖地域信息列表
         :type RegionSet: list of RegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegionSet = None
@@ -694,7 +694,7 @@ class InquiryPriceDbauditInstanceResponse(AbstractModel):
         :type TotalPrice: float
         :param _RealTotalCost: 真实价钱，预支费用的折扣价，单位：元
         :type RealTotalCost: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalPrice = None
@@ -784,7 +784,7 @@ class ModifyDbauditInstancesRenewFlagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

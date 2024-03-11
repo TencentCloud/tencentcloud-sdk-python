@@ -78,7 +78,7 @@ class ApplyChainMakerBatchUserCertResponse(AbstractModel):
         :param _SignUserCrtList: 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignUserCrtList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SignUserCrtList = None
@@ -246,7 +246,7 @@ class ApplyUserCertResponse(AbstractModel):
         :type CertId: int
         :param _CertDn: 证书DN
         :type CertDn: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertId = None
@@ -665,7 +665,7 @@ class DescribeFabricBlockResponse(AbstractModel):
         :type CreateTimestamp: str
         :param _ProposerOrg: 提案组织
         :type ProposerOrg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BlockHeight = None
@@ -840,7 +840,7 @@ class DescribeFabricTransactionResponse(AbstractModel):
         :type ChaincodeName: str
         :param _TransactionData: 交易数据，base64编码，解码后为json化的字符串
         :type TransactionData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TxId = None
@@ -1054,7 +1054,7 @@ class DownloadUserCertResponse(AbstractModel):
         :type CertCtx: str
         :param _Cert: 证书内容
         :type Cert: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertName = None
@@ -1291,7 +1291,7 @@ class GetBlockListResponse(AbstractModel):
         :type TotalCount: int
         :param _BlockList: 区块列表
         :type BlockList: list of Block
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1462,7 +1462,7 @@ class GetBlockTransactionListForUserResponse(AbstractModel):
         :type TotalCount: int
         :param _TransactionList: 交易列表
         :type TransactionList: list of TransactionItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1623,7 +1623,7 @@ class GetClusterSummaryResponse(AbstractModel):
         :type PeerCertCount: int
         :param _ClientCertCount: 当前组织业务证书数量
         :type ClientCertCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalChannelCount = None
@@ -1921,7 +1921,7 @@ class GetInvokeTxResponse(AbstractModel):
         :type TxValidationMsg: str
         :param _BlockId: 交易所在区块ID
         :type BlockId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TxValidationCode = None
@@ -2121,7 +2121,7 @@ class GetLatesdTransactionListResponse(AbstractModel):
         :type TotalCount: int
         :param _TransactionList: 交易列表
         :type TransactionList: list of TransactionItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2316,7 +2316,7 @@ class GetLatestTransactionListResponse(AbstractModel):
         :type TotalCount: int
         :param _TransactionList: 交易列表
         :type TransactionList: list of TransactionItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2497,7 +2497,7 @@ class GetTransactionDetailForUserResponse(AbstractModel):
         :type ContractName: str
         :param _EndorserOrgList: 背书组织列表
         :type EndorserOrgList: list of EndorserGroup
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TransactionId = None
@@ -2753,7 +2753,7 @@ class InvokeChainMakerContractResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2886,7 +2886,7 @@ class InvokeChainMakerDemoContractResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3022,7 +3022,7 @@ class InvokeFabricChaincodeResponse(AbstractModel):
         :type TxStatus: str
         :param _TxResult: 交易结果
         :type TxResult: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TxId = None
@@ -3229,7 +3229,7 @@ class InvokeResponse(AbstractModel):
         :type Events: str
         :param _TxId: 交易ID
         :type TxId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Txid = None
@@ -3400,7 +3400,7 @@ class QueryChainMakerBlockTransactionResponse(AbstractModel):
         :type TxCount: int
         :param _BlockTimestamp: 区块时间戳，单位是秒
         :type BlockTimestamp: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3554,7 +3554,7 @@ class QueryChainMakerContractResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3658,7 +3658,7 @@ class QueryChainMakerDemoBlockTransactionResponse(AbstractModel):
         :type TxCount: int
         :param _BlockTimestamp: 区块时间戳，单位是秒
         :type BlockTimestamp: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3812,7 +3812,7 @@ class QueryChainMakerDemoContractResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerContractResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3909,7 +3909,7 @@ class QueryChainMakerDemoTransactionResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4006,7 +4006,7 @@ class QueryChainMakerTransactionResponse(AbstractModel):
         :param _Result: 交易结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tbaas.v20180416.models.ChainMakerTransactionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4130,7 +4130,7 @@ class QueryFabricChaincodeResponse(AbstractModel):
         :type TxStatus: str
         :param _TxResult: 交易结果
         :type TxResult: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TxId = None
@@ -4321,7 +4321,7 @@ class QueryResponse(AbstractModel):
         r"""
         :param _Data: 查询结果数据
         :type Data: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -4464,7 +4464,7 @@ class SrvInvokeResponse(AbstractModel):
         :type RetMsg: str
         :param _Data: 返回数据
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RetCode = None

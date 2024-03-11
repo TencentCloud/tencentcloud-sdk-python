@@ -222,7 +222,7 @@ class CreateDisclosedCredentialResponse(AbstractModel):
         r"""
         :param _CredentialData: 凭证字符串
         :type CredentialData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CredentialData = None
@@ -369,7 +369,7 @@ class CreatePresentationResponse(AbstractModel):
         r"""
         :param _PresentationData: 可验证表达内容
         :type PresentationData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PresentationData = None
@@ -453,7 +453,7 @@ class CreateTDidByHostResponse(AbstractModel):
         :type Did: str
         :param _Transaction: 链上交易信息
         :type Transaction: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Did = None
@@ -573,7 +573,7 @@ class CreateTDidByPubKeyResponse(AbstractModel):
         :type Did: str
         :param _Transaction: 链上交易信息
         :type Transaction: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Did = None
@@ -865,7 +865,7 @@ class DeactivateTDidResponse(AbstractModel):
         r"""
         :param _Transaction: 上链交易信息
         :type Transaction: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Transaction = None
@@ -986,7 +986,7 @@ class GetAppSummaryResponse(AbstractModel):
         :param _UserCounter: 用户创建资源的统计指标
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserCounter: :class:`tencentcloud.tdid.v20210519.models.ResourceCounterData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppCounter = None
@@ -1083,7 +1083,7 @@ class GetCredentialStateResponse(AbstractModel):
         :param _CredentialState: 凭证状态信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CredentialState: :class:`tencentcloud.tdid.v20210519.models.CredentialState`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CredentialState = None
@@ -1141,7 +1141,7 @@ class GetOverSummaryResponse(AbstractModel):
         :param _ChainCnt: 部署网络子链总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChainCnt: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppCounter = None
@@ -1268,7 +1268,7 @@ class GetTDidByObjectIdResponse(AbstractModel):
         :param _Did: DID标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type Did: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Did = None
@@ -1350,7 +1350,7 @@ class GetTDidDocumentResponse(AbstractModel):
         r"""
         :param _Document: DID文档内容
         :type Document: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Document = None
@@ -1432,7 +1432,7 @@ class GetTDidPubKeyResponse(AbstractModel):
         r"""
         :param _AuthPublicKeyList: DID公钥数组
         :type AuthPublicKeyList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuthPublicKeyList = None
@@ -1528,7 +1528,7 @@ class IssueCredentialResponse(AbstractModel):
         r"""
         :param _CredentialData: 可验证凭证内容
         :type CredentialData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CredentialData = None
@@ -1630,7 +1630,7 @@ class QueryAuthorityInfoResponse(AbstractModel):
         :type Description: str
         :param _RecognizeTime: 认证时间
         :type RecognizeTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -1752,7 +1752,7 @@ class QueryCPTResponse(AbstractModel):
         r"""
         :param _CPTJson: 凭证模板内容
         :type CPTJson: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CPTJson = None
@@ -1949,7 +1949,7 @@ class SetTDidAttributeResponse(AbstractModel):
         r"""
         :param _Transaction: 上链交易信息
         :type Transaction: :class:`tencentcloud.tdid.v20210519.models.ChainTransaction`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Transaction = None
@@ -2034,7 +2034,7 @@ class UpdateCredentialStateResponse(AbstractModel):
         :param _Result: 更新是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2132,7 +2132,7 @@ class VerifyCredentialsResponse(AbstractModel):
         :type VerifyCode: int
         :param _VerifyMessage: 验证结果信息
         :type VerifyMessage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2262,7 +2262,7 @@ class VerifyPresentationResponse(AbstractModel):
         :type VerifyCode: int
         :param _VerifyMessage: 验证消息
         :type VerifyMessage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

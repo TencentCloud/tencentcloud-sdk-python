@@ -418,7 +418,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
         :type Result: int
         :param _TaskID: 任务id
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -620,7 +620,7 @@ class CreateAppScanTaskResponse(AbstractModel):
         :type Result: int
         :param _TaskID: 任务id
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -772,7 +772,7 @@ class CreateFlySecMiniAppProfessionalScanTaskResponse(AbstractModel):
         r"""
         :param _Ret: 返回值, 0:成功, 其他值请查看“返回值”定义
         :type Ret: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -904,7 +904,7 @@ class CreateFlySecMiniAppScanTaskRepeatResponse(AbstractModel):
         :type Ret: int
         :param _TaskID: 任务id
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1094,7 +1094,7 @@ class CreateFlySecMiniAppScanTaskResponse(AbstractModel):
         :type Ret: int
         :param _TaskID: 任务id
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1180,7 +1180,7 @@ class DescribeBasicDiagnosisResourceUsageInfoResponse(AbstractModel):
         :type Total: int
         :param _UnusedCount: 资源未使用次数
         :type UnusedCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1319,7 +1319,7 @@ class DescribeFlySecMiniAppReportUrlResponse(AbstractModel):
         :param _Url: 诊断报告下载链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1453,7 +1453,7 @@ class DescribeFlySecMiniAppScanReportListResponse(AbstractModel):
         :param _Total: 诊断任务数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1590,7 +1590,7 @@ class DescribeFlySecMiniAppScanTaskListResponse(AbstractModel):
         :param _Total: 诊断任务数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1698,7 +1698,7 @@ class DescribeFlySecMiniAppScanTaskParamResponse(AbstractModel):
         :param _ScanVersion: 诊断扫描版本 0:正式版 1:体验版
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanVersion: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1829,7 +1829,7 @@ class DescribeFlySecMiniAppScanTaskStatusResponse(AbstractModel):
         :param _MiniAppVersion: 小程序版本
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniAppVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -1916,7 +1916,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
         :type Data: list of ResourceUsageInfoData
         :param _Total: 安全资源数量
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -2113,7 +2113,7 @@ class DescribeScanTaskListResponse(AbstractModel):
         :param _Total: 任务总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2264,7 +2264,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param _ReportResult: 诊断json结果内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportResult: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2408,7 +2408,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
         :param _FlowSteps: 任务流详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowSteps: list of TaskFlowStepsInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

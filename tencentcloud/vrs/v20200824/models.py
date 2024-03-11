@@ -60,7 +60,7 @@ class CancelVRSTaskResponse(AbstractModel):
         r"""
         :param _Data: 任务ID
         :type Data: :class:`tencentcloud.vrs.v20200824.models.CancelVRSTaskRsp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -302,7 +302,7 @@ class CreateVRSTaskResponse(AbstractModel):
         r"""
         :param _Data: 创建任务结果
         :type Data: :class:`tencentcloud.vrs.v20200824.models.CreateVRSTaskRespData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -460,7 +460,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
         r"""
         :param _Data: 声音复刻任务结果
         :type Data: :class:`tencentcloud.vrs.v20200824.models.DescribeVRSTaskStatusRespData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -582,7 +582,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
         r"""
         :param _Data: 检测结果
         :type Data: :class:`tencentcloud.vrs.v20200824.models.DetectionEnvAndSoundQualityRespData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -737,7 +737,7 @@ class DownloadVRSModelResponse(AbstractModel):
         r"""
         :param _Data: 响应
         :type Data: :class:`tencentcloud.vrs.v20200824.models.DownloadVRSModelRsp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -870,7 +870,7 @@ class GetTrainingTextResponse(AbstractModel):
         r"""
         :param _Data: 文本列表
         :type Data: :class:`tencentcloud.vrs.v20200824.models.TrainingTexts`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -915,7 +915,7 @@ class GetVRSVoiceTypesResponse(AbstractModel):
         r"""
         :param _Data: 复刻音色信息
         :type Data: :class:`tencentcloud.vrs.v20200824.models.VoiceTypeListData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None

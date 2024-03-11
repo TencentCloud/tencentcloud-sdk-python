@@ -363,7 +363,7 @@ class CreateInstanceByApiResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -455,7 +455,7 @@ class DescribeInstanceInfoResponse(AbstractModel):
         :type SimpleInstanceInfo: :class:`tencentcloud.cdwpg.v20201230.models.SimpleInstanceInfo`
         :param _ErrorMsg: 1
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SimpleInstanceInfo = None
@@ -537,7 +537,7 @@ class DescribeInstanceResponse(AbstractModel):
         r"""
         :param _InstanceInfo: 实例描述信息
         :type InstanceInfo: :class:`tencentcloud.cdwpg.v20201230.models.InstanceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceInfo = None
@@ -630,7 +630,7 @@ class DescribeInstanceStateResponse(AbstractModel):
         :param _BackupStatus: 集群备份任务开启状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupStatus: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceState = None
@@ -830,7 +830,7 @@ class DescribeInstancesResponse(AbstractModel):
         :param _ErrorMsg: -
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -980,7 +980,7 @@ class DescribeSimpleInstancesResponse(AbstractModel):
         :param _ErrorMsg: -
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1077,7 +1077,7 @@ class DestroyInstanceByApiResponse(AbstractModel):
         :type FlowId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -1892,7 +1892,7 @@ class ModifyInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

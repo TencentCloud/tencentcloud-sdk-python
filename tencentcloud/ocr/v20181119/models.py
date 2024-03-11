@@ -76,7 +76,7 @@ class AdvertiseOCRResponse(AbstractModel):
         r"""
         :param _TextDetections: 检测到的文本信息，包括文本行内容、置信度、文本行坐标以及文本行旋转纠正后的坐标，具体内容请点击左侧链接。
         :type TextDetections: list of AdvertiseTextDetection
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -959,7 +959,7 @@ class ArithmeticOCRResponse(AbstractModel):
         :type TextDetections: list of TextArithmetic
         :param _Angle: 图片横屏的角度(90度或270度)
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -1156,7 +1156,7 @@ class BankCardOCRResponse(AbstractModel):
         :param _QualityValue: 图片质量分数，请求EnableQualityValue时返回（取值范围：0-100，分数越低越模糊，建议阈值≥50）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityValue: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CardNo = None
@@ -1406,7 +1406,7 @@ class BankSlipOCRResponse(AbstractModel):
         :type BankSlipInfos: list of BankSlipInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BankSlipInfos = None
@@ -1556,7 +1556,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
 
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegNum = None
@@ -2144,7 +2144,7 @@ class BusInvoiceOCRResponse(AbstractModel):
         :type BusInvoiceInfos: list of BusInvoiceInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusInvoiceInfos = None
@@ -2332,7 +2332,7 @@ class BusinessCardOCRResponse(AbstractModel):
         :type RetImageBase64: str
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessCardInfos = None
@@ -2584,7 +2584,7 @@ class CarInvoiceOCRResponse(AbstractModel):
         r"""
         :param _CarInvoiceInfos: 购车发票识别结果，具体内容请点击左侧链接。
         :type CarInvoiceInfos: list of CarInvoiceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CarInvoiceInfos = None
@@ -2815,7 +2815,7 @@ class ClassifyDetectOCRResponse(AbstractModel):
         r"""
         :param _ClassifyDetectInfos: 智能卡证分类结果。当图片类型不支持分类识别或者识别出的类型不在请求参数DiscernType指定的范围内时，返回结果中的Type字段将为空字符串，Name字段将返回"其它"
         :type ClassifyDetectInfos: list of ClassifyDetectInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClassifyDetectInfos = None
@@ -2980,7 +2980,7 @@ class CreateAIFormTaskResponse(AbstractModel):
         :param _OperateUrl: 本次识别任务的操作URL，有效期自生成之时起共24小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -3384,7 +3384,7 @@ WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
         :type BackPageName: str
         :param _BackPageCardCode: 驾驶证副页证号
         :type BackPageCardCode: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -3759,7 +3759,7 @@ class DutyPaidProofOCRResponse(AbstractModel):
         :type DutyPaidProofInfos: list of DutyPaidProofInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DutyPaidProofInfos = None
@@ -3885,7 +3885,7 @@ class EduPaperOCRResponse(AbstractModel):
         :type Angle: int
         :param _QuestionBlockInfos: 结构化方式输出，具体内容请点击左侧链接。
         :type QuestionBlockInfos: list of QuestionBlockObj
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EduPaperInfos = None
@@ -5401,7 +5401,7 @@ class EnglishOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetectionEn
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -5553,7 +5553,7 @@ class EnterpriseLicenseOCRResponse(AbstractModel):
         :type EnterpriseLicenseInfos: list of EnterpriseLicenseInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnterpriseLicenseInfos = None
@@ -5679,7 +5679,7 @@ class EstateCertOCRResponse(AbstractModel):
         :type Angle: float
         :param _Number: 不动产权号
         :type Number: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Obligee = None
@@ -5929,7 +5929,7 @@ class FinanBillOCRResponse(AbstractModel):
         r"""
         :param _FinanBillInfos: 金融票据整单识别结果，具体内容请点击左侧链接。
         :type FinanBillInfos: list of FinanBillInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FinanBillInfos = None
@@ -6069,7 +6069,7 @@ class FinanBillSliceOCRResponse(AbstractModel):
         r"""
         :param _FinanBillSliceInfos: 金融票据切片识别结果，具体内容请点击左侧链接。
         :type FinanBillSliceInfos: list of FinanBillSliceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FinanBillSliceInfos = None
@@ -6245,7 +6245,7 @@ class FlightInvoiceOCRResponse(AbstractModel):
         r"""
         :param _FlightInvoiceInfos: 机票行程单识别结果，具体内容请点击左侧链接。
         :type FlightInvoiceInfos: list of FlightInvoiceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlightInvoiceInfos = None
@@ -6623,7 +6623,7 @@ class FormulaOCRResponse(AbstractModel):
         :type Angle: int
         :param _FormulaInfos: 检测到的文本信息，具体内容请点击左侧链接。
         :type FormulaInfos: list of TextFormula
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Angle = None
@@ -6788,7 +6788,7 @@ class GeneralAccurateOCRResponse(AbstractModel):
         :type Angel: float
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -6996,7 +6996,7 @@ class GeneralBasicOCRResponse(AbstractModel):
         :type PdfPageSize: int
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -7133,7 +7133,7 @@ class GeneralEfficientOCRResponse(AbstractModel):
         :type TextDetections: list of TextDetection
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -7268,7 +7268,7 @@ class GeneralFastOCRResponse(AbstractModel):
         :type Angel: float
         :param _PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
         :type PdfPageSize: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -7432,7 +7432,7 @@ class GeneralHandwritingOCRResponse(AbstractModel):
         :type TextDetections: list of TextGeneralHandwriting
         :param _Angel: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angel: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -7639,7 +7639,7 @@ class GetTaskStateResponse(AbstractModel):
 5:超时：任务超过了可操作的24H时限
 6:任务识别失败
         :type TaskState: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskState = None
@@ -7823,7 +7823,7 @@ class HKIDCardOCRResponse(AbstractModel):
 -9102：证照复印件告警
 -9103：证照翻拍告警
         :type WarningCode: list of int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CnName = None
@@ -8065,7 +8065,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
         :type VisaNum: str
         :param _PassNo: 通行证号码
         :type PassNo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -8340,7 +8340,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         :type AdvancedInfo: str
         :param _ReflectDetailInfos: 反光点覆盖区域详情结果，具体内容请点击左侧链接
         :type ReflectDetailInfos: list of ReflectDetailInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -8567,7 +8567,7 @@ class ImageEnhancementResponse(AbstractModel):
         :type ImageTag: str
         :param _Image: 图片数据，返回预处理后图像或原图像base64字符
         :type Image: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageTag = None
@@ -8674,7 +8674,7 @@ class InstitutionOCRResponse(AbstractModel):
         :type Name: str
         :param _LegalPerson: 法定代表人
         :type LegalPerson: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegId = None
@@ -8856,7 +8856,7 @@ class InsuranceBillOCRResponse(AbstractModel):
         r"""
         :param _InsuranceBillInfos: 保险单据识别结果，具体内容请点击左侧链接。
         :type InsuranceBillInfos: list of InsuranceBillInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InsuranceBillInfos = None
@@ -9124,7 +9124,7 @@ class InvoiceGeneralOCRResponse(AbstractModel):
         :type InvoiceGeneralInfos: list of InvoiceGeneralInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InvoiceGeneralInfos = None
@@ -9712,7 +9712,7 @@ class LicensePlateOCRResponse(AbstractModel):
         :type Color: str
         :param _LicensePlateInfos: 全部车牌信息。
         :type LicensePlateInfos: list of LicensePlateInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Number = None
@@ -9930,7 +9930,7 @@ MyKid 儿童卡
         :type Type: str
         :param _Birthday: 出生日期（目前该字段仅支持IKAD劳工证、MyKad 身份证）
         :type Birthday: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ID = None
@@ -10148,7 +10148,7 @@ class MLIDPassportOCRResponse(AbstractModel):
         :type Type: str
         :param _PassportRecognizeInfos: 信息区证件内容
         :type PassportRecognizeInfos: :class:`tencentcloud.ocr.v20181119.models.PassportRecognizeInfos`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ID = None
@@ -10894,7 +10894,7 @@ class MainlandPermitOCRResponse(AbstractModel):
         :type Profile: str
         :param _MainlandTravelPermitBackInfos: 背面字段信息
         :type MainlandTravelPermitBackInfos: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -11447,7 +11447,7 @@ class MixedInvoiceDetectResponse(AbstractModel):
         r"""
         :param _InvoiceDetectInfos: 检测出的票据类型列表，具体内容请点击左侧链接。
         :type InvoiceDetectInfos: list of InvoiceDetectInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InvoiceDetectInfos = None
@@ -11735,7 +11735,7 @@ class MixedInvoiceOCRResponse(AbstractModel):
         r"""
         :param _MixedInvoiceItems: 混贴票据识别结果，具体内容请点击左侧链接。
         :type MixedInvoiceItems: list of MixedInvoiceItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MixedInvoiceItems = None
@@ -12861,7 +12861,7 @@ class OrgCodeCertOCRResponse(AbstractModel):
         :type Address: str
         :param _ValidDate: 有效期
         :type ValidDate: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrgCode = None
@@ -13271,7 +13271,7 @@ class PassportOCRResponse(AbstractModel):
         :type FamilyName: str
         :param _FirstName: 名
         :type FirstName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Country = None
@@ -13709,7 +13709,7 @@ class PermitOCRResponse(AbstractModel):
         :type IssueAddress: str
         :param _Birthday: 出生日期
         :type Birthday: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -13956,7 +13956,7 @@ class PropOwnerCertOCRResponse(AbstractModel):
         :type Nature: str
         :param _Location: 房地坐落
         :type Location: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Owner = None
@@ -14137,7 +14137,7 @@ class QrcodeOCRResponse(AbstractModel):
         :type CodeResults: list of QrcodeResultsInfo
         :param _ImgSize: 图片大小，具体内容请点击左侧链接。
         :type ImgSize: :class:`tencentcloud.ocr.v20181119.models.QrcodeImgSize`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeResults = None
@@ -14714,7 +14714,7 @@ class QuotaInvoiceOCRResponse(AbstractModel):
         :param _HasStamp: 是否有公司印章（1有 0无 空为识别不出）
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasStamp: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InvoiceNum = None
@@ -15216,7 +15216,7 @@ class RecognizeContainerOCRResponse(AbstractModel):
         :type TareKG: str
         :param _TareLB: 集装箱自身重量，单位：磅（LB）
         :type TareLB: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ContainerId = None
@@ -15531,7 +15531,7 @@ WarnInfos，告警信息，Code 告警码列表和释义：
         :type EncryptedBody: str
         :param _Encryption: 敏感数据加密信息
         :type Encryption: :class:`tencentcloud.ocr.v20181119.models.Encryption`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -15781,7 +15781,7 @@ class RecognizeForeignPermanentResidentIdCardResponse(AbstractModel):
         :type PreviousNumber: str
         :param _IssuedAuthority: 签发机关。
         :type IssuedAuthority: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CnName = None
@@ -16054,7 +16054,7 @@ class RecognizeGeneralInvoiceResponse(AbstractModel):
         :type MixedInvoiceItems: list of InvoiceItem
         :param _TotalPDFCount: PDF文件总页码
         :type TotalPDFCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MixedInvoiceItems = None
@@ -16189,7 +16189,7 @@ class RecognizeHealthCodeOCRResponse(AbstractModel):
         :type SpotName: str
         :param _VaccinationTime: 疫苗接种时间
         :type VaccinationTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -16429,7 +16429,7 @@ class RecognizeIndonesiaIDCardOCRResponse(AbstractModel):
         :type Provinsi: str
         :param _Kota: 城市，Scene为V2时支持识别
         :type Kota: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NIK = None
@@ -16738,7 +16738,7 @@ class RecognizeMedicalInvoiceOCRResponse(AbstractModel):
         :type MedicalInvoiceInfos: list of MedicalInvoiceInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MedicalInvoiceInfos = None
@@ -16866,7 +16866,7 @@ class RecognizeOnlineTaxiItineraryOCRResponse(AbstractModel):
         r"""
         :param _OnlineTaxiItineraryInfos: 网约车行程单识别结果，具体内容请点击左侧链接。
         :type OnlineTaxiItineraryInfos: list of OnlineTaxiItineraryInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OnlineTaxiItineraryInfos = None
@@ -16994,7 +16994,7 @@ class RecognizePhilippinesDrivingLicenseOCRResponse(AbstractModel):
         :type AgencyCode: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Birthday: 出生日期
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HeadPortrait = None
@@ -17235,7 +17235,7 @@ class RecognizePhilippinesSssIDOCRResponse(AbstractModel):
         :type FullName: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _Birthday: 生日
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HeadPortrait = None
@@ -17384,7 +17384,7 @@ class RecognizePhilippinesTinIDOCRResponse(AbstractModel):
         :type Birthday: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _IssueDate: 发证日期
         :type IssueDate: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HeadPortrait = None
@@ -17554,7 +17554,7 @@ class RecognizePhilippinesUMIDOCRResponse(AbstractModel):
         :type Sex: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _HeadPortrait: 人像照片Base64后的结果
         :type HeadPortrait: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Surname = None
@@ -17757,7 +17757,7 @@ class RecognizePhilippinesVoteIDOCRResponse(AbstractModel):
         :type Address: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
         :param _PrecinctNo: 地区
         :type PrecinctNo: :class:`tencentcloud.ocr.v20181119.models.TextDetectionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HeadPortrait = None
@@ -17965,7 +17965,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableDetections = None
@@ -18128,7 +18128,7 @@ class RecognizeTableOCRResponse(AbstractModel):
         :type PdfPageSize: int
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableDetections = None
@@ -18276,7 +18276,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type EnLastName: str
         :param _PortraitImage: 证件人像照片抠取
         :type PortraitImage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ID = None
@@ -18453,7 +18453,7 @@ class RecognizeTravelCardOCRResponse(AbstractModel):
         :type RiskArea: list of str
         :param _Telephone: 电话号码
         :type Telephone: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Time = None
@@ -18741,7 +18741,7 @@ class ResidenceBookletOCRResponse(AbstractModel):
         :type RegistrationDate: str
         :param _FormerName: 曾用名
         :type FormerName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HouseholdNumber = None
@@ -19103,7 +19103,7 @@ class RideHailingDriverLicenseOCRResponse(AbstractModel):
         :type EndDate: str
         :param _ReleaseDate: 初始发证日期，对应网约车驾驶证字段：初始领证日期/发证日期
         :type ReleaseDate: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -19237,7 +19237,7 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
         :type EndDate: str
         :param _ReleaseDate: 初始发证日期，对应网约车运输证字段：初始领证日期/发证日期。
         :type ReleaseDate: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OperationLicenseNumber = None
@@ -19484,7 +19484,7 @@ class SealOCRResponse(AbstractModel):
 菱形印章：3
 三角形印章：4
         :type SealShape: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealBody = None
@@ -19706,7 +19706,7 @@ class ShipInvoiceOCRResponse(AbstractModel):
         :type ShipInvoiceInfos: list of ShipInvoiceInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ShipInvoiceInfos = None
@@ -20580,7 +20580,7 @@ class SmartStructuralOCRResponse(AbstractModel):
         :type Angle: float
         :param _StructuralItems: 识别信息
         :type StructuralItems: list of StructuralItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Angle = None
@@ -20777,7 +20777,7 @@ class SmartStructuralOCRV2Response(AbstractModel):
         :type StructuralList: list of GroupInfo
         :param _WordList: 还原文本信息
         :type WordList: list of WordItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Angle = None
@@ -21419,7 +21419,7 @@ class TableOCRResponse(AbstractModel):
         :type TextDetections: list of TextTable
         :param _Data: Base64 编码后的 Excel 数据。
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None
@@ -21605,7 +21605,7 @@ class TaxiInvoiceOCRResponse(AbstractModel):
         :param _City: 市
 注意：此字段可能返回 null，表示取不到有效值。
         :type City: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InvoiceNum = None
@@ -22177,7 +22177,7 @@ class TextDetectResponse(AbstractModel):
         r"""
         :param _HasText: 图片中是否包含文字。
         :type HasText: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HasText = None
@@ -23648,7 +23648,7 @@ class TollInvoiceOCRResponse(AbstractModel):
         :type TollInvoiceInfos: list of TollInvoiceInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TollInvoiceInfos = None
@@ -24135,7 +24135,7 @@ class TrainTicketOCRResponse(AbstractModel):
         :type ReceiptNumber: str
         :param _IsReceipt: 仅供报销使用：1为是，0为否
         :type IsReceipt: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TicketNum = None
@@ -27290,7 +27290,7 @@ class VatInvoiceOCRResponse(AbstractModel):
         :type PdfPageSize: int
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VatInvoiceInfos = None
@@ -27868,7 +27868,7 @@ class VatInvoiceVerifyNewResponse(AbstractModel):
         :type ElectronicTrainTicket: :class:`tencentcloud.ocr.v20181119.models.ElectronicTrainTicket`
         :param _ElectronicAirTransport: 全电发票（航空运输电子客票行程单）详细字段信息。
         :type ElectronicAirTransport: :class:`tencentcloud.ocr.v20181119.models.ElectronicAirTransport`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Invoice = None
@@ -28055,7 +28055,7 @@ class VatInvoiceVerifyResponse(AbstractModel):
         :type VehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.VehicleInvoiceInfo`
         :param _UsedVehicleInvoiceInfo: 二手车销售统一发票信息
         :type UsedVehicleInvoiceInfo: :class:`tencentcloud.ocr.v20181119.models.UsedVehicleInvoiceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Invoice = None
@@ -28256,7 +28256,7 @@ class VatRollInvoiceOCRResponse(AbstractModel):
         :type VatRollInvoiceInfos: list of VatRollInvoiceInfo
         :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°，顺时针为正，逆时针为负。
         :type Angle: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VatRollInvoiceInfos = None
@@ -28702,7 +28702,7 @@ WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
 注：告警信息可以同时存在多个
         :type RecognizeWarnMsg: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FrontInfo = None
@@ -28881,7 +28881,7 @@ class VehicleRegCertOCRResponse(AbstractModel):
         r"""
         :param _VehicleRegCertInfos: 机动车登记证书识别结果，具体内容请点击左侧链接。
         :type VehicleRegCertInfos: list of VehicleRegCertInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VehicleRegCertInfos = None
@@ -29011,7 +29011,7 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
         :type AirTicketInfo: :class:`tencentcloud.ocr.v20181119.models.AirTicketInfo`
         :param _RailwayTicketInfo: 铁路电子客票
         :type RailwayTicketInfo: :class:`tencentcloud.ocr.v20181119.models.RailwayTicketInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Type = None
@@ -29293,7 +29293,7 @@ class VinOCRResponse(AbstractModel):
         r"""
         :param _Vin: 检测到的车辆 VIN 码。
         :type Vin: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Vin = None
@@ -29418,7 +29418,7 @@ class WaybillOCRResponse(AbstractModel):
         r"""
         :param _TextDetections: 检测到的文本信息，具体内容请点击左侧链接。
         :type TextDetections: :class:`tencentcloud.ocr.v20181119.models.TextWaybill`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TextDetections = None

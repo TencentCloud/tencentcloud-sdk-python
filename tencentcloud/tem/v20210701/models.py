@@ -479,7 +479,7 @@ class CreateApplicationAutoscalerResponse(AbstractModel):
         :param _Result: 弹性伸缩策略组合ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -717,7 +717,7 @@ class CreateApplicationResponse(AbstractModel):
         r"""
         :param _Result: 服务code
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -826,7 +826,7 @@ class CreateApplicationServiceResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -937,7 +937,7 @@ class CreateConfigDataResponse(AbstractModel):
         r"""
         :param _Result: 创建是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1056,7 +1056,7 @@ class CreateCosTokenResponse(AbstractModel):
         :param _Result: 成功时为CosToken对象，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.tem.v20210701.models.CosToken`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1290,7 +1290,7 @@ class CreateEnvironmentResponse(AbstractModel):
         :param _Result: 成功时为环境ID，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1482,7 +1482,7 @@ class CreateLogConfigResponse(AbstractModel):
         r"""
         :param _Result: 创建是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1613,7 +1613,7 @@ class CreateResourceResponse(AbstractModel):
         :param _Result: 成功与否
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1859,7 +1859,7 @@ class DeleteApplicationAutoscalerResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1965,7 +1965,7 @@ class DeleteApplicationResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2072,7 +2072,7 @@ class DeleteApplicationServiceResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2178,7 +2178,7 @@ class DeleteIngressResponse(AbstractModel):
         r"""
         :param _Result: 是否删除成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2838,7 +2838,7 @@ class DeployApplicationResponse(AbstractModel):
         r"""
         :param _Result: 版本ID（前端可忽略）
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3277,7 +3277,7 @@ class DescribeApplicationAutoscalerListResponse(AbstractModel):
         :param _Result: 弹性伸缩策略组合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of Autoscaler
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3376,7 +3376,7 @@ class DescribeApplicationInfoResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20210701.models.TemServiceVersionInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3523,7 +3523,7 @@ class DescribeApplicationPodsResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20210701.models.DescribeRunPodPage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3619,7 +3619,7 @@ class DescribeApplicationServiceListResponse(AbstractModel):
         r"""
         :param _Result: 应用 EKS Service 列表
         :type Result: :class:`tencentcloud.tem.v20210701.models.EksService`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3782,7 +3782,7 @@ class DescribeApplicationsResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20210701.models.ServicePage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3866,7 +3866,7 @@ class DescribeApplicationsStatusResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: list of ServiceVersionBrief
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4041,7 +4041,7 @@ class DescribeConfigDataListResponse(AbstractModel):
         r"""
         :param _Result: 配置列表
         :type Result: :class:`tencentcloud.tem.v20210701.models.DescribeConfigDataListPage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4137,7 +4137,7 @@ class DescribeConfigDataResponse(AbstractModel):
         r"""
         :param _Result: 配置
         :type Result: :class:`tencentcloud.tem.v20210701.models.ConfigData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4233,7 +4233,7 @@ class DescribeDeployApplicationDetailResponse(AbstractModel):
         r"""
         :param _Result: 分批发布结果详情
         :type Result: :class:`tencentcloud.tem.v20210701.models.TemDeployApplicationDetailInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4317,7 +4317,7 @@ class DescribeEnvironmentResponse(AbstractModel):
         r"""
         :param _Result: 环境信息
         :type Result: :class:`tencentcloud.tem.v20210701.models.NamespaceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4401,7 +4401,7 @@ class DescribeEnvironmentStatusResponse(AbstractModel):
         r"""
         :param _Result: 返回状态列表
         :type Result: list of NamespaceStatusInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4543,7 +4543,7 @@ class DescribeEnvironmentsResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.tem.v20210701.models.NamespacePage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4651,7 +4651,7 @@ class DescribeIngressResponse(AbstractModel):
         r"""
         :param _Result: Ingress 规则配置
         :type Result: :class:`tencentcloud.tem.v20210701.models.IngressInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4760,7 +4760,7 @@ class DescribeIngressesResponse(AbstractModel):
         :param _Result: ingress 数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of IngressInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4859,7 +4859,7 @@ class DescribeLogConfigResponse(AbstractModel):
         r"""
         :param _Result: 配置
         :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfig`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4991,7 +4991,7 @@ class DescribePagedLogConfigListResponse(AbstractModel):
         r"""
         :param _Result: 日志收集配置列表
         :type Result: :class:`tencentcloud.tem.v20210701.models.LogConfigListPage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5100,7 +5100,7 @@ class DescribeRelatedIngressesResponse(AbstractModel):
         :param _Result: ingress 数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of IngressInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5285,7 +5285,7 @@ class DestroyConfigDataResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5367,7 +5367,7 @@ class DestroyEnvironmentResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5461,7 +5461,7 @@ class DestroyLogConfigResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5568,7 +5568,7 @@ class DisableApplicationAutoscalerResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5927,7 +5927,7 @@ class EnableApplicationAutoscalerResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6160,7 +6160,7 @@ class GenerateApplicationPackageDownloadUrlResponse(AbstractModel):
         :param _Result: 包下载临时链接
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7436,7 +7436,7 @@ class ModifyApplicationAutoscalerResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7543,7 +7543,7 @@ class ModifyApplicationInfoResponse(AbstractModel):
         :param _Result: 成功与否
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7650,7 +7650,7 @@ class ModifyApplicationReplicasResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7773,7 +7773,7 @@ class ModifyApplicationServiceResponse(AbstractModel):
         :param _Result: 是否成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7884,7 +7884,7 @@ class ModifyConfigDataResponse(AbstractModel):
         r"""
         :param _Result: 编辑是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8027,7 +8027,7 @@ class ModifyEnvironmentResponse(AbstractModel):
         :param _Result: 成功时为环境ID，失败为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8112,7 +8112,7 @@ class ModifyIngressResponse(AbstractModel):
         :param _Result: 创建成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8220,7 +8220,7 @@ class ModifyLogConfigResponse(AbstractModel):
         r"""
         :param _Result: 编辑是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9081,7 +9081,7 @@ class RestartApplicationPodResponse(AbstractModel):
         :param _Result: 返回结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9175,7 +9175,7 @@ class RestartApplicationResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9257,7 +9257,7 @@ class ResumeDeployApplicationResponse(AbstractModel):
         r"""
         :param _Result: 是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9339,7 +9339,7 @@ class RevertDeployApplicationResponse(AbstractModel):
         r"""
         :param _Result: 是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9529,7 +9529,7 @@ class RollingUpdateApplicationByVersionResponse(AbstractModel):
         r"""
         :param _Result: 版本ID
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10510,7 +10510,7 @@ class StopApplicationResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

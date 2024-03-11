@@ -1987,7 +1987,7 @@ class CreateChannelCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2076,7 +2076,7 @@ class CreateCorpTagResponse(AbstractModel):
         r"""
         :param _TagGroup: 标签组信息
         :type TagGroup: :class:`tencentcloud.wav.v20210129.models.TagGroup`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TagGroup = None
@@ -2318,7 +2318,7 @@ class CreateLeadResponse(AbstractModel):
         :type BusinessCode: int
         :param _BusinessMsg: 线索处理结果描述
         :type BusinessMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessCode = None
@@ -4790,7 +4790,7 @@ class QueryActivityJoinListResponse(AbstractModel):
         :param _PageData: 活码列表响应参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ActivityJoinDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -4891,7 +4891,7 @@ class QueryActivityListResponse(AbstractModel):
         :param _PageData: 活码列表响应参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ActivityDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -4992,7 +4992,7 @@ class QueryActivityLiveCodeListResponse(AbstractModel):
         :param _PageData: 活码列表响应参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of LiveCodeDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5120,7 +5120,7 @@ class QueryArrivalListResponse(AbstractModel):
         :param _HasMore: 是否还有更多数据。0-否；1-是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasMore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5231,7 +5231,7 @@ class QueryChannelCodeListResponse(AbstractModel):
         :param _PageData: 活码列表响应参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ChannelCodeInnerDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5332,7 +5332,7 @@ class QueryChatArchivingListResponse(AbstractModel):
         :param _PageData: 会话存档列表响应参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ChatArchivingDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5460,7 +5460,7 @@ class QueryClueInfoListResponse(AbstractModel):
         :param _HasMore: 是否还有更多数据。0-否；1-是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasMore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PageData = None
@@ -5619,7 +5619,7 @@ class QueryCrmStatisticsResponse(AbstractModel):
         :param _PageData: CRM统计响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of CrmStatisticsData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5744,7 +5744,7 @@ class QueryCustomerEventDetailStatisticsResponse(AbstractModel):
         :param _PageData: 外部联系人SaaS使用明细统计响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of CustomerActionEventDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5869,7 +5869,7 @@ class QueryCustomerProfileListResponse(AbstractModel):
         :param _PageData: 潜客客户存档信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of CustomerProfile
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -5973,7 +5973,7 @@ class QueryDealerInfoListResponse(AbstractModel):
         :param _HasMore: 是否还有更多数据。0-否；1-是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasMore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PageData = None
@@ -6107,7 +6107,7 @@ class QueryExternalContactDetailByDateResponse(AbstractModel):
         :type NextCursor: str
         :param _PageData: 外部联系人详细信息
         :type PageData: list of ExternalContactDetailPro
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -6223,7 +6223,7 @@ class QueryExternalContactDetailResponse(AbstractModel):
         :param _FollowUser: 添加了此外部联系人的企业成员信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowUser: list of FollowUser
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -6336,7 +6336,7 @@ class QueryExternalContactListResponse(AbstractModel):
         :param _NextCursor: 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextCursor: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PageData = None
@@ -6461,7 +6461,7 @@ class QueryExternalUserEventListResponse(AbstractModel):
         :param _PageData: 外部联系人事件信息响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of ExternalUserEventInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -6547,7 +6547,7 @@ class QueryExternalUserMappingInfoResponse(AbstractModel):
         :param _ExternalUserIdMapping: 外部联系人映射信息, 只返回映射成功的记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalUserIdMapping: list of ExternalUserMappingInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExternalUserIdMapping = None
@@ -6665,7 +6665,7 @@ class QueryFollowListResponse(AbstractModel):
         :param _HasMore: 是否还有更多数据。0-否；1-是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasMore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -6761,7 +6761,7 @@ class QueryLicenseInfoResponse(AbstractModel):
         :param _LicenseInfo: license响应信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type LicenseInfo: :class:`tencentcloud.wav.v20210129.models.LicenseInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LicenseInfo = None
@@ -6861,7 +6861,7 @@ class QueryMaterialListResponse(AbstractModel):
         :param _PageData: 企业素材列表响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of MaterialInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -6962,7 +6962,7 @@ class QueryMiniAppCodeListResponse(AbstractModel):
         :param _PageData: 小程序码列表响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of MiniAppCodeInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -7087,7 +7087,7 @@ class QueryStaffEventDetailStatisticsResponse(AbstractModel):
         :param _PageData: 企业成员SaaS使用明细统计响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of SalesActionEventDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -7188,7 +7188,7 @@ class QueryUserInfoListResponse(AbstractModel):
         :param _PageData: 企业成员信息列表响应数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageData: list of CorpUserInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NextCursor = None
@@ -7292,7 +7292,7 @@ class QueryVehicleInfoListResponse(AbstractModel):
         :param _HasMore: 是否还有更多数据。0-否；1-是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasMore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PageData = None

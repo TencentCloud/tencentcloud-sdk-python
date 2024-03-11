@@ -106,7 +106,7 @@ class CancelFaceMorphJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -215,7 +215,7 @@ class ChangeAgePicResponse(AbstractModel):
         :type ResultImage: str
         :param _ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
         :type ResultUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultImage = None
@@ -338,7 +338,7 @@ class FaceCartoonPicResponse(AbstractModel):
         :type ResultImage: str
         :param _ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。(默认为base64)
         :type ResultUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultImage = None
@@ -728,7 +728,7 @@ class MorphFaceResponse(AbstractModel):
         :type JobId: str
         :param _EstimatedProcessTime: 预估处理时间，粒度为秒
         :type EstimatedProcessTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
@@ -814,7 +814,7 @@ class QueryFaceMorphJobResponse(AbstractModel):
         :param _JobStatusCode: 当前任务状态码：1：排队中、3: 处理中、5: 处理失败、7:处理完成
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobStatusCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobStatus = None
@@ -955,7 +955,7 @@ class SwapGenderPicResponse(AbstractModel):
         :type ResultImage: str
         :param _ResultUrl: RspImgType 为 url 时，返回处理后的图片 url 数据。
         :type ResultUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultImage = None

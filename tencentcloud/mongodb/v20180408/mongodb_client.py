@@ -27,8 +27,7 @@ class MongodbClient(AbstractClient):
 
 
     def AssignProject(self, request):
-        """本接口(AssignProject)用于指定云数据库实例的所属项目。
-
+        """本接口（AssignProject）用于指定云数据库实例的所属项目。
 
         :param request: Request instance for AssignProject.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.AssignProjectRequest`
@@ -235,7 +234,7 @@ class MongodbClient(AbstractClient):
 
 
     def SetPassword(self, request):
-        """本接口(SetPassword)用于设置云数据库账户的密码。
+        """本接口(SetPassword)用于设置（初始化）MongoDB云数据库实例账户密码。
 
 
         :param request: Request instance for SetPassword.
@@ -259,7 +258,7 @@ class MongodbClient(AbstractClient):
 
 
     def TerminateDBInstance(self, request):
-        """本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例
+        """本接口(TerminateDBInstance)用于销毁按量计费的MongoDB云数据库实例。
 
         :param request: Request instance for TerminateDBInstance.
         :type request: :class:`tencentcloud.mongodb.v20180408.models.TerminateDBInstanceRequest`

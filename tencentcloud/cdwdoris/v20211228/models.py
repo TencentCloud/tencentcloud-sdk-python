@@ -579,7 +579,7 @@ class CreateInstanceNewResponse(AbstractModel):
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -966,7 +966,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :type ClusterConfList: list of ClusterConfigsInfoFromEMR
         :param _BuildVersion: 返回当前内核版本 如果不存在则返回空字符串
         :type BuildVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterConfList = None
@@ -1207,7 +1207,7 @@ class DescribeDatabaseAuditDownloadResponse(AbstractModel):
         r"""
         :param _CosUrl: 日志的cos地址
         :type CosUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosUrl = None
@@ -1435,7 +1435,7 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         :type TotalCount: int
         :param _SlowQueryRecords: 记录列表
         :type SlowQueryRecords: :class:`tencentcloud.cdwdoris.v20211228.models.DataBaseAuditRecord`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1529,7 +1529,7 @@ class DescribeInstanceNodesInfoResponse(AbstractModel):
         :param _FeNodeInfos: Fe节点信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeNodeInfos: list of NodeInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BeNodes = None
@@ -1700,7 +1700,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
         :param _InstanceNodesList: 实例节点总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNodesList: list of InstanceNode
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1785,7 +1785,7 @@ class DescribeInstanceResponse(AbstractModel):
         r"""
         :param _InstanceInfo: 实例描述信息
         :type InstanceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceInfo = None
@@ -1872,7 +1872,7 @@ class DescribeInstanceStateResponse(AbstractModel):
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceState = None
@@ -2047,7 +2047,7 @@ class DescribeInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _InstancesList: 实例数组
         :type InstancesList: list of InstanceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2180,7 +2180,7 @@ class DescribeSlowQueryRecordsDownloadResponse(AbstractModel):
         r"""
         :param _CosUrl: cos地址
         :type CosUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosUrl = None
@@ -2366,7 +2366,7 @@ class DescribeSlowQueryRecordsResponse(AbstractModel):
         :param _CatalogNameList: 所有catalog名
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogNameList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2475,7 +2475,7 @@ class DestroyInstanceResponse(AbstractModel):
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -3332,7 +3332,7 @@ class ModifyInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3665,7 +3665,7 @@ class ResizeDiskResponse(AbstractModel):
         :type FlowId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceId = None
@@ -3805,7 +3805,7 @@ class RestartClusterForNodeResponse(AbstractModel):
         :type FlowId: int
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -3925,7 +3925,7 @@ class ScaleOutInstanceResponse(AbstractModel):
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -4043,7 +4043,7 @@ class ScaleUpInstanceResponse(AbstractModel):
         :type InstanceId: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None

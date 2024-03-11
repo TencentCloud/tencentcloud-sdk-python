@@ -690,7 +690,7 @@ class ModerateTextResponse(AbstractModel):
         :type ModerationDetails: list of ModerationDetail
         :param _Score: 该字段用于返回审核结果置信度，使用百分制。分数越高表示结果可信度越高。
         :type Score: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataId = None
@@ -1331,7 +1331,7 @@ class TextModerationResponse(AbstractModel):
         :param _SentimentAnalysis: 情感分析结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type SentimentAnalysis: :class:`tencentcloud.tms.v20201229.models.SentimentAnalysis`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BizType = None

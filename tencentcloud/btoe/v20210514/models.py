@@ -135,7 +135,7 @@ class CreateAudioDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -266,7 +266,7 @@ class CreateDataDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -421,7 +421,7 @@ class CreateDocDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -528,7 +528,7 @@ class CreateHashDepositNoCertResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -635,7 +635,7 @@ class CreateHashDepositNoSealResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -754,7 +754,7 @@ class CreateHashDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 存证编码
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -909,7 +909,7 @@ class CreateImageDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -1064,7 +1064,7 @@ class CreateVideoDepositResponse(AbstractModel):
         :type BusinessId: str
         :param _EvidenceId: 请求成功，返回存证编码,用于查询存证后续业务数据
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessId = None
@@ -1146,7 +1146,7 @@ class GetDepositCertResponse(AbstractModel):
         :type EvidenceId: str
         :param _EvidenceCert: 存证证书文件临时链接
         :type EvidenceCert: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EvidenceId = None
@@ -1228,7 +1228,7 @@ class GetDepositFileResponse(AbstractModel):
         :type EvidenceId: str
         :param _EvidenceFile: 存证文件临时链接
         :type EvidenceFile: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EvidenceId = None
@@ -1312,7 +1312,7 @@ class GetDepositInfoResponse(AbstractModel):
         :type EvidenceTime: str
         :param _EvidenceTxHash: 区块链交易哈希
         :type EvidenceTxHash: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EvidenceId = None
@@ -1408,7 +1408,7 @@ class VerifyEvidenceBlockChainTxHashResponse(AbstractModel):
         :param _EvidenceId: 存证编码，仅当核验结果为true时返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvidenceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1498,7 +1498,7 @@ class VerifyEvidenceHashResponse(AbstractModel):
         r"""
         :param _Result: 核验结果，true为核验成功，false为核验失败
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

@@ -76,7 +76,7 @@ class ActionAlterCkUserResponse(AbstractModel):
         :param _ErrMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrMsg = None
@@ -857,7 +857,7 @@ class CreateBackUpScheduleResponse(AbstractModel):
         r"""
         :param _ErrorMsg: 错误描述
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorMsg = None
@@ -1098,7 +1098,7 @@ class CreateInstanceNewResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -1274,7 +1274,7 @@ class DeleteBackUpDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1347,7 +1347,7 @@ class DescribeBackUpJobDetailResponse(AbstractModel):
         :param _TableContents: 备份表详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableContents: list of BackupTableContent
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableContents = None
@@ -1471,7 +1471,7 @@ class DescribeBackUpJobResponse(AbstractModel):
         :param _BackUpJobs: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackUpJobs: list of BackUpJobDisplay
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackUpJobs = None
@@ -1560,7 +1560,7 @@ class DescribeBackUpScheduleResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackUpOpened = None
@@ -1689,7 +1689,7 @@ class DescribeBackUpTablesResponse(AbstractModel):
         r"""
         :param _AvailableTables: 可备份表列表
         :type AvailableTables: list of BackupTableContent
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AvailableTables = None
@@ -1824,7 +1824,7 @@ class DescribeCkSqlApisResponse(AbstractModel):
         :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReturnData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReturnData = None
@@ -1894,7 +1894,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
         r"""
         :param _ClusterConfList: 返回实例的配置文件相关的信息
         :type ClusterConfList: list of ClusterConfigsInfoFromEMR
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterConfList = None
@@ -1969,7 +1969,7 @@ class DescribeInstanceClustersResponse(AbstractModel):
         r"""
         :param _Clusters: cluster列表
         :type Clusters: list of ClusterInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Clusters = None
@@ -2065,7 +2065,7 @@ class DescribeInstanceKeyValConfigsResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ConfigItems = None
@@ -2243,7 +2243,7 @@ class DescribeInstanceNodesResponse(AbstractModel):
         :param _InstanceNodesList: 实例节点总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNodesList: list of InstanceNode
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2340,7 +2340,7 @@ class DescribeInstanceResponse(AbstractModel):
         r"""
         :param _InstanceInfo: 实例描述信息
         :type InstanceInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceInfo = None
@@ -2413,7 +2413,7 @@ class DescribeInstanceShardsResponse(AbstractModel):
         :param _InstanceShardsList: 实例shard信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceShardsList: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceShardsList = None
@@ -2498,7 +2498,7 @@ class DescribeInstanceStateResponse(AbstractModel):
         :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceState = None
@@ -2685,7 +2685,7 @@ class DescribeInstancesNewResponse(AbstractModel):
         :type TotalCount: int
         :param _InstancesList: 实例数组
         :type InstancesList: list of InstanceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2811,7 +2811,7 @@ class DescribeSpecResponse(AbstractModel):
         :param _AttachCBSSpec: 云盘列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachCBSSpec: list of DiskSpec
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CommonSpec = None
@@ -2921,7 +2921,7 @@ class DestroyInstanceResponse(AbstractModel):
         :type InstanceID: str
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowID = None
@@ -4352,7 +4352,7 @@ class ModifyClusterConfigsResponse(AbstractModel):
         :type FlowId: int
         :param _ErrorMsg: 错误信息
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -4512,7 +4512,7 @@ class ModifyInstanceKeyValConfigsResponse(AbstractModel):
         :type ErrorMsg: str
         :param _FlowId: ID
         :type FlowId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorMsg = None
@@ -4655,7 +4655,7 @@ class ModifyUserNewPrivilegeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4992,7 +4992,7 @@ class OpenBackUpResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5062,7 +5062,7 @@ class RecoverBackUpJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5153,7 +5153,7 @@ class ResizeDiskResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -5484,7 +5484,7 @@ class ScaleOutInstanceResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -5617,7 +5617,7 @@ class ScaleUpInstanceResponse(AbstractModel):
         :param _ErrorMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None

@@ -160,7 +160,7 @@ class CreateSmpnEpaResponse(AbstractModel):
         r"""
         :param _ResponseData: 业号码认证回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.EPAResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None
@@ -246,7 +246,7 @@ class DescribeSmpnChpResponse(AbstractModel):
         r"""
         :param _ResponseData: 终端骚扰保护回应
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.CHPResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None
@@ -332,7 +332,7 @@ class DescribeSmpnFnrResponse(AbstractModel):
         r"""
         :param _ResponseData: 虚假号码识别回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.FNRResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None
@@ -418,7 +418,7 @@ class DescribeSmpnMhmResponse(AbstractModel):
         r"""
         :param _ResponseData: 号码营销监控回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MHMResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None
@@ -504,7 +504,7 @@ class DescribeSmpnMrlResponse(AbstractModel):
         r"""
         :param _ResponseData: 恶意标记等级回应内容
         :type ResponseData: :class:`tencentcloud.smpn.v20190822.models.MRLResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None

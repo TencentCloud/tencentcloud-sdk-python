@@ -590,6 +590,9 @@ RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = 'ResourceUnavailable.Cann
 # Docker资源不可用。
 RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = 'ResourceUnavailable.DockerUnavailable'
 
+# 防火墙模版在使用中，不支持该操作。
+RESOURCEUNAVAILABLE_FIREWALLTEMPLATEINUSE = 'ResourceUnavailable.FirewallTemplateInUse'
+
 # TAT agent不可用。
 RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = 'ResourceUnavailable.TATAgentUnavailable'
 

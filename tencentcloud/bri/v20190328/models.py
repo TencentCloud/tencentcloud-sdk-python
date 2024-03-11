@@ -344,7 +344,7 @@ class DescribeBRIResponse(AbstractModel):
         r"""
         :param _ResponseData: 业务风险情报响应体
         :type ResponseData: :class:`tencentcloud.bri.v20190328.models.BRIResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResponseData = None

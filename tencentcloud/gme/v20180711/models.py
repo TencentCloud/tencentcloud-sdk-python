@@ -739,7 +739,7 @@ class CreateAgeDetectTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 本次任务提交后唯一id，用于获取任务运行结果
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -1057,7 +1057,7 @@ class CreateAppResponse(AbstractModel):
         r"""
         :param _Data: 创建应用返回数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.CreateAppResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1153,7 +1153,7 @@ class CreateCustomizationResponse(AbstractModel):
         r"""
         :param _ModelId: 模型ID
         :type ModelId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ModelId = None
@@ -1263,7 +1263,7 @@ class CreateScanUserResponse(AbstractModel):
         r"""
         :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -1438,7 +1438,7 @@ class DeleteCustomizationResponse(AbstractModel):
         r"""
         :param _ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -1589,7 +1589,7 @@ class DeleteRoomMemberResponse(AbstractModel):
         r"""
         :param _DeleteResult: 剔除房间或成员的操作结果
         :type DeleteResult: :class:`tencentcloud.gme.v20180711.models.DeleteResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeleteResult = None
@@ -1687,7 +1687,7 @@ class DeleteScanUserResponse(AbstractModel):
         r"""
         :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -1775,7 +1775,7 @@ Url ：该请求中对应的 Url。
 Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
 Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
         :type Results: list of AgeDetectTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -1934,7 +1934,7 @@ class DescribeAppStatisticsResponse(AbstractModel):
         r"""
         :param _Data: 应用用量统计数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.DescribeAppStatisticsResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -2030,7 +2030,7 @@ class DescribeApplicationDataResponse(AbstractModel):
         r"""
         :param _Data: 应用统计数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.ApplicationDataStatistics`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -2174,7 +2174,7 @@ class DescribeApplicationListResponse(AbstractModel):
         :type ApplicationList: list of ApplicationList
         :param _Total: 应用总数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationList = None
@@ -2273,7 +2273,7 @@ class DescribeRealtimeScanConfigResponse(AbstractModel):
         :type UserIdString: str
         :param _RoomIdString: 房间号字符串，逗号分隔，示例："0001,0002,0003"
         :type RoomIdString: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -2420,7 +2420,7 @@ class DescribeRecordInfoResponse(AbstractModel):
         :type RecordMode: int
         :param _RoomId: 房间ID。
         :type RoomId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordInfo = None
@@ -2543,7 +2543,7 @@ class DescribeRoomInfoResponse(AbstractModel):
         :param _RoomUsers: 房间用户信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoomUsers: list of RoomUser
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2840,7 +2840,7 @@ class DescribeScanResultListResponse(AbstractModel):
         :param _Data: 要查询的语音检测任务的结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of DescribeScanResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -2934,7 +2934,7 @@ class DescribeTaskInfoResponse(AbstractModel):
         :param _SubscribeRecordUserIds: 指定订阅流白名单或者黑名单。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubscribeRecordUserIds: :class:`tencentcloud.gme.v20180711.models.SubscribeRecordUserIds`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -3076,7 +3076,7 @@ class DescribeUserInAndOutTimeResponse(AbstractModel):
         :type InOutList: list of InOutTimeInfo
         :param _Duration: 用户在房间中总时长
         :type Duration: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InOutList = None
@@ -3207,7 +3207,7 @@ class GetCustomizationListResponse(AbstractModel):
         :param _CustomizationConfigs: 语音消息转文本热句模型配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizationConfigs: list of CustomizationConfigs
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomizationConfigs = None
@@ -3384,7 +3384,7 @@ class ModifyAppStatusResponse(AbstractModel):
         r"""
         :param _Data: 修改应用开关状态返回数据
         :type Data: :class:`tencentcloud.gme.v20180711.models.ModifyAppStatusResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3482,7 +3482,7 @@ class ModifyCustomizationResponse(AbstractModel):
         :type ErrorCode: int
         :param _ModelId: 模型ID
         :type ModelId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -3588,7 +3588,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
         :type ModelId: str
         :param _ErrorCode: 返回值。0为成功，非0为失败。
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ModelId = None
@@ -3704,7 +3704,7 @@ class ModifyRecordInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3795,7 +3795,7 @@ class ModifyUserMicStatusResponse(AbstractModel):
         :type Result: int
         :param _ErrMsg: 错误信息。
         :type ErrMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4526,7 +4526,7 @@ class ScanVoiceResponse(AbstractModel):
         :param _Data: 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
 <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
         :type Data: list of ScanVoiceResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -4804,7 +4804,7 @@ class StartRecordResponse(AbstractModel):
         r"""
         :param _TaskId: 任务taskid。
         :type TaskId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -4962,7 +4962,7 @@ class StopRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5244,7 +5244,7 @@ class UpdateScanRoomsResponse(AbstractModel):
         :param _ErrorCode: 返回结果码
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None
@@ -5338,7 +5338,7 @@ class UpdateScanUsersResponse(AbstractModel):
         r"""
         :param _ErrorCode: 返回结果码
         :type ErrorCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorCode = None

@@ -9731,7 +9731,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9887,7 +9887,7 @@ class CreateSavingPlanOrderResponse(AbstractModel):
         r"""
         :param _BigDealId: 订单号
         :type BigDealId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BigDealId = None
@@ -10312,7 +10312,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10369,7 +10369,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type CreditBalance: float
         :param _RealCreditBalance: 真实可用信用额度
         :type RealCreditBalance: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Balance = None
@@ -10590,7 +10590,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
         :param _ActionType: 交易类型筛选列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: list of BillActionType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Business = None
@@ -11062,7 +11062,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
         :param _AllocationTreeNode: 分账单元筛选列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllocationTreeNode: list of AllocationTreeNode
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Business = None
@@ -11591,7 +11591,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _Detail: 分账账单明细
         :type Detail: list of AllocationDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -11692,7 +11692,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
         :param _Total: 分账账单概览金额汇总
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Detail = None
@@ -11890,7 +11890,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
         :param _Detail: 分账概览明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationOverviewDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -12132,7 +12132,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
         :param _Detail: 分账账单按产品汇总明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByBusiness
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -12533,7 +12533,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -12897,7 +12897,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: list of AllocationSummaryByResource
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -13025,7 +13025,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
         :param _Stat: 费用统计信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stat: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Current = None
@@ -13308,7 +13308,7 @@ class DescribeBillDetailForOrganizationResponse(AbstractModel):
         :param _Context: 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetailSet = None
@@ -13611,7 +13611,7 @@ class DescribeBillDetailResponse(AbstractModel):
         :param _Context: 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetailSet = None
@@ -13740,7 +13740,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
         :param _DownloadUrl: 账单文件下载链接，有效时长为一小时
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -13937,7 +13937,7 @@ class DescribeBillListResponse(AbstractModel):
         :type AgentOutAmount: float
         :param _AdvancePayAmount: 还垫付总额，单位（分）
         :type AdvancePayAmount: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TransactionList = None
@@ -14280,7 +14280,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
         :param _Total: 资源汇总列表总数，入参NeedRecordNum为0时不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceSummarySet = None
@@ -14535,7 +14535,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
         :param _Total: 资源汇总列表总数，入参NeedRecordNum为0时不返回
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceSummarySet = None
@@ -14647,7 +14647,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
         :param _SummaryOverview: 各付费模式花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of PayModeSummaryOverviewItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -14779,7 +14779,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
         :param _SummaryOverview: 各产品花费分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of BusinessSummaryOverviewItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -14903,7 +14903,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
         :param _SummaryOverview: 各项目花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of ProjectSummaryOverviewItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -15015,7 +15015,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
         :param _SummaryOverview: 各地域花费分布详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryOverview: list of RegionSummaryOverviewItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -15154,7 +15154,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
         :param _SummaryTotal: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -15277,7 +15277,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
         :type Ready: int
         :param _SummaryDetail: 账单多维度汇总消费详情
         :type SummaryDetail: list of SummaryDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -15388,7 +15388,7 @@ class DescribeBillSummaryResponse(AbstractModel):
         :type Ready: int
         :param _SummaryDetail: 账单多维度汇总消费详情
         :type SummaryDetail: list of SummaryDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -15574,7 +15574,7 @@ class DescribeCostDetailResponse(AbstractModel):
         :param _Total: 记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetailSet = None
@@ -15807,7 +15807,7 @@ class DescribeCostExplorerSummaryResponse(AbstractModel):
         :param _ConditionValue: 筛选框
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -15996,7 +15996,7 @@ class DescribeCostSummaryByProductResponse(AbstractModel):
         :param _RecordNum: 记录数量，NeedRecordNum为0是返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -16169,7 +16169,7 @@ class DescribeCostSummaryByProjectResponse(AbstractModel):
         :type Data: list of ConsumptionProjectSummaryDataItem
         :param _RecordNum: 记录数量，NeedRecordNum为0是返回null
         :type RecordNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -16343,7 +16343,7 @@ class DescribeCostSummaryByRegionResponse(AbstractModel):
         :param _RecordNum: 记录数量，NeedRecordNum为0是返回null
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -16548,7 +16548,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
         :param _Data: 资源消耗详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ConsumptionResourceSummaryDataItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ready = None
@@ -16765,7 +16765,7 @@ class DescribeDealsByCondResponse(AbstractModel):
         :type Deals: list of Deal
         :param _TotalCount: 订单总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Deals = None
@@ -16874,7 +16874,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
         r"""
         :param _DetailSets: 用量数组
         :type DetailSets: list of CosDetailSets
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetailSets = None
@@ -17327,7 +17327,7 @@ class DescribeDosageDetailByDateResponse(AbstractModel):
         :param _RetMsg: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Unit = None
@@ -17504,7 +17504,7 @@ class DescribeDosageDetailListResponse(AbstractModel):
         r"""
         :param _Record: 用量明细集合
         :type Record: list of DescribeDosageDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Record = None
@@ -17811,7 +17811,7 @@ class DescribeGatherResourceResponse(AbstractModel):
         :param _LastUpdateTime: 数据更新时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -17958,7 +17958,7 @@ class DescribeSavingPlanCoverageResponse(AbstractModel):
         :type RateSet: list of SavingPlanCoverageRate
         :param _TotalCount: 查询命中的节省计划覆盖率明细数据总条数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetailSet = None
@@ -18096,7 +18096,7 @@ class DescribeSavingPlanOverviewResponse(AbstractModel):
         :type Overviews: list of SavingPlanOverviewDetail
         :param _Total: 查询命中的节省计划总览明细数据总条数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Overviews = None
@@ -18217,7 +18217,7 @@ class DescribeSavingPlanResourceInfoResponse(AbstractModel):
         r"""
         :param _Total: 记录数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -18337,7 +18337,7 @@ class DescribeSavingPlanUsageResponse(AbstractModel):
         :type Usages: list of SavingPlanUsageDetail
         :param _Total: 查询命中的节省计划总览明细数据总条数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Usages = None
@@ -18472,7 +18472,7 @@ class DescribeTagListResponse(AbstractModel):
         :type RecordNum: int
         :param _Data: 标签信息
         :type Data: list of TagDataInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecordNum = None
@@ -18754,7 +18754,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
         :param _VoucherInfos: 代金券相关信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoucherInfos: list of VoucherInfos
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -18890,7 +18890,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
         :param _UsageRecords: 代金券使用记录细节
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsageRecords: list of UsageRecords
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -20152,7 +20152,7 @@ class PayDealsResponse(AbstractModel):
         :type ResourceIds: list of str
         :param _BigDealIds: 此次操作支付成功的大订单号数组
         :type BigDealIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrderIds = None

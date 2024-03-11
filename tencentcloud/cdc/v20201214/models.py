@@ -277,7 +277,7 @@ class CreateDedicatedClusterOrderResponse(AbstractModel):
         :param _DedicatedClusterOrderId: 专用集群订单id
 注意：此字段可能返回 null，表示取不到有效值。
         :type DedicatedClusterOrderId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterOrderId = None
@@ -383,7 +383,7 @@ class CreateDedicatedClusterResponse(AbstractModel):
         r"""
         :param _DedicatedClusterId: 创建的专用集群id
         :type DedicatedClusterId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterId = None
@@ -725,7 +725,7 @@ class CreateSiteResponse(AbstractModel):
         r"""
         :param _SiteId: 创建Site生成的id
         :type SiteId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SiteId = None
@@ -1814,7 +1814,7 @@ class DeleteDedicatedClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1872,7 +1872,7 @@ class DeleteSitesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1887,6 +1887,167 @@ class DeleteSitesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDedicatedClusterCbsStatisticsRequest(AbstractModel):
+    """DescribeDedicatedClusterCbsStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: 查询的专用集群id
+        :type DedicatedClusterId: str
+        :param _SetId: 云硬盘仓库id
+        :type SetId: str
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _Period: 时间范围精度，1分钟/5分钟
+        :type Period: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20
+        :type Limit: int
+        """
+        self._DedicatedClusterId = None
+        self._SetId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def DedicatedClusterId(self):
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._SetId = params.get("SetId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDedicatedClusterCbsStatisticsResponse(AbstractModel):
+    """DescribeDedicatedClusterCbsStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SetList: 云硬盘仓库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetList: list of SetInfo
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SetList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SetList(self):
+        return self._SetList
+
+    @SetList.setter
+    def SetList(self, SetList):
+        self._SetList = SetList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SetList") is not None:
+            self._SetList = []
+            for item in params.get("SetList"):
+                obj = SetInfo()
+                obj._deserialize(item)
+                self._SetList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -1932,7 +2093,7 @@ class DescribeDedicatedClusterCosCapacityResponse(AbstractModel):
         r"""
         :param _CosCapacity: 本集群内cos容量信息，单位：‘GB’
         :type CosCapacity: :class:`tencentcloud.cdc.v20201214.models.CosCapacity`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosCapacity = None
@@ -2052,7 +2213,7 @@ class DescribeDedicatedClusterHostStatisticsResponse(AbstractModel):
         r"""
         :param _HostStatisticSet: 该集群内宿主机的统计信息列表
         :type HostStatisticSet: list of HostStatistic
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HostStatisticSet = None
@@ -2154,7 +2315,7 @@ class DescribeDedicatedClusterHostsResponse(AbstractModel):
         :type HostInfoSet: list of HostInfo
         :param _TotalCount: 宿主机总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HostInfoSet = None
@@ -2239,7 +2400,7 @@ class DescribeDedicatedClusterInstanceTypesResponse(AbstractModel):
         r"""
         :param _DedicatedClusterInstanceTypeSet: 支持的实例规格列表
         :type DedicatedClusterInstanceTypeSet: list of DedicatedClusterInstanceType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterInstanceTypeSet = None
@@ -2376,7 +2537,7 @@ class DescribeDedicatedClusterOrdersResponse(AbstractModel):
         :type DedicatedClusterOrderSet: list of DedicatedClusterOrder
         :param _TotalCount: 符合条件的专用集群订单总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterOrderSet = None
@@ -2484,7 +2645,7 @@ class DescribeDedicatedClusterOverviewResponse(AbstractModel):
         :param _HostNormalCount: 普通宿主机数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostNormalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CvmCount = None
@@ -2698,7 +2859,7 @@ class DescribeDedicatedClusterTypesResponse(AbstractModel):
         :type DedicatedClusterTypeSet: list of DedicatedClusterType
         :param _TotalCount: 符合条件的个数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterTypeSet = None
@@ -2857,7 +3018,7 @@ class DescribeDedicatedClustersResponse(AbstractModel):
         :type DedicatedClusterSet: list of DedicatedCluster
         :param _TotalCount: 符合条件的专用集群数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DedicatedClusterSet = None
@@ -2942,7 +3103,7 @@ class DescribeDedicatedSupportedZonesResponse(AbstractModel):
         r"""
         :param _ZoneSet: 支持的可用区列表
         :type ZoneSet: list of RegionZoneInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ZoneSet = None
@@ -3055,7 +3216,7 @@ class DescribeSitesDetailResponse(AbstractModel):
         :type SiteDetailSet: list of SiteDetail
         :param _TotalCount: 符合条件的站点总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SiteDetailSet = None
@@ -3178,7 +3339,7 @@ class DescribeSitesResponse(AbstractModel):
         :type SiteSet: list of Site
         :param _TotalCount: 符合条件的站点数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SiteSet = None
@@ -3896,7 +4057,7 @@ class ModifyDedicatedClusterInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3978,7 +4139,7 @@ class ModifyOrderStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4212,7 +4373,7 @@ class ModifySiteDeviceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4366,7 +4527,7 @@ class ModifySiteInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4471,6 +4632,195 @@ class RegionZoneInfo(AbstractModel):
                 obj = ZoneInfo()
                 obj._deserialize(item)
                 self._Zones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetInfo(AbstractModel):
+    """云硬盘的仓库级别信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SetId: 云硬盘仓库id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: str
+        :param _SetName: 云硬盘仓库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetName: str
+        :param _SetType: 云硬盘仓库类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetType: str
+        :param _SetSize: 云硬盘仓库容量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetSize: float
+        :param _SetStatus: 云硬盘仓库状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetStatus: str
+        :param _CreateTime: 云硬盘仓库创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ReadTraffic: 读流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadTraffic: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _WriteTraffic: 写流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteTraffic: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _ReadIO: 读IO
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReadIO: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _WriteIO: 写IO
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WriteIO: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _Await: 平均等待时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Await: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        :param _Util: 利用率
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Util: :class:`tencentcloud.cdc.v20201214.models.DetailData`
+        """
+        self._SetId = None
+        self._SetName = None
+        self._SetType = None
+        self._SetSize = None
+        self._SetStatus = None
+        self._CreateTime = None
+        self._ReadTraffic = None
+        self._WriteTraffic = None
+        self._ReadIO = None
+        self._WriteIO = None
+        self._Await = None
+        self._Util = None
+
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
+    @property
+    def SetName(self):
+        return self._SetName
+
+    @SetName.setter
+    def SetName(self, SetName):
+        self._SetName = SetName
+
+    @property
+    def SetType(self):
+        return self._SetType
+
+    @SetType.setter
+    def SetType(self, SetType):
+        self._SetType = SetType
+
+    @property
+    def SetSize(self):
+        return self._SetSize
+
+    @SetSize.setter
+    def SetSize(self, SetSize):
+        self._SetSize = SetSize
+
+    @property
+    def SetStatus(self):
+        return self._SetStatus
+
+    @SetStatus.setter
+    def SetStatus(self, SetStatus):
+        self._SetStatus = SetStatus
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ReadTraffic(self):
+        return self._ReadTraffic
+
+    @ReadTraffic.setter
+    def ReadTraffic(self, ReadTraffic):
+        self._ReadTraffic = ReadTraffic
+
+    @property
+    def WriteTraffic(self):
+        return self._WriteTraffic
+
+    @WriteTraffic.setter
+    def WriteTraffic(self, WriteTraffic):
+        self._WriteTraffic = WriteTraffic
+
+    @property
+    def ReadIO(self):
+        return self._ReadIO
+
+    @ReadIO.setter
+    def ReadIO(self, ReadIO):
+        self._ReadIO = ReadIO
+
+    @property
+    def WriteIO(self):
+        return self._WriteIO
+
+    @WriteIO.setter
+    def WriteIO(self, WriteIO):
+        self._WriteIO = WriteIO
+
+    @property
+    def Await(self):
+        return self._Await
+
+    @Await.setter
+    def Await(self, Await):
+        self._Await = Await
+
+    @property
+    def Util(self):
+        return self._Util
+
+    @Util.setter
+    def Util(self, Util):
+        self._Util = Util
+
+
+    def _deserialize(self, params):
+        self._SetId = params.get("SetId")
+        self._SetName = params.get("SetName")
+        self._SetType = params.get("SetType")
+        self._SetSize = params.get("SetSize")
+        self._SetStatus = params.get("SetStatus")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ReadTraffic") is not None:
+            self._ReadTraffic = DetailData()
+            self._ReadTraffic._deserialize(params.get("ReadTraffic"))
+        if params.get("WriteTraffic") is not None:
+            self._WriteTraffic = DetailData()
+            self._WriteTraffic._deserialize(params.get("WriteTraffic"))
+        if params.get("ReadIO") is not None:
+            self._ReadIO = DetailData()
+            self._ReadIO._deserialize(params.get("ReadIO"))
+        if params.get("WriteIO") is not None:
+            self._WriteIO = DetailData()
+            self._WriteIO._deserialize(params.get("WriteIO"))
+        if params.get("Await") is not None:
+            self._Await = DetailData()
+            self._Await._deserialize(params.get("Await"))
+        if params.get("Util") is not None:
+            self._Util = DetailData()
+            self._Util._deserialize(params.get("Util"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

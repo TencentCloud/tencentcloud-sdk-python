@@ -1511,7 +1511,7 @@ class AuthorizeDSPAMetaResourcesResponse(AbstractModel):
         :param _Results: 授权结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DspaTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DspaId = None
@@ -1630,7 +1630,7 @@ class BindDSPAResourceCosBucketsResponse(AbstractModel):
         r"""
         :param _CosTaskResults: 绑定结果数组
         :type CosTaskResults: list of CosTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosTaskResults = None
@@ -1763,7 +1763,7 @@ class BindDSPAResourceDatabasesResponse(AbstractModel):
         r"""
         :param _DbTaskResults: 绑定结果数组
         :type DbTaskResults: list of DbTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DbTaskResults = None
@@ -2325,7 +2325,7 @@ class CopyDSPATemplateResponse(AbstractModel):
         r"""
         :param _TemplateId: 模板id
         :type TemplateId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TemplateId = None
@@ -2613,7 +2613,7 @@ class CreateAssetSortingReportRetryTaskResponse(AbstractModel):
         :param _Remark: 提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReportTaskId = None
@@ -2726,7 +2726,7 @@ class CreateAssetSortingReportTaskResponse(AbstractModel):
         :param _Remark: 提示信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReportTaskId = None
@@ -2777,7 +2777,7 @@ class CreateClassificationRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2933,7 +2933,7 @@ class CreateDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3039,7 +3039,7 @@ class CreateDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3209,7 +3209,7 @@ class CreateDSPAAssessmentTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 评估任务Id，格式“task-xxxxxxxx”
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -3439,7 +3439,7 @@ class CreateDSPACOSDiscoveryTaskResponse(AbstractModel):
         :param _ResultId: 扫描结果ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -3553,7 +3553,7 @@ class CreateDSPACategoryRelationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3625,7 +3625,7 @@ class CreateDSPACategoryResponse(AbstractModel):
         r"""
         :param _CategoryId: 敏感数据分类ID
         :type CategoryId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CategoryId = None
@@ -3748,7 +3748,7 @@ class CreateDSPAComplianceGroupResponse(AbstractModel):
         r"""
         :param _ComplianceGroupId: 合规组ID
         :type ComplianceGroupId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ComplianceGroupId = None
@@ -3857,7 +3857,7 @@ class CreateDSPAComplianceRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3939,7 +3939,7 @@ class CreateDSPACosMetaResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4070,7 +4070,7 @@ class CreateDSPADbMetaResourcesResponse(AbstractModel):
         :type DspaId: str
         :param _ResourceRegion: 资源所处地域。
         :type ResourceRegion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UpdateId = None
@@ -4222,7 +4222,7 @@ class CreateDSPADiscoveryRuleResponse(AbstractModel):
         r"""
         :param _RuleId: 规则ID
         :type RuleId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RuleId = None
@@ -4447,7 +4447,7 @@ class CreateDSPADiscoveryTaskResponse(AbstractModel):
         :param _ResultId: 扫描结果ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -4568,7 +4568,7 @@ class CreateDSPALevelGroupResponse(AbstractModel):
         r"""
         :param _LevelGroupId: 分级组ID
         :type LevelGroupId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LevelGroupId = None
@@ -4709,7 +4709,7 @@ class CreateDSPAMetaResourcesResponse(AbstractModel):
         :type DspaId: str
         :param _ResourceRegion: 资源所处地域。
         :type ResourceRegion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UpdateId = None
@@ -4975,7 +4975,7 @@ class CreateDSPASelfBuildMetaResourceResponse(AbstractModel):
         :type ConnectivityStatus: str
         :param _ConnectivityDescription: 连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
         :type ConnectivityDescription: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ConnectivityStatus = None
@@ -5143,7 +5143,7 @@ class CreateIdentifyRuleAnotherNameResponse(AbstractModel):
         :param _AliasRuleName: 别名规则名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasRuleName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AliasRuleId = None
@@ -5194,7 +5194,7 @@ class CreateNewClassificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5225,7 +5225,7 @@ class CreateOrCopyStandardResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6200,7 +6200,7 @@ class DecribeSuggestRiskLevelMatrixResponse(AbstractModel):
         r"""
         :param _SuggestRiskLevelMatrix: 矩阵
         :type SuggestRiskLevelMatrix: list of SuggestRiskLevelMatrix
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuggestRiskLevelMatrix = None
@@ -6302,7 +6302,7 @@ class DeleteCosMetaResourceResponse(AbstractModel):
         :type Results: list of DspaTaskResult
         :param _DspaId: DSPA实例ID。
         :type DspaId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Results = None
@@ -6397,7 +6397,7 @@ class DeleteDSPAAssessmentTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6467,7 +6467,7 @@ class DeleteDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6537,7 +6537,7 @@ class DeleteDSPACOSDiscoveryTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6619,7 +6619,7 @@ class DeleteDSPADiscoveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6689,7 +6689,7 @@ class DeleteDSPADiscoveryTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6763,7 +6763,7 @@ class DeleteDSPAMetaResourceResponse(AbstractModel):
         :type DspaId: str
         :param _Results: 删除结果。
         :type Results: list of DspaTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DspaId = None
@@ -6862,7 +6862,7 @@ class DescribeAssetDetailDataExportResultResponse(AbstractModel):
         :type ExportResult: str
         :param _ExportFileUrl: 导出文件地址
         :type ExportFileUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExportResult = None
@@ -7017,7 +7017,7 @@ class DescribeAssetOverviewResponse(AbstractModel):
         :param _MongoFieldNums: mongo字段数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongoFieldNums: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DBInstanceNums = None
@@ -7275,7 +7275,7 @@ class DescribeBindDBListResponse(AbstractModel):
         :param _BindList: 绑定信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindList: list of DBInstanceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BindDBList = None
@@ -7396,7 +7396,7 @@ class DescribeCOSAssetSensitiveDistributionResponse(AbstractModel):
         :param _CosDetail: cos资产详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosDetail: list of AssetCosDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosAsset = None
@@ -7469,7 +7469,7 @@ class DescribeClassificationInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7500,7 +7500,7 @@ class DescribeClassificationRuleCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7586,7 +7586,7 @@ class DescribeDSPAAssessmentHighRiskTop10OverviewResponse(AbstractModel):
         :param _AssetsList: 含高风险资产TOP10的列表数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsList: list of HighRiskAssetsDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AssetsList = None
@@ -7740,7 +7740,7 @@ class DescribeDSPAAssessmentLatestRiskDetailInfoResponse(AbstractModel):
         :param _AKSKLeak: AKSK泄漏列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AKSKLeak: list of AKSKLeak
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DataSourceId = None
@@ -8157,7 +8157,7 @@ class DescribeDSPAAssessmentLatestRiskListResponse(AbstractModel):
         :type LatestRiskList: list of RiskItemInfo
         :param _TotalCount: 总条数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LatestRiskList = None
@@ -8258,7 +8258,7 @@ class DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse(AbstractModel):
         :type AffectedAssetCount: int
         :param _WeekRatio: 周同比
         :type WeekRatio: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NewDiscoveredRiskCount = None
@@ -8364,7 +8364,7 @@ class DescribeDSPAAssessmentPendingRiskOverviewResponse(AbstractModel):
         :type AffectedAssetCount: int
         :param _WeekRatio: 周同比
         :type WeekRatio: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PendingRiskCount = None
@@ -8470,7 +8470,7 @@ class DescribeDSPAAssessmentProcessingRiskOverviewResponse(AbstractModel):
         :type AffectedAssetCount: int
         :param _WeekRatio: 周同比
         :type WeekRatio: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProcessingRiskCount = None
@@ -8574,7 +8574,7 @@ class DescribeDSPAAssessmentRiskAmountOverviewResponse(AbstractModel):
         :type TotalRiskCount: int
         :param _TotalAffectedAssetCount: 受影响的资产数
         :type TotalAffectedAssetCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalRiskCount = None
@@ -8655,7 +8655,7 @@ class DescribeDSPAAssessmentRiskDatasourceTop5Response(AbstractModel):
         :param _Items: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -8736,7 +8736,7 @@ class DescribeDSPAAssessmentRiskDealedOverviewResponse(AbstractModel):
         :type UnDealedRiskWeekRatio: float
         :param _UnDealedRiskDayRatio: 遗留待处理风险数日环比
         :type UnDealedRiskDayRatio: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8873,7 +8873,7 @@ class DescribeDSPAAssessmentRiskDealedTrendResponse(AbstractModel):
         :param _Items: 趋势统计结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskDealedTrendItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -8980,7 +8980,7 @@ class DescribeDSPAAssessmentRiskDistributionOverviewResponse(AbstractModel):
         :param _RiskAssetsDistribution: 风险资产详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskAssetsDistribution: list of Note
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskTypeDistribution = None
@@ -9086,7 +9086,7 @@ class DescribeDSPAAssessmentRiskItemTop5Response(AbstractModel):
         :param _Items: 无
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -9184,7 +9184,7 @@ class DescribeDSPAAssessmentRiskLevelDetailResponse(AbstractModel):
         :param _RiskLevelMatrix: 风险数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelMatrix: list of RiskLevelMatrix
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskLevelName = None
@@ -9326,7 +9326,7 @@ class DescribeDSPAAssessmentRiskLevelListResponse(AbstractModel):
         :param _RiskLevelList: 风险等级列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskLevelList: list of RiskLevelRisk
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -9448,7 +9448,7 @@ class DescribeDSPAAssessmentRiskLevelTrendResponse(AbstractModel):
         :param _Items: 结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RiskLevelTrendItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -9529,7 +9529,7 @@ class DescribeDSPAAssessmentRiskOverviewResponse(AbstractModel):
         :type HighRiskWeekRatio: float
         :param _HighRiskDayRatio: 高危风险数日环比
         :type HighRiskDayRatio: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -9642,7 +9642,7 @@ class DescribeDSPAAssessmentRiskProcessHistoryResponse(AbstractModel):
         :param _ProcessHistory: 处理的历史
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessHistory: list of ProcessHistory
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProcessHistory = None
@@ -9730,7 +9730,7 @@ class DescribeDSPAAssessmentRiskSideDistributedResponse(AbstractModel):
         :param _RiskSideDistributed: 风险面的分布
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSideDistributed: list of RiskSideDistributed
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskSideDistributed = None
@@ -9818,7 +9818,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
         :param _RiskSideItmeList: 风险面列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskSideItmeList: list of Note
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskSideItmeList = None
@@ -9947,7 +9947,7 @@ class DescribeDSPAAssessmentRiskTemplateDetailResponse(AbstractModel):
         :param _TaskCitations: 被任务引用次数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCitations: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TemplateId = None
@@ -10155,7 +10155,7 @@ class DescribeDSPAAssessmentRiskTemplateVulnerableListResponse(AbstractModel):
         :type RiskItemList: list of AssessmentRiskItem
         :param _TotalCount: 总条数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RiskItemList = None
@@ -10299,7 +10299,7 @@ class DescribeDSPAAssessmentRisksResponse(AbstractModel):
         :type TotalCount: int
         :param _Items: 评估风险项列表
         :type Items: list of AssessmentRisk
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -10433,7 +10433,7 @@ class DescribeDSPAAssessmentTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _Items: 评估任务列表
         :type Items: list of AssessmentTask
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -10579,7 +10579,7 @@ class DescribeDSPAAssessmentTemplateControlItemsResponse(AbstractModel):
         :type TotalCount: int
         :param _Items: 模板关联的评估项列表
         :type Items: list of AssessmentControlItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -10712,7 +10712,7 @@ class DescribeDSPAAssessmentTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _Items: 模板列表。
         :type Items: list of AssessmentTemplate
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -10810,7 +10810,7 @@ class DescribeDSPACOSDataAssetBucketsResponse(AbstractModel):
         :param _Buckets: COS对象存储敏感数据资产已扫描的桶集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Buckets: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Buckets = None
@@ -10894,7 +10894,7 @@ class DescribeDSPACOSDataAssetByComplianceIdResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stats: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDataAssetCount`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Stats = None
@@ -10981,7 +10981,7 @@ class DescribeDSPACOSDataAssetDetailResponse(AbstractModel):
         :type Details: list of DspaCOSDataAssetDetail
         :param _TotalCount: 符合条件的COS对象存储敏感数据资产数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Details = None
@@ -11079,7 +11079,7 @@ class DescribeDSPACOSDiscoveryTaskDetailResponse(AbstractModel):
         :param _Task: 任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Task: :class:`tencentcloud.dsgc.v20190723.models.DspaCOSDiscoveryTaskDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Task = None
@@ -11176,7 +11176,7 @@ class DescribeDSPACOSDiscoveryTaskFilesResponse(AbstractModel):
         :param _Files: 文件列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Files: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Files = None
@@ -11297,7 +11297,7 @@ class DescribeDSPACOSDiscoveryTaskResultResponse(AbstractModel):
         :param _TotalCount: 符合条件的数据结果数目
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -11445,7 +11445,7 @@ class DescribeDSPACOSDiscoveryTasksResponse(AbstractModel):
         :type Items: list of DspaCOSDiscoveryTask
         :param _TotalCount: 符合条件的任务列表数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -11653,7 +11653,7 @@ class DescribeDSPACOSTaskResultDetailResponse(AbstractModel):
         :type Items: list of DspaDiscoveryCOSTaskResultDetail
         :param _TotalCount: 符合条件的详情数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -11790,7 +11790,7 @@ class DescribeDSPACategoriesResponse(AbstractModel):
         :param _TotalCount: 符合条件的敏感数据分类数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -11888,7 +11888,7 @@ class DescribeDSPACategoryRuleStatisticResponse(AbstractModel):
         :param _StatisticSet: 分类规则统计信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticSet: list of CategoryRuleStatistic
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StatisticSet = None
@@ -11988,7 +11988,7 @@ class DescribeDSPACategoryRulesResponse(AbstractModel):
         :param _CategoryRules: 分类规则信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryRules: list of CategoryRule
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CategoryRules = None
@@ -12076,7 +12076,7 @@ class DescribeDSPACategoryTreeResponse(AbstractModel):
         :param _ResultJson: 分类树json
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultJson: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultJson = None
@@ -12171,7 +12171,7 @@ class DescribeDSPACategoryTreeWithRulesResponse(AbstractModel):
         :param _ResultJson: 分类树json
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultJson: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultJson = None
@@ -12254,7 +12254,7 @@ class DescribeDSPAComplianceGroupDetailResponse(AbstractModel):
         :param _Detail: 模板详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Detail: :class:`tencentcloud.dsgc.v20190723.models.ComplianceGroupDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Detail = None
@@ -12390,7 +12390,7 @@ class DescribeDSPAComplianceGroupsResponse(AbstractModel):
         :param _TotalCount: 符合条件的合规组列表数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -12491,7 +12491,7 @@ class DescribeDSPAComplianceUpdateNotificationResponse(AbstractModel):
         :param _TaskNameSet: 任务名称集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNameSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsUpdated = None
@@ -12596,7 +12596,7 @@ class DescribeDSPADataSourceDbInfoResponse(AbstractModel):
         :param _Items: 数据库信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DSPADataSourceDbInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -12734,7 +12734,7 @@ class DescribeDSPADiscoveryRulesResponse(AbstractModel):
         :param _Items: 规则集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaDiscoveryRuleDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -12819,7 +12819,7 @@ class DescribeDSPADiscoveryServiceStatusResponse(AbstractModel):
         r"""
         :param _ServiceEnabled: 分类分级服务是否开通，true 表示已开通，false表示未开通
         :type ServiceEnabled: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ServiceEnabled = None
@@ -12902,7 +12902,7 @@ class DescribeDSPADiscoveryTaskDetailResponse(AbstractModel):
         :param _Task: 任务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Task: :class:`tencentcloud.dsgc.v20190723.models.DspaDiscoveryTaskDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Task = None
@@ -13098,7 +13098,7 @@ class DescribeDSPADiscoveryTaskResultDetailResponse(AbstractModel):
         :param _TotalCount: 符合条件的扫描结果详情记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -13290,7 +13290,7 @@ class DescribeDSPADiscoveryTaskResultResponse(AbstractModel):
         :param _TotalCount: 符合条件的扫描任务结果记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -13412,7 +13412,7 @@ class DescribeDSPADiscoveryTaskTablesResponse(AbstractModel):
         :param _Items: 分类分级扫描表集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DSPATableInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -13525,7 +13525,7 @@ class DescribeDSPAESDataAssetByComplianceIdResponse(AbstractModel):
         :param _Stats: 概览统计结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stats: :class:`tencentcloud.dsgc.v20190723.models.ESDataAssetCountDto`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Stats = None
@@ -13667,7 +13667,7 @@ class DescribeDSPAESDataAssetDetailResponse(AbstractModel):
         :param _Details: 概览详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of ESDataAssetDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13765,7 +13765,7 @@ class DescribeDSPAESDataSampleResponse(AbstractModel):
         :param _Items: 数据样本列表，最多10条数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -13923,7 +13923,7 @@ class DescribeDSPAESDiscoveryTaskResultDetailResponse(AbstractModel):
         :param _TotalCount: 符合条件的扫描结果详情记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -14031,7 +14031,7 @@ class DescribeDSPALevelDetailResponse(AbstractModel):
         :param _TotalCount: 符合条件的敏感数据分级标识记录数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -14134,7 +14134,7 @@ class DescribeDSPALevelGroupsResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -14256,7 +14256,7 @@ class DescribeDSPARDBDataAssetByComplianceIdResponse(AbstractModel):
         :param _Stats: 符合条件的RDB关系数据库敏感数据资产统计记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type Stats: :class:`tencentcloud.dsgc.v20190723.models.DspaRDBDataAssetCount`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Stats = None
@@ -14356,7 +14356,7 @@ class DescribeDSPARDBDataAssetDetailResponse(AbstractModel):
         :type Details: list of DspaRDBDataAssetDetail
         :param _TotalCount: 符合条件的RDB关系数据库敏感数据资产数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Details = None
@@ -14442,10 +14442,13 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
         :param _Metas: 支持的元数据类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metas: list of DSPAMetaType
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _MaxDBInstanceLimit: 最大支持每批次同步数量
+        :type MaxDBInstanceLimit: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Metas = None
+        self._MaxDBInstanceLimit = None
         self._RequestId = None
 
     @property
@@ -14455,6 +14458,14 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
     @Metas.setter
     def Metas(self, Metas):
         self._Metas = Metas
+
+    @property
+    def MaxDBInstanceLimit(self):
+        return self._MaxDBInstanceLimit
+
+    @MaxDBInstanceLimit.setter
+    def MaxDBInstanceLimit(self, MaxDBInstanceLimit):
+        self._MaxDBInstanceLimit = MaxDBInstanceLimit
 
     @property
     def RequestId(self):
@@ -14472,6 +14483,7 @@ class DescribeDSPASupportedMetasResponse(AbstractModel):
                 obj = DSPAMetaType()
                 obj._deserialize(item)
                 self._Metas.append(obj)
+        self._MaxDBInstanceLimit = params.get("MaxDBInstanceLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -14530,7 +14542,7 @@ class DescribeDSPATaskResultDataSampleResponse(AbstractModel):
         :param _Items: 数据样本列表，最多10条数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DspaFieldResultDataSample
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
@@ -14641,7 +14653,7 @@ class DescribeESAssetSensitiveDistributionResponse(AbstractModel):
         :param _ESDetail: ES的详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ESDetail: list of ESAssetDBDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ESAsset = None
@@ -14757,7 +14769,7 @@ class DescribeExportTaskResultResponse(AbstractModel):
         :type ExportResult: str
         :param _ExportFileUrl: 导出文件地址
         :type ExportFileUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExportResult = None
@@ -14808,7 +14820,7 @@ class DescribeLeafClassificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -14904,7 +14916,7 @@ class DescribeMongoAssetSensitiveDistributionResponse(AbstractModel):
         :param _MongoDetail: mongo的详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDetail: list of MongoAssetDBDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MongoAsset = None
@@ -15042,7 +15054,7 @@ class DescribeRDBAssetSensitiveDistributionResponse(AbstractModel):
         :param _RDBDetail: rdb的详情列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RDBDetail: list of AssetDBDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RDBAsset = None
@@ -15169,7 +15181,7 @@ class DescribeReportTaskDownloadUrlResponse(AbstractModel):
         :param _DownloadUrlSet: 下载链接集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownloadUrlSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrlSet = None
@@ -15279,7 +15291,7 @@ class DescribeReportTasksResponse(AbstractModel):
         :param _ItemSet: 报表信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ItemSet: list of ReportInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -15335,7 +15347,7 @@ class DescribeRuleDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -15366,7 +15378,7 @@ class DescribeRuleListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -15465,7 +15477,7 @@ class DescribeSensitiveCOSDataDistributionResponse(AbstractModel):
         :param _SensitiveDataNum: 计算占比
 注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LevelDistribution = None
@@ -15619,7 +15631,7 @@ class DescribeSensitiveRDBDataDistributionResponse(AbstractModel):
         :param _SensitiveDataNum: 计算占比字段
 注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LevelDistribution = None
@@ -15773,7 +15785,7 @@ class DisableDSPAMetaResourceAuthResponse(AbstractModel):
         :param _Results: 授权结果。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of DspaTaskResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DspaId = None
@@ -21173,7 +21185,7 @@ class EnableDSPADiscoveryRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -21243,7 +21255,7 @@ class EnableTrialVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -21397,7 +21409,7 @@ class ExportAssetDetailDataResponse(AbstractModel):
         r"""
         :param _ExportTaskId: 导出任务id
         :type ExportTaskId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExportTaskId = None
@@ -21554,7 +21566,7 @@ class GetResourceConnectionStatusResponse(AbstractModel):
         :param _ConnectionDesc: 连接状态的描述信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConnectionDesc: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ConnectionStatus = None
@@ -21636,7 +21648,7 @@ class GetTrialVersionResponse(AbstractModel):
         :type TrialVersion: str
         :param _TrialEndAt: 版本体验结束时间戳。
         :type TrialEndAt: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TrialVersion = None
@@ -21726,7 +21738,7 @@ class GetUserQuotaInfoResponse(AbstractModel):
         :type CosRemainQuota: float
         :param _CosQuotaUnit: COS存储量单位，例如TB。
         :type CosQuotaUnit: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DspaId = None
@@ -22147,7 +22159,7 @@ class ListDSPAClustersResponse(AbstractModel):
         :type InstanceList: list of DspaInstance
         :param _DenyAll: 是否被拒绝访问所有dspa实例资源。
         :type DenyAll: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -22306,7 +22318,7 @@ class ListDSPACosMetaResourcesResponse(AbstractModel):
         :param _DspaId: DSPA实例ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DspaId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -22468,7 +22480,7 @@ class ListDSPAMetaResourcesResponse(AbstractModel):
         :type Resources: list of DspaUserResourceMeta
         :param _TotalCount: 资源总量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DspaId = None
@@ -22534,7 +22546,7 @@ class ModifyClassificationRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -22565,7 +22577,7 @@ class ModifyClassificationRuleStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -22687,7 +22699,7 @@ class ModifyDSPAAssessmentRiskLatestResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -22798,7 +22810,7 @@ class ModifyDSPAAssessmentRiskLevelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -22892,7 +22904,7 @@ class ModifyDSPAAssessmentRiskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23010,7 +23022,7 @@ class ModifyDSPAAssessmentRiskTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23213,7 +23225,7 @@ class ModifyDSPACOSDiscoveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23343,7 +23355,7 @@ class ModifyDSPACOSTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23437,7 +23449,7 @@ class ModifyDSPACategoryRelationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23519,7 +23531,7 @@ class ModifyDSPACategoryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23601,7 +23613,7 @@ class ModifyDSPAClusterInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23736,7 +23748,7 @@ class ModifyDSPAComplianceGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -23858,7 +23870,7 @@ class ModifyDSPADiscoveryRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24080,7 +24092,7 @@ class ModifyDSPADiscoveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24258,7 +24270,7 @@ class ModifyDSPAESTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24438,7 +24450,7 @@ class ModifyDSPATaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24469,7 +24481,7 @@ class ModifyLevelInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24500,7 +24512,7 @@ class ModifyLevelNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24531,7 +24543,7 @@ class ModifyLevelStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24562,7 +24574,7 @@ class ModifyMergeClassificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24593,7 +24605,7 @@ class ModifyNewClassificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -24624,7 +24636,7 @@ class ModifyStandardInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -25210,7 +25222,7 @@ class QueryDSPAMetaResourceDbListResponse(AbstractModel):
         r"""
         :param _DbRelationStatusItems: 数据库实例DB列表的查询结果。
         :type DbRelationStatusItems: list of DbRelationStatusItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DbRelationStatusItems = None
@@ -25323,7 +25335,7 @@ class QueryResourceDbBindStatusResponse(AbstractModel):
         :type BindDbNums: int
         :param _UnbindDbNums: 未绑定DB数量。
         :type UnbindDbNums: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BindDbNums = None
@@ -25788,7 +25800,7 @@ class RestartDSPAAssessmentTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -27165,7 +27177,7 @@ class StartDSPADiscoveryTaskResponse(AbstractModel):
         :param _ResultId: 任务扫描结果ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultId = None
@@ -27248,7 +27260,7 @@ class StopDSPADiscoveryTaskResponse(AbstractModel):
         :param _ResultId: 任务扫描结果ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultId = None
@@ -27641,7 +27653,7 @@ class UpdateDSPASelfBuildResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -27731,7 +27743,7 @@ Failed 验证失败
         :type VerifyResult: str
         :param _DetailInfo: 验证结果详情
         :type DetailInfo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VerifyResult = None
@@ -27879,7 +27891,7 @@ Failed 验证失败
         :type VerifyResult: str
         :param _DetailInfo: 验证结果详情
         :type DetailInfo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VerifyResult = None

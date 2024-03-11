@@ -710,7 +710,7 @@ class AuthorizeTokenResponse(AbstractModel):
         :param _Result: 0 成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -900,7 +900,7 @@ class BatchCreateAclResponse(AbstractModel):
         r"""
         :param _Result: 状态码：0-修改成功，否则修改失败
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1011,7 +1011,7 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1100,7 +1100,7 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: list of BatchModifyTopicResultDTO
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1545,7 +1545,7 @@ class CancelAuthorizationTokenResponse(AbstractModel):
         :param _Result: 0 成功
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1650,7 +1650,7 @@ class CheckCdcClusterResponse(AbstractModel):
         :param _Result: 返回结果状态Success
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3325,7 +3325,7 @@ class CreateAclResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3486,7 +3486,7 @@ class CreateAclRuleResponse(AbstractModel):
         r"""
         :param _Result: 规则的唯一表示Key
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3640,7 +3640,7 @@ class CreateCdcClusterResponse(AbstractModel):
         r"""
         :param _Result: 无
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CdcClusterResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3876,7 +3876,7 @@ class CreateConnectResourceResponse(AbstractModel):
         r"""
         :param _Result: 连接源的Id
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3984,7 +3984,7 @@ class CreateConsumerResponse(AbstractModel):
         r"""
         :param _Result: 创建group描述
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4225,7 +4225,7 @@ class CreateDatahubTaskResponse(AbstractModel):
         r"""
         :param _Result: 任务id
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4350,7 +4350,7 @@ class CreateDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回创建结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4764,7 +4764,7 @@ class CreateInstancePostResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5236,7 +5236,7 @@ class CreateInstancePreResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5332,7 +5332,7 @@ class CreatePartitionResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5608,7 +5608,7 @@ class CreatePostPaidInstanceResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5776,7 +5776,7 @@ class CreateRouteResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5861,7 +5861,7 @@ class CreateTokenResponse(AbstractModel):
         :param _Result: token串
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5955,7 +5955,7 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
         r"""
         :param _Result: 删除主题IP白名单结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6257,7 +6257,7 @@ class CreateTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回创建结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6353,7 +6353,7 @@ class CreateUserResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7481,7 +7481,7 @@ class DeleteAclResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7565,7 +7565,7 @@ class DeleteAclRuleResponse(AbstractModel):
         r"""
         :param _Result: 返回被删除的规则的ID
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7635,7 +7635,7 @@ class DeleteConnectResourceResponse(AbstractModel):
         r"""
         :param _Result: 连接源的Id
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7708,7 +7708,7 @@ class DeleteDatahubTaskResponse(AbstractModel):
         :param _Result: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7780,7 +7780,7 @@ class DeleteDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7864,7 +7864,7 @@ class DeleteGroupResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7936,7 +7936,7 @@ class DeleteInstancePostResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDeleteResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8008,7 +8008,7 @@ class DeleteInstancePreResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8116,7 +8116,7 @@ class DeleteRouteResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8186,7 +8186,7 @@ class DeleteRouteTriggerTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -8270,7 +8270,7 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
         r"""
         :param _Result: 删除主题IP白名单结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8354,7 +8354,7 @@ class DeleteTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8438,7 +8438,7 @@ class DeleteUserResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8570,7 +8570,7 @@ class DescribeACLResponse(AbstractModel):
         r"""
         :param _Result: 返回的ACL结果集对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8678,7 +8678,7 @@ class DescribeAclRuleResponse(AbstractModel):
         r"""
         :param _Result: 返回的AclRule结果集对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8762,7 +8762,7 @@ class DescribeAppInfoResponse(AbstractModel):
         r"""
         :param _Result: 返回的符合要求的App Id列表
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.AppIdResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8834,7 +8834,7 @@ class DescribeCkafkaZoneResponse(AbstractModel):
         r"""
         :param _Result: 查询结果复杂对象实体
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9599,7 +9599,7 @@ class DescribeConnectResourceResponse(AbstractModel):
         :param _Result: 连接源的Id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9770,7 +9770,7 @@ class DescribeConnectResourcesResponse(AbstractModel):
         r"""
         :param _Result: 连接源列表
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9890,7 +9890,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
         r"""
         :param _Result: 返回的消费分组信息
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerGroupResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10010,7 +10010,7 @@ class DescribeDatahubGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10312,7 +10312,7 @@ class DescribeDatahubTaskResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10507,7 +10507,7 @@ class DescribeDatahubTasksResponse(AbstractModel):
         r"""
         :param _Result: 返回任务查询结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10722,7 +10722,7 @@ class DescribeDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10870,7 +10870,7 @@ class DescribeDatahubTopicsResponse(AbstractModel):
         :param _Result: 主题列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11000,7 +11000,7 @@ class DescribeGroupInfoResponse(AbstractModel):
         :param _Result: 返回的结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of GroupInfoResponse
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11135,7 +11135,7 @@ class DescribeGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11243,7 +11243,7 @@ class DescribeGroupResponse(AbstractModel):
         r"""
         :param _Result: 返回结果集列表
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11315,7 +11315,7 @@ class DescribeInstanceAttributesResponse(AbstractModel):
         r"""
         :param _Result: 实例属性返回结果对象。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceAttributesResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11505,7 +11505,7 @@ class DescribeInstancesDetailResponse(AbstractModel):
         r"""
         :param _Result: 返回的实例详情结果对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceDetailResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11649,7 +11649,7 @@ class DescribeInstancesResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11758,7 +11758,7 @@ class DescribeRegionResponse(AbstractModel):
         :param _Result: 返回地域枚举结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: list of Region
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11845,7 +11845,7 @@ class DescribeRouteResponse(AbstractModel):
         r"""
         :param _Result: 返回的路由信息结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -11917,7 +11917,7 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12001,7 +12001,7 @@ class DescribeTopicAttributesResponse(AbstractModel):
         r"""
         :param _Result: 返回的结果对象
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicAttributesResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12121,7 +12121,7 @@ class DescribeTopicDetailResponse(AbstractModel):
         r"""
         :param _Result: 返回的主题详情实体
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicDetailResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12241,7 +12241,7 @@ class DescribeTopicFlowRankingResponse(AbstractModel):
         r"""
         :param _Result: 流量排行
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicFlowRankingResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12325,7 +12325,7 @@ class DescribeTopicProduceConnectionResponse(AbstractModel):
         r"""
         :param _Result: 链接信息返回结果集
         :type Result: list of DescribeConnectInfoResultDTO
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12449,7 +12449,7 @@ class DescribeTopicResponse(AbstractModel):
         :param _Result: 返回的结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12557,7 +12557,7 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12677,7 +12677,7 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
         r"""
         :param _Result: 返回topic 副本详情
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -12785,7 +12785,7 @@ class DescribeUserResponse(AbstractModel):
         r"""
         :param _Result: 返回结果列表
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -14480,7 +14480,7 @@ class FetchDatahubMessageByOffsetResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -14588,7 +14588,7 @@ class FetchLatestDatahubMessageListResponse(AbstractModel):
         r"""
         :param _Result: 返回结果。
         :type Result: list of ConsumerRecord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -14699,7 +14699,7 @@ class FetchMessageByOffsetResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -14819,7 +14819,7 @@ class FetchMessageListByOffsetResponse(AbstractModel):
         r"""
         :param _Result: 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
         :type Result: list of ConsumerRecord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -15870,7 +15870,7 @@ class InquireCkafkaPriceResponse(AbstractModel):
         r"""
         :param _Result: 出参
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -17789,7 +17789,7 @@ class InstanceScalingDownResponse(AbstractModel):
         :param _Result: 缩容应答
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ScalingDownResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -18819,7 +18819,7 @@ class ModifyAclRuleResponse(AbstractModel):
         r"""
         :param _Result: 规则的唯一表示Key
         :type Result: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19079,7 +19079,7 @@ class ModifyConnectResourceResponse(AbstractModel):
         r"""
         :param _Result: 连接源的Id
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19164,7 +19164,7 @@ class ModifyDatahubTaskResponse(AbstractModel):
         :param _Result: 任务id
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19277,7 +19277,7 @@ class ModifyDatahubTopicResponse(AbstractModel):
         r"""
         :param _Result: 返回结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19433,7 +19433,7 @@ class ModifyGroupOffsetsResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19664,7 +19664,7 @@ class ModifyInstanceAttributesResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19772,7 +19772,7 @@ class ModifyInstancePreResponse(AbstractModel):
         r"""
         :param _Result: 变更预付费实例配置返回结构
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -19880,7 +19880,7 @@ class ModifyPasswordResponse(AbstractModel):
         r"""
         :param _Result: 返回结果
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -20161,7 +20161,7 @@ class ModifyTopicAttributesResponse(AbstractModel):
         r"""
         :param _Result: 返回结果集
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -22402,7 +22402,7 @@ class RenewCkafkaInstanceResponse(AbstractModel):
         r"""
         :param _Result: 返回值
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.RenewCkafkaInstanceResp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -23459,7 +23459,7 @@ class SendMessageResponse(AbstractModel):
         r"""
         :param _MessageId: 消息ID列表
         :type MessageId: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MessageId = None

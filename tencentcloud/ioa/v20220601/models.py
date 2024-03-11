@@ -342,7 +342,7 @@ class DescribeDevicesResponse(AbstractModel):
         :param _Data: 分页的data数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDevicesPageRsp`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None

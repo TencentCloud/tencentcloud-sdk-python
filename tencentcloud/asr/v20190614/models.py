@@ -142,7 +142,7 @@ class CloseAsyncRecognitionTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -245,7 +245,7 @@ class CreateAsrVocabResponse(AbstractModel):
         r"""
         :param _VocabId: 词表ID，可用于获取词表信息
         :type VocabId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VocabId = None
@@ -447,7 +447,7 @@ class CreateAsyncRecognitionTaskResponse(AbstractModel):
         r"""
         :param _Data: 请求返回结果，包含本次的任务ID(TaskId)
         :type Data: :class:`tencentcloud.asr.v20190614.models.Task`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -559,7 +559,7 @@ class CreateCustomizationResponse(AbstractModel):
         r"""
         :param _ModelId: 模型ID
         :type ModelId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ModelId = None
@@ -984,7 +984,7 @@ class CreateRecTaskResponse(AbstractModel):
         r"""
         :param _Data: 录音文件识别的请求返回结果，包含结果查询需要的TaskId
         :type Data: :class:`tencentcloud.asr.v20190614.models.Task`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1054,7 +1054,7 @@ class DeleteAsrVocabResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1112,7 +1112,7 @@ class DeleteCustomizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1146,7 +1146,7 @@ class DescribeAsyncRecognitionTasksResponse(AbstractModel):
         :param _Data: 任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.asr.v20190614.models.AsyncRecognitionTasks`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1218,7 +1218,7 @@ class DescribeTaskStatusResponse(AbstractModel):
         r"""
         :param _Data: 录音文件识别的请求返回结果。
         :type Data: :class:`tencentcloud.asr.v20190614.models.TaskStatus`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1292,7 +1292,7 @@ class DownloadAsrVocabResponse(AbstractModel):
         :type VocabId: str
         :param _WordWeightStr: 词表权重文件形式的base64值。
         :type WordWeightStr: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VocabId = None
@@ -1372,7 +1372,7 @@ class DownloadCustomizationResponse(AbstractModel):
         r"""
         :param _DownloadUrl: 下载地址
         :type DownloadUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownloadUrl = None
@@ -1468,7 +1468,7 @@ class GetAsrVocabListResponse(AbstractModel):
         :type VocabList: list of Vocab
         :param _TotalCount: 热词列表总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VocabList = None
@@ -1565,7 +1565,7 @@ class GetAsrVocabResponse(AbstractModel):
         :type UpdateTime: str
         :param _State: 热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态
         :type State: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Name = None
@@ -1732,7 +1732,7 @@ class GetCustomizationListResponse(AbstractModel):
         :param _TotalCount: 自学习模型总量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1817,7 +1817,7 @@ class GetModelInfoResponse(AbstractModel):
         r"""
         :param _Data: 模型信息
         :type Data: :class:`tencentcloud.asr.v20190614.models.Model`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -2094,7 +2094,7 @@ class ModifyCustomizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2166,7 +2166,7 @@ class ModifyCustomizationStateResponse(AbstractModel):
         r"""
         :param _ModelId: 自学习模型ID
         :type ModelId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ModelId = None
@@ -2686,7 +2686,7 @@ class SentenceRecognitionResponse(AbstractModel):
         :param _WordList: 词时间戳列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type WordList: list of SentenceWord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2920,7 +2920,7 @@ class SetVocabStateResponse(AbstractModel):
         r"""
         :param _VocabId: 热词表ID
         :type VocabId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VocabId = None
@@ -3189,7 +3189,7 @@ class UpdateAsrVocabResponse(AbstractModel):
         r"""
         :param _VocabId: 热词表ID
         :type VocabId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VocabId = None
@@ -3512,7 +3512,7 @@ class VoicePrintCompareResponse(AbstractModel):
         r"""
         :param _Data: 音频声纹比对结果，包含相似度打分
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintCompareData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3591,7 +3591,7 @@ class VoicePrintCountResponse(AbstractModel):
         r"""
         :param _Data: 统计数据
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintCountData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3663,7 +3663,7 @@ class VoicePrintDeleteResponse(AbstractModel):
         r"""
         :param _Data: 说话人基本信息
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3771,7 +3771,7 @@ class VoicePrintEnrollResponse(AbstractModel):
         r"""
         :param _Data: 说话人基本数据
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3891,7 +3891,7 @@ class VoicePrintUpdateResponse(AbstractModel):
         r"""
         :param _Data: 说话人基础数据
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintBaseData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -4059,7 +4059,7 @@ class VoicePrintVerifyResponse(AbstractModel):
         r"""
         :param _Data: 说话人验证数据
         :type Data: :class:`tencentcloud.asr.v20190614.models.VoicePrintVerifyData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None

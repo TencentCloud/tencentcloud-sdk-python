@@ -455,7 +455,7 @@ class AddAlarmProcessRecordResponse(AbstractModel):
         r"""
         :param _Result: 添加告警处理记录结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2072,7 +2072,7 @@ class BatchCreateDeviceResponse(AbstractModel):
         r"""
         :param _Result: 批量新增设备返回结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.BatchCreateDeviceRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2296,7 +2296,7 @@ class BatchKillAlarmResponse(AbstractModel):
         r"""
         :param _Result: 批量消警结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2463,7 +2463,7 @@ class BatchReportAppMessageResponse(AbstractModel):
         r"""
         :param _Result: 批量消息上报结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.BatchReportAppMessageRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3039,7 +3039,7 @@ class ChangeAlarmStatusResponse(AbstractModel):
         r"""
         :param _Result: 返回空结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3158,7 +3158,7 @@ class ControlCameraPTZResponse(AbstractModel):
         r"""
         :param _Result: 控制摄像头结果返回
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3351,7 +3351,7 @@ class ControlDeviceResponse(AbstractModel):
         r"""
         :param _Result: 设备控制后结果集
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ControlDeviceSet`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3510,7 +3510,7 @@ class CreateApplicationTokenResponse(AbstractModel):
         r"""
         :param _Result: 应用令牌信息
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationTokenInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -3997,7 +3997,7 @@ class DescribeActionListResponse(AbstractModel):
         r"""
         :param _Result: 动作列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeActionListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4132,7 +4132,7 @@ class DescribeAdministrationByTagResponse(AbstractModel):
         r"""
         :param _Result: 行政区划返回结构
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAdministrationByTagRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4255,7 +4255,7 @@ class DescribeAlarmLevelListResponse(AbstractModel):
         r"""
         :param _Result: 告警级别列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmLevelListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4615,7 +4615,7 @@ class DescribeAlarmListResponse(AbstractModel):
         r"""
         :param _Result: 告警列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4738,7 +4738,7 @@ class DescribeAlarmStatusListResponse(AbstractModel):
         r"""
         :param _Result: 告警状态返回结构
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmStatusListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4873,7 +4873,7 @@ class DescribeAlarmTypeListResponse(AbstractModel):
         r"""
         :param _Result: 告警类型列表查询
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeAlarmTypeListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4993,7 +4993,7 @@ class DescribeApplicationListResponse(AbstractModel):
         r"""
         :param _Result: 应用列表
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationList`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5101,7 +5101,7 @@ class DescribeBuildingListResponse(AbstractModel):
         r"""
         :param _Result: 查询建筑列表出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.BuildingListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5197,7 +5197,7 @@ class DescribeBuildingModelResponse(AbstractModel):
         r"""
         :param _Result: 建模模型信息出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.BuildingModelRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5293,7 +5293,7 @@ class DescribeBuildingProfileResponse(AbstractModel):
         r"""
         :param _Result: 查询建筑信息出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.BuildingProfileRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5390,7 +5390,7 @@ class DescribeCameraExtendInfoResponse(AbstractModel):
         r"""
         :param _Result: 获取视频扩展信息结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.CameraExtendInfoRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5514,7 +5514,7 @@ class DescribeCityWorkspaceListResponse(AbstractModel):
         :param _Result: 工作空间信息集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeCityWorkspaceListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -5835,7 +5835,7 @@ class DescribeDeviceListResponse(AbstractModel):
         r"""
         :param _Result: 查询设备列表结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6015,7 +6015,7 @@ class DescribeDeviceShadowListResponse(AbstractModel):
         r"""
         :param _Result: 获取设备影子结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceShadowRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6235,7 +6235,7 @@ class DescribeDeviceStatusListResponse(AbstractModel):
         r"""
         :param _Result: 查询设备状态结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceStatusRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6355,7 +6355,7 @@ class DescribeDeviceStatusStatResponse(AbstractModel):
         r"""
         :param _Result: 设备状态统计结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceStatusStatRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6463,7 +6463,7 @@ class DescribeDeviceTagListResponse(AbstractModel):
         r"""
         :param _Result: 设备标签查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceTagRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6559,7 +6559,7 @@ class DescribeDeviceTypeListResponse(AbstractModel):
         r"""
         :param _Result: 设备的设备类型列表
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceTypeSet`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6643,7 +6643,7 @@ class DescribeEdgeApplicationTokenResponse(AbstractModel):
         r"""
         :param _Result: 边缘应用令牌信息	
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ApplicationTokenInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6847,7 +6847,7 @@ class DescribeElementProfilePageResponse(AbstractModel):
         r"""
         :param _Result: 分页查询构件出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfilePageRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6979,7 +6979,7 @@ class DescribeElementProfileTreeResponse(AbstractModel):
         r"""
         :param _Result: 构件树出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ElementProfileTreeRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7202,7 +7202,7 @@ class DescribeEventListResponse(AbstractModel):
         r"""
         :param _Result: 事件列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeEventListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7298,7 +7298,7 @@ class DescribeFileDownloadURLResponse(AbstractModel):
         r"""
         :param _Result: 文件下载URL地址
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.FileDownloadURL`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7455,7 +7455,7 @@ class DescribeFileUploadURLResponse(AbstractModel):
         r"""
         :param _Result: 获取文件上传地址结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.FileUploadURL`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7587,7 +7587,7 @@ class DescribeInterfaceListResponse(AbstractModel):
         r"""
         :param _Result: API列表
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ApiInfoList`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7810,7 +7810,7 @@ class DescribeLinkRuleListResponse(AbstractModel):
         r"""
         :param _Result: 联动规则列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeLinkRuleListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7954,7 +7954,7 @@ class DescribeModelListResponse(AbstractModel):
         r"""
         :param _Result: 模型列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ModelSet`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8098,7 +8098,7 @@ class DescribeProductListResponse(AbstractModel):
         r"""
         :param _Result: 产品列表查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ProductSet`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8206,7 +8206,7 @@ class DescribePropertyListResponse(AbstractModel):
         r"""
         :param _Result: 构件属性信息出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.ElementPropertyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8302,7 +8302,7 @@ class DescribeRuleDetailResponse(AbstractModel):
         r"""
         :param _Result: 规则详情查询结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.RuleDetailRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8386,7 +8386,7 @@ class DescribeSceneListResponse(AbstractModel):
         r"""
         :param _Result: 场景列表出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SceneListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8518,7 +8518,7 @@ class DescribeSpaceDeviceIdListResponse(AbstractModel):
         r"""
         :param _Result: 设备ID列表
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDeviceIdListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8650,7 +8650,7 @@ class DescribeSpaceDeviceRelationListResponse(AbstractModel):
         r"""
         :param _Result: 查询指定空间下设备与构件绑定关系列表出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDeviceRelationRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8746,7 +8746,7 @@ class DescribeSpaceInfoByDeviceIdResponse(AbstractModel):
         r"""
         :param _Result: 设备绑定的空间信息出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DeviceSpaceInfoRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8842,7 +8842,7 @@ class DescribeSpaceRelationByDeviceIdResponse(AbstractModel):
         r"""
         :param _Result: 空间层级关系出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceRelationRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -8950,7 +8950,7 @@ class DescribeSpaceTypeListResponse(AbstractModel):
         r"""
         :param _Result: 空间分类列表出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceTypeListRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9034,7 +9034,7 @@ class DescribeTenantBuildingCountAndAreaResponse(AbstractModel):
         r"""
         :param _Result: 租户所有项目空间楼栋数量与建筑面积统计结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDataTotalStatsRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9178,7 +9178,7 @@ class DescribeTenantDepartmentListResponse(AbstractModel):
         r"""
         :param _Result: 返回数据
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SsoDepartmentsResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9370,7 +9370,7 @@ class DescribeTenantUserListResponse(AbstractModel):
         r"""
         :param _Result: 返回数据
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SsoUserResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9491,7 +9491,7 @@ class DescribeVideoCloudRecordResponse(AbstractModel):
         r"""
         :param _Result: 获取云录像结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.VideoCloudRecordRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9630,7 +9630,7 @@ class DescribeVideoLiveStreamResponse(AbstractModel):
         r"""
         :param _Result: 视频实时流获取结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.VideoRecordStreamRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9801,7 +9801,7 @@ class DescribeVideoRecordStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -9873,7 +9873,7 @@ class DescribeWorkSpaceBuildingCountAndAreaResponse(AbstractModel):
         r"""
         :param _Result: 查询项目空间楼栋数量与建筑面积出参
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SpaceDataListStatsRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -9957,7 +9957,7 @@ class DescribeWorkspaceListResponse(AbstractModel):
         r"""
         :param _Result: 项目空间列表
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.WorkspaceInfoList`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -10089,7 +10089,7 @@ class DescribeWorkspaceUserListResponse(AbstractModel):
         r"""
         :param _Result: 返回数据
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SsoTeamUserResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -13390,7 +13390,7 @@ class ModifyDeviceNameResponse(AbstractModel):
         r"""
         :param _Result: 返回请求结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -14276,7 +14276,7 @@ class ReportAppMessageResponse(AbstractModel):
         r"""
         :param _Result: 上报单条信息结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -16235,7 +16235,7 @@ class StopVideoStreamingResponse(AbstractModel):
         r"""
         :param _Result: 停流接口返回结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -16343,7 +16343,7 @@ class UpdateWorkspaceParkAttributesResponse(AbstractModel):
         r"""
         :param _Result: 修改工作空间园区属性结果
         :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

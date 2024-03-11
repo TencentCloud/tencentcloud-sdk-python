@@ -1548,7 +1548,7 @@ class CancelEncryptTaskResponse(AbstractModel):
         r"""
         :param _State: 1: 取消任务成功 ； -1 ：取消任务失败，原因为任务进程已结束，不能取消。
         :type State: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._State = None
@@ -1654,7 +1654,7 @@ class CreateBindInstanceResponse(AbstractModel):
         r"""
         :param _Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Progress = None
@@ -1752,7 +1752,7 @@ class CreateCosSecKeyInstanceResponse(AbstractModel):
         :type CosPrefix: str
         :param _CosToken: 密钥TOCKEN信息
         :type CosToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CosAppid = None
@@ -1998,7 +1998,7 @@ class CreateEncryptInstanceResponse(AbstractModel):
         r"""
         :param _ResultId: 加固任务Id
         :type ResultId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultId = None
@@ -2096,7 +2096,7 @@ class CreateOrderInstanceResponse(AbstractModel):
         :type OrderId: str
         :param _ResourceId: 与订单关联的资源id
         :type ResourceId: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrderId = None
@@ -2212,7 +2212,7 @@ class CreateResourceInstancesResponse(AbstractModel):
         r"""
         :param _ResourceSet: 新创建的资源列表。
         :type ResourceSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceSet = None
@@ -2300,7 +2300,7 @@ class CreateShieldInstanceResponse(AbstractModel):
         :type Progress: int
         :param _ItemId: 任务唯一标识
         :type ItemId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Progress = None
@@ -2408,7 +2408,7 @@ class CreateShieldPlanInstanceResponse(AbstractModel):
         :type PlanId: int
         :param _Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PlanId = None
@@ -2488,7 +2488,7 @@ class DeleteShieldInstancesResponse(AbstractModel):
         r"""
         :param _Progress: 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
         :type Progress: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Progress = None
@@ -2574,7 +2574,7 @@ class DescribeApkDetectionResultResponse(AbstractModel):
         :type Reason: str
         :param _ResultList: APK检测结果数组
         :type ResultList: list of ResultListItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2821,7 +2821,7 @@ class DescribeEncryptInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _EncryptResults: 渠道合作加固信息数组
         :type EncryptResults: list of EncryptResults
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2990,7 +2990,7 @@ class DescribeEncryptPlanResponse(AbstractModel):
         :param _SDKPlan: 上次sdk加固配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type SDKPlan: :class:`tencentcloud.ms.v20180408.models.SDKPlan`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PlatformType = None
@@ -3290,7 +3290,7 @@ class DescribeOrderInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _Orders: 订单信息
         :type Orders: list of Orders
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3442,7 +3442,7 @@ class DescribeResourceInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _ResourceSet: 符合要求的资源数组
         :type ResourceSet: list of ResourceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3594,7 +3594,7 @@ class DescribeShieldInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _AppSet: 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
         :type AppSet: list of AppSetInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3695,7 +3695,7 @@ class DescribeShieldPlanInstanceResponse(AbstractModel):
         :type ShieldPlanInfo: :class:`tencentcloud.ms.v20180408.models.ShieldPlanInfo`
         :param _ResourceServiceInfo: 加固资源信息
         :type ResourceServiceInfo: :class:`tencentcloud.ms.v20180408.models.ResourceServiceInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BindInfo = None
@@ -3799,7 +3799,7 @@ class DescribeShieldResultResponse(AbstractModel):
         :type StatusDesc: str
         :param _StatusRef: 状态指引
         :type StatusRef: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskStatus = None
@@ -3950,7 +3950,7 @@ class DescribeUrlDetectionResultResponse(AbstractModel):
         :type EvilTypeDesc: str
         :param _LevelDesc: 该字段暂为空
         :type LevelDesc: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -4117,7 +4117,7 @@ class DescribeUserBaseInfoInstanceResponse(AbstractModel):
         :type UserAppid: int
         :param _TimeStamp: 系统时间戳
         :type TimeStamp: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserUin = None
@@ -4225,7 +4225,7 @@ class DestroyResourceInstancesResponse(AbstractModel):
         :type PlatformType: int
         :param _OrderType: 订单采购类型 1-免费试用 2-按年收费 3-按次收费  
         :type OrderType: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceId = None
@@ -5559,7 +5559,7 @@ trial
         :type EncryptParam: str
         :param _EncryptState: 任务状态
         :type EncryptState: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Sid = None
@@ -6515,7 +6515,7 @@ class UpdateClientStateResponse(AbstractModel):
         r"""
         :param _ResultCode: 返回值
         :type ResultCode: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -6633,7 +6633,7 @@ class UpdateLocalTaskResultResponse(AbstractModel):
         r"""
         :param _ResultCode: 标记成功
         :type ResultCode: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None

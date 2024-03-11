@@ -117,7 +117,7 @@ class AddFairPlayPemResponse(AbstractModel):
         :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FairPlayPemId = None
@@ -236,7 +236,7 @@ class CreateEncryptKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -349,7 +349,7 @@ class CreateLicenseResponse(AbstractModel):
         :type License: str
         :param _ContentId: 加密内容的内容ID
         :type ContentId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._License = None
@@ -440,7 +440,7 @@ class DeleteFairPlayPemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -546,7 +546,7 @@ class DescribeAllKeysResponse(AbstractModel):
         :param _ContentId: 内容ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Keys = None
@@ -679,7 +679,7 @@ class DescribeDRMLicenseResponse(AbstractModel):
         :type ContentId: str
         :param _TXEncryptionToken: 加密密钥。
         :type TXEncryptionToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ContentId = None
@@ -773,7 +773,7 @@ class DescribeFairPlayPemResponse(AbstractModel):
         :param _FairPlayPems: 该账户下，所有设置的FairPlay私钥摘要信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type FairPlayPems: list of FairPlayPemDigestInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FairPlayPems = None
@@ -907,7 +907,7 @@ class DescribeKeysResponse(AbstractModel):
         :param _Pssh: Widevine方案的Pssh数据，Base64编码。
 Fairplay方案无该值。
         :type Pssh: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Keys = None
@@ -1285,7 +1285,7 @@ class GenerateTDRMKeyResponse(AbstractModel):
         :type ContentId: str
         :param _TXEncryptionToken: 加密密钥。
         :type TXEncryptionToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ContentId = None
@@ -1586,7 +1586,7 @@ class ModifyFairPlayPemResponse(AbstractModel):
         :param _Priority: 私钥的优先级，优先级数值越高，优先级越高。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Priority: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FairPlayPemId = None
@@ -1776,7 +1776,7 @@ class StartEncryptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

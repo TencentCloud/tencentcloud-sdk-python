@@ -1066,7 +1066,7 @@ class AgentPayDealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1205,7 +1205,7 @@ class AgentTransferMoneyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1305,7 +1305,7 @@ class AssignClientsToSalesResponse(AbstractModel):
         :param _FailedUins: 处理失败的代客uin列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedUins: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SucceedUins = None
@@ -1416,7 +1416,7 @@ class AuditApplyClientResponse(AbstractModel):
         :param _AgentTime: 关联时间对应的时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Uin = None
@@ -1514,7 +1514,7 @@ class CreatePayRelationForClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1765,7 +1765,7 @@ class DescribeAgentAuditedClientsResponse(AbstractModel):
         :type AgentClientSet: list of AgentAuditedClient
         :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentClientSet = None
@@ -1924,7 +1924,7 @@ class DescribeAgentBillsResponse(AbstractModel):
         :type TotalCount: int
         :param _AgentBillSet: 业务明细列表
         :type AgentBillSet: list of AgentBillElem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2015,7 +2015,7 @@ class DescribeAgentClientGradeResponse(AbstractModel):
         :type ClientGrade: str
         :param _ClientType: 客户类型：1，个人；2，企业；3，其他
         :type ClientType: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuditStatus = None
@@ -2201,7 +2201,7 @@ class DescribeAgentClientsResponse(AbstractModel):
         :type AgentClientSet: list of AgentClientElem
         :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentClientSet = None
@@ -2396,7 +2396,7 @@ class DescribeAgentDealsByCacheResponse(AbstractModel):
         :type AgentDealSet: list of AgentDealNewElem
         :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentDealSet = None
@@ -2579,7 +2579,7 @@ class DescribeAgentPayDealsV2Response(AbstractModel):
         :type AgentPayDealSet: list of AgentDealNewElem
         :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentPayDealSet = None
@@ -2762,7 +2762,7 @@ class DescribeAgentSelfPayDealsV2Response(AbstractModel):
         :type AgentPayDealSet: list of AgentDealNewElem
         :param _TotalCount: 符合条件的订单总数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentPayDealSet = None
@@ -2849,7 +2849,7 @@ class DescribeClientBalanceNewResponse(AbstractModel):
         :type Balance: int
         :param _Cash: 账户现金余额，单位分
         :type Cash: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Balance = None
@@ -2955,7 +2955,7 @@ class DescribeRebateInfosNewResponse(AbstractModel):
         :type RebateInfoSet: list of RebateInfoElemNew
         :param _TotalCount: 符合查询条件返佣信息数目
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RebateInfoSet = None
@@ -3066,7 +3066,7 @@ class DescribeRebateInfosResponse(AbstractModel):
         :type RebateInfoSet: list of RebateInfoElem
         :param _TotalCount: 符合查询条件返佣信息数目
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RebateInfoSet = None
@@ -3201,7 +3201,7 @@ class DescribeSalesmansResponse(AbstractModel):
         :type AgentSalesmanSet: list of AgentSalesmanElem
         :param _TotalCount: 符合条件的代客总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AgentSalesmanSet = None
@@ -3360,7 +3360,7 @@ class DescribeUnbindClientListResponse(AbstractModel):
         :type TotalCount: int
         :param _UnbindClientList: 符合条件的解绑客户列表
         :type UnbindClientList: list of UnbindClientElem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3455,7 +3455,7 @@ class ModifyClientRemarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3791,7 +3791,7 @@ class RemovePayRelationForClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

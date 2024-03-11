@@ -141,6 +141,29 @@ class CdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDedicatedClusterCbsStatistics(self, request):
+        """查询本地专用集群云硬盘仓库信息
+
+        :param request: Request instance for DescribeDedicatedClusterCbsStatistics.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCbsStatisticsRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeDedicatedClusterCbsStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDedicatedClusterCbsStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDedicatedClusterCbsStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDedicatedClusterCosCapacity(self, request):
         """查询专用集群内cos的容量信息
 

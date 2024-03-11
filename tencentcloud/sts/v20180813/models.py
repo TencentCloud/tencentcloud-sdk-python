@@ -208,7 +208,7 @@ class AssumeRoleResponse(AbstractModel):
         :type ExpiredTime: int
         :param _Expiration: 临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
         :type Expiration: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Credentials = None
@@ -352,7 +352,7 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
         :type ExpiredTime: int
         :param _Expiration: 临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
         :type Expiration: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Credentials = None
@@ -496,7 +496,7 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
         :type Expiration: str
         :param _Credentials: 临时访问凭证
         :type Credentials: :class:`tencentcloud.sts.v20180813.models.Credentials`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ExpiredTime = None
@@ -631,7 +631,7 @@ class GetCallerIdentityResponse(AbstractModel):
         :type PrincipalId: str
         :param _Type: 身份类型。
         :type Type: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Arn = None
@@ -773,7 +773,7 @@ class GetFederationTokenResponse(AbstractModel):
         :param _Expiration: 临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Expiration: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Credentials = None
@@ -865,7 +865,7 @@ class QueryApiKeyResponse(AbstractModel):
         r"""
         :param _IdKeys: 密钥ID列表
         :type IdKeys: list of ApiKey
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdKeys = None

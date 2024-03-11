@@ -463,7 +463,7 @@ class CorrectMultiImageResponse(AbstractModel):
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
         :param _ResultData: 接口返回数据
         :type ResultData: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -569,7 +569,7 @@ class DescribeTaskResponse(AbstractModel):
         :type CorrectData: :class:`tencentcloud.ecc.v20181213.models.CorrectData`
         :param _Status: 任务状态，“Progressing”: 处理中（此时无结果返回）、“Finished”: 处理完成
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Content = None
@@ -761,7 +761,7 @@ class ECCResponse(AbstractModel):
         :param _TaskId: 任务 id，用于查询接口
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -965,7 +965,7 @@ class EHOCRResponse(AbstractModel):
         :type Data: :class:`tencentcloud.ecc.v20181213.models.CompostionContext`
         :param _ResultData: 接口返回数据
         :type ResultData: :class:`tencentcloud.ecc.v20181213.models.CompositionContext`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None

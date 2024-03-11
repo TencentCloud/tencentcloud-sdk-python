@@ -25,9 +25,9 @@ class AssignProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例 ID 列表。格式如：cmgo-p8vn****，与云数据库控制台页面中显示的实例 ID 相同。
         :type InstanceIds: list of str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: 项目ID。项目 ID 具有唯一性，请[登录 MongoDB 控制台](https://console.cloud.tencent.com/mongodb)，在右上角的账户信息的下拉菜单中，选择**项目管理**，即可获取项目ID。
         :type ProjectId: int
         """
         self._InstanceIds = None
@@ -70,9 +70,9 @@ class AssignProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowIds: 返回的异步任务ID列表
+        :param _FlowIds: 返回的异步任务ID列表。
         :type FlowIds: list of int non-negative
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowIds = None
@@ -357,7 +357,7 @@ class CreateDBInstanceHourResponse(AbstractModel):
         :type DealId: str
         :param _InstanceIds: 创建的实例ID列表
         :type InstanceIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
@@ -583,7 +583,7 @@ class CreateDBInstanceResponse(AbstractModel):
         :type DealId: str
         :param _InstanceIds: 创建的实例ID列表
         :type InstanceIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
@@ -664,10 +664,14 @@ class DescribeClientConnectionsResponse(AbstractModel):
         :param _Clients: 客户端连接信息，包括客户端IP和对应IP的连接数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Clients: list of ClientConnection
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _TotalCount: 连接数总结
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Clients = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -677,6 +681,14 @@ class DescribeClientConnectionsResponse(AbstractModel):
     @Clients.setter
     def Clients(self, Clients):
         self._Clients = Clients
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -694,6 +706,7 @@ class DescribeClientConnectionsResponse(AbstractModel):
                 obj = ClientConnection()
                 obj._deserialize(item)
                 self._Clients.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -704,27 +717,33 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+        :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
         :type InstanceIds: list of str
-        :param _InstanceType: 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+        :param _InstanceType: 实例类型，取值范围：
+<ul><li>0： 所有实例</li><li>1： 正式实例</li><li>2： 临时实例</li><li>3： 只读实例</li><li>-1： 正式实例+只读+灾备实例</li></ul>
         :type InstanceType: int
-        :param _ClusterType: 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+        :param _ClusterType: 集群类型，取值范围： 
+<ul><li>0： 副本集实例</li><li>1： 正式实例</li> <li>-1： 所有实例</li></ul>
         :type ClusterType: int
-        :param _Status: 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-实例已过期
+        :param _Status: 实例状态，取值范围： 
+<ul><li>0： 待初始化</li><li>1： 流程执行中</li> <li>2： 有效实例</li><li>-2： 已过期实例</li></ul>
         :type Status: list of int
-        :param _VpcId: 私有网络的ID，基础网络则不传该参数
+        :param _VpcId: 私有网络的ID，基础网络则不传该参数。
         :type VpcId: str
-        :param _SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+        :param _SubnetId: 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
         :type SubnetId: str
-        :param _PayMode: 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+        :param _PayMode: 付费类型，取值范围：
+<ul><li>0： 按量计费</li><li>1：包年包月</li><li>-1： 按量计费+包年包月</li></ul>
         :type PayMode: int
-        :param _Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+        :param _Limit: 单次请求返回的数量，最小值为1，最大值为100，默认值为20。
         :type Limit: int
-        :param _Offset: 偏移量，默认值为0
+        :param _Offset: 偏移量，默认值为0。
         :type Offset: int
-        :param _OrderBy: 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+        :param _OrderBy: 返回结果集排序的字段，目前支持： 
+<ul><li>ProjectId： 按照项目ID排序</li><li>InstanceName：按照实例名称排序</li><li>CreateTime： 根据创建时间排序</li></ul>
         :type OrderBy: str
-        :param _OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"
+        :param _OrderByType: 返回结果集排序方式，目前支持："ASC"或者"DESC"。
+<ul><li>ASC： 顺序取值</li><li>DESC：倒序取值</li></ul>
         :type OrderByType: str
         """
         self._InstanceIds = None
@@ -861,7 +880,7 @@ class DescribeDBInstancesResponse(AbstractModel):
         :type TotalCount: int
         :param _InstanceDetails: 实例详细信息
         :type InstanceDetails: list of MongoDBInstanceDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1008,7 +1027,7 @@ class DescribeSlowLogResponse(AbstractModel):
         :type TotalCount: int
         :param _SlowLogList: 符合查询条件的慢查询日志详情。
         :type SlowLogList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1088,7 +1107,7 @@ class DescribeSpecInfoResponse(AbstractModel):
         r"""
         :param _SpecInfoList: 实例售卖规格信息列表
         :type SpecInfoList: list of SpecificationInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SpecInfoList = None
@@ -1801,7 +1820,7 @@ class RenameInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param _NewName: 实例名称
+        :param _NewName: 实例自定义名称
         :type NewName: str
         """
         self._InstanceId = None
@@ -1844,7 +1863,7 @@ class RenameInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1871,7 +1890,10 @@ class SetAutoRenewRequest(AbstractModel):
         r"""
         :param _InstanceIds: 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceIds: list of str
-        :param _AutoRenewFlag: 续费选项，取值范围：0-手动续费，1-自动续费，2-确认不续费
+        :param _AutoRenewFlag: 配置自动续费标识。
+- 0：手动续费。
+- 1：自动续费。
+- 2：确认不续费。
         :type AutoRenewFlag: int
         """
         self._InstanceIds = None
@@ -1914,7 +1936,7 @@ class SetAutoRenewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1941,7 +1963,7 @@ class SetPasswordRequest(AbstractModel):
         r"""
         :param _InstanceId: 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
         :type InstanceId: str
-        :param _UserName: 实例账户名称
+        :param _UserName: 实例账户名。初始化实例密码，本参数传mongouser。
         :type UserName: str
         :param _Password: 实例新密码，至少包含字母、数字和字符（!@#%^*()）中的两种，长度为8-16个字符
         :type Password: str
@@ -1998,7 +2020,7 @@ class SetPasswordResponse(AbstractModel):
         r"""
         :param _FlowId: 返回的异步任务ID
         :type FlowId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -2446,9 +2468,9 @@ class TerminateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 订单ID，表示注销实例成功
+        :param _AsyncRequestId: 订单ID，表示注销实例成功。
         :type AsyncRequestId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AsyncRequestId = None
@@ -2554,7 +2576,7 @@ class UpgradeDBInstanceHourResponse(AbstractModel):
         r"""
         :param _DealId: 订单ID
         :type DealId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None
@@ -2660,7 +2682,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
         r"""
         :param _DealId: 订单ID
         :type DealId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealId = None

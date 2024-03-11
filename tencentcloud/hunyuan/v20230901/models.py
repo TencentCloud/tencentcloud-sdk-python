@@ -112,7 +112,7 @@ class ChatProResponse(AbstractModel):
 如果流式返回中服务处理异常，返回该错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
         self._Created = None
@@ -293,7 +293,7 @@ class ChatStdResponse(AbstractModel):
 如果流式返回中服务处理异常，返回该错误信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMsg: :class:`tencentcloud.hunyuan.v20230901.models.ErrorMsg`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
         :type RequestId: str
         """
         self._Created = None
@@ -669,7 +669,7 @@ class GetEmbeddingResponse(AbstractModel):
         :type Data: list of EmbeddingData
         :param _Usage: token 使用计数，按照总token数量收费。
         :type Usage: :class:`tencentcloud.hunyuan.v20230901.models.EmbeddingUsage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -760,7 +760,7 @@ class GetTokenCountResponse(AbstractModel):
         :type CharacterCount: int
         :param _Tokens: 切分后的列表
         :type Tokens: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TokenCount = None

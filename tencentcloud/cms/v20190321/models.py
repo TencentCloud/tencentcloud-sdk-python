@@ -393,7 +393,7 @@ class CreateKeywordsSamplesResponse(AbstractModel):
         :param _InvalidSamples: 无效关键词列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InvalidSamples: list of InvalidSample
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SampleIDs = None
@@ -603,7 +603,7 @@ class DeleteLibSamplesResponse(AbstractModel):
         :type Count: int
         :param _Details: 每个关键词删除的结果
         :type Details: list of DeleteSampleDetails
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Count = None
@@ -788,7 +788,7 @@ class DescribeKeywordsLibsResponse(AbstractModel):
         :type TotalCount: int
         :param _Infos: 词库详情
         :type Infos: list of KeywordsLibInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -935,7 +935,7 @@ class DescribeLibSamplesResponse(AbstractModel):
         :type TotalCount: int
         :param _Infos: 词详情
         :type Infos: list of UserKeywordInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1640,7 +1640,7 @@ class ImageModerationResponse(AbstractModel):
         :type BusinessCode: int
         :param _Data: 识别结果
         :type Data: :class:`tencentcloud.cms.v20190321.models.ImageData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessCode = None
@@ -3019,7 +3019,7 @@ class TextModerationResponse(AbstractModel):
         :param _Data: 识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.cms.v20190321.models.TextData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BusinessCode = None

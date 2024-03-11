@@ -155,7 +155,7 @@ class DescribeHSMBySubnetIdResponse(AbstractModel):
         :type TotalCount: int
         :param _SubnetId: 作为查询条件的SubnetId
         :type SubnetId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -237,7 +237,7 @@ class DescribeHSMByVpcIdResponse(AbstractModel):
         :type TotalCount: int
         :param _VpcId: 作为查询条件的VpcId
         :type VpcId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -356,7 +356,7 @@ class DescribeSubnetResponse(AbstractModel):
         :param _SubnetList: 返回的子网实例列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetList: list of Subnet
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -442,7 +442,7 @@ class DescribeSupportedHsmResponse(AbstractModel):
         :param _DeviceTypes: 当前地域所支持的设备列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceTypes: list of DeviceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeviceTypes = None
@@ -544,7 +544,7 @@ class DescribeUsgResponse(AbstractModel):
         :type SgList: list of SgUnit
         :param _TotalCount: 返回的安全组数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SgList = None
@@ -633,7 +633,7 @@ class DescribeUsgRuleResponse(AbstractModel):
         :param _TotalCount: 安全组详情数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SgRules = None
@@ -745,7 +745,7 @@ class DescribeVpcResponse(AbstractModel):
         :param _VpcList: Vpc对象列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcList: list of Vpc
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -886,7 +886,7 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :param _Manufacturer: 厂商
 注意：此字段可能返回 null，表示取不到有效值。
         :type Manufacturer: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResourceId = None
@@ -1254,7 +1254,7 @@ class DescribeVsmsResponse(AbstractModel):
         :param _VsmList: 资源信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type VsmList: list of ResourceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1363,7 +1363,7 @@ class GetAlarmEventResponse(AbstractModel):
         :param _AlarmConfig: 用户所有的告警策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmConfig: list of AlarmPolicy
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AlarmConfig = None
@@ -1450,7 +1450,7 @@ class GetVsmMonitorInfoResponse(AbstractModel):
         r"""
         :param _MonitorInfo: VSM监控信息
         :type MonitorInfo: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MonitorInfo = None
@@ -1667,7 +1667,7 @@ class InquiryPriceBuyVsmResponse(AbstractModel):
         :param _OriginalCost: 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginalCost: float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCost = None
@@ -1823,7 +1823,7 @@ class ModifyAlarmEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1956,7 +1956,7 @@ class ModifyVsmAttributesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

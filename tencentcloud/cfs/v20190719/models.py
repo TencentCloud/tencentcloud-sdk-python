@@ -571,7 +571,7 @@ class BindAutoSnapshotPolicyResponse(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoSnapshotPolicyId = None
@@ -747,7 +747,7 @@ class CreateAutoSnapshotPolicyResponse(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoSnapshotPolicyId = None
@@ -1028,7 +1028,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
         :type FsName: str
         :param _Encrypted: 文件系统是否加密
         :type Encrypted: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CreationTime = None
@@ -1188,7 +1188,7 @@ class CreateCfsPGroupResponse(AbstractModel):
         :type BindCfsNum: int
         :param _CDate: 权限组创建时间
         :type CDate: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupId = None
@@ -1356,7 +1356,7 @@ class CreateCfsRuleResponse(AbstractModel):
         :type UserPermission: str
         :param _Priority: 优先级
         :type Priority: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RuleId = None
@@ -1505,7 +1505,7 @@ class CreateCfsSnapshotResponse(AbstractModel):
         r"""
         :param _SnapshotId: 文件系统快照id
         :type SnapshotId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SnapshotId = None
@@ -1743,7 +1743,7 @@ class CreateMigrationTaskResponse(AbstractModel):
         r"""
         :param _TaskId: 迁移任务Id
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -1813,7 +1813,7 @@ class DeleteAutoSnapshotPolicyResponse(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoSnapshotPolicyId = None
@@ -1881,7 +1881,7 @@ class DeleteCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1943,7 +1943,7 @@ class DeleteCfsPGroupResponse(AbstractModel):
         :type PGroupId: str
         :param _AppId: 用户 ID
         :type AppId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupId = None
@@ -2037,7 +2037,7 @@ class DeleteCfsRuleResponse(AbstractModel):
         :type RuleId: str
         :param _PGroupId: 权限组 ID
         :type PGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RuleId = None
@@ -2129,7 +2129,7 @@ class DeleteCfsSnapshotResponse(AbstractModel):
         r"""
         :param _SnapshotId: 文件系统ID
         :type SnapshotId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SnapshotId = None
@@ -2197,7 +2197,7 @@ class DeleteMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2267,7 +2267,7 @@ class DeleteMountTargetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2349,7 +2349,7 @@ class DeleteUserQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2476,7 +2476,7 @@ class DescribeAutoSnapshotPoliciesResponse(AbstractModel):
         :type TotalCount: int
         :param _AutoSnapshotPolicies: 快照策略信息
         :type AutoSnapshotPolicies: list of AutoSnapshotPolicyInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2534,7 +2534,7 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
         r"""
         :param _RegionZones: 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
         :type RegionZones: list of AvailableRegion
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegionZones = None
@@ -2636,7 +2636,7 @@ class DescribeBucketListResponse(AbstractModel):
         :type TotalCount: int
         :param _BucketList: 桶列表
         :type BucketList: list of BucketInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2747,7 +2747,7 @@ class DescribeCfsFileSystemClientsResponse(AbstractModel):
         :type ClientList: list of FileSystemClient
         :param _TotalCount: 文件系统总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClientList = None
@@ -2894,7 +2894,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
         :type FileSystems: list of FileSystemInfo
         :param _TotalCount: 文件系统总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FileSystems = None
@@ -2952,7 +2952,7 @@ class DescribeCfsPGroupsResponse(AbstractModel):
         r"""
         :param _PGroupList: 权限组信息列表
         :type PGroupList: list of PGroupInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupList = None
@@ -3027,7 +3027,7 @@ class DescribeCfsRulesResponse(AbstractModel):
         r"""
         :param _RuleList: 权限组规则列表
         :type RuleList: list of PGroupRuleInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RuleList = None
@@ -3075,7 +3075,7 @@ class DescribeCfsServiceStatusResponse(AbstractModel):
         r"""
         :param _CfsServiceStatus: 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
         :type CfsServiceStatus: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CfsServiceStatus = None
@@ -3118,7 +3118,7 @@ class DescribeCfsSnapshotOverviewResponse(AbstractModel):
         r"""
         :param _StatisticsList: 统计信息
         :type StatisticsList: list of SnapshotStatistics
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._StatisticsList = None
@@ -3281,7 +3281,7 @@ class DescribeCfsSnapshotsResponse(AbstractModel):
         :type Snapshots: list of SnapshotInfo
         :param _TotalSize: 快照列表快照汇总
         :type TotalSize: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3421,7 +3421,7 @@ class DescribeMigrationTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _MigrationTasks: 迁移任务详情
         :type MigrationTasks: list of MigrationTaskInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3508,7 +3508,7 @@ class DescribeMountTargetsResponse(AbstractModel):
         :type MountTargets: list of MountInfo
         :param _NumberOfMountTargets: 挂载点数量
         :type NumberOfMountTargets: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MountTargets = None
@@ -3619,7 +3619,7 @@ class DescribeSnapshotOperationLogsResponse(AbstractModel):
         :type SnapshotId: str
         :param _SnapshotOperates: 操作日志
         :type SnapshotOperates: list of SnapshotOperateLog
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SnapshotId = None
@@ -3749,7 +3749,7 @@ class DescribeUserQuotaResponse(AbstractModel):
         :type TotalCount: int
         :param _UserQuotaInfo: UserQuota条目
         :type UserQuotaInfo: list of UserQuota
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4761,7 +4761,7 @@ class ModifyFileSystemAutoScaleUpRuleResponse(AbstractModel):
         :type ScaleUpThreshold: int
         :param _TargetThreshold: 扩容后达到阈值,范围[10-90]
         :type TargetThreshold: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FileSystemId = None
@@ -5247,7 +5247,7 @@ class ScaleUpFileSystemResponse(AbstractModel):
         :type FileSystemId: str
         :param _TargetCapacity: 扩容的目标容量（单位GiB）
         :type TargetCapacity: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FileSystemId = None
@@ -5373,7 +5373,7 @@ class SetUserQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5406,7 +5406,7 @@ class SignUpCfsServiceResponse(AbstractModel):
         r"""
         :param _CfsServiceStatus: 该用户当前 CFS 服务的状态，creating 是开通中，created 是已开通
         :type CfsServiceStatus: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CfsServiceStatus = None
@@ -5832,7 +5832,7 @@ class StopMigrationTaskResponse(AbstractModel):
         :type TaskId: str
         :param _Status: 迁移状态。0: 已完成；1: 进行中；2: 已终止
         :type Status: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -6003,7 +6003,7 @@ class UnbindAutoSnapshotPolicyResponse(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoSnapshotPolicyId = None
@@ -6157,7 +6157,7 @@ class UpdateAutoSnapshotPolicyResponse(AbstractModel):
         r"""
         :param _AutoSnapshotPolicyId: 快照策略ID
         :type AutoSnapshotPolicyId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AutoSnapshotPolicyId = None
@@ -6243,7 +6243,7 @@ class UpdateCfsFileSystemNameResponse(AbstractModel):
         :type FileSystemId: str
         :param _FsName: 用户自定义文件系统名称
         :type FsName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CreationToken = None
@@ -6347,7 +6347,7 @@ class UpdateCfsFileSystemPGroupResponse(AbstractModel):
         :type PGroupId: str
         :param _FileSystemId: 文件系统 ID
         :type FileSystemId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupId = None
@@ -6437,7 +6437,7 @@ class UpdateCfsFileSystemSizeLimitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6525,7 +6525,7 @@ class UpdateCfsPGroupResponse(AbstractModel):
         :type Name: str
         :param _DescInfo: 描述信息
         :type DescInfo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupId = None
@@ -6685,7 +6685,7 @@ class UpdateCfsRuleResponse(AbstractModel):
         :type UserPermission: str
         :param _Priority: 优先级
         :type Priority: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PGroupId = None
@@ -6829,7 +6829,7 @@ class UpdateCfsSnapshotAttributeResponse(AbstractModel):
         r"""
         :param _SnapshotId: 文件系统快照ID
         :type SnapshotId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SnapshotId = None
@@ -6909,7 +6909,7 @@ class UpdateFileSystemBandwidthLimitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

@@ -705,7 +705,7 @@ class DescribeKBComponentResponse(AbstractModel):
         r"""
         :param _Component: 匹配的组件信息
         :type Component: :class:`tencentcloud.bsca.v20210811.models.Component`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Component = None
@@ -779,7 +779,7 @@ class DescribeKBComponentVersionListResponse(AbstractModel):
         r"""
         :param _VersionList: 该组件的版本列表信息
         :type VersionList: list of ComponentVersion
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VersionList = None
@@ -857,7 +857,7 @@ class DescribeKBComponentVulnerabilityResponse(AbstractModel):
         :param _VulnerabilityList: 漏洞信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityList: list of ComponentVulnerabilityUnion
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VulnerabilityList = None
@@ -935,7 +935,7 @@ class DescribeKBLicenseResponse(AbstractModel):
         :type LicenseList: list of LicenseUnion
         :param _NormalizedLicenseExpression: 用于匹配的License表达式
         :type NormalizedLicenseExpression: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LicenseList = None
@@ -1057,7 +1057,7 @@ class DescribeKBVulnerabilityResponse(AbstractModel):
         :param _VulnerabilityDetailList: 漏洞详细信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityDetailList: list of VulnerabilityUnion
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VulnerabilityDetailList = None
@@ -1409,7 +1409,7 @@ class MatchKBPURLListResponse(AbstractModel):
         :type PURLList: list of PURL
         :param _Hit: 是否命中数据库。
         :type Hit: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PURLList = None
@@ -1676,7 +1676,7 @@ class SearchKBComponentResponse(AbstractModel):
         :type ComponentList: list of Component
         :param _Total: 满足搜索条件的总个数
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ComponentList = None

@@ -697,7 +697,7 @@ class ClearTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 清除表结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1246,7 +1246,7 @@ class CompareIdlFilesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableInfos: 读取IDL描述文件后,根据用户指示的所选中表格解析校验结果
         :type TableInfos: list of ParsedTableInfoNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdlFiles = None
@@ -1496,7 +1496,7 @@ class CreateBackupResponse(AbstractModel):
         :param _ApplicationIds: 创建的备份申请ID列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskIds = None
@@ -1711,7 +1711,7 @@ class CreateClusterResponse(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterId = None
@@ -1800,7 +1800,7 @@ class CreateSnapshotsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 批量创建的快照结果列表
         :type TableResults: list of SnapshotResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1926,7 +1926,7 @@ class CreateTableGroupResponse(AbstractModel):
         r"""
         :param _TableGroupId: 创建成功的表格组ID
         :type TableGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TableGroupId = None
@@ -2049,7 +2049,7 @@ class CreateTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 批量创建表格结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2152,7 +2152,7 @@ class DeleteBackupRecordsResponse(AbstractModel):
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -2222,7 +2222,7 @@ class DeleteClusterResponse(AbstractModel):
         r"""
         :param _TaskId: 删除集群生成的任务ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -2311,7 +2311,7 @@ class DeleteIdlFilesResponse(AbstractModel):
         :type TotalCount: int
         :param _IdlFileInfos: 删除结果
         :type IdlFileInfos: list of IdlFileInfoWithoutContent
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2415,7 +2415,7 @@ class DeleteSnapshotsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 批量删除的快照结果
         :type TableResults: list of SnapshotResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2519,7 +2519,7 @@ class DeleteTableDataFlowResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 删除表格分布式索引结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2616,7 +2616,7 @@ class DeleteTableGroupResponse(AbstractModel):
         r"""
         :param _TaskId: 删除表格组所创建的任务ID
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -2705,7 +2705,7 @@ class DeleteTableIndexResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 删除表格分布式索引结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2809,7 +2809,7 @@ class DeleteTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 删除表结果详情列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2980,7 +2980,7 @@ class DescribeApplicationsResponse(AbstractModel):
         :type Applications: list of Application
         :param _TotalCount: 申请单个数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Applications = None
@@ -3115,7 +3115,7 @@ class DescribeBackupRecordsResponse(AbstractModel):
         :type BackupRecords: list of BackupRecords
         :param _TotalCount: 返回记录条数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BackupRecords = None
@@ -3204,7 +3204,7 @@ class DescribeClusterTagsResponse(AbstractModel):
         :param _TotalCount: 返回结果个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Rows = None
@@ -3344,7 +3344,7 @@ class DescribeClustersResponse(AbstractModel):
         :type TotalCount: int
         :param _Clusters: 集群实例列表
         :type Clusters: list of ClusterInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3479,7 +3479,7 @@ class DescribeIdlFileInfosResponse(AbstractModel):
         :type TotalCount: int
         :param _IdlFileInfos: 文件详情列表
         :type IdlFileInfos: list of IdlFileInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3564,7 +3564,7 @@ class DescribeMachineResponse(AbstractModel):
         r"""
         :param _PoolList: 独占机器资源列表
         :type PoolList: list of PoolInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PoolList = None
@@ -3614,7 +3614,7 @@ class DescribeRegionsResponse(AbstractModel):
         :type TotalCount: int
         :param _RegionInfos: 可用区详情结果列表
         :type RegionInfos: list of RegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3754,7 +3754,7 @@ class DescribeSnapshotsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 快照结果列表
         :type TableResults: list of SnapshotResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -3855,7 +3855,7 @@ class DescribeTableGroupTagsResponse(AbstractModel):
         :param _TotalCount: 返回结果个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Rows = None
@@ -3995,7 +3995,7 @@ class DescribeTableGroupsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableGroups: 表格组信息列表
         :type TableGroups: list of TableGroupInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4099,7 +4099,7 @@ class DescribeTableTagsResponse(AbstractModel):
         :type TotalCount: int
         :param _Rows: 表格标签信息列表
         :type Rows: list of TagsInfoOfTable
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4239,7 +4239,7 @@ class DescribeTablesInRecycleResponse(AbstractModel):
         :type TotalCount: int
         :param _TableInfos: 表格详情结果列表
         :type TableInfos: list of TableInfoNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4396,7 +4396,7 @@ class DescribeTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableInfos: 表格详情结果列表
         :type TableInfos: list of TableInfoNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4536,7 +4536,7 @@ class DescribeTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _TaskInfos: 查询到的任务详情列表
         :type TaskInfos: list of TaskInfoNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4594,7 +4594,7 @@ class DescribeUinInWhitelistResponse(AbstractModel):
         r"""
         :param _Result: 查询结果：`FALSE` 否；`TRUE` 是
         :type Result: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4666,7 +4666,7 @@ class DisableRestProxyResponse(AbstractModel):
         :type RestProxyStatus: int
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RestProxyStatus = None
@@ -4748,7 +4748,7 @@ class EnableRestProxyResponse(AbstractModel):
         :type RestProxyStatus: int
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RestProxyStatus = None
@@ -5275,7 +5275,7 @@ class ImportSnapshotsResponse(AbstractModel):
         :param _ApplicationId: ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -5655,7 +5655,7 @@ class MergeTablesDataResponse(AbstractModel):
         r"""
         :param _Results: 合服结果集
         :type Results: list of MergeTableResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Results = None
@@ -5806,7 +5806,7 @@ class ModifyCensorshipResponse(AbstractModel):
         :type Uins: list of str
         :param _Censorship: 集群是否开启审核 0-关闭 1-开启
         :type Censorship: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterId = None
@@ -5942,7 +5942,7 @@ class ModifyClusterMachineResponse(AbstractModel):
         r"""
         :param _ClusterId: 集群id
         :type ClusterId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ClusterId = None
@@ -6022,7 +6022,7 @@ class ModifyClusterNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6128,7 +6128,7 @@ class ModifyClusterPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6223,7 +6223,7 @@ class ModifyClusterTagsResponse(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -6312,7 +6312,7 @@ class ModifySnapshotsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 批量修改的快照结果列表
         :type TableResults: list of SnapshotResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6419,7 +6419,7 @@ class ModifyTableGroupNameResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6526,7 +6526,7 @@ class ModifyTableGroupTagsResponse(AbstractModel):
         :param _TaskId: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -6615,7 +6615,7 @@ class ModifyTableMemosResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 表备注修改结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6719,7 +6719,7 @@ class ModifyTableQuotasResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 扩缩容结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6857,7 +6857,7 @@ class ModifyTableTagsResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 返回结果
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6978,7 +6978,7 @@ class ModifyTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 修改表结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -7581,7 +7581,7 @@ class RecoverRecycleTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 恢复表信息列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -7778,7 +7778,7 @@ class RollbackTablesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 表格回档任务结果列表
         :type TableResults: list of TableRollbackResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8345,7 +8345,7 @@ class SetBackupExpireRuleResponse(AbstractModel):
         :param _TaskId: TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -8434,7 +8434,7 @@ class SetTableDataFlowResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 表格数据订阅创建结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8538,7 +8538,7 @@ class SetTableIndexResponse(AbstractModel):
         :type TotalCount: int
         :param _TableResults: 表格分布式索引创建结果列表
         :type TableResults: list of TableResultNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -10414,7 +10414,7 @@ class UpdateApplyResponse(AbstractModel):
         :type ApplyResults: list of ApplyResult
         :param _TotalCount: 更新数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplyResults = None
@@ -10549,7 +10549,7 @@ class VerifyIdlFilesResponse(AbstractModel):
         :type TotalCount: int
         :param _TableInfos: 读取IDL描述文件后解析出的合法表列表，不包含已经创建的表
         :type TableInfos: list of ParsedTableInfoNew
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdlFiles = None

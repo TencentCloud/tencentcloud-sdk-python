@@ -223,7 +223,7 @@ class CreateProductSecretResponse(AbstractModel):
         :type TagMsg: str
         :param _FlowID: 创建云产品凭据异步任务ID号。
         :type FlowID: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -400,7 +400,7 @@ class CreateSSHKeyPairSecretResponse(AbstractModel):
         :param _TagMsg: 标签操作的返回信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -619,7 +619,7 @@ class CreateSecretResponse(AbstractModel):
         :param _TagMsg: 标签操作的返回信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -748,7 +748,7 @@ class DeleteSecretResponse(AbstractModel):
         :type SecretName: str
         :param _DeleteTime: 凭据删除的日期，unix时间戳。
         :type DeleteTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -842,7 +842,7 @@ class DeleteSecretVersionResponse(AbstractModel):
         :type SecretName: str
         :param _VersionId: 凭据版本号。
         :type VersionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -924,7 +924,7 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
         :type TaskStatus: int
         :param _Description: 任务描述信息。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskStatus = None
@@ -1013,7 +1013,7 @@ class DescribeRotationDetailResponse(AbstractModel):
         :param _NextRotateBeginTime: 下一次开始轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NextRotateBeginTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnableRotation = None
@@ -1115,7 +1115,7 @@ class DescribeRotationHistoryResponse(AbstractModel):
         :type VersionIDs: list of str
         :param _TotalCount: 版本号个数，可以给用户展示的版本号个数上限为10个。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VersionIDs = None
@@ -1237,7 +1237,7 @@ class DescribeSecretResponse(AbstractModel):
         :param _AdditionalConfig: 凭据额外配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdditionalConfig: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -1447,7 +1447,7 @@ class DescribeSupportedProductsResponse(AbstractModel):
         :type Products: list of str
         :param _TotalCount: 支持的产品个数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -1527,7 +1527,7 @@ class DisableSecretResponse(AbstractModel):
         r"""
         :param _SecretName: 停用的凭据名称。
         :type SecretName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -1597,7 +1597,7 @@ class EnableSecretResponse(AbstractModel):
         r"""
         :param _SecretName: 启用的凭据名称。
         :type SecretName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -1640,7 +1640,7 @@ class GetRegionsResponse(AbstractModel):
         r"""
         :param _Regions: region列表。
         :type Regions: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Regions = None
@@ -1734,7 +1734,7 @@ class GetSSHKeyPairValueResponse(AbstractModel):
         :param _SSHKeyName: SSH密钥对的名称。
 用户可以在CVM侧控制台对密钥对的名称进行修改。
         :type SSHKeyName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SSHKeyID = None
@@ -1875,7 +1875,7 @@ SecretBinary和SecretString只有一个不为空。
         :param _SecretString: 在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。
 SecretBinary和SecretString只有一个不为空。
         :type SecretString: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -1953,7 +1953,7 @@ class GetServiceStatusResponse(AbstractModel):
         :param _AccessKeyEscrowEnabled: true表示用户已经可以使用密钥安全托管功能，
 false表示用户暂时不能使用密钥安全托管功能。
         :type AccessKeyEscrowEnabled: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ServiceEnabled = None
@@ -2046,7 +2046,7 @@ class ListSecretVersionIdsResponse(AbstractModel):
         :param _Versions: VersionId列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Versions: list of VersionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -2237,7 +2237,7 @@ class ListSecretsResponse(AbstractModel):
         :type TotalCount: int
         :param _SecretMetadatas: 返回凭据信息列表。
         :type SecretMetadatas: list of SecretMetadata
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2467,7 +2467,7 @@ class PutSecretValueResponse(AbstractModel):
         :type SecretName: str
         :param _VersionId: 新增加的版本号。
         :type VersionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -2547,7 +2547,7 @@ class RestoreSecretResponse(AbstractModel):
         r"""
         :param _SecretName: 凭据名称。
         :type SecretName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -2617,7 +2617,7 @@ class RotateProductSecretResponse(AbstractModel):
         r"""
         :param _FlowID: 当凭据类型为云产品凭据时（即SecretType为1，如MySQL、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
         :type FlowID: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowID = None
@@ -3053,7 +3053,7 @@ class UpdateDescriptionResponse(AbstractModel):
         r"""
         :param _SecretName: 凭据名称。
         :type SecretName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None
@@ -3160,7 +3160,7 @@ class UpdateRotationStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3259,7 +3259,7 @@ class UpdateSecretResponse(AbstractModel):
         :type SecretName: str
         :param _VersionId: 凭据版本号。
         :type VersionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SecretName = None

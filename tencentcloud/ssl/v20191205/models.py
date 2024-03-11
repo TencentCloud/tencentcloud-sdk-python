@@ -373,7 +373,7 @@ class ApplyCertificateResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -539,7 +539,7 @@ class CancelAuditCertificateResponse(AbstractModel):
         r"""
         :param _Result: 操作是否成功
         :type Result: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -609,7 +609,7 @@ class CancelCertificateOrderResponse(AbstractModel):
         r"""
         :param _CertificateId: 取消订单成功的证书 ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -1755,7 +1755,7 @@ class CheckCertificateChainResponse(AbstractModel):
         :type IsTrustedCA: bool
         :param _Chains: 包含证书链中每一段证书的通用名称。
         :type Chains: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsValid = None
@@ -2185,7 +2185,7 @@ class CommitCertificateInformationResponse(AbstractModel):
         :type OrderId: str
         :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
         :type Status: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrderId = None
@@ -2396,7 +2396,7 @@ class CompleteCertificateResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书ID
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -2563,7 +2563,7 @@ class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
         r"""
         :param _CertTaskIds: 证书关联云资源异步任务ID列表
         :type CertTaskIds: list of CertTaskId
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertTaskIds = None
@@ -2837,7 +2837,7 @@ class CreateCertificateByPackageResponse(AbstractModel):
         :type CertificateId: str
         :param _CertificateIds: 批量购买证书时返回多个证书ID。
         :type CertificateIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -2943,7 +2943,7 @@ class CreateCertificateResponse(AbstractModel):
         :type CertificateIds: list of str
         :param _DealIds: 订单号列表
         :type DealIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateIds = None
@@ -3171,7 +3171,7 @@ class DeleteCertificateResponse(AbstractModel):
         :param _TaskId: 异步删除的任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeleteResult = None
@@ -3251,7 +3251,7 @@ class DeleteManagerResponse(AbstractModel):
         r"""
         :param _ManagerId: 管理人ID
         :type ManagerId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ManagerId = None
@@ -3364,7 +3364,7 @@ class DeployCertificateInstanceResponse(AbstractModel):
         :type DeployRecordId: int
         :param _DeployStatus: 部署状态，1表示部署成功，0表示部署失败
         :type DeployStatus: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployRecordId = None
@@ -3454,7 +3454,7 @@ class DeployCertificateRecordRetryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3514,7 +3514,7 @@ class DeployCertificateRecordRollbackResponse(AbstractModel):
         r"""
         :param _DeployRecordId: 回滚部署记录ID
         :type DeployRecordId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployRecordId = None
@@ -4139,7 +4139,7 @@ class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
         :param _TSE: 关联tse资源详情	
 注意：此字段可能返回 null，表示取不到有效值。
         :type TSE: list of TSEInstanceList
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CLB = None
@@ -4385,7 +4385,7 @@ class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
         :param _SyncTaskBindResourceResult: 异步任务绑定关联云资源结果列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SyncTaskBindResourceResult: list of SyncTaskBindResourceResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SyncTaskBindResourceResult = None
@@ -4581,7 +4581,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :param _DvRevokeAuthDetail: DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvRevokeAuthDetail: list of DvAuths
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OwnerUin = None
@@ -5110,7 +5110,7 @@ class DescribeCertificateOperateLogsResponse(AbstractModel):
         :param _OperateLogs: 证书操作日志列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateLogs: list of OperationLog
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AllTotal = None
@@ -5311,7 +5311,7 @@ class DescribeCertificateResponse(AbstractModel):
         :param _DvRevokeAuthDetail: DV证书吊销验证值
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvRevokeAuthDetail: list of DvAuths
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OwnerUin = None
@@ -5936,7 +5936,7 @@ class DescribeCertificatesResponse(AbstractModel):
         :param _Certificates: 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Certificates: list of Certificates
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6047,7 +6047,7 @@ class DescribeCompaniesResponse(AbstractModel):
         :type Companies: list of CompanyInfo
         :param _TotalCount: 公司总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Companies = None
@@ -6144,7 +6144,7 @@ class DescribeDeployedResourcesResponse(AbstractModel):
         r"""
         :param _DeployedResources: 资源详情
         :type DeployedResources: list of DeployedResources
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployedResources = None
@@ -6275,7 +6275,7 @@ class DescribeHostApiGatewayInstanceListResponse(AbstractModel):
         :type InstanceList: list of ApiGatewayInstanceDetail
         :param _TotalCount: 总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -6462,7 +6462,7 @@ class DescribeHostCdnInstanceListResponse(AbstractModel):
         :param _AsyncCacheTime: 当前缓存读取时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -6667,7 +6667,7 @@ class DescribeHostClbInstanceListResponse(AbstractModel):
         :param _AsyncCacheTime: 当前缓存读取时间	
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6836,7 +6836,7 @@ class DescribeHostCosInstanceListResponse(AbstractModel):
         :param _AsyncCacheTime: 当前缓存读取时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -7005,7 +7005,7 @@ class DescribeHostDdosInstanceListResponse(AbstractModel):
         :param _InstanceList: DDOS实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of DdosInstanceDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -7117,7 +7117,7 @@ class DescribeHostDeployRecordDetailResponse(AbstractModel):
         :param _RunningTotalCount: 部署中总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -7272,7 +7272,7 @@ class DescribeHostDeployRecordResponse(AbstractModel):
         :param _DeployRecordList: 证书部署记录列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordList: list of DeployRecordInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -7402,7 +7402,7 @@ class DescribeHostLighthouseInstanceListResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -7541,7 +7541,7 @@ class DescribeHostLiveInstanceListResponse(AbstractModel):
         :param _InstanceList: live实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -7708,7 +7708,7 @@ class DescribeHostTeoInstanceListResponse(AbstractModel):
         :type InstanceList: list of TeoInstanceDetail
         :param _TotalCount: 总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -7883,7 +7883,7 @@ class DescribeHostTkeInstanceListResponse(AbstractModel):
         :param _AsyncCacheTime: 当前缓存读取时间	
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncCacheTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8035,7 +8035,7 @@ class DescribeHostUpdateRecordDetailResponse(AbstractModel):
         :param _RunningTotalCount: 部署中总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningTotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8190,7 +8190,7 @@ class DescribeHostUpdateRecordResponse(AbstractModel):
         :param _DeployRecordList: 证书部署记录列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployRecordList: list of UpdateRecordInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -8332,7 +8332,7 @@ class DescribeHostVodInstanceListResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -8471,7 +8471,7 @@ class DescribeHostWafInstanceListResponse(AbstractModel):
         :param _InstanceList: WAF实例列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceList: list of LiveInstanceDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceList = None
@@ -8608,7 +8608,7 @@ class DescribeManagerDetailResponse(AbstractModel):
         :type ManagerId: int
         :param _StatusInfo: 审核状态详细信息
         :type StatusInfo: list of ManagerStatusInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -8946,7 +8946,7 @@ class DescribeManagersResponse(AbstractModel):
         :type Managers: list of ManagerInfo
         :param _TotalCount: 公司管理人总数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Managers = None
@@ -9107,7 +9107,7 @@ class DescribePackagesResponse(AbstractModel):
         :type TotalCount: int
         :param _TotalBalance: 权益点总余额。
         :type TotalBalance: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Packages = None
@@ -9206,7 +9206,7 @@ class DownloadCertificateResponse(AbstractModel):
         :param _ContentType: MIME 类型：application/zip = ZIP 压缩文件。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentType: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Content = None
@@ -10076,7 +10076,7 @@ class ModifyCertificateAliasResponse(AbstractModel):
         r"""
         :param _CertificateId: 修改成功的证书 ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -10162,7 +10162,7 @@ class ModifyCertificateProjectResponse(AbstractModel):
         :param _FailCertificates: 修改所属项目失败的证书集合。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailCertificates: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCertificates = None
@@ -10242,7 +10242,7 @@ class ModifyCertificateResubmitResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -10324,7 +10324,7 @@ class ModifyCertificatesExpiringNotificationSwitchResponse(AbstractModel):
         r"""
         :param _CertificateIds: 证书ID列表
         :type CertificateIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateIds = None
@@ -11039,7 +11039,7 @@ class ReplaceCertificateResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -11167,7 +11167,7 @@ class RevokeCertificateResponse(AbstractModel):
         :param _RevokeDomainValidateAuths: 吊销证书域名验证信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RevokeDomainValidateAuths: list of RevokeDomainValidateAuths
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RevokeDomainValidateAuths = None
@@ -11375,7 +11375,7 @@ class SubmitAuditManagerResponse(AbstractModel):
         r"""
         :param _ManagerId: 管理人ID
         :type ManagerId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ManagerId = None
@@ -11745,7 +11745,7 @@ class SubmitCertificateInformationResponse(AbstractModel):
         r"""
         :param _CertificateId: 证书 ID。
         :type CertificateId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -13602,7 +13602,7 @@ class UpdateCertificateInstanceResponse(AbstractModel):
         :param _UpdateSyncProgress: 更新异步创建任务进度详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateSyncProgress: list of UpdateSyncProgress
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployRecordId = None
@@ -13707,7 +13707,7 @@ class UpdateCertificateRecordRetryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -13767,7 +13767,7 @@ class UpdateCertificateRecordRollbackResponse(AbstractModel):
         r"""
         :param _DeployRecordId: 回滚部署记录ID
         :type DeployRecordId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DeployRecordId = None
@@ -14547,7 +14547,7 @@ class UploadCertificateResponse(AbstractModel):
         :param _RepeatCertId: 重复证书的ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatCertId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -14641,7 +14641,7 @@ class UploadConfirmLetterResponse(AbstractModel):
         :type CertificateId: str
         :param _IsSuccess: 是否成功
         :type IsSuccess: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -14735,7 +14735,7 @@ class UploadRevokeLetterResponse(AbstractModel):
         :type CertificateId: str
         :param _IsSuccess: 是否成功。
         :type IsSuccess: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CertificateId = None
@@ -14866,7 +14866,7 @@ class VerifyManagerResponse(AbstractModel):
         r"""
         :param _ManagerId: 管理人ID
         :type ManagerId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ManagerId = None

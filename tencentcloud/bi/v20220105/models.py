@@ -118,7 +118,7 @@ class ApplyEmbedIntervalResponse(AbstractModel):
         :param _Msg: 结果描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -721,7 +721,7 @@ class CreateDatasourceCloudResponse(AbstractModel):
         :param _Msg: 提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -1051,7 +1051,7 @@ class CreateDatasourceResponse(AbstractModel):
         :param _Msg: 提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -1249,7 +1249,7 @@ class CreateEmbedTokenResponse(AbstractModel):
         :param _Msg: 结果描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -1420,7 +1420,7 @@ class CreateProjectResponse(AbstractModel):
         :type Data: :class:`tencentcloud.bi.v20220105.models.Data`
         :param _Msg: 返回信息
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -1580,7 +1580,7 @@ class CreateUserRoleProjectResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -1728,7 +1728,7 @@ class CreateUserRoleResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -2457,7 +2457,7 @@ class DeleteDatasourceResponse(AbstractModel):
         :type Extra: str
         :param _Msg: 信息
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -2592,7 +2592,7 @@ class DeleteProjectResponse(AbstractModel):
         :param _Msg: ""
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -2716,7 +2716,7 @@ class DeleteUserRoleProjectResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -2828,7 +2828,7 @@ class DeleteUserRoleResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3010,7 +3010,7 @@ class DescribeDatasourceListResponse(AbstractModel):
         :type Extra: str
         :param _Msg: 信息
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3136,7 +3136,7 @@ class DescribeProjectInfoResponse(AbstractModel):
         :param _Data: 项目详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.Project`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3298,7 +3298,7 @@ class DescribeProjectListResponse(AbstractModel):
         :param _Data: 数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.ProjectListData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3448,7 +3448,7 @@ class DescribeUserProjectListResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3634,7 +3634,7 @@ class DescribeUserRoleListResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -3784,7 +3784,7 @@ class DescribeUserRoleProjectListResponse(AbstractModel):
         :param _Msg: 消息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -4529,7 +4529,7 @@ class ModifyDatasourceCloudResponse(AbstractModel):
         :param _Msg: 提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -4869,7 +4869,7 @@ class ModifyDatasourceResponse(AbstractModel):
         :param _Msg: 提示
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -5077,7 +5077,7 @@ class ModifyProjectResponse(AbstractModel):
         :param _Msg: 结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -5249,7 +5249,7 @@ class ModifyUserRoleProjectResponse(AbstractModel):
         :param _Data: 数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None
@@ -5433,7 +5433,7 @@ class ModifyUserRoleResponse(AbstractModel):
         :param _Data: 数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorInfo = None

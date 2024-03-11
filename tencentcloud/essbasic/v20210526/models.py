@@ -1086,7 +1086,7 @@ class ChannelBatchCancelFlowsResponse(AbstractModel):
 
 注:  `如果全部撤销成功, 此数组为空数组`
         :type FailMessages: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailMessages = None
@@ -1412,7 +1412,7 @@ class ChannelCancelFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1510,7 +1510,7 @@ class ChannelCancelMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1611,7 +1611,7 @@ class ChannelCancelUserAutoSignEnableUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1719,7 +1719,7 @@ class ChannelCreateBatchCancelFlowUrlResponse(AbstractModel):
 
 
         :type UrlExpireOn: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchCancelFlowUrl = None
@@ -1922,7 +1922,7 @@ class ChannelCreateBatchQuickSignUrlResponse(AbstractModel):
         r"""
         :param _FlowApproverUrlInfo: 签署人签署链接信息
         :type FlowApproverUrlInfo: :class:`tencentcloud.essbasic.v20210526.models.FlowApproverUrlInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowApproverUrlInfo = None
@@ -2160,7 +2160,7 @@ class ChannelCreateBatchSignUrlResponse(AbstractModel):
 1. 小程序和APP集成使用
 2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）
         :type MiniAppPath: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SignUrl = None
@@ -2288,7 +2288,7 @@ class ChannelCreateBoundFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2445,7 +2445,7 @@ class ChannelCreateConvertTaskApiResponse(AbstractModel):
         r"""
         :param _TaskId: 接口返回的文件转换任务Id，可以调用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi" target="_blank">查询转换任务状态</a>获取转换任务的状态和转换后的文件资源Id。
         :type TaskId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -2619,7 +2619,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
         r"""
         :param _WebUrl: 嵌入的web链接，5分钟有效
         :type WebUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WebUrl = None
@@ -2762,7 +2762,7 @@ class ChannelCreateFlowApproversResponse(AbstractModel):
 注:`目前仅补充动态签署人时会返回补充失败的原因`	
 注意：此字段可能返回 null，表示取不到有效值。
         :type FillError: list of FillError
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FillError = None
@@ -3141,7 +3141,7 @@ class ChannelCreateFlowByFilesResponse(AbstractModel):
         :param _Approvers: 签署方信息，如角色ID、角色名称等
 注意：此字段可能返回 null，表示取不到有效值。
         :type Approvers: list of ApproverItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -3322,7 +3322,7 @@ class ChannelCreateFlowGroupByFilesResponse(AbstractModel):
 `此数组的顺序和入参中的FlowGroupInfos顺序一致`
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
@@ -3450,7 +3450,7 @@ class ChannelCreateFlowGroupByTemplatesResponse(AbstractModel):
         :param _TaskInfos: 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
         :type TaskInfos: list of TaskInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
@@ -3567,7 +3567,7 @@ class ChannelCreateFlowRemindsResponse(AbstractModel):
         r"""
         :param _RemindFlowRecords: 合同催办结果的详细信息列表。
         :type RemindFlowRecords: list of RemindFlowRecords
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RemindFlowRecords = None
@@ -3722,7 +3722,7 @@ class ChannelCreateFlowSignReviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3892,7 +3892,7 @@ class ChannelCreateFlowSignUrlResponse(AbstractModel):
         r"""
         :param _FlowApproverUrlInfos: 签署人签署链接信息
         :type FlowApproverUrlInfos: list of FlowApproverUrlInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowApproverUrlInfos = None
@@ -4127,7 +4127,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
         :type QrCode: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
         :param _SignUrls: 一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
         :type SignUrls: :class:`tencentcloud.essbasic.v20210526.models.SignUrl`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._QrCode = None
@@ -4266,7 +4266,7 @@ class ChannelCreateOrganizationBatchSignUrlResponse(AbstractModel):
         :type SignUrl: str
         :param _ExpiredTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :type ExpiredTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SignUrl = None
@@ -4357,7 +4357,7 @@ class ChannelCreateOrganizationModifyQrCodeResponse(AbstractModel):
         :type QrCodeUrl: str
         :param _ExpiredTime: 二维码失效时间 UNIX 时间戳 精确到秒
         :type ExpiredTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._QrCodeUrl = None
@@ -4590,7 +4590,7 @@ class ChannelCreatePrepareFlowResponse(AbstractModel):
         :type PrepareFlowUrl: str
         :param _PreviewFlowUrl: 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果， 有效期为5分钟
         :type PreviewFlowUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PrepareFlowUrl = None
@@ -4821,7 +4821,7 @@ class ChannelCreatePreparedPersonalEsignResponse(AbstractModel):
 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
         :type SealId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealId = None
@@ -5035,7 +5035,7 @@ class ChannelCreateReleaseFlowResponse(AbstractModel):
         r"""
         :param _FlowId: 解除协议流程编号
         :type FlowId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
@@ -5156,7 +5156,7 @@ class ChannelCreateRoleResponse(AbstractModel):
         r"""
         :param _RoleId: 角色id
         :type RoleId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RoleId = None
@@ -5304,7 +5304,7 @@ class ChannelCreateSealPolicyResponse(AbstractModel):
         :param _UserIds: 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
 请求参数填写OpenId时，返回授权成功的 Openid。
         :type UserIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserIds = None
@@ -5490,7 +5490,7 @@ class ChannelCreateUserAutoSignEnableUrlResponse(AbstractModel):
 <ul><li> 空: 默认小程序端链接</li>
 <li> **H5SIGN** : h5端链接</li></ul>
         :type UrlType: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -5674,7 +5674,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
         :type Path: str
         :param _QrCode: base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
         :type QrCode: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppId = None
@@ -5848,7 +5848,7 @@ class ChannelCreateUserRolesResponse(AbstractModel):
         r"""
         :param _FailedCreateRoleData: 绑定失败的用户角色列表
         :type FailedCreateRoleData: list of FailedCreateRoleData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailedCreateRoleData = None
@@ -5954,7 +5954,7 @@ class ChannelCreateWebThemeConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6034,7 +6034,7 @@ class ChannelDeleteRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6150,7 +6150,7 @@ class ChannelDeleteRoleUsersResponse(AbstractModel):
         r"""
         :param _RoleId: 角色id
         :type RoleId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RoleId = None
@@ -6282,7 +6282,7 @@ class ChannelDeleteSealPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6432,7 +6432,7 @@ class ChannelDescribeBillUsageDetailResponse(AbstractModel):
         :type Total: int
         :param _Details: 消耗记录详情
         :type Details: list of ChannelBillUsageDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -6601,7 +6601,7 @@ class ChannelDescribeEmployeesResponse(AbstractModel):
         :type Limit: int
         :param _TotalCount: 符合条件的员工数量。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Employees = None
@@ -6728,7 +6728,7 @@ class ChannelDescribeFlowComponentsResponse(AbstractModel):
         r"""
         :param _RecipientComponentInfos: 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
         :type RecipientComponentInfos: list of RecipientComponentInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RecipientComponentInfos = None
@@ -6889,7 +6889,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
         :type TotalCount: int
         :param _Seals: 查询到的印章结果数组
         :type Seals: list of OccupiedSeal
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -7065,7 +7065,7 @@ class ChannelDescribeRolesResponse(AbstractModel):
         :param _ChannelRoles: 查询的角色信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelRoles: list of ChannelRole
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Offset = None
@@ -7213,7 +7213,7 @@ class ChannelDescribeSignFaceVideoResponse(AbstractModel):
         :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.essbasic.v20210526.models.IntentionActionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VideoData = None
@@ -7365,7 +7365,7 @@ class ChannelDescribeUserAutoSignStatusResponse(AbstractModel):
 
 <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
         :type LicenseType: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsOpen = None
@@ -7507,7 +7507,7 @@ class ChannelDisableUserAutoSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7647,7 +7647,7 @@ class ChannelGetTaskResultApiResponse(AbstractModel):
 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
 注意：此字段可能返回 null，表示取不到有效值。
         :type PreviewUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -7816,7 +7816,7 @@ class ChannelModifyRoleResponse(AbstractModel):
         r"""
         :param _RoleId: 角色id
         :type RoleId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RoleId = None
@@ -8188,7 +8188,7 @@ class ChannelUpdateSealStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -8300,7 +8300,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
         :type VerifySerialNo: str
         :param _PdfResourceMd5: 合同文件MD5哈希值
         :type PdfResourceMd5: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._VerifyResult = None
@@ -9353,7 +9353,7 @@ class CreateBatchOrganizationRegistrationTasksResponse(AbstractModel):
 若企业认证均成功生成，则不返回错误信息；
 若存在任何错误，则返回具体的错误描述。
         :type ErrorMessages: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -9498,7 +9498,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
         :param _ReportUrl: 废除，字段无效
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReportId = None
@@ -9630,7 +9630,7 @@ class CreateChannelOrganizationInfoChangeUrlResponse(AbstractModel):
         :type Url: str
         :param _ExpiredTime: 链接过期时间。链接7天有效。
         :type ExpiredTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -9930,7 +9930,7 @@ class CreateConsoleLoginUrlResponse(AbstractModel):
 <li> **false** : 还未认证加入公司</li></ul>
 注意：**员工是否实名是根据Agent.ProxyOperator.OpenId判断，非经办人姓名**
         :type ProxyOperatorIsVerified: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ConsoleUrl = None
@@ -10092,7 +10092,7 @@ class CreateFlowGroupSignReviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -10381,7 +10381,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
         :type TaskInfos: list of TaskInfo
         :param _FlowApprovers: 签署方信息，如角色ID、角色名称等
         :type FlowApprovers: list of FlowApproverItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowIds = None
@@ -10553,7 +10553,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
         :type MiniAppPath: str
         :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
         :type ExpireTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -10801,7 +10801,7 @@ class CreateSealByImageResponse(AbstractModel):
 注:`图片上传生成的电子印章无预览链接地址`
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealId = None
@@ -11133,7 +11133,7 @@ class CreateSignUrlsResponse(AbstractModel):
         :type SignUrlInfos: list of SignUrlInfo
         :param _ErrorMessages: 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
         :type ErrorMessages: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SignUrlInfos = None
@@ -11287,7 +11287,7 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
         r"""
         :param _OrganizationAuthUrls: 企业批量注册链接信息
         :type OrganizationAuthUrls: list of OrganizationAuthUrl
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrganizationAuthUrls = None
@@ -11423,7 +11423,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
 <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReportUrl = None
@@ -11575,7 +11575,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
         :type Limit: int
         :param _Total: 满足查询条件的企业总数量。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ChannelOrganizationInfos = None
@@ -11717,7 +11717,7 @@ class DescribeChannelSealPolicyWorkflowUrlResponse(AbstractModel):
         r"""
         :param _WorkflowUrl: 用印审批小程序链接，链接类型（通过H5唤起小程序或通过APP跳转方式查看）。
         :type WorkflowUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WorkflowUrl = None
@@ -11839,7 +11839,7 @@ class DescribeExtendedServiceAuthDetailResponse(AbstractModel):
         :param _AuthInfoDetail: 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthInfoDetail: :class:`tencentcloud.essbasic.v20210526.models.AuthInfoDetail`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuthInfoDetail = None
@@ -11922,7 +11922,7 @@ class DescribeExtendedServiceAuthInfoResponse(AbstractModel):
         :param _AuthInfo: 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthInfo: list of ExtentServiceAuthInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuthInfo = None
@@ -12064,7 +12064,7 @@ class DescribeFlowDetailInfoResponse(AbstractModel):
         :param _FlowGroupName: 合同组名称，只有在查询合同组信息时才会返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowGroupName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationId = None
@@ -12222,7 +12222,7 @@ class DescribeResourceUrlsByFlowsResponse(AbstractModel):
         :param _ErrorMessages: 如果某个序号的合同流程生成PDF下载链接成功, 对应序号的值为空
 如果某个序号的合同流程生成PDF下载链接失败, 对应序号的值为错误的原因
         :type ErrorMessages: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowResourceUrlInfos = None
@@ -12498,7 +12498,7 @@ class DescribeTemplatesResponse(AbstractModel):
         :type Limit: int
         :param _Offset: 查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
         :type Offset: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Templates = None
@@ -12702,7 +12702,7 @@ class DescribeUsageResponse(AbstractModel):
         :param _Details: 用量明细
 注意：此字段可能返回 null，表示取不到有效值。
         :type Details: list of UsageDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
@@ -15255,7 +15255,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
         :param _DownLoadUrl: 跳转控制台合同下载页面链接 , 5分钟之内有效，且只能访问一次
 
         :type DownLoadUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DownLoadUrl = None
@@ -15800,7 +15800,7 @@ class ModifyExtendedServiceResponse(AbstractModel):
 当操作类型是 OPEN 且 扩展服务类型是 AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回操作链接，
 返回的链接需要平台方自行触达超管或法人，超管或法人点击链接完成服务开通操作
         :type OperateUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OperateUrl = None
@@ -15912,7 +15912,7 @@ class ModifyFlowDeadlineResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -16369,7 +16369,7 @@ class OperateChannelTemplateResponse(AbstractModel):
         :param _FailMessageList: 操作失败信息数组
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailMessageList: list of AuthFailMessage
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AppId = None
@@ -17135,7 +17135,7 @@ class PrepareFlowsResponse(AbstractModel):
         r"""
         :param _ConfirmUrl: 待发起文件确认页
         :type ConfirmUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ConfirmUrl = None
@@ -18771,7 +18771,7 @@ class SyncProxyOrganizationOperatorsResponse(AbstractModel):
         :param _FailedList: 同步失败员工ID及其失败原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedList: list of SyncFailReason
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -18971,7 +18971,7 @@ class SyncProxyOrganizationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -19456,7 +19456,7 @@ class UploadFilesResponse(AbstractModel):
         :type FileIds: list of str
         :param _FileUrls: 对应上传文件的下载链接，过期时间5分钟
         :type FileUrls: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None

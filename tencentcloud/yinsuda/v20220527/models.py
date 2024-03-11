@@ -177,7 +177,7 @@ class ApplyChorusResponse(AbstractModel):
         r"""
         :param _ChorusToken: 合唱 Token。
         :type ChorusToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ChorusToken = None
@@ -310,7 +310,7 @@ class BatchDescribeKTVMusicDetailsResponse(AbstractModel):
         :type KTVMusicDetailInfoSet: list of KTVMusicDetailInfo
         :param _NotExistMusicIdSet: 不存在歌曲Id列表。
         :type NotExistMusicIdSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KTVMusicDetailInfoSet = None
@@ -496,7 +496,7 @@ class CreateKTVRobotResponse(AbstractModel):
         r"""
         :param _RobotId: 机器人Id。
         :type RobotId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RobotId = None
@@ -597,7 +597,7 @@ class DescribeKTVMatchMusicsResponse(AbstractModel):
         :type MatchMusicSet: list of KTVMatchMusic
         :param _NotMatchRuleSet: 未匹配的规则列表。
         :type NotMatchRuleSet: list of KTVMatchRule
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MatchMusicSet = None
@@ -754,7 +754,7 @@ class DescribeKTVMusicAccompanySegmentUrlResponse(AbstractModel):
         :param _OtherSegments: 其它片段时间（可用于抢唱）
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherSegments: list of KTVOtherSegments
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -928,7 +928,7 @@ class DescribeKTVMusicAccompanySegmentUrlVipResponse(AbstractModel):
         :param _FileSize: 链接文件大小 (单位:字节)
 
         :type FileSize: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -1126,7 +1126,7 @@ class DescribeKTVMusicsByTagResponse(AbstractModel):
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
         :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KTVMusicInfoSet = None
@@ -1302,7 +1302,7 @@ class DescribeKTVPlaylistDetailResponse(AbstractModel):
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
         :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KTVMusicInfoSet = None
@@ -1440,7 +1440,7 @@ class DescribeKTVPlaylistsResponse(AbstractModel):
         :type PlaylistBaseInfoSet: list of KTVPlaylistBaseInfo
         :param _TotalCount: 歌单总数。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PlaylistBaseInfoSet = None
@@ -1605,7 +1605,7 @@ class DescribeKTVRobotsResponse(AbstractModel):
         :type TotalCount: int
         :param _KTVRobotInfoSet: 机器人信息集合。
         :type KTVRobotInfoSet: list of KTVRobotInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1714,7 +1714,7 @@ class DescribeKTVSuggestionsResponse(AbstractModel):
         r"""
         :param _KTVSuggestionInfoSet: 联想词信息列表。
         :type KTVSuggestionInfoSet: list of KTVSuggestionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KTVSuggestionInfoSet = None
@@ -1801,7 +1801,7 @@ class DescribeKTVTagsResponse(AbstractModel):
         r"""
         :param _TagGroupInfoSet: 标签分组列表。
         :type TagGroupInfoSet: list of KTVTagGroupInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TagGroupInfoSet = None
@@ -1952,7 +1952,7 @@ class DescribeLiveVipTradeInfosResponse(AbstractModel):
         :type LiveVipTradeInfoSet: list of LiveVipTradeInfo
         :param _TotalCount: 直播会员充值流水总数。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LiveVipTradeInfoSet = None
@@ -2049,7 +2049,7 @@ class DescribeUserInfoResponse(AbstractModel):
         r"""
         :param _UserInfo: 用户信息。
         :type UserInfo: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserInfo = None
@@ -2141,7 +2141,7 @@ class DescribeVipUserInfoResponse(AbstractModel):
         :type EndTime: str
         :param _Status: 会员状态。（-1:未开通过；1:已开通，未过期；2:已开通，已过期）
         :type Status: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsVip = None
@@ -2273,7 +2273,7 @@ class DestroyKTVRobotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3588,7 +3588,7 @@ class RechargeLiveVipResponse(AbstractModel):
         r"""
         :param _LiveVipUserInfo: 直播会员信息。
         :type LiveVipUserInfo: :class:`tencentcloud.yinsuda.v20220527.models.LiveVipUserInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LiveVipUserInfo = None
@@ -3712,7 +3712,7 @@ class RechargeVipResponse(AbstractModel):
         :type OrderNo: str
         :param _CreateTime: 订单创建时间。
         :type CreateTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PartnerNo = None
@@ -3893,7 +3893,7 @@ class SearchKTVMusicsResponse(AbstractModel):
         :type KTVMusicInfoSet: list of KTVMusicBaseInfo
         :param _ScrollToken: 滚动标记，用于设置下次请求的 ScrollToken 参数。
         :type ScrollToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KTVMusicInfoSet = None
@@ -4291,7 +4291,7 @@ class SyncKTVRobotCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

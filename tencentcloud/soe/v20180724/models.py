@@ -233,7 +233,7 @@ class InitOralProcessResponse(AbstractModel):
         r"""
         :param _SessionId: 语音段唯一标识，一个完整语音一个SessionId
         :type SessionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SessionId = None
@@ -497,7 +497,7 @@ class KeywordEvaluateResponse(AbstractModel):
         :type KeywordScores: list of KeywordScore
         :param _SessionId: 语音段唯一标识，一段完整语音使用一个SessionId，不同语音段的评测需要使用不同的SessionId。一般使用uuid(通用唯一识别码)来作为它的值，要尽量保证SessionId的唯一性。
         :type SessionId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeywordScores = None
@@ -1136,7 +1136,7 @@ class TransmitOralProcessResponse(AbstractModel):
         :param _UnKeyWordHits: 负向主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnKeyWordHits: list of float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PronAccuracy = None
@@ -1612,7 +1612,7 @@ class TransmitOralProcessWithInitResponse(AbstractModel):
         :param _UnKeyWordHits: 负向主题词命中标志，0表示没命中，1表示命中
 注意：此字段可能返回 null，表示取不到有效值。
         :type UnKeyWordHits: list of float
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PronAccuracy = None

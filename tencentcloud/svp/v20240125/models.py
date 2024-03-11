@@ -156,7 +156,7 @@ class CreateSavingPlanOrderResponse(AbstractModel):
         r"""
         :param _BigDealId: 订单号
         :type BigDealId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BigDealId = None

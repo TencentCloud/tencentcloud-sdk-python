@@ -100,7 +100,7 @@ malware IP = 恶意IP
         :type Intelligences: list of IntelligenceType
         :param _Context: 情报相关的上下文
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReturnCode = None
@@ -266,7 +266,7 @@ class DescribeFileInfoResponse(AbstractModel):
         :type Intelligences: list of IntelligenceType
         :param _Context: 情报相关的上下文
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReturnCode = None
@@ -451,7 +451,7 @@ malware IP = 恶意IP
         :type Intelligences: list of IntelligenceType
         :param _Context: 情报相关的上下文
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReturnCode = None
@@ -649,7 +649,7 @@ expired = 过期
         :param _Context: 情报相关的上下文，参数option=1 的时候提供
 每个数据默认为3 条
         :type Context: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReturnCode = None

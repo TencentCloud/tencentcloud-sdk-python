@@ -756,7 +756,7 @@ class DescribeCaptchaAppIdInfoResponse(AbstractModel):
         :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SchemeColor = None
@@ -1008,7 +1008,7 @@ class DescribeCaptchaDataResponse(AbstractModel):
         :param _CaptchaMsg: 返回信息描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -1144,7 +1144,7 @@ class DescribeCaptchaDataSumResponse(AbstractModel):
         :type TicketThroughputSum: int
         :param _TicketInterceptSum: 票据验证拦截量
         :type TicketInterceptSum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GetSum = None
@@ -1336,7 +1336,7 @@ class DescribeCaptchaMiniDataResponse(AbstractModel):
         :param _CaptchaMsg: 返回信息描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -1480,7 +1480,7 @@ class DescribeCaptchaMiniDataSumResponse(AbstractModel):
         :param _TicketInterceptSum: 票据验证拦截量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketInterceptSum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GetSum = None
@@ -1672,7 +1672,7 @@ class DescribeCaptchaMiniOperDataResponse(AbstractModel):
         :param _Data: 用户操作数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -1873,7 +1873,7 @@ class DescribeCaptchaMiniResultResponse(AbstractModel):
         :param _CaptchaMsg: 状态描述及验证错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2090,7 +2090,7 @@ class DescribeCaptchaMiniRiskResultResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManageMarketingRiskValue: :class:`tencentcloud.captcha.v20190722.models.OutputManageMarketingRiskValue`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2224,7 +2224,7 @@ class DescribeCaptchaOperDataResponse(AbstractModel):
         :param _Data: 用户操作数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaOperDataRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2462,7 +2462,7 @@ EvilLevel=100 请求有恶意
         :param _RceResult: rce检测结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type RceResult: :class:`tencentcloud.captcha.v20190722.models.RceResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2737,7 +2737,7 @@ EvilLevel=100 请求有恶意
         :type EvilBitmap: int
         :param _SubmitCaptchaTime: 提交验证码时间
         :type SubmitCaptchaTime: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2887,7 +2887,7 @@ class DescribeCaptchaTicketDataResponse(AbstractModel):
         :param _Data: 验证码票据信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaTicketDataRes`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None
@@ -2958,7 +2958,7 @@ class DescribeCaptchaUserAllAppIdResponse(AbstractModel):
         :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3094,7 +3094,7 @@ class GetRequestStatisticsResponse(AbstractModel):
         :type CaptchaCode: int
         :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3227,7 +3227,7 @@ class GetTicketStatisticsResponse(AbstractModel):
         :type CaptchaCode: int
         :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3348,7 +3348,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
         :type CaptchaCode: int
         :param _CaptchaMsg: 验证码返回信息
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -3472,7 +3472,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
         :type CaptchaCode: int
         :param _CaptchaMsg: 返回信息
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -4320,7 +4320,7 @@ class UpdateCaptchaAppIdInfoResponse(AbstractModel):
         :param _CaptchaMsg: 返回操作信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CaptchaMsg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CaptchaCode = None

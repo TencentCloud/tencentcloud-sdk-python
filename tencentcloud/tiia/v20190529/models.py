@@ -92,7 +92,7 @@ class AssessQualityResponse(AbstractModel):
         :type ClarityScore: int
         :param _AestheticScore: 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
         :type AestheticScore: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LongImage = None
@@ -933,7 +933,7 @@ class CreateGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1132,7 +1132,7 @@ class CreateImageResponse(AbstractModel):
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Object = None
@@ -1272,7 +1272,7 @@ class CropImageResponse(AbstractModel):
 
 以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
         :type CropResult: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._X = None
@@ -1424,7 +1424,7 @@ class DeleteImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1509,7 +1509,7 @@ class DescribeGroupsResponse(AbstractModel):
         :param _Groups: 图库信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Groups: list of GroupInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Groups = None
@@ -1612,7 +1612,7 @@ class DescribeImagesResponse(AbstractModel):
         :type EntityId: str
         :param _ImageInfos: 图片信息。
         :type ImageInfos: list of ImageInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GroupId = None
@@ -1757,7 +1757,7 @@ class DetectChefDressResponse(AbstractModel):
         :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Bodies = None
@@ -1854,7 +1854,7 @@ class DetectDisgustResponse(AbstractModel):
         :type Confidence: float
         :param _Type: 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
         :type Type: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Confidence = None
@@ -1954,7 +1954,7 @@ class DetectEnvelopeResponse(AbstractModel):
         :param _SecondTags: 二级标签结果数组。识别文件封正反面。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondTags: list of ImageTag
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FirstTags = None
@@ -2102,7 +2102,7 @@ class DetectLabelBetaResponse(AbstractModel):
         :param _LocationLabels: 识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocationLabels: list of Product
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Labels = None
@@ -2346,7 +2346,7 @@ class DetectLabelProResponse(AbstractModel):
         :param _Labels: 返回标签数组。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of DetectLabelItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Labels = None
@@ -2475,7 +2475,7 @@ class DetectLabelResponse(AbstractModel):
 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewsLabels: list of DetectLabelItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Labels = None
@@ -2617,7 +2617,7 @@ class DetectMisbehaviorResponse(AbstractModel):
         :type Confidence: float
         :param _Type: 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
         :type Type: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Confidence = None
@@ -2713,7 +2713,7 @@ class DetectPetResponse(AbstractModel):
         r"""
         :param _Pets: 识别出图片中的宠物信息列表。
         :type Pets: list of Pet
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Pets = None
@@ -2822,7 +2822,7 @@ class DetectProductBetaResponse(AbstractModel):
         :param _ProductInfoList: 相似商品信息列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductInfoList: list of ProductInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegionDetected = None
@@ -2944,7 +2944,7 @@ class DetectProductResponse(AbstractModel):
         r"""
         :param _Products: 商品识别结果数组
         :type Products: list of Product
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -3070,7 +3070,7 @@ class DetectSecurityResponse(AbstractModel):
         :param _Bodies: 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bodies: list of AttributesForBody
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Bodies = None
@@ -3165,7 +3165,7 @@ class EnhanceImageResponse(AbstractModel):
         r"""
         :param _EnhancedImage: 增强后图片的base64编码。
         :type EnhancedImage: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnhancedImage = None
@@ -4121,7 +4121,7 @@ class RecognizeCarProResponse(AbstractModel):
         :param _CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
 注意：置信度是指车牌信息置信度。
         :type CarTags: list of CarTagItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CarCoords = None
@@ -4234,7 +4234,7 @@ class RecognizeCarResponse(AbstractModel):
         :type CarCoords: list of Coord
         :param _CarTags: 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
         :type CarTags: list of CarTagItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CarCoords = None
@@ -4609,7 +4609,7 @@ class SearchImageResponse(AbstractModel):
 **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 注意：此字段可能返回 null，表示取不到有效值。
         :type Object: :class:`tencentcloud.tiia.v20190529.models.ObjectInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Count = None
@@ -4740,7 +4740,7 @@ class UpdateImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

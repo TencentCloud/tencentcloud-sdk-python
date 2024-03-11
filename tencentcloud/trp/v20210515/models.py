@@ -194,7 +194,7 @@ class AuthorizedTransferResponse(AbstractModel):
         r"""
         :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -1268,7 +1268,7 @@ class CreateCodeBatchResponse(AbstractModel):
         r"""
         :param _BatchId: 批次ID
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -1475,7 +1475,7 @@ class CreateCodePackResponse(AbstractModel):
         r"""
         :param _PackId: 码包ID
         :type PackId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PackId = None
@@ -1642,7 +1642,7 @@ class CreateCorporationOrderResponse(AbstractModel):
         :param _CorpId: 企业ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CorpId = None
@@ -1856,7 +1856,7 @@ class CreateCustomPackResponse(AbstractModel):
         r"""
         :param _PackId: 码包ID
         :type PackId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PackId = None
@@ -1980,7 +1980,7 @@ class CreateCustomRuleResponse(AbstractModel):
         :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomId = None
@@ -2099,7 +2099,7 @@ class CreateMerchantResponse(AbstractModel):
         :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MerchantId = None
@@ -2256,7 +2256,7 @@ class CreateProductResponse(AbstractModel):
         :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProductId = None
@@ -2338,7 +2338,7 @@ class CreateTraceChainResponse(AbstractModel):
         r"""
         :param _TraceId: 溯源ID
         :type TraceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceId = None
@@ -2433,7 +2433,7 @@ class CreateTraceCodesAsyncResponse(AbstractModel):
         :param _BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -2564,7 +2564,7 @@ class CreateTraceCodesResponse(AbstractModel):
         :type ActiveCnt: int
         :param _CodeCnt: 批次码数量
         :type CodeCnt: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -2781,7 +2781,7 @@ class CreateTraceDataResponse(AbstractModel):
         r"""
         :param _TraceId: 溯源ID
         :type TraceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceId = None
@@ -3000,7 +3000,7 @@ class DeleteCodeBatchResponse(AbstractModel):
         r"""
         :param _BatchId: 批次ID
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -3083,7 +3083,7 @@ class DeleteMerchantResponse(AbstractModel):
         :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MerchantId = None
@@ -3166,7 +3166,7 @@ class DeleteProductResponse(AbstractModel):
         :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProductId = None
@@ -3249,7 +3249,7 @@ class DeleteTraceDataResponse(AbstractModel):
         :param _TraceId: 溯源id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceId = None
@@ -3353,7 +3353,7 @@ class DescribeAgentCorpsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3425,7 +3425,7 @@ class DescribeCodeBatchByIdResponse(AbstractModel):
         r"""
         :param _CodeBatch: 批次
         :type CodeBatch: :class:`tencentcloud.trp.v20210515.models.CodeBatch`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeBatch = None
@@ -3583,7 +3583,7 @@ class DescribeCodeBatchesResponse(AbstractModel):
         :type CodeBatches: list of CodeBatch
         :param _TotalCount: 总条数
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeBatches = None
@@ -3756,7 +3756,7 @@ class DescribeCodeBatchsResponse(AbstractModel):
         :param _TotalCount: 总条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeBatchs = None
@@ -3854,7 +3854,7 @@ class DescribeCodePackStatusResponse(AbstractModel):
         :param _Status: 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -3943,7 +3943,7 @@ class DescribeCodePackUrlResponse(AbstractModel):
         :param _FileKey: 文字码包Key，用于上传导入
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileKey: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -4109,7 +4109,7 @@ class DescribeCodePacksResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodePacks = None
@@ -4207,7 +4207,7 @@ class DescribeCodesByPackResponse(AbstractModel):
         :param _Codes: 码列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codes: list of CodeItem
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Codes = None
@@ -4322,7 +4322,7 @@ class DescribeCorpQuotasResponse(AbstractModel):
         :param _Total: 记录总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CorpQuotas = None
@@ -4420,7 +4420,7 @@ class DescribeCustomRuleByIdResponse(AbstractModel):
         :param _CustomRule: 码规则信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomRule: :class:`tencentcloud.trp.v20210515.models.CustomRule`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomRule = None
@@ -4556,7 +4556,7 @@ class DescribeCustomRulesResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomRules = None
@@ -4654,7 +4654,7 @@ class DescribeJobFileUrlResponse(AbstractModel):
         :param _Url: 码包地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -4737,7 +4737,7 @@ class DescribeMerchantByIdResponse(AbstractModel):
         :param _Merchant: 商户信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Merchant: :class:`tencentcloud.trp.v20210515.models.Merchant`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Merchant = None
@@ -4861,7 +4861,7 @@ class DescribeMerchantsResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Merchants = None
@@ -4986,7 +4986,7 @@ class DescribePlanQRCodeScanRecordsResponse(AbstractModel):
         :type Total: int
         :param _Data: 数据
         :type Data: list of PlanQRCodeRecord
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -5133,7 +5133,7 @@ class DescribePlanQRCodesResponse(AbstractModel):
         :type Total: int
         :param _Data: 数据
         :type Data: list of PlanQRCode
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Ret = None
@@ -5241,7 +5241,7 @@ class DescribeProductByIdResponse(AbstractModel):
         :param _Product: 商品信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type Product: :class:`tencentcloud.trp.v20210515.models.Product`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Product = None
@@ -5377,7 +5377,7 @@ class DescribeProductsResponse(AbstractModel):
         :param _TotalCount: 总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -5524,7 +5524,7 @@ class DescribeRawScanLogsResponse(AbstractModel):
         r"""
         :param _ScanLogs: 原始扫码日志
         :type ScanLogs: list of RawScanLog
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ScanLogs = None
@@ -5651,7 +5651,7 @@ class DescribeScanLogsResponse(AbstractModel):
         :type TotalCount: int
         :param _ScanLogs: 扫描记录
         :type ScanLogs: list of ScanLog
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Products = None
@@ -5827,7 +5827,7 @@ class DescribeScanStatsResponse(AbstractModel):
         r"""
         :param _ScanStats: 统计记录
         :type ScanStats: list of ScanStat
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ScanStats = None
@@ -5903,7 +5903,7 @@ class DescribeTmpTokenResponse(AbstractModel):
         :param _Token: 临时token
 注意：此字段可能返回 null，表示取不到有效值。
         :type Token: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Token = None
@@ -5987,7 +5987,7 @@ class DescribeTraceCodeByIdResponse(AbstractModel):
         :type TraceCode: :class:`tencentcloud.trp.v20210515.models.TraceCode`
         :param _CodePath: 码路径，如level是2，则为 [1级, 2级]
         :type CodePath: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceCode = None
@@ -6121,7 +6121,7 @@ class DescribeTraceCodesResponse(AbstractModel):
         :param _TotalCount: 条数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceCodes = None
@@ -6218,7 +6218,7 @@ class DescribeTraceDataByIdResponse(AbstractModel):
         r"""
         :param _TraceData: 无
         :type TraceData: :class:`tencentcloud.trp.v20210515.models.TraceData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceData = None
@@ -6364,7 +6364,7 @@ class DescribeTraceDataListResponse(AbstractModel):
         :type TotalCount: int
         :param _TraceDataList: 无
         :type TraceDataList: list of TraceData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -6451,7 +6451,7 @@ class EffectFeedbackResponse(AbstractModel):
         r"""
         :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
@@ -6929,7 +6929,7 @@ class ModifyCodeBatchResponse(AbstractModel):
         r"""
         :param _BatchId: 批次ID
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -7053,7 +7053,7 @@ class ModifyCustomRuleResponse(AbstractModel):
         :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomId = None
@@ -7148,7 +7148,7 @@ class ModifyCustomRuleStatusResponse(AbstractModel):
         :param _CustomId: 码规则ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CustomId = None
@@ -7279,7 +7279,7 @@ class ModifyMerchantResponse(AbstractModel):
         :param _MerchantId: 商户标识码
 注意：此字段可能返回 null，表示取不到有效值。
         :type MerchantId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MerchantId = None
@@ -7424,7 +7424,7 @@ class ModifyProductResponse(AbstractModel):
         :param _ProductId: 商品ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ProductId = None
@@ -7516,7 +7516,7 @@ class ModifyTraceCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -7604,7 +7604,7 @@ class ModifyTraceCodeUnlinkResponse(AbstractModel):
         :type CodeCnt: int
         :param _BatchId: 批次ID
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UnlinkCnt = None
@@ -7731,7 +7731,7 @@ class ModifyTraceDataRanksResponse(AbstractModel):
         :param _BatchId: 批次ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type BatchId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchId = None
@@ -8002,7 +8002,7 @@ class ModifyTraceDataResponse(AbstractModel):
         r"""
         :param _TraceId: 溯源ID
         :type TraceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TraceId = None
@@ -9027,7 +9027,7 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
         r"""
         :param _Data: 业务出参。
         :type Data: :class:`tencentcloud.trp.v20210515.models.OutputAuthorizedTransfer`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None

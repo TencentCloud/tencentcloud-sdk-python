@@ -502,7 +502,7 @@ class CreateAppScanTaskRepeatResponse(AbstractModel):
         :type Result: int
         :param _TaskID: 任务id
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -801,7 +801,7 @@ class CreateAppScanTaskResponse(AbstractModel):
         :param _TaskID: 任务ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -945,7 +945,7 @@ class DescribeChannelTaskReportUrlResponse(AbstractModel):
         :type ReportUrl: str
         :param _ReportTitle: 诊断报告/堆栈/报告json结果的名称
         :type ReportTitle: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1055,7 +1055,7 @@ class DescribeFileTicketResponse(AbstractModel):
         :param _FildID: 上传文件ID(任务来源为1时提交诊断任务需要)
 注意：此字段可能返回 null，表示取不到有效值。
         :type FildID: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1193,7 +1193,7 @@ class DescribeResourceUsageInfoResponse(AbstractModel):
         :type Result: int
         :param _Data: 资源使用信息
         :type Data: :class:`tencentcloud.acp.v20220105.models.ResourceUsageInfoData`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1376,7 +1376,7 @@ class DescribeScanTaskListResponse(AbstractModel):
         :param _Data: 诊断任务数据列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of AppTaskData
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1528,7 +1528,7 @@ class DescribeScanTaskReportUrlResponse(AbstractModel):
         :param _ReportResult: 诊断json结果内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReportResult: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1672,7 +1672,7 @@ class DescribeScanTaskStatusResponse(AbstractModel):
         :param _FlowSteps: 任务流详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowSteps: list of TaskFlowStepsInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None

@@ -172,7 +172,7 @@ class AddAccountToAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -245,7 +245,7 @@ class AddUserToUserGroupResponse(AbstractModel):
         :param _FailedItems: 未成功加入用户组的用户ID列表信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedItems: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailedItems = None
@@ -1020,7 +1020,7 @@ class CreateAccountGroupResponse(AbstractModel):
         :param _AccountGroupId: 账号组ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AccountGroupId = None
@@ -1127,7 +1127,7 @@ class CreateAppAccountResponse(AbstractModel):
         :param _AccountId: 账号ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AccountId = None
@@ -1234,7 +1234,7 @@ class CreateOrgNodeResponse(AbstractModel):
         :param _OrgNodeId: 机构节点ID，是机构节点的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgNodeId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrgNodeId = None
@@ -1317,7 +1317,7 @@ class CreateUserGroupResponse(AbstractModel):
         :param _UserGroupId: 用户组ID，是用户组的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserGroupId = None
@@ -1508,7 +1508,7 @@ class CreateUserResponse(AbstractModel):
         :param _UserId: 返回的新创建的用户ID，是该用户的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserId = None
@@ -1576,7 +1576,7 @@ class DeleteAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1634,7 +1634,7 @@ class DeleteAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1692,7 +1692,7 @@ class DeleteOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1750,7 +1750,7 @@ class DeleteUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1820,7 +1820,7 @@ class DeleteUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1893,7 +1893,7 @@ class DeleteUsersResponse(AbstractModel):
         :param _FailedItems: 未被成功删除的用户信息。当业务参数为DeleteIdList时，本字段将返回未成功删除的用户ID列表。当业务参数为DeleteNameList时，本字段将返回未成功删除的用户名称列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedItems: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FailedItems = None
@@ -2008,7 +2008,7 @@ class DescribeAccountGroupResponse(AbstractModel):
         :param _AccountGroupList: 返回符合条件的数据列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupList: list of AccountGroupInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2148,7 +2148,7 @@ class DescribeAppAccountResponse(AbstractModel):
         :param _AppAccountList: 返回符合条件的数据列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppAccountList: list of AppAccountInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -2298,7 +2298,7 @@ class DescribeApplicationResponse(AbstractModel):
         :param _Description: 描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._KeyId = None
@@ -2545,7 +2545,7 @@ class DescribeOrgNodeResponse(AbstractModel):
         :param _Description: 机构节点描述。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DisplayName = None
@@ -2727,7 +2727,7 @@ class DescribeOrgResourcesAuthorizationResponse(AbstractModel):
         :param _TotalCount: 资源数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationId = None
@@ -2859,7 +2859,7 @@ class DescribePublicKeyResponse(AbstractModel):
         :param _ApplicationId: 应用ID，是应用的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PublicKey = None
@@ -3004,7 +3004,7 @@ class DescribeUserGroupResourcesAuthorizationResponse(AbstractModel):
         :param _AuthorizationUserGroupResourceList: 资源列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationUserGroupResourceList: list of AuthorizationResourceEntityInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationId = None
@@ -3083,7 +3083,7 @@ class DescribeUserGroupResponse(AbstractModel):
         :param _UserGroupId: 用户组ID，是用户组的全局唯一标识。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DisplayName = None
@@ -3228,7 +3228,7 @@ class DescribeUserInfoResponse(AbstractModel):
         :param _AdminFlag: 是否管理员标志，0为否、1为是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdminFlag: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserName = None
@@ -3486,7 +3486,7 @@ class DescribeUserResourcesAuthorizationResponse(AbstractModel):
         :param _AuthorizationUserResourceList: 返回的资源列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthorizationUserResourceList: list of AuthorizationUserResouceInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationId = None
@@ -3618,7 +3618,7 @@ class DescribeUserThirdPartyAccountInfoResponse(AbstractModel):
         :param _ThirdPartyAccounts: 三方账号的绑定情况。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThirdPartyAccounts: list of ThirdPartyAccountInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserId = None
@@ -3852,7 +3852,7 @@ class ListAccountInAccountGroupResponse(AbstractModel):
         :param _AccountGroupId: 账号组ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AccountList = None
@@ -4003,7 +4003,7 @@ class ListApplicationAuthorizationsResponse(AbstractModel):
         :param _TotalCount: 返回的应用信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuthorizationInfoList = None
@@ -4144,7 +4144,7 @@ class ListApplicationsResponse(AbstractModel):
         :param _ApplicationInfoList: 返回的应用信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationInfoList: list of ApplicationInformation
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -4230,7 +4230,7 @@ class ListAuthorizedApplicationsToOrgNodeResponse(AbstractModel):
         :param _ApplicationIds: 机构节点拥有访问权限的应用 id 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationIds = None
@@ -4301,7 +4301,7 @@ class ListAuthorizedApplicationsToUserGroupResponse(AbstractModel):
         :param _ApplicationIds: 用户组拥有访问权限的应用 id 列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationIds = None
@@ -4384,7 +4384,7 @@ class ListAuthorizedApplicationsToUserResponse(AbstractModel):
         :param _ApplicationAuthorizationInfo: 用户拥有访问权限的应用信息列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationAuthorizationInfo: list of ApplicationAuthorizationInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ApplicationAuthorizationInfo = None
@@ -4521,7 +4521,7 @@ class ListUserGroupsOfUserResponse(AbstractModel):
         :param _TotalCount: 返回的用户组信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserGroupIds = None
@@ -4670,7 +4670,7 @@ class ListUserGroupsResponse(AbstractModel):
         :param _TotalCount: 返回的用户组信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserGroupList = None
@@ -4835,7 +4835,7 @@ class ListUsersInOrgNodeResponse(AbstractModel):
         :param _OrgNodeNamePath: 组织机构名称路径。
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrgNodeNamePath: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OrgNodeChildUserInfo = None
@@ -5129,7 +5129,7 @@ class ListUsersInUserGroupResponse(AbstractModel):
         :param _TotalNum: 返回的用户信息总数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserGroupId = None
@@ -5292,7 +5292,7 @@ class ListUsersResponse(AbstractModel):
         :param _TotalCount: 返回查询用户的总数量，仅当入参IncludeTotal等于true时返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._UserList = None
@@ -5399,7 +5399,7 @@ class ModifyAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5493,7 +5493,7 @@ class ModifyAppAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5611,7 +5611,7 @@ class ModifyApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5801,7 +5801,7 @@ class ModifyUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6087,7 +6087,7 @@ class RemoveAccountFromAccountGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6157,7 +6157,7 @@ class RemoveUserFromUserGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -6343,7 +6343,7 @@ class UpdateOrgNodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
