@@ -12544,6 +12544,8 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
         :type GroupName: str
         :param _QueryDLQMsg: 查询死信时该值为true
         :type QueryDLQMsg: bool
+        :param _QueryDeadLetterMessage: 查询死信时该值为true
+        :type QueryDeadLetterMessage: str
         """
         self._ClusterId = None
         self._EnvironmentId = None
@@ -12551,6 +12553,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
         self._MsgId = None
         self._GroupName = None
         self._QueryDLQMsg = None
+        self._QueryDeadLetterMessage = None
 
     @property
     def ClusterId(self):
@@ -12594,11 +12597,23 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
 
     @property
     def QueryDLQMsg(self):
+        warnings.warn("parameter `QueryDLQMsg` is deprecated", DeprecationWarning) 
+
         return self._QueryDLQMsg
 
     @QueryDLQMsg.setter
     def QueryDLQMsg(self, QueryDLQMsg):
+        warnings.warn("parameter `QueryDLQMsg` is deprecated", DeprecationWarning) 
+
         self._QueryDLQMsg = QueryDLQMsg
+
+    @property
+    def QueryDeadLetterMessage(self):
+        return self._QueryDeadLetterMessage
+
+    @QueryDeadLetterMessage.setter
+    def QueryDeadLetterMessage(self, QueryDeadLetterMessage):
+        self._QueryDeadLetterMessage = QueryDeadLetterMessage
 
 
     def _deserialize(self, params):
@@ -12608,6 +12623,7 @@ class DescribeRocketMQMsgTraceRequest(AbstractModel):
         self._MsgId = params.get("MsgId")
         self._GroupName = params.get("GroupName")
         self._QueryDLQMsg = params.get("QueryDLQMsg")
+        self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

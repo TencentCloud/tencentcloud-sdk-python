@@ -19695,6 +19695,124 @@ class ModifyDBRemarkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDReadableRequest(AbstractModel):
+    """ModifyDReadable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Type: 操作类型。enable-开启备机只读，disable-关闭备机只读
+        :type Type: str
+        :param _VpcId: 备机网络ID，不填默认和主实例保持一致
+        :type VpcId: str
+        :param _SubnetId: 备机网络子网ID，不填默认和主实例保持一致
+        :type SubnetId: str
+        :param _Vip: 指定的备机只读vip，不填自动分配
+        :type Vip: str
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Vip = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDReadableResponse(AbstractModel):
+    """ModifyDReadable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDataBaseTuple(AbstractModel):
     """要修改的数据库订阅发布关系集合
 

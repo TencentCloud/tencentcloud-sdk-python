@@ -1366,6 +1366,76 @@ class CcnAttachedInstance(AbstractModel):
         
 
 
+class Command(AbstractModel):
+    """用户执行TAT命令的数据结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: Base64编码后的命令内容，长度不可超过64KB。
+        :type Content: str
+        :param _Timeout: 命令超时时间，默认60秒。取值范围[1, 86400]。
+        :type Timeout: int
+        :param _WorkingDirectory: 命令执行路径，对于 SHELL 命令默认为 /root，对于 POWERSHELL 命令默认为 C:\Program Files\qcloud\tat_agent\workdir。
+        :type WorkingDirectory: str
+        :param _Username: 在 Lighthouse 实例中执行命令的用户名称。
+默认情况下，在 Linux 实例中以 root 用户执行命令；在Windows 实例中以 System 用户执行命令。
+        :type Username: str
+        """
+        self._Content = None
+        self._Timeout = None
+        self._WorkingDirectory = None
+        self._Username = None
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def WorkingDirectory(self):
+        return self._WorkingDirectory
+
+    @WorkingDirectory.setter
+    def WorkingDirectory(self, WorkingDirectory):
+        self._WorkingDirectory = WorkingDirectory
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Timeout = params.get("Timeout")
+        self._WorkingDirectory = params.get("WorkingDirectory")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerEnv(AbstractModel):
     """容器环境变量
 
@@ -2161,6 +2231,8 @@ false（默认）：发送正常请求，通过检查后直接创建实例
 如果标签不存在会为您自动创建标签。
 数组最多支持10个元素。
         :type Tags: list of Tag
+        :param _InitCommand: 创建实例后自动执行的命令。
+        :type InitCommand: :class:`tencentcloud.lighthouse.v20200324.models.Command`
         """
         self._BundleId = None
         self._BlueprintId = None
@@ -2175,6 +2247,7 @@ false（默认）：发送正常请求，通过检查后直接创建实例
         self._AutoVoucher = None
         self._FirewallTemplateId = None
         self._Tags = None
+        self._InitCommand = None
 
     @property
     def BundleId(self):
@@ -2280,6 +2353,14 @@ false（默认）：发送正常请求，通过检查后直接创建实例
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def InitCommand(self):
+        return self._InitCommand
+
+    @InitCommand.setter
+    def InitCommand(self, InitCommand):
+        self._InitCommand = InitCommand
+
 
     def _deserialize(self, params):
         self._BundleId = params.get("BundleId")
@@ -2309,6 +2390,9 @@ false（默认）：发送正常请求，通过检查后直接创建实例
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("InitCommand") is not None:
+            self._InitCommand = Command()
+            self._InitCommand._deserialize(params.get("InitCommand"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10315,6 +10399,8 @@ FAILED：表示操作失败
         :param _InstanceRestrictState: 实例封禁状态。取值范围：
 <li>NORMAL实例正常。</li><li>NETWORK_RESTRICT：网络封禁。</li>
         :type InstanceRestrictState: str
+        :param _InitInvocationId: 创建实例后自动执行TAT命令的调用ID。
+        :type InitInvocationId: str
         """
         self._InstanceId = None
         self._BundleId = None
@@ -10343,6 +10429,7 @@ FAILED：表示操作失败
         self._Zone = None
         self._Tags = None
         self._InstanceRestrictState = None
+        self._InitInvocationId = None
 
     @property
     def InstanceId(self):
@@ -10560,6 +10647,14 @@ FAILED：表示操作失败
     def InstanceRestrictState(self, InstanceRestrictState):
         self._InstanceRestrictState = InstanceRestrictState
 
+    @property
+    def InitInvocationId(self):
+        return self._InitInvocationId
+
+    @InitInvocationId.setter
+    def InitInvocationId(self, InitInvocationId):
+        self._InitInvocationId = InitInvocationId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10600,6 +10695,7 @@ FAILED：表示操作失败
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceRestrictState = params.get("InstanceRestrictState")
+        self._InitInvocationId = params.get("InitInvocationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

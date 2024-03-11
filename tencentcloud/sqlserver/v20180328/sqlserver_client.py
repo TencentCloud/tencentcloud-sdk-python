@@ -2579,6 +2579,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDReadable(self, request):
+        """本接口（ModifyDReadable）用于开通或者关闭备机只读
+
+        :param request: Request instance for ModifyDReadable.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDReadableRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDReadableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDReadable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDReadableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDatabaseCDC(self, request):
         """本接口(ModifyDatabaseCDC)用于开启、关闭数据库数据变更捕获(CDC)
 
