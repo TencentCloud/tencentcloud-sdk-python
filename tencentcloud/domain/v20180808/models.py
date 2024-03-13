@@ -2510,10 +2510,13 @@ class DescribePreDomainListRequest(AbstractModel):
         :type Size: int
         :param _EndTime: 用于结束时间筛选
         :type EndTime: str
+        :param _UpTime: 用户指定上架时间筛选
+        :type UpTime: str
         """
         self._Page = None
         self._Size = None
         self._EndTime = None
+        self._UpTime = None
 
     @property
     def Page(self):
@@ -2539,11 +2542,20 @@ class DescribePreDomainListRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def UpTime(self):
+        return self._UpTime
+
+    @UpTime.setter
+    def UpTime(self, UpTime):
+        self._UpTime = UpTime
+
 
     def _deserialize(self, params):
         self._Page = params.get("Page")
         self._Size = params.get("Size")
         self._EndTime = params.get("EndTime")
+        self._UpTime = params.get("UpTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

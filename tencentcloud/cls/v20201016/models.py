@@ -3972,6 +3972,8 @@ class CreateConfigExtraRequest(AbstractModel):
         :type GroupId: str
         :param _GroupIds: 绑定的机器组id列表
         :type GroupIds: list of str
+        :param _CollectInfos: 采集相关配置信息。详情见CollectInfo复杂类型配置。
+        :type CollectInfos: list of CollectInfo
         :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
 - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
 - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
@@ -3996,6 +3998,7 @@ class CreateConfigExtraRequest(AbstractModel):
         self._UserDefineRule = None
         self._GroupId = None
         self._GroupIds = None
+        self._CollectInfos = None
         self._AdvancedConfig = None
 
     @property
@@ -4135,6 +4138,14 @@ class CreateConfigExtraRequest(AbstractModel):
         self._GroupIds = GroupIds
 
     @property
+    def CollectInfos(self):
+        return self._CollectInfos
+
+    @CollectInfos.setter
+    def CollectInfos(self, CollectInfos):
+        self._CollectInfos = CollectInfos
+
+    @property
     def AdvancedConfig(self):
         return self._AdvancedConfig
 
@@ -4174,6 +4185,12 @@ class CreateConfigExtraRequest(AbstractModel):
         self._UserDefineRule = params.get("UserDefineRule")
         self._GroupId = params.get("GroupId")
         self._GroupIds = params.get("GroupIds")
+        if params.get("CollectInfos") is not None:
+            self._CollectInfos = []
+            for item in params.get("CollectInfos"):
+                obj = CollectInfo()
+                obj._deserialize(item)
+                self._CollectInfos.append(obj)
         self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6174,7 +6191,7 @@ class CreateTopicRequest(AbstractModel):
 非0：开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
 仅在StorageType为 hot 时生效。
         :type HotPeriod: int
-        :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
+        :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
         :type IsWebTracking: bool
         """
@@ -9029,42 +9046,11 @@ class DescribeDashboardsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页单页限制数目，默认值为20，最大值100。
         :type Limit: int
-        :param _Filters: <br><li>dashboardId
-
-按照【仪表盘id】进行过滤。
-类型：String
-
-必选：否</li>
-
-<br><li> dashboardName
-
-按照【仪表盘名字】进行模糊搜索过滤。
-类型：String
-
-必选：否</li>
-
-<br><li> dashboardRegion
-
-按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
-类型：String
-
-必选：否</li>
-
-<br><li> tagKey
-
-按照【标签键】进行过滤。
-
-类型：String
-
-必选：否</li>
-
-<br><li> tag:tagKey
-
-按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换。使用请参考示例二。
-
-类型：String
-
-必选：否</li>
+        :param _Filters: - dashboardId 按照【仪表盘id】进行过滤，类型：String， 必选：否。
+- dashboardName 按照【仪表盘名字】进行模糊搜索过滤，类型：String，必选：否。
+- dashboardRegion 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性，类型：String，必选：否。
+- tagKey 按照【标签键】进行过滤，类型：String，必选：否。
+- tag:tagKey 按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，类型：String，必选：否，使用请参考[示例2](https://cloud.tencent.com/document/api/614/95636#4.-.E7.A4.BA.E4.BE.8B)。
 
 每次请求的Filters的上限为10，Filter.Values的上限为100。
         :type Filters: list of Filter
@@ -10793,7 +10779,7 @@ class DescribeScheduledSqlInfoRequest(AbstractModel):
 <li>dstTopicName按照【目标日志主题名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 <li>srcTopicId按照【源日志主题ID】进行过滤。类型：String。必选：否</li>
 <li>dstTopicId按照【目标日志主题ID】进行过滤。类型：String。必选：否</li>
-<li>bizType按照【主题类型】进行过滤，0日志主题 1指标主题。类型：String。必选：否</li>
+<li>bizType按照【主题类型】进行过滤，0：日志主题；1：指标主题。类型：String。必选：否</li>
 <li>status按照【任务状态】进行过滤，1：运行；2：停止。类型：String。必选：否</li>
 <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li>
 <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
@@ -11654,7 +11640,9 @@ class ExtractRuleInfo(AbstractModel):
         :param _Keys: 取的每个字段的key名字，为空的key代表丢弃这个字段，只有LogType为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Keys: list of str
-        :param _FilterKeyRegex: 需要过滤日志的key，及其对应的regex
+        :param _FilterKeyRegex: 日志过滤规则列表（旧版），需要过滤日志的key，及其对应的regex。
+ 注意：2.9.3及以上版本LogListener ，建议使用AdvanceFilterRules配置日志过滤规则。
+
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilterKeyRegex: list of KeyRegexInfo
         :param _UnMatchUpLoadSwitch: 解析失败日志是否上传，true表示上传，false表示不上传
@@ -12128,9 +12116,9 @@ class GetAlarmLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 要查询的执行详情的起始时间，Unix时间戳，单位ms
+        :param _From: 要查询的执行详情的起始时间，Unix时间戳，单位ms。
         :type From: int
-        :param _To: 要查询的执行详情的结束时间，Unix时间戳，单位ms
+        :param _To: 要查询的执行详情的结束时间，Unix时间戳，单位ms。
         :type To: int
         :param _Query: 查询过滤条件，例如：
 - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
@@ -12140,14 +12128,19 @@ class GetAlarmLogRequest(AbstractModel):
         :type Query: str
         :param _Limit: 单次查询返回的执行详情条数，最大值为1000
         :type Limit: int
-        :param _Context: 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
+        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+注意：
+* 透传该参数时，请勿修改除该参数外的其它参数
+* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
         :type Context: str
-        :param _Sort: 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+注意：
+* 仅当检索分析语句(Query)不包含SQL时有效
+* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
         :type Sort: str
-        :param _UseNewAnalysis: 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
-为false代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
+        :param _UseNewAnalysis: true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
+false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
 两种返回方式在编码格式上有少量区别，建议使用true。
-示例值：false
         :type UseNewAnalysis: bool
         """
         self._From = None
@@ -12251,7 +12244,6 @@ class GetAlarmLogResponse(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColNames: list of str
         :param _Results: 执行详情查询结果。
-
 当Query字段无SQL语句时，返回查询结果。
 当Query字段有SQL语句时，可能返回null。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20146,6 +20138,7 @@ class TopicInfo(AbstractModel):
         :type Describes: str
         :param _HotPeriod: 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
+HotPeriod=0为没有开启日志沉降。
 注意：此字段可能返回 null，表示取不到有效值。
         :type HotPeriod: int
         :param _BizType: 主题类型。

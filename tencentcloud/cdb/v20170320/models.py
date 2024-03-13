@@ -15939,7 +15939,7 @@ class DescribeSlowLogDataRequest(AbstractModel):
         :type SortBy: str
         :param _OrderBy: 升序还是降序排列。当前支持：ASC,DESC 。
         :type OrderBy: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: 偏移量，默认为0，最大为9999。
         :type Offset: int
         :param _Limit: 一次性返回的记录数量，默认为100，最大为400。
         :type Limit: int

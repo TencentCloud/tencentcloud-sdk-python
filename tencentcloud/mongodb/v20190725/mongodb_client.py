@@ -831,6 +831,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SetInstanceMaintenance(self, request):
+        """本接口（SetInstanceMaintenance ） 用于设置实例维护时间窗。
+
+        :param request: Request instance for SetInstanceMaintenance.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.SetInstanceMaintenanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.SetInstanceMaintenanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetInstanceMaintenance", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetInstanceMaintenanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateDBInstances(self, request):
         """本接口（TerminateDBInstances）可将包年包月实例退还隔离。
 

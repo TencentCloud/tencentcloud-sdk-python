@@ -210,6 +210,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePresignedNotebookUrl(self, request):
+        """生成Notebook访问链接
+
+        :param request: Request instance for CreatePresignedNotebookUrl.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreatePresignedNotebookUrlRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreatePresignedNotebookUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePresignedNotebookUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePresignedNotebookUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTrainingModel(self, request):
         """导入模型
 

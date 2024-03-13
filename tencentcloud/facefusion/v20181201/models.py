@@ -98,7 +98,7 @@ class DescribeMaterialListResponse(AbstractModel):
         :type MaterialInfos: list of PublicMaterialInfos
         :param _Count: 素材条数
         :type Count: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MaterialInfos = None
@@ -272,7 +272,7 @@ class FaceFusionResponse(AbstractModel):
         :type Image: str
         :param _ReviewResultSet: 不适宜内容识别结果
         :type ReviewResultSet: list of FuseFaceReviewResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Image = None
@@ -592,7 +592,7 @@ class FuseFaceResponse(AbstractModel):
         :param _ReviewResultSet: 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewResultSet: list of FuseFaceReviewResult
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FusedImage = None

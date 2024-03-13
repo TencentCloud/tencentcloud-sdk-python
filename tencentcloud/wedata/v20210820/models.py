@@ -9341,8 +9341,8 @@ IRLCRC:在区间内(左闭右闭)
 IRLORO:在区间内(左开右开)
 NRLCRO:不在区间内(左闭右开)
 NRLORC:不在区间内(左开右闭)
-NRLCRC:不在在区间内(左闭右闭)
-NRLORO:不在在区间内(左开右开)
+NRLCRC:不在区间内(左闭右闭)
+NRLORO:不在区间内(左开右开)
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
         :param _ValueComputeType: 质量统计值类型 1.绝对值  2.上升 3. 下降  4._C包含   5. N_C不包含
@@ -12331,9 +12331,9 @@ class CreateRuleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 模版类型  1.系统模版   2.自定义模版
+        :param _Type: 模板类型  1.系统模板   2.自定义模板
         :type Type: int
-        :param _Name: 模版名称
+        :param _Name: 模板名称
         :type Name: str
         :param _QualityDim: 质量检测维度 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性
         :type QualityDim: int
@@ -16072,7 +16072,7 @@ class DeleteRuleTemplateRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目Id
         :type ProjectId: str
-        :param _Ids: 模版Id列表
+        :param _Ids: 模板Id列表
         :type Ids: list of int non-negative
         """
         self._ProjectId = None
@@ -32643,7 +32643,7 @@ class DescribeRuleTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 模版类型 1.系统模版 2.自定义模版
+        :param _Type: 模板类型 1.系统模板 2.自定义模板
         :type Type: int
         :param _SourceObjectType: 1.常量 2.离线表级 2.离线字段级
         :type SourceObjectType: int
@@ -32712,7 +32712,7 @@ class DescribeRuleTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 规则模版列表
+        :param _Data: 规则模板列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of RuleTemplate
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -45562,6 +45562,9 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         :param _InstanceLogListOpsDto: 实例日志简略信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceLogListOpsDto: :class:`tencentcloud.wedata.v20210820.models.InstanceLogInfo`
+        :param _InstanceState: 实例状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceState: str
         """
         self._TaskId = None
         self._CurRunDate = None
@@ -45573,6 +45576,7 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         self._ErrorDesc = None
         self._ErrorCodeLevel = None
         self._InstanceLogListOpsDto = None
+        self._InstanceState = None
 
     @property
     def TaskId(self):
@@ -45654,6 +45658,14 @@ class InstanceLifeCycleOpsDto(AbstractModel):
     def InstanceLogListOpsDto(self, InstanceLogListOpsDto):
         self._InstanceLogListOpsDto = InstanceLogListOpsDto
 
+    @property
+    def InstanceState(self):
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -45673,6 +45685,7 @@ class InstanceLifeCycleOpsDto(AbstractModel):
         if params.get("InstanceLogListOpsDto") is not None:
             self._InstanceLogListOpsDto = InstanceLogInfo()
             self._InstanceLogListOpsDto._deserialize(params.get("InstanceLogListOpsDto"))
+        self._InstanceState = params.get("InstanceState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45696,9 +45709,17 @@ class InstanceLifeDetailDto(AbstractModel):
         :param _StartTime: 该状态开始时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
+        :param _DetailState: 实例生命周期阶段状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetailState: str
+        :param _EndTime: 该状态结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
         """
         self._State = None
         self._StartTime = None
+        self._DetailState = None
+        self._EndTime = None
 
     @property
     def State(self):
@@ -45716,10 +45737,28 @@ class InstanceLifeDetailDto(AbstractModel):
     def StartTime(self, StartTime):
         self._StartTime = StartTime
 
+    @property
+    def DetailState(self):
+        return self._DetailState
+
+    @DetailState.setter
+    def DetailState(self, DetailState):
+        self._DetailState = DetailState
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
 
     def _deserialize(self, params):
         self._State = params.get("State")
         self._StartTime = params.get("StartTime")
+        self._DetailState = params.get("DetailState")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

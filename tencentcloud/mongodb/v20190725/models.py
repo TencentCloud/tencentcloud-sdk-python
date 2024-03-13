@@ -7343,6 +7343,91 @@ class SetAccountUserPrivilegeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetInstanceMaintenanceRequest(AbstractModel):
+    """SetInstanceMaintenance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+
+        :type InstanceId: str
+        :param _MaintenanceStart: 维护时间窗开始时间。取值范围为"00:00-23:00"的任意整点或半点，如00:00或00:30。
+        :type MaintenanceStart: str
+        :param _MaintenanceEnd: 维护时间窗结束时间。
+- 取值范围为"00:00-23:00"的任意整点或半点，维护时间持续时长最小为30分钟，最大为3小时。
+- 结束时间务必是基于开始时间向后的时间。
+        :type MaintenanceEnd: str
+        """
+        self._InstanceId = None
+        self._MaintenanceStart = None
+        self._MaintenanceEnd = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MaintenanceStart(self):
+        return self._MaintenanceStart
+
+    @MaintenanceStart.setter
+    def MaintenanceStart(self, MaintenanceStart):
+        self._MaintenanceStart = MaintenanceStart
+
+    @property
+    def MaintenanceEnd(self):
+        return self._MaintenanceEnd
+
+    @MaintenanceEnd.setter
+    def MaintenanceEnd(self, MaintenanceEnd):
+        self._MaintenanceEnd = MaintenanceEnd
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MaintenanceStart = params.get("MaintenanceStart")
+        self._MaintenanceEnd = params.get("MaintenanceEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetInstanceMaintenanceResponse(AbstractModel):
+    """SetInstanceMaintenance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ShardInfo(AbstractModel):
     """实例分片详情
 

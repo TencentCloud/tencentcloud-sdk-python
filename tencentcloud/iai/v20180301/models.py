@@ -123,7 +123,7 @@ class AnalyzeDenseLandmarksResponse(AbstractModel):
         :type DenseFaceShapeSet: list of DenseFaceShape
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。本接口仅支持 “3.0“ 输入。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageWidth = None
@@ -295,7 +295,7 @@ class AnalyzeFaceResponse(AbstractModel):
         :type FaceShapeSet: list of FaceShape
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageWidth = None
@@ -659,7 +659,7 @@ class CompareFaceResponse(AbstractModel):
         :type Score: float
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Score = None
@@ -753,7 +753,7 @@ class CopyPersonResponse(AbstractModel):
         :type SucGroupNum: int
         :param _SucGroupIds: 成功加入的人员库列表
         :type SucGroupIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SucGroupNum = None
@@ -924,7 +924,7 @@ RetCode的顺序和入参中 Images 或 Urls 的顺序一致。
         :type SucFaceRects: list of FaceRect
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SucFaceNum = None
@@ -1107,7 +1107,7 @@ class CreateGroupResponse(AbstractModel):
         r"""
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FaceModelVersion = None
@@ -1319,7 +1319,7 @@ class CreatePersonResponse(AbstractModel):
         :type SimilarPersonId: str
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FaceId = None
@@ -1435,7 +1435,7 @@ class DeleteFaceResponse(AbstractModel):
         :type SucDeletedNum: int
         :param _SucFaceIds: 删除成功的人脸ID列表
         :type SucFaceIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SucDeletedNum = None
@@ -1513,7 +1513,7 @@ class DeleteGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1583,7 +1583,7 @@ class DeletePersonFromGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1641,7 +1641,7 @@ class DeletePersonResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -2090,7 +2090,7 @@ class DetectFaceAttributesResponse(AbstractModel):
         :type FaceDetailInfos: list of FaceDetailInfo
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageWidth = None
@@ -2305,7 +2305,7 @@ class DetectFaceResponse(AbstractModel):
 2020年11月26日后开通服务的账号仅支持输入“3.0”。
 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ImageWidth = None
@@ -2454,7 +2454,7 @@ class DetectLiveFaceResponse(AbstractModel):
         :param _IsLiveness: 活体检测是否通过。
 本字段只有FaceModelVersion为3.0时才具备参考意义。
         :type IsLiveness: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Score = None
@@ -3792,7 +3792,7 @@ class GetGroupInfoResponse(AbstractModel):
         :type FaceModelVersion: str
         :param _CreationTimestamp: Group的创建时间和日期 CreationTimestamp。CreationTimestamp 的值是自 Unix 纪元时间到Group创建时间的毫秒数。
         :type CreationTimestamp: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GroupName = None
@@ -3927,7 +3927,7 @@ class GetGroupListResponse(AbstractModel):
         :param _GroupNum: 人员库总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._GroupInfos = None
@@ -4016,7 +4016,7 @@ class GetPersonBaseInfoResponse(AbstractModel):
         :type Gender: int
         :param _FaceIds: 包含的人脸 ID 列表
         :type FaceIds: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PersonName = None
@@ -4136,7 +4136,7 @@ class GetPersonGroupInfoResponse(AbstractModel):
         :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PersonGroupInfos = None
@@ -4233,7 +4233,7 @@ class GetPersonListNumResponse(AbstractModel):
         :type PersonNum: int
         :param _FaceNum: 人脸数量
         :type FaceNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PersonNum = None
@@ -4346,7 +4346,7 @@ class GetPersonListResponse(AbstractModel):
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PersonInfos = None
@@ -4465,7 +4465,7 @@ class GetUpgradeGroupFaceModelVersionJobListResponse(AbstractModel):
         :type JobInfos: list of UpgradeJobInfo
         :param _JobNum: 升级任务总数量。
         :type JobNum: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobInfos = None
@@ -4569,7 +4569,7 @@ Unix 纪元时间是 1970 年 1 月 1 日星期四，协调世界时 (UTC) 00:00
         :type GroupId: str
         :param _FailedFacesUrl: 无法升级的人脸Id信息，文件格式为json。半小时有效
         :type FailedFacesUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EndTimestamp = None
@@ -5115,7 +5115,7 @@ class ModifyGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5197,7 +5197,7 @@ class ModifyPersonBaseInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5284,7 +5284,7 @@ class ModifyPersonGroupInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5737,7 +5737,7 @@ class RevertGroupFaceModelVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -5925,7 +5925,7 @@ class SearchFacesResponse(AbstractModel):
         :type FaceNum: int
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Results = None
@@ -6149,7 +6149,7 @@ class SearchFacesReturnsByGroupResponse(AbstractModel):
         :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FaceNum = None
@@ -6374,7 +6374,7 @@ class SearchPersonsResponse(AbstractModel):
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Results = None
@@ -6596,7 +6596,7 @@ class SearchPersonsReturnsByGroupResponse(AbstractModel):
         :type ResultsReturnsByGroup: list of ResultsReturnsByGroup
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._PersonNum = None
@@ -6703,7 +6703,7 @@ class UpgradeGroupFaceModelVersionResponse(AbstractModel):
         r"""
         :param _JobId: 升级任务ID，用于查询、获取升级的进度和结果。
         :type JobId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
@@ -6939,7 +6939,7 @@ class VerifyFaceResponse(AbstractModel):
         :type IsMatch: bool
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Score = None
@@ -7094,7 +7094,7 @@ class VerifyPersonResponse(AbstractModel):
         :type IsMatch: bool
         :param _FaceModelVersion: 人脸识别所用的算法模型版本。
         :type FaceModelVersion: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Score = None

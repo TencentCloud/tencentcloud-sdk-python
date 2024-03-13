@@ -27744,6 +27744,10 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         :type SellerTaxCode: str
         :param _EnableCommonElectronic: 是否开启通用机打电子发票，默认为关闭。
         :type EnableCommonElectronic: bool
+        :param _EnableTodayInvoice: 是否允许查验当日发票，默认值为false。
+
+请注意，发票从开具到录入税局需要一定的时间来更新和验证发票信息，打开后仅支持查验已成功录入到税局中的发票。
+        :type EnableTodayInvoice: bool
         """
         self._InvoiceNo = None
         self._InvoiceDate = None
@@ -27754,6 +27758,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         self._RegionCode = None
         self._SellerTaxCode = None
         self._EnableCommonElectronic = None
+        self._EnableTodayInvoice = None
 
     @property
     def InvoiceNo(self):
@@ -27827,6 +27832,14 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
     def EnableCommonElectronic(self, EnableCommonElectronic):
         self._EnableCommonElectronic = EnableCommonElectronic
 
+    @property
+    def EnableTodayInvoice(self):
+        return self._EnableTodayInvoice
+
+    @EnableTodayInvoice.setter
+    def EnableTodayInvoice(self, EnableTodayInvoice):
+        self._EnableTodayInvoice = EnableTodayInvoice
+
 
     def _deserialize(self, params):
         self._InvoiceNo = params.get("InvoiceNo")
@@ -27838,6 +27851,7 @@ class VatInvoiceVerifyNewRequest(AbstractModel):
         self._RegionCode = params.get("RegionCode")
         self._SellerTaxCode = params.get("SellerTaxCode")
         self._EnableCommonElectronic = params.get("EnableCommonElectronic")
+        self._EnableTodayInvoice = params.get("EnableTodayInvoice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

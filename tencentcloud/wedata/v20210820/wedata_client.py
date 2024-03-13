@@ -1113,7 +1113,7 @@ class WedataClient(AbstractClient):
 
 
     def CreateRuleTemplate(self, request):
-        """创建规则模版
+        """创建规则模板
 
         :param request: Request instance for CreateRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.CreateRuleTemplateRequest`
@@ -1646,7 +1646,7 @@ class WedataClient(AbstractClient):
 
 
     def DeleteRuleTemplate(self, request):
-        """删除规则模版
+        """删除规则模板
 
         :param request: Request instance for DeleteRuleTemplate.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DeleteRuleTemplateRequest`
@@ -4486,7 +4486,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleTemplates(self, request):
-        """查询规则模版列表
+        """查询规则模板列表
 
         :param request: Request instance for DescribeRuleTemplates.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesRequest`
@@ -4509,7 +4509,7 @@ class WedataClient(AbstractClient):
 
 
     def DescribeRuleTemplatesByPage(self, request):
-        """过滤条件】 {模版名称Name,支持模糊匹配} {模版类型type，1.系统模版 2.自定义模版} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
+        """【过滤条件】 {模板名称Name,支持模糊匹配} {模板类型type，1.系统模板 2.自定义模板} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
 
         :param request: Request instance for DescribeRuleTemplatesByPage.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRuleTemplatesByPageRequest`

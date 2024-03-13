@@ -277,7 +277,7 @@ class DescribeApplicationsResponse(AbstractModel):
         :param _ApplicationSet: 分页返回的应用列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplicationSet: list of ApplicationInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -365,7 +365,7 @@ class DescribeInstanceNetworkStatusResponse(AbstractModel):
         :param _NetworkStatusSet: 查询结果集
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetworkStatusSet: list of NetworkStatus
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -498,7 +498,7 @@ class DescribeInstancesResponse(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -557,7 +557,7 @@ class DescribeRegionsResponse(AbstractModel):
         :param _RegionSet: 地域列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionSet: list of RegionInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RegionSet = None
@@ -633,7 +633,7 @@ class DescribeScenesResponse(AbstractModel):
         :param _SceneSet: 场景详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneSet: list of SceneInfo
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SceneSet = None
@@ -721,7 +721,7 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
         :param _LoginSettings: 服务登录配置详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginSettings: list of LoginSetting
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LoginSettings = None
@@ -919,7 +919,7 @@ class InquirePriceRunInstancesResponse(AbstractModel):
         :param _Price: 发货参数对应的价格组合，当DryRun=True，会返回空
 注意：此字段可能返回 null，表示取不到有效值。
         :type Price: :class:`tencentcloud.hai.v20230812.models.Price`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Price = None
@@ -1763,7 +1763,7 @@ class RunInstancesResponse(AbstractModel):
         r"""
         :param _InstanceIdSet: 实例ID列表
         :type InstanceIdSet: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceIdSet = None
@@ -1894,7 +1894,7 @@ class StartInstanceResponse(AbstractModel):
         r"""
         :param _TaskId: task任务id
         :type TaskId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -1990,7 +1990,7 @@ class StopInstanceResponse(AbstractModel):
         r"""
         :param _TaskId: task任务id
         :type TaskId: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
@@ -2130,7 +2130,7 @@ class TerminateInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

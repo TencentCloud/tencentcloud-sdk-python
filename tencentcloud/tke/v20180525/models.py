@@ -24383,11 +24383,14 @@ class GetClusterLevelPriceResponse(AbstractModel):
         :type Cost: int
         :param _TotalCost: 询价结果，单位：分，折扣前
         :type TotalCost: int
+        :param _Policy: 总的折扣，100表示100%不打折
+        :type Policy: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Cost = None
         self._TotalCost = None
+        self._Policy = None
         self._RequestId = None
 
     @property
@@ -24407,6 +24410,14 @@ class GetClusterLevelPriceResponse(AbstractModel):
         self._TotalCost = TotalCost
 
     @property
+    def Policy(self):
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24418,6 +24429,7 @@ class GetClusterLevelPriceResponse(AbstractModel):
     def _deserialize(self, params):
         self._Cost = params.get("Cost")
         self._TotalCost = params.get("TotalCost")
+        self._Policy = params.get("Policy")
         self._RequestId = params.get("RequestId")
 
 

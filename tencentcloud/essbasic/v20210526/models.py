@@ -10492,10 +10492,17 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :param _AuthorizedOrganizationName: 被授权企业名，和AuthorizedOrganizationId二选一，不能同时为空
 注：`被授权企业必须和当前企业在同一应用号下`
         :type AuthorizedOrganizationName: str
+        :param _PlatformAppAuthorization: 是否给平台应用授权:
+- true: 是（无需设置AuthorizedOrganizationId和AuthorizedOrganizationName）
+- false: 否（默认）
+ 注：该参数需要开通“基于子客授权第三方应用可文件发起子客自动签署”，请联系运营经理开通
+
+        :type PlatformAppAuthorization: bool
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
         self._AuthorizedOrganizationName = None
+        self._PlatformAppAuthorization = None
 
     @property
     def Agent(self):
@@ -10521,6 +10528,14 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthorizedOrganizationName(self, AuthorizedOrganizationName):
         self._AuthorizedOrganizationName = AuthorizedOrganizationName
 
+    @property
+    def PlatformAppAuthorization(self):
+        return self._PlatformAppAuthorization
+
+    @PlatformAppAuthorization.setter
+    def PlatformAppAuthorization(self, PlatformAppAuthorization):
+        self._PlatformAppAuthorization = PlatformAppAuthorization
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -10528,6 +10543,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._AuthorizedOrganizationId = params.get("AuthorizedOrganizationId")
         self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
+        self._PlatformAppAuthorization = params.get("PlatformAppAuthorization")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

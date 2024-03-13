@@ -74,7 +74,7 @@ class CreateBotResponse(AbstractModel):
         :type TaskRequestId: str
         :param _Msg: 任务信息
         :type Msg: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskRequestId = None
@@ -273,7 +273,7 @@ class ResetResponse(AbstractModel):
         :param _WaveData: tts合成的pcm音频。二进制数组经过base64编码(暂时不返回)
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaveData: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DialogStatus = None
@@ -587,7 +587,7 @@ class TextProcessResponse(AbstractModel):
         :param _ResponseMessage: 机器人应答。	
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseMessage: :class:`tencentcloud.tbp.v20190311.models.ResponseMessage`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DialogStatus = None
@@ -787,7 +787,7 @@ class TextResetResponse(AbstractModel):
         :param _ResponseText: 机器人对话的应答文本。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseText: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DialogStatus = None

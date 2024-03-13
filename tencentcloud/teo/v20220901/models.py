@@ -11534,6 +11534,117 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityIPGroupInfoRequest(AbstractModel):
+    """DescribeSecurityIPGroupInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点的 ID ，用于指定查询的站点范围。
+        :type ZoneId: str
+        :param _Limit: 单次返回的最大条目数。默认值为 20 ，最大查询条目为 1000 。
+        :type Limit: int
+        :param _Offset: 分页查询的起始条目偏移量。默认值为 0 。
+        :type Offset: int
+        """
+        self._ZoneId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityIPGroupInfoResponse(AbstractModel):
+    """DescribeSecurityIPGroupInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 返回的满足条件的 IP 组数量。
+        :type TotalCount: int
+        :param _IPGroups: IP 组的详细配置信息。包含每个 IP 组的 ID 、名称和 IP /网段列表信息。
+        :type IPGroups: list of IPGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._IPGroups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IPGroups(self):
+        return self._IPGroups
+
+    @IPGroups.setter
+    def IPGroups(self, IPGroups):
+        self._IPGroups = IPGroups
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("IPGroups") is not None:
+            self._IPGroups = []
+            for item in params.get("IPGroups"):
+                obj = IPGroup()
+                obj._deserialize(item)
+                self._IPGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityTemplateBindingsRequest(AbstractModel):
     """DescribeSecurityTemplateBindings请求参数结构体
 

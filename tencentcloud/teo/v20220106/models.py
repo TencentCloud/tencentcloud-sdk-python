@@ -106,7 +106,7 @@ class CreatePrefetchTaskResponse(AbstractModel):
         :param _FailedList: 失败的任务列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedList: list of FailReason
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
@@ -243,7 +243,7 @@ class CreatePurgeTaskResponse(AbstractModel):
         :param _FailedList: 失败的任务列表及原因
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedList: list of FailReason
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
@@ -427,7 +427,7 @@ class DescribePrefetchTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _Tasks: 任务结果列表
         :type Tasks: list of Task
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -623,7 +623,7 @@ class DescribePurgeTasksResponse(AbstractModel):
         :type TotalCount: int
         :param _Tasks: 任务结果列表
         :type Tasks: list of Task
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -739,7 +739,7 @@ class DescribeZonesResponse(AbstractModel):
         :type TotalCount: int
         :param _Zones: 站点详细信息列表。
         :type Zones: list of Zone
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None

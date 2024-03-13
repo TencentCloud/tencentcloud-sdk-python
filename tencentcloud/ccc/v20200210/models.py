@@ -6023,7 +6023,7 @@ class ErrStaffItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StaffEmail: 坐席邮箱地址
+        :param _StaffEmail: 座席邮箱地址
         :type StaffEmail: str
         :param _Code: 错误码
         :type Code: str
@@ -6098,9 +6098,9 @@ class ExtensionInfo(AbstractModel):
         :type Status: int
         :param _Register: 是否注册
         :type Register: bool
-        :param _Relation: 绑定坐席邮箱
+        :param _Relation: 绑定座席邮箱
         :type Relation: str
-        :param _RelationName: 绑定坐席名称
+        :param _RelationName: 绑定座席名称
         :type RelationName: str
         """
         self._SdkAppId = None
@@ -6355,10 +6355,10 @@ class IMCdrInfo(AbstractModel):
         :param _EndStatus: 结束状态
 0 异常结束
 1 正常结束
-3 无坐席在线
-17 坐席放弃接听
+3 无座席在线
+17 座席放弃接听
 100 黑名单
-101 坐席手动转接
+101 座席手动转接
 102 IVR阶段放弃
 108 用户超时自动结束
         :type EndStatus: int
@@ -7035,13 +7035,13 @@ class PSTNSession(AbstractModel):
         :type RingTimestamp: int
         :param _AcceptTimestamp: 接听时间，Unix 时间戳
         :type AcceptTimestamp: int
-        :param _StaffEmail: 坐席邮箱
+        :param _StaffEmail: 座席邮箱
         :type StaffEmail: str
-        :param _StaffNumber: 坐席工号
+        :param _StaffNumber: 座席工号
         :type StaffNumber: str
         :param _SessionStatus: 会话状态
 ringing 振铃中
-seatJoining  等待坐席接听
+seatJoining  等待座席接听
 inProgress 进行中
 finished 已完成
         :type SessionStatus: str
@@ -7238,11 +7238,11 @@ class PSTNSessionInfo(AbstractModel):
         :type StartTimestamp: str
         :param _AcceptTimestamp: 接听时间，Unix 时间戳
         :type AcceptTimestamp: str
-        :param _StaffEmail: 坐席邮箱
+        :param _StaffEmail: 座席邮箱
         :type StaffEmail: str
-        :param _StaffNumber: 坐席工号
+        :param _StaffNumber: 座席工号
         :type StaffNumber: str
-        :param _SessionStatus: 坐席状态 inProgress 进行中
+        :param _SessionStatus: 座席状态 inProgress 进行中
         :type SessionStatus: str
         :param _Direction: 会话呼叫方向， 0 呼入 | 1 - 呼出
         :type Direction: int
@@ -7815,9 +7815,9 @@ class SdkAppIdBuyInfo(AbstractModel):
         :type SdkAppId: int
         :param _Name: 应用名称
         :type Name: str
-        :param _StaffBuyNum: 坐席购买数（还在有效期内）
+        :param _StaffBuyNum: 座席购买数（还在有效期内）
         :type StaffBuyNum: int
-        :param _StaffBuyList: 坐席购买列表 （还在有效期内）
+        :param _StaffBuyList: 座席购买列表 （还在有效期内）
         :type StaffBuyList: list of StaffBuyInfo
         :param _PhoneNumBuyList: 号码购买列表
         :type PhoneNumBuyList: list of PhoneNumBuyInfo
@@ -7909,26 +7909,26 @@ class SdkAppIdBuyInfo(AbstractModel):
 
 
 class SeatUserInfo(AbstractModel):
-    """坐席用户信息
+    """座席用户信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 坐席名称
+        :param _Name: 座席名称
         :type Name: str
-        :param _Mail: 坐席邮箱
+        :param _Mail: 座席邮箱
         :type Mail: str
         :param _StaffNumber: 工号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaffNumber: str
-        :param _Phone: 坐席电话号码（带0086前缀）
+        :param _Phone: 座席电话号码（带0086前缀）
         :type Phone: str
-        :param _Nick: 坐席昵称
+        :param _Nick: 座席昵称
         :type Nick: str
         :param _UserId: 用户ID
         :type UserId: str
-        :param _SkillGroupNameList: 坐席关联的技能组列表
+        :param _SkillGroupNameList: 座席关联的技能组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type SkillGroupNameList: list of str
         :param _Role: 1:管理员
@@ -8038,10 +8038,10 @@ class ServeParticipant(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mail: 坐席邮箱
+        :param _Mail: 座席邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mail: str
-        :param _Phone: 坐席电话
+        :param _Phone: 座席电话
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
         :param _RingTimestamp: 振铃时间戳，Unix 秒级时间戳
@@ -8053,19 +8053,19 @@ class ServeParticipant(AbstractModel):
         :param _EndedTimestamp: 结束时间戳，Unix 秒级时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndedTimestamp: int
-        :param _RecordId: 录音 ID，能够索引到坐席侧的录音
+        :param _RecordId: 录音 ID，能够索引到座席侧的录音
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
         :param _Type: 参与者类型，"staffSeat", "outboundSeat", "staffPhoneSeat"
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _TransferFrom: 转接来源坐席信息
+        :param _TransferFrom: 转接来源座席信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferFrom: str
         :param _TransferFromType: 转接来源参与者类型，取值与 Type 一致
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferFromType: str
-        :param _TransferTo: 转接去向坐席信息
+        :param _TransferTo: 转接去向座席信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferTo: str
         :param _TransferToType: 转接去向参与者类型，取值与 Type 一致
@@ -8302,7 +8302,7 @@ class SkillGroupInfoItem(AbstractModel):
         :param _RoutePolicy: 会话分配策略
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutePolicy: str
-        :param _UsingLastSeat: 会话分配是否优先上次服务坐席
+        :param _UsingLastSeat: 会话分配是否优先上次服务座席
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsingLastSeat: int
         :param _MaxConcurrency: 单客服最大并发数（电话类型默认1）
@@ -8478,13 +8478,13 @@ class SkillGroupItem(AbstractModel):
 
 
 class StaffBuyInfo(AbstractModel):
-    """坐席购买信息
+    """座席购买信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Num: 购买坐席数量
+        :param _Num: 购买座席数量
         :type Num: int
         :param _BuyTime: 购买时间戳
         :type BuyTime: int
@@ -8548,24 +8548,24 @@ class StaffBuyInfo(AbstractModel):
 
 
 class StaffInfo(AbstractModel):
-    """带有技能组优先级的坐席信息
+    """带有技能组优先级的座席信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 坐席名称
+        :param _Name: 座席名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Mail: 坐席邮箱
+        :param _Mail: 座席邮箱
         :type Mail: str
-        :param _Phone: 坐席电话号码
+        :param _Phone: 座席电话号码
 注意：此字段可能返回 null，表示取不到有效值。
         :type Phone: str
-        :param _Nick: 坐席昵称
+        :param _Nick: 座席昵称
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nick: str
-        :param _StaffNumber: 坐席工号
+        :param _StaffNumber: 座席工号
 注意：此字段可能返回 null，表示取不到有效值。
         :type StaffNumber: str
         :param _RoleId: 用户角色id
@@ -8721,7 +8721,7 @@ class StaffSkillGroupList(AbstractModel):
 
 
 class StaffStatusExtra(AbstractModel):
-    """坐席状态补充信息
+    """座席状态补充信息
 
     """
 
@@ -8766,17 +8766,17 @@ class StaffStatusExtra(AbstractModel):
 
 
 class StaffStatusMetrics(AbstractModel):
-    """坐席状态相关信息
+    """座席状态相关信息
 
     """
 
     def __init__(self):
         r"""
-        :param _Email: 坐席邮箱
+        :param _Email: 座席邮箱
         :type Email: str
-        :param _Status: 坐席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
+        :param _Status: 座席状态 free 示闲 | busy 忙碌 | rest 小休 | notReady 示忙 | afterCallWork 话后调整 | offline 离线
         :type Status: str
-        :param _StatusExtra: 坐席状态补充信息
+        :param _StatusExtra: 座席状态补充信息
         :type StatusExtra: :class:`tencentcloud.ccc.v20200210.models.StaffStatusExtra`
         :param _OnlineDuration: 当天在线总时长
         :type OnlineDuration: int
@@ -9074,7 +9074,7 @@ class TelCdrInfo(AbstractModel):
         :param _RecordId: 录音 ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordId: str
-        :param _SeatUser: 坐席信息
+        :param _SeatUser: 座席信息
         :type SeatUser: :class:`tencentcloud.ccc.v20200210.models.SeatUserInfo`
         :param _EndStatus: EndStatus与EndStatusString一一对应，具体枚举如下：
 
@@ -9090,7 +9090,7 @@ class TelCdrInfo(AbstractModel):
 
 电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
 
-电话呼入	             105	        noSeatOnline	       无坐席在线
+电话呼入	             105	        noSeatOnline	       无座席在线
 
 电话呼入              106	       notWorkTime	       非工作时间   
 
@@ -9142,7 +9142,7 @@ class TelCdrInfo(AbstractModel):
         :param _IVRKeyPressed: IVR 按键信息 ，e.g. ["1","2","3"]
 注意：此字段可能返回 null，表示取不到有效值。
         :type IVRKeyPressed: list of str
-        :param _HungUpSide: 挂机方 seat 坐席 user 用户 system 系统
+        :param _HungUpSide: 挂机方 seat 座席 user 用户 system 系统
 注意：此字段可能返回 null，表示取不到有效值。
         :type HungUpSide: str
         :param _ServeParticipants: 服务参与者列表
@@ -9165,7 +9165,7 @@ class TelCdrInfo(AbstractModel):
 
 电话呼入	             104	        ringingGiveUp	       会话振铃期间用户放弃
 
-电话呼入	             105	        noSeatOnline	       无坐席在线
+电话呼入	             105	        noSeatOnline	       无座席在线
 
 电话呼入              106	       notWorkTime	       非工作时间   
 

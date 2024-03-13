@@ -5310,7 +5310,7 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
         :type Product: str
         :param _Offset: 偏移量，默认0。
         :type Offset: int
-        :param _SortBy: 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+        :param _SortBy: 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
         :type SortBy: str
         :param _OrderDirection: 排序方向。支持值包括："DESC"，"ASC"。
         :type OrderDirection: str

@@ -150,7 +150,7 @@ class BankCard2EVerificationResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -317,7 +317,7 @@ class BankCard4EVerificationResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -471,7 +471,7 @@ class BankCardVerificationResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -722,7 +722,7 @@ class CheckBankCardInformationResponse(AbstractModel):
         :type AccountBank: str
         :param _AccountType: 卡性质：1. 借记卡；2. 贷记卡；3. 预付费卡；4. 准贷记卡
         :type AccountType: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -826,7 +826,7 @@ doing: 验证中
 finished: 验证完成
 timeout: token已超时
         :type Status: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
@@ -986,7 +986,7 @@ class CheckIdCardInformationResponse(AbstractModel):
         :param _Encryption: 敏感数据加密信息。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Sim = None
@@ -1240,7 +1240,7 @@ class CheckIdNameDateResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1355,7 +1355,7 @@ class CheckPhoneAndNameResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -1467,7 +1467,7 @@ High：高度疑似攻击
         :type AttackRiskDetailList: list of AttackRiskDetail
         :param _ExtraInfo: 额外信息
         :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AttackRiskLevel = None
@@ -1715,7 +1715,7 @@ class DetectAuthResponse(AbstractModel):
         :param _BizToken: 一次核身流程的标识，有效时间为7,200秒；
 完成核身后，可用该标识获取验证结果信息。
         :type BizToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Url = None
@@ -2755,7 +2755,7 @@ class EncryptedPhoneVerificationResponse(AbstractModel):
         :param _ISP: 运营商名称。
 取值范围为["移动","联通","电信",""]
         :type ISP: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -2970,7 +2970,7 @@ class GetActionSequenceResponse(AbstractModel):
         r"""
         :param _ActionSequence: 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
         :type ActionSequence: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ActionSequence = None
@@ -3165,7 +3165,7 @@ class GetDetectInfoEnhancedResponse(AbstractModel):
         :param _EncryptedBody: 加密后的数据
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptedBody: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Text = None
@@ -3405,7 +3405,7 @@ class GetDetectInfoResponse(AbstractModel):
   }
 }
         :type DetectInfo: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DetectInfo = None
@@ -3544,7 +3544,7 @@ class GetEidResultResponse(AbstractModel):
         :param _IntentionActionResult: 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionActionResult: :class:`tencentcloud.faceid.v20180301.models.IntentionActionResult`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Text = None
@@ -3901,7 +3901,7 @@ class GetEidTokenResponse(AbstractModel):
         :type EidToken: str
         :param _Url: 发起核身流程的URL，用于H5场景核身。
         :type Url: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EidToken = None
@@ -4035,7 +4035,7 @@ class GetFaceIdResultResponse(AbstractModel):
 02：攻击风险
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfoTag: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IdCard = None
@@ -4283,7 +4283,7 @@ class GetFaceIdTokenResponse(AbstractModel):
         r"""
         :param _FaceIdToken: 有效期 10分钟。只能完成1次核身。
         :type FaceIdToken: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FaceIdToken = None
@@ -4326,7 +4326,7 @@ class GetLiveCodeResponse(AbstractModel):
         r"""
         :param _LiveCode: 数字验证码，如：1234
         :type LiveCode: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LiveCode = None
@@ -4424,7 +4424,7 @@ class GetWeChatBillDetailsResponse(AbstractModel):
         :type NextCursor: int
         :param _WeChatBillDetails: 数据
         :type WeChatBillDetails: list of WeChatBillDetail
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HasNextPage = None
@@ -4604,7 +4604,7 @@ class IdCardOCRVerificationResponse(AbstractModel):
         :param _Address: OCR得到的地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4782,7 +4782,7 @@ class IdCardVerificationResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -4918,7 +4918,7 @@ class ImageRecognitionResponse(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Sim = None
@@ -5064,7 +5064,7 @@ class ImageRecognitionV2Response(AbstractModel):
         :type Result: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Sim = None
@@ -5718,7 +5718,7 @@ class LivenessCompareResponse(AbstractModel):
         :param _BestFrameList: 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BestFrameBase64 = None
@@ -5935,7 +5935,7 @@ class LivenessRecognitionResponse(AbstractModel):
         :param _BestFrameList: 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BestFrameBase64 = None
@@ -6096,7 +6096,7 @@ class LivenessResponse(AbstractModel):
         :param _BestFrameList: 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameList: list of str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BestFrameBase64 = None
@@ -6270,7 +6270,7 @@ class MinorsVerificationResponse(AbstractModel):
 [16,18)表示年龄16-18周岁区间，不包括18岁；
 [18,+)表示年龄大于18周岁。
         :type AgeRange: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6386,7 +6386,7 @@ class MobileNetworkTimeVerificationResponse(AbstractModel):
         :param _Range: 在网时长区间。
 格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
         :type Range: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6506,7 +6506,7 @@ class MobileStatusResponse(AbstractModel):
 4：不在网
 99：未知状态
         :type StatusCode: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -6656,7 +6656,7 @@ class ParseNfcDataResponse(AbstractModel):
         :param _ResultDescription: 对result code的结果描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultDescription: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ResultCode = None
@@ -6968,7 +6968,7 @@ class PhoneVerificationCMCCResponse(AbstractModel):
         :type Isp: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7110,7 +7110,7 @@ class PhoneVerificationCTCCResponse(AbstractModel):
         :type Isp: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7252,7 +7252,7 @@ class PhoneVerificationCUCCResponse(AbstractModel):
         :type Isp: str
         :param _Description: 业务结果描述。
         :type Description: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
@@ -7416,7 +7416,7 @@ class PhoneVerificationResponse(AbstractModel):
         :param _Isp: 运营商名称。
 取值范围为["","移动","电信","联通"]
         :type Isp: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Result = None
