@@ -19,7 +19,7 @@ class ClientProfile(object):
     unsignedPayload = False
 
     def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
-                 disable_region_breaker=True, region_breaker_profile=None):
+                 disable_region_breaker=True, region_breaker_profile=None, request_client=None):
         """SDK profile.
 
         :param signMethod: The signature method, valid choice: HmacSHA1, HmacSHA256, TC3-HMAC-SHA256
@@ -43,6 +43,7 @@ class ClientProfile(object):
         self.region_breaker_profile = region_breaker_profile
         if not self.disable_region_breaker and self.region_breaker_profile is None:
             self.region_breaker_profile = RegionBreakerProfile()
+        self.request_client = request_client
 
 
 class RegionBreakerProfile(object):

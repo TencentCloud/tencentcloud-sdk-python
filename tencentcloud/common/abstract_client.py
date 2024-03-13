@@ -86,6 +86,10 @@ class AbstractClient(object):
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
+        if self.profile.request_client:
+            self.request_client = self.profile.request_client + "_" + self._sdkVersion
+        else:
+            self.request_client = self._sdkVersion
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):
@@ -135,7 +139,7 @@ class AbstractClient(object):
     def _build_req_with_old_signature(self, action, params, req):
         params = copy.deepcopy(self._fix_params(params))
         params['Action'] = action[0].upper() + action[1:]
-        params['RequestClient'] = self._sdkVersion
+        params['RequestClient'] = self.request_client
         params['Nonce'] = random.randint(1, sys.maxsize)
         params['Timestamp'] = int(time.time())
         params['Version'] = self._apiVersion
@@ -184,7 +188,7 @@ class AbstractClient(object):
         timestamp = int(time.time())
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
-        req.header["X-TC-RequestClient"] = self._sdkVersion
+        req.header["X-TC-RequestClient"] = self.request_client
         req.header["X-TC-Timestamp"] = str(timestamp)
         req.header["X-TC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
@@ -275,7 +279,7 @@ class AbstractClient(object):
         timestamp = int(time.time())
         req.header["Host"] = endpoint
         req.header["X-TC-Action"] = action[0].upper() + action[1:]
-        req.header["X-TC-RequestClient"] = self._sdkVersion
+        req.header["X-TC-RequestClient"] = self.request_client
         req.header["X-TC-Timestamp"] = str(timestamp)
         req.header["X-TC-Version"] = self._apiVersion
         if self.profile.unsignedPayload is True:
