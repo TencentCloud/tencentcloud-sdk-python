@@ -95,6 +95,52 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateServerlessInstance(self, request):
+        """创建Serverless索引
+
+        :param request: Request instance for CreateServerlessInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateServerlessInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateServerlessInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateServerlessInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateServerlessInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateServerlessSpaceV2(self, request):
+        """创建Serverless索引空间
+
+        :param request: Request instance for CreateServerlessSpaceV2.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateServerlessSpaceV2Request`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateServerlessSpaceV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateServerlessSpaceV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateServerlessSpaceV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteIndex(self, request):
         """删除索引
 
@@ -178,6 +224,52 @@ class EsClient(AbstractClient):
             body = self.call("DeleteLogstashPipelines", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteLogstashPipelinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteServerlessInstance(self, request):
+        """删除Serverless索引
+
+        :param request: Request instance for DeleteServerlessInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteServerlessInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteServerlessInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteServerlessInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServerlessInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteServerlessSpaceUser(self, request):
+        """删除Serverless空间子用户
+
+        :param request: Request instance for DeleteServerlessSpaceUser.
+        :type request: :class:`tencentcloud.es.v20180416.models.DeleteServerlessSpaceUserRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DeleteServerlessSpaceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteServerlessSpaceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServerlessSpaceUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +523,52 @@ class EsClient(AbstractClient):
             body = self.call("DescribeLogstashPipelines", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogstashPipelinesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServerlessSpaceUser(self, request):
+        """查看Serverless空间子用户
+
+        :param request: Request instance for DescribeServerlessSpaceUser.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpaceUserRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpaceUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessSpaceUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessSpaceUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServerlessSpaces(self, request):
+        """获取Serverless索引空间列表
+
+        :param request: Request instance for DescribeServerlessSpaces.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpacesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeServerlessSpacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServerlessSpaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServerlessSpacesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -949,6 +1087,52 @@ class EsClient(AbstractClient):
             body = self.call("UpdateRequestTargetNodeTypes", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateRequestTargetNodeTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateServerlessInstance(self, request):
+        """更新Serverless索引
+
+        :param request: Request instance for UpdateServerlessInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateServerlessInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateServerlessInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateServerlessInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateServerlessInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateServerlessSpace(self, request):
+        """更新Serverless索引空间
+
+        :param request: Request instance for UpdateServerlessSpace.
+        :type request: :class:`tencentcloud.es.v20180416.models.UpdateServerlessSpaceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.UpdateServerlessSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateServerlessSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateServerlessSpaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1353,6 +1353,351 @@ class CreateLogstashInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateServerlessInstanceRequest(AbstractModel):
+    """CreateServerlessInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _VpcId: 私有网络ID
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _IndexName: 索引名，需以-AppId结尾
+        :type IndexName: str
+        :param _IndexMetaJson: 创建的索引元数据JSON，如mappings、settings
+        :type IndexMetaJson: str
+        :param _SpaceId: 创建索引的空间ID
+        :type SpaceId: str
+        :param _Username: 创建索引的用户名
+        :type Username: str
+        :param _Password: 创建索引的密码
+        :type Password: str
+        :param _ServerlessDi: 创建数据接入
+        :type ServerlessDi: :class:`tencentcloud.es.v20180416.models.ServerlessDi`
+        :param _AutoGetIp: 是否自行添加白名单ip
+        :type AutoGetIp: int
+        :param _TagList: 标签信息
+        :type TagList: list of TagInfo
+        :param _KibanaWhiteIpList: kibana公网白名单
+        :type KibanaWhiteIpList: list of str
+        """
+        self._Zone = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._IndexName = None
+        self._IndexMetaJson = None
+        self._SpaceId = None
+        self._Username = None
+        self._Password = None
+        self._ServerlessDi = None
+        self._AutoGetIp = None
+        self._TagList = None
+        self._KibanaWhiteIpList = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def IndexMetaJson(self):
+        return self._IndexMetaJson
+
+    @IndexMetaJson.setter
+    def IndexMetaJson(self, IndexMetaJson):
+        self._IndexMetaJson = IndexMetaJson
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ServerlessDi(self):
+        return self._ServerlessDi
+
+    @ServerlessDi.setter
+    def ServerlessDi(self, ServerlessDi):
+        self._ServerlessDi = ServerlessDi
+
+    @property
+    def AutoGetIp(self):
+        return self._AutoGetIp
+
+    @AutoGetIp.setter
+    def AutoGetIp(self, AutoGetIp):
+        self._AutoGetIp = AutoGetIp
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def KibanaWhiteIpList(self):
+        return self._KibanaWhiteIpList
+
+    @KibanaWhiteIpList.setter
+    def KibanaWhiteIpList(self, KibanaWhiteIpList):
+        self._KibanaWhiteIpList = KibanaWhiteIpList
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._IndexName = params.get("IndexName")
+        self._IndexMetaJson = params.get("IndexMetaJson")
+        self._SpaceId = params.get("SpaceId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        if params.get("ServerlessDi") is not None:
+            self._ServerlessDi = ServerlessDi()
+            self._ServerlessDi._deserialize(params.get("ServerlessDi"))
+        self._AutoGetIp = params.get("AutoGetIp")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._KibanaWhiteIpList = params.get("KibanaWhiteIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateServerlessInstanceResponse(AbstractModel):
+    """CreateServerlessInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateServerlessSpaceV2Request(AbstractModel):
+    """CreateServerlessSpaceV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcInfo: vpc信息
+        :type VpcInfo: list of VpcInfo
+        :param _SpaceName: 索引空间名
+        :type SpaceName: str
+        :param _Zone: 空间名称
+        :type Zone: str
+        :param _KibanaWhiteIpList: 白名单列表
+        :type KibanaWhiteIpList: list of str
+        :param _ZoneId: 空间id
+        :type ZoneId: int
+        """
+        self._VpcInfo = None
+        self._SpaceName = None
+        self._Zone = None
+        self._KibanaWhiteIpList = None
+        self._ZoneId = None
+
+    @property
+    def VpcInfo(self):
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def KibanaWhiteIpList(self):
+        return self._KibanaWhiteIpList
+
+    @KibanaWhiteIpList.setter
+    def KibanaWhiteIpList(self, KibanaWhiteIpList):
+        self._KibanaWhiteIpList = KibanaWhiteIpList
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._SpaceName = params.get("SpaceName")
+        self._Zone = params.get("Zone")
+        self._KibanaWhiteIpList = params.get("KibanaWhiteIpList")
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateServerlessSpaceV2Response(AbstractModel):
+    """CreateServerlessSpaceV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpaceId = None
+        self._RequestId = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteIndexRequest(AbstractModel):
     """DeleteIndex请求参数结构体
 
@@ -1634,6 +1979,134 @@ class DeleteLogstashPipelinesRequest(AbstractModel):
 
 class DeleteLogstashPipelinesResponse(AbstractModel):
     """DeleteLogstashPipelines返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteServerlessInstanceRequest(AbstractModel):
+    """DeleteServerlessInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: serverless实例ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteServerlessInstanceResponse(AbstractModel):
+    """DeleteServerlessInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteServerlessSpaceUserRequest(AbstractModel):
+    """DeleteServerlessSpaceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间的ID
+        :type SpaceId: str
+        :param _Username: 创建索引的用户名
+        :type Username: str
+        """
+        self._SpaceId = None
+        self._Username = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Username = params.get("Username")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteServerlessSpaceUserResponse(AbstractModel):
+    """DeleteServerlessSpaceUser返回参数结构体
 
     """
 
@@ -3460,6 +3933,314 @@ class DescribeLogstashPipelinesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServerlessSpaceUserRequest(AbstractModel):
+    """DescribeServerlessSpaceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间的ID
+        :type SpaceId: str
+        :param _Offset: 游标
+        :type Offset: int
+        :param _Limit: 页条数
+        :type Limit: int
+        :param _UserNames: 用户名列表过滤
+        :type UserNames: list of str
+        :param _UserTypes: 用户类型
+        :type UserTypes: list of int
+        :param _PrivilegeTypes: 权限类型
+        :type PrivilegeTypes: list of int
+        """
+        self._SpaceId = None
+        self._Offset = None
+        self._Limit = None
+        self._UserNames = None
+        self._UserTypes = None
+        self._PrivilegeTypes = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def UserNames(self):
+        return self._UserNames
+
+    @UserNames.setter
+    def UserNames(self, UserNames):
+        self._UserNames = UserNames
+
+    @property
+    def UserTypes(self):
+        return self._UserTypes
+
+    @UserTypes.setter
+    def UserTypes(self, UserTypes):
+        self._UserTypes = UserTypes
+
+    @property
+    def PrivilegeTypes(self):
+        return self._PrivilegeTypes
+
+    @PrivilegeTypes.setter
+    def PrivilegeTypes(self, PrivilegeTypes):
+        self._PrivilegeTypes = PrivilegeTypes
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._UserNames = params.get("UserNames")
+        self._UserTypes = params.get("UserTypes")
+        self._PrivilegeTypes = params.get("PrivilegeTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessSpaceUserResponse(AbstractModel):
+    """DescribeServerlessSpaceUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerlessSpaceUsers: 用户数组
+        :type ServerlessSpaceUsers: list of ServerlessSpaceUser
+        :param _TotalCount: 用户总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServerlessSpaceUsers = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ServerlessSpaceUsers(self):
+        return self._ServerlessSpaceUsers
+
+    @ServerlessSpaceUsers.setter
+    def ServerlessSpaceUsers(self, ServerlessSpaceUsers):
+        self._ServerlessSpaceUsers = ServerlessSpaceUsers
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServerlessSpaceUsers") is not None:
+            self._ServerlessSpaceUsers = []
+            for item in params.get("ServerlessSpaceUsers"):
+                obj = ServerlessSpaceUser()
+                obj._deserialize(item)
+                self._ServerlessSpaceUsers.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServerlessSpacesRequest(AbstractModel):
+    """DescribeServerlessSpaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: 过滤的空间ID
+        :type SpaceIds: list of str
+        :param _SpaceNames: 过滤的空间名
+        :type SpaceNames: list of str
+        :param _Order: 排序顺序，支持升序asc、降序desc
+        :type Order: str
+        :param _OrderBy: 排序字段，支持空间创建时间SpaceCreateTime
+        :type OrderBy: str
+        :param _VpcIds: vpcId信息数组
+        :type VpcIds: list of str
+        :param _Offset: 分页起始
+        :type Offset: int
+        :param _Limit: 分页条数
+        :type Limit: int
+        """
+        self._SpaceIds = None
+        self._SpaceNames = None
+        self._Order = None
+        self._OrderBy = None
+        self._VpcIds = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SpaceIds(self):
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def SpaceNames(self):
+        return self._SpaceNames
+
+    @SpaceNames.setter
+    def SpaceNames(self, SpaceNames):
+        self._SpaceNames = SpaceNames
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def VpcIds(self):
+        return self._VpcIds
+
+    @VpcIds.setter
+    def VpcIds(self, VpcIds):
+        self._VpcIds = VpcIds
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._SpaceNames = params.get("SpaceNames")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        self._VpcIds = params.get("VpcIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServerlessSpacesResponse(AbstractModel):
+    """DescribeServerlessSpaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _ServerlessSpaces: Serverless空间信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerlessSpaces: list of ServerlessSpace
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ServerlessSpaces = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ServerlessSpaces(self):
+        return self._ServerlessSpaces
+
+    @ServerlessSpaces.setter
+    def ServerlessSpaces(self, ServerlessSpaces):
+        self._ServerlessSpaces = ServerlessSpaces
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ServerlessSpaces") is not None:
+            self._ServerlessSpaces = []
+            for item in params.get("ServerlessSpaces"):
+                obj = ServerlessSpace()
+                obj._deserialize(item)
+                self._ServerlessSpaces.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeViewsRequest(AbstractModel):
     """DescribeViews请求参数结构体
 
@@ -3567,6 +4348,762 @@ class DescribeViewsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._KibanasView.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DiData(AbstractModel):
+    """数据接入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiId: 数据接入id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiId: str
+        :param _CreateTime: 数据接入创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Status: 数据接入状态，0处理中，1正常，-2删除中，-3已删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _DiDataSourceCvm: cvm数据源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiDataSourceCvm: :class:`tencentcloud.es.v20180416.models.DiDataSourceCvm`
+        :param _DiDataSourceTke: tke数据源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiDataSourceTke: :class:`tencentcloud.es.v20180416.models.DiDataSourceTke`
+        :param _DiDataSinkServerless: serverless目的端信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiDataSinkServerless: :class:`tencentcloud.es.v20180416.models.DiDataSinkServerless`
+        :param _DiDataSourceType: 数据接入类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiDataSourceType: str
+        """
+        self._DiId = None
+        self._CreateTime = None
+        self._Status = None
+        self._DiDataSourceCvm = None
+        self._DiDataSourceTke = None
+        self._DiDataSinkServerless = None
+        self._DiDataSourceType = None
+
+    @property
+    def DiId(self):
+        return self._DiId
+
+    @DiId.setter
+    def DiId(self, DiId):
+        self._DiId = DiId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DiDataSourceCvm(self):
+        return self._DiDataSourceCvm
+
+    @DiDataSourceCvm.setter
+    def DiDataSourceCvm(self, DiDataSourceCvm):
+        self._DiDataSourceCvm = DiDataSourceCvm
+
+    @property
+    def DiDataSourceTke(self):
+        return self._DiDataSourceTke
+
+    @DiDataSourceTke.setter
+    def DiDataSourceTke(self, DiDataSourceTke):
+        self._DiDataSourceTke = DiDataSourceTke
+
+    @property
+    def DiDataSinkServerless(self):
+        return self._DiDataSinkServerless
+
+    @DiDataSinkServerless.setter
+    def DiDataSinkServerless(self, DiDataSinkServerless):
+        self._DiDataSinkServerless = DiDataSinkServerless
+
+    @property
+    def DiDataSourceType(self):
+        return self._DiDataSourceType
+
+    @DiDataSourceType.setter
+    def DiDataSourceType(self, DiDataSourceType):
+        self._DiDataSourceType = DiDataSourceType
+
+
+    def _deserialize(self, params):
+        self._DiId = params.get("DiId")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        if params.get("DiDataSourceCvm") is not None:
+            self._DiDataSourceCvm = DiDataSourceCvm()
+            self._DiDataSourceCvm._deserialize(params.get("DiDataSourceCvm"))
+        if params.get("DiDataSourceTke") is not None:
+            self._DiDataSourceTke = DiDataSourceTke()
+            self._DiDataSourceTke._deserialize(params.get("DiDataSourceTke"))
+        if params.get("DiDataSinkServerless") is not None:
+            self._DiDataSinkServerless = DiDataSinkServerless()
+            self._DiDataSinkServerless._deserialize(params.get("DiDataSinkServerless"))
+        self._DiDataSourceType = params.get("DiDataSourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiDataSinkServerless(AbstractModel):
+    """数据接入serverless目的端信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerlessId: serverless实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServerlessId: str
+        """
+        self._ServerlessId = None
+
+    @property
+    def ServerlessId(self):
+        return self._ServerlessId
+
+    @ServerlessId.setter
+    def ServerlessId(self, ServerlessId):
+        self._ServerlessId = ServerlessId
+
+
+    def _deserialize(self, params):
+        self._ServerlessId = params.get("ServerlessId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiDataSourceCvm(AbstractModel):
+    """数据接入cvm数据源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _LogPaths: 采集路径列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogPaths: list of str
+        :param _CvmInstances: cvm实例信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CvmInstances: list of DiDataSourceCvmInstance
+        :param _CollectorId: 采集器id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectorId: str
+        """
+        self._VpcId = None
+        self._LogPaths = None
+        self._CvmInstances = None
+        self._CollectorId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def LogPaths(self):
+        return self._LogPaths
+
+    @LogPaths.setter
+    def LogPaths(self, LogPaths):
+        self._LogPaths = LogPaths
+
+    @property
+    def CvmInstances(self):
+        return self._CvmInstances
+
+    @CvmInstances.setter
+    def CvmInstances(self, CvmInstances):
+        self._CvmInstances = CvmInstances
+
+    @property
+    def CollectorId(self):
+        return self._CollectorId
+
+    @CollectorId.setter
+    def CollectorId(self, CollectorId):
+        self._CollectorId = CollectorId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._LogPaths = params.get("LogPaths")
+        if params.get("CvmInstances") is not None:
+            self._CvmInstances = []
+            for item in params.get("CvmInstances"):
+                obj = DiDataSourceCvmInstance()
+                obj._deserialize(item)
+                self._CvmInstances.append(obj)
+        self._CollectorId = params.get("CollectorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiDataSourceCvmInstance(AbstractModel):
+    """数据接入cvm实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: cvm实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: 子网id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _ErrMsg: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        """
+        self._InstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ErrMsg = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiDataSourceTke(AbstractModel):
+    """数据接入tke数据源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpc id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _TkeId: tke实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TkeId: str
+        :param _CollectorId: 采集器id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectorId: str
+        :param _CollectorName: 采集源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectorName: str
+        :param _CollectorType: 采集器类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectorType: str
+        :param _CollectorVersion: 采集器版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectorVersion: str
+        :param _IncludeNamespaces: tke包含的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncludeNamespaces: list of str
+        :param _ExcludeNamespaces: tke不包含的命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExcludeNamespaces: list of str
+        :param _PodLabelKeys: tke pod标签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLabelKeys: list of str
+        :param _PodLabelValues: tke pod标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodLabelValues: list of str
+        :param _ContainerName: tke容器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _ConfigContent: tke采集器beat配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigContent: str
+        :param _InputType: /
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputType: str
+        :param _InputPath: TKE 日志采集路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputPath: str
+        """
+        self._VpcId = None
+        self._TkeId = None
+        self._CollectorId = None
+        self._CollectorName = None
+        self._CollectorType = None
+        self._CollectorVersion = None
+        self._IncludeNamespaces = None
+        self._ExcludeNamespaces = None
+        self._PodLabelKeys = None
+        self._PodLabelValues = None
+        self._ContainerName = None
+        self._ConfigContent = None
+        self._InputType = None
+        self._InputPath = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TkeId(self):
+        return self._TkeId
+
+    @TkeId.setter
+    def TkeId(self, TkeId):
+        self._TkeId = TkeId
+
+    @property
+    def CollectorId(self):
+        return self._CollectorId
+
+    @CollectorId.setter
+    def CollectorId(self, CollectorId):
+        self._CollectorId = CollectorId
+
+    @property
+    def CollectorName(self):
+        return self._CollectorName
+
+    @CollectorName.setter
+    def CollectorName(self, CollectorName):
+        self._CollectorName = CollectorName
+
+    @property
+    def CollectorType(self):
+        return self._CollectorType
+
+    @CollectorType.setter
+    def CollectorType(self, CollectorType):
+        self._CollectorType = CollectorType
+
+    @property
+    def CollectorVersion(self):
+        return self._CollectorVersion
+
+    @CollectorVersion.setter
+    def CollectorVersion(self, CollectorVersion):
+        self._CollectorVersion = CollectorVersion
+
+    @property
+    def IncludeNamespaces(self):
+        return self._IncludeNamespaces
+
+    @IncludeNamespaces.setter
+    def IncludeNamespaces(self, IncludeNamespaces):
+        self._IncludeNamespaces = IncludeNamespaces
+
+    @property
+    def ExcludeNamespaces(self):
+        return self._ExcludeNamespaces
+
+    @ExcludeNamespaces.setter
+    def ExcludeNamespaces(self, ExcludeNamespaces):
+        self._ExcludeNamespaces = ExcludeNamespaces
+
+    @property
+    def PodLabelKeys(self):
+        return self._PodLabelKeys
+
+    @PodLabelKeys.setter
+    def PodLabelKeys(self, PodLabelKeys):
+        self._PodLabelKeys = PodLabelKeys
+
+    @property
+    def PodLabelValues(self):
+        return self._PodLabelValues
+
+    @PodLabelValues.setter
+    def PodLabelValues(self, PodLabelValues):
+        self._PodLabelValues = PodLabelValues
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ConfigContent(self):
+        return self._ConfigContent
+
+    @ConfigContent.setter
+    def ConfigContent(self, ConfigContent):
+        self._ConfigContent = ConfigContent
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputPath(self):
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._TkeId = params.get("TkeId")
+        self._CollectorId = params.get("CollectorId")
+        self._CollectorName = params.get("CollectorName")
+        self._CollectorType = params.get("CollectorType")
+        self._CollectorVersion = params.get("CollectorVersion")
+        self._IncludeNamespaces = params.get("IncludeNamespaces")
+        self._ExcludeNamespaces = params.get("ExcludeNamespaces")
+        self._PodLabelKeys = params.get("PodLabelKeys")
+        self._PodLabelValues = params.get("PodLabelValues")
+        self._ContainerName = params.get("ContainerName")
+        self._ConfigContent = params.get("ConfigContent")
+        self._InputType = params.get("InputType")
+        self._InputPath = params.get("InputPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiSourceCvm(AbstractModel):
+    """数据接入cvm数据源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 数据源所属vpc id，创建后不允许修改
+        :type VpcId: str
+        :param _CvmIds: cvm列表
+        :type CvmIds: list of str
+        :param _LogPaths: 采集路径列表，支持通配符
+        :type LogPaths: list of str
+        """
+        self._VpcId = None
+        self._CvmIds = None
+        self._LogPaths = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def CvmIds(self):
+        return self._CvmIds
+
+    @CvmIds.setter
+    def CvmIds(self, CvmIds):
+        self._CvmIds = CvmIds
+
+    @property
+    def LogPaths(self):
+        return self._LogPaths
+
+    @LogPaths.setter
+    def LogPaths(self, LogPaths):
+        self._LogPaths = LogPaths
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._CvmIds = params.get("CvmIds")
+        self._LogPaths = params.get("LogPaths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiSourceTke(AbstractModel):
+    """数据接入tke数据源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: 数据源所属vpc id，创建后不允许修改
+        :type VpcId: str
+        :param _TkeId: tke实例id，创建后不允许修改
+        :type TkeId: str
+        :param _IncludeNamespaces: tke包含的命名空间
+        :type IncludeNamespaces: list of str
+        :param _ExcludeNamespaces: tke不包含的命名空间
+        :type ExcludeNamespaces: list of str
+        :param _ContainerName: tke容器名称
+        :type ContainerName: str
+        :param _LogFilters: tke日志内容过滤
+        :type LogFilters: str
+        :param _ConfigContent: tke beats配置项
+        :type ConfigContent: str
+        :param _PodLabel: tke pod标签
+        :type PodLabel: list of DiSourceTkePodLabel
+        :param _InputType: /
+        :type InputType: str
+        :param _InputPath: tke 日志采集路径
+        :type InputPath: str
+        """
+        self._VpcId = None
+        self._TkeId = None
+        self._IncludeNamespaces = None
+        self._ExcludeNamespaces = None
+        self._ContainerName = None
+        self._LogFilters = None
+        self._ConfigContent = None
+        self._PodLabel = None
+        self._InputType = None
+        self._InputPath = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def TkeId(self):
+        return self._TkeId
+
+    @TkeId.setter
+    def TkeId(self, TkeId):
+        self._TkeId = TkeId
+
+    @property
+    def IncludeNamespaces(self):
+        return self._IncludeNamespaces
+
+    @IncludeNamespaces.setter
+    def IncludeNamespaces(self, IncludeNamespaces):
+        self._IncludeNamespaces = IncludeNamespaces
+
+    @property
+    def ExcludeNamespaces(self):
+        return self._ExcludeNamespaces
+
+    @ExcludeNamespaces.setter
+    def ExcludeNamespaces(self, ExcludeNamespaces):
+        self._ExcludeNamespaces = ExcludeNamespaces
+
+    @property
+    def ContainerName(self):
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def LogFilters(self):
+        return self._LogFilters
+
+    @LogFilters.setter
+    def LogFilters(self, LogFilters):
+        self._LogFilters = LogFilters
+
+    @property
+    def ConfigContent(self):
+        return self._ConfigContent
+
+    @ConfigContent.setter
+    def ConfigContent(self, ConfigContent):
+        self._ConfigContent = ConfigContent
+
+    @property
+    def PodLabel(self):
+        return self._PodLabel
+
+    @PodLabel.setter
+    def PodLabel(self, PodLabel):
+        self._PodLabel = PodLabel
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def InputPath(self):
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._TkeId = params.get("TkeId")
+        self._IncludeNamespaces = params.get("IncludeNamespaces")
+        self._ExcludeNamespaces = params.get("ExcludeNamespaces")
+        self._ContainerName = params.get("ContainerName")
+        self._LogFilters = params.get("LogFilters")
+        self._ConfigContent = params.get("ConfigContent")
+        if params.get("PodLabel") is not None:
+            self._PodLabel = []
+            for item in params.get("PodLabel"):
+                obj = DiSourceTkePodLabel()
+                obj._deserialize(item)
+                self._PodLabel.append(obj)
+        self._InputType = params.get("InputType")
+        self._InputPath = params.get("InputPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiSourceTkePodLabel(AbstractModel):
+    """tke pod标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 标签value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DiagnoseInstanceRequest(AbstractModel):
@@ -6540,6 +8077,39 @@ class KibanaNodeInfo(AbstractModel):
         
 
 
+class KibanaPublicAcl(AbstractModel):
+    """kibana公网域名白名单参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhiteIpList: kibana访问白名单
+        :type WhiteIpList: list of str
+        """
+        self._WhiteIpList = None
+
+    @property
+    def WhiteIpList(self):
+        return self._WhiteIpList
+
+    @WhiteIpList.setter
+    def WhiteIpList(self, WhiteIpList):
+        self._WhiteIpList = WhiteIpList
+
+
+    def _deserialize(self, params):
+        self._WhiteIpList = params.get("WhiteIpList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KibanaView(AbstractModel):
     """Kibana视图数据
 
@@ -9250,6 +10820,412 @@ class SaveAndDeployLogstashPipelineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ServerlessDi(AbstractModel):
+    """创建serverless索引时创建数据接入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiSourceType: 数据链路采集源类型，如cvm_collector、tke_collector
+        :type DiSourceType: str
+        :param _DiSourceCvm: cvm数据源
+        :type DiSourceCvm: :class:`tencentcloud.es.v20180416.models.DiSourceCvm`
+        :param _DiSourceTke: tke数据源
+        :type DiSourceTke: :class:`tencentcloud.es.v20180416.models.DiSourceTke`
+        """
+        self._DiSourceType = None
+        self._DiSourceCvm = None
+        self._DiSourceTke = None
+
+    @property
+    def DiSourceType(self):
+        return self._DiSourceType
+
+    @DiSourceType.setter
+    def DiSourceType(self, DiSourceType):
+        self._DiSourceType = DiSourceType
+
+    @property
+    def DiSourceCvm(self):
+        return self._DiSourceCvm
+
+    @DiSourceCvm.setter
+    def DiSourceCvm(self, DiSourceCvm):
+        self._DiSourceCvm = DiSourceCvm
+
+    @property
+    def DiSourceTke(self):
+        return self._DiSourceTke
+
+    @DiSourceTke.setter
+    def DiSourceTke(self, DiSourceTke):
+        self._DiSourceTke = DiSourceTke
+
+
+    def _deserialize(self, params):
+        self._DiSourceType = params.get("DiSourceType")
+        if params.get("DiSourceCvm") is not None:
+            self._DiSourceCvm = DiSourceCvm()
+            self._DiSourceCvm._deserialize(params.get("DiSourceCvm"))
+        if params.get("DiSourceTke") is not None:
+            self._DiSourceTke = DiSourceTke()
+            self._DiSourceTke._deserialize(params.get("DiSourceTke"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessSpace(AbstractModel):
+    """Serverless索引空间信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: Serverless索引空间ID
+        :type SpaceId: str
+        :param _SpaceName: Serverless索引空间名
+        :type SpaceName: str
+        :param _Status: Serverless索引空间状态，0正常，-1已删除
+        :type Status: int
+        :param _CreateTime: 创建日期
+        :type CreateTime: str
+        :param _IndexCount: 空间内索引数量
+        :type IndexCount: int
+        :param _KibanaUrl: kibana公网uri
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaUrl: str
+        :param _KibanaPrivateUrl: kibana内网url
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPrivateUrl: str
+        :param _IndexAccessUrl: 空间内网访问地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexAccessUrl: str
+        :param _KibanaPublicAcl: 空间白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param _KibanaEmbedUrl: 空间检索分析域名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KibanaEmbedUrl: str
+        :param _DiDataList: 数据联路
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiDataList: :class:`tencentcloud.es.v20180416.models.DiData`
+        :param _VpcInfo: 空间vpc信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcInfo: list of VpcInfo
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Zone: 可用区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Zone: str
+        :param _EnableKibanaPublicAccess: kibana公网开关，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableKibanaPublicAccess: int
+        :param _EnableKibanaPrivateAccess: kibana内网开关，0关闭，1开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableKibanaPrivateAccess: int
+        :param _AppId: 空间所属appid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        """
+        self._SpaceId = None
+        self._SpaceName = None
+        self._Status = None
+        self._CreateTime = None
+        self._IndexCount = None
+        self._KibanaUrl = None
+        self._KibanaPrivateUrl = None
+        self._IndexAccessUrl = None
+        self._KibanaPublicAcl = None
+        self._KibanaEmbedUrl = None
+        self._DiDataList = None
+        self._VpcInfo = None
+        self._Region = None
+        self._Zone = None
+        self._EnableKibanaPublicAccess = None
+        self._EnableKibanaPrivateAccess = None
+        self._AppId = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def IndexCount(self):
+        return self._IndexCount
+
+    @IndexCount.setter
+    def IndexCount(self, IndexCount):
+        self._IndexCount = IndexCount
+
+    @property
+    def KibanaUrl(self):
+        return self._KibanaUrl
+
+    @KibanaUrl.setter
+    def KibanaUrl(self, KibanaUrl):
+        self._KibanaUrl = KibanaUrl
+
+    @property
+    def KibanaPrivateUrl(self):
+        return self._KibanaPrivateUrl
+
+    @KibanaPrivateUrl.setter
+    def KibanaPrivateUrl(self, KibanaPrivateUrl):
+        self._KibanaPrivateUrl = KibanaPrivateUrl
+
+    @property
+    def IndexAccessUrl(self):
+        return self._IndexAccessUrl
+
+    @IndexAccessUrl.setter
+    def IndexAccessUrl(self, IndexAccessUrl):
+        self._IndexAccessUrl = IndexAccessUrl
+
+    @property
+    def KibanaPublicAcl(self):
+        return self._KibanaPublicAcl
+
+    @KibanaPublicAcl.setter
+    def KibanaPublicAcl(self, KibanaPublicAcl):
+        self._KibanaPublicAcl = KibanaPublicAcl
+
+    @property
+    def KibanaEmbedUrl(self):
+        return self._KibanaEmbedUrl
+
+    @KibanaEmbedUrl.setter
+    def KibanaEmbedUrl(self, KibanaEmbedUrl):
+        self._KibanaEmbedUrl = KibanaEmbedUrl
+
+    @property
+    def DiDataList(self):
+        return self._DiDataList
+
+    @DiDataList.setter
+    def DiDataList(self, DiDataList):
+        self._DiDataList = DiDataList
+
+    @property
+    def VpcInfo(self):
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def EnableKibanaPublicAccess(self):
+        return self._EnableKibanaPublicAccess
+
+    @EnableKibanaPublicAccess.setter
+    def EnableKibanaPublicAccess(self, EnableKibanaPublicAccess):
+        self._EnableKibanaPublicAccess = EnableKibanaPublicAccess
+
+    @property
+    def EnableKibanaPrivateAccess(self):
+        return self._EnableKibanaPrivateAccess
+
+    @EnableKibanaPrivateAccess.setter
+    def EnableKibanaPrivateAccess(self, EnableKibanaPrivateAccess):
+        self._EnableKibanaPrivateAccess = EnableKibanaPrivateAccess
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceName = params.get("SpaceName")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._IndexCount = params.get("IndexCount")
+        self._KibanaUrl = params.get("KibanaUrl")
+        self._KibanaPrivateUrl = params.get("KibanaPrivateUrl")
+        self._IndexAccessUrl = params.get("IndexAccessUrl")
+        if params.get("KibanaPublicAcl") is not None:
+            self._KibanaPublicAcl = EsAcl()
+            self._KibanaPublicAcl._deserialize(params.get("KibanaPublicAcl"))
+        self._KibanaEmbedUrl = params.get("KibanaEmbedUrl")
+        if params.get("DiDataList") is not None:
+            self._DiDataList = DiData()
+            self._DiDataList._deserialize(params.get("DiDataList"))
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = []
+            for item in params.get("VpcInfo"):
+                obj = VpcInfo()
+                obj._deserialize(item)
+                self._VpcInfo.append(obj)
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._EnableKibanaPublicAccess = params.get("EnableKibanaPublicAccess")
+        self._EnableKibanaPrivateAccess = params.get("EnableKibanaPrivateAccess")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessSpaceUser(AbstractModel):
+    """ServerlessSpaceUser
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: 用户密码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Status: 用户状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _IndicesScope: 有权限的索引数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicesScope: list of str
+        :param _PrivilegeType: 权限类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeType: int
+        """
+        self._Username = None
+        self._Password = None
+        self._CreateTime = None
+        self._Status = None
+        self._IndicesScope = None
+        self._PrivilegeType = None
+
+    @property
+    def Username(self):
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IndicesScope(self):
+        return self._IndicesScope
+
+    @IndicesScope.setter
+    def IndicesScope(self, IndicesScope):
+        self._IndicesScope = IndicesScope
+
+    @property
+    def PrivilegeType(self):
+        return self._PrivilegeType
+
+    @PrivilegeType.setter
+    def PrivilegeType(self, PrivilegeType):
+        self._PrivilegeType = PrivilegeType
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        self._IndicesScope = params.get("IndicesScope")
+        self._PrivilegeType = params.get("PrivilegeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SettingDetail(AbstractModel):
     """智能运维集群配置详情
 
@@ -11099,6 +13075,234 @@ class UpdateRequestTargetNodeTypesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateServerlessInstanceRequest(AbstractModel):
+    """UpdateServerlessInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Serveless实例ID
+        :type InstanceId: str
+        :param _UpdateMetaJson: 更新的索引元数据JSON，如mappings、settings
+        :type UpdateMetaJson: str
+        :param _Password: 实例访问密码
+        :type Password: str
+        :param _KibanaPrivateAccess: 开启kibana内网访问，如OPEN、CLOSE
+        :type KibanaPrivateAccess: str
+        :param _KibanaPublicAccess: 开启kibana外网访问，如OPEN、CLOSE
+        :type KibanaPublicAccess: str
+        :param _KibanaPublicAcl: 访问控制列表
+        :type KibanaPublicAcl: :class:`tencentcloud.es.v20180416.models.KibanaPublicAcl`
+        """
+        self._InstanceId = None
+        self._UpdateMetaJson = None
+        self._Password = None
+        self._KibanaPrivateAccess = None
+        self._KibanaPublicAccess = None
+        self._KibanaPublicAcl = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UpdateMetaJson(self):
+        return self._UpdateMetaJson
+
+    @UpdateMetaJson.setter
+    def UpdateMetaJson(self, UpdateMetaJson):
+        self._UpdateMetaJson = UpdateMetaJson
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def KibanaPrivateAccess(self):
+        return self._KibanaPrivateAccess
+
+    @KibanaPrivateAccess.setter
+    def KibanaPrivateAccess(self, KibanaPrivateAccess):
+        self._KibanaPrivateAccess = KibanaPrivateAccess
+
+    @property
+    def KibanaPublicAccess(self):
+        return self._KibanaPublicAccess
+
+    @KibanaPublicAccess.setter
+    def KibanaPublicAccess(self, KibanaPublicAccess):
+        self._KibanaPublicAccess = KibanaPublicAccess
+
+    @property
+    def KibanaPublicAcl(self):
+        return self._KibanaPublicAcl
+
+    @KibanaPublicAcl.setter
+    def KibanaPublicAcl(self, KibanaPublicAcl):
+        self._KibanaPublicAcl = KibanaPublicAcl
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UpdateMetaJson = params.get("UpdateMetaJson")
+        self._Password = params.get("Password")
+        self._KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self._KibanaPublicAccess = params.get("KibanaPublicAccess")
+        if params.get("KibanaPublicAcl") is not None:
+            self._KibanaPublicAcl = KibanaPublicAcl()
+            self._KibanaPublicAcl._deserialize(params.get("KibanaPublicAcl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateServerlessInstanceResponse(AbstractModel):
+    """UpdateServerlessInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateServerlessSpaceRequest(AbstractModel):
+    """UpdateServerlessSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: Serveless索引空间ID
+        :type SpaceId: str
+        :param _SpaceName: Serveless索引空间名
+        :type SpaceName: str
+        :param _KibanaPrivateAccess: kibana内网开关
+        :type KibanaPrivateAccess: str
+        :param _KibanaPublicAccess: kibana公网开关
+        :type KibanaPublicAccess: str
+        :param _KibanaPublicAcl: kibana公网白名单
+        :type KibanaPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        """
+        self._SpaceId = None
+        self._SpaceName = None
+        self._KibanaPrivateAccess = None
+        self._KibanaPublicAccess = None
+        self._KibanaPublicAcl = None
+
+    @property
+    def SpaceId(self):
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceName(self):
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
+
+    @property
+    def KibanaPrivateAccess(self):
+        return self._KibanaPrivateAccess
+
+    @KibanaPrivateAccess.setter
+    def KibanaPrivateAccess(self, KibanaPrivateAccess):
+        self._KibanaPrivateAccess = KibanaPrivateAccess
+
+    @property
+    def KibanaPublicAccess(self):
+        return self._KibanaPublicAccess
+
+    @KibanaPublicAccess.setter
+    def KibanaPublicAccess(self, KibanaPublicAccess):
+        self._KibanaPublicAccess = KibanaPublicAccess
+
+    @property
+    def KibanaPublicAcl(self):
+        return self._KibanaPublicAcl
+
+    @KibanaPublicAcl.setter
+    def KibanaPublicAcl(self, KibanaPublicAcl):
+        self._KibanaPublicAcl = KibanaPublicAcl
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceName = params.get("SpaceName")
+        self._KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self._KibanaPublicAccess = params.get("KibanaPublicAccess")
+        if params.get("KibanaPublicAcl") is not None:
+            self._KibanaPublicAcl = EsAcl()
+            self._KibanaPublicAcl._deserialize(params.get("KibanaPublicAcl"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateServerlessSpaceResponse(AbstractModel):
+    """UpdateServerlessSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class UpgradeInstanceRequest(AbstractModel):
     """UpgradeInstance请求参数结构体
 
@@ -11370,6 +13574,92 @@ class UpgradeLicenseResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
         self._RequestId = params.get("RequestId")
+
+
+class VpcInfo(AbstractModel):
+    """vpc信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: vpcId信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: SubnetId信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _VpcUid: VpcUid信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcUid: int
+        :param _SubnetUid: SubnetUid 信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetUid: int
+        :param _AvailableIpAddressCount: 可用ip数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvailableIpAddressCount: int
+        """
+        self._VpcId = None
+        self._SubnetId = None
+        self._VpcUid = None
+        self._SubnetUid = None
+        self._AvailableIpAddressCount = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def VpcUid(self):
+        return self._VpcUid
+
+    @VpcUid.setter
+    def VpcUid(self, VpcUid):
+        self._VpcUid = VpcUid
+
+    @property
+    def SubnetUid(self):
+        return self._SubnetUid
+
+    @SubnetUid.setter
+    def SubnetUid(self, SubnetUid):
+        self._SubnetUid = SubnetUid
+
+    @property
+    def AvailableIpAddressCount(self):
+        return self._AvailableIpAddressCount
+
+    @AvailableIpAddressCount.setter
+    def AvailableIpAddressCount(self, AvailableIpAddressCount):
+        self._AvailableIpAddressCount = AvailableIpAddressCount
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._VpcUid = params.get("VpcUid")
+        self._SubnetUid = params.get("SubnetUid")
+        self._AvailableIpAddressCount = params.get("AvailableIpAddressCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WebNodeTypeInfo(AbstractModel):
