@@ -1894,6 +1894,10 @@ video 纯视频
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :type RecordBackground: str
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :type RecordScene: str
+        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+        :type RecordLang: str
         """
         self._Name = None
         self._StartTime = None
@@ -1922,6 +1926,8 @@ video 纯视频
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
         self._RecordBackground = None
+        self._RecordScene = None
+        self._RecordLang = None
 
     @property
     def Name(self):
@@ -2139,6 +2145,22 @@ video 纯视频
     def RecordBackground(self, RecordBackground):
         self._RecordBackground = RecordBackground
 
+    @property
+    def RecordScene(self):
+        return self._RecordScene
+
+    @RecordScene.setter
+    def RecordScene(self, RecordScene):
+        self._RecordScene = RecordScene
+
+    @property
+    def RecordLang(self):
+        return self._RecordLang
+
+    @RecordLang.setter
+    def RecordLang(self, RecordLang):
+        self._RecordLang = RecordLang
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2168,6 +2190,8 @@ video 纯视频
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordBackground = params.get("RecordBackground")
+        self._RecordScene = params.get("RecordScene")
+        self._RecordLang = params.get("RecordLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4494,6 +4518,10 @@ video 纯视频
         :type RecordBackground: str
         :param _RTMPStreamingURL: RTMP推流链接
         :type RTMPStreamingURL: str
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :type RecordScene: str
+        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+        :type RecordLang: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4525,6 +4553,8 @@ video 纯视频
         self._EnableAutoStart = None
         self._RecordBackground = None
         self._RTMPStreamingURL = None
+        self._RecordScene = None
+        self._RecordLang = None
         self._RequestId = None
 
     @property
@@ -4752,6 +4782,22 @@ video 纯视频
         self._RTMPStreamingURL = RTMPStreamingURL
 
     @property
+    def RecordScene(self):
+        return self._RecordScene
+
+    @RecordScene.setter
+    def RecordScene(self, RecordScene):
+        self._RecordScene = RecordScene
+
+    @property
+    def RecordLang(self):
+        return self._RecordLang
+
+    @RecordLang.setter
+    def RecordLang(self, RecordLang):
+        self._RecordLang = RecordLang
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4789,6 +4835,8 @@ video 纯视频
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordBackground = params.get("RecordBackground")
         self._RTMPStreamingURL = params.get("RTMPStreamingURL")
+        self._RecordScene = params.get("RecordScene")
+        self._RecordLang = params.get("RecordLang")
         self._RequestId = params.get("RequestId")
 
 
@@ -7870,6 +7918,10 @@ video 纯视频
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :type EnableAutoStart: int
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :type RecordScene: str
+        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+        :type RecordLang: str
         """
         self._RoomId = None
         self._SdkAppId = None
@@ -7895,6 +7947,8 @@ video 纯视频
         self._LiveType = None
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
+        self._RecordScene = None
+        self._RecordLang = None
 
     @property
     def RoomId(self):
@@ -8088,6 +8142,22 @@ video 纯视频
     def EnableAutoStart(self, EnableAutoStart):
         self._EnableAutoStart = EnableAutoStart
 
+    @property
+    def RecordScene(self):
+        return self._RecordScene
+
+    @RecordScene.setter
+    def RecordScene(self, RecordScene):
+        self._RecordScene = RecordScene
+
+    @property
+    def RecordLang(self):
+        return self._RecordLang
+
+    @RecordLang.setter
+    def RecordLang(self, RecordLang):
+        self._RecordLang = RecordLang
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -8114,6 +8184,8 @@ video 纯视频
         self._LiveType = params.get("LiveType")
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
+        self._RecordScene = params.get("RecordScene")
+        self._RecordLang = params.get("RecordLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8620,6 +8692,10 @@ class RoomInfo(AbstractModel):
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :type RecordBackground: str
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :type RecordScene: str
+        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+        :type RecordLang: str
         """
         self._Name = None
         self._StartTime = None
@@ -8647,6 +8723,8 @@ class RoomInfo(AbstractModel):
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
         self._RecordBackground = None
+        self._RecordScene = None
+        self._RecordLang = None
 
     @property
     def Name(self):
@@ -8856,6 +8934,22 @@ class RoomInfo(AbstractModel):
     def RecordBackground(self, RecordBackground):
         self._RecordBackground = RecordBackground
 
+    @property
+    def RecordScene(self):
+        return self._RecordScene
+
+    @RecordScene.setter
+    def RecordScene(self, RecordScene):
+        self._RecordScene = RecordScene
+
+    @property
+    def RecordLang(self):
+        return self._RecordLang
+
+    @RecordLang.setter
+    def RecordLang(self, RecordLang):
+        self._RecordLang = RecordLang
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8884,6 +8978,8 @@ class RoomInfo(AbstractModel):
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordBackground = params.get("RecordBackground")
+        self._RecordScene = params.get("RecordScene")
+        self._RecordLang = params.get("RecordLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8969,6 +9065,12 @@ class RoomItem(AbstractModel):
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordBackground: str
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordScene: str
+        :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordLang: str
         """
         self._Name = None
         self._RoomId = None
@@ -8992,6 +9094,8 @@ class RoomItem(AbstractModel):
         self._RecordLiveUrl = None
         self._EnableAutoStart = None
         self._RecordBackground = None
+        self._RecordScene = None
+        self._RecordLang = None
 
     @property
     def Name(self):
@@ -9169,6 +9273,22 @@ class RoomItem(AbstractModel):
     def RecordBackground(self, RecordBackground):
         self._RecordBackground = RecordBackground
 
+    @property
+    def RecordScene(self):
+        return self._RecordScene
+
+    @RecordScene.setter
+    def RecordScene(self, RecordScene):
+        self._RecordScene = RecordScene
+
+    @property
+    def RecordLang(self):
+        return self._RecordLang
+
+    @RecordLang.setter
+    def RecordLang(self, RecordLang):
+        self._RecordLang = RecordLang
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -9193,6 +9313,8 @@ class RoomItem(AbstractModel):
         self._RecordLiveUrl = params.get("RecordLiveUrl")
         self._EnableAutoStart = params.get("EnableAutoStart")
         self._RecordBackground = params.get("RecordBackground")
+        self._RecordScene = params.get("RecordScene")
+        self._RecordLang = params.get("RecordLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

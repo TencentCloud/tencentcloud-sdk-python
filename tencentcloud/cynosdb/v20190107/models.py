@@ -444,6 +444,8 @@ class AddInstancesRequest(AbstractModel):
         :type InstanceParams: list of ModifyParamItem
         :param _SecurityGroupIds: 安全组ID，新建只读实例时可以指定安全组。
         :type SecurityGroupIds: list of str
+        :param _UpgradeProxy: proxy同步升级
+        :type UpgradeProxy: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         self._ClusterId = None
         self._Cpu = None
@@ -461,6 +463,7 @@ class AddInstancesRequest(AbstractModel):
         self._ParamTemplateId = None
         self._InstanceParams = None
         self._SecurityGroupIds = None
+        self._UpgradeProxy = None
 
     @property
     def ClusterId(self):
@@ -594,6 +597,14 @@ class AddInstancesRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def UpgradeProxy(self):
+        return self._UpgradeProxy
+
+    @UpgradeProxy.setter
+    def UpgradeProxy(self, UpgradeProxy):
+        self._UpgradeProxy = UpgradeProxy
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -617,6 +628,9 @@ class AddInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceParams.append(obj)
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("UpgradeProxy") is not None:
+            self._UpgradeProxy = UpgradeProxy()
+            self._UpgradeProxy._deserialize(params.get("UpgradeProxy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27345,6 +27359,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type DealMode: int
         :param _UpgradeMode: NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
         :type UpgradeMode: str
+        :param _UpgradeProxy: proxy同步升级
+        :type UpgradeProxy: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         self._InstanceId = None
         self._Cpu = None
@@ -27355,6 +27371,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self._DbType = None
         self._DealMode = None
         self._UpgradeMode = None
+        self._UpgradeProxy = None
 
     @property
     def InstanceId(self):
@@ -27428,6 +27445,14 @@ class UpgradeInstanceRequest(AbstractModel):
     def UpgradeMode(self, UpgradeMode):
         self._UpgradeMode = UpgradeMode
 
+    @property
+    def UpgradeProxy(self):
+        return self._UpgradeProxy
+
+    @UpgradeProxy.setter
+    def UpgradeProxy(self, UpgradeProxy):
+        self._UpgradeProxy = UpgradeProxy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -27439,6 +27464,9 @@ class UpgradeInstanceRequest(AbstractModel):
         self._DbType = params.get("DbType")
         self._DealMode = params.get("DealMode")
         self._UpgradeMode = params.get("UpgradeMode")
+        if params.get("UpgradeProxy") is not None:
+            self._UpgradeProxy = UpgradeProxy()
+            self._UpgradeProxy._deserialize(params.get("UpgradeProxy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27510,6 +27538,80 @@ class UpgradeInstanceResponse(AbstractModel):
         self._BigDealIds = params.get("BigDealIds")
         self._DealNames = params.get("DealNames")
         self._RequestId = params.get("RequestId")
+
+
+class UpgradeProxy(AbstractModel):
+    """添加实例或者变配实例时同步升级proxy.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: cpu
+        :type Cpu: int
+        :param _Mem: memory
+        :type Mem: int
+        :param _ProxyZones: 代理节点信息
+        :type ProxyZones: list of ProxyZone
+        :param _ReloadBalance: 重新负载均衡
+        :type ReloadBalance: str
+        """
+        self._Cpu = None
+        self._Mem = None
+        self._ProxyZones = None
+        self._ReloadBalance = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def ProxyZones(self):
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+    @property
+    def ReloadBalance(self):
+        return self._ReloadBalance
+
+    @ReloadBalance.setter
+    def ReloadBalance(self, ReloadBalance):
+        self._ReloadBalance = ReloadBalance
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        self._ReloadBalance = params.get("ReloadBalance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeProxyRequest(AbstractModel):

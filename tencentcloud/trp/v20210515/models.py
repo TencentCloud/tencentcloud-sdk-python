@@ -8660,6 +8660,12 @@ class Quota(AbstractModel):
         :param _RiskQuota: 风控配额
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskQuota: int
+        :param _AigcTextQuota: AI文字数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AigcTextQuota: int
+        :param _AigcImageQuota: AI图片数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AigcImageQuota: int
         :param _TrackType: 溯源类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrackType: int
@@ -8681,6 +8687,8 @@ class Quota(AbstractModel):
         self._SaleQuota = None
         self._ChainQuota = None
         self._RiskQuota = None
+        self._AigcTextQuota = None
+        self._AigcImageQuota = None
         self._TrackType = None
         self._Version = None
         self._ProductCertify = None
@@ -8774,6 +8782,22 @@ class Quota(AbstractModel):
         self._RiskQuota = RiskQuota
 
     @property
+    def AigcTextQuota(self):
+        return self._AigcTextQuota
+
+    @AigcTextQuota.setter
+    def AigcTextQuota(self, AigcTextQuota):
+        self._AigcTextQuota = AigcTextQuota
+
+    @property
+    def AigcImageQuota(self):
+        return self._AigcImageQuota
+
+    @AigcImageQuota.setter
+    def AigcImageQuota(self, AigcImageQuota):
+        self._AigcImageQuota = AigcImageQuota
+
+    @property
     def TrackType(self):
         return self._TrackType
 
@@ -8810,6 +8834,8 @@ class Quota(AbstractModel):
         self._SaleQuota = params.get("SaleQuota")
         self._ChainQuota = params.get("ChainQuota")
         self._RiskQuota = params.get("RiskQuota")
+        self._AigcTextQuota = params.get("AigcTextQuota")
+        self._AigcImageQuota = params.get("AigcImageQuota")
         self._TrackType = params.get("TrackType")
         self._Version = params.get("Version")
         self._ProductCertify = params.get("ProductCertify")

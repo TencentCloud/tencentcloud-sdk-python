@@ -10297,7 +10297,7 @@ class DescribeFileUrlsRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _BusinessType: 文件对应的业务类型，目前支持：
 <ul>
-<li>**FLOW ** : 如需下载合同文件请选择此项</li>
+<li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
 <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
 <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
 <li>**SEAL  **: 如需下载印章图片请选择此项</li>
@@ -18490,6 +18490,123 @@ true - 可以，false - 不可以。
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewAutoSignLicenseRequest(AbstractModel):
+    """RenewAutoSignLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :type SceneKey: str
+        :param _UserInfo: 需要续期自动签的个人的信息，如姓名，证件信息等。
+        :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._SceneKey = None
+        self._UserInfo = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewAutoSignLicenseResponse(AbstractModel):
+    """RenewAutoSignLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicenseTo: 续期成功后新的自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+
+值为unix时间戳,单位为秒。
+        :type LicenseTo: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LicenseTo = None
+        self._RequestId = None
+
+    @property
+    def LicenseTo(self):
+        return self._LicenseTo
+
+    @LicenseTo.setter
+    def LicenseTo(self, LicenseTo):
+        self._LicenseTo = LicenseTo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LicenseTo = params.get("LicenseTo")
+        self._RequestId = params.get("RequestId")
 
 
 class ReviewerInfo(AbstractModel):

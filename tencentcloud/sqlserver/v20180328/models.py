@@ -9214,8 +9214,11 @@ class DescribeCollationTimeZoneRequest(AbstractModel):
         :param _MachineType: 购买实例的宿主机类型，PM-物理机, CLOUD_PREMIUM-云服务器高性能云盘，
 CLOUD_SSD-云服务器SSD云盘,CLOUD_HSSD-云服务器加强型SSD云盘，CLOUD_TSSD-云服务器极速型SSD云盘，CLOUD_BSSD-云服务器通用型SSD云盘,CLOUD_BASIC-云服务器云硬盘，默认取值PM
         :type MachineType: str
+        :param _DBVersion: 购买实例版本号
+        :type DBVersion: str
         """
         self._MachineType = None
+        self._DBVersion = None
 
     @property
     def MachineType(self):
@@ -9225,9 +9228,18 @@ CLOUD_SSD-云服务器SSD云盘,CLOUD_HSSD-云服务器加强型SSD云盘，CLOU
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def DBVersion(self):
+        return self._DBVersion
+
+    @DBVersion.setter
+    def DBVersion(self, DBVersion):
+        self._DBVersion = DBVersion
+
 
     def _deserialize(self, params):
         self._MachineType = params.get("MachineType")
+        self._DBVersion = params.get("DBVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -453,6 +453,53 @@ class ApplicationStatics(AbstractModel):
         
 
 
+class Arg(AbstractModel):
+    """通用的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Values: 值列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScaleRecord(AbstractModel):
     """弹性扩缩容记录
 
@@ -15629,11 +15676,14 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         :type OpScope: :class:`tencentcloud.emr.v20190103.models.OpScope`
         :param _StrategyConfig: 操作策略
         :type StrategyConfig: :class:`tencentcloud.emr.v20190103.models.StrategyConfig`
+        :param _StopParams: 暂停服务时用的参数
+        :type StopParams: :class:`tencentcloud.emr.v20190103.models.StopParams`
         """
         self._InstanceId = None
         self._OpType = None
         self._OpScope = None
         self._StrategyConfig = None
+        self._StopParams = None
 
     @property
     def InstanceId(self):
@@ -15667,6 +15717,14 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
     def StrategyConfig(self, StrategyConfig):
         self._StrategyConfig = StrategyConfig
 
+    @property
+    def StopParams(self):
+        return self._StopParams
+
+    @StopParams.setter
+    def StopParams(self, StopParams):
+        self._StopParams = StopParams
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15677,6 +15735,9 @@ class StartStopServiceOrMonitorRequest(AbstractModel):
         if params.get("StrategyConfig") is not None:
             self._StrategyConfig = StrategyConfig()
             self._StrategyConfig._deserialize(params.get("StrategyConfig"))
+        if params.get("StopParams") is not None:
+            self._StopParams = StopParams()
+            self._StopParams._deserialize(params.get("StopParams"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15785,6 +15846,52 @@ class Step(AbstractModel):
         
 
 
+class StopParams(AbstractModel):
+    """停止服务时的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StopPolicy: 安全模式：safe
+默认模式：default
+        :type StopPolicy: str
+        :param _ThreadCount: 线程数
+        :type ThreadCount: int
+        """
+        self._StopPolicy = None
+        self._ThreadCount = None
+
+    @property
+    def StopPolicy(self):
+        return self._StopPolicy
+
+    @StopPolicy.setter
+    def StopPolicy(self, StopPolicy):
+        self._StopPolicy = StopPolicy
+
+    @property
+    def ThreadCount(self):
+        return self._ThreadCount
+
+    @ThreadCount.setter
+    def ThreadCount(self, ThreadCount):
+        self._ThreadCount = ThreadCount
+
+
+    def _deserialize(self, params):
+        self._StopPolicy = params.get("StopPolicy")
+        self._ThreadCount = params.get("ThreadCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StrategyConfig(AbstractModel):
     """重启/停止/启动服务/监控的配置
 
@@ -15805,11 +15912,15 @@ class StrategyConfig(AbstractModel):
         :param _DealOnFail: 操作失败处理策略，0:失败阻塞, 1:失败自动跳过
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealOnFail: int
+        :param _Args: 指令需要指定的参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Args: list of Arg
         """
         self._RollingRestartSwitch = None
         self._BatchSize = None
         self._TimeWait = None
         self._DealOnFail = None
+        self._Args = None
 
     @property
     def RollingRestartSwitch(self):
@@ -15843,12 +15954,26 @@ class StrategyConfig(AbstractModel):
     def DealOnFail(self, DealOnFail):
         self._DealOnFail = DealOnFail
 
+    @property
+    def Args(self):
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
 
     def _deserialize(self, params):
         self._RollingRestartSwitch = params.get("RollingRestartSwitch")
         self._BatchSize = params.get("BatchSize")
         self._TimeWait = params.get("TimeWait")
         self._DealOnFail = params.get("DealOnFail")
+        if params.get("Args") is not None:
+            self._Args = []
+            for item in params.get("Args"):
+                obj = Arg()
+                obj._deserialize(item)
+                self._Args.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

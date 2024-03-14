@@ -7939,7 +7939,7 @@ class DescribeCdnIpRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ips: 需要查询的 IP 列表
+        :param _Ips: 需要查询的 IP 列表，单次可支持1-20个IP查询。
         :type Ips: list of str
         """
         self._Ips = None

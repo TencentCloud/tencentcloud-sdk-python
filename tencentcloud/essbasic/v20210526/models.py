@@ -6312,10 +6312,8 @@ class ChannelDescribeBillUsageDetailRequest(AbstractModel):
 此接口下面信息必填。
 <ul>
 <li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
 </ul>
-第三方平台子客企业和员工必须已经经过实名认证
+第三方平台子客企业必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         :param _StartTime: 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
         :type StartTime: str
@@ -8010,6 +8008,122 @@ class ChannelOrganizationInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ChannelRenewAutoSignLicenseRequest(AbstractModel):
+    """ChannelRenewAutoSignLicense请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _SceneKey: 自动签使用的场景值, 可以选择的场景值如下:
+<ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :type SceneKey: str
+        :param _UserInfo: 要查询状态的用户信息, 包括名字,身份证等
+        :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
+        """
+        self._Agent = None
+        self._SceneKey = None
+        self._UserInfo = None
+        self._Operator = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def SceneKey(self):
+        return self._SceneKey
+
+    @SceneKey.setter
+    def SceneKey(self, SceneKey):
+        self._SceneKey = SceneKey
+
+    @property
+    def UserInfo(self):
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._SceneKey = params.get("SceneKey")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = UserThreeFactor()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelRenewAutoSignLicenseResponse(AbstractModel):
+    """ChannelRenewAutoSignLicense返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicenseTo: 续期成功后自动签许可到期时间。当且仅当已通过许可开通自动签时有值。
+
+值为unix时间戳,单位为秒。
+        :type LicenseTo: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LicenseTo = None
+        self._RequestId = None
+
+    @property
+    def LicenseTo(self):
+        return self._LicenseTo
+
+    @LicenseTo.setter
+    def LicenseTo(self, LicenseTo):
+        self._LicenseTo = LicenseTo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LicenseTo = params.get("LicenseTo")
+        self._RequestId = params.get("RequestId")
 
 
 class ChannelRole(AbstractModel):
