@@ -716,6 +716,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBuildInImages(self, request):
+        """获取内置镜像列表
+
+        :param request: Request instance for DescribeBuildInImages.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBuildInImagesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBuildInImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBuildInImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBuildInImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatasetDetailStructured(self, request):
         """查询结构化数据集详情
 

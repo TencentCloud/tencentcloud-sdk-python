@@ -3099,7 +3099,7 @@ class DBInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点
+        :param _Role: 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。如数据库是tdsql，枚举值为：proxy、set
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 内核版本，针对mariadb的不同内核版本等
@@ -3159,6 +3159,9 @@ class DBInfo(AbstractModel):
         :param _TmpToken: 临时Token，可通过 获取联合身份临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48195
 注意：此字段可能返回 null，表示取不到有效值。
         :type TmpToken: str
+        :param _SetId: tdsql分片id。tdsql set节点必填
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetId: str
         """
         self._Role = None
         self._DbKernel = None
@@ -3180,6 +3183,7 @@ class DBInfo(AbstractModel):
         self._TmpSecretId = None
         self._TmpSecretKey = None
         self._TmpToken = None
+        self._SetId = None
 
     @property
     def Role(self):
@@ -3341,6 +3345,14 @@ class DBInfo(AbstractModel):
     def TmpToken(self, TmpToken):
         self._TmpToken = TmpToken
 
+    @property
+    def SetId(self):
+        return self._SetId
+
+    @SetId.setter
+    def SetId(self, SetId):
+        self._SetId = SetId
+
 
     def _deserialize(self, params):
         self._Role = params.get("Role")
@@ -3363,6 +3375,7 @@ class DBInfo(AbstractModel):
         self._TmpSecretId = params.get("TmpSecretId")
         self._TmpSecretKey = params.get("TmpSecretKey")
         self._TmpToken = params.get("TmpToken")
+        self._SetId = params.get("SetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7957,7 +7970,7 @@ class Endpoint(AbstractModel):
         :param _Region: 地域英文名，如：ap-guangzhou
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Role: tdsql mysql版的节点类型，枚举值为proxy、set
+        :param _Role: tdsql mysql版的节点类型，枚举值为proxy、set。tdsqlmysql必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql

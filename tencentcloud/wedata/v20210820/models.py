@@ -70175,6 +70175,15 @@ class TableLineageInfo(AbstractModel):
         :param _TableType: 表类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableType: str
+        :param _DatasourceName: datasourceName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: DatabaseName
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _DatabaseId: DatabaseId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
         """
         self._MetastoreType = None
         self._ProjectId = None
@@ -70199,6 +70208,9 @@ class TableLineageInfo(AbstractModel):
         self._DisplayType = None
         self._EngineType = None
         self._TableType = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._DatabaseId = None
 
     @property
     def MetastoreType(self):
@@ -70384,6 +70396,30 @@ class TableLineageInfo(AbstractModel):
     def TableType(self, TableType):
         self._TableType = TableType
 
+    @property
+    def DatasourceName(self):
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseId(self):
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
 
     def _deserialize(self, params):
         self._MetastoreType = params.get("MetastoreType")
@@ -70419,6 +70455,9 @@ class TableLineageInfo(AbstractModel):
         self._DisplayType = params.get("DisplayType")
         self._EngineType = params.get("EngineType")
         self._TableType = params.get("TableType")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseId = params.get("DatabaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70587,6 +70626,15 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _Location: 存储位置
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
+        :param _IsPartitionTable: 判断是否是分区表1 是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartitionTable: int
+        :param _PartitionColumns: 分区字段 key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionColumns: list of str
+        :param _PartitionExpireDays: 生命周期-分区保留天数【分区保留策略时有效】
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartitionExpireDays: int
         """
         self._TableId = None
         self._TableName = None
@@ -70638,6 +70686,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._MetaCrawlType = None
         self._IsView = None
         self._Location = None
+        self._IsPartitionTable = None
+        self._PartitionColumns = None
+        self._PartitionExpireDays = None
 
     @property
     def TableId(self):
@@ -71039,6 +71090,30 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def Location(self, Location):
         self._Location = Location
 
+    @property
+    def IsPartitionTable(self):
+        return self._IsPartitionTable
+
+    @IsPartitionTable.setter
+    def IsPartitionTable(self, IsPartitionTable):
+        self._IsPartitionTable = IsPartitionTable
+
+    @property
+    def PartitionColumns(self):
+        return self._PartitionColumns
+
+    @PartitionColumns.setter
+    def PartitionColumns(self, PartitionColumns):
+        self._PartitionColumns = PartitionColumns
+
+    @property
+    def PartitionExpireDays(self):
+        return self._PartitionExpireDays
+
+    @PartitionExpireDays.setter
+    def PartitionExpireDays(self, PartitionExpireDays):
+        self._PartitionExpireDays = PartitionExpireDays
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -71100,6 +71175,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._MetaCrawlType = params.get("MetaCrawlType")
         self._IsView = params.get("IsView")
         self._Location = params.get("Location")
+        self._IsPartitionTable = params.get("IsPartitionTable")
+        self._PartitionColumns = params.get("PartitionColumns")
+        self._PartitionExpireDays = params.get("PartitionExpireDays")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

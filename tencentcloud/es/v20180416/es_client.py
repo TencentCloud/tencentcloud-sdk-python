@@ -26,6 +26,52 @@ class EsClient(AbstractClient):
     _service = 'es'
 
 
+    def CheckMigrateIndexMetaData(self, request):
+        """检查cos迁移索引元数据
+
+        :param request: Request instance for CheckMigrateIndexMetaData.
+        :type request: :class:`tencentcloud.es.v20180416.models.CheckMigrateIndexMetaDataRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CheckMigrateIndexMetaDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckMigrateIndexMetaData", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckMigrateIndexMetaDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCosMigrateToServerlessInstance(self, request):
+        """cos迁移流程
+
+        :param request: Request instance for CreateCosMigrateToServerlessInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.CreateCosMigrateToServerlessInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CreateCosMigrateToServerlessInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCosMigrateToServerlessInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCosMigrateToServerlessInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateIndex(self, request):
         """创建索引
 
@@ -569,6 +615,29 @@ class EsClient(AbstractClient):
             body = self.call("DescribeServerlessSpaces", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServerlessSpacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserCosSnapshotList(self, request):
+        """查询快照信息接口
+
+        :param request: Request instance for DescribeUserCosSnapshotList.
+        :type request: :class:`tencentcloud.es.v20180416.models.DescribeUserCosSnapshotListRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.DescribeUserCosSnapshotListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserCosSnapshotList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserCosSnapshotListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1268,29 +1268,6 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeKafkaUser(self, request):
-        """本接口用于获取kafka用户信息
-
-        :param request: Request instance for DescribeKafkaUser.
-        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaUserRequest`
-        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaUserResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeKafkaUser", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeKafkaUserResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeLogContext(self, request):
         """本接口用于搜索日志上下文附近的内容，详情参考[上下文检索](https://cloud.tencent.com/document/product/614/53248)。
         API返回数据包最大49MB，建议启用 gzip 压缩（HTTP Request Header Accept-Encoding:gzip）。

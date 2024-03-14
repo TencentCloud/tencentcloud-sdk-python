@@ -4395,12 +4395,21 @@ class DescribeHiveQueriesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页大小，合法范围[1,100]
         :type Limit: int
+        :param _State: 执行状态,ERROR等
+        :type State: list of str
+        :param _EndTimeGte: 结束时间大于的时间点
+        :type EndTimeGte: int
+        :param _EndTimeLte: 结束时间小于时间点
+        :type EndTimeLte: int
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._Offset = None
         self._Limit = None
+        self._State = None
+        self._EndTimeGte = None
+        self._EndTimeLte = None
 
     @property
     def InstanceId(self):
@@ -4442,6 +4451,30 @@ class DescribeHiveQueriesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def EndTimeGte(self):
+        return self._EndTimeGte
+
+    @EndTimeGte.setter
+    def EndTimeGte(self, EndTimeGte):
+        self._EndTimeGte = EndTimeGte
+
+    @property
+    def EndTimeLte(self):
+        return self._EndTimeLte
+
+    @EndTimeLte.setter
+    def EndTimeLte(self, EndTimeLte):
+        self._EndTimeLte = EndTimeLte
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4449,6 +4482,9 @@ class DescribeHiveQueriesRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._State = params.get("State")
+        self._EndTimeGte = params.get("EndTimeGte")
+        self._EndTimeLte = params.get("EndTimeLte")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4530,12 +4566,21 @@ class DescribeImpalaQueriesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 分页大小，合法范围[1,100]
         :type Limit: int
+        :param _State: 执行状态，CREATED、INITIALIZED、COMPILED、RUNNING、FINISHED、EXCEPTION
+        :type State: list of str
+        :param _EndTimeGte: 结束时间大于的时间点
+        :type EndTimeGte: int
+        :param _EndTimeLte: 结束时间小于的时间点
+        :type EndTimeLte: int
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._Offset = None
         self._Limit = None
+        self._State = None
+        self._EndTimeGte = None
+        self._EndTimeLte = None
 
     @property
     def InstanceId(self):
@@ -4577,6 +4622,30 @@ class DescribeImpalaQueriesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def EndTimeGte(self):
+        return self._EndTimeGte
+
+    @EndTimeGte.setter
+    def EndTimeGte(self, EndTimeGte):
+        self._EndTimeGte = EndTimeGte
+
+    @property
+    def EndTimeLte(self):
+        return self._EndTimeLte
+
+    @EndTimeLte.setter
+    def EndTimeLte(self, EndTimeLte):
+        self._EndTimeLte = EndTimeLte
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -4584,6 +4653,9 @@ class DescribeImpalaQueriesRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._State = params.get("State")
+        self._EndTimeGte = params.get("EndTimeGte")
+        self._EndTimeLte = params.get("EndTimeLte")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -104,6 +104,172 @@ class BackingIndexMetaField(AbstractModel):
         
 
 
+class CheckMigrateIndexMetaDataRequest(AbstractModel):
+    """CheckMigrateIndexMetaData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerlessId: 索引 id
+        :type ServerlessId: str
+        :param _Snapshot: 快照名
+        :type Snapshot: str
+        :param _CosBucket: Cos桶名
+        :type CosBucket: str
+        :param _BasePath: BasePath路径
+        :type BasePath: str
+        :param _ClusterInstanceId: 云上集群名
+        :type ClusterInstanceId: str
+        :param _CommonIndexArr: 普通索引名列表
+        :type CommonIndexArr: list of str
+        :param _DataStreamArr: 自治索引名列表
+        :type DataStreamArr: list of str
+        """
+        self._ServerlessId = None
+        self._Snapshot = None
+        self._CosBucket = None
+        self._BasePath = None
+        self._ClusterInstanceId = None
+        self._CommonIndexArr = None
+        self._DataStreamArr = None
+
+    @property
+    def ServerlessId(self):
+        return self._ServerlessId
+
+    @ServerlessId.setter
+    def ServerlessId(self, ServerlessId):
+        self._ServerlessId = ServerlessId
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def BasePath(self):
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+    @property
+    def ClusterInstanceId(self):
+        return self._ClusterInstanceId
+
+    @ClusterInstanceId.setter
+    def ClusterInstanceId(self, ClusterInstanceId):
+        self._ClusterInstanceId = ClusterInstanceId
+
+    @property
+    def CommonIndexArr(self):
+        return self._CommonIndexArr
+
+    @CommonIndexArr.setter
+    def CommonIndexArr(self, CommonIndexArr):
+        self._CommonIndexArr = CommonIndexArr
+
+    @property
+    def DataStreamArr(self):
+        return self._DataStreamArr
+
+    @DataStreamArr.setter
+    def DataStreamArr(self, DataStreamArr):
+        self._DataStreamArr = DataStreamArr
+
+
+    def _deserialize(self, params):
+        self._ServerlessId = params.get("ServerlessId")
+        self._Snapshot = params.get("Snapshot")
+        self._CosBucket = params.get("CosBucket")
+        self._BasePath = params.get("BasePath")
+        self._ClusterInstanceId = params.get("ClusterInstanceId")
+        self._CommonIndexArr = params.get("CommonIndexArr")
+        self._DataStreamArr = params.get("DataStreamArr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckMigrateIndexMetaDataResponse(AbstractModel):
+    """CheckMigrateIndexMetaData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MappingTimeFieldCheckFailedIndexArr: 不存在于目标索引时间字段相同的字段
+        :type MappingTimeFieldCheckFailedIndexArr: list of str
+        :param _MappingTimeTypeCheckFailedIndexArr: @timestamp不为date类型，与目标索引时间字段冲突
+        :type MappingTimeTypeCheckFailedIndexArr: list of str
+        :param _SettingCheckFailedIndexArr: 索引的创建时间不在 serverless的存储周期内
+        :type SettingCheckFailedIndexArr: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MappingTimeFieldCheckFailedIndexArr = None
+        self._MappingTimeTypeCheckFailedIndexArr = None
+        self._SettingCheckFailedIndexArr = None
+        self._RequestId = None
+
+    @property
+    def MappingTimeFieldCheckFailedIndexArr(self):
+        return self._MappingTimeFieldCheckFailedIndexArr
+
+    @MappingTimeFieldCheckFailedIndexArr.setter
+    def MappingTimeFieldCheckFailedIndexArr(self, MappingTimeFieldCheckFailedIndexArr):
+        self._MappingTimeFieldCheckFailedIndexArr = MappingTimeFieldCheckFailedIndexArr
+
+    @property
+    def MappingTimeTypeCheckFailedIndexArr(self):
+        return self._MappingTimeTypeCheckFailedIndexArr
+
+    @MappingTimeTypeCheckFailedIndexArr.setter
+    def MappingTimeTypeCheckFailedIndexArr(self, MappingTimeTypeCheckFailedIndexArr):
+        self._MappingTimeTypeCheckFailedIndexArr = MappingTimeTypeCheckFailedIndexArr
+
+    @property
+    def SettingCheckFailedIndexArr(self):
+        return self._SettingCheckFailedIndexArr
+
+    @SettingCheckFailedIndexArr.setter
+    def SettingCheckFailedIndexArr(self, SettingCheckFailedIndexArr):
+        self._SettingCheckFailedIndexArr = SettingCheckFailedIndexArr
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MappingTimeFieldCheckFailedIndexArr = params.get("MappingTimeFieldCheckFailedIndexArr")
+        self._MappingTimeTypeCheckFailedIndexArr = params.get("MappingTimeTypeCheckFailedIndexArr")
+        self._SettingCheckFailedIndexArr = params.get("SettingCheckFailedIndexArr")
+        self._RequestId = params.get("RequestId")
+
+
 class ClusterView(AbstractModel):
     """集群维度视图数据
 
@@ -391,6 +557,53 @@ class ClusterView(AbstractModel):
         
 
 
+class CommonIndexInfo(AbstractModel):
+    """普通索引信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: 普通索引名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexName: str
+        :param _IsShardComplete: 分片状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsShardComplete: int
+        """
+        self._IndexName = None
+        self._IsShardComplete = None
+
+    @property
+    def IndexName(self):
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def IsShardComplete(self):
+        return self._IsShardComplete
+
+    @IsShardComplete.setter
+    def IsShardComplete(self, IsShardComplete):
+        self._IsShardComplete = IsShardComplete
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        self._IsShardComplete = params.get("IsShardComplete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosBackup(AbstractModel):
     """ES cos自动备份信息
 
@@ -434,6 +647,270 @@ class CosBackup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CosSnapShotInfo(AbstractModel):
+    """无
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucket: cos 桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucket: str
+        :param _BasePath: base path
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasePath: str
+        :param _SnapshotName: 快照名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotName: str
+        :param _State: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _Version: 快照版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _CommonIndexArr: 普通索引信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommonIndexArr: list of CommonIndexInfo
+        :param _DataStreamArr: 自治索引信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataStreamArr: list of DataStreamInfo
+        """
+        self._CosBucket = None
+        self._BasePath = None
+        self._SnapshotName = None
+        self._State = None
+        self._Version = None
+        self._CommonIndexArr = None
+        self._DataStreamArr = None
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def BasePath(self):
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CommonIndexArr(self):
+        return self._CommonIndexArr
+
+    @CommonIndexArr.setter
+    def CommonIndexArr(self, CommonIndexArr):
+        self._CommonIndexArr = CommonIndexArr
+
+    @property
+    def DataStreamArr(self):
+        return self._DataStreamArr
+
+    @DataStreamArr.setter
+    def DataStreamArr(self, DataStreamArr):
+        self._DataStreamArr = DataStreamArr
+
+
+    def _deserialize(self, params):
+        self._CosBucket = params.get("CosBucket")
+        self._BasePath = params.get("BasePath")
+        self._SnapshotName = params.get("SnapshotName")
+        self._State = params.get("State")
+        self._Version = params.get("Version")
+        if params.get("CommonIndexArr") is not None:
+            self._CommonIndexArr = []
+            for item in params.get("CommonIndexArr"):
+                obj = CommonIndexInfo()
+                obj._deserialize(item)
+                self._CommonIndexArr.append(obj)
+        if params.get("DataStreamArr") is not None:
+            self._DataStreamArr = []
+            for item in params.get("DataStreamArr"):
+                obj = DataStreamInfo()
+                obj._deserialize(item)
+                self._DataStreamArr.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosMigrateToServerlessInstanceRequest(AbstractModel):
+    """CreateCosMigrateToServerlessInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Snapshot: 快照名
+        :type Snapshot: str
+        :param _ServerlessId: 索引 id
+        :type ServerlessId: str
+        :param _CosBucket: cos 桶名
+        :type CosBucket: str
+        :param _BasePath: BasePath 路径
+        :type BasePath: str
+        :param _ClusterInstanceId: 云上集群 id
+        :type ClusterInstanceId: str
+        :param _CommonIndexArr: 待迁移普通索引名列表
+        :type CommonIndexArr: list of str
+        :param _DataStreamArr: 待迁移自治索引名列表
+        :type DataStreamArr: list of str
+        """
+        self._Snapshot = None
+        self._ServerlessId = None
+        self._CosBucket = None
+        self._BasePath = None
+        self._ClusterInstanceId = None
+        self._CommonIndexArr = None
+        self._DataStreamArr = None
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def ServerlessId(self):
+        return self._ServerlessId
+
+    @ServerlessId.setter
+    def ServerlessId(self, ServerlessId):
+        self._ServerlessId = ServerlessId
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def BasePath(self):
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+    @property
+    def ClusterInstanceId(self):
+        return self._ClusterInstanceId
+
+    @ClusterInstanceId.setter
+    def ClusterInstanceId(self, ClusterInstanceId):
+        self._ClusterInstanceId = ClusterInstanceId
+
+    @property
+    def CommonIndexArr(self):
+        return self._CommonIndexArr
+
+    @CommonIndexArr.setter
+    def CommonIndexArr(self, CommonIndexArr):
+        self._CommonIndexArr = CommonIndexArr
+
+    @property
+    def DataStreamArr(self):
+        return self._DataStreamArr
+
+    @DataStreamArr.setter
+    def DataStreamArr(self, DataStreamArr):
+        self._DataStreamArr = DataStreamArr
+
+
+    def _deserialize(self, params):
+        self._Snapshot = params.get("Snapshot")
+        self._ServerlessId = params.get("ServerlessId")
+        self._CosBucket = params.get("CosBucket")
+        self._BasePath = params.get("BasePath")
+        self._ClusterInstanceId = params.get("ClusterInstanceId")
+        self._CommonIndexArr = params.get("CommonIndexArr")
+        self._DataStreamArr = params.get("DataStreamArr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosMigrateToServerlessInstanceResponse(AbstractModel):
+    """CreateCosMigrateToServerlessInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 迁移 taskid
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateIndexRequest(AbstractModel):
@@ -1696,6 +2173,53 @@ class CreateServerlessSpaceV2Response(AbstractModel):
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
         self._RequestId = params.get("RequestId")
+
+
+class DataStreamInfo(AbstractModel):
+    """自治索引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataStreamName: 自治索引名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataStreamName: str
+        :param _IsShardComplete: 分片状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsShardComplete: int
+        """
+        self._DataStreamName = None
+        self._IsShardComplete = None
+
+    @property
+    def DataStreamName(self):
+        return self._DataStreamName
+
+    @DataStreamName.setter
+    def DataStreamName(self, DataStreamName):
+        self._DataStreamName = DataStreamName
+
+    @property
+    def IsShardComplete(self):
+        return self._IsShardComplete
+
+    @IsShardComplete.setter
+    def IsShardComplete(self, IsShardComplete):
+        self._IsShardComplete = IsShardComplete
+
+
+    def _deserialize(self, params):
+        self._DataStreamName = params.get("DataStreamName")
+        self._IsShardComplete = params.get("IsShardComplete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteIndexRequest(AbstractModel):
@@ -4238,6 +4762,117 @@ class DescribeServerlessSpacesResponse(AbstractModel):
                 obj = ServerlessSpace()
                 obj._deserialize(item)
                 self._ServerlessSpaces.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserCosSnapshotListRequest(AbstractModel):
+    """DescribeUserCosSnapshotList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucket: cos桶名
+        :type CosBucket: str
+        :param _BasePath: bucket 桶下的备份路径
+        :type BasePath: str
+        :param _ClusterInstanceId: 云上集群迁移集群名
+        :type ClusterInstanceId: str
+        """
+        self._CosBucket = None
+        self._BasePath = None
+        self._ClusterInstanceId = None
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def BasePath(self):
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+    @property
+    def ClusterInstanceId(self):
+        return self._ClusterInstanceId
+
+    @ClusterInstanceId.setter
+    def ClusterInstanceId(self, ClusterInstanceId):
+        self._ClusterInstanceId = ClusterInstanceId
+
+
+    def _deserialize(self, params):
+        self._CosBucket = params.get("CosBucket")
+        self._BasePath = params.get("BasePath")
+        self._ClusterInstanceId = params.get("ClusterInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserCosSnapshotListResponse(AbstractModel):
+    """DescribeUserCosSnapshotList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosSnapshotInfoList: cos 快照信息列表
+        :type CosSnapshotInfoList: list of CosSnapShotInfo
+        :param _TotalCount: cos 快照数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosSnapshotInfoList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CosSnapshotInfoList(self):
+        return self._CosSnapshotInfoList
+
+    @CosSnapshotInfoList.setter
+    def CosSnapshotInfoList(self, CosSnapshotInfoList):
+        self._CosSnapshotInfoList = CosSnapshotInfoList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosSnapshotInfoList") is not None:
+            self._CosSnapshotInfoList = []
+            for item in params.get("CosSnapshotInfoList"):
+                obj = CosSnapShotInfo()
+                obj._deserialize(item)
+                self._CosSnapshotInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

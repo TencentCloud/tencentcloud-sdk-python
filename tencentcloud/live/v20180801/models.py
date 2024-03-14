@@ -14097,6 +14097,125 @@ class DescribePullStreamConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePullTransformPushInfoRequest(AbstractModel):
+    """DescribePullTransformPushInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+        :type StartTime: str
+        :param _EndTime: 结束时间点，接口查询支持两种时间格式：
+1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
+支持最近三年的查询，查询开始和结束时间跨度不支持超过31天。
+        :type EndTime: str
+        :param _MainlandOrOversea: 可选值：
+Mainland：查询国内数据，
+Oversea：则查询国外数据，
+默认：查询国内+国外的数据。
+        :type MainlandOrOversea: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._MainlandOrOversea = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def MainlandOrOversea(self):
+        return self._MainlandOrOversea
+
+    @MainlandOrOversea.setter
+    def MainlandOrOversea(self, MainlandOrOversea):
+        self._MainlandOrOversea = MainlandOrOversea
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._MainlandOrOversea = params.get("MainlandOrOversea")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePullTransformPushInfoResponse(AbstractModel):
+    """DescribePullTransformPushInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: 时长统计数据列表
+        :type DataInfoList: list of TaskDurationInfo
+        :param _TotalDuration: 拉流转推得总时长
+        :type TotalDuration: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._TotalDuration = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalDuration(self):
+        return self._TotalDuration
+
+    @TotalDuration.setter
+    def TotalDuration(self, TotalDuration):
+        self._TotalDuration = TotalDuration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = TaskDurationInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._TotalDuration = params.get("TotalDuration")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePushBandwidthAndFluxListRequest(AbstractModel):
     """DescribePushBandwidthAndFluxList请求参数结构体
 
@@ -25122,6 +25241,51 @@ class SwitchBackupStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TaskDurationInfo(AbstractModel):
+    """拉流转推任务的时长分布信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: 拉流转推任务的时间点
+        :type Time: str
+        :param _Duration: 拉流转推任务的时长，单位为分钟
+        :type Duration: int
+        """
+        self._Time = None
+        self._Duration = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskStatusInfo(AbstractModel):

@@ -9077,6 +9077,30 @@ class InstanceDetail(AbstractModel):
         :param _Status: 实例状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param _UpDownTPS: 消息上下行配置TPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpDownTPS: int
+        :param _UpDownCurrentTPS: 当前消息上下行TPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpDownCurrentTPS: int
+        :param _ForwardTPS: 消息转发配置TPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardTPS: int
+        :param _ForwardCurrentTPS: 消息转发当前TPS
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForwardCurrentTPS: int
+        :param _CellNum: 实例单元数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CellNum: int
+        :param _BillingTag: 实例Tag
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillingTag: str
+        :param _EverydayFreeMessageCount: 每日消息数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EverydayFreeMessageCount: int
+        :param _MaxDeviceOnlineCount: 最大在线设备数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDeviceOnlineCount: int
         """
         self._InstanceId = None
         self._InstanceType = None
@@ -9093,6 +9117,14 @@ class InstanceDetail(AbstractModel):
         self._ActivateDevice = None
         self._Description = None
         self._Status = None
+        self._UpDownTPS = None
+        self._UpDownCurrentTPS = None
+        self._ForwardTPS = None
+        self._ForwardCurrentTPS = None
+        self._CellNum = None
+        self._BillingTag = None
+        self._EverydayFreeMessageCount = None
+        self._MaxDeviceOnlineCount = None
 
     @property
     def InstanceId(self):
@@ -9214,6 +9246,70 @@ class InstanceDetail(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def UpDownTPS(self):
+        return self._UpDownTPS
+
+    @UpDownTPS.setter
+    def UpDownTPS(self, UpDownTPS):
+        self._UpDownTPS = UpDownTPS
+
+    @property
+    def UpDownCurrentTPS(self):
+        return self._UpDownCurrentTPS
+
+    @UpDownCurrentTPS.setter
+    def UpDownCurrentTPS(self, UpDownCurrentTPS):
+        self._UpDownCurrentTPS = UpDownCurrentTPS
+
+    @property
+    def ForwardTPS(self):
+        return self._ForwardTPS
+
+    @ForwardTPS.setter
+    def ForwardTPS(self, ForwardTPS):
+        self._ForwardTPS = ForwardTPS
+
+    @property
+    def ForwardCurrentTPS(self):
+        return self._ForwardCurrentTPS
+
+    @ForwardCurrentTPS.setter
+    def ForwardCurrentTPS(self, ForwardCurrentTPS):
+        self._ForwardCurrentTPS = ForwardCurrentTPS
+
+    @property
+    def CellNum(self):
+        return self._CellNum
+
+    @CellNum.setter
+    def CellNum(self, CellNum):
+        self._CellNum = CellNum
+
+    @property
+    def BillingTag(self):
+        return self._BillingTag
+
+    @BillingTag.setter
+    def BillingTag(self, BillingTag):
+        self._BillingTag = BillingTag
+
+    @property
+    def EverydayFreeMessageCount(self):
+        return self._EverydayFreeMessageCount
+
+    @EverydayFreeMessageCount.setter
+    def EverydayFreeMessageCount(self, EverydayFreeMessageCount):
+        self._EverydayFreeMessageCount = EverydayFreeMessageCount
+
+    @property
+    def MaxDeviceOnlineCount(self):
+        return self._MaxDeviceOnlineCount
+
+    @MaxDeviceOnlineCount.setter
+    def MaxDeviceOnlineCount(self, MaxDeviceOnlineCount):
+        self._MaxDeviceOnlineCount = MaxDeviceOnlineCount
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9231,6 +9327,14 @@ class InstanceDetail(AbstractModel):
         self._ActivateDevice = params.get("ActivateDevice")
         self._Description = params.get("Description")
         self._Status = params.get("Status")
+        self._UpDownTPS = params.get("UpDownTPS")
+        self._UpDownCurrentTPS = params.get("UpDownCurrentTPS")
+        self._ForwardTPS = params.get("ForwardTPS")
+        self._ForwardCurrentTPS = params.get("ForwardCurrentTPS")
+        self._CellNum = params.get("CellNum")
+        self._BillingTag = params.get("BillingTag")
+        self._EverydayFreeMessageCount = params.get("EverydayFreeMessageCount")
+        self._MaxDeviceOnlineCount = params.get("MaxDeviceOnlineCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

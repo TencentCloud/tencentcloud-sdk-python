@@ -925,6 +925,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordLineCategoryList(self, request):
+        """按分类返回线路列表
+
+        :param request: Request instance for DescribeRecordLineCategoryList.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineCategoryListRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.DescribeRecordLineCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordLineCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordLineCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRecordLineList(self, request):
         """获取等级允许的线路
 

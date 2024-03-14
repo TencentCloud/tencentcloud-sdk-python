@@ -2085,6 +2085,8 @@ class CreateRecordRequest(AbstractModel):
         :type Status: str
         :param _Remark: 备注
         :type Remark: str
+        :param _DnssecConflictMode: 开启DNSSEC时，强制添加CNAME/URL记录
+        :type DnssecConflictMode: str
         """
         self._Domain = None
         self._RecordType = None
@@ -2098,6 +2100,7 @@ class CreateRecordRequest(AbstractModel):
         self._Weight = None
         self._Status = None
         self._Remark = None
+        self._DnssecConflictMode = None
 
     @property
     def Domain(self):
@@ -2195,6 +2198,14 @@ class CreateRecordRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def DnssecConflictMode(self):
+        return self._DnssecConflictMode
+
+    @DnssecConflictMode.setter
+    def DnssecConflictMode(self, DnssecConflictMode):
+        self._DnssecConflictMode = DnssecConflictMode
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -2209,6 +2220,7 @@ class CreateRecordRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._Status = params.get("Status")
         self._Remark = params.get("Remark")
+        self._DnssecConflictMode = params.get("DnssecConflictMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5643,6 +5655,93 @@ class DescribeRecordGroupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRecordLineCategoryListRequest(AbstractModel):
+    """DescribeRecordLineCategoryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 要查询线路列表的域名。
+        :type Domain: str
+        :param _DomainId: 要查询线路列表的域名 ID。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+        :type DomainId: int
+        """
+        self._Domain = None
+        self._DomainId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainId(self):
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainId = params.get("DomainId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordLineCategoryListResponse(AbstractModel):
+    """DescribeRecordLineCategoryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineList: 按分类返回的线路列表。
+        :type LineList: list of LineItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LineList = None
+        self._RequestId = None
+
+    @property
+    def LineList(self):
+        return self._LineList
+
+    @LineList.setter
+    def LineList(self, LineList):
+        self._LineList = LineList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LineList") is not None:
+            self._LineList = []
+            for item in params.get("LineList"):
+                obj = LineItem()
+                obj._deserialize(item)
+                self._LineList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRecordLineListRequest(AbstractModel):
     """DescribeRecordLineList请求参数结构体
 
@@ -8800,6 +8899,108 @@ class LineInfo(AbstractModel):
         
 
 
+class LineItem(AbstractModel):
+    """域名解析记录线路信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineName: 解析线路名称。
+        :type LineName: str
+        :param _LineId: 解析线路 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LineId: str
+        :param _Useful: 当前线路在当前域名下是否可用。
+        :type Useful: bool
+        :param _Grade: 当前线路最低套餐等级要求。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grade: str
+        :param _SubGroup: 当前线路分类下的子线路列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubGroup: list of LineItem
+        :param _Lines: 自定义线路分组内包含的线路。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lines: list of str
+        """
+        self._LineName = None
+        self._LineId = None
+        self._Useful = None
+        self._Grade = None
+        self._SubGroup = None
+        self._Lines = None
+
+    @property
+    def LineName(self):
+        return self._LineName
+
+    @LineName.setter
+    def LineName(self, LineName):
+        self._LineName = LineName
+
+    @property
+    def LineId(self):
+        return self._LineId
+
+    @LineId.setter
+    def LineId(self, LineId):
+        self._LineId = LineId
+
+    @property
+    def Useful(self):
+        return self._Useful
+
+    @Useful.setter
+    def Useful(self, Useful):
+        self._Useful = Useful
+
+    @property
+    def Grade(self):
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def SubGroup(self):
+        return self._SubGroup
+
+    @SubGroup.setter
+    def SubGroup(self, SubGroup):
+        self._SubGroup = SubGroup
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+
+    def _deserialize(self, params):
+        self._LineName = params.get("LineName")
+        self._LineId = params.get("LineId")
+        self._Useful = params.get("Useful")
+        self._Grade = params.get("Grade")
+        if params.get("SubGroup") is not None:
+            self._SubGroup = []
+            for item in params.get("SubGroup"):
+                obj = LineItem()
+                obj._deserialize(item)
+                self._SubGroup.append(obj)
+        self._Lines = params.get("Lines")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LockInfo(AbstractModel):
     """域名锁定信息
 
@@ -10219,6 +10420,8 @@ class ModifyRecordRequest(AbstractModel):
         :type Status: str
         :param _Remark: 记录的备注信息。传空删除备注。
         :type Remark: str
+        :param _DnssecConflictMode: 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+        :type DnssecConflictMode: str
         """
         self._Domain = None
         self._RecordType = None
@@ -10233,6 +10436,7 @@ class ModifyRecordRequest(AbstractModel):
         self._Weight = None
         self._Status = None
         self._Remark = None
+        self._DnssecConflictMode = None
 
     @property
     def Domain(self):
@@ -10338,6 +10542,14 @@ class ModifyRecordRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def DnssecConflictMode(self):
+        return self._DnssecConflictMode
+
+    @DnssecConflictMode.setter
+    def DnssecConflictMode(self, DnssecConflictMode):
+        self._DnssecConflictMode = DnssecConflictMode
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10353,6 +10565,7 @@ class ModifyRecordRequest(AbstractModel):
         self._Weight = params.get("Weight")
         self._Status = params.get("Status")
         self._Remark = params.get("Remark")
+        self._DnssecConflictMode = params.get("DnssecConflictMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
