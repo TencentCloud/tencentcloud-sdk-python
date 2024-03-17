@@ -13370,7 +13370,7 @@ class DescribeBillDetailRequest(AbstractModel):
         r"""
         :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
         :type Offset: int
-        :param _Limit: 数量，最大值为100
+        :param _Limit: 数量，最大值为300
         :type Limit: int
         :param _PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
         :type PeriodType: str

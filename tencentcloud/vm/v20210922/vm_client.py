@@ -86,7 +86,7 @@ class VmClient(AbstractClient):
         - 视频流时长支持：**8小时以内**
         - 视频流分辨率支持：支持**1920x1080 (1080p)**，更高分辨率视频可以调用[直播云转码服务](https://cloud.tencent.com/document/product/267/39889)转码后再送审；
         - 视频流支持格式：rmtp，flv 等主流视频流编码格式。
-        - 视频文件支持的传输协议：HTTP/HTTPS/RTMP；
+        - 视频流支持的传输协议：HTTP/HTTPS/RTMP；
         - 支持用户配置是否需要开启音频审核，若不开启则将仅对视频流图像内容进行审核。
 
         ### 直播断流处理说明：

@@ -279,6 +279,52 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConfigFile(self, request):
+        """创建配置文件
+
+        :param request: Request instance for CreateConfigFile.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConfigFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateConfigFileGroup(self, request):
+        """创建服务治理中心配置文件组
+
+        :param request: Request instance for CreateConfigFileGroup.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileGroupRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateConfigFileGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigFileGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConfigFileGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateEngine(self, request):
         """创建引擎实例
 
@@ -302,8 +348,31 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGovernanceAlias(self, request):
+        """创建治理中心服务别名
+
+        :param request: Request instance for CreateGovernanceAlias.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceAliasRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGovernanceAlias", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGovernanceAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGovernanceInstances(self, request):
-        """创建治理中心服务实例
+        """创建服务实例
 
         :param request: Request instance for CreateGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceInstancesRequest`
@@ -316,6 +385,52 @@ class TseClient(AbstractClient):
             body = self.call("CreateGovernanceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.CreateGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGovernanceNamespaces(self, request):
+        """创建治理中心命名空间
+
+        :param request: Request instance for CreateGovernanceNamespaces.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceNamespacesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGovernanceNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGovernanceNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateGovernanceServices(self, request):
+        """创建治理中心服务
+
+        :param request: Request instance for CreateGovernanceServices.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceServicesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGovernanceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGovernanceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -339,6 +454,29 @@ class TseClient(AbstractClient):
             body = self.call("CreateNativeGatewayServerGroup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNativeGatewayServerGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateOrUpdateConfigFileAndRelease(self, request):
+        """创建或更新配置文件并发布配置
+
+        :param request: Request instance for CreateOrUpdateConfigFileAndRelease.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateOrUpdateConfigFileAndReleaseRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateOrUpdateConfigFileAndReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrUpdateConfigFileAndRelease", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrUpdateConfigFileAndReleaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -578,6 +716,75 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteConfigFileGroup(self, request):
+        """删除配置文件分组
+
+        :param request: Request instance for DeleteConfigFileGroup.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileGroupRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConfigFileGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConfigFileGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConfigFileReleases(self, request):
+        """删除配置发布
+
+        :param request: Request instance for DeleteConfigFileReleases.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileReleasesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFileReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConfigFileReleases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConfigFileReleasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConfigFiles(self, request):
+        """删除配置文件
+
+        :param request: Request instance for DeleteConfigFiles.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFilesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteConfigFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConfigFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConfigFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteEngine(self, request):
         """删除引擎实例
 
@@ -601,8 +808,31 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteGovernanceAliases(self, request):
+        """删除治理中心服务别名
+
+        :param request: Request instance for DeleteGovernanceAliases.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceAliasesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceAliasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceAliases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceAliasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteGovernanceInstances(self, request):
-        """删除治理中心服务实例
+        """删除服务实例
 
         :param request: Request instance for DeleteGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesRequest`
@@ -615,6 +845,75 @@ class TseClient(AbstractClient):
             body = self.call("DeleteGovernanceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGovernanceInstancesByHost(self, request):
+        """删除治理中心服务实例
+
+        :param request: Request instance for DeleteGovernanceInstancesByHost.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesByHostRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceInstancesByHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceInstancesByHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceInstancesByHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGovernanceNamespaces(self, request):
+        """删除治理中心命名空间
+
+        :param request: Request instance for DeleteGovernanceNamespaces.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceNamespacesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGovernanceServices(self, request):
+        """删除治理中心服务
+
+        :param request: Request instance for DeleteGovernanceServices.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceServicesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -661,6 +960,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteWafDomains", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWafDomainsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAllConfigFileTemplates(self, request):
+        """获取全量配置文件模板列表
+
+        :param request: Request instance for DescribeAllConfigFileTemplates.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeAllConfigFileTemplatesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeAllConfigFileTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAllConfigFileTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAllConfigFileTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1015,8 +1337,215 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConfigFile(self, request):
+        """根据命名空间、组、名字查找配置文件
+
+        :param request: Request instance for DescribeConfigFile.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFileGroups(self, request):
+        """根据条件分页查询配置文件组
+
+        :param request: Request instance for DescribeConfigFileGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFileGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFileRelease(self, request):
+        """获取配置文件发布
+
+        :param request: Request instance for DescribeConfigFileRelease.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFileRelease", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFileReleaseHistories(self, request):
+        """获取配置文件发布历史列表
+
+        :param request: Request instance for DescribeConfigFileReleaseHistories.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseHistoriesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseHistoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFileReleaseHistories", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileReleaseHistoriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFileReleaseVersions(self, request):
+        """查询某个配置所有版本信息
+
+        :param request: Request instance for DescribeConfigFileReleaseVersions.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseVersionsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleaseVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFileReleaseVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileReleaseVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFileReleases(self, request):
+        """查询配置版本列表
+
+        :param request: Request instance for DescribeConfigFileReleases.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleasesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFileReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFileReleases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFileReleasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFiles(self, request):
+        """根据命名空间、组名、名称、标签查询配置文件列表
+
+        :param request: Request instance for DescribeConfigFiles.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigFilesByGroup(self, request):
+        """根据group查询配置文件列表
+
+        :param request: Request instance for DescribeConfigFilesByGroup.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesByGroupRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeConfigFilesByGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigFilesByGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigFilesByGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceAliases(self, request):
+        """查询治理中心服务别名列表
+
+        :param request: Request instance for DescribeGovernanceAliases.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceAliasesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceAliasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceAliases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceAliasesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGovernanceInstances(self, request):
-        """查询治理中心服务实例
+        """查询服务实例
 
         :param request: Request instance for DescribeGovernanceInstances.
         :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceInstancesRequest`
@@ -1029,6 +1558,98 @@ class TseClient(AbstractClient):
             body = self.call("DescribeGovernanceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceNamespaces(self, request):
+        """查询服务治理中心命名空间列表
+
+        :param request: Request instance for DescribeGovernanceNamespaces.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceNamespacesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceServiceContractVersions(self, request):
+        """查询服务下契约版本列表
+
+        :param request: Request instance for DescribeGovernanceServiceContractVersions.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractVersionsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceServiceContractVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceServiceContractVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceServiceContracts(self, request):
+        """查询服务契约定义列表
+
+        :param request: Request instance for DescribeGovernanceServiceContracts.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServiceContractsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceServiceContracts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceServiceContractsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeGovernanceServices(self, request):
+        """查询治理中心服务列表
+
+        :param request: Request instance for DescribeGovernanceServices.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServicesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1498,6 +2119,52 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConfigFileGroup(self, request):
+        """批量修改配置文件组
+
+        :param request: Request instance for ModifyConfigFileGroup.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFileGroupRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFileGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConfigFileGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConfigFileGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConfigFiles(self, request):
+        """修改配置文件
+
+        :param request: Request instance for ModifyConfigFiles.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFilesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyConfigFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConfigFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConfigFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConsoleNetwork(self, request):
         """修改网关实例Konga网络配置
 
@@ -1521,6 +2188,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyGovernanceAlias(self, request):
+        """修改治理中心服务别名
+
+        :param request: Request instance for ModifyGovernanceAlias.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceAliasRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceAliasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernanceAlias", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernanceAliasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyGovernanceInstances(self, request):
         """修改治理中心服务实例
 
@@ -1535,6 +2225,52 @@ class TseClient(AbstractClient):
             body = self.call("ModifyGovernanceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGovernanceNamespaces(self, request):
+        """修改治理中心命名空间
+
+        :param request: Request instance for ModifyGovernanceNamespaces.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceNamespacesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernanceNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernanceNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGovernanceServices(self, request):
+        """修改治理中心服务
+
+        :param request: Request instance for ModifyGovernanceServices.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceServicesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernanceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernanceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1650,6 +2386,52 @@ class TseClient(AbstractClient):
             body = self.call("OpenWafProtection", params, headers=headers)
             response = json.loads(body)
             model = models.OpenWafProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PublishConfigFiles(self, request):
+        """发布配置文件
+
+        :param request: Request instance for PublishConfigFiles.
+        :type request: :class:`tencentcloud.tse.v20201207.models.PublishConfigFilesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.PublishConfigFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PublishConfigFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.PublishConfigFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackConfigFileReleases(self, request):
+        """回滚配置发布
+
+        :param request: Request instance for RollbackConfigFileReleases.
+        :type request: :class:`tencentcloud.tse.v20201207.models.RollbackConfigFileReleasesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.RollbackConfigFileReleasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackConfigFileReleases", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackConfigFileReleasesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

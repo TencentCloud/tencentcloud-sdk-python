@@ -23,6 +23,9 @@ FAILEDOPERATION = 'FailedOperation'
 # 内核响应超时。
 FAILEDOPERATION_KERNELRESPONSETIMEOUT = 'FailedOperation.KernelResponseTimeout'
 
+# 当前实例已开启外网访问。
+FAILEDOPERATION_NOTALLOWMODIFYADDRAFTEROPENWANSERVICE = 'FailedOperation.NotAllowModifyAddrAfterOpenWanService'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

@@ -2333,6 +2333,1427 @@ class CloudNativeAPIGatewayVpcConfig(AbstractModel):
         
 
 
+class ConfigFile(AbstractModel):
+    """配置文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置文件id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 配置文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: 配置文件命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Group: 配置文件组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _Content: 配置文件内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Format: 配置文件格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        :param _Comment: 配置文件注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Status: 配置文件状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Tags: 配置文件标签数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ConfigFileTag
+        :param _CreateTime: 配置文件创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreateBy: 配置文件创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateBy: str
+        :param _ModifyTime: 配置文件修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ModifyBy: 配置文件修改者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyBy: str
+        :param _ReleaseTime: 配置文件发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseTime: str
+        :param _ReleaseBy: 配置文件发布者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseBy: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Namespace = None
+        self._Group = None
+        self._Content = None
+        self._Format = None
+        self._Comment = None
+        self._Status = None
+        self._Tags = None
+        self._CreateTime = None
+        self._CreateBy = None
+        self._ModifyTime = None
+        self._ModifyBy = None
+        self._ReleaseTime = None
+        self._ReleaseBy = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+    @property
+    def ReleaseTime(self):
+        return self._ReleaseTime
+
+    @ReleaseTime.setter
+    def ReleaseTime(self, ReleaseTime):
+        self._ReleaseTime = ReleaseTime
+
+    @property
+    def ReleaseBy(self):
+        return self._ReleaseBy
+
+    @ReleaseBy.setter
+    def ReleaseBy(self, ReleaseBy):
+        self._ReleaseBy = ReleaseBy
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Content = params.get("Content")
+        self._Format = params.get("Format")
+        self._Comment = params.get("Comment")
+        self._Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ConfigFileTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ModifyBy = params.get("ModifyBy")
+        self._ReleaseTime = params.get("ReleaseTime")
+        self._ReleaseBy = params.get("ReleaseBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileGroup(AbstractModel):
+    """配置文件组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置文件组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 配置文件组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Comment: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreateBy: 创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateBy: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ModifyBy: 修改者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyBy: str
+        :param _FileCount: 文件数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileCount: int
+        :param _UserIds: 关联用户，link_users
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of str
+        :param _GroupIds: 组id，link_groups
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of str
+        :param _RemoveUserIds: remove_link_users
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveUserIds: list of str
+        :param _RemoveGroupIds: remove_link_groups
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveGroupIds: list of str
+        :param _Editable: 是否可编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        :param _Owner: 归属者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _Department: 部门
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: str
+        :param _Business: 业务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: str
+        :param _ConfigFileGroupTags: 配置文件组标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFileGroupTags: list of ConfigFileGroupTag
+        """
+        self._Id = None
+        self._Name = None
+        self._Namespace = None
+        self._Comment = None
+        self._CreateTime = None
+        self._CreateBy = None
+        self._ModifyTime = None
+        self._ModifyBy = None
+        self._FileCount = None
+        self._UserIds = None
+        self._GroupIds = None
+        self._RemoveUserIds = None
+        self._RemoveGroupIds = None
+        self._Editable = None
+        self._Owner = None
+        self._Department = None
+        self._Business = None
+        self._ConfigFileGroupTags = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+    @property
+    def FileCount(self):
+        return self._FileCount
+
+    @FileCount.setter
+    def FileCount(self, FileCount):
+        self._FileCount = FileCount
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def RemoveUserIds(self):
+        return self._RemoveUserIds
+
+    @RemoveUserIds.setter
+    def RemoveUserIds(self, RemoveUserIds):
+        self._RemoveUserIds = RemoveUserIds
+
+    @property
+    def RemoveGroupIds(self):
+        return self._RemoveGroupIds
+
+    @RemoveGroupIds.setter
+    def RemoveGroupIds(self, RemoveGroupIds):
+        self._RemoveGroupIds = RemoveGroupIds
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+    @property
+    def Owner(self):
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def ConfigFileGroupTags(self):
+        return self._ConfigFileGroupTags
+
+    @ConfigFileGroupTags.setter
+    def ConfigFileGroupTags(self, ConfigFileGroupTags):
+        self._ConfigFileGroupTags = ConfigFileGroupTags
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ModifyBy = params.get("ModifyBy")
+        self._FileCount = params.get("FileCount")
+        self._UserIds = params.get("UserIds")
+        self._GroupIds = params.get("GroupIds")
+        self._RemoveUserIds = params.get("RemoveUserIds")
+        self._RemoveGroupIds = params.get("RemoveGroupIds")
+        self._Editable = params.get("Editable")
+        self._Owner = params.get("Owner")
+        self._Department = params.get("Department")
+        self._Business = params.get("Business")
+        if params.get("ConfigFileGroupTags") is not None:
+            self._ConfigFileGroupTags = []
+            for item in params.get("ConfigFileGroupTags"):
+                obj = ConfigFileGroupTag()
+                obj._deserialize(item)
+                self._ConfigFileGroupTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileGroupTag(AbstractModel):
+    """配置文件标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key-value 键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: key-value 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFilePublishInfo(AbstractModel):
+    """发布详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReleaseName: 发布名称
+        :type ReleaseName: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 发布组
+        :type Group: str
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _Content: 内容
+        :type Content: str
+        :param _Comment: 描述
+        :type Comment: str
+        :param _Format: 格式
+        :type Format: str
+        :param _CreateBy: 创建者
+        :type CreateBy: str
+        :param _ModifyBy: 修改者
+        :type ModifyBy: str
+        :param _Tags: 标签
+        :type Tags: list of ConfigFileTag
+        """
+        self._ReleaseName = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._Content = None
+        self._Comment = None
+        self._Format = None
+        self._CreateBy = None
+        self._ModifyBy = None
+        self._Tags = None
+
+    @property
+    def ReleaseName(self):
+        return self._ReleaseName
+
+    @ReleaseName.setter
+    def ReleaseName(self, ReleaseName):
+        self._ReleaseName = ReleaseName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ReleaseName = params.get("ReleaseName")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._Content = params.get("Content")
+        self._Comment = params.get("Comment")
+        self._Format = params.get("Format")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyBy = params.get("ModifyBy")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ConfigFileTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileRelease(AbstractModel):
+    """配置文件发布
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置文件发布id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 配置文件发布名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: 配置文件发布命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Group: 配置文件发布组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _FileName: 配置文件发布文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _Content: 配置文件发布内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Comment: 配置文件发布注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Md5: 配置文件发布Md5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
+        :param _Version: 配置文件发布版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _CreateTime: 配置文件发布创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreateBy: 配置文件发布创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateBy: str
+        :param _ModifyTime: 配置文件发布修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ModifyBy: 配置文件发布修改者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyBy: str
+        :param _ReleaseDescription: 发布描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDescription: str
+        :param _Active: 是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Active: bool
+        :param _Format: 格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._Content = None
+        self._Comment = None
+        self._Md5 = None
+        self._Version = None
+        self._CreateTime = None
+        self._CreateBy = None
+        self._ModifyTime = None
+        self._ModifyBy = None
+        self._ReleaseDescription = None
+        self._Active = None
+        self._Format = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Md5(self):
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+    @property
+    def ReleaseDescription(self):
+        return self._ReleaseDescription
+
+    @ReleaseDescription.setter
+    def ReleaseDescription(self, ReleaseDescription):
+        self._ReleaseDescription = ReleaseDescription
+
+    @property
+    def Active(self):
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._Content = params.get("Content")
+        self._Comment = params.get("Comment")
+        self._Md5 = params.get("Md5")
+        self._Version = params.get("Version")
+        self._CreateTime = params.get("CreateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ModifyBy = params.get("ModifyBy")
+        self._ReleaseDescription = params.get("ReleaseDescription")
+        self._Active = params.get("Active")
+        self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileReleaseDeletion(AbstractModel):
+    """配置发布删除
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Group: 配置分组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _FileName: 文件名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _ReleaseVersion: 发布版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseVersion: str
+        """
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._ReleaseVersion = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def ReleaseVersion(self):
+        return self._ReleaseVersion
+
+    @ReleaseVersion.setter
+    def ReleaseVersion(self, ReleaseVersion):
+        self._ReleaseVersion = ReleaseVersion
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._ReleaseVersion = params.get("ReleaseVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileReleaseHistory(AbstractModel):
+    """配置文件发布历史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置文件发布历史记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 配置文件发布历史名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: 配置文件发布历史命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Group: 配置文件发布历史组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _FileName: 配置文件发布历史名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _Content: 配置文件发布历史内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Format: 配置文件发布历史格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        :param _Comment: 配置文件发布历史注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Md5: 配置文件发布历史Md5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Md5: str
+        :param _Type: 配置文件发布历史类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Status: 配置文件发布历史状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Tags: 配置文件发布历史标签组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of ConfigFileTag
+        :param _CreateTime: 配置文件发布创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreateBy: 配置文件发布创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateBy: str
+        :param _ModifyTime: 配置文件发布修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ModifyBy: 配置文件发布修改者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyBy: str
+        :param _ReleaseDescription: 发布描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseDescription: str
+        :param _ReleaseReason: 原因，用于失败时原因展示
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReleaseReason: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._Content = None
+        self._Format = None
+        self._Comment = None
+        self._Md5 = None
+        self._Type = None
+        self._Status = None
+        self._Tags = None
+        self._CreateTime = None
+        self._CreateBy = None
+        self._ModifyTime = None
+        self._ModifyBy = None
+        self._ReleaseDescription = None
+        self._ReleaseReason = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Md5(self):
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+    @property
+    def ReleaseDescription(self):
+        return self._ReleaseDescription
+
+    @ReleaseDescription.setter
+    def ReleaseDescription(self, ReleaseDescription):
+        self._ReleaseDescription = ReleaseDescription
+
+    @property
+    def ReleaseReason(self):
+        return self._ReleaseReason
+
+    @ReleaseReason.setter
+    def ReleaseReason(self, ReleaseReason):
+        self._ReleaseReason = ReleaseReason
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._Content = params.get("Content")
+        self._Format = params.get("Format")
+        self._Comment = params.get("Comment")
+        self._Md5 = params.get("Md5")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ConfigFileTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ModifyBy = params.get("ModifyBy")
+        self._ReleaseDescription = params.get("ReleaseDescription")
+        self._ReleaseReason = params.get("ReleaseReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileTag(AbstractModel):
+    """配置文件标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: key-value 键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: key-value 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigFileTemplate(AbstractModel):
+    """配置文件模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置文件模板id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _Name: 配置文件模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Content: 配置文件模板内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Format: 配置文件模板格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Format: str
+        :param _Comment: 配置文件模板注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: 配置文件模板创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreateBy: 配置文件模板创建者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateBy: str
+        :param _ModifyTime: 配置文件模板修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _ModifyBy: 配置文件模板修改者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyBy: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Content = None
+        self._Format = None
+        self._Comment = None
+        self._CreateTime = None
+        self._CreateBy = None
+        self._ModifyTime = None
+        self._ModifyBy = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreateBy(self):
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ModifyBy(self):
+        return self._ModifyBy
+
+    @ModifyBy.setter
+    def ModifyBy(self, ModifyBy):
+        self._ModifyBy = ModifyBy
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Format = params.get("Format")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ModifyBy = params.get("ModifyBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAutoScalerResourceStrategyRequest(AbstractModel):
     """CreateAutoScalerResourceStrategy请求参数结构体
 
@@ -3771,6 +5192,174 @@ class CreateCloudNativeAPIGatewayServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateConfigFileGroupRequest(AbstractModel):
+    """CreateConfigFileGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例 id
+        :type InstanceId: str
+        :param _ConfigFileGroup: 配置文件组实体
+        :type ConfigFileGroup: :class:`tencentcloud.tse.v20201207.models.ConfigFileGroup`
+        """
+        self._InstanceId = None
+        self._ConfigFileGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFileGroup(self):
+        return self._ConfigFileGroup
+
+    @ConfigFileGroup.setter
+    def ConfigFileGroup(self, ConfigFileGroup):
+        self._ConfigFileGroup = ConfigFileGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFileGroup") is not None:
+            self._ConfigFileGroup = ConfigFileGroup()
+            self._ConfigFileGroup._deserialize(params.get("ConfigFileGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigFileGroupResponse(AbstractModel):
+    """CreateConfigFileGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否创建成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConfigFileRequest(AbstractModel):
+    """CreateConfigFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE 实例id
+        :type InstanceId: str
+        :param _ConfigFile: 配置文件列表详情
+        :type ConfigFile: :class:`tencentcloud.tse.v20201207.models.ConfigFile`
+        """
+        self._InstanceId = None
+        self._ConfigFile = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFile(self):
+        return self._ConfigFile
+
+    @ConfigFile.setter
+    def ConfigFile(self, ConfigFile):
+        self._ConfigFile = ConfigFile
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFile") is not None:
+            self._ConfigFile = ConfigFile()
+            self._ConfigFile._deserialize(params.get("ConfigFile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigFileResponse(AbstractModel):
+    """CreateConfigFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否创建成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateEngineRequest(AbstractModel):
     """CreateEngine请求参数结构体
 
@@ -4128,6 +5717,136 @@ class CreateGatewayServiceResult(AbstractModel):
         
 
 
+class CreateGovernanceAliasRequest(AbstractModel):
+    """CreateGovernanceAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _Alias: 服务别名
+        :type Alias: str
+        :param _AliasNamespace: 服务别名命名空间
+        :type AliasNamespace: str
+        :param _Service: 服务别名所指向的服务名
+        :type Service: str
+        :param _Namespace: 服务别名所指向的命名空间
+        :type Namespace: str
+        :param _Comment: 服务别名描述
+        :type Comment: str
+        """
+        self._InstanceId = None
+        self._Alias = None
+        self._AliasNamespace = None
+        self._Service = None
+        self._Namespace = None
+        self._Comment = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def AliasNamespace(self):
+        return self._AliasNamespace
+
+    @AliasNamespace.setter
+    def AliasNamespace(self, AliasNamespace):
+        self._AliasNamespace = AliasNamespace
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Alias = params.get("Alias")
+        self._AliasNamespace = params.get("AliasNamespace")
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGovernanceAliasResponse(AbstractModel):
+    """CreateGovernanceAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGovernanceInstancesRequest(AbstractModel):
     """CreateGovernanceInstances请求参数结构体
 
@@ -4180,6 +5899,180 @@ class CreateGovernanceInstancesRequest(AbstractModel):
 
 class CreateGovernanceInstancesResponse(AbstractModel):
     """CreateGovernanceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGovernanceNamespacesRequest(AbstractModel):
+    """CreateGovernanceNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例id。
+        :type InstanceId: str
+        :param _GovernanceNamespaces: 命名空间信息。
+        :type GovernanceNamespaces: list of GovernanceNamespaceInput
+        """
+        self._InstanceId = None
+        self._GovernanceNamespaces = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceNamespaces(self):
+        return self._GovernanceNamespaces
+
+    @GovernanceNamespaces.setter
+    def GovernanceNamespaces(self, GovernanceNamespaces):
+        self._GovernanceNamespaces = GovernanceNamespaces
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceNamespaces") is not None:
+            self._GovernanceNamespaces = []
+            for item in params.get("GovernanceNamespaces"):
+                obj = GovernanceNamespaceInput()
+                obj._deserialize(item)
+                self._GovernanceNamespaces.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGovernanceNamespacesResponse(AbstractModel):
+    """CreateGovernanceNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateGovernanceServicesRequest(AbstractModel):
+    """CreateGovernanceServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例 id。
+        :type InstanceId: str
+        :param _GovernanceServices: 服务信息。
+        :type GovernanceServices: list of GovernanceServiceInput
+        """
+        self._InstanceId = None
+        self._GovernanceServices = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceServices(self):
+        return self._GovernanceServices
+
+    @GovernanceServices.setter
+    def GovernanceServices(self, GovernanceServices):
+        self._GovernanceServices = GovernanceServices
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceServices") is not None:
+            self._GovernanceServices = []
+            for item in params.get("GovernanceServices"):
+                obj = GovernanceServiceInput()
+                obj._deserialize(item)
+                self._GovernanceServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGovernanceServicesResponse(AbstractModel):
+    """CreateGovernanceServices返回参数结构体
 
     """
 
@@ -4362,6 +6255,90 @@ class CreateNativeGatewayServerGroupResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = CreateCloudNativeAPIGatewayServerGroupResult()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateOrUpdateConfigFileAndReleaseRequest(AbstractModel):
+    """CreateOrUpdateConfigFileAndRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ConfigFilePublishInfo: 配置文件列表详情	
+        :type ConfigFilePublishInfo: :class:`tencentcloud.tse.v20201207.models.ConfigFilePublishInfo`
+        """
+        self._InstanceId = None
+        self._ConfigFilePublishInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFilePublishInfo(self):
+        return self._ConfigFilePublishInfo
+
+    @ConfigFilePublishInfo.setter
+    def ConfigFilePublishInfo(self, ConfigFilePublishInfo):
+        self._ConfigFilePublishInfo = ConfigFilePublishInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFilePublishInfo") is not None:
+            self._ConfigFilePublishInfo = ConfigFilePublishInfo()
+            self._ConfigFilePublishInfo._deserialize(params.get("ConfigFilePublishInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrUpdateConfigFileAndReleaseResponse(AbstractModel):
+    """CreateOrUpdateConfigFileAndRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -5235,6 +7212,293 @@ class DeleteCloudNativeAPIGatewayServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteConfigFileGroupRequest(AbstractModel):
+    """DeleteConfigFileGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例 id。	
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 组
+        :type Group: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConfigFileGroupResponse(AbstractModel):
+    """DeleteConfigFileGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否删除成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConfigFileReleasesRequest(AbstractModel):
+    """DeleteConfigFileReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _ConfigFileReleases: 待删除配置发布详情
+        :type ConfigFileReleases: list of ConfigFileReleaseDeletion
+        """
+        self._InstanceId = None
+        self._ConfigFileReleases = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFileReleases(self):
+        return self._ConfigFileReleases
+
+    @ConfigFileReleases.setter
+    def ConfigFileReleases(self, ConfigFileReleases):
+        self._ConfigFileReleases = ConfigFileReleases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFileReleases") is not None:
+            self._ConfigFileReleases = []
+            for item in params.get("ConfigFileReleases"):
+                obj = ConfigFileReleaseDeletion()
+                obj._deserialize(item)
+                self._ConfigFileReleases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConfigFileReleasesResponse(AbstractModel):
+    """DeleteConfigFileReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除配置发布结果
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConfigFilesRequest(AbstractModel):
+    """DeleteConfigFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 配置分组名称
+        :type Group: str
+        :param _Name: 配置文件名称
+        :type Name: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._Name = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConfigFilesResponse(AbstractModel):
+    """DeleteConfigFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 修改是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteEngineRequest(AbstractModel):
     """DeleteEngine请求参数结构体
 
@@ -5290,6 +7554,180 @@ class DeleteEngineResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceAliasesRequest(AbstractModel):
+    """DeleteGovernanceAliases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceAliases: 服务别名列表
+        :type GovernanceAliases: list of GovernanceAlias
+        """
+        self._InstanceId = None
+        self._GovernanceAliases = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceAliases(self):
+        return self._GovernanceAliases
+
+    @GovernanceAliases.setter
+    def GovernanceAliases(self, GovernanceAliases):
+        self._GovernanceAliases = GovernanceAliases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceAliases") is not None:
+            self._GovernanceAliases = []
+            for item in params.get("GovernanceAliases"):
+                obj = GovernanceAlias()
+                obj._deserialize(item)
+                self._GovernanceAliases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceAliasesResponse(AbstractModel):
+    """DeleteGovernanceAliases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceInstancesByHostRequest(AbstractModel):
+    """DeleteGovernanceInstancesByHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceInstances: 要删除的服务实例信息。
+        :type GovernanceInstances: list of GovernanceInstanceUpdate
+        """
+        self._InstanceId = None
+        self._GovernanceInstances = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceInstances(self):
+        return self._GovernanceInstances
+
+    @GovernanceInstances.setter
+    def GovernanceInstances(self, GovernanceInstances):
+        self._GovernanceInstances = GovernanceInstances
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceInstances") is not None:
+            self._GovernanceInstances = []
+            for item in params.get("GovernanceInstances"):
+                obj = GovernanceInstanceUpdate()
+                obj._deserialize(item)
+                self._GovernanceInstances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceInstancesByHostResponse(AbstractModel):
+    """DeleteGovernanceInstancesByHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -5351,6 +7789,180 @@ class DeleteGovernanceInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 操作是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceNamespacesRequest(AbstractModel):
+    """DeleteGovernanceNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例 id。
+        :type InstanceId: str
+        :param _GovernanceNamespaces: 命名空间信息。
+        :type GovernanceNamespaces: list of GovernanceNamespaceInput
+        """
+        self._InstanceId = None
+        self._GovernanceNamespaces = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceNamespaces(self):
+        return self._GovernanceNamespaces
+
+    @GovernanceNamespaces.setter
+    def GovernanceNamespaces(self, GovernanceNamespaces):
+        self._GovernanceNamespaces = GovernanceNamespaces
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceNamespaces") is not None:
+            self._GovernanceNamespaces = []
+            for item in params.get("GovernanceNamespaces"):
+                obj = GovernanceNamespaceInput()
+                obj._deserialize(item)
+                self._GovernanceNamespaces.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceNamespacesResponse(AbstractModel):
+    """DeleteGovernanceNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceServicesRequest(AbstractModel):
+    """DeleteGovernanceServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceServices: 服务信息。
+        :type GovernanceServices: list of GovernanceServiceInput
+        """
+        self._InstanceId = None
+        self._GovernanceServices = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceServices(self):
+        return self._GovernanceServices
+
+    @GovernanceServices.setter
+    def GovernanceServices(self, GovernanceServices):
+        self._GovernanceServices = GovernanceServices
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceServices") is not None:
+            self._GovernanceServices = []
+            for item in params.get("GovernanceServices"):
+                obj = GovernanceServiceInput()
+                obj._deserialize(item)
+                self._GovernanceServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceServicesResponse(AbstractModel):
+    """DeleteGovernanceServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 删除服务结果。
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5602,6 +8214,93 @@ class DeleteWafDomainsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAllConfigFileTemplatesRequest(AbstractModel):
+    """DescribeAllConfigFileTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAllConfigFileTemplatesResponse(AbstractModel):
+    """DescribeAllConfigFileTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据总数量
+        :type TotalCount: int
+        :param _ConfigFileTemplates: 配置文件模板列表
+        :type ConfigFileTemplates: list of ConfigFileTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigFileTemplates = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigFileTemplates(self):
+        return self._ConfigFileTemplates
+
+    @ConfigFileTemplates.setter
+    def ConfigFileTemplates(self, ConfigFileTemplates):
+        self._ConfigFileTemplates = ConfigFileTemplates
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigFileTemplates") is not None:
+            self._ConfigFileTemplates = []
+            for item in params.get("ConfigFileTemplates"):
+                obj = ConfigFileTemplate()
+                obj._deserialize(item)
+                self._ConfigFileTemplates.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7536,6 +10235,1147 @@ class DescribeCloudNativeAPIGatewaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConfigFileGroupsRequest(AbstractModel):
+    """DescribeConfigFileGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id
+        :type InstanceId: str
+        :param _Namespace: 根据命名空间过滤
+        :type Namespace: str
+        :param _Group: 根据配置文件组名过滤
+        :type Group: str
+        :param _FileName: 根据配置文件组名过滤
+        :type FileName: str
+        :param _Limit: 返回数量，默认为20，最大值为100。	
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。	
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileGroupsResponse(AbstractModel):
+    """DescribeConfigFileGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 列表总数量
+        :type TotalCount: int
+        :param _ConfigFileGroups: 配置文件组列表
+        :type ConfigFileGroups: list of ConfigFileGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigFileGroups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigFileGroups(self):
+        return self._ConfigFileGroups
+
+    @ConfigFileGroups.setter
+    def ConfigFileGroups(self, ConfigFileGroups):
+        self._ConfigFileGroups = ConfigFileGroups
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigFileGroups") is not None:
+            self._ConfigFileGroups = []
+            for item in params.get("ConfigFileGroups"):
+                obj = ConfigFileGroup()
+                obj._deserialize(item)
+                self._ConfigFileGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFileReleaseHistoriesRequest(AbstractModel):
+    """DescribeConfigFileReleaseHistories请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 组
+        :type Group: str
+        :param _Name: 名称
+        :type Name: str
+        :param _EndId: 发布历史记录id，用于分页优化，一般指定 EndId，就不用指定 Offset，否则分页可能不连续
+        :type EndId: int
+        :param _Limit: 返回数量，默认为20，最大值为100。	
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。	
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._Name = None
+        self._EndId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EndId(self):
+        return self._EndId
+
+    @EndId.setter
+    def EndId(self, EndId):
+        self._EndId = EndId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        self._EndId = params.get("EndId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileReleaseHistoriesResponse(AbstractModel):
+    """DescribeConfigFileReleaseHistories返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据总数量
+        :type TotalCount: int
+        :param _ConfigFileReleaseHistories: 配置文件发布历史列表
+        :type ConfigFileReleaseHistories: list of ConfigFileReleaseHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigFileReleaseHistories = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigFileReleaseHistories(self):
+        return self._ConfigFileReleaseHistories
+
+    @ConfigFileReleaseHistories.setter
+    def ConfigFileReleaseHistories(self, ConfigFileReleaseHistories):
+        self._ConfigFileReleaseHistories = ConfigFileReleaseHistories
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigFileReleaseHistories") is not None:
+            self._ConfigFileReleaseHistories = []
+            for item in params.get("ConfigFileReleaseHistories"):
+                obj = ConfigFileReleaseHistory()
+                obj._deserialize(item)
+                self._ConfigFileReleaseHistories.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFileReleaseRequest(AbstractModel):
+    """DescribeConfigFileRelease请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间名称
+        :type Namespace: str
+        :param _Group: 配置分组名称
+        :type Group: str
+        :param _Name: 配置文件名称
+        :type Name: str
+        :param _ReleaseName: 配置文件发布名称
+        :type ReleaseName: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._Name = None
+        self._ReleaseName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ReleaseName(self):
+        return self._ReleaseName
+
+    @ReleaseName.setter
+    def ReleaseName(self, ReleaseName):
+        self._ReleaseName = ReleaseName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        self._ReleaseName = params.get("ReleaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileReleaseResponse(AbstractModel):
+    """DescribeConfigFileRelease返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigFileRelease: 配置文件发布详情
+        :type ConfigFileRelease: :class:`tencentcloud.tse.v20201207.models.ConfigFileRelease`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConfigFileRelease = None
+        self._RequestId = None
+
+    @property
+    def ConfigFileRelease(self):
+        return self._ConfigFileRelease
+
+    @ConfigFileRelease.setter
+    def ConfigFileRelease(self, ConfigFileRelease):
+        self._ConfigFileRelease = ConfigFileRelease
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigFileRelease") is not None:
+            self._ConfigFileRelease = ConfigFileRelease()
+            self._ConfigFileRelease._deserialize(params.get("ConfigFileRelease"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFileReleaseVersionsRequest(AbstractModel):
+    """DescribeConfigFileReleaseVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 配置分组
+        :type Group: str
+        :param _FileName: 文件名称
+        :type FileName: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileReleaseVersionsResponse(AbstractModel):
+    """DescribeConfigFileReleaseVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReleaseVersions: 版本信息
+        :type ReleaseVersions: list of ReleaseVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReleaseVersions = None
+        self._RequestId = None
+
+    @property
+    def ReleaseVersions(self):
+        return self._ReleaseVersions
+
+    @ReleaseVersions.setter
+    def ReleaseVersions(self, ReleaseVersions):
+        self._ReleaseVersions = ReleaseVersions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReleaseVersions") is not None:
+            self._ReleaseVersions = []
+            for item in params.get("ReleaseVersions"):
+                obj = ReleaseVersion()
+                obj._deserialize(item)
+                self._ReleaseVersions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFileReleasesRequest(AbstractModel):
+    """DescribeConfigFileReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Limit: 条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 配置分组
+        :type Group: str
+        :param _FileName: 文件名称
+        :type FileName: str
+        :param _OnlyUse: 只保护处于使用状态
+        :type OnlyUse: bool
+        :param _ReleaseName: 发布名称
+        :type ReleaseName: str
+        :param _OrderField: 排序字段，mtime/version/name
+，默认version
+        :type OrderField: str
+        :param _OrderDesc: 排序，asc/desc，默认 desc
+        :type OrderDesc: str
+        """
+        self._InstanceId = None
+        self._Limit = None
+        self._Offset = None
+        self._Namespace = None
+        self._Group = None
+        self._FileName = None
+        self._OnlyUse = None
+        self._ReleaseName = None
+        self._OrderField = None
+        self._OrderDesc = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def OnlyUse(self):
+        return self._OnlyUse
+
+    @OnlyUse.setter
+    def OnlyUse(self, OnlyUse):
+        self._OnlyUse = OnlyUse
+
+    @property
+    def ReleaseName(self):
+        return self._ReleaseName
+
+    @ReleaseName.setter
+    def ReleaseName(self, ReleaseName):
+        self._ReleaseName = ReleaseName
+
+    @property
+    def OrderField(self):
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderDesc(self):
+        return self._OrderDesc
+
+    @OrderDesc.setter
+    def OrderDesc(self, OrderDesc):
+        self._OrderDesc = OrderDesc
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._FileName = params.get("FileName")
+        self._OnlyUse = params.get("OnlyUse")
+        self._ReleaseName = params.get("ReleaseName")
+        self._OrderField = params.get("OrderField")
+        self._OrderDesc = params.get("OrderDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileReleasesResponse(AbstractModel):
+    """DescribeConfigFileReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _Releases: 发布列表
+        :type Releases: list of ConfigFileRelease
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Releases = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Releases(self):
+        return self._Releases
+
+    @Releases.setter
+    def Releases(self, Releases):
+        self._Releases = Releases
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Releases") is not None:
+            self._Releases = []
+            for item in params.get("Releases"):
+                obj = ConfigFileRelease()
+                obj._deserialize(item)
+                self._Releases.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFileRequest(AbstractModel):
+    """DescribeConfigFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Group: 组
+        :type Group: str
+        :param _Name: 名称
+        :type Name: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._Name = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFileResponse(AbstractModel):
+    """DescribeConfigFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigFile: 配置文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigFile: :class:`tencentcloud.tse.v20201207.models.ConfigFile`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConfigFile = None
+        self._RequestId = None
+
+    @property
+    def ConfigFile(self):
+        return self._ConfigFile
+
+    @ConfigFile.setter
+    def ConfigFile(self, ConfigFile):
+        self._ConfigFile = ConfigFile
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigFile") is not None:
+            self._ConfigFile = ConfigFile()
+            self._ConfigFile._deserialize(params.get("ConfigFile"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFilesByGroupRequest(AbstractModel):
+    """DescribeConfigFilesByGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Namespace: 命名空间名
+        :type Namespace: str
+        :param _Group: 组名
+        :type Group: str
+        :param _Limit: 返回数量，默认为20，最大值为100。	
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。	
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Group = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Group = params.get("Group")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFilesByGroupResponse(AbstractModel):
+    """DescribeConfigFilesByGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 记录总数量
+        :type TotalCount: int
+        :param _ConfigFiles: 配置文件列表
+        :type ConfigFiles: list of ConfigFile
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigFiles = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigFiles(self):
+        return self._ConfigFiles
+
+    @ConfigFiles.setter
+    def ConfigFiles(self, ConfigFiles):
+        self._ConfigFiles = ConfigFiles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigFiles") is not None:
+            self._ConfigFiles = []
+            for item in params.get("ConfigFiles"):
+                obj = ConfigFile()
+                obj._deserialize(item)
+                self._ConfigFiles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigFilesRequest(AbstractModel):
+    """DescribeConfigFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间名称
+        :type Namespace: str
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _Group: 组名
+        :type Group: str
+        :param _Name: 名称
+        :type Name: str
+        :param _Tags: 标签列表
+        :type Tags: list of ConfigFileTag
+        :param _Limit: 返回数量，默认为20，最大值为100。	
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。	
+        :type Offset: int
+        """
+        self._Namespace = None
+        self._InstanceId = None
+        self._Group = None
+        self._Name = None
+        self._Tags = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._InstanceId = params.get("InstanceId")
+        self._Group = params.get("Group")
+        self._Name = params.get("Name")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ConfigFileTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigFilesResponse(AbstractModel):
+    """DescribeConfigFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 分页总数量
+        :type TotalCount: int
+        :param _ConfigFiles: 配置文件列表
+        :type ConfigFiles: list of ConfigFile
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigFiles = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigFiles(self):
+        return self._ConfigFiles
+
+    @ConfigFiles.setter
+    def ConfigFiles(self, ConfigFiles):
+        self._ConfigFiles = ConfigFiles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigFiles") is not None:
+            self._ConfigFiles = []
+            for item in params.get("ConfigFiles"):
+                obj = ConfigFile()
+                obj._deserialize(item)
+                self._ConfigFiles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGatewayInstancePortResult(AbstractModel):
     """获取云原生API网关实例协议端口列表响应结果
 
@@ -7586,6 +11426,177 @@ class DescribeGatewayInstancePortResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeGovernanceAliasesRequest(AbstractModel):
+    """DescribeGovernanceAliases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _Service: 服务别名所指向的服务名。
+        :type Service: str
+        :param _Namespace: 服务别名所指向的命名空间名。
+        :type Namespace: str
+        :param _Alias: 服务别名。
+        :type Alias: str
+        :param _AliasNamespace: 服务别名命名空间。
+        :type AliasNamespace: str
+        :param _Comment: 服务别名描述。
+        :type Comment: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Service = None
+        self._Namespace = None
+        self._Alias = None
+        self._AliasNamespace = None
+        self._Comment = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def AliasNamespace(self):
+        return self._AliasNamespace
+
+    @AliasNamespace.setter
+    def AliasNamespace(self, AliasNamespace):
+        self._AliasNamespace = AliasNamespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Alias = params.get("Alias")
+        self._AliasNamespace = params.get("AliasNamespace")
+        self._Comment = params.get("Comment")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceAliasesResponse(AbstractModel):
+    """DescribeGovernanceAliases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 服务别名总数量。
+        :type TotalCount: int
+        :param _Content: 服务别名列表。
+        :type Content: list of GovernanceAlias
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = GovernanceAlias()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeGovernanceInstancesRequest(AbstractModel):
@@ -7795,6 +11806,624 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
             self._Content = []
             for item in params.get("Content"):
                 obj = GovernanceInstance()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGovernanceNamespacesRequest(AbstractModel):
+    """DescribeGovernanceNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id
+        :type InstanceId: str
+        :param _Name: 根据命名空间名称过滤。
+        :type Name: str
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceNamespacesResponse(AbstractModel):
+    """DescribeGovernanceNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 列表总数量。
+        :type TotalCount: int
+        :param _Content: 治理中心命名空间实例列表。
+        :type Content: list of GovernanceNamespace
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = GovernanceNamespace()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGovernanceServiceContractVersionsRequest(AbstractModel):
+    """DescribeGovernanceServiceContractVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 引擎实例ID
+        :type InstanceId: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Service: 服务名
+        :type Service: str
+        """
+        self._InstanceId = None
+        self._Namespace = None
+        self._Service = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Namespace = params.get("Namespace")
+        self._Service = params.get("Service")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceServiceContractVersionsResponse(AbstractModel):
+    """DescribeGovernanceServiceContractVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GovernanceServiceContractVersions: 服务契约版本列表
+        :type GovernanceServiceContractVersions: list of GovernanceServiceContractVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GovernanceServiceContractVersions = None
+        self._RequestId = None
+
+    @property
+    def GovernanceServiceContractVersions(self):
+        return self._GovernanceServiceContractVersions
+
+    @GovernanceServiceContractVersions.setter
+    def GovernanceServiceContractVersions(self, GovernanceServiceContractVersions):
+        self._GovernanceServiceContractVersions = GovernanceServiceContractVersions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GovernanceServiceContractVersions") is not None:
+            self._GovernanceServiceContractVersions = []
+            for item in params.get("GovernanceServiceContractVersions"):
+                obj = GovernanceServiceContractVersion()
+                obj._deserialize(item)
+                self._GovernanceServiceContractVersions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGovernanceServiceContractsRequest(AbstractModel):
+    """DescribeGovernanceServiceContracts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 北极星引擎实例ID
+        :type InstanceId: str
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Limit: 分页条数
+        :type Limit: int
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Service: 服务名
+        :type Service: str
+        :param _Name: 契约名称
+        :type Name: str
+        :param _ContractVersion: 契约版本
+        :type ContractVersion: str
+        :param _Protocol: 契约协议
+        :type Protocol: str
+        :param _Brief: 是否只展示基本信息
+        :type Brief: bool
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Namespace = None
+        self._Service = None
+        self._Name = None
+        self._ContractVersion = None
+        self._Protocol = None
+        self._Brief = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContractVersion(self):
+        return self._ContractVersion
+
+    @ContractVersion.setter
+    def ContractVersion(self, ContractVersion):
+        self._ContractVersion = ContractVersion
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Brief(self):
+        return self._Brief
+
+    @Brief.setter
+    def Brief(self, Brief):
+        self._Brief = Brief
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Namespace = params.get("Namespace")
+        self._Service = params.get("Service")
+        self._Name = params.get("Name")
+        self._ContractVersion = params.get("ContractVersion")
+        self._Protocol = params.get("Protocol")
+        self._Brief = params.get("Brief")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceServiceContractsResponse(AbstractModel):
+    """DescribeGovernanceServiceContracts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Size: 返回条数
+        :type Size: int
+        :param _ServiceContracts: 契约定义列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceContracts: list of GovernanceServiceContract
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Size = None
+        self._ServiceContracts = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ServiceContracts(self):
+        return self._ServiceContracts
+
+    @ServiceContracts.setter
+    def ServiceContracts(self, ServiceContracts):
+        self._ServiceContracts = ServiceContracts
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Size = params.get("Size")
+        if params.get("ServiceContracts") is not None:
+            self._ServiceContracts = []
+            for item in params.get("ServiceContracts"):
+                obj = GovernanceServiceContract()
+                obj._deserialize(item)
+                self._ServiceContracts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGovernanceServicesRequest(AbstractModel):
+    """DescribeGovernanceServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 按照服务名过滤，精确匹配。
+        :type Name: str
+        :param _Namespace: 按照命名空间过滤，精确匹配。
+        :type Namespace: str
+        :param _Metadatas: 使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。
+        :type Metadatas: list of Metadata
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _InstanceId: tse 实例 id。
+        :type InstanceId: str
+        :param _Department: 服务所属部门。
+        :type Department: str
+        :param _Business: 服务所属业务。
+        :type Business: str
+        :param _Host: 服务中实例的ip，用来过滤服务。
+        :type Host: str
+        :param _OnlyExistHealthyInstance: 是否只查询存在健康实例的服务
+        :type OnlyExistHealthyInstance: bool
+        """
+        self._Name = None
+        self._Namespace = None
+        self._Metadatas = None
+        self._Offset = None
+        self._Limit = None
+        self._InstanceId = None
+        self._Department = None
+        self._Business = None
+        self._Host = None
+        self._OnlyExistHealthyInstance = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def OnlyExistHealthyInstance(self):
+        return self._OnlyExistHealthyInstance
+
+    @OnlyExistHealthyInstance.setter
+    def OnlyExistHealthyInstance(self, OnlyExistHealthyInstance):
+        self._OnlyExistHealthyInstance = OnlyExistHealthyInstance
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._Department = params.get("Department")
+        self._Business = params.get("Business")
+        self._Host = params.get("Host")
+        self._OnlyExistHealthyInstance = params.get("OnlyExistHealthyInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceServicesResponse(AbstractModel):
+    """DescribeGovernanceServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 服务数总量。
+        :type TotalCount: int
+        :param _Content: 服务信息详情。
+        :type Content: list of GovernanceService
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = GovernanceService()
                 obj._deserialize(item)
                 self._Content.append(obj)
         self._RequestId = params.get("RequestId")
@@ -10132,6 +14761,140 @@ class GatewayInstanceSchemeAndPorts(AbstractModel):
         
 
 
+class GovernanceAlias(AbstractModel):
+    """服务别名结构信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: 服务别名
+        :type Alias: str
+        :param _AliasNamespace: 服务别名命名空间
+        :type AliasNamespace: str
+        :param _Service: 服务别名指向的服务名
+        :type Service: str
+        :param _Namespace: 服务别名指向的服务命名空间
+        :type Namespace: str
+        :param _Comment: 服务别名的描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: 服务别名创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 服务别名修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Id: 服务别名ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Editable: 该服务别名是否可以编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        """
+        self._Alias = None
+        self._AliasNamespace = None
+        self._Service = None
+        self._Namespace = None
+        self._Comment = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Id = None
+        self._Editable = None
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def AliasNamespace(self):
+        return self._AliasNamespace
+
+    @AliasNamespace.setter
+    def AliasNamespace(self, AliasNamespace):
+        self._AliasNamespace = AliasNamespace
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
+        self._AliasNamespace = params.get("AliasNamespace")
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Id = params.get("Id")
+        self._Editable = params.get("Editable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GovernanceInstance(AbstractModel):
     """治理中心实例信息。
 
@@ -10181,6 +14944,15 @@ class GovernanceInstance(AbstractModel):
         :param _Ttl: 上报心跳间隔。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ttl: int
+        :param _InstanceVersion: 版本信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceVersion: str
+        :param _HealthStatus: 状态信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthStatus: str
+        :param _Comment: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
         """
         self._Id = None
         self._Service = None
@@ -10197,6 +14969,9 @@ class GovernanceInstance(AbstractModel):
         self._ModifyTime = None
         self._Metadatas = None
         self._Ttl = None
+        self._InstanceVersion = None
+        self._HealthStatus = None
+        self._Comment = None
 
     @property
     def Id(self):
@@ -10318,6 +15093,30 @@ class GovernanceInstance(AbstractModel):
     def Ttl(self, Ttl):
         self._Ttl = Ttl
 
+    @property
+    def InstanceVersion(self):
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
+
+    @property
+    def HealthStatus(self):
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10340,6 +15139,9 @@ class GovernanceInstance(AbstractModel):
                 obj._deserialize(item)
                 self._Metadatas.append(obj)
         self._Ttl = params.get("Ttl")
+        self._InstanceVersion = params.get("InstanceVersion")
+        self._HealthStatus = params.get("HealthStatus")
+        self._Comment = params.get("Comment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10675,6 +15477,1072 @@ class GovernanceInstanceUpdate(AbstractModel):
                 obj = Metadata()
                 obj._deserialize(item)
                 self._Metadatas.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceInterfaceDescription(AbstractModel):
+    """服务契约接口定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 契约接口ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Method: 方法名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param _Path: 路径/接口名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Content: 内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Source: 创建来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: str
+        :param _Revision: 信息摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Name: 接口名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._ID = None
+        self._Method = None
+        self._Path = None
+        self._Content = None
+        self._Source = None
+        self._Revision = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Name = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Revision(self):
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Method = params.get("Method")
+        self._Path = params.get("Path")
+        self._Content = params.get("Content")
+        self._Source = params.get("Source")
+        self._Revision = params.get("Revision")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceNamespace(AbstractModel):
+    """治理中心命名空间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 命名空间名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Comment: 命名空间描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _TotalServiceCount: 命名空间下总服务数据量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalServiceCount: int
+        :param _TotalHealthInstanceCount: 命名空间下总健康实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalHealthInstanceCount: int
+        :param _TotalInstanceCount: 命名空间下总实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalInstanceCount: int
+        :param _Id: 命名空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Editable: 是否可以编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        :param _UserIds: 可以操作此命名空间的用户ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of str
+        :param _GroupIds: 可以操作此命名空间的用户组ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of str
+        :param _RemoveUserIds: 移除可以操作此命名空间的用户ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveUserIds: list of str
+        :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveGroupIds: list of str
+        """
+        self._Name = None
+        self._Comment = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._TotalServiceCount = None
+        self._TotalHealthInstanceCount = None
+        self._TotalInstanceCount = None
+        self._Id = None
+        self._Editable = None
+        self._UserIds = None
+        self._GroupIds = None
+        self._RemoveUserIds = None
+        self._RemoveGroupIds = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def TotalServiceCount(self):
+        return self._TotalServiceCount
+
+    @TotalServiceCount.setter
+    def TotalServiceCount(self, TotalServiceCount):
+        self._TotalServiceCount = TotalServiceCount
+
+    @property
+    def TotalHealthInstanceCount(self):
+        return self._TotalHealthInstanceCount
+
+    @TotalHealthInstanceCount.setter
+    def TotalHealthInstanceCount(self, TotalHealthInstanceCount):
+        self._TotalHealthInstanceCount = TotalHealthInstanceCount
+
+    @property
+    def TotalInstanceCount(self):
+        return self._TotalInstanceCount
+
+    @TotalInstanceCount.setter
+    def TotalInstanceCount(self, TotalInstanceCount):
+        self._TotalInstanceCount = TotalInstanceCount
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def RemoveUserIds(self):
+        return self._RemoveUserIds
+
+    @RemoveUserIds.setter
+    def RemoveUserIds(self, RemoveUserIds):
+        self._RemoveUserIds = RemoveUserIds
+
+    @property
+    def RemoveGroupIds(self):
+        return self._RemoveGroupIds
+
+    @RemoveGroupIds.setter
+    def RemoveGroupIds(self, RemoveGroupIds):
+        self._RemoveGroupIds = RemoveGroupIds
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._TotalServiceCount = params.get("TotalServiceCount")
+        self._TotalHealthInstanceCount = params.get("TotalHealthInstanceCount")
+        self._TotalInstanceCount = params.get("TotalInstanceCount")
+        self._Id = params.get("Id")
+        self._Editable = params.get("Editable")
+        self._UserIds = params.get("UserIds")
+        self._GroupIds = params.get("GroupIds")
+        self._RemoveUserIds = params.get("RemoveUserIds")
+        self._RemoveGroupIds = params.get("RemoveGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceNamespaceInput(AbstractModel):
+    """治理中心命名空间输入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 命名空间名。
+        :type Name: str
+        :param _Comment: 描述信息。
+        :type Comment: str
+        :param _UserIds: 新增的可以操作此命名空间的用户ID列表
+        :type UserIds: list of str
+        :param _GroupIds: 新增的可以操作此命名空间的用户组ID列表
+        :type GroupIds: list of str
+        :param _RemoveUserIds: 移除可以操作此命名空间的用户ID列表
+        :type RemoveUserIds: list of str
+        :param _RemoveGroupIds: 移除可以操作此命名空间的用户组ID列表
+        :type RemoveGroupIds: list of str
+        """
+        self._Name = None
+        self._Comment = None
+        self._UserIds = None
+        self._GroupIds = None
+        self._RemoveUserIds = None
+        self._RemoveGroupIds = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def RemoveUserIds(self):
+        return self._RemoveUserIds
+
+    @RemoveUserIds.setter
+    def RemoveUserIds(self, RemoveUserIds):
+        self._RemoveUserIds = RemoveUserIds
+
+    @property
+    def RemoveGroupIds(self):
+        return self._RemoveGroupIds
+
+    @RemoveGroupIds.setter
+    def RemoveGroupIds(self, RemoveGroupIds):
+        self._RemoveGroupIds = RemoveGroupIds
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._UserIds = params.get("UserIds")
+        self._GroupIds = params.get("GroupIds")
+        self._RemoveUserIds = params.get("RemoveUserIds")
+        self._RemoveGroupIds = params.get("RemoveGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceService(AbstractModel):
+    """治理中心服务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 服务名称。
+        :type Name: str
+        :param _Namespace: 命名空间名称。
+        :type Namespace: str
+        :param _Metadatas: 元数据信息数组。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadatas: list of Metadata
+        :param _Comment: 描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: 创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Department: 服务所属部门。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Department: str
+        :param _Business: 服务所属业务。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Business: str
+        :param _HealthyInstanceCount: 健康服务实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthyInstanceCount: int
+        :param _TotalInstanceCount: 服务实例总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalInstanceCount: int
+        :param _Id: 服务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Editable: 是否可以编辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Editable: bool
+        :param _UserIds: 可以编辑该资源的用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: list of str
+        :param _GroupIds: 可以编辑该资源的用户组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupIds: list of str
+        :param _RemoveUserIds: 移除可以编辑该资源的用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveUserIds: list of str
+        :param _RemoveGroupIds: 移除可以编辑该资源的用户组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoveGroupIds: list of str
+        :param _ExportTo: 该服务对哪些命名空间可见	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportTo: list of str
+        :param _Revision: 该服务信息摘要签名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        """
+        self._Name = None
+        self._Namespace = None
+        self._Metadatas = None
+        self._Comment = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Department = None
+        self._Business = None
+        self._HealthyInstanceCount = None
+        self._TotalInstanceCount = None
+        self._Id = None
+        self._Editable = None
+        self._UserIds = None
+        self._GroupIds = None
+        self._RemoveUserIds = None
+        self._RemoveGroupIds = None
+        self._ExportTo = None
+        self._Revision = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def HealthyInstanceCount(self):
+        return self._HealthyInstanceCount
+
+    @HealthyInstanceCount.setter
+    def HealthyInstanceCount(self, HealthyInstanceCount):
+        self._HealthyInstanceCount = HealthyInstanceCount
+
+    @property
+    def TotalInstanceCount(self):
+        return self._TotalInstanceCount
+
+    @TotalInstanceCount.setter
+    def TotalInstanceCount(self, TotalInstanceCount):
+        self._TotalInstanceCount = TotalInstanceCount
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Editable(self):
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def RemoveUserIds(self):
+        return self._RemoveUserIds
+
+    @RemoveUserIds.setter
+    def RemoveUserIds(self, RemoveUserIds):
+        self._RemoveUserIds = RemoveUserIds
+
+    @property
+    def RemoveGroupIds(self):
+        return self._RemoveGroupIds
+
+    @RemoveGroupIds.setter
+    def RemoveGroupIds(self, RemoveGroupIds):
+        self._RemoveGroupIds = RemoveGroupIds
+
+    @property
+    def ExportTo(self):
+        return self._ExportTo
+
+    @ExportTo.setter
+    def ExportTo(self, ExportTo):
+        self._ExportTo = ExportTo
+
+    @property
+    def Revision(self):
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Department = params.get("Department")
+        self._Business = params.get("Business")
+        self._HealthyInstanceCount = params.get("HealthyInstanceCount")
+        self._TotalInstanceCount = params.get("TotalInstanceCount")
+        self._Id = params.get("Id")
+        self._Editable = params.get("Editable")
+        self._UserIds = params.get("UserIds")
+        self._GroupIds = params.get("GroupIds")
+        self._RemoveUserIds = params.get("RemoveUserIds")
+        self._RemoveGroupIds = params.get("RemoveGroupIds")
+        self._ExportTo = params.get("ExportTo")
+        self._Revision = params.get("Revision")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceServiceContract(AbstractModel):
+    """服务契约定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 契约名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: 所属服务命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Protocol: 协议
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: str
+        :param _ID: 契约ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Service: 所属服务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _Version: 版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Revision: 信息摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param _Content: 额外内容描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Interfaces: 契约接口列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Interfaces: list of GovernanceInterfaceDescription
+        """
+        self._Name = None
+        self._Namespace = None
+        self._Protocol = None
+        self._ID = None
+        self._Service = None
+        self._Version = None
+        self._Revision = None
+        self._Content = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Interfaces = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Revision(self):
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Interfaces(self):
+        return self._Interfaces
+
+    @Interfaces.setter
+    def Interfaces(self, Interfaces):
+        self._Interfaces = Interfaces
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Protocol = params.get("Protocol")
+        self._ID = params.get("ID")
+        self._Service = params.get("Service")
+        self._Version = params.get("Version")
+        self._Revision = params.get("Revision")
+        self._Content = params.get("Content")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        if params.get("Interfaces") is not None:
+            self._Interfaces = []
+            for item in params.get("Interfaces"):
+                obj = GovernanceInterfaceDescription()
+                obj._deserialize(item)
+                self._Interfaces.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceServiceContractVersion(AbstractModel):
+    """服务契约版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 契约版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Name: 契约名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Key: 唯一名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        """
+        self._Version = None
+        self._Name = None
+        self._Key = None
+
+    @property
+    def Version(self):
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Name = params.get("Name")
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceServiceInput(AbstractModel):
+    """治理中心服务入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 服务名。
+        :type Name: str
+        :param _Namespace: 服务所属命名空间。
+        :type Namespace: str
+        :param _Comment: 服务描述信息。
+        :type Comment: str
+        :param _Metadatas: 服务元数据。
+        :type Metadatas: list of Metadata
+        :param _Department: 服务所属部门。
+        :type Department: str
+        :param _Business: 服务所属业务。
+        :type Business: str
+        :param _UserIds: 被添加进来可以操作此命名空间的用户ID列表
+        :type UserIds: list of str
+        :param _GroupIds: 被添加进来可以操作此命名空间的用户组ID列表
+        :type GroupIds: list of str
+        :param _RemoveUserIds: 从操作此命名空间的用户组ID列表被移除的ID列表
+        :type RemoveUserIds: list of str
+        :param _RemoveGroupIds: 从可以操作此命名空间的用户组ID列表中被移除的ID列表
+        :type RemoveGroupIds: list of str
+        :param _ExportTo: 该服务对哪些命名空间可见
+        :type ExportTo: list of str
+        """
+        self._Name = None
+        self._Namespace = None
+        self._Comment = None
+        self._Metadatas = None
+        self._Department = None
+        self._Business = None
+        self._UserIds = None
+        self._GroupIds = None
+        self._RemoveUserIds = None
+        self._RemoveGroupIds = None
+        self._ExportTo = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Metadatas(self):
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def UserIds(self):
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def GroupIds(self):
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def RemoveUserIds(self):
+        return self._RemoveUserIds
+
+    @RemoveUserIds.setter
+    def RemoveUserIds(self, RemoveUserIds):
+        self._RemoveUserIds = RemoveUserIds
+
+    @property
+    def RemoveGroupIds(self):
+        return self._RemoveGroupIds
+
+    @RemoveGroupIds.setter
+    def RemoveGroupIds(self, RemoveGroupIds):
+        self._RemoveGroupIds = RemoveGroupIds
+
+    @property
+    def ExportTo(self):
+        return self._ExportTo
+
+    @ExportTo.setter
+    def ExportTo(self, ExportTo):
+        self._ExportTo = ExportTo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._Comment = params.get("Comment")
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._Department = params.get("Department")
+        self._Business = params.get("Business")
+        self._UserIds = params.get("UserIds")
+        self._GroupIds = params.get("GroupIds")
+        self._RemoveUserIds = params.get("RemoveUserIds")
+        self._RemoveGroupIds = params.get("RemoveGroupIds")
+        self._ExportTo = params.get("ExportTo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13867,6 +19735,174 @@ class ModifyCloudNativeAPIGatewayServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyConfigFileGroupRequest(AbstractModel):
+    """ModifyConfigFileGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id
+        :type InstanceId: str
+        :param _ConfigFileGroup: 配置文件组
+        :type ConfigFileGroup: :class:`tencentcloud.tse.v20201207.models.ConfigFileGroup`
+        """
+        self._InstanceId = None
+        self._ConfigFileGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFileGroup(self):
+        return self._ConfigFileGroup
+
+    @ConfigFileGroup.setter
+    def ConfigFileGroup(self, ConfigFileGroup):
+        self._ConfigFileGroup = ConfigFileGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFileGroup") is not None:
+            self._ConfigFileGroup = ConfigFileGroup()
+            self._ConfigFileGroup._deserialize(params.get("ConfigFileGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConfigFileGroupResponse(AbstractModel):
+    """ModifyConfigFileGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 修改是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConfigFilesRequest(AbstractModel):
+    """ModifyConfigFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ins-df344df5	
+        :type InstanceId: str
+        :param _ConfigFile: 配置文件列表
+        :type ConfigFile: :class:`tencentcloud.tse.v20201207.models.ConfigFile`
+        """
+        self._InstanceId = None
+        self._ConfigFile = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFile(self):
+        return self._ConfigFile
+
+    @ConfigFile.setter
+    def ConfigFile(self, ConfigFile):
+        self._ConfigFile = ConfigFile
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFile") is not None:
+            self._ConfigFile = ConfigFile()
+            self._ConfigFile._deserialize(params.get("ConfigFile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConfigFilesResponse(AbstractModel):
+    """ModifyConfigFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 修改是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyConsoleNetworkRequest(AbstractModel):
     """ModifyConsoleNetwork请求参数结构体
 
@@ -13967,6 +20003,136 @@ class ModifyConsoleNetworkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyGovernanceAliasRequest(AbstractModel):
+    """ModifyGovernanceAlias请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _Alias: 服务别名
+        :type Alias: str
+        :param _AliasNamespace: 服务别名命名空间
+        :type AliasNamespace: str
+        :param _Service: 服务别名所指向的服务名
+        :type Service: str
+        :param _Namespace: 服务别名所指向的命名空间
+        :type Namespace: str
+        :param _Comment: 服务别名描述
+        :type Comment: str
+        """
+        self._InstanceId = None
+        self._Alias = None
+        self._AliasNamespace = None
+        self._Service = None
+        self._Namespace = None
+        self._Comment = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def AliasNamespace(self):
+        return self._AliasNamespace
+
+    @AliasNamespace.setter
+    def AliasNamespace(self, AliasNamespace):
+        self._AliasNamespace = AliasNamespace
+
+    @property
+    def Service(self):
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Alias = params.get("Alias")
+        self._AliasNamespace = params.get("AliasNamespace")
+        self._Service = params.get("Service")
+        self._Namespace = params.get("Namespace")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGovernanceAliasResponse(AbstractModel):
+    """ModifyGovernanceAlias返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 创建是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGovernanceInstancesRequest(AbstractModel):
     """ModifyGovernanceInstances请求参数结构体
 
@@ -14025,6 +20191,180 @@ class ModifyGovernanceInstancesResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Result: 修改是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGovernanceNamespacesRequest(AbstractModel):
+    """ModifyGovernanceNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse实例id。
+        :type InstanceId: str
+        :param _GovernanceNamespaces: 命名空间信息。
+        :type GovernanceNamespaces: list of GovernanceNamespaceInput
+        """
+        self._InstanceId = None
+        self._GovernanceNamespaces = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceNamespaces(self):
+        return self._GovernanceNamespaces
+
+    @GovernanceNamespaces.setter
+    def GovernanceNamespaces(self, GovernanceNamespaces):
+        self._GovernanceNamespaces = GovernanceNamespaces
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceNamespaces") is not None:
+            self._GovernanceNamespaces = []
+            for item in params.get("GovernanceNamespaces"):
+                obj = GovernanceNamespaceInput()
+                obj._deserialize(item)
+                self._GovernanceNamespaces.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGovernanceNamespacesResponse(AbstractModel):
+    """ModifyGovernanceNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作是否成功。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGovernanceServicesRequest(AbstractModel):
+    """ModifyGovernanceServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: tse 实例 id。
+        :type InstanceId: str
+        :param _GovernanceServices: 服务信息。
+        :type GovernanceServices: list of GovernanceServiceInput
+        """
+        self._InstanceId = None
+        self._GovernanceServices = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GovernanceServices(self):
+        return self._GovernanceServices
+
+    @GovernanceServices.setter
+    def GovernanceServices(self, GovernanceServices):
+        self._GovernanceServices = GovernanceServices
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("GovernanceServices") is not None:
+            self._GovernanceServices = []
+            for item in params.get("GovernanceServices"):
+                obj = GovernanceServiceInput()
+                obj._deserialize(item)
+                self._GovernanceServices.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGovernanceServicesResponse(AbstractModel):
+    """ModifyGovernanceServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否成功
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15117,6 +21457,90 @@ class PolarisLimiterAddress(AbstractModel):
         
 
 
+class PublishConfigFilesRequest(AbstractModel):
+    """PublishConfigFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _ConfigFileReleases: 配置文件发布
+        :type ConfigFileReleases: :class:`tencentcloud.tse.v20201207.models.ConfigFileRelease`
+        """
+        self._InstanceId = None
+        self._ConfigFileReleases = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigFileReleases(self):
+        return self._ConfigFileReleases
+
+    @ConfigFileReleases.setter
+    def ConfigFileReleases(self, ConfigFileReleases):
+        self._ConfigFileReleases = ConfigFileReleases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ConfigFileReleases") is not None:
+            self._ConfigFileReleases = ConfigFileRelease()
+            self._ConfigFileReleases._deserialize(params.get("ConfigFileReleases"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PublishConfigFilesResponse(AbstractModel):
+    """PublishConfigFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 配置文件发布是否成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class QpsThreshold(AbstractModel):
     """云原生网关限流插件Qps阈值
 
@@ -15225,6 +21649,140 @@ class RateLimitResponse(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReleaseVersion(AbstractModel):
+    """配置发布版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Active: 是否生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Active: bool
+        """
+        self._Name = None
+        self._Active = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Active(self):
+        return self._Active
+
+    @Active.setter
+    def Active(self, Active):
+        self._Active = Active
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Active = params.get("Active")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackConfigFileReleasesRequest(AbstractModel):
+    """RollbackConfigFileReleases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: TSE实例id
+        :type InstanceId: str
+        :param _RollbackConfigFileReleases: 回滚发布
+        :type RollbackConfigFileReleases: list of ConfigFileRelease
+        """
+        self._InstanceId = None
+        self._RollbackConfigFileReleases = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RollbackConfigFileReleases(self):
+        return self._RollbackConfigFileReleases
+
+    @RollbackConfigFileReleases.setter
+    def RollbackConfigFileReleases(self, RollbackConfigFileReleases):
+        self._RollbackConfigFileReleases = RollbackConfigFileReleases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("RollbackConfigFileReleases") is not None:
+            self._RollbackConfigFileReleases = []
+            for item in params.get("RollbackConfigFileReleases"):
+                obj = ConfigFileRelease()
+                obj._deserialize(item)
+                self._RollbackConfigFileReleases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackConfigFileReleasesResponse(AbstractModel):
+    """RollbackConfigFileReleases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 回滚结果
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class RouteWafStatus(AbstractModel):

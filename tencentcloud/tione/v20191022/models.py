@@ -422,7 +422,7 @@ class CreateCodeRepositoryResponse(AbstractModel):
         r"""
         :param _CodeRepositoryName: 存储库名称
         :type CodeRepositoryName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeRepositoryName = None
@@ -656,7 +656,7 @@ class CreateNotebookInstanceResponse(AbstractModel):
         r"""
         :param _NotebookInstanceName: Notebook实例名字
         :type NotebookInstanceName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookInstanceName = None
@@ -752,7 +752,7 @@ class CreateNotebookLifecycleScriptResponse(AbstractModel):
         r"""
         :param _NotebookLifecycleScriptsName: 生命周期脚本名称
         :type NotebookLifecycleScriptsName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookLifecycleScriptsName = None
@@ -835,7 +835,7 @@ class CreatePresignedNotebookInstanceUrlResponse(AbstractModel):
         r"""
         :param _AuthorizedUrl: 授权url
         :type AuthorizedUrl: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AuthorizedUrl = None
@@ -1046,7 +1046,7 @@ class CreateTrainingJobResponse(AbstractModel):
         r"""
         :param _TrainingJobName: 训练任务名称
         :type TrainingJobName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TrainingJobName = None
@@ -1167,7 +1167,7 @@ class DeleteCodeRepositoryResponse(AbstractModel):
         r"""
         :param _CodeRepositoryName: 存储库名称
         :type CodeRepositoryName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeRepositoryName = None
@@ -1235,7 +1235,7 @@ class DeleteNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1305,7 +1305,7 @@ class DeleteNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -1413,7 +1413,7 @@ class DescribeCodeRepositoriesResponse(AbstractModel):
         :param _CodeRepoSet: 存储库列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeRepoSet: list of CodeRepoSummary
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
@@ -1506,7 +1506,7 @@ class DescribeCodeRepositoryResponse(AbstractModel):
         :type GitConfig: :class:`tencentcloud.tione.v20191022.models.GitConfig`
         :param _NoSecret: 是否有Git凭证
         :type NoSecret: bool
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CreationTime = None
@@ -1687,7 +1687,7 @@ Failed: 失败
         :param _ClsConfig: Cls配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsConfig: :class:`tencentcloud.tione.v20191022.models.ClsConfig`
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookInstanceName = None
@@ -2026,7 +2026,7 @@ class DescribeNotebookInstancesResponse(AbstractModel):
         :type NotebookInstanceSet: list of NotebookInstanceSummary
         :param _TotalCount: Notebook实例总数目
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookInstanceSet = None
@@ -2121,7 +2121,7 @@ class DescribeNotebookLifecycleScriptResponse(AbstractModel):
         :type CreationTime: str
         :param _LastModifiedTime: 最后修改时间
         :type LastModifiedTime: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookLifecycleScriptsName = None
@@ -2278,7 +2278,7 @@ class DescribeNotebookLifecycleScriptsResponse(AbstractModel):
         :type NotebookLifecycleScriptsSet: list of NotebookLifecycleScriptsSummary
         :param _TotalCount: Notebook生命周期脚本总数量
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NotebookLifecycleScriptsSet = None
@@ -2342,7 +2342,7 @@ class DescribeNotebookSummaryResponse(AbstractModel):
         :type StorageOnlyBillingInstanceCnt: int
         :param _ComputingBillingInstanceCnt: 计算和存储都计费的实例总数
         :type ComputingBillingInstanceCnt: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AllInstanceCnt = None
@@ -2502,7 +2502,7 @@ Stopped：已停止
         :type LogUrl: str
         :param _InstanceId: 训练任务实例ID
         :type InstanceId: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AlgorithmSpecification = None
@@ -2855,7 +2855,7 @@ class DescribeTrainingJobsResponse(AbstractModel):
         :type TrainingJobSet: list of TrainingJobSummary
         :param _TotalCount: 训练任务总数目
         :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TrainingJobSet = None
@@ -3782,7 +3782,7 @@ class StartNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3840,7 +3840,7 @@ class StopNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -3898,7 +3898,7 @@ class StopTrainingJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4138,7 +4138,7 @@ class UpdateCodeRepositoryResponse(AbstractModel):
         r"""
         :param _CodeRepositoryName: 存储库名称
         :type CodeRepositoryName: str
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CodeRepositoryName = None
@@ -4386,7 +4386,7 @@ class UpdateNotebookInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None
@@ -4470,7 +4470,7 @@ class UpdateNotebookLifecycleScriptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._RequestId = None

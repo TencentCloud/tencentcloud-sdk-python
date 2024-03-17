@@ -4606,14 +4606,11 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         :type DomainName: str
         :param _AppName: 推流路径，与推流和播放地址中的AppName保持一致。如果只绑定域名，则此处填""。
         :type AppName: str
-        :param _StreamName: 流名称。如果只绑定域名或路径，则此处填空。
-        :type StreamName: str
         :param _TemplateId: 指定已有的模板Id。
         :type TemplateId: int
         """
         self._DomainName = None
         self._AppName = None
-        self._StreamName = None
         self._TemplateId = None
 
     @property
@@ -4633,14 +4630,6 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
         self._AppName = AppName
 
     @property
-    def StreamName(self):
-        return self._StreamName
-
-    @StreamName.setter
-    def StreamName(self, StreamName):
-        self._StreamName = StreamName
-
-    @property
     def TemplateId(self):
         return self._TemplateId
 
@@ -4652,7 +4641,6 @@ class CreateLiveTranscodeRuleRequest(AbstractModel):
     def _deserialize(self, params):
         self._DomainName = params.get("DomainName")
         self._AppName = params.get("AppName")
-        self._StreamName = params.get("StreamName")
         self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
