@@ -243,7 +243,7 @@ class ApproverInfo(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
@@ -2551,12 +2551,15 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
 
 例如:2023-07-28 17:25:59
         :type UrlExpireOn: str
+        :param _TaskId: 批量撤销任务编号，为32位字符串，可用于[查询批量撤销签署流程任务结果](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl) 或关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._BatchCancelFlowUrl = None
         self._FailMessages = None
         self._UrlExpireOn = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
@@ -2584,6 +2587,14 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._UrlExpireOn = UrlExpireOn
 
     @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2596,6 +2607,7 @@ class CreateBatchCancelFlowUrlResponse(AbstractModel):
         self._BatchCancelFlowUrl = params.get("BatchCancelFlowUrl")
         self._FailMessages = params.get("FailMessages")
         self._UrlExpireOn = params.get("UrlExpireOn")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2833,7 +2845,7 @@ class CreateBatchSignUrlRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`请确保和合同中填入的一致`
@@ -6924,7 +6936,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _Agent: 代理企业和员工的信息。
@@ -7477,7 +7489,7 @@ class CreatePreparedPersonalEsignRequest(AbstractModel):
         :type UserName: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _SealName: 印章名称，长度1-50个字。
@@ -7930,7 +7942,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母(但“I”、“O”除外)，后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         :param _EndPoint: 要跳转的链接类型
@@ -13437,7 +13449,7 @@ WEWORKAPP: 企业微信
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
@@ -14228,7 +14240,7 @@ class FlowCreateApprover(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _RecipientId: 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
@@ -16157,8 +16169,12 @@ class Intention(AbstractModel):
 注: `视频认证为白名单功能，使用前请联系对接的客户经理沟通。`
         :type IntentionType: int
         :param _IntentionQuestions: 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
+
+注：`选择问答模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可语音回复“同意”或“不同意”。`
         :type IntentionQuestions: list of IntentionQuestion
         :param _IntentionActions: 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+
+注：`选择点头模式时，此字段可不传，不传则使用默认语音文本：请问，您是否同意签署本协议？可点头同意。`
         :type IntentionActions: list of IntentionAction
         """
         self._IntentionType = None
@@ -17109,7 +17125,7 @@ class NeedReviewApproverInfo(AbstractModel):
         :type ApproverIdCardType: str
         :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
         :param _OrganizationName: 组织机构名称。
@@ -19231,8 +19247,8 @@ class StartFlowResponse(AbstractModel):
 
 
 class SuccessCreateStaffData(AbstractModel):
-    """创建员工成功返回的信息
-    支持saas/企微/H5端进行加入。
+    """创建/修改员工成功返回的信息
+    现在支持saas/企微/H5端进行加入。
 
     """
 
@@ -19249,9 +19265,7 @@ class SuccessCreateStaffData(AbstractModel):
         :type Note: str
         :param _WeworkOpenId: 传入的企微账号id
         :type WeworkOpenId: str
-        :param _Url: H5端员工加入\实名链接
-
-只有入参 InvitationNotifyType = H5的时候才会进行返回。
+        :param _Url: 员工邀请返回链接 根据入参的 InvitationNotifyType 和 Endpoint 返回链接 <table><tbody><tr><td>链接类型</td><td>有效期</td><td>示例</td></tr><tr><td>HTTP_SHORT_URL（短链）</td><td>一天</td><td>https://test.essurl.cn/fvG7UBEd0F</td></tr><tr><td>HTTP（长链）</td><td>一天</td><td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?where=mini&from=MSG&to=USER_VERIFY&verifyToken=yDCVbUUckpwocmfpUySko7IS83LTV0u0&expireTime=1710840183</td></tr><tr><td>H5</td><td>30 天</td><td>https://quick.test.qian.tencent.cn/guide?Code=yDCVbUUckpwtvxqoUbTw4VBBjLbfAtW7&CodeType=QUICK&shortKey=yDCVbUY7lhqV7mZlCL2d</td></tr><tr><td>APP</td><td>一天</td><td>/pages/guide/index?to=USER_VERIFY&verifyToken=yDCVbUUckpwocm96UySko7ISvEIZH7Yz&expireTime=1710840455 </td></tr></tbody></table>
         :type Url: str
         """
         self._DisplayName = None
@@ -20568,7 +20582,7 @@ class UserThreeFactor(AbstractModel):
         :type IdCardType: str
         :param _IdCardNumber: 证件号码，应符合以下规则
 <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+<li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给香港居民，“M”字头签发给澳门居民；第2位至第11位为数字。</li>
 <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type IdCardNumber: str
         """
