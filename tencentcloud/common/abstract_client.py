@@ -410,8 +410,6 @@ class AbstractClient(object):
                               self._requestPath,
                               header=headers)
         self._build_req_inter(action, params, req, options)
-        logger.debug("Request Headers: %s", json.dumps(req.header))
-        logger.debug("Request Body: %s", req.data)
 
         if self.profile.httpProfile.apigw_endpoint:
             req.host = self.profile.httpProfile.apigw_endpoint
