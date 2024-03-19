@@ -1279,6 +1279,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAlarmSmsQuota(self, request):
+        """获取告警短信配额
+
+        :param request: Request instance for DescribeAlarmSmsQuota.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmSmsQuotaRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmSmsQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmSmsQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmSmsQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlertRules(self, request):
         """Prometheus 报警规则查询接口
 
@@ -1670,6 +1693,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMonitorResourceInfo(self, request):
+        """获取资源消耗页概览
+
+        :param request: Request instance for DescribeMonitorResourceInfo.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorResourceInfoRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeMonitorResourceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMonitorResourceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMonitorResourceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMonitorTypes(self, request):
         """腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 
@@ -1684,6 +1730,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeMonitorTypes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMonitorTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePhoneAlarmFlowTotalCount(self, request):
+        """查询周期内电话流水总数
+
+        :param request: Request instance for DescribePhoneAlarmFlowTotalCount.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribePhoneAlarmFlowTotalCountRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribePhoneAlarmFlowTotalCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePhoneAlarmFlowTotalCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePhoneAlarmFlowTotalCountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

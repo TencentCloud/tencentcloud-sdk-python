@@ -30246,10 +30246,14 @@ class PodLimitsByType(AbstractModel):
         :param _TKEDirectENI: TKE独立网卡模式可支持的Pod数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TKEDirectENI: int
+        :param _TKESubENI: TKE中继网卡模式可支持的Pod数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TKESubENI: int
         """
         self._TKERouteENINonStaticIP = None
         self._TKERouteENIStaticIP = None
         self._TKEDirectENI = None
+        self._TKESubENI = None
 
     @property
     def TKERouteENINonStaticIP(self):
@@ -30275,11 +30279,20 @@ class PodLimitsByType(AbstractModel):
     def TKEDirectENI(self, TKEDirectENI):
         self._TKEDirectENI = TKEDirectENI
 
+    @property
+    def TKESubENI(self):
+        return self._TKESubENI
+
+    @TKESubENI.setter
+    def TKESubENI(self, TKESubENI):
+        self._TKESubENI = TKESubENI
+
 
     def _deserialize(self, params):
         self._TKERouteENINonStaticIP = params.get("TKERouteENINonStaticIP")
         self._TKERouteENIStaticIP = params.get("TKERouteENIStaticIP")
         self._TKEDirectENI = params.get("TKEDirectENI")
+        self._TKESubENI = params.get("TKESubENI")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

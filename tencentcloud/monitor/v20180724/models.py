@@ -9334,6 +9334,187 @@ class DescribeAlarmPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAlarmSmsQuotaQuota(AbstractModel):
+    """DescribeAlarmSmsQuota接口的配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 配额类型
+        :type Type: str
+        :param _Name: 配额名称
+        :type Name: str
+        :param _FreeLeft: 免费配额剩余量
+        :type FreeLeft: int
+        :param _PurchaseLeft: 付费配额剩余量
+        :type PurchaseLeft: int
+        :param _Used: 已使用量
+        :type Used: int
+        """
+        self._Type = None
+        self._Name = None
+        self._FreeLeft = None
+        self._PurchaseLeft = None
+        self._Used = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FreeLeft(self):
+        return self._FreeLeft
+
+    @FreeLeft.setter
+    def FreeLeft(self, FreeLeft):
+        self._FreeLeft = FreeLeft
+
+    @property
+    def PurchaseLeft(self):
+        return self._PurchaseLeft
+
+    @PurchaseLeft.setter
+    def PurchaseLeft(self, PurchaseLeft):
+        self._PurchaseLeft = PurchaseLeft
+
+    @property
+    def Used(self):
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._FreeLeft = params.get("FreeLeft")
+        self._PurchaseLeft = params.get("PurchaseLeft")
+        self._Used = params.get("Used")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmSmsQuotaRequest(AbstractModel):
+    """DescribeAlarmSmsQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 固定值，为"monitor"
+        :type Module: str
+        """
+        self._Module = None
+
+    @property
+    def Module(self):
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmSmsQuotaResponse(AbstractModel):
+    """DescribeAlarmSmsQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 配额总数
+        :type Total: int
+        :param _Used: 总使用量
+        :type Used: int
+        :param _QuotaList: 短信配额信息列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuotaList: list of DescribeAlarmSmsQuotaQuota
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Used = None
+        self._QuotaList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Used(self):
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def QuotaList(self):
+        return self._QuotaList
+
+    @QuotaList.setter
+    def QuotaList(self, QuotaList):
+        self._QuotaList = QuotaList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Used = params.get("Used")
+        if params.get("QuotaList") is not None:
+            self._QuotaList = []
+            for item in params.get("QuotaList"):
+                obj = DescribeAlarmSmsQuotaQuota()
+                obj._deserialize(item)
+                self._QuotaList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAlertRulesRequest(AbstractModel):
     """DescribeAlertRules请求参数结构体
 
@@ -11984,6 +12165,85 @@ class DescribeInstalledPluginsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMonitorResourceInfoRequest(AbstractModel):
+    """DescribeMonitorResourceInfo请求参数结构体
+
+    """
+
+
+class DescribeMonitorResourceInfoResponse(AbstractModel):
+    """DescribeMonitorResourceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhoneAlarmNumber: 电话告警数量
+        :type PhoneAlarmNumber: int
+        :param _AdvancedMetricNumber: 高级指标数量
+        :type AdvancedMetricNumber: int
+        :param _APIUsageNumber: API调用量
+        :type APIUsageNumber: int
+        :param _AlarmSMSNumber: 告警短信数量
+        :type AlarmSMSNumber: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PhoneAlarmNumber = None
+        self._AdvancedMetricNumber = None
+        self._APIUsageNumber = None
+        self._AlarmSMSNumber = None
+        self._RequestId = None
+
+    @property
+    def PhoneAlarmNumber(self):
+        return self._PhoneAlarmNumber
+
+    @PhoneAlarmNumber.setter
+    def PhoneAlarmNumber(self, PhoneAlarmNumber):
+        self._PhoneAlarmNumber = PhoneAlarmNumber
+
+    @property
+    def AdvancedMetricNumber(self):
+        return self._AdvancedMetricNumber
+
+    @AdvancedMetricNumber.setter
+    def AdvancedMetricNumber(self, AdvancedMetricNumber):
+        self._AdvancedMetricNumber = AdvancedMetricNumber
+
+    @property
+    def APIUsageNumber(self):
+        return self._APIUsageNumber
+
+    @APIUsageNumber.setter
+    def APIUsageNumber(self, APIUsageNumber):
+        self._APIUsageNumber = APIUsageNumber
+
+    @property
+    def AlarmSMSNumber(self):
+        return self._AlarmSMSNumber
+
+    @AlarmSMSNumber.setter
+    def AlarmSMSNumber(self, AlarmSMSNumber):
+        self._AlarmSMSNumber = AlarmSMSNumber
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PhoneAlarmNumber = params.get("PhoneAlarmNumber")
+        self._AdvancedMetricNumber = params.get("AdvancedMetricNumber")
+        self._APIUsageNumber = params.get("APIUsageNumber")
+        self._AlarmSMSNumber = params.get("AlarmSMSNumber")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMonitorTypesRequest(AbstractModel):
     """DescribeMonitorTypes请求参数结构体
 
@@ -12068,6 +12328,88 @@ class DescribeMonitorTypesResponse(AbstractModel):
                 obj = MonitorTypeInfo()
                 obj._deserialize(item)
                 self._MonitorTypeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePhoneAlarmFlowTotalCountRequest(AbstractModel):
+    """DescribePhoneAlarmFlowTotalCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 默认monitor
+        :type Module: str
+        :param _QueryTime: unix时间戳，单位：s
+        :type QueryTime: int
+        """
+        self._Module = None
+        self._QueryTime = None
+
+    @property
+    def Module(self):
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def QueryTime(self):
+        return self._QueryTime
+
+    @QueryTime.setter
+    def QueryTime(self, QueryTime):
+        self._QueryTime = QueryTime
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._QueryTime = params.get("QueryTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePhoneAlarmFlowTotalCountResponse(AbstractModel):
+    """DescribePhoneAlarmFlowTotalCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 电话流水总数
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
 
 

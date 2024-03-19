@@ -893,6 +893,51 @@ class BaseFlowInfo(AbstractModel):
         
 
 
+class CancelFailureFlow(AbstractModel):
+    """撤销失败的流程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 签署流程编号，为32位字符串
+        :type FlowId: str
+        :param _Reason: 撤销失败原因
+        :type Reason: str
+        """
+        self._FlowId = None
+        self._Reason = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CcInfo(AbstractModel):
     """抄送信息
 
@@ -11473,6 +11518,139 @@ class DescribeBatchOrganizationRegistrationUrlsResponse(AbstractModel):
                 obj = OrganizationAuthUrl()
                 obj._deserialize(item)
                 self._OrganizationAuthUrls.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCancelFlowsTaskRequest(AbstractModel):
+    """DescribeCancelFlowsTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+
+此接口下面信息必填。
+<ul>
+<li>渠道应用标识:  Agent.AppId</li>
+<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+</ul>
+第三方平台子客企业和员工必须已经经过实名认证
+        :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _TaskId: 批量撤销任务编号，为32位字符串，通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)获得。
+        :type TaskId: str
+        """
+        self._Agent = None
+        self._TaskId = None
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCancelFlowsTaskResponse(AbstractModel):
+    """DescribeCancelFlowsTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 批量撤销任务编号，为32位字符串。
+        :type TaskId: str
+        :param _TaskStatus: 任务状态，需要关注的状态<ul><li>**PROCESSING**  - 任务执行中</li><li>**END** - 任务处理完成</li><li>**TIMEOUT** 任务超时未处理完成，用户未在批量撤销链接有效期内操作</li></ul>
+        :type TaskStatus: str
+        :param _SuccessFlowIds: 批量撤销成功的签署流程编号
+        :type SuccessFlowIds: list of str
+        :param _FailureFlows: 批量撤销失败的签署流程信息
+        :type FailureFlows: list of CancelFailureFlow
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._SuccessFlowIds = None
+        self._FailureFlows = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def SuccessFlowIds(self):
+        return self._SuccessFlowIds
+
+    @SuccessFlowIds.setter
+    def SuccessFlowIds(self, SuccessFlowIds):
+        self._SuccessFlowIds = SuccessFlowIds
+
+    @property
+    def FailureFlows(self):
+        return self._FailureFlows
+
+    @FailureFlows.setter
+    def FailureFlows(self, FailureFlows):
+        self._FailureFlows = FailureFlows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._SuccessFlowIds = params.get("SuccessFlowIds")
+        if params.get("FailureFlows") is not None:
+            self._FailureFlows = []
+            for item in params.get("FailureFlows"):
+                obj = CancelFailureFlow()
+                obj._deserialize(item)
+                self._FailureFlows.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -1511,6 +1511,19 @@ class AddSpartaProtectionRequest(AbstractModel):
 1：IP hash
 2：加权轮询
         :type LoadBalance: str
+        :param _Ports: 服务端口列表配置。
+NginxServerId：新增域名时填'0'
+Port：监听端口号
+Protocol：端口协议
+UpstreamPort：与Port相同
+UpstreamProtocol：与Protocol相同
+        :type Ports: list of PortItem
+        :param _IsKeepAlive: 必填项，是否开启长连接。
+0： 短连接
+1： 长连接
+        :type IsKeepAlive: str
+        :param _InstanceID: 必填项，域名所属实例id
+        :type InstanceID: str
         :param _Cert: CertType为1时，需要填充此参数，表示自有证书的证书链
         :type Cert: str
         :param _PrivateKey: CertType为1时，需要填充此参数，表示自有证书的私钥
@@ -1543,24 +1556,11 @@ https：使用https协议回源
 0：关闭
 1：开启
         :type IsHttp2: int
-        :param _Ports: 服务端口列表配置。
-NginxServerId：新增域名时填'0'
-Port：监听端口号
-Protocol：端口协议
-UpstreamPort：与Port相同
-UpstreamProtocol：与Protocol相同
-        :type Ports: list of PortItem
         :param _Edition: 待废弃，可不填。WAF实例类型。
 sparta-waf：SAAS型WAF
 clb-waf：负载均衡型WAF
 cdn-waf：CDN上的Web防护能力
         :type Edition: str
-        :param _IsKeepAlive: 必填项，是否开启长连接。
-0： 短连接
-1： 长连接
-        :type IsKeepAlive: str
-        :param _InstanceID: 必填项，域名所属实例id
-        :type InstanceID: str
         :param _Anycast: 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
         :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -1599,6 +1599,8 @@ cdn-waf：CDN上的Web防护能力
         :type Note: str
         :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
         :type UpstreamHost: str
+        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+        :type ProxyBuffer: int
         """
         self._Domain = None
         self._CertType = None
@@ -1606,6 +1608,9 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamType = None
         self._IsWebsocket = None
         self._LoadBalance = None
+        self._Ports = None
+        self._IsKeepAlive = None
+        self._InstanceID = None
         self._Cert = None
         self._PrivateKey = None
         self._SSLId = None
@@ -1619,10 +1624,7 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamDomain = None
         self._SrcList = None
         self._IsHttp2 = None
-        self._Ports = None
         self._Edition = None
-        self._IsKeepAlive = None
-        self._InstanceID = None
         self._Anycast = None
         self._Weights = None
         self._ActiveCheck = None
@@ -1636,6 +1638,7 @@ cdn-waf：CDN上的Web防护能力
         self._XFFReset = None
         self._Note = None
         self._UpstreamHost = None
+        self._ProxyBuffer = None
 
     @property
     def Domain(self):
@@ -1684,6 +1687,30 @@ cdn-waf：CDN上的Web防护能力
     @LoadBalance.setter
     def LoadBalance(self, LoadBalance):
         self._LoadBalance = LoadBalance
+
+    @property
+    def Ports(self):
+        return self._Ports
+
+    @Ports.setter
+    def Ports(self, Ports):
+        self._Ports = Ports
+
+    @property
+    def IsKeepAlive(self):
+        return self._IsKeepAlive
+
+    @IsKeepAlive.setter
+    def IsKeepAlive(self, IsKeepAlive):
+        self._IsKeepAlive = IsKeepAlive
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
 
     @property
     def Cert(self):
@@ -1790,36 +1817,12 @@ cdn-waf：CDN上的Web防护能力
         self._IsHttp2 = IsHttp2
 
     @property
-    def Ports(self):
-        return self._Ports
-
-    @Ports.setter
-    def Ports(self, Ports):
-        self._Ports = Ports
-
-    @property
     def Edition(self):
         return self._Edition
 
     @Edition.setter
     def Edition(self, Edition):
         self._Edition = Edition
-
-    @property
-    def IsKeepAlive(self):
-        return self._IsKeepAlive
-
-    @IsKeepAlive.setter
-    def IsKeepAlive(self, IsKeepAlive):
-        self._IsKeepAlive = IsKeepAlive
-
-    @property
-    def InstanceID(self):
-        return self._InstanceID
-
-    @InstanceID.setter
-    def InstanceID(self, InstanceID):
-        self._InstanceID = InstanceID
 
     @property
     def Anycast(self):
@@ -1925,6 +1928,14 @@ cdn-waf：CDN上的Web防护能力
     def UpstreamHost(self, UpstreamHost):
         self._UpstreamHost = UpstreamHost
 
+    @property
+    def ProxyBuffer(self):
+        return self._ProxyBuffer
+
+    @ProxyBuffer.setter
+    def ProxyBuffer(self, ProxyBuffer):
+        self._ProxyBuffer = ProxyBuffer
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -1933,6 +1944,14 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamType = params.get("UpstreamType")
         self._IsWebsocket = params.get("IsWebsocket")
         self._LoadBalance = params.get("LoadBalance")
+        if params.get("Ports") is not None:
+            self._Ports = []
+            for item in params.get("Ports"):
+                obj = PortItem()
+                obj._deserialize(item)
+                self._Ports.append(obj)
+        self._IsKeepAlive = params.get("IsKeepAlive")
+        self._InstanceID = params.get("InstanceID")
         self._Cert = params.get("Cert")
         self._PrivateKey = params.get("PrivateKey")
         self._SSLId = params.get("SSLId")
@@ -1946,15 +1965,7 @@ cdn-waf：CDN上的Web防护能力
         self._UpstreamDomain = params.get("UpstreamDomain")
         self._SrcList = params.get("SrcList")
         self._IsHttp2 = params.get("IsHttp2")
-        if params.get("Ports") is not None:
-            self._Ports = []
-            for item in params.get("Ports"):
-                obj = PortItem()
-                obj._deserialize(item)
-                self._Ports.append(obj)
         self._Edition = params.get("Edition")
-        self._IsKeepAlive = params.get("IsKeepAlive")
-        self._InstanceID = params.get("InstanceID")
         self._Anycast = params.get("Anycast")
         self._Weights = params.get("Weights")
         self._ActiveCheck = params.get("ActiveCheck")
@@ -1968,6 +1979,7 @@ cdn-waf：CDN上的Web防护能力
         self._XFFReset = params.get("XFFReset")
         self._Note = params.get("Note")
         self._UpstreamHost = params.get("UpstreamHost")
+        self._ProxyBuffer = params.get("ProxyBuffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2367,7 +2379,7 @@ class BatchIpAccessControlData(AbstractModel):
 
 
 class BatchIpAccessControlItem(AbstractModel):
-    """多域名黑白名单列表Ip
+    """批量多域名黑白名单列表Ip
 
     """
 
@@ -2390,6 +2402,12 @@ class BatchIpAccessControlItem(AbstractModel):
         :type ValidTs: int
         :param _Hosts: 域名列表
         :type Hosts: list of str
+        :param _RuleId: 55101145
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _IpList: IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpList: list of str
         """
         self._Id = None
         self._ActionType = None
@@ -2399,6 +2417,8 @@ class BatchIpAccessControlItem(AbstractModel):
         self._TsVersion = None
         self._ValidTs = None
         self._Hosts = None
+        self._RuleId = None
+        self._IpList = None
 
     @property
     def Id(self):
@@ -2464,6 +2484,22 @@ class BatchIpAccessControlItem(AbstractModel):
     def Hosts(self, Hosts):
         self._Hosts = Hosts
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2474,6 +2510,8 @@ class BatchIpAccessControlItem(AbstractModel):
         self._TsVersion = params.get("TsVersion")
         self._ValidTs = params.get("ValidTs")
         self._Hosts = params.get("Hosts")
+        self._RuleId = params.get("RuleId")
+        self._IpList = params.get("IpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7280,6 +7318,9 @@ class DescribeAttackOverviewResponse(AbstractModel):
         :param _LeakCount: 信息泄露总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type LeakCount: int
+        :param _ApiRiskEventCircleCount: API风险事件周环比
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiRiskEventCircleCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7293,6 +7334,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._IPBlackCount = None
         self._TamperCount = None
         self._LeakCount = None
+        self._ApiRiskEventCircleCount = None
         self._RequestId = None
 
     @property
@@ -7376,6 +7418,14 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._LeakCount = LeakCount
 
     @property
+    def ApiRiskEventCircleCount(self):
+        return self._ApiRiskEventCircleCount
+
+    @ApiRiskEventCircleCount.setter
+    def ApiRiskEventCircleCount(self, ApiRiskEventCircleCount):
+        self._ApiRiskEventCircleCount = ApiRiskEventCircleCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -7395,6 +7445,7 @@ class DescribeAttackOverviewResponse(AbstractModel):
         self._IPBlackCount = params.get("IPBlackCount")
         self._TamperCount = params.get("TamperCount")
         self._LeakCount = params.get("LeakCount")
+        self._ApiRiskEventCircleCount = params.get("ApiRiskEventCircleCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8044,7 +8095,7 @@ class DescribeCCAutoStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoCCSwitch: 配置状态
+        :param _AutoCCSwitch: 配置状态，0表示关闭，1表示开启
         :type AutoCCSwitch: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10649,7 +10700,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type Source: str
         :param _Sort: 排序参数
         :type Sort: str
-        :param _Ip: ip
+        :param _Ip: IP
         :type Ip: str
         :param _ValidStatus: 生效状态
         :type ValidStatus: int
@@ -10657,6 +10708,8 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type ValidTimeStampMin: str
         :param _ValidTimeStampMax: 最大有效时间的时间戳
         :type ValidTimeStampMax: str
+        :param _RuleId: 规则ID
+        :type RuleId: int
         """
         self._Domain = None
         self._Count = None
@@ -10673,6 +10726,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidStatus = None
         self._ValidTimeStampMin = None
         self._ValidTimeStampMax = None
+        self._RuleId = None
 
     @property
     def Domain(self):
@@ -10802,6 +10856,14 @@ class DescribeIpAccessControlRequest(AbstractModel):
     def ValidTimeStampMax(self, ValidTimeStampMax):
         self._ValidTimeStampMax = ValidTimeStampMax
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -10819,6 +10881,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         self._ValidStatus = params.get("ValidStatus")
         self._ValidTimeStampMin = params.get("ValidTimeStampMin")
         self._ValidTimeStampMax = params.get("ValidTimeStampMax")
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10839,10 +10902,14 @@ class DescribeIpAccessControlResponse(AbstractModel):
         :param _Data: 输出
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.waf.v20180125.models.IpAccessControlData`
+        :param _UsedTotal: 已经使用的IP黑白名单的IP总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Data = None
+        self._UsedTotal = None
         self._RequestId = None
 
     @property
@@ -10852,6 +10919,14 @@ class DescribeIpAccessControlResponse(AbstractModel):
     @Data.setter
     def Data(self, Data):
         self._Data = Data
+
+    @property
+    def UsedTotal(self):
+        return self._UsedTotal
+
+    @UsedTotal.setter
+    def UsedTotal(self, UsedTotal):
+        self._UsedTotal = UsedTotal
 
     @property
     def RequestId(self):
@@ -10866,6 +10941,7 @@ class DescribeIpAccessControlResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = IpAccessControlData()
             self._Data._deserialize(params.get("Data"))
+        self._UsedTotal = params.get("UsedTotal")
         self._RequestId = params.get("RequestId")
 
 
@@ -13422,7 +13498,7 @@ cdc-clb-waf：CDC环境下负载均衡型WAF实例
 "日本": "jp"
 "弗吉尼亚": "use"
 "北京": "bj"
-"香港": "hk"
+"中国香港": "hk"
 "杭州": "hzec"
 "北京金融": "bjjr"
 "上海金融": "shjr"
@@ -13544,6 +13620,9 @@ public：公有云域名
         :param _SgID: 安全组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type SgID: str
+        :param _AccessStatus: clbwaf接入状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessStatus: int
         """
         self._Domain = None
         self._DomainId = None
@@ -13579,6 +13658,7 @@ public：公有云域名
         self._SrcList = None
         self._UpstreamDomainList = None
         self._SgID = None
+        self._AccessStatus = None
 
     @property
     def Domain(self):
@@ -13852,6 +13932,14 @@ public：公有云域名
     def SgID(self, SgID):
         self._SgID = SgID
 
+    @property
+    def AccessStatus(self):
+        return self._AccessStatus
+
+    @AccessStatus.setter
+    def AccessStatus(self, AccessStatus):
+        self._AccessStatus = AccessStatus
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -13898,6 +13986,7 @@ public：公有云域名
         self._SrcList = params.get("SrcList")
         self._UpstreamDomainList = params.get("UpstreamDomainList")
         self._SgID = params.get("SgID")
+        self._AccessStatus = params.get("AccessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14200,6 +14289,9 @@ https：使用https协议回源
         :param _Level: 防护规则
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: str
+        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyBuffer: int
         """
         self._Domain = None
         self._DomainId = None
@@ -14242,6 +14334,7 @@ https：使用https协议回源
         self._Note = None
         self._UpstreamHost = None
         self._Level = None
+        self._ProxyBuffer = None
 
     @property
     def Domain(self):
@@ -14571,6 +14664,14 @@ https：使用https协议回源
     def Level(self, Level):
         self._Level = Level
 
+    @property
+    def ProxyBuffer(self):
+        return self._ProxyBuffer
+
+    @ProxyBuffer.setter
+    def ProxyBuffer(self, ProxyBuffer):
+        self._ProxyBuffer = ProxyBuffer
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
@@ -14619,6 +14720,7 @@ https：使用https协议回源
         self._Note = params.get("Note")
         self._UpstreamHost = params.get("UpstreamHost")
         self._Level = params.get("Level")
+        self._ProxyBuffer = params.get("ProxyBuffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17622,6 +17724,12 @@ class IpAccessControlItem(AbstractModel):
         :param _ValidStatus: 生效状态
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidStatus: int
+        :param _RuleId: 55000001
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleId: int
+        :param _IpList: IP列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpList: list of str
         """
         self._Id = None
         self._ActionType = None
@@ -17631,6 +17739,8 @@ class IpAccessControlItem(AbstractModel):
         self._TsVersion = None
         self._ValidTs = None
         self._ValidStatus = None
+        self._RuleId = None
+        self._IpList = None
 
     @property
     def Id(self):
@@ -17696,6 +17806,22 @@ class IpAccessControlItem(AbstractModel):
     def ValidStatus(self, ValidStatus):
         self._ValidStatus = ValidStatus
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def IpList(self):
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -17706,6 +17832,8 @@ class IpAccessControlItem(AbstractModel):
         self._TsVersion = params.get("TsVersion")
         self._ValidTs = params.get("ValidTs")
         self._ValidStatus = params.get("ValidStatus")
+        self._RuleId = params.get("RuleId")
+        self._IpList = params.get("IpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18623,10 +18751,14 @@ class ModifyAccessPeriodRequest(AbstractModel):
 
     @property
     def TopicId(self):
+        warnings.warn("parameter `TopicId` is deprecated", DeprecationWarning) 
+
         return self._TopicId
 
     @TopicId.setter
     def TopicId(self, TopicId):
+        warnings.warn("parameter `TopicId` is deprecated", DeprecationWarning) 
+
         self._TopicId = TopicId
 
 
@@ -21743,6 +21875,8 @@ class ModifySpartaProtectionRequest(AbstractModel):
         :type Domain: str
         :param _DomainId: 必填项。域名唯一ID
         :type DomainId: str
+        :param _InstanceID: 必填项。域名所属实例id
+        :type InstanceID: str
         :param _CertType: 必填项。证书类型。
 0：仅配置HTTP监听端口，没有证书
 1：证书来源为自有证书
@@ -21801,8 +21935,6 @@ https：使用https协议回源
 0： 短连接
 1： 长连接
         :type IsKeepAlive: str
-        :param _InstanceID: 必填项。域名所属实例id
-        :type InstanceID: str
         :param _Anycast: 必填项，待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
         :type Anycast: int
         :param _Weights: 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -21843,9 +21975,12 @@ https：使用https协议回源
         :type Note: str
         :param _UpstreamHost: 自定义回源Host。默认为空字符串，表示使用防护域名作为回源Host。
         :type UpstreamHost: str
+        :param _ProxyBuffer: 是否开启缓存 0-关闭 1-开启
+        :type ProxyBuffer: int
         """
         self._Domain = None
         self._DomainId = None
+        self._InstanceID = None
         self._CertType = None
         self._Cert = None
         self._PrivateKey = None
@@ -21864,7 +21999,6 @@ https：使用https协议回源
         self._Edition = None
         self._Ports = None
         self._IsKeepAlive = None
-        self._InstanceID = None
         self._Anycast = None
         self._Weights = None
         self._ActiveCheck = None
@@ -21879,6 +22013,7 @@ https：使用https协议回源
         self._XFFReset = None
         self._Note = None
         self._UpstreamHost = None
+        self._ProxyBuffer = None
 
     @property
     def Domain(self):
@@ -21895,6 +22030,14 @@ https：使用https协议回源
     @DomainId.setter
     def DomainId(self, DomainId):
         self._DomainId = DomainId
+
+    @property
+    def InstanceID(self):
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
 
     @property
     def CertType(self):
@@ -22041,14 +22184,6 @@ https：使用https协议回源
         self._IsKeepAlive = IsKeepAlive
 
     @property
-    def InstanceID(self):
-        return self._InstanceID
-
-    @InstanceID.setter
-    def InstanceID(self, InstanceID):
-        self._InstanceID = InstanceID
-
-    @property
     def Anycast(self):
         return self._Anycast
 
@@ -22160,10 +22295,19 @@ https：使用https协议回源
     def UpstreamHost(self, UpstreamHost):
         self._UpstreamHost = UpstreamHost
 
+    @property
+    def ProxyBuffer(self):
+        return self._ProxyBuffer
+
+    @ProxyBuffer.setter
+    def ProxyBuffer(self, ProxyBuffer):
+        self._ProxyBuffer = ProxyBuffer
+
 
     def _deserialize(self, params):
         self._Domain = params.get("Domain")
         self._DomainId = params.get("DomainId")
+        self._InstanceID = params.get("InstanceID")
         self._CertType = params.get("CertType")
         self._Cert = params.get("Cert")
         self._PrivateKey = params.get("PrivateKey")
@@ -22187,7 +22331,6 @@ https：使用https协议回源
                 obj._deserialize(item)
                 self._Ports.append(obj)
         self._IsKeepAlive = params.get("IsKeepAlive")
-        self._InstanceID = params.get("InstanceID")
         self._Anycast = params.get("Anycast")
         self._Weights = params.get("Weights")
         self._ActiveCheck = params.get("ActiveCheck")
@@ -22202,6 +22345,7 @@ https：使用https协议回源
         self._XFFReset = params.get("XFFReset")
         self._Note = params.get("Note")
         self._UpstreamHost = params.get("UpstreamHost")
+        self._ProxyBuffer = params.get("ProxyBuffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

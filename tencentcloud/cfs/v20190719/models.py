@@ -247,7 +247,7 @@ class AvailableProtoStatus(AbstractModel):
         r"""
         :param _SaleStatus: 售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售
         :type SaleStatus: str
-        :param _Protocol: 协议类型。可选值有 NFS、CIFS
+        :param _Protocol: 协议类型。可选值有 NFS、CIFS、TURBO
         :type Protocol: str
         """
         self._SaleStatus = None

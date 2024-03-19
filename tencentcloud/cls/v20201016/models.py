@@ -12764,7 +12764,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: Kafka数据订阅配置的ID。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
         :param _TopicId: 日志主题ID

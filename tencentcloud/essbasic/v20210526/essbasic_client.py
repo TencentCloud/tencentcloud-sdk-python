@@ -1994,6 +1994,29 @@ class EssbasicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCancelFlowsTask(self, request):
+        """通过接口[批量撤销合同流程](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelBatchCancelFlows)或者[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/partnerApis/operateFlows/ChannelCreateBatchCancelFlowUrl)发起批量撤销任务后，可通过此接口查询批量撤销任务的结果。
+
+        :param request: Request instance for DescribeCancelFlowsTask.
+        :type request: :class:`tencentcloud.essbasic.v20210526.models.DescribeCancelFlowsTaskRequest`
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.DescribeCancelFlowsTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCancelFlowsTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCancelFlowsTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeChannelFlowEvidenceReport(self, request):
         """获取出证报告任务执行结果，返回报告 URL。
 

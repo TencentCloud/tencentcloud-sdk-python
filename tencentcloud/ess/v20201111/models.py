@@ -1539,6 +1539,51 @@ class Caller(AbstractModel):
         
 
 
+class CancelFailureFlow(AbstractModel):
+    """撤销失败的流程信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID，为32位字符串。
+        :type FlowId: str
+        :param _Reason: 撤销失败原因
+        :type Reason: str
+        """
+        self._FlowId = None
+        self._Reason = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelFlowRequest(AbstractModel):
     """CancelFlow请求参数结构体
 
@@ -5997,22 +6042,24 @@ class CreateIntegrationEmployeesRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _InvitationNotifyType: 员工邀请方式可通过以下方式进行设置：
-
-**H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-**SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+        :param _InvitationNotifyType: 员工邀请方式
+可通过以下途径进行设置：
+<ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
         :type InvitationNotifyType: str
         :param _JumpUrl: 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
 
 注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
 
         :type JumpUrl: str
+        :param _Endpoint: 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+        :type Endpoint: str
         """
         self._Operator = None
         self._Employees = None
         self._Agent = None
         self._InvitationNotifyType = None
         self._JumpUrl = None
+        self._Endpoint = None
 
     @property
     def Operator(self):
@@ -6054,6 +6101,14 @@ class CreateIntegrationEmployeesRequest(AbstractModel):
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
 
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -6070,6 +6125,7 @@ class CreateIntegrationEmployeesRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._InvitationNotifyType = params.get("InvitationNotifyType")
         self._JumpUrl = params.get("JumpUrl")
+        self._Endpoint = params.get("Endpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10045,6 +10101,150 @@ class DescribeBillUsageDetailResponse(AbstractModel):
                 obj = BillUsageDetail()
                 obj._deserialize(item)
                 self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCancelFlowsTaskRequest(AbstractModel):
+    """DescribeCancelFlowsTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 批量撤销任务编号，为32位字符串，通过接口[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)获得。
+        :type TaskId: str
+        :param _Agent: 代理企业和员工的信息。
+<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Agent(self):
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCancelFlowsTaskResponse(AbstractModel):
+    """DescribeCancelFlowsTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 批量撤销任务编号，为32位字符串，通过接口[获取批量撤销签署流程腾讯电子签小程序链接](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)获得。
+        :type TaskId: str
+        :param _TaskStatus: 任务状态，需要关注的状态
+<ul><li>**PROCESSING**  - 任务执行中</li>
+<li>**END** - 任务处理完成</li>
+<li>**TIMEOUT** 任务超时未处理完成，用户未在批量撤销链接有效期内操作</li></ul>
+        :type TaskStatus: str
+        :param _SuccessFlowIds: 批量撤销成功的签署流程编号
+        :type SuccessFlowIds: list of str
+        :param _FailureFlows: 批量撤销失败的签署流程信息
+        :type FailureFlows: list of CancelFailureFlow
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskStatus = None
+        self._SuccessFlowIds = None
+        self._FailureFlows = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStatus(self):
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def SuccessFlowIds(self):
+        return self._SuccessFlowIds
+
+    @SuccessFlowIds.setter
+    def SuccessFlowIds(self, SuccessFlowIds):
+        self._SuccessFlowIds = SuccessFlowIds
+
+    @property
+    def FailureFlows(self):
+        return self._FailureFlows
+
+    @FailureFlows.setter
+    def FailureFlows(self, FailureFlows):
+        self._FailureFlows = FailureFlows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._SuccessFlowIds = params.get("SuccessFlowIds")
+        if params.get("FailureFlows") is not None:
+            self._FailureFlows = []
+            for item in params.get("FailureFlows"):
+                obj = CancelFailureFlow()
+                obj._deserialize(item)
+                self._FailureFlows.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -20020,21 +20220,19 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _InvitationNotifyType: 员工邀请方式可通过以下方式进行设置：
-
-**H5**：会生成H5的链接，点击链接进入H5的认证加入企业的逻辑。
-**SMS（默认）**：会通过短信或企业微信消息进行邀请。如果非企业微信场景，则是企业微信消息。其他场景则是短信通知，短信中包含链接，点击后进入微信小程序进行认证加入企业的逻辑。
+        :param _InvitationNotifyType: 员工邀请方式可通过以下途径进行设置：<ul><li>**SMS（默认）**：邀请将通过短信或企业微信消息发送。若场景非企业微信，则采用企业微信消息；其他情境下则使用短信通知。短信内含链接，点击后将进入微信小程序进行认证并加入企业的流程。</li><li>**H5**：将生成H5链接，用户点击链接后可进入H5页面进行认证并加入企业的流程。</li><li>**NONE**：系统会根据Endpoint生成签署链接，业务方需获取链接并通知客户。</li></ul>
         :type InvitationNotifyType: str
-        :param _JumpUrl: 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。
-
-注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
+        :param _JumpUrl: 回跳地址，为认证成功后页面进行回跳的URL，请确保回跳地址的可用性。注：`只有在员工邀请方式（InvitationNotifyType参数）为H5场景下才生效， 其他方式下设置无效。`
         :type JumpUrl: str
+        :param _Endpoint: 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**H5**： 第三方移动端浏览器进行嵌入，不支持小程序嵌入，过期时间一个月</li></ul>注意：InvitationNotifyType 和 Endpoint 的关系图<table><tbody><tr><td>通知类型（InvitationNotifyType）</td><td>Endpoint</td></tr><tr><td>SMS（默认）</td><td>不需要传递，会将 Endpoint 默认设置为HTTP_SHORT_URL</td></tr><tr><td>H5</td><td>不需要传递，会将 Endpoint 默认设置为 H5</td></tr><tr><td>NONE</td><td>所有 Endpoint 都支持（HTTP_URL/HTTP_SHORT_URL/H5/APP）默认为HTTP_SHORT_URL</td></tr></tbody></table>
+        :type Endpoint: str
         """
         self._Operator = None
         self._Employees = None
         self._Agent = None
         self._InvitationNotifyType = None
         self._JumpUrl = None
+        self._Endpoint = None
 
     @property
     def Operator(self):
@@ -20076,6 +20274,14 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
     def JumpUrl(self, JumpUrl):
         self._JumpUrl = JumpUrl
 
+    @property
+    def Endpoint(self):
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -20092,6 +20298,7 @@ class UpdateIntegrationEmployeesRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._InvitationNotifyType = params.get("InvitationNotifyType")
         self._JumpUrl = params.get("JumpUrl")
+        self._Endpoint = params.get("Endpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
