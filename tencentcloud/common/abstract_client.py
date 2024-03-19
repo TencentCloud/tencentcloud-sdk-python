@@ -397,6 +397,12 @@ class AbstractClient(object):
                 e[key] = int(val)
 
     def _call(self, action, params, options=None, headers=None):
+        if headers is None:
+            headers = {}
+        if not isinstance(headers, dict):
+            raise TencentCloudSDKException("ClientError", "headers must be a dict.")
+        if "x-tc-traceid" not in {k.lower() for k in headers.keys()}:
+            headers["X-TC-TraceId"] = str(uuid.uuid4())
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
         req = RequestInternal(self._get_endpoint(),
