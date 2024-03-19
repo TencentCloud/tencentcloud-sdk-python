@@ -11,6 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import warnings
+import re
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.common.profile.http_profile import HttpProfile
 
@@ -32,6 +34,8 @@ class ClientProfile(object):
         :type disable_region_breaker: bool
         :param region_breaker_profile: The region breaker profile.
         :type region_breaker_profile: :class:`RegionBreakerProfile`
+        :param request_client: Custom request client.
+        :type request_client: str
         """
         self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
         self.signMethod = "TC3-HMAC-SHA256" if signMethod is None else signMethod
@@ -43,7 +47,13 @@ class ClientProfile(object):
         self.region_breaker_profile = region_breaker_profile
         if not self.disable_region_breaker and self.region_breaker_profile is None:
             self.region_breaker_profile = RegionBreakerProfile()
-        self.request_client = request_client
+        self.request_client = None
+        if isinstance(request_client, str) and re.match("^[0-9a-zA-Z-_,;.]+$", request_client):
+            if len(request_client) > 128:
+                warnings.warn("the length of RequestClient should be with in 128 characters, it will be truncated")
+            self.request_client = request_client[:128]
+        elif request_client is not None:
+            warnings.warn("RequestClient not match the regexp: ^[0-9a-zA-Z-_,;.]+$, ignored")
 
 
 class RegionBreakerProfile(object):

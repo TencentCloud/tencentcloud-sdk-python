@@ -87,7 +87,7 @@ class AbstractClient(object):
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
         if self.profile.request_client:
-            self.request_client = self.profile.request_client + "_" + self._sdkVersion
+            self.request_client = self._sdkVersion + "; " + self.profile.request_client
         else:
             self.request_client = self._sdkVersion
 
