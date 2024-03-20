@@ -12734,6 +12734,57 @@ class DescribeLiveWatermarksRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Name: 水印名称
+        :type Name: str
+        :param _PageNo: 分页的索引参数，从1开始
+        :type PageNo: int
+        :param _PageSize: 分页的大小参数，默认值500
+        :type PageSize: int
+        """
+        self._Name = None
+        self._PageNo = None
+        self._PageSize = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeLiveWatermarksResponse(AbstractModel):
     """DescribeLiveWatermarks返回参数结构体

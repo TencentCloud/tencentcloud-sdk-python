@@ -7240,6 +7240,9 @@ class DataEngineInfo(AbstractModel):
         :param _EngineTypeDetail: 引擎详细类型，支持：SparkSQL/SparkBatch/PrestoSQL/Kyuubi
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTypeDetail: str
+        :param _EngineNetworkId: 引擎网络ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineNetworkId: str
         """
         self._DataEngineName = None
         self._EngineType = None
@@ -7289,6 +7292,7 @@ class DataEngineInfo(AbstractModel):
         self._AutoAuthorization = None
         self._EngineGeneration = None
         self._EngineTypeDetail = None
+        self._EngineNetworkId = None
 
     @property
     def DataEngineName(self):
@@ -7674,6 +7678,14 @@ class DataEngineInfo(AbstractModel):
     def EngineTypeDetail(self, EngineTypeDetail):
         self._EngineTypeDetail = EngineTypeDetail
 
+    @property
+    def EngineNetworkId(self):
+        return self._EngineNetworkId
+
+    @EngineNetworkId.setter
+    def EngineNetworkId(self, EngineNetworkId):
+        self._EngineNetworkId = EngineNetworkId
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -7738,6 +7750,7 @@ class DataEngineInfo(AbstractModel):
         self._AutoAuthorization = params.get("AutoAuthorization")
         self._EngineGeneration = params.get("EngineGeneration")
         self._EngineTypeDetail = params.get("EngineTypeDetail")
+        self._EngineNetworkId = params.get("EngineNetworkId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

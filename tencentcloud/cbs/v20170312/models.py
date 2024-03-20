@@ -5458,11 +5458,14 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
         r"""
         :param _DiskIds: 一个或多个待操作的云硬盘ID。
         :type DiskIds: list of str
-        :param _RenewFlag: 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+        :param _RenewFlag: 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
         :type RenewFlag: str
+        :param _AutoRenewPeriod: 该参数支持设置云硬盘的自动续费周期，单位为月。
+        :type AutoRenewPeriod: int
         """
         self._DiskIds = None
         self._RenewFlag = None
+        self._AutoRenewPeriod = None
 
     @property
     def DiskIds(self):
@@ -5480,10 +5483,19 @@ class ModifyDisksRenewFlagRequest(AbstractModel):
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
 
+    @property
+    def AutoRenewPeriod(self):
+        return self._AutoRenewPeriod
+
+    @AutoRenewPeriod.setter
+    def AutoRenewPeriod(self, AutoRenewPeriod):
+        self._AutoRenewPeriod = AutoRenewPeriod
+
 
     def _deserialize(self, params):
         self._DiskIds = params.get("DiskIds")
         self._RenewFlag = params.get("RenewFlag")
+        self._AutoRenewPeriod = params.get("AutoRenewPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

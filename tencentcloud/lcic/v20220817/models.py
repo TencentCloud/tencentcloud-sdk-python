@@ -1894,7 +1894,7 @@ video 纯视频
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :type RecordBackground: str
-        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
@@ -2155,10 +2155,14 @@ video 纯视频
 
     @property
     def RecordLang(self):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         return self._RecordLang
 
     @RecordLang.setter
     def RecordLang(self, RecordLang):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         self._RecordLang = RecordLang
 
 
@@ -7918,7 +7922,7 @@ video 纯视频
         :type RecordLiveUrl: str
         :param _EnableAutoStart: 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效
         :type EnableAutoStart: int
-        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
@@ -8152,10 +8156,14 @@ video 纯视频
 
     @property
     def RecordLang(self):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         return self._RecordLang
 
     @RecordLang.setter
     def RecordLang(self, RecordLang):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         self._RecordLang = RecordLang
 
 
@@ -8692,7 +8700,7 @@ class RoomInfo(AbstractModel):
         :type EnableAutoStart: int
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
         :type RecordBackground: str
-        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
         :type RecordLang: str
@@ -8944,10 +8952,14 @@ class RoomInfo(AbstractModel):
 
     @property
     def RecordLang(self):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         return self._RecordLang
 
     @RecordLang.setter
     def RecordLang(self, RecordLang):
+        warnings.warn("parameter `RecordLang` is deprecated", DeprecationWarning) 
+
         self._RecordLang = RecordLang
 
 
@@ -9065,11 +9077,10 @@ class RoomItem(AbstractModel):
         :param _RecordBackground: 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordBackground: str
-        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效
+        :param _RecordScene: 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordScene: str
         :param _RecordLang: 录制自定义语言，仅recordlayout=9的时候此参数有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type RecordLang: str
         """
         self._Name = None
