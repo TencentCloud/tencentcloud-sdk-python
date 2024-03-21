@@ -72,7 +72,7 @@ class AddProjectResponse(AbstractModel):
         r"""
         :param _ProjectId: 项目Id
         :type ProjectId: int
-        :param _IsNew: 是否为新项目
+        :param _IsNew: 是否为新项目，1是新项目，0不是新项目
         :type IsNew: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3111,7 +3111,7 @@ class GetTagKeysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值
+        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
         :type PaginationToken: str
         :param _TagKeys: 标签键信息。
         :type TagKeys: list of str
@@ -3233,7 +3233,7 @@ class GetTagValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值
+        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
         :type PaginationToken: str
         :param _Tags: 标签列表。
         :type Tags: list of Tag
@@ -3360,7 +3360,7 @@ class GetTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PaginationToken: 获取的下一页的Token值
+        :param _PaginationToken: 获取的下一页的Token值，如果当前是最后一页，返回为空
         :type PaginationToken: str
         :param _Tags: 标签列表。
         :type Tags: list of Tag

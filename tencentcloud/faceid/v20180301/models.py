@@ -1533,10 +1533,11 @@ class DetectAuthRequest(AbstractModel):
         :type RuleId: str
         :param _TerminalType: 本接口不需要传递此参数。
         :type TerminalType: str
-        :param _IdCard: 身份标识（未使用OCR服务时，必须传入）。
+        :param _IdCard: 身份标识（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
 规则：a-z，A-Z，0-9组合。最长长度32位。
         :type IdCard: str
-        :param _Name: 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+        :param _Name: 姓名。（是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示）。
+最长长度32位。中文请使用UTF-8编码。
         :type Name: str
         :param _RedirectUrl: 认证结束后重定向的回调链接地址。最长长度1024位。
         :type RedirectUrl: str

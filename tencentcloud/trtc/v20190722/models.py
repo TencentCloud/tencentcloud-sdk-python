@@ -3896,6 +3896,77 @@ class DescribeUserInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWebRecordRequest(AbstractModel):
+    """DescribeWebRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 开始页面录制时返回的任务id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWebRecordResponse(AbstractModel):
+    """DescribeWebRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 1: 正在录制中
+2: 任务不存在
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DismissRoomByStrRoomIdRequest(AbstractModel):
     """DismissRoomByStrRoomId请求参数结构体
 
@@ -8463,6 +8534,143 @@ class StartStreamIngestResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartWebRecordRequest(AbstractModel):
+    """StartWebRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordUrl: 需要录制的网页URL
+
+        :type RecordUrl: str
+        :param _MaxDurationLimit: 录制最大时长限制， 单位 s, 合法取值范围[0, 36000], 默认 36000s(10 小时)
+
+        :type MaxDurationLimit: int
+        :param _StorageParams: 云存储相关的参数，目前支持腾讯云对象存储，不支持第三方云存储以及VOD
+        :type StorageParams: :class:`tencentcloud.trtc.v20190722.models.StorageParams`
+        :param _WebRecordVideoParams: 页面录制视频参数
+        :type WebRecordVideoParams: :class:`tencentcloud.trtc.v20190722.models.WebRecordVideoParams`
+        :param _SdkAppId: TRTC的SdkAppId
+        :type SdkAppId: int
+        :param _RecordId: 当对重复任务敏感时，请关注此值： 为了避免任务在短时间内重复发起，导致任务重复
+传入录制RecordId来标识此次任务， 小于32字节，若携带RecordId发起两次以上的开始录制请求，任务只会启动一个，第二个报错FailedOperation.TaskExist。注意StartWebRecord调用失败时而非FailedOperation.TaskExist错误，请更换RecordId重新发起。
+        :type RecordId: str
+        """
+        self._RecordUrl = None
+        self._MaxDurationLimit = None
+        self._StorageParams = None
+        self._WebRecordVideoParams = None
+        self._SdkAppId = None
+        self._RecordId = None
+
+    @property
+    def RecordUrl(self):
+        return self._RecordUrl
+
+    @RecordUrl.setter
+    def RecordUrl(self, RecordUrl):
+        self._RecordUrl = RecordUrl
+
+    @property
+    def MaxDurationLimit(self):
+        return self._MaxDurationLimit
+
+    @MaxDurationLimit.setter
+    def MaxDurationLimit(self, MaxDurationLimit):
+        self._MaxDurationLimit = MaxDurationLimit
+
+    @property
+    def StorageParams(self):
+        return self._StorageParams
+
+    @StorageParams.setter
+    def StorageParams(self, StorageParams):
+        self._StorageParams = StorageParams
+
+    @property
+    def WebRecordVideoParams(self):
+        return self._WebRecordVideoParams
+
+    @WebRecordVideoParams.setter
+    def WebRecordVideoParams(self, WebRecordVideoParams):
+        self._WebRecordVideoParams = WebRecordVideoParams
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+
+    def _deserialize(self, params):
+        self._RecordUrl = params.get("RecordUrl")
+        self._MaxDurationLimit = params.get("MaxDurationLimit")
+        if params.get("StorageParams") is not None:
+            self._StorageParams = StorageParams()
+            self._StorageParams._deserialize(params.get("StorageParams"))
+        if params.get("WebRecordVideoParams") is not None:
+            self._WebRecordVideoParams = WebRecordVideoParams()
+            self._WebRecordVideoParams._deserialize(params.get("WebRecordVideoParams"))
+        self._SdkAppId = params.get("SdkAppId")
+        self._RecordId = params.get("RecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartWebRecordResponse(AbstractModel):
+    """StartWebRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 录制任务的唯一Id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class StopMCUMixTranscodeByStrRoomIdRequest(AbstractModel):
     """StopMCUMixTranscodeByStrRoomId请求参数结构体
 
@@ -8732,6 +8940,64 @@ class StopStreamIngestRequest(AbstractModel):
 
 class StopStreamIngestResponse(AbstractModel):
     """StopStreamIngest返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopWebRecordRequest(AbstractModel):
+    """StopWebRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 需要停止的任务Id
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopWebRecordResponse(AbstractModel):
+    """StopWebRecord返回参数结构体
 
     """
 
@@ -9102,7 +9368,7 @@ class TencentVod(AbstractModel):
         :param _MediaType: 上传到vod平台的录制文件格式类型，0：mp4(默认), 1: hls, 2:aac(StreamType=1纯音频录制时有效),
 3: hls+mp4, 4: hls+aac(StreamType=1纯音频录制时有效)。
         :type MediaType: int
-        :param _UserDefineRecordId: 仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用__UserDefine_u_分开。
+        :param _UserDefineRecordId: 仅支持API录制上传vod，该参数表示用户可以自定义录制文件名前缀，【限制长度为64字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线和连词符】。前缀与自动生成的录制文件名之间用`__UserDefine_u_` 分开。
         :type UserDefineRecordId: str
         """
         self._Procedure = None
@@ -10330,6 +10596,64 @@ class WaterMarkTimestamp(AbstractModel):
         self._Pos = params.get("Pos")
         self._TimeZone = params.get("TimeZone")
         self._Font = params.get("Font")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebRecordVideoParams(AbstractModel):
+    """页面录制视频参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: 录制画面宽度，默认为1280，取值范围[0, 1920]
+        :type Width: int
+        :param _Height: 录制画面高度，默认为720，取值范围[0, 1080]
+        :type Height: int
+        :param _Format: 指定输出格式，可选hls,mp4
+
+        :type Format: str
+        """
+        self._Width = None
+        self._Height = None
+        self._Format = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Format = params.get("Format")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

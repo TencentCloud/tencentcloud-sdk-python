@@ -249,6 +249,10 @@ class ApproverInfo(AbstractModel):
         :param _NotifyType: 通知签署方经办人的方式,  有以下途径:
 <ul><li>  **sms**  :  (默认)短信</li>
 <li>   **none**   : 不通知</li></ul>
+```
+注意：
+如果使用的是通过文件发起合同（CreateFlowByFiles），NotifyType必须 是 sms 才会发送短信
+```
         :type NotifyType: str
         :param _ApproverRole: 收据场景设置签署人角色类型, 可以设置如下****类型****:
 <ul><li> **1**  :收款人</li>

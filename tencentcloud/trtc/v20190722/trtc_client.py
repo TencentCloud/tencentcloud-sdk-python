@@ -778,6 +778,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWebRecord(self, request):
+        """查询页面录制任务
+
+        :param request: Request instance for DescribeWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DismissRoom(self, request):
         """接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
 
@@ -1145,6 +1168,30 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartWebRecord(self, request):
+        """通过此接口可以发起 WEB 页面录制任务，在接口参数中指定录制 URL，录制分辨率，录制结果存储等参数。
+        因为参数或API逻辑问题会立即返回结果。而因为页面问题，如页面无法访问，会在回调中返回结果，请关注。
+
+        :param request: Request instance for StartWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartWebRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopMCUMixTranscode(self, request):
         """接口说明：结束云端混流
 
@@ -1228,6 +1275,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopStreamIngest", params, headers=headers)
             response = json.loads(body)
             model = models.StopStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopWebRecord(self, request):
+        """停止页面录制任务
+
+        :param request: Request instance for StopWebRecord.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopWebRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopWebRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopWebRecordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

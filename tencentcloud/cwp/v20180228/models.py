@@ -12352,7 +12352,17 @@ class BruteAttackInfo(AbstractModel):
         :param _CreateTime: 创建时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _BanStatus: 阻断状态：1-阻断成功；非1-阻断失败
+        :param _BanStatus: 0 -不阻断(客户端版本不支持)
+1 -已阻断
+2 -阻断失败(程序异常)
+3 -不阻断(内网不阻断)
+4 -可用区不支持阻断
+10-阻断中
+81-不阻断(未开启阻断)
+82-不阻断(非专业版)
+83-不阻断(已加白名单)
+86-不阻断(系统白名单)
+87-不阻断(客户端离线)
 注意：此字段可能返回 null，表示取不到有效值。
         :type BanStatus: int
         :param _EventType: 事件类型：200-暴力破解事件，300-暴力破解成功事件（页面展示），400-暴力破解不存在的帐号事件
@@ -12394,6 +12404,12 @@ class BruteAttackInfo(AbstractModel):
         :param _DataFrom: 事件来源：0--阻断规则，1--威胁情报
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataFrom: int
+        :param _AttackStatusDesc: 破解状态说明
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttackStatusDesc: str
+        :param _BanExpiredTime: 阻断过期时间（仅阻断中事件有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BanExpiredTime: str
         """
         self._Id = None
         self._Uuid = None
@@ -12420,6 +12436,8 @@ class BruteAttackInfo(AbstractModel):
         self._Location = None
         self._RiskLevel = None
         self._DataFrom = None
+        self._AttackStatusDesc = None
+        self._BanExpiredTime = None
 
     @property
     def Id(self):
@@ -12621,6 +12639,22 @@ class BruteAttackInfo(AbstractModel):
     def DataFrom(self, DataFrom):
         self._DataFrom = DataFrom
 
+    @property
+    def AttackStatusDesc(self):
+        return self._AttackStatusDesc
+
+    @AttackStatusDesc.setter
+    def AttackStatusDesc(self, AttackStatusDesc):
+        self._AttackStatusDesc = AttackStatusDesc
+
+    @property
+    def BanExpiredTime(self):
+        return self._BanExpiredTime
+
+    @BanExpiredTime.setter
+    def BanExpiredTime(self, BanExpiredTime):
+        self._BanExpiredTime = BanExpiredTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12650,6 +12684,8 @@ class BruteAttackInfo(AbstractModel):
         self._Location = params.get("Location")
         self._RiskLevel = params.get("RiskLevel")
         self._DataFrom = params.get("DataFrom")
+        self._AttackStatusDesc = params.get("AttackStatusDesc")
+        self._BanExpiredTime = params.get("BanExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26937,11 +26973,14 @@ class DescribeBanStatusResponse(AbstractModel):
         :type Status: int
         :param _ShowTips: 是否弹窗提示信息 false: 关闭，true: 开启
         :type ShowTips: bool
+        :param _OpenSmartMode: 是否开启智能过白模式
+        :type OpenSmartMode: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._ShowTips = None
+        self._OpenSmartMode = None
         self._RequestId = None
 
     @property
@@ -26961,6 +27000,14 @@ class DescribeBanStatusResponse(AbstractModel):
         self._ShowTips = ShowTips
 
     @property
+    def OpenSmartMode(self):
+        return self._OpenSmartMode
+
+    @OpenSmartMode.setter
+    def OpenSmartMode(self, OpenSmartMode):
+        self._OpenSmartMode = OpenSmartMode
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -26972,6 +27019,7 @@ class DescribeBanStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._ShowTips = params.get("ShowTips")
+        self._OpenSmartMode = params.get("OpenSmartMode")
         self._RequestId = params.get("RequestId")
 
 
@@ -68618,10 +68666,13 @@ class ModifyBanStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 阻断状态 0:关闭 1:开启
+        :param _Status: 阻断开关状态: 0 -- 关闭 1 -- 高级阻断 2 -- 基础阻断(只阻断情报库黑ip)
         :type Status: int
+        :param _OpenSmartMode: 是否开启智能过白模式
+        :type OpenSmartMode: bool
         """
         self._Status = None
+        self._OpenSmartMode = None
 
     @property
     def Status(self):
@@ -68631,9 +68682,18 @@ class ModifyBanStatusRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def OpenSmartMode(self):
+        return self._OpenSmartMode
+
+    @OpenSmartMode.setter
+    def OpenSmartMode(self, OpenSmartMode):
+        self._OpenSmartMode = OpenSmartMode
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._OpenSmartMode = params.get("OpenSmartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1034,6 +1034,9 @@ FAILED：表示操作失败
         :param _LoginServices: 实例包含的登录服务详情
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginServices: list of LoginService
+        :param _OSType: 应用服务的操作系统类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OSType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -1056,6 +1059,7 @@ FAILED：表示操作失败
         self._MaxFreeTraffic = None
         self._ConfigurationEnvironment = None
         self._LoginServices = None
+        self._OSType = None
 
     @property
     def InstanceId(self):
@@ -1225,6 +1229,14 @@ FAILED：表示操作失败
     def LoginServices(self, LoginServices):
         self._LoginServices = LoginServices
 
+    @property
+    def OSType(self):
+        return self._OSType
+
+    @OSType.setter
+    def OSType(self, OSType):
+        self._OSType = OSType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1255,6 +1267,7 @@ FAILED：表示操作失败
                 obj = LoginService()
                 obj._deserialize(item)
                 self._LoginServices.append(obj)
+        self._OSType = params.get("OSType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
