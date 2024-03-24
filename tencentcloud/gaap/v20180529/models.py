@@ -10897,6 +10897,12 @@ class HTTPSListener(AbstractModel):
         :param _GroupId: 监听器的通道组ID，如果监听器属于通道，则为null
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
+        :param _TLSSupportVersion: 支持的TLS版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSSupportVersion: list of str
+        :param _TLSCiphers: 支持的TLS密码套件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TLSCiphers: str
         """
         self._ListenerId = None
         self._ListenerName = None
@@ -10914,6 +10920,8 @@ class HTTPSListener(AbstractModel):
         self._Http3Supported = None
         self._ProxyId = None
         self._GroupId = None
+        self._TLSSupportVersion = None
+        self._TLSCiphers = None
 
     @property
     def ListenerId(self):
@@ -11043,6 +11051,22 @@ class HTTPSListener(AbstractModel):
     def GroupId(self, GroupId):
         self._GroupId = GroupId
 
+    @property
+    def TLSSupportVersion(self):
+        return self._TLSSupportVersion
+
+    @TLSSupportVersion.setter
+    def TLSSupportVersion(self, TLSSupportVersion):
+        self._TLSSupportVersion = TLSSupportVersion
+
+    @property
+    def TLSCiphers(self):
+        return self._TLSCiphers
+
+    @TLSCiphers.setter
+    def TLSCiphers(self, TLSCiphers):
+        self._TLSCiphers = TLSCiphers
+
 
     def _deserialize(self, params):
         self._ListenerId = params.get("ListenerId")
@@ -11066,6 +11090,8 @@ class HTTPSListener(AbstractModel):
         self._Http3Supported = params.get("Http3Supported")
         self._ProxyId = params.get("ProxyId")
         self._GroupId = params.get("GroupId")
+        self._TLSSupportVersion = params.get("TLSSupportVersion")
+        self._TLSCiphers = params.get("TLSCiphers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14111,6 +14137,11 @@ class ProxyGroupDetail(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeatureBitmap: int
+        :param _IsSupportTLSChoice: 是否支持设置TSL设置
+0表示不支持；
+1表示支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportTLSChoice: int
         """
         self._CreateTime = None
         self._ProjectId = None
@@ -14132,6 +14163,7 @@ class ProxyGroupDetail(AbstractModel):
         self._PackageType = None
         self._Http3Supported = None
         self._FeatureBitmap = None
+        self._IsSupportTLSChoice = None
 
     @property
     def CreateTime(self):
@@ -14293,6 +14325,14 @@ class ProxyGroupDetail(AbstractModel):
     def FeatureBitmap(self, FeatureBitmap):
         self._FeatureBitmap = FeatureBitmap
 
+    @property
+    def IsSupportTLSChoice(self):
+        return self._IsSupportTLSChoice
+
+    @IsSupportTLSChoice.setter
+    def IsSupportTLSChoice(self, IsSupportTLSChoice):
+        self._IsSupportTLSChoice = IsSupportTLSChoice
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -14322,6 +14362,7 @@ class ProxyGroupDetail(AbstractModel):
         self._PackageType = params.get("PackageType")
         self._Http3Supported = params.get("Http3Supported")
         self._FeatureBitmap = params.get("FeatureBitmap")
+        self._IsSupportTLSChoice = params.get("IsSupportTLSChoice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14690,6 +14731,11 @@ CrossBorder表示跨境通道。
         :param _IsAutoScaleProxy: 是否是开启了auto scale的通道，0表示否，1表示是。
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoScaleProxy: int
+        :param _IsSupportTLSChoice: 是否允许设置TLS配置
+0表示不支持；
+1表示支持。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportTLSChoice: int
         """
         self._InstanceId = None
         self._CreateTime = None
@@ -14727,6 +14773,7 @@ CrossBorder表示跨境通道。
         self._InBanBlacklist = None
         self._FeatureBitmap = None
         self._IsAutoScaleProxy = None
+        self._IsSupportTLSChoice = None
 
     @property
     def InstanceId(self):
@@ -15016,6 +15063,14 @@ CrossBorder表示跨境通道。
     def IsAutoScaleProxy(self, IsAutoScaleProxy):
         self._IsAutoScaleProxy = IsAutoScaleProxy
 
+    @property
+    def IsSupportTLSChoice(self):
+        return self._IsSupportTLSChoice
+
+    @IsSupportTLSChoice.setter
+    def IsSupportTLSChoice(self, IsSupportTLSChoice):
+        self._IsSupportTLSChoice = IsSupportTLSChoice
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15068,6 +15123,7 @@ CrossBorder表示跨境通道。
         self._InBanBlacklist = params.get("InBanBlacklist")
         self._FeatureBitmap = params.get("FeatureBitmap")
         self._IsAutoScaleProxy = params.get("IsAutoScaleProxy")
+        self._IsSupportTLSChoice = params.get("IsSupportTLSChoice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

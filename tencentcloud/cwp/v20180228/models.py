@@ -2889,6 +2889,9 @@ class AssetMachineBaseInfo(AbstractModel):
         :param _MachineExtraInfo: 附加信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _CpuLoadNum: cpu负载读数（仅linux系统有效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuLoadNum: str
         """
         self._Quuid = None
         self._Uuid = None
@@ -2910,6 +2913,7 @@ class AssetMachineBaseInfo(AbstractModel):
         self._IsNew = None
         self._FirstTime = None
         self._MachineExtraInfo = None
+        self._CpuLoadNum = None
 
     @property
     def Quuid(self):
@@ -3071,6 +3075,14 @@ class AssetMachineBaseInfo(AbstractModel):
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
 
+    @property
+    def CpuLoadNum(self):
+        return self._CpuLoadNum
+
+    @CpuLoadNum.setter
+    def CpuLoadNum(self, CpuLoadNum):
+        self._CpuLoadNum = CpuLoadNum
+
 
     def _deserialize(self, params):
         self._Quuid = params.get("Quuid")
@@ -3100,6 +3112,7 @@ class AssetMachineBaseInfo(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._CpuLoadNum = params.get("CpuLoadNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

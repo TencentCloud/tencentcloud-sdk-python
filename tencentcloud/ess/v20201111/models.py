@@ -677,6 +677,8 @@ class ApproverOption(AbstractModel):
 <ul><li> **false** : ( 默认)可以转他人处理</li>
 <li> **true** :不可以转他人处理</li></ul>
         :type NoTransfer: bool
+        :param _CanEditApprover: 允许编辑签署人信息（嵌入式使用） 默认true-可以编辑 false-不可以编辑
+        :type CanEditApprover: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
 
 <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
@@ -694,6 +696,7 @@ class ApproverOption(AbstractModel):
         """
         self._NoRefuse = None
         self._NoTransfer = None
+        self._CanEditApprover = None
         self._FillType = None
         self._FlowReadLimit = None
 
@@ -712,6 +715,14 @@ class ApproverOption(AbstractModel):
     @NoTransfer.setter
     def NoTransfer(self, NoTransfer):
         self._NoTransfer = NoTransfer
+
+    @property
+    def CanEditApprover(self):
+        return self._CanEditApprover
+
+    @CanEditApprover.setter
+    def CanEditApprover(self, CanEditApprover):
+        self._CanEditApprover = CanEditApprover
 
     @property
     def FillType(self):
@@ -733,6 +744,7 @@ class ApproverOption(AbstractModel):
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
         self._NoTransfer = params.get("NoTransfer")
+        self._CanEditApprover = params.get("CanEditApprover")
         self._FillType = params.get("FillType")
         self._FlowReadLimit = params.get("FlowReadLimit")
         memeber_set = set(params.keys())
@@ -5003,6 +5015,70 @@ class CreateFlowOption(AbstractModel):
         :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，描述信息最长500字符
 
         :type CustomCreateFlowDescription: str
+        :param _ForbidAddApprover:   禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
+
+        :type ForbidAddApprover: str
+        :param _ForbidEditFlowProperties:   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
+
+        :type ForbidEditFlowProperties: str
+        :param _HideComponentTypes: 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用，具体的控件类型如下
+<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+<li>SIGN_SEAL : 企业印章</li>
+<li>SIGN_PAGING_SEAL : 骑缝章</li>
+<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+<li>SIGN_APPROVE : 签批</li>
+<li>SIGN_OPINION : 签署意见</li>
+<li>BUSI-FULL-NAME  : 企业全称</li>
+<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+<li>PERSONAL-NAME : 签署人姓名</li>
+<li>PERSONAL-MOBILE : 签署人手机号</li>
+<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+<li>PERSONAL-IDCARD : 签署人证件号</li>
+<li>TEXT : 单行文本</li>
+<li>MULTI_LINE_TEXT : 多行文本</li>
+<li>CHECK_BOX : 勾选框</li>
+<li>SELECTOR : 选择器</li>
+<li>DIGIT : 数字</li>
+<li>DATE : 日期</li>
+<li>FILL_IMAGE : 图片</li>
+<li>ATTACHMENT : 附件</li>
+<li>EMAIL : 邮箱</li>
+<li>LOCATION : 地址</li>
+<li>EDUCATION : 学历</li>
+<li>GENDER : 性别</li>
+<li>DISTRICT : 省市区</li></ul>
+        :type HideComponentTypes: list of str
+        :param _ShowComponentTypes: 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用，具体的控件类型如下
+<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
+<li>SIGN_SEAL : 企业印章</li>
+<li>SIGN_PAGING_SEAL : 骑缝章</li>
+<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
+<li>SIGN_APPROVE : 签批</li>
+<li>SIGN_OPINION : 签署意见</li>
+<li>BUSI-FULL-NAME  : 企业全称</li>
+<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
+<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
+<li>PERSONAL-NAME : 签署人姓名</li>
+<li>PERSONAL-MOBILE : 签署人手机号</li>
+<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
+<li>PERSONAL-IDCARD : 签署人证件号</li>
+<li>TEXT : 单行文本</li>
+<li>MULTI_LINE_TEXT : 多行文本</li>
+<li>CHECK_BOX : 勾选框</li>
+<li>SELECTOR : 选择器</li>
+<li>DIGIT : 数字</li>
+<li>DATE : 日期</li>
+<li>FILL_IMAGE : 图片</li>
+<li>ATTACHMENT : 附件</li>
+<li>EMAIL : 邮箱</li>
+<li>LOCATION : 地址</li>
+<li>EDUCATION : 学历</li>
+<li>GENDER : 性别</li>
+<li>DISTRICT : 省市区</li></ul>
+        :type ShowComponentTypes: list of str
+        :param _ResultPageConfig: 发起流程的可嵌入页面结果页配置
+        :type ResultPageConfig: list of CreateResultPageConfig
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -5013,6 +5089,11 @@ class CreateFlowOption(AbstractModel):
         self._SkipUploadFile = None
         self._ForbidEditFillComponent = None
         self._CustomCreateFlowDescription = None
+        self._ForbidAddApprover = None
+        self._ForbidEditFlowProperties = None
+        self._HideComponentTypes = None
+        self._ShowComponentTypes = None
+        self._ResultPageConfig = None
 
     @property
     def CanEditFlow(self):
@@ -5086,6 +5167,46 @@ class CreateFlowOption(AbstractModel):
     def CustomCreateFlowDescription(self, CustomCreateFlowDescription):
         self._CustomCreateFlowDescription = CustomCreateFlowDescription
 
+    @property
+    def ForbidAddApprover(self):
+        return self._ForbidAddApprover
+
+    @ForbidAddApprover.setter
+    def ForbidAddApprover(self, ForbidAddApprover):
+        self._ForbidAddApprover = ForbidAddApprover
+
+    @property
+    def ForbidEditFlowProperties(self):
+        return self._ForbidEditFlowProperties
+
+    @ForbidEditFlowProperties.setter
+    def ForbidEditFlowProperties(self, ForbidEditFlowProperties):
+        self._ForbidEditFlowProperties = ForbidEditFlowProperties
+
+    @property
+    def HideComponentTypes(self):
+        return self._HideComponentTypes
+
+    @HideComponentTypes.setter
+    def HideComponentTypes(self, HideComponentTypes):
+        self._HideComponentTypes = HideComponentTypes
+
+    @property
+    def ShowComponentTypes(self):
+        return self._ShowComponentTypes
+
+    @ShowComponentTypes.setter
+    def ShowComponentTypes(self, ShowComponentTypes):
+        self._ShowComponentTypes = ShowComponentTypes
+
+    @property
+    def ResultPageConfig(self):
+        return self._ResultPageConfig
+
+    @ResultPageConfig.setter
+    def ResultPageConfig(self, ResultPageConfig):
+        self._ResultPageConfig = ResultPageConfig
+
 
     def _deserialize(self, params):
         self._CanEditFlow = params.get("CanEditFlow")
@@ -5097,6 +5218,16 @@ class CreateFlowOption(AbstractModel):
         self._SkipUploadFile = params.get("SkipUploadFile")
         self._ForbidEditFillComponent = params.get("ForbidEditFillComponent")
         self._CustomCreateFlowDescription = params.get("CustomCreateFlowDescription")
+        self._ForbidAddApprover = params.get("ForbidAddApprover")
+        self._ForbidEditFlowProperties = params.get("ForbidEditFlowProperties")
+        self._HideComponentTypes = params.get("HideComponentTypes")
+        self._ShowComponentTypes = params.get("ShowComponentTypes")
+        if params.get("ResultPageConfig") is not None:
+            self._ResultPageConfig = []
+            for item in params.get("ResultPageConfig"):
+                obj = CreateResultPageConfig()
+                obj._deserialize(item)
+                self._ResultPageConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7975,6 +8106,65 @@ class CreateReleaseFlowResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateResultPageConfig(AbstractModel):
+    """发起流程的可嵌入页面操作结果页配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <ul>
+  <li>0 : 发起审批成功页面（通过接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreatePrepareFlow/" target="_blank">创建发起流程web页面</a>发起时设置了NeedCreateReview参数为true）</li>
+</ul>
+        :type Type: int
+        :param _Title: 结果页标题，不超过50字
+        :type Title: str
+        :param _Description: 结果页描述，不超过200字
+        :type Description: str
+        """
+        self._Type = None
+        self._Title = None
+        self._Description = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateSchemeUrlRequest(AbstractModel):

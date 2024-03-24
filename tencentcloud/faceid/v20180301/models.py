@@ -3676,6 +3676,8 @@ class GetEidTokenConfig(AbstractModel):
         :type IntentionRecognition: bool
         :param _IsSupportHMTResidentPermitOCR: 是否支持港澳台居住证识别
         :type IsSupportHMTResidentPermitOCR: bool
+        :param _MouthOpenRecognition: 用户语音回答过程中是否开启张嘴识别检测，默认不开启，仅在意愿核身问答模式中使用。
+        :type MouthOpenRecognition: bool
         """
         self._InputType = None
         self._UseIntentionVerify = None
@@ -3685,6 +3687,7 @@ class GetEidTokenConfig(AbstractModel):
         self._IntentionActions = None
         self._IntentionRecognition = None
         self._IsSupportHMTResidentPermitOCR = None
+        self._MouthOpenRecognition = None
 
     @property
     def InputType(self):
@@ -3750,6 +3753,14 @@ class GetEidTokenConfig(AbstractModel):
     def IsSupportHMTResidentPermitOCR(self, IsSupportHMTResidentPermitOCR):
         self._IsSupportHMTResidentPermitOCR = IsSupportHMTResidentPermitOCR
 
+    @property
+    def MouthOpenRecognition(self):
+        return self._MouthOpenRecognition
+
+    @MouthOpenRecognition.setter
+    def MouthOpenRecognition(self, MouthOpenRecognition):
+        self._MouthOpenRecognition = MouthOpenRecognition
+
 
     def _deserialize(self, params):
         self._InputType = params.get("InputType")
@@ -3770,6 +3781,7 @@ class GetEidTokenConfig(AbstractModel):
                 self._IntentionActions.append(obj)
         self._IntentionRecognition = params.get("IntentionRecognition")
         self._IsSupportHMTResidentPermitOCR = params.get("IsSupportHMTResidentPermitOCR")
+        self._MouthOpenRecognition = params.get("MouthOpenRecognition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5343,7 +5355,8 @@ class IntentionQuestionResult(AbstractModel):
 -107: "请勿遮挡鼻子"     
 -201: "人脸比对相似度低"    
 -202: "人脸比对失败"    
--301: "意愿核验不通过"   
+-301: "意愿核验不通过"       
+-302: "用户回答阶段未检测到张嘴动作"  
 -800: "前端不兼容错误"    
 -801: "用户未授权摄像头和麦克风权限"   
 -802: "核验流程异常中断，请勿切屏或进行其他操作"   

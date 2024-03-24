@@ -10719,7 +10719,7 @@ OPEN：公网属性， INTERNAL：内网属性。
         :param _SnatIps: 开启SnatPro负载均衡后，SnatIp列表。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnatIps: list of SnatIp
-        :param _SlaType: 性能容量型规格
+        :param _SlaType: 性能容量型规格。<ul><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li><li>null：共享型实例</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaType: str
         :param _IsBlock: vip是否被封堵
