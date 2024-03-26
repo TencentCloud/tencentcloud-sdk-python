@@ -5691,6 +5691,10 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type CageId: str
         :param _ProjectId: 项目ID，默认项目ID0
         :type ProjectId: int
+        :param _PayType: 付费类型，PRE_PAID：包年包月，USED_PAID：按量计费。默认为按量计费
+        :type PayType: str
+        :param _Period: 实例时长，PayType为PRE_PAID时必传，单位：月，可选值包括 [1,2,3,4,5,6,7,8,9,10,11,12,24,36]。
+        :type Period: int
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -5713,6 +5717,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._DryRun = None
         self._CageId = None
         self._ProjectId = None
+        self._PayType = None
+        self._Period = None
 
     @property
     def InstanceId(self):
@@ -5882,6 +5888,22 @@ class CreateCloneInstanceRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def PayType(self):
+        return self._PayType
+
+    @PayType.setter
+    def PayType(self, PayType):
+        self._PayType = PayType
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5910,6 +5932,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._DryRun = params.get("DryRun")
         self._CageId = params.get("CageId")
         self._ProjectId = params.get("ProjectId")
+        self._PayType = params.get("PayType")
+        self._Period = params.get("Period")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28455,6 +28479,55 @@ class TagsInfoOfInstance(AbstractModel):
         
 
 
+class TaskAttachInfo(AbstractModel):
+    """任务列表中的部分任务支持特定的附加信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttachKey: 升级任务：
+”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachKey: str
+        :param _AttachValue: 升级任务：
+”FastUpgradeStatus“：表示升级类型。1-原地升级；0-普通升级。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AttachValue: str
+        """
+        self._AttachKey = None
+        self._AttachValue = None
+
+    @property
+    def AttachKey(self):
+        return self._AttachKey
+
+    @AttachKey.setter
+    def AttachKey(self, AttachKey):
+        self._AttachKey = AttachKey
+
+    @property
+    def AttachValue(self):
+        return self._AttachValue
+
+    @AttachValue.setter
+    def AttachValue(self, AttachValue):
+        self._AttachValue = AttachValue
+
+
+    def _deserialize(self, params):
+        self._AttachKey = params.get("AttachKey")
+        self._AttachValue = params.get("AttachValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskDetail(AbstractModel):
     """实例任务详情
 
@@ -28504,6 +28577,9 @@ class TaskDetail(AbstractModel):
         :type InstanceIds: list of str
         :param _AsyncRequestId: 异步任务的请求 ID。
         :type AsyncRequestId: str
+        :param _TaskAttachInfo: 任务的附加信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskAttachInfo: list of TaskAttachInfo
         """
         self._Code = None
         self._Message = None
@@ -28515,6 +28591,7 @@ class TaskDetail(AbstractModel):
         self._EndTime = None
         self._InstanceIds = None
         self._AsyncRequestId = None
+        self._TaskAttachInfo = None
 
     @property
     def Code(self):
@@ -28596,6 +28673,14 @@ class TaskDetail(AbstractModel):
     def AsyncRequestId(self, AsyncRequestId):
         self._AsyncRequestId = AsyncRequestId
 
+    @property
+    def TaskAttachInfo(self):
+        return self._TaskAttachInfo
+
+    @TaskAttachInfo.setter
+    def TaskAttachInfo(self, TaskAttachInfo):
+        self._TaskAttachInfo = TaskAttachInfo
+
 
     def _deserialize(self, params):
         self._Code = params.get("Code")
@@ -28608,6 +28693,12 @@ class TaskDetail(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._InstanceIds = params.get("InstanceIds")
         self._AsyncRequestId = params.get("AsyncRequestId")
+        if params.get("TaskAttachInfo") is not None:
+            self._TaskAttachInfo = []
+            for item in params.get("TaskAttachInfo"):
+                obj = TaskAttachInfo()
+                obj._deserialize(item)
+                self._TaskAttachInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

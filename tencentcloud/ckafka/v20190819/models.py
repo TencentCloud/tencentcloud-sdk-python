@@ -18764,7 +18764,7 @@ class ModifyAclRuleRequest(AbstractModel):
         :type InstanceId: str
         :param _RuleName: ACL策略名
         :type RuleName: str
-        :param _IsApplied: 是否应用到新增的Topic
+        :param _IsApplied: 修改预设规则时传入,是否应用到新增的Topic
         :type IsApplied: int
         """
         self._InstanceId = None

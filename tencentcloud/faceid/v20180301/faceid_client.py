@@ -417,6 +417,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFaceIdRiskInfo(self, request):
+        """完成验证后，用FaceIdToken调用本接口获取设备风险相关信息，FaceIdToken生成后三天内（3\*24\*3,600秒）可多次拉取。
+
+        :param request: Request instance for GetFaceIdRiskInfo.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdRiskInfoRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetFaceIdRiskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFaceIdRiskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFaceIdRiskInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetFaceIdToken(self, request):
         """每次调用人脸核身SDK服务前，需先调用本接口获取SDKToken，用来串联核身流程，在验证完成后，用于获取验证结果信息，该token仅能核身一次。
 
@@ -431,6 +454,29 @@ class FaceidClient(AbstractClient):
             body = self.call("GetFaceIdToken", params, headers=headers)
             response = json.loads(body)
             model = models.GetFaceIdTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFaceidRiskInfoToken(self, request):
+        """每次调用人脸核身SDK服务前，需先调用本接口获取SDKToken，用来串联核身流程，在验证完成后，用于获取风险结果信息，该Token仅能核身一次。
+
+        :param request: Request instance for GetFaceidRiskInfoToken.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetFaceidRiskInfoTokenRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetFaceidRiskInfoTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFaceidRiskInfoToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFaceidRiskInfoTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

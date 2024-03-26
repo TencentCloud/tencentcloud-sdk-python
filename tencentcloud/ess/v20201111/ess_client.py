@@ -2209,7 +2209,7 @@ class EssClient(AbstractClient):
         注：
         1.<font color="red">合同发起后就会扣减合同的额度</font>, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）
 
-        2.<font color="red">静默（自动）签署不支持合同签署方存在填写</font>功能
+        2.<font color="red">静默（自动）签署不支持非本企业合同签署方存在填写</font>功能
 
         3.<font color="red">在发起签署流程之前，建议等待 [PDF合成完成的回调](https://qian.tencent.com/developers/company/callback_types_file_resources)</font>，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
 

@@ -3797,16 +3797,16 @@ class CreateFlowApproversRequest(AbstractModel):
         :param _Operator: 执行本接口操作的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-        :type FlowId: str
         :param _Approvers: 补充企业签署人信息。
 
 - 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
 
 - 如果不指定，则使用姓名和手机号进行补充。
         :type Approvers: list of FillApproverInfo
+        :param _FlowId: 合同流程ID，为32位字符串。
+建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :type FlowId: str
         :param _FillApproverType: 签署人信息补充方式
 
 <ul><li>**0**: 添加或签人候选人，或签支持一个节点传多个签署人，不传值默认或签。
@@ -3818,13 +3818,16 @@ class CreateFlowApproversRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FlowGroupId: 合同流程组的组ID, 在合同流程组场景下，生成合同流程组的签署链接时需要赋值
+        :type FlowGroupId: str
         """
         self._Operator = None
-        self._FlowId = None
         self._Approvers = None
+        self._FlowId = None
         self._FillApproverType = None
         self._Initiator = None
         self._Agent = None
+        self._FlowGroupId = None
 
     @property
     def Operator(self):
@@ -3835,20 +3838,20 @@ class CreateFlowApproversRequest(AbstractModel):
         self._Operator = Operator
 
     @property
-    def FlowId(self):
-        return self._FlowId
-
-    @FlowId.setter
-    def FlowId(self, FlowId):
-        self._FlowId = FlowId
-
-    @property
     def Approvers(self):
         return self._Approvers
 
     @Approvers.setter
     def Approvers(self, Approvers):
         self._Approvers = Approvers
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
 
     @property
     def FillApproverType(self):
@@ -3874,23 +3877,32 @@ class CreateFlowApproversRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def FlowGroupId(self):
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
-        self._FlowId = params.get("FlowId")
         if params.get("Approvers") is not None:
             self._Approvers = []
             for item in params.get("Approvers"):
                 obj = FillApproverInfo()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._FlowId = params.get("FlowId")
         self._FillApproverType = params.get("FillApproverType")
         self._Initiator = params.get("Initiator")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        self._FlowGroupId = params.get("FlowGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4638,11 +4650,14 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
         :param _FlowIds: 合同(流程)组中子合同列表.
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
+        :param _Approvers: 合同组签署方信息。
+        :type Approvers: list of FlowGroupApprovers
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
         self._FlowIds = None
+        self._Approvers = None
         self._RequestId = None
 
     @property
@@ -4662,6 +4677,14 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
         self._FlowIds = FlowIds
 
     @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4673,6 +4696,12 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowGroupId = params.get("FlowGroupId")
         self._FlowIds = params.get("FlowIds")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = FlowGroupApprovers()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4788,11 +4817,14 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         :param _FlowIds: 合同(流程)组中子合同列表.
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlowIds: list of str
+        :param _Approvers: 合同组签署人信息。
+        :type Approvers: list of FlowGroupApprovers
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
         self._FlowIds = None
+        self._Approvers = None
         self._RequestId = None
 
     @property
@@ -4812,6 +4844,14 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         self._FlowIds = FlowIds
 
     @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4823,6 +4863,12 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowGroupId = params.get("FlowGroupId")
         self._FlowIds = params.get("FlowIds")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = FlowGroupApprovers()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8236,6 +8282,8 @@ class CreateSchemeUrlRequest(AbstractModel):
 
 注：`生成动态签署人补充链接时必传。`
         :type RecipientId: str
+        :param _FlowGroupUrlInfo: 合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+        :type FlowGroupUrlInfo: :class:`tencentcloud.ess.v20201111.models.FlowGroupUrlInfo`
         """
         self._Operator = None
         self._OrganizationName = None
@@ -8251,6 +8299,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._Agent = None
         self._Hides = None
         self._RecipientId = None
+        self._FlowGroupUrlInfo = None
 
     @property
     def Operator(self):
@@ -8364,6 +8413,14 @@ class CreateSchemeUrlRequest(AbstractModel):
     def RecipientId(self, RecipientId):
         self._RecipientId = RecipientId
 
+    @property
+    def FlowGroupUrlInfo(self):
+        return self._FlowGroupUrlInfo
+
+    @FlowGroupUrlInfo.setter
+    def FlowGroupUrlInfo(self, FlowGroupUrlInfo):
+        self._FlowGroupUrlInfo = FlowGroupUrlInfo
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -8384,6 +8441,9 @@ class CreateSchemeUrlRequest(AbstractModel):
             self._Agent._deserialize(params.get("Agent"))
         self._Hides = params.get("Hides")
         self._RecipientId = params.get("RecipientId")
+        if params.get("FlowGroupUrlInfo") is not None:
+            self._FlowGroupUrlInfo = FlowGroupUrlInfo()
+            self._FlowGroupUrlInfo._deserialize(params.get("FlowGroupUrlInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13848,6 +13908,8 @@ WEWORKAPP: 企业微信
 
 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
         :type ApproverIdCardNumber: str
+        :param _FlowId: 合同流程ID，补充合同组子合同动态签署人时必传。
+        :type FlowId: str
         """
         self._RecipientId = None
         self._ApproverSource = None
@@ -13857,6 +13919,7 @@ WEWORKAPP: 企业微信
         self._OrganizationName = None
         self._ApproverIdCardType = None
         self._ApproverIdCardNumber = None
+        self._FlowId = None
 
     @property
     def RecipientId(self):
@@ -13922,6 +13985,14 @@ WEWORKAPP: 企业微信
     def ApproverIdCardNumber(self, ApproverIdCardNumber):
         self._ApproverIdCardNumber = ApproverIdCardNumber
 
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
 
     def _deserialize(self, params):
         self._RecipientId = params.get("RecipientId")
@@ -13932,6 +14003,7 @@ WEWORKAPP: 企业微信
         self._OrganizationName = params.get("OrganizationName")
         self._ApproverIdCardType = params.get("ApproverIdCardType")
         self._ApproverIdCardNumber = params.get("ApproverIdCardNumber")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15224,6 +15296,103 @@ class FlowDetailInfo(AbstractModel):
         
 
 
+class FlowGroupApproverInfo(AbstractModel):
+    """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID。
+        :type FlowId: str
+        :param _RecipientId: 签署节点ID，用于生成动态签署人链接完成领取。注：`生成动态签署人补充链接时必传。`
+        :type RecipientId: str
+        """
+        self._FlowId = None
+        self._RecipientId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RecipientId(self):
+        return self._RecipientId
+
+    @RecipientId.setter
+    def RecipientId(self, RecipientId):
+        self._RecipientId = RecipientId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RecipientId = params.get("RecipientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowGroupApprovers(AbstractModel):
+    """合同组签署方信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 合同流程ID 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: str
+        :param _Approvers: 签署方信息，包含合同ID和角色ID用于定位RecipientId。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Approvers: list of ApproverItem
+        """
+        self._FlowId = None
+        self._Approvers = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Approvers(self):
+        return self._Approvers
+
+    @Approvers.setter
+    def Approvers(self, Approvers):
+        self._Approvers = Approvers
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("Approvers") is not None:
+            self._Approvers = []
+            for item in params.get("Approvers"):
+                obj = ApproverItem()
+                obj._deserialize(item)
+                self._Approvers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FlowGroupInfo(AbstractModel):
     """此结构体(FlowGroupInfo)描述的是合同组(流程组)的单个合同(流程)信息
 
@@ -15495,6 +15664,44 @@ class FlowGroupOptions(AbstractModel):
         self._ApproverVerifyType = params.get("ApproverVerifyType")
         self._SelfOrganizationApproverNotifyType = params.get("SelfOrganizationApproverNotifyType")
         self._OtherApproverNotifyType = params.get("OtherApproverNotifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowGroupUrlInfo(AbstractModel):
+    """合同组相关信息，指定合同组子合同和签署方的信息，用于补充动态签署人。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowGroupApproverInfos: 合同组子合同和签署方的信息，用于补充动态签署人。
+        :type FlowGroupApproverInfos: list of FlowGroupApproverInfo
+        """
+        self._FlowGroupApproverInfos = None
+
+    @property
+    def FlowGroupApproverInfos(self):
+        return self._FlowGroupApproverInfos
+
+    @FlowGroupApproverInfos.setter
+    def FlowGroupApproverInfos(self, FlowGroupApproverInfos):
+        self._FlowGroupApproverInfos = FlowGroupApproverInfos
+
+
+    def _deserialize(self, params):
+        if params.get("FlowGroupApproverInfos") is not None:
+            self._FlowGroupApproverInfos = []
+            for item in params.get("FlowGroupApproverInfos"):
+                obj = FlowGroupApproverInfo()
+                obj._deserialize(item)
+                self._FlowGroupApproverInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

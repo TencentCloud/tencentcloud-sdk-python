@@ -54164,6 +54164,12 @@ class ModifyTaskInfoRequest(AbstractModel):
         :type DependencyWorkflow: str
         :param _DependencyConfigDTOs: 依赖配置
         :type DependencyConfigDTOs: list of DependencyConfig
+        :param _ExecutionTTL: 执行耗时
+        :type ExecutionTTL: int
+        :param _ScriptChange: 脚本是否改变
+        :type ScriptChange: bool
+        :param _InChargeIds: 责任人id
+        :type InChargeIds: list of str
         """
         self._ProjectId = None
         self._TaskId = None
@@ -54194,6 +54200,9 @@ class ModifyTaskInfoRequest(AbstractModel):
         self._TargetServer = None
         self._DependencyWorkflow = None
         self._DependencyConfigDTOs = None
+        self._ExecutionTTL = None
+        self._ScriptChange = None
+        self._InChargeIds = None
 
     @property
     def ProjectId(self):
@@ -54373,10 +54382,14 @@ class ModifyTaskInfoRequest(AbstractModel):
 
     @property
     def InCharge(self):
+        warnings.warn("parameter `InCharge` is deprecated", DeprecationWarning) 
+
         return self._InCharge
 
     @InCharge.setter
     def InCharge(self, InCharge):
+        warnings.warn("parameter `InCharge` is deprecated", DeprecationWarning) 
+
         self._InCharge = InCharge
 
     @property
@@ -54427,6 +54440,30 @@ class ModifyTaskInfoRequest(AbstractModel):
     def DependencyConfigDTOs(self, DependencyConfigDTOs):
         self._DependencyConfigDTOs = DependencyConfigDTOs
 
+    @property
+    def ExecutionTTL(self):
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        self._ExecutionTTL = ExecutionTTL
+
+    @property
+    def ScriptChange(self):
+        return self._ScriptChange
+
+    @ScriptChange.setter
+    def ScriptChange(self, ScriptChange):
+        self._ScriptChange = ScriptChange
+
+    @property
+    def InChargeIds(self):
+        return self._InChargeIds
+
+    @InChargeIds.setter
+    def InChargeIds(self, InChargeIds):
+        self._InChargeIds = InChargeIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -54473,6 +54510,9 @@ class ModifyTaskInfoRequest(AbstractModel):
                 obj = DependencyConfig()
                 obj._deserialize(item)
                 self._DependencyConfigDTOs.append(obj)
+        self._ExecutionTTL = params.get("ExecutionTTL")
+        self._ScriptChange = params.get("ScriptChange")
+        self._InChargeIds = params.get("InChargeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

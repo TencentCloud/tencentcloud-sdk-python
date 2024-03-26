@@ -4166,6 +4166,142 @@ class GetFaceIdResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetFaceIdRiskInfoRequest(AbstractModel):
+    """GetFaceIdRiskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceIdToken: SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+        :type FaceIdToken: str
+        """
+        self._FaceIdToken = None
+
+    @property
+    def FaceIdToken(self):
+        return self._FaceIdToken
+
+    @FaceIdToken.setter
+    def FaceIdToken(self, FaceIdToken):
+        self._FaceIdToken = FaceIdToken
+
+
+    def _deserialize(self, params):
+        self._FaceIdToken = params.get("FaceIdToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFaceIdRiskInfoResponse(AbstractModel):
+    """GetFaceIdRiskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceInfoTag: 描述当前请求所在设备的风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceInfoTag: str
+        :param _DeviceInfoLevel: 描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceInfoLevel: int
+        :param _OpenId: 设备id标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OpenId: str
+        :param _CameraInfoLevel: 描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CameraInfoLevel: int
+        :param _CameraInfoTag: 描述当前请求所在设备的相机指纹风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备，空表示没有相机指纹风险
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CameraInfoTag: str
+        :param _Extra: 获取token时透传的信息	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeviceInfoTag = None
+        self._DeviceInfoLevel = None
+        self._OpenId = None
+        self._CameraInfoLevel = None
+        self._CameraInfoTag = None
+        self._Extra = None
+        self._RequestId = None
+
+    @property
+    def DeviceInfoTag(self):
+        return self._DeviceInfoTag
+
+    @DeviceInfoTag.setter
+    def DeviceInfoTag(self, DeviceInfoTag):
+        self._DeviceInfoTag = DeviceInfoTag
+
+    @property
+    def DeviceInfoLevel(self):
+        return self._DeviceInfoLevel
+
+    @DeviceInfoLevel.setter
+    def DeviceInfoLevel(self, DeviceInfoLevel):
+        self._DeviceInfoLevel = DeviceInfoLevel
+
+    @property
+    def OpenId(self):
+        return self._OpenId
+
+    @OpenId.setter
+    def OpenId(self, OpenId):
+        self._OpenId = OpenId
+
+    @property
+    def CameraInfoLevel(self):
+        return self._CameraInfoLevel
+
+    @CameraInfoLevel.setter
+    def CameraInfoLevel(self, CameraInfoLevel):
+        self._CameraInfoLevel = CameraInfoLevel
+
+    @property
+    def CameraInfoTag(self):
+        return self._CameraInfoTag
+
+    @CameraInfoTag.setter
+    def CameraInfoTag(self, CameraInfoTag):
+        self._CameraInfoTag = CameraInfoTag
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeviceInfoTag = params.get("DeviceInfoTag")
+        self._DeviceInfoLevel = params.get("DeviceInfoLevel")
+        self._OpenId = params.get("OpenId")
+        self._CameraInfoLevel = params.get("CameraInfoLevel")
+        self._CameraInfoTag = params.get("CameraInfoTag")
+        self._Extra = params.get("Extra")
+        self._RequestId = params.get("RequestId")
+
+
 class GetFaceIdTokenRequest(AbstractModel):
     """GetFaceIdToken请求参数结构体
 
@@ -4289,6 +4425,88 @@ class GetFaceIdTokenRequest(AbstractModel):
 
 class GetFaceIdTokenResponse(AbstractModel):
     """GetFaceIdToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceIdToken: 有效期 10分钟。只能完成1次核身。
+        :type FaceIdToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FaceIdToken = None
+        self._RequestId = None
+
+    @property
+    def FaceIdToken(self):
+        return self._FaceIdToken
+
+    @FaceIdToken.setter
+    def FaceIdToken(self, FaceIdToken):
+        self._FaceIdToken = FaceIdToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FaceIdToken = params.get("FaceIdToken")
+        self._RequestId = params.get("RequestId")
+
+
+class GetFaceidRiskInfoTokenRequest(AbstractModel):
+    """GetFaceidRiskInfoToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Meta: SDK中生成的Meta字符串
+        :type Meta: str
+        :param _Extra: 透传参数 1000长度字符串
+        :type Extra: str
+        """
+        self._Meta = None
+        self._Extra = None
+
+    @property
+    def Meta(self):
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._Meta = params.get("Meta")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFaceidRiskInfoTokenResponse(AbstractModel):
+    """GetFaceidRiskInfoToken返回参数结构体
 
     """
 

@@ -1710,7 +1710,7 @@ class CreateFolderRequest(AbstractModel):
         r"""
         :param _FolderName: 新建文件夹名
         :type FolderName: str
-        :param _ParentId: 新建文件夹的父目录ID
+        :param _ParentId: 新建文件夹的父目录ID（根目录为"root"）
         :type ParentId: str
         :param _FolderType: 文件夹类型，0是任务文件夹，1是依赖文件夹
         :type FolderType: int

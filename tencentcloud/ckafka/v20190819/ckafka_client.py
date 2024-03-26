@@ -1638,7 +1638,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyAclRule(self, request):
-        """修改AC策略，目前只支持预设规则的是否应用到新增topic这一项的修改
+        """修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 
         :param request: Request instance for ModifyAclRule.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAclRuleRequest`
