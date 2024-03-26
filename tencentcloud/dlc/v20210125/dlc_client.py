@@ -2533,6 +2533,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryTaskCostDetail(self, request):
+        """该接口（QueryTaskCostDetail）用于查询任务消耗明细
+
+        :param request: Request instance for QueryTaskCostDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryTaskCostDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryTaskCostDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RenewDataEngine(self, request):
         """续费数据引擎
 

@@ -4467,12 +4467,12 @@ class CreateInstancePostRequest(AbstractModel):
         r"""
         :param _InstanceName: 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
         :type InstanceName: str
-        :param _BandWidth: 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
-        :type BandWidth: int
         :param _VpcId: 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
         :type VpcId: str
         :param _SubnetId: 子网id。创建实例默认接入点所在的子网对应的子网 id
         :type SubnetId: str
+        :param _BandWidth: 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
+        :type BandWidth: int
         :param _InstanceType: 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
         :type InstanceType: int
         :param _MsgRetentionTime: 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
@@ -4503,9 +4503,9 @@ class CreateInstancePostRequest(AbstractModel):
         :type PublicNetworkMonthly: int
         """
         self._InstanceName = None
-        self._BandWidth = None
         self._VpcId = None
         self._SubnetId = None
+        self._BandWidth = None
         self._InstanceType = None
         self._MsgRetentionTime = None
         self._ClusterId = None
@@ -4530,14 +4530,6 @@ class CreateInstancePostRequest(AbstractModel):
         self._InstanceName = InstanceName
 
     @property
-    def BandWidth(self):
-        return self._BandWidth
-
-    @BandWidth.setter
-    def BandWidth(self, BandWidth):
-        self._BandWidth = BandWidth
-
-    @property
     def VpcId(self):
         return self._VpcId
 
@@ -4552,6 +4544,14 @@ class CreateInstancePostRequest(AbstractModel):
     @SubnetId.setter
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
+
+    @property
+    def BandWidth(self):
+        return self._BandWidth
+
+    @BandWidth.setter
+    def BandWidth(self, BandWidth):
+        self._BandWidth = BandWidth
 
     @property
     def InstanceType(self):
@@ -4668,9 +4668,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
-        self._BandWidth = params.get("BandWidth")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._BandWidth = params.get("BandWidth")
         self._InstanceType = params.get("InstanceType")
         self._MsgRetentionTime = params.get("MsgRetentionTime")
         self._ClusterId = params.get("ClusterId")

@@ -6188,6 +6188,9 @@ class DescribeSubscribeDetailResponse(AbstractModel):
         :param _KafkaConfig: kafka配置信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
+        :param _KafkaVersion: 订阅内置kafka的版本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVersion: str
         :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessType: str
@@ -6232,6 +6235,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         self._Protocol = None
         self._SubscribeObjects = None
         self._KafkaConfig = None
+        self._KafkaVersion = None
         self._AccessType = None
         self._Endpoints = None
         self._PipelineInfo = None
@@ -6409,6 +6413,14 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         self._KafkaConfig = KafkaConfig
 
     @property
+    def KafkaVersion(self):
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
     def AccessType(self):
         return self._AccessType
 
@@ -6494,6 +6506,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
         if params.get("KafkaConfig") is not None:
             self._KafkaConfig = SubscribeKafkaConfig()
             self._KafkaConfig._deserialize(params.get("KafkaConfig"))
+        self._KafkaVersion = params.get("KafkaVersion")
         self._AccessType = params.get("AccessType")
         if params.get("Endpoints") is not None:
             self._Endpoints = []
@@ -7970,7 +7983,7 @@ class Endpoint(AbstractModel):
         :param _Region: 地域英文名，如：ap-guangzhou
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Role: tdsql mysql版的节点类型，枚举值为proxy、set。tdsqlmysql必填
+        :param _Role: 节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
         :param _DbKernel: 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql
@@ -14658,7 +14671,7 @@ class SyncDBEndpointInfos(AbstractModel):
         :param _DatabaseType: 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseType: str
-        :param _Info: 数据库信息。注意：如果数据类型为tdsqlmysql，此处Endpoint数组的顺序应该与set顺序对应，第一个分片（shardkey范围起始为0的分片）必须要输入在第一个位置
+        :param _Info: 数据库信息。注意：如果数据库类型为tdsqlmysql，此处Endpoint数组的顺序应满足规则：proxy节点放在set节点之前。如果SrcConnectType选择proxy接入则只需要填写proxy节点即可。如果选择set接入，数组中第一个set节点必须是shardkey范围起始为0的分片
 注意：此字段可能返回 null，表示取不到有效值。
         :type Info: list of Endpoint
         """

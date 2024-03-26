@@ -1346,6 +1346,37 @@ class CreateCronJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEnvironmentRequest(AbstractModel):
+    """CreateEnvironment请求参数结构体
+
+    """
+
+
+class CreateEnvironmentResponse(AbstractModel):
+    """CreateEnvironment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateFileRequest(AbstractModel):
     """CreateFile请求参数结构体
 
@@ -2620,6 +2651,37 @@ class DeleteCronJobsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteEnvironmentsRequest(AbstractModel):
+    """DeleteEnvironments请求参数结构体
+
+    """
+
+
+class DeleteEnvironmentsResponse(AbstractModel):
+    """DeleteEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteFilesRequest(AbstractModel):
     """DeleteFiles请求参数结构体
 
@@ -3575,6 +3637,37 @@ class DescribeCronJobsResponse(AbstractModel):
                 obj = CronJob()
                 obj._deserialize(item)
                 self._CronJobSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentsRequest(AbstractModel):
+    """DescribeEnvironments请求参数结构体
+
+    """
+
+
+class DescribeEnvironmentsResponse(AbstractModel):
+    """DescribeEnvironments返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10512,6 +10605,37 @@ class UpdateCronJobRequest(AbstractModel):
 
 class UpdateCronJobResponse(AbstractModel):
     """UpdateCronJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateEnvironmentRequest(AbstractModel):
+    """UpdateEnvironment请求参数结构体
+
+    """
+
+
+class UpdateEnvironmentResponse(AbstractModel):
+    """UpdateEnvironment返回参数结构体
 
     """
 

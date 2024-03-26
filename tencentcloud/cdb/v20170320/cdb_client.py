@@ -3268,7 +3268,7 @@ class CdbClient(AbstractClient):
 
 
     def ReleaseIsolatedDBInstances(self, request):
-        """本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。
+        """本接口（ReleaseIsolatedDBInstances）用于恢复已隔离云数据库实例。仅用于按量计费实例的解隔离，包年包月实例的解隔离请使用 RenewDBInstance 。
 
         :param request: Request instance for ReleaseIsolatedDBInstances.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ReleaseIsolatedDBInstancesRequest`

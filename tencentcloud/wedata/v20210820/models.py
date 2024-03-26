@@ -510,6 +510,12 @@ class AlarmEventInfo(AbstractModel):
         :param _IsSendSuccess: 0：部分成功，1：全部成功，2：全部失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSendSuccess: int
+        :param _InQuitePeriods: 是否在免打扰时间内，0:否, 1:是
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InQuitePeriods: int
+        :param _RecordId: 告警记录id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: int
         :param _MessageId: 消息ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageId: str
@@ -553,6 +559,8 @@ class AlarmEventInfo(AbstractModel):
         self._InstanceId = None
         self._TaskName = None
         self._IsSendSuccess = None
+        self._InQuitePeriods = None
+        self._RecordId = None
         self._MessageId = None
         self._Operator = None
         self._RegularId = None
@@ -684,6 +692,22 @@ class AlarmEventInfo(AbstractModel):
         self._IsSendSuccess = IsSendSuccess
 
     @property
+    def InQuitePeriods(self):
+        return self._InQuitePeriods
+
+    @InQuitePeriods.setter
+    def InQuitePeriods(self, InQuitePeriods):
+        self._InQuitePeriods = InQuitePeriods
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
     def MessageId(self):
         return self._MessageId
 
@@ -772,6 +796,8 @@ class AlarmEventInfo(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._TaskName = params.get("TaskName")
         self._IsSendSuccess = params.get("IsSendSuccess")
+        self._InQuitePeriods = params.get("InQuitePeriods")
+        self._RecordId = params.get("RecordId")
         self._MessageId = params.get("MessageId")
         self._Operator = params.get("Operator")
         self._RegularId = params.get("RegularId")
@@ -4359,12 +4385,16 @@ class BatchKillIntegrationTaskInstancesResponse(AbstractModel):
         :type FailedCount: int
         :param _TotalCount: 任务总数
         :type TotalCount: int
+        :param _TaskNames: 实际传的为taskId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._TaskNames = None
         self._RequestId = None
 
     @property
@@ -4392,6 +4422,14 @@ class BatchKillIntegrationTaskInstancesResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4404,6 +4442,7 @@ class BatchKillIntegrationTaskInstancesResponse(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._TaskNames = params.get("TaskNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -5120,12 +5159,15 @@ class BatchRerunIntegrationTaskInstancesResponse(AbstractModel):
         :type FailedCount: int
         :param _TotalCount: 任务总数
         :type TotalCount: int
+        :param _TaskNames: 实际传的为taskId
+        :type TaskNames: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SuccessCount = None
         self._FailedCount = None
         self._TotalCount = None
+        self._TaskNames = None
         self._RequestId = None
 
     @property
@@ -5153,6 +5195,14 @@ class BatchRerunIntegrationTaskInstancesResponse(AbstractModel):
         self._TotalCount = TotalCount
 
     @property
+    def TaskNames(self):
+        return self._TaskNames
+
+    @TaskNames.setter
+    def TaskNames(self, TaskNames):
+        self._TaskNames = TaskNames
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -5165,6 +5215,7 @@ class BatchRerunIntegrationTaskInstancesResponse(AbstractModel):
         self._SuccessCount = params.get("SuccessCount")
         self._FailedCount = params.get("FailedCount")
         self._TotalCount = params.get("TotalCount")
+        self._TaskNames = params.get("TaskNames")
         self._RequestId = params.get("RequestId")
 
 
@@ -10096,6 +10147,8 @@ class CreateDataSourceRequest(AbstractModel):
         :type COSRegion: str
         :param _ConnectResult: 连接测试结果
         :type ConnectResult: str
+        :param _DevelopmentParams: 开发环境数据源配置
+        :type DevelopmentParams: str
         """
         self._Name = None
         self._Category = None
@@ -10115,6 +10168,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._COSBucket = None
         self._COSRegion = None
         self._ConnectResult = None
+        self._DevelopmentParams = None
 
     @property
     def Name(self):
@@ -10260,6 +10314,14 @@ class CreateDataSourceRequest(AbstractModel):
     def ConnectResult(self, ConnectResult):
         self._ConnectResult = ConnectResult
 
+    @property
+    def DevelopmentParams(self):
+        return self._DevelopmentParams
+
+    @DevelopmentParams.setter
+    def DevelopmentParams(self, DevelopmentParams):
+        self._DevelopmentParams = DevelopmentParams
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10280,6 +10342,7 @@ class CreateDataSourceRequest(AbstractModel):
         self._COSBucket = params.get("COSBucket")
         self._COSRegion = params.get("COSRegion")
         self._ConnectResult = params.get("ConnectResult")
+        self._DevelopmentParams = params.get("DevelopmentParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13527,6 +13590,15 @@ class DataSourceInfo(AbstractModel):
         :param _ShowType: 数据源页面展示类型，与Type对应
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShowType: str
+        :param _ProductId: 当前数据源生产源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductId: int
+        :param _DevelopmentId: 当前数据源开发源Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevelopmentId: int
+        :param _DevelopmentParams: 同params 内容为开发数据源的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DevelopmentParams: str
         """
         self._DatabaseName = None
         self._Description = None
@@ -13559,6 +13631,9 @@ class DataSourceInfo(AbstractModel):
         self._BizParamsString = None
         self._ModifiedTime = None
         self._ShowType = None
+        self._ProductId = None
+        self._DevelopmentId = None
+        self._DevelopmentParams = None
 
     @property
     def DatabaseName(self):
@@ -13808,6 +13883,30 @@ class DataSourceInfo(AbstractModel):
     def ShowType(self, ShowType):
         self._ShowType = ShowType
 
+    @property
+    def ProductId(self):
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DevelopmentId(self):
+        return self._DevelopmentId
+
+    @DevelopmentId.setter
+    def DevelopmentId(self, DevelopmentId):
+        self._DevelopmentId = DevelopmentId
+
+    @property
+    def DevelopmentParams(self):
+        return self._DevelopmentParams
+
+    @DevelopmentParams.setter
+    def DevelopmentParams(self, DevelopmentParams):
+        self._DevelopmentParams = DevelopmentParams
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -13841,6 +13940,9 @@ class DataSourceInfo(AbstractModel):
         self._BizParamsString = params.get("BizParamsString")
         self._ModifiedTime = params.get("ModifiedTime")
         self._ShowType = params.get("ShowType")
+        self._ProductId = params.get("ProductId")
+        self._DevelopmentId = params.get("DevelopmentId")
+        self._DevelopmentParams = params.get("DevelopmentParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17053,8 +17155,6 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         :type PageSize: int
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _MessageId: 消息ID
-        :type MessageId: str
         :param _TaskType: 类型
         :type TaskType: int
         :param _AlarmRecipient: 告警接收人ID(逗号分隔)
@@ -17063,6 +17163,10 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         :type AlarmRecipientName: str
         :param _AlarmTime: 告警时间
         :type AlarmTime: str
+        :param _MessageId: 消息ID
+        :type MessageId: str
+        :param _RecordId: 告警记录id
+        :type RecordId: int
         :param _MonitorType: 监控对象类型(1:所有任务,2:指定任务,3:指定责任人,4:指定资源组)
         :type MonitorType: int
         """
@@ -17070,11 +17174,12 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._PageNumber = None
         self._PageSize = None
         self._ProjectId = None
-        self._MessageId = None
         self._TaskType = None
         self._AlarmRecipient = None
         self._AlarmRecipientName = None
         self._AlarmTime = None
+        self._MessageId = None
+        self._RecordId = None
         self._MonitorType = None
 
     @property
@@ -17110,14 +17215,6 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._ProjectId = ProjectId
 
     @property
-    def MessageId(self):
-        return self._MessageId
-
-    @MessageId.setter
-    def MessageId(self, MessageId):
-        self._MessageId = MessageId
-
-    @property
     def TaskType(self):
         return self._TaskType
 
@@ -17150,6 +17247,22 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._AlarmTime = AlarmTime
 
     @property
+    def MessageId(self):
+        return self._MessageId
+
+    @MessageId.setter
+    def MessageId(self, MessageId):
+        self._MessageId = MessageId
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
     def MonitorType(self):
         return self._MonitorType
 
@@ -17163,11 +17276,12 @@ class DescribeAlarmReceiverRequest(AbstractModel):
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         self._ProjectId = params.get("ProjectId")
-        self._MessageId = params.get("MessageId")
         self._TaskType = params.get("TaskType")
         self._AlarmRecipient = params.get("AlarmRecipient")
         self._AlarmRecipientName = params.get("AlarmRecipientName")
         self._AlarmTime = params.get("AlarmTime")
+        self._MessageId = params.get("MessageId")
+        self._RecordId = params.get("RecordId")
         self._MonitorType = params.get("MonitorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -20518,7 +20632,7 @@ class DescribeDataTypesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasourceType: 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
+        :param _DatasourceType: 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|TCHouse-P|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
         :type DatasourceType: str
         :param _ProjectId: 项目ID。
         :type ProjectId: str
@@ -51042,7 +51156,7 @@ class MakePlanTaskOpsDto(AbstractModel):
         :param _TaskBaseInfo: 任务基本信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskBaseInfo: :class:`tencentcloud.wedata.v20210820.models.TaskOpsDto`
-        :param _InstanceCount: 补录计划该任务实例数
+        :param _InstanceCount: 补录该任务当前已生成的实例数
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceCount: int
         :param _CompletePercent: 补录任务实例完成百分数
@@ -51051,11 +51165,15 @@ class MakePlanTaskOpsDto(AbstractModel):
         :param _SuccessPercent: 补录任务实例成功百分数
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessPercent: int
+        :param _InstanceTotalCount: 预计生成的总实例个数，由于是异步生成，-1代表实例还未完完全生成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTotalCount: int
         """
         self._TaskBaseInfo = None
         self._InstanceCount = None
         self._CompletePercent = None
         self._SuccessPercent = None
+        self._InstanceTotalCount = None
 
     @property
     def TaskBaseInfo(self):
@@ -51089,6 +51207,14 @@ class MakePlanTaskOpsDto(AbstractModel):
     def SuccessPercent(self, SuccessPercent):
         self._SuccessPercent = SuccessPercent
 
+    @property
+    def InstanceTotalCount(self):
+        return self._InstanceTotalCount
+
+    @InstanceTotalCount.setter
+    def InstanceTotalCount(self, InstanceTotalCount):
+        self._InstanceTotalCount = InstanceTotalCount
+
 
     def _deserialize(self, params):
         if params.get("TaskBaseInfo") is not None:
@@ -51097,6 +51223,7 @@ class MakePlanTaskOpsDto(AbstractModel):
         self._InstanceCount = params.get("InstanceCount")
         self._CompletePercent = params.get("CompletePercent")
         self._SuccessPercent = params.get("SuccessPercent")
+        self._InstanceTotalCount = params.get("InstanceTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52169,6 +52296,8 @@ class ModifyDataSourceRequest(AbstractModel):
         :type COSRegion: str
         :param _ProjectId: 操作项目id
         :type ProjectId: str
+        :param _DevelopmentParams: 数据源开发环境配置
+        :type DevelopmentParams: str
         """
         self._Name = None
         self._Category = None
@@ -52189,6 +52318,7 @@ class ModifyDataSourceRequest(AbstractModel):
         self._COSBucket = None
         self._COSRegion = None
         self._ProjectId = None
+        self._DevelopmentParams = None
 
     @property
     def Name(self):
@@ -52342,6 +52472,14 @@ class ModifyDataSourceRequest(AbstractModel):
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def DevelopmentParams(self):
+        return self._DevelopmentParams
+
+    @DevelopmentParams.setter
+    def DevelopmentParams(self, DevelopmentParams):
+        self._DevelopmentParams = DevelopmentParams
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -52363,6 +52501,7 @@ class ModifyDataSourceRequest(AbstractModel):
         self._COSBucket = params.get("COSBucket")
         self._COSRegion = params.get("COSRegion")
         self._ProjectId = params.get("ProjectId")
+        self._DevelopmentParams = params.get("DevelopmentParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58206,6 +58345,66 @@ class QualityScoreTrend(AbstractModel):
                 obj = DailyScoreInfo()
                 obj._deserialize(item)
                 self._DailyScoreList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuietPeriod(AbstractModel):
+    """数据集成 - 告警免打扰时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DaysOfWeek: 代表一周里的哪些天，1代表周一，7代表周日，以此类推
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DaysOfWeek: list of int non-negative
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._DaysOfWeek = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DaysOfWeek(self):
+        return self._DaysOfWeek
+
+    @DaysOfWeek.setter
+    def DaysOfWeek(self, DaysOfWeek):
+        self._DaysOfWeek = DaysOfWeek
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DaysOfWeek = params.get("DaysOfWeek")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71657,6 +71856,9 @@ class TaskAlarmInfo(AbstractModel):
         :param _AlarmRecipientType: 告警接收人类型，0指定人员；1任务责任人
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmRecipientType: int
+        :param _QuietPeriods: 免打扰时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QuietPeriods: list of QuietPeriod
         :param _WeComHook: 企业微信群Hook地址，多个hook地址使用,隔开
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeComHook: str
@@ -71709,6 +71911,7 @@ class TaskAlarmInfo(AbstractModel):
         self._NodeName = None
         self._AlarmIndicatorInfos = None
         self._AlarmRecipientType = None
+        self._QuietPeriods = None
         self._WeComHook = None
         self._UpdateTime = None
         self._OperatorUin = None
@@ -71889,6 +72092,14 @@ class TaskAlarmInfo(AbstractModel):
         self._AlarmRecipientType = AlarmRecipientType
 
     @property
+    def QuietPeriods(self):
+        return self._QuietPeriods
+
+    @QuietPeriods.setter
+    def QuietPeriods(self, QuietPeriods):
+        self._QuietPeriods = QuietPeriods
+
+    @property
     def WeComHook(self):
         return self._WeComHook
 
@@ -71996,6 +72207,12 @@ class TaskAlarmInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AlarmIndicatorInfos.append(obj)
         self._AlarmRecipientType = params.get("AlarmRecipientType")
+        if params.get("QuietPeriods") is not None:
+            self._QuietPeriods = []
+            for item in params.get("QuietPeriods"):
+                obj = QuietPeriod()
+                obj._deserialize(item)
+                self._QuietPeriods.append(obj)
         self._WeComHook = params.get("WeComHook")
         self._UpdateTime = params.get("UpdateTime")
         self._OperatorUin = params.get("OperatorUin")

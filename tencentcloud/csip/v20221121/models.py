@@ -12726,7 +12726,7 @@ class ServerRisk(AbstractModel):
         :type InstanceName: str
         :param _InstanceType: 资产类型
         :type InstanceType: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级 low:低危 high:高危 middle:中危 info:提示 extreme:严重
         :type Level: str
         :param _Protocol: 协议
         :type Protocol: str

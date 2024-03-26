@@ -4327,6 +4327,9 @@ class GetFaceIdTokenRequest(AbstractModel):
         :type UseCos: bool
         :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _RuleId: 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+示例值：1
+        :type RuleId: str
         """
         self._CompareLib = None
         self._IdCard = None
@@ -4336,6 +4339,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         self._Extra = None
         self._UseCos = None
         self._Encryption = None
+        self._RuleId = None
 
     @property
     def CompareLib(self):
@@ -4401,6 +4405,14 @@ class GetFaceIdTokenRequest(AbstractModel):
     def Encryption(self, Encryption):
         self._Encryption = Encryption
 
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
 
     def _deserialize(self, params):
         self._CompareLib = params.get("CompareLib")
@@ -4413,6 +4425,7 @@ class GetFaceIdTokenRequest(AbstractModel):
         if params.get("Encryption") is not None:
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
+        self._RuleId = params.get("RuleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

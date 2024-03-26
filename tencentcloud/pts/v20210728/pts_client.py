@@ -164,6 +164,29 @@ class PtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEnvironment(self, request):
+        """创建环境
+
+        :param request: Request instance for CreateEnvironment.
+        :type request: :class:`tencentcloud.pts.v20210728.models.CreateEnvironmentRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.CreateEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEnvironmentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFile(self, request):
         """创建文件
 
@@ -270,6 +293,29 @@ class PtsClient(AbstractClient):
             body = self.call("DeleteCronJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCronJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteEnvironments(self, request):
+        """删除环境
+
+        :param request: Request instance for DeleteEnvironments.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DeleteEnvironmentsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DeleteEnvironmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEnvironments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEnvironmentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -477,6 +523,29 @@ class PtsClient(AbstractClient):
             body = self.call("DescribeCronJobs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCronJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEnvironments(self, request):
+        """查看环境列表
+
+        :param request: Request instance for DescribeEnvironments.
+        :type request: :class:`tencentcloud.pts.v20210728.models.DescribeEnvironmentsRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.DescribeEnvironmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvironmentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -937,6 +1006,29 @@ class PtsClient(AbstractClient):
             body = self.call("UpdateCronJob", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateCronJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateEnvironment(self, request):
+        """更新环境
+
+        :param request: Request instance for UpdateEnvironment.
+        :type request: :class:`tencentcloud.pts.v20210728.models.UpdateEnvironmentRequest`
+        :rtype: :class:`tencentcloud.pts.v20210728.models.UpdateEnvironmentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateEnvironment", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateEnvironmentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
