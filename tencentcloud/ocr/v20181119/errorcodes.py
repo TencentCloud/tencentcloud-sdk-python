@@ -38,6 +38,9 @@ FAILEDOPERATION_EMPTYIMAGEERROR = 'FailedOperation.EmptyImageError'
 # 引擎识别超时。
 FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = 'FailedOperation.EngineRecognizeTimeout'
 
+# 文件解码失败
+FAILEDOPERATION_FILEDECODEFAILED = 'FailedOperation.FileDecodeFailed'
+
 # 第二代身份证信息不合法或缺失（身份证号、姓名字段校验非法等）
 FAILEDOPERATION_IDCARDINFOILLEGAL = 'FailedOperation.IdCardInfoIllegal'
 

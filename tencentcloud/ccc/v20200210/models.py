@@ -973,6 +973,346 @@ class CarrierPrivilegeNumberApplicant(AbstractModel):
         
 
 
+class CompanyApplyInfo(AbstractModel):
+    """企业资质申请信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicantType: 申请人身份，0-公司法定代表人，1-经办人（受法定代表人委托）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicantType: int
+        :param _CompanyName: 企业名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyName: str
+        :param _BusinessId: 统一社会信用代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessId: str
+        :param _BusinessIdPicUrl: 营业执照扫描件(加盖公章)。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessIdPicUrl: str
+        :param _CorporationName: 法定代表人名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationName: str
+        :param _CorporationId: 法定代表人身份证号码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationId: str
+        :param _CorporationIdPicUrl: 法定代表人身份证正反面扫描件。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationIdPicUrl: str
+        :param _BusinessScope: 业务经营范围
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessScope: str
+        :param _AcceptPicUrl: 电话受理单。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AcceptPicUrl: str
+        :param _NetworkCommitmentPicUrl: 电信入网承诺书。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetworkCommitmentPicUrl: str
+        :param _CorporationHoldingOnIdPicUrl: 法定代表人手持身份证照，申请人类型为法定代表人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorporationHoldingOnIdPicUrl: str
+        :param _OperatorName: 经办人名称，申请人类型为经办人时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorName: str
+        :param _OperatorId: 经办人证件号码，申请人类型为经办人时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorId: str
+        :param _OperatorIdPicUrl: 经办人身份证正反面扫描件，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorIdPicUrl: str
+        :param _OperatorHoldingOnIdPicUrl: 经办人手持身份证照，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorHoldingOnIdPicUrl: str
+        :param _CommissionPicUrl: 委托授权书，申请人类型为经办人时必填。(支持jpg、png、gif、jpeg格式的图片，每张图片应大于50K，不超过5MB，模版参见控制台:https://console.cloud.tencent.com/ccc/enterprise/update)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CommissionPicUrl: str
+        """
+        self._ApplicantType = None
+        self._CompanyName = None
+        self._BusinessId = None
+        self._BusinessIdPicUrl = None
+        self._CorporationName = None
+        self._CorporationId = None
+        self._CorporationIdPicUrl = None
+        self._BusinessScope = None
+        self._AcceptPicUrl = None
+        self._NetworkCommitmentPicUrl = None
+        self._CorporationHoldingOnIdPicUrl = None
+        self._OperatorName = None
+        self._OperatorId = None
+        self._OperatorIdPicUrl = None
+        self._OperatorHoldingOnIdPicUrl = None
+        self._CommissionPicUrl = None
+
+    @property
+    def ApplicantType(self):
+        return self._ApplicantType
+
+    @ApplicantType.setter
+    def ApplicantType(self, ApplicantType):
+        self._ApplicantType = ApplicantType
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def BusinessIdPicUrl(self):
+        return self._BusinessIdPicUrl
+
+    @BusinessIdPicUrl.setter
+    def BusinessIdPicUrl(self, BusinessIdPicUrl):
+        self._BusinessIdPicUrl = BusinessIdPicUrl
+
+    @property
+    def CorporationName(self):
+        return self._CorporationName
+
+    @CorporationName.setter
+    def CorporationName(self, CorporationName):
+        self._CorporationName = CorporationName
+
+    @property
+    def CorporationId(self):
+        return self._CorporationId
+
+    @CorporationId.setter
+    def CorporationId(self, CorporationId):
+        self._CorporationId = CorporationId
+
+    @property
+    def CorporationIdPicUrl(self):
+        return self._CorporationIdPicUrl
+
+    @CorporationIdPicUrl.setter
+    def CorporationIdPicUrl(self, CorporationIdPicUrl):
+        self._CorporationIdPicUrl = CorporationIdPicUrl
+
+    @property
+    def BusinessScope(self):
+        return self._BusinessScope
+
+    @BusinessScope.setter
+    def BusinessScope(self, BusinessScope):
+        self._BusinessScope = BusinessScope
+
+    @property
+    def AcceptPicUrl(self):
+        return self._AcceptPicUrl
+
+    @AcceptPicUrl.setter
+    def AcceptPicUrl(self, AcceptPicUrl):
+        self._AcceptPicUrl = AcceptPicUrl
+
+    @property
+    def NetworkCommitmentPicUrl(self):
+        return self._NetworkCommitmentPicUrl
+
+    @NetworkCommitmentPicUrl.setter
+    def NetworkCommitmentPicUrl(self, NetworkCommitmentPicUrl):
+        self._NetworkCommitmentPicUrl = NetworkCommitmentPicUrl
+
+    @property
+    def CorporationHoldingOnIdPicUrl(self):
+        return self._CorporationHoldingOnIdPicUrl
+
+    @CorporationHoldingOnIdPicUrl.setter
+    def CorporationHoldingOnIdPicUrl(self, CorporationHoldingOnIdPicUrl):
+        self._CorporationHoldingOnIdPicUrl = CorporationHoldingOnIdPicUrl
+
+    @property
+    def OperatorName(self):
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
+
+    @property
+    def OperatorId(self):
+        return self._OperatorId
+
+    @OperatorId.setter
+    def OperatorId(self, OperatorId):
+        self._OperatorId = OperatorId
+
+    @property
+    def OperatorIdPicUrl(self):
+        return self._OperatorIdPicUrl
+
+    @OperatorIdPicUrl.setter
+    def OperatorIdPicUrl(self, OperatorIdPicUrl):
+        self._OperatorIdPicUrl = OperatorIdPicUrl
+
+    @property
+    def OperatorHoldingOnIdPicUrl(self):
+        return self._OperatorHoldingOnIdPicUrl
+
+    @OperatorHoldingOnIdPicUrl.setter
+    def OperatorHoldingOnIdPicUrl(self, OperatorHoldingOnIdPicUrl):
+        self._OperatorHoldingOnIdPicUrl = OperatorHoldingOnIdPicUrl
+
+    @property
+    def CommissionPicUrl(self):
+        return self._CommissionPicUrl
+
+    @CommissionPicUrl.setter
+    def CommissionPicUrl(self, CommissionPicUrl):
+        self._CommissionPicUrl = CommissionPicUrl
+
+
+    def _deserialize(self, params):
+        self._ApplicantType = params.get("ApplicantType")
+        self._CompanyName = params.get("CompanyName")
+        self._BusinessId = params.get("BusinessId")
+        self._BusinessIdPicUrl = params.get("BusinessIdPicUrl")
+        self._CorporationName = params.get("CorporationName")
+        self._CorporationId = params.get("CorporationId")
+        self._CorporationIdPicUrl = params.get("CorporationIdPicUrl")
+        self._BusinessScope = params.get("BusinessScope")
+        self._AcceptPicUrl = params.get("AcceptPicUrl")
+        self._NetworkCommitmentPicUrl = params.get("NetworkCommitmentPicUrl")
+        self._CorporationHoldingOnIdPicUrl = params.get("CorporationHoldingOnIdPicUrl")
+        self._OperatorName = params.get("OperatorName")
+        self._OperatorId = params.get("OperatorId")
+        self._OperatorIdPicUrl = params.get("OperatorIdPicUrl")
+        self._OperatorHoldingOnIdPicUrl = params.get("OperatorHoldingOnIdPicUrl")
+        self._CommissionPicUrl = params.get("CommissionPicUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompanyStateInfo(AbstractModel):
+    """公司资质审核状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 申请单ID
+        :type Id: int
+        :param _CompanyName: 公司名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompanyName: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _CheckTime: 审核时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckTime: int
+        :param _CheckMsg: 审核备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckMsg: str
+        :param _State: 审核状态，1-待审核，2-审核通过，3-驳回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: int
+        :param _BusinessId: 公司统一社会信用代码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessId: str
+        """
+        self._Id = None
+        self._CompanyName = None
+        self._CreateTime = None
+        self._CheckTime = None
+        self._CheckMsg = None
+        self._State = None
+        self._BusinessId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CheckTime(self):
+        return self._CheckTime
+
+    @CheckTime.setter
+    def CheckTime(self, CheckTime):
+        self._CheckTime = CheckTime
+
+    @property
+    def CheckMsg(self):
+        return self._CheckMsg
+
+    @CheckMsg.setter
+    def CheckMsg(self, CheckMsg):
+        self._CheckMsg = CheckMsg
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def BusinessId(self):
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CompanyName = params.get("CompanyName")
+        self._CreateTime = params.get("CreateTime")
+        self._CheckTime = params.get("CheckTime")
+        self._CheckMsg = params.get("CheckMsg")
+        self._State = params.get("State")
+        self._BusinessId = params.get("BusinessId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAdminURLRequest(AbstractModel):
     """CreateAdminURL请求参数结构体
 
@@ -1635,6 +1975,78 @@ class CreateCarrierPrivilegeNumberApplicantResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ApplicantId = params.get("ApplicantId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCompanyApplyRequest(AbstractModel):
+    """CreateCompanyApply请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompanyInfo: 企业资质信息
+        :type CompanyInfo: :class:`tencentcloud.ccc.v20200210.models.CompanyApplyInfo`
+        """
+        self._CompanyInfo = None
+
+    @property
+    def CompanyInfo(self):
+        return self._CompanyInfo
+
+    @CompanyInfo.setter
+    def CompanyInfo(self, CompanyInfo):
+        self._CompanyInfo = CompanyInfo
+
+
+    def _deserialize(self, params):
+        if params.get("CompanyInfo") is not None:
+            self._CompanyInfo = CompanyApplyInfo()
+            self._CompanyInfo._deserialize(params.get("CompanyInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCompanyApplyResponse(AbstractModel):
+    """CreateCompanyApply返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 申请单ID
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -3482,6 +3894,142 @@ class DescribeChatMessagesResponse(AbstractModel):
                 obj = MessageBody()
                 obj._deserialize(item)
                 self._Messages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCompanyListRequest(AbstractModel):
+    """DescribeCompanyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: 分页尺寸，上限 100
+        :type PageSize: int
+        :param _PageNumber: 分页页码，从 0 开始
+        :type PageNumber: int
+        :param _CompanyName: 公司名称
+        :type CompanyName: list of str
+        :param _State: 审核状态，1-待审核，2-审核通过，3-驳回
+        :type State: list of int
+        :param _ApplyID: 申请ID
+        :type ApplyID: list of int
+        """
+        self._PageSize = None
+        self._PageNumber = None
+        self._CompanyName = None
+        self._State = None
+        self._ApplyID = None
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def CompanyName(self):
+        return self._CompanyName
+
+    @CompanyName.setter
+    def CompanyName(self, CompanyName):
+        self._CompanyName = CompanyName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def ApplyID(self):
+        return self._ApplyID
+
+    @ApplyID.setter
+    def ApplyID(self, ApplyID):
+        self._ApplyID = ApplyID
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._CompanyName = params.get("CompanyName")
+        self._State = params.get("State")
+        self._ApplyID = params.get("ApplyID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCompanyListResponse(AbstractModel):
+    """DescribeCompanyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _CompanyInfo: 企业资质审核信息
+        :type CompanyInfo: list of CompanyStateInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CompanyInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CompanyInfo(self):
+        return self._CompanyInfo
+
+    @CompanyInfo.setter
+    def CompanyInfo(self, CompanyInfo):
+        self._CompanyInfo = CompanyInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CompanyInfo") is not None:
+            self._CompanyInfo = []
+            for item in params.get("CompanyInfo"):
+                obj = CompanyStateInfo()
+                obj._deserialize(item)
+                self._CompanyInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6707,6 +7255,78 @@ class MessageBody(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyCompanyApplyRequest(AbstractModel):
+    """ModifyCompanyApply请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyId: 申请单ID(只能修改状态为“驳回”或者“待审核”的申请单)
+        :type ApplyId: int
+        :param _CompanyInfo: 企业资质信息
+        :type CompanyInfo: :class:`tencentcloud.ccc.v20200210.models.CompanyApplyInfo`
+        """
+        self._ApplyId = None
+        self._CompanyInfo = None
+
+    @property
+    def ApplyId(self):
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def CompanyInfo(self):
+        return self._CompanyInfo
+
+    @CompanyInfo.setter
+    def CompanyInfo(self, CompanyInfo):
+        self._CompanyInfo = CompanyInfo
+
+
+    def _deserialize(self, params):
+        self._ApplyId = params.get("ApplyId")
+        if params.get("CompanyInfo") is not None:
+            self._CompanyInfo = CompanyApplyInfo()
+            self._CompanyInfo._deserialize(params.get("CompanyInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCompanyApplyResponse(AbstractModel):
+    """ModifyCompanyApply返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyExtensionRequest(AbstractModel):

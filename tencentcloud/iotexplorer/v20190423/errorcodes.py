@@ -449,6 +449,9 @@ UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = 'UnauthorizedOperation.ProductNotSu
 # License数量不足。
 UNAUTHORIZEDOPERATION_USERLICENSEEXCEEDLIMIT = 'UnauthorizedOperation.UserLicenseExceedLimit'
 
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'
+
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 

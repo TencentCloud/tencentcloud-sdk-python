@@ -22706,18 +22706,26 @@ class TableBaseInfo(AbstractModel):
 
     @property
     def GovernPolicy(self):
+        warnings.warn("parameter `GovernPolicy` is deprecated", DeprecationWarning) 
+
         return self._GovernPolicy
 
     @GovernPolicy.setter
     def GovernPolicy(self, GovernPolicy):
+        warnings.warn("parameter `GovernPolicy` is deprecated", DeprecationWarning) 
+
         self._GovernPolicy = GovernPolicy
 
     @property
     def DbGovernPolicyIsDisable(self):
+        warnings.warn("parameter `DbGovernPolicyIsDisable` is deprecated", DeprecationWarning) 
+
         return self._DbGovernPolicyIsDisable
 
     @DbGovernPolicyIsDisable.setter
     def DbGovernPolicyIsDisable(self, DbGovernPolicyIsDisable):
+        warnings.warn("parameter `DbGovernPolicyIsDisable` is deprecated", DeprecationWarning) 
+
         self._DbGovernPolicyIsDisable = DbGovernPolicyIsDisable
 
     @property

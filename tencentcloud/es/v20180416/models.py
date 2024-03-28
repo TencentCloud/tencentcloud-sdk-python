@@ -7322,7 +7322,7 @@ class InstanceInfo(AbstractModel):
         :type VpcUid: str
         :param _SubnetUid: 实例所属子网的UID
         :type SubnetUid: str
-        :param _Status: 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁, 2:创建集群时初始化中
+        :param _Status: 实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中
         :type Status: int
         :param _RenewFlag: 自动续费标识。取值范围：
 RENEW_FLAG_AUTO：自动续费  
@@ -7414,7 +7414,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _DeployMode: 部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployMode: int
-        :param _PublicAccess: ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+        :param _PublicAccess: ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccess: str
         :param _EsPublicAcl: ES公网访问控制配置
@@ -7422,10 +7422,10 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _KibanaPrivateUrl: Kibana内网地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateUrl: str
-        :param _KibanaPublicAccess: Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+        :param _KibanaPublicAccess: Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPublicAccess: str
-        :param _KibanaPrivateAccess: Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭
+        :param _KibanaPrivateAccess: Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateAccess: str
         :param _SecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
@@ -7515,7 +7515,7 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _ProcessPercent: 流程进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessPercent: float
-        :param _KibanaAlteringPublicAccess: Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+        :param _KibanaAlteringPublicAccess: Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaAlteringPublicAccess: str
         :param _HasKernelUpgrade: 本月是否有内核可以更新：false-无，true-有
@@ -7530,6 +7530,12 @@ RENEW_FLAG_DEFAULT：不自动续费
         :param _CustomKibanaPrivateUrl: 自定义kibana内网url
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomKibanaPrivateUrl: str
+        :param _OutboundPublicAcls: 节点出站访问详细信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutboundPublicAcls: list of OutboundPublicAcl
+        :param _NetConnectScheme: 网络连接方案
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NetConnectScheme: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -7616,6 +7622,8 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._CdcId = None
         self._KibanaPrivateVip = None
         self._CustomKibanaPrivateUrl = None
+        self._OutboundPublicAcls = None
+        self._NetConnectScheme = None
 
     @property
     def InstanceId(self):
@@ -8297,6 +8305,22 @@ RENEW_FLAG_DEFAULT：不自动续费
     def CustomKibanaPrivateUrl(self, CustomKibanaPrivateUrl):
         self._CustomKibanaPrivateUrl = CustomKibanaPrivateUrl
 
+    @property
+    def OutboundPublicAcls(self):
+        return self._OutboundPublicAcls
+
+    @OutboundPublicAcls.setter
+    def OutboundPublicAcls(self, OutboundPublicAcls):
+        self._OutboundPublicAcls = OutboundPublicAcls
+
+    @property
+    def NetConnectScheme(self):
+        return self._NetConnectScheme
+
+    @NetConnectScheme.setter
+    def NetConnectScheme(self, NetConnectScheme):
+        self._NetConnectScheme = NetConnectScheme
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8425,6 +8449,13 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._CdcId = params.get("CdcId")
         self._KibanaPrivateVip = params.get("KibanaPrivateVip")
         self._CustomKibanaPrivateUrl = params.get("CustomKibanaPrivateUrl")
+        if params.get("OutboundPublicAcls") is not None:
+            self._OutboundPublicAcls = []
+            for item in params.get("OutboundPublicAcls"):
+                obj = OutboundPublicAcl()
+                obj._deserialize(item)
+                self._OutboundPublicAcls.append(obj)
+        self._NetConnectScheme = params.get("NetConnectScheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10304,6 +10335,8 @@ class NodeView(AbstractModel):
         :type Hidden: bool
         :param _IsCoordinationNode: 是否充当协调节点的角色
         :type IsCoordinationNode: bool
+        :param _CVMStatus: CVM运行状态
+        :type CVMStatus: str
         """
         self._NodeId = None
         self._NodeIp = None
@@ -10323,6 +10356,7 @@ class NodeView(AbstractModel):
         self._DiskIds = None
         self._Hidden = None
         self._IsCoordinationNode = None
+        self._CVMStatus = None
 
     @property
     def NodeId(self):
@@ -10468,6 +10502,14 @@ class NodeView(AbstractModel):
     def IsCoordinationNode(self, IsCoordinationNode):
         self._IsCoordinationNode = IsCoordinationNode
 
+    @property
+    def CVMStatus(self):
+        return self._CVMStatus
+
+    @CVMStatus.setter
+    def CVMStatus(self, CVMStatus):
+        self._CVMStatus = CVMStatus
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -10488,6 +10530,7 @@ class NodeView(AbstractModel):
         self._DiskIds = params.get("DiskIds")
         self._Hidden = params.get("Hidden")
         self._IsCoordinationNode = params.get("IsCoordinationNode")
+        self._CVMStatus = params.get("CVMStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10967,6 +11010,53 @@ class OptionalWebServiceInfo(AbstractModel):
         
 
 
+class OutboundPublicAcl(AbstractModel):
+    """节点出站访问信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeType: 允许节点出站访问的节点类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeType: str
+        :param _WhiteHostList: 允许节点出站访问的白名单
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WhiteHostList: list of str
+        """
+        self._NodeType = None
+        self._WhiteHostList = None
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def WhiteHostList(self):
+        return self._WhiteHostList
+
+    @WhiteHostList.setter
+    def WhiteHostList(self, WhiteHostList):
+        self._WhiteHostList = WhiteHostList
+
+
+    def _deserialize(self, params):
+        self._NodeType = params.get("NodeType")
+        self._WhiteHostList = params.get("WhiteHostList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProcessDetail(AbstractModel):
     """任务进度详情
 
@@ -11282,12 +11372,15 @@ class RestartNodesRequest(AbstractModel):
         :type RestartMode: str
         :param _IsOffline: 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
         :type IsOffline: bool
+        :param _CvmDelayOnlineTime: cvm延迟上架时间
+        :type CvmDelayOnlineTime: int
         """
         self._InstanceId = None
         self._NodeNames = None
         self._ForceRestart = None
         self._RestartMode = None
         self._IsOffline = None
+        self._CvmDelayOnlineTime = None
 
     @property
     def InstanceId(self):
@@ -11329,6 +11422,14 @@ class RestartNodesRequest(AbstractModel):
     def IsOffline(self, IsOffline):
         self._IsOffline = IsOffline
 
+    @property
+    def CvmDelayOnlineTime(self):
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11336,6 +11437,7 @@ class RestartNodesRequest(AbstractModel):
         self._ForceRestart = params.get("ForceRestart")
         self._RestartMode = params.get("RestartMode")
         self._IsOffline = params.get("IsOffline")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12759,6 +12861,15 @@ CLOSE 关闭
         :type CerebroPrivateDomain: str
         :param _Protocol: 变更为https集群，默认是http
         :type Protocol: str
+        :param _OutboundPublicAcls: 节点出站访问详细信息
+
+        :type OutboundPublicAcls: list of OutboundPublicAcl
+        :param _OutboundPublicAccess: 节点出站访问操作
+OPEN 开启
+CLOSE 关闭
+        :type OutboundPublicAccess: str
+        :param _CvmDelayOnlineTime: cvm延迟上架参数
+        :type CvmDelayOnlineTime: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12795,6 +12906,9 @@ CLOSE 关闭
         self._KibanaPrivateDomain = None
         self._CerebroPrivateDomain = None
         self._Protocol = None
+        self._OutboundPublicAcls = None
+        self._OutboundPublicAccess = None
+        self._CvmDelayOnlineTime = None
 
     @property
     def InstanceId(self):
@@ -13076,6 +13190,30 @@ CLOSE 关闭
     def Protocol(self, Protocol):
         self._Protocol = Protocol
 
+    @property
+    def OutboundPublicAcls(self):
+        return self._OutboundPublicAcls
+
+    @OutboundPublicAcls.setter
+    def OutboundPublicAcls(self, OutboundPublicAcls):
+        self._OutboundPublicAcls = OutboundPublicAcls
+
+    @property
+    def OutboundPublicAccess(self):
+        return self._OutboundPublicAccess
+
+    @OutboundPublicAccess.setter
+    def OutboundPublicAccess(self, OutboundPublicAccess):
+        self._OutboundPublicAccess = OutboundPublicAccess
+
+    @property
+    def CvmDelayOnlineTime(self):
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13135,6 +13273,14 @@ CLOSE 关闭
         self._KibanaPrivateDomain = params.get("KibanaPrivateDomain")
         self._CerebroPrivateDomain = params.get("CerebroPrivateDomain")
         self._Protocol = params.get("Protocol")
+        if params.get("OutboundPublicAcls") is not None:
+            self._OutboundPublicAcls = []
+            for item in params.get("OutboundPublicAcls"):
+                obj = OutboundPublicAcl()
+                obj._deserialize(item)
+                self._OutboundPublicAcls.append(obj)
+        self._OutboundPublicAccess = params.get("OutboundPublicAccess")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13961,6 +14107,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :type CosBackup: bool
         :param _SkipCheckForceRestart: 滚动模式时，是否跳过检查，进行强制重启。默认值为false
         :type SkipCheckForceRestart: bool
+        :param _CvmDelayOnlineTime: cvm延迟上架参数
+        :type CvmDelayOnlineTime: int
         """
         self._InstanceId = None
         self._EsVersion = None
@@ -13970,6 +14118,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self._UpgradeMode = None
         self._CosBackup = None
         self._SkipCheckForceRestart = None
+        self._CvmDelayOnlineTime = None
 
     @property
     def InstanceId(self):
@@ -14035,6 +14184,14 @@ class UpgradeInstanceRequest(AbstractModel):
     def SkipCheckForceRestart(self, SkipCheckForceRestart):
         self._SkipCheckForceRestart = SkipCheckForceRestart
 
+    @property
+    def CvmDelayOnlineTime(self):
+        return self._CvmDelayOnlineTime
+
+    @CvmDelayOnlineTime.setter
+    def CvmDelayOnlineTime(self, CvmDelayOnlineTime):
+        self._CvmDelayOnlineTime = CvmDelayOnlineTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -14045,6 +14202,7 @@ class UpgradeInstanceRequest(AbstractModel):
         self._UpgradeMode = params.get("UpgradeMode")
         self._CosBackup = params.get("CosBackup")
         self._SkipCheckForceRestart = params.get("SkipCheckForceRestart")
+        self._CvmDelayOnlineTime = params.get("CvmDelayOnlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

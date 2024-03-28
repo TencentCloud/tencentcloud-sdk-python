@@ -681,8 +681,10 @@ class ApproverOption(AbstractModel):
         :type CanEditApprover: bool
         :param _FillType: 签署人信息补充类型，默认无需补充。
 
-<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li>
-</ul>
+<ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）注：`企业自动签不支持动态补充`</li></ul>
+
+注：
+`使用动态签署人能力前，需登陆腾讯电子签控制台打开服务开关`
         :type FillType: int
         :param _FlowReadLimit: 签署人阅读合同限制参数
  <br/>取值：
@@ -5063,10 +5065,10 @@ class CreateFlowOption(AbstractModel):
         :type CustomCreateFlowDescription: str
         :param _ForbidAddApprover:   禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
 
-        :type ForbidAddApprover: str
+        :type ForbidAddApprover: bool
         :param _ForbidEditFlowProperties:   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
 
-        :type ForbidEditFlowProperties: str
+        :type ForbidEditFlowProperties: bool
         :param _HideComponentTypes: 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用，具体的控件类型如下
 <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
 <li>SIGN_SEAL : 企业印章</li>
@@ -14781,11 +14783,16 @@ class FlowCreateApprover(AbstractModel):
 
 `此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主`
         :type Components: list of Component
-        :param _ComponentLimitType: 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
-	HANDWRITE – 手写签名
-	OCR_ESIGN -- AI智能识别手写签名
-	ESIGN -- 个人印章类型
-	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
+        :param _ComponentLimitType: 当签署方控件类型为 <b>SIGN_SIGNATURE</b> 时，可以指定签署方签名方式。如果不指定，签署人可以使用所有的签名类型，可指定的签名类型包括：
+
+<ul><li> <b>HANDWRITE</b> :手写签名。</li>
+<li> <b>OCR_ESIGN</b> :AI智能识别手写签名。</li>
+<li> <b>ESIGN</b> :个人印章类型。</li>
+<li> <b>IMG_ESIGN</b>  : 图片印章。该类型支持用户在签署将上传的PNG格式的图片作为签名。</li>
+<li> <b>SYSTEM_ESIGN</b> :系统签名。该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署。</li></ul>
+
+各种签名的样式可以参考下图：
+![image](https://qcloudimg.tencent-cloud.cn/raw/ee0498856c060c065628a0c5ba780d6b.jpg)
         :type ComponentLimitType: list of str
         :param _ApproverVerifyTypes: 指定个人签署方查看合同的校验方式,可以传值如下:
 <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>

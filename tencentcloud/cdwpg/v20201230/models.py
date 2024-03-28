@@ -244,6 +244,8 @@ class CreateInstanceByApiRequest(AbstractModel):
         :type Resources: list of ResourceSpecNew
         :param _Tags: 标签列表
         :type Tags: :class:`tencentcloud.cdwpg.v20201230.models.Tag`
+        :param _ProductVersion: 版本
+        :type ProductVersion: str
         """
         self._InstanceName = None
         self._Zone = None
@@ -253,6 +255,7 @@ class CreateInstanceByApiRequest(AbstractModel):
         self._AdminPassword = None
         self._Resources = None
         self._Tags = None
+        self._ProductVersion = None
 
     @property
     def InstanceName(self):
@@ -318,6 +321,14 @@ class CreateInstanceByApiRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ProductVersion(self):
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -337,6 +348,7 @@ class CreateInstanceByApiRequest(AbstractModel):
         if params.get("Tags") is not None:
             self._Tags = Tag()
             self._Tags._deserialize(params.get("Tags"))
+        self._ProductVersion = params.get("ProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

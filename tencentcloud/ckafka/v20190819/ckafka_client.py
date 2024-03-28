@@ -417,6 +417,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePrometheus(self, request):
+        """添加普罗米修斯监控1
+
+        :param request: Request instance for CreatePrometheus.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreatePrometheusRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreatePrometheusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrometheus", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrometheusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRoute(self, request):
         """添加实例路由
 
@@ -1236,6 +1259,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DescribeInstancesDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrometheus(self, request):
+        """获取实例Prometheus信息
+
+        :param request: Request instance for DescribePrometheus.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribePrometheusRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribePrometheusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrometheus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrometheusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

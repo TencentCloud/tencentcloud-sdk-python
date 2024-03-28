@@ -26,6 +26,29 @@ class IotexplorerClient(AbstractClient):
     _service = 'iotexplorer'
 
 
+    def BindCloudStorageUser(self, request):
+        """绑定云存用户
+
+        :param request: Request instance for BindCloudStorageUser.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindCloudStorageUserRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BindCloudStorageUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindCloudStorageUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindCloudStorageUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindDevices(self, request):
         """批量绑定子设备
 
@@ -210,6 +233,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateIotVideoCloudStorage(self, request):
+        """开通云存服务
+
+        :param request: Request instance for CreateIotVideoCloudStorage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateIotVideoCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateIotVideoCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIotVideoCloudStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIotVideoCloudStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLoRaFrequency(self, request):
         """创建 LoRa 自定义频点
 
@@ -385,6 +431,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("CreateTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudStorageEvent(self, request):
+        """删除云存事件
+
+        :param request: Request instance for DeleteCloudStorageEvent.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteCloudStorageEventRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteCloudStorageEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudStorageEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudStorageEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +762,282 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorage(self, request):
+        """获取设备云存服务详情
+
+        :param request: Request instance for DescribeCloudStorage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageDate(self, request):
+        """获取具有云存的日期
+
+        :param request: Request instance for DescribeCloudStorageDate.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageDateRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageEvents(self, request):
+        """拉取云存事件列表
+
+        :param request: Request instance for DescribeCloudStorageEvents.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageMultiThumbnail(self, request):
+        """拉取多个云存事件缩略图
+
+        :param request: Request instance for DescribeCloudStorageMultiThumbnail.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageMultiThumbnailRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageMultiThumbnailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageMultiThumbnail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageMultiThumbnailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageOrder(self, request):
+        """查询云存服务详情
+
+        :param request: Request instance for DescribeCloudStorageOrder.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageOrderRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStoragePackageConsumeDetails(self, request):
+        """获取云存套餐包消耗详细记录
+
+        :param request: Request instance for DescribeCloudStoragePackageConsumeDetails.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeDetailsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeDetailsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStoragePackageConsumeDetails", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStoragePackageConsumeDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStoragePackageConsumeStats(self, request):
+        """获取云存套餐包消耗统计
+
+        :param request: Request instance for DescribeCloudStoragePackageConsumeStats.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeStatsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStoragePackageConsumeStatsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStoragePackageConsumeStats", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStoragePackageConsumeStatsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageStreamData(self, request):
+        """获取设备图片流数据
+
+        :param request: Request instance for DescribeCloudStorageStreamData.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageStreamDataRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageStreamDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageStreamData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageStreamDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageThumbnail(self, request):
+        """拉取云存事件缩略图
+
+        :param request: Request instance for DescribeCloudStorageThumbnail.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageThumbnail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageThumbnailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageThumbnailList(self, request):
+        """批量拉取云存事件缩略图
+
+        :param request: Request instance for DescribeCloudStorageThumbnailList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageThumbnailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageThumbnailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageThumbnailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageTime(self, request):
+        """获取某一天云存时间轴
+
+        :param request: Request instance for DescribeCloudStorageTime.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageTimeRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageTimeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageTime", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudStorageUsers(self, request):
+        """拉取云存用户列表
+
+        :param request: Request instance for DescribeCloudStorageUsers.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageUsersRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDevice(self, request):
         """用于查看某个设备的详细信息
 
@@ -822,6 +1167,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribeDeviceLocationSolve", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceLocationSolveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDevicePackages(self, request):
+        """根据设备信息拉取有效套餐列表
+
+        :param request: Request instance for DescribeDevicePackages.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePackagesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeDevicePackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDevicePackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDevicePackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1061,6 +1429,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePackageConsumeTask(self, request):
+        """查询套餐消耗记录详情
+
+        :param request: Request instance for DescribePackageConsumeTask.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTaskRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePackageConsumeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePackageConsumeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePackageConsumeTasks(self, request):
+        """查询套餐消耗记录列表
+
+        :param request: Request instance for DescribePackageConsumeTasks.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTasksRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePackageConsumeTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePackageConsumeTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePackageConsumeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePositionFenceList(self, request):
         """获取围栏列表
 
@@ -1282,6 +1696,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GenSingleDeviceSignatureOfPublic", params, headers=headers)
             response = json.loads(body)
             model = models.GenSingleDeviceSignatureOfPublicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateSignedVideoURL(self, request):
+        """获取视频防盗链播放URL
+
+        :param request: Request instance for GenerateSignedVideoURL.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateSignedVideoURLRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GenerateSignedVideoURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateSignedVideoURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateSignedVideoURLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1558,6 +1995,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTopicRuleList", params, headers=headers)
             response = json.loads(body)
             model = models.GetTopicRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InheritCloudStorageUser(self, request):
+        """继承云存用户
+
+        :param request: Request instance for InheritCloudStorageUser.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InheritCloudStorageUserRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.InheritCloudStorageUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InheritCloudStorageUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.InheritCloudStorageUserResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1981,6 +2441,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetCloudStorage(self, request):
+        """重置云存服务
+
+        :param request: Request instance for ResetCloudStorage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetCloudStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetCloudStorageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetCloudStorageEvent(self, request):
+        """重置云存事件
+
+        :param request: Request instance for ResetCloudStorageEvent.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageEventRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ResetCloudStorageEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetCloudStorageEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetCloudStorageEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchPositionSpace(self, request):
         """搜索位置空间
 
@@ -2041,6 +2547,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("SearchTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.SearchTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferCloudStorage(self, request):
+        """转移云存服务
+
+        :param request: Request instance for TransferCloudStorage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.TransferCloudStorageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TransferCloudStorageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferCloudStorage", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferCloudStorageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

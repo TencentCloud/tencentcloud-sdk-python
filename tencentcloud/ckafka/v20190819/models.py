@@ -5638,6 +5638,102 @@ class CreatePostPaidInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrometheusRequest(AbstractModel):
+    """CreatePrometheus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka实例id
+        :type InstanceId: str
+        :param _VpcId: vpc地址
+        :type VpcId: str
+        :param _SubnetId: 子网地址
+        :type SubnetId: str
+        """
+        self._InstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrometheusResponse(AbstractModel):
+    """CreatePrometheus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 打通普罗米修斯
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.PrometheusResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = PrometheusResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRouteRequest(AbstractModel):
     """CreateRoute请求参数结构体
 
@@ -10954,7 +11050,7 @@ class DescribeGroupInfoRequest(AbstractModel):
         r"""
         :param _InstanceId: （过滤条件）按照实例 ID 过滤。
         :type InstanceId: str
-        :param _GroupList: Kafka 消费分组，Consumer-group，这里是数组形式，格式：GroupList.0=xxx&GroupList.1=yyy。
+        :param _GroupList: Kafka 消费分组，Consumer-group，这里是数组形式，示例：["xxx","yyy"]
         :type GroupList: list of str
         """
         self._InstanceId = None
@@ -11676,6 +11772,81 @@ class DescribeInstancesResponse(AbstractModel):
         if params.get("Result") is not None:
             self._Result = InstanceResponse()
             self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrometheusRequest(AbstractModel):
+    """DescribePrometheus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ckafka实例Id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrometheusResponse(AbstractModel):
+    """DescribePrometheus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Prometheus监控映射列表
+        :type Result: list of PrometheusDTO
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = []
+            for item in params.get("Result"):
+                obj = PrometheusDTO()
+                obj._deserialize(item)
+                self._Result.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21986,6 +22157,122 @@ class PrivateLinkParam(AbstractModel):
     def _deserialize(self, params):
         self._ServiceVip = params.get("ServiceVip")
         self._UniqVpcId = params.get("UniqVpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusDTO(AbstractModel):
+    """普罗米修斯打通的vipVport
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: export类型（jmx_export\node_export）
+        :type Type: str
+        :param _SourceIp: vip
+        :type SourceIp: str
+        :param _SourcePort: vport
+        :type SourcePort: int
+        """
+        self._Type = None
+        self._SourceIp = None
+        self._SourcePort = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SourceIp(self):
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SourcePort(self):
+        return self._SourcePort
+
+    @SourcePort.setter
+    def SourcePort(self, SourcePort):
+        self._SourcePort = SourcePort
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SourceIp = params.get("SourceIp")
+        self._SourcePort = params.get("SourcePort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusResult(AbstractModel):
+    """Prometheus 监控返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 返回的code，0为正常，非0为错误
+        :type ReturnCode: str
+        :param _ReturnMessage: 成功消息
+        :type ReturnMessage: str
+        :param _Data: 操作型返回的Data数据,可能有flowId等
+        :type Data: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
+        """
+        self._ReturnCode = None
+        self._ReturnMessage = None
+        self._Data = None
+
+    @property
+    def ReturnCode(self):
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMessage(self):
+        return self._ReturnMessage
+
+    @ReturnMessage.setter
+    def ReturnMessage(self, ReturnMessage):
+        self._ReturnMessage = ReturnMessage
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMessage = params.get("ReturnMessage")
+        if params.get("Data") is not None:
+            self._Data = OperateResponseData()
+            self._Data._deserialize(params.get("Data"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

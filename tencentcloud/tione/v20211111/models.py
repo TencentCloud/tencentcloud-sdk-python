@@ -2525,7 +2525,7 @@ HYBRID_PAID:
         :type ServiceCategory: str
         :param _Command: 服务的启动命令
         :type Command: str
-        :param _ServiceEIP: 是否开启TIONE内网访问外部
+        :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         self._ServiceGroupId = None
@@ -12338,6 +12338,9 @@ class ImageInfo(AbstractModel):
         :param _ImageName: 镜像名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageName: str
+        :param _SupportDataPipeline: 是否支持数据构建
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDataPipeline: bool
         """
         self._ImageType = None
         self._ImageUrl = None
@@ -12345,6 +12348,7 @@ class ImageInfo(AbstractModel):
         self._RegistryId = None
         self._AllowSaveAllContent = None
         self._ImageName = None
+        self._SupportDataPipeline = None
 
     @property
     def ImageType(self):
@@ -12394,6 +12398,14 @@ class ImageInfo(AbstractModel):
     def ImageName(self, ImageName):
         self._ImageName = ImageName
 
+    @property
+    def SupportDataPipeline(self):
+        return self._SupportDataPipeline
+
+    @SupportDataPipeline.setter
+    def SupportDataPipeline(self, SupportDataPipeline):
+        self._SupportDataPipeline = SupportDataPipeline
+
 
     def _deserialize(self, params):
         self._ImageType = params.get("ImageType")
@@ -12402,6 +12414,7 @@ class ImageInfo(AbstractModel):
         self._RegistryId = params.get("RegistryId")
         self._AllowSaveAllContent = params.get("AllowSaveAllContent")
         self._ImageName = params.get("ImageName")
+        self._SupportDataPipeline = params.get("SupportDataPipeline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14532,7 +14545,7 @@ HYBRID_PAID:
         :type ModelTurboEnable: bool
         :param _Command: 服务的启动命令
         :type Command: str
-        :param _ServiceEIP: 是否开启TIONE内网访问外部
+        :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         self._ServiceId = None

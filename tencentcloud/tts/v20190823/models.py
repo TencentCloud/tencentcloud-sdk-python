@@ -579,9 +579,12 @@ class TextToVoiceRequest(AbstractModel):
         :param _SegmentRate: 断句敏感阈值，默认值为：0，取值范围：[0,1,2]。该值越大越不容易断句，模型会更倾向于仅按照标点符号断句。此参数建议不要随意调整，可能会影响合成效果。
         :type SegmentRate: int
         :param _EmotionCategory: 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)、撒娇(sajiao)、厌恶(disgusted)、震惊(amaze)、平静(peaceful)、兴奋(exciting)、傲娇(aojiao)、解说(jieshuo)
+示例值：neutral
         :type EmotionCategory: str
         :param _EmotionIntensity: 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
         :type EmotionIntensity: int
+        :param _FastVoiceType: 一句话复刻音色id，使用一句话复刻音色时需填写。若使用一句话复刻，VoiceType请填入固定值“200000000”
+        :type FastVoiceType: str
         """
         self._Text = None
         self._SessionId = None
@@ -597,6 +600,7 @@ class TextToVoiceRequest(AbstractModel):
         self._SegmentRate = None
         self._EmotionCategory = None
         self._EmotionIntensity = None
+        self._FastVoiceType = None
 
     @property
     def Text(self):
@@ -710,6 +714,14 @@ class TextToVoiceRequest(AbstractModel):
     def EmotionIntensity(self, EmotionIntensity):
         self._EmotionIntensity = EmotionIntensity
 
+    @property
+    def FastVoiceType(self):
+        return self._FastVoiceType
+
+    @FastVoiceType.setter
+    def FastVoiceType(self, FastVoiceType):
+        self._FastVoiceType = FastVoiceType
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -726,6 +738,7 @@ class TextToVoiceRequest(AbstractModel):
         self._SegmentRate = params.get("SegmentRate")
         self._EmotionCategory = params.get("EmotionCategory")
         self._EmotionIntensity = params.get("EmotionIntensity")
+        self._FastVoiceType = params.get("FastVoiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

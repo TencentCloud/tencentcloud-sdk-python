@@ -72550,6 +72550,48 @@ class TaskCanvasInfo(AbstractModel):
 
 注意：此字段可能返回 null，表示取不到有效值。
         :type TenantId: str
+        :param _SelfDepend: 自依赖类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SelfDepend: int
+        :param _ExecutorGroupId: 资源组id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _ExecutorGroupName: 资源组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupName: str
+        :param _RunPriority: 优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunPriority: str
+        :param _TryLimit: 可充实次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TryLimit: str
+        :param _RetryAble: 可充实
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryAble: str
+        :param _RetryWait: 重试等待事件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryWait: str
+        :param _LastSchedulerCommitTime: 最近提交时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSchedulerCommitTime: str
+        :param _Notes: 备注
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Notes: str
+        :param _Creator: 创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _UpdateUser: 创建人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUser: str
+        :param _UpdateUserId: 更新人id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUserId: str
+        :param _YarnQueue: yarn队列
+注意：此字段可能返回 null，表示取不到有效值。
+        :type YarnQueue: str
+        :param _ExecutionTTL: 可执行的timeToLive
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTTL: int
         """
         self._TaskId = None
         self._TaskName = None
@@ -72585,6 +72627,20 @@ class TaskCanvasInfo(AbstractModel):
         self._UserId = None
         self._OwnerId = None
         self._TenantId = None
+        self._SelfDepend = None
+        self._ExecutorGroupId = None
+        self._ExecutorGroupName = None
+        self._RunPriority = None
+        self._TryLimit = None
+        self._RetryAble = None
+        self._RetryWait = None
+        self._LastSchedulerCommitTime = None
+        self._Notes = None
+        self._Creator = None
+        self._UpdateUser = None
+        self._UpdateUserId = None
+        self._YarnQueue = None
+        self._ExecutionTTL = None
 
     @property
     def TaskId(self):
@@ -72858,6 +72914,118 @@ class TaskCanvasInfo(AbstractModel):
     def TenantId(self, TenantId):
         self._TenantId = TenantId
 
+    @property
+    def SelfDepend(self):
+        return self._SelfDepend
+
+    @SelfDepend.setter
+    def SelfDepend(self, SelfDepend):
+        self._SelfDepend = SelfDepend
+
+    @property
+    def ExecutorGroupId(self):
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def ExecutorGroupName(self):
+        return self._ExecutorGroupName
+
+    @ExecutorGroupName.setter
+    def ExecutorGroupName(self, ExecutorGroupName):
+        self._ExecutorGroupName = ExecutorGroupName
+
+    @property
+    def RunPriority(self):
+        return self._RunPriority
+
+    @RunPriority.setter
+    def RunPriority(self, RunPriority):
+        self._RunPriority = RunPriority
+
+    @property
+    def TryLimit(self):
+        return self._TryLimit
+
+    @TryLimit.setter
+    def TryLimit(self, TryLimit):
+        self._TryLimit = TryLimit
+
+    @property
+    def RetryAble(self):
+        return self._RetryAble
+
+    @RetryAble.setter
+    def RetryAble(self, RetryAble):
+        self._RetryAble = RetryAble
+
+    @property
+    def RetryWait(self):
+        return self._RetryWait
+
+    @RetryWait.setter
+    def RetryWait(self, RetryWait):
+        self._RetryWait = RetryWait
+
+    @property
+    def LastSchedulerCommitTime(self):
+        return self._LastSchedulerCommitTime
+
+    @LastSchedulerCommitTime.setter
+    def LastSchedulerCommitTime(self, LastSchedulerCommitTime):
+        self._LastSchedulerCommitTime = LastSchedulerCommitTime
+
+    @property
+    def Notes(self):
+        return self._Notes
+
+    @Notes.setter
+    def Notes(self, Notes):
+        self._Notes = Notes
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def UpdateUser(self):
+        return self._UpdateUser
+
+    @UpdateUser.setter
+    def UpdateUser(self, UpdateUser):
+        self._UpdateUser = UpdateUser
+
+    @property
+    def UpdateUserId(self):
+        return self._UpdateUserId
+
+    @UpdateUserId.setter
+    def UpdateUserId(self, UpdateUserId):
+        self._UpdateUserId = UpdateUserId
+
+    @property
+    def YarnQueue(self):
+        return self._YarnQueue
+
+    @YarnQueue.setter
+    def YarnQueue(self, YarnQueue):
+        self._YarnQueue = YarnQueue
+
+    @property
+    def ExecutionTTL(self):
+        return self._ExecutionTTL
+
+    @ExecutionTTL.setter
+    def ExecutionTTL(self, ExecutionTTL):
+        self._ExecutionTTL = ExecutionTTL
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -72894,6 +73062,20 @@ class TaskCanvasInfo(AbstractModel):
         self._UserId = params.get("UserId")
         self._OwnerId = params.get("OwnerId")
         self._TenantId = params.get("TenantId")
+        self._SelfDepend = params.get("SelfDepend")
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._ExecutorGroupName = params.get("ExecutorGroupName")
+        self._RunPriority = params.get("RunPriority")
+        self._TryLimit = params.get("TryLimit")
+        self._RetryAble = params.get("RetryAble")
+        self._RetryWait = params.get("RetryWait")
+        self._LastSchedulerCommitTime = params.get("LastSchedulerCommitTime")
+        self._Notes = params.get("Notes")
+        self._Creator = params.get("Creator")
+        self._UpdateUser = params.get("UpdateUser")
+        self._UpdateUserId = params.get("UpdateUserId")
+        self._YarnQueue = params.get("YarnQueue")
+        self._ExecutionTTL = params.get("ExecutionTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

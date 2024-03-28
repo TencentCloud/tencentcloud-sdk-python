@@ -210,6 +210,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCompanyApply(self, request):
+        """创建公司资质申请（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+
+        :param request: Request instance for CreateCompanyApply.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.CreateCompanyApplyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.CreateCompanyApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCompanyApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCompanyApplyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExtension(self, request):
         """创建话机账号
 
@@ -548,6 +571,29 @@ class CccClient(AbstractClient):
             body = self.call("DescribeChatMessages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeChatMessagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCompanyList(self, request):
+        """查询公司资质申请列表
+
+        :param request: Request instance for DescribeCompanyList.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeCompanyListRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeCompanyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCompanyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCompanyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -962,6 +1008,29 @@ class CccClient(AbstractClient):
             body = self.call("HangUpCall", params, headers=headers)
             response = json.loads(body)
             model = models.HangUpCallResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCompanyApply(self, request):
+        """修改公司资质申请，只能修改状态为驳回或待审核的申请单。（1、首次使用接口，建议先在云联络中心控制台查看各个资料模版:https://console.cloud.tencent.com/ccc/enterprise/update。2、参数中图片Url建议使用腾讯云Cos存储的临时链接）
+
+        :param request: Request instance for ModifyCompanyApply.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.ModifyCompanyApplyRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.ModifyCompanyApplyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCompanyApply", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCompanyApplyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

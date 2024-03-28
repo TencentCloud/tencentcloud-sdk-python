@@ -806,7 +806,6 @@ class BatchRegisterTargetsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FailListenerIdSet: 绑定失败的监听器ID，如为空表示全部绑定成功。
-注意：此字段可能返回 null，表示取不到有效值。
         :type FailListenerIdSet: list of str
         :param _Message: 绑定失败错误原因信息。
         :type Message: str

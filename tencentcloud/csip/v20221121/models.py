@@ -1024,7 +1024,7 @@ class AssetViewCFGRisk(AbstractModel):
         :type InstanceType: str
         :param _AffectAsset: 影响资产
         :type AffectAsset: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _FirstTime: 首次识别时间
         :type FirstTime: str
@@ -1277,7 +1277,7 @@ class AssetViewPortRisk(AbstractModel):
         :type Port: int
         :param _AffectAsset: 影响资产
         :type AffectAsset: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _InstanceType: 资产类型
         :type InstanceType: str
@@ -1526,7 +1526,8 @@ class AssetViewVULRisk(AbstractModel):
         r"""
         :param _AffectAsset: 影响资产
         :type AffectAsset: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
+
         :type Level: str
         :param _InstanceType: 资产类型
         :type InstanceType: str
@@ -1946,7 +1947,7 @@ class AssetViewWeakPassRisk(AbstractModel):
         r"""
         :param _AffectAsset: 影响资产
         :type AffectAsset: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _InstanceType: 资产类型
         :type InstanceType: str
@@ -11597,7 +11598,7 @@ class PortViewPortRisk(AbstractModel):
         r"""
         :param _NoHandleCount: 影响资产
         :type NoHandleCount: int
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _Protocol: 协议
         :type Protocol: str
@@ -14292,7 +14293,7 @@ class VULRiskAdvanceCFGList(AbstractModel):
         :type RiskId: str
         :param _VULName: 漏洞名称
         :type VULName: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type RiskLevel: str
         :param _CheckFrom: 识别来源
         :type CheckFrom: str
@@ -14571,7 +14572,7 @@ class VULViewVULRisk(AbstractModel):
         :type Port: str
         :param _NoHandleCount: 影响资产
         :type NoHandleCount: int
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _Component: 组件
         :type Component: str
@@ -15092,7 +15093,7 @@ class WebsiteRisk(AbstractModel):
         r"""
         :param _AffectAsset: 影响资产
         :type AffectAsset: str
-        :param _Level: 风险等级
+        :param _Level: 风险等级，low-低危，high-高危，middle-中危，info-提示，extreme-严重。
         :type Level: str
         :param _RecentTime: 最近识别时间
         :type RecentTime: str

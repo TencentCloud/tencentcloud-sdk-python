@@ -21738,6 +21738,10 @@ class GetUserQuotaInfoResponse(AbstractModel):
         :type CosRemainQuota: float
         :param _CosQuotaUnit: COS存储量单位，例如TB。
         :type CosQuotaUnit: str
+        :param _DBUnbindNum: db月解绑次数
+        :type DBUnbindNum: int
+        :param _COSUnbindNum: cos月解绑次数
+        :type COSUnbindNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -21747,6 +21751,8 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._DbRemainQuota = None
         self._CosRemainQuota = None
         self._CosQuotaUnit = None
+        self._DBUnbindNum = None
+        self._COSUnbindNum = None
         self._RequestId = None
 
     @property
@@ -21798,6 +21804,22 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._CosQuotaUnit = CosQuotaUnit
 
     @property
+    def DBUnbindNum(self):
+        return self._DBUnbindNum
+
+    @DBUnbindNum.setter
+    def DBUnbindNum(self, DBUnbindNum):
+        self._DBUnbindNum = DBUnbindNum
+
+    @property
+    def COSUnbindNum(self):
+        return self._COSUnbindNum
+
+    @COSUnbindNum.setter
+    def COSUnbindNum(self, COSUnbindNum):
+        self._COSUnbindNum = COSUnbindNum
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -21813,6 +21835,8 @@ class GetUserQuotaInfoResponse(AbstractModel):
         self._DbRemainQuota = params.get("DbRemainQuota")
         self._CosRemainQuota = params.get("CosRemainQuota")
         self._CosQuotaUnit = params.get("CosQuotaUnit")
+        self._DBUnbindNum = params.get("DBUnbindNum")
+        self._COSUnbindNum = params.get("COSUnbindNum")
         self._RequestId = params.get("RequestId")
 
 
