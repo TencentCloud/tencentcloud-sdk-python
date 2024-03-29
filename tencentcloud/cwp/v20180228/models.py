@@ -7782,10 +7782,14 @@ class BaselineCategory(AbstractModel):
         :type CategoryName: str
         :param _ParentCategoryId: 父分类ID,如果为0则没有父分类
         :type ParentCategoryId: int
+        :param _ItemCount: 子分类下检测项总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ItemCount: int
         """
         self._CategoryId = None
         self._CategoryName = None
         self._ParentCategoryId = None
+        self._ItemCount = None
 
     @property
     def CategoryId(self):
@@ -7811,11 +7815,20 @@ class BaselineCategory(AbstractModel):
     def ParentCategoryId(self, ParentCategoryId):
         self._ParentCategoryId = ParentCategoryId
 
+    @property
+    def ItemCount(self):
+        return self._ItemCount
+
+    @ItemCount.setter
+    def ItemCount(self, ItemCount):
+        self._ItemCount = ItemCount
+
 
     def _deserialize(self, params):
         self._CategoryId = params.get("CategoryId")
         self._CategoryName = params.get("CategoryName")
         self._ParentCategoryId = params.get("ParentCategoryId")
+        self._ItemCount = params.get("ItemCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9493,6 +9506,80 @@ class BaselineItemInfo(AbstractModel):
                 obj = BaselineCustomRuleIdName()
                 obj._deserialize(item)
                 self._RelatedCustomRuleInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaselineItemsCategory(AbstractModel):
+    """基线检测项分类树状结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParentCategoryId: 基线检测项父分类id
+        :type ParentCategoryId: int
+        :param _ParentCategoryName: 基线检测项父分类名称
+        :type ParentCategoryName: str
+        :param _CategoryCount: 基线检测项子分类数目
+        :type CategoryCount: int
+        :param _CategoryLists: 基线检测项子分类列表
+        :type CategoryLists: list of BaselineCategory
+        """
+        self._ParentCategoryId = None
+        self._ParentCategoryName = None
+        self._CategoryCount = None
+        self._CategoryLists = None
+
+    @property
+    def ParentCategoryId(self):
+        return self._ParentCategoryId
+
+    @ParentCategoryId.setter
+    def ParentCategoryId(self, ParentCategoryId):
+        self._ParentCategoryId = ParentCategoryId
+
+    @property
+    def ParentCategoryName(self):
+        return self._ParentCategoryName
+
+    @ParentCategoryName.setter
+    def ParentCategoryName(self, ParentCategoryName):
+        self._ParentCategoryName = ParentCategoryName
+
+    @property
+    def CategoryCount(self):
+        return self._CategoryCount
+
+    @CategoryCount.setter
+    def CategoryCount(self, CategoryCount):
+        self._CategoryCount = CategoryCount
+
+    @property
+    def CategoryLists(self):
+        return self._CategoryLists
+
+    @CategoryLists.setter
+    def CategoryLists(self, CategoryLists):
+        self._CategoryLists = CategoryLists
+
+
+    def _deserialize(self, params):
+        self._ParentCategoryId = params.get("ParentCategoryId")
+        self._ParentCategoryName = params.get("ParentCategoryName")
+        self._CategoryCount = params.get("CategoryCount")
+        if params.get("CategoryLists") is not None:
+            self._CategoryLists = []
+            for item in params.get("CategoryLists"):
+                obj = BaselineCategory()
+                obj._deserialize(item)
+                self._CategoryLists.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16018,10 +16105,13 @@ class CreateSearchTemplateResponse(AbstractModel):
         r"""
         :param _Status: 0：成功，非0：失败
         :type Status: int
+        :param _Message: 失败原因
+        :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._Message = None
         self._RequestId = None
 
     @property
@@ -16031,6 +16121,14 @@ class CreateSearchTemplateResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
     @property
     def RequestId(self):
@@ -16043,6 +16141,7 @@ class CreateSearchTemplateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -29009,11 +29108,15 @@ class DescribeBaselineItemInfoResponse(AbstractModel):
         :type List: list of BaselineItemInfo
         :param _Total: 总条目数
         :type Total: int
+        :param _CategoryList: 基线分类列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryList: list of BaselineItemsCategory
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
         self._Total = None
+        self._CategoryList = None
         self._RequestId = None
 
     @property
@@ -29033,6 +29136,14 @@ class DescribeBaselineItemInfoResponse(AbstractModel):
         self._Total = Total
 
     @property
+    def CategoryList(self):
+        return self._CategoryList
+
+    @CategoryList.setter
+    def CategoryList(self, CategoryList):
+        self._CategoryList = CategoryList
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -29049,6 +29160,12 @@ class DescribeBaselineItemInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._Total = params.get("Total")
+        if params.get("CategoryList") is not None:
+            self._CategoryList = []
+            for item in params.get("CategoryList"):
+                obj = BaselineItemsCategory()
+                obj._deserialize(item)
+                self._CategoryList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -64187,9 +64304,13 @@ class Item(AbstractModel):
         :type ItemId: int
         :param _ItemName: 名称
         :type ItemName: str
+        :param _CustomItemValues: 自定义阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomItemValues: list of int non-negative
         """
         self._ItemId = None
         self._ItemName = None
+        self._CustomItemValues = None
 
     @property
     def ItemId(self):
@@ -64207,10 +64328,19 @@ class Item(AbstractModel):
     def ItemName(self, ItemName):
         self._ItemName = ItemName
 
+    @property
+    def CustomItemValues(self):
+        return self._CustomItemValues
+
+    @CustomItemValues.setter
+    def CustomItemValues(self, CustomItemValues):
+        self._CustomItemValues = CustomItemValues
+
 
     def _deserialize(self, params):
         self._ItemId = params.get("ItemId")
         self._ItemName = params.get("ItemName")
+        self._CustomItemValues = params.get("CustomItemValues")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69123,10 +69253,19 @@ class ModifyBaselineRuleRequest(AbstractModel):
         :type SelectAll: int
         :param _Filters: <li>ItemName - string - 是否必填：否 - 项名称</li>
         :type Filters: list of Filter
+        :param _IdType: 0:检测项，1:检测项分类
+        :type IdType: int
+        :param _ExcludeIds: 需要排除的检测项id
+        :type ExcludeIds: list of int non-negative
+        :param _CategoryIds: 勾选的检测项分类
+        :type CategoryIds: list of int non-negative
         """
         self._Data = None
         self._SelectAll = None
         self._Filters = None
+        self._IdType = None
+        self._ExcludeIds = None
+        self._CategoryIds = None
 
     @property
     def Data(self):
@@ -69152,6 +69291,30 @@ class ModifyBaselineRuleRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def IdType(self):
+        return self._IdType
+
+    @IdType.setter
+    def IdType(self, IdType):
+        self._IdType = IdType
+
+    @property
+    def ExcludeIds(self):
+        return self._ExcludeIds
+
+    @ExcludeIds.setter
+    def ExcludeIds(self, ExcludeIds):
+        self._ExcludeIds = ExcludeIds
+
+    @property
+    def CategoryIds(self):
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
@@ -69164,6 +69327,9 @@ class ModifyBaselineRuleRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._IdType = params.get("IdType")
+        self._ExcludeIds = params.get("ExcludeIds")
+        self._CategoryIds = params.get("CategoryIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

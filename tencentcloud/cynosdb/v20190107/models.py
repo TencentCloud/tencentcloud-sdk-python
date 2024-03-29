@@ -25302,6 +25302,381 @@ class RollbackTimeRange(AbstractModel):
         
 
 
+class RollbackToNewClusterRequest(AbstractModel):
+    """RollbackToNewCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 可用区
+        :type Zone: str
+        :param _OriginalClusterId: 回档时，传入源集群ID，用于查找源poolId
+        :type OriginalClusterId: str
+        :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        :type ClusterName: str
+        :param _UniqVpcId: 所属VPC网络ID
+        :type UniqVpcId: str
+        :param _UniqSubnetId: 所属子网ID
+        :type UniqSubnetId: str
+        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :type AutoVoucher: int
+        :param _DbMode: Db类型
+当DbType为MYSQL时可选(默认NORMAL)：
+<li>NORMAL</li>
+<li>SERVERLESS</li>
+        :type DbMode: str
+        :param _MinCpu: 当DbMode为SEVERLESS时必填
+cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MinCpu: float
+        :param _MaxCpu: 当DbMode为SEVERLESS时必填：
+cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :type MaxCpu: float
+        :param _AutoPause: 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
+<li>yes</li>
+<li>no</li>
+默认值:yes
+        :type AutoPause: str
+        :param _AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
+默认值:600
+        :type AutoPauseDelay: int
+        :param _SecurityGroupIds: 安全组id数组
+        :type SecurityGroupIds: list of str
+        :param _AlarmPolicyIds: 告警策略Id数组
+        :type AlarmPolicyIds: list of str
+        :param _ClusterParams: 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+        :type ClusterParams: list of ParamItem
+        :param _DealMode: 0-下单并支付 1-下单
+        :type DealMode: int
+        :param _ParamTemplateId: 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        :type ParamTemplateId: int
+        :param _ResourceTags: 集群创建需要绑定的tag数组信息
+        :type ResourceTags: list of Tag
+        :param _InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
+        :type InstanceInitInfos: list of InstanceInitInfo
+        :param _RollbackId: 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        :type RollbackId: int
+        :param _ExpectTime: 时间点回档，指定时间；快照回档，快照时间
+        :type ExpectTime: str
+        """
+        self._Zone = None
+        self._OriginalClusterId = None
+        self._ClusterName = None
+        self._UniqVpcId = None
+        self._UniqSubnetId = None
+        self._AutoVoucher = None
+        self._DbMode = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._AutoPause = None
+        self._AutoPauseDelay = None
+        self._SecurityGroupIds = None
+        self._AlarmPolicyIds = None
+        self._ClusterParams = None
+        self._DealMode = None
+        self._ParamTemplateId = None
+        self._ResourceTags = None
+        self._InstanceInitInfos = None
+        self._RollbackId = None
+        self._ExpectTime = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def OriginalClusterId(self):
+        return self._OriginalClusterId
+
+    @OriginalClusterId.setter
+    def OriginalClusterId(self, OriginalClusterId):
+        self._OriginalClusterId = OriginalClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def UniqSubnetId(self):
+        return self._UniqSubnetId
+
+    @UniqSubnetId.setter
+    def UniqSubnetId(self, UniqSubnetId):
+        self._UniqSubnetId = UniqSubnetId
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def DbMode(self):
+        return self._DbMode
+
+    @DbMode.setter
+    def DbMode(self, DbMode):
+        self._DbMode = DbMode
+
+    @property
+    def MinCpu(self):
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def AutoPause(self):
+        return self._AutoPause
+
+    @AutoPause.setter
+    def AutoPause(self, AutoPause):
+        self._AutoPause = AutoPause
+
+    @property
+    def AutoPauseDelay(self):
+        return self._AutoPauseDelay
+
+    @AutoPauseDelay.setter
+    def AutoPauseDelay(self, AutoPauseDelay):
+        self._AutoPauseDelay = AutoPauseDelay
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def AlarmPolicyIds(self):
+        return self._AlarmPolicyIds
+
+    @AlarmPolicyIds.setter
+    def AlarmPolicyIds(self, AlarmPolicyIds):
+        self._AlarmPolicyIds = AlarmPolicyIds
+
+    @property
+    def ClusterParams(self):
+        return self._ClusterParams
+
+    @ClusterParams.setter
+    def ClusterParams(self, ClusterParams):
+        self._ClusterParams = ClusterParams
+
+    @property
+    def DealMode(self):
+        return self._DealMode
+
+    @DealMode.setter
+    def DealMode(self, DealMode):
+        self._DealMode = DealMode
+
+    @property
+    def ParamTemplateId(self):
+        return self._ParamTemplateId
+
+    @ParamTemplateId.setter
+    def ParamTemplateId(self, ParamTemplateId):
+        self._ParamTemplateId = ParamTemplateId
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def InstanceInitInfos(self):
+        return self._InstanceInitInfos
+
+    @InstanceInitInfos.setter
+    def InstanceInitInfos(self, InstanceInitInfos):
+        self._InstanceInitInfos = InstanceInitInfos
+
+    @property
+    def RollbackId(self):
+        return self._RollbackId
+
+    @RollbackId.setter
+    def RollbackId(self, RollbackId):
+        self._RollbackId = RollbackId
+
+    @property
+    def ExpectTime(self):
+        return self._ExpectTime
+
+    @ExpectTime.setter
+    def ExpectTime(self, ExpectTime):
+        self._ExpectTime = ExpectTime
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._OriginalClusterId = params.get("OriginalClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._UniqSubnetId = params.get("UniqSubnetId")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._DbMode = params.get("DbMode")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._AutoPause = params.get("AutoPause")
+        self._AutoPauseDelay = params.get("AutoPauseDelay")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._AlarmPolicyIds = params.get("AlarmPolicyIds")
+        if params.get("ClusterParams") is not None:
+            self._ClusterParams = []
+            for item in params.get("ClusterParams"):
+                obj = ParamItem()
+                obj._deserialize(item)
+                self._ClusterParams.append(obj)
+        self._DealMode = params.get("DealMode")
+        self._ParamTemplateId = params.get("ParamTemplateId")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("InstanceInitInfos") is not None:
+            self._InstanceInitInfos = []
+            for item in params.get("InstanceInitInfos"):
+                obj = InstanceInitInfo()
+                obj._deserialize(item)
+                self._InstanceInitInfos.append(obj)
+        self._RollbackId = params.get("RollbackId")
+        self._ExpectTime = params.get("ExpectTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackToNewClusterResponse(AbstractModel):
+    """RollbackToNewCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: 冻结流水ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _DealNames: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIds: list of str
+        :param _BigDealIds: 大订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
+        self._BigDealIds = None
+        self._RequestId = None
+
+    @property
+    def TranId(self):
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def BigDealIds(self):
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
+        self._BigDealIds = params.get("BigDealIds")
+        self._RequestId = params.get("RequestId")
+
+
 class RuleFilters(AbstractModel):
     """审计规则的规则过滤条件
 

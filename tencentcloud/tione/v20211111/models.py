@@ -7407,6 +7407,38 @@ class DescribeBuildInImagesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ImageFilters: 镜像过滤器
+        :type ImageFilters: list of ImageFIlter
+        """
+        self._ImageFilters = None
+
+    @property
+    def ImageFilters(self):
+        return self._ImageFilters
+
+    @ImageFilters.setter
+    def ImageFilters(self, ImageFilters):
+        self._ImageFilters = ImageFilters
+
+
+    def _deserialize(self, params):
+        if params.get("ImageFilters") is not None:
+            self._ImageFilters = []
+            for item in params.get("ImageFilters"):
+                obj = ImageFIlter()
+                obj._deserialize(item)
+                self._ImageFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeBuildInImagesResponse(AbstractModel):
     """DescribeBuildInImages返回参数结构体
@@ -12315,6 +12347,63 @@ class HyperParameter(AbstractModel):
         
 
 
+class ImageFIlter(AbstractModel):
+    """镜像列表过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤字段名称
+        :type Name: str
+        :param _Values: 过滤值
+        :type Values: list of str
+        :param _Negative: 是否反选
+        :type Negative: bool
+        """
+        self._Name = None
+        self._Values = None
+        self._Negative = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Negative(self):
+        return self._Negative
+
+    @Negative.setter
+    def Negative(self, Negative):
+        self._Negative = Negative
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._Negative = params.get("Negative")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageInfo(AbstractModel):
     """镜像描述信息
 
@@ -12809,6 +12898,12 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         :type SpecFeatures: list of str
         :param _CvmInstanceId: 纳管cvmid
         :type CvmInstanceId: str
+        :param _ErrCode: 部署失败错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: str
+        :param _ErrMsg: 部署失败错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
         """
         self._InstanceId = None
         self._UsedResource = None
@@ -12822,6 +12917,8 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._SpecAlias = None
         self._SpecFeatures = None
         self._CvmInstanceId = None
+        self._ErrCode = None
+        self._ErrMsg = None
 
     @property
     def InstanceId(self):
@@ -12919,6 +13016,22 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
     def CvmInstanceId(self, CvmInstanceId):
         self._CvmInstanceId = CvmInstanceId
 
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMsg(self):
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -12937,6 +13050,8 @@ DISABLE_NOTIFY_AND_MANUAL_RENEW：手动续费(取消自动续费)且到期不�
         self._SpecAlias = params.get("SpecAlias")
         self._SpecFeatures = params.get("SpecFeatures")
         self._CvmInstanceId = params.get("CvmInstanceId")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

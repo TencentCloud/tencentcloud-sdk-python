@@ -2313,6 +2313,66 @@ class CreateSupervisorResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomMsgContent(AbstractModel):
+    """自定义消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 自定义消息数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _Desc: 自定义消息描述信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Desc: str
+        :param _Ext: 扩展字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ext: str
+        """
+        self._Data = None
+        self._Desc = None
+        self._Ext = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Ext(self):
+        return self._Ext
+
+    @Ext.setter
+    def Ext(self, Ext):
+        self._Ext = Ext
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Desc = params.get("Desc")
+        self._Ext = params.get("Ext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAppCustomContentRequest(AbstractModel):
     """DeleteAppCustomContent请求参数结构体
 
@@ -7526,10 +7586,14 @@ class MessageItem(AbstractModel):
         :param _ImageMessage: 图片消息URL。 message type为1时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageMessage: str
+        :param _CustomMessage: 自定义消息内容。message type为2时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomMessage: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         self._MessageType = None
         self._TextMessage = None
         self._ImageMessage = None
+        self._CustomMessage = None
 
     @property
     def MessageType(self):
@@ -7555,11 +7619,22 @@ class MessageItem(AbstractModel):
     def ImageMessage(self, ImageMessage):
         self._ImageMessage = ImageMessage
 
+    @property
+    def CustomMessage(self):
+        return self._CustomMessage
+
+    @CustomMessage.setter
+    def CustomMessage(self, CustomMessage):
+        self._CustomMessage = CustomMessage
+
 
     def _deserialize(self, params):
         self._MessageType = params.get("MessageType")
         self._TextMessage = params.get("TextMessage")
         self._ImageMessage = params.get("ImageMessage")
+        if params.get("CustomMessage") is not None:
+            self._CustomMessage = CustomMsgContent()
+            self._CustomMessage._deserialize(params.get("CustomMessage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8322,6 +8397,7 @@ class MsgBody(AbstractModel):
 TIMTextElem（文本消息）
 TIMFaceElem（表情消息）
 TIMImageElem（图像消息）
+TIMCustomElem（自定义消息）
         :type MsgType: str
         :param _TextMsgContent: 文本消息，当MsgType 为TIMTextElem（文本消息）必选。
         :type TextMsgContent: :class:`tencentcloud.lcic.v20220817.models.TextMsgContent`
@@ -8329,11 +8405,14 @@ TIMImageElem（图像消息）
         :type FaceMsgContent: :class:`tencentcloud.lcic.v20220817.models.FaceMsgContent`
         :param _ImageMsgContent: 图像消息，当MsgType为TIMImageElem（图像消息）必选。
         :type ImageMsgContent: :class:`tencentcloud.lcic.v20220817.models.ImageMsgContent`
+        :param _CustomMsgContent: 自定义消息，TIMCustomElem（自定义消息）必选。
+        :type CustomMsgContent: :class:`tencentcloud.lcic.v20220817.models.CustomMsgContent`
         """
         self._MsgType = None
         self._TextMsgContent = None
         self._FaceMsgContent = None
         self._ImageMsgContent = None
+        self._CustomMsgContent = None
 
     @property
     def MsgType(self):
@@ -8367,6 +8446,14 @@ TIMImageElem（图像消息）
     def ImageMsgContent(self, ImageMsgContent):
         self._ImageMsgContent = ImageMsgContent
 
+    @property
+    def CustomMsgContent(self):
+        return self._CustomMsgContent
+
+    @CustomMsgContent.setter
+    def CustomMsgContent(self, CustomMsgContent):
+        self._CustomMsgContent = CustomMsgContent
+
 
     def _deserialize(self, params):
         self._MsgType = params.get("MsgType")
@@ -8379,6 +8466,9 @@ TIMImageElem（图像消息）
         if params.get("ImageMsgContent") is not None:
             self._ImageMsgContent = ImageMsgContent()
             self._ImageMsgContent._deserialize(params.get("ImageMsgContent"))
+        if params.get("CustomMsgContent") is not None:
+            self._CustomMsgContent = CustomMsgContent()
+            self._CustomMsgContent._deserialize(params.get("CustomMsgContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

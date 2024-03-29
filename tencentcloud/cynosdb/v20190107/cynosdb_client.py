@@ -2832,6 +2832,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RollbackToNewCluster(self, request):
+        """回档到新集群
+
+        :param request: Request instance for RollbackToNewCluster.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.RollbackToNewClusterRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RollbackToNewClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackToNewCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackToNewClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchClusterDatabases(self, request):
         """本接口(SearchClusterDatabases)搜索集群数据库列表
 

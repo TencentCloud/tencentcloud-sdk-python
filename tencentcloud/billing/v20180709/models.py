@@ -335,10 +335,10 @@ class AllocationDetail(AbstractModel):
         :param _ZoneName: 可用区：资源所属可用区
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneName: str
-        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _InstanceType: 实例类型编码
@@ -720,18 +720,26 @@ class AllocationDetail(AbstractModel):
 
     @property
     def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         return self._SplitItemId
 
     @SplitItemId.setter
     def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         self._SplitItemId = SplitItemId
 
     @property
     def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         return self._SplitItemName
 
     @SplitItemName.setter
     def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         self._SplitItemName = SplitItemName
 
     @property
@@ -2442,10 +2450,10 @@ class AllocationSummaryByItem(AbstractModel):
         :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
-        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _Tag: 分账标签：资源绑定的标签
@@ -2939,18 +2947,26 @@ class AllocationSummaryByItem(AbstractModel):
 
     @property
     def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         return self._SplitItemId
 
     @SplitItemId.setter
     def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         self._SplitItemId = SplitItemId
 
     @property
     def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         return self._SplitItemName
 
     @SplitItemName.setter
     def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         self._SplitItemName = SplitItemName
 
     @property
@@ -3266,10 +3282,10 @@ class AllocationSummaryByResource(AbstractModel):
         :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
-        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _Tag: 分账标签：资源绑定的标签
@@ -3653,18 +3669,26 @@ class AllocationSummaryByResource(AbstractModel):
 
     @property
     def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         return self._SplitItemId
 
     @SplitItemId.setter
     def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         self._SplitItemId = SplitItemId
 
     @property
     def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         return self._SplitItemName
 
     @SplitItemName.setter
     def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         self._SplitItemName = SplitItemName
 
     @property
@@ -8416,6 +8440,9 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         :param _TransferPayAmount: 分成金
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
+        :param _RegionName: 地域名称（仅在地域汇总总展示）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
         """
         self._BusinessCode = None
         self._BusinessCodeName = None
@@ -8425,6 +8452,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         self._IncentivePayAmount = None
         self._VoucherPayAmount = None
         self._TransferPayAmount = None
+        self._RegionName = None
 
     @property
     def BusinessCode(self):
@@ -8490,6 +8518,14 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
 
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
 
     def _deserialize(self, params):
         self._BusinessCode = params.get("BusinessCode")
@@ -8502,6 +8538,7 @@ class ConsumptionBusinessSummaryDataItem(AbstractModel):
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._RegionName = params.get("RegionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8669,12 +8706,28 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
         :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
         :param _Business: 产品消费详情
         :type Business: list of ConsumptionBusinessSummaryDataItem
+        :param _CashPayAmount: 现金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: 代金券
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: 赠送金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: 分成金
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferPayAmount: str
         """
         self._RegionId = None
         self._RegionName = None
         self._RealTotalCost = None
         self._Trend = None
         self._Business = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
 
     @property
     def RegionId(self):
@@ -8716,6 +8769,38 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
     def Business(self, Business):
         self._Business = Business
 
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
 
     def _deserialize(self, params):
         self._RegionId = params.get("RegionId")
@@ -8730,6 +8815,10 @@ class ConsumptionRegionSummaryDataItem(AbstractModel):
                 obj = ConsumptionBusinessSummaryDataItem()
                 obj._deserialize(item)
                 self._Business.append(obj)
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8889,6 +8978,57 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         :param _TransferPayAmount: 分成金
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransferPayAmount: str
+        :param _PayerUin: 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayerUin: str
+        :param _OwnerUin: 使用者UIN：实际使用资源的账号 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: str
+        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateUin: str
+        :param _ProductCode: 子产品编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCode: str
+        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductCodeName: str
+        :param _RegionType: 地域类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionType: str
+        :param _RegionTypeName: 地域类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionTypeName: str
+        :param _Extend1: 扩展字段1
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extend1: str
+        :param _Extend2: 扩展字段2
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extend2: str
+        :param _Extend3: 扩展字段3
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extend3: str
+        :param _Extend4: 扩展字段4
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extend4: str
+        :param _Extend5: 扩展字段5
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extend5: str
+        :param _InstanceType: 实例类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _InstanceTypeName: 实例类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceTypeName: str
+        :param _PayTime: 扣费时间：结算扣费时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayTime: str
+        :param _ZoneName: 可用区：资源所属可用区，如广州三区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneName: str
+        :param _ComponentConfig: 配置描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComponentConfig: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -8912,6 +9052,23 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = None
         self._IncentivePayAmount = None
         self._TransferPayAmount = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._Extend1 = None
+        self._Extend2 = None
+        self._Extend3 = None
+        self._Extend4 = None
+        self._Extend5 = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._PayTime = None
+        self._ZoneName = None
+        self._ComponentConfig = None
 
     @property
     def ResourceId(self):
@@ -9089,6 +9246,142 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
     def TransferPayAmount(self, TransferPayAmount):
         self._TransferPayAmount = TransferPayAmount
 
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def Extend1(self):
+        return self._Extend1
+
+    @Extend1.setter
+    def Extend1(self, Extend1):
+        self._Extend1 = Extend1
+
+    @property
+    def Extend2(self):
+        return self._Extend2
+
+    @Extend2.setter
+    def Extend2(self, Extend2):
+        self._Extend2 = Extend2
+
+    @property
+    def Extend3(self):
+        return self._Extend3
+
+    @Extend3.setter
+    def Extend3(self, Extend3):
+        self._Extend3 = Extend3
+
+    @property
+    def Extend4(self):
+        return self._Extend4
+
+    @Extend4.setter
+    def Extend4(self, Extend4):
+        self._Extend4 = Extend4
+
+    @property
+    def Extend5(self):
+        return self._Extend5
+
+    @Extend5.setter
+    def Extend5(self, Extend5):
+        self._Extend5 = Extend5
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -9113,6 +9406,23 @@ class ConsumptionResourceSummaryDataItem(AbstractModel):
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._IncentivePayAmount = params.get("IncentivePayAmount")
         self._TransferPayAmount = params.get("TransferPayAmount")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._Extend1 = params.get("Extend1")
+        self._Extend2 = params.get("Extend2")
+        self._Extend3 = params.get("Extend3")
+        self._Extend4 = params.get("Extend4")
+        self._Extend5 = params.get("Extend5")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._PayTime = params.get("PayTime")
+        self._ZoneName = params.get("ZoneName")
+        self._ComponentConfig = params.get("ComponentConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11314,7 +11624,7 @@ class DescribeAllocationBillDetailRequest(AbstractModel):
         r"""
         :param _Limit: 数量，最大值为1000
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :type Offset: int
         :param _Month: 账单月份，格式为2024-02，不传默认当前月
         :type Month: str
@@ -11358,7 +11668,7 @@ desc - 降序
         :type ComponentCodes: list of str
         :param _ItemCodes: 组件名称编码，用作筛选
         :type ItemCodes: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
         :type SearchKey: str
         :param _ProjectIds: 项目ID，用作筛选
         :type ProjectIds: list of int non-negative
@@ -12197,7 +12507,7 @@ class DescribeAllocationSummaryByItemRequest(AbstractModel):
         :param _Limit: 数量，最大值为1000
 
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :type Offset: int
         :param _Month: 账单月份，格式为2024-02，不传默认当前月
 
@@ -12260,8 +12570,7 @@ desc - 降序
         :type ComponentCodes: list of str
         :param _ItemCodes: 组件名称编码，用作筛选
         :type ItemCodes: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
-
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
         :type SearchKey: str
         :param _ProjectIds: 项目ID，用作筛选
 
@@ -12598,7 +12907,7 @@ class DescribeAllocationSummaryByResourceRequest(AbstractModel):
         :param _Limit: 数量，最大值为1000
 
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :type Offset: int
         :param _Month: 账单月份，格式为2024-02，不传默认当前月
 
@@ -12645,7 +12954,7 @@ desc - 降序
         :type InstanceTypes: list of str
         :param _Tag: 标签，用作筛选
         :type Tag: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
         :type SearchKey: str
         :param _ProjectIds: 项目ID，用作筛选
         :type ProjectIds: list of int non-negative
@@ -17546,7 +17855,7 @@ class DescribeGatherResourceRequest(AbstractModel):
         r"""
         :param _Limit: 数量，最大值为1000
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
         :type Offset: int
         :param _Month: 账单月份，格式为2024-02，不传默认当前月
         :type Month: str
@@ -17583,7 +17892,7 @@ desc - 降序
         :type OperateUins: list of str
         :param _OwnerUins: 使用者UIN，用作筛选
         :type OwnerUins: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名、分拆项id和分拆项名称
+        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
         :type SearchKey: str
         :param _Tag: 标签，用作筛选
         :type Tag: list of str
@@ -19510,10 +19819,10 @@ class GatherResourceSummary(AbstractModel):
         :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceTypeName: str
-        :param _ResourceId: 资源ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+        :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空
+        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
         :param _TreeNodeUniqKey: 分账单元唯一标识
@@ -19942,18 +20251,26 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def SplitItemId(self):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         return self._SplitItemId
 
     @SplitItemId.setter
     def SplitItemId(self, SplitItemId):
+        warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
+
         self._SplitItemId = SplitItemId
 
     @property
     def SplitItemName(self):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         return self._SplitItemName
 
     @SplitItemName.setter
     def SplitItemName(self, SplitItemName):
+        warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
+
         self._SplitItemName = SplitItemName
 
 

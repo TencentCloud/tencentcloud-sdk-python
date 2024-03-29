@@ -8061,6 +8061,12 @@ class Endpoint(AbstractModel):
         :param _CcnOwnerUin: 数据库为跨账号云联网下的实例时、表示云联网所属主账号
 注意：此字段可能返回 null，表示取不到有效值。
         :type CcnOwnerUin: str
+        :param _ChildInstanceId: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildInstanceId: str
+        :param _ChildInstanceType: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、比如：只读实例传ro、读写实例传rw
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildInstanceType: str
         """
         self._Region = None
         self._Role = None
@@ -8089,6 +8095,8 @@ class Endpoint(AbstractModel):
         self._EncryptConn = None
         self._DatabaseNetEnv = None
         self._CcnOwnerUin = None
+        self._ChildInstanceId = None
+        self._ChildInstanceType = None
 
     @property
     def Region(self):
@@ -8306,6 +8314,22 @@ class Endpoint(AbstractModel):
     def CcnOwnerUin(self, CcnOwnerUin):
         self._CcnOwnerUin = CcnOwnerUin
 
+    @property
+    def ChildInstanceId(self):
+        return self._ChildInstanceId
+
+    @ChildInstanceId.setter
+    def ChildInstanceId(self, ChildInstanceId):
+        self._ChildInstanceId = ChildInstanceId
+
+    @property
+    def ChildInstanceType(self):
+        return self._ChildInstanceType
+
+    @ChildInstanceType.setter
+    def ChildInstanceType(self, ChildInstanceType):
+        self._ChildInstanceType = ChildInstanceType
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -8335,6 +8359,8 @@ class Endpoint(AbstractModel):
         self._EncryptConn = params.get("EncryptConn")
         self._DatabaseNetEnv = params.get("DatabaseNetEnv")
         self._CcnOwnerUin = params.get("CcnOwnerUin")
+        self._ChildInstanceId = params.get("ChildInstanceId")
+        self._ChildInstanceType = params.get("ChildInstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8400,6 +8426,12 @@ class EndpointItem(AbstractModel):
         :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAttr: list of KeyValuePairOption
+        :param _ChildInstanceId: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildInstanceId: str
+        :param _ChildInstanceType: 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、比如：只读实例传ro、读写实例传rw
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChildInstanceType: str
         """
         self._DatabaseRegion = None
         self._User = None
@@ -8417,6 +8449,8 @@ class EndpointItem(AbstractModel):
         self._DatabaseNetEnv = None
         self._CcnOwnerUin = None
         self._ExtraAttr = None
+        self._ChildInstanceId = None
+        self._ChildInstanceType = None
 
     @property
     def DatabaseRegion(self):
@@ -8546,6 +8580,22 @@ class EndpointItem(AbstractModel):
     def ExtraAttr(self, ExtraAttr):
         self._ExtraAttr = ExtraAttr
 
+    @property
+    def ChildInstanceId(self):
+        return self._ChildInstanceId
+
+    @ChildInstanceId.setter
+    def ChildInstanceId(self, ChildInstanceId):
+        self._ChildInstanceId = ChildInstanceId
+
+    @property
+    def ChildInstanceType(self):
+        return self._ChildInstanceType
+
+    @ChildInstanceType.setter
+    def ChildInstanceType(self, ChildInstanceType):
+        self._ChildInstanceType = ChildInstanceType
+
 
     def _deserialize(self, params):
         self._DatabaseRegion = params.get("DatabaseRegion")
@@ -8569,6 +8619,8 @@ class EndpointItem(AbstractModel):
                 obj = KeyValuePairOption()
                 obj._deserialize(item)
                 self._ExtraAttr.append(obj)
+        self._ChildInstanceId = params.get("ChildInstanceId")
+        self._ChildInstanceType = params.get("ChildInstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

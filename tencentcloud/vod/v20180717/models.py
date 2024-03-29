@@ -8889,8 +8889,13 @@ class AreaCLSTargetInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _CLSRegion: 日志集所属地区：
-ap-guangzhou：广州； 
-ap-singapore：新加坡。
+<li>ap-guangzhou：广州；</li>
+<li>ap-beijing：北京；</li>
+<li>ap-chengdu：成都；</li>
+<li>ap-chongqing：重庆；</li>
+<li>ap-nanjing：南京；</li>
+<li>ap-shanghai：上海；</li>
+<li>ap-singapore：新加坡。</li>
         :type CLSRegion: str
         :param _TopicId: 投递的目标主题 ID。
         :type TopicId: str

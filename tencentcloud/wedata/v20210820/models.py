@@ -20043,7 +20043,7 @@ class DescribeDataCheckStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project id
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _BeginDate: 开始时间，时间戳到秒
         :type BeginDate: str
@@ -26169,9 +26169,9 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目id
         :type ProjectId: str
-        :param _PageNumber: 页数
+        :param _PageNumber: 页数:默认1
         :type PageNumber: int
-        :param _PageSize: 分页大小
+        :param _PageSize: 分页大小,默认最小10
         :type PageSize: int
         :param _Filters: 过滤条件
         :type Filters: list of Filter
@@ -30811,7 +30811,7 @@ class DescribeRuleDimStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project Id
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _BeginDate: 开始时间，时间戳到秒
         :type BeginDate: str
@@ -31444,7 +31444,7 @@ class DescribeRuleExecStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: ProjectId 值
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _BeginDate: 开始时间，时间戳到秒
         :type BeginDate: str
@@ -38398,7 +38398,7 @@ class DescribeTopTableStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project Id
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _BeginDate: 开始时间，时间戳到秒
         :type BeginDate: str
@@ -38494,7 +38494,7 @@ class DescribeTrendStatRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: Project id
+        :param _ProjectId: 项目id
         :type ProjectId: str
         :param _BeginDate: 开始时间，时间戳到秒
         :type BeginDate: str
@@ -42111,6 +42111,21 @@ class ExportTaskInfo(AbstractModel):
         :param _FilePath: 文件相对路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type FilePath: str
+        :param _Expire: 是否过期(1.已过期 2.未过期) 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Expire: int
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DbTableName: 库名+表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbTableName: str
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _RuleExecId: 规则执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecId: int
         """
         self._ExportTaskId = None
         self._TaskType = None
@@ -42121,6 +42136,11 @@ class ExportTaskInfo(AbstractModel):
         self._SchedulerTaskId = None
         self._SchedulerCurRunDate = None
         self._FilePath = None
+        self._Expire = None
+        self._DatasourceName = None
+        self._DbTableName = None
+        self._RuleName = None
+        self._RuleExecId = None
 
     @property
     def ExportTaskId(self):
@@ -42194,6 +42214,46 @@ class ExportTaskInfo(AbstractModel):
     def FilePath(self, FilePath):
         self._FilePath = FilePath
 
+    @property
+    def Expire(self):
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+    @property
+    def DatasourceName(self):
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DbTableName(self):
+        return self._DbTableName
+
+    @DbTableName.setter
+    def DbTableName(self, DbTableName):
+        self._DbTableName = DbTableName
+
+    @property
+    def RuleName(self):
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleExecId(self):
+        return self._RuleExecId
+
+    @RuleExecId.setter
+    def RuleExecId(self, RuleExecId):
+        self._RuleExecId = RuleExecId
+
 
     def _deserialize(self, params):
         self._ExportTaskId = params.get("ExportTaskId")
@@ -42205,6 +42265,11 @@ class ExportTaskInfo(AbstractModel):
         self._SchedulerTaskId = params.get("SchedulerTaskId")
         self._SchedulerCurRunDate = params.get("SchedulerCurRunDate")
         self._FilePath = params.get("FilePath")
+        self._Expire = params.get("Expire")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DbTableName = params.get("DbTableName")
+        self._RuleName = params.get("RuleName")
+        self._RuleExecId = params.get("RuleExecId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60295,6 +60360,9 @@ class Rule(AbstractModel):
         :param _MonitorStatus: 监控是否开启.0false,1true
 注意：此字段可能返回 null，表示取不到有效值。
         :type MonitorStatus: int
+        :param _TriggerCondition: 触发条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerCondition: str
         """
         self._RuleId = None
         self._RuleGroupId = None
@@ -60339,6 +60407,7 @@ class Rule(AbstractModel):
         self._DatasourceId = None
         self._DatabaseId = None
         self._MonitorStatus = None
+        self._TriggerCondition = None
 
     @property
     def RuleId(self):
@@ -60684,6 +60753,14 @@ class Rule(AbstractModel):
     def MonitorStatus(self, MonitorStatus):
         self._MonitorStatus = MonitorStatus
 
+    @property
+    def TriggerCondition(self):
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -60737,6 +60814,7 @@ class Rule(AbstractModel):
         self._DatasourceId = params.get("DatasourceId")
         self._DatabaseId = params.get("DatabaseId")
         self._MonitorStatus = params.get("MonitorStatus")
+        self._TriggerCondition = params.get("TriggerCondition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62261,6 +62339,9 @@ class RuleGroupExecResult(AbstractModel):
         :param _EngineType: 实际执行引擎
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineType: str
+        :param _RuleExecResultVOList: 规则执行结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleExecResultVOList: list of RuleExecResult
         """
         self._RuleGroupExecId = None
         self._RuleGroupId = None
@@ -62277,6 +62358,7 @@ class RuleGroupExecResult(AbstractModel):
         self._Permission = None
         self._ExecDetail = None
         self._EngineType = None
+        self._RuleExecResultVOList = None
 
     @property
     def RuleGroupExecId(self):
@@ -62398,6 +62480,14 @@ class RuleGroupExecResult(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def RuleExecResultVOList(self):
+        return self._RuleExecResultVOList
+
+    @RuleExecResultVOList.setter
+    def RuleExecResultVOList(self, RuleExecResultVOList):
+        self._RuleExecResultVOList = RuleExecResultVOList
+
 
     def _deserialize(self, params):
         self._RuleGroupExecId = params.get("RuleGroupExecId")
@@ -62415,6 +62505,12 @@ class RuleGroupExecResult(AbstractModel):
         self._Permission = params.get("Permission")
         self._ExecDetail = params.get("ExecDetail")
         self._EngineType = params.get("EngineType")
+        if params.get("RuleExecResultVOList") is not None:
+            self._RuleExecResultVOList = []
+            for item in params.get("RuleExecResultVOList"):
+                obj = RuleExecResult()
+                obj._deserialize(item)
+                self._RuleExecResultVOList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -828,6 +828,8 @@ class CreateDatasourceRequest(AbstractModel):
         :type Vport: str
         :param _VpcId: 腾讯云私有网络标识
         :type VpcId: str
+        :param _OperationAuthLimit: 操作权限限制
+        :type OperationAuthLimit: list of str
         """
         self._DbHost = None
         self._DbPort = None
@@ -848,6 +850,7 @@ class CreateDatasourceRequest(AbstractModel):
         self._Vip = None
         self._Vport = None
         self._VpcId = None
+        self._OperationAuthLimit = None
 
     @property
     def DbHost(self):
@@ -1001,6 +1004,14 @@ class CreateDatasourceRequest(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def OperationAuthLimit(self):
+        return self._OperationAuthLimit
+
+    @OperationAuthLimit.setter
+    def OperationAuthLimit(self, OperationAuthLimit):
+        self._OperationAuthLimit = OperationAuthLimit
+
 
     def _deserialize(self, params):
         self._DbHost = params.get("DbHost")
@@ -1022,6 +1033,7 @@ class CreateDatasourceRequest(AbstractModel):
         self._Vip = params.get("Vip")
         self._Vport = params.get("Vport")
         self._VpcId = params.get("VpcId")
+        self._OperationAuthLimit = params.get("OperationAuthLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1330,6 +1342,8 @@ class CreateProjectRequest(AbstractModel):
         :type IsApply: bool
         :param _DefaultPanelType: 默认看板
         :type DefaultPanelType: int
+        :param _ManagePlatform: 管理平台
+        :type ManagePlatform: str
         """
         self._Name = None
         self._ColorCode = None
@@ -1337,6 +1351,7 @@ class CreateProjectRequest(AbstractModel):
         self._Mark = None
         self._IsApply = None
         self._DefaultPanelType = None
+        self._ManagePlatform = None
 
     @property
     def Name(self):
@@ -1386,6 +1401,14 @@ class CreateProjectRequest(AbstractModel):
     def DefaultPanelType(self, DefaultPanelType):
         self._DefaultPanelType = DefaultPanelType
 
+    @property
+    def ManagePlatform(self):
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1394,6 +1417,7 @@ class CreateProjectRequest(AbstractModel):
         self._Mark = params.get("Mark")
         self._IsApply = params.get("IsApply")
         self._DefaultPanelType = params.get("DefaultPanelType")
+        self._ManagePlatform = params.get("ManagePlatform")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4954,6 +4978,8 @@ class ModifyProjectRequest(AbstractModel):
         :type DefaultPanelType: int
         :param _PanelScope: 2
         :type PanelScope: str
+        :param _ManagePlatform: 项目管理平台
+        :type ManagePlatform: str
         """
         self._Id = None
         self._Name = None
@@ -4964,6 +4990,7 @@ class ModifyProjectRequest(AbstractModel):
         self._Seed = None
         self._DefaultPanelType = None
         self._PanelScope = None
+        self._ManagePlatform = None
 
     @property
     def Id(self):
@@ -5037,6 +5064,14 @@ class ModifyProjectRequest(AbstractModel):
     def PanelScope(self, PanelScope):
         self._PanelScope = PanelScope
 
+    @property
+    def ManagePlatform(self):
+        return self._ManagePlatform
+
+    @ManagePlatform.setter
+    def ManagePlatform(self, ManagePlatform):
+        self._ManagePlatform = ManagePlatform
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5048,6 +5083,7 @@ class ModifyProjectRequest(AbstractModel):
         self._Seed = params.get("Seed")
         self._DefaultPanelType = params.get("DefaultPanelType")
         self._PanelScope = params.get("PanelScope")
+        self._ManagePlatform = params.get("ManagePlatform")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -697,7 +697,9 @@ class CwpClient(AbstractClient):
 
 
     def DeleteAttackLogs(self, request):
-        """删除网络攻击日志
+        """ModifyEventAttackStatus 接口替代
+
+        删除网络攻击日志
 
         :param request: Request instance for DeleteAttackLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.DeleteAttackLogsRequest`
@@ -8887,7 +8889,9 @@ class CwpClient(AbstractClient):
 
 
     def ExportAttackLogs(self, request):
-        """导出网络攻击日志
+        """ExportAttackEvents接口替代
+
+        导出网络攻击日志
 
         :param request: Request instance for ExportAttackLogs.
         :type request: :class:`tencentcloud.cwp.v20180228.models.ExportAttackLogsRequest`

@@ -25,22 +25,30 @@ class CreateWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 工作空间名称
+        :param _Name: 工作空间名称, 长度限制 2~64
         :type Name: str
-        :param _Description: 工作空间描述
+        :param _Description: 工作空间描述, 长度限制 0~255
         :type Description: str
         :param _Specs: 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
         :type Specs: str
-        :param _Image: 工作空间基础镜像名称, 默认会使用 All In One 镜像
+        :param _Image: 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
         :type Image: str
         :param _Repository: Git 仓库. 工作空间启动时会自动克隆该仓库
         :type Repository: :class:`tencentcloud.cloudstudio.v20230508.models.GitRepository`
         :param _Envs: 环境变量. 会被注入到工作空间中
         :type Envs: list of Env
-        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
+        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
         :type Extensions: list of str
         :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
+        :param _AppId: 应用名称
+        :type AppId: int
+        :param _Uin: 用户UIN
+        :type Uin: str
+        :param _UniqVpcId: VPCID
+        :type UniqVpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
         """
         self._Name = None
         self._Description = None
@@ -50,6 +58,10 @@ class CreateWorkspaceRequest(AbstractModel):
         self._Envs = None
         self._Extensions = None
         self._Lifecycle = None
+        self._AppId = None
+        self._Uin = None
+        self._UniqVpcId = None
+        self._SubnetId = None
 
     @property
     def Name(self):
@@ -115,6 +127,38 @@ class CreateWorkspaceRequest(AbstractModel):
     def Lifecycle(self, Lifecycle):
         self._Lifecycle = Lifecycle
 
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def UniqVpcId(self):
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -134,6 +178,10 @@ class CreateWorkspaceRequest(AbstractModel):
         if params.get("Lifecycle") is not None:
             self._Lifecycle = LifeCycle()
             self._Lifecycle._deserialize(params.get("Lifecycle"))
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

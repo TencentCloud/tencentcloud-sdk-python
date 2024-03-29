@@ -9932,6 +9932,8 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
 
 注：`该姓名需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该姓名会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人名字传入将不会生效`
         :type ProxyOperatorName: str
+        :param _ProxyOperatorMobile: 子客企业员工的手机码,  支持国内手机号11位数字(无需加+86前缀或其他字符)。注：`该手机号需要和Agent.ProxyOperator.OpenId相匹配,  当员工完成认证后该手机号会和Agent.ProxyOperator.OpenId一一绑定, 若员工已认证加入企业，这里修改经办人手机号传入将不会生效`
+        :type ProxyOperatorMobile: str
         :param _Module: Web控制台登录后进入的功能模块,  支持的模块包括：
 <ul>
 <li> **空值** :(默认)企业中心模块</li>
@@ -9989,6 +9991,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyOrganizationName = None
         self._UniformSocialCreditCode = None
         self._ProxyOperatorName = None
+        self._ProxyOperatorMobile = None
         self._Module = None
         self._ModuleId = None
         self._MenuStatus = None
@@ -10030,6 +10033,14 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
     @ProxyOperatorName.setter
     def ProxyOperatorName(self, ProxyOperatorName):
         self._ProxyOperatorName = ProxyOperatorName
+
+    @property
+    def ProxyOperatorMobile(self):
+        return self._ProxyOperatorMobile
+
+    @ProxyOperatorMobile.setter
+    def ProxyOperatorMobile(self, ProxyOperatorMobile):
+        self._ProxyOperatorMobile = ProxyOperatorMobile
 
     @property
     def Module(self):
@@ -10115,6 +10126,7 @@ class CreateConsoleLoginUrlRequest(AbstractModel):
         self._ProxyOrganizationName = params.get("ProxyOrganizationName")
         self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self._ProxyOperatorName = params.get("ProxyOperatorName")
+        self._ProxyOperatorMobile = params.get("ProxyOperatorMobile")
         self._Module = params.get("Module")
         self._ModuleId = params.get("ModuleId")
         self._MenuStatus = params.get("MenuStatus")
