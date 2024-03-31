@@ -11812,6 +11812,8 @@ class CreateOrUpdateResourceRequest(AbstractModel):
         :type NewFile: bool
         :param _FilesSize: 必填项，文件大小，与 Files 字段对应
         :type FilesSize: list of str
+        :param _FileMd5: 必填项，资源的Md5值（COS中的ETag）
+        :type FileMd5: str
         """
         self._ProjectId = None
         self._Files = None
@@ -11820,6 +11822,7 @@ class CreateOrUpdateResourceRequest(AbstractModel):
         self._CosRegion = None
         self._NewFile = None
         self._FilesSize = None
+        self._FileMd5 = None
 
     @property
     def ProjectId(self):
@@ -11877,6 +11880,14 @@ class CreateOrUpdateResourceRequest(AbstractModel):
     def FilesSize(self, FilesSize):
         self._FilesSize = FilesSize
 
+    @property
+    def FileMd5(self):
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -11886,6 +11897,7 @@ class CreateOrUpdateResourceRequest(AbstractModel):
         self._CosRegion = params.get("CosRegion")
         self._NewFile = params.get("NewFile")
         self._FilesSize = params.get("FilesSize")
+        self._FileMd5 = params.get("FileMd5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

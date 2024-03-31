@@ -4209,13 +4209,13 @@ class GetFaceIdRiskInfoResponse(AbstractModel):
         :param _DeviceInfoTag: 描述当前请求所在设备的风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoTag: str
-        :param _DeviceInfoLevel: 描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+        :param _DeviceInfoLevel: 描述当前请求所在设备的风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoLevel: int
         :param _OpenId: 设备id标识
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpenId: str
-        :param _CameraInfoLevel: 描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 安全 2 - 低风险 3 - 中风险 4 - 高危 ，-1表示未获取到风险等级
+        :param _CameraInfoLevel: 描述当前请求所在设备的相机指纹风险等级，共4级，详情如下： 1 - 低风险 2 - 中风险 3 - 高风险 4 - 攻击 ，-1表示未获取到风险等级
 注意：此字段可能返回 null，表示取不到有效值。
         :type CameraInfoLevel: int
         :param _CameraInfoTag: 描述当前请求所在设备的相机指纹风险标签，详情如下： 01-设备疑似被Root/设备疑似越狱 02-设备疑似被注入 03-设备疑似为模拟器 04-设备疑似存在风险操作 05-摄像头疑似被劫持 06-疑似黑产设备，空表示没有相机指纹风险
