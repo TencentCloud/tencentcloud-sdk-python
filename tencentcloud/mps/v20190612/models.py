@@ -1360,6 +1360,9 @@ class AiAnalysisResult(AbstractModel):
         :param _DeLogoTask: 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        :param _HeadTailTask: 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTailTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
         :param _DescriptionTask: 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
@@ -1371,6 +1374,7 @@ class AiAnalysisResult(AbstractModel):
         self._FrameTagTask = None
         self._HighlightTask = None
         self._DeLogoTask = None
+        self._HeadTailTask = None
         self._DescriptionTask = None
 
     @property
@@ -1430,6 +1434,14 @@ class AiAnalysisResult(AbstractModel):
         self._DeLogoTask = DeLogoTask
 
     @property
+    def HeadTailTask(self):
+        return self._HeadTailTask
+
+    @HeadTailTask.setter
+    def HeadTailTask(self, HeadTailTask):
+        self._HeadTailTask = HeadTailTask
+
+    @property
     def DescriptionTask(self):
         return self._DescriptionTask
 
@@ -1458,6 +1470,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("DeLogoTask") is not None:
             self._DeLogoTask = AiAnalysisTaskDelLogoResult()
             self._DeLogoTask._deserialize(params.get("DeLogoTask"))
+        if params.get("HeadTailTask") is not None:
+            self._HeadTailTask = AiAnalysisTaskHeadTailResult()
+            self._HeadTailTask._deserialize(params.get("HeadTailTask"))
         if params.get("DescriptionTask") is not None:
             self._DescriptionTask = AiAnalysisTaskDescriptionResult()
             self._DescriptionTask._deserialize(params.get("DescriptionTask"))
@@ -2304,6 +2319,172 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskFrameTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailInput(AbstractModel):
+    """片头片尾任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 片头片尾识别模板 ID。
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailOutput(AbstractModel):
+    """片头片尾结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadTimeOffset: 片头pts。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeadTimeOffset: float
+        :param _TailTimeOffset: 片尾pts。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TailTimeOffset: float
+        """
+        self._HeadTimeOffset = None
+        self._TailTimeOffset = None
+
+    @property
+    def HeadTimeOffset(self):
+        return self._HeadTimeOffset
+
+    @HeadTimeOffset.setter
+    def HeadTimeOffset(self, HeadTimeOffset):
+        self._HeadTimeOffset = HeadTimeOffset
+
+    @property
+    def TailTimeOffset(self):
+        return self._TailTimeOffset
+
+    @TailTimeOffset.setter
+    def TailTimeOffset(self, TailTimeOffset):
+        self._TailTimeOffset = TailTimeOffset
+
+
+    def _deserialize(self, params):
+        self._HeadTimeOffset = params.get("HeadTimeOffset")
+        self._TailTimeOffset = params.get("TailTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailResult(AbstractModel):
+    """片头片尾结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :type Status: str
+        :param _ErrCode: 错误码，0：成功，其他值：失败。
+        :type ErrCode: int
+        :param _Message: 错误信息。
+        :type Message: str
+        :param _Input: 片头片尾任务输入。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailInput`
+        :param _Output: 片头片尾任务输出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskHeadTailInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskHeadTailOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

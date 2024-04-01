@@ -670,6 +670,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceEvents(self, request):
+        """本接口（DescribeInstanceEvents）用于查询 Redis 实例事件信息。
+
+        :param request: Request instance for DescribeInstanceEvents.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceEventsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceMonitorBigKey(self, request):
         """腾讯云数据库 Redis 已经于2022年10月31日下线查询实例大 Key 接口。具体公告，请参见[查询实例大 Key 接口下线公告](https://cloud.tencent.com/document/product/239/81005)。
 
@@ -1742,6 +1765,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceAvailabilityZones", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceAvailabilityZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceEvent(self, request):
+        """本接口（ModifyInstanceEvent）用于修改实例的运维事件的执行计划。
+
+        :param request: Request instance for ModifyInstanceEvent.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceEventRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

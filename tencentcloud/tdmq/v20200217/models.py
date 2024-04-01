@@ -4565,6 +4565,16 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         :type VpcInfo: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         :param _TimeSpan: 购买时长，月为单位
         :type TimeSpan: int
+        :param _SupportsMigrateToCloud: 是否用于迁移上云，默认为false
+        :type SupportsMigrateToCloud: bool
+        :param _EnablePublic: 是否开启公网
+        :type EnablePublic: bool
+        :param _Bandwidth: 公网带宽，在开启公网情况下为必传字段
+        :type Bandwidth: int
+        :param _IpRules: 公网白名单
+        :type IpRules: list of PublicAccessRule
+        :param _Tags: 标签
+        :type Tags: list of Tag
         """
         self._Name = None
         self._Spec = None
@@ -4573,6 +4583,11 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
         self._ZoneIds = None
         self._VpcInfo = None
         self._TimeSpan = None
+        self._SupportsMigrateToCloud = None
+        self._EnablePublic = None
+        self._Bandwidth = None
+        self._IpRules = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -4630,6 +4645,46 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
     def TimeSpan(self, TimeSpan):
         self._TimeSpan = TimeSpan
 
+    @property
+    def SupportsMigrateToCloud(self):
+        return self._SupportsMigrateToCloud
+
+    @SupportsMigrateToCloud.setter
+    def SupportsMigrateToCloud(self, SupportsMigrateToCloud):
+        self._SupportsMigrateToCloud = SupportsMigrateToCloud
+
+    @property
+    def EnablePublic(self):
+        return self._EnablePublic
+
+    @EnablePublic.setter
+    def EnablePublic(self, EnablePublic):
+        self._EnablePublic = EnablePublic
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def IpRules(self):
+        return self._IpRules
+
+    @IpRules.setter
+    def IpRules(self, IpRules):
+        self._IpRules = IpRules
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4641,6 +4696,21 @@ class CreateRocketMQVipInstanceRequest(AbstractModel):
             self._VpcInfo = VpcInfo()
             self._VpcInfo._deserialize(params.get("VpcInfo"))
         self._TimeSpan = params.get("TimeSpan")
+        self._SupportsMigrateToCloud = params.get("SupportsMigrateToCloud")
+        self._EnablePublic = params.get("EnablePublic")
+        self._Bandwidth = params.get("Bandwidth")
+        if params.get("IpRules") is not None:
+            self._IpRules = []
+            for item in params.get("IpRules"):
+                obj = PublicAccessRule()
+                obj._deserialize(item)
+                self._IpRules.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

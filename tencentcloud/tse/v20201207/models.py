@@ -798,6 +798,31 @@ class CloudNativeAPIGatewayCanaryRule(AbstractModel):
         :param _ServiceName: 归属服务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
+        :param _RuleType: 灰度规则类别
+Standard｜Lane
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleType: str
+        :param _MatchType: 全链路灰度策略多个条件之间的匹配方式，与AND，或OR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchType: str
+        :param _GroupId: 泳道组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _GroupName: 泳道组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _LaneId: 泳道ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneId: str
+        :param _LaneName: 泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneName: str
+        :param _MatchMode: 泳道匹配规则：严格STRICT｜宽松PERMISSIVE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchMode: str
+        :param _LaneTag: 泳道标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneTag: str
         """
         self._Priority = None
         self._Enabled = None
@@ -805,6 +830,14 @@ class CloudNativeAPIGatewayCanaryRule(AbstractModel):
         self._BalancedServiceList = None
         self._ServiceId = None
         self._ServiceName = None
+        self._RuleType = None
+        self._MatchType = None
+        self._GroupId = None
+        self._GroupName = None
+        self._LaneId = None
+        self._LaneName = None
+        self._MatchMode = None
+        self._LaneTag = None
 
     @property
     def Priority(self):
@@ -854,6 +887,70 @@ class CloudNativeAPIGatewayCanaryRule(AbstractModel):
     def ServiceName(self, ServiceName):
         self._ServiceName = ServiceName
 
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def MatchType(self):
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def LaneId(self):
+        return self._LaneId
+
+    @LaneId.setter
+    def LaneId(self, LaneId):
+        self._LaneId = LaneId
+
+    @property
+    def LaneName(self):
+        return self._LaneName
+
+    @LaneName.setter
+    def LaneName(self, LaneName):
+        self._LaneName = LaneName
+
+    @property
+    def MatchMode(self):
+        return self._MatchMode
+
+    @MatchMode.setter
+    def MatchMode(self, MatchMode):
+        self._MatchMode = MatchMode
+
+    @property
+    def LaneTag(self):
+        return self._LaneTag
+
+    @LaneTag.setter
+    def LaneTag(self, LaneTag):
+        self._LaneTag = LaneTag
+
 
     def _deserialize(self, params):
         self._Priority = params.get("Priority")
@@ -872,6 +969,14 @@ class CloudNativeAPIGatewayCanaryRule(AbstractModel):
                 self._BalancedServiceList.append(obj)
         self._ServiceId = params.get("ServiceId")
         self._ServiceName = params.get("ServiceName")
+        self._RuleType = params.get("RuleType")
+        self._MatchType = params.get("MatchType")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._LaneId = params.get("LaneId")
+        self._LaneName = params.get("LaneName")
+        self._MatchMode = params.get("MatchMode")
+        self._LaneTag = params.get("LaneTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1455,25 +1560,15 @@ class CloudNativeAPIGatewayRateLimitDetail(AbstractModel):
         :type Enabled: bool
         :param _QpsThresholds: qps阈值
         :type QpsThresholds: list of QpsThreshold
-        :param _LimitBy: 限流依据
-ip service consumer credential path header
-        :type LimitBy: str
-        :param _ResponseType: 响应策略
-url请求转发
-text 响应配置
-default 直接返回
-
-        :type ResponseType: str
-        :param _HideClientHeaders: 是否隐藏限流客户端响应头
-        :type HideClientHeaders: bool
-        :param _IsDelay: 是否开启请求排队
-        :type IsDelay: bool
         :param _Path: 需要进行流量控制的请求路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         :param _Header: 需要进行流量控制的请求头Key
 注意：此字段可能返回 null，表示取不到有效值。
         :type Header: str
+        :param _LimitBy: 限流依据
+ip service consumer credential path header
+        :type LimitBy: str
         :param _ExternalRedis: 外部redis配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalRedis: :class:`tencentcloud.tse.v20201207.models.ExternalRedis`
@@ -1491,22 +1586,40 @@ external_redis 外部redis
         :param _RateLimitResponseUrl: 请求转发地址
 注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitResponseUrl: str
+        :param _ResponseType: 响应策略
+url请求转发
+text 响应配置
+default 直接返回
+
+        :type ResponseType: str
+        :param _HideClientHeaders: 是否隐藏限流客户端响应头
+        :type HideClientHeaders: bool
         :param _LineUpTime: 排队时间
         :type LineUpTime: int
+        :param _IsDelay: 是否开启请求排队
+        :type IsDelay: bool
+        :param _BasicLimitQpsThresholds: 基础限流
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicLimitQpsThresholds: list of QpsThreshold
+        :param _LimitRules: 参数限流的规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitRules: list of LimitRule
         """
         self._Enabled = None
         self._QpsThresholds = None
-        self._LimitBy = None
-        self._ResponseType = None
-        self._HideClientHeaders = None
-        self._IsDelay = None
         self._Path = None
         self._Header = None
+        self._LimitBy = None
         self._ExternalRedis = None
         self._Policy = None
         self._RateLimitResponse = None
         self._RateLimitResponseUrl = None
+        self._ResponseType = None
+        self._HideClientHeaders = None
         self._LineUpTime = None
+        self._IsDelay = None
+        self._BasicLimitQpsThresholds = None
+        self._LimitRules = None
 
     @property
     def Enabled(self):
@@ -1525,38 +1638,6 @@ external_redis 外部redis
         self._QpsThresholds = QpsThresholds
 
     @property
-    def LimitBy(self):
-        return self._LimitBy
-
-    @LimitBy.setter
-    def LimitBy(self, LimitBy):
-        self._LimitBy = LimitBy
-
-    @property
-    def ResponseType(self):
-        return self._ResponseType
-
-    @ResponseType.setter
-    def ResponseType(self, ResponseType):
-        self._ResponseType = ResponseType
-
-    @property
-    def HideClientHeaders(self):
-        return self._HideClientHeaders
-
-    @HideClientHeaders.setter
-    def HideClientHeaders(self, HideClientHeaders):
-        self._HideClientHeaders = HideClientHeaders
-
-    @property
-    def IsDelay(self):
-        return self._IsDelay
-
-    @IsDelay.setter
-    def IsDelay(self, IsDelay):
-        self._IsDelay = IsDelay
-
-    @property
     def Path(self):
         return self._Path
 
@@ -1571,6 +1652,14 @@ external_redis 外部redis
     @Header.setter
     def Header(self, Header):
         self._Header = Header
+
+    @property
+    def LimitBy(self):
+        return self._LimitBy
+
+    @LimitBy.setter
+    def LimitBy(self, LimitBy):
+        self._LimitBy = LimitBy
 
     @property
     def ExternalRedis(self):
@@ -1605,12 +1694,52 @@ external_redis 外部redis
         self._RateLimitResponseUrl = RateLimitResponseUrl
 
     @property
+    def ResponseType(self):
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def HideClientHeaders(self):
+        return self._HideClientHeaders
+
+    @HideClientHeaders.setter
+    def HideClientHeaders(self, HideClientHeaders):
+        self._HideClientHeaders = HideClientHeaders
+
+    @property
     def LineUpTime(self):
         return self._LineUpTime
 
     @LineUpTime.setter
     def LineUpTime(self, LineUpTime):
         self._LineUpTime = LineUpTime
+
+    @property
+    def IsDelay(self):
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
+    def BasicLimitQpsThresholds(self):
+        return self._BasicLimitQpsThresholds
+
+    @BasicLimitQpsThresholds.setter
+    def BasicLimitQpsThresholds(self, BasicLimitQpsThresholds):
+        self._BasicLimitQpsThresholds = BasicLimitQpsThresholds
+
+    @property
+    def LimitRules(self):
+        return self._LimitRules
+
+    @LimitRules.setter
+    def LimitRules(self, LimitRules):
+        self._LimitRules = LimitRules
 
 
     def _deserialize(self, params):
@@ -1621,12 +1750,9 @@ external_redis 外部redis
                 obj = QpsThreshold()
                 obj._deserialize(item)
                 self._QpsThresholds.append(obj)
-        self._LimitBy = params.get("LimitBy")
-        self._ResponseType = params.get("ResponseType")
-        self._HideClientHeaders = params.get("HideClientHeaders")
-        self._IsDelay = params.get("IsDelay")
         self._Path = params.get("Path")
         self._Header = params.get("Header")
+        self._LimitBy = params.get("LimitBy")
         if params.get("ExternalRedis") is not None:
             self._ExternalRedis = ExternalRedis()
             self._ExternalRedis._deserialize(params.get("ExternalRedis"))
@@ -1635,7 +1761,22 @@ external_redis 外部redis
             self._RateLimitResponse = RateLimitResponse()
             self._RateLimitResponse._deserialize(params.get("RateLimitResponse"))
         self._RateLimitResponseUrl = params.get("RateLimitResponseUrl")
+        self._ResponseType = params.get("ResponseType")
+        self._HideClientHeaders = params.get("HideClientHeaders")
         self._LineUpTime = params.get("LineUpTime")
+        self._IsDelay = params.get("IsDelay")
+        if params.get("BasicLimitQpsThresholds") is not None:
+            self._BasicLimitQpsThresholds = []
+            for item in params.get("BasicLimitQpsThresholds"):
+                obj = QpsThreshold()
+                obj._deserialize(item)
+                self._BasicLimitQpsThresholds.append(obj)
+        if params.get("LimitRules") is not None:
+            self._LimitRules = []
+            for item in params.get("LimitRules"):
+                obj = LimitRule()
+                obj._deserialize(item)
+                self._LimitRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8507,6 +8648,8 @@ class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
         :type GatewayId: str
         :param _ServiceId: 服务 ID
         :type ServiceId: str
+        :param _RuleType: 灰度规则类别 Standard｜Lane
+        :type RuleType: str
         :param _Limit: 列表数量
         :type Limit: int
         :param _Offset: 列表offset
@@ -8514,6 +8657,7 @@ class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
         """
         self._GatewayId = None
         self._ServiceId = None
+        self._RuleType = None
         self._Limit = None
         self._Offset = None
 
@@ -8532,6 +8676,14 @@ class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
     @ServiceId.setter
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
+
+    @property
+    def RuleType(self):
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
 
     @property
     def Limit(self):
@@ -8553,6 +8705,7 @@ class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._ServiceId = params.get("ServiceId")
+        self._RuleType = params.get("RuleType")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
@@ -16880,6 +17033,53 @@ class KVPair(AbstractModel):
         
 
 
+class KeyValue(AbstractModel):
+    """Key/Value结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 条件的Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 条件的Value
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KongActiveHealthCheck(AbstractModel):
     """Kong网关主动健康检查配置
 
@@ -17898,6 +18098,9 @@ class KongTarget(AbstractModel):
         :param _CvmInstanceName: CVM实例名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type CvmInstanceName: str
+        :param _Tags: target标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
         """
         self._Host = None
         self._Port = None
@@ -17907,6 +18110,7 @@ class KongTarget(AbstractModel):
         self._Source = None
         self._CvmInstanceId = None
         self._CvmInstanceName = None
+        self._Tags = None
 
     @property
     def Host(self):
@@ -17972,6 +18176,14 @@ class KongTarget(AbstractModel):
     def CvmInstanceName(self, CvmInstanceName):
         self._CvmInstanceName = CvmInstanceName
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
@@ -17982,6 +18194,7 @@ class KongTarget(AbstractModel):
         self._Source = params.get("Source")
         self._CvmInstanceId = params.get("CvmInstanceId")
         self._CvmInstanceName = params.get("CvmInstanceName")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18385,6 +18598,81 @@ class KongUpstreamPreview(AbstractModel):
                 obj = KongTarget()
                 obj._deserialize(item)
                 self._Target.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LimitRule(AbstractModel):
+    """参数限流的规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 请求匹配条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Filters: list of RuleFilter
+        :param _LimitBy: 参数限流依据组合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LimitBy: list of KeyValue
+        :param _QpsThresholds: 限流阈值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QpsThresholds: list of QpsThreshold
+        """
+        self._Filters = None
+        self._LimitBy = None
+        self._QpsThresholds = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def LimitBy(self):
+        return self._LimitBy
+
+    @LimitBy.setter
+    def LimitBy(self, LimitBy):
+        self._LimitBy = LimitBy
+
+    @property
+    def QpsThresholds(self):
+        return self._QpsThresholds
+
+    @QpsThresholds.setter
+    def QpsThresholds(self, QpsThresholds):
+        self._QpsThresholds = QpsThresholds
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RuleFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("LimitBy") is not None:
+            self._LimitBy = []
+            for item in params.get("LimitBy"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._LimitBy.append(obj)
+        if params.get("QpsThresholds") is not None:
+            self._QpsThresholds = []
+            for item in params.get("QpsThresholds"):
+                obj = QpsThreshold()
+                obj._deserialize(item)
+                self._QpsThresholds.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21900,6 +22188,53 @@ class RouteWafStatus(AbstractModel):
         self._Hosts = params.get("Hosts")
         self._ServiceName = params.get("ServiceName")
         self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleFilter(AbstractModel):
+    """限流规则的Filter
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 限流条件的Key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Values: 限流条件的Values
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

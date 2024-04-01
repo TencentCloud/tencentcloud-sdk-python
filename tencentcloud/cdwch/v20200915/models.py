@@ -907,8 +907,9 @@ class CreateInstanceNewRequest(AbstractModel):
         :param _InstanceName: 实例名称
         :type InstanceName: str
         :param _DataSpec: 数据节点
+SpecName从DescribeSpec接口中返回的DataSpec.Name获取
         :type DataSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
-        :param _Tags: 标签列表
+        :param _Tags: 标签列表（废弃）
         :type Tags: :class:`tencentcloud.cdwch.v20200915.models.Tag`
         :param _ClsLogSetId: 日志主题ID
         :type ClsLogSetId: str
@@ -919,7 +920,10 @@ class CreateInstanceNewRequest(AbstractModel):
         :param _HAZk: 是否是ZK高可用
         :type HAZk: bool
         :param _CommonSpec: ZK节点
+SpecName从DescribeSpec接口中返回的CommonSpec.Name（ZK节点）获取
         :type CommonSpec: :class:`tencentcloud.cdwch.v20200915.models.NodeSpec`
+        :param _TagItems: 标签列表
+        :type TagItems: list of Tag
         """
         self._Zone = None
         self._HaFlag = None
@@ -935,6 +939,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._MountDiskType = None
         self._HAZk = None
         self._CommonSpec = None
+        self._TagItems = None
 
     @property
     def Zone(self):
@@ -1002,10 +1007,14 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def Tags(self):
+        warnings.warn("parameter `Tags` is deprecated", DeprecationWarning) 
+
         return self._Tags
 
     @Tags.setter
     def Tags(self, Tags):
+        warnings.warn("parameter `Tags` is deprecated", DeprecationWarning) 
+
         self._Tags = Tags
 
     @property
@@ -1048,6 +1057,14 @@ class CreateInstanceNewRequest(AbstractModel):
     def CommonSpec(self, CommonSpec):
         self._CommonSpec = CommonSpec
 
+    @property
+    def TagItems(self):
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -1072,6 +1089,12 @@ class CreateInstanceNewRequest(AbstractModel):
         if params.get("CommonSpec") is not None:
             self._CommonSpec = NodeSpec()
             self._CommonSpec._deserialize(params.get("CommonSpec"))
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

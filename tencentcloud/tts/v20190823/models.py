@@ -27,14 +27,14 @@ class CreateTtsTaskRequest(AbstractModel):
         r"""
         :param _Text: 合成语音的源文本，按UTF-8编码统一计算，最多支持10万字符
         :type Text: str
-        :param _ModelType: 模型类型，1-默认模型。
-        :type ModelType: int
         :param _Volume: 音量大小，范围：[0，10]，分别对应11个等级的音量，默认为0，代表正常音量。没有静音选项。
         :type Volume: float
         :param _Speed: 语速，范围：[-2，2]，分别对应不同语速：<li>-2代表0.6倍</li><li>-1代表0.8倍</li><li>0代表1.0倍（默认）</li><li>1代表1.2倍</li><li>2代表1.5倍</li>如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。<br>参数值与实际语速转换，可参考[代码示例](https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz)
         :type Speed: float
         :param _ProjectId: 项目id，用户自定义，默认为0。
         :type ProjectId: int
+        :param _ModelType: 模型类型，1-默认模型。
+        :type ModelType: int
         :param _VoiceType: 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
         :type VoiceType: int
         :param _PrimaryLanguage: 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
@@ -55,10 +55,10 @@ class CreateTtsTaskRequest(AbstractModel):
         :type EmotionIntensity: int
         """
         self._Text = None
-        self._ModelType = None
         self._Volume = None
         self._Speed = None
         self._ProjectId = None
+        self._ModelType = None
         self._VoiceType = None
         self._PrimaryLanguage = None
         self._SampleRate = None
@@ -76,14 +76,6 @@ class CreateTtsTaskRequest(AbstractModel):
     @Text.setter
     def Text(self, Text):
         self._Text = Text
-
-    @property
-    def ModelType(self):
-        return self._ModelType
-
-    @ModelType.setter
-    def ModelType(self, ModelType):
-        self._ModelType = ModelType
 
     @property
     def Volume(self):
@@ -108,6 +100,14 @@ class CreateTtsTaskRequest(AbstractModel):
     @ProjectId.setter
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
+
+    @property
+    def ModelType(self):
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
 
     @property
     def VoiceType(self):
@@ -184,10 +184,10 @@ class CreateTtsTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
-        self._ModelType = params.get("ModelType")
         self._Volume = params.get("Volume")
         self._Speed = params.get("Speed")
         self._ProjectId = params.get("ProjectId")
+        self._ModelType = params.get("ModelType")
         self._VoiceType = params.get("VoiceType")
         self._PrimaryLanguage = params.get("PrimaryLanguage")
         self._SampleRate = params.get("SampleRate")

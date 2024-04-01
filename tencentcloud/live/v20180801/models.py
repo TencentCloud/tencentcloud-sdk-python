@@ -23685,6 +23685,9 @@ class RecordTemplateInfo(AbstractModel):
         :param _RemoveWatermark: 是否去除水印。
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoveWatermark: bool
+        :param _CosStore: 是否存储至cos
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosStore: int
         :param _FlvSpecialParam: FLV 录制定制参数。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlvSpecialParam: :class:`tencentcloud.live.v20180801.models.FlvSpecialParam`
@@ -23700,6 +23703,7 @@ class RecordTemplateInfo(AbstractModel):
         self._HlsSpecialParam = None
         self._Mp3Param = None
         self._RemoveWatermark = None
+        self._CosStore = None
         self._FlvSpecialParam = None
 
     @property
@@ -23791,6 +23795,14 @@ class RecordTemplateInfo(AbstractModel):
         self._RemoveWatermark = RemoveWatermark
 
     @property
+    def CosStore(self):
+        return self._CosStore
+
+    @CosStore.setter
+    def CosStore(self, CosStore):
+        self._CosStore = CosStore
+
+    @property
     def FlvSpecialParam(self):
         return self._FlvSpecialParam
 
@@ -23823,6 +23835,7 @@ class RecordTemplateInfo(AbstractModel):
             self._Mp3Param = RecordParam()
             self._Mp3Param._deserialize(params.get("Mp3Param"))
         self._RemoveWatermark = params.get("RemoveWatermark")
+        self._CosStore = params.get("CosStore")
         if params.get("FlvSpecialParam") is not None:
             self._FlvSpecialParam = FlvSpecialParam()
             self._FlvSpecialParam._deserialize(params.get("FlvSpecialParam"))

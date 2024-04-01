@@ -107,10 +107,6 @@ class CreateVRSTaskRequest(AbstractModel):
         :type SessionId: str
         :param _VoiceName: 音色名称
         :type VoiceName: str
-        :param _SampleRate: 音频采样率：
-
-16000：16k
-        :type SampleRate: int
         :param _VoiceGender: 音色性别:
 
 1-male
@@ -121,28 +117,31 @@ class CreateVRSTaskRequest(AbstractModel):
 
 1-中文
         :type VoiceLanguage: int
-        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
-        :type Codec: str
         :param _AudioIdList: 音频ID集合
         :type AudioIdList: list of str
+        :param _SampleRate: 音频采样率：
+
+16000：16k
+        :type SampleRate: int
+        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
+        :type Codec: str
         :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
         :type CallbackUrl: str
         :param _ModelType: 模型类型 1:在线 2:离线  默认为1
         :type ModelType: int
-        :param _TaskType: 任务类型 0:轻量版复刻
-默认为0
+        :param _TaskType: 复刻类型。 0 - 轻量版声音复刻（默认）。
         :type TaskType: int
-        :param _VPRAudioId: 校验音频ID
+        :param _VPRAudioId: 校验音频ID。
         :type VPRAudioId: str
         """
         self._SessionId = None
         self._VoiceName = None
-        self._SampleRate = None
         self._VoiceGender = None
         self._VoiceLanguage = None
-        self._Codec = None
         self._AudioIdList = None
+        self._SampleRate = None
+        self._Codec = None
         self._CallbackUrl = None
         self._ModelType = None
         self._TaskType = None
@@ -165,14 +164,6 @@ class CreateVRSTaskRequest(AbstractModel):
         self._VoiceName = VoiceName
 
     @property
-    def SampleRate(self):
-        return self._SampleRate
-
-    @SampleRate.setter
-    def SampleRate(self, SampleRate):
-        self._SampleRate = SampleRate
-
-    @property
     def VoiceGender(self):
         return self._VoiceGender
 
@@ -189,20 +180,28 @@ class CreateVRSTaskRequest(AbstractModel):
         self._VoiceLanguage = VoiceLanguage
 
     @property
-    def Codec(self):
-        return self._Codec
-
-    @Codec.setter
-    def Codec(self, Codec):
-        self._Codec = Codec
-
-    @property
     def AudioIdList(self):
         return self._AudioIdList
 
     @AudioIdList.setter
     def AudioIdList(self, AudioIdList):
         self._AudioIdList = AudioIdList
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
 
     @property
     def CallbackUrl(self):
@@ -240,11 +239,11 @@ class CreateVRSTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._VoiceName = params.get("VoiceName")
-        self._SampleRate = params.get("SampleRate")
         self._VoiceGender = params.get("VoiceGender")
         self._VoiceLanguage = params.get("VoiceLanguage")
-        self._Codec = params.get("Codec")
         self._AudioIdList = params.get("AudioIdList")
+        self._SampleRate = params.get("SampleRate")
+        self._Codec = params.get("Codec")
         self._CallbackUrl = params.get("CallbackUrl")
         self._ModelType = params.get("ModelType")
         self._TaskType = params.get("TaskType")
@@ -381,7 +380,7 @@ class DescribeVRSTaskStatusRespData(AbstractModel):
         :param _StatusStr: 任务状态，waiting：任务等待，doing：任务执行中，success：任务成功，failed：任务失败。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusStr: str
-        :param _VoiceType: 音色id
+        :param _VoiceType: 音色id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceType: int
         :param _ErrorMsg: 失败原因说明。
@@ -501,10 +500,10 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         :type TextId: str
         :param _AudioData: 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
         :type AudioData: str
-        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
-        :type Codec: str
         :param _TypeId: 1:环境检测 2:音质检测
         :type TypeId: int
+        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
+        :type Codec: str
         :param _SampleRate: 音频采样率：
 
 16000：16k（默认）
@@ -512,8 +511,8 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         """
         self._TextId = None
         self._AudioData = None
-        self._Codec = None
         self._TypeId = None
+        self._Codec = None
         self._SampleRate = None
 
     @property
@@ -533,20 +532,20 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
         self._AudioData = AudioData
 
     @property
-    def Codec(self):
-        return self._Codec
-
-    @Codec.setter
-    def Codec(self, Codec):
-        self._Codec = Codec
-
-    @property
     def TypeId(self):
         return self._TypeId
 
     @TypeId.setter
     def TypeId(self, TypeId):
         self._TypeId = TypeId
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
 
     @property
     def SampleRate(self):
@@ -560,8 +559,8 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
     def _deserialize(self, params):
         self._TextId = params.get("TextId")
         self._AudioData = params.get("AudioData")
-        self._Codec = params.get("Codec")
         self._TypeId = params.get("TypeId")
+        self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

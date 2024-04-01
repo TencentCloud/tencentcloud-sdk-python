@@ -4172,6 +4172,185 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceEventsRequest(AbstractModel):
+    """DescribeInstanceEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionStartDate: 配置查询事件执行计划的起始日期。
+        :type ExecutionStartDate: str
+        :param _ExecutionEndDate: 配置查询事件执行计划的结束日期。
+        :type ExecutionEndDate: str
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _PageSize: 输出每页显示事件的数量，默认：10。
+        :type PageSize: int
+        :param _PageNo: 配置查询事件的输出页码，即支持根据PageNo（页码）与 PageSize （每页输出数量）查询某一页的事件。默认：1。
+        :type PageNo: int
+        :param _Status: 事件当前状态。
+- Waiting：未到达执行日期或不在维护时间窗内的事件。
+- Running：在维护时间窗内，正在执行维护的事件。
+- Finished：已全部完成维护的事件。
+- Canceled：已取消执行的事件。
+        :type Status: list of str
+        :param _EventTypes: 事件类型，当前仅支持配置实例迁移、资源腾挪、机房裁撤相关的运维操作。该参数仅支持配置为 **InstanceMigration**。
+        :type EventTypes: list of str
+        :param _Grades: 配置查询事件等级。事件等级根据其影响严重程度和紧急程度进行分级，由重至轻依次为关键、重要、中等、一般。
+- Critical：关键
+- High：重要
+- Middle：中等
+- Low：一般
+        :type Grades: list of str
+        """
+        self._ExecutionStartDate = None
+        self._ExecutionEndDate = None
+        self._InstanceId = None
+        self._PageSize = None
+        self._PageNo = None
+        self._Status = None
+        self._EventTypes = None
+        self._Grades = None
+
+    @property
+    def ExecutionStartDate(self):
+        return self._ExecutionStartDate
+
+    @ExecutionStartDate.setter
+    def ExecutionStartDate(self, ExecutionStartDate):
+        self._ExecutionStartDate = ExecutionStartDate
+
+    @property
+    def ExecutionEndDate(self):
+        return self._ExecutionEndDate
+
+    @ExecutionEndDate.setter
+    def ExecutionEndDate(self, ExecutionEndDate):
+        self._ExecutionEndDate = ExecutionEndDate
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventTypes(self):
+        return self._EventTypes
+
+    @EventTypes.setter
+    def EventTypes(self, EventTypes):
+        self._EventTypes = EventTypes
+
+    @property
+    def Grades(self):
+        return self._Grades
+
+    @Grades.setter
+    def Grades(self, Grades):
+        self._Grades = Grades
+
+
+    def _deserialize(self, params):
+        self._ExecutionStartDate = params.get("ExecutionStartDate")
+        self._ExecutionEndDate = params.get("ExecutionEndDate")
+        self._InstanceId = params.get("InstanceId")
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        self._Status = params.get("Status")
+        self._EventTypes = params.get("EventTypes")
+        self._Grades = params.get("Grades")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceEventsResponse(AbstractModel):
+    """DescribeInstanceEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RedisInstanceEvents: 实例事件信息
+        :type RedisInstanceEvents: list of RedisInstanceEvent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedisInstanceEvents = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedisInstanceEvents(self):
+        return self._RedisInstanceEvents
+
+    @RedisInstanceEvents.setter
+    def RedisInstanceEvents(self, RedisInstanceEvents):
+        self._RedisInstanceEvents = RedisInstanceEvents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedisInstanceEvents") is not None:
+            self._RedisInstanceEvents = []
+            for item in params.get("RedisInstanceEvents"):
+                obj = RedisInstanceEvent()
+                obj._deserialize(item)
+                self._RedisInstanceEvents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceMonitorBigKeyRequest(AbstractModel):
     """DescribeInstanceMonitorBigKey请求参数结构体
 
@@ -12163,6 +12342,138 @@ class ModifyInstanceAvailabilityZonesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceEventRequest(AbstractModel):
+    """ModifyInstanceEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis#/)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _EventId: 事件 ID。请通过 DescribeInstanceEvents 获取需修改的事件 ID。
+        :type EventId: int
+        :param _StartTime: 修改事件执行的计划开始时间。
+        :type StartTime: str
+        :param _EndTime: 修改事件计划执行的结束时间。开始时间配置之后，结束时间只能选择在开始时间之后的 30 分钟、1 小时、1.5 小时、2 小时和 3 小时之内。
+        :type EndTime: str
+        :param _ExecutionDate: 修改事件执行计划的开始日期。
+        :type ExecutionDate: str
+        :param _Status: 修改事件的运行状态。该参数当前仅支持设置为 **Canceled**， 即取消执行当前事件。可通过 DescribeInstanceEvents 接口查询当前事件的运行状态与事件级别。
+- 事件级别为Critical（关键）或 High（重要）类事件不支持取消。即严重的事件必须执行，不可取消。
+- 仅运行状态为 Waiting （待执行的事件）的事件，才能执行取消操作。
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._EventId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecutionDate = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionDate(self):
+        return self._ExecutionDate
+
+    @ExecutionDate.setter
+    def ExecutionDate(self, ExecutionDate):
+        self._ExecutionDate = ExecutionDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EventId = params.get("EventId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionDate = params.get("ExecutionDate")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceEventResponse(AbstractModel):
+    """ModifyInstanceEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: 事件 ID。
+        :type EventId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventId = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamsRequest(AbstractModel):
     """ModifyInstanceParams请求参数结构体
 
@@ -13933,6 +14244,204 @@ class RedisCommonInstanceList(AbstractModel):
         self._Createtime = params.get("Createtime")
         self._PayMode = params.get("PayMode")
         self._NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisInstanceEvent(AbstractModel):
+    """实例事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 事件 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _InstanceId: 实例 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _Type: 事件类型，当前仅支持配置实例迁移、资源腾挪、机房裁撤相关的运维操作。该参数仅支持配置为 **InstanceMigration**。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Grade: 事件等级根据其影响严重程度和紧急程度进行分级，由重至轻依次为关键、重要、中等、一般。
+- Critical：关键
+- High：重要
+- Middle：中等
+- Low：一般
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Grade: str
+        :param _ExecutionDate: 事件计划执行日期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionDate: str
+        :param _StartTime: 事件计划执行开始时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 事件计划执行结束时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _LatestExecutionDate: 运维事件最迟执行的日期，即该事件必须在该日期之前完成，否则可能会对业务产生影响。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestExecutionDate: str
+        :param _Status: 事件当前状态。
+- Waiting：未到达执行日期或不在维护时间窗内的事件。
+- Running：在维护时间窗内，正在执行维护的事件。
+- Finished：已全部完成维护的事件。
+- Canceled：已取消执行的事件。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TaskEndTime: 事件执行任务完成时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskEndTime: str
+        :param _EffectInfo: 事件影响信息。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectInfo: str
+        :param _InitialExecutionDate: 事件最初计划执行日期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InitialExecutionDate: str
+        """
+        self._ID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Type = None
+        self._Grade = None
+        self._ExecutionDate = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LatestExecutionDate = None
+        self._Status = None
+        self._TaskEndTime = None
+        self._EffectInfo = None
+        self._InitialExecutionDate = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Grade(self):
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def ExecutionDate(self):
+        return self._ExecutionDate
+
+    @ExecutionDate.setter
+    def ExecutionDate(self, ExecutionDate):
+        self._ExecutionDate = ExecutionDate
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LatestExecutionDate(self):
+        return self._LatestExecutionDate
+
+    @LatestExecutionDate.setter
+    def LatestExecutionDate(self, LatestExecutionDate):
+        self._LatestExecutionDate = LatestExecutionDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskEndTime(self):
+        return self._TaskEndTime
+
+    @TaskEndTime.setter
+    def TaskEndTime(self, TaskEndTime):
+        self._TaskEndTime = TaskEndTime
+
+    @property
+    def EffectInfo(self):
+        return self._EffectInfo
+
+    @EffectInfo.setter
+    def EffectInfo(self, EffectInfo):
+        self._EffectInfo = EffectInfo
+
+    @property
+    def InitialExecutionDate(self):
+        return self._InitialExecutionDate
+
+    @InitialExecutionDate.setter
+    def InitialExecutionDate(self, InitialExecutionDate):
+        self._InitialExecutionDate = InitialExecutionDate
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Type = params.get("Type")
+        self._Grade = params.get("Grade")
+        self._ExecutionDate = params.get("ExecutionDate")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LatestExecutionDate = params.get("LatestExecutionDate")
+        self._Status = params.get("Status")
+        self._TaskEndTime = params.get("TaskEndTime")
+        self._EffectInfo = params.get("EffectInfo")
+        self._InitialExecutionDate = params.get("InitialExecutionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
