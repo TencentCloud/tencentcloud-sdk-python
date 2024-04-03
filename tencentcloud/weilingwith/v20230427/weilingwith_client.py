@@ -72,6 +72,29 @@ class WeilingwithClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDeleteDevice(self, request):
+        """批量删除设备
+
+        :param request: Request instance for BatchDeleteDevice.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.BatchDeleteDeviceRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.BatchDeleteDeviceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteDevice", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchKillAlarm(self, request):
         """批量消警
 
@@ -201,6 +224,29 @@ class WeilingwithClient(AbstractClient):
             body = self.call("CreateApplicationToken", params, headers=headers)
             response = json.loads(body)
             model = models.CreateApplicationTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDeviceGroup(self, request):
+        """删除设备分组
+
+        :param request: Request instance for DeleteDeviceGroup.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DeleteDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DeleteDeviceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeviceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeviceGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -477,6 +523,29 @@ class WeilingwithClient(AbstractClient):
             body = self.call("DescribeCityWorkspaceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCityWorkspaceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceGroupList(self, request):
+        """设备分组列表
+
+        :param request: Request instance for DescribeDeviceGroupList.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceGroupListRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceGroupListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceGroupList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceGroupListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1245,6 +1314,52 @@ class WeilingwithClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDeviceField(self, request):
+        """批量修改设备自定义字段值
+
+        :param request: Request instance for ModifyDeviceField.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceFieldRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceFieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceField", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceFieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeviceGroup(self, request):
+        """批量修改设备组
+
+        :param request: Request instance for ModifyDeviceGroup.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDeviceName(self, request):
         """批量修改设备名字
 
@@ -1268,6 +1383,29 @@ class WeilingwithClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDeviceTag(self, request):
+        """批量修改设备标签
+
+        :param request: Request instance for ModifyDeviceTag.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceTagRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.ModifyDeviceTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReportAppMessage(self, request):
         """上报应用消息
 
@@ -1282,6 +1420,29 @@ class WeilingwithClient(AbstractClient):
             body = self.call("ReportAppMessage", params, headers=headers)
             response = json.loads(body)
             model = models.ReportAppMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SaveDeviceGroup(self, request):
+        """设备分组新增/修改
+
+        :param request: Request instance for SaveDeviceGroup.
+        :type request: :class:`tencentcloud.weilingwith.v20230427.models.SaveDeviceGroupRequest`
+        :rtype: :class:`tencentcloud.weilingwith.v20230427.models.SaveDeviceGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveDeviceGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaveDeviceGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -144,6 +144,8 @@ class MrsClient(AbstractClient):
     def TextToClass(self, request):
         """文本分类
 
+        适用场景：经过腾讯医疗专用 OCR 从图片识别之后的文本，并且需要加上每个字符的坐标信息，才可以调用此接口。通过其它 OCR 识别的文本可能不适配。医院的 XML 格式文本也不适配，XML 文件需要经过特殊转换才能直接调用此接口。单次调用传入的文本不宜超过 2000 字。如有需要调用此接口，建议先咨询产品团队。
+
         :param request: Request instance for TextToClass.
         :type request: :class:`tencentcloud.mrs.v20200910.models.TextToClassRequest`
         :rtype: :class:`tencentcloud.mrs.v20200910.models.TextToClassResponse`

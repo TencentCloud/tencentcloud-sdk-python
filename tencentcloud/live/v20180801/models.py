@@ -3649,6 +3649,8 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         :type HlsSpecialParam: :class:`tencentcloud.live.v20180801.models.HlsSpecialParam`
         :param _Mp3Param: Mp3录制参数，开启Mp3录制时设置。
         :type Mp3Param: :class:`tencentcloud.live.v20180801.models.RecordParam`
+        :param _CosStore: 是否存储至 cos，值为 1 时表示存储至 cos。
+        :type CosStore: int
         :param _RemoveWatermark: 是否去除水印，类型为慢直播时此参数无效。
 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
         :type RemoveWatermark: bool
@@ -3664,6 +3666,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self._IsDelayLive = None
         self._HlsSpecialParam = None
         self._Mp3Param = None
+        self._CosStore = None
         self._RemoveWatermark = None
         self._FlvSpecialParam = None
 
@@ -3740,6 +3743,14 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         self._Mp3Param = Mp3Param
 
     @property
+    def CosStore(self):
+        return self._CosStore
+
+    @CosStore.setter
+    def CosStore(self, CosStore):
+        self._CosStore = CosStore
+
+    @property
     def RemoveWatermark(self):
         return self._RemoveWatermark
 
@@ -3778,6 +3789,7 @@ class CreateLiveRecordTemplateRequest(AbstractModel):
         if params.get("Mp3Param") is not None:
             self._Mp3Param = RecordParam()
             self._Mp3Param._deserialize(params.get("Mp3Param"))
+        self._CosStore = params.get("CosStore")
         self._RemoveWatermark = params.get("RemoveWatermark")
         if params.get("FlvSpecialParam") is not None:
             self._FlvSpecialParam = FlvSpecialParam()

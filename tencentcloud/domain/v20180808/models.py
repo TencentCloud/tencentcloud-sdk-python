@@ -2962,6 +2962,49 @@ class DescribeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTldListRequest(AbstractModel):
+    """DescribeTldList请求参数结构体
+
+    """
+
+
+class DescribeTldListResponse(AbstractModel):
+    """DescribeTldList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 支持的后缀列表
+        :type List: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._List = params.get("List")
+        self._RequestId = params.get("RequestId")
+
+
 class DomainBaseInfo(AbstractModel):
     """获取域名基础信息
 

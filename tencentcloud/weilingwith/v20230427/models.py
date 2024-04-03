@@ -2102,6 +2102,102 @@ class BatchCreateDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchDeleteDeviceRequest(AbstractModel):
+    """BatchDeleteDevice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _WIDSet: 设备wid数组列表
+        :type WIDSet: list of str
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        """
+        self._WorkspaceId = None
+        self._WIDSet = None
+        self._ApplicationToken = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def WIDSet(self):
+        return self._WIDSet
+
+    @WIDSet.setter
+    def WIDSet(self, WIDSet):
+        self._WIDSet = WIDSet
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._WIDSet = params.get("WIDSet")
+        self._ApplicationToken = params.get("ApplicationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteDeviceResponse(AbstractModel):
+    """BatchDeleteDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回请求结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = EmptyRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class BatchKillAlarmRequest(AbstractModel):
     """BatchKillAlarm请求参数结构体
 
@@ -3802,6 +3898,102 @@ class CustomFieldInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteDeviceGroupRequest(AbstractModel):
+    """DeleteDeviceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 设备分组的id
+        :type Id: int
+        :param _WorkspaceId: 工作空间的id
+        :type WorkspaceId: int
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        """
+        self._Id = None
+        self._WorkspaceId = None
+        self._ApplicationToken = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ApplicationToken = params.get("ApplicationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeviceGroupResponse(AbstractModel):
+    """DeleteDeviceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 无返回信息
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = EmptyRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeActionListRequest(AbstractModel):
@@ -5540,6 +5732,141 @@ class DescribeCityWorkspaceListResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = DescribeCityWorkspaceListRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceGroupListRequest(AbstractModel):
+    """DescribeDeviceGroupList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _WorkspaceId: 工作空间ID
+        :type WorkspaceId: int
+        :param _GroupId: 分组id, 不传默认全部
+        :type GroupId: int
+        """
+        self._ApplicationToken = None
+        self._WorkspaceId = None
+        self._GroupId = None
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceGroupListRes(AbstractModel):
+    """设备分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 设备分组list
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of DescribeGroupInfo
+        """
+        self._List = None
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DescribeGroupInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceGroupListResponse(AbstractModel):
+    """DescribeDeviceGroupList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 分组信息
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.DescribeDeviceGroupListRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeDeviceGroupListRes()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -7483,6 +7810,77 @@ class DescribeFileUploadURLResponse(AbstractModel):
             self._Result = FileUploadURL()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class DescribeGroupInfo(AbstractModel):
+    """分组信息实体类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 分组
+        :type Id: int
+        :param _Name: 设备分组名称
+        :type Name: str
+        :param _Description: 分组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ParentId: 分组父级ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentId: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._ParentId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ParentId = params.get("ParentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeInterfaceListRequest(AbstractModel):
@@ -13319,6 +13717,310 @@ class ModelSet(AbstractModel):
         
 
 
+class ModifyDeviceFieldInfo(AbstractModel):
+    """设备自定义值修改信息入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WID: 设备id
+        :type WID: str
+        :param _Key: 自定义字段key
+        :type Key: str
+        :param _Val: 自定义字段值
+        :type Val: str
+        """
+        self._WID = None
+        self._Key = None
+        self._Val = None
+
+    @property
+    def WID(self):
+        return self._WID
+
+    @WID.setter
+    def WID(self, WID):
+        self._WID = WID
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Val(self):
+        return self._Val
+
+    @Val.setter
+    def Val(self, Val):
+        self._Val = Val
+
+
+    def _deserialize(self, params):
+        self._WID = params.get("WID")
+        self._Key = params.get("Key")
+        self._Val = params.get("Val")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceFieldRequest(AbstractModel):
+    """ModifyDeviceField请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _Set: 设备自定义字段修改信息集合
+        :type Set: list of ModifyDeviceFieldInfo
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        """
+        self._WorkspaceId = None
+        self._Set = None
+        self._ApplicationToken = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Set(self):
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = ModifyDeviceFieldInfo()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        self._ApplicationToken = params.get("ApplicationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceFieldResponse(AbstractModel):
+    """ModifyDeviceField返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回请求结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = EmptyRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDeviceGroupInfo(AbstractModel):
+    """设备组修改信息入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WID: 设备id
+        :type WID: str
+        :param _GroupId: 设备分组id
+        :type GroupId: int
+        """
+        self._WID = None
+        self._GroupId = None
+
+    @property
+    def WID(self):
+        return self._WID
+
+    @WID.setter
+    def WID(self, WID):
+        self._WID = WID
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._WID = params.get("WID")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceGroupRequest(AbstractModel):
+    """ModifyDeviceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _Set: 设备组修改信息集合	
+        :type Set: list of ModifyDeviceGroupInfo
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        """
+        self._WorkspaceId = None
+        self._Set = None
+        self._ApplicationToken = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Set(self):
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = ModifyDeviceGroupInfo()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        self._ApplicationToken = params.get("ApplicationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceGroupResponse(AbstractModel):
+    """ModifyDeviceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回请求结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = EmptyRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDeviceNameRequest(AbstractModel):
     """ModifyDeviceName请求参数结构体
 
@@ -13383,6 +14085,152 @@ class ModifyDeviceNameRequest(AbstractModel):
 
 class ModifyDeviceNameResponse(AbstractModel):
     """ModifyDeviceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回请求结果
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.EmptyRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = EmptyRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDeviceTagInfo(AbstractModel):
+    """设备标签修改信息入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WID: 设备id
+        :type WID: str
+        :param _NameSet: 设备标签名称集合
+        :type NameSet: list of str
+        """
+        self._WID = None
+        self._NameSet = None
+
+    @property
+    def WID(self):
+        return self._WID
+
+    @WID.setter
+    def WID(self, WID):
+        self._WID = WID
+
+    @property
+    def NameSet(self):
+        return self._NameSet
+
+    @NameSet.setter
+    def NameSet(self, NameSet):
+        self._NameSet = NameSet
+
+
+    def _deserialize(self, params):
+        self._WID = params.get("WID")
+        self._NameSet = params.get("NameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceTagRequest(AbstractModel):
+    """ModifyDeviceTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间id
+        :type WorkspaceId: int
+        :param _Set: 设备标签修改信息集合
+        :type Set: list of ModifyDeviceTagInfo
+        :param _ApplicationToken: 应用token	
+        :type ApplicationToken: str
+        """
+        self._WorkspaceId = None
+        self._Set = None
+        self._ApplicationToken = None
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Set(self):
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = ModifyDeviceTagInfo()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        self._ApplicationToken = params.get("ApplicationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceTagResponse(AbstractModel):
+    """ModifyDeviceTag返回参数结构体
 
     """
 
@@ -14574,6 +15422,172 @@ class RuleDetailRes(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SaveDeviceGroupRequest(AbstractModel):
+    """SaveDeviceGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 分组名称
+        :type Name: str
+        :param _Description: 分组描述
+        :type Description: str
+        :param _WorkspaceId: 空间id
+        :type WorkspaceId: int
+        :param _ApplicationToken: 应用token
+        :type ApplicationToken: str
+        :param _Id: 分组id, 携带则为修改, 不携带则为新增
+        :type Id: int
+        :param _ParentId: 分组父级id
+        :type ParentId: int
+        """
+        self._Name = None
+        self._Description = None
+        self._WorkspaceId = None
+        self._ApplicationToken = None
+        self._Id = None
+        self._ParentId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WorkspaceId(self):
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def ApplicationToken(self):
+        return self._ApplicationToken
+
+    @ApplicationToken.setter
+    def ApplicationToken(self, ApplicationToken):
+        self._ApplicationToken = ApplicationToken
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ParentId(self):
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._ApplicationToken = params.get("ApplicationToken")
+        self._Id = params.get("Id")
+        self._ParentId = params.get("ParentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveDeviceGroupRes(AbstractModel):
+    """保存or修改设备分组回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 保存or修改设备分组回包信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SaveDeviceGroupResponse(AbstractModel):
+    """SaveDeviceGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 新增/修改的设备分组记录的id
+        :type Result: :class:`tencentcloud.weilingwith.v20230427.models.SaveDeviceGroupRes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SaveDeviceGroupRes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
 
 
 class SceneInfo(AbstractModel):

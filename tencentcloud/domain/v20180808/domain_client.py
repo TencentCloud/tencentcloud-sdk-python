@@ -578,6 +578,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTldList(self, request):
+        """用于获取域名注册当前支持注册的后缀
+
+        :param request: Request instance for DescribeTldList.
+        :type request: :class:`tencentcloud.domain.v20180808.models.DescribeTldListRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.DescribeTldListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTldList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTldListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomDnsHost(self, request):
         """修改自定义DNS Host
 

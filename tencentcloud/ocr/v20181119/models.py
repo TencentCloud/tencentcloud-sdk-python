@@ -3291,6 +3291,9 @@ class DocumentElement(AbstractModel):
         :param _Level: 元素层级
 注意：此字段可能返回 null，表示取不到有效值。
         :type Level: int
+        :param _InsetImageName: 入参开启EnableInsetImage后返回，表示在InsetImagePackage中的内嵌图片名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InsetImageName: str
         :param _Elements: 嵌套的文档元素信息，一般包含的是文档内嵌入图片的文字识别结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type Elements: list of DocumentElement
@@ -3300,6 +3303,7 @@ class DocumentElement(AbstractModel):
         self._Text = None
         self._Polygon = None
         self._Level = None
+        self._InsetImageName = None
         self._Elements = None
 
     @property
@@ -3343,6 +3347,14 @@ class DocumentElement(AbstractModel):
         self._Level = Level
 
     @property
+    def InsetImageName(self):
+        return self._InsetImageName
+
+    @InsetImageName.setter
+    def InsetImageName(self, InsetImageName):
+        self._InsetImageName = InsetImageName
+
+    @property
     def Elements(self):
         return self._Elements
 
@@ -3359,6 +3371,7 @@ class DocumentElement(AbstractModel):
             self._Polygon = Polygon()
             self._Polygon._deserialize(params.get("Polygon"))
         self._Level = params.get("Level")
+        self._InsetImageName = params.get("InsetImageName")
         if params.get("Elements") is not None:
             self._Elements = []
             for item in params.get("Elements"):

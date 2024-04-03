@@ -1052,7 +1052,7 @@ class FilterGroup(AbstractModel):
 
 
 class Paging(AbstractModel):
-    """数据分页信息
+    """页码
 
     """
 

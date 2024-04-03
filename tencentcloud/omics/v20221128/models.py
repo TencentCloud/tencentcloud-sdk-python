@@ -3318,12 +3318,14 @@ class RunApplicationRequest(AbstractModel):
         :type Name: str
         :param _EnvironmentId: 投递环境ID。
         :type EnvironmentId: str
-        :param _InputBase64: 任务输入JSON。需要进行base64编码。
-        :type InputBase64: str
         :param _ProjectId: 项目ID。（不填使用指定地域下的默认项目）
         :type ProjectId: str
         :param _Description: 任务批次描述。
         :type Description: str
+        :param _InputCosUri: 任务输入COS地址。（InputBase64和InputCosUri必选其一）
+        :type InputCosUri: str
+        :param _InputBase64: 任务输入JSON。需要进行base64编码。（InputBase64和InputCosUri必选其一）
+        :type InputBase64: str
         :param _TableId: 批量投递表格ID，不填表示单例投递。
         :type TableId: str
         :param _TableRowUuids: 批量投递表格行UUID。不填表示表格全部行。
@@ -3338,13 +3340,18 @@ class RunApplicationRequest(AbstractModel):
         :type NFOption: :class:`tencentcloud.omics.v20221128.models.NFOption`
         :param _WorkDir: 工作目录，使用缓存卷内的相对路径 (暂时仅支持Nextflow)
         :type WorkDir: str
+        :param _AccessMode: 访问模式，不填默认私有。取值范围
+- PRIVATE：私有应用
+- PUBLIC：公共应用
+        :type AccessMode: str
         """
         self._ApplicationId = None
         self._Name = None
         self._EnvironmentId = None
-        self._InputBase64 = None
         self._ProjectId = None
         self._Description = None
+        self._InputCosUri = None
+        self._InputBase64 = None
         self._TableId = None
         self._TableRowUuids = None
         self._CacheClearDelay = None
@@ -3352,6 +3359,7 @@ class RunApplicationRequest(AbstractModel):
         self._Option = None
         self._NFOption = None
         self._WorkDir = None
+        self._AccessMode = None
 
     @property
     def ApplicationId(self):
@@ -3378,14 +3386,6 @@ class RunApplicationRequest(AbstractModel):
         self._EnvironmentId = EnvironmentId
 
     @property
-    def InputBase64(self):
-        return self._InputBase64
-
-    @InputBase64.setter
-    def InputBase64(self, InputBase64):
-        self._InputBase64 = InputBase64
-
-    @property
     def ProjectId(self):
         return self._ProjectId
 
@@ -3400,6 +3400,22 @@ class RunApplicationRequest(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def InputCosUri(self):
+        return self._InputCosUri
+
+    @InputCosUri.setter
+    def InputCosUri(self, InputCosUri):
+        self._InputCosUri = InputCosUri
+
+    @property
+    def InputBase64(self):
+        return self._InputBase64
+
+    @InputBase64.setter
+    def InputBase64(self, InputBase64):
+        self._InputBase64 = InputBase64
 
     @property
     def TableId(self):
@@ -3457,14 +3473,23 @@ class RunApplicationRequest(AbstractModel):
     def WorkDir(self, WorkDir):
         self._WorkDir = WorkDir
 
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
         self._Name = params.get("Name")
         self._EnvironmentId = params.get("EnvironmentId")
-        self._InputBase64 = params.get("InputBase64")
         self._ProjectId = params.get("ProjectId")
         self._Description = params.get("Description")
+        self._InputCosUri = params.get("InputCosUri")
+        self._InputBase64 = params.get("InputBase64")
         self._TableId = params.get("TableId")
         self._TableRowUuids = params.get("TableRowUuids")
         self._CacheClearDelay = params.get("CacheClearDelay")
@@ -3476,6 +3501,7 @@ class RunApplicationRequest(AbstractModel):
             self._NFOption = NFOption()
             self._NFOption._deserialize(params.get("NFOption"))
         self._WorkDir = params.get("WorkDir")
+        self._AccessMode = params.get("AccessMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
