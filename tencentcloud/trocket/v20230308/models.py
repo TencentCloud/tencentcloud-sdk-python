@@ -7168,11 +7168,14 @@ class ModifyTopicRequest(AbstractModel):
         :type QueueNum: int
         :param _Remark: 备注信息
         :type Remark: str
+        :param _MsgTTL: 消息保留时长
+        :type MsgTTL: int
         """
         self._InstanceId = None
         self._Topic = None
         self._QueueNum = None
         self._Remark = None
+        self._MsgTTL = None
 
     @property
     def InstanceId(self):
@@ -7206,12 +7209,21 @@ class ModifyTopicRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def MsgTTL(self):
+        return self._MsgTTL
+
+    @MsgTTL.setter
+    def MsgTTL(self, MsgTTL):
+        self._MsgTTL = MsgTTL
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
         self._QueueNum = params.get("QueueNum")
         self._Remark = params.get("Remark")
+        self._MsgTTL = params.get("MsgTTL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
